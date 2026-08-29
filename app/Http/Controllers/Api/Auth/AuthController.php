@@ -14,6 +14,7 @@ use App\Http\Resources\Auth\AuthUserResource;
 use App\Http\Resources\Profile\ProfileResource;
 use App\Infrastructure\Device\UserAgentParser;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -54,7 +55,7 @@ class AuthController extends Controller
     }
     public function logout(): JsonResponse
     {
-        $this->logoutUser->handle(auth()->user());
+        $this->logoutUser->handle(Auth::user());
 
         return $this->success(
             message: __('messages.auth.logout_success')
@@ -66,7 +67,7 @@ class AuthController extends Controller
     return $this->success(
         data: [
             'user' => new ProfileResource(
-                $this->getCurrentUser->handle(auth()->user())
+                $this->getCurrentUser->handle(Auth::user())
             ),
         ],
         message: __('messages.auth.me_success')
