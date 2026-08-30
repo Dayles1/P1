@@ -1,6 +1,5 @@
 import { wayfinder } from '@laravel/vite-plugin-wayfinder';
 import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react';
 import laravel from 'laravel-vite-plugin';
 import { bunny } from 'laravel-vite-plugin/fonts';
 import { defineConfig } from 'vite';
@@ -10,22 +9,22 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
-                'resources/js/app.tsx',
+
+                // Auth Blade
+                'resources/css/blade/auth/auth.css',
+                'resources/js/blade/auth/auth.js',
+
+                // Если здесь будут другие Blade-страницы,
+                // добавляй их сюда
             ],
+
             refresh: true,
+
             fonts: [
                 bunny('Instrument Sans', {
                     weights: [400, 500, 600],
                 }),
             ],
-        }),
-
-        react({
-            babel: {
-                plugins: [
-                    'babel-plugin-react-compiler',
-                ],
-            },
         }),
 
         tailwindcss(),
