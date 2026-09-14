@@ -49,13 +49,20 @@ export function setTheme(theme) {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const apply = () => applyTheme(theme);
 
-    if (!document.startViewTransition || prefersReducedMotion) {
+    if (!document.startViewTransition || prefersReducedMotion || document.visibilityState !== 'visible') {
         apply();
 
         return;
     }
 
-    document.startViewTransition(apply);
+    // The animation itself can reject (e.g. the tab loses visibility mid-
+    // transition) even though `apply()` already ran and the theme is
+    // correctly applied — that's a cosmetic animation failure, not a
+    // functional one, so it's swallowed rather than left as an unhandled
+    // rejection.
+    const transition = document.startViewTransition(apply);
+    transition.ready.catch(() => {});
+    transition.finished.catch(() => {});
 }
 
 /**
