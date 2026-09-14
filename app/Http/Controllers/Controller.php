@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 abstract class Controller
 {
+    use AuthorizesRequests;
+
     protected function success(
         mixed $data = null,
         string $message = 'Operation successful',
@@ -42,16 +42,16 @@ abstract class Controller
             [
                 'pagination' => [
                     'current_page' => $paginator->currentPage(),
-                    'last_page'    => $paginator->lastPage(),
-                    'per_page'     => $paginator->perPage(),
-                    'total'        => $paginator->total(),
-                    'from'         => $paginator->firstItem(),
-                    'to'           => $paginator->lastItem(),
-                    'links'        => [
+                    'last_page' => $paginator->lastPage(),
+                    'per_page' => $paginator->perPage(),
+                    'total' => $paginator->total(),
+                    'from' => $paginator->firstItem(),
+                    'to' => $paginator->lastItem(),
+                    'links' => [
                         'first' => $paginator->url(1),
-                        'last'  => $paginator->url($paginator->lastPage()),
-                        'prev'  => $paginator->previousPageUrl(),
-                        'next'  => $paginator->nextPageUrl(),
+                        'last' => $paginator->url($paginator->lastPage()),
+                        'prev' => $paginator->previousPageUrl(),
+                        'next' => $paginator->nextPageUrl(),
                     ],
                 ],
             ]
@@ -68,10 +68,10 @@ abstract class Controller
         $payload = [
             'success' => $success,
             'message' => $message,
-            'data'    => $data,
+            'data' => $data,
         ];
 
-        if (!empty($meta)) {
+        if (! empty($meta)) {
             $payload = array_merge($payload, $meta);
         }
 

@@ -157,7 +157,7 @@
         0
         4px
         12px
-        rgba(127, 86, 217, 0.18);
+        color-mix(in srgb, var(--auth-primary) 18%, transparent);
 
     transition:
         background 180ms ease,
@@ -174,7 +174,7 @@
         0
         8px
         22px
-        rgba(127, 86, 217, 0.24);
+        color-mix(in srgb, var(--auth-primary) 24%, transparent);
 }
 
 .auth-button:active {

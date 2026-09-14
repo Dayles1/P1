@@ -2,7 +2,11 @@
 
 namespace App\Http\Requests\Profile;
 
+use App\Domain\Localization\Models\Language;
+use App\Domain\Setting\Services\ThemeCatalog;
+use App\Domain\Setting\Services\UserDateFormatter;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateUserSettingRequest extends FormRequest
 {
@@ -10,7 +14,6 @@ class UpdateUserSettingRequest extends FormRequest
     {
         return true;
     }
-
 
     public function rules(): array
     {
@@ -30,23 +33,22 @@ class UpdateUserSettingRequest extends FormRequest
                 'nullable',
                 'string',
                 'max:10',
+                Rule::in(Language::query()->where('is_active', true)->pluck('code')->all()),
             ],
 
             'theme' => [
                 'nullable',
-                'in:light,dark,system',
+                Rule::in(ThemeCatalog::codes()),
             ],
 
             'date_format' => [
                 'nullable',
-                'string',
-                'max:50',
+                Rule::in(array_keys(UserDateFormatter::availableDateFormats())),
             ],
 
             'time_format' => [
                 'nullable',
-                'string',
-                'max:50',
+                Rule::in(array_keys(UserDateFormatter::availableTimeFormats())),
             ],
 
             'meta' => [

@@ -20,6 +20,10 @@ api.interceptors.request.use(
             config.headers.Authorization = `Bearer ${token}`;
         }
 
+        if (window.__i18n?.locale) {
+            config.headers['X-Locale'] = window.__i18n.locale;
+        }
+
         return config;
     },
     (error) => Promise.reject(error)

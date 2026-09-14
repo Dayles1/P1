@@ -1,6 +1,8 @@
 import { api } from '../axios';
 import { initials } from '../shared/auth-state';
-import { showToast } from '../shared/toast';
+import { showToast, apiErrorMessage } from '../shared/toast';
+import { apiErrors, clearFieldErrors, showFieldErrors } from '../shared/forms';
+import { t } from '../shared/i18n';
 
 let currentUser = null;
 
@@ -30,32 +32,6 @@ const rolesEl = document.querySelector('[data-profile-roles]');
 |--------------------------------------------------------------------------
 */
 
-function clearFieldErrors(form) {
-    form.querySelectorAll('[data-field-error]').forEach((el) => {
-        el.textContent = '';
-    });
-}
-
-function showFieldErrors(form, errors) {
-    clearFieldErrors(form);
-
-    Object.entries(errors || {}).forEach(([field, messages]) => {
-        const el = form.querySelector(`[data-field-error="${CSS.escape(field)}"]`);
-
-        if (el) {
-            el.textContent = Array.isArray(messages) ? messages[0] : messages;
-        }
-    });
-}
-
-function apiErrors(error) {
-    return error?.response?.data?.errors || {};
-}
-
-function apiMessage(error, fallback) {
-    return error?.response?.data?.message || fallback;
-}
-
 function renderAvatar(user) {
     if (user.avatar?.url) {
         avatarEl.innerHTML = `<img class="avatar__image" src="${user.avatar.url}" alt="${user.name}">`;
@@ -70,7 +46,7 @@ function renderRoles(user) {
     }
 
     if (!user.roles?.length) {
-        rolesEl.innerHTML = '<span class="field-hint">No roles assigned.</span>';
+        rolesEl.innerHTML = `<span class="field-hint">${t('profile.no_roles')}</span>`;
 
         return;
     }
@@ -87,7 +63,16 @@ function renderBan(user) {
 
     if (user.ban?.is_active) {
         banNotice.hidden = false;
-        banNoticeText.textContent = `Your account is banned${user.ban.reason ? `: ${user.ban.reason}` : '.'}${user.ban.ends_at ? ` (until ${user.ban.ends_at})` : ''}`;
+
+        let message = user.ban.reason
+            ? t('profile.banned_notice_reason', { reason: user.ban.reason })
+            : t('profile.banned_notice');
+
+        if (user.ban.ends_at) {
+            message += t('profile.banned_notice_until', { date: user.ban.ends_at });
+        }
+
+        banNoticeText.textContent = message;
     } else {
         banNotice.hidden = true;
     }
@@ -112,7 +97,7 @@ async function loadProfile() {
         renderRoles(currentUser);
         renderBan(currentUser);
     } catch (error) {
-        showToast(apiMessage(error, 'Could not load your profile.'), 'error');
+        showToast(apiErrorMessage(error, t('profile.load_error')), 'error');
     }
 }
 
@@ -160,10 +145,10 @@ profileForm?.addEventListener('submit', async (event) => {
         currentPasswordField.hidden = true;
         profileForm.querySelector('[name="current_password"]').value = '';
 
-        showToast('Profile updated.');
+        showToast(t('profile.updated'));
     } catch (error) {
         showFieldErrors(profileForm, apiErrors(error));
-        showToast(apiMessage(error, 'Could not update your profile.'), 'error');
+        showToast(apiErrorMessage(error, t('profile.save_error')), 'error');
     } finally {
         submitButton.disabled = false;
     }
@@ -191,10 +176,10 @@ passwordForm?.addEventListener('submit', async (event) => {
 
         passwordForm.reset();
 
-        showToast('Password updated.');
+        showToast(t('profile.password_updated'));
     } catch (error) {
         showFieldErrors(passwordForm, apiErrors(error));
-        showToast(apiMessage(error, 'Could not update your password.'), 'error');
+        showToast(apiErrorMessage(error, t('profile.password_error')), 'error');
     } finally {
         submitButton.disabled = false;
     }
@@ -231,9 +216,9 @@ avatarInput?.addEventListener('change', async () => {
             avatarEl.innerHTML = `<img class="avatar__image" src="${data.data.url}" alt="avatar">`;
         }
 
-        showToast('Avatar updated.');
+        showToast(t('profile.avatar_updated'));
     } catch (error) {
-        showToast(apiMessage(error, 'Could not upload avatar.'), 'error');
+        showToast(apiErrorMessage(error, t('profile.avatar_error')), 'error');
     } finally {
         avatarTrigger.disabled = false;
         avatarInput.value = '';

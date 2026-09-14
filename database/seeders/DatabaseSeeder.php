@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             TimezoneSeeder::class,
+            LanguageSeeder::class,
             SuperAdminSeeder::class,
             SettingSeeder::class,
         ]);

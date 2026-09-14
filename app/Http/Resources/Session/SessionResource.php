@@ -46,6 +46,12 @@ class SessionResource extends JsonResource
 
             'is_current' => (int) $this->personal_access_token_id ===
                 (int) optional($request->user()?->currentAccessToken())->id,
+
+            'user' => $this->whenLoaded('user', fn () => [
+                'id' => $this->user->id,
+                'name' => $this->user->name,
+                'email' => $this->user->email,
+            ]),
         ];
     }
 }

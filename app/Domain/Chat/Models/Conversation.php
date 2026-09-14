@@ -51,33 +51,40 @@ class Conversation extends Model
     }
 
     public function users(): BelongsToMany
-{
-    return $this->belongsToMany(
-        User::class,
-        'conversation_users'
-    )
-        ->using(ConversationUser::class)
-        ->wherePivotNull('left_at')
-        ->withPivot([
-            'role',
-            'joined_at',
-            'left_at',
-            'muted_until',
-            'last_read_message_id',
-            'last_read_at',
-            'is_pinned',
-            'is_hidden',
-            'unread_count',
-            'notifications_enabled',
-        ])
-        ->withTimestamps();
-}
+    {
+        return $this->belongsToMany(
+            User::class,
+            'conversation_users'
+        )
+            ->using(ConversationUser::class)
+            ->wherePivotNull('left_at')
+            ->withPivot([
+                'role',
+                'joined_at',
+                'left_at',
+                'muted_until',
+                'last_read_message_id',
+                'last_read_at',
+                'is_pinned',
+                'is_hidden',
+                'unread_count',
+                'notifications_enabled',
+            ])
+            ->withTimestamps();
+    }
 
     public function messages(): HasMany
     {
         return $this->hasMany(Message::class);
     }
-    public function avatar(): MorphOne
+
+    /**
+     * The conversation's uploaded avatar attachment. Not named `avatar()` —
+     * the model already has a real `avatar` column (a plain URL string), and
+     * an Eloquent relation method sharing that name would never actually be
+     * reachable through `$conversation->avatar` (the column always wins).
+     */
+    public function avatarAttachment(): MorphOne
     {
         return $this->morphOne(Attachment::class, 'attachable')
             ->where('collection', 'avatar');

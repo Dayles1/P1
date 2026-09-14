@@ -18,7 +18,7 @@ class ConversationShowResource extends JsonResource
             'id' => $this->id,
             'type' => $this->type,
             'title' => $this->title,
-            'avatar' => $this->avatar?->url(),
+            'avatar' => $this->avatar,
             'created_by' => $this->created_by,
             'creator' => $this->whenLoaded('creator', function () {
                 return [
@@ -31,8 +31,8 @@ class ConversationShowResource extends JsonResource
             'is_archived' => (bool) $this->is_archived,
             'meta' => $this->meta,
             'members_count' => $this->users_count,
-            'created_at' => $formatter->format($this->created_at,$user),
-            'updated_at' => $formatter->format($this->updated_at,$user),
+            'created_at' => $formatter->format($this->created_at, $user),
+            'updated_at' => $formatter->format($this->updated_at, $user),
         ];
     }
 }

@@ -22,8 +22,15 @@ export default defineConfig({
                 'resources/js/blade/app/authenticated.js',
                 'resources/js/blade/app/profile.js',
                 'resources/js/blade/app/sessions.js',
+                'resources/js/blade/app/session-detail.js',
                 'resources/js/blade/app/settings.js',
+                'resources/js/blade/app/dashboard.js',
+                'resources/js/blade/app/chat.js',
                 'resources/js/blade/app/admin-settings.js',
+                'resources/js/blade/app/admin-users.js',
+                'resources/js/blade/app/admin-sessions.js',
+                'resources/js/blade/app/admin-session-detail.js',
+                'resources/js/blade/app/admin-request-logs.js',
 
                 // Если здесь будут другие Blade-страницы,
                 // добавляй их сюда

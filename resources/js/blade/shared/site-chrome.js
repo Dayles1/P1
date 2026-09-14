@@ -1,38 +1,7 @@
 import { fetchCurrentUser, hasRole, initials, logout } from './auth-state';
-
-/*
-|--------------------------------------------------------------------------
-| Theme toggle
-|--------------------------------------------------------------------------
-*/
-
-function initThemeToggle() {
-    const root = document.documentElement;
-    const themeToggle = document.getElementById('theme-toggle');
-
-    function prefersReducedMotion() {
-        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    }
-
-    function toggleTheme() {
-        const current = root.dataset.theme === 'dark' ? 'dark' : 'light';
-        const next = current === 'dark' ? 'light' : 'dark';
-
-        const apply = () => {
-            root.dataset.theme = next;
-            localStorage.setItem('theme', next);
-        };
-
-        if (!document.startViewTransition || prefersReducedMotion()) {
-            apply();
-            return;
-        }
-
-        document.startViewTransition(apply);
-    }
-
-    themeToggle?.addEventListener('click', toggleTheme);
-}
+import { initThemePicker } from './theme';
+import { initLocalePicker } from './i18n';
+import { api } from '../axios';
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +56,12 @@ function closeAllDropdowns(except = null) {
 
 function initDropdowns() {
     document.addEventListener('click', (event) => {
+        if (event.target.closest('[data-theme-option], [data-locale-option]')) {
+            closeAllDropdowns();
+
+            return;
+        }
+
         const trigger = event.target.closest('[data-dropdown-trigger]');
 
         if (trigger) {
@@ -119,6 +94,39 @@ function initDropdowns() {
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
             closeAllDropdowns();
+        }
+    });
+}
+
+/*
+|--------------------------------------------------------------------------
+| Static modals (<x-blade.u-i.modal>)
+|--------------------------------------------------------------------------
+*/
+
+function initStaticModals() {
+    document.addEventListener('click', (event) => {
+        const trigger = event.target.closest('[data-modal-trigger]');
+
+        if (trigger) {
+            document.getElementById(trigger.dataset.modalTrigger)?.removeAttribute('hidden');
+
+            return;
+        }
+
+        const closeBtn = event.target.closest('[data-modal-close]');
+        const overlay = event.target.closest('[data-modal]');
+
+        if (closeBtn) {
+            closeBtn.closest('[data-modal]')?.setAttribute('hidden', '');
+        } else if (overlay && event.target === overlay) {
+            overlay.setAttribute('hidden', '');
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            document.querySelectorAll('[data-modal]:not([hidden])').forEach((modal) => modal.setAttribute('hidden', ''));
         }
     });
 }
@@ -214,9 +222,11 @@ async function initHeaderAuthState() {
 */
 
 export function initSiteChrome() {
-    initThemeToggle();
+    initThemePicker();
+    initLocalePicker(api);
     initMobileNav();
     initDropdowns();
+    initStaticModals();
     initAlerts();
     initLogout();
 

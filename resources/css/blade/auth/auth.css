@@ -15,62 +15,62 @@
     --auth-text-muted: #98a2b3;
 
     /* BORDER */
-    --auth-border: #e4e7ec;
-    --auth-border-hover: #d0d5dd;
-    --auth-border-focus: #7f56d9;
+    --auth-border: #e3e6ea;
+    --auth-border-hover: #cdd2da;
+    --auth-border-focus: #2f6fed;
 
     /* BRAND */
-    --auth-primary: #7f56d9;
-    --auth-primary-hover: #6941c6;
+    --auth-primary: #2f6fed;
+    --auth-primary-hover: #2558c4;
     --auth-primary-soft:
-        rgba(127, 86, 217, 0.10);
+        rgba(47, 111, 237, 0.10);
 
     /* STATUS */
     --auth-danger: #d92d20;
     --auth-danger-bg: #fef3f2;
-    --auth-success: #039855;
-    --auth-success-bg: #ecfdf3;
+    --auth-success: #16a34a;
+    --auth-success-bg: #eefcf3;
 
     /* SHOWCASE LIGHT */
     --showcase-bg:
         radial-gradient(
             circle at 15% 20%,
-            rgba(139, 92, 246, 0.16),
+            rgba(47, 111, 237, 0.16),
             transparent 32%
         ),
         radial-gradient(
             circle at 85% 80%,
-            rgba(59, 130, 246, 0.12),
+            rgba(34, 211, 238, 0.12),
             transparent 32%
         ),
         linear-gradient(
             145deg,
-            #f5f3ff 0%,
-            #eef2ff 50%,
+            #eff4ff 0%,
+            #eef6ff 50%,
             #f8fafc 100%
         );
     --showcase-glow-one:
-        rgba(168, 85, 247, 0.16);
+        rgba(47, 111, 237, 0.16);
     --showcase-glow-two:
-        rgba(59, 130, 246, 0.10);
+        rgba(34, 211, 238, 0.10);
     --showcase-text:
-        #17111f;
+        #11172a;
     --showcase-text-secondary:
-        rgba(23, 17, 31, 0.62);
+        rgba(17, 23, 42, 0.62);
     --showcase-accent:
-        #6d28d9;
+        #2558c4;
     --showcase-bottom:
-        rgba(23, 17, 31, 0.46);
+        rgba(17, 23, 42, 0.46);
     --showcase-badge-bg:
         rgba(255, 255, 255, 0.58);
     --showcase-badge-border:
-        rgba(109, 40, 217, 0.13);
+        rgba(37, 88, 196, 0.13);
     --showcase-badge-text:
-        rgba(23, 17, 31, 0.72);
+        rgba(17, 23, 42, 0.72);
     --showcase-mark-bg:
         rgba(255, 255, 255, 0.58);
     --showcase-mark-border:
-        rgba(109, 40, 217, 0.13);
+        rgba(37, 88, 196, 0.13);
     --showcase-security-bg:
         rgba(22, 163, 74, 0.10);
     --showcase-security-color:
@@ -105,52 +105,52 @@ html[data-theme="dark"] {
     --auth-text-muted: #71717a;
 
     /* BORDER */
-    --auth-border: #27272a;
-    --auth-border-hover: #3f3f46;
-    --auth-border-focus: #a78bfa;
+    --auth-border: #2b2f3a;
+    --auth-border-hover: #3a3f4c;
+    --auth-border-focus: #6ea1ff;
 
     /* BRAND */
-    --auth-primary: #8b5cf6;
-    --auth-primary-hover: #a78bfa;
+    --auth-primary: #4c8dff;
+    --auth-primary-hover: #6ea1ff;
     --auth-primary-soft:
-        rgba(139, 92, 246, 0.14);
+        rgba(76, 141, 255, 0.16);
 
     /* STATUS */
     --auth-danger: #f87171;
     --auth-danger-bg:
-        rgba(248, 113, 113, 0.08);
+        rgba(248, 113, 113, 0.10);
     --auth-success: #4ade80;
     --auth-success-bg:
-        rgba(74, 222, 128, 0.08);
+        rgba(74, 222, 128, 0.10);
 
     /* SHOWCASE DARK */
     --showcase-bg:
         radial-gradient(
             circle at 15% 20%,
-            rgba(139, 92, 246, 0.42),
+            rgba(76, 141, 255, 0.40),
             transparent 30%
         ),
         radial-gradient(
             circle at 85% 80%,
-            rgba(59, 130, 246, 0.22),
+            rgba(34, 211, 238, 0.22),
             transparent 30%
         ),
         linear-gradient(
             145deg,
-            #140d24 0%,
-            #211238 50%,
-            #101827 100%
+            #0c1120 0%,
+            #121a30 50%,
+            #0a0f1c 100%
         );
     --showcase-glow-one:
-        rgba(168, 85, 247, 0.22);
+        rgba(76, 141, 255, 0.24);
     --showcase-glow-two:
-        rgba(59, 130, 246, 0.16);
+        rgba(34, 211, 238, 0.16);
     --showcase-text:
         #ffffff;
     --showcase-text-secondary:
         rgba(255, 255, 255, 0.64);
     --showcase-accent:
-        #c4b5fd;
+        #9cc2ff;
     --showcase-bottom:
         rgba(255, 255, 255, 0.48);
     --showcase-badge-bg:
@@ -173,6 +173,138 @@ html[data-theme="dark"] {
         0 1px 2px rgba(0, 0, 0, 0.20);
     --auth-shadow-md:
         0 12px 40px rgba(0, 0, 0, 0.30);
+}
+
+/* =========================================================
+   GRAY / BLACK / GREEN / ORANGE THEMES
+   (core tokens only — the showcase panel reuses the light
+   gradient for light-based themes and the dark gradient for
+   the black theme, defined above)
+   ========================================================= */
+html[data-theme="gray"] {
+    color-scheme: light;
+
+    --auth-bg: #eceef1;
+    --auth-surface: #ffffff;
+    --auth-surface-soft: #f4f5f7;
+
+    --auth-text: #202329;
+    --auth-text-secondary: #5f6470;
+    --auth-text-muted: #9498a2;
+
+    --auth-border: #dcdfe4;
+    --auth-border-hover: #c5c9d0;
+    --auth-border-focus: #4b5563;
+
+    --auth-primary: #4b5563;
+    --auth-primary-hover: #374151;
+    --auth-primary-soft: rgba(75, 85, 99, 0.12);
+
+    --auth-danger: #d92d20;
+    --auth-danger-bg: #fef3f2;
+    --auth-success: #16a34a;
+    --auth-success-bg: #eefcf3;
+}
+
+html[data-theme="black"] {
+    color-scheme: dark;
+
+    --auth-bg: #000000;
+    --auth-surface: #0a0a0b;
+    --auth-surface-soft: #131315;
+
+    --auth-text: #f5f5f5;
+    --auth-text-secondary: #a1a1a6;
+    --auth-text-muted: #6e6e73;
+
+    --auth-border: #1f1f22;
+    --auth-border-hover: #2c2c30;
+    --auth-border-focus: #22d3ee;
+
+    --auth-primary: #22d3ee;
+    --auth-primary-hover: #67e3f4;
+    --auth-primary-soft: rgba(34, 211, 238, 0.14);
+
+    --auth-danger: #f87171;
+    --auth-danger-bg: rgba(248, 113, 113, 0.10);
+    --auth-success: #4ade80;
+    --auth-success-bg: rgba(74, 222, 128, 0.10);
+
+    --showcase-bg:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(34, 211, 238, 0.30),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(76, 141, 255, 0.18),
+            transparent 30%
+        ),
+        linear-gradient(145deg, #000000 0%, #050607 50%, #000000 100%);
+    --showcase-glow-one: rgba(34, 211, 238, 0.22);
+    --showcase-glow-two: rgba(76, 141, 255, 0.14);
+    --showcase-text: #ffffff;
+    --showcase-text-secondary: rgba(255, 255, 255, 0.64);
+    --showcase-accent: #67e3f4;
+    --showcase-bottom: rgba(255, 255, 255, 0.44);
+    --showcase-badge-bg: rgba(255, 255, 255, 0.06);
+    --showcase-badge-border: rgba(255, 255, 255, 0.12);
+    --showcase-badge-text: rgba(255, 255, 255, 0.80);
+    --showcase-mark-bg: rgba(255, 255, 255, 0.08);
+    --showcase-mark-border: rgba(255, 255, 255, 0.16);
+    --showcase-security-bg: rgba(134, 239, 172, 0.12);
+    --showcase-security-color: #86efac;
+}
+
+html[data-theme="green"] {
+    color-scheme: light;
+
+    --auth-bg: #f4faf6;
+    --auth-surface: #ffffff;
+    --auth-surface-soft: #eaf6ee;
+
+    --auth-text: #14201a;
+    --auth-text-secondary: #4b5d52;
+    --auth-text-muted: #8a9c91;
+
+    --auth-border: #dbe9e0;
+    --auth-border-hover: #c2d9cb;
+    --auth-border-focus: #16a34a;
+
+    --auth-primary: #16a34a;
+    --auth-primary-hover: #128a3e;
+    --auth-primary-soft: rgba(22, 163, 74, 0.12);
+
+    --auth-danger: #d92d20;
+    --auth-danger-bg: #fef3f2;
+    --auth-success: #16a34a;
+    --auth-success-bg: #e6f7eb;
+}
+
+html[data-theme="orange"] {
+    color-scheme: light;
+
+    --auth-bg: #faf7f3;
+    --auth-surface: #ffffff;
+    --auth-surface-soft: #fdf1e7;
+
+    --auth-text: #241c14;
+    --auth-text-secondary: #6b5d4f;
+    --auth-text-muted: #a3927e;
+
+    --auth-border: #ecdfd0;
+    --auth-border-hover: #dcc9b2;
+    --auth-border-focus: #ea580c;
+
+    --auth-primary: #ea580c;
+    --auth-primary-hover: #c2410c;
+    --auth-primary-soft: rgba(234, 88, 12, 0.12);
+
+    --auth-danger: #d92d20;
+    --auth-danger-bg: #fef3f2;
+    --auth-success: #16a34a;
+    --auth-success-bg: #eefcf3;
 }
 
 /* =========================================================
@@ -201,7 +333,7 @@ body {
     color:
         var(--auth-text);
     font-family:
-        Inter,
+        "Instrument Sans",
         ui-sans-serif,
         system-ui,
         -apple-system,

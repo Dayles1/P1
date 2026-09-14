@@ -1,51 +1,11 @@
 import { api } from '../axios';
-import { showToast } from '../shared/toast';
+import { showToast, apiErrorMessage } from '../shared/toast';
+import { apiErrors, clearFieldErrors, showFieldErrors } from '../shared/forms';
+import { setTheme } from '../shared/theme';
+import { getLocale, writeLocaleCookie, t } from '../shared/i18n';
 
 const form = document.querySelector('[data-settings-form]');
 const timezoneSelect = form?.querySelector('[name="timezone_id"]');
-
-function apiErrors(error) {
-    return error?.response?.data?.errors || {};
-}
-
-function apiMessage(error, fallback) {
-    return error?.response?.data?.message || fallback;
-}
-
-function clearFieldErrors() {
-    form.querySelectorAll('[data-field-error]').forEach((el) => {
-        el.textContent = '';
-    });
-}
-
-function showFieldErrors(errors) {
-    clearFieldErrors();
-
-    Object.entries(errors).forEach(([field, messages]) => {
-        const el = form.querySelector(`[data-field-error="${CSS.escape(field)}"]`);
-
-        if (el) {
-            el.textContent = Array.isArray(messages) ? messages[0] : messages;
-        }
-    });
-}
-
-function applyLiveTheme(theme) {
-    const root = document.documentElement;
-
-    if (theme === 'system') {
-        localStorage.removeItem('theme');
-
-        root.dataset.theme = window.matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'dark'
-            : 'light';
-
-        return;
-    }
-
-    localStorage.setItem('theme', theme);
-    root.dataset.theme = theme;
-}
 
 async function loadTimezones() {
     try {
@@ -57,7 +17,7 @@ async function loadTimezones() {
             .map((tz) => `<option value="${tz.id}">${tz.name} (${tz.offset})</option>`)
             .join('');
     } catch {
-        timezoneSelect.innerHTML = '<option value="">Could not load timezones</option>';
+        timezoneSelect.innerHTML = `<option value="">${t('settings.timezones_error')}</option>`;
     }
 }
 
@@ -86,19 +46,21 @@ async function loadSettings() {
             form.querySelector('[name="date_format"]').value = settings.date_format;
         }
     } catch (error) {
-        showToast(apiMessage(error, 'Could not load your settings.'), 'error');
+        showToast(apiErrorMessage(error, t('settings.load_error')), 'error');
     }
 }
 
 form?.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    clearFieldErrors();
+    clearFieldErrors(form);
 
     const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
 
     payload.timezone_source = 'manual';
+
+    const localeChanged = payload.locale && payload.locale !== getLocale();
 
     const submitButton = form.querySelector('button[type="submit"]');
     submitButton.disabled = true;
@@ -106,12 +68,19 @@ form?.addEventListener('submit', async (event) => {
     try {
         await api.put('/profile/settings', payload);
 
-        applyLiveTheme(payload.theme);
+        setTheme(payload.theme);
 
-        showToast('Settings saved.');
+        if (localeChanged) {
+            writeLocaleCookie(payload.locale);
+            window.location.reload();
+
+            return;
+        }
+
+        showToast(t('settings.saved'));
     } catch (error) {
-        showFieldErrors(apiErrors(error));
-        showToast(apiMessage(error, 'Could not save your settings.'), 'error');
+        showFieldErrors(form, apiErrors(error));
+        showToast(apiErrorMessage(error, t('settings.error')), 'error');
     } finally {
         submitButton.disabled = false;
     }

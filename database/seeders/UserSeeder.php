@@ -11,15 +11,13 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $userRole = Role::query()
-            ->where('code', 'user')
+            ->where('code', Role::USER)
             ->firstOrFail();
 
         User::factory()
             ->count(100)
             ->create()
             ->each(function (User $user) use ($userRole): void {
-                // $user->roles()->attach($userRole->id);
-                // yoki:
                 $user->assignRole($userRole);
             });
     }

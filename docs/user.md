@@ -2,7 +2,7 @@
 
 Everything here requires `Authorization: Bearer <token>` (Sanctum) and is available to **any authenticated user regardless of role** (`USER`, `ADMIN`, or `SUPER_ADMIN`). For admin-only endpoints see [`admin.md`](./admin.md).
 
-Frontend pages: `/profile`, `/sessions`, `/settings` (all under `resources/views/blade/layouts/authenticated.blade.php`).
+Frontend pages: `/dashboard`, `/profile`, `/sessions`, `/sessions/{id}`, `/settings`, `/chat` (all under `resources/views/blade/layouts/authenticated.blade.php`, with the shared sidebar).
 
 ---
 
@@ -102,11 +102,28 @@ A `user_sessions` row is created on every login (see [`auth.md`](./auth.md#login
 
 `status` is derived (`active` when `logged_out_at` is null, else `expired`). `is_current` compares against the token used for *this* request.
 
+### Session detail
+`GET /api/sessions/{session}` → single `SessionResource` (same shape as the list). Authorization is enforced by `UserSessionPolicy::manage` — a session that isn't yours 403s, it never leaks whether the id exists at all.
+
 ### Revoke one session
 `DELETE /api/sessions/{session}` — `{session}` is the `user_sessions` row id (not the token id). Cannot be used on your own current session via this endpoint's intended flow — the frontend hides the "Log out" action for `is_current: true` rows.
 
 ### Revoke all other sessions
 `DELETE /api/sessions/others` → `{ "data": { "revoked_sessions": 3 } }`
+
+---
+
+## Request logs (per session)
+
+Every `/api/*` request is recorded to `request_logs` by the `LogApiRequest` middleware (runs in `terminate()`, after the response is already sent — logging never adds latency) and tied to the caller's `user_sessions` row when one can be resolved from the bearer token. Sensitive fields (`password`, `password_confirmation`, `token`, `access_token`, the `Authorization`/`Cookie` headers, etc. — full list in `config/request-logging.php`) are replaced with `"[REDACTED]"` **before** the row is written, and request/response bodies are hard-capped (`request-logging.max_body_bytes`, default 8KB) with `body_truncated`/`response_truncated` flags set when a payload was cut.
+
+Same ownership rule as the session itself: only the owning user (or an admin, via the separate `/api/admin/*` routes below) can read these.
+
+### List a session's request log
+`GET /api/sessions/{session}/request-logs?method=&status=2xx|3xx|4xx|5xx&status_code=&search=&sort=asc|desc&page=&per_page=` → paginated summary rows (`id, method, path, route_name, status_code, ip_address, duration_ms, created_at`).
+
+### Request log detail
+`GET /api/sessions/{session}/request-logs/{requestLog}` → full row: `query`, `headers`, `body`, `response_headers`, `response_body`, `duration_ms`, `ip_address`, `user_agent`, already-redacted per above. 404s (not 403) if the log belongs to a different session than the one in the URL — this is deliberate so a valid session id can't be used to fish for a request log id that actually belongs to someone else's session.
 
 ---
 
@@ -124,15 +141,15 @@ One `UserSetting` row per user — timezone, locale, theme, date/time format, fr
 |---|---|
 | `timezone_id` | nullable, must exist in `timezones` |
 | `timezone_source` | nullable, string ≤50 (frontend sends `"manual"` whenever the user picks one explicitly) |
-| `locale` | nullable, string ≤10 |
-| `theme` | nullable, one of `light`, `dark`, `system` |
-| `date_format` | nullable, string ≤50 (free-form, e.g. `Y-m-d`) |
-| `time_format` | nullable, string ≤50 (frontend uses `24h`/`12h`) |
+| `locale` | nullable, must be the `code` of an active `Language` row (currently `en`, `ru`, `uz`) |
+| `theme` | nullable, one of `system`, `light`, `gray`, `dark`, `black`, `green`, `orange` (`App\Domain\Setting\Services\ThemeCatalog::codes()`) |
+| `date_format` | nullable, one of `Y-m-d`, `d.m.Y`, `d/m/Y`, `m/d/Y` (`UserDateFormatter::availableDateFormats()`) |
+| `time_format` | nullable, one of `24h`, `12h` (`UserDateFormatter::availableTimeFormats()`) |
 | `meta` | nullable, array (not exposed in the UI — send it only if you have a real use for it) |
 
-Only send the fields you intend to change — omitted keys keep their current value.
+Only send the fields you intend to change — omitted keys keep their current value. `date_format`/`time_format` are not cosmetic-only: `UserDateFormatter` (used by every resource that renders a timestamp — sessions, request logs, chat messages, dashboard, profile) actually formats every date server-side according to these two fields plus the resolved timezone, so the same API response looks different per user without any client-side date math.
 
-**Frontend note**: saving `theme` here also immediately applies it to the live UI (`document.documentElement.dataset.theme` + `localStorage.theme`), keeping the stored preference and the on-screen theme toggle in sync.
+**Frontend note**: saving `theme` here also immediately applies it to the live UI via `resources/js/blade/shared/theme.js` (`data-theme` on `<html>` + `localStorage.theme`); saving `locale` writes the `locale` cookie (`SetLocale` middleware reads it on every subsequent request, including plain page loads — see `docs/README.md`) and reloads the page so server-rendered text updates immediately.
 
 ---
 
@@ -141,3 +158,33 @@ Only send the fields you intend to change — omitted keys keep their current va
 `GET /api/timezones` — **public, no auth required**
 
 Returns every active `Timezone` row: `{ "id": 276, "name": "Asia/Tashkent", "offset": "+05:00" }`. Used to populate the timezone `<select>` on both the register form and the settings page.
+
+---
+
+## Languages
+
+`GET /api/languages` — **public, no auth required**
+
+Returns every active `Language` row: `{ "code": "ru", "name": "Русский", "is_default": false }`. Backs the language picker in the header and the `locale` `<select>` on the settings page.
+
+---
+
+## Dashboard
+
+`GET /api/dashboard` — **requires auth**
+
+One aggregate endpoint for the `/dashboard` landing page. Every number is a real query against the caller's own data — nothing here is fabricated for display:
+
+```json
+{
+  "account": { "created_at": "...", "email_verified": true, "has_avatar": false, "has_timezone_set": true, "profile_completeness": 75 },
+  "sessions": { "total": 4, "active": 2 },
+  "requests": { "today": 12, "this_week": 88, "errors_this_week": 1 },
+  "unread_messages": 3,
+  "recent_sessions": [ "...SessionResource[]" ],
+  "recent_requests": [ "...request log summary rows" ],
+  "instance": { "total_users": 42, "active_sessions": 9, "requests_today": 310, "errors_today": 2 }
+}
+```
+
+`instance` is only present for `SUPER_ADMIN`/`ADMIN` callers (instance-wide counts, not scoped to the caller) — it's simply absent from the JSON for a regular `USER`, not `null`.

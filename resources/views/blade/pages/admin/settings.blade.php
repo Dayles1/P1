@@ -1,19 +1,19 @@
 @extends('blade.layouts.authenticated')
 
-@section('title', 'Admin Settings')
+@section('title', __('ui.admin.settings_title'))
 
 @section('content')
 
     <div class="page-head">
         <div>
-            <h1>App settings</h1>
-            <p>Global configuration. Visible only to Admin and Super Admin.</p>
+            <h1>{{ __('ui.admin.settings_title') }}</h1>
+            <p>{{ __('ui.admin.settings_subtitle') }}</p>
         </div>
     </div>
 
     <div data-admin-settings>
         <div class="empty-state">
-            <strong>Loading settings&hellip;</strong>
+            <strong>{{ __('ui.common.loading') }}</strong>
         </div>
     </div>
 

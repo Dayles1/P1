@@ -16,37 +16,8 @@
     </title>
 
 
-    {{-- =====================================================
-    THEME BOOTSTRAP
-    ===================================================== --}}
-    <script>
-        (() => {
-            const THEME_KEY = 'theme';
-
-            const savedTheme =
-                localStorage.getItem(THEME_KEY);
-
-            if (
-                savedTheme === 'light' ||
-                savedTheme === 'dark'
-            ) {
-                document.documentElement.dataset.theme =
-                    savedTheme;
-
-                return;
-            }
-
-            const systemTheme =
-                window.matchMedia(
-                    '(prefers-color-scheme: dark)'
-                ).matches
-                    ? 'dark'
-                    : 'light';
-
-            document.documentElement.dataset.theme =
-                systemTheme;
-        })();
-    </script>
+    @include('blade.sections.theme-bootstrap')
+    @include('blade.sections.i18n-bootstrap')
 
 
     @vite([

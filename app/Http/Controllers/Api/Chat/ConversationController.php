@@ -28,15 +28,14 @@ class ConversationController extends Controller
         protected DeleteConversation $deleteConversation,
         protected PinConversation $pinConversation,
         protected UnpinConversation $unpinConversation,
-    ) {
-    }
+    ) {}
 
     public function store(ChatStoreRequest $request): JsonResponse
     {
         $conversation = $this->chatStore->handle($request->validated());
 
         return $this->success(
-            new ConversationShowResource($conversation->load('creator', 'users')),
+            new ConversationShowResource($conversation->load('creator', 'users')->loadCount('users')),
         );
     }
 
@@ -50,7 +49,7 @@ class ConversationController extends Controller
         return $this->responsePagination(
             $conversations,
             ConversationListResource::collection($conversations),
-            __('Conversations retrieved successfully')
+            __('messages.chat.list')
         );
     }
 
@@ -117,6 +116,4 @@ class ConversationController extends Controller
             message: __('messages.chat.unpinned')
         );
     }
-
-    
 }

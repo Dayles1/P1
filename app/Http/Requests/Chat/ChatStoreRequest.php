@@ -4,6 +4,7 @@ namespace App\Http\Requests\Chat;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ChatStoreRequest extends FormRequest
 {
@@ -31,9 +32,14 @@ class ChatStoreRequest extends FormRequest
             ],
 
             'user_ids' => [
-                'required_unless:type,private',
+                'required',
                 'array',
+                'min:1',
                 'max:100',
+                Rule::when(
+                    fn () => $this->input('type') === 'private',
+                    ['size:1'],
+                ),
             ],
 
             'user_ids.*' => [

@@ -19,17 +19,23 @@ class MemberController extends Controller
         protected GetConversationMembersQuery $getConversationMembers,
         protected AddConversationMembers $addConversationMembers,
         protected RemoveConversationMembers $removeConversationMembers,
-    ) {
-    }
+    ) {}
 
     public function index(Request $request, Conversation $conversation): JsonResponse
     {
-        $members = $this->getConversationMembers->execute($conversation);
+        try {
+            $members = $this->getConversationMembers->execute($conversation, $request->user());
+        } catch (\Throwable $e) {
+            return $this->error(
+                message: $e->getMessage(),
+                status: 422
+            );
+        }
 
         return $this->responsePagination(
             $members,
             ConversationMemberResource::collection($members),
-            __('Members retrieved successfully')
+            __('messages.chat.members_listed')
         );
     }
 

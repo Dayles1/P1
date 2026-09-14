@@ -1,13 +1,13 @@
 @extends('blade.layouts.authenticated')
 
-@section('title', 'Profile')
+@section('title', __('ui.profile.title'))
 
 @section('content')
 
     <div class="page-head">
         <div>
-            <h1>Profile</h1>
-            <p>Manage your account details and security.</p>
+            <h1>{{ __('ui.profile.title') }}</h1>
+            <p>{{ __('ui.profile.subtitle') }}</p>
         </div>
     </div>
 
@@ -21,8 +21,8 @@
 
     {{-- AVATAR --}}
     <div class="settings-section">
-        <h2>Avatar</h2>
-        <p>Upload a picture to personalize your account.</p>
+        <h2>{{ __('ui.profile.avatar') }}</h2>
+        <p>{{ __('ui.profile.avatar_hint') }}</p>
 
         <div class="avatar-upload">
             <span class="avatar avatar--lg" data-profile-avatar>
@@ -33,10 +33,10 @@
                 <input type="file" id="avatar-file" accept="image/*" hidden data-avatar-input>
 
                 <x-blade.u-i.button variant="secondary" size="sm" type="button" data-avatar-trigger>
-                    Upload new avatar
+                    {{ __('ui.profile.avatar_upload') }}
                 </x-blade.u-i.button>
 
-                <div class="field-hint" style="margin-top: 8px;">JPG, PNG, WEBP or GIF.</div>
+                <div class="field-hint" style="margin-top: 8px;">{{ __('ui.profile.avatar_formats') }}</div>
             </div>
         </div>
     </div>
@@ -44,33 +44,33 @@
 
     {{-- PROFILE INFO --}}
     <div class="settings-section">
-        <h2>Account details</h2>
-        <p>Your name and email address.</p>
+        <h2>{{ __('ui.profile.account_details') }}</h2>
+        <p>{{ __('ui.profile.account_details_hint') }}</p>
 
         <form data-profile-form novalidate>
 
             <div class="field-group">
-                <label class="field-label" for="profile-name">Name</label>
+                <label class="field-label" for="profile-name">{{ __('ui.profile.name') }}</label>
                 <input class="field-input" type="text" id="profile-name" name="name" required>
                 <span class="field-error" data-field-error="name"></span>
             </div>
 
             <div class="field-group">
-                <label class="field-label" for="profile-email">Email</label>
+                <label class="field-label" for="profile-email">{{ __('ui.profile.email') }}</label>
                 <input class="field-input" type="email" id="profile-email" name="email" required>
-                <span class="field-hint">Changing your email will require re-verification.</span>
+                <span class="field-hint">{{ __('ui.profile.email_change_hint') }}</span>
                 <span class="field-error" data-field-error="email"></span>
             </div>
 
             <div class="field-group" data-current-password-field hidden>
-                <label class="field-label" for="profile-current-password">Current password</label>
+                <label class="field-label" for="profile-current-password">{{ __('ui.profile.current_password') }}</label>
                 <input class="field-input" type="password" id="profile-current-password" name="current_password" autocomplete="current-password">
-                <span class="field-hint">Required because you changed your email address.</span>
+                <span class="field-hint">{{ __('ui.profile.current_password_hint') }}</span>
                 <span class="field-error" data-field-error="current_password"></span>
             </div>
 
             <x-blade.u-i.button type="submit" size="sm">
-                Save changes
+                {{ __('ui.profile.save_changes') }}
             </x-blade.u-i.button>
 
         </form>
@@ -79,32 +79,32 @@
 
     {{-- CHANGE PASSWORD --}}
     <div class="settings-section">
-        <h2>Change password</h2>
-        <p>Use a strong password: at least 8 characters, upper and lower case letters, and a number.</p>
+        <h2>{{ __('ui.profile.change_password') }}</h2>
+        <p>{{ __('ui.profile.change_password_hint') }}</p>
 
         <form data-password-form novalidate>
 
             <div class="field-group">
-                <label class="field-label" for="password-current">Current password</label>
+                <label class="field-label" for="password-current">{{ __('ui.profile.current_password') }}</label>
                 <input class="field-input" type="password" id="password-current" name="current_password" autocomplete="current-password" required>
                 <span class="field-error" data-field-error="current_password"></span>
             </div>
 
             <div class="field-row">
                 <div class="field-group">
-                    <label class="field-label" for="password-new">New password</label>
+                    <label class="field-label" for="password-new">{{ __('ui.profile.new_password') }}</label>
                     <input class="field-input" type="password" id="password-new" name="password" autocomplete="new-password" required>
                     <span class="field-error" data-field-error="password"></span>
                 </div>
 
                 <div class="field-group">
-                    <label class="field-label" for="password-confirm">Confirm new password</label>
+                    <label class="field-label" for="password-confirm">{{ __('ui.profile.confirm_password') }}</label>
                     <input class="field-input" type="password" id="password-confirm" name="password_confirmation" autocomplete="new-password" required>
                 </div>
             </div>
 
             <x-blade.u-i.button type="submit" size="sm">
-                Update password
+                {{ __('ui.profile.update_password') }}
             </x-blade.u-i.button>
 
         </form>
@@ -113,8 +113,8 @@
 
     {{-- ROLES --}}
     <div class="settings-section">
-        <h2>Roles</h2>
-        <p>Assigned by an administrator.</p>
+        <h2>{{ __('ui.profile.roles') }}</h2>
+        <p>{{ __('ui.profile.roles_hint') }}</p>
 
         <div data-profile-roles></div>
     </div>

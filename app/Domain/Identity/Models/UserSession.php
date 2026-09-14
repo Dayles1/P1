@@ -2,9 +2,10 @@
 
 namespace App\Domain\Identity\Models;
 
-use Laravel\Sanctum\PersonalAccessToken;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class UserSession extends Model
 {
@@ -39,5 +40,15 @@ class UserSession extends Model
     public function token(): BelongsTo
     {
         return $this->belongsTo(PersonalAccessToken::class, 'personal_access_token_id');
+    }
+
+    public function requestLogs(): HasMany
+    {
+        return $this->hasMany(RequestLog::class);
+    }
+
+    public function isActive(): bool
+    {
+        return $this->logged_out_at === null;
     }
 }

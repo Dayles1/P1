@@ -10,7 +10,6 @@ use App\Domain\Audit\Traits\RecordsAudits;
 use App\Domain\Ban\Models\Ban;
 use App\Domain\Chat\Models\Conversation;
 use App\Domain\Chat\Models\ConversationUser;
-use App\Domain\Identity\Models\UserSession;
 use App\Domain\Organization\Models\Department;
 use Database\Factories\UserFactory;
 use Illuminate\Contracts\Database\Eloquent\Builder;
@@ -30,6 +29,7 @@ class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasApiTokens, HasFactory, Notifiable, RecordsAudits, SoftDeletes;
+
     protected $fillable = [
         'name',
         'email',
@@ -79,11 +79,13 @@ class User extends Authenticatable
     {
         return $this->ban?->isActive() ?? false;
     }
+
     public function avatars(): MorphMany
     {
         return $this->morphMany(Attachment::class, 'attachable')
             ->where('collection', 'avatar');
     }
+
     public function avatar(): MorphOne
     {
         return $this->morphOne(Attachment::class, 'attachable')
@@ -100,6 +102,7 @@ class User extends Authenticatable
     {
         return UserFactory::new();
     }
+
     public function conversations(): BelongsToMany
     {
         return $this->belongsToMany(
@@ -122,40 +125,35 @@ class User extends Authenticatable
             ])
             ->withTimestamps();
     }
+
     public function settings()
     {
         return $this->hasOne(UserSetting::class);
     }
+
+    /**
+     * The session tied to whichever Sanctum token this instance is currently
+     * carrying (set explicitly by callers via `withCurrentSession()` /
+     * `setRelation()` — never resolved through the `auth()` helper, since
+     * that would silently misbehave for any `User` other than the one
+     * making the request).
+     */
     public function currentSession(): HasOne
     {
-        $authUser = auth()->user();
-
-        $tokenId = ($authUser && $this->is($authUser))
-            ? $authUser->currentAccessToken()?->id
-            : null;
-
-        return $this->hasOne(UserSession::class)
-            ->where('personal_access_token_id', $tokenId ?? 0);
+        return $this->hasOne(UserSession::class)->whereRaw('1 = 0');
     }
 
+    public function withCurrentSession(): static
+    {
+        $tokenId = $this->currentAccessToken()?->id;
 
+        $this->setRelation(
+            'currentSession',
+            $tokenId ? $this->sessions()->where('personal_access_token_id', $tokenId)->first() : null
+        );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return $this;
+    }
 
     public function rolePermissions(): Builder
     {
@@ -234,7 +232,7 @@ class User extends Authenticatable
     public function hasAllPermissions(array $permissions): bool
     {
         foreach ($permissions as $permission) {
-            if (!$this->hasPermissionTo($permission)) {
+            if (! $this->hasPermissionTo($permission)) {
                 return false;
             }
         }

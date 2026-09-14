@@ -9,20 +9,15 @@ class ProfileRepository implements ProfileRepositoryInterface
 {
     public function get(User $user): User
     {
-        $currentTokenId = $user->currentAccessToken()?->id;
-
         $user->load([
             'department',
             'roles.permissions',
             'permissions',
             'ban',
             'avatar',
-            'currentSession',
             'settings.timezone',
         ]);
 
-        
-
-        return $user;
+        return $user->withCurrentSession();
     }
 }

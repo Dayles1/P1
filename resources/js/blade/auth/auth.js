@@ -121,15 +121,11 @@ function resetThemeAnimation() {
 */
 
 function toggleTheme() {
-    const current =
-        root.dataset.theme === 'dark'
-            ? 'dark'
-            : 'light';
+    const isDarkLike =
+        root.dataset.theme === 'dark' ||
+        root.dataset.theme === 'black';
 
-    const next =
-        current === 'dark'
-            ? 'light'
-            : 'dark';
+    const next = isDarkLike ? 'light' : 'dark';
 
     /*
     |--------------------------------------------------------------------------

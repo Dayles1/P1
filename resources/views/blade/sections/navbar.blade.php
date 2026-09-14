@@ -5,15 +5,15 @@
 <nav class="navbar" aria-label="Primary">
 
     <x-blade.navigation.nav-link :href="route('home')">
-        Home
+        {{ __('ui.nav.home') }}
     </x-blade.navigation.nav-link>
 
     <x-blade.navigation.nav-link :href="route('about')">
-        About
+        {{ __('ui.nav.about') }}
     </x-blade.navigation.nav-link>
 
     <x-blade.navigation.nav-link :href="route('contact')">
-        Contact
+        {{ __('ui.nav.contact') }}
     </x-blade.navigation.nav-link>
 
 </nav>

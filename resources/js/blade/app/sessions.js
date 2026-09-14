@@ -1,11 +1,20 @@
 import { api } from '../axios';
-import { showToast } from '../shared/toast';
+import { showToast, apiErrorMessage } from '../shared/toast';
+import { confirmDialog } from '../shared/confirm';
+import { renderPagination } from '../shared/pagination';
+import { t } from '../shared/i18n';
 
 const list = document.querySelector('[data-sessions-list]');
 const revokeOthersBtn = document.querySelector('[data-revoke-others]');
+const statusFilter = document.querySelector('[data-sessions-status]');
+const paginationEl = document.querySelector('[data-sessions-pagination]');
 
-function apiMessage(error, fallback) {
-    return error?.response?.data?.message || fallback;
+let currentPage = 1;
+
+function renderSkeleton() {
+    list.innerHTML = Array.from({ length: 3 })
+        .map(() => '<div class="skeleton skeleton-row"></div>')
+        .join('');
 }
 
 function renderEmpty(message) {
@@ -14,52 +23,59 @@ function renderEmpty(message) {
 
 function renderSessions(sessions) {
     if (!sessions.length) {
-        renderEmpty('No sessions found.');
+        renderEmpty(t('sessions.empty'));
 
         return;
     }
 
     list.innerHTML = sessions
         .map((session) => {
-            const statusPill =
-                session.status === 'active'
-                    ? '<span class="pill pill--success">Active</span>'
-                    : '<span class="pill pill--muted">Expired</span>';
+            const statusPill = session.status === 'active'
+                ? `<span class="pill pill--success">${t('common.active')}</span>`
+                : `<span class="pill pill--muted">${t('common.expired')}</span>`;
 
             const currentPill = session.is_current
-                ? '<span class="pill pill--primary" style="margin-left:6px;">This device</span>'
+                ? `<span class="pill pill--primary" style="margin-left:6px;">${t('sessions.this_device')}</span>`
                 : '';
 
             const device = [session.browser, session.platform]
                 .filter(Boolean)
-                .join(' on ') || session.device_name || 'Unknown device';
+                .join(' · ') || session.device_name || t('common.unknown');
 
-            const revokeButton =
-                session.status === 'active' && !session.is_current
-                    ? `<button type="button" class="btn btn--outline btn--sm" data-revoke="${session.id}">Log out</button>`
-                    : '';
+            const revokeButton = session.status === 'active' && !session.is_current
+                ? `<button type="button" class="btn btn--outline btn--sm" data-revoke="${session.id}">${t('sessions.sign_out')}</button>`
+                : '';
 
             return `
-                <div class="data-row ${session.is_current ? 'data-row--current' : ''}">
+                <a href="/sessions/${session.id}" class="data-row ${session.is_current ? 'data-row--current' : ''}" style="text-decoration:none;">
                     <div class="data-row__main">
                         <div class="data-row__title">${device} ${statusPill} ${currentPill}</div>
-                        <div class="data-row__meta">${session.ip_address ?? ''} &middot; last active ${session.last_activity_at ?? '—'}</div>
+                        <div class="data-row__meta">${session.ip_address ?? ''} &middot; ${t('sessions.last_active')}: ${session.last_activity_at ?? '—'}</div>
                     </div>
-                    <div class="data-row__actions">${revokeButton}</div>
-                </div>
+                    <div class="data-row__actions" onclick="event.stopPropagation(); event.preventDefault();">
+                        ${revokeButton}
+                        <a href="/sessions/${session.id}" class="btn btn--ghost btn--sm">${t('common.details')}</a>
+                    </div>
+                </a>
             `;
         })
         .join('');
 }
 
-async function loadSessions() {
+async function loadSessions(page = 1) {
+    currentPage = page;
+    renderSkeleton();
+
     try {
-        const { data } = await api.get('/sessions', { params: { status: 'all' } });
+        const { data } = await api.get('/sessions', {
+            params: { status: statusFilter?.value || 'all', page, per_page: 10 },
+        });
 
         renderSessions(data.data || []);
+        renderPagination(paginationEl, data.pagination, loadSessions);
     } catch (error) {
-        renderEmpty('Could not load sessions.');
-        showToast(apiMessage(error, 'Could not load sessions.'), 'error');
+        renderEmpty(t('sessions.error'));
+        showToast(apiErrorMessage(error, t('sessions.error')), 'error');
     }
 }
 
@@ -70,7 +86,17 @@ list?.addEventListener('click', async (event) => {
         return;
     }
 
-    if (!window.confirm('Log out this session?')) {
+    event.preventDefault();
+
+    const confirmed = await confirmDialog({
+        title: t('confirm.revoke_session_title'),
+        message: t('confirm.revoke_session_message'),
+        confirmText: t('confirm.revoke_session_confirm'),
+        cancelText: t('common.cancel'),
+        danger: true,
+    });
+
+    if (!confirmed) {
         return;
     }
 
@@ -79,17 +105,25 @@ list?.addEventListener('click', async (event) => {
     try {
         await api.delete(`/sessions/${button.dataset.revoke}`);
 
-        showToast('Session revoked.');
+        showToast(t('sessions.revoked'));
 
-        loadSessions();
+        loadSessions(currentPage);
     } catch (error) {
-        showToast(apiMessage(error, 'Could not revoke session.'), 'error');
+        showToast(apiErrorMessage(error, t('sessions.error')), 'error');
         button.disabled = false;
     }
 });
 
 revokeOthersBtn?.addEventListener('click', async () => {
-    if (!window.confirm('Log out all other sessions? This device stays signed in.')) {
+    const confirmed = await confirmDialog({
+        title: t('confirm.revoke_others_title'),
+        message: t('confirm.revoke_others_message'),
+        confirmText: t('confirm.revoke_others_confirm'),
+        cancelText: t('common.cancel'),
+        danger: true,
+    });
+
+    if (!confirmed) {
         return;
     }
 
@@ -98,14 +132,20 @@ revokeOthersBtn?.addEventListener('click', async () => {
     try {
         const { data } = await api.delete('/sessions/others');
 
-        showToast(`Logged out ${data.data?.revoked_sessions ?? 0} other session(s).`);
+        showToast(
+            data.data?.revoked_sessions > 0
+                ? t('sessions.revoked')
+                : t('sessions.others_revoked_none')
+        );
 
-        loadSessions();
+        loadSessions(currentPage);
     } catch (error) {
-        showToast(apiMessage(error, 'Could not revoke other sessions.'), 'error');
+        showToast(apiErrorMessage(error, t('sessions.error')), 'error');
     } finally {
         revokeOthersBtn.disabled = false;
     }
 });
+
+statusFilter?.addEventListener('change', () => loadSessions(1));
 
 loadSessions();

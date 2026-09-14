@@ -1,3 +1,8 @@
-<div>
-    <!-- Walk as if you are kissing the Earth with your feet. - Thich Nhat Hanh -->
-</div>
+@php
+    $allowed = ['muted', 'primary', 'success', 'danger', 'warning', 'info'];
+    $variant = in_array($variant, $allowed, true) ? $variant : 'muted';
+@endphp
+
+<span {{ $attributes->class(['pill', "pill--{$variant}"]) }}>
+    {{ $slot }}
+</span>

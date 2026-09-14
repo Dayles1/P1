@@ -25,17 +25,51 @@
         {{-- RIGHT SIDE --}}
         <div class="site-header__actions">
 
-            {{-- THEME TOGGLE --}}
-            <button
-                type="button"
-                id="theme-toggle"
-                class="theme-toggle"
-                aria-label="Toggle theme"
-                title="Toggle theme"
-            >
-                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☼</span>
-                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">☾</span>
-            </button>
+            {{-- THEME PICKER --}}
+            <x-blade.u-i.dropdown align="right">
+                <x-slot:trigger>
+                    <span class="icon-btn" aria-label="{{ __('ui.theme.label') }}" title="{{ __('ui.theme.label') }}">
+                        ◐
+                    </span>
+                </x-slot:trigger>
+
+                <div class="dropdown__label">{{ __('ui.theme.label') }}</div>
+
+                @foreach (['system', 'light', 'gray', 'dark', 'black', 'green', 'orange'] as $themeOption)
+                    <button
+                        type="button"
+                        class="dropdown__item dropdown__item--picker"
+                        role="menuitemradio"
+                        data-theme-option="{{ $themeOption }}"
+                    >
+                        <span><span class="theme-swatch theme-swatch--{{ $themeOption }}"></span>{{ __('ui.theme.' . $themeOption) }}</span>
+                        <span class="dropdown__check" aria-hidden="true">✓</span>
+                    </button>
+                @endforeach
+            </x-blade.u-i.dropdown>
+
+            {{-- LANGUAGE PICKER --}}
+            <x-blade.u-i.dropdown align="right">
+                <x-slot:trigger>
+                    <span class="icon-btn" aria-label="{{ __('ui.locale.label') }}" title="{{ __('ui.locale.label') }}">
+                        {{ strtoupper(app()->getLocale()) }}
+                    </span>
+                </x-slot:trigger>
+
+                <div class="dropdown__label">{{ __('ui.locale.label') }}</div>
+
+                @foreach (['en', 'ru', 'uz'] as $localeOption)
+                    <button
+                        type="button"
+                        class="dropdown__item dropdown__item--picker"
+                        role="menuitemradio"
+                        data-locale-option="{{ $localeOption }}"
+                    >
+                        <span>{{ __('ui.locale.' . $localeOption) }}</span>
+                        <span class="dropdown__check" aria-hidden="true">✓</span>
+                    </button>
+                @endforeach
+            </x-blade.u-i.dropdown>
 
 
             {{-- =====================================================
@@ -51,11 +85,11 @@
             {{-- GUEST ACTIONS --}}
             <div class="site-header__guest" data-auth-guest hidden>
                 <x-blade.u-i.button variant="ghost" size="sm" :href="route('login')">
-                    Log in
+                    {{ __('ui.nav.log_in') }}
                 </x-blade.u-i.button>
 
                 <x-blade.u-i.button variant="primary" size="sm" :href="route('register')">
-                    Get started
+                    {{ __('ui.nav.get_started') }}
                 </x-blade.u-i.button>
             </div>
 
@@ -70,16 +104,20 @@
 
                     <div class="dropdown__label" data-user-name>&nbsp;</div>
 
+                    <a href="{{ route('dashboard') }}" class="dropdown__item" role="menuitem">
+                        {{ __('ui.nav.dashboard') }}
+                    </a>
+
                     <a href="{{ route('profile') }}" class="dropdown__item" role="menuitem">
-                        Profile
+                        {{ __('ui.nav.profile') }}
                     </a>
 
                     <a href="{{ route('sessions') }}" class="dropdown__item" role="menuitem">
-                        Sessions
+                        {{ __('ui.nav.sessions') }}
                     </a>
 
                     <a href="{{ route('settings') }}" class="dropdown__item" role="menuitem">
-                        Settings
+                        {{ __('ui.nav.settings') }}
                     </a>
 
                     <a
@@ -89,11 +127,11 @@
                         data-requires-role="SUPER_ADMIN,ADMIN"
                         hidden
                     >
-                        Admin settings
+                        {{ __('ui.nav.admin') }}
                     </a>
 
                     <button type="button" class="dropdown__item dropdown__item--danger" data-logout role="menuitem">
-                        Log out
+                        {{ __('ui.nav.log_out') }}
                     </button>
                 </x-blade.u-i.dropdown>
             </div>

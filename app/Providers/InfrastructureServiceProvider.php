@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Domain\Identity\Repository\RequestLogRepositoryInterface;
 use App\Domain\Identity\Repository\UserSessionRepositoryInterface;
 use App\Domain\Profile\Repository\ProfileRepositoryInterface;
 use App\Infrastructure\Persistence\Eloquent\Profile\ProfileRepository;
+use App\Infrastructure\Persistence\Eloquent\RequestLog\RequestLogRepository;
 use App\Infrastructure\Persistence\Eloquent\Session\UserSessionRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,6 +21,10 @@ class InfrastructureServiceProvider extends ServiceProvider
         $this->app->bind(
             UserSessionRepositoryInterface::class,
             UserSessionRepository::class
+        );
+        $this->app->bind(
+            RequestLogRepositoryInterface::class,
+            RequestLogRepository::class
         );
     }
 

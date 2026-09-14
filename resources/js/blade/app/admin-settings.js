@@ -1,20 +1,12 @@
 import { api } from '../axios';
-import { showToast } from '../shared/toast';
+import { showToast, apiErrorMessage } from '../shared/toast';
+import { escapeHtml } from '../shared/forms';
+import { t } from '../shared/i18n';
 
 const container = document.querySelector('[data-admin-settings]');
 
-const GROUP_LABELS = {
-    auth: 'Authentication',
-    system: 'System',
-    localization: 'Localization',
-    upload: 'Uploads',
-    notification: 'Notifications',
-    user: 'User',
-    security: 'Security',
-};
-
-function apiMessage(error, fallback) {
-    return error?.response?.data?.message || fallback;
+function groupLabel(group) {
+    return t(`admin.group_${group}`) !== `admin.group_${group}` ? t(`admin.group_${group}`) : group;
 }
 
 function renderMessage(message) {
@@ -26,10 +18,12 @@ function controlFor(setting) {
 
     if (setting.type === 'boolean') {
         return `
-            <select class="field-select" id="${id}" data-setting-value data-type="boolean" style="max-width:140px;">
-                <option value="true" ${setting.value ? 'selected' : ''}>On</option>
-                <option value="false" ${!setting.value ? 'selected' : ''}>Off</option>
-            </select>
+            <div class="select-field" style="max-width:140px;">
+                <select class="field-select" id="${id}" data-setting-value data-type="boolean">
+                    <option value="true" ${setting.value ? 'selected' : ''}>${t('common.yes')}</option>
+                    <option value="false" ${!setting.value ? 'selected' : ''}>${t('common.no')}</option>
+                </select>
+            </div>
         `;
     }
 
@@ -48,21 +42,11 @@ function controlFor(setting) {
     return `<input class="field-input" id="${id}" type="text" data-setting-value data-type="string" value="${escapeHtml(setting.value ?? '')}" style="max-width:320px;">`;
 }
 
-function escapeHtml(value) {
-    return String(value).replace(/[&<>"']/g, (char) => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;',
-    })[char]);
-}
-
 function renderSettings(groupedSettings) {
     container.innerHTML = groupedSettings
         .map(({ group, items }) => `
             <div class="settings-section">
-                <h2>${GROUP_LABELS[group] || group}</h2>
+                <h2>${groupLabel(group)}</h2>
 
                 <div class="data-list">
                     ${items
@@ -71,8 +55,8 @@ function renderSettings(groupedSettings) {
                                 <div class="data-row__main">
                                     <div class="data-row__title">
                                         ${setting.key}
-                                        ${setting.is_locked ? '<span class="pill pill--muted">Locked</span>' : ''}
-                                        ${setting.is_public ? '<span class="pill pill--primary">Public</span>' : ''}
+                                        ${setting.is_locked ? `<span class="pill pill--muted">${t('admin.locked')}</span>` : ''}
+                                        ${setting.is_public ? `<span class="pill pill--primary">${t('admin.public')}</span>` : ''}
                                     </div>
                                 </div>
                                 <div class="data-row__actions">
@@ -82,7 +66,7 @@ function renderSettings(groupedSettings) {
                                         class="btn btn--secondary btn--sm"
                                         data-save-setting="${setting.id}"
                                         ${setting.is_locked ? 'disabled' : ''}
-                                    >Save</button>
+                                    >${t('common.save')}</button>
                                 </div>
                             </div>
                         `)
@@ -100,13 +84,13 @@ async function loadSettings() {
         renderSettings(data.data || []);
     } catch (error) {
         if (error?.response?.status === 403) {
-            renderMessage('You do not have access to this page.');
+            renderMessage(t('admin.access_denied'));
 
             return;
         }
 
-        renderMessage('Could not load settings.');
-        showToast(apiMessage(error, 'Could not load settings.'), 'error');
+        renderMessage(t('common.error_generic'));
+        showToast(apiErrorMessage(error, t('common.error_generic')), 'error');
     }
 }
 
@@ -132,7 +116,7 @@ container?.addEventListener('click', async (event) => {
         try {
             value = JSON.parse(value);
         } catch {
-            showToast('Invalid JSON value.', 'error');
+            showToast(t('admin.invalid_json'), 'error');
 
             return;
         }
@@ -143,9 +127,9 @@ container?.addEventListener('click', async (event) => {
     try {
         await api.patch(`/admin/settings/${settingId}`, { value, operation: 'set' });
 
-        showToast('Setting updated.');
+        showToast(t('admin.save_success'));
     } catch (error) {
-        showToast(apiMessage(error, 'Could not update setting.'), 'error');
+        showToast(apiErrorMessage(error, t('admin.save_error')), 'error');
     } finally {
         button.disabled = false;
     }

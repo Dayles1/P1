@@ -18,7 +18,7 @@ class ConversationRepository implements ConversationRepositoryInterface
             ->with([
                 'users:id,name',
                 'users.avatar',
-                'lastMessage.sender:id,name',
+                'lastMessage.user:id,name',
             ])
             ->withPivot([
                 'unread_count',
@@ -35,13 +35,13 @@ class ConversationRepository implements ConversationRepositoryInterface
             $query->where('type', $type);
         }
 
-        if (!empty($filters['search'])) {
+        if (! empty($filters['search'])) {
             $search = $filters['search'];
 
             if ($type === 'private') {
                 $query->whereHas('users', function ($q) use ($user, $search) {
                     $q->where('users.id', '!=', $user->id)
-                      ->where('users.name', 'like', "%{$search}%");
+                        ->where('users.name', 'like', "%{$search}%");
                 });
             } else {
                 $query->where('name', 'like', "%{$search}%");
@@ -54,6 +54,7 @@ class ConversationRepository implements ConversationRepositoryInterface
             ->orderByDesc('last_message_at')
             ->paginate(30);
     }
+
     public function addMembers(Conversation $conversation, array $userIds): array
     {
         $userIds = collect($userIds)
@@ -85,6 +86,7 @@ class ConversationRepository implements ConversationRepositoryInterface
             foreach ($userIds as $userId) {
                 if (in_array($userId, $activeIds, true)) {
                     $skipped[] = $userId;
+
                     continue;
                 }
 
@@ -97,16 +99,17 @@ class ConversationRepository implements ConversationRepositoryInterface
                     ]);
 
                     $restored[] = $userId;
+
                     continue;
                 }
 
                 ConversationUser::create([
-                    'conversation_id'       => $conversation->id,
-                    'user_id'               => $userId,
-                    'role'                  => 'member',
-                    'joined_at'             => $now,
-                    'is_hidden'             => false,
-                    'is_pinned'             => false,
+                    'conversation_id' => $conversation->id,
+                    'user_id' => $userId,
+                    'role' => 'member',
+                    'joined_at' => $now,
+                    'is_hidden' => false,
+                    'is_pinned' => false,
                     'notifications_enabled' => true,
                 ]);
 
@@ -115,9 +118,9 @@ class ConversationRepository implements ConversationRepositoryInterface
         });
 
         return [
-            'added'    => $added,
+            'added' => $added,
             'restored' => $restored,
-            'skipped'  => $skipped,
+            'skipped' => $skipped,
         ];
     }
 
@@ -140,11 +143,13 @@ class ConversationRepository implements ConversationRepositoryInterface
 
                 if (! $pivot || $pivot->left_at) {
                     $skipped[] = $userId;
+
                     continue;
                 }
 
                 if ($pivot->role === 'creator') {
                     $skipped[] = $userId;
+
                     continue;
                 }
 

@@ -4,18 +4,29 @@
 
 <nav class="sidebar-nav" aria-label="Account">
 
-    <span class="sidebar-nav__group-label">Account</span>
+    <span class="sidebar-nav__group-label">{{ __('ui.nav.dashboard') }}</span>
+
+    <x-blade.navigation.sidebar-link :href="route('dashboard')" icon="&#9635;">
+        {{ __('ui.nav.dashboard') }}
+    </x-blade.navigation.sidebar-link>
+
+    <x-blade.navigation.sidebar-link :href="route('chat')" icon="&#9993;">
+        {{ __('ui.nav.chat') }}
+    </x-blade.navigation.sidebar-link>
+
+
+    <span class="sidebar-nav__group-label">{{ __('ui.nav.profile') }}</span>
 
     <x-blade.navigation.sidebar-link :href="route('profile')" icon="&#9679;">
-        Profile
+        {{ __('ui.nav.profile') }}
     </x-blade.navigation.sidebar-link>
 
     <x-blade.navigation.sidebar-link :href="route('settings')" icon="&#9881;">
-        Settings
+        {{ __('ui.nav.settings') }}
     </x-blade.navigation.sidebar-link>
 
-    <x-blade.navigation.sidebar-link :href="route('sessions')" icon="&#9679;">
-        Sessions
+    <x-blade.navigation.sidebar-link :href="route('sessions')" icon="&#9673;">
+        {{ __('ui.nav.sessions') }}
     </x-blade.navigation.sidebar-link>
 
 
@@ -24,8 +35,35 @@
         data-requires-role="SUPER_ADMIN,ADMIN"
         hidden
     >
-        Administration
+        {{ __('ui.nav.admin') }}
     </span>
+
+    <x-blade.navigation.sidebar-link
+        :href="route('admin.users')"
+        icon="&#9782;"
+        data-requires-role="SUPER_ADMIN,ADMIN"
+        hidden
+    >
+        {{ __('ui.nav.admin_users') }}
+    </x-blade.navigation.sidebar-link>
+
+    <x-blade.navigation.sidebar-link
+        :href="route('admin.sessions')"
+        icon="&#9673;"
+        data-requires-role="SUPER_ADMIN,ADMIN"
+        hidden
+    >
+        {{ __('ui.nav.admin_sessions') }}
+    </x-blade.navigation.sidebar-link>
+
+    <x-blade.navigation.sidebar-link
+        :href="route('admin.request-logs')"
+        icon="&#9776;"
+        data-requires-role="SUPER_ADMIN,ADMIN"
+        hidden
+    >
+        {{ __('ui.nav.admin_request_logs') }}
+    </x-blade.navigation.sidebar-link>
 
     <x-blade.navigation.sidebar-link
         :href="route('admin.settings')"
@@ -33,7 +71,7 @@
         data-requires-role="SUPER_ADMIN,ADMIN"
         hidden
     >
-        App settings
+        {{ __('ui.nav.admin_settings') }}
     </x-blade.navigation.sidebar-link>
 
 </nav>

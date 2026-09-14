@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Blade\AuthPageController;
-
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +20,6 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('blade.pages.contact');
 })->name('contact');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +54,6 @@ Route::controller(AuthPageController::class)->group(function () {
         ->name('password.confirm');
 });
 
-
 /*
 |--------------------------------------------------------------------------
 | Authenticated area
@@ -69,6 +66,10 @@ Route::controller(AuthPageController::class)->group(function () {
 |
 */
 
+Route::get('/dashboard', function () {
+    return view('blade.pages.dashboard');
+})->name('dashboard');
+
 Route::get('/profile', function () {
     return view('blade.pages.profile');
 })->name('profile');
@@ -77,10 +78,44 @@ Route::get('/sessions', function () {
     return view('blade.pages.sessions');
 })->name('sessions');
 
+Route::get('/sessions/{session}', function (string $session) {
+    return view('blade.pages.session-detail');
+})->name('sessions.show');
+
 Route::get('/settings', function () {
     return view('blade.pages.settings');
 })->name('settings');
 
+Route::get('/chat', function () {
+    return view('blade.pages.chat');
+})->name('chat');
+
+Route::get('/chat/{conversation}', function (string $conversation) {
+    return view('blade.pages.chat');
+})->name('chat.show');
+
+/*
+|--------------------------------------------------------------------------
+| Admin area
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/admin/settings', function () {
     return view('blade.pages.admin.settings');
 })->name('admin.settings');
+
+Route::get('/admin/users', function () {
+    return view('blade.pages.admin.users');
+})->name('admin.users');
+
+Route::get('/admin/sessions', function () {
+    return view('blade.pages.admin.sessions');
+})->name('admin.sessions');
+
+Route::get('/admin/sessions/{session}', function (string $session) {
+    return view('blade.pages.admin.session-detail');
+})->name('admin.sessions.show');
+
+Route::get('/admin/request-logs', function () {
+    return view('blade.pages.admin.request-logs');
+})->name('admin.request-logs');
