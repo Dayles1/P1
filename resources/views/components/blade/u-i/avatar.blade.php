@@ -1,3 +1,21 @@
-<div>
-    <!-- The best way to take care of the future is to take care of the present moment. - Thich Nhat Hanh -->
-</div>
+@php
+    $size ??= 'md';
+@endphp
+
+<span
+    @class([
+        'avatar',
+        "avatar--{$size}",
+    ])
+    {{ $attributes }}
+>
+    @if ($src)
+        <img src="{{ $src }}" alt="{{ $name }}" class="avatar__image">
+    @else
+        <span class="avatar__initials" aria-hidden="true">
+            {{ $initials }}
+        </span>
+    @endif
+
+    <span class="sr-only">{{ $name }}</span>
+</span>

@@ -1,3 +1,7 @@
-<div>
-    <!-- Simplicity is the ultimate sophistication. - Leonardo da Vinci -->
-</div>
+{{-- =====================================================
+     BREADCRUMBS
+     ===================================================== --}}
+
+@if (!empty($breadcrumbs))
+    <x-blade.navigation.breadcrumb :items="$breadcrumbs" />
+@endif

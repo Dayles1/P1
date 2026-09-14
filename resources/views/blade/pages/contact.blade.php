@@ -1,3 +1,14 @@
-<div>
-    <!-- You must be the change you wish to see in the world. - Mahatma Gandhi -->
-</div>
+@extends('blade.layouts.app')
+
+@section('title', 'Contact')
+
+@section('content')
+
+    <section class="page-header">
+        <h1>Contact us</h1>
+        <p>
+            Have a question? Reach out and our team will get back to you shortly.
+        </p>
+    </section>
+
+@endsection

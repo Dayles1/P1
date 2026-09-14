@@ -10,9 +10,12 @@ class Breadcrumb extends Component
 {
     /**
      * Create a new component instance.
+     *
+     * @param array<int, array{label: string, url?: string|null}> $items
      */
-    public function __construct()
-    {
+    public function __construct(
+        public array $items = [],
+    ) {
         //
     }
 

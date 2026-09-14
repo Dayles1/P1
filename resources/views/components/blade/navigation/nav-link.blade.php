@@ -1,3 +1,11 @@
-<div>
-    <!-- Because you are alive, everything is possible. - Thich Nhat Hanh -->
-</div>
+<a
+    href="{{ $href }}"
+    @class([
+        'nav-link',
+        'nav-link--active' => $active,
+    ])
+    @if ($active) aria-current="page" @endif
+    {{ $attributes }}
+>
+    {{ $slot }}
+</a>

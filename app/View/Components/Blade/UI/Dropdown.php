@@ -8,12 +8,15 @@ use Illuminate\View\Component;
 
 class Dropdown extends Component
 {
+    public string $id;
+
     /**
      * Create a new component instance.
      */
-    public function __construct()
-    {
-        //
+    public function __construct(
+        public string $align = 'right',
+    ) {
+        $this->id = 'dropdown-' . uniqid();
     }
 
     /**

@@ -12,7 +12,13 @@ export default defineConfig({
 
                 // Auth Blade
                 'resources/css/blade/auth/auth.css',
+                'resources/css/blade/auth/auth-pages.css',
                 'resources/js/blade/auth/auth.js',
+                'resources/js/blade/auth/auth-pages.js',
+
+                // App Blade
+                'resources/css/blade/app/app.css',
+                'resources/js/blade/app/app.js',
 
                 // Если здесь будут другие Blade-страницы,
                 // добавляй их сюда

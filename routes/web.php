@@ -14,6 +14,14 @@ Route::get('/', function () {
     return view('blade.pages.home');
 })->name('home');
 
+Route::get('/about', function () {
+    return view('blade.pages.about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('blade.pages.contact');
+})->name('contact');
+
 
 /*
 |--------------------------------------------------------------------------

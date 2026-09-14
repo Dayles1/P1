@@ -1,3 +1,17 @@
-<div>
-    <!-- Let all your things have their places; let each part of your business have its time. - Benjamin Franklin -->
-</div>
+@php
+    $classes = [
+        'btn',
+        "btn--{$variant}",
+        "btn--{$size}",
+    ];
+@endphp
+
+@if ($href)
+    <a href="{{ $href }}" @class($classes) {{ $attributes }}>
+        {{ $slot }}
+    </a>
+@else
+    <button type="{{ $type }}" @class($classes) {{ $attributes }}>
+        {{ $slot }}
+    </button>
+@endif

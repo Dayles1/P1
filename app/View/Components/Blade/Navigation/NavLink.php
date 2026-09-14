@@ -8,12 +8,16 @@ use Illuminate\View\Component;
 
 class NavLink extends Component
 {
+    public bool $active;
+
     /**
      * Create a new component instance.
      */
-    public function __construct()
-    {
-        //
+    public function __construct(
+        public string $href,
+        ?bool $active = null,
+    ) {
+        $this->active = $active ?? request()->is(ltrim(parse_url($href, PHP_URL_PATH) ?: '/', '/') ?: '/');
     }
 
     /**
