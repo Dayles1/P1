@@ -57,7 +57,7 @@ class SettingSeeder extends Seeder
             ],
             [
                 'key' => 'auth.default_role_id',
-                'value' => Role::USER,
+                'value' => Role::query()->where('code', Role::USER)->value('id') ?? 0,
                 'type' => Setting::TYPE_INTEGER,
                 'group' => Setting::GROUP_AUTH,
                 'is_public' => false,

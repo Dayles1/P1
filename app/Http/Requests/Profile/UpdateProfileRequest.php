@@ -35,6 +35,10 @@ class UpdateProfileRequest extends FormRequest
                 Password::defaults(),
             ],
 
+            'current_password' => [
+                'required_with:password,email',
+                'current_password:sanctum',
+            ],
         ];
     }
 }

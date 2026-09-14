@@ -126,6 +126,9 @@ const API = {
 
     'verification-notification':
         '/api/auth/email/verification-notification',
+
+    'confirm-password':
+        '/api/auth/confirm-password',
 };
 
 /*
@@ -950,11 +953,18 @@ function serializeForm(form) {
 |--------------------------------------------------------------------------
 */
 
+function getAuthToken() {
+    return localStorage.getItem('auth_token');
+}
+
 async function apiRequest(
     method,
     url,
     data = {}
 ) {
+    const token =
+        getAuthToken();
+
     return axios({
         method,
         url,
@@ -969,6 +979,10 @@ async function apiRequest(
 
             'X-Requested-With':
                 'XMLHttpRequest',
+
+            ...(token
+                ? { Authorization: `Bearer ${token}` }
+                : {}),
         },
 
         withCredentials:
@@ -1055,11 +1069,22 @@ async function handleRegister(form) {
                 .resolvedOptions()
                 .timeZone;
 
-        await apiRequest(
-            'POST',
-            API.register,
-            data
-        );
+        const response =
+            await apiRequest(
+                'POST',
+                API.register,
+                data
+            );
+
+        const verified =
+            response.data?.data?.user?.email_verified;
+
+        if (verified) {
+            window.location.href =
+                '/login?registered=1';
+
+            return;
+        }
 
         navigate(
             'verify-email'
@@ -1175,6 +1200,58 @@ async function handleResetPassword(form) {
         navigate(
             'login'
         );
+    } catch (error) {
+        showFormErrors(
+            form,
+            getApiErrors(error)
+        );
+    } finally {
+        setFormLoading(
+            form,
+            false
+        );
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| CONFIRM PASSWORD
+|--------------------------------------------------------------------------
+*/
+
+async function handleConfirmPassword(form) {
+    clearFormErrors(form);
+
+    if (!getAuthToken()) {
+        window.location.href =
+            '/login';
+
+        return;
+    }
+
+    setFormLoading(
+        form,
+        true
+    );
+
+    try {
+        const data =
+            serializeForm(form);
+
+        await apiRequest(
+            'POST',
+            API['confirm-password'],
+            data
+        );
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        window.location.href =
+            params.get('redirect') ||
+            '/profile';
     } catch (error) {
         showFormErrors(
             form,
@@ -1310,6 +1387,12 @@ function setupForms() {
 
                 case 'verification-notification':
                     await handleVerificationNotification(
+                        form
+                    );
+                    break;
+
+                case 'confirm-password':
+                    await handleConfirmPassword(
                         form
                     );
                     break;
@@ -1470,6 +1553,94 @@ function initializePage() {
 
 /*
 |--------------------------------------------------------------------------
+| Query-param status banners (verified / registered / reset)
+|--------------------------------------------------------------------------
+*/
+
+function showStatusBanner(form, message, isError = false) {
+    if (!form) {
+        return;
+    }
+
+    const className =
+        isError
+            ? 'auth-form-error'
+            : 'auth-form-success';
+
+    let banner =
+        form.querySelector(
+            `.${className}`
+        );
+
+    if (!banner) {
+        banner =
+            document.createElement(
+                'div'
+            );
+
+        banner.className =
+            className;
+
+        form.prepend(banner);
+    }
+
+    banner.textContent =
+        message;
+}
+
+function showQueryStatusBanners() {
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const loginForm =
+        getPageElement('login')?.querySelector(
+            '[data-auth-form="login"]'
+        );
+
+    if (
+        window.location.pathname === '/login'
+    ) {
+        if (params.get('registered')) {
+            showStatusBanner(
+                loginForm,
+                'Account created. Please sign in.'
+            );
+        }
+
+        if (params.get('reset')) {
+            showStatusBanner(
+                loginForm,
+                'Your password has been reset. Please sign in.'
+            );
+        }
+
+        const verified =
+            params.get('verified');
+
+        if (verified === '1') {
+            showStatusBanner(
+                loginForm,
+                'Your email has been verified. Please sign in.'
+            );
+        } else if (verified === 'already') {
+            showStatusBanner(
+                loginForm,
+                'Your email was already verified. Please sign in.'
+            );
+        } else if (verified === 'invalid') {
+            showStatusBanner(
+                loginForm,
+                'This verification link is invalid or has expired.',
+                true
+            );
+        }
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
 | Initialization
 |--------------------------------------------------------------------------
 */
@@ -1484,6 +1655,8 @@ function init() {
     setupForms();
 
     setupPasswordToggles();
+
+    showQueryStatusBanners();
 }
 
 init();

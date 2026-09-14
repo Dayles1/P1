@@ -127,13 +127,16 @@ class User extends Authenticatable
         return $this->hasOne(UserSetting::class);
     }
     public function currentSession(): HasOne
-{
-    return $this->hasOne(UserSession::class)
-        ->where(
-            'personal_access_token_id',
-            auth()->user()->currentAccessToken()->id
-        );
-}
+    {
+        $authUser = auth()->user();
+
+        $tokenId = ($authUser && $this->is($authUser))
+            ? $authUser->currentAccessToken()?->id
+            : null;
+
+        return $this->hasOne(UserSession::class)
+            ->where('personal_access_token_id', $tokenId ?? 0);
+    }
 
 
 

@@ -12,6 +12,7 @@ use App\Domain\Chat\Models\Conversation;
 use App\Domain\Chat\Queries\GetConversationsQuery;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Chat\ChatStoreRequest;
+use App\Http\Requests\Chat\GetConversationsRequest;
 use App\Http\Requests\Chat\UpdateConversationRequest;
 use App\Http\Resources\Chat\ConversationListResource;
 use App\Http\Resources\Chat\ConversationShowResource;
@@ -39,11 +40,11 @@ class ConversationController extends Controller
         );
     }
 
-    public function index(Request $request, GetConversationsQuery $query): JsonResponse
+    public function index(GetConversationsRequest $request, GetConversationsQuery $query): JsonResponse
     {
         $conversations = $query->execute(
             $request->user(),
-            $request->all()
+            $request->validated()
         );
 
         return $this->responsePagination(

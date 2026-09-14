@@ -26,12 +26,14 @@ Route::prefix('auth')->group(function (): void {
     Route::middleware('auth:sanctum')->group(function (): void {
         Route::post('logout', [AuthController::class, 'logout']);
         Route::get('me', [AuthController::class, 'me']);
+
+        Route::post('confirm-password', [AuthController::class, 'confirmPassword']);
     });
 });
 
 
 Route::prefix('admin/settings')
-    ->middleware(['auth:sanctum',])
+    ->middleware(['auth:sanctum', 'role:SUPER_ADMIN,ADMIN'])
     ->group(function () {
         Route::get('/', [SettingController::class, 'index']);
         Route::get('{setting}', [SettingController::class, 'show']);

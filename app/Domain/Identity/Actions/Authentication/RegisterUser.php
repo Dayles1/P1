@@ -45,11 +45,13 @@ class RegisterUser
             $user->markEmailAsVerified();
         }
 
-        $defaultRole = $this->settings->string('auth.default_role', Role::USER);
+        $defaultRoleId = $this->settings->integer('auth.default_role_id');
 
-        $role = Role::query()
-            ->where('name', $defaultRole)
-            ->first();
+        $role = $defaultRoleId > 0
+            ? Role::query()->find($defaultRoleId)
+            : null;
+
+        $role ??= Role::query()->where('code', Role::USER)->first();
 
         if ($role) {
             $user->roles()->sync([$role->id]);

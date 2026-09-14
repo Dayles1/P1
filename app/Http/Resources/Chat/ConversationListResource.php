@@ -24,7 +24,7 @@ class ConversationListResource extends JsonResource
             'id' => $this->id,
             'type' => $this->type,
 
-            'title' => $this->type === 'private'? $otherUser?->name: $this->name,
+            'title' => $this->type === 'private'? $otherUser?->name: $this->title,
 
             'is_pinned' => (bool) ($this->pivot?->is_pinned),
             'avatar' => $this->type === 'private'? $otherUser?->avatar?->url(): $this->avatar?->url(),

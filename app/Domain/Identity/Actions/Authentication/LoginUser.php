@@ -46,7 +46,7 @@ class LoginUser
 
         $allowedRoles = $this->settings->json('auth.allowed_login_role_ids');
 
-        if ($allowedRoles !== [] && ! in_array($user->role_id, $allowedRoles, true)) {
+        if ($allowedRoles !== [] && ! $user->roles()->whereIn('roles.id', $allowedRoles)->exists()) {
             abort(403, __('auth.role_not_allowed'));
         }
 
