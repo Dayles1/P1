@@ -1021,8 +1021,8 @@ async function handleLogin(form) {
             );
 
         const token =
-            response.data?.token ||
-            response.data?.access_token;
+            response.data?.data?.token ||
+            response.data?.data?.access_token;
 
         if (token) {
             localStorage.setItem(
@@ -1031,8 +1031,18 @@ async function handleLogin(form) {
             );
         }
 
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        const redirect =
+            params.get('redirect');
+
         window.location.href =
-            '/';
+            (redirect && redirect.startsWith('/'))
+                ? redirect
+                : '/';
     } catch (error) {
         showFormErrors(
             form,
@@ -1641,6 +1651,77 @@ function showQueryStatusBanners() {
 
 /*
 |--------------------------------------------------------------------------
+| Route guarding
+|--------------------------------------------------------------------------
+|
+| Sanctum bearer tokens are the only real signal of auth
+| state here (no server session is ever established for
+| API logins), so guarding has to happen client-side.
+|
+*/
+
+const GUEST_ONLY_PAGES = [
+    'login',
+    'register',
+    'forgot-password',
+    'reset-password',
+];
+
+const AUTH_ONLY_PAGES = [
+    'confirm-password',
+];
+
+async function guardAuthPage() {
+    const page =
+        getPageFromLocation();
+
+    const token =
+        getAuthToken();
+
+    if (
+        AUTH_ONLY_PAGES.includes(page) &&
+        !token
+    ) {
+        window.location.href =
+            '/login';
+
+        return;
+    }
+
+    if (
+        !token ||
+        !GUEST_ONLY_PAGES.includes(page)
+    ) {
+        return;
+    }
+
+    try {
+        await apiRequest(
+            'GET',
+            '/api/auth/me'
+        );
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        const redirect =
+            params.get('redirect');
+
+        window.location.href =
+            (redirect && redirect.startsWith('/'))
+                ? redirect
+                : '/profile';
+    } catch {
+        localStorage.removeItem(
+            'auth_token'
+        );
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
 | Initialization
 |--------------------------------------------------------------------------
 */
@@ -1657,6 +1738,8 @@ function init() {
     setupPasswordToggles();
 
     showQueryStatusBanners();
+
+    guardAuthPage();
 }
 
 init();

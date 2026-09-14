@@ -15,6 +15,9 @@ class UpdateProfileRequest extends FormRequest
 
     public function rules(): array
     {
+        $emailChanging = $this->filled('email') && $this->input('email') !== $this->user()->email;
+        $passwordChanging = $this->filled('password');
+
         return [
             'name' => [
                 'sometimes',
@@ -36,7 +39,7 @@ class UpdateProfileRequest extends FormRequest
             ],
 
             'current_password' => [
-                'required_with:password,email',
+                ($emailChanging || $passwordChanging) ? 'required' : 'nullable',
                 'current_password:sanctum',
             ],
         ];

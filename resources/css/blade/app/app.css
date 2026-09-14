@@ -202,6 +202,18 @@ body {
     margin-left: auto;
 }
 
+.site-header__guest,
+.site-header__user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.site-header__guest[hidden],
+.site-header__user[hidden] {
+    display: none;
+}
+
 /* =========================================================
    NAVBAR
    ========================================================= */
@@ -441,6 +453,19 @@ body {
 
 .dropdown__item--danger {
     color: var(--ui-danger);
+}
+
+.dropdown__label {
+    padding: 8px 12px 6px;
+    color: var(--ui-text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 220px;
 }
 
 /* =========================================================
@@ -706,6 +731,344 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
     color: var(--ui-text-muted);
     font-size: 12px;
     text-align: center;
+}
+
+/* =========================================================
+   APP SHELL (authenticated layout)
+   ========================================================= */
+.app-shell {
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    width: 100%;
+    max-width: var(--ui-container);
+    margin: 0 auto;
+}
+
+.app-sidebar {
+    position: sticky;
+    top: var(--ui-header-height);
+    flex-shrink: 0;
+    width: 240px;
+    padding: 24px 12px;
+    height: calc(100vh - var(--ui-header-height));
+    overflow-y: auto;
+    border-right: 1px solid var(--ui-border);
+}
+
+.app-content {
+    flex: 1;
+    min-width: 0;
+    padding: 32px 24px 80px;
+}
+
+.app-content__inner {
+    max-width: 760px;
+}
+
+.app-content__inner--wide {
+    max-width: none;
+}
+
+/* =========================================================
+   SIDEBAR NAV
+   ========================================================= */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sidebar-nav__group-label {
+    padding: 16px 12px 8px;
+    color: var(--ui-text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: var(--ui-radius-sm);
+    color: var(--ui-text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 160ms ease, color 160ms ease;
+}
+
+.sidebar-link:hover {
+    background: var(--ui-surface-soft);
+    color: var(--ui-text);
+}
+
+.sidebar-link--active {
+    background: var(--ui-primary-soft);
+    color: var(--ui-primary);
+}
+
+.sidebar-link__icon {
+    display: grid;
+    place-items: center;
+    width: 18px;
+    flex-shrink: 0;
+    font-size: 15px;
+}
+
+@media (max-width: 850px) {
+    .app-shell {
+        flex-direction: column;
+    }
+
+    .app-sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--ui-border);
+        padding: 12px 24px;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .sidebar-nav__group-label {
+        display: none;
+    }
+
+    .app-content {
+        padding: 24px 20px 60px;
+    }
+}
+
+/* =========================================================
+   PAGE HEAD (title + actions row used across app pages)
+   ========================================================= */
+.page-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.page-head h1 {
+    margin: 0 0 4px;
+    color: var(--ui-text);
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    font-weight: 750;
+}
+
+.page-head p {
+    margin: 0;
+    color: var(--ui-text-secondary);
+    font-size: 14px;
+}
+
+/* =========================================================
+   SETTINGS FORM SECTIONS
+   ========================================================= */
+.settings-section {
+    padding: 24px 0;
+    border-top: 1px solid var(--ui-border);
+}
+
+.settings-section:first-child {
+    padding-top: 0;
+    border-top: none;
+}
+
+.settings-section h2 {
+    margin: 0 0 4px;
+    color: var(--ui-text);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.settings-section > p {
+    margin: 0 0 18px;
+    color: var(--ui-text-secondary);
+    font-size: 13px;
+}
+
+/* =========================================================
+   DATA LIST (sessions, settings rows, etc.)
+   ========================================================= */
+.data-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.data-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 16px;
+    border: 1px solid var(--ui-border);
+    border-radius: var(--ui-radius);
+    background: var(--ui-surface);
+}
+
+.data-row--current {
+    border-color: var(--ui-primary);
+    box-shadow: 0 0 0 1px var(--ui-primary-soft);
+}
+
+.data-row__main {
+    min-width: 0;
+}
+
+.data-row__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ui-text);
+    font-size: 14px;
+    font-weight: 650;
+}
+
+.data-row__meta {
+    margin-top: 3px;
+    color: var(--ui-text-secondary);
+    font-size: 12px;
+}
+
+.data-row__actions {
+    flex-shrink: 0;
+    display: flex;
+    gap: 8px;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.pill--success {
+    background: var(--ui-success-bg);
+    color: var(--ui-success);
+}
+
+.pill--muted {
+    background: var(--ui-surface-soft);
+    color: var(--ui-text-muted);
+}
+
+.pill--primary {
+    background: var(--ui-primary-soft);
+    color: var(--ui-primary);
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 32px;
+    border: 1px dashed var(--ui-border);
+    border-radius: var(--ui-radius);
+    color: var(--ui-text-secondary);
+}
+
+.empty-state strong {
+    color: var(--ui-text);
+    font-size: 14px;
+}
+
+/* =========================================================
+   AVATAR UPLOAD
+   ========================================================= */
+.avatar-upload {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* =========================================================
+   FORM (shared with settings/profile forms)
+   ========================================================= */
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.field-label {
+    color: var(--ui-text);
+    font-size: 13px;
+    font-weight: 650;
+}
+
+.field-hint {
+    color: var(--ui-text-muted);
+    font-size: 12px;
+}
+
+.field-input,
+.field-select {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid var(--ui-border);
+    border-radius: var(--ui-radius-sm);
+    background: var(--ui-surface);
+    color: var(--ui-text);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 160ms ease;
+}
+
+.field-input:focus,
+.field-select:focus {
+    border-color: var(--ui-primary);
+}
+
+.field-error {
+    color: var(--ui-danger);
+    font-size: 12px;
+}
+
+.field-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.field-row > .field-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* =========================================================
+   TOAST VARIANTS
+   ========================================================= */
+.toast--success {
+    border-color: rgba(3, 152, 85, 0.25);
+}
+
+.toast--error {
+    border-color: rgba(217, 45, 32, 0.25);
+    color: var(--ui-danger);
 }
 
 /* =========================================================

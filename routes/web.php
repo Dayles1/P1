@@ -54,4 +54,33 @@ Route::controller(AuthPageController::class)->group(function () {
 
     Route::get('/confirm-password', 'index')
         ->name('password.confirm');
-}); 
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Authenticated area
+|--------------------------------------------------------------------------
+|
+| These pages require a valid Sanctum bearer token, but that can only
+| be verified client-side (there is no server session for API logins),
+| so there is no server-side auth middleware here — each page's own JS
+| checks GET /api/auth/me on load and redirects to /login if it fails.
+|
+*/
+
+Route::get('/profile', function () {
+    return view('blade.pages.profile');
+})->name('profile');
+
+Route::get('/sessions', function () {
+    return view('blade.pages.sessions');
+})->name('sessions');
+
+Route::get('/settings', function () {
+    return view('blade.pages.settings');
+})->name('settings');
+
+Route::get('/admin/settings', function () {
+    return view('blade.pages.admin.settings');
+})->name('admin.settings');

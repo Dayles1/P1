@@ -140,6 +140,22 @@
 
         </button>
 
+
+        {{-- REGISTER --}}
+        <div class="auth-page-switch">
+
+            Don't have an account?
+
+            <a
+                href="/register"
+                class="auth-link"
+                data-auth-link="register"
+            >
+                Sign up
+            </a>
+
+        </div>
+
     </form>
 
 </div>

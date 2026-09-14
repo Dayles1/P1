@@ -38,23 +38,18 @@
             </button>
 
 
-            @auth
-                {{-- USER MENU --}}
-                <x-blade.u-i.dropdown align="right">
-                    <x-slot:trigger>
-                        <x-blade.u-i.avatar :name="auth()->user()->name" size="sm" />
-                    </x-slot:trigger>
+            {{-- =====================================================
+                 AUTH STATE
+                 -----------------------------------------------------
+                 There is no server session for API logins here (auth
+                 is a Sanctum bearer token only), so which of these two
+                 blocks is shown is decided entirely client-side by
+                 app.js after it asks GET /api/auth/me — never assume
+                 login state from Blade.
+                 ===================================================== --}}
 
-                    <a href="{{ route('home') }}" class="dropdown__item" role="menuitem">
-                        Profile
-                    </a>
-
-                    <button type="button" class="dropdown__item dropdown__item--danger" data-logout role="menuitem">
-                        Log out
-                    </button>
-                </x-blade.u-i.dropdown>
-            @else
-                {{-- GUEST ACTIONS --}}
+            {{-- GUEST ACTIONS --}}
+            <div class="site-header__guest" data-auth-guest hidden>
                 <x-blade.u-i.button variant="ghost" size="sm" :href="route('login')">
                     Log in
                 </x-blade.u-i.button>
@@ -62,7 +57,46 @@
                 <x-blade.u-i.button variant="primary" size="sm" :href="route('register')">
                     Get started
                 </x-blade.u-i.button>
-            @endauth
+            </div>
+
+            {{-- USER MENU --}}
+            <div class="site-header__user" data-auth-user hidden>
+                <x-blade.u-i.dropdown align="right">
+                    <x-slot:trigger>
+                        <span class="avatar avatar--sm" data-user-avatar>
+                            <span class="avatar__initials" data-user-initials aria-hidden="true">--</span>
+                        </span>
+                    </x-slot:trigger>
+
+                    <div class="dropdown__label" data-user-name>&nbsp;</div>
+
+                    <a href="{{ route('profile') }}" class="dropdown__item" role="menuitem">
+                        Profile
+                    </a>
+
+                    <a href="{{ route('sessions') }}" class="dropdown__item" role="menuitem">
+                        Sessions
+                    </a>
+
+                    <a href="{{ route('settings') }}" class="dropdown__item" role="menuitem">
+                        Settings
+                    </a>
+
+                    <a
+                        href="{{ route('admin.settings') }}"
+                        class="dropdown__item"
+                        role="menuitem"
+                        data-requires-role="SUPER_ADMIN,ADMIN"
+                        hidden
+                    >
+                        Admin settings
+                    </a>
+
+                    <button type="button" class="dropdown__item dropdown__item--danger" data-logout role="menuitem">
+                        Log out
+                    </button>
+                </x-blade.u-i.dropdown>
+            </div>
 
 
             {{-- MOBILE MENU TOGGLE --}}

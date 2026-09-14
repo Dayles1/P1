@@ -8,12 +8,17 @@ use Illuminate\View\Component;
 
 class SidebarLink extends Component
 {
+    public bool $active;
+
     /**
      * Create a new component instance.
      */
-    public function __construct()
-    {
-        //
+    public function __construct(
+        public string $href,
+        public string $icon = '',
+        ?bool $active = null,
+    ) {
+        $this->active = $active ?? request()->is(ltrim(parse_url($href, PHP_URL_PATH) ?: '/', '/') . '*');
     }
 
     /**

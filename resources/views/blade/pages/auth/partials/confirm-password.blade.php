@@ -7,18 +7,81 @@
         </h1>
 
         <p>
-            Please confirm your password to continue.
+            This is a sensitive action. Please confirm your
+            password before continuing.
         </p>
 
     </div>
 
 
-    <div class="auth-info-box">
+    <form
+        class="auth-form"
+        data-auth-form="confirm-password"
+        novalidate
+    >
 
-        Password confirmation is handled by the
-        authenticated API flow.
+        @csrf
 
-    </div>
+
+        {{-- PASSWORD --}}
+        <div class="form-group">
+
+            <label
+                for="confirm-password-password"
+                class="form-label"
+            >
+                Password
+            </label>
+
+            <div class="form-input-wrapper">
+
+                <input
+                    id="confirm-password-password"
+                    type="password"
+                    name="password"
+                    class="form-input"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="password-toggle"
+                    data-password-toggle="confirm-password-password"
+                    aria-label="Show password"
+                >
+                    ◉
+                </button>
+
+            </div>
+
+            <span
+                class="form-error"
+                data-error-for="password"
+            ></span>
+
+        </div>
+
+
+        {{-- SUBMIT --}}
+        <button
+            type="submit"
+            class="auth-button"
+        >
+
+            <span class="auth-button__text">
+                Confirm
+            </span>
+
+            <span
+                class="auth-button__loader"
+                aria-hidden="true"
+            ></span>
+
+        </button>
+
+    </form>
 
 
     <div class="auth-page-switch">
