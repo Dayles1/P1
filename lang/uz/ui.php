@@ -155,7 +155,7 @@ return [
 
     'settings' => [
         'title' => 'Sozlamalar',
-        'subtitle' => 'Ilovaning koʻrinishi va sana formatlariga oid shaxsiy sozlamalar.',
+        'subtitle' => 'Hisobingiz, koʻrinish va — agar siz administrator boʻlsangiz — global sozlamalar.',
         'timezone' => 'Vaqt mintaqasi',
         'language' => 'Til',
         'theme' => 'Mavzu',
@@ -168,6 +168,48 @@ return [
         'error' => 'Sozlamalarni saqlab boʻlmadi.',
         'load_error' => 'Sozlamalarni yuklab boʻlmadi.',
         'timezones_error' => 'Vaqt mintaqalarini yuklab boʻlmadi',
+
+        'nav' => [
+            'general' => 'Umumiy',
+            'appearance' => 'Koʻrinish',
+            'localization' => 'Lokalizatsiya',
+            'notifications' => 'Bildirishnomalar',
+            'authentication' => 'Autentifikatsiya',
+            'security' => 'Xavfsizlik',
+            'system' => 'Tizim',
+            'developer' => 'Dasturchi uchun',
+        ],
+
+        'general_hint' => 'Sana va vaqt siz uchun qanday koʻrsatiladi.',
+        'user_policies' => 'Hisob siyosatlari',
+        'user_policies_hint' => 'Har bir foydalanuvchiga oʻz hisobi bilan nima qilishga ruxsat berilgan.',
+
+        'localization_hint' => 'Ilova interfeysi tili.',
+        'default_language' => 'Standart til',
+        'default_language_hint' => 'Yangi mehmonlar oʻzlari tanlamaguncha koʻradigan til.',
+        'fallback_language' => 'Zaxira til',
+
+        'notifications_hint' => 'Butun ilova boʻyicha qaysi bildirishnoma kanallari mavjud.',
+        'notifications_empty' => 'Hozircha bu yerda sozlanadigan narsa yoʻq.',
+
+        'allowed_login_roles' => 'Kirishga ruxsat etilgan rollar',
+        'allowed_login_roles_hint' => 'Faqat belgilangan rollardan biriga ega hisoblar kira oladi. Hech narsa belgilanmasa — barcha rollarga ruxsat beriladi.',
+        'default_registration_role' => 'Roʻyxatdan oʻtishdagi standart rol',
+        'default_registration_role_hint' => 'Roʻyxatdan oʻtgandan keyin yangi hisobga avtomatik beriladigan rol.',
+
+        'security_hint' => 'Butun ilova uchun chegaralar, hisoblar soni va API/audit sozlamalari.',
+
+        'favicon' => 'Favicon',
+        'favicon_hint' => 'Butun sayt boʻylab brauzer yorliqlari va xatchoʻplarda koʻrsatiladi.',
+        'favicon_upload' => 'Yangi favicon yuklash',
+        'favicon_remove' => 'Standart holatga qaytarish',
+        'favicon_formats' => '.ico, .png yoki .svg — 512 KB gacha.',
+        'favicon_dropzone' => 'Faylni shu yerga tashlang yoki yuqoridagi tugmadan foydalaning.',
+        'favicon_updated' => 'Favicon yangilandi.',
+        'favicon_error' => 'Faviconni yangilab boʻlmadi.',
+
+        'developer_mode' => 'Dasturchi rejimi',
+        'developer_mode_hint' => 'Odatiy interfeys yonida API texnik tafsilotlarini (endpoint, holat, vaqt, soʻrov ID) koʻrsatish.',
     ],
 
     'admin' => [

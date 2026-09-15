@@ -50,19 +50,16 @@ function syncActiveCard(grid) {
     });
 }
 
-export function openThemePicker() {
-    const { modal } = openModal({
-        title: t('theme.picker_title'),
-        wide: true,
-        bodyHtml: `
-            <p style="margin:0 0 16px; color:var(--ui-text-secondary); font-size:13px;">
-                ${t('theme.picker_subtitle')}
-            </p>
-            <div class="theme-picker-grid" role="radiogroup" aria-label="${t('theme.label')}" data-theme-grid></div>
-        `,
-    });
-
-    const grid = modal.querySelector('[data-theme-grid]');
+/**
+ * Fills `grid` (any container element) with the full theme picker grid and
+ * wires it up — shared by the header's modal panel and the Settings ->
+ * Appearance section, so there's exactly one implementation of "pick a
+ * theme" in the app, not a modal-only one and a separate inline one.
+ */
+export function renderThemeGrid(grid) {
+    grid.classList.add('theme-picker-grid');
+    grid.setAttribute('role', 'radiogroup');
+    grid.setAttribute('aria-label', t('theme.label'));
     grid.innerHTML = THEMES.map(previewCard).join('');
     syncActiveCard(grid);
 
@@ -76,6 +73,21 @@ export function openThemePicker() {
         setTheme(card.dataset.themeOption);
         syncActiveCard(grid);
     });
+}
+
+export function openThemePicker() {
+    const { modal } = openModal({
+        title: t('theme.picker_title'),
+        wide: true,
+        bodyHtml: `
+            <p style="margin:0 0 16px; color:var(--ui-text-secondary); font-size:13px;">
+                ${t('theme.picker_subtitle')}
+            </p>
+            <div data-theme-grid></div>
+        `,
+    });
+
+    renderThemeGrid(modal.querySelector('[data-theme-grid]'));
 }
 
 /** Wires up every `[data-theme-picker-trigger]` button to open the panel. */

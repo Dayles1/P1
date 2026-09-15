@@ -155,7 +155,7 @@ return [
 
     'settings' => [
         'title' => 'Settings',
-        'subtitle' => 'Personal preferences for how the app looks and formats dates.',
+        'subtitle' => 'Your account, appearance, and — if you administer this instance — global configuration.',
         'timezone' => 'Timezone',
         'language' => 'Language',
         'theme' => 'Theme',
@@ -168,6 +168,48 @@ return [
         'error' => 'Could not save your settings.',
         'load_error' => 'Could not load your settings.',
         'timezones_error' => 'Could not load timezones',
+
+        'nav' => [
+            'general' => 'General',
+            'appearance' => 'Appearance',
+            'localization' => 'Localization',
+            'notifications' => 'Notifications',
+            'authentication' => 'Authentication',
+            'security' => 'Security',
+            'system' => 'System',
+            'developer' => 'Developer',
+        ],
+
+        'general_hint' => 'How dates and times are displayed for you.',
+        'user_policies' => 'Account policies',
+        'user_policies_hint' => 'What every user is allowed to do with their own account.',
+
+        'localization_hint' => 'The language used across the app.',
+        'default_language' => 'Default language',
+        'default_language_hint' => 'The language new visitors and guests see before they pick one themselves.',
+        'fallback_language' => 'Fallback language',
+
+        'notifications_hint' => 'Which notification channels are available instance-wide.',
+        'notifications_empty' => 'Nothing to configure here yet.',
+
+        'allowed_login_roles' => 'Allowed login roles',
+        'allowed_login_roles_hint' => 'Only accounts with one of the checked roles can sign in. Leave all unchecked to allow every role.',
+        'default_registration_role' => 'Default registration role',
+        'default_registration_role_hint' => 'The role automatically assigned to a new account after registration.',
+
+        'security_hint' => 'Rate limits, account caps, and API/audit toggles for the whole instance.',
+
+        'favicon' => 'Favicon',
+        'favicon_hint' => 'Shown in browser tabs and bookmarks across the whole site.',
+        'favicon_upload' => 'Upload new favicon',
+        'favicon_remove' => 'Reset to default',
+        'favicon_formats' => '.ico, .png or .svg — up to 512 KB.',
+        'favicon_dropzone' => 'Drag & drop a file here, or use the button above.',
+        'favicon_updated' => 'Favicon updated.',
+        'favicon_error' => 'Could not update the favicon.',
+
+        'developer_mode' => 'Developer mode',
+        'developer_mode_hint' => 'Show API/technical details (endpoint, status, timing, request ID) alongside the normal UI.',
     ],
 
     'admin' => [

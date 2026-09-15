@@ -19,21 +19,38 @@ export function clearToken() {
  * app (login never establishes a server session), so "am I logged in"
  * is always resolved by asking the API, never by trusting a Blade
  * @auth/@guest check.
+ *
+ * Every authenticated page loads both the shared site-chrome bootstrap
+ * (header user menu) and its own page script, and both used to call this
+ * independently — two `GET /auth/me` requests per page load for no reason.
+ * The in-flight/resolved promise is cached for the lifetime of the page
+ * (a real login/logout always does a full navigation, so there's never a
+ * stale-cache case to invalidate within one page's lifetime).
  */
+let currentUserPromise = null;
+
 export async function fetchCurrentUser() {
     if (!getToken()) {
         return null;
     }
 
-    try {
-        const { data } = await api.get('/auth/me');
+    currentUserPromise ??= api
+        .get('/auth/me')
+        .then(({ data }) => data?.data?.user ?? null)
+        .catch(() => {
+            clearToken();
 
-        return data?.data?.user ?? null;
-    } catch {
-        clearToken();
+            return null;
+        })
+        .finally(() => {
+            // Don't cache a null result forever — a later call (e.g. right
+            // after logging back in on the same page) should retry.
+            if (!getToken()) {
+                currentUserPromise = null;
+            }
+        });
 
-        return null;
-    }
+    return currentUserPromise;
 }
 
 export function hasRole(user, ...codes) {

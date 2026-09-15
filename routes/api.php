@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\AccessControl\RoleController;
+use App\Http\Controllers\Api\Admin\FaviconController;
 use App\Http\Controllers\Api\Admin\RequestLogController as AdminRequestLogController;
 use App\Http\Controllers\Api\Admin\SessionController as AdminSessionController;
 use App\Http\Controllers\Api\Admin\SettingController;
@@ -86,6 +88,7 @@ Route::prefix('profile')
 
 Route::get('timezones', [TimezoneController::class, 'index']);
 Route::get('languages', [LanguageController::class, 'index']);
+Route::middleware('auth.api')->get('roles', [RoleController::class, 'index']);
 
 Route::middleware('auth.api')->get('dashboard', [DashboardController::class, 'index']);
 
@@ -119,6 +122,8 @@ Route::prefix('admin/settings')
     ->middleware(['auth.api', 'role:SUPER_ADMIN,ADMIN'])
     ->group(function () {
         Route::get('/', [SettingController::class, 'index']);
+        Route::post('favicon', [FaviconController::class, 'store']);
+        Route::delete('favicon', [FaviconController::class, 'destroy']);
         Route::get('{setting}', [SettingController::class, 'show']);
         Route::patch('{setting}', [SettingController::class, 'update']);
     });

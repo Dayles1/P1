@@ -15,6 +15,7 @@
         @endif
     </title>
 
+    @include('blade.sections.favicon')
 
     @include('blade.sections.theme-bootstrap')
     @include('blade.sections.i18n-bootstrap')

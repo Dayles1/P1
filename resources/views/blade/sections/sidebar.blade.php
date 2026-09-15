@@ -66,7 +66,7 @@
     </x-blade.navigation.sidebar-link>
 
     <x-blade.navigation.sidebar-link
-        :href="route('admin.settings')"
+        href="{{ route('settings') }}#system"
         icon="&#9881;"
         data-requires-role="SUPER_ADMIN,ADMIN"
         hidden

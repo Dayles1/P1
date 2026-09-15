@@ -22,9 +22,6 @@
             <div class="select-field">
                 <select class="field-select" id="users-role" data-users-role>
                     <option value="">{{ __('ui.common.all') }}</option>
-                    <option value="SUPER_ADMIN">Super Admin</option>
-                    <option value="ADMIN">Admin</option>
-                    <option value="USER">User</option>
                 </select>
             </div>
         </div>

@@ -34,6 +34,8 @@ return [
     'settings' => [
         'updated' => 'Настройка обновлена.',
         'locked' => 'Эта настройка заблокирована и не может быть изменена.',
+        'favicon_updated' => 'Favicon обновлён.',
+        'favicon_removed' => 'Favicon сброшен на значение по умолчанию.',
     ],
 
     'chat' => [

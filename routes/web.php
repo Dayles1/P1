@@ -100,8 +100,13 @@ Route::get('/chat/{conversation}', function (string $conversation) {
 |--------------------------------------------------------------------------
 */
 
+/*
+ * The old standalone admin settings page is retired — its Authentication
+ * and System sections now live inside the unified Settings mini-app. This
+ * keeps the route name (and old bookmarks/links) working.
+ */
 Route::get('/admin/settings', function () {
-    return view('blade.pages.admin.settings');
+    return redirect('/settings#system');
 })->name('admin.settings');
 
 Route::get('/admin/users', function () {

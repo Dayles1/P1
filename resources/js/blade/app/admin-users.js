@@ -11,18 +11,36 @@ const paginationEl = document.querySelector('[data-users-pagination]');
 const searchInput = document.querySelector('[data-users-search]');
 const roleFilter = document.querySelector('[data-users-role]');
 
-const ROLES = ['SUPER_ADMIN', 'ADMIN', 'USER'];
-
+let roles = [];
 let currentPage = 1;
 let searchTimer = null;
 
+async function loadRoles() {
+    try {
+        const { data } = await api.get('/roles');
+        roles = data.data || [];
+
+        if (roleFilter) {
+            roleFilter.insertAdjacentHTML(
+                'beforeend',
+                roles.map((role) => `<option value="${role.code}">${escapeHtml(role.name)}</option>`).join('')
+            );
+        }
+    } catch {
+        // Role-change/filter controls just render with codes as a fallback below.
+    }
+}
+
 function roleSelect(user) {
     const currentRole = user.roles?.[0]?.code || 'USER';
+    const options = roles.length
+        ? roles.map((role) => ({ value: role.code, label: role.name }))
+        : [currentRole].map((code) => ({ value: code, label: code }));
 
     return `
         <div class="select-field" style="max-width:150px;">
             <select class="field-select" data-role-select="${user.id}" data-current-role="${currentRole}">
-                ${ROLES.map((role) => `<option value="${role}" ${role === currentRole ? 'selected' : ''}>${role}</option>`).join('')}
+                ${options.map((role) => `<option value="${role.value}" ${role.value === currentRole ? 'selected' : ''}>${escapeHtml(role.label)}</option>`).join('')}
             </select>
         </div>
     `;
@@ -210,4 +228,7 @@ searchInput?.addEventListener('input', () => {
     searchTimer = window.setTimeout(() => loadUsers(1), 350);
 });
 
-loadUsers();
+(async () => {
+    await loadRoles();
+    loadUsers();
+})();

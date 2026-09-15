@@ -34,6 +34,8 @@ return [
     'settings' => [
         'updated' => 'Sozlama yangilandi.',
         'locked' => 'Bu sozlama bloklangan va oʻzgartirib boʻlmaydi.',
+        'favicon_updated' => 'Favicon yangilandi.',
+        'favicon_removed' => 'Favicon standart holatga qaytarildi.',
     ],
 
     'chat' => [

@@ -34,6 +34,8 @@ return [
     'settings' => [
         'updated' => 'Setting updated.',
         'locked' => 'This setting is locked and cannot be changed.',
+        'favicon_updated' => 'Favicon updated.',
+        'favicon_removed' => 'Favicon reset to the default.',
     ],
 
     'chat' => [

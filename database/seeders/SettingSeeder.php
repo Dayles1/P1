@@ -155,7 +155,7 @@ class SettingSeeder extends Seeder
             ],
             [
                 'key' => 'system.favicon',
-                'value' => 'images/favicon.ico',
+                'value' => '/favicon.ico',
                 'type' => Setting::TYPE_STRING,
                 'group' => Setting::GROUP_SYSTEM,
                 'is_public' => true,
