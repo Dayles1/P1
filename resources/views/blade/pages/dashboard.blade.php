@@ -37,16 +37,30 @@
 
     <div class="dashboard-grid">
 
-        <div class="card">
-            <div class="card__header">
-                <h2 class="card__title">{{ __('ui.dashboard.recent_requests') }}</h2>
-                <a href="{{ route('sessions') }}" class="btn btn--ghost btn--sm">{{ __('ui.common.view') }}</a>
-            </div>
-            <div class="card__body">
-                <div class="timeline" data-recent-requests>
-                    <div class="skeleton skeleton-row"></div>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+
+            <div class="card">
+                <div class="card__header">
+                    <h2 class="card__title">{{ __('ui.dashboard.recent_conversations') }}</h2>
+                    <a href="{{ route('chat') }}" class="btn btn--ghost btn--sm">{{ __('ui.common.view') }}</a>
+                </div>
+                <div class="card__body card__body--flush" data-recent-conversations>
+                    <div class="skeleton skeleton-row" style="margin:12px;"></div>
                 </div>
             </div>
+
+            <div class="card">
+                <div class="card__header">
+                    <h2 class="card__title">{{ __('ui.dashboard.recent_requests') }}</h2>
+                    <a href="{{ route('sessions') }}" class="btn btn--ghost btn--sm">{{ __('ui.common.view') }}</a>
+                </div>
+                <div class="card__body">
+                    <div class="timeline" data-recent-requests>
+                        <div class="skeleton skeleton-row"></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div style="display:flex; flex-direction:column; gap:16px;">
@@ -58,8 +72,16 @@
                 <div class="card__body" style="display:flex; flex-direction:column; gap:8px;">
                     <a href="{{ route('profile') }}" class="btn btn--outline btn--sm" style="justify-content:flex-start;">{{ __('ui.dashboard.go_to_profile') }}</a>
                     <a href="{{ route('sessions') }}" class="btn btn--outline btn--sm" style="justify-content:flex-start;">{{ __('ui.dashboard.go_to_sessions') }}</a>
-                    <a href="{{ route('settings') }}" class="btn btn--outline btn--sm" style="justify-content:flex-start;">{{ __('ui.dashboard.go_to_settings') }}</a>
                     <a href="{{ route('chat') }}" class="btn btn--outline btn--sm" style="justify-content:flex-start;">{{ __('ui.dashboard.go_to_chat') }}</a>
+                    <a href="{{ route('notifications') }}" class="btn btn--outline btn--sm" style="justify-content:flex-start;">{{ __('ui.dashboard.go_to_notifications') }}</a>
+                    <a href="{{ route('settings') }}" class="btn btn--outline btn--sm" style="justify-content:flex-start;">{{ __('ui.dashboard.go_to_settings') }}</a>
+                    <a
+                        href="{{ route('admin.users') }}"
+                        class="btn btn--outline btn--sm"
+                        style="justify-content:flex-start;"
+                        data-requires-role="SUPER_ADMIN,ADMIN"
+                        hidden
+                    >{{ __('ui.dashboard.go_to_admin') }}</a>
                 </div>
             </div>
 

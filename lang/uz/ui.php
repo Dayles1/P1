@@ -2,6 +2,33 @@
 
 return [
 
+    'footer' => [
+        'tagline' => 'Hisobingiz, loyihalaringiz va shaxsiy ish maydoningizni boshqarishning ishonchli va oddiy usuli.',
+        'rights_reserved' => 'Barcha huquqlar himoyalangan.',
+    ],
+
+    'changelog' => [
+        'title' => 'Yangiliklar',
+        'subtitle' => 'Har bir versiyadagi yangi imkoniyatlar, yaxshilanishlar va tuzatishlar.',
+        'type_new' => 'Yangi',
+        'type_improved' => 'Yaxshilangan',
+        'type_fixed' => 'Tuzatilgan',
+    ],
+
+    'dev_panel' => [
+        'title' => 'Dasturchi rejimi',
+    ],
+
+    'shortcuts' => [
+        'title' => 'Klaviatura yorliqlari',
+        'search' => 'Qidiruv',
+        'help' => 'Shu yordamni koʻrsatish',
+        'close' => 'Oyna va dialoglarni yopish',
+        'send' => 'Xabarni yuborish',
+        'newline' => 'Yangi qator',
+        'edit_last' => 'Oxirgi xabaringizni tahrirlash',
+    ],
+
     'nav' => [
         'home' => 'Bosh sahifa',
         'about' => 'Biz haqimizda',
@@ -213,6 +240,8 @@ return [
 
         'developer_mode' => 'Dasturchi rejimi',
         'developer_mode_hint' => 'Odatiy interfeys yonida API texnik tafsilotlarini (endpoint, holat, vaqt, soʻrov ID) koʻrsatish.',
+        'about' => 'Ilova haqida',
+        'version' => 'Versiya :version',
 
         'notif_prefs' => 'Bildirishnoma sozlamalari',
         'notif_prefs_hint' => 'Nima haqida va qanday xabardor qilinishingiz.',
@@ -273,8 +302,11 @@ return [
         'requests_week' => 'Shu hafta soʻrovlari',
         'errors_week' => 'Shu hafta xatolari',
         'unread_messages' => 'Oʻqilmagan xabarlar',
+        'unread_notifications' => 'Oʻqilmagan bildirishnomalar',
         'recent_sessions' => 'Soʻnggi seanslar',
         'recent_requests' => 'Soʻnggi soʻrovlar',
+        'recent_conversations' => 'Soʻnggi suhbatlar',
+        'no_recent_conversations' => 'Hali suhbatlar yoʻq.',
         'quick_actions' => 'Tezkor amallar',
         'instance_overview' => 'Tizim umumiy koʻrinishi',
         'total_users' => 'Jami foydalanuvchilar',
@@ -284,6 +316,8 @@ return [
         'go_to_sessions' => 'Seanslarni boshqarish',
         'go_to_settings' => 'Sozlamalar',
         'go_to_chat' => 'Chatni ochish',
+        'go_to_notifications' => 'Bildirishnomalar',
+        'go_to_admin' => 'Boshqaruv',
     ],
 
     'notifications' => [

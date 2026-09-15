@@ -687,6 +687,7 @@ function wireSystem() {
 
 function renderDeveloper() {
     const enabled = Boolean(state.personal?.meta?.developer_mode);
+    const version = document.body.dataset.appVersion;
 
     return `
         <div class="settings-panel__section">
@@ -697,6 +698,12 @@ function renderDeveloper() {
                 <span class="checkbox__box"></span>
                 ${t('settings.developer_mode')}
             </label>
+        </div>
+
+        <div class="settings-panel__section">
+            <h2 class="settings-panel__section-title">${t('settings.about')}</h2>
+            <p class="settings-panel__section-hint">${version ? t('settings.version', { version }) : ''}</p>
+            <a href="/changelog" class="btn btn--outline btn--sm">${t('changelog.title')}</a>
         </div>
     `;
 }

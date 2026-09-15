@@ -18,15 +18,15 @@
             </a>
 
             <p class="site-footer__tagline">
-                A secure and simple way to manage your account, projects and personal workspace.
+                {{ __('ui.footer.tagline') }}
             </p>
         </div>
 
 
         <nav class="site-footer__links" aria-label="Footer">
-            <a href="{{ route('home') }}">Home</a>
-            <a href="{{ route('about') }}">About</a>
-            <a href="{{ route('contact') }}">Contact</a>
+            <a href="{{ route('home') }}">{{ __('ui.nav.home') }}</a>
+            <a href="{{ route('about') }}">{{ __('ui.nav.about') }}</a>
+            <a href="{{ route('contact') }}">{{ __('ui.nav.contact') }}</a>
         </nav>
 
     </div>
@@ -34,7 +34,7 @@
 
     <div class="site-footer__bottom">
         <span>
-            © {{ date('Y') }} {{ config('app.name', 'Laravel') }}. All rights reserved.
+            © {{ date('Y') }} {{ config('app.name', 'Laravel') }}. {{ __('ui.footer.rights_reserved') }}
         </span>
     </div>
 

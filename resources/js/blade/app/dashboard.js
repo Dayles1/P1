@@ -1,8 +1,9 @@
 import { api } from '../axios';
-import { fetchCurrentUser } from '../shared/auth-state';
+import { fetchCurrentUser, initials } from '../shared/auth-state';
 import { methodClass, statusClass } from '../shared/format';
 import { escapeHtml } from '../shared/forms';
 import { t } from '../shared/i18n';
+import { emptyState } from '../shared/skeleton';
 import { showToast, apiErrorMessage } from '../shared/toast';
 
 const welcomeEl = document.querySelector('[data-dashboard-welcome]');
@@ -11,6 +12,7 @@ const completenessValueEl = document.querySelector('[data-completeness-value]');
 const completenessBarEl = document.querySelector('[data-completeness-bar]');
 const recentRequestsEl = document.querySelector('[data-recent-requests]');
 const recentSessionsEl = document.querySelector('[data-recent-sessions]');
+const recentConversationsEl = document.querySelector('[data-recent-conversations]');
 const instanceOverviewEl = document.querySelector('[data-instance-overview]');
 const instanceStatsEl = document.querySelector('[data-instance-stats]');
 
@@ -31,6 +33,7 @@ function renderStats(summary) {
         statCard(t('dashboard.requests_week'), summary.requests.this_week),
         statCard(t('dashboard.errors_week'), summary.requests.errors_this_week),
         statCard(t('dashboard.unread_messages'), summary.unread_messages),
+        statCard(t('dashboard.unread_notifications'), summary.unread_notifications),
     ].join('');
 
     completenessValueEl.textContent = `${summary.account.profile_completeness}%`;
@@ -93,6 +96,35 @@ function renderRecentSessions(sessions) {
         .join('');
 }
 
+function renderRecentConversations(conversations) {
+    if (!recentConversationsEl) {
+        return;
+    }
+
+    if (!conversations.length) {
+        recentConversationsEl.innerHTML = emptyState(t('dashboard.no_recent_conversations'));
+
+        return;
+    }
+
+    recentConversationsEl.innerHTML = conversations
+        .map((conversation) => `
+            <a href="/chat/${conversation.id}" class="data-row" style="text-decoration:none; border-radius:0; border-left:none; border-right:none; border-top:none;">
+                <div class="data-row__main" style="display:flex; align-items:center; gap:10px;">
+                    <span class="avatar avatar--sm">
+                        ${conversation.avatar ? `<img class="avatar__image" src="${conversation.avatar}" alt="">` : `<span class="avatar__initials">${initials(conversation.title)}</span>`}
+                    </span>
+                    <div>
+                        <div class="data-row__title" style="font-size:13px;">${escapeHtml(conversation.title || t('common.unknown'))}</div>
+                        <div class="data-row__meta">${escapeHtml(conversation.last_message?.body || t('chat.empty_messages'))}</div>
+                    </div>
+                </div>
+                ${conversation.unread_count > 0 ? `<span class="pill pill--primary">${conversation.unread_count}</span>` : ''}
+            </a>
+        `)
+        .join('');
+}
+
 async function loadDashboard() {
     try {
         const { data } = await api.get('/dashboard');
@@ -101,6 +133,7 @@ async function loadDashboard() {
         renderStats(summary);
         renderRecentRequests(summary.recent_requests || []);
         renderRecentSessions(summary.recent_sessions || []);
+        renderRecentConversations(summary.recent_conversations || []);
     } catch (error) {
         showToast(apiErrorMessage(error, t('common.error_generic')), 'error');
     }

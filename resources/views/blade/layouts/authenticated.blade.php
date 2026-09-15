@@ -29,7 +29,7 @@
 </head>
 
 
-<body>
+<body data-app-version="{{ collect(require base_path('resources/data/changelog.php'))->first()['version'] ?? '' }}">
 
     <div class="site-layout">
 

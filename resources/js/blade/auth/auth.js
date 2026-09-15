@@ -7,7 +7,9 @@
 
 import { api } from '../axios';
 import { initLocalePicker } from '../shared/i18n';
+import { initShortcuts } from '../shared/shortcuts';
 import { initThemePicker } from '../shared/theme-picker';
 
 initThemePicker();
 initLocalePicker(api);
+initShortcuts();

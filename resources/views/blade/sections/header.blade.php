@@ -134,6 +134,10 @@
                         {{ __('ui.nav.settings') }}
                     </a>
 
+                    <a href="{{ route('changelog') }}" class="dropdown__item" role="menuitem">
+                        {{ __('ui.changelog.title') }}
+                    </a>
+
                     <a
                         href="{{ route('admin.settings') }}"
                         class="dropdown__item"

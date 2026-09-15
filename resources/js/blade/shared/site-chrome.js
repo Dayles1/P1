@@ -1,9 +1,12 @@
 import { api } from '../axios';
 import { fetchCurrentUser, hasRole, initials, logout } from './auth-state';
 import { initLocalePicker } from './i18n';
+import { initDevPanel } from './dev-panel';
 import { initNotificationBell } from './notification-bell';
 import { initPresence } from './presence';
+import { initShortcuts } from './shortcuts';
 import { initThemePicker } from './theme-picker';
+import { getUserSettings } from './user-settings-cache';
 
 /*
 |--------------------------------------------------------------------------
@@ -216,6 +219,13 @@ async function initHeaderAuthState() {
 
     initNotificationBell(api);
     initPresence();
+    initDevPanel();
+
+    getUserSettings(api)
+        .then((settings) => {
+            document.documentElement.toggleAttribute('data-developer-mode', Boolean(settings?.meta?.developer_mode));
+        })
+        .catch(() => {});
 
     return user;
 }
@@ -234,6 +244,7 @@ export function initSiteChrome() {
     initStaticModals();
     initAlerts();
     initLogout();
+    initShortcuts();
 
     return initHeaderAuthState();
 }

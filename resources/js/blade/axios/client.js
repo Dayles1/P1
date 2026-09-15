@@ -24,17 +24,49 @@ api.interceptors.request.use(
             config.headers['X-Locale'] = window.__i18n.locale;
         }
 
+        config.__startedAt = performance.now();
+
         return config;
     },
     (error) => Promise.reject(error)
 );
 
+/**
+ * Developer Mode (Settings -> Developer) listens for this — kept as a
+ * plain DOM CustomEvent rather than a JS import so the axios client never
+ * has to know the dev panel exists. Only every real request/response is
+ * reported; nothing here is fabricated.
+ */
+function reportDevRequest(config, response, error) {
+    if (!document.documentElement.hasAttribute('data-developer-mode')) {
+        return;
+    }
+
+    const duration = config.__startedAt ? Math.round(performance.now() - config.__startedAt) : null;
+
+    document.dispatchEvent(new CustomEvent('dev-request', {
+        detail: {
+            method: (config.method || 'get').toUpperCase(),
+            url: (config.baseURL || '') + (config.url || ''),
+            status: response?.status ?? error?.response?.status ?? null,
+            duration,
+            ok: !error,
+        },
+    }));
+}
+
 api.interceptors.response.use(
-    (response) => response,
+    (response) => {
+        reportDevRequest(response.config, response, null);
+
+        return response;
+    },
     (error) => {
         if (error.response?.status === 401) {
             localStorage.removeItem('auth_token');
         }
+
+        reportDevRequest(error.config || {}, null, error);
 
         return Promise.reject(error);
     }

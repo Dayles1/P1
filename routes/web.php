@@ -90,6 +90,10 @@ Route::get('/notifications', function () {
     return view('blade.pages.notifications');
 })->name('notifications');
 
+Route::get('/changelog', function () {
+    return view('blade.pages.changelog', ['releases' => require base_path('resources/data/changelog.php')]);
+})->name('changelog');
+
 Route::get('/chat', function () {
     return view('blade.pages.chat');
 })->name('chat');

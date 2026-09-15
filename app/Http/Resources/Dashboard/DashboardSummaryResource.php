@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Dashboard;
 
 use App\Domain\Setting\Services\UserDateFormatter;
+use App\Http\Resources\Chat\ConversationListResource;
 use App\Http\Resources\Session\RequestLogListResource;
 use App\Http\Resources\Session\SessionResource;
 use Illuminate\Http\Request;
@@ -26,8 +27,10 @@ class DashboardSummaryResource extends JsonResource
             'sessions' => $this['sessions'],
             'requests' => $this['requests'],
             'unread_messages' => $this['unread_messages'],
+            'unread_notifications' => $this['unread_notifications'],
             'recent_sessions' => SessionResource::collection($this['recent_sessions']),
             'recent_requests' => RequestLogListResource::collection($this['recent_requests']),
+            'recent_conversations' => ConversationListResource::collection($this['recent_conversations']),
             'instance' => $this->when(isset($this->resource['instance']), fn () => $this['instance']),
         ];
     }

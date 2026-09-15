@@ -2,6 +2,33 @@
 
 return [
 
+    'footer' => [
+        'tagline' => 'A secure and simple way to manage your account, projects and personal workspace.',
+        'rights_reserved' => 'All rights reserved.',
+    ],
+
+    'changelog' => [
+        'title' => "What's new",
+        'subtitle' => 'New features, improvements, and fixes in each release.',
+        'type_new' => 'New',
+        'type_improved' => 'Improved',
+        'type_fixed' => 'Fixed',
+    ],
+
+    'dev_panel' => [
+        'title' => 'Developer mode',
+    ],
+
+    'shortcuts' => [
+        'title' => 'Keyboard shortcuts',
+        'search' => 'Search',
+        'help' => 'Show this help',
+        'close' => 'Close dialogs and overlays',
+        'send' => 'Send message',
+        'newline' => 'New line',
+        'edit_last' => 'Edit your last message',
+    ],
+
     'nav' => [
         'home' => 'Home',
         'about' => 'About',
@@ -213,6 +240,8 @@ return [
 
         'developer_mode' => 'Developer mode',
         'developer_mode_hint' => 'Show API/technical details (endpoint, status, timing, request ID) alongside the normal UI.',
+        'about' => 'About',
+        'version' => 'Version :version',
 
         'notif_prefs' => 'Notification preferences',
         'notif_prefs_hint' => 'What you get notified about, and how.',
@@ -273,8 +302,11 @@ return [
         'requests_week' => 'Requests this week',
         'errors_week' => 'Errors this week',
         'unread_messages' => 'Unread messages',
+        'unread_notifications' => 'Unread notifications',
         'recent_sessions' => 'Recent sessions',
         'recent_requests' => 'Recent requests',
+        'recent_conversations' => 'Recent conversations',
+        'no_recent_conversations' => 'No conversations yet.',
         'quick_actions' => 'Quick actions',
         'instance_overview' => 'Instance overview',
         'total_users' => 'Total users',
@@ -284,6 +316,8 @@ return [
         'go_to_sessions' => 'Manage sessions',
         'go_to_settings' => 'Preferences',
         'go_to_chat' => 'Open chat',
+        'go_to_notifications' => 'View notifications',
+        'go_to_admin' => 'Administration',
     ],
 
     'notifications' => [

@@ -40,6 +40,7 @@ class GetDashboardSummary
             ],
 
             'unread_messages' => (int) $user->conversations()->sum('conversation_users.unread_count'),
+            'unread_notifications' => $user->unreadNotifications()->count(),
 
             'recent_sessions' => UserSession::query()
                 ->where('user_id', $user->id)
@@ -51,6 +52,13 @@ class GetDashboardSummary
                 ->where('user_id', $user->id)
                 ->latest('created_at')
                 ->limit(8)
+                ->get(),
+
+            'recent_conversations' => $user->conversations()
+                ->with(['users:id,name', 'users.avatar', 'lastMessage.user:id,name'])
+                ->withPivot(['unread_count'])
+                ->orderByDesc('last_message_at')
+                ->limit(5)
                 ->get(),
         ];
 
