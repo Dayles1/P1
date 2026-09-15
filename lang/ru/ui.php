@@ -11,6 +11,7 @@ return [
         'sessions' => 'Сеансы',
         'settings' => 'Настройки',
         'chat' => 'Чат',
+        'notifications' => 'Уведомления',
         'admin' => 'Администрирование',
         'admin_settings' => 'Настройки приложения',
         'admin_users' => 'Пользователи',
@@ -48,6 +49,7 @@ return [
         'send' => 'Отправить',
         'new' => 'Новый',
         'never' => 'Никогда',
+        'check_following' => 'Проверьте следующее:',
     ],
 
     'theme' => [
@@ -210,6 +212,13 @@ return [
 
         'developer_mode' => 'Режим разработчика',
         'developer_mode_hint' => 'Показывать технические детали API (endpoint, статус, время выполнения, ID запроса) рядом с обычным интерфейсом.',
+
+        'notif_prefs' => 'Настройки уведомлений',
+        'notif_prefs_hint' => 'О чём и как вас уведомлять.',
+        'notif_pref_database' => 'Сохранять уведомления в центр уведомлений',
+        'notif_pref_browser' => 'Показывать браузерные уведомления',
+        'notif_pref_message' => 'Уведомлять о новых сообщениях',
+        'notif_pref_system' => 'Уведомлять о системных объявлениях',
     ],
 
     'admin' => [
@@ -274,6 +283,22 @@ return [
         'go_to_sessions' => 'Управление сеансами',
         'go_to_settings' => 'Настройки',
         'go_to_chat' => 'Открыть чат',
+    ],
+
+    'notifications' => [
+        'label' => 'Уведомления',
+        'center_subtitle' => 'Всё, о чём вас уведомляли, в одном месте.',
+        'mark_all_read' => 'Отметить все как прочитанные',
+        'view_all' => 'Показать все',
+        'empty' => 'Пока нет уведомлений.',
+        'unread' => 'Непрочитанные',
+        'type_system' => 'Система',
+        'type_message' => 'Сообщения',
+        'type_mention' => 'Упоминания',
+        'just_now' => 'Только что',
+        'minutes_ago' => ':count мин назад',
+        'hours_ago' => ':count ч назад',
+        'days_ago' => ':count дн назад',
     ],
 
     'chat' => [

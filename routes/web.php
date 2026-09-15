@@ -86,6 +86,10 @@ Route::get('/settings', function () {
     return view('blade.pages.settings');
 })->name('settings');
 
+Route::get('/notifications', function () {
+    return view('blade.pages.notifications');
+})->name('notifications');
+
 Route::get('/chat', function () {
     return view('blade.pages.chat');
 })->name('chat');

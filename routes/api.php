@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\Chat\MemberController;
 use App\Http\Controllers\Api\Chat\MessageController;
 use App\Http\Controllers\Api\Chat\UserSearchController;
 use App\Http\Controllers\Api\Dashboard\DashboardController;
+use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\Profile\AvatarController;
 use App\Http\Controllers\Api\Profile\ProfileController;
 use App\Http\Controllers\Api\Profile\UserSettingController;
@@ -91,6 +92,13 @@ Route::get('languages', [LanguageController::class, 'index']);
 Route::middleware('auth.api')->get('roles', [RoleController::class, 'index']);
 
 Route::middleware('auth.api')->get('dashboard', [DashboardController::class, 'index']);
+
+Route::middleware('auth.api')->prefix('notifications')->controller(NotificationController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('unread-count', 'unreadCount');
+    Route::post('read-all', 'markAllAsRead');
+    Route::post('{notification}/read', 'markAsRead');
+});
 
 Route::middleware('auth.api')->prefix('conversations')->controller(ConversationController::class)->group(function () {
     Route::get('/', 'index');

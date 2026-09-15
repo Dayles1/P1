@@ -14,6 +14,10 @@
         {{ __('ui.nav.chat') }}
     </x-blade.navigation.sidebar-link>
 
+    <x-blade.navigation.sidebar-link :href="route('notifications')" icon="&#128276;">
+        {{ __('ui.nav.notifications') }}
+    </x-blade.navigation.sidebar-link>
+
 
     <span class="sidebar-nav__group-label">{{ __('ui.nav.profile') }}</span>
 

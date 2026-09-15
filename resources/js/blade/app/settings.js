@@ -5,7 +5,7 @@ import { t } from '../shared/i18n';
 import { fetchCurrentUser, hasRole } from '../shared/auth-state';
 import { renderThemeGrid } from '../shared/theme-picker';
 import { writeLocaleCookie, getLocale } from '../shared/i18n';
-import { emptyState } from '../shared/skeleton';
+import { getUserSettings, invalidateUserSettings } from '../shared/user-settings-cache';
 
 const nav = document.querySelector('[data-settings-nav]');
 const panel = document.querySelector('[data-settings-panel]');
@@ -60,7 +60,7 @@ async function loadAll() {
     state.isAdmin = hasRole(user, 'SUPER_ADMIN', 'ADMIN');
 
     const requests = [
-        api.get('/profile/settings'),
+        getUserSettings(api),
         api.get('/timezones'),
         api.get('/languages'),
     ];
@@ -74,7 +74,7 @@ async function loadAll() {
     const [personalRes, timezonesRes, languagesRes, adminSettingsRes, rolesRes] = results;
 
     if (personalRes.status === 'fulfilled') {
-        state.personal = personalRes.value.data.data;
+        state.personal = personalRes.value;
     }
 
     if (timezonesRes.status === 'fulfilled') {
@@ -173,6 +173,7 @@ async function savePersonal(payload, { onSuccess } = {}) {
         // `timezone` (the nested object we render from) don't share a
         // shape, so a naive merge would leave stale data behind.
         state.personal = data.data;
+        invalidateUserSettings();
         onSuccess?.();
         showToast(t('settings.saved'));
     } catch (error) {
@@ -380,18 +381,66 @@ function wireLocalization() {
 |--------------------------------------------------------------------------
 */
 
+const NOTIFICATION_PREF_KEYS = ['database', 'browser', 'message', 'system'];
+
+function notificationPrefCheckbox(key, prefs) {
+    const enabled = prefs?.[key] !== false;
+
+    return `
+        <label class="checkbox" style="display:flex; margin-bottom:10px;">
+            <input type="checkbox" class="checkbox__input" data-notif-pref="${key}" ${enabled ? 'checked' : ''}>
+            <span class="checkbox__box"></span>
+            ${t(`settings.notif_pref_${key}`)}
+        </label>
+    `;
+}
+
 function renderNotifications() {
-    if (!state.isAdmin) {
-        return emptyState(t('settings.notifications_empty'));
-    }
+    const prefs = state.personal?.meta?.notifications;
 
     return `
         <div class="settings-panel__section">
-            <h2 class="settings-panel__section-title">${t('settings.nav.notifications')}</h2>
-            <p class="settings-panel__section-hint">${t('settings.notifications_hint')}</p>
-            ${genericSettingsBlock(SECTION_ADMIN_KEYS.notifications)}
+            <h2 class="settings-panel__section-title">${t('settings.notif_prefs')}</h2>
+            <p class="settings-panel__section-hint">${t('settings.notif_prefs_hint')}</p>
+            ${NOTIFICATION_PREF_KEYS.map((key) => notificationPrefCheckbox(key, prefs)).join('')}
         </div>
+
+        ${state.isAdmin ? `
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('settings.nav.notifications')}</h2>
+                <p class="settings-panel__section-hint">${t('settings.notifications_hint')}</p>
+                ${genericSettingsBlock(SECTION_ADMIN_KEYS.notifications)}
+            </div>
+        ` : ''}
     `;
+}
+
+function wireNotifications() {
+    panel.querySelectorAll('[data-notif-pref]').forEach((checkbox) => {
+        checkbox.addEventListener('change', async () => {
+            const key = checkbox.dataset.notifPref;
+
+            if (key === 'browser' && checkbox.checked && typeof Notification !== 'undefined' && Notification.permission === 'default') {
+                const permission = await Notification.requestPermission();
+
+                if (permission !== 'granted') {
+                    checkbox.checked = false;
+
+                    return;
+                }
+            }
+
+            const meta = {
+                ...(state.personal?.meta || {}),
+                notifications: {
+                    ...(state.personal?.meta?.notifications || {}),
+                    [key]: checkbox.checked,
+                },
+            };
+
+            savePersonal({ meta });
+        });
+    });
 }
 
 /*
@@ -718,7 +767,7 @@ const RENDERERS = {
     general: [renderGeneral, wireGeneral],
     appearance: [renderAppearance, wireAppearance],
     localization: [renderLocalization, wireLocalization],
-    notifications: [renderNotifications, null],
+    notifications: [renderNotifications, wireNotifications],
     authentication: [renderAuthentication, wireAuthentication],
     security: [renderSecurity, null],
     system: [renderSystem, wireSystem],

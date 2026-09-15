@@ -11,6 +11,7 @@ return [
         'sessions' => 'Seanslar',
         'settings' => 'Sozlamalar',
         'chat' => 'Chat',
+        'notifications' => 'Bildirishnomalar',
         'admin' => 'Boshqaruv',
         'admin_settings' => 'Ilova sozlamalari',
         'admin_users' => 'Foydalanuvchilar',
@@ -48,6 +49,7 @@ return [
         'send' => 'Yuborish',
         'new' => 'Yangi',
         'never' => 'Hech qachon',
+        'check_following' => 'Quyidagilarni tekshiring:',
     ],
 
     'theme' => [
@@ -210,6 +212,13 @@ return [
 
         'developer_mode' => 'Dasturchi rejimi',
         'developer_mode_hint' => 'Odatiy interfeys yonida API texnik tafsilotlarini (endpoint, holat, vaqt, soʻrov ID) koʻrsatish.',
+
+        'notif_prefs' => 'Bildirishnoma sozlamalari',
+        'notif_prefs_hint' => 'Nima haqida va qanday xabardor qilinishingiz.',
+        'notif_pref_database' => 'Bildirishnomalarni bildirishnomalar markazida saqlash',
+        'notif_pref_browser' => 'Brauzer bildirishnomalarini koʻrsatish',
+        'notif_pref_message' => 'Yangi xabarlar haqida xabardor qilish',
+        'notif_pref_system' => 'Tizim eʼlonlari haqida xabardor qilish',
     ],
 
     'admin' => [
@@ -274,6 +283,22 @@ return [
         'go_to_sessions' => 'Seanslarni boshqarish',
         'go_to_settings' => 'Sozlamalar',
         'go_to_chat' => 'Chatni ochish',
+    ],
+
+    'notifications' => [
+        'label' => 'Bildirishnomalar',
+        'center_subtitle' => 'Sizga yuborilgan barcha bildirishnomalar bir joyda.',
+        'mark_all_read' => 'Barchasini oʻqilgan deb belgilash',
+        'view_all' => 'Barchasini koʻrish',
+        'empty' => 'Hozircha bildirishnomalar yoʻq.',
+        'unread' => 'Oʻqilmagan',
+        'type_system' => 'Tizim',
+        'type_message' => 'Xabarlar',
+        'type_mention' => 'Eslatishlar',
+        'just_now' => 'Hozirgina',
+        'minutes_ago' => ':count daqiqa oldin',
+        'hours_ago' => ':count soat oldin',
+        'days_ago' => ':count kun oldin',
     ],
 
     'chat' => [

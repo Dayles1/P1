@@ -1,6 +1,7 @@
 import { fetchCurrentUser, hasRole, initials, logout } from './auth-state';
 import { initThemePicker } from './theme-picker';
 import { initLocalePicker } from './i18n';
+import { initNotificationBell } from './notification-bell';
 import { api } from '../axios';
 
 /*
@@ -211,6 +212,8 @@ async function initHeaderAuthState() {
             el.removeAttribute('hidden');
         }
     });
+
+    initNotificationBell(api);
 
     return user;
 }

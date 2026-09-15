@@ -2478,6 +2478,134 @@ body {
 }
 
 /* =========================================================
+   NOTIFICATION BELL + CENTER
+   ========================================================= */
+.notif-bell {
+    position: relative;
+}
+
+.notif-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    display: inline-grid;
+    place-items: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: var(--ui-danger);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 750;
+    line-height: 1;
+}
+
+.notif-dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 12px 6px;
+}
+
+.notif-list {
+    min-width: 320px;
+    max-width: 360px;
+    max-height: 380px;
+    overflow-y: auto;
+}
+
+@media (max-width: 520px) {
+    .notif-list {
+        min-width: 0;
+        max-width: none;
+    }
+}
+
+.notif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    border-radius: var(--ui-radius-sm);
+    background: transparent;
+    text-align: left;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.notif-item:hover {
+    background: var(--ui-surface-soft);
+}
+
+.notif-item__icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--ui-primary-soft);
+    color: var(--ui-primary);
+    font-size: 14px;
+}
+
+.notif-item--mention .notif-item__icon {
+    background: var(--ui-warning-bg);
+    color: var(--ui-warning);
+}
+
+.notif-item__body {
+    flex: 1;
+    min-width: 0;
+}
+
+.notif-item__title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 650;
+    color: var(--ui-text);
+}
+
+.notif-item__dot {
+    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--ui-primary);
+}
+
+.notif-item__text {
+    margin-top: 2px;
+    font-size: 12.5px;
+    color: var(--ui-text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.notif-item__time {
+    margin-top: 4px;
+    font-size: 11px;
+    color: var(--ui-text-muted);
+}
+
+.notif-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+/* =========================================================
    SETTINGS MINI-APP
    ========================================================= */
 .settings-app {

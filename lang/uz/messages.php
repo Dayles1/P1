@@ -38,6 +38,11 @@ return [
         'favicon_removed' => 'Favicon standart holatga qaytarildi.',
     ],
 
+    'notifications' => [
+        'marked_read' => 'Bildirishnoma oʻqilgan deb belgilandi.',
+        'all_marked_read' => 'Barcha bildirishnomalar oʻqilgan deb belgilandi.',
+    ],
+
     'chat' => [
         'list' => 'Suhbatlar roʻyxati olindi.',
         'members_listed' => 'Aʼzolar roʻyxati olindi.',

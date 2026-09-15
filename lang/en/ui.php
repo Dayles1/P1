@@ -11,6 +11,7 @@ return [
         'sessions' => 'Sessions',
         'settings' => 'Settings',
         'chat' => 'Chat',
+        'notifications' => 'Notifications',
         'admin' => 'Administration',
         'admin_settings' => 'App settings',
         'admin_users' => 'Users',
@@ -48,6 +49,7 @@ return [
         'send' => 'Send',
         'new' => 'New',
         'never' => 'Never',
+        'check_following' => 'Please check the following:',
     ],
 
     'theme' => [
@@ -210,6 +212,13 @@ return [
 
         'developer_mode' => 'Developer mode',
         'developer_mode_hint' => 'Show API/technical details (endpoint, status, timing, request ID) alongside the normal UI.',
+
+        'notif_prefs' => 'Notification preferences',
+        'notif_prefs_hint' => 'What you get notified about, and how.',
+        'notif_pref_database' => 'Save notifications to your notification center',
+        'notif_pref_browser' => 'Show browser notifications',
+        'notif_pref_message' => 'Notify me about new messages',
+        'notif_pref_system' => 'Notify me about system announcements',
     ],
 
     'admin' => [
@@ -274,6 +283,22 @@ return [
         'go_to_sessions' => 'Manage sessions',
         'go_to_settings' => 'Preferences',
         'go_to_chat' => 'Open chat',
+    ],
+
+    'notifications' => [
+        'label' => 'Notifications',
+        'center_subtitle' => 'Everything you\'ve been notified about, in one place.',
+        'mark_all_read' => 'Mark all as read',
+        'view_all' => 'View all',
+        'empty' => 'No notifications yet.',
+        'unread' => 'Unread',
+        'type_system' => 'System',
+        'type_message' => 'Messages',
+        'type_mention' => 'Mentions',
+        'just_now' => 'Just now',
+        'minutes_ago' => ':count min ago',
+        'hours_ago' => ':count h ago',
+        'days_ago' => ':count d ago',
     ],
 
     'chat' => [

@@ -16,7 +16,7 @@
 
 @if ($errors->any())
     <x-blade.feedback.alert type="error">
-        <strong>Please check the following:</strong>
+        <strong>{{ __('ui.common.check_following') }}</strong>
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>

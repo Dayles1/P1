@@ -83,6 +83,32 @@
 
             {{-- USER MENU --}}
             <div class="site-header__user" data-auth-user hidden>
+
+                {{-- NOTIFICATIONS --}}
+                <x-blade.u-i.dropdown align="right" data-notif-dropdown>
+                    <x-slot:trigger>
+                        <span class="icon-btn notif-bell" aria-label="{{ __('ui.notifications.label') }}" title="{{ __('ui.notifications.label') }}">
+                            🔔
+                            <span class="notif-badge" data-notif-badge hidden>0</span>
+                        </span>
+                    </x-slot:trigger>
+
+                    <div class="notif-dropdown-header">
+                        <span class="dropdown__label" style="padding:0;">{{ __('ui.notifications.label') }}</span>
+                        <button type="button" class="btn btn--ghost btn--sm" style="height:auto; padding:3px 8px; font-size:11px;" data-notif-mark-all>
+                            {{ __('ui.notifications.mark_all_read') }}
+                        </button>
+                    </div>
+
+                    <div class="notif-list" data-notif-list>
+                        <div class="skeleton skeleton-row" style="margin:8px;"></div>
+                    </div>
+
+                    <a href="{{ route('notifications') }}" class="dropdown__item" role="menuitem" style="text-align:center; font-weight:700;">
+                        {{ __('ui.notifications.view_all') }}
+                    </a>
+                </x-blade.u-i.dropdown>
+
                 <x-blade.u-i.dropdown align="right">
                     <x-slot:trigger>
                         <span class="avatar avatar--sm" data-user-avatar>
