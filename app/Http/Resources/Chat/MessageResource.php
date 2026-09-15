@@ -48,6 +48,7 @@ class MessageResource extends JsonResource
                     'user_ids' => $group->pluck('user_id')->all(),
                 ])
                 ->values()),
+            'read_by' => $this->whenLoaded('reads', fn () => $this->reads->pluck('user_id')->all()),
             'edited_at' => $formatter->format($this->edited_at, $user),
             'created_at' => $formatter->format($this->created_at, $user),
             'created_at_iso' => $formatter->iso($this->created_at, $user),

@@ -1,10 +1,10 @@
 import { api } from '../axios';
-import { showToast, apiErrorMessage } from '../shared/toast';
+import { fetchCurrentUser, hasRole } from '../shared/auth-state';
 import { escapeHtml } from '../shared/forms';
 import { t } from '../shared/i18n';
-import { fetchCurrentUser, hasRole } from '../shared/auth-state';
-import { renderThemeGrid } from '../shared/theme-picker';
 import { writeLocaleCookie, getLocale } from '../shared/i18n';
+import { renderThemeGrid } from '../shared/theme-picker';
+import { showToast, apiErrorMessage } from '../shared/toast';
 import { getUserSettings, invalidateUserSettings } from '../shared/user-settings-cache';
 
 const nav = document.querySelector('[data-settings-nav]');

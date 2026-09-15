@@ -120,6 +120,37 @@ test('marking a message read updates the read receipt and broadcasts once', func
     Event::assertDispatchedTimes(MessageRead::class, 1);
 });
 
+test('marking the newest message read also marks every earlier message in the conversation read', function () {
+    Event::fake([MessageRead::class]);
+    $userA = userWithRole(Role::USER);
+    $userB = userWithRole(Role::USER);
+    $conversationId = startPrivateConversation($userA, $userB);
+
+    $firstId = $this->actingAs($userA, 'sanctum')
+        ->postJson("/api/conversations/{$conversationId}/messages", ['body' => 'one'])
+        ->json('data.id');
+    $secondId = $this->actingAs($userA, 'sanctum')
+        ->postJson("/api/conversations/{$conversationId}/messages", ['body' => 'two'])
+        ->json('data.id');
+    $thirdId = $this->actingAs($userA, 'sanctum')
+        ->postJson("/api/conversations/{$conversationId}/messages", ['body' => 'three'])
+        ->json('data.id');
+
+    // userB only ever marks the newest message as read (matching what the
+    // frontend actually does when opening a conversation or scrolling to
+    // the bottom) — every earlier message must still end up read too.
+    $this->actingAs($userB, 'sanctum')
+        ->postJson("/api/conversations/{$conversationId}/messages/{$thirdId}/read")
+        ->assertOk();
+
+    foreach ([$firstId, $secondId, $thirdId] as $messageId) {
+        expect(\App\Domain\Chat\Models\MessageRead::where('message_id', $messageId)->where('user_id', $userB->id)->exists())
+            ->toBeTrue("message {$messageId} should be marked read");
+    }
+
+    Event::assertDispatchedTimes(MessageRead::class, 1);
+});
+
 test('any member can pin and unpin a message', function () {
     $userA = userWithRole(Role::USER);
     $userB = userWithRole(Role::USER);

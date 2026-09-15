@@ -1,5 +1,5 @@
-import { openModal } from './modal';
 import { t } from './i18n';
+import { openModal } from './modal';
 import { THEMES, getStoredTheme, setTheme, resolveAppliedTheme, watchSystemTheme } from './theme';
 
 /**

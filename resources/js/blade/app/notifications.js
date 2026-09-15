@@ -1,9 +1,9 @@
 import { api } from '../axios';
-import { showToast, apiErrorMessage } from '../shared/toast';
 import { t } from '../shared/i18n';
-import { renderPagination } from '../shared/pagination';
 import { notificationItemHtml } from '../shared/notification-renderers';
+import { renderPagination } from '../shared/pagination';
 import { emptyState } from '../shared/skeleton';
+import { showToast, apiErrorMessage } from '../shared/toast';
 
 const list = document.querySelector('[data-notif-center-list]');
 const paginationEl = document.querySelector('[data-notif-pagination]');

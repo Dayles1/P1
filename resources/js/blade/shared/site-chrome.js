@@ -1,9 +1,9 @@
+import { api } from '../axios';
 import { fetchCurrentUser, hasRole, initials, logout } from './auth-state';
-import { initThemePicker } from './theme-picker';
 import { initLocalePicker } from './i18n';
 import { initNotificationBell } from './notification-bell';
 import { initPresence } from './presence';
-import { api } from '../axios';
+import { initThemePicker } from './theme-picker';
 
 /*
 |--------------------------------------------------------------------------

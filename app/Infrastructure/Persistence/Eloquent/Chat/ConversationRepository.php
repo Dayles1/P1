@@ -27,6 +27,7 @@ class ConversationRepository implements ConversationRepositoryInterface
                 'is_pinned',
                 'is_hidden',
                 'notifications_enabled',
+                'muted_until',
             ]);
 
         $type = $filters['type'] ?? 'all';

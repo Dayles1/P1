@@ -1,7 +1,7 @@
 import { t } from './i18n';
-import { showToast, apiErrorMessage } from './toast';
 import { notificationItemHtml } from './notification-renderers';
 import { emptyState } from './skeleton';
+import { showToast, apiErrorMessage } from './toast';
 import { getUserSettings } from './user-settings-cache';
 
 const POLL_MS = 30000;

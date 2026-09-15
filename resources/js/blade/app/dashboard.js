@@ -1,9 +1,9 @@
 import { api } from '../axios';
 import { fetchCurrentUser } from '../shared/auth-state';
-import { showToast, apiErrorMessage } from '../shared/toast';
-import { t } from '../shared/i18n';
 import { methodClass, statusClass } from '../shared/format';
 import { escapeHtml } from '../shared/forms';
+import { t } from '../shared/i18n';
+import { showToast, apiErrorMessage } from '../shared/toast';
 
 const welcomeEl = document.querySelector('[data-dashboard-welcome]');
 const statGridEl = document.querySelector('[data-stat-grid]');

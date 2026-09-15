@@ -1,5 +1,5 @@
-import { t } from './i18n';
 import { escapeHtml } from './forms';
+import { t } from './i18n';
 
 /**
  * One renderer per notification `type` — add a new type here (icon + copy)

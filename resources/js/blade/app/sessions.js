@@ -1,8 +1,8 @@
 import { api } from '../axios';
-import { showToast, apiErrorMessage } from '../shared/toast';
 import { confirmDialog } from '../shared/confirm';
-import { renderPagination } from '../shared/pagination';
 import { t } from '../shared/i18n';
+import { renderPagination } from '../shared/pagination';
+import { showToast, apiErrorMessage } from '../shared/toast';
 
 const list = document.querySelector('[data-sessions-list]');
 const revokeOthersBtn = document.querySelector('[data-revoke-others]');

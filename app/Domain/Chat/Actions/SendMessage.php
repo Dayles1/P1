@@ -66,7 +66,7 @@ class SendMessage
                     'last_read_at' => $message->created_at,
                 ]);
 
-            return $message->load('user.avatar', 'attachments', 'reactions', 'parent.user');
+            return $message->load('user.avatar', 'attachments', 'reactions', 'reads', 'parent.user');
         });
 
         $this->notifyParticipants($user, $conversation, $message);

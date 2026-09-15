@@ -6,8 +6,8 @@
  */
 
 import { api } from '../axios';
-import { initThemePicker } from '../shared/theme-picker';
 import { initLocalePicker } from '../shared/i18n';
+import { initThemePicker } from '../shared/theme-picker';
 
 initThemePicker();
 initLocalePicker(api);

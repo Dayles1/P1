@@ -1,9 +1,9 @@
 import { api } from '../axios';
-import { showToast, apiErrorMessage } from '../shared/toast';
 import { confirmDialog } from '../shared/confirm';
-import { renderPagination } from '../shared/pagination';
-import { t } from '../shared/i18n';
 import { escapeHtml } from '../shared/forms';
+import { t } from '../shared/i18n';
+import { renderPagination } from '../shared/pagination';
+import { showToast, apiErrorMessage } from '../shared/toast';
 
 const rowsEl = document.querySelector('[data-sessions-rows]');
 const paginationEl = document.querySelector('[data-sessions-pagination]');

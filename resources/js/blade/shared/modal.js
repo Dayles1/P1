@@ -8,9 +8,11 @@ export function openModal({ title = '', bodyHtml = '', footerHtml = '', wide = f
 
     const modal = document.createElement('div');
     modal.className = 'modal';
+
     if (wide) {
         modal.style.maxWidth = '720px';
     }
+
     modal.setAttribute('role', 'dialog');
     modal.setAttribute('aria-modal', 'true');
 

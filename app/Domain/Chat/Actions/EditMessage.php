@@ -31,7 +31,7 @@ class EditMessage
             'edited_at' => now(),
         ]);
 
-        $message = $message->fresh(['user.avatar', 'attachments', 'reactions', 'parent.user']);
+        $message = $message->fresh(['user.avatar', 'attachments', 'reactions', 'reads', 'parent.user']);
 
         broadcast(new MessageEdited($message))->toOthers();
 

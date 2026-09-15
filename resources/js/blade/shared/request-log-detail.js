@@ -1,7 +1,7 @@
-import { openModal } from './modal';
-import { t } from './i18n';
 import { prettyJson, methodClass, statusClass } from './format';
 import { escapeHtml } from './forms';
+import { t } from './i18n';
+import { openModal } from './modal';
 
 function field(label, value) {
     return `
