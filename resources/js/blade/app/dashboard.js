@@ -109,8 +109,12 @@ async function loadDashboard() {
 (async () => {
     const user = await fetchCurrentUser();
 
-    if (user && welcomeEl) {
-        welcomeEl.textContent = t('dashboard.welcome', { name: user.name });
+    if (welcomeEl) {
+        // Falls back to a generic subtitle (rather than leaving the skeleton
+        // spinning forever) if the user fetch failed for any reason.
+        welcomeEl.textContent = user
+            ? t('dashboard.welcome', { name: user.name })
+            : t('dashboard.subtitle');
     }
 
     loadDashboard();

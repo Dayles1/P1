@@ -75,28 +75,24 @@ rowsEl?.addEventListener('click', async (event) => {
         return;
     }
 
-    const confirmed = await confirmDialog({
-        title: t('confirm.revoke_session_title'),
-        message: t('confirm.revoke_session_message'),
-        confirmText: t('confirm.revoke_session_confirm'),
-        cancelText: t('common.cancel'),
-        danger: true,
-    });
-
-    if (!confirmed) {
-        return;
-    }
-
-    button.disabled = true;
-
     try {
-        await api.delete(`/admin/sessions/${button.dataset.revoke}`);
+        const confirmed = await confirmDialog({
+            title: t('confirm.revoke_session_title'),
+            message: t('confirm.revoke_session_message'),
+            confirmText: t('confirm.revoke_session_confirm'),
+            cancelText: t('common.cancel'),
+            danger: true,
+            onConfirm: () => api.delete(`/admin/sessions/${button.dataset.revoke}`),
+        });
+
+        if (!confirmed) {
+            return;
+        }
 
         showToast(t('sessions.revoked'));
         loadSessions(currentPage);
     } catch (error) {
         showToast(apiErrorMessage(error, t('sessions.error')), 'error');
-        button.disabled = false;
     }
 });
 

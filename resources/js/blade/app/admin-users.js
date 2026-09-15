@@ -94,23 +94,22 @@ rowsEl?.addEventListener('change', async (event) => {
     const previousRole = select.dataset.currentRole;
     const newRole = select.value;
 
-    const confirmed = await confirmDialog({
-        title: t('confirm.change_role_title'),
-        message: t('confirm.change_role_message'),
-        confirmText: t('confirm.change_role_confirm'),
-        cancelText: t('common.cancel'),
-    });
-
-    if (!confirmed) {
-        select.value = previousRole;
-
-        return;
-    }
-
     select.disabled = true;
 
     try {
-        await api.patch(`/admin/users/${userId}/role`, { role: newRole });
+        const confirmed = await confirmDialog({
+            title: t('confirm.change_role_title'),
+            message: t('confirm.change_role_message'),
+            confirmText: t('confirm.change_role_confirm'),
+            cancelText: t('common.cancel'),
+            onConfirm: () => api.patch(`/admin/users/${userId}/role`, { role: newRole }),
+        });
+
+        if (!confirmed) {
+            select.value = previousRole;
+
+            return;
+        }
 
         select.dataset.currentRole = newRole;
         showToast(t('admin.role_updated'));
@@ -127,27 +126,23 @@ rowsEl?.addEventListener('click', async (event) => {
     const banBtn = event.target.closest('[data-ban]');
 
     if (unbanBtn) {
-        const confirmed = await confirmDialog({
-            title: t('confirm.unban_user_title'),
-            message: t('confirm.unban_user_message'),
-            confirmText: t('confirm.unban_user_confirm'),
-            cancelText: t('common.cancel'),
-        });
-
-        if (!confirmed) {
-            return;
-        }
-
-        unbanBtn.disabled = true;
-
         try {
-            await api.delete(`/admin/users/${unbanBtn.dataset.unban}/ban`);
+            const confirmed = await confirmDialog({
+                title: t('confirm.unban_user_title'),
+                message: t('confirm.unban_user_message'),
+                confirmText: t('confirm.unban_user_confirm'),
+                cancelText: t('common.cancel'),
+                onConfirm: () => api.delete(`/admin/users/${unbanBtn.dataset.unban}/ban`),
+            });
+
+            if (!confirmed) {
+                return;
+            }
 
             showToast(t('admin.user_unbanned'));
             loadUsers(currentPage);
         } catch (error) {
             showToast(apiErrorMessage(error, t('common.error_generic')), 'error');
-            unbanBtn.disabled = false;
         }
 
         return;
@@ -182,7 +177,12 @@ function openBanModal(userId) {
 
     modal.querySelector('[data-action="confirm"]').addEventListener('click', async () => {
         const confirmBtn = modal.querySelector('[data-action="confirm"]');
+        const cancelBtn = modal.querySelector('[data-action="cancel"]');
+        const originalLabel = confirmBtn.textContent;
+
         confirmBtn.disabled = true;
+        cancelBtn.disabled = true;
+        confirmBtn.innerHTML = `<span class="btn__spinner" aria-hidden="true"></span>${originalLabel}`;
 
         const reason = modal.querySelector('[data-ban-reason]').value || undefined;
         const endsAtRaw = modal.querySelector('[data-ban-ends-at]').value;
@@ -197,6 +197,8 @@ function openBanModal(userId) {
         } catch (error) {
             showToast(apiErrorMessage(error, t('common.error_generic')), 'error');
             confirmBtn.disabled = false;
+            cancelBtn.disabled = false;
+            confirmBtn.textContent = originalLabel;
         }
     });
 }

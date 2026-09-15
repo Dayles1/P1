@@ -1,5 +1,5 @@
 import { fetchCurrentUser, hasRole, initials, logout } from './auth-state';
-import { initThemePicker } from './theme';
+import { initThemePicker } from './theme-picker';
 import { initLocalePicker } from './i18n';
 import { api } from '../axios';
 

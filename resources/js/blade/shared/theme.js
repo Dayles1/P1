@@ -1,7 +1,28 @@
 const THEME_KEY = 'theme';
 
-export const THEMES = ['system', 'light', 'gray', 'dark', 'black', 'green', 'orange'];
-const DARK_THEMES = ['dark', 'black'];
+export const THEMES = [
+    'system',
+    'light',
+    'gray',
+    'dark',
+    'black',
+    'blue',
+    'indigo',
+    'cyan',
+    'emerald',
+    'green',
+    'slate',
+    'red',
+    'rose',
+    'orange',
+    'warm',
+    'soft',
+    'graphite',
+    'midnight',
+    'nord',
+    'high-contrast',
+];
+const DARK_THEMES = ['dark', 'black', 'graphite', 'midnight', 'nord', 'high-contrast'];
 
 export function getStoredTheme() {
     const value = localStorage.getItem(THEME_KEY);
@@ -66,34 +87,10 @@ export function setTheme(theme) {
 }
 
 /**
- * Wires up every `[data-theme-option]` control on the page (radio-style
- * dropdown items) to call `setTheme()` and reflect the active choice via
- * `aria-checked`. Safe to call multiple times / on pages with no picker.
+ * Re-applies the resolved theme whenever the OS preference changes while
+ * `system` is selected. The picker UI itself lives in `./theme-picker.js`.
  */
-export function initThemePicker() {
-    const options = document.querySelectorAll('[data-theme-option]');
-
-    if (!options.length) {
-        return;
-    }
-
-    const sync = () => {
-        const current = getStoredTheme();
-
-        options.forEach((el) => {
-            el.setAttribute('aria-checked', String(el.dataset.themeOption === current));
-        });
-    };
-
-    options.forEach((el) => {
-        el.addEventListener('click', () => {
-            setTheme(el.dataset.themeOption);
-            sync();
-        });
-    });
-
-    sync();
-
+export function watchSystemTheme() {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
         if (getStoredTheme() === 'system') {
             applyTheme('system');

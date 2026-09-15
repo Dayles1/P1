@@ -129,29 +129,24 @@ export function initSessionDetailView({ sessionId, sessionEndpoint, logsEndpoint
     });
 
     revokeBtn?.addEventListener('click', async () => {
-        const confirmed = await confirmDialog({
-            title: t('confirm.revoke_session_title'),
-            message: t('confirm.revoke_session_message'),
-            confirmText: t('confirm.revoke_session_confirm'),
-            cancelText: t('common.cancel'),
-            danger: true,
-        });
-
-        if (!confirmed) {
-            return;
-        }
-
-        revokeBtn.disabled = true;
-
         try {
-            await api.delete(revokeEndpoint);
+            const confirmed = await confirmDialog({
+                title: t('confirm.revoke_session_title'),
+                message: t('confirm.revoke_session_message'),
+                confirmText: t('confirm.revoke_session_confirm'),
+                cancelText: t('common.cancel'),
+                danger: true,
+                onConfirm: () => api.delete(revokeEndpoint),
+            });
+
+            if (!confirmed) {
+                return;
+            }
 
             showToast(t('sessions.revoked'));
             loadSession();
         } catch (error) {
             showToast(apiErrorMessage(error, t('sessions.error')), 'error');
-        } finally {
-            revokeBtn.disabled = false;
         }
     });
 

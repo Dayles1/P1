@@ -18,7 +18,15 @@
     @include('blade.sections.i18n-bootstrap')
 
 
+    {{--
+        app.css supplies the shared `--ui-*` design tokens (all themes) and
+        generic components (icon buttons, dropdown, modal, theme picker) the
+        theme/language pickers below need — auth.css/auth-pages.css layer
+        the auth-specific showcase/card/form styling on top; the two share
+        no class names, so there's nothing to reconcile.
+    --}}
     @vite([
+        'resources/css/blade/app/app.css',
         'resources/css/blade/auth/auth.css',
         'resources/css/blade/auth/auth-pages.css',
         'resources/js/blade/auth/auth.js',
@@ -127,21 +135,43 @@
                 </a>
 
 
-                {{-- THEME TOGGLE --}}
-                <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"
-                    title="Toggle theme">
+                <div class="auth-topbar__actions">
 
-                    <span class="theme-toggle__icon
-                           theme-toggle__icon--sun" aria-hidden="true">
-                        ☼
-                    </span>
+                    {{-- THEME PICKER --}}
+                    <button
+                        type="button"
+                        class="icon-btn"
+                        aria-label="{{ __('ui.theme.label') }}"
+                        title="{{ __('ui.theme.label') }}"
+                        data-theme-picker-trigger
+                    >
+                        ◐
+                    </button>
 
-                    <span class="theme-toggle__icon
-                           theme-toggle__icon--moon" aria-hidden="true">
-                        ☾
-                    </span>
+                    {{-- LANGUAGE PICKER --}}
+                    <x-blade.u-i.dropdown align="right">
+                        <x-slot:trigger>
+                            <span class="icon-btn" aria-label="{{ __('ui.locale.label') }}" title="{{ __('ui.locale.label') }}">
+                                {{ strtoupper(app()->getLocale()) }}
+                            </span>
+                        </x-slot:trigger>
 
-                </button>
+                        <div class="dropdown__label">{{ __('ui.locale.label') }}</div>
+
+                        @foreach (['en', 'ru', 'uz'] as $localeOption)
+                            <button
+                                type="button"
+                                class="dropdown__item dropdown__item--picker"
+                                role="menuitemradio"
+                                data-locale-option="{{ $localeOption }}"
+                            >
+                                <span>{{ __('ui.locale.' . $localeOption) }}</span>
+                                <span class="dropdown__check" aria-hidden="true">✓</span>
+                            </button>
+                        @endforeach
+                    </x-blade.u-i.dropdown>
+
+                </div>
 
             </header>
 

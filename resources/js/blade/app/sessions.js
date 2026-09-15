@@ -88,61 +88,53 @@ list?.addEventListener('click', async (event) => {
 
     event.preventDefault();
 
-    const confirmed = await confirmDialog({
-        title: t('confirm.revoke_session_title'),
-        message: t('confirm.revoke_session_message'),
-        confirmText: t('confirm.revoke_session_confirm'),
-        cancelText: t('common.cancel'),
-        danger: true,
-    });
-
-    if (!confirmed) {
-        return;
-    }
-
-    button.disabled = true;
-
     try {
-        await api.delete(`/sessions/${button.dataset.revoke}`);
+        const confirmed = await confirmDialog({
+            title: t('confirm.revoke_session_title'),
+            message: t('confirm.revoke_session_message'),
+            confirmText: t('confirm.revoke_session_confirm'),
+            cancelText: t('common.cancel'),
+            danger: true,
+            onConfirm: () => api.delete(`/sessions/${button.dataset.revoke}`),
+        });
+
+        if (!confirmed) {
+            return;
+        }
 
         showToast(t('sessions.revoked'));
 
         loadSessions(currentPage);
     } catch (error) {
         showToast(apiErrorMessage(error, t('sessions.error')), 'error');
-        button.disabled = false;
     }
 });
 
 revokeOthersBtn?.addEventListener('click', async () => {
-    const confirmed = await confirmDialog({
-        title: t('confirm.revoke_others_title'),
-        message: t('confirm.revoke_others_message'),
-        confirmText: t('confirm.revoke_others_confirm'),
-        cancelText: t('common.cancel'),
-        danger: true,
-    });
-
-    if (!confirmed) {
-        return;
-    }
-
-    revokeOthersBtn.disabled = true;
-
     try {
-        const { data } = await api.delete('/sessions/others');
+        let revokedCount = 0;
 
-        showToast(
-            data.data?.revoked_sessions > 0
-                ? t('sessions.revoked')
-                : t('sessions.others_revoked_none')
-        );
+        const confirmed = await confirmDialog({
+            title: t('confirm.revoke_others_title'),
+            message: t('confirm.revoke_others_message'),
+            confirmText: t('confirm.revoke_others_confirm'),
+            cancelText: t('common.cancel'),
+            danger: true,
+            onConfirm: async () => {
+                const { data } = await api.delete('/sessions/others');
+                revokedCount = data.data?.revoked_sessions ?? 0;
+            },
+        });
+
+        if (!confirmed) {
+            return;
+        }
+
+        showToast(revokedCount > 0 ? t('sessions.revoked') : t('sessions.others_revoked_none'));
 
         loadSessions(currentPage);
     } catch (error) {
         showToast(apiErrorMessage(error, t('sessions.error')), 'error');
-    } finally {
-        revokeOthersBtn.disabled = false;
     }
 });
 

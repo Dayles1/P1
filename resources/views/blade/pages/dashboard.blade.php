@@ -6,8 +6,16 @@
 
     <div class="page-head">
         <div>
-            <h1 data-dashboard-welcome>{{ __('ui.dashboard.title') }}</h1>
-            <p>{{ __('ui.dashboard.profile_completeness') }}</p>
+            <h1>{{ __('ui.dashboard.title') }}</h1>
+            {{--
+                The heading itself never changes — only this subline swaps a
+                skeleton for the personalized greeting once the user loads,
+                so nothing ever visibly overwrites a value the user already
+                read (the old "BBBB -> AAAA" flicker).
+            --}}
+            <p data-dashboard-welcome>
+                <span class="skeleton" style="display:inline-block; width:200px; height:13px; vertical-align:middle;"></span>
+            </p>
         </div>
     </div>
 

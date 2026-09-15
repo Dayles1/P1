@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { t } from '../shared/i18n';
 
 /**
  * ==========================================================================
@@ -746,7 +747,7 @@ function getApiErrors(error) {
 
     return {
         general: [
-            'Something went wrong. Please try again.',
+            t('common.error_generic'),
         ],
     };
 }
@@ -1039,10 +1040,13 @@ async function handleLogin(form) {
         const redirect =
             params.get('redirect');
 
+        // No explicit `?redirect=` (or it isn't a local path) means there's
+        // no specifically required flow to send the user back to — land on
+        // the dashboard, the app's actual home, not the public marketing page.
         window.location.href =
             (redirect && redirect.startsWith('/'))
                 ? redirect
-                : '/';
+                : '/dashboard';
     } catch (error) {
         showFormErrors(
             form,
@@ -1158,7 +1162,7 @@ async function handleForgotPassword(form) {
         }
 
         success.textContent =
-            'If this email exists, a password reset link has been sent.';
+            t('auth.forgot_password_sent');
     } catch (error) {
         showFormErrors(
             form,
@@ -1321,7 +1325,7 @@ async function handleVerificationNotification(
         }
 
         success.textContent =
-            'Verification email has been sent.';
+            t('auth.verification_sent');
     } catch (error) {
         showFormErrors(
             form,
@@ -1459,8 +1463,8 @@ function setupPasswordToggles() {
             button.setAttribute(
                 'aria-label',
                 visible
-                    ? 'Show password'
-                    : 'Hide password'
+                    ? t('auth.show_password')
+                    : t('auth.hide_password')
             );
 
             button.setAttribute(
@@ -1615,14 +1619,14 @@ function showQueryStatusBanners() {
         if (params.get('registered')) {
             showStatusBanner(
                 loginForm,
-                'Account created. Please sign in.'
+                t('auth.status_registered')
             );
         }
 
         if (params.get('reset')) {
             showStatusBanner(
                 loginForm,
-                'Your password has been reset. Please sign in.'
+                t('auth.status_reset')
             );
         }
 
@@ -1632,17 +1636,17 @@ function showQueryStatusBanners() {
         if (verified === '1') {
             showStatusBanner(
                 loginForm,
-                'Your email has been verified. Please sign in.'
+                t('auth.status_verified')
             );
         } else if (verified === 'already') {
             showStatusBanner(
                 loginForm,
-                'Your email was already verified. Please sign in.'
+                t('auth.status_verified_already')
             );
         } else if (verified === 'invalid') {
             showStatusBanner(
                 loginForm,
-                'This verification link is invalid or has expired.',
+                t('auth.status_verification_invalid'),
                 true
             );
         }

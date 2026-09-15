@@ -43,7 +43,7 @@
                     <label class="field-label" for="settings-theme">{{ __('ui.settings.theme') }}</label>
                     <div class="select-field">
                         <select class="field-select" id="settings-theme" name="theme">
-                            @foreach (['system', 'light', 'gray', 'dark', 'black', 'green', 'orange'] as $themeOption)
+                            @foreach (\App\Domain\Setting\Services\ThemeCatalog::codes() as $themeOption)
                                 <option value="{{ $themeOption }}">{{ __('ui.theme.' . $themeOption) }}</option>
                             @endforeach
                         </select>

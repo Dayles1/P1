@@ -26,27 +26,15 @@
         <div class="site-header__actions">
 
             {{-- THEME PICKER --}}
-            <x-blade.u-i.dropdown align="right">
-                <x-slot:trigger>
-                    <span class="icon-btn" aria-label="{{ __('ui.theme.label') }}" title="{{ __('ui.theme.label') }}">
-                        ◐
-                    </span>
-                </x-slot:trigger>
-
-                <div class="dropdown__label">{{ __('ui.theme.label') }}</div>
-
-                @foreach (['system', 'light', 'gray', 'dark', 'black', 'green', 'orange'] as $themeOption)
-                    <button
-                        type="button"
-                        class="dropdown__item dropdown__item--picker"
-                        role="menuitemradio"
-                        data-theme-option="{{ $themeOption }}"
-                    >
-                        <span><span class="theme-swatch theme-swatch--{{ $themeOption }}"></span>{{ __('ui.theme.' . $themeOption) }}</span>
-                        <span class="dropdown__check" aria-hidden="true">✓</span>
-                    </button>
-                @endforeach
-            </x-blade.u-i.dropdown>
+            <button
+                type="button"
+                class="icon-btn"
+                aria-label="{{ __('ui.theme.label') }}"
+                title="{{ __('ui.theme.label') }}"
+                data-theme-picker-trigger
+            >
+                ◐
+            </button>
 
             {{-- LANGUAGE PICKER --}}
             <x-blade.u-i.dropdown align="right">

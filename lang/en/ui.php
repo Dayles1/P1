@@ -52,13 +52,28 @@ return [
 
     'theme' => [
         'label' => 'Theme',
+        'picker_title' => 'Choose a theme',
+        'picker_subtitle' => 'Applies everywhere, syncs across reloads, and never causes a flash of the wrong colors.',
         'system' => 'System',
         'light' => 'Light',
         'gray' => 'Gray',
         'dark' => 'Dark',
         'black' => 'Black',
+        'blue' => 'Blue',
+        'indigo' => 'Indigo',
+        'cyan' => 'Cyan',
+        'emerald' => 'Emerald',
         'green' => 'Green',
+        'slate' => 'Slate',
+        'red' => 'Red',
+        'rose' => 'Rose',
         'orange' => 'Orange',
+        'warm' => 'Warm',
+        'soft' => 'Soft',
+        'graphite' => 'Graphite',
+        'midnight' => 'Midnight',
+        'nord' => 'Nord',
+        'high-contrast' => 'High Contrast',
     ],
 
     'locale' => [
@@ -66,6 +81,18 @@ return [
         'en' => 'English',
         'ru' => 'Русский',
         'uz' => "O'zbekcha",
+    ],
+
+    'auth' => [
+        'forgot_password_sent' => 'If this email exists, a password reset link has been sent.',
+        'verification_sent' => 'Verification email has been sent.',
+        'show_password' => 'Show password',
+        'hide_password' => 'Hide password',
+        'status_registered' => 'Account created. Please sign in.',
+        'status_reset' => 'Your password has been reset. Please sign in.',
+        'status_verified' => 'Your email has been verified. Please sign in.',
+        'status_verified_already' => 'Your email was already verified. Please sign in.',
+        'status_verification_invalid' => 'This verification link is invalid or has expired.',
     ],
 
     'confirm' => [
@@ -185,6 +212,7 @@ return [
 
     'dashboard' => [
         'title' => 'Dashboard',
+        'subtitle' => 'Your account overview.',
         'welcome' => 'Welcome back, :name.',
         'profile_completeness' => 'Profile completeness',
         'active_sessions' => 'Active sessions',

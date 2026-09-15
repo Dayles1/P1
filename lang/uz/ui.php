@@ -52,13 +52,28 @@ return [
 
     'theme' => [
         'label' => 'Mavzu',
+        'picker_title' => 'Mavzuni tanlang',
+        'picker_subtitle' => 'Barcha joyda qoʻllanadi, sahifa yangilansa ham saqlanadi va notoʻgʻri ranglar bilan yaltillamaydi.',
         'system' => 'Tizim',
         'light' => 'Yorug\'',
         'gray' => 'Kulrang',
         'dark' => 'Toʻq',
         'black' => 'Qora',
+        'blue' => 'Koʻk',
+        'indigo' => 'Indigo',
+        'cyan' => 'Moviy-yashil',
+        'emerald' => 'Zumrad',
         'green' => 'Yashil',
+        'slate' => 'Shifer',
+        'red' => 'Qizil',
+        'rose' => 'Pushti',
         'orange' => 'Toʻq sariq',
+        'warm' => 'Iliq',
+        'soft' => 'Yumshoq',
+        'graphite' => 'Grafit',
+        'midnight' => 'Yarim tun',
+        'nord' => 'Nord',
+        'high-contrast' => 'Yuqori kontrast',
     ],
 
     'locale' => [
@@ -66,6 +81,18 @@ return [
         'en' => 'English',
         'ru' => 'Русский',
         'uz' => "O'zbekcha",
+    ],
+
+    'auth' => [
+        'forgot_password_sent' => 'Agar bunday email mavjud boʻlsa, parolni tiklash havolasi yuborildi.',
+        'verification_sent' => 'Tasdiqlash xabari yuborildi.',
+        'show_password' => 'Parolni koʻrsatish',
+        'hide_password' => 'Parolni yashirish',
+        'status_registered' => 'Hisob yaratildi. Tizimga kiring.',
+        'status_reset' => 'Parol tiklandi. Tizimga kiring.',
+        'status_verified' => 'Email tasdiqlandi. Tizimga kiring.',
+        'status_verified_already' => 'Email allaqachon tasdiqlangan. Tizimga kiring.',
+        'status_verification_invalid' => 'Tasdiqlash havolasi notoʻgʻri yoki muddati oʻtgan.',
     ],
 
     'confirm' => [
@@ -185,6 +212,7 @@ return [
 
     'dashboard' => [
         'title' => 'Boshqaruv paneli',
+        'subtitle' => 'Hisobingizga umumiy koʻrinish.',
         'welcome' => 'Xush kelibsiz, :name.',
         'profile_completeness' => 'Profil toʻldirilganligi',
         'active_sessions' => 'Faol seanslar',
