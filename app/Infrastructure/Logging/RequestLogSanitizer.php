@@ -54,7 +54,16 @@ class RequestLogSanitizer
         $maxBytes = (int) config('request-logging.max_body_bytes', 8192);
         $encoded = json_encode($value, JSON_UNESCAPED_UNICODE | JSON_PARTIAL_OUTPUT_ON_ERROR);
 
-        if ($encoded === false || strlen($encoded) <= $maxBytes) {
+        // A hard encoding failure (not just "too big") means `$value`
+        // itself contains something json_encode can't represent (e.g. an
+        // object with a resource handle) — returning it as-is would only
+        // defer the same failure to Eloquent's own encode-on-save, as a
+        // harder-to-diagnose exception instead of a stored log row.
+        if ($encoded === false) {
+            return [['_unloggable' => true, '_reason' => json_last_error_msg()], true];
+        }
+
+        if (strlen($encoded) <= $maxBytes) {
             return [$value, false];
         }
 

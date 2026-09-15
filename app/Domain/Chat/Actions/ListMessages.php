@@ -14,7 +14,7 @@ class ListMessages
         $conversation = $user->conversations()->findOrFail($conversationId);
 
         $messages = $conversation->messages()
-            ->with('user.avatar')
+            ->with(['user.avatar', 'attachments', 'reactions', 'parent.user'])
             ->latest('id')
             ->paginate($filters['per_page'] ?? 30);
 

@@ -19,7 +19,7 @@ class ConversationMemberResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'avatar' => $this->avatar?->url(),
+            'avatar' => $this->avatar?->url,
             'role' => $pivot?->role,
             'joined_at' => $formatter->format($pivot?->joined_at,$user),
             'muted_until' => $formatter->format($pivot?->muted_until,$user),

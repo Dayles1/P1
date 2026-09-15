@@ -52,8 +52,13 @@ class LogApiRequest
             ? UserSession::query()->where('personal_access_token_id', $tokenId)->value('id')
             : null;
 
+        // Excludes whichever top-level fields actually carry uploaded files
+        // on *this* request, rather than a hardcoded ['file', 'files'] list
+        // — an UploadedFile can't be JSON-encoded, and previously any new
+        // upload field with a different name (e.g. chat's `attachments`)
+        // would reach RequestLog::create() unsanitized and throw.
         [$body, $bodyTruncated] = $this->sanitizer->capture(
-            $this->sanitizer->sanitizeFields($request->except(['file', 'files']))
+            $this->sanitizer->sanitizeFields($request->except(array_keys($request->allFiles())))
         );
 
         [$responseBody, $responseTruncated] = $this->sanitizer->capture(

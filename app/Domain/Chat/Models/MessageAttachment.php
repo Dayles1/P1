@@ -35,4 +35,9 @@ class MessageAttachment extends Model
     {
         return $this->belongsTo(Message::class);
     }
+
+    public function getUrlAttribute(): ?string
+    {
+        return $this->path ? \Storage::disk($this->disk)->url($this->path) : null;
+    }
 }

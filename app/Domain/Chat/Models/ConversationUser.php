@@ -51,6 +51,10 @@ class ConversationUser extends Pivot
 
     public function permissions(): HasMany
     {
-        return $this->hasMany(ConversationUserPermission::class);
+        // Explicit FK: Pivot's key-name resolution doesn't feed Eloquent's
+        // usual class-name-based foreign key guessing the way a normal
+        // Model's does, so the implicit hasMany() silently built a bogus
+        // (empty) foreign key here.
+        return $this->hasMany(ConversationUserPermission::class, 'conversation_user_id');
     }
 }

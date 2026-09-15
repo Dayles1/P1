@@ -17,3 +17,8 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 Broadcast::channel('online', function (User $user) {
     return ['id' => $user->id, 'name' => $user->name];
 });
+
+/** Only current members (not left) of the conversation may subscribe to its live updates. */
+Broadcast::channel('conversation.{id}', function (User $user, int $id) {
+    return $user->conversations()->where('conversations.id', $id)->exists();
+});

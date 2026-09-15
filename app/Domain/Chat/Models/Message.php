@@ -21,6 +21,8 @@ class Message extends Model
         'meta',
         'edited_at',
         'deleted_at',
+        'is_pinned',
+        'pinned_at',
     ];
 
     protected function casts(): array
@@ -29,6 +31,8 @@ class Message extends Model
             'meta' => 'array',
             'edited_at' => 'datetime',
             'deleted_at' => 'datetime',
+            'is_pinned' => 'boolean',
+            'pinned_at' => 'datetime',
         ];
     }
 

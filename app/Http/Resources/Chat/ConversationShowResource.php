@@ -24,7 +24,7 @@ class ConversationShowResource extends JsonResource
                 return [
                     'id' => $this->creator?->id,
                     'name' => $this->creator?->name,
-                    'avatar' => $this->creator?->avatar?->url(),
+                    'avatar' => $this->creator?->avatar?->url,
                 ];
             }),
             'is_locked' => (bool) $this->is_locked,

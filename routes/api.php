@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\Auth\SessionController;
 use App\Http\Controllers\Api\Chat\ConversationController;
 use App\Http\Controllers\Api\Chat\MemberController;
 use App\Http\Controllers\Api\Chat\MessageController;
+use App\Http\Controllers\Api\Chat\TypingController;
 use App\Http\Controllers\Api\Chat\UserSearchController;
 use App\Http\Controllers\Api\Dashboard\DashboardController;
 use App\Http\Controllers\Api\NotificationController;
@@ -118,7 +119,16 @@ Route::middleware('auth.api')->prefix('conversations')->controller(MemberControl
 Route::middleware('auth.api')->prefix('conversations')->controller(MessageController::class)->group(function () {
     Route::get('{conversation}/messages', 'index');
     Route::post('{conversation}/messages', 'store');
+    Route::get('{conversation}/messages/pinned', 'pinned');
+    Route::patch('{conversation}/messages/{message}', 'update');
+    Route::delete('{conversation}/messages/{message}', 'destroy');
+    Route::post('{conversation}/messages/{message}/reactions', 'react');
+    Route::post('{conversation}/messages/{message}/read', 'markRead');
+    Route::post('{conversation}/messages/{message}/pin', 'pin');
+    Route::delete('{conversation}/messages/{message}/pin', 'unpin');
 });
+Route::middleware('auth.api')->get('messages/search', [MessageController::class, 'search']);
+Route::middleware('auth.api')->post('conversations/{conversation}/typing', [TypingController::class, 'store']);
 Route::middleware('auth.api')->get('chat/users/search', [UserSearchController::class, 'index']);
 
 /*
