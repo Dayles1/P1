@@ -40,7 +40,7 @@ class Role extends Model
     {
         $permissionId = $permission instanceof Permission
             ? $permission->getKey()
-            : Permission::query()->where($permission instanceof int ? 'id' : 'code', $permission)->value('id');
+            : Permission::query()->where(is_int($permission) ? 'id' : 'code', $permission)->value('id');
 
         if ($permissionId !== null) {
             $this->permissions()->syncWithoutDetaching([$permissionId]);
@@ -51,7 +51,7 @@ class Role extends Model
     {
         $permissionId = $permission instanceof Permission
             ? $permission->getKey()
-            : Permission::query()->where($permission instanceof int ? 'id' : 'code', $permission)->value('id');
+            : Permission::query()->where(is_int($permission) ? 'id' : 'code', $permission)->value('id');
 
         if ($permissionId !== null) {
             $this->permissions()->detach($permissionId);

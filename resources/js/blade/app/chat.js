@@ -1023,9 +1023,18 @@ function handleMentionTyping() {
 
 function renderMentionList() {
     mentionsEl.hidden = false;
+    mentionsEl.setAttribute('role', 'listbox');
+    mentionsEl.setAttribute('aria-label', t('chat.members'));
     mentionsEl.innerHTML = mentionMatches
         .map((m, index) => `
-            <button type="button" class="mention-autocomplete__item ${index === mentionActiveIndex ? 'mention-autocomplete__item--active' : ''}" data-mention-index="${index}">
+            <button
+                type="button"
+                class="mention-autocomplete__item ${index === mentionActiveIndex ? 'mention-autocomplete__item--active' : ''}"
+                data-mention-index="${index}"
+                role="option"
+                id="mention-option-${index}"
+                aria-selected="${index === mentionActiveIndex}"
+            >
                 <span class="avatar avatar--sm">${m.avatar ? `<img class="avatar__image" src="${m.avatar}" alt="">` : `<span class="avatar__initials">${initials(m.name)}</span>`}</span>
                 ${escapeHtml(m.name)}
             </button>
