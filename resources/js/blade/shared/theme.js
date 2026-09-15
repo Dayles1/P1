@@ -1,28 +1,19 @@
 const THEME_KEY = 'theme';
 
-export const THEMES = [
-    'system',
-    'light',
-    'gray',
-    'dark',
-    'black',
-    'blue',
-    'indigo',
-    'cyan',
-    'emerald',
-    'green',
-    'slate',
-    'red',
-    'rose',
-    'orange',
-    'warm',
-    'soft',
-    'graphite',
-    'midnight',
-    'nord',
-    'high-contrast',
-];
-const DARK_THEMES = ['dark', 'black', 'graphite', 'midnight', 'nord', 'high-contrast'];
+/**
+ * Read from `window.__themeCatalog` (published by
+ * blade.sections.theme-bootstrap, itself rendered from the server-side
+ * ThemeCatalog) rather than hand-duplicated here — two independent copies
+ * of this list previously drifted apart as palettes were added, which is
+ * exactly what silently broke persisting anything but the original 6
+ * themes. The fallback below only matters if this module is ever loaded on
+ * a page that, unusually, doesn't include the bootstrap script.
+ */
+const FALLBACK_THEMES = ['system', 'light', 'dark'];
+const FALLBACK_DARK_THEMES = ['dark'];
+
+export const THEMES = window.__themeCatalog?.codes || FALLBACK_THEMES;
+const DARK_THEMES = window.__themeCatalog?.darkCodes || FALLBACK_DARK_THEMES;
 
 export function getStoredTheme() {
     const value = localStorage.getItem(THEME_KEY);

@@ -28,6 +28,15 @@ return Application::configure(basePath: dirname(__DIR__))
         ['middleware' => ['auth.api']],
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // The `locale` cookie is written in plaintext by client-side JS
+        // (document.cookie, not Laravel's Cookie facade), so it's never
+        // actually encrypted — left off this list, EncryptCookies tries to
+        // decrypt it on every request, fails, and silently nulls it out.
+        // SetLocale then falls straight through to Accept-Language browser
+        // detection, which is why picking a language never stuck: whatever
+        // the browser's own language was always won instead.
+        $middleware->encryptCookies(except: ['locale']);
+
         $middleware->web(append: [
             AddLinkHeadersForPreloadedAssets::class,
             SetLocale::class,

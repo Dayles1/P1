@@ -33,6 +33,28 @@ test('the locale cookie is honored on requests without an X-Locale header', func
     expect($response->json('errors.email.0'))->toBe('Bunday maʼlumotlar tizimda topilmadi.');
 });
 
+test('the locale cookie survives a full page load, not just an XHR', function () {
+    // The api-group test above ('the locale cookie is honored...') only
+    // proves the cookie survives on /api/* routes, where EncryptCookies
+    // isn't even in the pipeline — it says nothing about a real page
+    // navigation (window.location.reload() after picking a language),
+    // which goes through the `web` group where EncryptCookies *is* present.
+    // Without excluding `locale` from it, this plaintext (document.cookie-
+    // written) cookie gets silently decrypt-failed to null on every such
+    // load, and the app falls through to Accept-Language browser detection
+    // instead — so whatever the browser's own language was always won,
+    // no matter what the user picked. This is the actual reported bug.
+    // 'ru', deliberately not 'uz' (the seeded localization.default_locale) —
+    // otherwise a broken cookie falling through to the default would still
+    // coincidentally match and mask the bug this test exists to catch.
+    Setting::where('key', 'localization.auto_detect_browser_locale')->update(['value' => '0']);
+
+    $response = $this->withUnencryptedCookie('locale', 'ru')->get('/login');
+
+    $response->assertOk();
+    expect(app()->getLocale())->toBe('ru');
+});
+
 test('an authenticated user\'s saved locale takes priority over the X-Locale header', function () {
     $user = User::factory()->create();
     [$token] = createUserSession($user);
