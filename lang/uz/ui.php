@@ -247,6 +247,7 @@ return [
         'notif_prefs_hint' => 'Nima haqida va qanday xabardor qilinishingiz.',
         'notif_pref_database' => 'Bildirishnomalarni bildirishnomalar markazida saqlash',
         'notif_pref_browser' => 'Brauzer bildirishnomalarini koʻrsatish',
+        'notif_pref_sound' => 'Yangi xabarlar uchun tovush chalish',
         'notif_pref_message' => 'Yangi xabarlar haqida xabardor qilish',
         'notif_pref_system' => 'Tizim eʼlonlari haqida xabardor qilish',
     ],

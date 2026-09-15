@@ -133,6 +133,18 @@ class User extends Authenticatable
     }
 
     /**
+     * Laravel's default notification-broadcast channel name is derived from
+     * the notifiable's FQCN (`App.Domain.Identity.Models.User.{id}` here),
+     * which doesn't match the `App.Models.User.{id}` channel already
+     * authorized in routes/channels.php — pin it explicitly so notification
+     * broadcasts actually land on the channel the frontend subscribes to.
+     */
+    public function receivesBroadcastNotificationsOn(): string
+    {
+        return 'App.Models.User.'.$this->getKey();
+    }
+
+    /**
      * The session tied to whichever Sanctum token this instance is currently
      * carrying (set explicitly by callers via `withCurrentSession()` /
      * `setRelation()` — never resolved through the `auth()` helper, since

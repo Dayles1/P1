@@ -247,6 +247,7 @@ return [
         'notif_prefs_hint' => 'What you get notified about, and how.',
         'notif_pref_database' => 'Save notifications to your notification center',
         'notif_pref_browser' => 'Show browser notifications',
+        'notif_pref_sound' => 'Play a sound for new messages',
         'notif_pref_message' => 'Notify me about new messages',
         'notif_pref_system' => 'Notify me about system announcements',
     ],

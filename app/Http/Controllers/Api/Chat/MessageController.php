@@ -38,6 +38,7 @@ class MessageController extends Controller
     {
         $filters = $request->validate([
             'per_page' => ['nullable', 'integer', 'min:1', 'max:100'],
+            'before_id' => ['nullable', 'integer', 'min:1'],
         ]);
 
         $messages = $this->listMessages->handle($request->user(), $conversation, $filters);

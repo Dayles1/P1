@@ -1,95 +1,135 @@
+import { isConversationActive } from './active-context';
+import { getEcho } from './echo';
 import { t } from './i18n';
 import { notificationItemHtml } from './notification-renderers';
+import { playNotificationSound } from './notification-sound';
 import { emptyState } from './skeleton';
 import { showToast, apiErrorMessage } from './toast';
 import { getUserSettings } from './user-settings-cache';
 
-const POLL_MS = 30000;
-
 /**
- * Header bell: unread badge (polled — replaced by a real push once Reverb
- * lands) + a dropdown of recent notifications. Fires a browser notification
- * for any *new* unread item seen since the bell was initialized, gated by
- * the user's `browser` preference — permission itself is only ever
- * requested from the Settings toggle, never from here.
+ * Header bell: unread badge + a dropdown of recent notifications, kept live
+ * over the same private `App.Models.User.{id}` Reverb channel the backend
+ * already broadcasts every notification on (see BaseNotification::via) —
+ * one fetch on boot to get the current count/list, then push for
+ * everything after that. No polling loop.
  */
-export function initNotificationBell(api) {
+export function initNotificationBell(api, user) {
     const badge = document.querySelector('[data-notif-badge]');
     const list = document.querySelector('[data-notif-list]');
     const markAllBtn = document.querySelector('[data-notif-mark-all]');
     const dropdown = document.querySelector('[data-notif-dropdown]');
 
-    if (!badge || !list) {
+    if (!badge || !list || !user) {
         return;
     }
 
-    const seenIds = new Set();
-    let firstPoll = true;
-    let browserPrefEnabled = true;
+    let unreadCount = 0;
+    let prefs = { browser: true, sound: true };
 
     getUserSettings(api)
         .then((settings) => {
-            browserPrefEnabled = settings?.meta?.notifications?.browser !== false;
+            const meta = settings?.meta?.notifications || {};
+            prefs = { browser: meta.browser !== false, sound: meta.sound !== false };
         })
         .catch(() => {});
 
     function updateBadge(count) {
-        if (count > 0) {
-            badge.textContent = count > 99 ? '99+' : String(count);
-            badge.hidden = false;
-        } else {
-            badge.hidden = true;
-        }
+        unreadCount = Math.max(0, count);
+        badge.textContent = unreadCount > 99 ? '99+' : String(unreadCount);
+        badge.hidden = unreadCount === 0;
     }
 
-    function maybeFireBrowser(notification) {
-        if (typeof Notification === 'undefined' || Notification.permission !== 'granted') {
+    /** Same target resolution for a dropdown click and an OS notification click — a full nav when we're not already in the chat app, an in-page event when we are, so a click never causes a redundant reload of the same chat page. */
+    function openNotificationTarget(notification) {
+        const conversationId = notification.data?.conversation_id;
+        const messageId = notification.data?.message_id;
+
+        if (conversationId && window.location.pathname.startsWith('/chat')) {
+            document.dispatchEvent(new CustomEvent('chat:open-conversation', {
+                detail: { conversationId: Number(conversationId), messageId: messageId ? Number(messageId) : null },
+            }));
+
             return;
         }
 
-        if (!browserPrefEnabled) {
+        if (!notification.action_url) {
             return;
         }
 
-        const renderer = notification.type === 'mention' ? t('notifications.type_mention') : notification.title;
+        const url = new URL(notification.action_url, window.location.origin);
 
-        new Notification(renderer || t('notifications.label'), {
-            body: notification.body || '',
-            tag: `notification-${notification.id}`,
-        });
+        if (messageId) {
+            url.searchParams.set('message', messageId);
+        }
+
+        window.location.href = url.pathname + url.search;
     }
 
-    async function pollUnread() {
+    function maybeAlert(notification) {
+        const conversationId = notification.data?.conversation_id;
+
+        // The message already landed live in the open conversation — an OS
+        // popup + ding on top of that would just be noise for something
+        // the user is already looking at.
+        if (conversationId && isConversationActive(conversationId)) {
+            return;
+        }
+
+        if (prefs.sound) {
+            playNotificationSound();
+        }
+
+        if (prefs.browser && typeof Notification !== 'undefined' && Notification.permission === 'granted') {
+            const renderer = notification.type === 'mention' ? t('notifications.type_mention') : notification.title;
+            const popup = new Notification(renderer || t('notifications.label'), {
+                body: notification.body || '',
+                tag: `notification-${notification.id}`,
+            });
+
+            popup.onclick = () => {
+                window.focus();
+                openNotificationTarget(notification);
+                popup.close();
+            };
+        }
+    }
+
+    function prependToDropdown(notification) {
+        const empty = list.querySelector('.empty-state');
+
+        if (empty) {
+            empty.remove();
+        }
+
+        list.insertAdjacentHTML('afterbegin', notificationItemHtml(notification));
+
+        // Keep the dropdown from growing unbounded across a long session.
+        const items = list.querySelectorAll('[data-notif-id]');
+
+        if (items.length > 8) {
+            items[items.length - 1].remove();
+        }
+    }
+
+    function onNotificationCreated(notification) {
+        updateBadge(unreadCount + 1);
+        prependToDropdown(notification);
+        maybeAlert(notification);
+    }
+
+    async function loadInitial() {
         try {
-            const { data } = await api.get('/notifications', { params: { unread: true, per_page: 5 } });
-            const items = data.data || [];
+            const [{ data: recent }, { data: countData }] = await Promise.all([
+                api.get('/notifications', { params: { per_page: 8 } }),
+                api.get('/notifications/unread-count'),
+            ]);
 
-            const { data: countData } = await api.get('/notifications/unread-count');
+            const items = recent.data || [];
+            list.innerHTML = items.length ? items.map(notificationItemHtml).join('') : emptyState(t('notifications.empty'));
             updateBadge(countData.data.count);
-
-            if (!firstPoll) {
-                items.filter((n) => !seenIds.has(n.id)).forEach((n) => maybeFireBrowser(n));
-            }
-
-            items.forEach((n) => seenIds.add(n.id));
-            firstPoll = false;
         } catch {
-            // Silent — this is a background poll, not a user-initiated action.
-        }
-    }
-
-    async function loadRecent() {
-        list.innerHTML = `<div class="skeleton skeleton-row" style="margin:8px;"></div>`;
-
-        try {
-            const { data } = await api.get('/notifications', { params: { per_page: 8 } });
-            const items = data.data || [];
-
-            list.innerHTML = items.length
-                ? items.map(notificationItemHtml).join('')
-                : emptyState(t('notifications.empty'));
-        } catch (error) {
-            list.innerHTML = emptyState(apiErrorMessage(error, t('common.error_generic')));
+            // Silent — the bell just stays at its initial (empty) state until the dropdown is opened, which retries.
         }
     }
 
@@ -109,15 +149,20 @@ export function initNotificationBell(api) {
         }
 
         markRead(item.dataset.notifId);
-        item.classList.remove('notif-item--unread');
-        item.querySelector('.notif-item__dot')?.remove();
-        pollUnread();
 
-        const url = item.dataset.notifUrl;
-
-        if (url) {
-            window.location.href = url;
+        if (item.classList.contains('notif-item--unread')) {
+            item.classList.remove('notif-item--unread');
+            item.querySelector('.notif-item__dot')?.remove();
+            updateBadge(unreadCount - 1);
         }
+
+        openNotificationTarget({
+            action_url: item.dataset.notifUrl,
+            data: {
+                conversation_id: item.dataset.notifConversationId || null,
+                message_id: item.dataset.notifMessageId || null,
+            },
+        });
     });
 
     markAllBtn?.addEventListener('click', async () => {
@@ -133,18 +178,21 @@ export function initNotificationBell(api) {
         }
     });
 
-    // Only fetch the (heavier) recent list when the dropdown is actually
-    // opened — deferred a tick so this reads the DOM *after* site-chrome's
-    // own delegated click listener has already toggled `hidden`, regardless
-    // of which of the two listeners happened to be registered first.
+    // The (heavier) recent list is already kept live via the socket, so
+    // opening the dropdown just needs the very first load — no re-fetch.
+    let loaded = false;
+
     dropdown?.querySelector('[data-dropdown-trigger]')?.addEventListener('click', () => {
         window.setTimeout(() => {
-            if (!dropdown.querySelector('[data-dropdown-menu]')?.hasAttribute('hidden')) {
-                loadRecent();
+            if (!loaded && !dropdown.querySelector('[data-dropdown-menu]')?.hasAttribute('hidden')) {
+                loaded = true;
+                loadInitial();
             }
         }, 0);
     });
 
-    pollUnread();
-    window.setInterval(pollUnread, POLL_MS);
+    loadInitial();
+
+    const echo = getEcho();
+    echo?.private(`App.Models.User.${user.id}`).notification((notification) => onNotificationCreated(notification));
 }

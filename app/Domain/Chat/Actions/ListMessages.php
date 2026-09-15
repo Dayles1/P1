@@ -9,16 +9,37 @@ use Illuminate\Support\Facades\DB;
 
 class ListMessages
 {
+    /**
+     * `before_id` (when present) turns this into "give me the next older
+     * page below this id" — always requested/answered as page 1 of a query
+     * already filtered to `id < before_id`, which is what makes it a real
+     * cursor rather than an offset: a message arriving between two calls
+     * can never shift where the "next page" starts, so nothing gets
+     * skipped or duplicated the way page-number pagination would risk.
+     */
     public function handle(User $user, int $conversationId, array $filters = []): LengthAwarePaginator
     {
         $conversation = $user->conversations()->findOrFail($conversationId);
 
-        $messages = $conversation->messages()
-            ->with(['user.avatar', 'attachments', 'reactions', 'reads', 'parent.user'])
-            ->latest('id')
-            ->paginate($filters['per_page'] ?? 30);
+        $query = $conversation->messages()
+            ->with(['user.avatar', 'attachments', 'reactions', 'reads', 'parent.user']);
 
-        $this->markRead($conversation->id, $user->id, $messages->first()?->id);
+        $beforeId = $filters['before_id'] ?? null;
+
+        if ($beforeId) {
+            $query->where('id', '<', $beforeId);
+        }
+
+        $messages = $query->latest('id')->paginate($filters['per_page'] ?? 30);
+
+        // Only the newest (no before_id) page reflects what the viewer is
+        // actually looking at right now — marking read off an older,
+        // scrolled-back-into page would move last_read_message_id
+        // *backwards*, which would make the conversation look less-read
+        // than it already was.
+        if (! $beforeId) {
+            $this->markRead($conversation->id, $user->id, $messages->first()?->id);
+        }
 
         return $messages;
     }

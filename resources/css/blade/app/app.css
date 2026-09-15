@@ -732,6 +732,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 40;
+    flex-shrink: 0;
     background: var(--ui-surface);
     border-bottom: 1px solid var(--ui-border);
     transition: background 220ms ease, border-color 220ms ease;
@@ -746,6 +747,24 @@ body {
     height: var(--ui-header-height);
     margin: 0 auto;
     padding: 0 24px;
+}
+
+/* The app shell (authenticated layout) uses the full viewport width — only
+   the public marketing layout keeps the header content centered/capped. */
+.app-shell .site-header__inner {
+    max-width: none;
+    padding: 0 20px;
+}
+
+/* The marketing nav (Home/About/Contact) is dead weight once you're inside
+   the actual app — real navigation lives in the sidebar there instead
+   (which becomes a horizontal scrollable strip on mobile, so the header's
+   own hamburger/mobile-nav drawer — for that same marketing nav — has
+   nothing useful left to toggle either). */
+.app-shell-html .navbar,
+.app-shell-html .site-mobile-nav,
+.app-shell-html .site-header__burger {
+    display: none !important;
 }
 
 .site-header__actions {
@@ -1249,39 +1268,80 @@ body {
 
 /* =========================================================
    APP SHELL (authenticated layout)
+   -----------------------------------------------------------
+   A real fixed-viewport application shell, not a page that happens to be
+   tall: <html>/<body> never scroll (see html.app-shell-html below). The
+   shell itself is a column flexbox (header, then body); the body is a row
+   flexbox (sidebar, then main) with `min-height: 0` / `min-width: 0` at
+   every level in the chain. That last part is the actual fix for "the
+   whole page scrolls/jumps once there's a lot of content" — a flex child
+   defaults to `min-height: auto`, which means it refuses to shrink below
+   its content's natural size and pushes the overflow up to whichever
+   ancestor still allows scrolling (normally <body>, i.e. the entire page)
+   instead of scrolling in place the way `overflow-y: auto` on that child
+   implies. Explicit `min-height: 0` (and `min-width: 0` for horizontal
+   flex children) is what actually lets a nested scroll container scroll
+   as its own island rather than growing forever.
    ========================================================= */
+html.app-shell-html,
+html.app-shell-html body {
+    height: 100%;
+    overflow: hidden;
+}
+
 .app-shell {
     display: flex;
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+}
+
+.app-shell__body {
     flex: 1;
-    align-items: flex-start;
-    width: 100%;
-    max-width: var(--ui-container);
-    margin: 0 auto;
+    display: flex;
+    min-height: 0;
 }
 
 .app-sidebar {
-    position: sticky;
-    top: var(--ui-header-height);
     flex-shrink: 0;
     width: 240px;
-    padding: 24px 12px;
-    height: calc(100vh - var(--ui-header-height));
+    padding: 20px 12px;
     overflow-y: auto;
     border-right: 1px solid var(--ui-border);
 }
 
-.app-content {
+.app-main {
     flex: 1;
     min-width: 0;
-    padding: 32px 24px 80px;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
 }
 
-.app-content__inner {
+/* Full-bleed pages (chat) manage their own internal scrolling entirely —
+   the shell must not also try to scroll them, or you get the classic
+   double-scrollbar/height-fights-itself bug. */
+.app-main[data-full-bleed] {
+    overflow: hidden;
+}
+
+.app-main__inner {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    padding: 28px 32px 64px;
+}
+
+.app-main__inner--narrow {
     max-width: 760px;
 }
 
-.app-content__inner--wide {
-    max-width: none;
+.app-main__inner--full-bleed {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    min-height: 0;
 }
 
 /* =========================================================
@@ -1334,30 +1394,39 @@ body {
 }
 
 @media (max-width: 850px) {
-    .app-shell {
+    .app-shell__body {
         flex-direction: column;
     }
 
+    /* A bounded horizontal strip rather than an unbounded wrapping block —
+       the point is that its height is predictable, so .app-main below it
+       can reliably fill "the rest" without any fragile height math. */
     .app-sidebar {
-        position: static;
         width: 100%;
-        height: auto;
+        max-height: 52px;
+        overflow-x: auto;
+        overflow-y: hidden;
         border-right: none;
         border-bottom: 1px solid var(--ui-border);
-        padding: 12px 24px;
+        padding: 8px 12px;
+        scrollbar-width: none;
+    }
+
+    .app-sidebar::-webkit-scrollbar {
+        display: none;
     }
 
     .sidebar-nav {
         flex-direction: row;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
     }
 
     .sidebar-nav__group-label {
         display: none;
     }
 
-    .app-content {
-        padding: 24px 20px 60px;
+    .app-main__inner:not(.app-main__inner--full-bleed) {
+        padding: 20px 16px 48px;
     }
 }
 
@@ -2963,10 +3032,15 @@ body {
 .chat-shell {
     display: grid;
     grid-template-columns: 300px 1fr 300px;
-    height: calc(100vh - var(--ui-header-height) - 140px);
-    min-height: 520px;
+    /* A flex:1 child of app-main__inner--full-bleed (itself min-height:0
+       all the way up to the shell) rather than a `calc(100vh - <guessed
+       chrome height>)` — the old calc broke the instant any surrounding
+       chrome (page-head, banners, breadcrumbs) was a different height
+       than whatever number was hardcoded here, which is exactly what
+       "everything shifts once there are a lot of messages" was. */
+    flex: 1;
+    min-height: 0;
     border: 1px solid var(--ui-border);
-    border-radius: var(--ui-radius);
     background: var(--ui-surface);
     overflow: hidden;
     position: relative;
@@ -2979,6 +3053,7 @@ body {
 .chat-details-pane {
     display: flex;
     flex-direction: column;
+    min-height: 0;
     border-left: 1px solid var(--ui-border);
     background: var(--ui-surface-soft);
     overflow-y: auto;
@@ -2998,8 +3073,6 @@ body {
 @media (max-width: 800px) {
     .chat-shell {
         grid-template-columns: 1fr !important;
-        height: calc(100vh - var(--ui-header-height) - 90px);
-        min-height: 420px;
     }
 
     .chat-shell[data-view="list"] .chat-thread-pane,
@@ -3025,9 +3098,10 @@ body {
 .chat-list-pane {
     display: flex;
     flex-direction: column;
+    min-height: 0;
+    min-width: 0;
     border-right: 1px solid var(--ui-border);
     background: var(--ui-surface-soft);
-    min-width: 0;
 }
 
 .chat-list-pane__header {
@@ -3167,6 +3241,7 @@ body {
     display: flex;
     flex-direction: column;
     min-width: 0;
+    min-height: 0;
     position: relative;
 }
 
@@ -3336,6 +3411,16 @@ body {
     gap: 8px;
     padding: 3px 0;
     scroll-margin: 80px;
+}
+
+/* Consecutive messages from the same sender within a few minutes sit
+   closer together and don't repeat the sender's name (see
+   isGroupedWithPrevious in chat.js) — the same visual shorthand Telegram
+   and Slack use so a burst of short messages doesn't read as N separate
+   people talking. */
+.chat-bubble-row--grouped {
+    padding-top: 0;
+    margin-top: -2px;
 }
 
 .chat-bubble-row--mine {

@@ -1,5 +1,7 @@
 @extends('blade.layouts.authenticated')
 
+@php($narrow = true)
+
 @section('title', __('ui.profile.title'))
 
 @section('content')

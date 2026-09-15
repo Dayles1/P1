@@ -138,6 +138,7 @@ class SendMessage
 
             $participant->notify(new MessageNotification(
                 conversationId: $conversation->id,
+                messageId: $message->id,
                 conversationTitle: $conversation->title ?? $sender->name,
                 senderName: $sender->name,
                 preview: $preview,

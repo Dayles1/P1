@@ -1,4 +1,6 @@
 import { api } from '../axios';
+import { fetchCurrentUser } from '../shared/auth-state';
+import { getEcho } from '../shared/echo';
 import { t } from '../shared/i18n';
 import { notificationItemHtml } from '../shared/notification-renderers';
 import { renderPagination } from '../shared/pagination';
@@ -87,3 +89,42 @@ markAllBtn?.addEventListener('click', async () => {
 });
 
 load();
+
+/*
+|--------------------------------------------------------------------------
+| Live updates — a new notification lands on top instantly if it matches
+| whatever's currently being viewed (page 1, and the active filter, if
+| any). Anything else (a later page, or a filtered-out type) just isn't
+| shown yet, exactly like a fresh page load wouldn't show it either.
+|--------------------------------------------------------------------------
+*/
+
+function matchesCurrentFilter(notification) {
+    if (!currentFilter || currentFilter === 'unread') {
+        return true;
+    }
+
+    return notification.type === currentFilter;
+}
+
+function prependLive(notification) {
+    if (currentPage !== 1 || !matchesCurrentFilter(notification)) {
+        return;
+    }
+
+    const wrapper = list.querySelector(':scope > div');
+
+    if (wrapper) {
+        wrapper.insertAdjacentHTML('afterbegin', notificationItemHtml(notification));
+    } else {
+        list.innerHTML = `<div style="padding:6px;">${notificationItemHtml(notification)}</div>`;
+    }
+}
+
+(async () => {
+    const user = await fetchCurrentUser();
+
+    if (user) {
+        getEcho()?.private(`App.Models.User.${user.id}`).notification(prependLive);
+    }
+})();

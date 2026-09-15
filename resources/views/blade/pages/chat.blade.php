@@ -1,7 +1,7 @@
 @extends('blade.layouts.authenticated')
 
 @section('title', __('ui.chat.title'))
-@php($wide = true)
+@php($fullBleed = true)
 
 @section('content')
 

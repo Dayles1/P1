@@ -217,7 +217,7 @@ async function initHeaderAuthState() {
         }
     });
 
-    initNotificationBell(api);
+    initNotificationBell(api, user);
     initPresence();
     initDevPanel();
 

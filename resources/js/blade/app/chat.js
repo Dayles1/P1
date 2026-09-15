@@ -1,4 +1,5 @@
 import { api } from '../axios';
+import { setActiveConversationId } from '../shared/active-context';
 import { fetchCurrentUser, initials } from '../shared/auth-state';
 import { confirmDialog } from '../shared/confirm';
 import { openContextMenu, attachLongPress } from '../shared/context-menu';
@@ -249,22 +250,73 @@ function markMessageMine(message) {
     return { ...message, is_mine: Number(message.sender?.id) === Number(currentUser?.id) };
 }
 
+/*
+|--------------------------------------------------------------------------
+| Per-conversation message cache
+|--------------------------------------------------------------------------
+|
+| Every conversation channel is subscribed to as soon as it appears in the
+| list (see subscribeToConversation), whether or not it's the one currently
+| open — so realtime events for a *background* conversation still land here
+| and keep its cache correct. Re-opening a conversation already visited
+| this session then just re-renders from cache instead of re-fetching, and
+| still ends up consistent with anything that happened while it was in the
+| background (spec: cache must reconcile via Reverb events, not go stale).
+|
+| Each entry: { messages: [oldest...newest], hasMoreOlder, ids: Set<id> }
+| `ids` is the actual dedup source of truth — message ids, not array
+| position — since the same message can arrive twice (our own send's HTTP
+| response *and* the broadcast echoing back, see ingestMessage).
+*/
+const MAX_MESSAGES_IN_MEMORY = 200;
+const INITIAL_CHUNK_SIZE = 10;
+const INITIAL_PREWARM_CHUNKS = 2; // beyond the first, loaded quietly in the background
+const conversationCache = new Map();
+
+function getCache(conversationId) {
+    if (!conversationCache.has(conversationId)) {
+        conversationCache.set(conversationId, { messages: [], hasMoreOlder: true, ids: new Set() });
+    }
+
+    return conversationCache.get(conversationId);
+}
+
+function isActive(conversationId) {
+    return activeConversation?.id === conversationId;
+}
+
 /**
  * Handles a message arriving both from our own successful send (the
  * synchronous HTTP response, `is_mine` already correct) and from the
  * `.message.sent` broadcast (which reaches every participant, our own
  * other tabs included — there's no per-socket exclusion wired up, so this
- * function has to be safe to call twice for the same message).
+ * function has to be safe to call twice for the same message). Message id
+ * is the only thing that decides "have I already got this", never array
+ * position or count.
  */
 function ingestMessage(conversationId, message) {
-    if (activeConversation?.id === conversationId) {
-        if (messages.some((m) => m.id === message.id)) {
-            return;
-        }
+    const cache = getCache(conversationId);
 
+    if (cache.ids.has(message.id)) {
+        return;
+    }
+
+    cache.ids.add(message.id);
+    cache.messages.push(message);
+
+    if (cache.messages.length > MAX_MESSAGES_IN_MEMORY) {
+        const dropped = cache.messages.shift();
+        cache.ids.delete(dropped.id);
+        cache.hasMoreOlder = true; // we just trimmed our own tail, so there's always "more" above it now
+
+        if (isActive(conversationId)) {
+            messagesEl.querySelector(`[data-message-id="${dropped.id}"]`)?.remove();
+        }
+    }
+
+    if (isActive(conversationId)) {
         const wasAtBottom = isScrolledToBottom();
-        messages.push(message);
-        renderMessages();
+        appendMessageDOM(message);
 
         if (message.is_mine || wasAtBottom) {
             scrollToBottom();
@@ -277,7 +329,7 @@ function ingestMessage(conversationId, message) {
     updateConversationSummary(conversationId, {
         last_message: { body: message.body, sender: message.sender?.name, type: message.type },
         last_message_at: message.created_at,
-        unread_count: activeConversation?.id === conversationId
+        unread_count: isActive(conversationId)
             ? 0
             : (conversations.find((c) => c.id === conversationId)?.unread_count || 0) + (message.is_mine ? 0 : 1),
     });
@@ -291,28 +343,53 @@ function onMessageSent(conversationId, payload) {
 
 function onMessageEdited(conversationId, payload) {
     const message = markMessageMine(payload);
-    const index = messages.findIndex((m) => m.id === message.id);
+    const cache = getCache(conversationId);
+    const index = cache.messages.findIndex((m) => m.id === message.id);
 
-    if (index !== -1) {
-        messages[index] = message;
-        renderMessages();
+    if (index === -1) {
+        return;
+    }
+
+    cache.messages[index] = message;
+
+    if (isActive(conversationId)) {
+        patchMessageDOM(message);
     }
 }
 
 function onMessageDeleted(conversationId, payload) {
-    messages = messages.filter((m) => m.id !== payload.message_id);
+    const cache = getCache(conversationId);
+    const index = cache.messages.findIndex((m) => m.id === payload.message_id);
 
-    if (activeConversation?.id === conversationId) {
-        renderMessages();
+    if (index === -1) {
+        return;
+    }
+
+    // Mutates in place (splice) rather than `filter()` + reassign — the
+    // module-level `messages` alias (see openConversation) points at this
+    // exact array instance, and a reassignment would silently detach it.
+    cache.messages.splice(index, 1);
+    cache.ids.delete(payload.message_id);
+
+    if (isActive(conversationId)) {
+        // `index` now points at whoever took the removed message's place
+        // (post-splice) — i.e. the message that followed it, if any.
+        removeMessageDOM(payload.message_id, cache.messages[index] ?? null, index);
     }
 }
 
 function onReactionToggled(conversationId, payload) {
-    const message = messages.find((m) => m.id === payload.message_id);
+    const cache = getCache(conversationId);
+    const message = cache.messages.find((m) => m.id === payload.message_id);
 
-    if (message) {
-        message.reactions = payload.reactions;
-        renderMessages();
+    if (!message) {
+        return;
+    }
+
+    message.reactions = payload.reactions;
+
+    if (isActive(conversationId)) {
+        patchMessageDOM(message);
     }
 }
 
@@ -320,20 +397,20 @@ function onMessageReadEvent(conversationId, payload) {
     // The backend marks "read up to and including this id" in one batch
     // (see MarkMessageRead), so the event means the same thing here — not
     // just the one message id it carries.
-    let changed = false;
+    const cache = getCache(conversationId);
+    const active = isActive(conversationId);
 
-    messages
+    cache.messages
         .filter((m) => m.id <= payload.message_id)
         .forEach((message) => {
             if (!message.read_by?.includes(payload.user_id)) {
                 message.read_by = [...new Set([...(message.read_by || []), payload.user_id])];
-                changed = true;
+
+                if (active) {
+                    patchMessageDOM(message);
+                }
             }
         });
-
-    if (changed) {
-        renderMessages();
-    }
 }
 
 function onUserTyping(conversationId, payload) {
@@ -470,7 +547,23 @@ function attachmentsHtml(message) {
     `;
 }
 
-function bubbleHtml(message) {
+/** Telegram-style grouping: same sender, same day, within 5 minutes of the previous message — no repeated name label, tighter spacing. */
+function isGroupedWithPrevious(previous, current) {
+    if (!previous || Number(previous.sender?.id) !== Number(current.sender?.id)) {
+        return false;
+    }
+
+    if (dayLabel(previous.created_at_iso) !== dayLabel(current.created_at_iso)) {
+        return false;
+    }
+
+    const prevTime = previous.created_at_iso ? new Date(previous.created_at_iso).getTime() : null;
+    const currTime = current.created_at_iso ? new Date(current.created_at_iso).getTime() : null;
+
+    return prevTime !== null && currTime !== null && Math.abs(currTime - prevTime) < 5 * 60 * 1000;
+}
+
+function bubbleHtml(message, { grouped = false } = {}) {
     const reply = message.reply_to
         ? `
             <button type="button" class="chat-bubble__reply" data-scroll-to="${message.reply_to.id}">
@@ -481,11 +574,11 @@ function bubbleHtml(message) {
         : '';
 
     return `
-        <div class="chat-bubble-row ${message.is_mine ? 'chat-bubble-row--mine' : ''}" data-message-id="${message.id}">
+        <div class="chat-bubble-row ${message.is_mine ? 'chat-bubble-row--mine' : ''} ${grouped ? 'chat-bubble-row--grouped' : ''}" data-message-id="${message.id}">
             <div class="chat-bubble-wrap">
                 <div class="chat-bubble" data-bubble="${message.id}">
                     ${message.is_pinned ? '<span class="chat-bubble__pin-icon" aria-hidden="true">&#128204;</span>' : ''}
-                    ${!message.is_mine ? `<span class="chat-bubble__sender">${escapeHtml(message.sender?.name || '')}</span>` : ''}
+                    ${!message.is_mine && !grouped ? `<span class="chat-bubble__sender">${escapeHtml(message.sender?.name || '')}</span>` : ''}
                     ${reply}
                     ${message.body ? `<div class="chat-bubble__body">${renderMessageBody(message.body)}</div>` : ''}
                     ${attachmentsHtml(message)}
@@ -501,7 +594,36 @@ function bubbleHtml(message) {
     `;
 }
 
-function renderMessages() {
+/**
+ * Builds the HTML for a run of messages (day dividers + grouping), given
+ * whatever message immediately precedes the run in the full timeline (or
+ * null if this run starts the conversation) — needed so a prepended older
+ * batch groups correctly against the batch already on screen, and so the
+ * initial/full render groups correctly within itself.
+ */
+function messagesHtml(list, precedingMessage) {
+    let html = '';
+    let previous = precedingMessage;
+    let lastDay = precedingMessage ? dayLabel(precedingMessage.created_at_iso) : null;
+
+    list.forEach((message) => {
+        const day = dayLabel(message.created_at_iso);
+
+        if (day !== lastDay) {
+            html += `<div class="chat-day-divider">${escapeHtml(day)}</div>`;
+            lastDay = day;
+            previous = null; // a day boundary always restarts a group, even same sender
+        }
+
+        html += bubbleHtml(message, { grouped: isGroupedWithPrevious(previous, message) });
+        previous = message;
+    });
+
+    return html;
+}
+
+/** Full rebuild — only for the initial open of a conversation (or recovering from an error state). Everything else patches the DOM incrementally. */
+function renderMessageList() {
     if (!messages.length) {
         messagesEl.innerHTML = emptyState(t('chat.empty_messages'));
         renderPinnedBar();
@@ -509,37 +631,94 @@ function renderMessages() {
         return;
     }
 
-    let html = '';
-    let lastDay = null;
+    messagesEl.innerHTML = messagesHtml(messages, null);
+    renderPinnedBar();
+}
 
-    messages.forEach((message) => {
-        const day = dayLabel(message.created_at_iso);
-
-        if (day !== lastDay) {
-            html += `<div class="chat-day-divider">${escapeHtml(day)}</div>`;
-            lastDay = day;
-        }
-
-        html += bubbleHtml(message);
-    });
-
-    // A full innerHTML replace (simplest correct approach given messages can
-    // be inserted/edited/removed anywhere, not just appended) would otherwise
-    // reset scrollTop to 0 on every render — including ones triggered by
-    // something as minor as someone else reacting to a message far above the
-    // viewport. Preserve the reader's distance from the bottom instead of
-    // just snapping to bottom-or-nothing.
-    const wasAtBottom = isScrolledToBottom();
-    const distanceFromBottom = messagesEl.scrollHeight - messagesEl.scrollTop;
-
-    messagesEl.innerHTML = html;
-
-    if (wasAtBottom) {
+function appendMessageDOM(message) {
+    // The caller (ingestMessage) has already pushed `message` onto the
+    // array before calling this, so `messages.length` is never 0 here —
+    // length === 1 is the "conversation was empty a moment ago" case, and
+    // the DOM still shows the emptyState() placeholder from renderMessageList(),
+    // not an empty container. A plain append would land the new bubble
+    // *after* that stale placeholder instead of replacing it.
+    if (messages.length <= 1) {
+        renderMessageList();
         scrollToBottom();
-    } else {
-        messagesEl.scrollTop = messagesEl.scrollHeight - distanceFromBottom;
+
+        return;
     }
 
+    // The message immediately before this one in the full timeline is
+    // whichever one is currently last in the array *before* the caller
+    // pushed this one on — i.e. messages[length - 2].
+    const previous = messages.length >= 2 ? messages[messages.length - 2] : null;
+    messagesEl.insertAdjacentHTML('beforeend', messagesHtml([message], previous));
+    renderPinnedBar();
+}
+
+function patchMessageDOM(message, groupedOverride = null) {
+    const row = messagesEl.querySelector(`[data-message-id="${message.id}"]`);
+
+    if (!row) {
+        return;
+    }
+
+    const grouped = groupedOverride ?? row.classList.contains('chat-bubble-row--grouped');
+    row.outerHTML = bubbleHtml(message, { grouped });
+    renderPinnedBar();
+}
+
+/** `following`/`followingIndex`: the message (if any) that now sits where the removed one used to be, in the already-spliced array. */
+function removeMessageDOM(messageId, following, followingIndex) {
+    messagesEl.querySelector(`[data-message-id="${messageId}"]`)?.remove();
+
+    // That message may have only been grouped (no repeated sender label)
+    // *because of* the one that just got removed — recompute against its
+    // new actual predecessor rather than leaving a stray hidden label.
+    if (following) {
+        const newPrevious = followingIndex > 0 ? messages[followingIndex - 1] : null;
+        patchMessageDOM(following, isGroupedWithPrevious(newPrevious, following));
+    }
+
+    if (!messages.length) {
+        messagesEl.innerHTML = emptyState(t('chat.empty_messages'));
+    }
+
+    renderPinnedBar();
+}
+
+/**
+ * Prepends an older page (oldest-first) above whatever's currently
+ * rendered, without moving the reader's eye — the classic "load more
+ * history" scroll-jump bug. Fix: measure scrollHeight before inserting,
+ * insert, then add exactly the height that was added back onto scrollTop
+ * (browsers don't do this for you; inserting content above the viewport
+ * leaves scrollTop numerically unchanged, which visually *is* the jump).
+ */
+function prependMessagesDOM(olderBatch) {
+    const firstCurrent = messages[olderBatch.length] ?? null; // after unshift, this is what was previously first
+    const lastOlder = olderBatch[olderBatch.length - 1];
+    const heightBefore = messagesEl.scrollHeight;
+
+    // A day boundary at the seam between the new batch and what's already
+    // rendered needs its own divider too — messagesHtml() only handles
+    // transitions *within* the list it's given, not against content that
+    // already exists in the DOM before it.
+    const seamNeedsDivider = firstCurrent && dayLabel(lastOlder?.created_at_iso) !== dayLabel(firstCurrent.created_at_iso);
+    const seamHtml = seamNeedsDivider ? `<div class="chat-day-divider">${escapeHtml(dayLabel(firstCurrent.created_at_iso))}</div>` : '';
+
+    messagesEl.insertAdjacentHTML('afterbegin', messagesHtml(olderBatch, null) + seamHtml);
+
+    // The previously-first message was rendered assuming it had no
+    // predecessor (grouped: false) — now that older history sits above it,
+    // that boundary needs re-evaluating against its real new neighbor
+    // (never grouped across a day divider, so skip it in that case).
+    if (firstCurrent && !seamNeedsDivider) {
+        patchMessageDOM(firstCurrent, isGroupedWithPrevious(lastOlder, firstCurrent));
+    }
+
+    messagesEl.scrollTop += messagesEl.scrollHeight - heightBefore;
     renderPinnedBar();
 }
 
@@ -561,15 +740,37 @@ function isScrolledToBottom() {
     return messagesEl.scrollHeight - messagesEl.scrollTop - messagesEl.clientHeight < 80;
 }
 
+function isNearTop() {
+    return messagesEl.scrollTop < 120;
+}
+
 function scrollToBottom() {
     messagesEl.scrollTop = messagesEl.scrollHeight;
     scrollBottomBtn.hidden = true;
+}
+
+let olderLoadInFlight = false;
+
+async function maybeLoadOlder() {
+    if (!activeConversation || olderLoadInFlight) {
+        return;
+    }
+
+    const cache = getCache(activeConversation.id);
+
+    if (!cache.hasMoreOlder || !isNearTop()) {
+        return;
+    }
+
+    await loadOlderMessages(activeConversation.id);
 }
 
 messagesEl?.addEventListener('scroll', () => {
     if (isScrolledToBottom()) {
         scrollBottomBtn.hidden = true;
     }
+
+    maybeLoadOlder();
 });
 
 scrollBottomBtn?.addEventListener('click', () => {
@@ -596,30 +797,124 @@ async function markRead(conversationId, messageId) {
 
 /*
 |--------------------------------------------------------------------------
-| Opening a conversation
+| Message history loading
+|--------------------------------------------------------------------------
+|
+| Opening a conversation never fires one big request. It fetches the
+| newest INITIAL_CHUNK_SIZE messages, renders them immediately, then keeps
+| quietly fetching a couple more chunks further back (sequentially — a
+| deliberate choice, not an oversight: awaiting each one before requesting
+| the next means there's no concurrent-request ordering to reason about at
+| all, which is worth far more here than shaving a few hundred ms off a
+| background prefetch). Scrolling near the top of the pane later triggers
+| the exact same "load one older chunk" path.
 |--------------------------------------------------------------------------
 */
 
+async function fetchMessagePage(conversationId, { beforeId } = {}) {
+    const { data } = await api.get(`/conversations/${conversationId}/messages`, {
+        params: { per_page: INITIAL_CHUNK_SIZE, before_id: beforeId },
+    });
+
+    // API returns newest-first; this module always works oldest-first.
+    return [...(data.data || [])].reverse().map(markMessageMine);
+}
+
+/** The one place that mutates a cache's message array in bulk (prepend) — everything else pushes/splices one at a time via ingestMessage/onMessageDeleted. */
+function prependToCache(cache, olderBatch) {
+    olderBatch.forEach((m) => {
+        if (!cache.ids.has(m.id)) {
+            cache.ids.add(m.id);
+        }
+    });
+
+    cache.messages.unshift(...olderBatch.filter((m, i) => olderBatch.findIndex((x) => x.id === m.id) === i));
+}
+
+async function loadOlderMessages(conversationId) {
+    const cache = getCache(conversationId);
+
+    if (!cache.hasMoreOlder || olderLoadInFlight) {
+        return;
+    }
+
+    olderLoadInFlight = true;
+
+    try {
+        const oldestId = cache.messages[0]?.id;
+        const batch = await fetchMessagePage(conversationId, { beforeId: oldestId });
+
+        if (batch.length < INITIAL_CHUNK_SIZE) {
+            cache.hasMoreOlder = false;
+        }
+
+        if (!batch.length) {
+            return;
+        }
+
+        prependToCache(cache, batch);
+
+        if (isActive(conversationId)) {
+            prependMessagesDOM(batch);
+        }
+    } catch {
+        // A failed "load more" isn't fatal — the user can just scroll/retry; no need for a disruptive toast.
+    } finally {
+        olderLoadInFlight = false;
+    }
+}
+
 async function loadMessages(conversationId) {
+    const cache = getCache(conversationId);
+
+    if (cache.messages.length) {
+        // Already have this conversation cached from earlier this session
+        // (and kept correct in the background via realtime events) — no
+        // need to hit the network again at all.
+        renderMessageList();
+        scrollToBottom();
+        markRead(conversationId, cache.messages[cache.messages.length - 1].id);
+        updateConversationSummary(conversationId, { unread_count: 0 });
+
+        return;
+    }
+
     messagesEl.innerHTML = `<div class="skeleton skeleton-row"></div>`;
 
     try {
-        const { data } = await api.get(`/conversations/${conversationId}/messages`, { params: { per_page: 50 } });
+        const firstChunk = await fetchMessagePage(conversationId);
 
-        messages = [...(data.data || [])].reverse().map(markMessageMine);
-        renderMessages();
-        scrollToBottom();
+        if (firstChunk.length < INITIAL_CHUNK_SIZE) {
+            cache.hasMoreOlder = false;
+        }
 
-        const last = messages[messages.length - 1];
+        prependToCache(cache, firstChunk);
+
+        // The very first paint happens the instant this first small chunk
+        // is in — the user is never waiting on the full prewarm below.
+        if (isActive(conversationId)) {
+            renderMessageList();
+            scrollToBottom();
+        }
+
+        const last = cache.messages[cache.messages.length - 1];
 
         if (last) {
             markRead(conversationId, last.id);
         }
 
         updateConversationSummary(conversationId, { unread_count: 0 });
+
+        // Sequential (awaited each time), not concurrent — see the module
+        // docblock above for why that's the deliberate choice here.
+        for (let i = 0; i < INITIAL_PREWARM_CHUNKS && cache.hasMoreOlder; i += 1) {
+            await loadOlderMessages(conversationId);
+        }
     } catch (error) {
-        messagesEl.innerHTML = emptyState(t('chat.messages_error'));
-        showToast(apiErrorMessage(error, t('chat.messages_error')), 'error');
+        if (isActive(conversationId)) {
+            messagesEl.innerHTML = emptyState(t('chat.messages_error'));
+            showToast(apiErrorMessage(error, t('chat.messages_error')), 'error');
+        }
     }
 }
 
@@ -660,6 +955,12 @@ async function openConversation(conversation) {
     }
 
     activeConversation = conversation;
+    setActiveConversationId(conversation.id);
+    // The module-level `messages` is an alias for this conversation's cache
+    // array — every render/patch function below reads/mutates through it,
+    // so re-pointing it here is the one place "switching conversations"
+    // actually happens for the message list.
+    messages = getCache(conversation.id).messages;
     shell.dataset.view = 'conversation';
 
     threadHeader.hidden = false;
@@ -700,6 +1001,10 @@ listEl?.addEventListener('click', (event) => {
 
 backBtn?.addEventListener('click', () => {
     shell.dataset.view = 'list';
+    // Mobile-only affordance (stacked single-pane view) — leaving the
+    // thread for the list means this conversation is no longer the one
+    // "on screen," so notification suppression for it should lift too.
+    setActiveConversationId(null);
 });
 
 document.querySelector('[data-chat-details-back]')?.addEventListener('click', () => {
@@ -1136,6 +1441,34 @@ function scrollToMessage(messageId) {
     window.setTimeout(() => row.classList.remove('chat-bubble-row--highlight'), 1600);
 }
 
+/**
+ * Same as scrollToMessage, but for a target that might sit further back
+ * than whatever's currently loaded (a search hit, or a notification click
+ * for a message from before the conversation was opened) — walks the same
+ * `before_id` cursor infinite-scroll already uses, one page at a time,
+ * until the row exists or there's genuinely nothing older left to fetch.
+ */
+async function scrollToMessageOrLoad(conversationId, messageId, attempt = 0) {
+    if (!isActive(conversationId)) {
+        return;
+    }
+
+    if (messagesEl.querySelector(`[data-message-id="${messageId}"]`)) {
+        scrollToMessage(messageId);
+
+        return;
+    }
+
+    const cache = getCache(conversationId);
+
+    if (!cache.hasMoreOlder || attempt >= 25) {
+        return;
+    }
+
+    await loadOlderMessages(conversationId);
+    await scrollToMessageOrLoad(conversationId, messageId, attempt + 1);
+}
+
 const QUICK_REACTIONS = ['👍', '❤️', '😂', '😮', '😢', '🙏'];
 
 async function toggleReaction(messageId, emoji) {
@@ -1149,7 +1482,7 @@ async function toggleReaction(messageId, emoji) {
 
         if (message) {
             message.reactions = data.data.reactions;
-            renderMessages();
+            patchMessageDOM(message);
         }
     } catch (error) {
         showToast(apiErrorMessage(error, t('common.error_generic')), 'error');
@@ -1256,8 +1589,11 @@ async function deleteMessage(message) {
         });
 
         if (confirmed) {
-            messages = messages.filter((m) => m.id !== message.id);
-            renderMessages();
+            // Reuses the exact same path the realtime broadcast drives —
+            // one source of truth for "a message was removed", and safe to
+            // run twice if that broadcast also arrives (onMessageDeleted
+            // no-ops once the id is already gone).
+            onMessageDeleted(activeConversation.id, { message_id: message.id });
         }
     } catch (error) {
         showToast(apiErrorMessage(error, t('common.error_generic')), 'error');
@@ -1277,7 +1613,7 @@ async function togglePin(message) {
 
         if (local) {
             local.is_pinned = data.data.is_pinned;
-            renderMessages();
+            patchMessageDOM(local);
         }
     } catch (error) {
         showToast(apiErrorMessage(error, t('common.error_generic')), 'error');
@@ -1419,7 +1755,7 @@ searchPanelResults?.addEventListener('click', async (event) => {
         await openConversation(conversation);
     }
 
-    window.setTimeout(() => scrollToMessage(messageId), 200);
+    scrollToMessageOrLoad(conversationId, messageId);
 });
 
 /*
@@ -1659,12 +1995,64 @@ searchInput?.addEventListener('input', () => {
 |--------------------------------------------------------------------------
 | Reconciliation on tab focus (catch up on anything missed while backgrounded)
 |--------------------------------------------------------------------------
+|
+| Deliberately NOT loadMessages() — its cache-hit branch does a full
+| renderMessageList() + scrollToBottom(), which would yank the reader back
+| to the bottom every time the tab regains focus even if they were reading
+| scrolled-up history. Fetching just the newest chunk and feeding it through
+| ingestMessage (the same dedup/scroll-if-at-bottom path realtime events
+| use) catches up on anything the socket missed while backgrounded without
+| touching scroll position for anyone not already at the bottom.
 */
+
+async function reconcileActiveConversation(conversationId) {
+    try {
+        const latest = await fetchMessagePage(conversationId);
+        latest.forEach((message) => ingestMessage(conversationId, message));
+    } catch {
+        // Best-effort catch-up only — realtime events cover the normal case.
+    }
+}
 
 document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible' && activeConversation) {
-        loadMessages(activeConversation.id);
+        reconcileActiveConversation(activeConversation.id);
     }
+});
+
+/*
+|--------------------------------------------------------------------------
+| Opening a specific conversation/message from outside the chat pane —
+| either a full page load (?message= query param, e.g. from a notification
+| click while on some other page) or, while already inside the chat app, a
+| same-page custom event so a notification click never forces a reload of
+| the page it's already sitting on (see notification-bell.js).
+|--------------------------------------------------------------------------
+*/
+
+async function openConversationById(conversationId, messageId) {
+    let conversation = conversations.find((c) => c.id === conversationId);
+
+    if (!conversation) {
+        // Could be a conversation that started after this page's list was
+        // loaded (e.g. someone's very first message to you) — refresh once.
+        await loadConversations();
+        conversation = conversations.find((c) => c.id === conversationId);
+    }
+
+    if (!conversation) {
+        return;
+    }
+
+    await openConversation(conversation);
+
+    if (messageId) {
+        scrollToMessageOrLoad(conversationId, messageId);
+    }
+}
+
+document.addEventListener('chat:open-conversation', (event) => {
+    openConversationById(event.detail.conversationId, event.detail.messageId);
 });
 
 /*
@@ -1681,12 +2069,17 @@ document.addEventListener('visibilitychange', () => {
     await loadConversations();
 
     const match = window.location.pathname.match(/\/chat\/(\d+)/);
+    const messageParam = new URLSearchParams(window.location.search).get('message');
 
     if (match) {
         const conversation = conversations.find((c) => String(c.id) === match[1]);
 
         if (conversation) {
-            openConversation(conversation);
+            await openConversation(conversation);
+
+            if (messageParam) {
+                scrollToMessageOrLoad(conversation.id, Number(messageParam));
+            }
         }
     }
 })();

@@ -151,6 +151,67 @@ test('marking the newest message read also marks every earlier message in the co
     Event::assertDispatchedTimes(MessageRead::class, 1);
 });
 
+test('before_id pages through history as a stable cursor, oldest-safe and gap-free', function () {
+    $userA = userWithRole(Role::USER);
+    $userB = userWithRole(Role::USER);
+    $conversationId = startPrivateConversation($userA, $userB);
+
+    $ids = [];
+
+    foreach (range(1, 25) as $i) {
+        $ids[] = $this->actingAs($userA, 'sanctum')
+            ->postJson("/api/conversations/{$conversationId}/messages", ['body' => "message {$i}"])
+            ->json('data.id');
+    }
+
+    // Initial load: newest 10.
+    $first = $this->actingAs($userB, 'sanctum')
+        ->getJson("/api/conversations/{$conversationId}/messages?per_page=10")
+        ->assertOk();
+    $firstIds = collect($first->json('data'))->pluck('id')->all();
+    expect($firstIds)->toBe(array_reverse(array_slice($ids, 15, 10)));
+
+    // Page back further using the oldest id seen so far as the cursor.
+    $oldestSoFar = min($firstIds);
+    $second = $this->actingAs($userB, 'sanctum')
+        ->getJson("/api/conversations/{$conversationId}/messages?per_page=10&before_id={$oldestSoFar}")
+        ->assertOk();
+    $secondIds = collect($second->json('data'))->pluck('id')->all();
+    expect($secondIds)->toBe(array_reverse(array_slice($ids, 5, 10)));
+
+    // No overlap, no gap between the two pages.
+    expect(array_intersect($firstIds, $secondIds))->toBeEmpty();
+    expect(min($firstIds) - max($secondIds))->toBe(1);
+});
+
+test('paging into older history does not move last_read_message_id backwards', function () {
+    $userA = userWithRole(Role::USER);
+    $userB = userWithRole(Role::USER);
+    $conversationId = startPrivateConversation($userA, $userB);
+
+    foreach (range(1, 15) as $i) {
+        $this->actingAs($userA, 'sanctum')->postJson("/api/conversations/{$conversationId}/messages", ['body' => "m{$i}"]);
+    }
+
+    // userB loads the newest page (marks the newest message read)...
+    $newest = $this->actingAs($userB, 'sanctum')
+        ->getJson("/api/conversations/{$conversationId}/messages?per_page=10")
+        ->json('data');
+    $newestId = collect($newest)->pluck('id')->max();
+
+    // ...then scrolls up into older history.
+    $oldestSoFar = collect($newest)->pluck('id')->min();
+    $this->actingAs($userB, 'sanctum')
+        ->getJson("/api/conversations/{$conversationId}/messages?per_page=10&before_id={$oldestSoFar}")
+        ->assertOk();
+
+    $pivot = \App\Domain\Chat\Models\ConversationUser::where('conversation_id', $conversationId)
+        ->where('user_id', $userB->id)
+        ->first();
+
+    expect($pivot->last_read_message_id)->toBe($newestId);
+});
+
 test('any member can pin and unpin a message', function () {
     $userA = userWithRole(Role::USER);
     $userB = userWithRole(Role::USER);
@@ -272,6 +333,22 @@ test('a muted conversation suppresses regular message notifications', function (
     $this->actingAs($userA, 'sanctum')->postJson("/api/conversations/{$conversationId}/messages", ['body' => 'quiet please']);
 
     expect($userB->notifications()->count())->toBe(0);
+});
+
+test('a regular message notification carries the message id, so a notification click can scroll straight to it', function () {
+    $userA = userWithRole(Role::USER);
+    $userB = userWithRole(Role::USER);
+    $conversationId = startPrivateConversation($userA, $userB);
+
+    $response = $this->actingAs($userA, 'sanctum')
+        ->postJson("/api/conversations/{$conversationId}/messages", ['body' => 'hello there'])
+        ->assertCreated();
+
+    $notification = $userB->notifications()->first();
+
+    expect($notification->data['type'])->toBe('message')
+        ->and($notification->data['message_id'])->toBe($response->json('data.id'))
+        ->and($notification->data['conversation_id'])->toBe($conversationId);
 });
 
 test('sending a message broadcasts MessageSent', function () {

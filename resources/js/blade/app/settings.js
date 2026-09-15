@@ -381,7 +381,7 @@ function wireLocalization() {
 |--------------------------------------------------------------------------
 */
 
-const NOTIFICATION_PREF_KEYS = ['database', 'browser', 'message', 'system'];
+const NOTIFICATION_PREF_KEYS = ['database', 'browser', 'sound', 'message', 'system'];
 
 function notificationPrefCheckbox(key, prefs) {
     const enabled = prefs?.[key] !== false;

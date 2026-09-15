@@ -1,7 +1,5 @@
 @extends('blade.layouts.authenticated')
 
-@php($wide = true)
-
 @section('title', __('ui.settings.title'))
 
 @section('content')

@@ -61,6 +61,8 @@ export function notificationItemHtml(notification) {
             class="notif-item ${unread ? 'notif-item--unread' : ''} notif-item--${notification.type}"
             data-notif-id="${notification.id}"
             data-notif-url="${escapeHtml(notification.action_url || '')}"
+            ${notification.data?.conversation_id ? `data-notif-conversation-id="${notification.data.conversation_id}"` : ''}
+            ${notification.data?.message_id ? `data-notif-message-id="${notification.data.message_id}"` : ''}
         >
             <span class="notif-item__icon" aria-hidden="true">${renderer.icon}</span>
             <span class="notif-item__body">

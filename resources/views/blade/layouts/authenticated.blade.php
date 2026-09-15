@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="app-shell-html">
 
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -31,34 +31,41 @@
 
 <body data-app-version="{{ collect(require base_path('resources/data/changelog.php'))->first()['version'] ?? '' }}">
 
-    <div class="site-layout">
+    {{--
+        A real fixed-viewport application shell: <html>/<body> never
+        scroll (app-shell-html, set above), so every scrollable region
+        (sidebar, main content, and — on the chat page — each of its three
+        panes) manages its own scroll independently instead of one giant
+        page-level scrollbar growing with whatever the current page holds.
+    --}}
+    <div class="app-shell">
 
         {{-- =====================================================
         HEADER
         ===================================================== --}}
         @include('blade.sections.header')
 
-
-        {{-- =====================================================
-        SHELL (sidebar + content)
-        ===================================================== --}}
-        <div class="app-shell">
+        <div class="app-shell__body">
 
             <aside class="app-sidebar">
                 @include('blade.sections.sidebar')
             </aside>
 
-            <main class="app-content">
+            <main class="app-main" @if($fullBleed ?? false) data-full-bleed @endif>
 
-                <div @class(['app-content__inner', 'app-content__inner--wide' => $wide ?? false])>
+                <div @class([
+                    'app-main__inner',
+                    'app-main__inner--narrow' => $narrow ?? false,
+                    'app-main__inner--full-bleed' => $fullBleed ?? false,
+                ])>
 
-                    {{-- BREADCRUMBS --}}
-                    @include('blade.sections.breadcrumbs')
+                    @unless ($fullBleed ?? false)
+                        {{-- BREADCRUMBS --}}
+                        @include('blade.sections.breadcrumbs')
+                    @endunless
 
-
-                    {{-- NOTIFICATIONS --}}
+                    {{-- NOTIFICATIONS (toasts are position:fixed — safe even full-bleed) --}}
                     @include('blade.sections.notifications')
-
 
                     {{-- CURRENT PAGE --}}
                     @yield('content')

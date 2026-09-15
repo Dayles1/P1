@@ -101,7 +101,7 @@ test('the type filter only returns notifications of that type', function () {
     [$token] = createUserSession($user);
 
     $user->notify(new SystemNotification('Sys', 'Body'));
-    $user->notify(new MessageNotification(1, 'General', 'Alex', 'hello'));
+    $user->notify(new MessageNotification(1, 1, 'General', 'Alex', 'hello'));
 
     $response = $this->withHeaders(['Authorization' => "Bearer {$token}"])
         ->getJson('/api/notifications?type=message')
@@ -114,4 +114,48 @@ test('the type filter only returns notifications of that type', function () {
 
 test('a guest cannot access notifications', function () {
     $this->getJson('/api/notifications')->assertUnauthorized();
+});
+
+test('notifications that persist to the database also broadcast in realtime', function () {
+    $user = User::factory()->create();
+    $timezone = timezoneRow('UTC');
+    $user->settings()->create(['timezone_id' => $timezone->id]);
+
+    expect((new SystemNotification('Maintenance', 'Body'))->via($user))->toBe(['database', 'broadcast']);
+});
+
+test('a disabled preference also skips the broadcast channel, not just the database one', function () {
+    $user = User::factory()->create();
+    $timezone = timezoneRow('UTC');
+    $user->settings()->create(['timezone_id' => $timezone->id, 'meta' => ['notifications' => ['system' => false]]]);
+
+    expect((new SystemNotification('Maintenance', 'Body'))->via($user))->toBe([]);
+});
+
+test('mentions always broadcast too, regardless of preferences', function () {
+    $user = User::factory()->create();
+    $timezone = timezoneRow('UTC');
+    $user->settings()->create(['timezone_id' => $timezone->id, 'meta' => ['notifications' => ['database' => false]]]);
+
+    $notification = new MentionNotification(1, 1, 'Team chat', 'Alex', 'hey');
+
+    expect($notification->via($user))->toBe(['database', 'broadcast']);
+});
+
+test('users broadcast notifications on the already-authorized App.Models.User channel', function () {
+    $user = User::factory()->create();
+
+    expect($user->receivesBroadcastNotificationsOn())->toBe("App.Models.User.{$user->id}");
+});
+
+test('the broadcast payload carries the type via broadcastType, not a colliding data key', function () {
+    $user = User::factory()->create();
+    $notification = new MessageNotification(5, 9, 'General', 'Alex', 'hi there');
+
+    $broadcastData = $notification->toBroadcast($user)->data;
+
+    expect($broadcastData)->not->toHaveKey('type')
+        ->and($broadcastData['conversation_id'])->toBe(5)
+        ->and($broadcastData['message_id'])->toBe(9)
+        ->and($notification->broadcastType())->toBe('message');
 });
