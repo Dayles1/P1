@@ -112,7 +112,7 @@
                 <x-blade.u-i.dropdown align="right">
                     <x-slot:trigger>
                         <span class="avatar avatar--sm" data-user-avatar>
-                            <span class="avatar__initials" data-user-initials aria-hidden="true">--</span>
+                            <span class="avatar__initials" aria-hidden="true">--</span>
                         </span>
                     </x-slot:trigger>
 

@@ -205,8 +205,10 @@ async function initHeaderAuthState() {
         el.textContent = user.name;
     });
 
-    document.querySelectorAll('[data-user-initials]').forEach((el) => {
-        el.textContent = initials(user.name);
+    document.querySelectorAll('[data-user-avatar]').forEach((el) => {
+        el.innerHTML = user.avatar?.url
+            ? `<img class="avatar__image" src="${user.avatar.url}" alt="">`
+            : `<span class="avatar__initials" aria-hidden="true">${initials(user.name)}</span>`;
     });
 
     document.querySelectorAll('[data-requires-role]').forEach((el) => {
