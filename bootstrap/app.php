@@ -4,6 +4,7 @@ use App\Http\Middleware\EnsureUserHasRole;
 use App\Http\Middleware\EnsureUserIsNotBanned;
 use App\Http\Middleware\LogApiRequest;
 use App\Http\Middleware\SetLocale;
+use App\Http\Middleware\TouchLastSeen;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -16,6 +17,15 @@ return Application::configure(basePath: dirname(__DIR__))
         api: __DIR__.'/../routes/api.php',
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
+    )
+    // Registered separately (rather than via withRouting's `channels:`
+    // param) so /broadcasting/auth uses the same bearer-token guard as
+    // every other API route — this app has no server session, so the
+    // default `web` guard Broadcast::routes() would otherwise use could
+    // never authorize a private/presence channel subscription.
+    ->withBroadcasting(
+        __DIR__.'/../routes/channels.php',
+        ['middleware' => ['auth.api']],
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->web(append: [
@@ -38,6 +48,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->group('auth.api', [
             'auth:sanctum',
             EnsureUserIsNotBanned::class,
+            TouchLastSeen::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
