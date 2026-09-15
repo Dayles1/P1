@@ -15,10 +15,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::policy(UserSession::class, UserSessionPolicy::class);
 
         Password::defaults(function () {
-            return Password::min(8)
-                ->mixedCase()
-                ->letters()
-                ->numbers();
+            return Password::min(8);
+                // ->mixedCase()
+                // ->letters();
+                // ->numbers();
             // ->symbols()
             // ->uncompromised();
         });
