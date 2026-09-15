@@ -1,6 +1,7 @@
 import { api } from '../axios';
 
 const TOKEN_KEY = 'auth_token';
+const HEADER_SNAPSHOT_KEY = 'header_snapshot';
 
 export function getToken() {
     return localStorage.getItem(TOKEN_KEY);
@@ -12,6 +13,46 @@ export function setToken(token) {
 
 export function clearToken() {
     localStorage.removeItem(TOKEN_KEY);
+}
+
+/**
+ * A tiny "who am I" snapshot (name + avatar URL) kept in sessionStorage so
+ * the header can paint the real avatar immediately on every new page load
+ * — before the /auth/me round-trip even starts — instead of showing a
+ * placeholder and popping in the photo a moment later on every navigation.
+ * Session-scoped (not localStorage) so it naturally can't leak across a
+ * different login in a different tab; still explicitly cleared on logout
+ * and whenever a fetch turns up no user, so a stale snapshot never outlives
+ * the session it belongs to.
+ */
+export function getHeaderSnapshot() {
+    try {
+        const raw = sessionStorage.getItem(HEADER_SNAPSHOT_KEY);
+
+        return raw ? JSON.parse(raw) : null;
+    } catch {
+        return null;
+    }
+}
+
+function saveHeaderSnapshot(user) {
+    try {
+        sessionStorage.setItem(HEADER_SNAPSHOT_KEY, JSON.stringify({
+            name: user.name,
+            avatarUrl: user.avatar?.url || null,
+        }));
+    } catch {
+        // Storage unavailable (private mode etc) — the header just won't
+        // have a snapshot to paint from on the next load, nothing breaks.
+    }
+}
+
+function clearHeaderSnapshot() {
+    try {
+        sessionStorage.removeItem(HEADER_SNAPSHOT_KEY);
+    } catch {
+        // Nothing to clean up if storage was never reachable.
+    }
 }
 
 /**
@@ -37,8 +78,18 @@ export async function fetchCurrentUser() {
     currentUserPromise ??= api
         .get('/auth/me')
         .then(({ data }) => data?.data?.user ?? null)
+        .then((user) => {
+            if (user) {
+                saveHeaderSnapshot(user);
+            } else {
+                clearHeaderSnapshot();
+            }
+
+            return user;
+        })
         .catch(() => {
             clearToken();
+            clearHeaderSnapshot();
 
             return null;
         })
@@ -76,5 +127,6 @@ export async function logout() {
         // ignore — we clear client state regardless
     } finally {
         clearToken();
+        clearHeaderSnapshot();
     }
 }

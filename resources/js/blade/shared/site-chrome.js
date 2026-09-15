@@ -1,5 +1,5 @@
 import { api } from '../axios';
-import { fetchCurrentUser, hasRole, initials, logout } from './auth-state';
+import { fetchCurrentUser, getHeaderSnapshot, hasRole, initials, logout } from './auth-state';
 import { initLocalePicker } from './i18n';
 import { initDevPanel } from './dev-panel';
 import { initNotificationBell } from './notification-bell';
@@ -183,6 +183,18 @@ function initLogout() {
 |
 */
 
+function paintUserHeader(name, avatarUrl) {
+    document.querySelectorAll('[data-user-name]').forEach((el) => {
+        el.textContent = name;
+    });
+
+    document.querySelectorAll('[data-user-avatar]').forEach((el) => {
+        el.innerHTML = avatarUrl
+            ? `<img class="avatar__image" src="${avatarUrl}" alt="">`
+            : `<span class="avatar__initials" aria-hidden="true">${initials(name)}</span>`;
+    });
+}
+
 async function initHeaderAuthState() {
     const guestEls = document.querySelectorAll('[data-auth-guest]');
     const userEls = document.querySelectorAll('[data-auth-user]');
@@ -191,25 +203,34 @@ async function initHeaderAuthState() {
         return null;
     }
 
+    // Paint immediately from last session's snapshot — before the /auth/me
+    // round-trip even starts — so the real photo is already there on every
+    // navigation instead of popping in a moment later each time. The real
+    // fetch below still runs and reconciles (or, rarely, rolls this back to
+    // the guest state if the token turned out to be no longer valid).
+    const snapshot = getHeaderSnapshot();
+    let paintedOptimistically = false;
+
+    if (snapshot) {
+        paintUserHeader(snapshot.name, snapshot.avatarUrl);
+        userEls.forEach((el) => el.removeAttribute('hidden'));
+        paintedOptimistically = true;
+    }
+
     const user = await fetchCurrentUser();
 
     if (!user) {
+        if (paintedOptimistically) {
+            userEls.forEach((el) => el.setAttribute('hidden', ''));
+        }
+
         guestEls.forEach((el) => el.removeAttribute('hidden'));
 
         return null;
     }
 
     userEls.forEach((el) => el.removeAttribute('hidden'));
-
-    document.querySelectorAll('[data-user-name]').forEach((el) => {
-        el.textContent = user.name;
-    });
-
-    document.querySelectorAll('[data-user-avatar]').forEach((el) => {
-        el.innerHTML = user.avatar?.url
-            ? `<img class="avatar__image" src="${user.avatar.url}" alt="">`
-            : `<span class="avatar__initials" aria-hidden="true">${initials(user.name)}</span>`;
-    });
+    paintUserHeader(user.name, user.avatar?.url || null);
 
     document.querySelectorAll('[data-requires-role]').forEach((el) => {
         const roles = el.dataset.requiresRole.split(',');
