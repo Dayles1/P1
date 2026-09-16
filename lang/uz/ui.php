@@ -133,6 +133,11 @@ return [
         'status_verified' => 'Email tasdiqlandi. Tizimga kiring.',
         'status_verified_already' => 'Email allaqachon tasdiqlangan. Tizimga kiring.',
         'status_verification_invalid' => 'Tasdiqlash havolasi notoʻgʻri yoki muddati oʻtgan.',
+        'code_invalid' => 'Kod notoʻgʻri.',
+        'code_expired' => 'Kod muddati tugagan. Yangisini soʻrang.',
+        'code_too_many_attempts' => 'Juda koʻp notoʻgʻri urinish. Yangi kod soʻrang.',
+        'resend_code' => 'Kodni qayta yuborish',
+        'resend_in' => ':seconds s dan keyin qayta yuborish',
     ],
 
     'confirm' => [
@@ -223,6 +228,11 @@ return [
         'general_hint' => 'Sana va vaqt siz uchun qanday koʻrsatiladi.',
         'user_policies' => 'Hisob siyosatlari',
         'user_policies_hint' => 'Har bir foydalanuvchiga oʻz hisobi bilan nima qilishga ruxsat berilgan.',
+
+        'login_security_title' => 'Kirish xavfsizligi',
+        'login_security_hint' => 'Parol bilan kirganda qoʻshimcha tekshiruv.',
+        'require_login_verification' => 'Har safar kirishda tasdiqlash kodini talab qilish',
+        'require_login_verification_hint' => 'Paroldan soʻng davom etishdan oldin elektron pochtangizga yuborilgan 6 xonali kodni ham kiritishingiz kerak boʻladi.',
 
         'localization_hint' => 'Ilova interfeysi tili.',
         'default_language' => 'Standart til',

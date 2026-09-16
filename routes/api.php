@@ -24,10 +24,14 @@ use App\Http\Controllers\Api\Setting\TimezoneController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')->group(function (): void {
-    Route::post('register', [AuthController::class, 'register']);
-    Route::post('login', [AuthController::class, 'login']);
-    Route::post('forgot-password', [AuthController::class, 'forgotPassword']);
-    Route::post('reset-password', [AuthController::class, 'resetPassword']);
+    Route::post('register', [AuthController::class, 'register'])->middleware('throttle:login');
+    Route::post('login', [AuthController::class, 'login'])->middleware('throttle:login');
+    Route::post('login/verify', [AuthController::class, 'verifyLoginCode'])->middleware('throttle:verification-code');
+    Route::post('login/code', [AuthController::class, 'requestLoginCode'])->middleware('throttle:verification-code');
+    Route::post('login/code/verify', [AuthController::class, 'verifyLoginCodeLogin'])->middleware('throttle:verification-code');
+    Route::post('login/code/resend', [AuthController::class, 'resendLoginCode'])->middleware('throttle:verification-code');
+    Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->middleware('throttle:login');
+    Route::post('reset-password', [AuthController::class, 'resetPassword'])->middleware('throttle:login');
 
     Route::get('email/verify/{id}/{hash}', [AuthController::class, 'verifyEmail'])
         ->middleware(['signed', 'throttle:6,1'])
@@ -35,6 +39,14 @@ Route::prefix('auth')->group(function (): void {
 
     Route::post('email/verification-notification', [AuthController::class, 'resendVerification'])
         ->middleware('throttle:6,1');
+
+    // Not behind auth.api: a freshly registered user has no bearer token
+    // yet, so this identifies the pending code via an opaque
+    // challenge_token instead (same idiom as login/code/verify). Still
+    // works for an already-authenticated caller, who is resolved from
+    // the bearer token as usual and never needs a challenge_token.
+    Route::post('email/verify-code', [AuthController::class, 'verifyEmailCode'])
+        ->middleware('throttle:verification-code');
 
     Route::middleware('auth.api')->group(function (): void {
         Route::post('logout', [AuthController::class, 'logout']);

@@ -16,6 +16,9 @@ return [
         'email_not_found' => 'We could not find an account with that email address.',
         'invalid_password' => 'The password you entered is incorrect.',
         'password_confirmed' => 'Your password has been confirmed.',
+        'verification_required' => 'Enter the verification code we sent to your email.',
+        'code_sent' => 'If that email exists, a sign-in code has been sent.',
+        'email_verified' => 'Your email has been verified.',
     ],
 
     'profile' => [

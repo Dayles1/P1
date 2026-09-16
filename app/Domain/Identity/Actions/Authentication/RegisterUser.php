@@ -39,8 +39,10 @@ class RegisterUser
 
         $user = $this->createUser->handle($data);
 
+        $emailChallengeToken = null;
+
         if ($this->settings->boolean('auth.email_verification_required')) {
-            $user->sendEmailVerificationNotification();
+            $emailChallengeToken = $user->sendEmailVerificationCode();
         } else {
             $user->markEmailAsVerified();
         }
@@ -59,6 +61,7 @@ class RegisterUser
 
         return [
             'user' => $user,
+            'email_challenge_token' => $emailChallengeToken,
         ];
     }
 }

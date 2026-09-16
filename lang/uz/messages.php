@@ -16,6 +16,9 @@ return [
         'email_not_found' => 'Bunday email bilan hisob topilmadi.',
         'invalid_password' => 'Kiritilgan parol notoʻgʻri.',
         'password_confirmed' => 'Parol tasdiqlandi.',
+        'verification_required' => 'Emailingizga yuborilgan tasdiqlash kodini kiriting.',
+        'code_sent' => 'Agar bunday email mavjud boʻlsa, unga kirish kodi yuborildi.',
+        'email_verified' => 'Emailingiz tasdiqlandi.',
     ],
 
     'profile' => [

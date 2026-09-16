@@ -133,6 +133,11 @@ return [
         'status_verified' => 'Your email has been verified. Please sign in.',
         'status_verified_already' => 'Your email was already verified. Please sign in.',
         'status_verification_invalid' => 'This verification link is invalid or has expired.',
+        'code_invalid' => 'That code is incorrect.',
+        'code_expired' => 'That code has expired. Request a new one.',
+        'code_too_many_attempts' => 'Too many incorrect attempts. Request a new code.',
+        'resend_code' => 'Resend code',
+        'resend_in' => 'Resend in :seconds s',
     ],
 
     'confirm' => [
@@ -223,6 +228,11 @@ return [
         'general_hint' => 'How dates and times are displayed for you.',
         'user_policies' => 'Account policies',
         'user_policies_hint' => 'What every user is allowed to do with their own account.',
+
+        'login_security_title' => 'Login security',
+        'login_security_hint' => 'An extra check when you sign in with your password.',
+        'require_login_verification' => 'Require a verification code every time you sign in',
+        'require_login_verification_hint' => 'After your password, you will also need to enter a 6-digit code sent to your email before you can continue.',
 
         'localization_hint' => 'The language used across the app.',
         'default_language' => 'Default language',

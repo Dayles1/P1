@@ -58,6 +58,11 @@ class UpdateUserSettingRequest extends FormRequest
                 'nullable',
                 'array',
             ],
+
+            'require_login_verification' => [
+                'sometimes',
+                'boolean',
+            ],
         ];
     }
 }

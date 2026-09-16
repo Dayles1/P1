@@ -29,6 +29,15 @@ export function initSessionDetailView({
     revokeEndpoint,
     showOwner = false,
 }) {
+    // Turbo Drive can restore a page from its own cache using the exact
+    // previous DOM nodes (not fresh ones) on a back/forward-style
+    // navigation, so listeners bound on a prior call to this function can
+    // still be attached when it runs again. The AbortController lets the
+    // caller remove this call's listeners in one shot (via the returned
+    // cleanup function) before wiring up a fresh set.
+    const controller = new AbortController();
+    const { signal } = controller;
+
     const summaryEl = document.querySelector('[data-session-summary]');
     const revokeBtn = document.querySelector('[data-revoke-session]');
     const rowsEl = document.querySelector('[data-request-log-rows]');
@@ -142,38 +151,48 @@ export function initSessionDetailView({
         }
     }
 
-    rowsEl?.addEventListener('click', (event) => {
-        const row = event.target.closest('[data-log-id]');
+    rowsEl?.addEventListener(
+        'click',
+        (event) => {
+            const row = event.target.closest('[data-log-id]');
 
-        if (row) {
-            openLogDetail(row.dataset.logId);
-        }
-    });
-
-    revokeBtn?.addEventListener('click', async () => {
-        try {
-            const confirmed = await confirmDialog({
-                title: t('confirm.revoke_session_title'),
-                message: t('confirm.revoke_session_message'),
-                confirmText: t('confirm.revoke_session_confirm'),
-                cancelText: t('common.cancel'),
-                danger: true,
-                onConfirm: () => api.delete(revokeEndpoint),
-            });
-
-            if (!confirmed) {
-                return;
+            if (row) {
+                openLogDetail(row.dataset.logId);
             }
+        },
+        { signal },
+    );
 
-            showToast(t('sessions.revoked'));
-            loadSession();
-        } catch (error) {
-            showToast(apiErrorMessage(error, t('sessions.error')), 'error');
-        }
-    });
+    revokeBtn?.addEventListener(
+        'click',
+        async () => {
+            try {
+                const confirmed = await confirmDialog({
+                    title: t('confirm.revoke_session_title'),
+                    message: t('confirm.revoke_session_message'),
+                    confirmText: t('confirm.revoke_session_confirm'),
+                    cancelText: t('common.cancel'),
+                    danger: true,
+                    onConfirm: () => api.delete(revokeEndpoint),
+                });
+
+                if (!confirmed) {
+                    return;
+                }
+
+                showToast(t('sessions.revoked'));
+                loadSession();
+            } catch (error) {
+                showToast(apiErrorMessage(error, t('sessions.error')), 'error');
+            }
+        },
+        { signal },
+    );
 
     if (sessionId) {
         loadSession();
         loadLogs();
     }
+
+    return () => controller.abort();
 }

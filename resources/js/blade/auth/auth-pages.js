@@ -1,4 +1,11 @@
 import axios from 'axios';
+import {
+    focusCodeInput,
+    getCodeValue,
+    initCodeInput,
+    resetCodeInput,
+    startResendCountdown,
+} from '../shared/code-input';
 import { t } from '../shared/i18n';
 
 /**
@@ -61,6 +68,17 @@ const state = {
     isTransitioning: false,
 
     transitionTimer: null,
+
+    // The current pending code-login challenge (2FA-after-password on the
+    // `login` page, or fully passwordless on `login-code`) — never the
+    // code itself, just the opaque token identifying which pending
+    // attempt a submitted code belongs to.
+    loginChallengeToken: '',
+
+    // Same idiom, for the `verify-email` code step — set after register
+    // (or after resending the verification email) since that visitor has
+    // no bearer token yet to identify themselves with instead.
+    emailChallengeToken: '',
 };
 
 /*
@@ -71,6 +89,8 @@ const state = {
 
 const AUTH_ROUTES = {
     login: '/login',
+
+    'login-code': '/login/code',
 
     register: '/register',
 
@@ -92,6 +112,14 @@ const AUTH_ROUTES = {
 const API = {
     login: '/api/auth/login',
 
+    'login-verify': '/api/auth/login/verify',
+
+    'login-code-request': '/api/auth/login/code',
+
+    'login-code-verify': '/api/auth/login/code/verify',
+
+    'login-code-resend': '/api/auth/login/code/resend',
+
     register: '/api/auth/register',
 
     'forgot-password': '/api/auth/forgot-password',
@@ -99,6 +127,8 @@ const API = {
     'reset-password': '/api/auth/reset-password',
 
     'verification-notification': '/api/auth/email/verification-notification',
+
+    'verify-email-code': '/api/auth/email/verify-code',
 
     'confirm-password': '/api/auth/confirm-password',
 };
@@ -111,6 +141,7 @@ const API = {
 
 const PAGE_ORDER = [
     'login',
+    'login-code',
     'register',
     'forgot-password',
     'reset-password',
@@ -175,6 +206,10 @@ function getDirection(from, to) {
 
 function getPageFromLocation() {
     const path = window.location.pathname;
+
+    if (path === '/login/code') {
+        return 'login-code';
+    }
 
     if (path === '/register') {
         return 'register';
@@ -728,6 +763,50 @@ async function apiRequest(method, url, data = {}) {
 |--------------------------------------------------------------------------
 */
 
+function redirectAfterLogin() {
+    const params = new URLSearchParams(window.location.search);
+
+    // No explicit `?redirect=` (or it isn't a safe local path) means
+    // there's no specifically required flow to send the user back to —
+    // land on the dashboard, the app's actual home, not the public
+    // marketing page or (see sanitizeRedirect) back on a guest page.
+    window.location.href = sanitizeRedirect(
+        params.get('redirect'),
+        '/dashboard',
+    );
+}
+
+function storeTokenAndRedirect(response) {
+    const token =
+        response.data?.data?.token || response.data?.data?.access_token;
+
+    if (token) {
+        localStorage.setItem('auth_token', token);
+    }
+
+    redirectAfterLogin();
+}
+
+/** Shows one `[data-auth-step]` within a page and hides its siblings. */
+function showStep(page, step) {
+    getPageElement(page)
+        ?.querySelectorAll('[data-auth-step]')
+        .forEach((element) => {
+            element.hidden = element.dataset.authStep !== step;
+        });
+
+    if (step !== 'password' && step !== 'request') {
+        const container = getPageElement(page)?.querySelector(
+            '[data-auth-step="verify"] [data-code-input]',
+        );
+
+        if (container) {
+            resetCodeInput(container);
+            focusCodeInput(container);
+        }
+    }
+}
+
 async function handleLogin(form) {
     clearFormErrors(form);
 
@@ -740,26 +819,141 @@ async function handleLogin(form) {
 
         const response = await apiRequest('POST', API.login, data);
 
-        const token =
-            response.data?.data?.token || response.data?.data?.access_token;
+        if (response.data?.data?.requires_verification) {
+            state.loginChallengeToken = response.data.data.challenge_token;
+            showStep('login', 'verify');
+            startCodeResendCountdown('login');
 
-        if (token) {
-            localStorage.setItem('auth_token', token);
+            return;
         }
 
-        const params = new URLSearchParams(window.location.search);
-
-        const redirect = params.get('redirect');
-
-        // No explicit `?redirect=` (or it isn't a local path) means there's
-        // no specifically required flow to send the user back to — land on
-        // the dashboard, the app's actual home, not the public marketing page.
-        window.location.href =
-            redirect && redirect.startsWith('/') ? redirect : '/dashboard';
+        storeTokenAndRedirect(response);
     } catch (error) {
         showFormErrors(form, getApiErrors(error));
     } finally {
         setFormLoading(form, false);
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| CODE-BASED LOGIN (2FA-after-password + fully passwordless)
+|--------------------------------------------------------------------------
+*/
+
+function codeVerifyErrorMessage(error) {
+    const errorCode = error?.response?.data?.data?.error_code;
+    const key =
+        {
+            invalid_code: 'auth.code_invalid',
+            code_expired: 'auth.code_expired',
+            too_many_attempts: 'auth.code_too_many_attempts',
+        }[errorCode] || null;
+
+    return key ? { code: [t(key)] } : getApiErrors(error);
+}
+
+async function handleLoginVerifyCode(form) {
+    clearFormErrors(form);
+    setFormLoading(form, true);
+
+    try {
+        const response = await apiRequest('POST', API['login-verify'], {
+            challenge_token: state.loginChallengeToken,
+            code: getCodeValue(form.querySelector('[data-code-input]')),
+        });
+
+        storeTokenAndRedirect(response);
+    } catch (error) {
+        showFormErrors(form, codeVerifyErrorMessage(error));
+        resetCodeInput(form.querySelector('[data-code-input]'));
+    } finally {
+        setFormLoading(form, false);
+    }
+}
+
+async function handleLoginCodeRequest(form) {
+    clearFormErrors(form);
+    setFormLoading(form, true);
+
+    try {
+        const data = serializeForm(form);
+        const response = await apiRequest(
+            'POST',
+            API['login-code-request'],
+            data,
+        );
+
+        state.loginChallengeToken = response.data?.data?.challenge_token || '';
+        showStep('login-code', 'verify');
+        startCodeResendCountdown('login-code');
+    } catch (error) {
+        showFormErrors(form, getApiErrors(error));
+    } finally {
+        setFormLoading(form, false);
+    }
+}
+
+async function handleLoginCodeVerify(form) {
+    clearFormErrors(form);
+    setFormLoading(form, true);
+
+    try {
+        const response = await apiRequest('POST', API['login-code-verify'], {
+            challenge_token: state.loginChallengeToken,
+            code: getCodeValue(form.querySelector('[data-code-input]')),
+        });
+
+        storeTokenAndRedirect(response);
+    } catch (error) {
+        showFormErrors(form, codeVerifyErrorMessage(error));
+        resetCodeInput(form.querySelector('[data-code-input]'));
+    } finally {
+        setFormLoading(form, false);
+    }
+}
+
+/** Purpose is inferred from which page's verify step is currently visible. */
+function currentCodePurpose() {
+    return state.currentPage === 'login-code'
+        ? 'passwordless_login'
+        : 'login_2fa';
+}
+
+async function resendCurrentLoginCode(button) {
+    if (!state.loginChallengeToken || button.disabled) {
+        return;
+    }
+
+    try {
+        const { data } = await apiRequest('POST', API['login-code-resend'], {
+            challenge_token: state.loginChallengeToken,
+            purpose: currentCodePurpose(),
+        });
+
+        state.loginChallengeToken =
+            data?.data?.challenge_token || state.loginChallengeToken;
+        startResendCountdown(
+            button,
+            60,
+            (seconds) => t('auth.resend_in', { seconds }),
+            t('auth.resend_code'),
+        );
+    } catch {
+        // Non-critical — the button just stays enabled and the user can retry.
+    }
+}
+
+function startCodeResendCountdown(page) {
+    const button = getPageElement(page)?.querySelector('[data-resend-code]');
+
+    if (button) {
+        startResendCountdown(
+            button,
+            60,
+            (seconds) => t('auth.resend_in', { seconds }),
+            t('auth.resend_code'),
+        );
     }
 }
 
@@ -788,6 +982,9 @@ async function handleRegister(form) {
 
             return;
         }
+
+        state.emailChallengeToken =
+            response.data?.data?.email_challenge_token || '';
 
         navigate('verify-email');
     } catch (error) {
@@ -909,7 +1106,14 @@ async function handleVerificationNotification(form) {
     try {
         const data = serializeForm(form);
 
-        await apiRequest('POST', API['verification-notification'], data);
+        const response = await apiRequest(
+            'POST',
+            API['verification-notification'],
+            data,
+        );
+
+        state.emailChallengeToken =
+            response.data?.data?.email_challenge_token || '';
 
         let success = form.querySelector('.auth-form-success');
 
@@ -924,6 +1128,38 @@ async function handleVerificationNotification(form) {
         success.textContent = t('auth.verification_sent');
     } catch (error) {
         showFormErrors(form, getApiErrors(error));
+    } finally {
+        setFormLoading(form, false);
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| VERIFY EMAIL BY CODE (alternative to clicking the link)
+|--------------------------------------------------------------------------
+*/
+
+async function handleVerifyEmailCode(form) {
+    clearFormErrors(form);
+    setFormLoading(form, true);
+
+    try {
+        await apiRequest('POST', API['verify-email-code'], {
+            code: getCodeValue(form.querySelector('[data-code-input]')),
+            challenge_token: state.emailChallengeToken,
+        });
+
+        // An already-authenticated visitor (verifying from inside the app,
+        // e.g. after changing their email) has a session to go back to; a
+        // freshly registered one has no token yet, so send them to sign in
+        // — the login page already renders the `verified=1` banner for
+        // this (same one the emailed link's flow uses).
+        window.location.href = getAuthToken()
+            ? '/dashboard'
+            : '/login?verified=1';
+    } catch (error) {
+        showFormErrors(form, codeVerifyErrorMessage(error));
+        resetCodeInput(form.querySelector('[data-code-input]'));
     } finally {
         setFormLoading(form, false);
     }
@@ -958,6 +1194,18 @@ function setupForms() {
                 await handleLogin(form);
                 break;
 
+            case 'login-verify':
+                await handleLoginVerifyCode(form);
+                break;
+
+            case 'login-code-request':
+                await handleLoginCodeRequest(form);
+                break;
+
+            case 'login-code-verify':
+                await handleLoginCodeVerify(form);
+                break;
+
             case 'register':
                 await handleRegister(form);
                 break;
@@ -972,6 +1220,10 @@ function setupForms() {
 
             case 'verification-notification':
                 await handleVerificationNotification(form);
+                break;
+
+            case 'verify-email-code':
+                await handleVerifyEmailCode(form);
                 break;
 
             case 'confirm-password':
@@ -1019,6 +1271,38 @@ function setupPasswordToggles() {
         );
 
         button.setAttribute('aria-pressed', visible ? 'false' : 'true');
+    });
+}
+
+/*
+|--------------------------------------------------------------------------
+| Code-entry steps: back links, resend, auto-submit on 6th digit
+|--------------------------------------------------------------------------
+*/
+
+function setupCodeInputs() {
+    spa.querySelectorAll('[data-code-input]').forEach((container) => {
+        initCodeInput(container, () => {
+            container.closest('form')?.requestSubmit();
+        });
+    });
+}
+
+function setupStepControls() {
+    spa.addEventListener('click', (event) => {
+        if (event.target.closest('[data-back-to-password]')) {
+            showStep('login', 'password');
+        }
+
+        if (event.target.closest('[data-back-to-request]')) {
+            showStep('login-code', 'request');
+        }
+
+        const resend = event.target.closest('[data-resend-code]');
+
+        if (resend) {
+            resendCurrentLoginCode(resend);
+        }
     });
 }
 
@@ -1163,12 +1447,38 @@ function showQueryStatusBanners() {
 
 const GUEST_ONLY_PAGES = [
     'login',
+    'login-code',
     'register',
     'forgot-password',
     'reset-password',
 ];
 
 const AUTH_ONLY_PAGES = ['confirm-password'];
+
+/**
+ * Every guest-only page's actual URL (not just its page key) — a
+ * `?redirect=` value pointing back at one of these is never honored,
+ * otherwise a stale or crafted `redirect=/login` sends someone right
+ * back to the login screen immediately after successfully signing in.
+ * Combined with rejecting anything that isn't a same-origin path
+ * (`startsWith('/')`, and not `//` which browsers treat as protocol-
+ * relative), this is the fix for the "sent back to a guest page after
+ * login" bug.
+ */
+function sanitizeRedirect(path, fallback) {
+    if (!path || !path.startsWith('/') || path.startsWith('//')) {
+        return fallback;
+    }
+
+    const bare = path.split('?')[0].split('#')[0];
+    const guestUrls = GUEST_ONLY_PAGES.map((page) => getUrlForPage(page));
+
+    if (guestUrls.includes(bare)) {
+        return fallback;
+    }
+
+    return path;
+}
 
 async function guardAuthPage() {
     const page = getPageFromLocation();
@@ -1190,10 +1500,10 @@ async function guardAuthPage() {
 
         const params = new URLSearchParams(window.location.search);
 
-        const redirect = params.get('redirect');
-
-        window.location.href =
-            redirect && redirect.startsWith('/') ? redirect : '/profile';
+        window.location.href = sanitizeRedirect(
+            params.get('redirect'),
+            '/dashboard',
+        );
     } catch {
         localStorage.removeItem('auth_token');
     }
@@ -1215,6 +1525,10 @@ function init() {
     setupForms();
 
     setupPasswordToggles();
+
+    setupCodeInputs();
+
+    setupStepControls();
 
     showQueryStatusBanners();
 

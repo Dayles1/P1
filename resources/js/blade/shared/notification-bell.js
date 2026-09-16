@@ -1,4 +1,5 @@
 import { isConversationActive } from './active-context';
+import { pushNotification, setNotifications } from './app-state';
 import { getEcho } from './echo';
 import { t } from './i18n';
 import { notificationItemHtml } from './notification-renderers';
@@ -137,6 +138,7 @@ export function initNotificationBell(api, user) {
         updateBadge(unreadCount + 1);
         prependToDropdown(notification);
         maybeAlert(notification);
+        pushNotification(notification);
     }
 
     async function loadInitial() {
@@ -151,6 +153,7 @@ export function initNotificationBell(api, user) {
                 ? items.map(notificationItemHtml).join('')
                 : emptyState(t('notifications.empty'));
             updateBadge(countData.data.count);
+            setNotifications({ items, unreadCount: countData.data.count });
         } catch {
             // Silent — the bell just stays at its initial (empty) state until the dropdown is opened, which retries.
         }

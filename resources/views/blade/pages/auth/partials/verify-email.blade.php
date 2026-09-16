@@ -12,11 +12,29 @@
         </h1>
 
         <p>
-            Check your inbox and click the verification
-            link to activate your account.
+            We've sent a verification link and a 6-digit code to your email.
+            Click the link, or enter the code below — either one works.
         </p>
 
     </div>
+
+
+    <form
+        class="auth-form"
+        data-auth-form="verify-email-code"
+        novalidate
+    >
+
+        @include('blade.pages.auth.partials._code-input')
+
+        <span class="form-error" data-error-for="code" style="text-align:center;"></span>
+
+        <button type="submit" class="auth-button">
+            <span class="auth-button__text">Verify email</span>
+            <span class="auth-button__loader" aria-hidden="true"></span>
+        </button>
+
+    </form>
 
 
     <form

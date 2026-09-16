@@ -1,9 +1,9 @@
+import { setTheme } from './app-state';
 import { t } from './i18n';
 import { openModal } from './modal';
 import {
     THEMES,
     getStoredTheme,
-    setTheme,
     resolveAppliedTheme,
     watchSystemTheme,
 } from './theme';

@@ -531,3 +531,51 @@
         visibility: hidden !important;
     }
 }
+
+/* =========================================================
+   CODE INPUT (login 2FA / passwordless / email verification)
+   ========================================================= */
+
+.code-input {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.code-input__box {
+    width: 44px;
+    height: 52px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    border: 1px solid var(--auth-border);
+    border-radius: var(--auth-radius);
+    outline: none;
+    background: var(--auth-surface);
+    color: var(--auth-text);
+    box-shadow: var(--auth-shadow-sm);
+    transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.code-input__box:focus {
+    border-color: var(--auth-border-focus);
+    box-shadow: 0 0 0 4px var(--auth-primary-soft);
+}
+
+.code-input__box.is-invalid {
+    border-color: var(--auth-danger);
+}
+
+.auth-step-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--auth-text-secondary, inherit);
+    font-size: 13px;
+    cursor: pointer;
+}

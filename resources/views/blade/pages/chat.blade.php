@@ -2,6 +2,15 @@
 
 @section('title', __('ui.chat.title'))
 @php($fullBleed = true)
+@php($sidebarMode = 'compact')
+@php($secondarySidebar = 'conversations')
+
+@push('styles')
+    {{-- Chat holds live Echo subscriptions torn down on turbo:before-cache
+         (see chat.js) — never let Turbo instant-restore a cached snapshot
+         of this page with dead subscriptions still wired to its DOM. --}}
+    <meta name="turbo-cache-control" content="no-preview">
+@endpush
 
 @section('content')
 

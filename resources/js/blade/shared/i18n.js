@@ -52,8 +52,14 @@ export function t(key, params = {}) {
  * Persists the chosen locale (cookie, read by the backend's SetLocale
  * middleware on every subsequent request — including plain page loads,
  * which can't carry a custom header) and, for a signed-in user, saves it
- * to their account too so it follows them across devices. Reloads the page
- * so server-rendered text picks up the new language immediately.
+ * to their account too so it follows them across devices. Then revisits
+ * the current URL so server-rendered text picks up the new language
+ * immediately. Under Turbo Drive this is a soft revisit (`Turbo.visit`)
+ * rather than a hard `location.reload()` — the permanent header/sidebar
+ * and the Echo/Reverb connection are untouched, only the (non-permanent)
+ * content and the `window.__i18n` head script re-render in the new
+ * locale. Falls back to a hard reload if Turbo hasn't loaded for any
+ * reason (e.g. on a page outside the authenticated shell).
  */
 export async function setLocale(locale, { api } = {}) {
     writeLocaleCookie(locale);
@@ -67,7 +73,11 @@ export async function setLocale(locale, { api } = {}) {
         }
     }
 
-    window.location.reload();
+    if (window.Turbo) {
+        window.Turbo.visit(window.location.href, { action: 'replace' });
+    } else {
+        window.location.reload();
+    }
 }
 
 export function initLocalePicker(apiClient) {

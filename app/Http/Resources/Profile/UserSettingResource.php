@@ -22,6 +22,7 @@ class UserSettingResource extends JsonResource
             'date_format' => $this->date_format,
             'time_format' => $this->time_format,
             'meta' => $this->meta,
+            'require_login_verification' => (bool) $this->require_login_verification,
         ];
     }
 }

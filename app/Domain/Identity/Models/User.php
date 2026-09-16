@@ -2,7 +2,6 @@
 
 namespace App\Domain\Identity\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Domain\AccessControl\Models\Permission;
 use App\Domain\AccessControl\Models\Role;
 use App\Domain\Attachment\Models\Attachment;
@@ -10,8 +9,11 @@ use App\Domain\Audit\Traits\RecordsAudits;
 use App\Domain\Ban\Models\Ban;
 use App\Domain\Chat\Models\Conversation;
 use App\Domain\Chat\Models\ConversationUser;
+use App\Domain\Identity\Notifications\VerifyEmailWithCode;
+use App\Domain\Identity\Services\VerificationCodeService;
 use App\Domain\Organization\Models\Department;
 use Database\Factories\UserFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -25,7 +27,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<UserFactory> */
     use HasApiTokens, HasFactory, Notifiable, RecordsAudits, SoftDeletes;
@@ -127,7 +129,8 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 
-    public function settings()
+    /** @return HasOne<UserSetting, $this> */
+    public function settings(): HasOne
     {
         return $this->hasOne(UserSetting::class);
     }
@@ -142,6 +145,35 @@ class User extends Authenticatable
     public function receivesBroadcastNotificationsOn(): string
     {
         return 'App.Models.User.'.$this->getKey();
+    }
+
+    /**
+     * Overrides Laravel's default (link-only) verification email so it
+     * also carries a 6-digit code — either one verifies the account (see
+     * VerificationCodeService / AuthController::verifyEmailCode). Required
+     * by the MustVerifyEmail contract, so it can't return the challenge
+     * token itself — callers that need it call sendEmailVerificationCode()
+     * directly instead.
+     */
+    public function sendEmailVerificationNotification(): void
+    {
+        $this->sendEmailVerificationCode();
+    }
+
+    /**
+     * Same send as above, but returns the opaque challenge_token a caller
+     * with no bearer token yet (a user who just registered) needs to later
+     * submit the code without being authenticated — see RegisterUser and
+     * ResendEmailVerification.
+     */
+    public function sendEmailVerificationCode(): string
+    {
+        $generated = app(VerificationCodeService::class)
+            ->generate($this, VerificationCode::PURPOSE_EMAIL_VERIFICATION);
+
+        $this->notify(new VerifyEmailWithCode($generated['code']));
+
+        return $generated['challenge_token'];
     }
 
     /**

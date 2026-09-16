@@ -2,7 +2,7 @@
      SITE HEADER
      ===================================================== --}}
 
-<header class="site-header" data-site-header>
+<header class="site-header" data-site-header id="site-header" data-turbo-permanent>
 
     <div class="site-header__inner">
 

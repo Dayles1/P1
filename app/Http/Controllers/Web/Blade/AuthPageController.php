@@ -23,6 +23,8 @@ class AuthPageController extends Controller
 
         $currentPage = match (true) {
 
+            $path === '/login/code' => 'login-code',
+
             $path === '/register' => 'register',
 
             $path === '/forgot-password' => 'forgot-password',

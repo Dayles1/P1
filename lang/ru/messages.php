@@ -16,6 +16,9 @@ return [
         'email_not_found' => 'Аккаунт с таким email не найден.',
         'invalid_password' => 'Введённый пароль неверен.',
         'password_confirmed' => 'Пароль подтверждён.',
+        'verification_required' => 'Введите код подтверждения, отправленный на вашу почту.',
+        'code_sent' => 'Если такой email существует, на него отправлен код для входа.',
+        'email_verified' => 'Ваш email подтверждён.',
     ],
 
     'profile' => [

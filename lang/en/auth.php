@@ -23,4 +23,25 @@ return [
     'role_not_allowed' => 'Your account is not allowed to sign in.',
     'unauthenticated' => 'You need to sign in to continue.',
 
+    'verification_code' => [
+        'invalid' => 'That code is incorrect.',
+        'expired' => 'That code has expired. Request a new one.',
+        'too_many_attempts' => 'Too many incorrect attempts. Request a new code.',
+        'login_subject' => 'Your sign-in verification code',
+        'login_intro' => 'Enter this code to finish signing in:',
+        'passwordless_subject' => 'Your one-time sign-in code',
+        'passwordless_intro' => 'Enter this code to sign in:',
+        'generic_subject' => 'Your verification code',
+        'generic_intro' => 'Enter this code to continue:',
+        'expires' => 'This code expires in :minutes minutes.',
+    ],
+
+    'verify_email' => [
+        'subject' => 'Verify your email address',
+        'intro' => 'Click the button below to verify your email address.',
+        'action' => 'Verify Email Address',
+        'or_code' => 'Or enter this code instead:',
+        'expires' => 'This code expires in :minutes minutes.',
+    ],
+
 ];

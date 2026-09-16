@@ -17,20 +17,24 @@ class UserSetting extends Model
         'date_format',
         'time_format',
         'meta',
+        'require_login_verification',
     ];
 
     protected function casts(): array
     {
         return [
             'meta' => 'array',
+            'require_login_verification' => 'boolean',
         ];
     }
 
+    /** @return BelongsTo<User, $this> */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /** @return BelongsTo<Timezone, $this> */
     public function timezone(): BelongsTo
     {
         return $this->belongsTo(Timezone::class);

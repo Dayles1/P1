@@ -67,7 +67,24 @@ api.interceptors.response.use(
     },
     (error) => {
         if (error.response?.status === 401) {
+            // Only force a redirect when the rejected request actually
+            // carried a bearer token — i.e. we thought we were logged in
+            // and the session died mid-use (token revoked/expired
+            // elsewhere). A 401 with no token attached is a normal
+            // response from a public endpoint (e.g. a wrong-password
+            // login attempt) and must not redirect anything; that case is
+            // already handled by the caller's own error handling.
+            const hadToken = Boolean(error.config?.headers?.Authorization);
+
             localStorage.removeItem('auth_token');
+
+            if (hadToken && !window.location.pathname.startsWith('/login')) {
+                const redirect = encodeURIComponent(
+                    window.location.pathname + window.location.search,
+                );
+
+                window.location.href = `/login?redirect=${redirect}`;
+            }
         }
 
         reportDevRequest(error.config || {}, null, error);

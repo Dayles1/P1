@@ -38,6 +38,9 @@ Route::controller(AuthPageController::class)->group(function () {
     Route::get('/login', 'index')
         ->name('login');
 
+    Route::get('/login/code', 'index')
+        ->name('login.code');
+
     Route::get('/register', 'index')
         ->name('register');
 

@@ -1,15 +1,15 @@
 import { api } from '../axios';
 import {
-    fetchCurrentUser,
-    getHeaderSnapshot,
-    hasRole,
-    initials,
-    logout,
-} from './auth-state';
+    bootstrapAppState,
+    logout as appStateLogout,
+    setPresence,
+    subscribe,
+} from './app-state';
+import { hasRole, initials } from './auth-state';
 import { initDevPanel } from './dev-panel';
 import { initLocalePicker } from './i18n';
 import { initNotificationBell } from './notification-bell';
-import { initPresence } from './presence';
+import { initPresence, onPresenceChange } from './presence';
 import { initShortcuts } from './shortcuts';
 import { initThemePicker } from './theme-picker';
 import { getUserSettings } from './user-settings-cache';
@@ -176,7 +176,7 @@ function initLogout() {
 
         trigger.disabled = true;
 
-        await logout();
+        await appStateLogout();
 
         window.location.href = '/login';
     });
@@ -205,42 +205,39 @@ function paintUserHeader(name, avatarUrl) {
     });
 }
 
-async function initHeaderAuthState() {
+/**
+ * Called exactly once per session with the already-resolved user (never
+ * a fake/placeholder one) — from authenticated.js after
+ * bootstrapAppState() settles for the app shell, or resolved here for
+ * public pages (see initSiteChrome below) where a guest is a valid,
+ * real outcome rather than a loading state. The header nodes are
+ * `data-turbo-permanent` on authenticated pages, so this paints the
+ * real name/avatar once and then only ever repaints via the `user`
+ * subscription below (e.g. after a profile edit patches AppState) —
+ * never a refetch, never a placeholder shown first.
+ */
+function initHeaderAuthState(user) {
     const guestEls = document.querySelectorAll('[data-auth-guest]');
     const userEls = document.querySelectorAll('[data-auth-user]');
 
     if (!guestEls.length && !userEls.length) {
-        return null;
+        return;
     }
-
-    // Paint immediately from last session's snapshot — before the /auth/me
-    // round-trip even starts — so the real photo is already there on every
-    // navigation instead of popping in a moment later each time. The real
-    // fetch below still runs and reconciles (or, rarely, rolls this back to
-    // the guest state if the token turned out to be no longer valid).
-    const snapshot = getHeaderSnapshot();
-    let paintedOptimistically = false;
-
-    if (snapshot) {
-        paintUserHeader(snapshot.name, snapshot.avatarUrl);
-        userEls.forEach((el) => el.removeAttribute('hidden'));
-        paintedOptimistically = true;
-    }
-
-    const user = await fetchCurrentUser();
 
     if (!user) {
-        if (paintedOptimistically) {
-            userEls.forEach((el) => el.setAttribute('hidden', ''));
-        }
-
         guestEls.forEach((el) => el.removeAttribute('hidden'));
 
-        return null;
+        return;
     }
 
     userEls.forEach((el) => el.removeAttribute('hidden'));
     paintUserHeader(user.name, user.avatar?.url || null);
+
+    subscribe('user', (current) => {
+        if (current) {
+            paintUserHeader(current.name, current.avatar?.url || null);
+        }
+    });
 
     document.querySelectorAll('[data-requires-role]').forEach((el) => {
         const roles = el.dataset.requiresRole.split(',');
@@ -252,6 +249,7 @@ async function initHeaderAuthState() {
 
     initNotificationBell(api, user);
     initPresence();
+    onPresenceChange((onlineIds) => setPresence(onlineIds));
     initDevPanel();
 
     getUserSettings(api)
@@ -262,8 +260,6 @@ async function initHeaderAuthState() {
             );
         })
         .catch(() => {});
-
-    return user;
 }
 
 /*
@@ -272,7 +268,7 @@ async function initHeaderAuthState() {
 |--------------------------------------------------------------------------
 */
 
-export function initSiteChrome() {
+export function initSiteChrome(user) {
     initThemePicker();
     initLocalePicker(api);
     initMobileNav();
@@ -282,5 +278,17 @@ export function initSiteChrome() {
     initLogout();
     initShortcuts();
 
-    return initHeaderAuthState();
+    // authenticated.js already resolved the user via bootstrapAppState()
+    // and passes it in directly. Public pages (app.js) call this with no
+    // argument at all — there's no route guard to wait on there, and a
+    // resolved guest is a legitimate outcome, not a loading state.
+    if (arguments.length > 0) {
+        initHeaderAuthState(user);
+
+        return;
+    }
+
+    bootstrapAppState().then((resolvedUser) =>
+        initHeaderAuthState(resolvedUser),
+    );
 }

@@ -1,5 +1,7 @@
 <div class="auth-card">
 
+    <div data-auth-step="password">
+
     <div class="auth-card__header">
 
         <h1>
@@ -141,6 +143,20 @@
         </button>
 
 
+        {{-- ONE-TIME CODE --}}
+        <div class="auth-page-switch">
+
+            <a
+                href="/login/code"
+                class="auth-link"
+                data-auth-link="login-code"
+            >
+                Login with one-time code
+            </a>
+
+        </div>
+
+
         {{-- REGISTER --}}
         <div class="auth-page-switch">
 
@@ -157,5 +173,43 @@
         </div>
 
     </form>
+
+    </div>
+
+
+    {{-- =====================================================
+         VERIFICATION STEP (shown after a correct password when
+         the account has "require a code on every login" on)
+         ===================================================== --}}
+
+    <div data-auth-step="verify" hidden>
+
+        <div class="auth-card__header">
+            <h1>Enter verification code</h1>
+            <p>We've sent a 6-digit code to your email.</p>
+        </div>
+
+        <form class="auth-form" data-auth-form="login-verify" novalidate>
+
+            @include('blade.pages.auth.partials._code-input')
+
+            <span class="form-error" data-error-for="code" style="text-align:center;"></span>
+
+            <button type="submit" class="auth-button">
+                <span class="auth-button__text">Verify &amp; sign in</span>
+                <span class="auth-button__loader" aria-hidden="true"></span>
+            </button>
+
+            <div class="auth-page-switch">
+                <button type="button" class="auth-link" data-resend-code>Resend code</button>
+            </div>
+
+            <div class="auth-page-switch">
+                <button type="button" class="auth-step-back" data-back-to-password>&larr; Back to sign in</button>
+            </div>
+
+        </form>
+
+    </div>
 
 </div>

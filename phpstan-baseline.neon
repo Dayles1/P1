@@ -385,16 +385,21 @@ parameters:
 			path: app/Domain/Chat/Repositories/ConversationRepositoryInterface.php
 
 		-
-			message: '#^Access to an undefined property App\\Domain\\Identity\\Models\\User\:\:\$settings\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Domain/Dashboard/Actions/GetDashboardSummary.php
-
-		-
 			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:isBanned\(\)\.$#'
 			identifier: method.notFound
 			count: 1
 			path: app/Domain/Identity/Actions/Authentication/LoginUser.php
+
+		-
+			# Same Larastan false positive as LoginUser above: an earlier
+			# reachable throw/abort() in the same class confuses its generic
+			# inference for a subsequent Model::query()->with([...])->first()
+			# chain. $user is definitely a User here (verified in isolation
+			# without the class's other throwing statements present).
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:isBanned\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Domain/Identity/Actions/Authentication/RequestLoginCode.php
 
 		-
 			message: '#^Method App\\Domain\\Identity\\Actions\\Authentication\\LoginUser\:\:handle\(\) has parameter \$data with no value type specified in iterable type array\.$#'
@@ -437,12 +442,6 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: app/Domain/Identity/Actions/Authentication/ResetUserPassword.php
-
-		-
-			message: '#^Parameter \#1 \$user of class Illuminate\\Auth\\Events\\Verified constructor expects Illuminate\\Contracts\\Auth\\MustVerifyEmail, App\\Domain\\Identity\\Models\\User given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Domain/Identity/Actions/Authentication/VerifyUserEmail.php
 
 		-
 			message: '#^Method App\\Domain\\Identity\\Actions\\RequestLog\\GetAllRequestLogs\:\:handle\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
@@ -631,12 +630,6 @@ parameters:
 			path: app/Domain/Identity/Models/User.php
 
 		-
-			message: '#^Method App\\Domain\\Identity\\Models\\User\:\:settings\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: app/Domain/Identity/Models/User.php
-
-		-
 			message: '#^Using nullsafe property access on non\-nullable type Laravel\\Sanctum\\PersonalAccessToken\. Use \-\> instead\.$#'
 			identifier: nullsafe.neverNull
 			count: 1
@@ -659,18 +652,6 @@ parameters:
 			identifier: missingType.generics
 			count: 1
 			path: app/Domain/Identity/Models/UserSession.php
-
-		-
-			message: '#^Method App\\Domain\\Identity\\Models\\UserSetting\:\:timezone\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
-			identifier: missingType.generics
-			count: 1
-			path: app/Domain/Identity/Models/UserSetting.php
-
-		-
-			message: '#^Method App\\Domain\\Identity\\Models\\UserSetting\:\:user\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
-			identifier: missingType.generics
-			count: 1
-			path: app/Domain/Identity/Models/UserSetting.php
 
 		-
 			message: '#^Method App\\Domain\\Identity\\Repository\\RequestLogRepositoryInterface\:\:all\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
@@ -817,12 +798,6 @@ parameters:
 			path: app/Domain/Setting/Services/SettingService.php
 
 		-
-			message: '#^Access to an undefined property App\\Domain\\Identity\\Models\\User\:\:\$settings\.$#'
-			identifier: property.notFound
-			count: 4
-			path: app/Domain/Setting/Services/UserDateFormatter.php
-
-		-
 			message: '#^Using nullsafe property access "\?\-\>name" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
 			identifier: nullsafe.neverNull
 			count: 1
@@ -929,12 +904,6 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: app/Http/Controllers/Controller.php
-
-		-
-			message: '#^Access to an undefined property App\\Domain\\Identity\\Models\\User\:\:\$settings\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/Middleware/SetLocale.php
 
 		-
 			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$code\.$#'
@@ -1496,6 +1465,12 @@ parameters:
 
 		-
 			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSettingResource\:\:\$meta\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/UserSettingResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSettingResource\:\:\$require_login_verification\.$#'
 			identifier: property.notFound
 			count: 1
 			path: app/Http/Resources/Profile/UserSettingResource.php

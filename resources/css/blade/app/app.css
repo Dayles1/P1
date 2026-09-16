@@ -1715,6 +1715,32 @@ html.app-shell-html body {
     overflow: hidden;
 }
 
+/* =========================================================
+   PAGE-DRIVEN SIDEBAR MODES
+   -----------------------------------------------------------
+   Set by shared/layout-controller.js from a page's own
+   $sidebarMode/$secondarySidebar Blade variables (see
+   layouts/authenticated.blade.php) — the sidebar itself is a
+   permanent element under Turbo Drive, so a page can no longer
+   just render it differently; it requests a mode instead.
+   ========================================================= */
+.app-sidebar[data-mode='compact'] {
+    width: 64px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.app-sidebar[data-mode='compact'] .sidebar-nav__group-label,
+.app-sidebar[data-mode='compact']
+    .sidebar-link
+    > span:not(.sidebar-link__icon) {
+    display: none;
+}
+
+.app-sidebar[data-mode='compact'] .sidebar-link {
+    justify-content: center;
+}
+
 .app-main__inner {
     flex: 1;
     min-height: 0;

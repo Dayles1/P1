@@ -3,18 +3,32 @@
 namespace App\Domain\Identity\Actions\Authentication;
 
 use App\Application\DTO\Identity\DeviceData;
+use App\Domain\Identity\Actions\Authentication\Concerns\IssuesAuthenticatedSession;
 use App\Domain\Identity\Models\User;
-use App\Domain\Identity\Models\UserSession;
+use App\Domain\Identity\Models\VerificationCode;
+use App\Domain\Identity\Notifications\VerificationCodeNotification;
+use App\Domain\Identity\Services\VerificationCodeService;
 use App\Domain\Setting\Services\SettingService;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class LoginUser
 {
+    use IssuesAuthenticatedSession;
+
     public function __construct(
         private readonly SettingService $settings,
+        private readonly VerificationCodeService $verificationCodes,
     ) {}
 
+    /**
+     * Returns either `['user' => ..., 'token' => ...]` (login complete) or
+     * `['requires_verification' => true, 'challenge_token' => ...]` (the
+     * account has "require a verification code on every login" turned on
+     * — see UserSetting::require_login_verification — so a second step,
+     * AuthController::verifyLoginCode(), must complete before a token is
+     * issued).
+     */
     public function handle(array $data, DeviceData $device): array
     {
         if (! $this->settings->boolean('auth.login_open', true)) {
@@ -22,7 +36,7 @@ class LoginUser
         }
 
         $user = User::query()
-            ->with(['department.ban', 'ban'])
+            ->with(['department.ban', 'ban', 'settings'])
             ->where('email', $data['email'])
             ->first();
 
@@ -50,24 +64,22 @@ class LoginUser
             abort(403, __('auth.role_not_allowed'));
         }
 
-        $token = $user->createToken('auth');
+        if ($user->settings?->require_login_verification) {
+            $generated = $this->verificationCodes->generate(
+                $user,
+                VerificationCode::PURPOSE_LOGIN_2FA,
+                ipAddress: $device->ip_address,
+                userAgent: $device->user_agent,
+            );
 
-        UserSession::create([
-            'user_id' => $user->id,
-            'personal_access_token_id' => $token->accessToken->id,
-            'ip_address' => $device->ip_address,
-            'user_agent' => $device->user_agent,
-            'device_type' => $device->device_type,
-            'browser' => $device->browser,
-            'platform' => $device->platform,
-            'device_name' => $device->device_name,
-            'logged_in_at' => now(),
-            'last_activity_at' => now(),
-        ]);
+            $user->notify(new VerificationCodeNotification($generated['code'], VerificationCode::PURPOSE_LOGIN_2FA));
 
-        return [
-            'user' => $user,
-            'token' => $token->plainTextToken,
-        ];
+            return [
+                'requires_verification' => true,
+                'challenge_token' => $generated['challenge_token'],
+            ];
+        }
+
+        return $this->issueTokenAndSession($user, $device);
     }
 }

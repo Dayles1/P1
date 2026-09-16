@@ -47,7 +47,7 @@
 
         <div class="app-shell__body">
 
-            <aside class="app-sidebar">
+            <aside class="app-sidebar" id="app-sidebar" data-turbo-permanent>
                 @include('blade.sections.sidebar')
             </aside>
 
@@ -78,6 +78,18 @@
 
     </div>
 
+    {{--
+        Read by shared/layout-controller.js on every Turbo navigation
+        (before the swap happens) so it can apply this page's sidebar
+        mode straight onto the permanent sidebar node — the same
+        $sidebarMode/$secondarySidebar convention as $fullBleed/$narrow
+        above, just also readable client-side since the sidebar itself
+        is no longer re-rendered per page under Turbo Drive.
+    --}}
+    <script type="application/json" id="page-layout-config">{!! json_encode([
+        'sidebar' => $sidebarMode ?? 'default',
+        'secondarySidebar' => $secondarySidebar ?? null,
+    ]) !!}</script>
 
     @include('blade.sections.scripts')
 
