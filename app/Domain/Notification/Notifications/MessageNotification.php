@@ -20,6 +20,9 @@ class MessageNotification extends BaseNotification
         return 'message';
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toDatabase(User $notifiable): array
     {
         return [

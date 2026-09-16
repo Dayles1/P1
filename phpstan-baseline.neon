@@ -1,0 +1,2023 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method App\\Application\\DTO\\Identity\\DeviceData\:\:fromRequest\(\) has parameter \$parsedDevice with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Application/DTO/Identity/DeviceData.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:ban\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Domain/Ban/Actions/BanEntity.php
+
+		-
+			message: '#^Method App\\Domain\\Ban\\Actions\\BanEntity\:\:handle\(\) has parameter \$meta with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Ban/Actions/BanEntity.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$ban\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Ban/Actions/UnbanEntity.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Actions\\AddConversationMembers\:\:handle\(\) has parameter \$userIds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Actions/AddConversationMembers.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Actions\\AddConversationMembers\:\:handle\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Actions/AddConversationMembers.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Actions\\ChatStore\:\:handle\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Actions/ChatStore.php
+
+		-
+			message: '#^Parameter \#1 \$userId of method App\\Domain\\Chat\\Actions\\ChatStore\:\:findExistingPrivateConversation\(\) expects int, int\|string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Domain/Chat/Actions/ChatStore.php
+
+		-
+			message: '#^Unable to resolve the template type TKey in call to function collect$#'
+			identifier: argument.templateType
+			count: 1
+			path: app/Domain/Chat/Actions/ChatStore.php
+
+		-
+			message: '#^Unable to resolve the template type TValue in call to function collect$#'
+			identifier: argument.templateType
+			count: 1
+			path: app/Domain/Chat/Actions/ChatStore.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model&object\{pivot\: Illuminate\\Database\\Eloquent\\Relations\\Pivot\}\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Chat/Actions/ListMessages.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model&object\{pivot\: Illuminate\\Database\\Eloquent\\Relations\\Pivot\}\:\:messages\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Domain/Chat/Actions/ListMessages.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Actions\\ListMessages\:\:handle\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Actions/ListMessages.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Actions\\ListMessages\:\:handle\(\) return type with generic interface Illuminate\\Contracts\\Pagination\\LengthAwarePaginator does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Actions/ListMessages.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Actions\\RemoveConversationMembers\:\:handle\(\) has parameter \$userIds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Actions/RemoveConversationMembers.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Actions\\RemoveConversationMembers\:\:handle\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Actions/RemoveConversationMembers.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Actions\\SearchMessages\:\:handle\(\) return type with generic class Illuminate\\Pagination\\LengthAwarePaginator does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Actions/SearchMessages.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model&object\{pivot\: Illuminate\\Database\\Eloquent\\Relations\\Pivot\}\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 4
+			path: app/Domain/Chat/Actions/SendMessage.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Chat/Actions/SendMessage.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$pivot\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Chat/Actions/SendMessage.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:notify\(\)\.$#'
+			identifier: method.notFound
+			count: 2
+			path: app/Domain/Chat/Actions/SendMessage.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Actions\\SendMessage\:\:handle\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Actions/SendMessage.php
+
+		-
+			message: '#^Offset 1 on array\{list\<string\>, list\<numeric\-string\>\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Domain/Chat/Actions/SendMessage.php
+
+		-
+			message: '#^Parameter \#2 \$conversation of method App\\Domain\\Chat\\Actions\\SendMessage\:\:notifyParticipants\(\) expects App\\Domain\\Chat\\Models\\Conversation, Illuminate\\Database\\Eloquent\\Model&object\{pivot\: Illuminate\\Database\\Eloquent\\Relations\\Pivot\} given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Domain/Chat/Actions/SendMessage.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Actions\\ShowConversation\:\:handle\(\) should return App\\Domain\\Chat\\Models\\Conversation but returns Illuminate\\Database\\Eloquent\\Model&object\{pivot\: Illuminate\\Database\\Eloquent\\Relations\\Pivot\}\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Chat/Actions/ShowConversation.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$role\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Chat/Actions/UpdateConversation.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Actions\\UpdateConversation\:\:handle\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Actions/UpdateConversation.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Events\\MessageDeleted\:\:broadcastWith\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Events/MessageDeleted.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Events\\MessageEdited\:\:broadcastWith\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Events/MessageEdited.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Events\\MessageReactionToggled\:\:broadcastWith\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Events/MessageReactionToggled.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Events\\MessageRead\:\:broadcastWith\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Events/MessageRead.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Events\\MessageSent\:\:broadcastWith\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Events/MessageSent.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Events\\UserTyping\:\:broadcastWith\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Events/UserTyping.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\Conversation\:\:avatarAttachment\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphOne does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/Conversation.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\Conversation\:\:creator\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/Conversation.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\Conversation\:\:lastMessage\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/Conversation.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\Conversation\:\:messages\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/Conversation.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\Conversation\:\:participants\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/Conversation.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\Conversation\:\:users\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany does not specify its types\: TRelatedModel, TDeclaringModel, TPivotModel, TAccessor \(2\-4 required\)$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/Conversation.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\ConversationUser\:\:conversation\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/ConversationUser.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\ConversationUser\:\:permissions\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/ConversationUser.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\ConversationUser\:\:user\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/ConversationUser.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\ConversationUserPermission\:\:conversationUser\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/ConversationUserPermission.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\Message\:\:attachments\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/Message.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\Message\:\:conversation\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/Message.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\Message\:\:parent\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/Message.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\Message\:\:reactions\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/Message.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\Message\:\:reads\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/Message.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\Message\:\:replies\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/Message.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\Message\:\:user\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/Message.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\MessageAttachment\:\:message\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/MessageAttachment.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\MessageReaction\:\:message\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/MessageReaction.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\MessageReaction\:\:user\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/MessageReaction.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\MessageRead\:\:message\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/MessageRead.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Models\\MessageRead\:\:user\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Models/MessageRead.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Queries\\GetConversationMembersQuery\:\:execute\(\) return type with generic interface Illuminate\\Contracts\\Pagination\\LengthAwarePaginator does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Chat/Queries/GetConversationMembersQuery.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Queries\\GetConversationsQuery\:\:execute\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Chat/Queries/GetConversationsQuery.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Queries\\GetConversationsQuery\:\:execute\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Queries/GetConversationsQuery.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Repositories\\ConversationRepositoryInterface\:\:addMembers\(\) has parameter \$userIds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Repositories/ConversationRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Repositories\\ConversationRepositoryInterface\:\:addMembers\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Repositories/ConversationRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Repositories\\ConversationRepositoryInterface\:\:getUserConversations\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Chat/Repositories/ConversationRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Repositories\\ConversationRepositoryInterface\:\:getUserConversations\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Repositories/ConversationRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Repositories\\ConversationRepositoryInterface\:\:removeMembers\(\) has parameter \$userIds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Repositories/ConversationRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Chat\\Repositories\\ConversationRepositoryInterface\:\:removeMembers\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Chat/Repositories/ConversationRepositoryInterface.php
+
+		-
+			message: '#^Access to an undefined property App\\Domain\\Identity\\Models\\User\:\:\$settings\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Dashboard/Actions/GetDashboardSummary.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:isBanned\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Domain/Identity/Actions/Authentication/LoginUser.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\Authentication\\LoginUser\:\:handle\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Actions/Authentication/LoginUser.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\Authentication\\LoginUser\:\:handle\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Actions/Authentication/LoginUser.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\Authentication\\LogoutUser\:\:handle\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Identity/Actions/Authentication/LogoutUser.php
+
+		-
+			message: '#^Negated boolean expression is always false\.$#'
+			identifier: booleanNot.alwaysFalse
+			count: 1
+			path: app/Domain/Identity/Actions/Authentication/LogoutUser.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\Authentication\\RegisterUser\:\:handle\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Actions/Authentication/RegisterUser.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\Authentication\\RegisterUser\:\:handle\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Actions/Authentication/RegisterUser.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\Authentication\\ResetUserPassword\:\:handle\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Actions/Authentication/ResetUserPassword.php
+
+		-
+			message: '#^Parameter \#1 \$user of class Illuminate\\Auth\\Events\\Verified constructor expects Illuminate\\Contracts\\Auth\\MustVerifyEmail, App\\Domain\\Identity\\Models\\User given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Domain/Identity/Actions/Authentication/VerifyUserEmail.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\RequestLog\\GetAllRequestLogs\:\:handle\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Actions/RequestLog/GetAllRequestLogs.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\RequestLog\\GetAllRequestLogs\:\:handle\(\) return type with generic interface Illuminate\\Contracts\\Pagination\\LengthAwarePaginator does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Actions/RequestLog/GetAllRequestLogs.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\RequestLog\\GetSessionRequestLogs\:\:handle\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Actions/RequestLog/GetSessionRequestLogs.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\RequestLog\\GetSessionRequestLogs\:\:handle\(\) return type with generic interface Illuminate\\Contracts\\Pagination\\LengthAwarePaginator does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Actions/RequestLog/GetSessionRequestLogs.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\Session\\GetAllSessions\:\:handle\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Actions/Session/GetAllSessions.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\Session\\GetAllSessions\:\:handle\(\) return type with generic interface Illuminate\\Contracts\\Pagination\\LengthAwarePaginator does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Actions/Session/GetAllSessions.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\Session\\GetUserSessions\:\:handle\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Actions/Session/GetUserSessions.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\Session\\GetUserSessions\:\:handle\(\) return type with generic interface Illuminate\\Contracts\\Pagination\\LengthAwarePaginator does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Actions/Session/GetUserSessions.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\Setting\\UpdateUserSettings\:\:handle\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Actions/Setting/UpdateUserSettings.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\User\\BanUser\:\:handle\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Actions/User/BanUser.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\User\\CreateUser\:\:handle\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Actions/User/CreateUser.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\User\\ListUsers\:\:handle\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Actions/User/ListUsers.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\User\\ListUsers\:\:handle\(\) return type with generic interface Illuminate\\Contracts\\Pagination\\LengthAwarePaginator does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Actions/User/ListUsers.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Actions\\User\\SearchUsers\:\:handle\(\) return type with generic class Illuminate\\Database\\Eloquent\\Collection does not specify its types\: TKey, TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Actions/User/SearchUsers.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\RequestLog\:\:session\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/RequestLog.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\RequestLog\:\:user\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/RequestLog.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:isActive\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\User\:\:allPermissions\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\User\:\:avatar\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphOne does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\User\:\:avatars\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\User\:\:ban\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphOne does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\User\:\:conversations\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany does not specify its types\: TRelatedModel, TDeclaringModel, TPivotModel, TAccessor \(2\-4 required\)$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\User\:\:currentSession\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasOne does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\User\:\:department\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\User\:\:directPermissions\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany does not specify its types\: TRelatedModel, TDeclaringModel, TPivotModel, TAccessor \(2\-4 required\)$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\User\:\:hasAllPermissions\(\) has parameter \$permissions with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\User\:\:hasAnyPermission\(\) has parameter \$permissions with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\User\:\:newFactory\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\User\:\:permissions\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany does not specify its types\: TRelatedModel, TDeclaringModel, TPivotModel, TAccessor \(2\-4 required\)$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\User\:\:roles\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany does not specify its types\: TRelatedModel, TDeclaringModel, TPivotModel, TAccessor \(2\-4 required\)$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\User\:\:sessions\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\User\:\:settings\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Using nullsafe property access on non\-nullable type Laravel\\Sanctum\\PersonalAccessToken\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Domain/Identity/Models/User.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\UserSession\:\:requestLogs\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/UserSession.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\UserSession\:\:token\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/UserSession.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\UserSession\:\:user\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/UserSession.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\UserSetting\:\:timezone\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/UserSetting.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Models\\UserSetting\:\:user\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Models/UserSetting.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Repository\\RequestLogRepositoryInterface\:\:all\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Repository/RequestLogRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Repository\\RequestLogRepositoryInterface\:\:all\(\) return type with generic interface Illuminate\\Contracts\\Pagination\\LengthAwarePaginator does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Repository/RequestLogRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Repository\\RequestLogRepositoryInterface\:\:forSession\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Repository/RequestLogRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Repository\\RequestLogRepositoryInterface\:\:forSession\(\) return type with generic interface Illuminate\\Contracts\\Pagination\\LengthAwarePaginator does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Repository/RequestLogRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Repository\\UserSessionRepositoryInterface\:\:all\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Repository/UserSessionRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Repository\\UserSessionRepositoryInterface\:\:all\(\) return type with generic interface Illuminate\\Contracts\\Pagination\\LengthAwarePaginator does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Repository/UserSessionRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Repository\\UserSessionRepositoryInterface\:\:getUserSessions\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Identity/Repository/UserSessionRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Repository\\UserSessionRepositoryInterface\:\:getUserSessions\(\) return type with generic interface Illuminate\\Contracts\\Pagination\\LengthAwarePaginator does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Identity/Repository/UserSessionRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Domain\\Identity\\Repository\\UserSessionRepositoryInterface\:\:revokeOthers\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Identity/Repository/UserSessionRepositoryInterface.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$disk\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Profile/Actions/DestroyAvatar.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$path\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Profile/Actions/DestroyAvatar.php
+
+		-
+			message: '#^Method App\\Domain\\Profile\\Actions\\StoreAvatar\:\:handle\(\) should return App\\Domain\\Attachment\\Models\\Attachment but returns Illuminate\\Database\\Eloquent\\Model\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Profile/Actions/StoreAvatar.php
+
+		-
+			message: '#^Method App\\Domain\\Profile\\Actions\\UpdateProfile\:\:handle\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Profile/Actions/UpdateProfile.php
+
+		-
+			message: '#^Method App\\Domain\\Setting\\Actions\\GetSettingsAction\:\:handle\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Setting/Actions/GetSettingsAction.php
+
+		-
+			message: '#^Method App\\Domain\\Setting\\Actions\\ListTimezones\:\:handle\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Domain/Setting/Actions/ListTimezones.php
+
+		-
+			message: '#^Method App\\Domain\\Setting\\Actions\\UpdateSettingAction\:\:handle\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Setting/Actions/UpdateSettingAction.php
+
+		-
+			message: '#^Method App\\Domain\\Setting\\Actions\\UpdateSettingAction\:\:resolveJson\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Setting/Actions/UpdateSettingAction.php
+
+		-
+			message: '#^Method App\\Domain\\Setting\\Models\\Setting\:\:scopeByGroup\(\) has parameter \$query with generic class Illuminate\\Database\\Eloquent\\Builder but does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Setting/Models/Setting.php
+
+		-
+			message: '#^Method App\\Domain\\Setting\\Models\\Setting\:\:scopeByGroup\(\) return type with generic class Illuminate\\Database\\Eloquent\\Builder does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Setting/Models/Setting.php
+
+		-
+			message: '#^Method App\\Domain\\Setting\\Models\\Setting\:\:scopeByKey\(\) has parameter \$query with generic class Illuminate\\Database\\Eloquent\\Builder but does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Setting/Models/Setting.php
+
+		-
+			message: '#^Method App\\Domain\\Setting\\Models\\Setting\:\:scopeByKey\(\) return type with generic class Illuminate\\Database\\Eloquent\\Builder does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Setting/Models/Setting.php
+
+		-
+			message: '#^Method App\\Domain\\Setting\\Services\\SettingService\:\:all\(\) return type with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Domain/Setting/Services/SettingService.php
+
+		-
+			message: '#^Method App\\Domain\\Setting\\Services\\SettingService\:\:json\(\) has parameter \$default with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Setting/Services/SettingService.php
+
+		-
+			message: '#^Method App\\Domain\\Setting\\Services\\SettingService\:\:json\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Domain/Setting/Services/SettingService.php
+
+		-
+			message: '#^Access to an undefined property App\\Domain\\Identity\\Models\\User\:\:\$settings\.$#'
+			identifier: property.notFound
+			count: 4
+			path: app/Domain/Setting/Services/UserDateFormatter.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>name" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Domain/Setting/Services/UserDateFormatter.php
+
+		-
+			message: '#^Parameter \#1 \$paginator of method App\\Http\\Controllers\\Controller\:\:responsePagination\(\) expects Illuminate\\Pagination\\LengthAwarePaginator, Illuminate\\Contracts\\Pagination\\LengthAwarePaginator given\.$#'
+			identifier: argument.type
+			count: 2
+			path: app/Http/Controllers/Api/Admin/RequestLogController.php
+
+		-
+			message: '#^Parameter \#1 \$paginator of method App\\Http\\Controllers\\Controller\:\:responsePagination\(\) expects Illuminate\\Pagination\\LengthAwarePaginator, Illuminate\\Contracts\\Pagination\\LengthAwarePaginator given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Api/Admin/SessionController.php
+
+		-
+			message: '#^Parameter \#1 \$paginator of method App\\Http\\Controllers\\Controller\:\:responsePagination\(\) expects Illuminate\\Pagination\\LengthAwarePaginator, Illuminate\\Contracts\\Pagination\\LengthAwarePaginator given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: '#^Parameter \#1 \$paginator of method App\\Http\\Controllers\\Controller\:\:responsePagination\(\) expects Illuminate\\Pagination\\LengthAwarePaginator, Illuminate\\Contracts\\Pagination\\LengthAwarePaginator given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Api/Auth/RequestLogController.php
+
+		-
+			message: '#^Parameter \#1 \$paginator of method App\\Http\\Controllers\\Controller\:\:responsePagination\(\) expects Illuminate\\Pagination\\LengthAwarePaginator, Illuminate\\Contracts\\Pagination\\LengthAwarePaginator given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Api/Auth/SessionController.php
+
+		-
+			message: '#^Parameter \#1 \$paginator of method App\\Http\\Controllers\\Controller\:\:responsePagination\(\) expects Illuminate\\Pagination\\LengthAwarePaginator, Illuminate\\Contracts\\Pagination\\LengthAwarePaginator given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Api/Chat/MemberController.php
+
+		-
+			message: '#^Parameter \#1 \$paginator of method App\\Http\\Controllers\\Controller\:\:responsePagination\(\) expects Illuminate\\Pagination\\LengthAwarePaginator, Illuminate\\Contracts\\Pagination\\LengthAwarePaginator given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Api/Chat/MessageController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$email\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Api/Chat/UserSearchController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Api/Chat/UserSearchController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Api/Chat/UserSearchController.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<\(int\|string\),Illuminate\\Database\\Eloquent\\Model\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: app/Http/Controllers/Api/Chat/UserSearchController.php
+
+		-
+			message: '#^Return type of call to method Illuminate\\Database\\Eloquent\\Collection\<\(int\|string\),Illuminate\\Database\\Eloquent\\Model\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: method.unresolvableReturnType
+			count: 1
+			path: app/Http/Controllers/Api/Chat/UserSearchController.php
+
+		-
+			message: '#^Parameter \$paginator of method App\\Http\\Controllers\\Controller\:\:responsePagination\(\) expects Illuminate\\Pagination\\LengthAwarePaginator, Illuminate\\Contracts\\Pagination\\LengthAwarePaginator\<int, Illuminate\\Database\\Eloquent\\Model\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Api/Profile/AvatarController.php
+
+		-
+			message: '#^Method App\\Http\\Controllers\\Controller\:\:error\(\) has parameter \$meta with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Controllers/Controller.php
+
+		-
+			message: '#^Method App\\Http\\Controllers\\Controller\:\:respond\(\) has parameter \$meta with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Controllers/Controller.php
+
+		-
+			message: '#^Method App\\Http\\Controllers\\Controller\:\:responsePagination\(\) has parameter \$paginator with generic class Illuminate\\Pagination\\LengthAwarePaginator but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Http/Controllers/Controller.php
+
+		-
+			message: '#^Method App\\Http\\Controllers\\Controller\:\:success\(\) has parameter \$meta with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Controllers/Controller.php
+
+		-
+			message: '#^Access to an undefined property App\\Domain\\Identity\\Models\\User\:\:\$settings\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Middleware/SetLocale.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$code\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Admin/AdminUserResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Admin/AdminUserResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Admin/AdminUserResource.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,Illuminate\\Database\\Eloquent\\Model\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: app/Http/Resources/Admin/AdminUserResource.php
+
+		-
+			message: '#^Return type of call to method Illuminate\\Database\\Eloquent\\Collection\<int,Illuminate\\Database\\Eloquent\\Model\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: method.unresolvableReturnType
+			count: 1
+			path: app/Http/Resources/Admin/AdminUserResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$avatar\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationListResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$body\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationListResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationListResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/Chat/ConversationListResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationListResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationListResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$user\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationListResource.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>unread_count" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Http/Resources/Chat/ConversationListResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationMemberResource\:\:\$avatar\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationMemberResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationMemberResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/Chat/ConversationMemberResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationMemberResource\:\:\$last_seen_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationMemberResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationMemberResource\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationMemberResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationMemberResource\:\:\$pivot\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationMemberResource.php
+
+		-
+			message: '#^Method App\\Http\\Resources\\Chat\\ConversationMemberResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Resources/Chat/ConversationMemberResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationShowResource\:\:\$avatar\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationShowResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationShowResource\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationShowResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationShowResource\:\:\$created_by\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationShowResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationShowResource\:\:\$creator\.$#'
+			identifier: property.notFound
+			count: 3
+			path: app/Http/Resources/Chat/ConversationShowResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationShowResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationShowResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationShowResource\:\:\$is_archived\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationShowResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationShowResource\:\:\$is_locked\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationShowResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationShowResource\:\:\$meta\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationShowResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationShowResource\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationShowResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationShowResource\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationShowResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationShowResource\:\:\$updated_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationShowResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\ConversationShowResource\:\:\$users_count\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/ConversationShowResource.php
+
+		-
+			message: '#^Method App\\Http\\Resources\\Chat\\ConversationShowResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Resources/Chat/ConversationShowResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\MessageResource\:\:\$attachments\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/MessageResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\MessageResource\:\:\$body\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/MessageResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\MessageResource\:\:\$conversation_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/MessageResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\MessageResource\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/Chat/MessageResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\MessageResource\:\:\$edited_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/MessageResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\MessageResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/MessageResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\MessageResource\:\:\$is_pinned\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/MessageResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\MessageResource\:\:\$parent\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/MessageResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\MessageResource\:\:\$parent_message_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/MessageResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\MessageResource\:\:\$reactions\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/MessageResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\MessageResource\:\:\$reads\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/MessageResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\MessageResource\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/MessageResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\MessageResource\:\:\$user\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/MessageResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Chat\\MessageResource\:\:\$user_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Chat/MessageResource.php
+
+		-
+			message: '#^Method App\\Http\\Resources\\Chat\\MessageResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Resources/Chat/MessageResource.php
+
+		-
+			message: '#^Method App\\Http\\Resources\\Dashboard\\DashboardSummaryResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Resources/Dashboard/DashboardSummaryResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Localization\\LanguageResource\:\:\$code\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Localization/LanguageResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Localization\\LanguageResource\:\:\$is_default\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Localization/LanguageResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Localization\\LanguageResource\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Localization/LanguageResource.php
+
+		-
+			message: '#^Method App\\Http\\Resources\\Localization\\LanguageResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Resources/Localization/LanguageResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Notification\\NotificationResource\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Notification/NotificationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Notification\\NotificationResource\:\:\$data\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Notification/NotificationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Notification\\NotificationResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Notification/NotificationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Notification\\NotificationResource\:\:\$read_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Notification/NotificationResource.php
+
+		-
+			message: '#^Method App\\Http\\Resources\\Notification\\NotificationResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Resources/Notification/NotificationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\AvatarResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/AvatarResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\AvatarResource\:\:\$path\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/AvatarResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\AvatarResource\:\:\$url\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/AvatarResource.php
+
+		-
+			message: '#^Method App\\Http\\Resources\\Profile\\AvatarResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Resources/Profile/AvatarResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\BanResource\:\:\$ends_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/BanResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\BanResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/BanResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\BanResource\:\:\$reason\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/BanResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\BanResource\:\:\$starts_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/BanResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\BanResource\:\:\$user\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/Profile/BanResource.php
+
+		-
+			message: '#^Call to an undefined method App\\Http\\Resources\\Profile\\BanResource\:\:isActive\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Http/Resources/Profile/BanResource.php
+
+		-
+			message: '#^Method App\\Http\\Resources\\Profile\\BanResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Resources/Profile/BanResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\ProfileResource\:\:\$avatar\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/ProfileResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\ProfileResource\:\:\$ban\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/ProfileResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\ProfileResource\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/ProfileResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\ProfileResource\:\:\$currentSession\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/ProfileResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\ProfileResource\:\:\$department\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/ProfileResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\ProfileResource\:\:\$email\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/ProfileResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\ProfileResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/ProfileResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\ProfileResource\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/ProfileResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\ProfileResource\:\:\$permissions\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/ProfileResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\ProfileResource\:\:\$roles\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/Profile/ProfileResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\ProfileResource\:\:\$settings\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/ProfileResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\ProfileResource\:\:\$updated_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/ProfileResource.php
+
+		-
+			message: '#^Call to an undefined method App\\Http\\Resources\\Profile\\ProfileResource\:\:relationLoaded\(\)\.$#'
+			identifier: method.notFound
+			count: 2
+			path: app/Http/Resources/Profile/ProfileResource.php
+
+		-
+			message: '#^Method App\\Http\\Resources\\Profile\\ProfileResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Resources/Profile/ProfileResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSessionResource\:\:\$browser\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/UserSessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSessionResource\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/UserSessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSessionResource\:\:\$device_name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/UserSessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSessionResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/UserSessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSessionResource\:\:\$ip_address\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/UserSessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSessionResource\:\:\$last_used_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/UserSessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSessionResource\:\:\$platform\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/UserSessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSessionResource\:\:\$user_agent\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/UserSessionResource.php
+
+		-
+			message: '#^Method App\\Http\\Resources\\Profile\\UserSessionResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Resources/Profile/UserSessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSettingResource\:\:\$date_format\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/UserSettingResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSettingResource\:\:\$locale\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/UserSettingResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSettingResource\:\:\$meta\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/UserSettingResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSettingResource\:\:\$theme\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/UserSettingResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSettingResource\:\:\$time_format\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/UserSettingResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSettingResource\:\:\$timezone\.$#'
+			identifier: property.notFound
+			count: 4
+			path: app/Http/Resources/Profile/UserSettingResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Profile\\UserSettingResource\:\:\$timezone_source\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Profile/UserSettingResource.php
+
+		-
+			message: '#^Method App\\Http\\Resources\\Profile\\UserSettingResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Resources/Profile/UserSettingResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogListResource\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/Session/RequestLogListResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogListResource\:\:\$duration_ms\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogListResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogListResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogListResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogListResource\:\:\$ip_address\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogListResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogListResource\:\:\$method\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogListResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogListResource\:\:\$path\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogListResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogListResource\:\:\$route_name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogListResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogListResource\:\:\$session\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogListResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogListResource\:\:\$status_code\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogListResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogListResource\:\:\$user\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogListResource.php
+
+		-
+			message: '#^Method App\\Http\\Resources\\Session\\RequestLogListResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Resources/Session/RequestLogListResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$body\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$body_truncated\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$duration_ms\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$headers\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$ip_address\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$method\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$path\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$query\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$response_body\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$response_headers\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$response_truncated\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$route_name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$status_code\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$user\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$user_agent\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogResource\:\:\$user_session_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Method App\\Http\\Resources\\Session\\RequestLogResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Resources/Session/RequestLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\SessionResource\:\:\$browser\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/SessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\SessionResource\:\:\$device_name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/SessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\SessionResource\:\:\$device_type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/SessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\SessionResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/SessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\SessionResource\:\:\$ip_address\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/SessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\SessionResource\:\:\$last_activity_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/SessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\SessionResource\:\:\$logged_in_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/SessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\SessionResource\:\:\$logged_out_at\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/Session/SessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\SessionResource\:\:\$personal_access_token_id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/Session/SessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\SessionResource\:\:\$platform\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/SessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\SessionResource\:\:\$user\.$#'
+			identifier: property.notFound
+			count: 3
+			path: app/Http/Resources/Session/SessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\SessionResource\:\:\$user_agent\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Session/SessionResource.php
+
+		-
+			message: '#^Method App\\Http\\Resources\\Session\\SessionResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Resources/Session/SessionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Setting\\SettingResource\:\:\$group\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Setting/SettingResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Setting\\SettingResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Setting/SettingResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Setting\\SettingResource\:\:\$is_locked\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Setting/SettingResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Setting\\SettingResource\:\:\$is_public\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Setting/SettingResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Setting\\SettingResource\:\:\$key\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Setting/SettingResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Setting\\SettingResource\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Setting/SettingResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Setting\\SettingResource\:\:\$typed_value\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Setting/SettingResource.php
+
+		-
+			message: '#^Method App\\Http\\Resources\\Setting\\SettingResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Resources/Setting/SettingResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Setting\\TimezoneResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Setting/TimezoneResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Setting\\TimezoneResource\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Setting/TimezoneResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Setting\\TimezoneResource\:\:\$offset\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Setting/TimezoneResource.php
+
+		-
+			message: '#^Method App\\Http\\Resources\\Setting\\TimezoneResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Http/Resources/Setting/TimezoneResource.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Device\\UserAgentParser\:\:parse\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Infrastructure/Device/UserAgentParser.php
+
+		-
+			message: '#^Negated boolean expression is always true\.$#'
+			identifier: booleanNot.alwaysTrue
+			count: 1
+			path: app/Infrastructure/Device/UserAgentParser.php
+
+		-
+			message: '#^Parameter \#2 \$redactedKeys of method App\\Infrastructure\\Logging\\RequestLogSanitizer\:\:walk\(\) expects list\<string\>, array\<string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Infrastructure/Logging/RequestLogSanitizer.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\Chat\\ConversationRepository\:\:addMembers\(\) has parameter \$userIds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/Chat/ConversationRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\Chat\\ConversationRepository\:\:addMembers\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/Chat/ConversationRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\Chat\\ConversationRepository\:\:getUserConversations\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/Chat/ConversationRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\Chat\\ConversationRepository\:\:getUserConversations\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/Chat/ConversationRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\Chat\\ConversationRepository\:\:removeMembers\(\) has parameter \$userIds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/Chat/ConversationRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\Chat\\ConversationRepository\:\:removeMembers\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/Chat/ConversationRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\RequestLog\\RequestLogRepository\:\:all\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/RequestLog/RequestLogRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\RequestLog\\RequestLogRepository\:\:all\(\) return type with generic interface Illuminate\\Contracts\\Pagination\\LengthAwarePaginator does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/RequestLog/RequestLogRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\RequestLog\\RequestLogRepository\:\:applyFilters\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/RequestLog/RequestLogRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\RequestLog\\RequestLogRepository\:\:applyFilters\(\) has parameter \$query with generic class Illuminate\\Database\\Eloquent\\Builder but does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/RequestLog/RequestLogRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\RequestLog\\RequestLogRepository\:\:applyFilters\(\) return type with generic class Illuminate\\Database\\Eloquent\\Builder does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/RequestLog/RequestLogRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\RequestLog\\RequestLogRepository\:\:forSession\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/RequestLog/RequestLogRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\RequestLog\\RequestLogRepository\:\:forSession\(\) return type with generic interface Illuminate\\Contracts\\Pagination\\LengthAwarePaginator does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/RequestLog/RequestLogRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\Session\\UserSessionRepository\:\:all\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/Session/UserSessionRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\Session\\UserSessionRepository\:\:all\(\) return type with generic interface Illuminate\\Contracts\\Pagination\\LengthAwarePaginator does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/Session/UserSessionRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\Session\\UserSessionRepository\:\:getUserSessions\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/Session/UserSessionRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\Session\\UserSessionRepository\:\:getUserSessions\(\) return type with generic interface Illuminate\\Contracts\\Pagination\\LengthAwarePaginator does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/Session/UserSessionRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Persistence\\Eloquent\\Session\\UserSessionRepository\:\:revokeOthers\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/Session/UserSessionRepository.php
+
+		-
+			message: '#^Using nullsafe method call on non\-nullable type Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 3
+			path: app/Infrastructure/Persistence/Eloquent/Session/UserSessionRepository.php
+
+		-
+			message: '#^Using nullsafe property access on non\-nullable type Laravel\\Sanctum\\PersonalAccessToken\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Infrastructure/Persistence/Eloquent/Session/UserSessionRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Storage\\FileStorage\:\:store\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Infrastructure/Storage/FileStorage.php
+
+		-
+			message: '#^Class Database\\Factories\\RequestLogFactory extends generic class Illuminate\\Database\\Eloquent\\Factories\\Factory but does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: database/factories/RequestLogFactory.php
+
+		-
+			message: '#^Class Database\\Factories\\UserFactory extends generic class Illuminate\\Database\\Eloquent\\Factories\\Factory but does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: database/factories/UserFactory.php
+
+		-
+			message: '#^Method Database\\Seeders\\SettingSeeder\:\:defaults\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: database/seeders/SettingSeeder.php

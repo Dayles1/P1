@@ -27,12 +27,13 @@ class Attachment extends Model
         ];
     }
 
-
+    /**
+     * @return MorphTo<Model, $this>
+     */
     public function attachable(): MorphTo
     {
         return $this->morphTo();
     }
-
 
     // public function url(): string
     // {

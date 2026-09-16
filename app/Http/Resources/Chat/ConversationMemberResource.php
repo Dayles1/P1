@@ -21,8 +21,8 @@ class ConversationMemberResource extends JsonResource
             'name' => $this->name,
             'avatar' => $this->avatar?->url,
             'role' => $pivot?->role,
-            'joined_at' => $formatter->format($pivot?->joined_at,$user),
-            'muted_until' => $formatter->format($pivot?->muted_until,$user),
+            'joined_at' => $formatter->format($pivot?->joined_at, $user),
+            'muted_until' => $formatter->format($pivot?->muted_until, $user),
             'is_me' => $this->id === $user?->id,
             'last_seen_at' => $this->last_seen_at?->toIso8601String(),
         ];

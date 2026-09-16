@@ -12,7 +12,9 @@ class StoreAvatarRequest extends FormRequest
         return true;
     }
 
-
+    /**
+     * @return array<string, mixed>
+     */
     public function rules(): array
     {
         $setting = app(SettingService::class);
@@ -23,7 +25,7 @@ class StoreAvatarRequest extends FormRequest
             'file' => [
                 'required',
                 'file',
-                'max:' . $maxSize,
+                'max:'.$maxSize,
                 'mimes:jpg,jpeg,png,webp,gif,mp4,mov,avi,mkv',
             ],
         ];

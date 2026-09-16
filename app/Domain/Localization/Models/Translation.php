@@ -3,7 +3,6 @@
 namespace App\Domain\Localization\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Translation extends Model
@@ -16,7 +15,9 @@ class Translation extends Model
         'value',
     ];
 
-
+    /**
+     * @return MorphTo<Model, $this>
+     */
     public function translatable(): MorphTo
     {
         return $this->morphTo();

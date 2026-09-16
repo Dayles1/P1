@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ListRoles
 {
+    /**
+     * @return Collection<int, Role>
+     */
     public function handle(): Collection
     {
         return Role::query()->orderBy('id')->get();

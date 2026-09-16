@@ -9,8 +9,7 @@ class RevokeSession
 {
     public function __construct(
         protected UserSessionRepositoryInterface $sessionRepository,
-    ) {
-    }
+    ) {}
 
     public function handle(User $user, string|int $sessionId): void
     {

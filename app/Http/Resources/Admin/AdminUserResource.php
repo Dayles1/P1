@@ -2,14 +2,21 @@
 
 namespace App\Http\Resources\Admin;
 
+use App\Domain\Identity\Models\User;
 use App\Domain\Setting\Services\UserDateFormatter;
 use App\Http\Resources\Profile\AvatarResource;
 use App\Http\Resources\Profile\BanResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @mixin User
+ */
 class AdminUserResource extends JsonResource
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(Request $request): array
     {
         $formatter = app(UserDateFormatter::class);

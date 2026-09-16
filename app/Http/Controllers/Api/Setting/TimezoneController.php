@@ -16,6 +16,7 @@ class TimezoneController extends Controller
     public function index(): JsonResponse
     {
         $timezones = $this->listTimezones->handle();
+
         return $this->success(
             data: TimezoneResource::collection($timezones)
         );

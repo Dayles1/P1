@@ -23,7 +23,7 @@ class UnbanEntity
             $ban->update([
                 'unbanned_by' => $unbannedBy,
                 'unbanned_at' => now(),
-                'status'      => BanStatus::Revoked,
+                'status' => BanStatus::Revoked,
             ]);
 
             return $ban->refresh();

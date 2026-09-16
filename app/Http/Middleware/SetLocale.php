@@ -81,7 +81,10 @@ class SetLocale
     private function supportedLocales(): array
     {
         try {
-            $codes = Language::query()->where('is_active', true)->pluck('code')->all();
+            $codes = array_values(array_map(
+                static fn (mixed $code): string => (string) $code,
+                Language::query()->where('is_active', true)->pluck('code')->all()
+            ));
         } catch (\Throwable) {
             // Table not migrated yet (fresh install, test harness without a
             // migrated DB, etc.) — never let locale resolution 500 a page.

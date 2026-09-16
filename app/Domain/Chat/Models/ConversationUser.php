@@ -4,8 +4,8 @@ namespace App\Domain\Chat\Models;
 
 use App\Domain\Identity\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class ConversationUser extends Pivot
 {

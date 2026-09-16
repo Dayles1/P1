@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AuditLogger
 {
+    /**
+     * @param  array<string, mixed>  $oldValues
+     * @param  array<string, mixed>  $newValues
+     * @param  array<string, mixed>  $meta
+     */
     public function record(
         Model $subject,
         string $event,
@@ -35,11 +40,11 @@ class AuditLogger
             'new_values' => $newValues ?: null,
             'meta' => $meta ?: null,
 
-            'ip_address' => $request?->ip(),
-            'user_agent' => $request?->userAgent(),
-            'url' => $request?->fullUrl(),
-            'method' => $request?->method(),
-            'route_name' => $request?->route()?->getName(),
+            'ip_address' => $request->ip(),
+            'user_agent' => $request->userAgent(),
+            'url' => $request->fullUrl(),
+            'method' => $request->method(),
+            'route_name' => $request->route()?->getName(),
         ]);
     }
 }

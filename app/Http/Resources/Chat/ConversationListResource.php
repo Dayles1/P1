@@ -2,12 +2,22 @@
 
 namespace App\Http\Resources\Chat;
 
+use App\Domain\Chat\Models\Conversation;
+use App\Domain\Chat\Models\ConversationUser;
 use App\Domain\Setting\Services\UserDateFormatter;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @mixin Conversation
+ *
+ * @property-read ConversationUser|null $pivot
+ */
 class ConversationListResource extends JsonResource
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(Request $request): array
     {
         $formatter = app(UserDateFormatter::class);

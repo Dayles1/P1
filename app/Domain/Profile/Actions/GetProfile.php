@@ -9,8 +9,7 @@ class GetProfile
 {
     public function __construct(
         protected ProfileRepositoryInterface $profileRepository,
-    ) {
-    }
+    ) {}
 
     public function handle(User $user): User
     {

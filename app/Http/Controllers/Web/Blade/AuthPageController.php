@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Web\Blade;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class AuthPageController extends Controller
 {
-    public function index(Request $request, ?string $token = null)
+    public function index(Request $request, ?string $token = null): View
     {
-        $path = '/' . trim(
+        $path = '/'.trim(
             $request->path(),
             '/'
         );
@@ -22,28 +23,21 @@ class AuthPageController extends Controller
 
         $currentPage = match (true) {
 
-            $path === '/register'
-                => 'register',
+            $path === '/register' => 'register',
 
-            $path === '/forgot-password'
-                => 'forgot-password',
+            $path === '/forgot-password' => 'forgot-password',
 
             str_starts_with(
                 $path,
                 '/reset-password/'
-            )
-                => 'reset-password',
+            ) => 'reset-password',
 
-            $path === '/verify-email'
-                => 'verify-email',
+            $path === '/verify-email' => 'verify-email',
 
-            $path === '/confirm-password'
-                => 'confirm-password',
+            $path === '/confirm-password' => 'confirm-password',
 
-            default
-                => 'login',
+            default => 'login',
         };
-
 
         /*
         |--------------------------------------------------------------------------
@@ -58,8 +52,7 @@ class AuthPageController extends Controller
 
                 'resetToken' => $token,
 
-                'resetEmail' =>
-                    $request->query('email'),
+                'resetEmail' => $request->query('email'),
             ]
         );
     }

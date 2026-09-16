@@ -28,7 +28,6 @@ class UserSettingController extends Controller
         );
     }
 
-
     public function update(
         UpdateUserSettingRequest $request
     ): JsonResponse {

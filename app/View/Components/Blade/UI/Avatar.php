@@ -21,7 +21,7 @@ class Avatar extends Component
         $words = preg_split('/\s+/', trim($name)) ?: [];
 
         $this->initials = strtoupper(
-            substr($words[0] ?? '', 0, 1) . substr($words[1] ?? '', 0, 1)
+            substr($words[0] ?? '', 0, 1).substr($words[1] ?? '', 0, 1)
         ) ?: '?';
     }
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Setting;
 
-
 use App\Domain\Setting\Models\Setting;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -14,6 +13,9 @@ class UpdateSettingRequest extends FormRequest
         return true;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function rules(): array
     {
         /** @var Setting|null $setting */

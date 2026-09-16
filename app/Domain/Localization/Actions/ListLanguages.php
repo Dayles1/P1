@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ListLanguages
 {
+    /**
+     * @return Collection<int, Language>
+     */
     public function handle(): Collection
     {
         return Language::query()

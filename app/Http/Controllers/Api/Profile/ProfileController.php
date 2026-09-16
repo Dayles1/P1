@@ -15,8 +15,7 @@ class ProfileController extends Controller
     public function __construct(
         protected GetProfile $getProfile,
         protected UpdateProfile $updateProfile
-    ) {
-    }
+    ) {}
 
     public function show(Request $request): JsonResponse
     {
@@ -26,16 +25,17 @@ class ProfileController extends Controller
             data: new ProfileResource($profile)
         );
     }
-    public function update(UpdateProfileRequest $request): JsonResponse
-{
-    $profile = $this->updateProfile->handle(
-        $request->user(),
-        $request->validated()
-    );
 
-    return $this->success(
-        data: new ProfileResource($profile),
-        message: __('messages.profile.updated')
-    );
-}
+    public function update(UpdateProfileRequest $request): JsonResponse
+    {
+        $profile = $this->updateProfile->handle(
+            $request->user(),
+            $request->validated()
+        );
+
+        return $this->success(
+            data: new ProfileResource($profile),
+            message: __('messages.profile.updated')
+        );
+    }
 }

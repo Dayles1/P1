@@ -11,11 +11,11 @@ return new class extends Migration
         Schema::create('audits', function (Blueprint $table) {
             $table->id();
 
-            $table->nullableMorphs('causer'); 
-            $table->morphs('subject');         
+            $table->nullableMorphs('causer');
+            $table->morphs('subject');
 
-            $table->string('event', 100);      
-            $table->string('title')->nullable(); 
+            $table->string('event', 100);
+            $table->string('title')->nullable();
             $table->text('description')->nullable();
 
             $table->json('old_values')->nullable();

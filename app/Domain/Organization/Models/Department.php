@@ -17,10 +17,17 @@ class Department extends Model
         'code',
     ];
 
+    /**
+     * @return HasMany<User, $this>
+     */
     public function users(): HasMany
     {
         return $this->hasMany(User::class);
     }
+
+    /**
+     * @return MorphOne<Ban, $this>
+     */
     public function ban(): MorphOne
     {
         return $this->morphOne(Ban::class, 'bannable');

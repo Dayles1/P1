@@ -10,8 +10,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Role extends Model
 {
     use HasTranslations;
+
     public const SUPER_ADMIN = 'SUPER_ADMIN';
+
     public const ADMIN = 'ADMIN';
+
     public const USER = 'USER';
 
     protected $fillable = [
@@ -19,11 +22,17 @@ class Role extends Model
         'code',
     ];
 
+    /**
+     * @return BelongsToMany<User, $this>
+     */
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
     }
 
+    /**
+     * @return BelongsToMany<Permission, $this>
+     */
     public function permissions(): BelongsToMany
     {
         return $this->belongsToMany(Permission::class);

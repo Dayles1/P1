@@ -16,9 +16,9 @@ class AuthServiceProvider extends ServiceProvider
 
         Password::defaults(function () {
             return Password::min(8);
-                // ->mixedCase()
-                // ->letters();
-                // ->numbers();
+            // ->mixedCase()
+            // ->letters();
+            // ->numbers();
             // ->symbols()
             // ->uncompromised();
         });

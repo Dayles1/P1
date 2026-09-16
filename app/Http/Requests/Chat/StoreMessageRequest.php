@@ -12,6 +12,9 @@ class StoreMessageRequest extends FormRequest
         return true;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function rules(): array
     {
         $settings = app(SettingService::class);

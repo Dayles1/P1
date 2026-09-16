@@ -17,6 +17,9 @@ class SystemNotification extends BaseNotification
         return 'system';
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toDatabase(User $notifiable): array
     {
         return [

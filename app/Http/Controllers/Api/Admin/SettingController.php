@@ -15,8 +15,7 @@ class SettingController extends Controller
     public function __construct(
         private readonly GetSettingsAction $getSettingsAction,
         private readonly UpdateSettingAction $updateSettingAction,
-    ) {
-    }
+    ) {}
 
     public function index(): JsonResponse
     {

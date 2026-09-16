@@ -13,8 +13,7 @@ class CreateUser
 {
     public function __construct(
         private readonly SettingService $settings,
-    ) {
-    }
+    ) {}
 
     public function handle(array $data): User
     {
@@ -31,16 +30,13 @@ class CreateUser
                     'UTC'
                 );
 
-
             $timezone = Timezone::where('name', $timezoneName)
                 ->first();
 
-
-            if (!$timezone) {
+            if (! $timezone) {
                 $timezone = Timezone::where('name', 'UTC')
                     ->first();
             }
-
 
             UserSetting::create([
                 'user_id' => $user->id,

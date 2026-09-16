@@ -19,6 +19,9 @@ class RequestLogController extends Controller
         protected GetSessionRequestLogs $getSessionRequestLogs,
     ) {}
 
+    /**
+     * @return array<string, mixed>
+     */
     private function filters(Request $request): array
     {
         return $request->validate([

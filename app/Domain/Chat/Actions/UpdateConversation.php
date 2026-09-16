@@ -20,7 +20,7 @@ class UpdateConversation
 
         $conversation->update([
             'title' => $data['title'] ?? $conversation->title,
-            'meta'   => $data['meta'] ?? $conversation->meta,
+            'meta' => $data['meta'] ?? $conversation->meta,
         ]);
 
         return $conversation->refresh();

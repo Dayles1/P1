@@ -11,7 +11,7 @@ class LogoutUser
     {
         $token = $user->currentAccessToken();
 
-        if (!$token) {
+        if (! $token) {
             return;
         }
         // Log::info($user->sessions());
@@ -20,7 +20,7 @@ class LogoutUser
             ->update([
                 'logged_out_at' => now(),
             ]);
-        
+
         $token->delete();
     }
 }

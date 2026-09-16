@@ -17,8 +17,14 @@ abstract class BaseNotification extends Notification
     /** Discriminator stored in `data.type` — what the frontend dispatches on. */
     abstract public function type(): string;
 
+    /**
+     * @return array<string, mixed>
+     */
     abstract public function toDatabase(User $notifiable): array;
 
+    /**
+     * @return array<int, string>
+     */
     public function via(User $notifiable): array
     {
         // Mentions are the one type that always lands in the database (and

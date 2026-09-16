@@ -28,14 +28,14 @@ class StoreAvatar
         );
 
         return $user->avatars()->create([
-            'collection'    => 'avatar',
-            'disk'          => $stored['disk'],
-            'path'          => $stored['path'],
+            'collection' => 'avatar',
+            'disk' => $stored['disk'],
+            'path' => $stored['path'],
             'original_name' => $stored['name'],
-            'filename'      => $stored['filename'],
-            'extension'     => $stored['extension'],
-            'mime_type'     => $stored['mime_type'],
-            'size'          => $stored['size'],
+            'filename' => $stored['filename'],
+            'extension' => $stored['extension'],
+            'mime_type' => $stored['mime_type'],
+            'size' => $stored['size'],
         ]);
     }
 }

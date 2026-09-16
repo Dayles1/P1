@@ -41,8 +41,7 @@ class AuthController extends Controller
         protected VerifyUserEmail $verifyUserEmail,
         protected ResendEmailVerification $resendEmailVerification,
         protected ConfirmUserPassword $confirmUserPassword,
-    ) {
-    }
+    ) {}
 
     public function login(LoginRequest $request): JsonResponse
     {
@@ -52,6 +51,7 @@ class AuthController extends Controller
             $request->validated(),
             DeviceData::fromRequest($request, $parsedDevice)
         );
+
         return $this->success(
             data: [
                 'user' => new AuthUserResource($result['user']),
@@ -60,9 +60,11 @@ class AuthController extends Controller
             message: __('messages.auth.login_success')
         );
     }
+
     public function register(RegisterRequest $request): JsonResponse
     {
         $result = $this->registerUser->handle($request->validated());
+
         return $this->success(
             data: [
                 'user' => new AuthUserResource($result['user']),
@@ -70,6 +72,7 @@ class AuthController extends Controller
             message: __('messages.auth.register_success')
         );
     }
+
     public function logout(): JsonResponse
     {
         $this->logoutUser->handle(Auth::user());
@@ -80,16 +83,16 @@ class AuthController extends Controller
     }
 
     public function me(): JsonResponse
-{
-    return $this->success(
-        data: [
-            'user' => new ProfileResource(
-                $this->getCurrentUser->handle(Auth::user())
-            ),
-        ],
-        message: __('messages.auth.me_success')
-    );
-}
+    {
+        return $this->success(
+            data: [
+                'user' => new ProfileResource(
+                    $this->getCurrentUser->handle(Auth::user())
+                ),
+            ],
+            message: __('messages.auth.me_success')
+        );
+    }
 
     public function forgotPassword(ForgotPasswordRequest $request): JsonResponse
     {
@@ -113,7 +116,7 @@ class AuthController extends Controller
     {
         $user = User::find($id);
 
-        if (!$user || !hash_equals($hash, sha1($user->getEmailForVerification()))) {
+        if (! $user || ! hash_equals($hash, sha1($user->getEmailForVerification()))) {
             return redirect()->to('/login?verified=invalid');
         }
 
@@ -127,7 +130,7 @@ class AuthController extends Controller
         $user = $request->user()
             ?? User::where('email', $request->validated('email'))->first();
 
-        if (!$user) {
+        if (! $user) {
             return $this->error(
                 message: __('messages.auth.email_not_found'),
                 status: 422
@@ -151,7 +154,7 @@ class AuthController extends Controller
             $request->validated('password')
         );
 
-        if (!$confirmed) {
+        if (! $confirmed) {
             return $this->error(
                 message: __('messages.auth.invalid_password'),
                 status: 422
@@ -163,5 +166,4 @@ class AuthController extends Controller
             message: __('messages.auth.password_confirmed')
         );
     }
-
 }

@@ -32,16 +32,25 @@ class Ban extends Model
         ];
     }
 
+    /**
+     * @return MorphTo<Model, $this>
+     */
     public function bannable(): MorphTo
     {
         return $this->morphTo();
     }
 
+    /**
+     * @return BelongsTo<User, $this>
+     */
     public function bannedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'banned_by');
     }
 
+    /**
+     * @return BelongsTo<User, $this>
+     */
     public function unbannedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'unbanned_by');

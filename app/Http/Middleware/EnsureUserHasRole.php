@@ -15,7 +15,7 @@ class EnsureUserHasRole
     {
         $user = $request->user();
 
-        if (!$user) {
+        if (! $user) {
             abort(401, __('auth.unauthenticated'));
         }
 

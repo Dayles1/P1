@@ -10,8 +10,7 @@ class GetUserSessions
 {
     public function __construct(
         protected UserSessionRepositoryInterface $sessionRepository,
-    ) {
-    }
+    ) {}
 
     public function handle(User $user, array $filters = []): LengthAwarePaginator
     {

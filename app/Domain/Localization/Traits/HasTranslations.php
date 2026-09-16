@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait HasTranslations
 {
+    /**
+     * @return MorphMany<Translation, $this>
+     */
     public function translations(): MorphMany
     {
         return $this->morphMany(Translation::class, 'translatable');

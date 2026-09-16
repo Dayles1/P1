@@ -8,12 +8,12 @@ use App\Domain\Identity\Models\UserSetting;
 class GetUserSettings
 {
     public function handle(User $user): UserSetting
-{
-    $setting = $user->settings()
-        ->firstOrCreate([
-            'user_id' => $user->id,
-        ]);
+    {
+        $setting = $user->settings()
+            ->firstOrCreate([
+                'user_id' => $user->id,
+            ]);
 
-    return $setting->load('timezone');
-}
+        return $setting->load('timezone');
+    }
 }

@@ -7,6 +7,8 @@ use App\Domain\Chat\Events\MessageReactionToggled;
 use App\Domain\Chat\Events\MessageRead;
 use App\Domain\Chat\Events\MessageSent;
 use App\Domain\Chat\Events\UserTyping;
+use App\Domain\Chat\Models\ConversationUser;
+use App\Domain\Chat\Models\Message;
 use App\Domain\Identity\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Event;
@@ -67,7 +69,7 @@ test('a user can delete their own message and it broadcasts', function () {
         ->deleteJson("/api/conversations/{$conversationId}/messages/{$messageId}")
         ->assertOk();
 
-    expect(\App\Domain\Chat\Models\Message::withTrashed()->find($messageId)->trashed())->toBeTrue();
+    expect(Message::withTrashed()->find($messageId)->trashed())->toBeTrue();
     Event::assertDispatched(MessageDeleted::class);
 });
 
@@ -116,7 +118,7 @@ test('marking a message read updates the read receipt and broadcasts once', func
         ->postJson("/api/conversations/{$conversationId}/messages/{$messageId}/read")
         ->assertOk();
 
-    expect(\App\Domain\Chat\Models\MessageRead::where('message_id', $messageId)->where('user_id', $userB->id)->count())->toBe(1);
+    expect(App\Domain\Chat\Models\MessageRead::where('message_id', $messageId)->where('user_id', $userB->id)->count())->toBe(1);
     Event::assertDispatchedTimes(MessageRead::class, 1);
 });
 
@@ -144,7 +146,7 @@ test('marking the newest message read also marks every earlier message in the co
         ->assertOk();
 
     foreach ([$firstId, $secondId, $thirdId] as $messageId) {
-        expect(\App\Domain\Chat\Models\MessageRead::where('message_id', $messageId)->where('user_id', $userB->id)->exists())
+        expect(App\Domain\Chat\Models\MessageRead::where('message_id', $messageId)->where('user_id', $userB->id)->exists())
             ->toBeTrue("message {$messageId} should be marked read");
     }
 
@@ -205,7 +207,7 @@ test('paging into older history does not move last_read_message_id backwards', f
         ->getJson("/api/conversations/{$conversationId}/messages?per_page=10&before_id={$oldestSoFar}")
         ->assertOk();
 
-    $pivot = \App\Domain\Chat\Models\ConversationUser::where('conversation_id', $conversationId)
+    $pivot = ConversationUser::where('conversation_id', $conversationId)
         ->where('user_id', $userB->id)
         ->first();
 
@@ -326,7 +328,7 @@ test('a muted conversation suppresses regular message notifications', function (
     $userB = userWithRole(Role::USER);
     $conversationId = startPrivateConversation($userA, $userB);
 
-    \App\Domain\Chat\Models\ConversationUser::where('conversation_id', $conversationId)
+    ConversationUser::where('conversation_id', $conversationId)
         ->where('user_id', $userB->id)
         ->update(['muted_until' => now()->addDay()]);
 

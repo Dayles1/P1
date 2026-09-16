@@ -34,11 +34,17 @@ class Audit extends Model
         ];
     }
 
+    /**
+     * @return MorphTo<Model, $this>
+     */
     public function causer(): MorphTo
     {
         return $this->morphTo();
     }
 
+    /**
+     * @return MorphTo<Model, $this>
+     */
     public function subject(): MorphTo
     {
         return $this->morphTo();

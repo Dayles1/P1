@@ -16,7 +16,7 @@ class Dropdown extends Component
     public function __construct(
         public string $align = 'right',
     ) {
-        $this->id = 'dropdown-' . uniqid();
+        $this->id = 'dropdown-'.uniqid();
     }
 
     /**

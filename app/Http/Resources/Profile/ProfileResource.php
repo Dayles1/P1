@@ -12,12 +12,12 @@ class ProfileResource extends JsonResource
     {
         $rolePermissions = $this->whenLoaded('roles', function () {
             return $this->roles
-                ->flatMap(fn($role) => $role->permissions)
+                ->flatMap(fn ($role) => $role->permissions)
                 ->unique('id')
                 ->values();
         }, collect());
 
-        $directPermissions = $this->whenLoaded('permissions', fn() => $this->permissions, collect());
+        $directPermissions = $this->whenLoaded('permissions', fn () => $this->permissions, collect());
 
         $allPermissions = $rolePermissions
             ->merge($directPermissions)
@@ -36,19 +36,19 @@ class ProfileResource extends JsonResource
                 'name' => $this->department->name,
             ] : null,
 
-            'roles' => $this->roles->map(fn($role) => [
+            'roles' => $this->roles->map(fn ($role) => [
                 'id' => $role->id,
                 'name' => $role->name,
                 'code' => $role->code,
             ])->values(),
 
-            'permissions' => $directPermissions->map(fn($permission) => [
+            'permissions' => $directPermissions->map(fn ($permission) => [
                 'id' => $permission->id,
                 'name' => $permission->name,
                 'code' => $permission->code,
             ])->values(),
 
-            'all_permissions' => $allPermissions->map(fn($permission) => [
+            'all_permissions' => $allPermissions->map(fn ($permission) => [
                 'id' => $permission->id,
                 'name' => $permission->name,
                 'code' => $permission->code,
@@ -56,12 +56,12 @@ class ProfileResource extends JsonResource
 
             'ban' => $this->whenLoaded(
                 'ban',
-                fn() => new BanResource($this->ban)
+                fn () => new BanResource($this->ban)
             ),
 
             'avatar' => $this->whenLoaded(
                 'avatar',
-                fn() => new AvatarResource($this->avatar)
+                fn () => new AvatarResource($this->avatar)
             ),
 
             'current_session' => $this->relationLoaded('currentSession') && $this->currentSession

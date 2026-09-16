@@ -38,14 +38,12 @@ class FileStorage
         ];
     }
 
-
     public function delete(
         string $path,
         string $disk = 'public'
     ): bool {
         return Storage::disk($disk)->delete($path);
     }
-
 
     public function exists(
         string $path,
@@ -54,7 +52,6 @@ class FileStorage
         return Storage::disk($disk)->exists($path);
     }
 
-
     public function url(
         string $path,
         string $disk = 'public'
@@ -62,14 +59,12 @@ class FileStorage
         return Storage::disk($disk)->url($path);
     }
 
-
     public function size(
         string $path,
         string $disk = 'public'
     ): int {
         return Storage::disk($disk)->size($path);
     }
-
 
     public function mimeType(
         string $path,

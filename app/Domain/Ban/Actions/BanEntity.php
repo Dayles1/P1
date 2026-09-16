@@ -20,14 +20,14 @@ class BanEntity
             $ban = $bannable->ban()->updateOrCreate(
                 [],
                 [
-                    'banned_by'   => $bannedBy,
+                    'banned_by' => $bannedBy,
                     'unbanned_by' => null,
-                    'reason'      => $reason,
-                    'banned_at'   => now(),
-                    'ends_at'     => $endsAt,
+                    'reason' => $reason,
+                    'banned_at' => now(),
+                    'ends_at' => $endsAt,
                     'unbanned_at' => null,
-                    'status'      => BanStatus::Active,
-                    'meta'        => $meta,
+                    'status' => BanStatus::Active,
+                    'meta' => $meta,
                 ]
             );
 

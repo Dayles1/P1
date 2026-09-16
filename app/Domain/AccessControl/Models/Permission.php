@@ -10,16 +10,23 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Permission extends Model
 {
     use HasTranslations;
+
     protected $fillable = [
         'name',
         'code',
     ];
 
+    /**
+     * @return BelongsToMany<Role, $this>
+     */
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
     }
 
+    /**
+     * @return BelongsToMany<User, $this>
+     */
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);

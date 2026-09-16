@@ -20,6 +20,9 @@ class MentionNotification extends BaseNotification
         return 'mention';
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toDatabase(User $notifiable): array
     {
         return [

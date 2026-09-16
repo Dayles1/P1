@@ -8,18 +8,28 @@ use Illuminate\Database\Eloquent\Model;
 class Setting extends Model
 {
     public const TYPE_BOOLEAN = 'boolean';
-    public const TYPE_INTEGER = 'integer';
-    public const TYPE_JSON    = 'json';
-    public const TYPE_STRING  = 'string';
-    public const TYPE_TEXT    = 'text';
 
-    public const GROUP_AUTH          = 'auth';
-    public const GROUP_SYSTEM        = 'system';
-    public const GROUP_LOCALIZATION  = 'localization';
-    public const GROUP_UPLOAD        = 'upload';
-    public const GROUP_NOTIFICATION  = 'notification';
-    public const GROUP_USER          = 'user';
-    public const GROUP_SECURITY      = 'security';
+    public const TYPE_INTEGER = 'integer';
+
+    public const TYPE_JSON = 'json';
+
+    public const TYPE_STRING = 'string';
+
+    public const TYPE_TEXT = 'text';
+
+    public const GROUP_AUTH = 'auth';
+
+    public const GROUP_SYSTEM = 'system';
+
+    public const GROUP_LOCALIZATION = 'localization';
+
+    public const GROUP_UPLOAD = 'upload';
+
+    public const GROUP_NOTIFICATION = 'notification';
+
+    public const GROUP_USER = 'user';
+
+    public const GROUP_SECURITY = 'security';
 
     protected $fillable = [
         'key',
@@ -62,12 +72,12 @@ class Setting extends Model
         return match ($type) {
             self::TYPE_BOOLEAN => filter_var($value, FILTER_VALIDATE_BOOLEAN),
             self::TYPE_INTEGER => (int) $value,
-            self::TYPE_JSON    => is_string($value)
+            self::TYPE_JSON => is_string($value)
                 ? json_decode($value, true)
                 : $value,
             self::TYPE_TEXT,
-            self::TYPE_STRING  => (string) $value,
-            default            => $value,
+            self::TYPE_STRING => (string) $value,
+            default => $value,
         };
     }
 
@@ -76,13 +86,13 @@ class Setting extends Model
         return match ($type) {
             self::TYPE_BOOLEAN => filter_var($value, FILTER_VALIDATE_BOOLEAN) ? 1 : 0,
             self::TYPE_INTEGER => (int) $value,
-            self::TYPE_JSON    => json_encode(
+            self::TYPE_JSON => json_encode(
                 $value,
                 JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE
             ),
             self::TYPE_TEXT,
-            self::TYPE_STRING  => (string) $value,
-            default            => $value,
+            self::TYPE_STRING => (string) $value,
+            default => $value,
         };
     }
 }

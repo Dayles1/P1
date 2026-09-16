@@ -4,7 +4,6 @@ namespace App\Domain\Audit\Traits;
 
 use App\Domain\Audit\Models\Audit;
 use App\Domain\Audit\Services\AuditLogger;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Arr;
 
@@ -12,11 +11,11 @@ trait RecordsAudits
 {
     public static function bootRecordsAudits(): void
     {
-        static::created(function (Model $model): void {
+        static::created(function (self $model): void {
             $model->writeAudit('created', [], $model->auditNewValues());
         });
 
-        static::updated(function (Model $model): void {
+        static::updated(function (self $model): void {
             $old = [];
             $new = [];
 
@@ -34,20 +33,28 @@ trait RecordsAudits
             }
         });
 
-        static::deleted(function (Model $model): void {
+        static::deleted(function (self $model): void {
             $model->writeAudit('deleted', $model->auditOldValues(), []);
         });
 
-        static::restored(function (Model $model): void {
+        static::restored(function (self $model): void {
             $model->writeAudit('restored', [], []);
         });
     }
 
+    /**
+     * @return MorphMany<Audit, $this>
+     */
     public function audits(): MorphMany
     {
         return $this->morphMany(Audit::class, 'subject')->latest();
     }
 
+    /**
+     * @param  array<string, mixed>  $oldValues
+     * @param  array<string, mixed>  $newValues
+     * @param  array<string, mixed>  $meta
+     */
     public function writeAudit(
         string $event,
         array $oldValues = [],
@@ -67,16 +74,26 @@ trait RecordsAudits
         );
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function auditOldValues(): array
     {
         return $this->filterAuditValues($this->getOriginal());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function auditNewValues(): array
     {
         return $this->filterAuditValues($this->getAttributes());
     }
 
+    /**
+     * @param  array<string, mixed>  $values
+     * @return array<string, mixed>
+     */
     protected function filterAuditValues(array $values): array
     {
         $ignore = $this->getAuditIgnored();
@@ -84,6 +101,9 @@ trait RecordsAudits
         return Arr::except($values, $ignore);
     }
 
+    /**
+     * @return array<int, string>
+     */
     protected function getAuditIgnored(): array
     {
         return property_exists($this, 'auditIgnored')

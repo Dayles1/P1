@@ -13,6 +13,9 @@ class UpdateProfileRequest extends FormRequest
         return true;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function rules(): array
     {
         $emailChanging = $this->filled('email') && $this->input('email') !== $this->user()->email;

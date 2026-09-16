@@ -13,6 +13,8 @@ class GetDashboardSummary
      * Every number here comes straight from the database for the
      * authenticated user (and, for admins, the whole instance) — nothing is
      * fabricated for display purposes.
+     *
+     * @return array<string, mixed>
      */
     public function handle(User $user): array
     {

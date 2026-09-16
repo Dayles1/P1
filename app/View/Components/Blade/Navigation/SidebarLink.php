@@ -18,7 +18,7 @@ class SidebarLink extends Component
         public string $icon = '',
         ?bool $active = null,
     ) {
-        $this->active = $active ?? request()->is(ltrim(parse_url($href, PHP_URL_PATH) ?: '/', '/') . '*');
+        $this->active = $active ?? request()->is(ltrim(parse_url($href, PHP_URL_PATH) ?: '/', '/').'*');
     }
 
     /**
