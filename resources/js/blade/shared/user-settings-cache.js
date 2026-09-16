@@ -7,7 +7,9 @@
 let settingsPromise = null;
 
 export function getUserSettings(api) {
-    settingsPromise ??= api.get('/profile/settings').then(({ data }) => data.data);
+    settingsPromise ??= api
+        .get('/profile/settings')
+        .then(({ data }) => data.data);
 
     return settingsPromise;
 }

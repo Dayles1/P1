@@ -20,12 +20,14 @@ export function openContextMenu(x, y, items) {
     menu.className = 'context-menu';
     menu.setAttribute('role', 'menu');
     menu.innerHTML = items
-        .map((item, index) => `
+        .map(
+            (item, index) => `
             <button type="button" class="context-menu__item ${item.danger ? 'context-menu__item--danger' : ''}" data-index="${index}" role="menuitem">
                 ${item.icon ? `<span aria-hidden="true">${item.icon}</span>` : ''}
                 <span>${item.label}</span>
             </button>
-        `)
+        `,
+        )
         .join('');
 
     document.body.appendChild(menu);
@@ -66,14 +68,19 @@ export function openContextMenu(x, y, items) {
     window.setTimeout(() => {
         document.addEventListener('click', onOutside, { capture: true });
         document.addEventListener('contextmenu', onOutside, { capture: true });
-        document.addEventListener('scroll', closeContextMenu, { capture: true, once: true });
+        document.addEventListener('scroll', closeContextMenu, {
+            capture: true,
+            once: true,
+        });
     }, 0);
 
     document.addEventListener('keydown', onKeydown);
 
     cleanup = () => {
         document.removeEventListener('click', onOutside, { capture: true });
-        document.removeEventListener('contextmenu', onOutside, { capture: true });
+        document.removeEventListener('contextmenu', onOutside, {
+            capture: true,
+        });
         document.removeEventListener('keydown', onKeydown);
     };
 }
@@ -83,20 +90,27 @@ export function attachLongPress(element, onLongPress) {
     let timer = null;
     let start = null;
 
-    element.addEventListener('touchstart', (event) => {
-        const touch = event.touches[0];
-        start = { x: touch.clientX, y: touch.clientY };
+    element.addEventListener(
+        'touchstart',
+        (event) => {
+            const touch = event.touches[0];
+            start = { x: touch.clientX, y: touch.clientY };
 
-        timer = window.setTimeout(() => {
-            onLongPress(start.x, start.y, event);
-        }, 500);
-    }, { passive: true });
+            timer = window.setTimeout(() => {
+                onLongPress(start.x, start.y, event);
+            }, 500);
+        },
+        { passive: true },
+    );
 
     const cancel = (event) => {
         if (timer && start && event.touches?.[0]) {
             const touch = event.touches[0];
 
-            if (Math.abs(touch.clientX - start.x) > 10 || Math.abs(touch.clientY - start.y) > 10) {
+            if (
+                Math.abs(touch.clientX - start.x) > 10 ||
+                Math.abs(touch.clientY - start.y) > 10
+            ) {
                 window.clearTimeout(timer);
                 timer = null;
             }

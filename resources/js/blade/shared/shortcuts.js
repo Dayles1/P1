@@ -9,7 +9,9 @@ import { openModal } from './modal';
  * since they only make sense with focus in that page's own composer.
  */
 function triggerSearch() {
-    const chatSearchTrigger = document.querySelector('[data-chat-global-search]');
+    const chatSearchTrigger = document.querySelector(
+        '[data-chat-global-search]',
+    );
 
     if (chatSearchTrigger) {
         chatSearchTrigger.click();
@@ -31,12 +33,14 @@ function shortcutRows() {
     ];
 
     return rows
-        .map(([keys, label]) => `
+        .map(
+            ([keys, label]) => `
             <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--ui-border);">
                 <span style="font-size:13px; color:var(--ui-text);">${label}</span>
                 <kbd style="padding:3px 8px; border:1px solid var(--ui-border); border-radius:6px; background:var(--ui-surface-soft); font-size:12px; font-family:ui-monospace, monospace;">${keys}</kbd>
             </div>
-        `)
+        `,
+        )
         .join('');
 }
 
@@ -48,25 +52,29 @@ function openShortcutsHelp() {
 }
 
 export function initShortcuts() {
-    document.addEventListener('keydown', (event) => {
-        const meta = event.ctrlKey || event.metaKey;
+    document.addEventListener(
+        'keydown',
+        (event) => {
+            const meta = event.ctrlKey || event.metaKey;
 
-        if (!meta) {
-            return;
-        }
+            if (!meta) {
+                return;
+            }
 
-        if (event.key === 'k' || event.key === 'K') {
-            event.preventDefault();
-            triggerSearch();
+            if (event.key === 'k' || event.key === 'K') {
+                event.preventDefault();
+                triggerSearch();
 
-            return;
-        }
+                return;
+            }
 
-        if (event.key === '/') {
-            event.preventDefault();
-            openShortcutsHelp();
-        }
-    }, { capture: true });
+            if (event.key === '/') {
+                event.preventDefault();
+                openShortcutsHelp();
+            }
+        },
+        { capture: true },
+    );
 }
 
 export { openShortcutsHelp };

@@ -1,5 +1,11 @@
 import { api } from '../axios';
-import { fetchCurrentUser, getHeaderSnapshot, hasRole, initials, logout } from './auth-state';
+import {
+    fetchCurrentUser,
+    getHeaderSnapshot,
+    hasRole,
+    initials,
+    logout,
+} from './auth-state';
 import { initDevPanel } from './dev-panel';
 import { initLocalePicker } from './i18n';
 import { initNotificationBell } from './notification-bell';
@@ -114,7 +120,9 @@ function initStaticModals() {
         const trigger = event.target.closest('[data-modal-trigger]');
 
         if (trigger) {
-            document.getElementById(trigger.dataset.modalTrigger)?.removeAttribute('hidden');
+            document
+                .getElementById(trigger.dataset.modalTrigger)
+                ?.removeAttribute('hidden');
 
             return;
         }
@@ -131,7 +139,9 @@ function initStaticModals() {
 
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
-            document.querySelectorAll('[data-modal]:not([hidden])').forEach((modal) => modal.setAttribute('hidden', ''));
+            document
+                .querySelectorAll('[data-modal]:not([hidden])')
+                .forEach((modal) => modal.setAttribute('hidden', ''));
         }
     });
 }
@@ -246,7 +256,10 @@ async function initHeaderAuthState() {
 
     getUserSettings(api)
         .then((settings) => {
-            document.documentElement.toggleAttribute('data-developer-mode', Boolean(settings?.meta?.developer_mode));
+            document.documentElement.toggleAttribute(
+                'data-developer-mode',
+                Boolean(settings?.meta?.developer_mode),
+            );
         })
         .catch(() => {});
 

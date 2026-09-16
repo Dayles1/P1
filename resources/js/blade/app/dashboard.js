@@ -12,7 +12,9 @@ const completenessValueEl = document.querySelector('[data-completeness-value]');
 const completenessBarEl = document.querySelector('[data-completeness-bar]');
 const recentRequestsEl = document.querySelector('[data-recent-requests]');
 const recentSessionsEl = document.querySelector('[data-recent-sessions]');
-const recentConversationsEl = document.querySelector('[data-recent-conversations]');
+const recentConversationsEl = document.querySelector(
+    '[data-recent-conversations]',
+);
 const instanceOverviewEl = document.querySelector('[data-instance-overview]');
 const instanceStatsEl = document.querySelector('[data-instance-stats]');
 
@@ -28,12 +30,19 @@ function statCard(label, value, meta = '') {
 
 function renderStats(summary) {
     statGridEl.innerHTML = [
-        statCard(t('dashboard.active_sessions'), summary.sessions.active, `${t('dashboard.total_sessions')}: ${summary.sessions.total}`),
+        statCard(
+            t('dashboard.active_sessions'),
+            summary.sessions.active,
+            `${t('dashboard.total_sessions')}: ${summary.sessions.total}`,
+        ),
         statCard(t('dashboard.requests_today'), summary.requests.today),
         statCard(t('dashboard.requests_week'), summary.requests.this_week),
         statCard(t('dashboard.errors_week'), summary.requests.errors_this_week),
         statCard(t('dashboard.unread_messages'), summary.unread_messages),
-        statCard(t('dashboard.unread_notifications'), summary.unread_notifications),
+        statCard(
+            t('dashboard.unread_notifications'),
+            summary.unread_notifications,
+        ),
     ].join('');
 
     completenessValueEl.textContent = `${summary.account.profile_completeness}%`;
@@ -43,9 +52,19 @@ function renderStats(summary) {
         instanceOverviewEl.hidden = false;
         instanceStatsEl.innerHTML = [
             statCard(t('dashboard.total_users'), summary.instance.total_users),
-            statCard(t('dashboard.active_sessions'), summary.instance.active_sessions),
-            statCard(t('dashboard.requests_today'), summary.instance.requests_today),
-            statCard(t('common.status'), summary.instance.errors_today, t('dashboard.errors_week')),
+            statCard(
+                t('dashboard.active_sessions'),
+                summary.instance.active_sessions,
+            ),
+            statCard(
+                t('dashboard.requests_today'),
+                summary.instance.requests_today,
+            ),
+            statCard(
+                t('common.status'),
+                summary.instance.errors_today,
+                t('dashboard.errors_week'),
+            ),
         ].join('');
     }
 }
@@ -58,7 +77,8 @@ function renderRecentRequests(logs) {
     }
 
     recentRequestsEl.innerHTML = logs
-        .map((log) => `
+        .map(
+            (log) => `
             <div class="timeline__item">
                 <span class="timeline__dot ${log.status_code >= 400 ? 'timeline__dot--danger' : ''}"></span>
                 <div class="timeline__content">
@@ -70,7 +90,8 @@ function renderRecentRequests(logs) {
                     <div class="timeline__meta">${log.created_at ?? ''}</div>
                 </div>
             </div>
-        `)
+        `,
+        )
         .join('');
 }
 
@@ -82,7 +103,8 @@ function renderRecentSessions(sessions) {
     }
 
     recentSessionsEl.innerHTML = sessions
-        .map((session) => `
+        .map(
+            (session) => `
             <a href="/sessions/${session.id}" class="data-row" style="text-decoration:none; padding:10px 0;">
                 <div class="data-row__main">
                     <div class="data-row__title" style="font-size:13px;">
@@ -92,7 +114,8 @@ function renderRecentSessions(sessions) {
                     <div class="data-row__meta">${session.last_activity_at ?? ''}</div>
                 </div>
             </a>
-        `)
+        `,
+        )
         .join('');
 }
 
@@ -102,13 +125,16 @@ function renderRecentConversations(conversations) {
     }
 
     if (!conversations.length) {
-        recentConversationsEl.innerHTML = emptyState(t('dashboard.no_recent_conversations'));
+        recentConversationsEl.innerHTML = emptyState(
+            t('dashboard.no_recent_conversations'),
+        );
 
         return;
     }
 
     recentConversationsEl.innerHTML = conversations
-        .map((conversation) => `
+        .map(
+            (conversation) => `
             <a href="/chat/${conversation.id}" class="data-row" style="text-decoration:none; border-radius:0; border-left:none; border-right:none; border-top:none;">
                 <div class="data-row__main" style="display:flex; align-items:center; gap:10px;">
                     <span class="avatar avatar--sm">
@@ -121,7 +147,8 @@ function renderRecentConversations(conversations) {
                 </div>
                 ${conversation.unread_count > 0 ? `<span class="pill pill--primary">${conversation.unread_count}</span>` : ''}
             </a>
-        `)
+        `,
+        )
         .join('');
 }
 

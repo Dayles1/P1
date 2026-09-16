@@ -28,7 +28,7 @@ api.interceptors.request.use(
 
         return config;
     },
-    (error) => Promise.reject(error)
+    (error) => Promise.reject(error),
 );
 
 /**
@@ -42,17 +42,21 @@ function reportDevRequest(config, response, error) {
         return;
     }
 
-    const duration = config.__startedAt ? Math.round(performance.now() - config.__startedAt) : null;
+    const duration = config.__startedAt
+        ? Math.round(performance.now() - config.__startedAt)
+        : null;
 
-    document.dispatchEvent(new CustomEvent('dev-request', {
-        detail: {
-            method: (config.method || 'get').toUpperCase(),
-            url: (config.baseURL || '') + (config.url || ''),
-            status: response?.status ?? error?.response?.status ?? null,
-            duration,
-            ok: !error,
-        },
-    }));
+    document.dispatchEvent(
+        new CustomEvent('dev-request', {
+            detail: {
+                method: (config.method || 'get').toUpperCase(),
+                url: (config.baseURL || '') + (config.url || ''),
+                status: response?.status ?? error?.response?.status ?? null,
+                duration,
+                ok: !error,
+            },
+        }),
+    );
 }
 
 api.interceptors.response.use(
@@ -69,7 +73,7 @@ api.interceptors.response.use(
         reportDevRequest(error.config || {}, null, error);
 
         return Promise.reject(error);
-    }
+    },
 );
 
 export default api;

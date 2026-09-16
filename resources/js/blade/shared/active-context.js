@@ -16,7 +16,9 @@ export function getActiveConversationId() {
 }
 
 export function isConversationActive(id) {
-    return document.visibilityState === 'visible'
-        && activeConversationId !== null
-        && Number(activeConversationId) === Number(id);
+    return (
+        document.visibilityState === 'visible' &&
+        activeConversationId !== null &&
+        Number(activeConversationId) === Number(id)
+    );
 }

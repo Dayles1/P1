@@ -22,9 +22,10 @@ function renderRows(sessions) {
 
     rowsEl.innerHTML = sessions
         .map((session) => {
-            const statusPill = session.status === 'active'
-                ? `<span class="pill pill--success">${t('common.active')}</span>`
-                : `<span class="pill pill--muted">${t('common.expired')}</span>`;
+            const statusPill =
+                session.status === 'active'
+                    ? `<span class="pill pill--success">${t('common.active')}</span>`
+                    : `<span class="pill pill--muted">${t('common.expired')}</span>`;
 
             return `
                 <tr>
@@ -82,7 +83,8 @@ rowsEl?.addEventListener('click', async (event) => {
             confirmText: t('confirm.revoke_session_confirm'),
             cancelText: t('common.cancel'),
             danger: true,
-            onConfirm: () => api.delete(`/admin/sessions/${button.dataset.revoke}`),
+            onConfirm: () =>
+                api.delete(`/admin/sessions/${button.dataset.revoke}`),
         });
 
         if (!confirmed) {

@@ -25,7 +25,12 @@ export function renderPagination(container, pagination, onPage) {
 
     const pages = pageWindow(current, last);
 
-    const pageButton = (page, label = page, active = false, disabled = false) => `
+    const pageButton = (
+        page,
+        label = page,
+        active = false,
+        disabled = false,
+    ) => `
         <button
             type="button"
             class="pagination__btn ${active ? 'pagination__btn--active' : ''}"
@@ -42,7 +47,7 @@ export function renderPagination(container, pagination, onPage) {
                 .map((page) =>
                     page === '…'
                         ? '<span class="pagination__btn" style="border:none;background:none;cursor:default;">…</span>'
-                        : pageButton(page, page, page === current)
+                        : pageButton(page, page, page === current),
                 )
                 .join('')}
             ${pageButton(current + 1, '›', false, current >= last)}

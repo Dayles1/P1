@@ -30,21 +30,26 @@ function renderSessions(sessions) {
 
     list.innerHTML = sessions
         .map((session) => {
-            const statusPill = session.status === 'active'
-                ? `<span class="pill pill--success">${t('common.active')}</span>`
-                : `<span class="pill pill--muted">${t('common.expired')}</span>`;
+            const statusPill =
+                session.status === 'active'
+                    ? `<span class="pill pill--success">${t('common.active')}</span>`
+                    : `<span class="pill pill--muted">${t('common.expired')}</span>`;
 
             const currentPill = session.is_current
                 ? `<span class="pill pill--primary" style="margin-left:6px;">${t('sessions.this_device')}</span>`
                 : '';
 
-            const device = [session.browser, session.platform]
-                .filter(Boolean)
-                .join(' · ') || session.device_name || t('common.unknown');
+            const device =
+                [session.browser, session.platform]
+                    .filter(Boolean)
+                    .join(' · ') ||
+                session.device_name ||
+                t('common.unknown');
 
-            const revokeButton = session.status === 'active' && !session.is_current
-                ? `<button type="button" class="btn btn--outline btn--sm" data-revoke="${session.id}">${t('sessions.sign_out')}</button>`
-                : '';
+            const revokeButton =
+                session.status === 'active' && !session.is_current
+                    ? `<button type="button" class="btn btn--outline btn--sm" data-revoke="${session.id}">${t('sessions.sign_out')}</button>`
+                    : '';
 
             return `
                 <a href="/sessions/${session.id}" class="data-row ${session.is_current ? 'data-row--current' : ''}" style="text-decoration:none;">
@@ -68,7 +73,11 @@ async function loadSessions(page = 1) {
 
     try {
         const { data } = await api.get('/sessions', {
-            params: { status: statusFilter?.value || 'all', page, per_page: 10 },
+            params: {
+                status: statusFilter?.value || 'all',
+                page,
+                per_page: 10,
+            },
         });
 
         renderSessions(data.data || []);
@@ -130,7 +139,11 @@ revokeOthersBtn?.addEventListener('click', async () => {
             return;
         }
 
-        showToast(revokedCount > 0 ? t('sessions.revoked') : t('sessions.others_revoked_none'));
+        showToast(
+            revokedCount > 0
+                ? t('sessions.revoked')
+                : t('sessions.others_revoked_none'),
+        );
 
         loadSessions(currentPage);
     } catch (error) {

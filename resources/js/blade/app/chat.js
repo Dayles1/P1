@@ -32,11 +32,15 @@ const messagesEl = document.querySelector('[data-chat-messages]');
 const typingEl = document.querySelector('[data-chat-typing]');
 const scrollBottomBtn = document.querySelector('[data-chat-scroll-bottom]');
 const replyPreview = document.querySelector('[data-chat-reply-preview]');
-const replyPreviewText = document.querySelector('[data-chat-reply-preview-text]');
+const replyPreviewText = document.querySelector(
+    '[data-chat-reply-preview-text]',
+);
 const editPreview = document.querySelector('[data-chat-edit-preview]');
 const composer = document.querySelector('[data-chat-composer]');
 const composerInput = document.querySelector('[data-chat-input]');
-const composerAttachmentsEl = document.querySelector('[data-chat-composer-attachments]');
+const composerAttachmentsEl = document.querySelector(
+    '[data-chat-composer-attachments]',
+);
 const fileInput = document.querySelector('[data-chat-file-input]');
 const mentionsEl = document.querySelector('[data-chat-mentions]');
 const backBtn = document.querySelector('[data-chat-back]');
@@ -101,7 +105,10 @@ function scheduleDraftSave() {
     }
 
     window.clearTimeout(draftSaveTimer);
-    draftSaveTimer = window.setTimeout(() => saveDraft(activeConversation.id, composerInput.value), 300);
+    draftSaveTimer = window.setTimeout(
+        () => saveDraft(activeConversation.id, composerInput.value),
+        300,
+    );
 }
 
 /*
@@ -111,7 +118,9 @@ function scheduleDraftSave() {
 */
 
 function conversationSubtitle(conversation) {
-    const typing = [...(typingByConversation.get(conversation.id)?.values() || [])].map((u) => u.name);
+    const typing = [
+        ...(typingByConversation.get(conversation.id)?.values() || []),
+    ].map((u) => u.name);
 
     if (typing.length === 1) {
         return `<span class="chat-list-item__typing">${escapeHtml(t('chat.is_typing', { name: typing[0] }))}</span>`;
@@ -143,7 +152,9 @@ function renderConversationList() {
     const rest = conversations.filter((c) => !c.is_pinned);
 
     const row = (conversation) => {
-        const online = conversation.other_user_id ? isOnline(conversation.other_user_id) : false;
+        const online = conversation.other_user_id
+            ? isOnline(conversation.other_user_id)
+            : false;
 
         return `
             <button
@@ -222,11 +233,14 @@ function subscribeToConversation(id) {
         return;
     }
 
-    const channel = echo.private(`conversation.${id}`)
+    const channel = echo
+        .private(`conversation.${id}`)
         .listen('.message.sent', (payload) => onMessageSent(id, payload))
         .listen('.message.edited', (payload) => onMessageEdited(id, payload))
         .listen('.message.deleted', (payload) => onMessageDeleted(id, payload))
-        .listen('.message.reaction.toggled', (payload) => onReactionToggled(id, payload))
+        .listen('.message.reaction.toggled', (payload) =>
+            onReactionToggled(id, payload),
+        )
         .listen('.message.read', (payload) => onMessageReadEvent(id, payload))
         .listen('.user.typing', (payload) => onUserTyping(id, payload));
 
@@ -247,7 +261,10 @@ function unsubscribeAll() {
 */
 
 function markMessageMine(message) {
-    return { ...message, is_mine: Number(message.sender?.id) === Number(currentUser?.id) };
+    return {
+        ...message,
+        is_mine: Number(message.sender?.id) === Number(currentUser?.id),
+    };
 }
 
 /*
@@ -275,7 +292,11 @@ const conversationCache = new Map();
 
 function getCache(conversationId) {
     if (!conversationCache.has(conversationId)) {
-        conversationCache.set(conversationId, { messages: [], hasMoreOlder: true, ids: new Set() });
+        conversationCache.set(conversationId, {
+            messages: [],
+            hasMoreOlder: true,
+            ids: new Set(),
+        });
     }
 
     return conversationCache.get(conversationId);
@@ -310,7 +331,9 @@ function ingestMessage(conversationId, message) {
         cache.hasMoreOlder = true; // we just trimmed our own tail, so there's always "more" above it now
 
         if (isActive(conversationId)) {
-            messagesEl.querySelector(`[data-message-id="${dropped.id}"]`)?.remove();
+            messagesEl
+                .querySelector(`[data-message-id="${dropped.id}"]`)
+                ?.remove();
         }
     }
 
@@ -327,11 +350,16 @@ function ingestMessage(conversationId, message) {
     }
 
     updateConversationSummary(conversationId, {
-        last_message: { body: message.body, sender: message.sender?.name, type: message.type },
+        last_message: {
+            body: message.body,
+            sender: message.sender?.name,
+            type: message.type,
+        },
         last_message_at: message.created_at,
         unread_count: isActive(conversationId)
             ? 0
-            : (conversations.find((c) => c.id === conversationId)?.unread_count || 0) + (message.is_mine ? 0 : 1),
+            : (conversations.find((c) => c.id === conversationId)
+                  ?.unread_count || 0) + (message.is_mine ? 0 : 1),
     });
 
     clearTyping(conversationId, message.sender?.id);
@@ -374,7 +402,11 @@ function onMessageDeleted(conversationId, payload) {
     if (isActive(conversationId)) {
         // `index` now points at whoever took the removed message's place
         // (post-splice) — i.e. the message that followed it, if any.
-        removeMessageDOM(payload.message_id, cache.messages[index] ?? null, index);
+        removeMessageDOM(
+            payload.message_id,
+            cache.messages[index] ?? null,
+            index,
+        );
     }
 }
 
@@ -404,7 +436,9 @@ function onMessageReadEvent(conversationId, payload) {
         .filter((m) => m.id <= payload.message_id)
         .forEach((message) => {
             if (!message.read_by?.includes(payload.user_id)) {
-                message.read_by = [...new Set([...(message.read_by || []), payload.user_id])];
+                message.read_by = [
+                    ...new Set([...(message.read_by || []), payload.user_id]),
+                ];
 
                 if (active) {
                     patchMessageDOM(message);
@@ -454,7 +488,9 @@ function renderTypingIndicator() {
         return;
     }
 
-    const names = [...(typingByConversation.get(activeConversation.id)?.values() || [])].map((u) => u.name);
+    const names = [
+        ...(typingByConversation.get(activeConversation.id)?.values() || []),
+    ].map((u) => u.name);
 
     if (!names.length) {
         typingEl.textContent = '';
@@ -501,14 +537,18 @@ function reactionBar(message) {
 
     return `
         <div class="chat-bubble__reactions">
-            ${message.reactions.map((r) => `
+            ${message.reactions
+                .map(
+                    (r) => `
                 <button
                     type="button"
                     class="chat-reaction-pill ${r.user_ids.includes(currentUser?.id) ? 'chat-reaction-pill--mine' : ''}"
                     data-react="${message.id}"
                     data-emoji="${r.emoji}"
                 >${r.emoji} ${r.count}</button>
-            `).join('')}
+            `,
+                )
+                .join('')}
         </div>
     `;
 }
@@ -518,7 +558,9 @@ function readTicks(message) {
         return '';
     }
 
-    const otherReaders = (message.read_by || []).filter((id) => Number(id) !== Number(currentUser?.id));
+    const otherReaders = (message.read_by || []).filter(
+        (id) => Number(id) !== Number(currentUser?.id),
+    );
     const isRead = otherReaders.length > 0;
 
     return `<span class="chat-bubble__ticks ${isRead ? 'chat-bubble__ticks--read' : ''}" title="${isRead ? t('chat.read') : t('chat.sent')}">${isRead ? '✓✓' : '✓'}</span>`;
@@ -531,36 +573,51 @@ function attachmentsHtml(message) {
 
     return `
         <div class="chat-bubble__attachments">
-            ${message.attachments.map((a) => {
-                if ((a.mime_type || '').startsWith('image/')) {
-                    return `<img class="chat-attachment-image" src="${a.url}" alt="${escapeHtml(a.original_name || '')}" data-lightbox="${a.url}">`;
-                }
+            ${message.attachments
+                .map((a) => {
+                    if ((a.mime_type || '').startsWith('image/')) {
+                        return `<img class="chat-attachment-image" src="${a.url}" alt="${escapeHtml(a.original_name || '')}" data-lightbox="${a.url}">`;
+                    }
 
-                return `
+                    return `
                     <a class="chat-attachment-file" href="${a.url}" target="_blank" rel="noopener" download>
                         <span class="chat-attachment-file__icon" aria-hidden="true">&#128196;</span>
                         <span class="chat-attachment-file__name">${escapeHtml(a.original_name || '')}</span>
                     </a>
                 `;
-            }).join('')}
+                })
+                .join('')}
         </div>
     `;
 }
 
 /** Telegram-style grouping: same sender, same day, within 5 minutes of the previous message — no repeated name label, tighter spacing. */
 function isGroupedWithPrevious(previous, current) {
-    if (!previous || Number(previous.sender?.id) !== Number(current.sender?.id)) {
+    if (
+        !previous ||
+        Number(previous.sender?.id) !== Number(current.sender?.id)
+    ) {
         return false;
     }
 
-    if (dayLabel(previous.created_at_iso) !== dayLabel(current.created_at_iso)) {
+    if (
+        dayLabel(previous.created_at_iso) !== dayLabel(current.created_at_iso)
+    ) {
         return false;
     }
 
-    const prevTime = previous.created_at_iso ? new Date(previous.created_at_iso).getTime() : null;
-    const currTime = current.created_at_iso ? new Date(current.created_at_iso).getTime() : null;
+    const prevTime = previous.created_at_iso
+        ? new Date(previous.created_at_iso).getTime()
+        : null;
+    const currTime = current.created_at_iso
+        ? new Date(current.created_at_iso).getTime()
+        : null;
 
-    return prevTime !== null && currTime !== null && Math.abs(currTime - prevTime) < 5 * 60 * 1000;
+    return (
+        prevTime !== null &&
+        currTime !== null &&
+        Math.abs(currTime - prevTime) < 5 * 60 * 1000
+    );
 }
 
 function bubbleHtml(message, { grouped = false } = {}) {
@@ -604,7 +661,9 @@ function bubbleHtml(message, { grouped = false } = {}) {
 function messagesHtml(list, precedingMessage) {
     let html = '';
     let previous = precedingMessage;
-    let lastDay = precedingMessage ? dayLabel(precedingMessage.created_at_iso) : null;
+    let lastDay = precedingMessage
+        ? dayLabel(precedingMessage.created_at_iso)
+        : null;
 
     list.forEach((message) => {
         const day = dayLabel(message.created_at_iso);
@@ -615,7 +674,9 @@ function messagesHtml(list, precedingMessage) {
             previous = null; // a day boundary always restarts a group, even same sender
         }
 
-        html += bubbleHtml(message, { grouped: isGroupedWithPrevious(previous, message) });
+        html += bubbleHtml(message, {
+            grouped: isGroupedWithPrevious(previous, message),
+        });
         previous = message;
     });
 
@@ -652,8 +713,12 @@ function appendMessageDOM(message) {
     // The message immediately before this one in the full timeline is
     // whichever one is currently last in the array *before* the caller
     // pushed this one on — i.e. messages[length - 2].
-    const previous = messages.length >= 2 ? messages[messages.length - 2] : null;
-    messagesEl.insertAdjacentHTML('beforeend', messagesHtml([message], previous));
+    const previous =
+        messages.length >= 2 ? messages[messages.length - 2] : null;
+    messagesEl.insertAdjacentHTML(
+        'beforeend',
+        messagesHtml([message], previous),
+    );
     renderPinnedBar();
 }
 
@@ -664,7 +729,8 @@ function patchMessageDOM(message, groupedOverride = null) {
         return;
     }
 
-    const grouped = groupedOverride ?? row.classList.contains('chat-bubble-row--grouped');
+    const grouped =
+        groupedOverride ?? row.classList.contains('chat-bubble-row--grouped');
     row.outerHTML = bubbleHtml(message, { grouped });
     renderPinnedBar();
 }
@@ -677,8 +743,12 @@ function removeMessageDOM(messageId, following, followingIndex) {
     // *because of* the one that just got removed — recompute against its
     // new actual predecessor rather than leaving a stray hidden label.
     if (following) {
-        const newPrevious = followingIndex > 0 ? messages[followingIndex - 1] : null;
-        patchMessageDOM(following, isGroupedWithPrevious(newPrevious, following));
+        const newPrevious =
+            followingIndex > 0 ? messages[followingIndex - 1] : null;
+        patchMessageDOM(
+            following,
+            isGroupedWithPrevious(newPrevious, following),
+        );
     }
 
     if (!messages.length) {
@@ -705,17 +775,28 @@ function prependMessagesDOM(olderBatch) {
     // rendered needs its own divider too — messagesHtml() only handles
     // transitions *within* the list it's given, not against content that
     // already exists in the DOM before it.
-    const seamNeedsDivider = firstCurrent && dayLabel(lastOlder?.created_at_iso) !== dayLabel(firstCurrent.created_at_iso);
-    const seamHtml = seamNeedsDivider ? `<div class="chat-day-divider">${escapeHtml(dayLabel(firstCurrent.created_at_iso))}</div>` : '';
+    const seamNeedsDivider =
+        firstCurrent &&
+        dayLabel(lastOlder?.created_at_iso) !==
+            dayLabel(firstCurrent.created_at_iso);
+    const seamHtml = seamNeedsDivider
+        ? `<div class="chat-day-divider">${escapeHtml(dayLabel(firstCurrent.created_at_iso))}</div>`
+        : '';
 
-    messagesEl.insertAdjacentHTML('afterbegin', messagesHtml(olderBatch, null) + seamHtml);
+    messagesEl.insertAdjacentHTML(
+        'afterbegin',
+        messagesHtml(olderBatch, null) + seamHtml,
+    );
 
     // The previously-first message was rendered assuming it had no
     // predecessor (grouped: false) — now that older history sits above it,
     // that boundary needs re-evaluating against its real new neighbor
     // (never grouped across a day divider, so skip it in that case).
     if (firstCurrent && !seamNeedsDivider) {
-        patchMessageDOM(firstCurrent, isGroupedWithPrevious(lastOlder, firstCurrent));
+        patchMessageDOM(
+            firstCurrent,
+            isGroupedWithPrevious(lastOlder, firstCurrent),
+        );
     }
 
     messagesEl.scrollTop += messagesEl.scrollHeight - heightBefore;
@@ -737,7 +818,12 @@ function renderPinnedBar() {
 }
 
 function isScrolledToBottom() {
-    return messagesEl.scrollHeight - messagesEl.scrollTop - messagesEl.clientHeight < 80;
+    return (
+        messagesEl.scrollHeight -
+            messagesEl.scrollTop -
+            messagesEl.clientHeight <
+        80
+    );
 }
 
 function isNearTop() {
@@ -789,7 +875,9 @@ scrollBottomBtn?.addEventListener('click', () => {
 
 async function markRead(conversationId, messageId) {
     try {
-        await api.post(`/conversations/${conversationId}/messages/${messageId}/read`);
+        await api.post(
+            `/conversations/${conversationId}/messages/${messageId}/read`,
+        );
     } catch {
         // Non-critical.
     }
@@ -812,9 +900,12 @@ async function markRead(conversationId, messageId) {
 */
 
 async function fetchMessagePage(conversationId, { beforeId } = {}) {
-    const { data } = await api.get(`/conversations/${conversationId}/messages`, {
-        params: { per_page: INITIAL_CHUNK_SIZE, before_id: beforeId },
-    });
+    const { data } = await api.get(
+        `/conversations/${conversationId}/messages`,
+        {
+            params: { per_page: INITIAL_CHUNK_SIZE, before_id: beforeId },
+        },
+    );
 
     // API returns newest-first; this module always works oldest-first.
     return [...(data.data || [])].reverse().map(markMessageMine);
@@ -828,7 +919,11 @@ function prependToCache(cache, olderBatch) {
         }
     });
 
-    cache.messages.unshift(...olderBatch.filter((m, i) => olderBatch.findIndex((x) => x.id === m.id) === i));
+    cache.messages.unshift(
+        ...olderBatch.filter(
+            (m, i) => olderBatch.findIndex((x) => x.id === m.id) === i,
+        ),
+    );
 }
 
 async function loadOlderMessages(conversationId) {
@@ -842,7 +937,9 @@ async function loadOlderMessages(conversationId) {
 
     try {
         const oldestId = cache.messages[0]?.id;
-        const batch = await fetchMessagePage(conversationId, { beforeId: oldestId });
+        const batch = await fetchMessagePage(conversationId, {
+            beforeId: oldestId,
+        });
 
         if (batch.length < INITIAL_CHUNK_SIZE) {
             cache.hasMoreOlder = false;
@@ -907,20 +1004,29 @@ async function loadMessages(conversationId) {
 
         // Sequential (awaited each time), not concurrent — see the module
         // docblock above for why that's the deliberate choice here.
-        for (let i = 0; i < INITIAL_PREWARM_CHUNKS && cache.hasMoreOlder; i += 1) {
+        for (
+            let i = 0;
+            i < INITIAL_PREWARM_CHUNKS && cache.hasMoreOlder;
+            i += 1
+        ) {
             await loadOlderMessages(conversationId);
         }
     } catch (error) {
         if (isActive(conversationId)) {
             messagesEl.innerHTML = emptyState(t('chat.messages_error'));
-            showToast(apiErrorMessage(error, t('chat.messages_error')), 'error');
+            showToast(
+                apiErrorMessage(error, t('chat.messages_error')),
+                'error',
+            );
         }
     }
 }
 
 async function loadMembers(conversationId) {
     try {
-        const { data } = await api.get(`/conversations/${conversationId}/members`);
+        const { data } = await api.get(
+            `/conversations/${conversationId}/members`,
+        );
         members = data.data || [];
     } catch {
         members = [];
@@ -942,7 +1048,11 @@ function otherMemberStatus(conversation) {
 
     const member = members.find((m) => m.id === conversation.other_user_id);
 
-    return member?.last_seen_at ? t('chat.last_seen', { time: new Date(member.last_seen_at).toLocaleString() }) : '';
+    return member?.last_seen_at
+        ? t('chat.last_seen', {
+              time: new Date(member.last_seen_at).toLocaleString(),
+          })
+        : '';
 }
 
 async function openConversation(conversation) {
@@ -992,7 +1102,9 @@ listEl?.addEventListener('click', (event) => {
         return;
     }
 
-    const conversation = conversations.find((c) => String(c.id) === button.dataset.conversationId);
+    const conversation = conversations.find(
+        (c) => String(c.id) === button.dataset.conversationId,
+    );
 
     if (conversation) {
         openConversation(conversation);
@@ -1007,10 +1119,12 @@ backBtn?.addEventListener('click', () => {
     setActiveConversationId(null);
 });
 
-document.querySelector('[data-chat-details-back]')?.addEventListener('click', () => {
-    shell.removeAttribute('data-details-open');
-    shell.dataset.view = 'conversation';
-});
+document
+    .querySelector('[data-chat-details-back]')
+    ?.addEventListener('click', () => {
+        shell.removeAttribute('data-details-open');
+        shell.dataset.view = 'conversation';
+    });
 
 threadHeader?.addEventListener('click', (event) => {
     if (event.target.closest('[data-chat-back], [data-chat-search-toggle]')) {
@@ -1076,8 +1190,12 @@ function cancelEdit() {
     autoGrow();
 }
 
-document.querySelector('[data-chat-reply-cancel]')?.addEventListener('click', cancelReply);
-document.querySelector('[data-chat-edit-cancel]')?.addEventListener('click', cancelEdit);
+document
+    .querySelector('[data-chat-reply-cancel]')
+    ?.addEventListener('click', cancelReply);
+document
+    .querySelector('[data-chat-edit-cancel]')
+    ?.addEventListener('click', cancelEdit);
 
 function renderPendingAttachments() {
     if (!pendingAttachments.length) {
@@ -1089,12 +1207,14 @@ function renderPendingAttachments() {
 
     composerAttachmentsEl.hidden = false;
     composerAttachmentsEl.innerHTML = pendingAttachments
-        .map((file, index) => `
+        .map(
+            (file, index) => `
             <span class="chat-composer__attachment-chip">
                 ${escapeHtml(file.name)}
                 <button type="button" data-remove-attachment="${index}" aria-label="${t('common.delete')}">&times;</button>
             </span>
-        `)
+        `,
+        )
         .join('');
 }
 
@@ -1107,7 +1227,9 @@ composerAttachmentsEl?.addEventListener('click', (event) => {
     }
 });
 
-document.querySelector('[data-chat-attach]')?.addEventListener('click', () => fileInput.click());
+document
+    .querySelector('[data-chat-attach]')
+    ?.addEventListener('click', () => fileInput.click());
 
 fileInput?.addEventListener('change', () => {
     pendingAttachments.push(...fileInput.files);
@@ -1210,14 +1332,20 @@ composer?.addEventListener('submit', async (event) => {
                 payload.append('parent_message_id', replyTarget.id);
             }
 
-            pendingAttachments.forEach((file) => payload.append('attachments[]', file));
+            pendingAttachments.forEach((file) =>
+                payload.append('attachments[]', file),
+            );
             headers['Content-Type'] = 'multipart/form-data';
         } else {
             payload = { body, parent_message_id: replyTarget?.id ?? undefined };
         }
 
         const conversationId = activeConversation.id;
-        const { data } = await api.post(`/conversations/${conversationId}/messages`, payload, { headers });
+        const { data } = await api.post(
+            `/conversations/${conversationId}/messages`,
+            payload,
+            { headers },
+        );
 
         // Render immediately from the response rather than waiting on the
         // (queued) broadcast to round-trip back to us — see ingestMessage's
@@ -1246,7 +1374,10 @@ async function submitEdit() {
     }
 
     try {
-        await api.patch(`/conversations/${activeConversation.id}/messages/${editTarget.id}`, { body });
+        await api.patch(
+            `/conversations/${activeConversation.id}/messages/${editTarget.id}`,
+            { body },
+        );
         cancelEdit();
     } catch (error) {
         showToast(apiErrorMessage(error, t('chat.edit_error')), 'error');
@@ -1254,7 +1385,10 @@ async function submitEdit() {
 }
 
 composerInput?.addEventListener('keydown', (event) => {
-    if (mentionQuery && ['ArrowDown', 'ArrowUp', 'Enter', 'Escape'].includes(event.key)) {
+    if (
+        mentionQuery &&
+        ['ArrowDown', 'ArrowUp', 'Enter', 'Escape'].includes(event.key)
+    ) {
         handleMentionKeydown(event);
 
         return;
@@ -1331,7 +1465,8 @@ function renderMentionList() {
     mentionsEl.setAttribute('role', 'listbox');
     mentionsEl.setAttribute('aria-label', t('chat.members'));
     mentionsEl.innerHTML = mentionMatches
-        .map((m, index) => `
+        .map(
+            (m, index) => `
             <button
                 type="button"
                 class="mention-autocomplete__item ${index === mentionActiveIndex ? 'mention-autocomplete__item--active' : ''}"
@@ -1343,7 +1478,8 @@ function renderMentionList() {
                 <span class="avatar avatar--sm">${m.avatar ? `<img class="avatar__image" src="${m.avatar}" alt="">` : `<span class="avatar__initials">${initials(m.name)}</span>`}</span>
                 ${escapeHtml(m.name)}
             </button>
-        `)
+        `,
+        )
         .join('');
 }
 
@@ -1379,7 +1515,9 @@ function handleMentionKeydown(event) {
 
     if (event.key === 'ArrowUp') {
         event.preventDefault();
-        mentionActiveIndex = (mentionActiveIndex - 1 + mentionMatches.length) % mentionMatches.length;
+        mentionActiveIndex =
+            (mentionActiveIndex - 1 + mentionMatches.length) %
+            mentionMatches.length;
         renderMentionList();
 
         return;
@@ -1417,7 +1555,10 @@ messagesEl?.addEventListener('click', (event) => {
     const reactionPill = event.target.closest('[data-react]');
 
     if (reactionPill) {
-        toggleReaction(Number(reactionPill.dataset.react), reactionPill.dataset.emoji);
+        toggleReaction(
+            Number(reactionPill.dataset.react),
+            reactionPill.dataset.emoji,
+        );
 
         return;
     }
@@ -1438,7 +1579,10 @@ function scrollToMessage(messageId) {
 
     row.scrollIntoView({ behavior: 'smooth', block: 'center' });
     row.classList.add('chat-bubble-row--highlight');
-    window.setTimeout(() => row.classList.remove('chat-bubble-row--highlight'), 1600);
+    window.setTimeout(
+        () => row.classList.remove('chat-bubble-row--highlight'),
+        1600,
+    );
 }
 
 /**
@@ -1477,7 +1621,10 @@ async function toggleReaction(messageId, emoji) {
     }
 
     try {
-        const { data } = await api.post(`/conversations/${activeConversation.id}/messages/${messageId}/reactions`, { emoji });
+        const { data } = await api.post(
+            `/conversations/${activeConversation.id}/messages/${messageId}/reactions`,
+            { emoji },
+        );
         const message = messages.find((m) => m.id === messageId);
 
         if (message) {
@@ -1491,8 +1638,16 @@ async function toggleReaction(messageId, emoji) {
 
 function messageContextItems(message) {
     const items = [
-        { label: t('chat.reply'), icon: '↩', onClick: () => setReplyTarget(message) },
-        { label: t('chat.copy'), icon: '⧉', onClick: () => navigator.clipboard?.writeText(message.body || '') },
+        {
+            label: t('chat.reply'),
+            icon: '↩',
+            onClick: () => setReplyTarget(message),
+        },
+        {
+            label: t('chat.copy'),
+            icon: '⧉',
+            onClick: () => navigator.clipboard?.writeText(message.body || ''),
+        },
         {
             label: t('chat.react'),
             icon: '☺',
@@ -1501,8 +1656,17 @@ function messageContextItems(message) {
     ];
 
     if (message.is_mine) {
-        items.push({ label: t('common.edit'), icon: '✎', onClick: () => setEditTarget(message) });
-        items.push({ label: t('common.delete'), icon: '🗑', danger: true, onClick: () => deleteMessage(message) });
+        items.push({
+            label: t('common.edit'),
+            icon: '✎',
+            onClick: () => setEditTarget(message),
+        });
+        items.push({
+            label: t('common.delete'),
+            icon: '🗑',
+            danger: true,
+            onClick: () => deleteMessage(message),
+        });
     }
 
     items.push({
@@ -1522,10 +1686,16 @@ messagesEl?.addEventListener('contextmenu', (event) => {
     }
 
     event.preventDefault();
-    const message = messages.find((m) => m.id === Number(row.dataset.messageId));
+    const message = messages.find(
+        (m) => m.id === Number(row.dataset.messageId),
+    );
 
     if (message) {
-        openContextMenu(event.clientX, event.clientY, messageContextItems(message));
+        openContextMenu(
+            event.clientX,
+            event.clientY,
+            messageContextItems(message),
+        );
     }
 });
 
@@ -1537,7 +1707,9 @@ function wireLongPress() {
             return;
         }
 
-        const message = messages.find((m) => m.id === Number(row.dataset.messageId));
+        const message = messages.find(
+            (m) => m.id === Number(row.dataset.messageId),
+        );
 
         if (message) {
             openContextMenu(x, y, messageContextItems(message));
@@ -1548,7 +1720,10 @@ function wireLongPress() {
 function openReactionPicker(message, event) {
     const picker = document.createElement('div');
     picker.className = 'reaction-picker';
-    picker.innerHTML = QUICK_REACTIONS.map((emoji) => `<button type="button" data-emoji="${emoji}">${emoji}</button>`).join('');
+    picker.innerHTML = QUICK_REACTIONS.map(
+        (emoji) =>
+            `<button type="button" data-emoji="${emoji}">${emoji}</button>`,
+    ).join('');
 
     const x = event?.clientX ?? window.innerWidth / 2;
     const y = event?.clientY ?? window.innerHeight / 2;
@@ -1570,7 +1745,14 @@ function openReactionPicker(message, event) {
         close();
     });
 
-    window.setTimeout(() => document.addEventListener('click', close, { once: true, capture: true }), 0);
+    window.setTimeout(
+        () =>
+            document.addEventListener('click', close, {
+                once: true,
+                capture: true,
+            }),
+        0,
+    );
 }
 
 async function deleteMessage(message) {
@@ -1585,7 +1767,10 @@ async function deleteMessage(message) {
             confirmText: t('common.delete'),
             cancelText: t('common.cancel'),
             danger: true,
-            onConfirm: () => api.delete(`/conversations/${activeConversation.id}/messages/${message.id}`),
+            onConfirm: () =>
+                api.delete(
+                    `/conversations/${activeConversation.id}/messages/${message.id}`,
+                ),
         });
 
         if (confirmed) {
@@ -1607,7 +1792,9 @@ async function togglePin(message) {
 
     try {
         const method = message.is_pinned ? 'delete' : 'post';
-        const { data } = await api[method](`/conversations/${activeConversation.id}/messages/${message.id}/pin`);
+        const { data } = await api[method](
+            `/conversations/${activeConversation.id}/messages/${message.id}/pin`,
+        );
 
         const local = messages.find((m) => m.id === message.id);
 
@@ -1673,7 +1860,10 @@ function highlightQuery(text, query) {
     const escaped = escapeHtml(text);
     const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-    return escaped.replace(new RegExp(`(${escapedQuery})`, 'ig'), '<mark>$1</mark>');
+    return escaped.replace(
+        new RegExp(`(${escapedQuery})`, 'ig'),
+        '<mark>$1</mark>',
+    );
 }
 
 function renderSearchResults(results, query) {
@@ -1684,7 +1874,8 @@ function renderSearchResults(results, query) {
     }
 
     searchPanelResults.innerHTML = results
-        .map((message) => `
+        .map(
+            (message) => `
             <button type="button" class="chat-search-result" data-search-result-conversation="${message.conversation_id}" data-search-result-message="${message.id}">
                 <div class="chat-search-result__meta">
                     <span>${escapeHtml(message.sender?.name || '')}</span>
@@ -1692,7 +1883,8 @@ function renderSearchResults(results, query) {
                 </div>
                 <div class="chat-search-result__body">${highlightQuery(message.body || '', query)}</div>
             </button>
-        `)
+        `,
+        )
         .join('');
 }
 
@@ -1715,7 +1907,9 @@ async function runSearch(query, scopedToConversation) {
         const { data } = await api.get('/messages/search', { params });
         renderSearchResults(data.data || [], query);
     } catch (error) {
-        searchPanelResults.innerHTML = emptyState(apiErrorMessage(error, t('common.error_generic')));
+        searchPanelResults.innerHTML = emptyState(
+            apiErrorMessage(error, t('common.error_generic')),
+        );
     }
 }
 
@@ -1727,15 +1921,24 @@ function openSearchPanel(scopedToConversation) {
     searchPanelInput.focus();
 }
 
-document.querySelector('[data-chat-global-search]')?.addEventListener('click', () => openSearchPanel(false));
-document.querySelector('[data-chat-search-toggle]')?.addEventListener('click', () => openSearchPanel(true));
-document.querySelector('[data-chat-search-close]')?.addEventListener('click', () => {
-    searchPanel.hidden = true;
-});
+document
+    .querySelector('[data-chat-global-search]')
+    ?.addEventListener('click', () => openSearchPanel(false));
+document
+    .querySelector('[data-chat-search-toggle]')
+    ?.addEventListener('click', () => openSearchPanel(true));
+document
+    .querySelector('[data-chat-search-close]')
+    ?.addEventListener('click', () => {
+        searchPanel.hidden = true;
+    });
 
 searchPanelInput?.addEventListener('input', () => {
     window.clearTimeout(searchTimer);
-    searchTimer = window.setTimeout(() => runSearch(searchPanelInput.value.trim(), !globalSearchMode), 300);
+    searchTimer = window.setTimeout(
+        () => runSearch(searchPanelInput.value.trim(), !globalSearchMode),
+        300,
+    );
 });
 
 searchPanelResults?.addEventListener('click', async (event) => {
@@ -1776,7 +1979,11 @@ function openDetails() {
 
 function renderDetails() {
     const conversation = activeConversation;
-    const media = messages.flatMap((m) => (m.attachments || []).filter((a) => (a.mime_type || '').startsWith('image/')));
+    const media = messages.flatMap((m) =>
+        (m.attachments || []).filter((a) =>
+            (a.mime_type || '').startsWith('image/'),
+        ),
+    );
     const pinned = messages.filter((m) => m.is_pinned);
 
     detailsContent.innerHTML = `
@@ -1788,31 +1995,46 @@ function renderDetails() {
             <div style="font-size:12px; color:var(--ui-text-secondary);">${escapeHtml(otherMemberStatus(conversation))}</div>
         </div>
 
-        ${conversation.type === 'group' ? `
+        ${
+            conversation.type === 'group'
+                ? `
             <div class="chat-details-section">
                 <h3 class="chat-details-section__title">${t('chat.members')}</h3>
-                ${members.map((m) => `
+                ${members
+                    .map(
+                        (m) => `
                     <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
                         <span class="avatar avatar--sm">${m.avatar ? `<img class="avatar__image" src="${m.avatar}" alt="">` : `<span class="avatar__initials">${initials(m.name)}</span>`}</span>
                         <span style="font-size:13px;">${escapeHtml(m.name)}</span>
                     </div>
-                `).join('')}
+                `,
+                    )
+                    .join('')}
             </div>
-        ` : ''}
+        `
+                : ''
+        }
 
         <div class="chat-details-section">
             <h3 class="chat-details-section__title">${t('chat.pinned_messages')}</h3>
-            ${pinned.length
-                ? pinned.map((m) => `<div class="chat-pinned-item" data-details-scroll-to="${m.id}">${escapeHtml(m.body || t('chat.attachment_preview'))}</div>`).join('')
-                : `<div style="font-size:12px; color:var(--ui-text-muted);">${t('chat.no_pinned_messages')}</div>`
+            ${
+                pinned.length
+                    ? pinned
+                          .map(
+                              (m) =>
+                                  `<div class="chat-pinned-item" data-details-scroll-to="${m.id}">${escapeHtml(m.body || t('chat.attachment_preview'))}</div>`,
+                          )
+                          .join('')
+                    : `<div style="font-size:12px; color:var(--ui-text-muted);">${t('chat.no_pinned_messages')}</div>`
             }
         </div>
 
         <div class="chat-details-section">
             <h3 class="chat-details-section__title">${t('chat.shared_media')}</h3>
-            ${media.length
-                ? `<div class="chat-media-grid">${media.map((a) => `<img src="${a.url}" alt="" data-details-lightbox="${a.url}">`).join('')}</div>`
-                : `<div style="font-size:12px; color:var(--ui-text-muted);">${t('chat.no_shared_media')}</div>`
+            ${
+                media.length
+                    ? `<div class="chat-media-grid">${media.map((a) => `<img src="${a.url}" alt="" data-details-lightbox="${a.url}">`).join('')}</div>`
+                    : `<div style="font-size:12px; color:var(--ui-text-muted);">${t('chat.no_shared_media')}</div>`
             }
         </div>
     `;
@@ -1823,7 +2045,10 @@ detailsContent?.addEventListener('click', (event) => {
 
     if (scrollTarget) {
         shell.dataset.view = 'conversation';
-        window.setTimeout(() => scrollToMessage(Number(scrollTarget.dataset.detailsScrollTo)), 150);
+        window.setTimeout(
+            () => scrollToMessage(Number(scrollTarget.dataset.detailsScrollTo)),
+            150,
+        );
 
         return;
     }
@@ -1865,7 +2090,9 @@ function userPickerModal({ multi }) {
     const selectedEl = modal.querySelector('[data-selected-users]');
     const confirmBtn = modal.querySelector('[data-action="confirm"]');
 
-    modal.querySelector('[data-action="cancel"]').addEventListener('click', close);
+    modal
+        .querySelector('[data-action="cancel"]')
+        .addEventListener('click', close);
 
     function renderSelected() {
         if (!selectedEl) {
@@ -1873,7 +2100,10 @@ function userPickerModal({ multi }) {
         }
 
         selectedEl.innerHTML = [...selected.values()]
-            .map((user) => `<span class="pill pill--primary">${escapeHtml(user.name)} <button type="button" data-remove-user="${user.id}" style="border:none;background:none;color:inherit;cursor:pointer;">&times;</button></span>`)
+            .map(
+                (user) =>
+                    `<span class="pill pill--primary">${escapeHtml(user.name)} <button type="button" data-remove-user="${user.id}" style="border:none;background:none;color:inherit;cursor:pointer;">&times;</button></span>`,
+            )
             .join('');
 
         confirmBtn.disabled = selected.size === 0;
@@ -1887,16 +2117,22 @@ function userPickerModal({ multi }) {
         }
 
         try {
-            const { data } = await api.get('/chat/users/search', { params: { q: query } });
+            const { data } = await api.get('/chat/users/search', {
+                params: { q: query },
+            });
             const users = (data.data || []).filter((u) => !selected.has(u.id));
 
-            resultsEl.innerHTML = users
-                .map((user) => `
+            resultsEl.innerHTML =
+                users
+                    .map(
+                        (user) => `
                     <button type="button" class="dropdown__item" data-pick-user='${escapeHtml(JSON.stringify(user))}'>
                         ${escapeHtml(user.name)} <span style="color:var(--ui-text-muted); font-size:11.5px;">${escapeHtml(user.email)}</span>
                     </button>
-                `)
-                .join('') || `<div class="field-hint" style="padding:8px;">${t('chat.empty_list')}</div>`;
+                `,
+                    )
+                    .join('') ||
+                `<div class="field-hint" style="padding:8px;">${t('chat.empty_list')}</div>`;
         } catch {
             resultsEl.innerHTML = '';
         }
@@ -1905,7 +2141,10 @@ function userPickerModal({ multi }) {
     let queryTimer = null;
     queryInput.addEventListener('input', () => {
         window.clearTimeout(queryTimer);
-        queryTimer = window.setTimeout(() => searchUsers(queryInput.value.trim()), 250);
+        queryTimer = window.setTimeout(
+            () => searchUsers(queryInput.value.trim()),
+            250,
+        );
     });
 
     resultsEl.addEventListener('click', async (event) => {
@@ -1949,7 +2188,11 @@ function userPickerModal({ multi }) {
         }
 
         close();
-        await createConversation({ type: 'group', title, user_ids: [...selected.keys()] });
+        await createConversation({
+            type: 'group',
+            title,
+            user_ids: [...selected.keys()],
+        });
     });
 
     queryInput.focus();
@@ -1975,8 +2218,12 @@ async function createConversation(payload) {
     }
 }
 
-document.querySelector('[data-start-private]')?.addEventListener('click', () => userPickerModal({ multi: false }));
-document.querySelector('[data-start-group]')?.addEventListener('click', () => userPickerModal({ multi: true }));
+document
+    .querySelector('[data-start-private]')
+    ?.addEventListener('click', () => userPickerModal({ multi: false }));
+document
+    .querySelector('[data-start-group]')
+    ?.addEventListener('click', () => userPickerModal({ multi: true }));
 
 /*
 |--------------------------------------------------------------------------
@@ -1988,7 +2235,10 @@ let conversationSearchTimer = null;
 
 searchInput?.addEventListener('input', () => {
     window.clearTimeout(conversationSearchTimer);
-    conversationSearchTimer = window.setTimeout(() => loadConversations(searchInput.value), 300);
+    conversationSearchTimer = window.setTimeout(
+        () => loadConversations(searchInput.value),
+        300,
+    );
 });
 
 /*
@@ -2069,10 +2319,14 @@ document.addEventListener('chat:open-conversation', (event) => {
     await loadConversations();
 
     const match = window.location.pathname.match(/\/chat\/(\d+)/);
-    const messageParam = new URLSearchParams(window.location.search).get('message');
+    const messageParam = new URLSearchParams(window.location.search).get(
+        'message',
+    );
 
     if (match) {
-        const conversation = conversations.find((c) => String(c.id) === match[1]);
+        const conversation = conversations.find(
+            (c) => String(c.id) === match[1],
+        );
 
         if (conversation) {
             await openConversation(conversation);

@@ -30,7 +30,10 @@ export function initNotificationBell(api, user) {
     getUserSettings(api)
         .then((settings) => {
             const meta = settings?.meta?.notifications || {};
-            prefs = { browser: meta.browser !== false, sound: meta.sound !== false };
+            prefs = {
+                browser: meta.browser !== false,
+                sound: meta.sound !== false,
+            };
         })
         .catch(() => {});
 
@@ -46,9 +49,14 @@ export function initNotificationBell(api, user) {
         const messageId = notification.data?.message_id;
 
         if (conversationId && window.location.pathname.startsWith('/chat')) {
-            document.dispatchEvent(new CustomEvent('chat:open-conversation', {
-                detail: { conversationId: Number(conversationId), messageId: messageId ? Number(messageId) : null },
-            }));
+            document.dispatchEvent(
+                new CustomEvent('chat:open-conversation', {
+                    detail: {
+                        conversationId: Number(conversationId),
+                        messageId: messageId ? Number(messageId) : null,
+                    },
+                }),
+            );
 
             return;
         }
@@ -80,12 +88,22 @@ export function initNotificationBell(api, user) {
             playNotificationSound();
         }
 
-        if (prefs.browser && typeof Notification !== 'undefined' && Notification.permission === 'granted') {
-            const renderer = notification.type === 'mention' ? t('notifications.type_mention') : notification.title;
-            const popup = new Notification(renderer || t('notifications.label'), {
-                body: notification.body || '',
-                tag: `notification-${notification.id}`,
-            });
+        if (
+            prefs.browser &&
+            typeof Notification !== 'undefined' &&
+            Notification.permission === 'granted'
+        ) {
+            const renderer =
+                notification.type === 'mention'
+                    ? t('notifications.type_mention')
+                    : notification.title;
+            const popup = new Notification(
+                renderer || t('notifications.label'),
+                {
+                    body: notification.body || '',
+                    tag: `notification-${notification.id}`,
+                },
+            );
 
             popup.onclick = () => {
                 window.focus();
@@ -102,7 +120,10 @@ export function initNotificationBell(api, user) {
             empty.remove();
         }
 
-        list.insertAdjacentHTML('afterbegin', notificationItemHtml(notification));
+        list.insertAdjacentHTML(
+            'afterbegin',
+            notificationItemHtml(notification),
+        );
 
         // Keep the dropdown from growing unbounded across a long session.
         const items = list.querySelectorAll('[data-notif-id]');
@@ -126,7 +147,9 @@ export function initNotificationBell(api, user) {
             ]);
 
             const items = recent.data || [];
-            list.innerHTML = items.length ? items.map(notificationItemHtml).join('') : emptyState(t('notifications.empty'));
+            list.innerHTML = items.length
+                ? items.map(notificationItemHtml).join('')
+                : emptyState(t('notifications.empty'));
             updateBadge(countData.data.count);
         } catch {
             // Silent — the bell just stays at its initial (empty) state until the dropdown is opened, which retries.
@@ -174,7 +197,10 @@ export function initNotificationBell(api, user) {
             });
             updateBadge(0);
         } catch (error) {
-            showToast(apiErrorMessage(error, t('common.error_generic')), 'error');
+            showToast(
+                apiErrorMessage(error, t('common.error_generic')),
+                'error',
+            );
         }
     });
 
@@ -182,17 +208,26 @@ export function initNotificationBell(api, user) {
     // opening the dropdown just needs the very first load — no re-fetch.
     let loaded = false;
 
-    dropdown?.querySelector('[data-dropdown-trigger]')?.addEventListener('click', () => {
-        window.setTimeout(() => {
-            if (!loaded && !dropdown.querySelector('[data-dropdown-menu]')?.hasAttribute('hidden')) {
-                loaded = true;
-                loadInitial();
-            }
-        }, 0);
-    });
+    dropdown
+        ?.querySelector('[data-dropdown-trigger]')
+        ?.addEventListener('click', () => {
+            window.setTimeout(() => {
+                if (
+                    !loaded &&
+                    !dropdown
+                        .querySelector('[data-dropdown-menu]')
+                        ?.hasAttribute('hidden')
+                ) {
+                    loaded = true;
+                    loadInitial();
+                }
+            }, 0);
+        });
 
     loadInitial();
 
     const echo = getEcho();
-    echo?.private(`App.Models.User.${user.id}`).notification((notification) => onNotificationCreated(notification));
+    echo?.private(`App.Models.User.${user.id}`).notification((notification) =>
+        onNotificationCreated(notification),
+    );
 }

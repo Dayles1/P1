@@ -13,13 +13,17 @@ let currentUser = null;
 */
 
 const avatarEl = document.querySelector('[data-profile-avatar]');
-const avatarInitialsEl = document.querySelector('[data-profile-avatar-initials]');
+const avatarInitialsEl = document.querySelector(
+    '[data-profile-avatar-initials]',
+);
 const avatarInput = document.querySelector('[data-avatar-input]');
 const avatarTrigger = document.querySelector('[data-avatar-trigger]');
 
 const profileForm = document.querySelector('[data-profile-form]');
 const passwordForm = document.querySelector('[data-password-form]');
-const currentPasswordField = document.querySelector('[data-current-password-field]');
+const currentPasswordField = document.querySelector(
+    '[data-current-password-field]',
+);
 
 const banNotice = document.querySelector('[data-ban-notice]');
 const banNoticeText = document.querySelector('[data-ban-notice-text]');
@@ -52,7 +56,10 @@ function renderRoles(user) {
     }
 
     rolesEl.innerHTML = user.roles
-        .map((role) => `<span class="pill pill--primary" style="margin-right:6px;">${role.name}</span>`)
+        .map(
+            (role) =>
+                `<span class="pill pill--primary" style="margin-right:6px;">${role.name}</span>`,
+        )
         .join('');
 }
 
@@ -69,7 +76,9 @@ function renderBan(user) {
             : t('profile.banned_notice');
 
         if (user.ban.ends_at) {
-            message += t('profile.banned_notice_until', { date: user.ban.ends_at });
+            message += t('profile.banned_notice_until', {
+                date: user.ban.ends_at,
+            });
         }
 
         banNoticeText.textContent = message;
@@ -107,11 +116,13 @@ async function loadProfile() {
 |--------------------------------------------------------------------------
 */
 
-profileForm?.querySelector('[name="email"]')?.addEventListener('input', (event) => {
-    const changed = currentUser && event.target.value !== currentUser.email;
+profileForm
+    ?.querySelector('[name="email"]')
+    ?.addEventListener('input', (event) => {
+        const changed = currentUser && event.target.value !== currentUser.email;
 
-    currentPasswordField.hidden = !changed;
-});
+        currentPasswordField.hidden = !changed;
+    });
 
 /*
 |--------------------------------------------------------------------------

@@ -29,15 +29,22 @@ export function writeLocaleCookie(locale) {
  */
 export function t(key, params = {}) {
     const strings = window.__i18n?.strings || {};
-    const value = key.split('.').reduce((acc, part) => (acc && typeof acc === 'object' ? acc[part] : undefined), strings);
+    const value = key
+        .split('.')
+        .reduce(
+            (acc, part) =>
+                acc && typeof acc === 'object' ? acc[part] : undefined,
+            strings,
+        );
 
     if (typeof value !== 'string') {
         return key;
     }
 
     return Object.entries(params).reduce(
-        (result, [paramKey, paramValue]) => result.replaceAll(`:${paramKey}`, String(paramValue)),
-        value
+        (result, [paramKey, paramValue]) =>
+            result.replaceAll(`:${paramKey}`, String(paramValue)),
+        value,
     );
 }
 
@@ -73,7 +80,10 @@ export function initLocalePicker(apiClient) {
     const current = getLocale();
 
     options.forEach((el) => {
-        el.setAttribute('aria-checked', String(el.dataset.localeOption === current));
+        el.setAttribute(
+            'aria-checked',
+            String(el.dataset.localeOption === current),
+        );
 
         el.addEventListener('click', () => {
             if (el.dataset.localeOption === current) {

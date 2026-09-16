@@ -2,7 +2,13 @@
  * Generic modal shell shared by the confirm dialog and any "show details"
  * popover (request log detail, etc.). Returns a `close()` function.
  */
-export function openModal({ title = '', bodyHtml = '', footerHtml = '', wide = false, onClose } = {}) {
+export function openModal({
+    title = '',
+    bodyHtml = '',
+    footerHtml = '',
+    wide = false,
+    onClose,
+} = {}) {
     const overlay = document.createElement('div');
     overlay.className = 'modal-overlay';
 
@@ -54,7 +60,9 @@ export function openModal({ title = '', bodyHtml = '', footerHtml = '', wide = f
         }
 
         if (event.key === 'Tab') {
-            const focusable = modal.querySelectorAll('button, a[href], input, textarea, select');
+            const focusable = modal.querySelectorAll(
+                'button, a[href], input, textarea, select',
+            );
             const first = focusable[0];
             const last = focusable[focusable.length - 1];
 

@@ -27,7 +27,10 @@ function detailBlock(label, value) {
 
 export function openRequestLogDetailModal(log) {
     const ownerBlock = log.user
-        ? field(t('admin.user'), `${escapeHtml(log.user.name)} &middot; ${escapeHtml(log.user.email)}`)
+        ? field(
+              t('admin.user'),
+              `${escapeHtml(log.user.name)} &middot; ${escapeHtml(log.user.email)}`,
+          )
         : '';
 
     openModal({

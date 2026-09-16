@@ -14,7 +14,7 @@ import { initSiteChrome } from '../shared/site-chrome';
 initSiteChrome().then((user) => {
     if (!user) {
         const redirect = encodeURIComponent(
-            window.location.pathname + window.location.search
+            window.location.pathname + window.location.search,
         );
 
         window.location.href = `/login?redirect=${redirect}`;

@@ -25,18 +25,12 @@ import { t } from '../shared/i18n';
 |--------------------------------------------------------------------------
 */
 
-const spa =
-    document.getElementById('auth-spa');
+const spa = document.getElementById('auth-spa');
 
-const viewport =
-    document.getElementById(
-        'auth-spa-viewport'
-    );
+const viewport = document.getElementById('auth-spa-viewport');
 
 if (!spa || !viewport) {
-    throw new Error(
-        'Auth SPA root was not found.'
-    );
+    throw new Error('Auth SPA root was not found.');
 }
 
 /*
@@ -45,16 +39,10 @@ if (!spa || !viewport) {
 |--------------------------------------------------------------------------
 */
 
-const pages = Array.from(
-    spa.querySelectorAll(
-        '[data-auth-page]'
-    )
-);
+const pages = Array.from(spa.querySelectorAll('[data-auth-page]'));
 
 if (!pages.length) {
-    throw new Error(
-        'Auth SPA pages were not found.'
-    );
+    throw new Error('Auth SPA pages were not found.');
 }
 
 /*
@@ -64,20 +52,15 @@ if (!pages.length) {
 */
 
 const state = {
-    currentPage:
-        spa.dataset.currentPage || 'login',
+    currentPage: spa.dataset.currentPage || 'login',
 
-    resetToken:
-        spa.dataset.resetToken || '',
+    resetToken: spa.dataset.resetToken || '',
 
-    resetEmail:
-        spa.dataset.resetEmail || '',
+    resetEmail: spa.dataset.resetEmail || '',
 
-    isTransitioning:
-        false,
+    isTransitioning: false,
 
-    transitionTimer:
-        null,
+    transitionTimer: null,
 };
 
 /*
@@ -87,23 +70,17 @@ const state = {
 */
 
 const AUTH_ROUTES = {
-    login:
-        '/login',
+    login: '/login',
 
-    register:
-        '/register',
+    register: '/register',
 
-    'forgot-password':
-        '/forgot-password',
+    'forgot-password': '/forgot-password',
 
-    'reset-password':
-        '/reset-password',
+    'reset-password': '/reset-password',
 
-    'verify-email':
-        '/verify-email',
+    'verify-email': '/verify-email',
 
-    'confirm-password':
-        '/confirm-password',
+    'confirm-password': '/confirm-password',
 };
 
 /*
@@ -113,23 +90,17 @@ const AUTH_ROUTES = {
 */
 
 const API = {
-    login:
-        '/api/auth/login',
+    login: '/api/auth/login',
 
-    register:
-        '/api/auth/register',
+    register: '/api/auth/register',
 
-    'forgot-password':
-        '/api/auth/forgot-password',
+    'forgot-password': '/api/auth/forgot-password',
 
-    'reset-password':
-        '/api/auth/reset-password',
+    'reset-password': '/api/auth/reset-password',
 
-    'verification-notification':
-        '/api/auth/email/verification-notification',
+    'verification-notification': '/api/auth/email/verification-notification',
 
-    'confirm-password':
-        '/api/auth/confirm-password',
+    'confirm-password': '/api/auth/confirm-password',
 };
 
 /*
@@ -154,16 +125,11 @@ const PAGE_ORDER = [
 */
 
 function getPageElement(page) {
-    return pages.find(
-        (element) =>
-            element.dataset.authPage === page
-    );
+    return pages.find((element) => element.dataset.authPage === page);
 }
 
 function isKnownPage(page) {
-    return Boolean(
-        getPageElement(page)
-    );
+    return Boolean(getPageElement(page));
 }
 
 /*
@@ -173,9 +139,7 @@ function isKnownPage(page) {
 */
 
 function prefersReducedMotion() {
-    return window.matchMedia(
-        '(prefers-reduced-motion: reduce)'
-    ).matches;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
 /*
@@ -191,26 +155,16 @@ function prefersReducedMotion() {
 |--------------------------------------------------------------------------
 */
 
-function getDirection(
-    from,
-    to
-) {
-    const fromIndex =
-        PAGE_ORDER.indexOf(from);
+function getDirection(from, to) {
+    const fromIndex = PAGE_ORDER.indexOf(from);
 
-    const toIndex =
-        PAGE_ORDER.indexOf(to);
+    const toIndex = PAGE_ORDER.indexOf(to);
 
-    if (
-        fromIndex === -1 ||
-        toIndex === -1
-    ) {
+    if (fromIndex === -1 || toIndex === -1) {
         return 'forward';
     }
 
-    return toIndex >= fromIndex
-        ? 'forward'
-        : 'backward';
+    return toIndex >= fromIndex ? 'forward' : 'backward';
 }
 
 /*
@@ -220,36 +174,25 @@ function getDirection(
 */
 
 function getPageFromLocation() {
-    const path =
-        window.location.pathname;
+    const path = window.location.pathname;
 
     if (path === '/register') {
         return 'register';
     }
 
-    if (
-        path === '/forgot-password'
-    ) {
+    if (path === '/forgot-password') {
         return 'forgot-password';
     }
 
-    if (
-        path.startsWith(
-            '/reset-password/'
-        )
-    ) {
+    if (path.startsWith('/reset-password/')) {
         return 'reset-password';
     }
 
-    if (
-        path === '/verify-email'
-    ) {
+    if (path === '/verify-email') {
         return 'verify-email';
     }
 
-    if (
-        path === '/confirm-password'
-    ) {
+    if (path === '/confirm-password') {
         return 'confirm-password';
     }
 
@@ -262,48 +205,29 @@ function getPageFromLocation() {
 |--------------------------------------------------------------------------
 */
 
-function getUrlForPage(
-    page,
-    options = {}
-) {
-    if (
-        page === 'reset-password'
-    ) {
-        const token =
-            options.token ||
-            state.resetToken;
+function getUrlForPage(page, options = {}) {
+    if (page === 'reset-password') {
+        const token = options.token || state.resetToken;
 
         if (token) {
-            const url =
-                new URL(
-                    `/reset-password/${encodeURIComponent(token)}`,
-                    window.location.origin
-                );
+            const url = new URL(
+                `/reset-password/${encodeURIComponent(token)}`,
+                window.location.origin,
+            );
 
-            const email =
-                options.email ||
-                state.resetEmail;
+            const email = options.email || state.resetEmail;
 
             if (email) {
-                url.searchParams.set(
-                    'email',
-                    email
-                );
+                url.searchParams.set('email', email);
             }
 
-            return (
-                url.pathname +
-                url.search
-            );
+            return url.pathname + url.search;
         }
 
         return '/reset-password';
     }
 
-    return (
-        AUTH_ROUTES[page] ||
-        '/login'
-    );
+    return AUTH_ROUTES[page] || '/login';
 }
 
 /*
@@ -313,14 +237,9 @@ function getUrlForPage(
 */
 
 function clearTransitionClasses() {
-    pages.forEach(
-        (page) => {
-            page.classList.remove(
-                'is-entering',
-                'is-leaving'
-            );
-        }
-    );
+    pages.forEach((page) => {
+        page.classList.remove('is-entering', 'is-leaving');
+    });
 }
 
 /*
@@ -330,20 +249,16 @@ function clearTransitionClasses() {
 */
 
 function setActivePage(page) {
-    pages.forEach(
-        (pageElement) => {
-            pageElement.classList.toggle(
-                'is-active',
-                pageElement.dataset.authPage === page
-            );
-        }
-    );
+    pages.forEach((pageElement) => {
+        pageElement.classList.toggle(
+            'is-active',
+            pageElement.dataset.authPage === page,
+        );
+    });
 
-    spa.dataset.currentPage =
-        page;
+    spa.dataset.currentPage = page;
 
-    state.currentPage =
-        page;
+    state.currentPage = page;
 }
 
 /*
@@ -353,21 +268,15 @@ function setActivePage(page) {
 */
 
 function finishTransition() {
-    if (
-        state.transitionTimer
-    ) {
-        clearTimeout(
-            state.transitionTimer
-        );
+    if (state.transitionTimer) {
+        clearTimeout(state.transitionTimer);
 
-        state.transitionTimer =
-            null;
+        state.transitionTimer = null;
     }
 
     clearTransitionClasses();
 
-    state.isTransitioning =
-        false;
+    state.isTransitioning = false;
 }
 
 /*
@@ -387,16 +296,10 @@ function finishTransition() {
 |--------------------------------------------------------------------------
 */
 
-function animatePageChange(
-    from,
-    to,
-    direction
-) {
-    const fromElement =
-        getPageElement(from);
+function animatePageChange(from, to, direction) {
+    const fromElement = getPageElement(from);
 
-    const toElement =
-        getPageElement(to);
+    const toElement = getPageElement(to);
 
     if (!toElement) {
         return;
@@ -408,10 +311,7 @@ function animatePageChange(
     |--------------------------------------------------------------------------
     */
 
-    if (
-        from === to ||
-        !fromElement
-    ) {
+    if (from === to || !fromElement) {
         setActivePage(to);
 
         return;
@@ -425,8 +325,7 @@ function animatePageChange(
 
     finishTransition();
 
-    state.isTransitioning =
-        true;
+    state.isTransitioning = true;
 
     /*
     |--------------------------------------------------------------------------
@@ -434,8 +333,7 @@ function animatePageChange(
     |--------------------------------------------------------------------------
     */
 
-    viewport.dataset.direction =
-        direction;
+    viewport.dataset.direction = direction;
 
     /*
     |--------------------------------------------------------------------------
@@ -443,15 +341,9 @@ function animatePageChange(
     |--------------------------------------------------------------------------
     */
 
-    toElement.classList.remove(
-        'is-entering',
-        'is-leaving'
-    );
+    toElement.classList.remove('is-entering', 'is-leaving');
 
-    fromElement.classList.remove(
-        'is-entering',
-        'is-leaving'
-    );
+    fromElement.classList.remove('is-entering', 'is-leaving');
 
     /*
     |--------------------------------------------------------------------------
@@ -481,9 +373,7 @@ function animatePageChange(
     |--------------------------------------------------------------------------
     */
 
-    toElement.classList.add(
-        'is-entering'
-    );
+    toElement.classList.add('is-entering');
 
     /*
     |--------------------------------------------------------------------------
@@ -491,9 +381,7 @@ function animatePageChange(
     |--------------------------------------------------------------------------
     */
 
-    fromElement.classList.add(
-        'is-leaving'
-    );
+    fromElement.classList.add('is-leaving');
 
     /*
     |--------------------------------------------------------------------------
@@ -509,13 +397,9 @@ function animatePageChange(
     |--------------------------------------------------------------------------
     */
 
-    state.transitionTimer =
-        window.setTimeout(
-            () => {
-                finishTransition();
-            },
-            360
-        );
+    state.transitionTimer = window.setTimeout(() => {
+        finishTransition();
+    }, 360);
 }
 
 /*
@@ -524,16 +408,12 @@ function animatePageChange(
 |--------------------------------------------------------------------------
 */
 
-function navigate(
-    page,
-    options = {}
-) {
+function navigate(page, options = {}) {
     if (!isKnownPage(page)) {
         return;
     }
 
-    const current =
-        state.currentPage;
+    const current = state.currentPage;
 
     /*
     |--------------------------------------------------------------------------
@@ -541,10 +421,7 @@ function navigate(
     |--------------------------------------------------------------------------
     */
 
-    if (
-        current === page &&
-        !options.force
-    ) {
+    if (current === page && !options.force) {
         return;
     }
 
@@ -554,12 +431,7 @@ function navigate(
     |--------------------------------------------------------------------------
     */
 
-    const direction =
-        options.direction ||
-        getDirection(
-            current,
-            page
-        );
+    const direction = options.direction || getDirection(current, page);
 
     /*
     |--------------------------------------------------------------------------
@@ -568,13 +440,11 @@ function navigate(
     */
 
     if (options.token) {
-        state.resetToken =
-            options.token;
+        state.resetToken = options.token;
     }
 
     if (options.email) {
-        state.resetEmail =
-            options.email;
+        state.resetEmail = options.email;
     }
 
     /*
@@ -584,25 +454,18 @@ function navigate(
     */
 
     if (!options.fromPopState) {
-        const url =
-            getUrlForPage(
-                page,
-                options
-            );
+        const url = getUrlForPage(page, options);
 
         history.pushState(
             {
-                authPage:
-                    page,
+                authPage: page,
 
-                token:
-                    state.resetToken,
+                token: state.resetToken,
 
-                email:
-                    state.resetEmail,
+                email: state.resetEmail,
             },
             '',
-            url
+            url,
         );
     }
 
@@ -612,11 +475,7 @@ function navigate(
     |--------------------------------------------------------------------------
     */
 
-    animatePageChange(
-        current,
-        page,
-        direction
-    );
+    animatePageChange(current, page, direction);
 }
 
 /*
@@ -626,48 +485,33 @@ function navigate(
 */
 
 function setupNavigationLinks() {
-    spa.addEventListener(
-        'click',
-        (event) => {
-            const link =
-                event.target.closest(
-                    '[data-auth-link]'
-                );
+    spa.addEventListener('click', (event) => {
+        const link = event.target.closest('[data-auth-link]');
 
-            if (!link) {
-                return;
-            }
+        if (!link) {
+            return;
+        }
 
-            /*
+        /*
             |--------------------------------------------------------------------------
             | Allow browser modified clicks
             |--------------------------------------------------------------------------
             */
 
-            if (
-                event.metaKey ||
-                event.ctrlKey ||
-                event.shiftKey ||
-                event.altKey
-            ) {
-                return;
-            }
-
-            event.preventDefault();
-
-            const page =
-                link.dataset.authLink;
-
-            if (
-                !page ||
-                !isKnownPage(page)
-            ) {
-                return;
-            }
-
-            navigate(page);
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+            return;
         }
-    );
+
+        event.preventDefault();
+
+        const page = link.dataset.authLink;
+
+        if (!page || !isKnownPage(page)) {
+            return;
+        }
+
+        navigate(page);
+    });
 }
 
 /*
@@ -677,44 +521,25 @@ function setupNavigationLinks() {
 */
 
 function setupHistory() {
-    window.addEventListener(
-        'popstate',
-        (event) => {
-            const page =
-                event.state?.authPage ||
-                getPageFromLocation();
+    window.addEventListener('popstate', (event) => {
+        const page = event.state?.authPage || getPageFromLocation();
 
-            if (!isKnownPage(page)) {
-                return;
-            }
-
-            if (
-                event.state?.token
-            ) {
-                state.resetToken =
-                    event.state.token;
-            }
-
-            if (
-                event.state?.email
-            ) {
-                state.resetEmail =
-                    event.state.email;
-            }
-
-            const direction =
-                getDirection(
-                    state.currentPage,
-                    page
-                );
-
-            animatePageChange(
-                state.currentPage,
-                page,
-                direction
-            );
+        if (!isKnownPage(page)) {
+            return;
         }
-    );
+
+        if (event.state?.token) {
+            state.resetToken = event.state.token;
+        }
+
+        if (event.state?.email) {
+            state.resetEmail = event.state.email;
+        }
+
+        const direction = getDirection(state.currentPage, page);
+
+        animatePageChange(state.currentPage, page, direction);
+    });
 }
 
 /*
@@ -724,31 +549,22 @@ function setupHistory() {
 */
 
 function getApiErrors(error) {
-    const response =
-        error?.response;
+    const response = error?.response;
 
-    const data =
-        response?.data;
+    const data = response?.data;
 
-    if (
-        data?.errors &&
-        typeof data.errors === 'object'
-    ) {
+    if (data?.errors && typeof data.errors === 'object') {
         return data.errors;
     }
 
     if (data?.message) {
         return {
-            general: [
-                data.message,
-            ],
+            general: [data.message],
         };
     }
 
     return {
-        general: [
-            t('common.error_generic'),
-        ],
+        general: [t('common.error_generic')],
     };
 }
 
@@ -759,41 +575,22 @@ function getApiErrors(error) {
 */
 
 function clearFormErrors(form) {
-    form.querySelectorAll(
-        '.form-error'
-    ).forEach(
-        (element) => {
-            element.textContent =
-                '';
+    form.querySelectorAll('.form-error').forEach((element) => {
+        element.textContent = '';
 
-            element.removeAttribute(
-                'data-visible'
-            );
-        }
-    );
+        element.removeAttribute('data-visible');
+    });
 
-    form.querySelectorAll(
-        '.form-input'
-    ).forEach(
-        (element) => {
-            element.classList.remove(
-                'is-invalid'
-            );
-        }
-    );
+    form.querySelectorAll('.form-input').forEach((element) => {
+        element.classList.remove('is-invalid');
+    });
 
-    const general =
-        form.querySelector(
-            '[data-error-general]'
-        );
+    const general = form.querySelector('[data-error-general]');
 
     if (general) {
-        general.textContent =
-            '';
+        general.textContent = '';
 
-        general.removeAttribute(
-            'data-visible'
-        );
+        general.removeAttribute('data-visible');
     }
 }
 
@@ -803,95 +600,60 @@ function clearFormErrors(form) {
 |--------------------------------------------------------------------------
 */
 
-function showFormErrors(
-    form,
-    errors
-) {
+function showFormErrors(form, errors) {
     clearFormErrors(form);
 
-    Object.entries(errors)
-        .forEach(
-            ([field, messages]) => {
-                const message =
-                    Array.isArray(messages)
-                        ? messages[0]
-                        : messages;
+    Object.entries(errors).forEach(([field, messages]) => {
+        const message = Array.isArray(messages) ? messages[0] : messages;
 
-                /*
+        /*
                 |--------------------------------------------------------------------------
                 | General error
                 |--------------------------------------------------------------------------
                 */
 
-                if (
-                    field === 'general'
-                ) {
-                    let general =
-                        form.querySelector(
-                            '[data-error-general]'
-                        );
+        if (field === 'general') {
+            let general = form.querySelector('[data-error-general]');
 
-                    if (!general) {
-                        general =
-                            document.createElement(
-                                'div'
-                            );
+            if (!general) {
+                general = document.createElement('div');
 
-                        general.className =
-                            'auth-form-error';
+                general.className = 'auth-form-error';
 
-                        general.dataset.errorGeneral =
-                            'true';
+                general.dataset.errorGeneral = 'true';
 
-                        form.prepend(
-                            general
-                        );
-                    }
+                form.prepend(general);
+            }
 
-                    general.textContent =
-                        message;
+            general.textContent = message;
 
-                    general.setAttribute(
-                        'data-visible',
-                        'true'
-                    );
+            general.setAttribute('data-visible', 'true');
 
-                    return;
-                }
+            return;
+        }
 
-                /*
+        /*
                 |--------------------------------------------------------------------------
                 | Input
                 |--------------------------------------------------------------------------
                 */
 
-                const input =
-                    form.querySelector(
-                        `[name="${CSS.escape(field)}"]`
-                    );
+        const input = form.querySelector(`[name="${CSS.escape(field)}"]`);
 
-                const errorElement =
-                    form.querySelector(
-                        `[data-error-for="${CSS.escape(field)}"]`
-                    );
-
-                if (input) {
-                    input.classList.add(
-                        'is-invalid'
-                    );
-                }
-
-                if (errorElement) {
-                    errorElement.textContent =
-                        message;
-
-                    errorElement.setAttribute(
-                        'data-visible',
-                        'true'
-                    );
-                }
-            }
+        const errorElement = form.querySelector(
+            `[data-error-for="${CSS.escape(field)}"]`,
         );
+
+        if (input) {
+            input.classList.add('is-invalid');
+        }
+
+        if (errorElement) {
+            errorElement.textContent = message;
+
+            errorElement.setAttribute('data-visible', 'true');
+        }
+    });
 }
 
 /*
@@ -900,30 +662,14 @@ function showFormErrors(
 |--------------------------------------------------------------------------
 */
 
-function setFormLoading(
-    form,
-    loading
-) {
-    form.querySelectorAll(
-        'button[type="submit"]'
-    ).forEach(
-        (button) => {
-            button.disabled =
-                loading;
+function setFormLoading(form, loading) {
+    form.querySelectorAll('button[type="submit"]').forEach((button) => {
+        button.disabled = loading;
 
-            button.classList.toggle(
-                'is-loading',
-                loading
-            );
+        button.classList.toggle('is-loading', loading);
 
-            button.setAttribute(
-                'aria-busy',
-                loading
-                    ? 'true'
-                    : 'false'
-            );
-        }
-    );
+        button.setAttribute('aria-busy', loading ? 'true' : 'false');
+    });
 }
 
 /*
@@ -933,17 +679,13 @@ function setFormLoading(
 */
 
 function serializeForm(form) {
-    const formData =
-        new FormData(form);
+    const formData = new FormData(form);
 
     const data = {};
 
-    formData.forEach(
-        (value, key) => {
-            data[key] =
-                value;
-        }
-    );
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
 
     return data;
 }
@@ -958,13 +700,8 @@ function getAuthToken() {
     return localStorage.getItem('auth_token');
 }
 
-async function apiRequest(
-    method,
-    url,
-    data = {}
-) {
-    const token =
-        getAuthToken();
+async function apiRequest(method, url, data = {}) {
+    const token = getAuthToken();
 
     return axios({
         method,
@@ -972,22 +709,16 @@ async function apiRequest(
         data,
 
         headers: {
-            Accept:
-                'application/json',
+            Accept: 'application/json',
 
-            'Content-Type':
-                'application/json',
+            'Content-Type': 'application/json',
 
-            'X-Requested-With':
-                'XMLHttpRequest',
+            'X-Requested-With': 'XMLHttpRequest',
 
-            ...(token
-                ? { Authorization: `Bearer ${token}` }
-                : {}),
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
 
-        withCredentials:
-            true,
+        withCredentials: true,
     });
 }
 
@@ -1000,63 +731,35 @@ async function apiRequest(
 async function handleLogin(form) {
     clearFormErrors(form);
 
-    setFormLoading(
-        form,
-        true
-    );
+    setFormLoading(form, true);
 
     try {
-        const data =
-            serializeForm(form);
+        const data = serializeForm(form);
 
-        data.timezone =
-            Intl.DateTimeFormat()
-                .resolvedOptions()
-                .timeZone;
+        data.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-        const response =
-            await apiRequest(
-                'POST',
-                API.login,
-                data
-            );
+        const response = await apiRequest('POST', API.login, data);
 
         const token =
-            response.data?.data?.token ||
-            response.data?.data?.access_token;
+            response.data?.data?.token || response.data?.data?.access_token;
 
         if (token) {
-            localStorage.setItem(
-                'auth_token',
-                token
-            );
+            localStorage.setItem('auth_token', token);
         }
 
-        const params =
-            new URLSearchParams(
-                window.location.search
-            );
+        const params = new URLSearchParams(window.location.search);
 
-        const redirect =
-            params.get('redirect');
+        const redirect = params.get('redirect');
 
         // No explicit `?redirect=` (or it isn't a local path) means there's
         // no specifically required flow to send the user back to — land on
         // the dashboard, the app's actual home, not the public marketing page.
         window.location.href =
-            (redirect && redirect.startsWith('/'))
-                ? redirect
-                : '/dashboard';
+            redirect && redirect.startsWith('/') ? redirect : '/dashboard';
     } catch (error) {
-        showFormErrors(
-            form,
-            getApiErrors(error)
-        );
+        showFormErrors(form, getApiErrors(error));
     } finally {
-        setFormLoading(
-            form,
-            false
-        );
+        setFormLoading(form, false);
     }
 }
 
@@ -1069,50 +772,28 @@ async function handleLogin(form) {
 async function handleRegister(form) {
     clearFormErrors(form);
 
-    setFormLoading(
-        form,
-        true
-    );
+    setFormLoading(form, true);
 
     try {
-        const data =
-            serializeForm(form);
+        const data = serializeForm(form);
 
-        data.timezone =
-            Intl.DateTimeFormat()
-                .resolvedOptions()
-                .timeZone;
+        data.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-        const response =
-            await apiRequest(
-                'POST',
-                API.register,
-                data
-            );
+        const response = await apiRequest('POST', API.register, data);
 
-        const verified =
-            response.data?.data?.user?.email_verified;
+        const verified = response.data?.data?.user?.email_verified;
 
         if (verified) {
-            window.location.href =
-                '/login?registered=1';
+            window.location.href = '/login?registered=1';
 
             return;
         }
 
-        navigate(
-            'verify-email'
-        );
+        navigate('verify-email');
     } catch (error) {
-        showFormErrors(
-            form,
-            getApiErrors(error)
-        );
+        showFormErrors(form, getApiErrors(error));
     } finally {
-        setFormLoading(
-            form,
-            false
-        );
+        setFormLoading(form, false);
     }
 }
 
@@ -1125,54 +806,30 @@ async function handleRegister(form) {
 async function handleForgotPassword(form) {
     clearFormErrors(form);
 
-    setFormLoading(
-        form,
-        true
-    );
+    setFormLoading(form, true);
 
     try {
-        const data =
-            serializeForm(form);
+        const data = serializeForm(form);
 
-        await apiRequest(
-            'POST',
-            API['forgot-password'],
-            data
-        );
+        await apiRequest('POST', API['forgot-password'], data);
 
         form.reset();
 
-        let success =
-            form.querySelector(
-                '.auth-form-success'
-            );
+        let success = form.querySelector('.auth-form-success');
 
         if (!success) {
-            success =
-                document.createElement(
-                    'div'
-                );
+            success = document.createElement('div');
 
-            success.className =
-                'auth-form-success';
+            success.className = 'auth-form-success';
 
-            form.prepend(
-                success
-            );
+            form.prepend(success);
         }
 
-        success.textContent =
-            t('auth.forgot_password_sent');
+        success.textContent = t('auth.forgot_password_sent');
     } catch (error) {
-        showFormErrors(
-            form,
-            getApiErrors(error)
-        );
+        showFormErrors(form, getApiErrors(error));
     } finally {
-        setFormLoading(
-            form,
-            false
-        );
+        setFormLoading(form, false);
     }
 }
 
@@ -1185,45 +842,24 @@ async function handleForgotPassword(form) {
 async function handleResetPassword(form) {
     clearFormErrors(form);
 
-    setFormLoading(
-        form,
-        true
-    );
+    setFormLoading(form, true);
 
     try {
-        const data =
-            serializeForm(form);
+        const data = serializeForm(form);
 
-        data.token =
-            state.resetToken;
+        data.token = state.resetToken;
 
-        if (
-            !data.email &&
-            state.resetEmail
-        ) {
-            data.email =
-                state.resetEmail;
+        if (!data.email && state.resetEmail) {
+            data.email = state.resetEmail;
         }
 
-        await apiRequest(
-            'POST',
-            API['reset-password'],
-            data
-        );
+        await apiRequest('POST', API['reset-password'], data);
 
-        navigate(
-            'login'
-        );
+        navigate('login');
     } catch (error) {
-        showFormErrors(
-            form,
-            getApiErrors(error)
-        );
+        showFormErrors(form, getApiErrors(error));
     } finally {
-        setFormLoading(
-            form,
-            false
-        );
+        setFormLoading(form, false);
     }
 }
 
@@ -1237,45 +873,25 @@ async function handleConfirmPassword(form) {
     clearFormErrors(form);
 
     if (!getAuthToken()) {
-        window.location.href =
-            '/login';
+        window.location.href = '/login';
 
         return;
     }
 
-    setFormLoading(
-        form,
-        true
-    );
+    setFormLoading(form, true);
 
     try {
-        const data =
-            serializeForm(form);
+        const data = serializeForm(form);
 
-        await apiRequest(
-            'POST',
-            API['confirm-password'],
-            data
-        );
+        await apiRequest('POST', API['confirm-password'], data);
 
-        const params =
-            new URLSearchParams(
-                window.location.search
-            );
+        const params = new URLSearchParams(window.location.search);
 
-        window.location.href =
-            params.get('redirect') ||
-            '/profile';
+        window.location.href = params.get('redirect') || '/profile';
     } catch (error) {
-        showFormErrors(
-            form,
-            getApiErrors(error)
-        );
+        showFormErrors(form, getApiErrors(error));
     } finally {
-        setFormLoading(
-            form,
-            false
-        );
+        setFormLoading(form, false);
     }
 }
 
@@ -1285,57 +901,31 @@ async function handleConfirmPassword(form) {
 |--------------------------------------------------------------------------
 */
 
-async function handleVerificationNotification(
-    form
-) {
+async function handleVerificationNotification(form) {
     clearFormErrors(form);
 
-    setFormLoading(
-        form,
-        true
-    );
+    setFormLoading(form, true);
 
     try {
-        const data =
-            serializeForm(form);
+        const data = serializeForm(form);
 
-        await apiRequest(
-            'POST',
-            API['verification-notification'],
-            data
-        );
+        await apiRequest('POST', API['verification-notification'], data);
 
-        let success =
-            form.querySelector(
-                '.auth-form-success'
-            );
+        let success = form.querySelector('.auth-form-success');
 
         if (!success) {
-            success =
-                document.createElement(
-                    'div'
-                );
+            success = document.createElement('div');
 
-            success.className =
-                'auth-form-success';
+            success.className = 'auth-form-success';
 
-            form.prepend(
-                success
-            );
+            form.prepend(success);
         }
 
-        success.textContent =
-            t('auth.verification_sent');
+        success.textContent = t('auth.verification_sent');
     } catch (error) {
-        showFormErrors(
-            form,
-            getApiErrors(error)
-        );
+        showFormErrors(form, getApiErrors(error));
     } finally {
-        setFormLoading(
-            form,
-            false
-        );
+        setFormLoading(form, false);
     }
 }
 
@@ -1346,73 +936,49 @@ async function handleVerificationNotification(
 */
 
 function setupForms() {
-    spa.addEventListener(
-        'submit',
-        async (event) => {
-            const form =
-                event.target.closest(
-                    '[data-auth-form]'
-                );
+    spa.addEventListener('submit', async (event) => {
+        const form = event.target.closest('[data-auth-form]');
 
-            if (!form) {
-                return;
-            }
-
-            event.preventDefault();
-
-            const submitButton =
-                form.querySelector(
-                    'button[type="submit"]'
-                );
-
-            if (
-                submitButton?.disabled
-            ) {
-                return;
-            }
-
-            const type =
-                form.dataset.authForm;
-
-            switch (type) {
-                case 'login':
-                    await handleLogin(
-                        form
-                    );
-                    break;
-
-                case 'register':
-                    await handleRegister(
-                        form
-                    );
-                    break;
-
-                case 'forgot-password':
-                    await handleForgotPassword(
-                        form
-                    );
-                    break;
-
-                case 'reset-password':
-                    await handleResetPassword(
-                        form
-                    );
-                    break;
-
-                case 'verification-notification':
-                    await handleVerificationNotification(
-                        form
-                    );
-                    break;
-
-                case 'confirm-password':
-                    await handleConfirmPassword(
-                        form
-                    );
-                    break;
-            }
+        if (!form) {
+            return;
         }
-    );
+
+        event.preventDefault();
+
+        const submitButton = form.querySelector('button[type="submit"]');
+
+        if (submitButton?.disabled) {
+            return;
+        }
+
+        const type = form.dataset.authForm;
+
+        switch (type) {
+            case 'login':
+                await handleLogin(form);
+                break;
+
+            case 'register':
+                await handleRegister(form);
+                break;
+
+            case 'forgot-password':
+                await handleForgotPassword(form);
+                break;
+
+            case 'reset-password':
+                await handleResetPassword(form);
+                break;
+
+            case 'verification-notification':
+                await handleVerificationNotification(form);
+                break;
+
+            case 'confirm-password':
+                await handleConfirmPassword(form);
+                break;
+        }
+    });
 }
 
 /*
@@ -1422,59 +988,38 @@ function setupForms() {
 */
 
 function setupPasswordToggles() {
-    spa.addEventListener(
-        'click',
-        (event) => {
-            const button =
-                event.target.closest(
-                    '[data-password-toggle]'
-                );
+    spa.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-password-toggle]');
 
-            if (!button) {
-                return;
-            }
-
-            event.preventDefault();
-
-            const inputId =
-                button.dataset.passwordToggle;
-
-            if (!inputId) {
-                return;
-            }
-
-            const input =
-                document.getElementById(
-                    inputId
-                );
-
-            if (!input) {
-                return;
-            }
-
-            const visible =
-                input.type === 'text';
-
-            input.type =
-                visible
-                    ? 'password'
-                    : 'text';
-
-            button.setAttribute(
-                'aria-label',
-                visible
-                    ? t('auth.show_password')
-                    : t('auth.hide_password')
-            );
-
-            button.setAttribute(
-                'aria-pressed',
-                visible
-                    ? 'false'
-                    : 'true'
-            );
+        if (!button) {
+            return;
         }
-    );
+
+        event.preventDefault();
+
+        const inputId = button.dataset.passwordToggle;
+
+        if (!inputId) {
+            return;
+        }
+
+        const input = document.getElementById(inputId);
+
+        if (!input) {
+            return;
+        }
+
+        const visible = input.type === 'text';
+
+        input.type = visible ? 'password' : 'text';
+
+        button.setAttribute(
+            'aria-label',
+            visible ? t('auth.show_password') : t('auth.hide_password'),
+        );
+
+        button.setAttribute('aria-pressed', visible ? 'false' : 'true');
+    });
 }
 
 /*
@@ -1484,8 +1029,7 @@ function setupPasswordToggles() {
 */
 
 function initializePage() {
-    const page =
-        getPageFromLocation();
+    const page = getPageFromLocation();
 
     /*
     |--------------------------------------------------------------------------
@@ -1493,24 +1037,15 @@ function initializePage() {
     |--------------------------------------------------------------------------
     */
 
-    const pathname =
-        window.location.pathname;
+    const pathname = window.location.pathname;
 
-    if (
-        pathname.startsWith(
-            '/reset-password/'
-        )
-    ) {
-        const token =
-            decodeURIComponent(
-                pathname.split(
-                    '/reset-password/'
-                )[1] || ''
-            );
+    if (pathname.startsWith('/reset-password/')) {
+        const token = decodeURIComponent(
+            pathname.split('/reset-password/')[1] || '',
+        );
 
         if (token) {
-            state.resetToken =
-                token;
+            state.resetToken = token;
         }
     }
 
@@ -1520,17 +1055,12 @@ function initializePage() {
     |--------------------------------------------------------------------------
     */
 
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
+    const params = new URLSearchParams(window.location.search);
 
-    const email =
-        params.get('email');
+    const email = params.get('email');
 
     if (email) {
-        state.resetEmail =
-            email;
+        state.resetEmail = email;
     }
 
     /*
@@ -1551,17 +1081,14 @@ function initializePage() {
 
     history.replaceState(
         {
-            authPage:
-                page,
+            authPage: page,
 
-            token:
-                state.resetToken,
+            token: state.resetToken,
 
-            email:
-                state.resetEmail,
+            email: state.resetEmail,
         },
         '',
-        window.location.href
+        window.location.href,
     );
 }
 
@@ -1576,78 +1103,48 @@ function showStatusBanner(form, message, isError = false) {
         return;
     }
 
-    const className =
-        isError
-            ? 'auth-form-error'
-            : 'auth-form-success';
+    const className = isError ? 'auth-form-error' : 'auth-form-success';
 
-    let banner =
-        form.querySelector(
-            `.${className}`
-        );
+    let banner = form.querySelector(`.${className}`);
 
     if (!banner) {
-        banner =
-            document.createElement(
-                'div'
-            );
+        banner = document.createElement('div');
 
-        banner.className =
-            className;
+        banner.className = className;
 
         form.prepend(banner);
     }
 
-    banner.textContent =
-        message;
+    banner.textContent = message;
 }
 
 function showQueryStatusBanners() {
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
+    const params = new URLSearchParams(window.location.search);
 
-    const loginForm =
-        getPageElement('login')?.querySelector(
-            '[data-auth-form="login"]'
-        );
+    const loginForm = getPageElement('login')?.querySelector(
+        '[data-auth-form="login"]',
+    );
 
-    if (
-        window.location.pathname === '/login'
-    ) {
+    if (window.location.pathname === '/login') {
         if (params.get('registered')) {
-            showStatusBanner(
-                loginForm,
-                t('auth.status_registered')
-            );
+            showStatusBanner(loginForm, t('auth.status_registered'));
         }
 
         if (params.get('reset')) {
-            showStatusBanner(
-                loginForm,
-                t('auth.status_reset')
-            );
+            showStatusBanner(loginForm, t('auth.status_reset'));
         }
 
-        const verified =
-            params.get('verified');
+        const verified = params.get('verified');
 
         if (verified === '1') {
-            showStatusBanner(
-                loginForm,
-                t('auth.status_verified')
-            );
+            showStatusBanner(loginForm, t('auth.status_verified'));
         } else if (verified === 'already') {
-            showStatusBanner(
-                loginForm,
-                t('auth.status_verified_already')
-            );
+            showStatusBanner(loginForm, t('auth.status_verified_already'));
         } else if (verified === 'invalid') {
             showStatusBanner(
                 loginForm,
                 t('auth.status_verification_invalid'),
-                true
+                true,
             );
         }
     }
@@ -1671,56 +1168,34 @@ const GUEST_ONLY_PAGES = [
     'reset-password',
 ];
 
-const AUTH_ONLY_PAGES = [
-    'confirm-password',
-];
+const AUTH_ONLY_PAGES = ['confirm-password'];
 
 async function guardAuthPage() {
-    const page =
-        getPageFromLocation();
+    const page = getPageFromLocation();
 
-    const token =
-        getAuthToken();
+    const token = getAuthToken();
 
-    if (
-        AUTH_ONLY_PAGES.includes(page) &&
-        !token
-    ) {
-        window.location.href =
-            '/login';
+    if (AUTH_ONLY_PAGES.includes(page) && !token) {
+        window.location.href = '/login';
 
         return;
     }
 
-    if (
-        !token ||
-        !GUEST_ONLY_PAGES.includes(page)
-    ) {
+    if (!token || !GUEST_ONLY_PAGES.includes(page)) {
         return;
     }
 
     try {
-        await apiRequest(
-            'GET',
-            '/api/auth/me'
-        );
+        await apiRequest('GET', '/api/auth/me');
 
-        const params =
-            new URLSearchParams(
-                window.location.search
-            );
+        const params = new URLSearchParams(window.location.search);
 
-        const redirect =
-            params.get('redirect');
+        const redirect = params.get('redirect');
 
         window.location.href =
-            (redirect && redirect.startsWith('/'))
-                ? redirect
-                : '/profile';
+            redirect && redirect.startsWith('/') ? redirect : '/profile';
     } catch {
-        localStorage.removeItem(
-            'auth_token'
-        );
+        localStorage.removeItem('auth_token');
     }
 }
 

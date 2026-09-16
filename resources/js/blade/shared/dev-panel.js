@@ -35,10 +35,12 @@ function ensurePanel() {
     `;
     document.body.appendChild(panel);
 
-    panel.querySelector('[data-dev-panel-toggle]').addEventListener('click', () => {
-        const body = panel.querySelector('[data-dev-panel-body]');
-        body.hidden = !body.hidden;
-    });
+    panel
+        .querySelector('[data-dev-panel-toggle]')
+        .addEventListener('click', () => {
+            const body = panel.querySelector('[data-dev-panel-body]');
+            body.hidden = !body.hidden;
+        });
 
     return panel;
 }
@@ -60,14 +62,16 @@ function render() {
         : '';
 
     el.querySelector('[data-dev-panel-body]').innerHTML = history
-        .map((entry) => `
+        .map(
+            (entry) => `
             <div style="padding:4px 0; border-bottom:1px solid var(--ui-border); display:flex; gap:8px; align-items:baseline;">
                 <span style="color:${statusColor(entry.status, entry.ok)}; font-weight:700; min-width:28px;">${entry.status ?? '—'}</span>
                 <span style="color:var(--ui-text-secondary); min-width:36px;">${entry.method}</span>
                 <span style="flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--ui-text);">${entry.url}</span>
                 <span style="color:var(--ui-text-muted);">${entry.duration ?? '—'}ms</span>
             </div>
-        `)
+        `,
+        )
         .join('');
 }
 

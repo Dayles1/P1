@@ -21,25 +21,38 @@ function field(label, value) {
  * `/admin/sessions/{id}` page — same layout, same request-log drill-down,
  * different base API path and whether the owning user is shown.
  */
-export function initSessionDetailView({ sessionId, sessionEndpoint, logsEndpoint, logDetailEndpoint, revokeEndpoint, showOwner = false }) {
+export function initSessionDetailView({
+    sessionId,
+    sessionEndpoint,
+    logsEndpoint,
+    logDetailEndpoint,
+    revokeEndpoint,
+    showOwner = false,
+}) {
     const summaryEl = document.querySelector('[data-session-summary]');
     const revokeBtn = document.querySelector('[data-revoke-session]');
     const rowsEl = document.querySelector('[data-request-log-rows]');
-    const paginationEl = document.querySelector('[data-request-log-pagination]');
-
+    const paginationEl = document.querySelector(
+        '[data-request-log-pagination]',
+    );
 
     function renderSummary(session) {
-        const statusPill = session.status === 'active'
-            ? `<span class="pill pill--success">${t('common.active')}</span>`
-            : `<span class="pill pill--muted">${t('common.expired')}</span>`;
+        const statusPill =
+            session.status === 'active'
+                ? `<span class="pill pill--success">${t('common.active')}</span>`
+                : `<span class="pill pill--muted">${t('common.expired')}</span>`;
 
         const currentPill = session.is_current
             ? `<span class="pill pill--primary" style="margin-left:6px;">${t('sessions.this_device')}</span>`
             : '';
 
-        const ownerBlock = showOwner && session.user
-            ? field(t('admin.user'), `${escapeHtml(session.user.name)}<br><span style="font-weight:400; color:var(--ui-text-secondary);">${escapeHtml(session.user.email)}</span>`)
-            : '';
+        const ownerBlock =
+            showOwner && session.user
+                ? field(
+                      t('admin.user'),
+                      `${escapeHtml(session.user.name)}<br><span style="font-weight:400; color:var(--ui-text-secondary);">${escapeHtml(session.user.email)}</span>`,
+                  )
+                : '';
 
         summaryEl.innerHTML = `
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px;">
@@ -59,7 +72,8 @@ export function initSessionDetailView({ sessionId, sessionEndpoint, logsEndpoint
         `;
 
         if (revokeBtn) {
-            revokeBtn.hidden = session.status !== 'active' || session.is_current;
+            revokeBtn.hidden =
+                session.status !== 'active' || session.is_current;
         }
     }
 
@@ -82,7 +96,8 @@ export function initSessionDetailView({ sessionId, sessionEndpoint, logsEndpoint
         }
 
         rowsEl.innerHTML = logs
-            .map((log) => `
+            .map(
+                (log) => `
                 <tr class="table__row--clickable" data-log-id="${log.id}">
                     <td><span class="${statusClass(log.status_code)}">${log.status_code ?? '—'}</span></td>
                     <td><span class="${methodClass(log.method)}">${log.method}</span></td>
@@ -90,7 +105,8 @@ export function initSessionDetailView({ sessionId, sessionEndpoint, logsEndpoint
                     <td>${log.duration_ms != null ? `${log.duration_ms} ms` : '—'}</td>
                     <td>${log.created_at ?? '—'}</td>
                 </tr>
-            `)
+            `,
+            )
             .join('');
     }
 
@@ -98,13 +114,18 @@ export function initSessionDetailView({ sessionId, sessionEndpoint, logsEndpoint
         rowsEl.innerHTML = `<tr><td colspan="5"><div class="skeleton skeleton-row"></div></td></tr>`;
 
         try {
-            const { data } = await api.get(logsEndpoint, { params: { page, per_page: 15 } });
+            const { data } = await api.get(logsEndpoint, {
+                params: { page, per_page: 15 },
+            });
 
             renderLogRows(data.data || []);
             renderPagination(paginationEl, data.pagination, loadLogs);
         } catch (error) {
             rowsEl.innerHTML = `<tr><td colspan="5"><div class="empty-state"><strong>${t('sessions.request_logs_error')}</strong></div></td></tr>`;
-            showToast(apiErrorMessage(error, t('sessions.request_logs_error')), 'error');
+            showToast(
+                apiErrorMessage(error, t('sessions.request_logs_error')),
+                'error',
+            );
         }
     }
 
@@ -114,7 +135,10 @@ export function initSessionDetailView({ sessionId, sessionEndpoint, logsEndpoint
 
             openRequestLogDetailModal(data.data);
         } catch (error) {
-            showToast(apiErrorMessage(error, t('sessions.request_logs_error')), 'error');
+            showToast(
+                apiErrorMessage(error, t('sessions.request_logs_error')),
+                'error',
+            );
         }
     }
 

@@ -5,7 +5,9 @@ export function apiErrors(error) {
 }
 
 export function apiMessage(error, fallback) {
-    return error?.response?.data?.message || fallback || t('common.error_generic');
+    return (
+        error?.response?.data?.message || fallback || t('common.error_generic')
+    );
 }
 
 export function clearFieldErrors(form) {
@@ -18,7 +20,9 @@ export function showFieldErrors(form, errors) {
     clearFieldErrors(form);
 
     Object.entries(errors || {}).forEach(([field, messages]) => {
-        const el = form.querySelector(`[data-field-error="${CSS.escape(field)}"]`);
+        const el = form.querySelector(
+            `[data-field-error="${CSS.escape(field)}"]`,
+        );
 
         if (el) {
             el.textContent = Array.isArray(messages) ? messages[0] : messages;
@@ -27,11 +31,15 @@ export function showFieldErrors(form, errors) {
 }
 
 export function escapeHtml(value) {
-    return String(value ?? '').replace(/[&<>"']/g, (char) => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;',
-    })[char]);
+    return String(value ?? '').replace(
+        /[&<>"']/g,
+        (char) =>
+            ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;',
+            })[char],
+    );
 }

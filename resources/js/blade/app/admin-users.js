@@ -23,7 +23,12 @@ async function loadRoles() {
         if (roleFilter) {
             roleFilter.insertAdjacentHTML(
                 'beforeend',
-                roles.map((role) => `<option value="${role.code}">${escapeHtml(role.name)}</option>`).join('')
+                roles
+                    .map(
+                        (role) =>
+                            `<option value="${role.code}">${escapeHtml(role.name)}</option>`,
+                    )
+                    .join(''),
             );
         }
     } catch {
@@ -68,9 +73,10 @@ function renderRows(users) {
                     <td>${roleSelect(user)}</td>
                     <td>${statusPill}</td>
                     <td style="text-align:right;">
-                        ${user.is_banned
-                            ? `<button type="button" class="btn btn--outline btn--sm" data-unban="${user.id}">${t('admin.unban')}</button>`
-                            : `<button type="button" class="btn btn--outline btn--danger-outline btn--sm" data-ban="${user.id}">${t('admin.ban')}</button>`
+                        ${
+                            user.is_banned
+                                ? `<button type="button" class="btn btn--outline btn--sm" data-unban="${user.id}">${t('admin.unban')}</button>`
+                                : `<button type="button" class="btn btn--outline btn--danger-outline btn--sm" data-ban="${user.id}">${t('admin.ban')}</button>`
                         }
                     </td>
                 </tr>
@@ -120,7 +126,8 @@ rowsEl?.addEventListener('change', async (event) => {
             message: t('confirm.change_role_message'),
             confirmText: t('confirm.change_role_confirm'),
             cancelText: t('common.cancel'),
-            onConfirm: () => api.patch(`/admin/users/${userId}/role`, { role: newRole }),
+            onConfirm: () =>
+                api.patch(`/admin/users/${userId}/role`, { role: newRole }),
         });
 
         if (!confirmed) {
@@ -150,7 +157,8 @@ rowsEl?.addEventListener('click', async (event) => {
                 message: t('confirm.unban_user_message'),
                 confirmText: t('confirm.unban_user_confirm'),
                 cancelText: t('common.cancel'),
-                onConfirm: () => api.delete(`/admin/users/${unbanBtn.dataset.unban}/ban`),
+                onConfirm: () =>
+                    api.delete(`/admin/users/${unbanBtn.dataset.unban}/ban`),
             });
 
             if (!confirmed) {
@@ -160,7 +168,10 @@ rowsEl?.addEventListener('click', async (event) => {
             showToast(t('admin.user_unbanned'));
             loadUsers(currentPage);
         } catch (error) {
-            showToast(apiErrorMessage(error, t('common.error_generic')), 'error');
+            showToast(
+                apiErrorMessage(error, t('common.error_generic')),
+                'error',
+            );
         }
 
         return;
@@ -191,34 +202,47 @@ function openBanModal(userId) {
         `,
     });
 
-    modal.querySelector('[data-action="cancel"]').addEventListener('click', close);
+    modal
+        .querySelector('[data-action="cancel"]')
+        .addEventListener('click', close);
 
-    modal.querySelector('[data-action="confirm"]').addEventListener('click', async () => {
-        const confirmBtn = modal.querySelector('[data-action="confirm"]');
-        const cancelBtn = modal.querySelector('[data-action="cancel"]');
-        const originalLabel = confirmBtn.textContent;
+    modal
+        .querySelector('[data-action="confirm"]')
+        .addEventListener('click', async () => {
+            const confirmBtn = modal.querySelector('[data-action="confirm"]');
+            const cancelBtn = modal.querySelector('[data-action="cancel"]');
+            const originalLabel = confirmBtn.textContent;
 
-        confirmBtn.disabled = true;
-        cancelBtn.disabled = true;
-        confirmBtn.innerHTML = `<span class="btn__spinner" aria-hidden="true"></span>${originalLabel}`;
+            confirmBtn.disabled = true;
+            cancelBtn.disabled = true;
+            confirmBtn.innerHTML = `<span class="btn__spinner" aria-hidden="true"></span>${originalLabel}`;
 
-        const reason = modal.querySelector('[data-ban-reason]').value || undefined;
-        const endsAtRaw = modal.querySelector('[data-ban-ends-at]').value;
-        const ends_at = endsAtRaw ? new Date(endsAtRaw).toISOString() : undefined;
+            const reason =
+                modal.querySelector('[data-ban-reason]').value || undefined;
+            const endsAtRaw = modal.querySelector('[data-ban-ends-at]').value;
+            const ends_at = endsAtRaw
+                ? new Date(endsAtRaw).toISOString()
+                : undefined;
 
-        try {
-            await api.post(`/admin/users/${userId}/ban`, { reason, ends_at });
+            try {
+                await api.post(`/admin/users/${userId}/ban`, {
+                    reason,
+                    ends_at,
+                });
 
-            showToast(t('admin.user_banned'));
-            close();
-            loadUsers(currentPage);
-        } catch (error) {
-            showToast(apiErrorMessage(error, t('common.error_generic')), 'error');
-            confirmBtn.disabled = false;
-            cancelBtn.disabled = false;
-            confirmBtn.textContent = originalLabel;
-        }
-    });
+                showToast(t('admin.user_banned'));
+                close();
+                loadUsers(currentPage);
+            } catch (error) {
+                showToast(
+                    apiErrorMessage(error, t('common.error_generic')),
+                    'error',
+                );
+                confirmBtn.disabled = false;
+                cancelBtn.disabled = false;
+                confirmBtn.textContent = originalLabel;
+            }
+        });
 }
 
 roleFilter?.addEventListener('change', () => loadUsers(1));

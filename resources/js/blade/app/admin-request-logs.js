@@ -22,7 +22,8 @@ function renderRows(logs) {
     }
 
     rowsEl.innerHTML = logs
-        .map((log) => `
+        .map(
+            (log) => `
             <tr class="table__row--clickable" data-log-id="${log.id}">
                 <td><span class="${statusClass(log.status_code)}">${log.status_code ?? '—'}</span></td>
                 <td><span class="${methodClass(log.method)}">${log.method}</span></td>
@@ -31,7 +32,8 @@ function renderRows(logs) {
                 <td>${log.duration_ms != null ? `${log.duration_ms} ms` : '—'}</td>
                 <td>${log.created_at ?? '—'}</td>
             </tr>
-        `)
+        `,
+        )
         .join('');
 }
 
@@ -53,7 +55,10 @@ async function loadLogs(page = 1) {
         renderPagination(paginationEl, data.pagination, loadLogs);
     } catch (error) {
         rowsEl.innerHTML = `<tr><td colspan="6"><div class="empty-state"><strong>${t('sessions.request_logs_error')}</strong></div></td></tr>`;
-        showToast(apiErrorMessage(error, t('sessions.request_logs_error')), 'error');
+        showToast(
+            apiErrorMessage(error, t('sessions.request_logs_error')),
+            'error',
+        );
     }
 }
 
@@ -63,7 +68,10 @@ async function openLogDetail(logId) {
 
         openRequestLogDetailModal(data.data);
     } catch (error) {
-        showToast(apiErrorMessage(error, t('sessions.request_logs_error')), 'error');
+        showToast(
+            apiErrorMessage(error, t('sessions.request_logs_error')),
+            'error',
+        );
     }
 }
 
@@ -75,7 +83,9 @@ rowsEl?.addEventListener('click', (event) => {
     }
 });
 
-[methodFilter, statusFilter].forEach((el) => el?.addEventListener('change', () => loadLogs(1)));
+[methodFilter, statusFilter].forEach((el) =>
+    el?.addEventListener('change', () => loadLogs(1)),
+);
 
 searchInput?.addEventListener('input', () => {
     window.clearTimeout(searchTimer);

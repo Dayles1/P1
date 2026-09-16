@@ -6,18 +6,24 @@
  */
 
 /** A single skeleton block matching `.skeleton` (row/card/line, any height via `style`). */
-export function skeletonBlock({ height = 20, className = '', style = '' } = {}) {
+export function skeletonBlock({
+    height = 20,
+    className = '',
+    style = '',
+} = {}) {
     return `<div class="skeleton ${className}" style="height:${height}px;${style}"></div>`;
 }
 
 /** `count` stacked skeleton rows — the common "list still loading" placeholder. */
 export function skeletonRows(count = 3, { height = 56, gap = 8 } = {}) {
     return Array.from({ length: count })
-        .map((_, index) => skeletonBlock({
-            height,
-            className: 'skeleton-row',
-            style: index < count - 1 ? `margin-bottom:${gap}px;` : '',
-        }))
+        .map((_, index) =>
+            skeletonBlock({
+                height,
+                className: 'skeleton-row',
+                style: index < count - 1 ? `margin-bottom:${gap}px;` : '',
+            }),
+        )
         .join('');
 }
 

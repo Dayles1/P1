@@ -54,13 +54,15 @@ export function prettyJson(value) {
 }
 
 export function methodClass(method) {
-    return {
-        GET: 'pill pill--info',
-        POST: 'pill pill--success',
-        PUT: 'pill pill--warning',
-        PATCH: 'pill pill--warning',
-        DELETE: 'pill pill--danger',
-    }[method] || 'pill pill--muted';
+    return (
+        {
+            GET: 'pill pill--info',
+            POST: 'pill pill--success',
+            PUT: 'pill pill--warning',
+            PATCH: 'pill pill--warning',
+            DELETE: 'pill pill--danger',
+        }[method] || 'pill pill--muted'
+    );
 }
 
 export function statusClass(status) {

@@ -42,7 +42,9 @@ export function applyTheme(theme, { persist = true } = {}) {
     const applied = resolveAppliedTheme(theme);
 
     document.documentElement.dataset.theme = applied;
-    document.documentElement.style.colorScheme = DARK_THEMES.includes(applied) ? 'dark' : 'light';
+    document.documentElement.style.colorScheme = DARK_THEMES.includes(applied)
+        ? 'dark'
+        : 'light';
 
     if (persist) {
         if (theme === 'system') {
@@ -58,10 +60,16 @@ export function setTheme(theme) {
         return;
     }
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)',
+    ).matches;
     const apply = () => applyTheme(theme);
 
-    if (!document.startViewTransition || prefersReducedMotion || document.visibilityState !== 'visible') {
+    if (
+        !document.startViewTransition ||
+        prefersReducedMotion ||
+        document.visibilityState !== 'visible'
+    ) {
         apply();
 
         return;
@@ -82,9 +90,11 @@ export function setTheme(theme) {
  * `system` is selected. The picker UI itself lives in `./theme-picker.js`.
  */
 export function watchSystemTheme() {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-        if (getStoredTheme() === 'system') {
-            applyTheme('system');
-        }
-    });
+    window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', () => {
+            if (getStoredTheme() === 'system') {
+                applyTheme('system');
+            }
+        });
 }

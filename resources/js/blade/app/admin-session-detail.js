@@ -1,6 +1,8 @@
 import { initSessionDetailView } from '../shared/session-detail-view';
 
-const sessionId = window.location.pathname.match(/\/admin\/sessions\/(\d+)/)?.[1];
+const sessionId = window.location.pathname.match(
+    /\/admin\/sessions\/(\d+)/,
+)?.[1];
 
 if (sessionId) {
     initSessionDetailView({

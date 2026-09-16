@@ -1,6 +1,12 @@
 import { t } from './i18n';
 import { openModal } from './modal';
-import { THEMES, getStoredTheme, setTheme, resolveAppliedTheme, watchSystemTheme } from './theme';
+import {
+    THEMES,
+    getStoredTheme,
+    setTheme,
+    resolveAppliedTheme,
+    watchSystemTheme,
+} from './theme';
 
 /**
  * Every theme rendered as a real miniature UI (header/card/input/button)
@@ -94,7 +100,9 @@ export function openThemePicker() {
 export function initThemePicker() {
     watchSystemTheme();
 
-    document.querySelectorAll('[data-theme-picker-trigger]').forEach((trigger) => {
-        trigger.addEventListener('click', openThemePicker);
-    });
+    document
+        .querySelectorAll('[data-theme-picker-trigger]')
+        .forEach((trigger) => {
+            trigger.addEventListener('click', openThemePicker);
+        });
 }

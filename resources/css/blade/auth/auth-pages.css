@@ -73,9 +73,7 @@
 .form-input:focus {
     border-color: var(--auth-border-focus);
 
-    box-shadow:
-        0 0 0 4px
-        var(--auth-primary-soft);
+    box-shadow: 0 0 0 4px var(--auth-primary-soft);
 }
 
 .form-input.is-invalid {
@@ -87,7 +85,6 @@
     font-size: 12px;
     line-height: 1.4;
 }
-
 
 /* =========================================================
    OPTIONS
@@ -127,7 +124,6 @@
     text-decoration: underline;
 }
 
-
 /* =========================================================
    BUTTON
    ========================================================= */
@@ -153,10 +149,7 @@
 
     cursor: pointer;
 
-    box-shadow:
-        0
-        4px
-        12px
+    box-shadow: 0 4px 12px
         color-mix(in srgb, var(--auth-primary) 18%, transparent);
 
     transition:
@@ -170,10 +163,7 @@
 
     transform: translateY(-1px);
 
-    box-shadow:
-        0
-        8px
-        22px
+    box-shadow: 0 8px 22px
         color-mix(in srgb, var(--auth-primary) 24%, transparent);
 }
 
@@ -182,13 +172,10 @@
 }
 
 .auth-button:focus-visible {
-    outline:
-        3px solid
-        var(--auth-primary-soft);
+    outline: 3px solid var(--auth-primary-soft);
 
     outline-offset: 2px;
 }
-
 
 /* =========================================================
    FOOTER
@@ -211,7 +198,6 @@
     text-decoration: underline;
 }
 
-
 /* =========================================================
    AUTH SPA
    ========================================================= */
@@ -226,7 +212,6 @@
     width: 100%;
     overflow: hidden;
 }
-
 
 /* =========================================================
    AUTH PAGE
@@ -251,11 +236,8 @@
      * Меняется только прозрачность.
      */
 
-    transition:
-        opacity 320ms
-        cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 
 /* =========================================================
    ACTIVE PAGE
@@ -268,37 +250,26 @@
     z-index: 1;
 }
 
-
 /* =========================================================
    PAGE ENTER
    ========================================================= */
 
 .auth-page.is-entering {
-    animation:
-        auth-page-fade-in
-        320ms
-        cubic-bezier(0.22, 1, 0.36, 1)
-        both;
+    animation: auth-page-fade-in 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
 
     z-index: 2;
 }
-
 
 /* =========================================================
    PAGE LEAVE
    ========================================================= */
 
 .auth-page.is-leaving {
-    animation:
-        auth-page-fade-out
-        260ms
-        cubic-bezier(0.4, 0, 1, 1)
-        both;
+    animation: auth-page-fade-out 260ms cubic-bezier(0.4, 0, 1, 1) both;
 
     pointer-events: none;
     z-index: 1;
 }
-
 
 /* =========================================================
    PAGE FADE IN
@@ -314,7 +285,6 @@
     }
 }
 
-
 /* =========================================================
    PAGE FADE OUT
    ========================================================= */
@@ -329,7 +299,6 @@
     }
 }
 
-
 /* =========================================================
    INPUT WRAPPER
    ========================================================= */
@@ -342,7 +311,6 @@
 .form-input-wrapper .form-input {
     padding-right: 48px;
 }
-
 
 /* =========================================================
    PASSWORD TOGGLE
@@ -381,7 +349,6 @@
     color: var(--auth-text);
 }
 
-
 /* =========================================================
    PAGE SWITCH
    ========================================================= */
@@ -397,7 +364,6 @@
     margin-left: 4px;
 }
 
-
 /* =========================================================
    GENERAL FORM ERROR
    ========================================================= */
@@ -405,15 +371,11 @@
 .auth-form-error {
     width: 100%;
 
-    padding:
-        12px
-        14px;
+    padding: 12px 14px;
 
     margin-bottom: 2px;
 
-    border:
-        1px solid
-        rgba(217, 45, 32, 0.18);
+    border: 1px solid rgba(217, 45, 32, 0.18);
 
     border-radius: var(--auth-radius);
 
@@ -424,7 +386,6 @@
     line-height: 1.5;
 }
 
-
 /* =========================================================
    FORM SUCCESS
    ========================================================= */
@@ -432,13 +393,9 @@
 .auth-form-success {
     width: 100%;
 
-    padding:
-        12px
-        14px;
+    padding: 12px 14px;
 
-    border:
-        1px solid
-        rgba(3, 152, 85, 0.18);
+    border: 1px solid rgba(3, 152, 85, 0.18);
 
     border-radius: var(--auth-radius);
 
@@ -448,7 +405,6 @@
     font-size: 13px;
     line-height: 1.5;
 }
-
 
 /* =========================================================
    BUTTON LOADING
@@ -464,9 +420,7 @@
     width: 18px;
     height: 18px;
 
-    border:
-        2px solid
-        rgba(255, 255, 255, 0.35);
+    border: 2px solid rgba(255, 255, 255, 0.35);
 
     border-top-color: #ffffff;
 
@@ -480,26 +434,19 @@
     pointer-events: none;
 }
 
-.auth-button.is-loading
-.auth-button__text {
+.auth-button.is-loading .auth-button__text {
     opacity: 0;
 }
 
-.auth-button.is-loading
-.auth-button__loader {
+.auth-button.is-loading .auth-button__loader {
     opacity: 1;
 
-    animation:
-        auth-spin
-        700ms
-        linear
-        infinite;
+    animation: auth-spin 700ms linear infinite;
 }
 
 .auth-button:disabled {
     cursor: wait;
 }
-
 
 /* =========================================================
    LOADING SPINNER
@@ -514,7 +461,6 @@
         transform: rotate(360deg);
     }
 }
-
 
 /* =========================================================
    CENTERED CARD
@@ -531,14 +477,9 @@
     width: 52px;
     height: 52px;
 
-    margin:
-        0
-        auto
-        20px;
+    margin: 0 auto 20px;
 
-    border:
-        1px solid
-        var(--auth-border);
+    border: 1px solid var(--auth-border);
 
     border-radius: 16px;
 
@@ -548,7 +489,6 @@
     font-size: 22px;
 }
 
-
 /* =========================================================
    INFO BOX
    ========================================================= */
@@ -556,13 +496,9 @@
 .auth-info-box {
     margin-top: 20px;
 
-    padding:
-        14px
-        16px;
+    padding: 14px 16px;
 
-    border:
-        1px solid
-        var(--auth-border);
+    border: 1px solid var(--auth-border);
 
     border-radius: var(--auth-radius);
 
@@ -572,7 +508,6 @@
     font-size: 13px;
     line-height: 1.6;
 }
-
 
 /* =========================================================
    REDUCED MOTION

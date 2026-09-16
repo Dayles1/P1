@@ -5,12 +5,24 @@ import { t } from '../shared/i18n';
 import { writeLocaleCookie, getLocale } from '../shared/i18n';
 import { renderThemeGrid } from '../shared/theme-picker';
 import { showToast, apiErrorMessage } from '../shared/toast';
-import { getUserSettings, invalidateUserSettings } from '../shared/user-settings-cache';
+import {
+    getUserSettings,
+    invalidateUserSettings,
+} from '../shared/user-settings-cache';
 
 const nav = document.querySelector('[data-settings-nav]');
 const panel = document.querySelector('[data-settings-panel]');
 
-const SECTIONS = ['general', 'appearance', 'localization', 'notifications', 'authentication', 'security', 'system', 'developer'];
+const SECTIONS = [
+    'general',
+    'appearance',
+    'localization',
+    'notifications',
+    'authentication',
+    'security',
+    'system',
+    'developer',
+];
 const ADMIN_SECTIONS = new Set(['authentication', 'security', 'system']);
 
 // Which raw admin settings (by key) render via the generic boolean/integer/
@@ -18,25 +30,49 @@ const ADMIN_SECTIONS = new Set(['authentication', 'security', 'system']);
 // are listed here for exclusion only; they get bespoke widgets instead.
 const SECTION_ADMIN_KEYS = {
     general: [
-        'user.allow_avatar_upload', 'user.default_avatar', 'user.max_avatar_size',
-        'user.allow_profile_edit', 'user.allow_delete_account', 'user.allow_change_email', 'user.allow_change_username',
+        'user.allow_avatar_upload',
+        'user.default_avatar',
+        'user.max_avatar_size',
+        'user.allow_profile_edit',
+        'user.allow_delete_account',
+        'user.allow_change_email',
+        'user.allow_change_username',
     ],
     notifications: [
-        'notification.database', 'notification.email', 'notification.telegram', 'notification.push', 'notification.sms',
+        'notification.database',
+        'notification.email',
+        'notification.telegram',
+        'notification.push',
+        'notification.sms',
     ],
     authentication: [
-        'auth.registration_open', 'auth.login_open', 'auth.email_verification_required',
-        'auth.remember_me_enabled', 'auth.session_lifetime',
+        'auth.registration_open',
+        'auth.login_open',
+        'auth.email_verification_required',
+        'auth.remember_me_enabled',
+        'auth.session_lifetime',
     ],
     security: [
-        'auth.max_register_users_count', 'auth.max_users_count', 'auth.max_login_attempts',
-        'auth.lockout_minutes', 'auth.protect_superadmin', 'security.enable_api', 'security.audit_log',
+        'auth.max_register_users_count',
+        'auth.max_users_count',
+        'auth.max_login_attempts',
+        'auth.lockout_minutes',
+        'auth.protect_superadmin',
+        'security.enable_api',
+        'security.audit_log',
     ],
     system: [
-        'system.site_name', 'system.timezone', 'system.logo',
-        'upload.max_upload_size', 'upload.allowed_extensions', 'upload.allowed_mime_types',
-        'upload.max_image_width', 'upload.max_image_height', 'upload.max_video_size',
-        'upload.max_document_size', 'upload.image_quality',
+        'system.site_name',
+        'system.timezone',
+        'system.logo',
+        'upload.max_upload_size',
+        'upload.allowed_extensions',
+        'upload.allowed_mime_types',
+        'upload.max_image_width',
+        'upload.max_image_height',
+        'upload.max_video_size',
+        'upload.max_document_size',
+        'upload.image_quality',
     ],
 };
 
@@ -71,7 +107,13 @@ async function loadAll() {
 
     const results = await Promise.allSettled(requests);
 
-    const [personalRes, timezonesRes, languagesRes, adminSettingsRes, rolesRes] = results;
+    const [
+        personalRes,
+        timezonesRes,
+        languagesRes,
+        adminSettingsRes,
+        rolesRes,
+    ] = results;
 
     if (personalRes.status === 'fulfilled') {
         state.personal = personalRes.value;
@@ -87,7 +129,11 @@ async function loadAll() {
 
     if (state.isAdmin && adminSettingsRes?.status === 'fulfilled') {
         const groups = adminSettingsRes.value.data.data || [];
-        groups.forEach((group) => group.items.forEach((item) => state.adminSettingsByKey.set(item.key, item)));
+        groups.forEach((group) =>
+            group.items.forEach((item) =>
+                state.adminSettingsByKey.set(item.key, item),
+            ),
+        );
     }
 
     if (state.isAdmin && rolesRes?.status === 'fulfilled') {
@@ -191,7 +237,10 @@ function renderGeneral() {
     const p = state.personal;
 
     const timezoneOptions = state.timezones
-        .map((tz) => `<option value="${tz.id}" ${String(tz.id) === String(p?.timezone?.id) ? 'selected' : ''}>${escapeHtml(tz.name)} (${tz.offset})</option>`)
+        .map(
+            (tz) =>
+                `<option value="${tz.id}" ${String(tz.id) === String(p?.timezone?.id) ? 'selected' : ''}>${escapeHtml(tz.name)} (${tz.offset})</option>`,
+        )
         .join('');
 
     const dateFormats = ['Y-m-d', 'd.m.Y', 'd/m/Y', 'm/d/Y'];
@@ -230,28 +279,36 @@ function renderGeneral() {
             </div>
         </div>
 
-        ${state.isAdmin ? `
+        ${
+            state.isAdmin
+                ? `
             <div class="settings-panel__section">
                 <h2 class="settings-panel__section-title">${t('settings.user_policies')}</h2>
                 <p class="settings-panel__section-hint">${t('settings.user_policies_hint')}</p>
                 ${genericSettingsBlock(SECTION_ADMIN_KEYS.general)}
             </div>
-        ` : ''}
+        `
+                : ''
+        }
     `;
 }
 
 function wireGeneral() {
-    panel.querySelectorAll('[data-personal="timezone_id"], [data-personal="time_format"], [data-personal="date_format"]').forEach((el) => {
-        el.addEventListener('change', () => {
-            const payload = { [el.dataset.personal]: el.value };
+    panel
+        .querySelectorAll(
+            '[data-personal="timezone_id"], [data-personal="time_format"], [data-personal="date_format"]',
+        )
+        .forEach((el) => {
+            el.addEventListener('change', () => {
+                const payload = { [el.dataset.personal]: el.value };
 
-            if (el.dataset.personal === 'timezone_id') {
-                payload.timezone_source = 'manual';
-            }
+                if (el.dataset.personal === 'timezone_id') {
+                    payload.timezone_source = 'manual';
+                }
 
-            savePersonal(payload);
+                savePersonal(payload);
+            });
         });
-    });
 }
 
 /*
@@ -286,7 +343,10 @@ function wireAppearance() {
 
 function languageOptions(selectedCode) {
     return state.languages
-        .map((lang) => `<option value="${lang.code}" ${lang.code === selectedCode ? 'selected' : ''}>${escapeHtml(lang.name)}</option>`)
+        .map(
+            (lang) =>
+                `<option value="${lang.code}" ${lang.code === selectedCode ? 'selected' : ''}>${escapeHtml(lang.name)}</option>`,
+        )
         .join('');
 }
 
@@ -307,7 +367,9 @@ function renderLocalization() {
             </div>
         </div>
 
-        ${state.isAdmin && defaultLocale && fallbackLocale ? `
+        ${
+            state.isAdmin && defaultLocale && fallbackLocale
+                ? `
             <div class="settings-panel__section">
                 <h2 class="settings-panel__section-title">${t('settings.default_language')}</h2>
                 <p class="settings-panel__section-hint">${t('settings.default_language_hint')}</p>
@@ -332,29 +394,33 @@ function renderLocalization() {
             <div class="settings-panel__section">
                 ${genericSettingsBlock(['localization.allow_locale_switch', 'localization.auto_detect_browser_locale'])}
             </div>
-        ` : ''}
+        `
+                : ''
+        }
     `;
 }
 
 function wireLocalization() {
-    panel.querySelector('[data-personal-locale]')?.addEventListener('change', async (event) => {
-        const locale = event.target.value;
-        const select = event.target;
+    panel
+        .querySelector('[data-personal-locale]')
+        ?.addEventListener('change', async (event) => {
+            const locale = event.target.value;
+            const select = event.target;
 
-        select.disabled = true;
-        writeLocaleCookie(locale);
+            select.disabled = true;
+            writeLocaleCookie(locale);
 
-        try {
-            await api.put('/profile/settings', { locale });
-        } catch (error) {
-            showToast(apiErrorMessage(error, t('settings.error')), 'error');
-            select.disabled = false;
+            try {
+                await api.put('/profile/settings', { locale });
+            } catch (error) {
+                showToast(apiErrorMessage(error, t('settings.error')), 'error');
+                select.disabled = false;
 
-            return;
-        }
+                return;
+            }
 
-        window.location.reload();
-    });
+            window.location.reload();
+        });
 
     panel.querySelectorAll('[data-locale-setting]').forEach((select) => {
         select.addEventListener('change', async () => {
@@ -363,10 +429,16 @@ function wireLocalization() {
             select.disabled = true;
 
             try {
-                await api.patch(`/admin/settings/${settingId}`, { value: select.value, operation: 'set' });
+                await api.patch(`/admin/settings/${settingId}`, {
+                    value: select.value,
+                    operation: 'set',
+                });
                 showToast(t('admin.save_success'));
             } catch (error) {
-                showToast(apiErrorMessage(error, t('admin.save_error')), 'error');
+                showToast(
+                    apiErrorMessage(error, t('admin.save_error')),
+                    'error',
+                );
             } finally {
                 select.disabled = false;
             }
@@ -381,7 +453,13 @@ function wireLocalization() {
 |--------------------------------------------------------------------------
 */
 
-const NOTIFICATION_PREF_KEYS = ['database', 'browser', 'sound', 'message', 'system'];
+const NOTIFICATION_PREF_KEYS = [
+    'database',
+    'browser',
+    'sound',
+    'message',
+    'system',
+];
 
 function notificationPrefCheckbox(key, prefs) {
     const enabled = prefs?.[key] !== false;
@@ -405,13 +483,17 @@ function renderNotifications() {
             ${NOTIFICATION_PREF_KEYS.map((key) => notificationPrefCheckbox(key, prefs)).join('')}
         </div>
 
-        ${state.isAdmin ? `
+        ${
+            state.isAdmin
+                ? `
             <div class="settings-panel__section">
                 <h2 class="settings-panel__section-title">${t('settings.nav.notifications')}</h2>
                 <p class="settings-panel__section-hint">${t('settings.notifications_hint')}</p>
                 ${genericSettingsBlock(SECTION_ADMIN_KEYS.notifications)}
             </div>
-        ` : ''}
+        `
+                : ''
+        }
     `;
 }
 
@@ -420,7 +502,12 @@ function wireNotifications() {
         checkbox.addEventListener('change', async () => {
             const key = checkbox.dataset.notifPref;
 
-            if (key === 'browser' && checkbox.checked && typeof Notification !== 'undefined' && Notification.permission === 'default') {
+            if (
+                key === 'browser' &&
+                checkbox.checked &&
+                typeof Notification !== 'undefined' &&
+                Notification.permission === 'default'
+            ) {
                 const permission = await Notification.requestPermission();
 
                 if (permission !== 'granted') {
@@ -460,7 +547,9 @@ function renderAuthentication() {
             <h2 class="settings-panel__section-title">${t('settings.allowed_login_roles')}</h2>
             <p class="settings-panel__section-hint">${t('settings.allowed_login_roles_hint')}</p>
             <div class="settings-role-list" data-allowed-roles data-setting-id="${allowedRoles?.id ?? ''}">
-                ${state.roles.map((role) => `
+                ${state.roles
+                    .map(
+                        (role) => `
                     <label class="settings-role-row">
                         <div class="settings-role-row__main">
                             <div class="settings-role-row__name">${escapeHtml(role.name)}</div>
@@ -472,7 +561,9 @@ function renderAuthentication() {
                             <span class="checkbox__box"></span>
                         </span>
                     </label>
-                `).join('')}
+                `,
+                    )
+                    .join('')}
             </div>
         </div>
 
@@ -510,7 +601,9 @@ function wireAuthentication() {
         }
 
         const settingId = rolesContainer.dataset.settingId;
-        const selected = [...rolesContainer.querySelectorAll('[data-role-id]:checked')].map((el) => Number(el.dataset.roleId));
+        const selected = [
+            ...rolesContainer.querySelectorAll('[data-role-id]:checked'),
+        ].map((el) => Number(el.dataset.roleId));
 
         try {
             await patchSetting(settingId, selected);
@@ -527,7 +620,10 @@ function wireAuthentication() {
         defaultRoleSelect.disabled = true;
 
         try {
-            await patchSetting(defaultRoleSelect.dataset.settingId, Number(defaultRoleSelect.value));
+            await patchSetting(
+                defaultRoleSelect.dataset.settingId,
+                Number(defaultRoleSelect.value),
+            );
             showToast(t('admin.save_success'));
         } catch (error) {
             showToast(apiErrorMessage(error, t('admin.save_error')), 'error');
@@ -627,7 +723,9 @@ function wireSystem() {
     const input = panel.querySelector('[data-favicon-input]');
     const dropzone = panel.querySelector('[data-favicon-dropzone]');
 
-    panel.querySelector('[data-favicon-trigger]')?.addEventListener('click', () => input.click());
+    panel
+        .querySelector('[data-favicon-trigger]')
+        ?.addEventListener('click', () => input.click());
 
     input?.addEventListener('change', () => {
         const file = input.files?.[0];
@@ -639,35 +737,45 @@ function wireSystem() {
         input.value = '';
     });
 
-    panel.querySelector('[data-favicon-reset]')?.addEventListener('click', async (event) => {
-        const button = event.currentTarget;
-        button.disabled = true;
+    panel
+        .querySelector('[data-favicon-reset]')
+        ?.addEventListener('click', async (event) => {
+            const button = event.currentTarget;
+            button.disabled = true;
 
-        try {
-            const { data } = await api.delete('/admin/settings/favicon');
+            try {
+                const { data } = await api.delete('/admin/settings/favicon');
 
-            panel.querySelector('[data-favicon-preview]').src = data.data.url;
-            showToast(t('settings.favicon_updated'));
+                panel.querySelector('[data-favicon-preview]').src =
+                    data.data.url;
+                showToast(t('settings.favicon_updated'));
 
-            const setting = adminSetting('system.favicon');
+                const setting = adminSetting('system.favicon');
 
-            if (setting) {
-                setting.value = data.data.url;
+                if (setting) {
+                    setting.value = data.data.url;
+                }
+            } catch (error) {
+                showToast(
+                    apiErrorMessage(error, t('settings.favicon_error')),
+                    'error',
+                );
+                button.disabled = false;
             }
-        } catch (error) {
-            showToast(apiErrorMessage(error, t('settings.favicon_error')), 'error');
-            button.disabled = false;
-        }
-    });
+        });
 
-    ['dragover', 'dragenter'].forEach((evt) => dropzone?.addEventListener(evt, (event) => {
-        event.preventDefault();
-        dropzone.classList.add('favicon-dropzone--active');
-    }));
+    ['dragover', 'dragenter'].forEach((evt) =>
+        dropzone?.addEventListener(evt, (event) => {
+            event.preventDefault();
+            dropzone.classList.add('favicon-dropzone--active');
+        }),
+    );
 
-    ['dragleave', 'dragend', 'drop'].forEach((evt) => dropzone?.addEventListener(evt, () => {
-        dropzone.classList.remove('favicon-dropzone--active');
-    }));
+    ['dragleave', 'dragend', 'drop'].forEach((evt) =>
+        dropzone?.addEventListener(evt, () => {
+            dropzone.classList.remove('favicon-dropzone--active');
+        }),
+    );
 
     dropzone?.addEventListener('drop', (event) => {
         event.preventDefault();
@@ -709,13 +817,25 @@ function renderDeveloper() {
 }
 
 function wireDeveloper() {
-    panel.querySelector('[data-developer-mode]')?.addEventListener('change', (event) => {
-        const meta = { ...(state.personal?.meta || {}), developer_mode: event.target.checked };
+    panel
+        .querySelector('[data-developer-mode]')
+        ?.addEventListener('change', (event) => {
+            const meta = {
+                ...(state.personal?.meta || {}),
+                developer_mode: event.target.checked,
+            };
 
-        savePersonal({ meta }, {
-            onSuccess: () => document.documentElement.toggleAttribute('data-developer-mode', event.target.checked),
+            savePersonal(
+                { meta },
+                {
+                    onSuccess: () =>
+                        document.documentElement.toggleAttribute(
+                            'data-developer-mode',
+                            event.target.checked,
+                        ),
+                },
+            );
         });
-    });
 }
 
 /*
@@ -784,7 +904,10 @@ const RENDERERS = {
 function currentSection() {
     const hash = window.location.hash.replace('#', '');
 
-    if (SECTIONS.includes(hash) && (!ADMIN_SECTIONS.has(hash) || state.isAdmin)) {
+    if (
+        SECTIONS.includes(hash) &&
+        (!ADMIN_SECTIONS.has(hash) || state.isAdmin)
+    ) {
         return hash;
     }
 
@@ -793,7 +916,10 @@ function currentSection() {
 
 function showSection(section) {
     nav.querySelectorAll('[data-settings-nav-link]').forEach((link) => {
-        link.classList.toggle('settings-nav__link--active', link.dataset.settingsNavLink === section);
+        link.classList.toggle(
+            'settings-nav__link--active',
+            link.dataset.settingsNavLink === section,
+        );
     });
 
     const [render, wire] = RENDERERS[section];

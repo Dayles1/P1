@@ -7,7 +7,8 @@ if (sessionId) {
         sessionId,
         sessionEndpoint: `/sessions/${sessionId}`,
         logsEndpoint: `/sessions/${sessionId}/request-logs`,
-        logDetailEndpoint: (logId) => `/sessions/${sessionId}/request-logs/${logId}`,
+        logDetailEndpoint: (logId) =>
+            `/sessions/${sessionId}/request-logs/${logId}`,
         revokeEndpoint: `/sessions/${sessionId}`,
         showOwner: false,
     });

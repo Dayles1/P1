@@ -37,7 +37,9 @@ async function load(page = 1) {
 
         renderPagination(paginationEl, data.pagination, load);
     } catch (error) {
-        list.innerHTML = emptyState(apiErrorMessage(error, t('common.error_generic')));
+        list.innerHTML = emptyState(
+            apiErrorMessage(error, t('common.error_generic')),
+        );
     }
 }
 
@@ -115,7 +117,10 @@ function prependLive(notification) {
     const wrapper = list.querySelector(':scope > div');
 
     if (wrapper) {
-        wrapper.insertAdjacentHTML('afterbegin', notificationItemHtml(notification));
+        wrapper.insertAdjacentHTML(
+            'afterbegin',
+            notificationItemHtml(notification),
+        );
     } else {
         list.innerHTML = `<div style="padding:6px;">${notificationItemHtml(notification)}</div>`;
     }
@@ -125,6 +130,8 @@ function prependLive(notification) {
     const user = await fetchCurrentUser();
 
     if (user) {
-        getEcho()?.private(`App.Models.User.${user.id}`).notification(prependLive);
+        getEcho()
+            ?.private(`App.Models.User.${user.id}`)
+            .notification(prependLive);
     }
 })();
