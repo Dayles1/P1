@@ -1,11 +1,11 @@
 import { api } from '../axios';
-import { showToast, apiErrorMessage } from './toast';
 import { confirmDialog } from './confirm';
-import { renderPagination } from './pagination';
-import { t } from './i18n';
 import { methodClass, statusClass } from './format';
 import { escapeHtml } from './forms';
+import { t } from './i18n';
+import { renderPagination } from './pagination';
 import { openRequestLogDetailModal } from './request-log-detail';
+import { showToast, apiErrorMessage } from './toast';
 
 function field(label, value) {
     return `
@@ -27,7 +27,6 @@ export function initSessionDetailView({ sessionId, sessionEndpoint, logsEndpoint
     const rowsEl = document.querySelector('[data-request-log-rows]');
     const paginationEl = document.querySelector('[data-request-log-pagination]');
 
-    let currentPage = 1;
 
     function renderSummary(session) {
         const statusPill = session.status === 'active'
@@ -96,7 +95,6 @@ export function initSessionDetailView({ sessionId, sessionEndpoint, logsEndpoint
     }
 
     async function loadLogs(page = 1) {
-        currentPage = page;
         rowsEl.innerHTML = `<tr><td colspan="5"><div class="skeleton skeleton-row"></div></td></tr>`;
 
         try {

@@ -1,10 +1,10 @@
 import { api } from '../axios';
-import { showToast, apiErrorMessage } from '../shared/toast';
-import { renderPagination } from '../shared/pagination';
-import { openRequestLogDetailModal } from '../shared/request-log-detail';
-import { t } from '../shared/i18n';
 import { methodClass, statusClass } from '../shared/format';
 import { escapeHtml } from '../shared/forms';
+import { t } from '../shared/i18n';
+import { renderPagination } from '../shared/pagination';
+import { openRequestLogDetailModal } from '../shared/request-log-detail';
+import { showToast, apiErrorMessage } from '../shared/toast';
 
 const rowsEl = document.querySelector('[data-logs-rows]');
 const paginationEl = document.querySelector('[data-logs-pagination]');
@@ -12,7 +12,6 @@ const searchInput = document.querySelector('[data-logs-search]');
 const methodFilter = document.querySelector('[data-logs-method]');
 const statusFilter = document.querySelector('[data-logs-status]');
 
-let currentPage = 1;
 let searchTimer = null;
 
 function renderRows(logs) {
@@ -37,7 +36,6 @@ function renderRows(logs) {
 }
 
 async function loadLogs(page = 1) {
-    currentPage = page;
     rowsEl.innerHTML = `<tr><td colspan="6"><div class="skeleton skeleton-row"></div></td></tr>`;
 
     try {
