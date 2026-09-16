@@ -39,6 +39,48 @@ function apply(sourceDoc) {
             delete newMain.dataset.secondarySidebar;
         }
     }
+
+    updateActiveNav(sourceDoc);
+}
+
+/**
+ * `<x-sidebar-link>` used to decide its own `--active` state server-side
+ * via `request()->is(...)`, which only ever ran once now that the sidebar
+ * is permanent — every subsequent Turbo visit left the *first* page's link
+ * highlighted no matter where you actually navigated to. Recompute it
+ * client-side instead, from the page Turbo is actually rendering.
+ */
+function updateActiveNav(sourceDoc) {
+    let path;
+
+    try {
+        path = new URL(sourceDoc.baseURI || window.location.href).pathname;
+    } catch {
+        path = window.location.pathname;
+    }
+
+    document.querySelectorAll('.sidebar-link').forEach((link) => {
+        let linkPath;
+
+        try {
+            linkPath = new URL(
+                link.getAttribute('href'),
+                window.location.origin,
+            ).pathname;
+        } catch {
+            return;
+        }
+
+        const isActive = path === linkPath || path.startsWith(`${linkPath}/`);
+
+        link.classList.toggle('sidebar-link--active', isActive);
+
+        if (isActive) {
+            link.setAttribute('aria-current', 'page');
+        } else {
+            link.removeAttribute('aria-current');
+        }
+    });
 }
 
 document.addEventListener('turbo:before-render', (event) => {
