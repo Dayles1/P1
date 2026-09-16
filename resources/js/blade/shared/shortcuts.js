@@ -1,5 +1,5 @@
-import { openModal } from './modal';
 import { t } from './i18n';
+import { openModal } from './modal';
 
 /**
  * Global shortcuts that make sense everywhere (Ctrl/Cmd+K, Ctrl/Cmd+/) —

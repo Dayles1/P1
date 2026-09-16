@@ -1,7 +1,7 @@
 import { api } from '../axios';
 import { fetchCurrentUser, getHeaderSnapshot, hasRole, initials, logout } from './auth-state';
-import { initLocalePicker } from './i18n';
 import { initDevPanel } from './dev-panel';
+import { initLocalePicker } from './i18n';
 import { initNotificationBell } from './notification-bell';
 import { initPresence } from './presence';
 import { initShortcuts } from './shortcuts';
