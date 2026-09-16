@@ -40,7 +40,7 @@ function apply(sourceDoc) {
         }
     }
 
-    updateActiveNav(sourceDoc);
+    updateActiveNav();
 }
 
 /**
@@ -48,16 +48,18 @@ function apply(sourceDoc) {
  * via `request()->is(...)`, which only ever ran once now that the sidebar
  * is permanent — every subsequent Turbo visit left the *first* page's link
  * highlighted no matter where you actually navigated to. Recompute it
- * client-side instead, from the page Turbo is actually rendering.
+ * client-side instead.
+ *
+ * Deliberately reads `window.location`, not the incoming document passed
+ * in as `sourceDoc` elsewhere in this file: Turbo parses that document via
+ * `DOMParser`, which gives it its own unrelated `baseURI` (effectively
+ * `about:blank`), not the URL actually being navigated to. `window.
+ * location` is safe to read here because Turbo already calls
+ * `visit.changeHistory()` — updating the address bar — before it fires
+ * `turbo:before-render`.
  */
-function updateActiveNav(sourceDoc) {
-    let path;
-
-    try {
-        path = new URL(sourceDoc.baseURI || window.location.href).pathname;
-    } catch {
-        path = window.location.pathname;
-    }
+function updateActiveNav() {
+    const path = window.location.pathname;
 
     document.querySelectorAll('.sidebar-link').forEach((link) => {
         let linkPath;
