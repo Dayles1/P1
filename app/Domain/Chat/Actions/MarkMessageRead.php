@@ -7,10 +7,15 @@ use App\Domain\Chat\Models\ConversationUser;
 use App\Domain\Chat\Models\Message;
 use App\Domain\Chat\Models\MessageRead;
 use App\Domain\Identity\Models\User;
+use App\Domain\Notification\Actions\MarkNotificationsRead;
 use Illuminate\Support\Facades\DB;
 
 class MarkMessageRead
 {
+    public function __construct(
+        private readonly MarkNotificationsRead $markNotificationsRead,
+    ) {}
+
     /**
      * "Read up to and including message X" — not just message X itself.
      * A client only ever calls this for the newest message it can see
@@ -76,5 +81,15 @@ class MarkMessageRead
             // <= this one instead of matching a single id.
             broadcast(new MessageReadEvent($conversationId, $message->id, $user->id))->toOthers();
         }
+
+        // Reading a message in Chat should also clear whatever notification
+        // it generated (mention/message) — otherwise the bell keeps
+        // counting something the user has plainly already seen.
+        $this->markNotificationsRead->handle(
+            $user,
+            $user->notifications()
+                ->where('conversation_id', $conversationId)
+                ->where('message_id', '<=', $message->id),
+        );
     }
 }

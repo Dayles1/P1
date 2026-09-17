@@ -1,6 +1,11 @@
 import { api } from '../axios';
-import { fetchCurrentUser, hasRole } from '../shared/auth-state';
-import { escapeHtml } from '../shared/forms';
+import { fetchCurrentUser, hasRole, initials } from '../shared/auth-state';
+import {
+    apiErrors,
+    clearFieldErrors,
+    escapeHtml,
+    showFieldErrors,
+} from '../shared/forms';
 import { t } from '../shared/i18n';
 import { writeLocaleCookie, getLocale } from '../shared/i18n';
 import { bootOnPage } from '../shared/page-boot';
@@ -31,6 +36,12 @@ window.addEventListener('hashchange', () => {
 });
 
 /**
+ * Which section renders in the panel when no hash (or an unknown/
+ * not-allowed one) is present.
+ */
+const DEFAULT_SECTION = 'personal-profile';
+
+/**
  * Everything below used to run once at module top level. Under Turbo
  * Drive, `<main>` (and everything in it) is replaced by fresh server
  * HTML on every navigation, but this module is only ever evaluated once
@@ -45,49 +56,36 @@ function boot() {
     const controller = new AbortController();
     const { signal } = controller;
 
+    const app = document.querySelector('[data-settings-app]');
     const nav = document.querySelector('[data-settings-nav]');
     const panel = document.querySelector('[data-settings-panel]');
+    const backBtn = document.querySelector('[data-settings-back]');
 
-    const SECTIONS = [
-        'general',
-        'appearance',
-        'localization',
-        'notifications',
-        'authentication',
-        'security',
-        'system',
-        'developer',
-    ];
-    const ADMIN_SECTIONS = new Set(['authentication', 'security', 'system']);
-
-    // Which raw admin settings (by key) render via the generic boolean/integer/
-    // text control inside each section — special keys (roles, locales, favicon)
-    // are listed here for exclusion only; they get bespoke widgets instead.
+    // Which raw admin settings (by key) render via the generic boolean/
+    // integer/text control inside each Application section — special keys
+    // (roles, default role, locales, favicon) are excluded here and get
+    // bespoke widgets instead.
     const SECTION_ADMIN_KEYS = {
-        general: [
-            'user.allow_avatar_upload',
-            'user.default_avatar',
-            'user.max_avatar_size',
-            'user.allow_profile_edit',
-            'user.allow_delete_account',
-            'user.allow_change_email',
-            'user.allow_change_username',
-        ],
-        notifications: [
-            'notification.database',
-            'notification.email',
-            'notification.telegram',
-            'notification.push',
-            'notification.sms',
-        ],
-        authentication: [
+        'application-general': ['system.site_name', 'system.timezone'],
+        'application-authentication': [
             'auth.registration_open',
             'auth.login_open',
             'auth.email_verification_required',
             'auth.remember_me_enabled',
             'auth.session_lifetime',
         ],
-        security: [
+        'application-localization': [
+            'localization.allow_locale_switch',
+            'localization.auto_detect_browser_locale',
+        ],
+        'application-notifications': [
+            'notification.database',
+            'notification.email',
+            'notification.telegram',
+            'notification.push',
+            'notification.sms',
+        ],
+        'application-security': [
             'auth.max_register_users_count',
             'auth.max_users_count',
             'auth.max_login_attempts',
@@ -96,10 +94,7 @@ function boot() {
             'security.enable_api',
             'security.audit_log',
         ],
-        system: [
-            'system.site_name',
-            'system.timezone',
-            'system.logo',
+        'application-system': [
             'upload.max_upload_size',
             'upload.allowed_extensions',
             'upload.allowed_mime_types',
@@ -108,12 +103,22 @@ function boot() {
             'upload.max_video_size',
             'upload.max_document_size',
             'upload.image_quality',
+            'user.allow_avatar_upload',
+            'user.default_avatar',
+            'user.max_avatar_size',
+            'user.allow_profile_edit',
+            'user.allow_delete_account',
+            'user.allow_change_email',
+            'user.allow_change_username',
         ],
     };
+
+    const ADMIN_SECTIONS = new Set(Object.keys(SECTION_ADMIN_KEYS));
 
     const state = {
         isAdmin: false,
         personal: null,
+        profile: null,
         timezones: [],
         languages: [],
         roles: [],
@@ -132,6 +137,7 @@ function boot() {
 
         const requests = [
             getUserSettings(api),
+            api.get('/profile'),
             api.get('/timezones'),
             api.get('/languages'),
         ];
@@ -144,6 +150,7 @@ function boot() {
 
         const [
             personalRes,
+            profileRes,
             timezonesRes,
             languagesRes,
             adminSettingsRes,
@@ -152,6 +159,10 @@ function boot() {
 
         if (personalRes.status === 'fulfilled') {
             state.personal = personalRes.value;
+        }
+
+        if (profileRes.status === 'fulfilled') {
+            state.profile = profileRes.value.data.data;
         }
 
         if (timezonesRes.status === 'fulfilled') {
@@ -182,13 +193,47 @@ function boot() {
 
     /*
     |--------------------------------------------------------------------------
-    | Generic admin control (boolean / integer / text / json) — same shape as
-    | the flat admin settings editor this replaces, just relocated per-section.
+    | Human labels for generic settings — a raw key like
+    | `auth.session_lifetime` is developer/implementation detail, not
+    | product copy. `settings.keys.<key with dots as underscores>` (+
+    | `_hint`) supplies the real label; falling back to a humanized version
+    | of the key itself only if a translation is genuinely missing. The raw
+    | key stays visible in small monospace text, but only in Developer Mode
+    | (see the `.settings-row__key` CSS rule).
+    |--------------------------------------------------------------------------
+    */
+
+    function humanizeSettingKey(key) {
+        return key
+            .split('.')
+            .pop()
+            .replace(/_/g, ' ')
+            .replace(/\b\w/g, (char) => char.toUpperCase());
+    }
+
+    function settingLabel(setting) {
+        const labelKey = `settings.keys.${setting.key.replace('.', '_')}`;
+        const label = t(labelKey);
+
+        return label === labelKey ? humanizeSettingKey(setting.key) : label;
+    }
+
+    function settingHint(setting) {
+        const hintKey = `settings.keys.${setting.key.replace('.', '_')}_hint`;
+        const hint = t(hintKey);
+
+        return hint === hintKey ? '' : hint;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Generic admin control (boolean / integer / text / json)
     |--------------------------------------------------------------------------
     */
 
     function genericControlHtml(setting) {
         const id = `setting-${setting.id}`;
+        const requiredAttr = setting.is_required ? 'data-required="true"' : '';
 
         if (setting.type === 'boolean') {
             return `
@@ -206,22 +251,27 @@ function boot() {
         }
 
         if (setting.type === 'json') {
-            return `<textarea class="field-input" id="${id}" data-setting-value data-type="json" rows="3" style="max-width:360px; height:auto;">${escapeHtml(JSON.stringify(setting.value ?? [], null, 2))}</textarea>`;
+            return `<textarea class="field-input" id="${id}" data-setting-value data-type="json" ${requiredAttr} rows="3" style="max-width:360px; height:auto;">${escapeHtml(JSON.stringify(setting.value ?? [], null, 2))}</textarea>`;
         }
 
-        return `<input class="field-input" id="${id}" type="text" data-setting-value data-type="${setting.type}" value="${escapeHtml(setting.value ?? '')}" style="max-width:360px;">`;
+        return `<input class="field-input" id="${id}" type="text" data-setting-value data-type="${setting.type}" ${requiredAttr} value="${escapeHtml(setting.value ?? '')}" style="max-width:360px;">`;
     }
 
     function genericSettingRow(setting) {
+        const label = settingLabel(setting);
+        const hint = settingHint(setting);
+
         return `
-            <div class="data-row" data-setting-row="${setting.id}" style="margin-bottom:10px;">
-                <div class="data-row__main">
-                    <div class="data-row__title">
-                        ${setting.key}
+            <div class="settings-row" data-setting-row="${setting.id}">
+                <div class="settings-row__main">
+                    <div class="settings-row__title">
+                        ${escapeHtml(label)}
                         ${setting.is_locked ? `<span class="pill pill--muted">${t('admin.locked')}</span>` : ''}
                     </div>
+                    ${hint ? `<div class="settings-row__hint">${escapeHtml(hint)}</div>` : ''}
+                    <div class="settings-row__key">${setting.key}</div>
                 </div>
-                <div class="data-row__actions">
+                <div class="settings-row__actions">
                     ${genericControlHtml(setting)}
                     <button type="button" class="btn btn--secondary btn--sm" data-save-setting="${setting.id}" ${setting.is_locked ? 'disabled' : ''}>${t('common.save')}</button>
                 </div>
@@ -236,7 +286,7 @@ function boot() {
             return '';
         }
 
-        return `<div class="data-list">${settings.map(genericSettingRow).join('')}</div>`;
+        return `<div>${settings.map(genericSettingRow).join('')}</div>`;
     }
 
     /*
@@ -264,119 +314,277 @@ function boot() {
 
     /*
     |--------------------------------------------------------------------------
-    | Section: General
+    | Section: Personal -> Profile (merged in from the old standalone
+    | /profile page — this is now Settings' first, always-visible section).
     |--------------------------------------------------------------------------
     */
 
-    function renderGeneral() {
-        const p = state.personal;
+    function banMessage(ban) {
+        let message = ban.reason
+            ? t('profile.banned_notice_reason', { reason: ban.reason })
+            : t('profile.banned_notice');
 
-        const timezoneOptions = state.timezones
+        if (ban.ends_at) {
+            message += t('profile.banned_notice_until', { date: ban.ends_at });
+        }
+
+        return message;
+    }
+
+    function rolesHtml(profile) {
+        if (!profile?.roles?.length) {
+            return `<span class="field-hint">${t('profile.no_roles')}</span>`;
+        }
+
+        return profile.roles
             .map(
-                (tz) =>
-                    `<option value="${tz.id}" ${String(tz.id) === String(p?.timezone?.id) ? 'selected' : ''}>${escapeHtml(tz.name)} (${tz.offset})</option>`,
+                (role) =>
+                    `<span class="pill pill--primary" style="margin-right:6px;">${escapeHtml(role.name)}</span>`,
             )
             .join('');
+    }
 
-        const dateFormats = ['Y-m-d', 'd.m.Y', 'd/m/Y', 'm/d/Y'];
-        const timeFormats = ['24h', '12h'];
+    function renderProfile() {
+        const p = state.profile;
+
+        const avatarInner = p?.avatar?.url
+            ? `<img class="avatar__image" src="${escapeHtml(p.avatar.url)}" alt="${escapeHtml(p.name || '')}">`
+            : `<span class="avatar__initials" data-profile-avatar-initials>${escapeHtml(initials(p?.name || ''))}</span>`;
 
         return `
-            <div class="settings-panel__section">
-                <h2 class="settings-panel__section-title">${t('settings.nav.general')}</h2>
-                <p class="settings-panel__section-hint">${t('settings.general_hint')}</p>
-
-                <div class="field-row">
-                    <div class="field-group">
-                        <label class="field-label">${t('settings.timezone')}</label>
-                        <div class="select-field">
-                            <select class="field-select" data-personal="timezone_id">${timezoneOptions}</select>
-                        </div>
-                    </div>
-
-                    <div class="field-group">
-                        <label class="field-label">${t('settings.time_format')}</label>
-                        <div class="select-field">
-                            <select class="field-select" data-personal="time_format">
-                                ${timeFormats.map((f) => `<option value="${f}" ${f === p?.time_format ? 'selected' : ''}>${t(`settings.time_format_${f}`)}</option>`).join('')}
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="field-group">
-                    <label class="field-label">${t('settings.date_format')}</label>
-                    <div class="select-field">
-                        <select class="field-select" data-personal="date_format">
-                            ${dateFormats.map((f) => `<option value="${f}" ${f === p?.date_format ? 'selected' : ''}>${f}</option>`).join('')}
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="settings-panel__section">
-                <h2 class="settings-panel__section-title">${t('settings.login_security_title')}</h2>
-                <p class="settings-panel__section-hint">${t('settings.login_security_hint')}</p>
-
-                <label class="checkbox">
-                    <input type="checkbox" class="checkbox__input" data-require-login-verification ${p?.require_login_verification ? 'checked' : ''}>
-                    <span class="checkbox__box"></span>
-                    ${t('settings.require_login_verification')}
-                </label>
-                <p class="settings-panel__section-hint">${t('settings.require_login_verification_hint')}</p>
-            </div>
-
             ${
-                state.isAdmin
+                p?.ban?.is_active
                     ? `
-                <div class="settings-panel__section">
-                    <h2 class="settings-panel__section-title">${t('settings.user_policies')}</h2>
-                    <p class="settings-panel__section-hint">${t('settings.user_policies_hint')}</p>
-                    ${genericSettingsBlock(SECTION_ADMIN_KEYS.general)}
+                <div class="alert alert--error" style="margin-bottom:20px;">
+                    <span class="alert__icon" aria-hidden="true">!</span>
+                    <div class="alert__content">${escapeHtml(banMessage(p.ban))}</div>
                 </div>
             `
                     : ''
             }
+
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('profile.avatar')}</h2>
+                <p class="settings-panel__section-hint">${t('profile.avatar_hint')}</p>
+
+                <div class="avatar-upload">
+                    <span class="avatar avatar--lg" data-profile-avatar>${avatarInner}</span>
+
+                    <div>
+                        <input type="file" accept="image/*" hidden data-avatar-input>
+                        <button type="button" class="btn btn--secondary btn--sm" data-avatar-trigger>${t('profile.avatar_upload')}</button>
+                        <div class="field-hint" style="margin-top:8px;">${t('profile.avatar_formats')}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('profile.account_details')}</h2>
+                <p class="settings-panel__section-hint">${t('profile.account_details_hint')}</p>
+
+                <form data-profile-form novalidate>
+                    <div class="field-group">
+                        <label class="field-label" for="profile-name">${t('profile.name')}</label>
+                        <input class="field-input" type="text" id="profile-name" name="name" value="${escapeHtml(p?.name || '')}" required>
+                        <span class="field-error" data-field-error="name"></span>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label" for="profile-email">${t('profile.email')}</label>
+                        <input class="field-input" type="email" id="profile-email" name="email" value="${escapeHtml(p?.email || '')}" required>
+                        <span class="field-hint">${t('profile.email_change_hint')}</span>
+                        <span class="field-error" data-field-error="email"></span>
+                    </div>
+
+                    <div class="field-group" data-current-password-field hidden>
+                        <label class="field-label" for="profile-current-password">${t('profile.current_password')}</label>
+                        <input class="field-input" type="password" id="profile-current-password" name="current_password" autocomplete="current-password">
+                        <span class="field-hint">${t('profile.current_password_hint')}</span>
+                        <span class="field-error" data-field-error="current_password"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn--secondary btn--sm">${t('profile.save_changes')}</button>
+                </form>
+            </div>
+
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('profile.change_password')}</h2>
+                <p class="settings-panel__section-hint">${t('profile.change_password_hint')}</p>
+
+                <form data-password-form novalidate>
+                    <div class="field-group">
+                        <label class="field-label" for="password-current">${t('profile.current_password')}</label>
+                        <input class="field-input" type="password" id="password-current" name="current_password" autocomplete="current-password" required>
+                        <span class="field-error" data-field-error="current_password"></span>
+                    </div>
+
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label class="field-label" for="password-new">${t('profile.new_password')}</label>
+                            <input class="field-input" type="password" id="password-new" name="password" autocomplete="new-password" required>
+                            <span class="field-error" data-field-error="password"></span>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label" for="password-confirm">${t('profile.confirm_password')}</label>
+                            <input class="field-input" type="password" id="password-confirm" name="password_confirmation" autocomplete="new-password" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn--secondary btn--sm">${t('profile.update_password')}</button>
+                </form>
+            </div>
+
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('profile.roles')}</h2>
+                <p class="settings-panel__section-hint">${t('profile.roles_hint')}</p>
+                <div data-profile-roles>${rolesHtml(p)}</div>
+            </div>
         `;
     }
 
-    function wireGeneral() {
-        panel
-            .querySelectorAll(
-                '[data-personal="timezone_id"], [data-personal="time_format"], [data-personal="date_format"]',
-            )
-            .forEach((el) => {
-                el.addEventListener(
-                    'change',
-                    () => {
-                        const payload = { [el.dataset.personal]: el.value };
+    function wireProfile() {
+        const profileForm = panel.querySelector('[data-profile-form]');
+        const passwordForm = panel.querySelector('[data-password-form]');
+        const currentPasswordField = panel.querySelector(
+            '[data-current-password-field]',
+        );
+        const avatarEl = panel.querySelector('[data-profile-avatar]');
+        const avatarInput = panel.querySelector('[data-avatar-input]');
+        const avatarTrigger = panel.querySelector('[data-avatar-trigger]');
+        const rolesEl = panel.querySelector('[data-profile-roles]');
 
-                        if (el.dataset.personal === 'timezone_id') {
-                            payload.timezone_source = 'manual';
-                        }
+        profileForm?.querySelector('[name="email"]')?.addEventListener(
+            'input',
+            (event) => {
+                const changed =
+                    state.profile && event.target.value !== state.profile.email;
 
-                        savePersonal(payload);
-                    },
-                    { signal },
+                currentPasswordField.hidden = !changed;
+            },
+            { signal },
+        );
+
+        profileForm?.addEventListener(
+            'submit',
+            async (event) => {
+                event.preventDefault();
+                clearFieldErrors(profileForm);
+
+                const formData = new FormData(profileForm);
+                const payload = Object.fromEntries(formData.entries());
+
+                if (!payload.current_password) {
+                    delete payload.current_password;
+                }
+
+                const submitButton = profileForm.querySelector(
+                    'button[type="submit"]',
                 );
-            });
+                submitButton.disabled = true;
 
-        panel
-            .querySelector('[data-require-login-verification]')
-            ?.addEventListener(
-                'change',
-                (event) => {
-                    savePersonal({
-                        require_login_verification: event.target.checked,
-                    });
-                },
-                { signal },
-            );
+                try {
+                    const { data } = await api.patch('/profile', payload);
+
+                    state.profile = data.data;
+                    rolesEl.innerHTML = rolesHtml(state.profile);
+                    currentPasswordField.hidden = true;
+                    profileForm.querySelector(
+                        '[name="current_password"]',
+                    ).value = '';
+
+                    showToast(t('profile.updated'));
+                } catch (error) {
+                    showFieldErrors(profileForm, apiErrors(error));
+                    showToast(
+                        apiErrorMessage(error, t('profile.save_error')),
+                        'error',
+                    );
+                } finally {
+                    submitButton.disabled = false;
+                }
+            },
+            { signal },
+        );
+
+        passwordForm?.addEventListener(
+            'submit',
+            async (event) => {
+                event.preventDefault();
+                clearFieldErrors(passwordForm);
+
+                const formData = new FormData(passwordForm);
+                const payload = Object.fromEntries(formData.entries());
+
+                const submitButton = passwordForm.querySelector(
+                    'button[type="submit"]',
+                );
+                submitButton.disabled = true;
+
+                try {
+                    await api.patch('/profile', payload);
+                    passwordForm.reset();
+                    showToast(t('profile.password_updated'));
+                } catch (error) {
+                    showFieldErrors(passwordForm, apiErrors(error));
+                    showToast(
+                        apiErrorMessage(error, t('profile.password_error')),
+                        'error',
+                    );
+                } finally {
+                    submitButton.disabled = false;
+                }
+            },
+            { signal },
+        );
+
+        avatarTrigger?.addEventListener('click', () => avatarInput?.click(), {
+            signal,
+        });
+
+        avatarInput?.addEventListener(
+            'change',
+            async () => {
+                const file = avatarInput.files?.[0];
+
+                if (!file) {
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append('file', file);
+
+                avatarTrigger.disabled = true;
+
+                try {
+                    const { data } = await api.post(
+                        '/profile/avatars',
+                        formData,
+                        { headers: { 'Content-Type': 'multipart/form-data' } },
+                    );
+
+                    if (data.data?.url) {
+                        avatarEl.innerHTML = `<img class="avatar__image" src="${data.data.url}" alt="avatar">`;
+                    }
+
+                    showToast(t('profile.avatar_updated'));
+                } catch (error) {
+                    showToast(
+                        apiErrorMessage(error, t('profile.avatar_error')),
+                        'error',
+                    );
+                } finally {
+                    avatarTrigger.disabled = false;
+                    avatarInput.value = '';
+                }
+            },
+            { signal },
+        );
     }
 
     /*
     |--------------------------------------------------------------------------
-    | Section: Appearance
+    | Section: Personal -> Appearance
     |--------------------------------------------------------------------------
     */
 
@@ -400,7 +608,9 @@ function boot() {
 
     /*
     |--------------------------------------------------------------------------
-    | Section: Localization
+    | Section: Personal -> Language & Region (personal locale + a searchable
+    | timezone picker + date/time format — the personal half of what used
+    | to be split across "General" and "Localization").
     |--------------------------------------------------------------------------
     */
 
@@ -413,14 +623,22 @@ function boot() {
             .join('');
     }
 
-    function renderLocalization() {
-        const defaultLocale = adminSetting('localization.default_locale');
-        const fallbackLocale = adminSetting('localization.fallback_locale');
+    function timezoneDisplayLabel(tz) {
+        return `${tz.label || tz.name} (${tz.offset})`;
+    }
+
+    function renderLanguageRegion() {
+        const p = state.personal;
+        const dateFormats = ['Y-m-d', 'd.m.Y', 'd/m/Y', 'm/d/Y'];
+        const timeFormats = ['24h', '12h'];
+        const selectedTz = state.timezones.find(
+            (tz) => String(tz.id) === String(p?.timezone?.id),
+        );
 
         return `
             <div class="settings-panel__section">
-                <h2 class="settings-panel__section-title">${t('settings.nav.localization')}</h2>
-                <p class="settings-panel__section-hint">${t('settings.localization_hint')}</p>
+                <h2 class="settings-panel__section-title">${t('settings.nav.language_region')}</h2>
+                <p class="settings-panel__section-hint">${t('settings.language_region_hint')}</p>
 
                 <div class="field-group" style="max-width:320px;">
                     <label class="field-label">${t('ui.locale.label')}</label>
@@ -428,42 +646,46 @@ function boot() {
                         <select class="field-select" data-personal-locale>${languageOptions(state.personal?.locale || getLocale())}</select>
                     </div>
                 </div>
-            </div>
 
-            ${
-                state.isAdmin && defaultLocale && fallbackLocale
-                    ? `
-                <div class="settings-panel__section">
-                    <h2 class="settings-panel__section-title">${t('settings.default_language')}</h2>
-                    <p class="settings-panel__section-hint">${t('settings.default_language_hint')}</p>
+                <div class="field-group" style="max-width:320px; position:relative;">
+                    <label class="field-label" for="timezone-search">${t('settings.timezone')}</label>
+                    <input
+                        class="field-input"
+                        type="text"
+                        id="timezone-search"
+                        data-timezone-search
+                        autocomplete="off"
+                        placeholder="${t('settings.timezone_search_placeholder')}"
+                        value="${selectedTz ? escapeHtml(timezoneDisplayLabel(selectedTz)) : ''}"
+                    >
+                    <input type="hidden" data-personal="timezone_id" value="${p?.timezone?.id ?? ''}">
+                    <div class="timezone-dropdown" data-timezone-dropdown hidden></div>
+                </div>
 
-                    <div class="field-row">
-                        <div class="field-group">
-                            <label class="field-label">${t('settings.default_language')}</label>
-                            <div class="select-field">
-                                <select class="field-select" data-locale-setting="${defaultLocale.id}">${languageOptions(defaultLocale.value)}</select>
-                            </div>
+                <div class="field-row">
+                    <div class="field-group">
+                        <label class="field-label">${t('settings.time_format')}</label>
+                        <div class="select-field">
+                            <select class="field-select" data-personal="time_format">
+                                ${timeFormats.map((f) => `<option value="${f}" ${f === p?.time_format ? 'selected' : ''}>${t(`settings.time_format_${f}`)}</option>`).join('')}
+                            </select>
                         </div>
+                    </div>
 
-                        <div class="field-group">
-                            <label class="field-label">${t('settings.fallback_language')}</label>
-                            <div class="select-field">
-                                <select class="field-select" data-locale-setting="${fallbackLocale.id}">${languageOptions(fallbackLocale.value)}</select>
-                            </div>
+                    <div class="field-group">
+                        <label class="field-label">${t('settings.date_format')}</label>
+                        <div class="select-field">
+                            <select class="field-select" data-personal="date_format">
+                                ${dateFormats.map((f) => `<option value="${f}" ${f === p?.date_format ? 'selected' : ''}>${f}</option>`).join('')}
+                            </select>
                         </div>
                     </div>
                 </div>
-
-                <div class="settings-panel__section">
-                    ${genericSettingsBlock(['localization.allow_locale_switch', 'localization.auto_detect_browser_locale'])}
-                </div>
-            `
-                    : ''
-            }
+            </div>
         `;
     }
 
-    function wireLocalization() {
+    function wireLanguageRegion() {
         panel.querySelector('[data-personal-locale]')?.addEventListener(
             'change',
             async (event) => {
@@ -490,38 +712,117 @@ function boot() {
             { signal },
         );
 
-        panel.querySelectorAll('[data-locale-setting]').forEach((select) => {
-            select.addEventListener(
-                'change',
-                async () => {
-                    const settingId = select.dataset.localeSetting;
+        panel
+            .querySelectorAll(
+                '[data-personal="time_format"], [data-personal="date_format"]',
+            )
+            .forEach((el) => {
+                el.addEventListener(
+                    'change',
+                    () => savePersonal({ [el.dataset.personal]: el.value }),
+                    { signal },
+                );
+            });
 
-                    select.disabled = true;
+        const searchInput = panel.querySelector('[data-timezone-search]');
+        const hiddenInput = panel.querySelector(
+            '[data-personal="timezone_id"]',
+        );
+        const dropdown = panel.querySelector('[data-timezone-dropdown]');
 
-                    try {
-                        await api.patch(`/admin/settings/${settingId}`, {
-                            value: select.value,
-                            operation: 'set',
-                        });
-                        showToast(t('admin.save_success'));
-                    } catch (error) {
-                        showToast(
-                            apiErrorMessage(error, t('admin.save_error')),
-                            'error',
-                        );
-                    } finally {
-                        select.disabled = false;
-                    }
-                },
-                { signal },
-            );
-        });
+        function renderTimezoneOptions(query) {
+            const q = query.trim().toLowerCase();
+            const matches = !q
+                ? state.timezones
+                : state.timezones.filter(
+                      (tz) =>
+                          tz.name.toLowerCase().includes(q) ||
+                          (tz.label || '').toLowerCase().includes(q) ||
+                          tz.offset.toLowerCase().includes(q),
+                  );
+
+            if (!matches.length) {
+                dropdown.innerHTML = `<div class="timezone-dropdown__empty">${t('settings.timezone_search_empty')}</div>`;
+
+                return;
+            }
+
+            dropdown.innerHTML = matches
+                .slice(0, 50)
+                .map(
+                    (tz) => `
+                <button type="button" class="timezone-dropdown__item" data-timezone-option="${tz.id}">
+                    <span>${escapeHtml(tz.label || tz.name)}</span>
+                    <span class="timezone-dropdown__offset">${escapeHtml(tz.offset)}</span>
+                </button>
+            `,
+                )
+                .join('');
+        }
+
+        searchInput?.addEventListener(
+            'focus',
+            () => {
+                renderTimezoneOptions(searchInput.value);
+                dropdown.hidden = false;
+            },
+            { signal },
+        );
+
+        searchInput?.addEventListener(
+            'input',
+            () => {
+                renderTimezoneOptions(searchInput.value);
+                dropdown.hidden = false;
+            },
+            { signal },
+        );
+
+        dropdown?.addEventListener(
+            'click',
+            (event) => {
+                const option = event.target.closest('[data-timezone-option]');
+
+                if (!option) {
+                    return;
+                }
+
+                const tz = state.timezones.find(
+                    (candidate) =>
+                        String(candidate.id) === option.dataset.timezoneOption,
+                );
+
+                if (!tz) {
+                    return;
+                }
+
+                searchInput.value = timezoneDisplayLabel(tz);
+                hiddenInput.value = tz.id;
+                dropdown.hidden = true;
+
+                savePersonal({ timezone_id: tz.id, timezone_source: 'manual' });
+            },
+            { signal },
+        );
+
+        document.addEventListener(
+            'click',
+            (event) => {
+                if (
+                    searchInput &&
+                    !searchInput.contains(event.target) &&
+                    !dropdown.contains(event.target)
+                ) {
+                    dropdown.hidden = true;
+                }
+            },
+            { signal },
+        );
     }
 
     /*
     |--------------------------------------------------------------------------
-    | Section: Notifications (admin channel toggles for now — Phase 3 adds
-    | personal per-user preferences alongside these).
+    | Section: Personal -> Notifications
     |--------------------------------------------------------------------------
     */
 
@@ -554,18 +855,6 @@ function boot() {
                 <p class="settings-panel__section-hint">${t('settings.notif_prefs_hint')}</p>
                 ${NOTIFICATION_PREF_KEYS.map((key) => notificationPrefCheckbox(key, prefs)).join('')}
             </div>
-
-            ${
-                state.isAdmin
-                    ? `
-                <div class="settings-panel__section">
-                    <h2 class="settings-panel__section-title">${t('settings.nav.notifications')}</h2>
-                    <p class="settings-panel__section-hint">${t('settings.notifications_hint')}</p>
-                    ${genericSettingsBlock(SECTION_ADMIN_KEYS.notifications)}
-                </div>
-            `
-                    : ''
-            }
         `;
     }
 
@@ -609,118 +898,91 @@ function boot() {
 
     /*
     |--------------------------------------------------------------------------
-    | Section: Authentication (admin) — allowed login roles + default role get
-    | real widgets instead of a raw ID input / JSON textarea.
+    | Section: Personal -> Security (an extra check at login — see auth
+    | flows; distinct from Application -> Security, which is instance-wide).
     |--------------------------------------------------------------------------
     */
 
-    function renderAuthentication() {
-        const allowedRoles = adminSetting('auth.allowed_login_role_ids');
-        const defaultRole = adminSetting('auth.default_role_id');
-        const allowedIds = new Set((allowedRoles?.value || []).map(Number));
+    function renderPersonalSecurity() {
+        const p = state.personal;
 
         return `
             <div class="settings-panel__section">
-                <h2 class="settings-panel__section-title">${t('settings.allowed_login_roles')}</h2>
-                <p class="settings-panel__section-hint">${t('settings.allowed_login_roles_hint')}</p>
-                <div class="settings-role-list" data-allowed-roles data-setting-id="${allowedRoles?.id ?? ''}">
-                    ${state.roles
-                        .map(
-                            (role) => `
-                        <label class="settings-role-row">
-                            <div class="settings-role-row__main">
-                                <div class="settings-role-row__name">${escapeHtml(role.name)}</div>
-                                ${role.description ? `<div class="settings-role-row__desc">${escapeHtml(role.description)}</div>` : ''}
-                                <div class="settings-role-row__code">${role.code} · #${role.id}</div>
-                            </div>
-                            <span class="checkbox">
-                                <input type="checkbox" class="checkbox__input" data-role-id="${role.id}" ${allowedIds.has(role.id) ? 'checked' : ''}>
-                                <span class="checkbox__box"></span>
-                            </span>
-                        </label>
-                    `,
-                        )
-                        .join('')}
-                </div>
-            </div>
+                <h2 class="settings-panel__section-title">${t('settings.login_security_title')}</h2>
+                <p class="settings-panel__section-hint">${t('settings.login_security_hint')}</p>
 
-            <div class="settings-panel__section">
-                <h2 class="settings-panel__section-title">${t('settings.default_registration_role')}</h2>
-                <p class="settings-panel__section-hint">${t('settings.default_registration_role_hint')}</p>
-                <div class="field-group" style="max-width:320px;">
-                    <div class="select-field">
-                        <select class="field-select" data-default-role data-setting-id="${defaultRole?.id ?? ''}">
-                            ${state.roles.map((role) => `<option value="${role.id}" ${role.id === defaultRole?.value ? 'selected' : ''}>${escapeHtml(role.name)}</option>`).join('')}
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="settings-panel__section">
-                <h2 class="settings-panel__section-title">${t('settings.nav.authentication')}</h2>
-                ${genericSettingsBlock(SECTION_ADMIN_KEYS.authentication)}
+                <label class="checkbox">
+                    <input type="checkbox" class="checkbox__input" data-require-login-verification ${p?.require_login_verification ? 'checked' : ''}>
+                    <span class="checkbox__box"></span>
+                    ${t('settings.require_login_verification')}
+                </label>
+                <p class="settings-panel__section-hint">${t('settings.require_login_verification_hint')}</p>
             </div>
         `;
     }
 
-    async function patchSetting(id, value) {
-        await api.patch(`/admin/settings/${id}`, { value, operation: 'set' });
+    function wirePersonalSecurity() {
+        panel
+            .querySelector('[data-require-login-verification]')
+            ?.addEventListener(
+                'change',
+                (event) => {
+                    savePersonal({
+                        require_login_verification: event.target.checked,
+                    });
+                },
+                { signal },
+            );
     }
 
-    function wireAuthentication() {
-        const rolesContainer = panel.querySelector('[data-allowed-roles]');
+    /*
+    |--------------------------------------------------------------------------
+    | Section: Personal -> Developer
+    |--------------------------------------------------------------------------
+    */
 
-        rolesContainer?.addEventListener(
+    function renderDeveloper() {
+        const enabled = Boolean(state.personal?.meta?.developer_mode);
+        const version = document.body.dataset.appVersion;
+
+        return `
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('settings.nav.developer')}</h2>
+                <p class="settings-panel__section-hint">${t('settings.developer_mode_hint')}</p>
+                <label class="checkbox">
+                    <input type="checkbox" class="checkbox__input" data-developer-mode ${enabled ? 'checked' : ''}>
+                    <span class="checkbox__box"></span>
+                    ${t('settings.developer_mode')}
+                </label>
+            </div>
+
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('settings.about')}</h2>
+                <p class="settings-panel__section-hint">${version ? t('settings.version', { version }) : ''}</p>
+                <a href="/changelog" class="btn btn--outline btn--sm">${t('changelog.title')}</a>
+            </div>
+        `;
+    }
+
+    function wireDeveloper() {
+        panel.querySelector('[data-developer-mode]')?.addEventListener(
             'change',
-            async (event) => {
-                const checkbox = event.target.closest('[data-role-id]');
+            (event) => {
+                const meta = {
+                    ...(state.personal?.meta || {}),
+                    developer_mode: event.target.checked,
+                };
 
-                if (!checkbox) {
-                    return;
-                }
-
-                const settingId = rolesContainer.dataset.settingId;
-                const selected = [
-                    ...rolesContainer.querySelectorAll(
-                        '[data-role-id]:checked',
-                    ),
-                ].map((el) => Number(el.dataset.roleId));
-
-                try {
-                    await patchSetting(settingId, selected);
-                    showToast(t('admin.save_success'));
-                } catch (error) {
-                    checkbox.checked = !checkbox.checked;
-                    showToast(
-                        apiErrorMessage(error, t('admin.save_error')),
-                        'error',
-                    );
-                }
-            },
-            { signal },
-        );
-
-        const defaultRoleSelect = panel.querySelector('[data-default-role]');
-
-        defaultRoleSelect?.addEventListener(
-            'change',
-            async () => {
-                defaultRoleSelect.disabled = true;
-
-                try {
-                    await patchSetting(
-                        defaultRoleSelect.dataset.settingId,
-                        Number(defaultRoleSelect.value),
-                    );
-                    showToast(t('admin.save_success'));
-                } catch (error) {
-                    showToast(
-                        apiErrorMessage(error, t('admin.save_error')),
-                        'error',
-                    );
-                } finally {
-                    defaultRoleSelect.disabled = false;
-                }
+                savePersonal(
+                    { meta },
+                    {
+                        onSuccess: () =>
+                            document.documentElement.toggleAttribute(
+                                'data-developer-mode',
+                                event.target.checked,
+                            ),
+                    },
+                );
             },
             { signal },
         );
@@ -728,31 +990,23 @@ function boot() {
 
     /*
     |--------------------------------------------------------------------------
-    | Section: Security (admin)
+    | Section: Application -> General (site name, application timezone via
+    | the generic block — both are now real, plain admin-editable strings
+    | — plus the favicon upload widget).
     |--------------------------------------------------------------------------
     */
 
-    function renderSecurity() {
-        return `
-            <div class="settings-panel__section">
-                <h2 class="settings-panel__section-title">${t('settings.nav.security')}</h2>
-                <p class="settings-panel__section-hint">${t('settings.security_hint')}</p>
-                ${genericSettingsBlock(SECTION_ADMIN_KEYS.security)}
-            </div>
-        `;
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Section: System (admin) — favicon gets a real upload widget.
-    |--------------------------------------------------------------------------
-    */
-
-    function renderSystem() {
+    function renderApplicationGeneral() {
         const favicon = adminSetting('system.favicon');
         const faviconUrl = favicon?.value || '/favicon.ico';
 
         return `
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('settings.nav.general')}</h2>
+                <p class="settings-panel__section-hint">${t('settings.application_general_hint')}</p>
+                ${genericSettingsBlock(SECTION_ADMIN_KEYS['application-general'])}
+            </div>
+
             <div class="settings-panel__section">
                 <h2 class="settings-panel__section-title">${t('settings.favicon')}</h2>
                 <p class="settings-panel__section-hint">${t('settings.favicon_hint')}</p>
@@ -773,12 +1027,11 @@ function boot() {
 
                 <div class="favicon-dropzone" data-favicon-dropzone>${t('settings.favicon_dropzone')}</div>
             </div>
-
-            <div class="settings-panel__section">
-                <h2 class="settings-panel__section-title">${t('settings.nav.system')}</h2>
-                ${genericSettingsBlock(SECTION_ADMIN_KEYS.system)}
-            </div>
         `;
+    }
+
+    async function patchSetting(id, value) {
+        await api.patch(`/admin/settings/${id}`, { value, operation: 'set' });
     }
 
     async function uploadFavicon(file) {
@@ -795,11 +1048,13 @@ function boot() {
             const { data } = await api.post(
                 '/admin/settings/favicon',
                 formData,
-                {
-                    headers: { 'Content-Type': 'multipart/form-data' },
-                },
+                { headers: { 'Content-Type': 'multipart/form-data' } },
             );
 
+            // Cache-bust: the <link rel="icon"> in <head> won't be
+            // refetched by the browser just because the underlying file
+            // changed at the same URL — this preview update is instant
+            // regardless, but see favicon.blade.php for the actual tab icon.
             preview.src = data.data.url;
             resetBtn.disabled = false;
             showToast(t('settings.favicon_updated'));
@@ -819,7 +1074,7 @@ function boot() {
         }
     }
 
-    function wireSystem() {
+    function wireApplicationGeneral() {
         const input = panel.querySelector('[data-favicon-input]');
         const dropzone = panel.querySelector('[data-favicon-dropzone]');
 
@@ -886,9 +1141,7 @@ function boot() {
         ['dragleave', 'dragend', 'drop'].forEach((evt) =>
             dropzone?.addEventListener(
                 evt,
-                () => {
-                    dropzone.classList.remove('favicon-dropzone--active');
-                },
+                () => dropzone.classList.remove('favicon-dropzone--active'),
                 { signal },
             ),
         );
@@ -909,52 +1162,114 @@ function boot() {
 
     /*
     |--------------------------------------------------------------------------
-    | Section: Developer
+    | Section: Application -> Authentication — allowed login roles +
+    | default role get real widgets instead of a raw ID input.
     |--------------------------------------------------------------------------
     */
 
-    function renderDeveloper() {
-        const enabled = Boolean(state.personal?.meta?.developer_mode);
-        const version = document.body.dataset.appVersion;
+    function renderApplicationAuthentication() {
+        const allowedRoles = adminSetting('auth.allowed_login_role_ids');
+        const defaultRole = adminSetting('auth.default_role_id');
+        const allowedIds = new Set((allowedRoles?.value || []).map(Number));
 
         return `
             <div class="settings-panel__section">
-                <h2 class="settings-panel__section-title">${t('settings.nav.developer')}</h2>
-                <p class="settings-panel__section-hint">${t('settings.developer_mode_hint')}</p>
-                <label class="checkbox">
-                    <input type="checkbox" class="checkbox__input" data-developer-mode ${enabled ? 'checked' : ''}>
-                    <span class="checkbox__box"></span>
-                    ${t('settings.developer_mode')}
-                </label>
+                <h2 class="settings-panel__section-title">${t('settings.allowed_login_roles')}</h2>
+                <p class="settings-panel__section-hint">${t('settings.allowed_login_roles_hint')}</p>
+                <div class="settings-role-list" data-allowed-roles data-setting-id="${allowedRoles?.id ?? ''}">
+                    ${state.roles
+                        .map(
+                            (role) => `
+                        <label class="settings-role-row">
+                            <div class="settings-role-row__main">
+                                <div class="settings-role-row__name">${escapeHtml(role.name)}</div>
+                                ${role.description ? `<div class="settings-role-row__desc">${escapeHtml(role.description)}</div>` : ''}
+                                <div class="settings-role-row__code">${role.code} · #${role.id}</div>
+                            </div>
+                            <span class="checkbox">
+                                <input type="checkbox" class="checkbox__input" data-role-id="${role.id}" ${allowedIds.has(role.id) ? 'checked' : ''}>
+                                <span class="checkbox__box"></span>
+                            </span>
+                        </label>
+                    `,
+                        )
+                        .join('')}
+                </div>
             </div>
 
             <div class="settings-panel__section">
-                <h2 class="settings-panel__section-title">${t('settings.about')}</h2>
-                <p class="settings-panel__section-hint">${version ? t('settings.version', { version }) : ''}</p>
-                <a href="/changelog" class="btn btn--outline btn--sm">${t('changelog.title')}</a>
+                <h2 class="settings-panel__section-title">${t('settings.default_registration_role')}</h2>
+                <p class="settings-panel__section-hint">${t('settings.default_registration_role_hint')}</p>
+                <div class="field-group" style="max-width:320px;">
+                    <div class="select-field">
+                        <select class="field-select" data-default-role data-setting-id="${defaultRole?.id ?? ''}">
+                            ${state.roles.map((role) => `<option value="${role.id}" ${role.id === defaultRole?.value ? 'selected' : ''}>${escapeHtml(role.name)}</option>`).join('')}
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('settings.nav.authentication')}</h2>
+                ${genericSettingsBlock(SECTION_ADMIN_KEYS['application-authentication'])}
             </div>
         `;
     }
 
-    function wireDeveloper() {
-        panel.querySelector('[data-developer-mode]')?.addEventListener(
-            'change',
-            (event) => {
-                const meta = {
-                    ...(state.personal?.meta || {}),
-                    developer_mode: event.target.checked,
-                };
+    function wireApplicationAuthentication() {
+        const rolesContainer = panel.querySelector('[data-allowed-roles]');
 
-                savePersonal(
-                    { meta },
-                    {
-                        onSuccess: () =>
-                            document.documentElement.toggleAttribute(
-                                'data-developer-mode',
-                                event.target.checked,
-                            ),
-                    },
-                );
+        rolesContainer?.addEventListener(
+            'change',
+            async (event) => {
+                const checkbox = event.target.closest('[data-role-id]');
+
+                if (!checkbox) {
+                    return;
+                }
+
+                const settingId = rolesContainer.dataset.settingId;
+                const selected = [
+                    ...rolesContainer.querySelectorAll(
+                        '[data-role-id]:checked',
+                    ),
+                ].map((el) => Number(el.dataset.roleId));
+
+                try {
+                    await patchSetting(settingId, selected);
+                    showToast(t('admin.save_success'));
+                } catch (error) {
+                    checkbox.checked = !checkbox.checked;
+                    showToast(
+                        apiErrorMessage(error, t('admin.save_error')),
+                        'error',
+                    );
+                }
+            },
+            { signal },
+        );
+
+        const defaultRoleSelect = panel.querySelector('[data-default-role]');
+
+        defaultRoleSelect?.addEventListener(
+            'change',
+            async () => {
+                defaultRoleSelect.disabled = true;
+
+                try {
+                    await patchSetting(
+                        defaultRoleSelect.dataset.settingId,
+                        Number(defaultRoleSelect.value),
+                    );
+                    showToast(t('admin.save_success'));
+                } catch (error) {
+                    showToast(
+                        apiErrorMessage(error, t('admin.save_error')),
+                        'error',
+                    );
+                } finally {
+                    defaultRoleSelect.disabled = false;
+                }
             },
             { signal },
         );
@@ -962,7 +1277,120 @@ function boot() {
 
     /*
     |--------------------------------------------------------------------------
-    | Generic-control save (shared by every section that renders raw settings)
+    | Section: Application -> Localization
+    |--------------------------------------------------------------------------
+    */
+
+    function renderApplicationLocalization() {
+        const defaultLocale = adminSetting('localization.default_locale');
+        const fallbackLocale = adminSetting('localization.fallback_locale');
+
+        return `
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('settings.default_language')}</h2>
+                <p class="settings-panel__section-hint">${t('settings.default_language_hint')}</p>
+
+                <div class="field-row">
+                    <div class="field-group">
+                        <label class="field-label">${t('settings.default_language')}</label>
+                        <div class="select-field">
+                            <select class="field-select" data-locale-setting="${defaultLocale?.id ?? ''}">${languageOptions(defaultLocale?.value)}</select>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label">${t('settings.fallback_language')}</label>
+                        <div class="select-field">
+                            <select class="field-select" data-locale-setting="${fallbackLocale?.id ?? ''}">${languageOptions(fallbackLocale?.value)}</select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('settings.nav.localization')}</h2>
+                ${genericSettingsBlock(SECTION_ADMIN_KEYS['application-localization'])}
+            </div>
+        `;
+    }
+
+    function wireApplicationLocalization() {
+        panel.querySelectorAll('[data-locale-setting]').forEach((select) => {
+            select.addEventListener(
+                'change',
+                async () => {
+                    const settingId = select.dataset.localeSetting;
+
+                    select.disabled = true;
+
+                    try {
+                        await patchSetting(settingId, select.value);
+                        showToast(t('admin.save_success'));
+                    } catch (error) {
+                        showToast(
+                            apiErrorMessage(error, t('admin.save_error')),
+                            'error',
+                        );
+                    } finally {
+                        select.disabled = false;
+                    }
+                },
+                { signal },
+            );
+        });
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Section: Application -> Notifications (system-wide channels)
+    |--------------------------------------------------------------------------
+    */
+
+    function renderApplicationNotifications() {
+        return `
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('settings.nav.notifications')}</h2>
+                <p class="settings-panel__section-hint">${t('settings.notifications_hint')}</p>
+                ${genericSettingsBlock(SECTION_ADMIN_KEYS['application-notifications'])}
+            </div>
+        `;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Section: Application -> Security
+    |--------------------------------------------------------------------------
+    */
+
+    function renderApplicationSecurity() {
+        return `
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('settings.nav.security')}</h2>
+                <p class="settings-panel__section-hint">${t('settings.security_hint')}</p>
+                ${genericSettingsBlock(SECTION_ADMIN_KEYS['application-security'])}
+            </div>
+        `;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Section: Application -> System (catch-all instance policy rows)
+    |--------------------------------------------------------------------------
+    */
+
+    function renderApplicationSystem() {
+        return `
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('settings.nav.system')}</h2>
+                <p class="settings-panel__section-hint">${t('settings.user_policies_hint')}</p>
+                ${genericSettingsBlock(SECTION_ADMIN_KEYS['application-system'])}
+            </div>
+        `;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Generic-control save (shared by every Application section)
     |--------------------------------------------------------------------------
     */
 
@@ -983,6 +1411,16 @@ function boot() {
 
             let value = control.value;
             const type = control.dataset.type;
+
+            if (
+                (type === 'string' || type === 'text') &&
+                control.dataset.required === 'true' &&
+                value.trim() === ''
+            ) {
+                showToast(t('admin.value_required'), 'error');
+
+                return;
+            }
 
             if (type === 'boolean') {
                 value = value === 'true';
@@ -1022,40 +1460,60 @@ function boot() {
     */
 
     const RENDERERS = {
-        general: [renderGeneral, wireGeneral],
-        appearance: [renderAppearance, wireAppearance],
-        localization: [renderLocalization, wireLocalization],
-        notifications: [renderNotifications, wireNotifications],
-        authentication: [renderAuthentication, wireAuthentication],
-        security: [renderSecurity, null],
-        system: [renderSystem, wireSystem],
-        developer: [renderDeveloper, wireDeveloper],
+        'personal-profile': [renderProfile, wireProfile],
+        'personal-appearance': [renderAppearance, wireAppearance],
+        'personal-language': [renderLanguageRegion, wireLanguageRegion],
+        'personal-notifications': [renderNotifications, wireNotifications],
+        'personal-security': [renderPersonalSecurity, wirePersonalSecurity],
+        'personal-developer': [renderDeveloper, wireDeveloper],
+        'application-general': [
+            renderApplicationGeneral,
+            wireApplicationGeneral,
+        ],
+        'application-authentication': [
+            renderApplicationAuthentication,
+            wireApplicationAuthentication,
+        ],
+        'application-localization': [
+            renderApplicationLocalization,
+            wireApplicationLocalization,
+        ],
+        'application-notifications': [renderApplicationNotifications, null],
+        'application-security': [renderApplicationSecurity, null],
+        'application-system': [renderApplicationSystem, null],
     };
 
     function currentSection() {
         const hash = window.location.hash.replace('#', '');
 
         if (
-            SECTIONS.includes(hash) &&
+            Object.hasOwn(RENDERERS, hash) &&
             (!ADMIN_SECTIONS.has(hash) || state.isAdmin)
         ) {
             return hash;
         }
 
-        return 'general';
+        return null;
     }
 
     function showSection(section) {
+        const active = section || DEFAULT_SECTION;
+
         nav.querySelectorAll('[data-settings-nav-link]').forEach((link) => {
             link.classList.toggle(
                 'settings-nav__link--active',
-                link.dataset.settingsNavLink === section,
+                link.dataset.settingsNavLink === active,
             );
         });
 
-        const [render, wire] = RENDERERS[section];
+        const [render, wire] = RENDERERS[active];
         panel.innerHTML = render();
         wire?.();
+
+        // Mobile only (see CSS): no section picked yet shows the nav as a
+        // full-width list; picking one swaps to showing just the panel +
+        // a back control, instead of squeezing both onto a small screen.
+        app?.classList.toggle('settings-app--detail', Boolean(section));
     }
 
     nav.addEventListener(
@@ -1068,6 +1526,18 @@ function boot() {
             }
 
             window.location.hash = link.dataset.settingsNavLink;
+        },
+        { signal },
+    );
+
+    backBtn?.addEventListener(
+        'click',
+        () => {
+            if (window.location.hash) {
+                window.location.hash = '';
+            } else {
+                showSection(null);
+            }
         },
         { signal },
     );

@@ -89,9 +89,16 @@ class UserDateFormatter
 
     public function resolveTimezone(?User $user): string
     {
-        $timezone = trim((string) ($user?->settings?->timezone?->name ?? config('app.timezone')));
+        // A user's own timezone always wins; absent that, fall back to the
+        // admin-configured "Application timezone" (system.timezone) rather
+        // than straight to config('app.timezone') — this is the setting's
+        // one real consumer, see AppServiceProvider for why it can't just
+        // override config('app.timezone') instead.
+        $applicationDefault = app(SettingService::class)->string('system.timezone') ?: config('app.timezone');
 
-        return $timezone !== '' ? $timezone : config('app.timezone');
+        $timezone = trim((string) ($user?->settings?->timezone?->name ?? $applicationDefault));
+
+        return $timezone !== '' ? $timezone : $applicationDefault;
     }
 
     private function resolveDateFormat(?string $format): string

@@ -2,7 +2,10 @@ import { api } from '../axios';
 import { fetchCurrentUser } from '../shared/auth-state';
 import { getEcho } from '../shared/echo';
 import { t } from '../shared/i18n';
-import { notificationItemHtml } from '../shared/notification-renderers';
+import {
+    markNotificationReadAndOpen,
+    notificationItemHtml,
+} from '../shared/notification-renderers';
 import { bootOnPage } from '../shared/page-boot';
 import { renderPagination } from '../shared/pagination';
 import { emptyState } from '../shared/skeleton';
@@ -65,26 +68,24 @@ function boot() {
 
     list.addEventListener(
         'click',
-        async (event) => {
+        (event) => {
             const item = event.target.closest('[data-notif-id]');
 
             if (!item) {
                 return;
             }
 
-            try {
-                await api.post(`/notifications/${item.dataset.notifId}/read`);
-                item.classList.remove('notif-item--unread');
-                item.querySelector('.notif-item__dot')?.remove();
-            } catch {
-                // Non-critical.
-            }
+            item.classList.remove('notif-item--unread');
+            item.querySelector('.notif-item__dot')?.remove();
 
-            const url = item.dataset.notifUrl;
-
-            if (url) {
-                window.location.href = url;
-            }
+            markNotificationReadAndOpen(api, {
+                id: item.dataset.notifId,
+                action_url: item.dataset.notifUrl,
+                data: {
+                    conversation_id: item.dataset.notifConversationId || null,
+                    message_id: item.dataset.notifMessageId || null,
+                },
+            });
         },
         { signal },
     );
@@ -164,10 +165,27 @@ function boot() {
     (async () => {
         const user = await fetchCurrentUser();
 
-        if (user) {
-            subscribedChannelName = `App.Models.User.${user.id}`;
-            getEcho()?.private(subscribedChannelName).notification(prependLive);
+        if (!user) {
+            return;
         }
+
+        subscribedChannelName = `App.Models.User.${user.id}`;
+        const channel = getEcho()?.private(subscribedChannelName);
+
+        channel?.notification(prependLive);
+
+        // Reflects reads that happened elsewhere — another tab, or reading
+        // the underlying message in Chat — without a manual refresh.
+        channel?.listen('.notifications.read', (payload) => {
+            (payload.ids || []).forEach((id) => {
+                const item = list.querySelector(`[data-notif-id="${id}"]`);
+
+                if (item?.classList.contains('notif-item--unread')) {
+                    item.classList.remove('notif-item--unread');
+                    item.querySelector('.notif-item__dot')?.remove();
+                }
+            });
+        });
     })();
 
     currentCleanup = () => {

@@ -1788,6 +1788,12 @@ parameters:
 			path: app/Http/Resources/Setting/SettingResource.php
 
 		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Setting\\SettingResource\:\:\$is_required\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Setting/SettingResource.php
+
+		-
 			message: '#^Access to an undefined property App\\Http\\Resources\\Setting\\SettingResource\:\:\$key\.$#'
 			identifier: property.notFound
 			count: 1
@@ -1813,6 +1819,12 @@ parameters:
 
 		-
 			message: '#^Access to an undefined property App\\Http\\Resources\\Setting\\TimezoneResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Setting/TimezoneResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Setting\\TimezoneResource\:\:\$label\.$#'
 			identifier: property.notFound
 			count: 1
 			path: app/Http/Resources/Setting/TimezoneResource.php

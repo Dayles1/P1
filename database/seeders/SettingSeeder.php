@@ -21,6 +21,7 @@ class SettingSeeder extends Seeder
                         'group' => $setting['group'],
                         'is_public' => $setting['is_public'],
                         'is_locked' => $setting['is_locked'],
+                        'is_required' => $setting['is_required'] ?? true,
                     ]
                 );
             }
@@ -143,16 +144,8 @@ class SettingSeeder extends Seeder
                 'type' => Setting::TYPE_STRING,
                 'group' => Setting::GROUP_SYSTEM,
                 'is_public' => true,
-                'is_locked' => true,
+                'is_locked' => false,
             ],
-            // [
-            //     'key' => 'system.logo',
-            //     'value' => 'images/logo.png',
-            //     'type' => Setting::TYPE_STRING,
-            //     'group' => Setting::GROUP_SYSTEM,
-            //     'is_public' => true,
-            //     'is_locked' => false,
-            // ],
             [
                 'key' => 'system.favicon',
                 'value' => '/favicon.ico',
@@ -160,6 +153,7 @@ class SettingSeeder extends Seeder
                 'group' => Setting::GROUP_SYSTEM,
                 'is_public' => true,
                 'is_locked' => false,
+                'is_required' => false,
             ],
 
             // LOCALIZATION

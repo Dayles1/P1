@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Domain\Notification\Actions\ListNotifications;
+use App\Domain\Notification\Actions\MarkNotificationsRead;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Notification\NotificationResource;
 use Illuminate\Http\JsonResponse;
@@ -12,6 +13,7 @@ class NotificationController extends Controller
 {
     public function __construct(
         protected ListNotifications $listNotifications,
+        protected MarkNotificationsRead $markNotificationsRead,
     ) {}
 
     public function index(Request $request): JsonResponse
@@ -38,8 +40,10 @@ class NotificationController extends Controller
 
     public function markAsRead(Request $request, string $notification): JsonResponse
     {
-        $record = $request->user()->notifications()->findOrFail($notification);
-        $record->markAsRead();
+        $user = $request->user();
+        $record = $user->notifications()->findOrFail($notification);
+
+        $this->markNotificationsRead->handle($user, $user->notifications()->whereKey($record->id));
 
         return $this->success(
             data: new NotificationResource($record->fresh()),
@@ -49,7 +53,9 @@ class NotificationController extends Controller
 
     public function markAllAsRead(Request $request): JsonResponse
     {
-        $request->user()->unreadNotifications->markAsRead();
+        $user = $request->user();
+
+        $this->markNotificationsRead->handle($user, $user->notifications());
 
         return $this->success(message: __('messages.notifications.all_marked_read'));
     }

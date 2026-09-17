@@ -24,6 +24,7 @@ class GetSettingsAction
                         'type' => $setting->type,
                         'is_public' => $setting->is_public,
                         'is_locked' => $setting->is_locked,
+                        'is_required' => $setting->is_required,
                     ])->values(),
                 ];
             })

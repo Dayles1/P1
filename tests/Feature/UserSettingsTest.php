@@ -23,6 +23,18 @@ test('a user can update their date/time/theme/locale preferences', function () {
         ->assertJsonPath('data.locale', 'ru');
 });
 
+test('a user can toggle require_login_verification', function () {
+    $user = User::factory()->create();
+    $token = $user->createToken('test')->plainTextToken;
+
+    $this->withHeader('Authorization', "Bearer {$token}")
+        ->putJson('/api/profile/settings', ['require_login_verification' => true])
+        ->assertOk()
+        ->assertJsonPath('data.require_login_verification', true);
+
+    expect($user->settings()->first()->require_login_verification)->toBeTrue();
+});
+
 test('an invalid theme value is rejected', function () {
     $user = User::factory()->create();
     $token = $user->createToken('test')->plainTextToken;

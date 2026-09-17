@@ -2,7 +2,10 @@ import { isConversationActive } from './active-context';
 import { pushNotification, setNotifications } from './app-state';
 import { getEcho } from './echo';
 import { t } from './i18n';
-import { notificationItemHtml } from './notification-renderers';
+import {
+    markNotificationReadAndOpen,
+    notificationItemHtml,
+} from './notification-renderers';
 import { playNotificationSound } from './notification-sound';
 import { emptyState } from './skeleton';
 import { showToast, apiErrorMessage } from './toast';
@@ -44,37 +47,6 @@ export function initNotificationBell(api, user) {
         badge.hidden = unreadCount === 0;
     }
 
-    /** Same target resolution for a dropdown click and an OS notification click — a full nav when we're not already in the chat app, an in-page event when we are, so a click never causes a redundant reload of the same chat page. */
-    function openNotificationTarget(notification) {
-        const conversationId = notification.data?.conversation_id;
-        const messageId = notification.data?.message_id;
-
-        if (conversationId && window.location.pathname.startsWith('/chat')) {
-            document.dispatchEvent(
-                new CustomEvent('chat:open-conversation', {
-                    detail: {
-                        conversationId: Number(conversationId),
-                        messageId: messageId ? Number(messageId) : null,
-                    },
-                }),
-            );
-
-            return;
-        }
-
-        if (!notification.action_url) {
-            return;
-        }
-
-        const url = new URL(notification.action_url, window.location.origin);
-
-        if (messageId) {
-            url.searchParams.set('message', messageId);
-        }
-
-        window.location.href = url.pathname + url.search;
-    }
-
     function maybeAlert(notification) {
         const conversationId = notification.data?.conversation_id;
 
@@ -108,7 +80,7 @@ export function initNotificationBell(api, user) {
 
             popup.onclick = () => {
                 window.focus();
-                openNotificationTarget(notification);
+                markNotificationReadAndOpen(api, notification);
                 popup.close();
             };
         }
@@ -159,14 +131,6 @@ export function initNotificationBell(api, user) {
         }
     }
 
-    async function markRead(id) {
-        try {
-            await api.post(`/notifications/${id}/read`);
-        } catch {
-            // Non-critical — the item just stays marked unread visually until next reload.
-        }
-    }
-
     list.addEventListener('click', (event) => {
         const item = event.target.closest('[data-notif-id]');
 
@@ -174,15 +138,14 @@ export function initNotificationBell(api, user) {
             return;
         }
 
-        markRead(item.dataset.notifId);
-
         if (item.classList.contains('notif-item--unread')) {
             item.classList.remove('notif-item--unread');
             item.querySelector('.notif-item__dot')?.remove();
             updateBadge(unreadCount - 1);
         }
 
-        openNotificationTarget({
+        markNotificationReadAndOpen(api, {
+            id: item.dataset.notifId,
             action_url: item.dataset.notifUrl,
             data: {
                 conversation_id: item.dataset.notifConversationId || null,
@@ -230,7 +193,25 @@ export function initNotificationBell(api, user) {
     loadInitial();
 
     const echo = getEcho();
-    echo?.private(`App.Models.User.${user.id}`).notification((notification) =>
+    const channel = echo?.private(`App.Models.User.${user.id}`);
+
+    channel?.notification((notification) =>
         onNotificationCreated(notification),
     );
+
+    // Keeps this tab's badge/list correct even when the read happened
+    // somewhere else entirely — another tab's bell/Notification Center, or
+    // reading the underlying message in Chat (see MarkNotificationsRead).
+    channel?.listen('.notifications.read', (payload) => {
+        updateBadge(payload.unread_count ?? 0);
+
+        (payload.ids || []).forEach((id) => {
+            const item = list.querySelector(`[data-notif-id="${id}"]`);
+
+            if (item?.classList.contains('notif-item--unread')) {
+                item.classList.remove('notif-item--unread');
+                item.querySelector('.notif-item__dot')?.remove();
+            }
+        });
+    });
 }

@@ -20,7 +20,6 @@ export default defineConfig({
                 'resources/css/blade/app/app.css',
                 'resources/js/blade/app/app.js',
                 'resources/js/blade/app/authenticated.js',
-                'resources/js/blade/app/profile.js',
                 'resources/js/blade/app/sessions.js',
                 'resources/js/blade/app/session-detail.js',
                 'resources/js/blade/app/settings.js',

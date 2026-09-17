@@ -21,10 +21,7 @@
 
     <span class="sidebar-nav__group-label">{{ __('ui.nav.profile') }}</span>
 
-    <x-blade.navigation.sidebar-link :href="route('profile')" icon="&#9679;">
-        {{ __('ui.nav.profile') }}
-    </x-blade.navigation.sidebar-link>
-
+    {{-- Profile now lives inside Settings (Personal -> Profile) — see settings.js. --}}
     <x-blade.navigation.sidebar-link :href="route('settings')" icon="&#9881;">
         {{ __('ui.nav.settings') }}
     </x-blade.navigation.sidebar-link>

@@ -43,12 +43,12 @@ class UpdateSettingRequest extends FormRequest
 
         if ($setting->type === Setting::TYPE_JSON) {
             $operationRules = ['nullable', Rule::in(['set'])];
-            $valueRules = ['required', 'array'];
+            $valueRules = $setting->is_required ? ['required', 'array'] : ['nullable', 'array'];
         }
 
         if (in_array($setting->type, [Setting::TYPE_STRING, Setting::TYPE_TEXT], true)) {
             $operationRules = ['nullable', Rule::in(['set'])];
-            $valueRules = ['required', 'string'];
+            $valueRules = $setting->is_required ? ['required', 'string'] : ['nullable', 'string'];
         }
 
         return [

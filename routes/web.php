@@ -73,8 +73,13 @@ Route::get('/dashboard', function () {
     return view('blade.pages.dashboard');
 })->name('dashboard');
 
+/*
+ * Profile now lives inside the unified Settings mini-app (Personal ->
+ * Profile), same retirement pattern as /admin/settings below — old
+ * bookmarks/links to /profile still land somewhere sensible.
+ */
 Route::get('/profile', function () {
-    return view('blade.pages.profile');
+    return redirect('/settings#personal-profile');
 })->name('profile');
 
 Route::get('/sessions', function () {
@@ -117,7 +122,7 @@ Route::get('/chat/{conversation}', function (string $conversation) {
  * keeps the route name (and old bookmarks/links) working.
  */
 Route::get('/admin/settings', function () {
-    return redirect('/settings#system');
+    return redirect('/settings#application-system');
 })->name('admin.settings');
 
 Route::get('/admin/users', function () {

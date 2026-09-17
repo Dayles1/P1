@@ -38,6 +38,7 @@ class Setting extends Model
         'group',
         'is_public',
         'is_locked',
+        'is_required',
     ];
 
     protected function casts(): array
@@ -45,6 +46,7 @@ class Setting extends Model
         return [
             'is_public' => 'boolean',
             'is_locked' => 'boolean',
+            'is_required' => 'boolean',
         ];
     }
 

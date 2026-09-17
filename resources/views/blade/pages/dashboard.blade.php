@@ -70,7 +70,7 @@
                     <h2 class="card__title">{{ __('ui.dashboard.quick_actions') }}</h2>
                 </div>
                 <div class="card__body" style="display:flex; flex-direction:column; gap:8px;">
-                    <a href="{{ route('profile') }}" class="btn btn--outline btn--sm" style="justify-content:flex-start;">{{ __('ui.dashboard.go_to_profile') }}</a>
+                    <a href="{{ route('settings') }}#personal-profile" class="btn btn--outline btn--sm" style="justify-content:flex-start;">{{ __('ui.dashboard.go_to_profile') }}</a>
                     <a href="{{ route('sessions') }}" class="btn btn--outline btn--sm" style="justify-content:flex-start;">{{ __('ui.dashboard.go_to_sessions') }}</a>
                     <a href="{{ route('chat') }}" class="btn btn--outline btn--sm" style="justify-content:flex-start;">{{ __('ui.dashboard.go_to_chat') }}</a>
                     <a href="{{ route('notifications') }}" class="btn btn--outline btn--sm" style="justify-content:flex-start;">{{ __('ui.dashboard.go_to_notifications') }}</a>

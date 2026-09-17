@@ -13,6 +13,16 @@ let history = [];
 
 function ensurePanel() {
     if (panel) {
+        // Turbo Drive replaces <body>'s contents on every navigation; this
+        // node isn't part of any server-rendered page (it's created here,
+        // client-side, once) so `data-turbo-permanent` — which only
+        // preserves elements present in *both* the current and incoming
+        // documents — doesn't apply. Re-attach the same node (and with it
+        // the same `history` array/open-closed state) instead of losing it.
+        if (!document.body.contains(panel)) {
+            document.body.appendChild(panel);
+        }
+
         return panel;
     }
 
@@ -79,5 +89,15 @@ export function initDevPanel() {
     document.addEventListener('dev-request', (event) => {
         history = [event.detail, ...history].slice(0, 20);
         render();
+    });
+
+    // Re-attach proactively too — otherwise the panel only reappears once
+    // the *next* API call fires a `dev-request` event, which can be a
+    // visibly empty page for a moment on a navigation with no immediate
+    // request.
+    document.addEventListener('turbo:load', () => {
+        if (panel) {
+            ensurePanel();
+        }
     });
 }
