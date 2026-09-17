@@ -1,6 +1,7 @@
 import { api } from '../axios';
 import {
     bootstrapAppState,
+    getState,
     logout as appStateLogout,
     setPresence,
     subscribe,
@@ -206,6 +207,20 @@ function paintUserHeader(name, avatarUrl) {
 }
 
 /**
+ * Shows/hides every `[data-requires-role]` element for the given user —
+ * shared by the one-time initial pass and the per-navigation re-apply
+ * below, since page content (unlike the permanent header/sidebar) gets
+ * fresh `[data-requires-role]` elements on every Turbo visit.
+ */
+function applyRoleVisibility(user) {
+    document.querySelectorAll('[data-requires-role]').forEach((el) => {
+        const roles = el.dataset.requiresRole.split(',');
+
+        el.toggleAttribute('hidden', !hasRole(user, ...roles));
+    });
+}
+
+/**
  * Called exactly once per session with the already-resolved user (never
  * a fake/placeholder one) — from authenticated.js after
  * bootstrapAppState() settles for the app shell, or resolved here for
@@ -239,12 +254,19 @@ function initHeaderAuthState(user) {
         }
     });
 
-    document.querySelectorAll('[data-requires-role]').forEach((el) => {
-        const roles = el.dataset.requiresRole.split(',');
+    applyRoleVisibility(user);
 
-        if (hasRole(user, ...roles)) {
-            el.removeAttribute('hidden');
-        }
+    // `<main>` (and everything in it) is replaced by fresh server HTML on
+    // every Turbo navigation, but this function itself only ever runs
+    // once per session (see the doc comment above) — so a `[data-requires-
+    // role]` element inside page content, like Settings' Application nav
+    // group, would stay stuck on whatever `hidden` state its very first
+    // appearance in the DOM happened to get, never revisited on a later
+    // soft-navigation to that page. Elements in the permanent header/
+    // sidebar don't have this problem (they're never recreated), but
+    // anything page-specific needs re-applying on every visit.
+    document.addEventListener('turbo:load', () => {
+        applyRoleVisibility(getState().user);
     });
 
     initNotificationBell(api, user);
