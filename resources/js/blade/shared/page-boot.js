@@ -16,13 +16,33 @@
  * gets cleaned up instead of leaking onto whatever page comes next.
  */
 export function bootOnPage(rootSelector, boot, teardown) {
+    /*
+     * On a hard load this module is evaluated (running the `tryBoot()` at
+     * the bottom) *before* Turbo fires its first `turbo:load` — deferred
+     * module scripts run at the end of parsing, Turbo waits for
+     * `readyState === 'complete'`. Without this flag the page booted
+     * twice every time it was loaded directly, stacking a second copy of
+     * every listener that boot() registers: one click, two saves.
+     */
+    let booted = false;
+
     function tryBoot() {
-        if (document.querySelector(rootSelector)) {
-            boot();
+        if (booted || !document.querySelector(rootSelector)) {
+            return;
         }
+
+        booted = true;
+        boot();
     }
 
     document.addEventListener('turbo:load', tryBoot);
+
+    // Whatever renders next is a genuinely new `<main>`, so it is allowed
+    // to boot again — `tryBoot` still checks that it is actually this
+    // page before it does.
+    document.addEventListener('turbo:before-render', () => {
+        booted = false;
+    });
 
     if (teardown) {
         document.addEventListener('turbo:before-cache', () => {
