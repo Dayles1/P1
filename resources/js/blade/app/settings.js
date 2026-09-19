@@ -17,29 +17,27 @@ import {
 } from '../shared/user-settings-cache';
 
 let currentCleanup = null;
-let currentSectionHandler = null;
-
-/*
-|--------------------------------------------------------------------------
-| `window` is not replaced by Turbo navigations, so this listener is
-| registered once at true module scope instead of inside `boot()` — that
-| way repeated visits to /settings within the same Turbo session don't
-| stack duplicate `hashchange` handlers. `boot()` reassigns
-| `currentSectionHandler` to that visit's `showSection`/`currentSection`
-| closures each time it runs; `teardown()` clears it back to null so a
-| stray hashchange while on some other page can't reach into a detached
-| previous visit's DOM.
-|--------------------------------------------------------------------------
-*/
-window.addEventListener('hashchange', () => {
-    currentSectionHandler?.();
-});
 
 /**
- * Which section renders in the panel when no hash (or an unknown/
- * not-allowed one) is present.
+ * Which section renders in the panel on /settings itself, i.e. when the
+ * URL names no section of its own.
  */
 const DEFAULT_SECTION = 'personal-profile';
+
+/**
+ * Turbo is what actually moves between sections now that each one is a
+ * real route; this only exists so the two places below that navigate
+ * *programmatically* degrade to a plain load if Turbo isn't up yet.
+ */
+function navigate(url) {
+    if (window.Turbo) {
+        window.Turbo.visit(url, { action: 'replace' });
+
+        return;
+    }
+
+    window.location.replace(url);
+}
 
 /**
  * Everything below used to run once at module top level. Under Turbo
@@ -56,10 +54,13 @@ function boot() {
     const controller = new AbortController();
     const { signal } = controller;
 
-    const app = document.querySelector('[data-settings-app]');
+    // Registered up front rather than at the end of boot(): the legacy-hash
+    // and non-admin branches below both leave early, and teardown still has
+    // to be able to unwind whatever this visit already registered.
+    currentCleanup = () => controller.abort();
+
     const nav = document.querySelector('[data-settings-nav]');
     const panel = document.querySelector('[data-settings-panel]');
-    const backBtn = document.querySelector('[data-settings-back]');
 
     // Which raw admin settings (by key) render via the generic boolean/
     // integer/text control inside each Application section — special keys
@@ -129,62 +130,63 @@ function boot() {
     |--------------------------------------------------------------------------
     | Data loading
     |--------------------------------------------------------------------------
+    |
+    | A section is a whole page of its own now, so it loads what it needs
+    | and nothing else — the old single page had to fetch every endpoint
+    | up front because any section could be shown next without another
+    | request. `getUserSettings()` is shared/cached per page load
+    | (user-settings-cache.js), the rest is one request each.
+    |
     */
 
-    async function loadAll() {
-        const user = await fetchCurrentUser();
-        state.isAdmin = hasRole(user, 'SUPER_ADMIN', 'ADMIN');
+    const LOADERS = {
+        personal: async () => {
+            state.personal = await getUserSettings(api);
+        },
+        profile: async () => {
+            state.profile = (await api.get('/profile')).data.data;
+        },
+        timezones: async () => {
+            state.timezones = (await api.get('/timezones')).data.data || [];
+        },
+        languages: async () => {
+            state.languages = (await api.get('/languages')).data.data || [];
+        },
+        roles: async () => {
+            state.roles = (await api.get('/roles')).data.data || [];
+        },
+        adminSettings: async () => {
+            const groups = (await api.get('/admin/settings')).data.data || [];
 
-        const requests = [
-            getUserSettings(api),
-            api.get('/profile'),
-            api.get('/timezones'),
-            api.get('/languages'),
-        ];
-
-        if (state.isAdmin) {
-            requests.push(api.get('/admin/settings'), api.get('/roles'));
-        }
-
-        const results = await Promise.allSettled(requests);
-
-        const [
-            personalRes,
-            profileRes,
-            timezonesRes,
-            languagesRes,
-            adminSettingsRes,
-            rolesRes,
-        ] = results;
-
-        if (personalRes.status === 'fulfilled') {
-            state.personal = personalRes.value;
-        }
-
-        if (profileRes.status === 'fulfilled') {
-            state.profile = profileRes.value.data.data;
-        }
-
-        if (timezonesRes.status === 'fulfilled') {
-            state.timezones = timezonesRes.value.data.data || [];
-        }
-
-        if (languagesRes.status === 'fulfilled') {
-            state.languages = languagesRes.value.data.data || [];
-        }
-
-        if (state.isAdmin && adminSettingsRes?.status === 'fulfilled') {
-            const groups = adminSettingsRes.value.data.data || [];
             groups.forEach((group) =>
                 group.items.forEach((item) =>
                     state.adminSettingsByKey.set(item.key, item),
                 ),
             );
-        }
+        },
+    };
 
-        if (state.isAdmin && rolesRes?.status === 'fulfilled') {
-            state.roles = rolesRes.value.data.data || [];
-        }
+    const SECTION_DATA = {
+        'personal-profile': ['profile'],
+        'personal-appearance': [],
+        'personal-language': ['personal', 'timezones', 'languages'],
+        'personal-notifications': ['personal'],
+        'personal-security': ['personal'],
+        'personal-developer': ['personal'],
+        'application-general': ['adminSettings'],
+        'application-authentication': ['adminSettings', 'roles'],
+        'application-localization': ['adminSettings', 'languages'],
+        'application-notifications': ['adminSettings'],
+        'application-security': ['adminSettings'],
+        'application-system': ['adminSettings'],
+    };
+
+    // allSettled, not all: one endpoint being down should degrade that
+    // part of the section (an empty timezone list), not blank the page.
+    function loadFor(section) {
+        return Promise.allSettled(
+            (SECTION_DATA[section] || []).map((key) => LOADERS[key]()),
+        );
     }
 
     function adminSetting(key) {
@@ -1483,79 +1485,94 @@ function boot() {
         'application-system': [renderApplicationSystem, null],
     };
 
-    function currentSection() {
-        const hash = window.location.hash.replace('#', '');
-
-        if (
-            Object.hasOwn(RENDERERS, hash) &&
-            (!ADMIN_SECTIONS.has(hash) || state.isAdmin)
-        ) {
-            return hash;
-        }
-
-        return null;
+    /**
+     * The URL of a section, read back off the sidebar link the server
+     * already rendered for it — so no route lives in two places. The
+     * Application group is in the DOM for everyone (just `hidden` for
+     * non-admins), which is what makes the redirects below possible.
+     */
+    function urlForSection(id) {
+        return (
+            nav
+                ?.querySelector(`[data-settings-nav-link="${id}"]`)
+                ?.getAttribute('href') || null
+        );
     }
 
-    function showSection(section) {
-        const active = section || DEFAULT_SECTION;
+    function renderSection(id) {
+        const [render, wire] = RENDERERS[id];
 
-        nav.querySelectorAll('[data-settings-nav-link]').forEach((link) => {
-            link.classList.toggle(
-                'settings-nav__link--active',
-                link.dataset.settingsNavLink === active,
-            );
-        });
-
-        const [render, wire] = RENDERERS[active];
         panel.innerHTML = render();
         wire?.();
-
-        // Mobile only (see CSS): no section picked yet shows the nav as a
-        // full-width list; picking one swaps to showing just the panel +
-        // a back control, instead of squeezing both onto a small screen.
-        app?.classList.toggle('settings-app--detail', Boolean(section));
     }
 
-    nav.addEventListener(
-        'click',
-        (event) => {
-            const link = event.target.closest('[data-settings-nav-link]');
+    /*
+    |--------------------------------------------------------------------------
+    | Which section this page is
+    |--------------------------------------------------------------------------
+    |
+    | The server decides — `data-settings-section` is the id its route was
+    | registered for (see SettingsPageController), empty on /settings
+    | itself. The fallback is only a guard against an id no renderer
+    | knows; routes/web.php can't produce one.
+    |
+    */
 
-            if (!link) {
-                return;
-            }
+    const requested = panel.dataset.settingsSection;
+    const section = Object.hasOwn(RENDERERS, requested)
+        ? requested
+        : DEFAULT_SECTION;
 
-            window.location.hash = link.dataset.settingsNavLink;
-        },
-        { signal },
-    );
+    /*
+    | Sections used to be `#personal-appearance`-style hashes on this one
+    | URL. They are routes now, so an old bookmark or a stale link gets
+    | forwarded to the route that replaced it instead of silently showing
+    | Profile — and a hash we don't recognise is just dropped.
+    */
+    const legacy = window.location.hash.replace('#', '');
 
-    backBtn?.addEventListener(
-        'click',
-        () => {
-            if (window.location.hash) {
-                window.location.hash = '';
-            } else {
-                showSection(null);
-            }
-        },
-        { signal },
-    );
+    if (legacy) {
+        const legacyUrl = legacy !== requested ? urlForSection(legacy) : null;
 
-    currentSectionHandler = () => showSection(currentSection());
+        if (legacyUrl) {
+            navigate(legacyUrl);
+
+            return;
+        }
+
+        window.history.replaceState(
+            window.history.state,
+            '',
+            window.location.pathname + window.location.search,
+        );
+    }
 
     (async () => {
-        await loadAll();
-        showSection(currentSection());
-    })();
+        const user = await fetchCurrentUser();
 
-    currentCleanup = () => controller.abort();
+        state.isAdmin = hasRole(user, 'SUPER_ADMIN', 'ADMIN');
+
+        /*
+        | /admin/settings/* has no server-side guard (there is no session
+        | to check — see routes/web.php), and its API calls would just
+        | 403. Send a non-admin who typed or bookmarked the URL to their
+        | own settings instead of rendering a page of failed requests.
+        | The API is still the thing that actually enforces this.
+        */
+        if (ADMIN_SECTIONS.has(section) && !state.isAdmin) {
+            navigate(urlForSection(DEFAULT_SECTION) || '/settings');
+
+            return;
+        }
+
+        await loadFor(section);
+        renderSection(section);
+    })();
 }
 
 function teardown() {
     currentCleanup?.();
     currentCleanup = null;
-    currentSectionHandler = null;
 }
 
 bootOnPage('[data-settings-panel]', boot, teardown);

@@ -1,8 +1,51 @@
 @extends('blade.layouts.authenticated')
 
-@php($sidebarMode = 'compact')
+@php
+    $sidebarMode = 'compact';
 
-@section('title', __('ui.settings.title'))
+    /*
+    | The secondary sidebar. Every entry is a real route (see
+    | routes/web.php + SettingsPageController) — `$section` is the id of
+    | the one this request is for, or null on /settings itself.
+    |
+    | `roles` gates a whole group: the Application group is only for
+    | people who administer this instance, and sits below the personal
+    | one. It ships `hidden` and is unhidden client-side by
+    | shared/site-chrome.js once the user is resolved, because there is
+    | no server session to check here (bearer tokens only) — the API
+    | enforces the same roles server-side on every write.
+    */
+    $groups = [
+        [
+            'label' => __('ui.settings.group_personal'),
+            'roles' => null,
+            'items' => [
+                'personal-profile' => [route('settings.profile'), __('ui.settings.nav.profile')],
+                'personal-appearance' => [route('settings.appearance'), __('ui.settings.nav.appearance')],
+                'personal-language' => [route('settings.language'), __('ui.settings.nav.language_region')],
+                'personal-notifications' => [route('settings.notifications'), __('ui.settings.nav.notifications')],
+                'personal-security' => [route('settings.security'), __('ui.settings.nav.security')],
+                'personal-developer' => [route('settings.developer'), __('ui.settings.nav.developer')],
+            ],
+        ],
+        [
+            'label' => __('ui.settings.group_application'),
+            'roles' => 'SUPER_ADMIN,ADMIN',
+            'items' => [
+                'application-general' => [route('admin.settings.general'), __('ui.settings.nav.general')],
+                'application-authentication' => [route('admin.settings.authentication'), __('ui.settings.nav.authentication')],
+                'application-localization' => [route('admin.settings.localization'), __('ui.settings.nav.localization')],
+                'application-notifications' => [route('admin.settings.notifications'), __('ui.settings.nav.notifications')],
+                'application-security' => [route('admin.settings.security'), __('ui.settings.nav.security')],
+                'application-system' => [route('admin.settings.system'), __('ui.settings.nav.system')],
+            ],
+        ],
+    ];
+
+    $activeLabel = array_merge(...array_column($groups, 'items'))[$section][1] ?? null;
+@endphp
+
+@section('title', $activeLabel ? $activeLabel.' · '.__('ui.settings.title') : __('ui.settings.title'))
 
 @section('content')
 
@@ -13,39 +56,21 @@
         </div>
     </div>
 
-    <div class="settings-app" data-settings-app>
+    {{--
+        `--detail` is the phone-only list/detail state (see the CSS): on
+        /settings you get the nav as a full-width menu, on a section you
+        get that section plus a back link. It is a plain server-rendered
+        class now that each state is its own URL.
+    --}}
+    <div @class(['settings-app', 'settings-app--detail' => (bool) $section])>
 
-        <nav class="settings-nav" data-settings-nav aria-label="{{ __('ui.settings.title') }}">
-
-            <div class="settings-nav__group">
-                <span class="settings-nav__group-label">{{ __('ui.settings.group_personal') }}</span>
-
-                <button type="button" class="settings-nav__link" data-settings-nav-link="personal-profile">{{ __('ui.settings.nav.profile') }}</button>
-                <button type="button" class="settings-nav__link" data-settings-nav-link="personal-appearance">{{ __('ui.settings.nav.appearance') }}</button>
-                <button type="button" class="settings-nav__link" data-settings-nav-link="personal-language">{{ __('ui.settings.nav.language_region') }}</button>
-                <button type="button" class="settings-nav__link" data-settings-nav-link="personal-notifications">{{ __('ui.settings.nav.notifications') }}</button>
-                <button type="button" class="settings-nav__link" data-settings-nav-link="personal-security">{{ __('ui.settings.nav.security') }}</button>
-                <button type="button" class="settings-nav__link" data-settings-nav-link="personal-developer">{{ __('ui.settings.nav.developer') }}</button>
-            </div>
-
-            <div class="settings-nav__group" data-requires-role="SUPER_ADMIN,ADMIN" hidden>
-                <span class="settings-nav__group-label">{{ __('ui.settings.group_application') }}</span>
-
-                <button type="button" class="settings-nav__link" data-settings-nav-link="application-general">{{ __('ui.settings.nav.general') }}</button>
-                <button type="button" class="settings-nav__link" data-settings-nav-link="application-authentication">{{ __('ui.settings.nav.authentication') }}</button>
-                <button type="button" class="settings-nav__link" data-settings-nav-link="application-localization">{{ __('ui.settings.nav.localization') }}</button>
-                <button type="button" class="settings-nav__link" data-settings-nav-link="application-notifications">{{ __('ui.settings.nav.notifications') }}</button>
-                <button type="button" class="settings-nav__link" data-settings-nav-link="application-security">{{ __('ui.settings.nav.security') }}</button>
-                <button type="button" class="settings-nav__link" data-settings-nav-link="application-system">{{ __('ui.settings.nav.system') }}</button>
-            </div>
-
-        </nav>
+        @include('blade.sections.settings-nav', ['groups' => $groups, 'section' => $section])
 
         <div style="flex:1; min-width:0;">
-            <button type="button" class="settings-back-btn" data-settings-back>&larr; {{ __('ui.back') }}</button>
+            <a class="settings-back-btn" href="{{ route('settings') }}">&larr; {{ __('ui.common.back') }}</a>
 
-            <div class="settings-panel" data-settings-panel>
-                <div class="skeleton skeleton-row" data-settings-panel-loading></div>
+            <div class="settings-panel" data-settings-panel data-settings-section="{{ $section }}">
+                <div class="skeleton skeleton-row"></div>
             </div>
         </div>
 

@@ -122,7 +122,7 @@
                         {{ __('ui.nav.dashboard') }}
                     </a>
 
-                    <a href="{{ route('settings') }}#personal-profile" class="dropdown__item" role="menuitem">
+                    <a href="{{ route('settings.profile') }}" class="dropdown__item" role="menuitem">
                         {{ __('ui.nav.profile') }}
                     </a>
 

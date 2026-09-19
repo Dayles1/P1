@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\Blade\AuthPageController;
+use App\Http\Controllers\Web\Blade\SettingsPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -74,12 +75,12 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 /*
- * Profile now lives inside the unified Settings mini-app (Personal ->
- * Profile), same retirement pattern as /admin/settings below — old
- * bookmarks/links to /profile still land somewhere sensible.
+ * Profile now lives inside Settings (Personal -> Profile), same
+ * retirement pattern as /admin/settings below — old bookmarks/links to
+ * /profile still land somewhere sensible.
  */
 Route::get('/profile', function () {
-    return redirect('/settings#personal-profile');
+    return redirect()->route('settings.profile');
 })->name('profile');
 
 Route::get('/sessions', function () {
@@ -90,9 +91,30 @@ Route::get('/sessions/{session}', function (string $session) {
     return view('blade.pages.session-detail');
 })->name('sessions.show');
 
-Route::get('/settings', function () {
-    return view('blade.pages.settings');
-})->name('settings');
+/*
+|--------------------------------------------------------------------------
+| Settings
+|--------------------------------------------------------------------------
+|
+| One real route per section instead of one page with a `#hash` router.
+| The two groups live in two URL spaces on purpose: /settings/* is what a
+| user changes about themselves, /admin/settings/* is instance-wide
+| configuration (see the Admin area below).
+|
+| `defaults()` hands the controller the section it was registered for —
+| the segment is baked into the URL, so it is not a route parameter the
+| caller can pass, and every section still gets its own route name
+| (`settings.appearance`, `admin.settings.system`, ...).
+|
+*/
+
+Route::get('/settings', [SettingsPageController::class, 'index'])->name('settings');
+
+foreach (array_keys(SettingsPageController::PERSONAL) as $segment) {
+    Route::get("/settings/{$segment}", [SettingsPageController::class, 'personal'])
+        ->defaults('section', $segment)
+        ->name("settings.{$segment}");
+}
 
 Route::get('/notifications', function () {
     return view('blade.pages.notifications');
@@ -117,13 +139,20 @@ Route::get('/chat/{conversation}', function (string $conversation) {
 */
 
 /*
- * The old standalone admin settings page is retired — its Authentication
- * and System sections now live inside the unified Settings mini-app. This
- * keeps the route name (and old bookmarks/links) working.
+ * Application settings: one route per section, same shell (and same
+ * secondary sidebar) as the personal ones, but their own URL space.
+ * /admin/settings itself has no page of its own — it is the group, so it
+ * sends you to its first section, which also keeps old bookmarks working.
  */
 Route::get('/admin/settings', function () {
-    return redirect('/settings#application-system');
+    return redirect()->route('admin.settings.general');
 })->name('admin.settings');
+
+foreach (array_keys(SettingsPageController::APPLICATION) as $segment) {
+    Route::get("/admin/settings/{$segment}", [SettingsPageController::class, 'application'])
+        ->defaults('section', $segment)
+        ->name("admin.settings.{$segment}");
+}
 
 Route::get('/admin/users', function () {
     return view('blade.pages.admin.users');

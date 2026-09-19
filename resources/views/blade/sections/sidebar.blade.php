@@ -66,8 +66,11 @@
         {{ __('ui.nav.admin_request_logs') }}
     </x-blade.navigation.sidebar-link>
 
+    {{-- Application settings — its own URL space under /admin/settings,
+         so this no longer has to smuggle a section past /settings as a
+         `#hash` (which never matched a real section id anyway). --}}
     <x-blade.navigation.sidebar-link
-        href="{{ route('settings') }}#system"
+        :href="route('admin.settings')"
         icon="&#9881;"
         data-requires-role="SUPER_ADMIN,ADMIN"
         hidden
