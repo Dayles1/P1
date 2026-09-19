@@ -66,3 +66,44 @@ test('the 12h/24h and date format preferences actually change how dates are rend
 
     expect($lastActivity)->toMatch('/^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2} (AM|PM)$/');
 });
+
+test('a user can choose the currency they read prices in', function () {
+    $user = User::factory()->create();
+    $token = $user->createToken('test')->plainTextToken;
+    $uzs = currencyRow('UZS', symbol: 'soʻm');
+
+    $this->withHeader('Authorization', "Bearer {$token}")
+        ->putJson('/api/profile/settings', ['preferred_currency_id' => $uzs->id])
+        ->assertOk()
+        ->assertJsonPath('data.currency.code', 'UZS')
+        ->assertJsonPath('data.currency.symbol', 'soʻm');
+
+    expect($user->settings()->first()->preferred_currency_id)->toBe($uzs->id);
+});
+
+test('clearing the currency falls back to the app one rather than leaving prices unreadable', function () {
+    $user = User::factory()->create();
+    $token = $user->createToken('test')->plainTextToken;
+
+    $user->settings()->create([
+        'user_id' => $user->id,
+        'preferred_currency_id' => currencyRow('UZS')->id,
+    ]);
+
+    $this->withHeader('Authorization', "Bearer {$token}")
+        ->putJson('/api/profile/settings', ['preferred_currency_id' => null])
+        ->assertOk()
+        ->assertJsonPath('data.currency', null);
+});
+
+test('a currency the app has switched off cannot be chosen', function () {
+    $user = User::factory()->create();
+    $token = $user->createToken('test')->plainTextToken;
+    $old = currencyRow('OLD');
+    $old->update(['is_active' => false]);
+
+    $this->withHeader('Authorization', "Bearer {$token}")
+        ->putJson('/api/profile/settings', ['preferred_currency_id' => $old->id])
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors('preferred_currency_id');
+});

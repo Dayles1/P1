@@ -147,6 +147,19 @@ class SettingSeeder extends Seeder
                 'is_locked' => false,
             ],
             [
+                /*
+                 * The app currency. Rates are quoted against it and every
+                 * price keeps a snapshot of its value in it, so changing
+                 * it re-bases the next sync rather than rewriting history.
+                 */
+                'key' => 'system.base_currency_code',
+                'value' => 'USD',
+                'type' => Setting::TYPE_STRING,
+                'group' => Setting::GROUP_SYSTEM,
+                'is_public' => true,
+                'is_locked' => false,
+            ],
+            [
                 'key' => 'system.favicon',
                 'value' => '/favicon.ico',
                 'type' => Setting::TYPE_STRING,
@@ -356,6 +369,14 @@ class SettingSeeder extends Seeder
                 'key' => 'user.default_avatar',
                 'value' => 'images/default-avatar.png',
                 'type' => Setting::TYPE_STRING,
+                'group' => Setting::GROUP_USER,
+                'is_public' => true,
+                'is_locked' => false,
+            ],
+            [
+                'key' => 'user.max_favorite_currency_count',
+                'value' => 10,
+                'type' => Setting::TYPE_INTEGER,
                 'group' => Setting::GROUP_USER,
                 'is_public' => true,
                 'is_locked' => false,

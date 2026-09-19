@@ -218,6 +218,16 @@ return [
         'load_error' => 'Не удалось загрузить настройки.',
         'timezones_error' => 'Не удалось загрузить часовые пояса',
 
+        'currency' => 'Валюта',
+        'currency_follows_app' => 'Валюта приложения (:code)',
+        'currency_is_app_currency' => 'Цены показываются в :code — валюте приложения.',
+        'currency_rate' => '1 :from = :amount :to · курс на :date',
+        'currency_rate_missing' => 'Для :code пока нет курса.',
+        'app_currency' => 'Валюта приложения',
+        'app_currency_hint' => 'Всё считается относительно неё. Курсы сохраняются к ней каждый день, а каждая цена хранит свою стоимость в ней на день установки.',
+        'rates_as_of' => 'Курсы на :date.',
+        'rates_missing' => 'Курсы ещё не загружены — выполните `php artisan currency:sync`.',
+
         'nav' => [
             'profile' => 'Профиль',
             'general' => 'Общие',

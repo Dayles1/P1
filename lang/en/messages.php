@@ -41,6 +41,10 @@ return [
         'favicon_removed' => 'Favicon reset to the default.',
     ],
 
+    'currency' => [
+        'no_rate' => 'No exchange rate is available to convert :from to :to.',
+    ],
+
     'notifications' => [
         'marked_read' => 'Notification marked as read.',
         'all_marked_read' => 'All notifications marked as read.',

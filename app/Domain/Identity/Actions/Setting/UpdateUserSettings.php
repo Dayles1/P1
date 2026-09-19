@@ -19,6 +19,6 @@ class UpdateUserSettings
 
         $setting->update($data);
 
-        return $setting->load('timezone');
+        return $setting->load(['timezone', 'preferredCurrency']);
     }
 }

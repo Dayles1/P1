@@ -32,6 +32,11 @@ class UpdateUserSettingRequest extends FormRequest
                 'max:50',
             ],
 
+            'preferred_currency_id' => [
+                'nullable',
+                Rule::exists('currencies', 'id')->where('is_active', true),
+            ],
+
             'locale' => [
                 'nullable',
                 'string',

@@ -1,6 +1,8 @@
 <?php
 
 use App\Domain\AccessControl\Models\Role;
+use App\Domain\Currency\Models\Currency;
+use App\Domain\Currency\Models\ExchangeRate;
 use App\Domain\Identity\Models\User;
 use App\Domain\Identity\Models\UserSession;
 use App\Domain\Setting\Models\Timezone;
@@ -72,6 +74,43 @@ function timezoneRow(string $name = 'UTC'): Timezone
     return Timezone::query()->firstOrCreate(
         ['name' => $name],
         ['label' => $name, 'offset' => '+00:00', 'is_active' => true]
+    );
+}
+
+/**
+ * One currency, on demand. CurrencySeeder has all 166 of them, which is
+ * more rows than any single test needs — the same reasoning as
+ * timezoneRow() above.
+ */
+function currencyRow(string $code, int $decimals = 2, ?string $symbol = null): Currency
+{
+    return Currency::query()->firstOrCreate(
+        ['code' => strtoupper($code)],
+        [
+            'name' => strtoupper($code),
+            'symbol' => $symbol,
+            'decimals' => $decimals,
+            'is_active' => true,
+        ]
+    );
+}
+
+/**
+ * A rate for one currency on one day, against the app currency.
+ */
+function rateRow(string $code, string $rate, ?string $date = null, int $decimals = 2): ExchangeRate
+{
+    return ExchangeRate::query()->updateOrCreate(
+        [
+            'currency_id' => currencyRow($code, $decimals)->id,
+            'base_code' => 'USD',
+            'rate_date' => $date ?? now()->toDateString(),
+        ],
+        [
+            'rate' => $rate,
+            'source' => 'test',
+            'fetched_at' => now(),
+        ]
     );
 }
 

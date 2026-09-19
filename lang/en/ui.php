@@ -218,6 +218,16 @@ return [
         'load_error' => 'Could not load your settings.',
         'timezones_error' => 'Could not load timezones',
 
+        'currency' => 'Currency',
+        'currency_follows_app' => 'App currency (:code)',
+        'currency_is_app_currency' => 'Prices are shown in :code, the app currency.',
+        'currency_rate' => '1 :from = :amount :to · rates from :date',
+        'currency_rate_missing' => 'There is no exchange rate for :code yet.',
+        'app_currency' => 'App currency',
+        'app_currency_hint' => 'Everything is quoted against this. Exchange rates are stored against it daily, and each price keeps what it was worth in it on the day it was set.',
+        'rates_as_of' => 'Exchange rates from :date.',
+        'rates_missing' => 'No exchange rates stored yet — run `php artisan currency:sync`.',
+
         'nav' => [
             'profile' => 'Profile',
             'general' => 'General',

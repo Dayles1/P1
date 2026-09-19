@@ -41,6 +41,10 @@ return [
         'favicon_removed' => 'Favicon standart holatga qaytarildi.',
     ],
 
+    'currency' => [
+        'no_rate' => ':from dan :to ga oʻtkazish uchun kurs yoʻq.',
+    ],
+
     'notifications' => [
         'marked_read' => 'Bildirishnoma oʻqilgan deb belgilandi.',
         'all_marked_read' => 'Barcha bildirishnomalar oʻqilgan deb belgilandi.',

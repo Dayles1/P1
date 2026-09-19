@@ -121,6 +121,8 @@ function boot() {
         profile: null,
         timezones: [],
         languages: [],
+        currencies: [],
+        currencyMeta: { baseCode: null, ratesAsOf: null },
         roles: [],
         adminSettingsByKey: new Map(),
     };
@@ -151,6 +153,15 @@ function boot() {
         languages: async () => {
             state.languages = (await api.get('/languages')).data.data || [];
         },
+        currencies: async () => {
+            const { data } = await api.get('/currencies');
+
+            state.currencies = data.data || [];
+            state.currencyMeta = {
+                baseCode: data.base_code,
+                ratesAsOf: data.rates_as_of,
+            };
+        },
         roles: async () => {
             state.roles = (await api.get('/roles')).data.data || [];
         },
@@ -168,13 +179,22 @@ function boot() {
     const SECTION_DATA = {
         'personal-profile': ['profile'],
         'personal-appearance': [],
-        'personal-language': ['personal', 'timezones', 'languages'],
+        'personal-language': [
+            'personal',
+            'timezones',
+            'languages',
+            'currencies',
+        ],
         'personal-notifications': ['personal'],
         'personal-security': ['personal'],
         'personal-developer': ['personal'],
         'application-general': ['adminSettings'],
         'application-authentication': ['adminSettings', 'roles'],
-        'application-localization': ['adminSettings', 'languages'],
+        'application-localization': [
+            'adminSettings',
+            'languages',
+            'currencies',
+        ],
         'application-notifications': ['adminSettings'],
         'application-security': ['adminSettings'],
         'application-system': ['adminSettings'],
@@ -624,6 +644,41 @@ function boot() {
             .join('');
     }
 
+    function currencyLabel(currency) {
+        return currency.symbol
+            ? `${currency.code} — ${currency.name} (${currency.symbol})`
+            : `${currency.code} — ${currency.name}`;
+    }
+
+    /**
+     * An empty value means "whatever the app currency is" rather than
+     * "no currency", so the first option says which one that is.
+     */
+    function currencyOptions(selectedId, { includeFollowApp = true } = {}) {
+        const options = state.currencies.map(
+            (currency) =>
+                `<option value="${currency.id}" ${String(currency.id) === String(selectedId ?? '') ? 'selected' : ''}>${escapeHtml(currencyLabel(currency))}</option>`,
+        );
+
+        if (!includeFollowApp) {
+            return options.join('');
+        }
+
+        return (
+            `<option value="">${escapeHtml(t('settings.currency_follows_app', { code: state.currencyMeta.baseCode || '' }))}</option>` +
+            options.join('')
+        );
+    }
+
+    function currencyCodeOptions(selectedCode) {
+        return state.currencies
+            .map(
+                (currency) =>
+                    `<option value="${currency.code}" ${currency.code === selectedCode ? 'selected' : ''}>${escapeHtml(currencyLabel(currency))}</option>`,
+            )
+            .join('');
+    }
+
     function timezoneDisplayLabel(tz) {
         return `${tz.label || tz.name} (${tz.offset})`;
     }
@@ -661,6 +716,14 @@ function boot() {
                     >
                     <input type="hidden" data-personal="timezone_id" value="${p?.timezone?.id ?? ''}">
                     <div class="timezone-dropdown" data-timezone-dropdown hidden></div>
+                </div>
+
+                <div class="field-group" style="max-width:320px;">
+                    <label class="field-label">${t('settings.currency')}</label>
+                    <div class="select-field">
+                        <select class="field-select" data-personal="preferred_currency_id">${currencyOptions(p?.currency?.id)}</select>
+                    </div>
+                    <p class="settings-panel__section-hint" style="margin:6px 0 0;" data-currency-rate></p>
                 </div>
 
                 <div class="field-row">
@@ -724,6 +787,66 @@ function boot() {
                     { signal },
                 );
             });
+
+        const currencySelect = panel.querySelector(
+            '[data-personal="preferred_currency_id"]',
+        );
+        const currencyRate = panel.querySelector('[data-currency-rate]');
+
+        /**
+         * What one unit of the app currency is worth in the chosen one,
+         * and which day's rate that is — so the choice shows what it
+         * actually does instead of just being a label.
+         */
+        async function showCurrencyRate() {
+            if (!currencyRate) {
+                return;
+            }
+
+            const base = state.currencyMeta.baseCode;
+            const code = state.currencies.find(
+                (currency) =>
+                    String(currency.id) === String(currencySelect?.value),
+            )?.code;
+
+            if (!base || !code || code === base) {
+                currencyRate.textContent = base
+                    ? t('settings.currency_is_app_currency', { code: base })
+                    : '';
+
+                return;
+            }
+
+            try {
+                const { data } = await api.get('/currencies/convert', {
+                    params: { amount: 1, from: base, to: code },
+                });
+
+                currencyRate.textContent = t('settings.currency_rate', {
+                    from: base,
+                    amount: data.data.converted,
+                    to: code,
+                    date: data.data.as_of ?? '',
+                });
+            } catch {
+                currencyRate.textContent = t('settings.currency_rate_missing', {
+                    code,
+                });
+            }
+        }
+
+        currencySelect?.addEventListener(
+            'change',
+            () => {
+                savePersonal({
+                    preferred_currency_id: currencySelect.value || null,
+                });
+                showCurrencyRate();
+            },
+            { signal },
+        );
+
+        showCurrencyRate();
 
         const searchInput = panel.querySelector('[data-timezone-search]');
         const hiddenInput = panel.querySelector(
@@ -1285,6 +1408,7 @@ function boot() {
     function renderApplicationLocalization() {
         const defaultLocale = adminSetting('localization.default_locale');
         const fallbackLocale = adminSetting('localization.fallback_locale');
+        const baseCurrency = adminSetting('system.base_currency_code');
 
         return `
             <div class="settings-panel__section">
@@ -1295,16 +1419,31 @@ function boot() {
                     <div class="field-group">
                         <label class="field-label">${t('settings.default_language')}</label>
                         <div class="select-field">
-                            <select class="field-select" data-locale-setting="${defaultLocale?.id ?? ''}">${languageOptions(defaultLocale?.value)}</select>
+                            <select class="field-select" data-setting-select="${defaultLocale?.id ?? ''}">${languageOptions(defaultLocale?.value)}</select>
                         </div>
                     </div>
 
                     <div class="field-group">
                         <label class="field-label">${t('settings.fallback_language')}</label>
                         <div class="select-field">
-                            <select class="field-select" data-locale-setting="${fallbackLocale?.id ?? ''}">${languageOptions(fallbackLocale?.value)}</select>
+                            <select class="field-select" data-setting-select="${fallbackLocale?.id ?? ''}">${languageOptions(fallbackLocale?.value)}</select>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('settings.app_currency')}</h2>
+                <p class="settings-panel__section-hint">${t('settings.app_currency_hint')}</p>
+
+                <div class="field-group" style="max-width:320px;">
+                    <label class="field-label">${t('settings.app_currency')}</label>
+                    <div class="select-field">
+                        <select class="field-select" data-setting-select="${baseCurrency?.id ?? ''}">${currencyCodeOptions(baseCurrency?.value)}</select>
+                    </div>
+                    <p class="settings-panel__section-hint" style="margin:6px 0 0;">
+                        ${escapeHtml(state.currencyMeta.ratesAsOf ? t('settings.rates_as_of', { date: state.currencyMeta.ratesAsOf }) : t('settings.rates_missing'))}
+                    </p>
                 </div>
             </div>
 
@@ -1316,11 +1455,11 @@ function boot() {
     }
 
     function wireApplicationLocalization() {
-        panel.querySelectorAll('[data-locale-setting]').forEach((select) => {
+        panel.querySelectorAll('[data-setting-select]').forEach((select) => {
             select.addEventListener(
                 'change',
                 async () => {
-                    const settingId = select.dataset.localeSetting;
+                    const settingId = select.dataset.settingSelect;
 
                     select.disabled = true;
 

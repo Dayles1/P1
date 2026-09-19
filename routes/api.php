@@ -14,6 +14,9 @@ use App\Http\Controllers\Api\Chat\MemberController;
 use App\Http\Controllers\Api\Chat\MessageController;
 use App\Http\Controllers\Api\Chat\TypingController;
 use App\Http\Controllers\Api\Chat\UserSearchController;
+use App\Http\Controllers\Api\Currency\CurrencyController;
+use App\Http\Controllers\Api\Currency\ExchangeRateController;
+use App\Http\Controllers\Api\Currency\FavoriteCurrencyController;
 use App\Http\Controllers\Api\Dashboard\DashboardController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\Profile\AvatarController;
@@ -102,6 +105,27 @@ Route::prefix('profile')
 
 Route::get('timezones', [TimezoneController::class, 'index']);
 Route::get('languages', [LanguageController::class, 'index']);
+
+/*
+|--------------------------------------------------------------------------
+| Currencies — reference data, same as timezones and languages above
+|--------------------------------------------------------------------------
+|
+| Rates are quoted against the app currency and kept one row per day, so
+| `?date=` asks what a rate was, not just what it is.
+|
+*/
+Route::get('currencies', [CurrencyController::class, 'index']);
+Route::get('currencies/convert', [CurrencyController::class, 'convert']);
+Route::get('exchange-rates', [ExchangeRateController::class, 'index']);
+
+Route::middleware('auth.api')
+    ->prefix('profile')
+    ->controller(FavoriteCurrencyController::class)
+    ->group(function () {
+        Route::get('favorite-currencies', 'index');
+        Route::put('favorite-currencies', 'update');
+    });
 Route::middleware('auth.api')->get('roles', [RoleController::class, 'index']);
 
 Route::middleware('auth.api')->get('dashboard', [DashboardController::class, 'index']);

@@ -14,6 +14,6 @@ class GetUserSettings
                 'user_id' => $user->id,
             ]);
 
-        return $setting->load('timezone');
+        return $setting->load(['timezone', 'preferredCurrency']);
     }
 }

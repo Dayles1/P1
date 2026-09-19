@@ -218,6 +218,16 @@ return [
         'load_error' => 'Sozlamalarni yuklab boʻlmadi.',
         'timezones_error' => 'Vaqt mintaqalarini yuklab boʻlmadi',
 
+        'currency' => 'Valyuta',
+        'currency_follows_app' => 'Ilova valyutasi (:code)',
+        'currency_is_app_currency' => 'Narxlar :code — ilova valyutasida koʻrsatiladi.',
+        'currency_rate' => '1 :from = :amount :to · :date kursi',
+        'currency_rate_missing' => ':code uchun hozircha kurs yoʻq.',
+        'app_currency' => 'Ilova valyutasi',
+        'app_currency_hint' => 'Hammasi shunga nisbatan hisoblanadi. Kurslar har kuni shunga nisbatan saqlanadi, har bir narx esa qoʻyilgan kundagi qiymatini shunda saqlab qoladi.',
+        'rates_as_of' => ':date sanasidagi kurslar.',
+        'rates_missing' => 'Kurslar hali yuklanmagan — `php artisan currency:sync` ni ishga tushiring.',
+
         'nav' => [
             'profile' => 'Profil',
             'general' => 'Umumiy',

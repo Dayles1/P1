@@ -17,6 +17,11 @@ class DatabaseSeeder extends Seeder
             LanguageSeeder::class,
             SuperAdminSeeder::class,
             SettingSeeder::class,
+
+            // Currencies after settings: the sync quotes against
+            // system.base_currency_code, and rates need the catalogue.
+            CurrencySeeder::class,
+            ExchangeRateSeeder::class,
         ]);
     }
 }
