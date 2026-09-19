@@ -200,7 +200,9 @@ return [
 
     'settings' => [
         'title' => 'Sozlamalar',
-        'subtitle' => 'Hisobingiz, koʻrinish va — agar siz administrator boʻlsangiz — global sozlamalar.',
+        'subtitle' => 'Hisobingiz, uning koʻrinishi va siz bilan bogʻlanish usullari.',
+        'application_title' => 'Ilova sozlamalari',
+        'application_subtitle' => 'Umumiy konfiguratsiya — ilovadan foydalanadigan hamma uchun amal qiladi.',
         'timezone' => 'Vaqt mintaqasi',
         'timezone_search_placeholder' => 'Shahar, hudud yoki vaqt mintaqasi boʻyicha qidiring…',
         'timezone_search_empty' => 'Mos vaqt mintaqasi topilmadi.',
@@ -215,9 +217,6 @@ return [
         'error' => 'Sozlamalarni saqlab boʻlmadi.',
         'load_error' => 'Sozlamalarni yuklab boʻlmadi.',
         'timezones_error' => 'Vaqt mintaqalarini yuklab boʻlmadi',
-
-        'group_personal' => 'Shaxsiy',
-        'group_application' => 'Ilova',
 
         'nav' => [
             'profile' => 'Profil',

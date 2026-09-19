@@ -200,7 +200,9 @@ return [
 
     'settings' => [
         'title' => 'Settings',
-        'subtitle' => 'Your account, appearance, and — if you administer this instance — global configuration.',
+        'subtitle' => 'Your account, how it looks, and how it reaches you.',
+        'application_title' => 'App settings',
+        'application_subtitle' => 'Instance-wide configuration — what everyone using this app gets.',
         'timezone' => 'Timezone',
         'timezone_search_placeholder' => 'Search by city, region, or timezone…',
         'timezone_search_empty' => 'No matching timezone.',
@@ -215,9 +217,6 @@ return [
         'error' => 'Could not save your settings.',
         'load_error' => 'Could not load your settings.',
         'timezones_error' => 'Could not load timezones',
-
-        'group_personal' => 'Personal',
-        'group_application' => 'Application',
 
         'nav' => [
             'profile' => 'Profile',

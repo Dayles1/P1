@@ -4,20 +4,23 @@
     $sidebarMode = 'compact';
 
     /*
-    | The secondary sidebar. Every entry is a real route (see
-    | routes/web.php + SettingsPageController) — `$section` is the id of
-    | the one this request is for, or null on /settings itself.
+    | The two settings groups. Each is its own URL space (see
+    | routes/web.php + SettingsPageController) and its own mini-app: the
+    | page renders the nav of `$group` only, so /settings never lists
+    | Application sections and /admin/settings never lists personal ones.
+    | You cross between them from the main sidebar, not from here.
     |
-    | `roles` gates a whole group: the Application group is only for
-    | people who administer this instance, and sits below the personal
-    | one. It ships `hidden` and is unhidden client-side by
-    | shared/site-chrome.js once the user is resolved, because there is
-    | no server session to check here (bearer tokens only) — the API
-    | enforces the same roles server-side on every write.
+    | `roles` gates the whole Application nav. It ships `hidden` and is
+    | unhidden client-side by shared/site-chrome.js once the user is
+    | resolved, because there is no server session to check here (bearer
+    | tokens only) — the API enforces the same roles on every write, and
+    | settings.js bounces a non-admin off these URLs entirely.
     */
     $groups = [
-        [
-            'label' => __('ui.settings.group_personal'),
+        'personal' => [
+            'title' => __('ui.settings.title'),
+            'subtitle' => __('ui.settings.subtitle'),
+            'index' => route('settings'),
             'roles' => null,
             'items' => [
                 'personal-profile' => [route('settings.profile'), __('ui.settings.nav.profile')],
@@ -28,8 +31,10 @@
                 'personal-developer' => [route('settings.developer'), __('ui.settings.nav.developer')],
             ],
         ],
-        [
-            'label' => __('ui.settings.group_application'),
+        'application' => [
+            'title' => __('ui.settings.application_title'),
+            'subtitle' => __('ui.settings.application_subtitle'),
+            'index' => route('admin.settings'),
             'roles' => 'SUPER_ADMIN,ADMIN',
             'items' => [
                 'application-general' => [route('admin.settings.general'), __('ui.settings.nav.general')],
@@ -42,34 +47,54 @@
         ],
     ];
 
-    $activeLabel = array_merge(...array_column($groups, 'items'))[$section][1] ?? null;
+    $current = $groups[$group];
+
+    /*
+    | Section id -> URL for *both* groups, handed to settings.js. It
+    | forwards an old `#section` hash to the route that replaced it and
+    | sends a non-admin who landed on an Application URL back to their
+    | own settings — neither of which can read the URL off a nav that no
+    | longer lists the other group.
+    */
+    $routes = array_map(
+        fn (array $item) => $item[0],
+        array_merge(...array_column($groups, 'items')),
+    );
+
+    $activeLabel = $current['items'][$section][1] ?? null;
 @endphp
 
-@section('title', $activeLabel ? $activeLabel.' · '.__('ui.settings.title') : __('ui.settings.title'))
+@section('title', $activeLabel ? $activeLabel.' · '.$current['title'] : $current['title'])
 
 @section('content')
 
     <div class="page-head">
         <div>
-            <h1>{{ __('ui.settings.title') }}</h1>
-            <p>{{ __('ui.settings.subtitle') }}</p>
+            <h1>{{ $current['title'] }}</h1>
+            <p>{{ $current['subtitle'] }}</p>
         </div>
     </div>
 
     {{--
         `--detail` is the phone-only list/detail state (see the CSS): on
-        /settings you get the nav as a full-width menu, on a section you
-        get that section plus a back link. It is a plain server-rendered
-        class now that each state is its own URL.
+        a group's index you get the nav as a full-width menu, on a
+        section you get that section plus a back link. It is a plain
+        server-rendered class now that each state is its own URL.
     --}}
     <div @class(['settings-app', 'settings-app--detail' => (bool) $section])>
 
-        @include('blade.sections.settings-nav', ['groups' => $groups, 'section' => $section])
+        @include('blade.sections.settings-nav', ['group' => $current, 'section' => $section])
 
         <div style="flex:1; min-width:0;">
-            <a class="settings-back-btn" href="{{ route('settings') }}">&larr; {{ __('ui.common.back') }}</a>
+            <a class="settings-back-btn" href="{{ $current['index'] }}">&larr; {{ __('ui.common.back') }}</a>
 
-            <div class="settings-panel" data-settings-panel data-settings-section="{{ $section }}">
+            <div
+                class="settings-panel"
+                data-settings-panel
+                data-settings-section="{{ $section }}"
+                data-settings-default="{{ array_key_first($current['items']) }}"
+                data-settings-routes="{{ json_encode($routes) }}"
+            >
                 <div class="skeleton skeleton-row"></div>
             </div>
         </div>

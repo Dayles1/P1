@@ -19,8 +19,8 @@ import {
 let currentCleanup = null;
 
 /**
- * Which section renders in the panel on /settings itself, i.e. when the
- * URL names no section of its own.
+ * Where a user belongs when the URL names no section this page can
+ * render — and where a non-admin is sent back to from /admin/settings/*.
  */
 const DEFAULT_SECTION = 'personal-profile';
 
@@ -59,7 +59,6 @@ function boot() {
     // to be able to unwind whatever this visit already registered.
     currentCleanup = () => controller.abort();
 
-    const nav = document.querySelector('[data-settings-nav]');
     const panel = document.querySelector('[data-settings-panel]');
 
     // Which raw admin settings (by key) render via the generic boolean/
@@ -1486,17 +1485,16 @@ function boot() {
     };
 
     /**
-     * The URL of a section, read back off the sidebar link the server
-     * already rendered for it — so no route lives in two places. The
-     * Application group is in the DOM for everyone (just `hidden` for
-     * non-admins), which is what makes the redirects below possible.
+     * Section id -> URL, for *both* groups, as rendered by the server
+     * (see settings.blade.php) — so no route lives in two places. It is
+     * a map rather than a read off the sidebar because the sidebar only
+     * lists the group you are in, and both redirects below can need the
+     * other one.
      */
+    const SECTION_URLS = JSON.parse(panel.dataset.settingsRoutes || '{}');
+
     function urlForSection(id) {
-        return (
-            nav
-                ?.querySelector(`[data-settings-nav-link="${id}"]`)
-                ?.getAttribute('href') || null
-        );
+        return SECTION_URLS[id] || null;
     }
 
     function renderSection(id) {
@@ -1512,16 +1510,19 @@ function boot() {
     |--------------------------------------------------------------------------
     |
     | The server decides — `data-settings-section` is the id its route was
-    | registered for (see SettingsPageController), empty on /settings
-    | itself. The fallback is only a guard against an id no renderer
-    | knows; routes/web.php can't produce one.
+    | registered for (see SettingsPageController), empty on a group index
+    | (/settings, /admin/settings), where `data-settings-default` names
+    | the first section of *that* group instead. DEFAULT_SECTION is only a
+    | last-resort guard against an id no renderer knows; routes/web.php
+    | can't produce one.
     |
     */
 
     const requested = panel.dataset.settingsSection;
-    const section = Object.hasOwn(RENDERERS, requested)
-        ? requested
-        : DEFAULT_SECTION;
+    const fallback = panel.dataset.settingsDefault;
+    const section = [requested, fallback, DEFAULT_SECTION].find((id) =>
+        Object.hasOwn(RENDERERS, id),
+    );
 
     /*
     | Sections used to be `#personal-appearance`-style hashes on this one

@@ -139,14 +139,17 @@ Route::get('/chat/{conversation}', function (string $conversation) {
 */
 
 /*
- * Application settings: one route per section, same shell (and same
- * secondary sidebar) as the personal ones, but their own URL space.
- * /admin/settings itself has no page of its own — it is the group, so it
- * sends you to its first section, which also keeps old bookmarks working.
+ * Application settings: one route per section, same shell as the
+ * personal ones but their own URL space — and, because it is its own
+ * space, its own secondary sidebar: /settings never lists Application
+ * sections and /admin/settings never lists personal ones.
+ *
+ * /admin/settings is the group's index, the same page /settings is for
+ * the personal group (nav on a phone, first section on a desktop), which
+ * is also where "back" out of a section lands.
  */
-Route::get('/admin/settings', function () {
-    return redirect()->route('admin.settings.general');
-})->name('admin.settings');
+Route::get('/admin/settings', [SettingsPageController::class, 'applicationIndex'])
+    ->name('admin.settings');
 
 foreach (array_keys(SettingsPageController::APPLICATION) as $segment) {
     Route::get("/admin/settings/{$segment}", [SettingsPageController::class, 'application'])
