@@ -35,8 +35,11 @@ export default defineConfig({
             refresh: true,
 
             fonts: [
+                // Cyrillic for ru, Latin for uz/en — without it every
+                // Cyrillic glyph falls back to the system font.
                 bunny('Onest', {
                     weights: [400, 500, 600, 700],
+                    subsets: ['latin', 'cyrillic'],
                 }),
             ],
         }),

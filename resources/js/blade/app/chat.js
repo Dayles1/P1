@@ -160,6 +160,16 @@ function boot() {
         return `<span>${prefix}${escapeHtml(last.body || t('chat.attachment_preview'))}</span>`;
     }
 
+    /**
+     * The time part of an API "<date> <time>" stamp. Everything after the
+     * first space, so a 12h time keeps its "PM" instead of being cut to it.
+     */
+    function timeOf(stamp) {
+        const [, ...time] = String(stamp).split(' ');
+
+        return time.join(' ') || String(stamp);
+    }
+
     function renderConversationList() {
         if (!conversations.length) {
             listEl.innerHTML = emptyState(t('chat.empty_list'));
@@ -191,7 +201,7 @@ function boot() {
                                 ${conversation.is_pinned ? icon('pin', { size: 14, className: 'chat-list-item__pin-icon' }) : ''}
                                 ${escapeHtml(conversation.title || t('common.unknown'))}
                             </span>
-                            <span class="chat-list-item__time">${conversation.last_message_at ? conversation.last_message_at.split(' ').pop() : ''}</span>
+                            <span class="chat-list-item__time">${conversation.last_message_at ? timeOf(conversation.last_message_at) : ''}</span>
                         </div>
                         <div class="chat-list-item__preview">${conversationSubtitle(conversation)}</div>
                     </div>

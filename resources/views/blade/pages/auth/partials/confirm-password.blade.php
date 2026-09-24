@@ -1,99 +1,34 @@
 <div class="auth-card">
 
+    <span class="auth-card__icon">
+        <x-blade.u-i.icon name="shield" size="26" />
+    </span>
+
     <div class="auth-card__header">
-
-        <h1>
-            Confirm your password
-        </h1>
-
-        <p>
-            This is a sensitive action. Please confirm your
-            password before continuing.
-        </p>
-
+        <h1 class="auth-card__title">{{ __('ui.auth.confirm.title') }}</h1>
+        <p class="auth-card__subtitle">{{ __('ui.auth.confirm.subtitle') }}</p>
     </div>
 
-
-    <form
-        class="auth-form"
-        data-auth-form="confirm-password"
-        novalidate
-    >
-
+    <form class="auth-form" data-auth-form="confirm-password" novalidate>
         @csrf
 
+        <x-blade.u-i.password-input
+            id="confirm-password-password"
+            aria-describedby="confirm-password-password-error"
+            name="password"
+            :label="__('ui.auth.password')"
+            :placeholder="__('ui.auth.password_placeholder')"
+            autocomplete="current-password"
+            aria-required="true"
+        />
 
-        {{-- PASSWORD --}}
-        <div class="field-group">
-
-            <label
-                for="confirm-password-password"
-                class="field-label"
-            >
-                Password
-            </label>
-
-            <div class="field-control">
-
-                <input
-                    id="confirm-password-password"
-                    type="password"
-                    name="password"
-                    class="field-input"
-                    placeholder="Enter your password"
-                    autocomplete="current-password"
-                    required
-                >
-
-                <button
-                    type="button"
-                    class="password-toggle"
-                    data-password-toggle="confirm-password-password"
-                    aria-label="Show password"
-                >
-                    <x-blade.u-i.icon name="eye" size="18" />
-                </button>
-
-            </div>
-
-            <span
-                class="field-error"
-                data-field-error="password"
-            ></span>
-
-        </div>
-
-
-        {{-- SUBMIT --}}
-        <button
-            type="submit"
-            class="auth-button"
-        >
-
-            <span class="auth-button__text">
-                Confirm
-            </span>
-
-            <span
-                class="auth-button__loader"
-                aria-hidden="true"
-            ></span>
-
-        </button>
-
+        <x-blade.u-i.button type="submit" size="lg" block>
+            {{ __('ui.auth.confirm.submit') }}
+        </x-blade.u-i.button>
     </form>
 
-
-    <div class="auth-page-switch">
-
-        <a
-            href="/login"
-            class="auth-link"
-            data-auth-link="login"
-        >
-            Back to sign in
-        </a>
-
-    </div>
+    <p class="auth-card__footer">
+        <a href="/forgot-password" class="auth-link" data-auth-link="forgot-password">{{ __('ui.auth.confirm.forgot') }}</a>
+    </p>
 
 </div>

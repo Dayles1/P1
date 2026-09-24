@@ -1,4 +1,4 @@
-import { t } from './i18n';
+import { hasLocaleData, monthName, t, weekdayShort } from './i18n';
 import { icon } from './icon';
 
 /**
@@ -92,12 +92,31 @@ function numericFormat() {
     });
 }
 
+/**
+ * Without the locale's data Intl falls back to an English pattern, so the
+ * dictionary-backed locales get the dd.mm.yyyy order they actually use.
+ */
 function formatDate(date) {
-    return date ? numericFormat().format(date) : '';
+    if (!date) {
+        return '';
+    }
+
+    if (!hasLocaleData()) {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+
+        return `${day}.${month}.${date.getFullYear()}`;
+    }
+
+    return numericFormat().format(date);
 }
 
 /** Order of day/month/year in this locale, read from Intl itself. */
 function partOrder() {
+    if (!hasLocaleData()) {
+        return ['day', 'month', 'year'];
+    }
+
     return numericFormat()
         .formatToParts(new Date(2026, 10, 25))
         .filter((part) => ['day', 'month', 'year'].includes(part.type))
@@ -105,7 +124,7 @@ function partOrder() {
 }
 
 function parseDate(text) {
-    const numbers = (text || '').trim().split(/\D+/).filter(Boolean);
+    const numbers = (text || '').trim().split(/D+/).filter(Boolean);
 
     if (numbers.length !== 3) {
         return null;
@@ -129,38 +148,33 @@ function placeholder() {
         locale().slice(0, 2)
     ] || ['DD', 'MM', 'YYYY'];
     const map = { day: letters[0], month: letters[1], year: letters[2] };
-    const separator =
-        numericFormat()
-            .formatToParts(new Date(2026, 10, 25))
-            .find((part) => part.type === 'literal')?.value || '.';
+    const separator = hasLocaleData()
+        ? numericFormat()
+              .formatToParts(new Date(2026, 10, 25))
+              .find((part) => part.type === 'literal')?.value || '.'
+        : '.';
 
     return partOrder()
         .map((type) => map[type])
         .join(separator);
 }
 
-function capitalize(text) {
-    return text.charAt(0).toLocaleUpperCase(locale()) + text.slice(1);
-}
-
 function monthTitle(date) {
-    const month = new Intl.DateTimeFormat(locale(), { month: 'long' }).format(
-        date,
-    );
-
-    return `${capitalize(month)} ${date.getFullYear()}`;
+    return `${monthName(date.getMonth())} ${date.getFullYear()}`;
 }
 
+/** Monday-first, matching the grid. */
 function weekdayNames() {
-    const formatter = new Intl.DateTimeFormat(locale(), { weekday: 'short' });
-    const monday = new Date(2026, 8, 21);
-
     return Array.from({ length: 7 }, (_, index) =>
-        capitalize(formatter.format(addDays(monday, index)).replace('.', '')),
+        weekdayShort((index + 1) % 7),
     );
 }
 
 function longLabel(date) {
+    if (!hasLocaleData()) {
+        return `${date.getDate()} ${monthName(date.getMonth())} ${date.getFullYear()}`;
+    }
+
     return new Intl.DateTimeFormat(locale(), { dateStyle: 'long' }).format(
         date,
     );

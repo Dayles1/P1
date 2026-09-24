@@ -1,86 +1,38 @@
 <div class="auth-card">
 
+    <span class="auth-card__icon">
+        <x-blade.u-i.icon name="key" size="26" />
+    </span>
+
     <div class="auth-card__header">
-
-        <h1>
-            Forgot your password?
-        </h1>
-
-        <p>
-            Enter your email and we will send you
-            instructions to reset your password.
-        </p>
-
+        <h1 class="auth-card__title">{{ __('ui.auth.forgot.title') }}</h1>
+        <p class="auth-card__subtitle">{{ __('ui.auth.forgot.subtitle') }}</p>
     </div>
 
-
-    <form
-        class="auth-form"
-        data-auth-form="forgot-password"
-        novalidate
-    >
-
+    <form class="auth-form" data-auth-form="forgot-password" novalidate>
         @csrf
 
+        <x-blade.u-i.input
+            id="forgot-email"
+            type="email"
+            name="email"
+            icon="mail"
+            :label="__('ui.auth.email')"
+            :placeholder="__('ui.auth.email_placeholder')"
+            autocomplete="email"
+            aria-required="true"
+        />
 
-        <div class="field-group">
-
-            <label
-                for="forgot-email"
-                class="field-label"
-            >
-                Email address
-            </label>
-
-            <input
-                id="forgot-email"
-                type="email"
-                name="email"
-                class="field-input"
-                placeholder="you@example.com"
-                autocomplete="email"
-                required
-            >
-
-            <span
-                class="field-error"
-                data-field-error="email"
-            ></span>
-
-        </div>
-
-
-        <button
-            type="submit"
-            class="auth-button"
-        >
-
-            <span class="auth-button__text">
-                Send reset link
-            </span>
-
-            <span
-                class="auth-button__loader"
-                aria-hidden="true"
-            ></span>
-
-        </button>
-
-
-        <div class="auth-page-switch">
-
-            Remember your password?
-
-            <a
-                href="/login"
-                class="auth-link"
-                data-auth-link="login"
-            >
-                Back to sign in
-            </a>
-
-        </div>
-
+        <x-blade.u-i.button type="submit" size="lg" block>
+            {{ __('ui.auth.forgot.submit') }}
+        </x-blade.u-i.button>
     </form>
+
+    <p class="auth-card__footer">
+        <a href="/login" class="auth-link auth-link--back" data-auth-link="login">
+            <x-blade.u-i.icon name="arrow" size="16" />
+            {{ __('ui.auth.back_to_login') }}
+        </a>
+    </p>
 
 </div>

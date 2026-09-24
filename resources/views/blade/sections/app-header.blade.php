@@ -61,6 +61,7 @@
             data-notif-dropdown
             trigger-class="icon-btn notif-bell"
             menu-class="notif-popover"
+            menu-role="dialog"
             :label="__('ui.notifications.label')"
         >
             <x-slot:trigger>

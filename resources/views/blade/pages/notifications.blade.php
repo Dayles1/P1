@@ -4,33 +4,62 @@
 
 @section('content')
 
-    <div class="page-head">
-        <div>
-            <h1>{{ __('ui.notifications.label') }}</h1>
-            <p>{{ __('ui.notifications.center_subtitle') }}</p>
-        </div>
-        <x-blade.u-i.button variant="outline" size="sm" data-notif-mark-all-page>
-            {{ __('ui.notifications.mark_all_read') }}
-        </x-blade.u-i.button>
-    </div>
+    {{-- =====================================================
+         NOTIFICATION CENTER
+         -----------------------------------------------------
+         One feed for every notification, grouped by day. The list,
+         the unread summary and the pagination are filled by
+         resources/js/blade/app/notifications.js from the API. The
+         list takes focus (tabindex="-1") after a page change.
+         ===================================================== --}}
+    <div class="notif-page">
 
-    <div class="notif-filter-bar">
-        <button type="button" class="btn btn--secondary btn--sm" data-notif-filter="" data-active>{{ __('ui.common.all') }}</button>
-        <button type="button" class="btn btn--outline btn--sm" data-notif-filter="unread">{{ __('ui.notifications.unread') }}</button>
-        <button type="button" class="btn btn--outline btn--sm" data-notif-filter="system">{{ __('ui.notifications.type_system') }}</button>
-        <button type="button" class="btn btn--outline btn--sm" data-notif-filter="message">{{ __('ui.notifications.type_message') }}</button>
-        <button type="button" class="btn btn--outline btn--sm" data-notif-filter="mention">{{ __('ui.notifications.type_mention') }}</button>
-    </div>
+        <div class="page-head notif-page__head">
+            <div>
+                <h1>{{ __('ui.notifications.label') }}</h1>
+                <p class="notif-page__summary"><span class="notif-page__count" data-notif-unread-summary></span><span class="notif-page__scope">{{ __('ui.notifications.feed_scope') }}</span></p>
+            </div>
 
-    <div class="card">
-        <div class="card__body card__body--flush">
-            <div data-notif-center-list>
-                <div class="skeleton skeleton-row m-3"></div>
+            <div class="page-head__actions notif-page__actions">
+                <x-blade.u-i.button
+                    variant="outline"
+                    size="sm"
+                    icon="checks"
+                    class="notif-page__read-all"
+                    :label="__('ui.notifications.read_all')"
+                    data-notif-mark-all-page
+                >
+                    <span class="notif-page__action-label">{{ __('ui.notifications.read_all') }}</span>
+                </x-blade.u-i.button>
+
+                <x-blade.u-i.button
+                    variant="ghost"
+                    size="sm"
+                    icon="sliders"
+                    class="notif-page__settings"
+                    :href="route('settings.notifications')"
+                >
+                    {{ __('ui.notifications.settings') }}
+                </x-blade.u-i.button>
             </div>
         </div>
-        <div class="card__footer">
-            <div class="pagination" data-notif-pagination hidden></div>
+
+        <div class="chips notif-filters" role="group" aria-label="{{ __('ui.notifications.filters_label') }}">
+            <x-blade.u-i.chip :pressed="true" data-notif-filter="">{{ __('ui.notifications.filters.all') }}</x-blade.u-i.chip>
+            <x-blade.u-i.chip data-notif-filter="unread">{{ __('ui.notifications.filters.unread') }}</x-blade.u-i.chip>
+            <x-blade.u-i.chip data-notif-filter="message">{{ __('ui.notifications.filters.message') }}</x-blade.u-i.chip>
+            <x-blade.u-i.chip data-notif-filter="mention">{{ __('ui.notifications.filters.mention') }}</x-blade.u-i.chip>
+            <x-blade.u-i.chip data-notif-filter="system">{{ __('ui.notifications.filters.system') }}</x-blade.u-i.chip>
         </div>
+
+        <section class="card notif-feed" aria-label="{{ __('ui.notifications.label') }}">
+            <div class="notif-feed__list" data-notif-center-list tabindex="-1" aria-busy="true">
+                <x-blade.u-i.skeleton type="list" :rows="5" />
+            </div>
+
+            <div class="pagination notif-feed__pagination" data-notif-pagination hidden></div>
+        </section>
+
     </div>
 
 @endsection

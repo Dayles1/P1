@@ -1,5 +1,5 @@
 import { escapeHtml } from './forms';
-import { t } from './i18n';
+import { formatNumber, t } from './i18n';
 import { icon } from './icon';
 
 /**
@@ -30,7 +30,7 @@ export function formatBytes(bytes) {
 
     const rounded = unit === 0 ? value : Math.round(value * 10) / 10;
 
-    return `${new Intl.NumberFormat(window.__i18n?.locale || 'en').format(rounded)} ${units[unit]}`;
+    return `${formatNumber(rounded)} ${units[unit]}`;
 }
 
 function accepts(file, accept) {

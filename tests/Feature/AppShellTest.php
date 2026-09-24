@@ -107,3 +107,12 @@ test('the shell uses sprite icons, not glyphs', function () {
         ->and(shellSidebar($this->get('/dashboard')))->toContain('<use href="#i-home">')
         ->and(shellHeader($this->get('/dashboard')))->not->toMatch('/[\x{1F300}-\x{1FAFF}\x{2600}-\x{27BF}]/u');
 });
+
+test('the notification popover is a labelled dialog, not a menu', function () {
+    $header = shellHeader($this->get('/dashboard')->assertOk());
+
+    preg_match('/<div[^>]*class="dropdown__menu[^"]*notif-popover[^"]*"[^>]*>/s', $header, $panel);
+
+    expect($panel[0] ?? '')->toContain('role="dialog"')
+        ->and($panel[0] ?? '')->toContain('aria-label="'.__('ui.notifications.label').'"');
+});

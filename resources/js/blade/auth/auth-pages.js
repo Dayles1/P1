@@ -8,6 +8,7 @@ import {
 } from '../shared/code-input';
 import { clearFieldErrors, showFieldErrors } from '../shared/forms';
 import { t } from '../shared/i18n';
+import { icon } from '../shared/icon';
 
 /**
  * ==========================================================================
@@ -22,9 +23,9 @@ import { t } from '../shared/i18n';
  * - forms
  * - API
  * - validation
- * - password visibility
  *
- * Theme находится в auth.js.
+ * Theme, language and the form controls (password reveal, strength
+ * meter) are wired in auth.js.
  */
 
 /*
@@ -282,25 +283,60 @@ function clearTransitionClasses() {
 |--------------------------------------------------------------------------
 | Activate page
 |--------------------------------------------------------------------------
+| The current page (state, data attribute, tab title) changes at once;
+| which section is on screen can lag behind it by one fade-out, see
+| animatePageChange().
 */
 
-function setActivePage(page) {
+function setCurrentPage(page) {
+    spa.dataset.currentPage = page;
+
+    state.currentPage = page;
+
+    const title = getPageElement(page)?.dataset.authTitle;
+
+    if (title) {
+        document.title = title;
+    }
+}
+
+function showPage(page) {
     pages.forEach((pageElement) => {
         pageElement.classList.toggle(
             'is-active',
             pageElement.dataset.authPage === page,
         );
     });
+}
 
-    spa.dataset.currentPage = page;
+function setActivePage(page) {
+    showPage(page);
 
-    state.currentPage = page;
+    setCurrentPage(page);
+}
+
+/**
+ * Moves focus to the heading of the screen that just came up, so the
+ * next Tab starts inside it and a screen reader announces it (the link
+ * that was clicked has just been hidden with the page it was on).
+ */
+function focusPageHeading(page) {
+    const heading = Array.from(
+        getPageElement(page)?.querySelectorAll('.auth-card__title') || [],
+    ).find((title) => !title.closest('[hidden]'));
+
+    if (heading) {
+        heading.setAttribute('tabindex', '-1');
+        heading.focus({ preventScroll: true });
+    }
 }
 
 /*
 |--------------------------------------------------------------------------
 | Reset transition
 |--------------------------------------------------------------------------
+| Also completes a transition cut short by a new one: the page being
+| left goes away and the current one is shown straight away.
 */
 
 function finishTransition() {
@@ -308,6 +344,10 @@ function finishTransition() {
         clearTimeout(state.transitionTimer);
 
         state.transitionTimer = null;
+    }
+
+    if (state.isTransitioning) {
+        showPage(state.currentPage);
     }
 
     clearTransitionClasses();
@@ -319,18 +359,15 @@ function finishTransition() {
 |--------------------------------------------------------------------------
 | Page transition
 |--------------------------------------------------------------------------
-|
-| Здесь нет:
-| - translateX
-| - translateY
-| - position:absolute
-| - изменения width
-| - изменения height
-|
-| Только opacity.
-|
-|--------------------------------------------------------------------------
+| Opacity only, one page at a time: the old page fades out where it
+| stands, then the new one replaces it and fades in. The two never
+| overlap, and the column only changes height at the moment nothing is
+| visible, so neither page jumps.
 */
+
+const PAGE_FADE_OUT_MS = 140;
+
+const PAGE_FADE_IN_MS = 220;
 
 function animatePageChange(from, to, direction) {
     const fromElement = getPageElement(from);
@@ -341,101 +378,58 @@ function animatePageChange(from, to, direction) {
         return;
     }
 
+    finishTransition();
+
     /*
     |--------------------------------------------------------------------------
-    | Same page
+    | Same page, or no motion wanted
     |--------------------------------------------------------------------------
     */
 
-    if (from === to || !fromElement) {
+    if (from === to || !fromElement || prefersReducedMotion()) {
         setActivePage(to);
+
+        if (from !== to) {
+            focusPageHeading(to);
+        }
 
         return;
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Stop previous transition
-    |--------------------------------------------------------------------------
-    */
-
-    finishTransition();
 
     state.isTransitioning = true;
 
-    /*
-    |--------------------------------------------------------------------------
-    | Direction state
-    |--------------------------------------------------------------------------
-    */
-
     viewport.dataset.direction = direction;
 
-    /*
-    |--------------------------------------------------------------------------
-    | Prepare target
-    |--------------------------------------------------------------------------
-    */
-
-    toElement.classList.remove('is-entering', 'is-leaving');
-
-    fromElement.classList.remove('is-entering', 'is-leaving');
+    setCurrentPage(to);
 
     /*
     |--------------------------------------------------------------------------
-    | Force style calculation
-    |--------------------------------------------------------------------------
-    */
-
-    void toElement.offsetWidth;
-
-    /*
-    |--------------------------------------------------------------------------
-    | Reduced motion
-    |--------------------------------------------------------------------------
-    */
-
-    if (prefersReducedMotion()) {
-        setActivePage(to);
-
-        finishTransition();
-
-        return;
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | New page
-    |--------------------------------------------------------------------------
-    */
-
-    toElement.classList.add('is-entering');
-
-    /*
-    |--------------------------------------------------------------------------
-    | Old page
+    | Old page fades out in place
     |--------------------------------------------------------------------------
     */
 
     fromElement.classList.add('is-leaving');
 
-    /*
-    |--------------------------------------------------------------------------
-    | Both are visible while fading
-    |--------------------------------------------------------------------------
-    */
-
-    setActivePage(to);
-
-    /*
-    |--------------------------------------------------------------------------
-    | Finish after CSS animation
-    |--------------------------------------------------------------------------
-    */
-
     state.transitionTimer = window.setTimeout(() => {
-        finishTransition();
-    }, 360);
+        /*
+        |----------------------------------------------------------------------
+        | New page takes its place and fades in
+        |----------------------------------------------------------------------
+        */
+
+        fromElement.classList.remove('is-leaving');
+
+        toElement.classList.add('is-entering');
+
+        showPage(to);
+
+        focusPageHeading(to);
+
+        state.transitionTimer = window.setTimeout(
+            finishTransition,
+            PAGE_FADE_IN_MS,
+        );
+    }, PAGE_FADE_OUT_MS);
 }
 
 /*
@@ -610,8 +604,63 @@ function getApiErrors(error) {
 |--------------------------------------------------------------------------
 */
 
+/**
+ * Field messages, aria-invalid, and both banners where this form's
+ * banners are shown (CSS hides an empty banner).
+ */
 function clearFormErrors(form) {
     clearFieldErrors(form);
+
+    bannerHost(form)
+        .querySelectorAll('[data-auth-banner] .alert__content')
+        .forEach((slot) => {
+            slot.replaceChildren();
+            slot.removeAttribute('data-visible');
+        });
+}
+
+/*
+|--------------------------------------------------------------------------
+| Form banners
+|--------------------------------------------------------------------------
+| One success and one error banner at the top of a form, drawn as the
+| shared `.alert`. The error banner's text slot is the form's
+| [data-field-error="general"]. A form that is not the first on its page
+| can send its banners up to the first one with
+| `data-auth-banners-in="<that form's data-auth-form>"`, so a message
+| sits under the page heading rather than between buttons.
+*/
+
+function bannerHost(form) {
+    const hostName = form.dataset.authBannersIn;
+
+    return (
+        (hostName &&
+            spa.querySelector(`[data-auth-form="${CSS.escape(hostName)}"]`)) ||
+        form
+    );
+}
+
+function formBanner(form, type) {
+    const isError = type === 'error';
+
+    const host = bannerHost(form);
+
+    let banner = host.querySelector(`[data-auth-banner="${type}"]`);
+
+    if (!banner) {
+        banner = document.createElement('div');
+        banner.className = `alert alert--${isError ? 'error' : 'success'} auth-alert`;
+        banner.dataset.authBanner = type;
+        banner.setAttribute('role', isError ? 'alert' : 'status');
+        banner.innerHTML = `
+            <span class="alert__icon">${icon(isError ? 'alert' : 'check', { size: 20 })}</span>
+            <div class="alert__content"${isError ? ' data-field-error="general"' : ''}></div>
+        `;
+        host.prepend(banner);
+    }
+
+    return banner.querySelector('.alert__content');
 }
 
 /*
@@ -619,8 +668,8 @@ function clearFormErrors(form) {
 | Show errors
 |--------------------------------------------------------------------------
 | Field messages go through the shared showFieldErrors(); a `general`
-| message (no single field to blame) gets a banner at the top of the form,
-| which is itself just another [data-field-error] slot.
+| message (no single field to blame), or one about a field this form
+| has no slot for, goes into the error banner instead of being lost.
 */
 
 function showFormErrors(form, errors) {
@@ -628,21 +677,38 @@ function showFormErrors(form, errors) {
 
     showFieldErrors(form, fields);
 
-    if (!general) {
+    const unplaced = Object.entries(fields).find(
+        ([field]) =>
+            !form.querySelector(`[data-field-error="${CSS.escape(field)}"]`),
+    );
+
+    const message = general || unplaced?.[1];
+
+    if (!message) {
         return;
     }
 
-    let banner = form.querySelector('[data-field-error="general"]');
+    const slot = formBanner(form, 'error');
 
-    if (!banner) {
-        banner = document.createElement('div');
-        banner.className = 'auth-form-error';
-        banner.dataset.fieldError = 'general';
-        form.prepend(banner);
+    slot.textContent = Array.isArray(message) ? message[0] : message;
+    slot.setAttribute('data-visible', 'true');
+}
+
+/**
+ * The API reports a mismatched repeat under `password`; the designs put
+ * it on the repeat field (the password itself may well be a good one),
+ * so it is caught here before anything is sent.
+ */
+function showPasswordMismatch(form, data) {
+    if ((data.password ?? '') === (data.password_confirmation ?? '')) {
+        return false;
     }
 
-    banner.textContent = Array.isArray(general) ? general[0] : general;
-    banner.setAttribute('data-visible', 'true');
+    showFormErrors(form, {
+        password_confirmation: [t('auth.passwords_mismatch')],
+    });
+
+    return true;
 }
 
 /*
@@ -651,14 +717,34 @@ function showFormErrors(form, errors) {
 |--------------------------------------------------------------------------
 */
 
+/**
+ * A busy submit button keeps its label and gets a spinner in front of it
+ * (`.btn[aria-busy]` also blocks further clicks); setupForms() ignores a
+ * submit while it is busy, which covers Enter in a field too.
+ */
 function setFormLoading(form, loading) {
     form.querySelectorAll('button[type="submit"]').forEach((button) => {
-        button.disabled = loading;
-
         button.classList.toggle('is-loading', loading);
 
         button.setAttribute('aria-busy', loading ? 'true' : 'false');
+
+        const spinner = button.querySelector(':scope > .spinner');
+
+        if (loading && !spinner) {
+            button.insertAdjacentHTML(
+                'afterbegin',
+                '<span class="spinner" aria-hidden="true"></span>',
+            );
+        } else if (!loading) {
+            spinner?.remove();
+        }
     });
+}
+
+function isFormBusy(form) {
+    return Boolean(
+        form.querySelector('button[type="submit"][aria-busy="true"]'),
+    );
 }
 
 /*
@@ -741,7 +827,20 @@ function storeTokenAndRedirect(response) {
     redirectAfterLogin();
 }
 
-/** Shows one `[data-auth-step]` within a page and hides its siblings. */
+/** Writes the address the visitor typed into a page's [data-auth-email] spots. */
+function showEmailIn(page, email) {
+    getPageElement(page)
+        ?.querySelectorAll('[data-auth-email]')
+        .forEach((element) => {
+            element.textContent = email || '';
+        });
+}
+
+/**
+ * Shows one `[data-auth-step]` within a page and hides its siblings,
+ * then puts focus in it: the first code box, or (going back) the
+ * first field — the button that was pressed has just been hidden.
+ */
 function showStep(page, step) {
     getPageElement(page)
         ?.querySelectorAll('[data-auth-step]')
@@ -755,10 +854,17 @@ function showStep(page, step) {
         );
 
         if (container) {
+            clearFormErrors(container.closest('form'));
             resetCodeInput(container);
             focusCodeInput(container);
         }
+
+        return;
     }
+
+    getPageElement(page)
+        ?.querySelector(`[data-auth-step="${step}"] input:not([type="hidden"])`)
+        ?.focus();
 }
 
 async function handleLogin(form) {
@@ -775,6 +881,7 @@ async function handleLogin(form) {
 
         if (response.data?.data?.requires_verification) {
             state.loginChallengeToken = response.data.data.challenge_token;
+            showEmailIn('login', data.email);
             showStep('login', 'verify');
             startCodeResendCountdown('login');
 
@@ -839,6 +946,7 @@ async function handleLoginCodeRequest(form) {
         );
 
         state.loginChallengeToken = response.data?.data?.challenge_token || '';
+        showEmailIn('login-code', data.email);
         showStep('login-code', 'verify');
         startCodeResendCountdown('login-code');
     } catch (error) {
@@ -890,12 +998,20 @@ async function resendCurrentLoginCode(button) {
         startResendCountdown(
             button,
             60,
-            (seconds) => t('auth.resend_in', { seconds }),
+            resendCountdownLabel,
             t('auth.resend_code'),
         );
     } catch {
         // Non-critical — the button just stays enabled and the user can retry.
     }
+}
+
+/** "Resend in 0:45" — the wait as m:ss. */
+function resendCountdownLabel(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const rest = String(seconds % 60).padStart(2, '0');
+
+    return t('auth.resend_in', { seconds: `${minutes}:${rest}` });
 }
 
 function startCodeResendCountdown(page) {
@@ -905,7 +1021,7 @@ function startCodeResendCountdown(page) {
         startResendCountdown(
             button,
             60,
-            (seconds) => t('auth.resend_in', { seconds }),
+            resendCountdownLabel,
             t('auth.resend_code'),
         );
     }
@@ -920,11 +1036,15 @@ function startCodeResendCountdown(page) {
 async function handleRegister(form) {
     clearFormErrors(form);
 
+    const data = serializeForm(form);
+
+    if (showPasswordMismatch(form, data)) {
+        return;
+    }
+
     setFormLoading(form, true);
 
     try {
-        const data = serializeForm(form);
-
         data.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
         const response = await apiRequest('POST', API.register, data);
@@ -939,6 +1059,8 @@ async function handleRegister(form) {
 
         state.emailChallengeToken =
             response.data?.data?.email_challenge_token || '';
+
+        setVerifyEmail(data.email);
 
         navigate('verify-email');
     } catch (error) {
@@ -966,17 +1088,9 @@ async function handleForgotPassword(form) {
 
         form.reset();
 
-        let success = form.querySelector('.auth-form-success');
-
-        if (!success) {
-            success = document.createElement('div');
-
-            success.className = 'auth-form-success';
-
-            form.prepend(success);
-        }
-
-        success.textContent = t('auth.forgot_password_sent');
+        formBanner(form, 'success').textContent = t(
+            'auth.forgot_password_sent',
+        );
     } catch (error) {
         showFormErrors(form, getApiErrors(error));
     } finally {
@@ -993,11 +1107,15 @@ async function handleForgotPassword(form) {
 async function handleResetPassword(form) {
     clearFormErrors(form);
 
+    const data = serializeForm(form);
+
+    if (showPasswordMismatch(form, data)) {
+        return;
+    }
+
     setFormLoading(form, true);
 
     try {
-        const data = serializeForm(form);
-
         data.token = state.resetToken;
 
         if (!data.email && state.resetEmail) {
@@ -1005,6 +1123,11 @@ async function handleResetPassword(form) {
         }
 
         await apiRequest('POST', API['reset-password'], data);
+
+        showStatusBanner(
+            getPageElement('login')?.querySelector('[data-auth-form="login"]'),
+            t('auth.status_reset'),
+        );
 
         navigate('login');
     } catch (error) {
@@ -1038,7 +1161,10 @@ async function handleConfirmPassword(form) {
 
         const params = new URLSearchParams(window.location.search);
 
-        window.location.href = params.get('redirect') || '/profile';
+        window.location.href = sanitizeRedirect(
+            params.get('redirect'),
+            '/profile',
+        );
     } catch (error) {
         showFormErrors(form, getApiErrors(error));
     } finally {
@@ -1069,21 +1195,65 @@ async function handleVerificationNotification(form) {
         state.emailChallengeToken =
             response.data?.data?.email_challenge_token || '';
 
-        let success = form.querySelector('.auth-form-success');
+        setVerifyEmail(data.email);
 
-        if (!success) {
-            success = document.createElement('div');
+        formBanner(form, 'success').textContent = t('auth.verification_sent');
+    } catch (error) {
+        const errors = getApiErrors(error);
 
-            success.className = 'auth-form-success';
-
-            form.prepend(success);
+        // The address field is hidden once known — bring it back when the
+        // server has something to say about it.
+        if (errors.email) {
+            getPageElement('verify-email')
+                ?.querySelector('[data-verify-email-field]')
+                ?.removeAttribute('hidden');
         }
 
-        success.textContent = t('auth.verification_sent');
-    } catch (error) {
-        showFormErrors(form, getApiErrors(error));
+        showFormErrors(form, errors);
     } finally {
         setFormLoading(form, false);
+    }
+}
+
+/**
+ * Once the address is known (just registered, just resent, or the
+ * signed-in account's), the page names it and stops asking for it; the
+ * resend form still posts it from the now hidden field.
+ */
+function setVerifyEmail(email) {
+    const page = getPageElement('verify-email');
+
+    if (!page || !email) {
+        return;
+    }
+
+    showEmailIn('verify-email', email);
+
+    page.querySelectorAll('[data-verify-text]').forEach((element) => {
+        element.hidden = element.dataset.verifyText !== 'email';
+    });
+
+    const input = page.querySelector('#verification-email');
+
+    if (input) {
+        input.value = email;
+    }
+
+    page.querySelector('[data-verify-email-field]')?.setAttribute('hidden', '');
+}
+
+/** A signed-in visitor on /verify-email: fill in their own address. */
+async function prefillVerifyEmail() {
+    if (getPageFromLocation() !== 'verify-email' || !getAuthToken()) {
+        return;
+    }
+
+    try {
+        const { data } = await apiRequest('GET', '/api/auth/me');
+
+        setVerifyEmail(data?.data?.user?.email || '');
+    } catch {
+        // Not critical — the page just keeps asking for the address.
     }
 }
 
@@ -1135,9 +1305,7 @@ function setupForms() {
 
         event.preventDefault();
 
-        const submitButton = form.querySelector('button[type="submit"]');
-
-        if (submitButton?.disabled) {
+        if (isFormBusy(form)) {
             return;
         }
 
@@ -1184,47 +1352,6 @@ function setupForms() {
                 await handleConfirmPassword(form);
                 break;
         }
-    });
-}
-
-/*
-|--------------------------------------------------------------------------
-| Password visibility
-|--------------------------------------------------------------------------
-*/
-
-function setupPasswordToggles() {
-    spa.addEventListener('click', (event) => {
-        const button = event.target.closest('[data-password-toggle]');
-
-        if (!button) {
-            return;
-        }
-
-        event.preventDefault();
-
-        const inputId = button.dataset.passwordToggle;
-
-        if (!inputId) {
-            return;
-        }
-
-        const input = document.getElementById(inputId);
-
-        if (!input) {
-            return;
-        }
-
-        const visible = input.type === 'text';
-
-        input.type = visible ? 'password' : 'text';
-
-        button.setAttribute(
-            'aria-label',
-            visible ? t('auth.show_password') : t('auth.hide_password'),
-        );
-
-        button.setAttribute('aria-pressed', visible ? 'false' : 'true');
     });
 }
 
@@ -1341,19 +1468,7 @@ function showStatusBanner(form, message, isError = false) {
         return;
     }
 
-    const className = isError ? 'auth-form-error' : 'auth-form-success';
-
-    let banner = form.querySelector(`.${className}`);
-
-    if (!banner) {
-        banner = document.createElement('div');
-
-        banner.className = className;
-
-        form.prepend(banner);
-    }
-
-    banner.textContent = message;
+    formBanner(form, isError ? 'error' : 'success').textContent = message;
 }
 
 function showQueryStatusBanners() {
@@ -1399,39 +1514,61 @@ function showQueryStatusBanners() {
 |
 */
 
-const GUEST_ONLY_PAGES = [
-    'login',
-    'login-code',
-    'register',
-    'forgot-password',
-    'reset-password',
-];
+/**
+ * A signed-in visitor is sent on from these. A reset link is not one
+ * of them: a signed-in visitor can ask for one too (confirm-password
+ * offers "Forgot password?"), and opening it must not bounce them to
+ * the dashboard before they can set the new password.
+ */
+const GUEST_ONLY_PAGES = ['login', 'login-code', 'register', 'forgot-password'];
 
 const AUTH_ONLY_PAGES = ['confirm-password'];
 
+/** Pages that are never where a sign-in lands (see sanitizeRedirect). */
+const NO_RETURN_PAGES = [...GUEST_ONLY_PAGES, 'reset-password'];
+
 /**
- * Every guest-only page's actual URL (not just its page key) — a
+ * Every no-return page's actual URL (not just its page key) — a
  * `?redirect=` value pointing back at one of these is never honored,
  * otherwise a stale or crafted `redirect=/login` sends someone right
  * back to the login screen immediately after successfully signing in.
- * Combined with rejecting anything that isn't a same-origin path
- * (`startsWith('/')`, and not `//` which browsers treat as protocol-
- * relative), this is the fix for the "sent back to a guest page after
- * login" bug.
+ * Only a same-origin path is ever followed. A plain `startsWith('/')`
+ * check is not enough: browsers read a backslash as a slash (so
+ * "/" + "\" + "evil.com" is `//evil.com`) and drop tabs and newlines
+ * inside a URL, which turns "/<tab>/evil.com" into the protocol-relative
+ * `//evil.com`, and a `javascript:` value would run script. So the
+ * value is parsed as a URL against this origin and dropped unless it
+ * resolves back to the same origin.
  */
 function sanitizeRedirect(path, fallback) {
-    if (!path || !path.startsWith('/') || path.startsWith('//')) {
+    if (
+        !path ||
+        !path.startsWith('/') ||
+        path.startsWith('//') ||
+        path.includes('\\')
+    ) {
         return fallback;
     }
 
-    const bare = path.split('?')[0].split('#')[0];
-    const guestUrls = GUEST_ONLY_PAGES.map((page) => getUrlForPage(page));
+    let url;
 
-    if (guestUrls.includes(bare)) {
+    try {
+        url = new URL(path, window.location.origin);
+    } catch {
         return fallback;
     }
 
-    return path;
+    if (url.origin !== window.location.origin) {
+        return fallback;
+    }
+
+    const guestUrls = NO_RETURN_PAGES.map((page) => getUrlForPage(page));
+
+    if (guestUrls.includes(url.pathname)) {
+        return fallback;
+    }
+
+    return url.pathname + url.search + url.hash;
 }
 
 async function guardAuthPage() {
@@ -1478,8 +1615,6 @@ function init() {
 
     setupForms();
 
-    setupPasswordToggles();
-
     setupCodeInputs();
 
     setupStepControls();
@@ -1487,6 +1622,8 @@ function init() {
     showQueryStatusBanners();
 
     guardAuthPage();
+
+    prefillVerifyEmail();
 }
 
 init();

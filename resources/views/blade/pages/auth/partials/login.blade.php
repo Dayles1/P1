@@ -1,214 +1,106 @@
 <div class="auth-card">
 
-    <div data-auth-step="password">
+    {{-- STEP 1: e-mail + password --}}
+    <div class="auth-step" data-auth-step="password">
 
-    <div class="auth-card__header">
+        <div class="auth-card__header">
+            <h1 class="auth-card__title">{{ __('ui.auth.login.title') }}</h1>
+            <p class="auth-card__subtitle">{{ __('ui.auth.login.subtitle') }}</p>
+        </div>
 
-        <h1>
-            Welcome back
-        </h1>
+        <form class="auth-form" data-auth-form="login" novalidate>
+            @csrf
 
-        <p>
-            Sign in to your account to continue.
+            <x-blade.u-i.input
+                id="login-email"
+                type="email"
+                name="email"
+                icon="mail"
+                :label="__('ui.auth.email')"
+                :placeholder="__('ui.auth.email_placeholder')"
+                autocomplete="email"
+                aria-required="true"
+            />
+
+            <x-blade.u-i.password-input
+                id="login-password"
+                aria-describedby="login-password-error"
+                name="password"
+                :label="__('ui.auth.password')"
+                :placeholder="__('ui.auth.password_placeholder')"
+                autocomplete="current-password"
+                aria-required="true"
+            />
+
+            <div class="auth-form__options">
+                <x-blade.u-i.checkbox name="remember" value="1">
+                    {{ __('ui.auth.login.remember') }}
+                </x-blade.u-i.checkbox>
+
+                <a href="/forgot-password" class="auth-link" data-auth-link="forgot-password">
+                    {{ __('ui.auth.login.forgot') }}
+                </a>
+            </div>
+
+            <x-blade.u-i.button type="submit" size="lg" block>
+                {{ __('ui.auth.login.submit') }}
+            </x-blade.u-i.button>
+
+            <div class="auth-divider" role="separator">{{ __('ui.auth.or') }}</div>
+
+            <x-blade.u-i.button href="/login/code" variant="outline" size="lg" icon="mail" block data-auth-link="login-code">
+                {{ __('ui.auth.login.with_code') }}
+            </x-blade.u-i.button>
+        </form>
+
+        <p class="auth-card__footer">
+            {{ __('ui.auth.login.no_account') }}
+            <a href="/register" class="auth-link" data-auth-link="register">{{ __('ui.auth.login.register') }}</a>
         </p>
 
     </div>
 
 
-    <form
-        class="auth-form"
-        data-auth-form="login"
-        novalidate
-    >
+    {{--
+        STEP 2: the e-mailed code, shown after a correct password when
+        the account asks for a code on every sign-in.
+    --}}
+    <div class="auth-step" data-auth-step="verify" hidden>
 
-        @csrf
-
-
-        {{-- EMAIL --}}
-        <div class="field-group">
-
-            <label
-                for="login-email"
-                class="field-label"
-            >
-                Email address
-            </label>
-
-            <input
-                id="login-email"
-                type="email"
-                name="email"
-                class="field-input"
-                placeholder="you@example.com"
-                autocomplete="email"
-                required
-            >
-
-            <span
-                class="field-error"
-                data-field-error="email"
-            ></span>
-
-        </div>
-
-
-        {{-- PASSWORD --}}
-        <div class="field-group">
-
-            <label
-                for="login-password"
-                class="field-label"
-            >
-                Password
-            </label>
-
-
-            <div class="field-control">
-
-                <input
-                    id="login-password"
-                    type="password"
-                    name="password"
-                    class="field-input"
-                    placeholder="Enter your password"
-                    autocomplete="current-password"
-                    required
-                >
-
-
-                <button
-                    type="button"
-                    class="password-toggle"
-                    data-password-toggle="login-password"
-                    aria-label="Show password"
-                >
-                    <x-blade.u-i.icon name="eye" size="18" />
-                </button>
-
-            </div>
-
-
-            <span
-                class="field-error"
-                data-field-error="password"
-            ></span>
-
-        </div>
-
-
-        {{-- OPTIONS --}}
-        <div class="auth-form__options">
-
-            <label class="auth-checkbox">
-
-                <input
-                    type="checkbox"
-                    name="remember"
-                    value="1"
-                >
-
-                <span>
-                    Remember me
-                </span>
-
-            </label>
-
-
-            <a
-                href="/forgot-password"
-                class="auth-link"
-                data-auth-link="forgot-password"
-            >
-                Forgot password?
-            </a>
-
-        </div>
-
-
-        {{-- SUBMIT --}}
-        <button
-            type="submit"
-            class="auth-button"
-        >
-
-            <span class="auth-button__text">
-                Sign in
-            </span>
-
-            <span
-                class="auth-button__loader"
-                aria-hidden="true"
-            ></span>
-
-        </button>
-
-
-        {{-- ONE-TIME CODE --}}
-        <div class="auth-page-switch">
-
-            <a
-                href="/login/code"
-                class="auth-link"
-                data-auth-link="login-code"
-            >
-                Login with one-time code
-            </a>
-
-        </div>
-
-
-        {{-- REGISTER --}}
-        <div class="auth-page-switch">
-
-            Don't have an account?
-
-            <a
-                href="/register"
-                class="auth-link"
-                data-auth-link="register"
-            >
-                Sign up
-            </a>
-
-        </div>
-
-    </form>
-
-    </div>
-
-
-    {{-- =====================================================
-         VERIFICATION STEP (shown after a correct password when
-         the account has "require a code on every login" on)
-         ===================================================== --}}
-
-    <div data-auth-step="verify" hidden>
+        <span class="auth-card__icon">
+            <x-blade.u-i.icon name="mail" size="26" />
+        </span>
 
         <div class="auth-card__header">
-            <h1>Enter verification code</h1>
-            <p>We've sent a 6-digit code to your email.</p>
+            <h1 class="auth-card__title" id="login-verify-title">{{ __('ui.auth.two_factor.title') }}</h1>
+            <p class="auth-card__subtitle" id="login-verify-text">
+                @include('blade.pages.auth.partials._email-sentence', ['key' => 'ui.auth.two_factor.text'])
+            </p>
         </div>
 
         <form class="auth-form" data-auth-form="login-verify" novalidate>
+            @include('blade.pages.auth.partials._code-input', [
+                'labelledBy' => 'login-verify-title',
+                'describedBy' => 'login-verify-text login-verify-code-error',
+            ])
 
-            @include('blade.pages.auth.partials._code-input')
+            <span class="field-error" id="login-verify-code-error" role="alert" data-field-error="code"></span>
 
-            <span class="field-error text-center" data-field-error="code"></span>
-
-            <button type="submit" class="auth-button">
-                <span class="auth-button__text">Verify &amp; sign in</span>
-                <span class="auth-button__loader" aria-hidden="true"></span>
-            </button>
-
-            <div class="auth-page-switch">
-                <button type="button" class="auth-link" data-resend-code>Resend code</button>
+            <div class="auth-form__resend">
+                <button type="button" class="auth-resend" data-resend-code>{{ __('ui.auth.resend_code') }}</button>
             </div>
 
-            <div class="auth-page-switch">
-                <button type="button" class="auth-step-back" data-back-to-password><x-blade.u-i.icon name="back" size="16" /> Back to sign in</button>
-            </div>
-
+            <x-blade.u-i.button type="submit" size="lg" block>
+                {{ __('ui.auth.two_factor.submit') }}
+            </x-blade.u-i.button>
         </form>
+
+        <p class="auth-card__footer">
+            <button type="button" class="auth-link auth-link--back" data-back-to-password>
+                <x-blade.u-i.icon name="arrow" size="16" />
+                {{ __('ui.auth.back_to_login') }}
+            </button>
+        </p>
 
     </div>
 

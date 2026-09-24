@@ -5,6 +5,7 @@ import { t } from './i18n';
 import {
     markNotificationReadAndOpen,
     notificationItemHtml,
+    pluralKey,
 } from './notification-renderers';
 import { playNotificationSound } from './notification-sound';
 import { emptyState } from './skeleton';
@@ -58,10 +59,19 @@ export function initNotificationBell(api, user) {
             }
         });
 
+        // "1 новое" / "3 новых" / "5 новых" — the plural form for the count.
         document.querySelectorAll('[data-notif-new-count]').forEach((el) => {
             el.hidden = unreadCount === 0;
-            el.textContent = t('notifications.new_count', { count: label });
+            el.textContent = t(
+                pluralKey('notifications.new_count_forms', unreadCount),
+                { count: label },
+            );
         });
+
+        // "Read all" has nothing to do once everything is read.
+        if (markAllBtn) {
+            markAllBtn.disabled = unreadCount === 0;
+        }
     }
 
     function maybeAlert(notification) {

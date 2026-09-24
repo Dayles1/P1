@@ -14,6 +14,10 @@
 @php
     $inputId = $id ?? 'field-'.\Illuminate\Support\Str::random(8);
     $message = $error ?? ($name ? ($errors ?? null)?->first($name) : null);
+    $describedBy = collect([
+        $hint ? "{$inputId}-hint" : null,
+        $name ? "{$inputId}-error" : null,
+    ])->filter()->implode(' ');
 @endphp
 
 <x-blade.u-i.field :label="$label" :for="$inputId" :name="$name" :hint="$hint" :error="$message" :required="$required">
@@ -25,7 +29,7 @@
             name="{{ $name }}"
             @if ($required) required @endif
             @if ($message) aria-invalid="true" @endif
-            {{ $attributes->class(['field-box__input'])->merge(['autocomplete' => 'current-password']) }}
+            {{ $attributes->class(['field-box__input'])->merge(array_filter(['autocomplete' => 'current-password', 'aria-describedby' => $describedBy])) }}
         >
         <button type="button" class="field-box__action" data-password-reveal aria-pressed="false" aria-label="{{ __('ui.components.show_password') }}">
             <x-blade.u-i.icon name="eye" size="18" />

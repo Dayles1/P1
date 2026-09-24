@@ -195,3 +195,27 @@ test('no component writes inline styles', function (string $template) {
     '<x-blade.u-i.status state="online">x</x-blade.u-i.status>',
     '<x-blade.feedback.alert type="warning" title="t">x</x-blade.feedback.alert>',
 ]);
+
+test('a password input is described by its hint and error slot', function () {
+    $html = renderBlade('<x-blade.u-i.password-input id="pw" name="password" hint="At least 8 characters" />');
+
+    expect($html)->toContain('aria-describedby="pw-hint pw-error"')
+        ->and($html)->toContain('id="pw-error"');
+});
+
+test('an explicit aria-describedby on a password input wins over the default', function () {
+    $html = renderBlade('<x-blade.u-i.password-input id="pw" name="password" aria-describedby="custom" />');
+
+    expect($html)->toContain('aria-describedby="custom"')
+        ->and($html)->not->toContain('aria-describedby="pw-error"');
+});
+
+test('a dropdown can present its panel as a dialog', function () {
+    $html = renderBlade('<x-blade.u-i.dropdown menu-role="dialog" label="Notifications"><x-slot:trigger>x</x-slot:trigger> body</x-blade.u-i.dropdown>');
+
+    expect($html)->toContain('role="dialog"')
+        ->and($html)->toContain('aria-haspopup="dialog"')
+        ->and($html)->toMatch('/role="dialog"\s+aria-label="Notifications"/')
+        ->and(renderBlade('<x-blade.u-i.dropdown><x-slot:trigger>x</x-slot:trigger> y</x-blade.u-i.dropdown>'))
+        ->toContain('role="menu"');
+});

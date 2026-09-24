@@ -76,6 +76,7 @@
     }
 
     .notif-popover__title {
+        margin: 0;
         font-size: 16px;
         font-weight: var(--weight-semibold);
     }
@@ -89,6 +90,15 @@
 
     .notif-popover__action:hover {
         color: var(--ui-primary-hover);
+    }
+
+    /* Nothing to read: the "N new" pill is hidden exactly when the
+       unread count is zero (shared/notification-bell.js). */
+    .notif-popover__action:disabled,
+    .notif-popover__header:has(> [data-notif-new-count][hidden])
+        .notif-popover__action {
+        color: var(--ui-text-muted);
+        cursor: default;
     }
 
     .notif-popover__footer {
@@ -107,6 +117,8 @@
     }
 
     .notif-popover .notif-list {
+        min-width: 0;
+        max-width: none;
         max-height: 420px;
         overflow-y: auto;
     }
@@ -116,8 +128,30 @@
         border-radius: 0;
     }
 
+    /* The panel is the frame — no dashed box inside it. */
     .notif-popover .empty-state {
-        margin: var(--space-3);
+        margin: 0;
+        padding: var(--space-8) var(--space-4);
+        border: 0;
+        border-top: 1px solid var(--ui-border);
+        border-radius: 0;
+    }
+
+    /* Phone: anchored under the bell, 400px ran off the left edge — span
+       the viewport instead, just below the 60px phone header. */
+    @media (max-width: 639px) {
+        .dropdown__menu.notif-popover {
+            position: fixed;
+            top: calc(60px + var(--space-2));
+            right: var(--space-3);
+            left: var(--space-3);
+            width: auto;
+            max-width: none;
+        }
+
+        .notif-popover .notif-list {
+            max-height: 60dvh;
+        }
     }
 
     /* Public site header dropdown keeps its narrower list. */
@@ -137,6 +171,11 @@
 
     /* =========================================================
        NOTIFICATION ITEM (popover + Notification Center)
+       -----------------------------------------------------------
+       Rendered by shared/notification-renderers.js:
+       icon · one line of text ("<b>Name</b> mentioned you in «Chat»")
+       over a meta line (time, or "module · time") · unread dot.
+       The Notification Center enlarges it (pages/notifications.css).
        ========================================================= */
     .notif-item {
         display: flex;
@@ -154,9 +193,32 @@
         background: var(--ui-surface-soft);
     }
 
-    .notif-item--unread,
-    .notif-item--unread:hover {
+    .notif-item:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: -2px;
+    }
+
+    .notif-item--unread {
         background: var(--ui-primary-soft);
+    }
+
+    /* A touch more of the accent than the resting unread tint. */
+    .notif-item--unread:hover {
+        background: color-mix(
+            in srgb,
+            var(--ui-primary) 8%,
+            var(--ui-primary-soft)
+        );
+    }
+
+    /* Dark: the border and the unread tint have almost the same
+       luminance, so dividers between unread rows take a little accent. */
+    [data-theme='dark'] .notif-item--unread {
+        border-top-color: color-mix(
+            in srgb,
+            var(--ui-primary) 22%,
+            var(--ui-border)
+        );
     }
 
     .notif-item__icon {
@@ -166,8 +228,8 @@
         width: 34px;
         height: 34px;
         border-radius: var(--ui-radius-sm);
-        background: var(--hue-violet-bg);
-        color: var(--hue-violet);
+        background: var(--hue-amber-bg);
+        color: var(--hue-amber);
     }
 
     .notif-item--mention .notif-item__icon {
@@ -188,25 +250,24 @@
         min-width: 0;
     }
 
-    .notif-item__title {
-        font-size: 13.5px;
-        font-weight: var(--weight-semibold);
-        line-height: 1.4;
-    }
-
     .notif-item__text {
         display: -webkit-box;
         overflow: hidden;
-        color: var(--ui-text-secondary);
-        font-size: var(--text-sm);
+        font-size: 13.5px;
         line-height: 1.4;
+        overflow-wrap: anywhere;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
     }
 
-    .notif-item__time {
+    .notif-item__text strong {
+        font-weight: var(--weight-semibold);
+    }
+
+    .notif-item__meta {
         color: var(--ui-text-secondary);
         font-size: 12px;
+        line-height: 1.3;
     }
 
     .notif-item__dot {
@@ -216,12 +277,5 @@
         margin-top: 6px;
         border-radius: var(--ui-radius-full);
         background: var(--ui-primary);
-    }
-
-    .notif-filter-bar {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 16px;
     }
 }
