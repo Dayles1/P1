@@ -36,6 +36,7 @@ class UserSettingResource extends JsonResource
             'favorite_currency_ids' => $this->favorite_currency_ids ?? [],
             'locale' => $this->locale,
             'theme' => $this->theme,
+            'accent' => $this->accent,
             'date_format' => $this->date_format,
             'time_format' => $this->time_format,
             'meta' => $this->meta,

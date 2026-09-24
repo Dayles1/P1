@@ -85,8 +85,8 @@
 
         @include('blade.sections.settings-nav', ['group' => $current, 'section' => $section])
 
-        <div style="flex:1; min-width:0;">
-            <a class="settings-back-btn" href="{{ $current['index'] }}">&larr; {{ __('ui.common.back') }}</a>
+        <div class="grow">
+            <a class="settings-back-btn" href="{{ $current['index'] }}"><x-blade.u-i.icon name="back" size="16" /> {{ __('ui.common.back') }}</a>
 
             <div
                 class="settings-panel"

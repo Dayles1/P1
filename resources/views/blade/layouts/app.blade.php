@@ -20,9 +20,8 @@
     @include('blade.sections.theme-bootstrap')
     @include('blade.sections.i18n-bootstrap')
 
-
+    @fonts
     @vite([
-        'resources/css/app.css',
         'resources/css/blade/app/app.css',
         'resources/js/blade/app/app.js',
     ])
@@ -32,6 +31,7 @@
 
 
 <body>
+    @include('blade.sections.icons')
 
     <div class="site-layout">
 

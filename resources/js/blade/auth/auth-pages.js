@@ -6,6 +6,7 @@ import {
     resetCodeInput,
     startResendCountdown,
 } from '../shared/code-input';
+import { clearFieldErrors, showFieldErrors } from '../shared/forms';
 import { t } from '../shared/i18n';
 
 /**
@@ -610,85 +611,38 @@ function getApiErrors(error) {
 */
 
 function clearFormErrors(form) {
-    form.querySelectorAll('.form-error').forEach((element) => {
-        element.textContent = '';
-
-        element.removeAttribute('data-visible');
-    });
-
-    form.querySelectorAll('.form-input').forEach((element) => {
-        element.classList.remove('is-invalid');
-    });
-
-    const general = form.querySelector('[data-error-general]');
-
-    if (general) {
-        general.textContent = '';
-
-        general.removeAttribute('data-visible');
-    }
+    clearFieldErrors(form);
 }
 
 /*
 |--------------------------------------------------------------------------
 | Show errors
 |--------------------------------------------------------------------------
+| Field messages go through the shared showFieldErrors(); a `general`
+| message (no single field to blame) gets a banner at the top of the form,
+| which is itself just another [data-field-error] slot.
 */
 
 function showFormErrors(form, errors) {
-    clearFormErrors(form);
+    const { general, ...fields } = errors;
 
-    Object.entries(errors).forEach(([field, messages]) => {
-        const message = Array.isArray(messages) ? messages[0] : messages;
+    showFieldErrors(form, fields);
 
-        /*
-                |--------------------------------------------------------------------------
-                | General error
-                |--------------------------------------------------------------------------
-                */
+    if (!general) {
+        return;
+    }
 
-        if (field === 'general') {
-            let general = form.querySelector('[data-error-general]');
+    let banner = form.querySelector('[data-field-error="general"]');
 
-            if (!general) {
-                general = document.createElement('div');
+    if (!banner) {
+        banner = document.createElement('div');
+        banner.className = 'auth-form-error';
+        banner.dataset.fieldError = 'general';
+        form.prepend(banner);
+    }
 
-                general.className = 'auth-form-error';
-
-                general.dataset.errorGeneral = 'true';
-
-                form.prepend(general);
-            }
-
-            general.textContent = message;
-
-            general.setAttribute('data-visible', 'true');
-
-            return;
-        }
-
-        /*
-                |--------------------------------------------------------------------------
-                | Input
-                |--------------------------------------------------------------------------
-                */
-
-        const input = form.querySelector(`[name="${CSS.escape(field)}"]`);
-
-        const errorElement = form.querySelector(
-            `[data-error-for="${CSS.escape(field)}"]`,
-        );
-
-        if (input) {
-            input.classList.add('is-invalid');
-        }
-
-        if (errorElement) {
-            errorElement.textContent = message;
-
-            errorElement.setAttribute('data-visible', 'true');
-        }
-    });
+    banner.textContent = Array.isArray(general) ? general[0] : general;
+    banner.setAttribute('data-visible', 'true');
 }
 
 /*

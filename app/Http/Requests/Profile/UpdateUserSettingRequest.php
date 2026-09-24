@@ -49,6 +49,11 @@ class UpdateUserSettingRequest extends FormRequest
                 Rule::in(ThemeCatalog::codes()),
             ],
 
+            'accent' => [
+                'nullable',
+                Rule::in(ThemeCatalog::accents()),
+            ],
+
             'date_format' => [
                 'nullable',
                 Rule::in(array_keys(UserDateFormatter::availableDateFormats())),

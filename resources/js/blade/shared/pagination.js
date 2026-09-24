@@ -1,4 +1,5 @@
 import { t } from './i18n';
+import { icon } from './icon';
 
 /**
  * Renders numbered pagination controls from the `pagination` meta object
@@ -21,7 +22,13 @@ export function renderPagination(container, pagination, onPage) {
 
     container.hidden = false;
 
-    const { current_page: current, last_page: last, total } = pagination;
+    const {
+        current_page: current,
+        last_page: last,
+        total,
+        from,
+        to,
+    } = pagination;
 
     const pages = pageWindow(current, last);
 
@@ -30,27 +37,34 @@ export function renderPagination(container, pagination, onPage) {
         label = page,
         active = false,
         disabled = false,
+        ariaLabel = null,
     ) => `
         <button
             type="button"
             class="pagination__btn ${active ? 'pagination__btn--active' : ''}"
             data-page="${page}"
+            ${active ? 'aria-current="page"' : ''}
+            ${ariaLabel ? `aria-label="${ariaLabel}"` : ''}
             ${disabled ? 'disabled' : ''}
         >${label}</button>
     `;
 
     container.innerHTML = `
-        <span>${t('common.total_items', { count: total })}</span>
+        <span class="pagination__info">${
+            from && to
+                ? t('components.showing', { from, to, total })
+                : t('common.total_items', { count: total })
+        }</span>
         <div class="pagination__controls">
-            ${pageButton(current - 1, '‹', false, current <= 1)}
+            ${pageButton(current - 1, icon('left', { size: 16 }), false, current <= 1, t('components.previous'))}
             ${pages
                 .map((page) =>
                     page === '…'
-                        ? '<span class="pagination__btn" style="border:none;background:none;cursor:default;">…</span>'
+                        ? '<span class="pagination__btn pagination__ellipsis" aria-hidden="true">…</span>'
                         : pageButton(page, page, page === current),
                 )
                 .join('')}
-            ${pageButton(current + 1, '›', false, current >= last)}
+            ${pageButton(current + 1, icon('chev', { size: 16 }), false, current >= last, t('components.next'))}
         </div>
     `;
 

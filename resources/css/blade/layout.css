@@ -1,0 +1,579 @@
+@layer layout {
+    :root {
+        --ui-container: 1160px;
+    }
+
+    /* =========================================================
+       LAYOUT
+       ========================================================= */
+    .site-layout {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .site-main {
+        flex: 1;
+    }
+
+    .site-main__inner {
+        width: 100%;
+        max-width: var(--ui-container);
+        margin: 0 auto;
+        padding: 40px 24px 80px;
+    }
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        flex-shrink: 0;
+        background: var(--ui-surface);
+        border-bottom: 1px solid var(--ui-border);
+        transition:
+            background 220ms ease,
+            border-color 220ms ease;
+    }
+
+    .site-header__inner {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        width: 100%;
+        max-width: var(--ui-container);
+        height: var(--ui-header-height);
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+
+    .site-header__actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-left: auto;
+    }
+
+    .site-header__guest,
+    .site-header__user {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .site-header__guest[hidden],
+    .site-header__user[hidden] {
+        display: none;
+    }
+
+    /* =========================================================
+       NAVBAR
+       ========================================================= */
+    .navbar {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .nav-link {
+        padding: 8px 14px;
+        border-radius: var(--ui-radius-sm);
+        color: var(--ui-text-secondary);
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        transition:
+            background 160ms ease,
+            color 160ms ease;
+    }
+
+    .nav-link:hover {
+        background: var(--ui-surface-soft);
+        color: var(--ui-text);
+    }
+
+    .nav-link--active {
+        color: var(--ui-primary);
+    }
+
+    .site-mobile-nav {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        padding: 12px 24px 20px;
+        border-top: 1px solid var(--ui-border);
+    }
+
+    .site-mobile-nav .nav-link {
+        width: 100%;
+    }
+
+    .site-header__burger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 4px;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius-sm);
+        background: var(--ui-surface);
+        cursor: pointer;
+    }
+
+    .site-header__burger span {
+        display: block;
+        margin: 0 auto;
+        width: 18px;
+        height: 2px;
+        background: var(--ui-text);
+        border-radius: 1px;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+    .site-footer {
+        border-top: 1px solid var(--ui-border);
+        background: var(--ui-surface-soft);
+        transition:
+            background 220ms ease,
+            border-color 220ms ease;
+    }
+
+    .site-footer__inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 32px;
+        width: 100%;
+        max-width: var(--ui-container);
+        margin: 0 auto;
+        padding: 48px 24px;
+    }
+
+    .site-footer__brand {
+        max-width: 360px;
+    }
+
+    .site-footer__tagline {
+        margin: 14px 0 0;
+        color: var(--ui-text-secondary);
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .site-footer__links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .site-footer__links a {
+        color: var(--ui-text-secondary);
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .site-footer__links a:hover {
+        color: var(--ui-text);
+    }
+
+    .site-footer__bottom {
+        padding: 18px 24px;
+        border-top: 1px solid var(--ui-border);
+        color: var(--ui-text-muted);
+        font-size: 12px;
+        text-align: center;
+    }
+
+    /* =========================================================
+       APP SHELL (authenticated layout)
+       -----------------------------------------------------------
+       A real fixed-viewport application shell, not a page that happens to be
+       tall: <html>/<body> never scroll. The shell is a row (sidebar, then a
+       column of header + main + phone tab bar) with `min-height: 0` /
+       `min-width: 0` at every level — a flex child defaults to
+       `min-height: auto` and would otherwise push its overflow up to the
+       page instead of scrolling in place as its own island.
+
+       Breakpoints (tokens.css): < 640 phone — tab bar, no sidebar;
+       640–1199 — 72px icon rail; ≥ 1200 — 248px sidebar with labels;
+       ≥ 2560 — the whole shell zooms to 150%.
+       ========================================================= */
+    html.app-shell-html,
+    html.app-shell-html body {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .app-shell {
+        display: flex;
+        height: 100vh;
+        height: 100dvh;
+    }
+
+    .app-shell__main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        min-height: 0;
+    }
+
+    .app-main {
+        flex: 1;
+        min-width: 0;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    /* Full-bleed pages (chat) manage their own internal scrolling entirely —
+       the shell must not also try to scroll them, or you get the classic
+       double-scrollbar/height-fights-itself bug. */
+    .app-main[data-full-bleed] {
+        overflow: hidden;
+    }
+
+    .app-main__inner {
+        flex: 1;
+        min-height: 0;
+        width: 100%;
+        padding: 28px 28px 64px;
+    }
+
+    .app-main__inner--narrow {
+        max-width: 760px;
+    }
+
+    .app-main__inner--full-bleed {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        min-height: 0;
+    }
+
+    /* =========================================================
+       SIDEBAR
+       ========================================================= */
+    .app-sidebar {
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        width: var(--ui-sidebar-width);
+        padding: 14px 12px;
+        overflow-y: auto;
+        background: var(--ui-surface);
+        border-right: 1px solid var(--ui-border);
+    }
+
+    .sidebar-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: var(--control-md);
+        margin-bottom: 14px;
+        padding: 0 8px 0 6px;
+        border-radius: var(--ui-radius-sm);
+        color: var(--ui-text);
+    }
+
+    .sidebar-brand__mark {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 9px;
+        background: var(--ui-primary);
+        color: var(--ui-on-primary);
+        font-size: var(--text-md);
+        font-weight: var(--weight-bold);
+    }
+
+    .sidebar-brand__text {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    .sidebar-brand__name {
+        font-size: var(--text-md);
+        font-weight: var(--weight-bold);
+    }
+
+    .sidebar-brand__caption {
+        color: var(--ui-text-secondary);
+        font-size: 12px;
+    }
+
+    .sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .sidebar-link {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        height: 38px;
+        padding: 0 10px;
+        border-radius: var(--ui-radius-sm);
+        color: var(--ui-text-secondary);
+        font-size: var(--text-base);
+        font-weight: var(--weight-medium);
+        transition:
+            background 160ms ease,
+            color 160ms ease;
+    }
+
+    .sidebar-link:hover {
+        background: var(--ui-surface-soft);
+        color: var(--ui-text);
+    }
+
+    .sidebar-link--active,
+    .sidebar-link--active:hover {
+        background: var(--ui-primary-soft);
+        color: var(--ui-primary);
+        font-weight: var(--weight-semibold);
+    }
+
+    .sidebar-link:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: 2px;
+    }
+
+    /*
+        The 72px icon rail — automatic from 640 to 1199px, and on any
+        width when a page asks for it via $sidebarMode = 'compact' (set on
+        the permanent sidebar by shared/layout-controller.js). Labels stay
+        in the accessibility tree, just visually hidden.
+    */
+    .app-sidebar[data-mode='compact'] {
+        align-items: center;
+        width: var(--ui-sidebar-compact);
+        padding: 14px 0;
+        gap: var(--space-1);
+    }
+
+    .app-sidebar[data-mode='compact'] .sidebar-brand {
+        justify-content: center;
+        width: var(--control-md);
+        height: 40px;
+        margin-bottom: 10px;
+        padding: 0;
+    }
+
+    .app-sidebar[data-mode='compact'] .sidebar-brand__text,
+    .app-sidebar[data-mode='compact'] .sidebar-link__label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+    }
+
+    .app-sidebar[data-mode='compact'] .sidebar-nav {
+        gap: var(--space-1);
+    }
+
+    .app-sidebar[data-mode='compact'] .sidebar-link {
+        justify-content: center;
+        width: var(--control-md);
+        height: var(--control-md);
+        padding: 0;
+    }
+
+    @media (min-width: 640px) and (max-width: 1199px) {
+        .app-sidebar {
+            align-items: center;
+            width: var(--ui-sidebar-compact);
+            padding: 14px 0;
+            gap: var(--space-1);
+        }
+
+        .app-sidebar .sidebar-brand {
+            justify-content: center;
+            width: var(--control-md);
+            height: 40px;
+            margin-bottom: 10px;
+            padding: 0;
+        }
+
+        .app-sidebar .sidebar-brand__text,
+        .app-sidebar .sidebar-link__label {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+        }
+
+        .app-sidebar .sidebar-nav {
+            gap: var(--space-1);
+        }
+
+        .app-sidebar .sidebar-link {
+            justify-content: center;
+            width: var(--control-md);
+            height: var(--control-md);
+            padding: 0;
+        }
+    }
+
+    /* =========================================================
+       PHONE (< 640px) — compact header, no sidebar, bottom tab bar
+       ========================================================= */
+    .app-tabbar {
+        display: none;
+    }
+
+    @media (max-width: 639px) {
+        .app-sidebar {
+            display: none;
+        }
+
+        .app-main__inner:not(.app-main__inner--full-bleed) {
+            padding: 20px 16px 24px;
+        }
+
+        .app-tabbar {
+            display: flex;
+            flex-shrink: 0;
+            padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+            background: var(--ui-surface);
+            border-top: 1px solid var(--ui-border);
+        }
+    }
+
+    .app-tabbar__link {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-1);
+        min-height: 48px;
+        color: var(--ui-text-secondary);
+        font-size: 11px;
+        font-weight: var(--weight-medium);
+    }
+
+    .app-tabbar__link--active {
+        color: var(--ui-primary);
+        font-weight: var(--weight-semibold);
+    }
+
+    .app-tabbar__icon {
+        position: relative;
+        display: flex;
+    }
+
+    .app-tabbar__dot {
+        position: absolute;
+        top: -1px;
+        right: -3px;
+        width: 8px;
+        height: 8px;
+        border: 2px solid var(--ui-surface);
+        border-radius: var(--ui-radius-full);
+        background: var(--ui-danger);
+        box-sizing: content-box;
+    }
+
+    /* =========================================================
+       PAGE HEAD (title + actions row used across app pages)
+       ========================================================= */
+    .page-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: var(--space-4);
+        margin-bottom: var(--space-5);
+    }
+
+    .page-head h1 {
+        margin: 0 0 var(--space-1);
+        color: var(--ui-text);
+        font-size: var(--text-2xl);
+        font-weight: var(--weight-semibold);
+        letter-spacing: -0.02em;
+    }
+
+    .page-head p {
+        margin: 0;
+        color: var(--ui-text-secondary);
+        font-size: var(--text-base);
+    }
+
+    /* Right-hand buttons of a page head. */
+    .page-head__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    @media (max-width: 639px) {
+        .page-head h1 {
+            font-size: 22px;
+        }
+
+        .page-head__actions,
+        .page-head__actions .btn {
+            width: 100%;
+        }
+    }
+
+    /* =========================================================
+       PAGE HEADER
+       ========================================================= */
+    .page-header {
+        padding: 32px 0;
+    }
+
+    .page-header h1 {
+        margin: 0 0 12px;
+        color: var(--ui-text);
+        font-size: clamp(30px, 4vw, 42px);
+        letter-spacing: -0.03em;
+        font-weight: 750;
+    }
+
+    .page-header p {
+        max-width: 640px;
+        margin: 0;
+        color: var(--ui-text-secondary);
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+    @media (max-width: 850px) {
+        .navbar {
+            display: none;
+        }
+
+        .site-header__burger {
+            display: flex;
+        }
+
+        .site-mobile-nav[data-open] {
+            display: flex;
+        }
+    }
+}

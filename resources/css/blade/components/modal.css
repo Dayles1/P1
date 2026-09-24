@@ -1,0 +1,239 @@
+@layer components {
+    /* =========================================================
+       MODAL · DRAWER · CONFIRM (shared/modal.js, shared/confirm.js)
+       -----------------------------------------------------------
+       One overlay, three panels: the centered .modal (520, --wide
+       720), the right-hand .drawer (360) and the compact .confirm
+       alert dialog. Esc and a click on the backdrop close; focus is
+       trapped inside while open.
+       ========================================================= */
+    .modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-5);
+        background: var(--ui-overlay);
+        animation: modal-fade-in 160ms ease;
+    }
+
+    .modal-overlay--drawer {
+        justify-content: flex-end;
+        padding: 0;
+    }
+
+    .modal {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 520px;
+        max-height: calc(100dvh - 40px);
+        overflow: hidden;
+        border-radius: var(--ui-radius-lg);
+        background: var(--ui-surface);
+        box-shadow: var(--ui-shadow-lg);
+        animation: modal-in 180ms cubic-bezier(0.2, 0.8, 0.3, 1);
+    }
+
+    .modal--wide {
+        max-width: 720px;
+    }
+
+    .modal__header {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        padding: 20px var(--space-6) var(--space-3);
+    }
+
+    .modal__title {
+        flex: 1;
+        color: var(--ui-text);
+        font-size: 18px;
+        font-weight: var(--weight-semibold);
+    }
+
+    .modal__close {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 36px;
+        height: 36px;
+        margin-right: -8px;
+        border-radius: var(--ui-radius-sm);
+        color: var(--ui-text-secondary);
+    }
+
+    .modal__close:hover {
+        background: var(--ui-surface-soft);
+        color: var(--ui-text);
+    }
+
+    .modal__close:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: 1px;
+    }
+
+    .modal__body {
+        flex: 1;
+        min-height: 0;
+        overflow-y: auto;
+        padding: var(--space-1) var(--space-6) 20px;
+        color: var(--ui-text-secondary);
+        font-size: 14.5px;
+        line-height: 1.55;
+    }
+
+    .modal__footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        padding: 14px var(--space-6);
+        border-top: 1px solid var(--ui-border);
+        background: var(--ui-surface-soft);
+    }
+
+    /* ---------- Drawer ---------- */
+    .drawer {
+        display: flex;
+        flex-direction: column;
+        width: 360px;
+        max-width: 100%;
+        height: 100%;
+        background: var(--ui-surface);
+        box-shadow: var(--ui-shadow-lg);
+        animation: drawer-in 200ms cubic-bezier(0.2, 0.8, 0.3, 1);
+    }
+
+    .drawer .modal__header {
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--ui-border);
+    }
+
+    .drawer .modal__title {
+        font-size: var(--text-lg);
+    }
+
+    .drawer .modal__close {
+        margin-right: -6px;
+    }
+
+    .drawer .modal__body {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        padding: 20px;
+    }
+
+    .drawer .modal__footer {
+        padding: 14px 20px;
+        background: var(--ui-surface);
+    }
+
+    /* ---------- Confirm ---------- */
+    .confirm {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        width: 100%;
+        max-width: 420px;
+        padding: var(--space-6);
+        border-radius: var(--ui-radius-lg);
+        background: var(--ui-surface);
+        box-shadow: var(--ui-shadow-lg);
+        animation: modal-in 180ms cubic-bezier(0.2, 0.8, 0.3, 1);
+    }
+
+    .confirm__icon {
+        display: grid;
+        place-items: center;
+        width: 48px;
+        height: 48px;
+        border-radius: var(--ui-radius-full);
+        background: var(--ui-primary-soft);
+        color: var(--ui-primary);
+    }
+
+    .confirm--danger .confirm__icon {
+        background: var(--ui-danger-bg);
+        color: var(--ui-danger);
+    }
+
+    .confirm__text {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .confirm__title {
+        font-size: 18px;
+        font-weight: var(--weight-semibold);
+    }
+
+    .confirm__message {
+        color: var(--ui-text-secondary);
+        font-size: 14.5px;
+        line-height: 1.5;
+    }
+
+    .confirm__actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+
+    @media (max-width: 520px) {
+        .modal__footer,
+        .confirm__actions {
+            flex-direction: column-reverse;
+            align-items: stretch;
+        }
+
+        .modal__footer .btn,
+        .confirm__actions .btn {
+            width: 100%;
+        }
+    }
+
+    /* Set on <body> while a modal is open so the page behind can't scroll. */
+    .scroll-lock {
+        overflow: hidden;
+    }
+
+    @keyframes modal-fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes modal-in {
+        from {
+            opacity: 0;
+            transform: translateY(10px) scale(0.98);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    @keyframes drawer-in {
+        from {
+            transform: translateX(24px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+}

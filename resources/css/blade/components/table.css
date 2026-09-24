@@ -1,0 +1,50 @@
+@layer components {
+    /* =========================================================
+       TABLE (admin lists: users, sessions, request logs)
+       ========================================================= */
+    .table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius);
+    }
+
+    .table {
+        width: 100%;
+        min-width: 560px;
+        border-collapse: collapse;
+        font-size: var(--text-base);
+    }
+
+    .table th,
+    .table td {
+        padding: var(--space-3) var(--space-4);
+        text-align: left;
+        border-bottom: 1px solid var(--ui-border);
+        white-space: nowrap;
+    }
+
+    .table th {
+        background: var(--ui-surface-soft);
+        color: var(--ui-text-secondary);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-weight: var(--weight-semibold);
+        font-size: 12.5px;
+    }
+
+    .table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .table tbody tr:hover {
+        background: var(--ui-surface-soft);
+    }
+
+    .table td.table__cell--wrap {
+        white-space: normal;
+    }
+
+    .table__row--clickable {
+        cursor: pointer;
+    }
+}

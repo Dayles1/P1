@@ -46,7 +46,7 @@ function boot() {
                 <tr class="table__row--clickable" data-log-id="${log.id}">
                     <td><span class="${statusClass(log.status_code)}">${log.status_code ?? '—'}</span></td>
                     <td><span class="${methodClass(log.method)}">${log.method}</span></td>
-                    <td class="table__cell--wrap" style="max-width:280px;">${escapeHtml(log.path)}</td>
+                    <td class="table__cell--wrap mw-lg">${escapeHtml(log.path)}</td>
                     <td>${escapeHtml(log.user?.name || '—')}</td>
                     <td>${log.duration_ms != null ? `${log.duration_ms} ms` : '—'}</td>
                     <td>${log.created_at ?? '—'}</td>

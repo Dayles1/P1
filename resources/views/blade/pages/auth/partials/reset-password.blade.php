@@ -23,11 +23,11 @@
 
 
         {{-- EMAIL --}}
-        <div class="form-group">
+        <div class="field-group">
 
             <label
                 for="reset-email"
-                class="form-label"
+                class="field-label"
             >
                 Email address
             </label>
@@ -36,7 +36,7 @@
                 id="reset-email"
                 type="email"
                 name="email"
-                class="form-input"
+                class="field-input"
                 placeholder="you@example.com"
                 autocomplete="email"
                 value="{{ $resetEmail ?? '' }}"
@@ -44,30 +44,30 @@
             >
 
             <span
-                class="form-error"
-                data-error-for="email"
+                class="field-error"
+                data-field-error="email"
             ></span>
 
         </div>
 
 
         {{-- PASSWORD --}}
-        <div class="form-group">
+        <div class="field-group">
 
             <label
                 for="reset-password"
-                class="form-label"
+                class="field-label"
             >
                 New password
             </label>
 
-            <div class="form-input-wrapper">
+            <div class="field-control">
 
                 <input
                     id="reset-password"
                     type="password"
                     name="password"
-                    class="form-input"
+                    class="field-input"
                     placeholder="Create a new password"
                     autocomplete="new-password"
                     required
@@ -79,25 +79,25 @@
                     data-password-toggle="reset-password"
                     aria-label="Show password"
                 >
-                    ◉
+                    <x-blade.u-i.icon name="eye" size="18" />
                 </button>
 
             </div>
 
             <span
-                class="form-error"
-                data-error-for="password"
+                class="field-error"
+                data-field-error="password"
             ></span>
 
         </div>
 
 
         {{-- CONFIRM --}}
-        <div class="form-group">
+        <div class="field-group">
 
             <label
                 for="reset-password-confirmation"
-                class="form-label"
+                class="field-label"
             >
                 Confirm password
             </label>
@@ -106,15 +106,15 @@
                 id="reset-password-confirmation"
                 type="password"
                 name="password_confirmation"
-                class="form-input"
+                class="field-input"
                 placeholder="Repeat your new password"
                 autocomplete="new-password"
                 required
             >
 
             <span
-                class="form-error"
-                data-error-for="password_confirmation"
+                class="field-error"
+                data-field-error="password_confirmation"
             ></span>
 
         </div>

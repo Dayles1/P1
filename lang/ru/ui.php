@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'footer' => [
         'tagline' => 'Надёжный и простой способ управлять аккаунтом, проектами и личным рабочим пространством.',
         'rights_reserved' => 'Все права защищены.',
@@ -80,47 +79,109 @@ return [
         'edit' => 'Изменить',
     ],
 
+    'shell' => [
+        'main_nav' => 'Основная навигация',
+        'tab_nav' => 'Разделы',
+        'workspace' => 'Рабочее пространство',
+        'search_placeholder' => 'Поиск и команды',
+        'create' => 'Создать',
+        'new_chat' => 'Новый чат',
+        'new_group' => 'Новая группа',
+        'account_menu' => 'Меню аккаунта',
+        'my_account' => 'Мой аккаунт',
+        'security_sessions' => 'Безопасность и сессии',
+        'whats_new' => 'Что нового',
+        'administration' => 'Администрирование',
+        'theme' => 'Тема',
+        'language' => 'Язык',
+    ],
+
+    'palette' => [
+        'label' => 'Поиск и команды',
+        'placeholder' => 'Поиск людей, сообщений и команд',
+        'people' => 'Люди',
+        'messages' => 'Сообщения',
+        'commands' => 'Команды',
+        'navigation' => 'Перейти',
+        'empty' => 'Ничего не найдено',
+        'searching' => 'Ищем…',
+        'toggle_theme' => 'Переключить тему',
+        'hint_select' => 'выбрать',
+        'hint_open' => 'открыть',
+        'hint_close' => 'закрыть',
+    ],
+
+    'components' => [
+        'breadcrumbs' => 'Хлебные крошки',
+        'previous' => 'Назад',
+        'next' => 'Вперёд',
+        'showing' => 'Показано :from–:to из :total',
+        'clear' => 'Очистить',
+        'copy' => 'Копировать',
+        'copied' => 'Скопировано',
+        'show_password' => 'Показать пароль',
+        'hide_password' => 'Скрыть пароль',
+        'decrease' => 'Меньше',
+        'increase' => 'Больше',
+        'digit' => 'Цифра :n',
+        'char_count' => ':count / :max',
+        'strength_1' => 'Слабый пароль',
+        'strength_2' => 'Средний пароль',
+        'strength_3' => 'Хороший пароль',
+        'strength_4' => 'Надёжный пароль',
+        'today' => 'Сегодня',
+        'done' => 'Готово',
+        'prev_month' => 'Предыдущий месяц',
+        'next_month' => 'Следующий месяц',
+        'choose_date' => 'Выберите дату',
+        'invalid_date' => 'Такой даты нет',
+        'invalid_time' => 'Введите время в формате ЧЧ:ММ',
+        'preset_today' => 'Сегодня',
+        'preset_yesterday' => 'Вчера',
+        'preset_this_week' => 'Эта неделя',
+        'preset_last_week' => 'Прошлая неделя',
+        'preset_last_30_days' => '30 дней',
+        'preset_this_month' => 'Этот месяц',
+        'preset_custom' => 'Свой период',
+        'drop_drag' => 'Перетащите файлы',
+        'drop_or' => 'или',
+        'drop_browse' => 'выберите на компьютере',
+        'drop_release' => 'Отпустите, чтобы загрузить файлов: :count',
+        'file_too_large' => 'Файл больше :size',
+        'file_not_allowed' => 'Этот тип файла не поддерживается',
+        'file_uploaded' => 'загружен',
+        'remove' => 'Удалить',
+        'retry' => 'Повторить',
+        'empty_title' => 'Ничего не найдено',
+        'error_title' => 'Не удалось загрузить данные',
+        'confirm_title' => 'Вы уверены?',
+        'more' => 'Ещё',
+    ],
+
     'theme' => [
         'label' => 'Тема',
-        'picker_title' => 'Выберите тему',
+        'picker_title' => 'Тема и цвет',
         'picker_subtitle' => 'Применяется везде, сохраняется после перезагрузки и никогда не мигает неправильными цветами.',
-        'system' => 'Системная',
+        'mode_label' => 'Тема',
+        'auto' => 'Авто',
         'light' => 'Светлая',
-        'gray' => 'Серая',
         'dark' => 'Тёмная',
-        'black' => 'Чёрная',
-        'blue' => 'Синяя светлая',
-        'blue-dark' => 'Синяя тёмная',
-        'indigo' => 'Индиго светлая',
-        'indigo-dark' => 'Индиго тёмная',
-        'cyan' => 'Бирюзовая светлая',
-        'cyan-dark' => 'Бирюзовая тёмная',
-        'emerald' => 'Изумрудная светлая',
-        'emerald-dark' => 'Изумрудная тёмная',
-        'green' => 'Зелёная светлая',
-        'green-dark' => 'Зелёная тёмная',
-        'red' => 'Красная светлая',
-        'red-dark' => 'Красная тёмная',
-        'rose' => 'Розовая светлая',
-        'rose-dark' => 'Розовая тёмная',
-        'orange' => 'Оранжевая светлая',
-        'orange-dark' => 'Оранжевая тёмная',
-        'warm' => 'Тёплая светлая',
-        'warm-dark' => 'Тёплая тёмная',
-        'soft' => 'Мягкая светлая',
-        'soft-dark' => 'Мягкая тёмная',
-        'slate' => 'Сланцевая',
-        'graphite' => 'Графитовая',
-        'midnight' => 'Полночная',
-        'nord' => 'Nord',
-        'high-contrast' => 'Высокий контраст',
+        'accent_label' => 'Цвет акцента',
+        'accent' => [
+            'default' => 'Синий',
+            'teal' => 'Бирюзовый',
+            'violet' => 'Фиолетовый',
+            'orange' => 'Оранжевый',
+            'rose' => 'Розовый',
+            'mono' => 'Монохром',
+        ],
     ],
 
     'locale' => [
         'label' => 'Язык',
         'en' => 'English',
         'ru' => 'Русский',
-        'uz' => "O'zbekcha",
+        'uz' => 'O\'zbekcha',
     ],
 
     'auth' => [
@@ -217,7 +278,6 @@ return [
         'error' => 'Не удалось сохранить настройки.',
         'load_error' => 'Не удалось загрузить настройки.',
         'timezones_error' => 'Не удалось загрузить часовые пояса',
-
         'currency' => 'Валюта',
         'currency_follows_app' => 'Валюта приложения (:code)',
         'currency_is_app_currency' => 'Цены показываются в :code — валюте приложения.',
@@ -227,7 +287,6 @@ return [
         'app_currency_hint' => 'Всё считается относительно неё. Курсы сохраняются к ней каждый день, а каждая цена хранит свою стоимость в ней на день установки.',
         'rates_as_of' => 'Курсы на :date.',
         'rates_missing' => 'Курсы ещё не загружены — выполните `php artisan currency:sync`.',
-
         'nav' => [
             'profile' => 'Профиль',
             'general' => 'Общие',
@@ -240,30 +299,23 @@ return [
             'system' => 'Система',
             'developer' => 'Разработчику',
         ],
-
         'language_region_hint' => 'Как для вас отображаются даты, время и язык.',
         'application_general_hint' => 'Что видит каждый посетитель этого приложения — его название и часовой пояс по умолчанию.',
         'user_policies_hint' => 'Что разрешено делать каждому пользователю со своим аккаунтом, плюс лимиты загрузки.',
-
         'login_security_title' => 'Безопасность входа',
         'login_security_hint' => 'Дополнительная проверка при входе с паролем.',
         'require_login_verification' => 'Запрашивать код подтверждения при каждом входе',
         'require_login_verification_hint' => 'После пароля вам также нужно будет ввести 6-значный код, отправленный на почту, прежде чем продолжить.',
-
         'default_language' => 'Язык по умолчанию',
         'default_language_hint' => 'Язык, который видят новые гости, пока сами его не изменят.',
         'fallback_language' => 'Резервный язык',
-
         'notifications_hint' => 'Какие каналы уведомлений доступны во всём приложении.',
         'notifications_empty' => 'Здесь пока нечего настраивать.',
-
         'allowed_login_roles' => 'Разрешённые роли для входа',
         'allowed_login_roles_hint' => 'Войти смогут только аккаунты с одной из отмеченных ролей. Если ничего не отмечено — разрешены все роли.',
         'default_registration_role' => 'Роль по умолчанию при регистрации',
         'default_registration_role_hint' => 'Роль, которая автоматически назначается новому аккаунту после регистрации.',
-
         'security_hint' => 'Лимиты, ограничения аккаунтов и переключатели API/аудита для всего приложения.',
-
         'favicon' => 'Favicon',
         'favicon_hint' => 'Отображается во вкладках браузера и закладках на всём сайте.',
         'favicon_upload' => 'Загрузить новый favicon',
@@ -272,12 +324,10 @@ return [
         'favicon_dropzone' => 'Перетащите файл сюда или используйте кнопку выше.',
         'favicon_updated' => 'Favicon обновлён.',
         'favicon_error' => 'Не удалось обновить favicon.',
-
         'developer_mode' => 'Режим разработчика',
         'developer_mode_hint' => 'Показывать технические детали API (endpoint, статус, время выполнения, ID запроса) рядом с обычным интерфейсом.',
         'about' => 'О приложении',
         'version' => 'Версия :version',
-
         'notif_prefs' => 'Настройки уведомлений',
         'notif_prefs_hint' => 'О чём и как вас уведомлять.',
         'notif_pref_database' => 'Сохранять уведомления в центр уведомлений',
@@ -285,13 +335,11 @@ return [
         'notif_pref_sound' => 'Звук при новых сообщениях',
         'notif_pref_message' => 'Уведомлять о новых сообщениях',
         'notif_pref_system' => 'Уведомлять о системных объявлениях',
-
         'keys' => [
             'system_site_name' => 'Название сайта',
             'system_site_name_hint' => 'Отображается в заголовках страниц, шапке и на страницах входа по всему сайту.',
             'system_timezone' => 'Часовой пояс приложения',
             'system_timezone_hint' => 'Используется для тех, кто не указал свой часовой пояс в личных настройках.',
-
             'auth_registration_open' => 'Разрешить новую регистрацию',
             'auth_registration_open_hint' => 'Отключите, чтобы запретить регистрацию новых аккаунтов.',
             'auth_login_open' => 'Разрешить вход',
@@ -302,12 +350,10 @@ return [
             'auth_remember_me_enabled_hint' => 'Позволяет пользователю оставаться в системе после перезапуска браузера.',
             'auth_session_lifetime' => 'Время жизни сессии (минуты)',
             'auth_session_lifetime_hint' => 'Как долго сессия остаётся активной без действий пользователя.',
-
             'localization_allow_locale_switch' => 'Разрешить смену языка',
             'localization_allow_locale_switch_hint' => 'Отключите, чтобы закрепить язык по умолчанию для всех.',
             'localization_auto_detect_browser_locale' => 'Определять язык по браузеру',
             'localization_auto_detect_browser_locale_hint' => 'Использовать язык браузера посетителя до перехода к языку по умолчанию.',
-
             'notification_database' => 'Уведомления в приложении',
             'notification_database_hint' => 'Можно ли вообще сохранять уведомления в центр уведомлений пользователя.',
             'notification_email' => 'Email-уведомления',
@@ -318,7 +364,6 @@ return [
             'notification_push_hint' => 'Может ли приложение отправлять push-уведомления.',
             'notification_sms' => 'SMS-уведомления',
             'notification_sms_hint' => 'Может ли приложение отправлять уведомления по SMS.',
-
             'auth_max_register_users_count' => 'Макс. регистраций в день',
             'auth_max_register_users_count_hint' => 'Дневной лимит новых регистраций на всё приложение. 0 — без ограничения.',
             'auth_max_users_count' => 'Макс. всего аккаунтов',
@@ -333,7 +378,6 @@ return [
             'security_enable_api_hint' => 'Отключите, чтобы заблокировать любой доступ к API.',
             'security_audit_log' => 'Вести журнал аудита',
             'security_audit_log_hint' => 'Записывать, кто и что изменил, для последующей проверки.',
-
             'upload_max_upload_size' => 'Макс. размер загрузки (КБ)',
             'upload_max_upload_size_hint' => 'Наибольший файл, который примет любая точка загрузки.',
             'upload_allowed_extensions' => 'Разрешённые расширения файлов',
@@ -350,7 +394,6 @@ return [
             'upload_max_document_size_hint' => 'Наибольший файл документа, который могут загружать пользователи.',
             'upload_image_quality' => 'Качество сжатия изображений (%)',
             'upload_image_quality_hint' => 'Меньшие значения экономят место за счёт качества изображения.',
-
             'user_allow_avatar_upload' => 'Разрешить загрузку аватара',
             'user_allow_avatar_upload_hint' => 'Позволяет пользователям загружать фото профиля.',
             'user_default_avatar' => 'Аватар по умолчанию',
@@ -385,15 +428,12 @@ return [
         'group_notification' => 'Уведомления',
         'group_user' => 'Пользователь',
         'group_security' => 'Безопасность',
-
         'sessions_title' => 'Сеансы',
         'sessions_subtitle' => 'Все сеансы всех аккаунтов.',
         'sessions_search_placeholder' => 'Поиск по пользователю, IP или устройству…',
         'user' => 'Пользователь',
-
         'request_logs_title' => 'Журнал запросов',
         'request_logs_subtitle' => 'Все API-запросы, зафиксированные во всей системе.',
-
         'users_title' => 'Пользователи',
         'users_subtitle' => 'Управление аккаунтами, ролями и блокировками.',
         'users_search_placeholder' => 'Поиск по имени или email…',
@@ -452,6 +492,9 @@ return [
         'minutes_ago' => ':count мин назад',
         'hours_ago' => ':count ч назад',
         'days_ago' => ':count дн назад',
+        'new_count' => ':count новых',
+        'read_all' => 'Прочитать все',
+        'all' => 'Все уведомления',
     ],
 
     'chat' => [
@@ -472,7 +515,6 @@ return [
         'start_group' => 'Создать группу',
         'recipient_id' => 'ID пользователя',
         'create' => 'Создать',
-
         'search_all' => 'Искать по всем беседам',
         'jump_to_newest' => 'К последним',
         'replying_to' => 'Ответ на',
@@ -557,5 +599,4 @@ return [
         'banned_notice_reason' => 'Ваш аккаунт заблокирован: :reason',
         'banned_notice_until' => ' (до :date)',
     ],
-
 ];

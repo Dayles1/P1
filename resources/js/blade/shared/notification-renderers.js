@@ -1,5 +1,6 @@
 import { escapeHtml } from './forms';
 import { t } from './i18n';
+import { icon } from './icon';
 
 /**
  * One renderer per notification `type` — add a new type here (icon + copy)
@@ -10,15 +11,15 @@ import { t } from './i18n';
  */
 const RENDERERS = {
     system: {
-        icon: '⚙',
+        icon: 'info',
         title: (n) => n.title || t('notifications.type_system'),
     },
     message: {
-        icon: '✉',
+        icon: 'chat',
         title: (n) => n.title || t('notifications.type_message'),
     },
     mention: {
-        icon: '@',
+        icon: 'user',
         title: (n) => n.title || t('notifications.type_mention'),
     },
 };
@@ -123,15 +124,13 @@ export function notificationItemHtml(notification) {
             ${notification.data?.conversation_id ? `data-notif-conversation-id="${notification.data.conversation_id}"` : ''}
             ${notification.data?.message_id ? `data-notif-message-id="${notification.data.message_id}"` : ''}
         >
-            <span class="notif-item__icon" aria-hidden="true">${renderer.icon}</span>
+            <span class="notif-item__icon">${icon(renderer.icon, { size: 16 })}</span>
             <span class="notif-item__body">
-                <span class="notif-item__title">
-                    ${escapeHtml(renderer.title(notification))}
-                    ${unread ? '<span class="notif-item__dot" aria-hidden="true"></span>' : ''}
-                </span>
+                <span class="notif-item__title">${escapeHtml(renderer.title(notification))}</span>
                 ${notification.body ? `<span class="notif-item__text">${escapeHtml(notification.body)}</span>` : ''}
                 <span class="notif-item__time">${relativeTime(notification.created_at)}</span>
             </span>
+            ${unread ? '<span class="notif-item__dot" aria-hidden="true"></span>' : ''}
         </button>
     `;
 }

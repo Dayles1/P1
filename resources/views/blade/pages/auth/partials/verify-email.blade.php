@@ -1,7 +1,7 @@
 <div class="auth-card auth-card--centered">
 
     <div class="auth-card__icon">
-        ✉
+        <x-blade.u-i.icon name="mail" size="28" />
     </div>
 
 
@@ -27,7 +27,7 @@
 
         @include('blade.pages.auth.partials._code-input')
 
-        <span class="form-error" data-error-for="code" style="text-align:center;"></span>
+        <span class="field-error text-center" data-field-error="code"></span>
 
         <button type="submit" class="auth-button">
             <span class="auth-button__text">Verify email</span>
@@ -46,11 +46,11 @@
         @csrf
 
 
-        <div class="form-group">
+        <div class="field-group">
 
             <label
                 for="verification-email"
-                class="form-label"
+                class="field-label"
             >
                 Email address
             </label>
@@ -59,15 +59,15 @@
                 id="verification-email"
                 type="email"
                 name="email"
-                class="form-input"
+                class="field-input"
                 placeholder="you@example.com"
                 autocomplete="email"
                 required
             >
 
             <span
-                class="form-error"
-                data-error-for="email"
+                class="field-error"
+                data-field-error="email"
             ></span>
 
         </div>

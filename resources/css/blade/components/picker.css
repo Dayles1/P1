@@ -1,0 +1,19 @@
+@layer components {
+    /* =========================================================
+       LANGUAGE PICKER (header dropdown)
+       ========================================================= */
+    .dropdown__item--picker {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .dropdown__item--picker .dropdown__check {
+        opacity: 0;
+        color: var(--ui-primary);
+    }
+
+    .dropdown__item--picker[aria-checked='true'] .dropdown__check {
+        opacity: 1;
+    }
+}

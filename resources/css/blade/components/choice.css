@@ -1,0 +1,348 @@
+@layer components {
+    /* =========================================================
+       CHECKBOX / RADIO
+       -----------------------------------------------------------
+       <label class="checkbox"> real <input class="checkbox__input">
+       (visually hidden, still focusable) + the drawn .checkbox__box +
+       .checkbox__text (__label, optional __hint). Indeterminate is the
+       DOM property, set by shared/choice-controls.js from
+       [data-indeterminate]. Radio is the same shape with .radio.
+       The tick / dash are masks, so they take the token color.
+       ========================================================= */
+    .checkbox,
+    .radio {
+        display: inline-flex;
+        align-items: flex-start;
+        gap: 10px;
+        min-height: 28px;
+        color: var(--ui-text);
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .checkbox__input,
+    .radio__input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .checkbox__box,
+    .radio__dot {
+        display: inline-grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        margin-top: 1px;
+        border: 1.5px solid var(--ui-border-hover);
+        background: var(--ui-surface);
+        transition:
+            background 140ms ease,
+            border-color 140ms ease,
+            border-width 140ms ease;
+    }
+
+    .checkbox__box {
+        border-radius: 6px;
+    }
+
+    .checkbox__box::after {
+        content: '';
+        width: 14px;
+        height: 14px;
+        background: var(--ui-on-primary);
+        opacity: 0;
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")
+            center / contain no-repeat;
+    }
+
+    .checkbox__input:checked + .checkbox__box,
+    .checkbox__input:indeterminate + .checkbox__box {
+        border-color: var(--ui-primary);
+        background: var(--ui-primary);
+    }
+
+    .checkbox__input:checked + .checkbox__box::after,
+    .checkbox__input:indeterminate + .checkbox__box::after {
+        opacity: 1;
+    }
+
+    .checkbox__input:indeterminate + .checkbox__box::after {
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 12h12'/%3E%3C/svg%3E");
+    }
+
+    .radio__dot {
+        border-radius: var(--ui-radius-full);
+    }
+
+    .radio__input:checked + .radio__dot {
+        border: 6px solid var(--ui-primary);
+    }
+
+    .checkbox__input:focus-visible + .checkbox__box,
+    .radio__input:focus-visible + .radio__dot {
+        box-shadow: 0 0 0 3px
+            color-mix(in srgb, var(--ui-primary) 35%, transparent);
+    }
+
+    .checkbox:has(.checkbox__input:disabled),
+    .radio:has(.radio__input:disabled) {
+        color: var(--ui-text-muted);
+        cursor: not-allowed;
+    }
+
+    .checkbox__input:disabled + .checkbox__box,
+    .radio__input:disabled + .radio__dot {
+        border-color: var(--ui-border);
+        background: var(--ui-surface-soft);
+    }
+
+    .checkbox__input:disabled:checked + .checkbox__box {
+        border-color: var(--ui-border-hover);
+        background: var(--ui-border-hover);
+    }
+
+    .checkbox__input:disabled:checked + .checkbox__box::after {
+        background: var(--ui-surface);
+    }
+
+    .checkbox__text,
+    .radio__text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .checkbox__label,
+    .radio__label {
+        font-size: 14.5px;
+        font-weight: var(--weight-medium);
+    }
+
+    .checkbox__hint,
+    .radio__hint {
+        color: var(--ui-text-secondary);
+        font-size: var(--text-sm);
+    }
+
+    .choice-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    /* =========================================================
+       SWITCH
+       -----------------------------------------------------------
+       <label class="switch"> label text + <input type="checkbox"
+       role="switch" class="switch__input"> + .switch__track.
+       ========================================================= */
+    .switch {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-4);
+        min-height: 32px;
+        color: var(--ui-text);
+        cursor: pointer;
+    }
+
+    .switch__text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .switch__label {
+        font-size: 14.5px;
+        font-weight: var(--weight-medium);
+    }
+
+    .switch__hint {
+        color: var(--ui-text-secondary);
+        font-size: var(--text-sm);
+    }
+
+    .switch__input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .switch__track {
+        position: relative;
+        flex-shrink: 0;
+        width: 44px;
+        height: 26px;
+        border-radius: 13px;
+        background: var(--ui-border-hover);
+        transition: background 160ms ease;
+    }
+
+    .switch__track::after {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 20px;
+        height: 20px;
+        border-radius: var(--ui-radius-full);
+        background: var(--ui-surface);
+        box-shadow: 0 1px 2px rgba(16, 24, 40, 0.2);
+        transition: transform 160ms ease;
+    }
+
+    .switch__input:checked + .switch__track {
+        background: var(--ui-primary);
+    }
+
+    .switch__input:checked + .switch__track::after {
+        transform: translateX(18px);
+    }
+
+    .switch__input:focus-visible + .switch__track {
+        box-shadow: 0 0 0 3px
+            color-mix(in srgb, var(--ui-primary) 35%, transparent);
+    }
+
+    .switch:has(.switch__input:disabled) {
+        color: var(--ui-text-muted);
+        cursor: not-allowed;
+    }
+
+    .switch__input:disabled + .switch__track {
+        opacity: 0.45;
+    }
+
+    /* =========================================================
+       CHIPS — filter toggles (aria-pressed) and removable tags
+       ========================================================= */
+    .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+    }
+
+    .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        height: 34px;
+        padding: 0 14px;
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius-full);
+        background: var(--ui-surface);
+        color: var(--ui-text);
+        font-size: 13.5px;
+        font-weight: var(--weight-semibold);
+        white-space: nowrap;
+        cursor: pointer;
+        transition:
+            background 140ms ease,
+            border-color 140ms ease,
+            color 140ms ease;
+    }
+
+    .chip:hover {
+        border-color: var(--ui-border-hover);
+    }
+
+    .chip[aria-pressed='true'] {
+        border-color: var(--ui-text);
+        background: var(--ui-text);
+        color: var(--ui-surface);
+    }
+
+    .chip:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: 2px;
+    }
+
+    .chip__count {
+        color: inherit;
+        opacity: 0.7;
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* A picked value (multiselect tags, selected users). */
+    .chip--tag {
+        height: 28px;
+        padding: 0 6px 0 10px;
+        border-color: var(--ui-surface-soft);
+        background: var(--ui-surface-soft);
+        font-size: var(--text-sm);
+        font-weight: var(--weight-medium);
+        cursor: default;
+    }
+
+    .chip__remove {
+        display: grid;
+        place-items: center;
+        width: 18px;
+        height: 18px;
+        border-radius: var(--ui-radius-full);
+        color: var(--ui-text-muted);
+    }
+
+    .chip__remove:hover {
+        background: var(--ui-border);
+        color: var(--ui-text);
+    }
+
+    /* =========================================================
+       SEGMENTED CONTROL (theme / language switches, view tabs)
+       ========================================================= */
+    .segmented {
+        display: flex;
+        gap: 2px;
+        padding: 3px;
+        border-radius: var(--ui-radius-sm);
+        background: var(--ui-surface-soft);
+    }
+
+    .segmented--inline {
+        display: inline-flex;
+    }
+
+    .segmented__option {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        height: 30px;
+        padding: 0 var(--space-3);
+        border-radius: 6px;
+        color: var(--ui-text-secondary);
+        font-size: 12.5px;
+        font-weight: var(--weight-semibold);
+        white-space: nowrap;
+    }
+
+    .segmented__option:hover {
+        color: var(--ui-text);
+    }
+
+    .segmented__option[aria-pressed='true'],
+    .segmented__option[aria-selected='true'],
+    .segmented__option:has(:checked) {
+        background: var(--ui-surface);
+        color: var(--ui-text);
+        box-shadow: 0 1px 2px rgba(16, 24, 40, 0.12);
+    }
+
+    label.segmented__option {
+        cursor: pointer;
+    }
+
+    .segmented__option:has(:focus-visible),
+    .segmented__option:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: 1px;
+    }
+}

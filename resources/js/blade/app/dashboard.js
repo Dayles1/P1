@@ -104,9 +104,9 @@ function boot() {
                     <span class="timeline__dot ${log.status_code >= 400 ? 'timeline__dot--danger' : ''}"></span>
                     <div class="timeline__content">
                         <div class="timeline__title">
-                            <span class="${methodClass(log.method)}" style="margin-right:6px;">${log.method}</span>
+                            <span class="${methodClass(log.method)} mr-2">${log.method}</span>
                             ${escapeHtml(log.path)}
-                            <span class="${statusClass(log.status_code)}" style="margin-left:6px;">${log.status_code ?? '—'}</span>
+                            <span class="${statusClass(log.status_code)} ml-2">${log.status_code ?? '—'}</span>
                         </div>
                         <div class="timeline__meta">${log.created_at ?? ''}</div>
                     </div>
@@ -126,9 +126,9 @@ function boot() {
         recentSessionsEl.innerHTML = sessions
             .map(
                 (session) => `
-                <a href="/sessions/${session.id}" class="data-row" style="text-decoration:none; padding:10px 0;">
+                <a href="/sessions/${session.id}" class="data-row data-row--link">
                     <div class="data-row__main">
-                        <div class="data-row__title" style="font-size:13px;">
+                        <div class="data-row__title text-sm">
                             ${[session.browser, session.platform].filter(Boolean).join(' · ') || t('common.unknown')}
                             ${session.is_current ? `<span class="pill pill--primary">${t('sessions.this_device')}</span>` : ''}
                         </div>
@@ -156,13 +156,13 @@ function boot() {
         recentConversationsEl.innerHTML = conversations
             .map(
                 (conversation) => `
-                <a href="/chat/${conversation.id}" class="data-row" style="text-decoration:none; border-radius:0; border-left:none; border-right:none; border-top:none;">
-                    <div class="data-row__main" style="display:flex; align-items:center; gap:10px;">
+                <a href="/chat/${conversation.id}" class="data-row data-row--flush">
+                    <div class="data-row__main row gap-3">
                         <span class="avatar avatar--sm">
                             ${conversation.avatar ? `<img class="avatar__image" src="${conversation.avatar}" alt="">` : `<span class="avatar__initials">${initials(conversation.title)}</span>`}
                         </span>
                         <div>
-                            <div class="data-row__title" style="font-size:13px;">${escapeHtml(conversation.title || t('common.unknown'))}</div>
+                            <div class="data-row__title text-sm">${escapeHtml(conversation.title || t('common.unknown'))}</div>
                             <div class="data-row__meta">${escapeHtml(conversation.last_message?.body || t('chat.empty_messages'))}</div>
                         </div>
                     </div>

@@ -26,6 +26,7 @@
         the auth-specific showcase/card/form styling on top; the two share
         no class names, so there's nothing to reconcile.
     --}}
+    @fonts
     @vite([
         'resources/css/blade/app/app.css',
         'resources/css/blade/auth/auth.css',
@@ -39,6 +40,7 @@
 
 
 <body>
+    @include('blade.sections.icons')
 
     <div class="auth-layout">
 
@@ -95,7 +97,7 @@
                     <div class="auth-security">
 
                         <span class="auth-security__icon">
-                            ✓
+                            <x-blade.u-i.icon name="check" size="14" />
                         </span>
 
                         <span>
@@ -146,7 +148,7 @@
                         title="{{ __('ui.theme.label') }}"
                         data-theme-picker-trigger
                     >
-                        ◐
+                        <x-blade.u-i.icon name="sun" size="18" />
                     </button>
 
                     {{-- LANGUAGE PICKER --}}
@@ -167,7 +169,7 @@
                                 data-locale-option="{{ $localeOption }}"
                             >
                                 <span>{{ __('ui.locale.' . $localeOption) }}</span>
-                                <span class="dropdown__check" aria-hidden="true">✓</span>
+                                <x-blade.u-i.icon name="check" size="16" class="dropdown__check" />
                             </button>
                         @endforeach
                     </x-blade.u-i.dropdown>
@@ -220,7 +222,7 @@
                             <div class="auth-alert auth-alert--success">
 
                                 <div class="auth-alert__icon">
-                                    ✓
+                                    <x-blade.u-i.icon name="check" size="14" />
                                 </div>
 
                                 <div class="auth-alert__content">

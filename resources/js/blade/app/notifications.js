@@ -40,7 +40,7 @@ function boot() {
 
     async function load(page = 1) {
         currentPage = page;
-        list.innerHTML = `<div class="skeleton skeleton-row" style="margin:12px;"></div>`;
+        list.innerHTML = `<div class="skeleton skeleton-row m-3"></div>`;
 
         const params = { page, per_page: 15 };
 
@@ -55,7 +55,7 @@ function boot() {
             const items = data.data || [];
 
             list.innerHTML = items.length
-                ? `<div style="padding:6px;">${items.map(notificationItemHtml).join('')}</div>`
+                ? `<div class="p-2">${items.map(notificationItemHtml).join('')}</div>`
                 : emptyState(t('notifications.empty'));
 
             renderPagination(paginationEl, data.pagination, load);
@@ -158,7 +158,7 @@ function boot() {
                 notificationItemHtml(notification),
             );
         } else {
-            list.innerHTML = `<div style="padding:6px;">${notificationItemHtml(notification)}</div>`;
+            list.innerHTML = `<div class="p-2">${notificationItemHtml(notification)}</div>`;
         }
     }
 

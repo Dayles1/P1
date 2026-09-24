@@ -1,0 +1,141 @@
+@layer components {
+    /* =========================================================
+       DATE PICKER (shared/date-picker.js)
+       -----------------------------------------------------------
+       A month grid in a popover under a .field-box. Range mode adds
+       a presets column and marks the days in between.
+       ========================================================= */
+    .date-picker {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-3);
+    }
+
+    .calendar {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+        width: 300px;
+        padding: 14px;
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius);
+        background: var(--ui-surface);
+        box-shadow: var(--ui-shadow-md);
+    }
+
+    .calendar__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .calendar__title {
+        font-size: var(--text-md);
+        font-weight: var(--weight-semibold);
+    }
+
+    .calendar__nav {
+        display: grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        color: var(--ui-text);
+    }
+
+    .calendar__nav:hover {
+        background: var(--ui-surface-soft);
+    }
+
+    .calendar__grid {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 2px;
+    }
+
+    .calendar__weekday {
+        display: grid;
+        place-items: center;
+        height: 32px;
+        color: var(--ui-text-secondary);
+        font-size: 12px;
+        font-weight: var(--weight-semibold);
+    }
+
+    .calendar__day {
+        height: 36px;
+        border-radius: var(--ui-radius-sm);
+        color: var(--ui-text);
+        font-size: var(--text-base);
+        font-variant-numeric: tabular-nums;
+    }
+
+    .calendar__day:hover {
+        background: var(--ui-surface-soft);
+    }
+
+    .calendar__day--outside {
+        color: var(--ui-text-muted);
+    }
+
+    .calendar__day--today {
+        box-shadow: inset 0 0 0 1.5px var(--ui-primary);
+    }
+
+    .calendar__day--in-range {
+        background: var(--ui-primary-soft);
+    }
+
+    .calendar__day[aria-pressed='true'] {
+        background: var(--ui-primary);
+        color: var(--ui-on-primary);
+        font-weight: var(--weight-semibold);
+    }
+
+    .calendar__day:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: 1px;
+    }
+
+    .calendar__day:disabled {
+        color: var(--ui-text-muted);
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+    .calendar__foot {
+        display: flex;
+        justify-content: space-between;
+        padding-top: var(--space-2);
+        border-top: 1px solid var(--ui-border);
+    }
+
+    .date-picker__presets {
+        width: 180px;
+    }
+
+    /* "14.09.2026 → 20.09.2026" inside the trigger box. */
+    .date-range-value {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        flex: 1;
+        min-width: 0;
+        white-space: nowrap;
+    }
+
+    .date-range-value__arrow {
+        color: var(--ui-text-secondary);
+    }
+
+    @media (max-width: 639px) {
+        .date-picker {
+            flex-direction: column-reverse;
+        }
+
+        .calendar,
+        .date-picker__presets {
+            width: min(300px, calc(100vw - 32px));
+        }
+    }
+}

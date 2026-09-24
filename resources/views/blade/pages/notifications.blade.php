@@ -25,7 +25,7 @@
     <div class="card">
         <div class="card__body card__body--flush">
             <div data-notif-center-list>
-                <div class="skeleton skeleton-row" style="margin:12px;"></div>
+                <div class="skeleton skeleton-row m-3"></div>
             </div>
         </div>
         <div class="card__footer">

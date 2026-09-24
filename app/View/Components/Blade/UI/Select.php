@@ -12,7 +12,12 @@ class Select extends Component
     public string $inputId;
 
     /**
-     * @param  array<string|int, string>  $options  value => label
+     * A native <select> — the right choice for short, plain lists. Options
+     * come from `$options` (value => label) or the slot.
+     *
+     * @param  array<string|int, string>  $options
+     * @param  string|null  $placeholder  An empty first option ("Choose…").
+     * @param  string  $size  sm | md | lg
      */
     public function __construct(
         public ?string $label = null,
@@ -20,9 +25,13 @@ class Select extends Component
         public array $options = [],
         public string|int|null $selected = null,
         public ?string $error = null,
+        public ?string $hint = null,
+        public ?string $placeholder = null,
+        public bool $required = false,
+        public string $size = 'md',
         ?string $id = null,
     ) {
-        $this->inputId = $id ?? 'select-'.Str::random(8);
+        $this->inputId = $id ?? 'field-'.Str::random(8);
     }
 
     public function render(): View|Closure|string

@@ -52,14 +52,11 @@ export function t(key, params = {}) {
  * Persists the chosen locale (cookie, read by the backend's SetLocale
  * middleware on every subsequent request — including plain page loads,
  * which can't carry a custom header) and, for a signed-in user, saves it
- * to their account too so it follows them across devices. Then revisits
- * the current URL so server-rendered text picks up the new language
- * immediately. Under Turbo Drive this is a soft revisit (`Turbo.visit`)
- * rather than a hard `location.reload()` — the permanent header/sidebar
- * and the Echo/Reverb connection are untouched, only the (non-permanent)
- * content and the `window.__i18n` head script re-render in the new
- * locale. Falls back to a hard reload if Turbo hasn't loaded for any
- * reason (e.g. on a page outside the authenticated shell).
+ * to their account too so it follows them across devices. Then reloads
+ * the page. It has to be a real reload, not a Turbo soft revisit: the
+ * permanent header, sidebar and tab bar (account menu, nav labels) are
+ * never re-rendered by Turbo, so a soft visit would leave them in the old
+ * language next to freshly translated page content.
  */
 export async function setLocale(locale, { api } = {}) {
     writeLocaleCookie(locale);
@@ -73,11 +70,7 @@ export async function setLocale(locale, { api } = {}) {
         }
     }
 
-    if (window.Turbo) {
-        window.Turbo.visit(window.location.href, { action: 'replace' });
-    } else {
-        window.location.reload();
-    }
+    window.location.reload();
 }
 
 export function initLocalePicker(apiClient) {
@@ -90,9 +83,14 @@ export function initLocalePicker(apiClient) {
     const current = getLocale();
 
     options.forEach((el) => {
+        const isCurrent = String(el.dataset.localeOption === current);
+
+        // Radio-style menu items use aria-checked, segmented buttons aria-pressed.
         el.setAttribute(
-            'aria-checked',
-            String(el.dataset.localeOption === current),
+            el.getAttribute('role') === 'menuitemradio'
+                ? 'aria-checked'
+                : 'aria-pressed',
+            isCurrent,
         );
 
         el.addEventListener('click', () => {

@@ -4,12 +4,14 @@
         'sidebar-link',
         'sidebar-link--active' => $active,
     ])
+    data-nav-link="sidebar-link"
+    title="{{ trim(strip_tags($slot)) }}"
     @if ($active) aria-current="page" @endif
     {{ $attributes }}
 >
     @if ($icon)
-        <span class="sidebar-link__icon" aria-hidden="true">{!! $icon !!}</span>
+        <x-blade.u-i.icon :name="$icon" size="20" class="sidebar-link__icon" />
     @endif
 
-    <span>{{ $slot }}</span>
+    <span class="sidebar-link__label">{{ $slot }}</span>
 </a>

@@ -25,11 +25,11 @@
 
 
         {{-- EMAIL --}}
-        <div class="form-group">
+        <div class="field-group">
 
             <label
                 for="login-email"
-                class="form-label"
+                class="field-label"
             >
                 Email address
             </label>
@@ -38,38 +38,38 @@
                 id="login-email"
                 type="email"
                 name="email"
-                class="form-input"
+                class="field-input"
                 placeholder="you@example.com"
                 autocomplete="email"
                 required
             >
 
             <span
-                class="form-error"
-                data-error-for="email"
+                class="field-error"
+                data-field-error="email"
             ></span>
 
         </div>
 
 
         {{-- PASSWORD --}}
-        <div class="form-group">
+        <div class="field-group">
 
             <label
                 for="login-password"
-                class="form-label"
+                class="field-label"
             >
                 Password
             </label>
 
 
-            <div class="form-input-wrapper">
+            <div class="field-control">
 
                 <input
                     id="login-password"
                     type="password"
                     name="password"
-                    class="form-input"
+                    class="field-input"
                     placeholder="Enter your password"
                     autocomplete="current-password"
                     required
@@ -82,15 +82,15 @@
                     data-password-toggle="login-password"
                     aria-label="Show password"
                 >
-                    ◉
+                    <x-blade.u-i.icon name="eye" size="18" />
                 </button>
 
             </div>
 
 
             <span
-                class="form-error"
-                data-error-for="password"
+                class="field-error"
+                data-field-error="password"
             ></span>
 
         </div>
@@ -193,7 +193,7 @@
 
             @include('blade.pages.auth.partials._code-input')
 
-            <span class="form-error" data-error-for="code" style="text-align:center;"></span>
+            <span class="field-error text-center" data-field-error="code"></span>
 
             <button type="submit" class="auth-button">
                 <span class="auth-button__text">Verify &amp; sign in</span>
@@ -205,7 +205,7 @@
             </div>
 
             <div class="auth-page-switch">
-                <button type="button" class="auth-step-back" data-back-to-password>&larr; Back to sign in</button>
+                <button type="button" class="auth-step-back" data-back-to-password><x-blade.u-i.icon name="back" size="16" /> Back to sign in</button>
             </div>
 
         </form>

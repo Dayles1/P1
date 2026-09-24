@@ -1,14 +1,13 @@
 <?php
 
 return [
-
     'footer' => [
         'tagline' => 'A secure and simple way to manage your account, projects and personal workspace.',
         'rights_reserved' => 'All rights reserved.',
     ],
 
     'changelog' => [
-        'title' => "What's new",
+        'title' => 'What\'s new',
         'subtitle' => 'New features, improvements, and fixes in each release.',
         'type_new' => 'New',
         'type_improved' => 'Improved',
@@ -80,47 +79,109 @@ return [
         'edit' => 'Edit',
     ],
 
+    'shell' => [
+        'main_nav' => 'Main navigation',
+        'tab_nav' => 'Sections',
+        'workspace' => 'Workspace',
+        'search_placeholder' => 'Search and commands',
+        'create' => 'Create',
+        'new_chat' => 'New chat',
+        'new_group' => 'New group',
+        'account_menu' => 'Account menu',
+        'my_account' => 'My account',
+        'security_sessions' => 'Security and sessions',
+        'whats_new' => 'What\'s new',
+        'administration' => 'Administration',
+        'theme' => 'Theme',
+        'language' => 'Language',
+    ],
+
+    'palette' => [
+        'label' => 'Search and commands',
+        'placeholder' => 'Search people, messages and commands',
+        'people' => 'People',
+        'messages' => 'Messages',
+        'commands' => 'Commands',
+        'navigation' => 'Go to',
+        'empty' => 'Nothing found',
+        'searching' => 'Searching…',
+        'toggle_theme' => 'Toggle theme',
+        'hint_select' => 'select',
+        'hint_open' => 'open',
+        'hint_close' => 'close',
+    ],
+
+    'components' => [
+        'breadcrumbs' => 'Breadcrumbs',
+        'previous' => 'Previous',
+        'next' => 'Next',
+        'showing' => 'Showing :from–:to of :total',
+        'clear' => 'Clear',
+        'copy' => 'Copy',
+        'copied' => 'Copied',
+        'show_password' => 'Show password',
+        'hide_password' => 'Hide password',
+        'decrease' => 'Decrease',
+        'increase' => 'Increase',
+        'digit' => 'Digit :n',
+        'char_count' => ':count / :max',
+        'strength_1' => 'Weak password',
+        'strength_2' => 'Fair password',
+        'strength_3' => 'Good password',
+        'strength_4' => 'Strong password',
+        'today' => 'Today',
+        'done' => 'Done',
+        'prev_month' => 'Previous month',
+        'next_month' => 'Next month',
+        'choose_date' => 'Choose a date',
+        'invalid_date' => 'That date does not exist',
+        'invalid_time' => 'Enter a time as HH:MM',
+        'preset_today' => 'Today',
+        'preset_yesterday' => 'Yesterday',
+        'preset_this_week' => 'This week',
+        'preset_last_week' => 'Last week',
+        'preset_last_30_days' => 'Last 30 days',
+        'preset_this_month' => 'This month',
+        'preset_custom' => 'Custom range',
+        'drop_drag' => 'Drag files here',
+        'drop_or' => 'or',
+        'drop_browse' => 'choose on your computer',
+        'drop_release' => 'Release to upload :count file(s)',
+        'file_too_large' => 'File is larger than :size',
+        'file_not_allowed' => 'This file type is not allowed',
+        'file_uploaded' => 'uploaded',
+        'remove' => 'Remove',
+        'retry' => 'Retry',
+        'empty_title' => 'Nothing found',
+        'error_title' => 'Could not load the data',
+        'confirm_title' => 'Are you sure?',
+        'more' => 'More',
+    ],
+
     'theme' => [
         'label' => 'Theme',
-        'picker_title' => 'Choose a theme',
+        'picker_title' => 'Theme and color',
         'picker_subtitle' => 'Applies everywhere, syncs across reloads, and never causes a flash of the wrong colors.',
-        'system' => 'System',
+        'mode_label' => 'Theme',
+        'auto' => 'Auto',
         'light' => 'Light',
-        'gray' => 'Gray',
         'dark' => 'Dark',
-        'black' => 'Black',
-        'blue' => 'Blue Light',
-        'blue-dark' => 'Blue Dark',
-        'indigo' => 'Indigo Light',
-        'indigo-dark' => 'Indigo Dark',
-        'cyan' => 'Cyan Light',
-        'cyan-dark' => 'Cyan Dark',
-        'emerald' => 'Emerald Light',
-        'emerald-dark' => 'Emerald Dark',
-        'green' => 'Green Light',
-        'green-dark' => 'Green Dark',
-        'red' => 'Red Light',
-        'red-dark' => 'Red Dark',
-        'rose' => 'Rose Light',
-        'rose-dark' => 'Rose Dark',
-        'orange' => 'Orange Light',
-        'orange-dark' => 'Orange Dark',
-        'warm' => 'Warm Light',
-        'warm-dark' => 'Warm Dark',
-        'soft' => 'Soft Light',
-        'soft-dark' => 'Soft Dark',
-        'slate' => 'Slate',
-        'graphite' => 'Graphite',
-        'midnight' => 'Midnight',
-        'nord' => 'Nord',
-        'high-contrast' => 'High Contrast',
+        'accent_label' => 'Accent color',
+        'accent' => [
+            'default' => 'Blue',
+            'teal' => 'Teal',
+            'violet' => 'Violet',
+            'orange' => 'Orange',
+            'rose' => 'Rose',
+            'mono' => 'Monochrome',
+        ],
     ],
 
     'locale' => [
         'label' => 'Language',
         'en' => 'English',
         'ru' => 'Русский',
-        'uz' => "O'zbekcha",
+        'uz' => 'O\'zbekcha',
     ],
 
     'auth' => [
@@ -217,7 +278,6 @@ return [
         'error' => 'Could not save your settings.',
         'load_error' => 'Could not load your settings.',
         'timezones_error' => 'Could not load timezones',
-
         'currency' => 'Currency',
         'currency_follows_app' => 'App currency (:code)',
         'currency_is_app_currency' => 'Prices are shown in :code, the app currency.',
@@ -227,7 +287,6 @@ return [
         'app_currency_hint' => 'Everything is quoted against this. Exchange rates are stored against it daily, and each price keeps what it was worth in it on the day it was set.',
         'rates_as_of' => 'Exchange rates from :date.',
         'rates_missing' => 'No exchange rates stored yet — run `php artisan currency:sync`.',
-
         'nav' => [
             'profile' => 'Profile',
             'general' => 'General',
@@ -240,30 +299,23 @@ return [
             'system' => 'System',
             'developer' => 'Developer',
         ],
-
         'language_region_hint' => 'How dates, times, and language look for you.',
         'application_general_hint' => 'What every visitor sees for this instance — its name and default timezone.',
         'user_policies_hint' => 'What every user is allowed to do with their own account, plus upload limits.',
-
         'login_security_title' => 'Login security',
         'login_security_hint' => 'An extra check when you sign in with your password.',
         'require_login_verification' => 'Require a verification code every time you sign in',
         'require_login_verification_hint' => 'After your password, you will also need to enter a 6-digit code sent to your email before you can continue.',
-
         'default_language' => 'Default language',
         'default_language_hint' => 'The language new visitors and guests see before they pick one themselves.',
         'fallback_language' => 'Fallback language',
-
         'notifications_hint' => 'Which notification channels are available instance-wide.',
         'notifications_empty' => 'Nothing to configure here yet.',
-
         'allowed_login_roles' => 'Allowed login roles',
         'allowed_login_roles_hint' => 'Only accounts with one of the checked roles can sign in. Leave all unchecked to allow every role.',
         'default_registration_role' => 'Default registration role',
         'default_registration_role_hint' => 'The role automatically assigned to a new account after registration.',
-
         'security_hint' => 'Rate limits, account caps, and API/audit toggles for the whole instance.',
-
         'favicon' => 'Favicon',
         'favicon_hint' => 'Shown in browser tabs and bookmarks across the whole site.',
         'favicon_upload' => 'Upload new favicon',
@@ -272,12 +324,10 @@ return [
         'favicon_dropzone' => 'Drag & drop a file here, or use the button above.',
         'favicon_updated' => 'Favicon updated.',
         'favicon_error' => 'Could not update the favicon.',
-
         'developer_mode' => 'Developer mode',
         'developer_mode_hint' => 'Show API/technical details (endpoint, status, timing, request ID) alongside the normal UI.',
         'about' => 'About',
         'version' => 'Version :version',
-
         'notif_prefs' => 'Notification preferences',
         'notif_prefs_hint' => 'What you get notified about, and how.',
         'notif_pref_database' => 'Save notifications to your notification center',
@@ -285,16 +335,11 @@ return [
         'notif_pref_sound' => 'Play a sound for new messages',
         'notif_pref_message' => 'Notify me about new messages',
         'notif_pref_system' => 'Notify me about system announcements',
-
-        // Human labels for the remaining generic Application settings —
-        // see settings.js's settingLabel()/settingHint(). Key = the raw
-        // setting key with the dot replaced by an underscore.
         'keys' => [
             'system_site_name' => 'Site name',
             'system_site_name_hint' => 'Shown in page titles, the header, and auth pages across the whole site.',
             'system_timezone' => 'Application timezone',
             'system_timezone_hint' => 'Used for anyone who has not set their own timezone in Personal settings.',
-
             'auth_registration_open' => 'Allow new registrations',
             'auth_registration_open_hint' => 'Turn off to stop new accounts from signing up.',
             'auth_login_open' => 'Allow sign-ins',
@@ -305,12 +350,10 @@ return [
             'auth_remember_me_enabled_hint' => 'Lets a signed-in user stay signed in across browser restarts.',
             'auth_session_lifetime' => 'Session lifetime (minutes)',
             'auth_session_lifetime_hint' => 'How long a session stays valid without activity.',
-
             'localization_allow_locale_switch' => 'Allow users to change language',
             'localization_allow_locale_switch_hint' => 'Turn off to lock everyone to the default language.',
             'localization_auto_detect_browser_locale' => 'Auto-detect language from browser',
             'localization_auto_detect_browser_locale_hint' => 'Use a visitor\'s browser language before falling back to the default.',
-
             'notification_database' => 'In-app notifications',
             'notification_database_hint' => 'Whether notifications can be saved to a user\'s notification center at all.',
             'notification_email' => 'Email notifications',
@@ -321,7 +364,6 @@ return [
             'notification_push_hint' => 'Whether the app can send mobile/web push notifications.',
             'notification_sms' => 'SMS notifications',
             'notification_sms_hint' => 'Whether the app can send notifications via SMS.',
-
             'auth_max_register_users_count' => 'Max new registrations per day',
             'auth_max_register_users_count_hint' => 'A daily cap on new sign-ups, instance-wide. 0 means no cap.',
             'auth_max_users_count' => 'Max total accounts',
@@ -336,7 +378,6 @@ return [
             'security_enable_api_hint' => 'Turn off to block all API access instance-wide.',
             'security_audit_log' => 'Keep an audit log',
             'security_audit_log_hint' => 'Record who changed what, for later review.',
-
             'upload_max_upload_size' => 'Max upload size (KB)',
             'upload_max_upload_size_hint' => 'The largest file any upload endpoint will accept.',
             'upload_allowed_extensions' => 'Allowed file extensions',
@@ -353,7 +394,6 @@ return [
             'upload_max_document_size_hint' => 'The largest document file users are allowed to upload.',
             'upload_image_quality' => 'Image compression quality (%)',
             'upload_image_quality_hint' => 'Lower values save space at the cost of image quality.',
-
             'user_allow_avatar_upload' => 'Allow avatar uploads',
             'user_allow_avatar_upload_hint' => 'Lets users upload a profile picture.',
             'user_default_avatar' => 'Default avatar image',
@@ -388,15 +428,12 @@ return [
         'group_notification' => 'Notifications',
         'group_user' => 'User',
         'group_security' => 'Security',
-
         'sessions_title' => 'Sessions',
         'sessions_subtitle' => 'Every session across every account.',
         'sessions_search_placeholder' => 'Search by user, IP, or device…',
         'user' => 'User',
-
         'request_logs_title' => 'Request logs',
         'request_logs_subtitle' => 'Every API request captured across the instance.',
-
         'users_title' => 'Users',
         'users_subtitle' => 'Manage accounts, roles, and bans.',
         'users_search_placeholder' => 'Search by name or email…',
@@ -455,6 +492,9 @@ return [
         'minutes_ago' => ':count min ago',
         'hours_ago' => ':count h ago',
         'days_ago' => ':count d ago',
+        'new_count' => ':count new',
+        'read_all' => 'Read all',
+        'all' => 'All notifications',
     ],
 
     'chat' => [
@@ -475,7 +515,6 @@ return [
         'start_group' => 'Create a group',
         'recipient_id' => 'User ID',
         'create' => 'Create',
-
         'search_all' => 'Search all conversations',
         'jump_to_newest' => 'Jump to newest',
         'replying_to' => 'Replying to',
@@ -510,18 +549,18 @@ return [
     ],
 
     'errors' => [
-        '403_title' => "You don't have access to this page",
+        '403_title' => 'You don\'t have access to this page',
         '403_message' => 'You are signed in, but your account is not allowed to view this page.',
         '404_title' => 'Page not found',
-        '404_message' => "The page you're looking for doesn't exist or may have been moved.",
+        '404_message' => 'The page you\'re looking for doesn\'t exist or may have been moved.',
         '419_title' => 'Your session expired',
         '419_message' => 'The page timed out for security reasons. Please try again.',
         '429_title' => 'Too many requests',
-        '429_message' => "You've made too many requests in a short time. Please wait a moment and try again.",
+        '429_message' => 'You\'ve made too many requests in a short time. Please wait a moment and try again.',
         '500_title' => 'Something went wrong',
-        '500_message' => "An unexpected error occurred on our end. We've been notified — please try again shortly.",
+        '500_message' => 'An unexpected error occurred on our end. We\'ve been notified — please try again shortly.',
         '503_title' => 'Down for maintenance',
-        '503_message' => "We're performing scheduled maintenance. Please check back in a few minutes.",
+        '503_message' => 'We\'re performing scheduled maintenance. Please check back in a few minutes.',
         'go_home' => 'Go to homepage',
         'go_back' => 'Go back',
     ],
@@ -560,5 +599,4 @@ return [
         'banned_notice_reason' => 'Your account is banned: :reason',
         'banned_notice_until' => ' (until :date)',
     ],
-
 ];

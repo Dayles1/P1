@@ -23,11 +23,11 @@
         @csrf
 
 
-        <div class="form-group">
+        <div class="field-group">
 
             <label
                 for="forgot-email"
-                class="form-label"
+                class="field-label"
             >
                 Email address
             </label>
@@ -36,15 +36,15 @@
                 id="forgot-email"
                 type="email"
                 name="email"
-                class="form-input"
+                class="field-input"
                 placeholder="you@example.com"
                 autocomplete="email"
                 required
             >
 
             <span
-                class="form-error"
-                data-error-for="email"
+                class="field-error"
+                data-field-error="email"
             ></span>
 
         </div>

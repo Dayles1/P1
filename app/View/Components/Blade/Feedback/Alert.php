@@ -9,14 +9,14 @@ use Illuminate\View\Component;
 class Alert extends Component
 {
     /**
-     * Create a new component instance.
+     * @param  string  $type  success | error | warning | info
+     * @param  string|null  $title  Bold first line; the slot becomes the secondary text.
      */
     public function __construct(
         public string $type = 'info',
         public bool $dismissible = true,
-    ) {
-        //
-    }
+        public ?string $title = null,
+    ) {}
 
     /**
      * Get the view / contents that represent the component.

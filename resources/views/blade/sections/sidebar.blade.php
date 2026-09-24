@@ -1,81 +1,33 @@
 {{-- =====================================================
      AUTHENTICATED SIDEBAR
+     -----------------------------------------------------
+     Product sections only — new modules get their link here. Anything
+     personal or administrative (settings, sessions, notifications,
+     admin, sign-out) lives in the account menu in the header instead.
+     248px with labels ≥ 1200px, a 72px icon rail from 640px, and
+     replaced by the bottom tab bar on phones.
      ===================================================== --}}
 
-<nav class="sidebar-nav" aria-label="Account">
-
-    <span class="sidebar-nav__group-label">{{ __('ui.nav.dashboard') }}</span>
-
-    <x-blade.navigation.sidebar-link :href="route('dashboard')" icon="&#9635;">
-        {{ __('ui.nav.dashboard') }}
-    </x-blade.navigation.sidebar-link>
-
-    <x-blade.navigation.sidebar-link :href="route('chat')" icon="&#9993;">
-        {{ __('ui.nav.chat') }}
-    </x-blade.navigation.sidebar-link>
-
-    <x-blade.navigation.sidebar-link :href="route('notifications')" icon="&#128276;">
-        {{ __('ui.nav.notifications') }}
-    </x-blade.navigation.sidebar-link>
-
-
-    <span class="sidebar-nav__group-label">{{ __('ui.nav.profile') }}</span>
-
-    {{-- Profile now lives inside Settings (Personal -> Profile) — see settings.js. --}}
-    <x-blade.navigation.sidebar-link :href="route('settings')" icon="&#9881;">
-        {{ __('ui.nav.settings') }}
-    </x-blade.navigation.sidebar-link>
-
-    <x-blade.navigation.sidebar-link :href="route('sessions')" icon="&#9673;">
-        {{ __('ui.nav.sessions') }}
-    </x-blade.navigation.sidebar-link>
-
-
-    <span
-        class="sidebar-nav__group-label"
-        data-requires-role="SUPER_ADMIN,ADMIN"
-        hidden
-    >
-        {{ __('ui.nav.admin') }}
+<a href="{{ route('dashboard') }}" class="sidebar-brand">
+    <span class="sidebar-brand__mark" aria-hidden="true">{{ mb_strtoupper(mb_substr(config('app.name', 'L'), 0, 1)) }}</span>
+    <span class="sidebar-brand__text">
+        <span class="sidebar-brand__name truncate">{{ config('app.name', 'Laravel') }}</span>
+        <span class="sidebar-brand__caption truncate">{{ __('ui.shell.workspace') }}</span>
     </span>
+</a>
 
-    <x-blade.navigation.sidebar-link
-        :href="route('admin.users')"
-        icon="&#9782;"
-        data-requires-role="SUPER_ADMIN,ADMIN"
-        hidden
-    >
-        {{ __('ui.nav.admin_users') }}
+<nav class="sidebar-nav" aria-label="{{ __('ui.shell.main_nav') }}">
+
+    <x-blade.navigation.sidebar-link :href="route('dashboard')" icon="home">
+        {{ __('ui.nav.home') }}
     </x-blade.navigation.sidebar-link>
 
-    <x-blade.navigation.sidebar-link
-        :href="route('admin.sessions')"
-        icon="&#9673;"
-        data-requires-role="SUPER_ADMIN,ADMIN"
-        hidden
-    >
-        {{ __('ui.nav.admin_sessions') }}
+    <x-blade.navigation.sidebar-link :href="route('profile')" icon="user">
+        {{ __('ui.nav.profile') }}
     </x-blade.navigation.sidebar-link>
 
-    <x-blade.navigation.sidebar-link
-        :href="route('admin.request-logs')"
-        icon="&#9776;"
-        data-requires-role="SUPER_ADMIN,ADMIN"
-        hidden
-    >
-        {{ __('ui.nav.admin_request_logs') }}
-    </x-blade.navigation.sidebar-link>
-
-    {{-- Application settings — its own URL space under /admin/settings,
-         so this no longer has to smuggle a section past /settings as a
-         `#hash` (which never matched a real section id anyway). --}}
-    <x-blade.navigation.sidebar-link
-        :href="route('admin.settings')"
-        icon="&#9881;"
-        data-requires-role="SUPER_ADMIN,ADMIN"
-        hidden
-    >
-        {{ __('ui.nav.admin_settings') }}
+    <x-blade.navigation.sidebar-link :href="route('chat')" icon="chat">
+        {{ __('ui.nav.chat') }}
     </x-blade.navigation.sidebar-link>
 
 </nav>

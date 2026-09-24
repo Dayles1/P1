@@ -1,0 +1,227 @@
+@layer components {
+    /* =========================================================
+       NOTIFICATION BELL
+       -----------------------------------------------------------
+       The header bell shows a dot, not a count — the count lives in the
+       popover header ("N new") and next to "Notifications" in the
+       account menu.
+       ========================================================= */
+    .notif-bell {
+        position: relative;
+    }
+
+    .notif-bell__dot {
+        position: absolute;
+        top: 10px;
+        right: 11px;
+        width: 8px;
+        height: 8px;
+        box-sizing: content-box;
+        border: 2px solid var(--ui-surface);
+        border-radius: var(--ui-radius-full);
+        background: var(--ui-danger);
+    }
+
+    /* Count badge — still used by the public site header's bell. */
+    .notif-badge {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        display: inline-grid;
+        place-items: center;
+        min-width: 16px;
+        height: 16px;
+        padding: 0 4px;
+        border-radius: var(--ui-radius-full);
+        background: var(--ui-danger);
+        color: var(--ui-on-primary);
+        font-size: 10px;
+        font-weight: var(--weight-bold);
+        line-height: 1;
+    }
+
+    .notif-dropdown-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 8px 12px 6px;
+    }
+
+    .notif-dropdown-header .dropdown__label {
+        padding: 0;
+    }
+
+    .notif-dropdown-header__action {
+        height: auto;
+        padding: 3px 8px;
+        font-size: 11px;
+    }
+
+    /* =========================================================
+       NOTIFICATION POPOVER (header dropdown panel)
+       ========================================================= */
+    .dropdown__menu.notif-popover {
+        width: 400px;
+        max-width: calc(100vw - 24px);
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .notif-popover__header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px var(--space-4);
+    }
+
+    .notif-popover__title {
+        font-size: 16px;
+        font-weight: var(--weight-semibold);
+    }
+
+    .notif-popover__action {
+        margin-left: auto;
+        color: var(--ui-primary);
+        font-size: var(--text-sm);
+        font-weight: var(--weight-semibold);
+    }
+
+    .notif-popover__action:hover {
+        color: var(--ui-primary-hover);
+    }
+
+    .notif-popover__footer {
+        display: flex;
+        justify-content: center;
+        padding: var(--space-3);
+        border-top: 1px solid var(--ui-border);
+        color: var(--ui-primary);
+        font-size: var(--text-base);
+        font-weight: var(--weight-semibold);
+    }
+
+    .notif-popover__footer:hover {
+        background: var(--ui-surface-soft);
+        color: var(--ui-primary-hover);
+    }
+
+    .notif-popover .notif-list {
+        max-height: 420px;
+        overflow-y: auto;
+    }
+
+    .notif-popover .notif-item {
+        border-top: 1px solid var(--ui-border);
+        border-radius: 0;
+    }
+
+    .notif-popover .empty-state {
+        margin: var(--space-3);
+    }
+
+    /* Public site header dropdown keeps its narrower list. */
+    .notif-list {
+        min-width: 320px;
+        max-width: 400px;
+        max-height: 380px;
+        overflow-y: auto;
+    }
+
+    @media (max-width: 520px) {
+        .notif-list {
+            min-width: 0;
+            max-width: none;
+        }
+    }
+
+    /* =========================================================
+       NOTIFICATION ITEM (popover + Notification Center)
+       ========================================================= */
+    .notif-item {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-3);
+        width: 100%;
+        padding: var(--space-3) var(--space-4);
+        border-radius: var(--ui-radius-sm);
+        color: var(--ui-text);
+        text-align: left;
+        transition: background 140ms ease;
+    }
+
+    .notif-item:hover {
+        background: var(--ui-surface-soft);
+    }
+
+    .notif-item--unread,
+    .notif-item--unread:hover {
+        background: var(--ui-primary-soft);
+    }
+
+    .notif-item__icon {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 34px;
+        height: 34px;
+        border-radius: var(--ui-radius-sm);
+        background: var(--hue-violet-bg);
+        color: var(--hue-violet);
+    }
+
+    .notif-item--mention .notif-item__icon {
+        background: var(--hue-blue-bg);
+        color: var(--hue-blue);
+    }
+
+    .notif-item--message .notif-item__icon {
+        background: var(--hue-rose-bg);
+        color: var(--hue-rose);
+    }
+
+    .notif-item__body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        min-width: 0;
+    }
+
+    .notif-item__title {
+        font-size: 13.5px;
+        font-weight: var(--weight-semibold);
+        line-height: 1.4;
+    }
+
+    .notif-item__text {
+        display: -webkit-box;
+        overflow: hidden;
+        color: var(--ui-text-secondary);
+        font-size: var(--text-sm);
+        line-height: 1.4;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .notif-item__time {
+        color: var(--ui-text-secondary);
+        font-size: 12px;
+    }
+
+    .notif-item__dot {
+        flex-shrink: 0;
+        width: 8px;
+        height: 8px;
+        margin-top: 6px;
+        border-radius: var(--ui-radius-full);
+        background: var(--ui-primary);
+    }
+
+    .notif-filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+}

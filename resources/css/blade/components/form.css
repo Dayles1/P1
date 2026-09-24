@@ -1,0 +1,510 @@
+@layer components {
+    /* =========================================================
+       FIELD — label on top, control, hint or error underneath
+       -----------------------------------------------------------
+       .field-group > .field-label + control + .field-hint / .field-error
+       The error slot is [data-field-error="<name>"]; shared/forms.js
+       fills it from the API and marks the input aria-invalid.
+
+       Controls:
+         .field-input   a bare <input>/<textarea> (44px, sm 36 / lg 52)
+         .field-select  a native <select> with a drawn chevron
+         .field-box     a box that looks like an input and holds one
+                        (.field-box__input) plus icons, prefix/suffix
+                        text, an inline action or a select addon.
+       ========================================================= */
+    .field-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-width: 0;
+        margin-bottom: var(--space-4);
+    }
+
+    .field-label {
+        color: var(--ui-text);
+        font-size: var(--text-base);
+        font-weight: var(--weight-medium);
+    }
+
+    .field-label__required {
+        margin-left: 2px;
+        color: var(--ui-danger);
+    }
+
+    .field-hint {
+        color: var(--ui-text-secondary);
+        font-size: var(--text-sm);
+    }
+
+    .field-error {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--ui-danger);
+        font-size: var(--text-sm);
+    }
+
+    .field-error:empty {
+        display: none;
+    }
+
+    /* Hint on the left, character counter on the right (textarea). */
+    .field-meta {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--space-3);
+        color: var(--ui-text-secondary);
+        font-size: var(--text-sm);
+    }
+
+    .field-meta__count {
+        margin-left: auto;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .field-meta__count[data-over] {
+        color: var(--ui-danger);
+    }
+
+    .field-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-4);
+    }
+
+    .field-row > .field-group {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    /* ---------------------------------------------------------
+       Bare input / textarea / select
+       --------------------------------------------------------- */
+    .field-input,
+    .field-select {
+        width: 100%;
+        height: var(--control-md);
+        padding: 0 var(--space-3);
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius-sm);
+        outline: none;
+        background: var(--ui-surface);
+        color: var(--ui-text);
+        font-size: var(--text-md);
+        transition:
+            border-color 160ms ease,
+            box-shadow 160ms ease;
+    }
+
+    textarea.field-input {
+        height: auto;
+        min-height: 96px;
+        padding: var(--space-3);
+        line-height: 1.5;
+        resize: vertical;
+    }
+
+    .field-input::placeholder,
+    .field-box__input::placeholder {
+        color: var(--ui-text-muted);
+    }
+
+    .field-input:hover,
+    .field-select:hover {
+        border-color: var(--ui-border-hover);
+    }
+
+    .field-input:focus,
+    .field-select:focus {
+        border-color: var(--ui-primary);
+        box-shadow: 0 0 0 3px var(--ui-primary-soft);
+    }
+
+    .field-input[aria-invalid='true'],
+    .field-select[aria-invalid='true'] {
+        border-color: var(--ui-danger);
+        box-shadow: 0 0 0 3px var(--ui-danger-bg);
+    }
+
+    .field-input:disabled,
+    .field-select:disabled,
+    .field-input[readonly] {
+        background: var(--ui-surface-soft);
+        border-color: var(--ui-border);
+        box-shadow: none;
+    }
+
+    .field-input:disabled,
+    .field-select:disabled {
+        color: var(--ui-text-muted);
+        cursor: not-allowed;
+    }
+
+    .field-input--sm,
+    .field-select--sm {
+        height: var(--control-sm);
+        font-size: var(--text-base);
+    }
+
+    .field-input--lg,
+    .field-select--lg {
+        height: var(--control-lg);
+        font-size: 16px;
+    }
+
+    /* The chevron is two gradient halves in a token color. */
+    .field-select {
+        padding-right: 36px;
+        appearance: none;
+        background-image:
+            linear-gradient(
+                45deg,
+                transparent 50%,
+                var(--ui-text-secondary) 50%
+            ),
+            linear-gradient(
+                135deg,
+                var(--ui-text-secondary) 50%,
+                transparent 50%
+            );
+        background-position:
+            calc(100% - 18px) 50%,
+            calc(100% - 13px) 50%;
+        background-size:
+            5px 5px,
+            5px 5px;
+        background-repeat: no-repeat;
+    }
+
+    /* Legacy wrapper — the chevron now lives on .field-select itself. */
+    .select-field {
+        display: block;
+    }
+
+    /* An input with an action inside it (auth password toggle). */
+    .field-control {
+        position: relative;
+        width: 100%;
+    }
+
+    .field-control .field-input {
+        padding-right: 48px;
+    }
+
+    /* ---------------------------------------------------------
+       Composite box: icon / prefix / input / suffix / action / addon
+       --------------------------------------------------------- */
+    .field-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: var(--control-md);
+        padding: 0 var(--space-3);
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius-sm);
+        background: var(--ui-surface);
+        color: var(--ui-text);
+        font-size: var(--text-md);
+        transition:
+            border-color 160ms ease,
+            box-shadow 160ms ease;
+    }
+
+    .field-box:hover {
+        border-color: var(--ui-border-hover);
+    }
+
+    .field-box:focus-within {
+        border-color: var(--ui-primary);
+        box-shadow: 0 0 0 3px var(--ui-primary-soft);
+    }
+
+    .field-box:has([aria-invalid='true']) {
+        border-color: var(--ui-danger);
+        box-shadow: 0 0 0 3px var(--ui-danger-bg);
+    }
+
+    .field-box--success {
+        border-color: var(--ui-success);
+    }
+
+    .field-box:has(.field-box__input:disabled),
+    .field-box:has(.field-box__input[readonly]) {
+        background: var(--ui-surface-soft);
+        border-color: var(--ui-border);
+        box-shadow: none;
+    }
+
+    .field-box:has(.field-box__input:disabled) {
+        color: var(--ui-text-muted);
+    }
+
+    .field-box--sm {
+        height: var(--control-sm);
+        font-size: var(--text-base);
+    }
+
+    .field-box--lg {
+        height: var(--control-lg);
+        font-size: 16px;
+    }
+
+    /* Addon / stepper boxes run their parts edge to edge. */
+    .field-box--flush {
+        gap: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .field-box__input {
+        flex: 1;
+        min-width: 0;
+        height: 100%;
+        border: 0;
+        outline: none;
+        background: transparent;
+        color: inherit;
+        font-size: inherit;
+    }
+
+    .field-box--flush .field-box__input {
+        padding: 0 var(--space-3);
+    }
+
+    .field-box__input--end {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .field-box__input--center {
+        text-align: center;
+        font-weight: var(--weight-semibold);
+    }
+
+    .field-box__input[type='number'] {
+        appearance: textfield;
+    }
+
+    .field-box__input::-webkit-inner-spin-button,
+    .field-box__input::-webkit-outer-spin-button {
+        appearance: none;
+        margin: 0;
+    }
+
+    .field-box__icon {
+        display: flex;
+        color: var(--ui-text-muted);
+    }
+
+    .field-box--success .field-box__status {
+        display: flex;
+        color: var(--ui-success);
+    }
+
+    .field-box__prefix {
+        display: flex;
+        align-items: center;
+        align-self: stretch;
+        margin-right: 2px;
+        padding-right: 10px;
+        border-right: 1px solid var(--ui-border);
+        color: var(--ui-text-secondary);
+    }
+
+    .field-box__suffix {
+        color: var(--ui-text-secondary);
+        font-size: var(--text-base);
+        white-space: nowrap;
+    }
+
+    /* Clear / copy / show-password button inside the box. */
+    .field-box__action {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 30px;
+        height: 30px;
+        margin-right: -6px;
+        border-radius: 6px;
+        color: var(--ui-text-muted);
+    }
+
+    .field-box__action:hover {
+        background: var(--ui-surface-soft);
+        color: var(--ui-text);
+    }
+
+    .field-box__action--framed {
+        border: 1px solid var(--ui-border);
+        background: var(--ui-surface);
+        color: var(--ui-text-secondary);
+    }
+
+    .field-box__spinner {
+        flex-shrink: 0;
+    }
+
+    /* A select glued to one side of the box (country code, currency). */
+    .field-box__addon {
+        align-self: stretch;
+        flex-shrink: 0;
+        padding: 0 32px 0 var(--space-3);
+        border: 0;
+        outline: none;
+        appearance: none;
+        background-color: transparent;
+        background-image:
+            linear-gradient(
+                45deg,
+                transparent 50%,
+                var(--ui-text-secondary) 50%
+            ),
+            linear-gradient(
+                135deg,
+                var(--ui-text-secondary) 50%,
+                transparent 50%
+            );
+        background-position:
+            calc(100% - 16px) 50%,
+            calc(100% - 11px) 50%;
+        background-size:
+            5px 5px,
+            5px 5px;
+        background-repeat: no-repeat;
+        color: var(--ui-text);
+        font-size: inherit;
+        cursor: pointer;
+    }
+
+    .field-box__addon--start {
+        border-right: 1px solid var(--ui-border);
+    }
+
+    .field-box__addon--end {
+        border-left: 1px solid var(--ui-border);
+        background-color: var(--ui-surface-soft);
+        font-size: var(--text-base);
+        font-weight: var(--weight-semibold);
+    }
+
+    .field-box__addon:focus-visible {
+        background-color: var(--ui-primary-soft);
+    }
+
+    /* Number stepper: [−] value [+] */
+    .field-box__step {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        align-self: stretch;
+        width: var(--control-md);
+        background: var(--ui-surface-soft);
+        color: var(--ui-text);
+    }
+
+    .field-box__step:first-child {
+        border-right: 1px solid var(--ui-border);
+    }
+
+    .field-box__step:last-child {
+        border-left: 1px solid var(--ui-border);
+    }
+
+    .field-box__step:hover {
+        background: var(--ui-border);
+    }
+
+    .field-box__step:disabled {
+        color: var(--ui-text-muted);
+        cursor: not-allowed;
+    }
+
+    /* ---------------------------------------------------------
+       Password strength meter (4 segments)
+       --------------------------------------------------------- */
+    .strength {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .strength__bars {
+        display: flex;
+        gap: var(--space-1);
+    }
+
+    .strength__bar {
+        flex: 1;
+        height: 4px;
+        border-radius: 2px;
+        background: var(--ui-surface-soft);
+    }
+
+    .strength[data-level='1'] .strength__bar:nth-child(-n + 1) {
+        background: var(--ui-danger);
+    }
+
+    .strength[data-level='2'] .strength__bar:nth-child(-n + 2) {
+        background: var(--ui-warning);
+    }
+
+    .strength[data-level='3'] .strength__bar:nth-child(-n + 3),
+    .strength[data-level='4'] .strength__bar {
+        background: var(--ui-success);
+    }
+
+    .strength__label {
+        font-size: 12.5px;
+        font-weight: var(--weight-semibold);
+    }
+
+    .strength[data-level='1'] .strength__label {
+        color: var(--ui-danger);
+    }
+
+    .strength[data-level='2'] .strength__label {
+        color: var(--ui-warning);
+    }
+
+    .strength[data-level='3'] .strength__label,
+    .strength[data-level='4'] .strength__label {
+        color: var(--ui-success);
+    }
+
+    /* ---------------------------------------------------------
+       Verification code (OTP) — shared/code-input.js
+       --------------------------------------------------------- */
+    .code-input {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .code-input__box {
+        width: 100%;
+        min-width: 0;
+        height: 58px;
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius-sm);
+        outline: none;
+        background: var(--ui-surface);
+        color: var(--ui-text);
+        font-size: 24px;
+        font-weight: var(--weight-semibold);
+        text-align: center;
+        transition:
+            border-color 140ms ease,
+            box-shadow 140ms ease;
+    }
+
+    .code-input__box:focus {
+        border-color: var(--ui-primary);
+        box-shadow: inset 0 0 0 1px var(--ui-primary);
+    }
+
+    .code-input__box.is-invalid,
+    .code-input[data-invalid] .code-input__box {
+        border-color: var(--ui-danger);
+    }
+}

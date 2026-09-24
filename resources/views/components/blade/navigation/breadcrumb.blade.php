@@ -1,5 +1,5 @@
 @if (count($items))
-    <nav class="breadcrumb" aria-label="Breadcrumb" {{ $attributes }}>
+    <nav {{ $attributes->class(['breadcrumb']) }} aria-label="{{ __('ui.components.breadcrumbs') }}">
         <ol class="breadcrumb__list">
             @foreach ($items as $index => $item)
                 @php
@@ -18,7 +18,7 @@
                     @endif
 
                     @unless ($isLast)
-                        <span class="breadcrumb__separator" aria-hidden="true">/</span>
+                        <span class="breadcrumb__separator" aria-hidden="true"><x-blade.u-i.icon name="chev" size="14" /></span>
                     @endunless
                 </li>
             @endforeach

@@ -49,14 +49,14 @@ function boot() {
                 return `
                     <tr>
                         <td>
-                            <div style="font-weight:600;">${escapeHtml(session.user?.name || '—')}</div>
-                            <div style="font-size:11.5px; color:var(--ui-text-muted);">${escapeHtml(session.user?.email || '')}</div>
+                            <div class="font-semibold">${escapeHtml(session.user?.name || '—')}</div>
+                            <div class="text-xs muted">${escapeHtml(session.user?.email || '')}</div>
                         </td>
                         <td>${escapeHtml([session.browser, session.platform].filter(Boolean).join(' · ') || session.device_name || t('common.unknown'))}</td>
                         <td>${escapeHtml(session.ip_address || '—')}</td>
                         <td>${statusPill}</td>
                         <td>${session.last_activity_at ?? '—'}</td>
-                        <td style="text-align:right;">
+                        <td class="text-right">
                             <a href="/admin/sessions/${session.id}" class="btn btn--ghost btn--sm">${t('common.details')}</a>
                             ${session.status === 'active' ? `<button type="button" class="btn btn--outline btn--sm" data-revoke="${session.id}">${t('sessions.sign_out')}</button>` : ''}
                         </td>

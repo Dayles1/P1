@@ -14,7 +14,7 @@
         @if ($title)
             <div class="modal__header">
                 <h2 class="modal__title" id="{{ $id }}-title">{{ $title }}</h2>
-                <button type="button" class="modal__close" data-modal-close aria-label="Close">&times;</button>
+                <button type="button" class="modal__close" data-modal-close aria-label="{{ __('ui.common.close') }}"><x-blade.u-i.icon name="x" size="18" /></button>
             </div>
         @endif
 

@@ -6,8 +6,8 @@
 
     <div class="page-head">
         <div>
-            <a href="{{ route('admin.sessions') }}" class="btn btn--ghost btn--sm" style="margin-bottom:10px;">
-                &larr; {{ __('ui.admin.sessions_title') }}
+            <a href="{{ route('admin.sessions') }}" class="btn btn--ghost btn--sm mb-3">
+                <x-blade.u-i.icon name="back" size="16" /> {{ __('ui.admin.sessions_title') }}
             </a>
             <h1>{{ __('ui.sessions.detail_title') }}</h1>
         </div>
@@ -17,7 +17,7 @@
         </x-blade.u-i.button>
     </div>
 
-    <div class="card" style="margin-bottom:20px;">
+    <div class="card mb-5">
         <div class="card__body" data-session-summary>
             <div class="skeleton skeleton-row"></div>
         </div>

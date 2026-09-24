@@ -1,0 +1,61 @@
+@layer pages {
+    /* =========================================================
+       HERO
+       ========================================================= */
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        max-width: 640px;
+        padding: 48px 0;
+    }
+
+    .hero__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 11px;
+        border: 1px solid var(--ui-border);
+        border-radius: 999px;
+        background: var(--ui-surface);
+        color: var(--ui-text-secondary);
+        font-size: 12px;
+        font-weight: 650;
+    }
+
+    .hero__badge-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #22c55e;
+        box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+    }
+
+    .hero__title {
+        margin: 22px 0 16px;
+        color: var(--ui-text);
+        font-size: clamp(36px, 5vw, 56px);
+        line-height: 1.02;
+        letter-spacing: -0.03em;
+        font-weight: 760;
+    }
+
+    .hero__title span {
+        display: block;
+        color: var(--ui-primary);
+    }
+
+    .hero__subtitle {
+        margin: 0;
+        color: var(--ui-text-secondary);
+        font-size: 17px;
+        line-height: 1.7;
+    }
+
+    .hero__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 32px;
+    }
+}

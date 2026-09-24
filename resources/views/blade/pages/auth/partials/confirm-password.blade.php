@@ -24,22 +24,22 @@
 
 
         {{-- PASSWORD --}}
-        <div class="form-group">
+        <div class="field-group">
 
             <label
                 for="confirm-password-password"
-                class="form-label"
+                class="field-label"
             >
                 Password
             </label>
 
-            <div class="form-input-wrapper">
+            <div class="field-control">
 
                 <input
                     id="confirm-password-password"
                     type="password"
                     name="password"
-                    class="form-input"
+                    class="field-input"
                     placeholder="Enter your password"
                     autocomplete="current-password"
                     required
@@ -51,14 +51,14 @@
                     data-password-toggle="confirm-password-password"
                     aria-label="Show password"
                 >
-                    ◉
+                    <x-blade.u-i.icon name="eye" size="18" />
                 </button>
 
             </div>
 
             <span
-                class="form-error"
-                data-error-for="password"
+                class="field-error"
+                data-field-error="password"
             ></span>
 
         </div>

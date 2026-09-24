@@ -1,8 +1,2 @@
-@php
-    $allowed = ['muted', 'primary', 'success', 'danger', 'warning', 'info'];
-    $variant = in_array($variant, $allowed, true) ? $variant : 'muted';
-@endphp
-
-<span {{ $attributes->class(['pill', "pill--{$variant}"]) }}>
-    {{ $slot }}
-</span>
+{{-- <x-blade.u-i.badge variant="success">{{ __('ui.common.active') }}</x-blade.u-i.badge> --}}
+<span {{ $attributes->class(['badge', "badge--{$variant}" => $variant !== 'neutral']) }}>{{ $slot }}</span>

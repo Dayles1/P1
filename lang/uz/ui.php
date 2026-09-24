@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'footer' => [
         'tagline' => 'Hisobingiz, loyihalaringiz va shaxsiy ish maydoningizni boshqarishning ishonchli va oddiy usuli.',
         'rights_reserved' => 'Barcha huquqlar himoyalangan.',
@@ -80,47 +79,109 @@ return [
         'edit' => 'Tahrirlash',
     ],
 
+    'shell' => [
+        'main_nav' => 'Asosiy navigatsiya',
+        'tab_nav' => 'Boʻlimlar',
+        'workspace' => 'Ish maydoni',
+        'search_placeholder' => 'Qidiruv va buyruqlar',
+        'create' => 'Yaratish',
+        'new_chat' => 'Yangi chat',
+        'new_group' => 'Yangi guruh',
+        'account_menu' => 'Akkaunt menyusi',
+        'my_account' => 'Mening akkauntim',
+        'security_sessions' => 'Xavfsizlik va seanslar',
+        'whats_new' => 'Yangiliklar',
+        'administration' => 'Boshqaruv',
+        'theme' => 'Mavzu',
+        'language' => 'Til',
+    ],
+
+    'palette' => [
+        'label' => 'Qidiruv va buyruqlar',
+        'placeholder' => 'Odamlar, xabarlar va buyruqlarni qidiring',
+        'people' => 'Odamlar',
+        'messages' => 'Xabarlar',
+        'commands' => 'Buyruqlar',
+        'navigation' => 'Oʻtish',
+        'empty' => 'Hech narsa topilmadi',
+        'searching' => 'Qidirilmoqda…',
+        'toggle_theme' => 'Mavzuni almashtirish',
+        'hint_select' => 'tanlash',
+        'hint_open' => 'ochish',
+        'hint_close' => 'yopish',
+    ],
+
+    'components' => [
+        'breadcrumbs' => 'Navigatsiya yoʻli',
+        'previous' => 'Oldingi',
+        'next' => 'Keyingi',
+        'showing' => ':total tadan :from–:to koʻrsatilmoqda',
+        'clear' => 'Tozalash',
+        'copy' => 'Nusxa olish',
+        'copied' => 'Nusxa olindi',
+        'show_password' => 'Parolni koʻrsatish',
+        'hide_password' => 'Parolni yashirish',
+        'decrease' => 'Kamaytirish',
+        'increase' => 'Koʻpaytirish',
+        'digit' => ':n-raqam',
+        'char_count' => ':count / :max',
+        'strength_1' => 'Zaif parol',
+        'strength_2' => 'Oʻrtacha parol',
+        'strength_3' => 'Yaxshi parol',
+        'strength_4' => 'Ishonchli parol',
+        'today' => 'Bugun',
+        'done' => 'Tayyor',
+        'prev_month' => 'Oldingi oy',
+        'next_month' => 'Keyingi oy',
+        'choose_date' => 'Sanani tanlang',
+        'invalid_date' => 'Bunday sana yoʻq',
+        'invalid_time' => 'Vaqtni SS:DD koʻrinishida kiriting',
+        'preset_today' => 'Bugun',
+        'preset_yesterday' => 'Kecha',
+        'preset_this_week' => 'Shu hafta',
+        'preset_last_week' => 'Oʻtgan hafta',
+        'preset_last_30_days' => '30 kun',
+        'preset_this_month' => 'Shu oy',
+        'preset_custom' => 'Oʻz davri',
+        'drop_drag' => 'Fayllarni shu yerga torting',
+        'drop_or' => 'yoki',
+        'drop_browse' => 'kompyuterdan tanlang',
+        'drop_release' => 'Yuklash uchun qoʻyib yuboring: :count ta fayl',
+        'file_too_large' => 'Fayl :size dan katta',
+        'file_not_allowed' => 'Bu turdagi fayl qoʻllab-quvvatlanmaydi',
+        'file_uploaded' => 'yuklandi',
+        'remove' => 'Oʻchirish',
+        'retry' => 'Qayta urinish',
+        'empty_title' => 'Hech narsa topilmadi',
+        'error_title' => 'Maʼlumotlarni yuklab boʻlmadi',
+        'confirm_title' => 'Ishonchingiz komilmi?',
+        'more' => 'Yana',
+    ],
+
     'theme' => [
         'label' => 'Mavzu',
-        'picker_title' => 'Mavzuni tanlang',
+        'picker_title' => 'Mavzu va rang',
         'picker_subtitle' => 'Barcha joyda qoʻllanadi, sahifa yangilansa ham saqlanadi va notoʻgʻri ranglar bilan yaltillamaydi.',
-        'system' => 'Tizim',
-        'light' => 'Yorug\'',
-        'gray' => 'Kulrang',
+        'mode_label' => 'Mavzu',
+        'auto' => 'Avto',
+        'light' => 'Yorugʻ',
         'dark' => 'Toʻq',
-        'black' => 'Qora',
-        'blue' => 'Koʻk och',
-        'blue-dark' => 'Koʻk toʻq',
-        'indigo' => 'Indigo och',
-        'indigo-dark' => 'Indigo toʻq',
-        'cyan' => 'Moviy-yashil och',
-        'cyan-dark' => 'Moviy-yashil toʻq',
-        'emerald' => 'Zumrad och',
-        'emerald-dark' => 'Zumrad toʻq',
-        'green' => 'Yashil och',
-        'green-dark' => 'Yashil toʻq',
-        'red' => 'Qizil och',
-        'red-dark' => 'Qizil toʻq',
-        'rose' => 'Pushti och',
-        'rose-dark' => 'Pushti toʻq',
-        'orange' => 'Toʻq sariq och',
-        'orange-dark' => 'Toʻq sariq toʻq',
-        'warm' => 'Iliq och',
-        'warm-dark' => 'Iliq toʻq',
-        'soft' => 'Yumshoq och',
-        'soft-dark' => 'Yumshoq toʻq',
-        'slate' => 'Shifer',
-        'graphite' => 'Grafit',
-        'midnight' => 'Yarim tun',
-        'nord' => 'Nord',
-        'high-contrast' => 'Yuqori kontrast',
+        'accent_label' => 'Aksent rangi',
+        'accent' => [
+            'default' => 'Koʻk',
+            'teal' => 'Firuza',
+            'violet' => 'Binafsha',
+            'orange' => 'Toʻq sariq',
+            'rose' => 'Pushti',
+            'mono' => 'Monoxrom',
+        ],
     ],
 
     'locale' => [
         'label' => 'Til',
         'en' => 'English',
         'ru' => 'Русский',
-        'uz' => "O'zbekcha",
+        'uz' => 'O\'zbekcha',
     ],
 
     'auth' => [
@@ -217,7 +278,6 @@ return [
         'error' => 'Sozlamalarni saqlab boʻlmadi.',
         'load_error' => 'Sozlamalarni yuklab boʻlmadi.',
         'timezones_error' => 'Vaqt mintaqalarini yuklab boʻlmadi',
-
         'currency' => 'Valyuta',
         'currency_follows_app' => 'Ilova valyutasi (:code)',
         'currency_is_app_currency' => 'Narxlar :code — ilova valyutasida koʻrsatiladi.',
@@ -227,7 +287,6 @@ return [
         'app_currency_hint' => 'Hammasi shunga nisbatan hisoblanadi. Kurslar har kuni shunga nisbatan saqlanadi, har bir narx esa qoʻyilgan kundagi qiymatini shunda saqlab qoladi.',
         'rates_as_of' => ':date sanasidagi kurslar.',
         'rates_missing' => 'Kurslar hali yuklanmagan — `php artisan currency:sync` ni ishga tushiring.',
-
         'nav' => [
             'profile' => 'Profil',
             'general' => 'Umumiy',
@@ -240,30 +299,23 @@ return [
             'system' => 'Tizim',
             'developer' => 'Dasturchi uchun',
         ],
-
         'language_region_hint' => 'Sana, vaqt va til siz uchun qanday koʻrsatiladi.',
         'application_general_hint' => 'Har bir tashrif buyuruvchi bu ilova haqida nimani koʻradi — uning nomi va standart vaqt mintaqasi.',
         'user_policies_hint' => 'Har bir foydalanuvchiga oʻz hisobi bilan nima qilishga ruxsat berilgan, shuningdek yuklash chegaralari.',
-
         'login_security_title' => 'Kirish xavfsizligi',
         'login_security_hint' => 'Parol bilan kirganda qoʻshimcha tekshiruv.',
         'require_login_verification' => 'Har safar kirishda tasdiqlash kodini talab qilish',
         'require_login_verification_hint' => 'Paroldan soʻng davom etishdan oldin elektron pochtangizga yuborilgan 6 xonali kodni ham kiritishingiz kerak boʻladi.',
-
         'default_language' => 'Standart til',
         'default_language_hint' => 'Yangi mehmonlar oʻzlari tanlamaguncha koʻradigan til.',
         'fallback_language' => 'Zaxira til',
-
         'notifications_hint' => 'Butun ilova boʻyicha qaysi bildirishnoma kanallari mavjud.',
         'notifications_empty' => 'Hozircha bu yerda sozlanadigan narsa yoʻq.',
-
         'allowed_login_roles' => 'Kirishga ruxsat etilgan rollar',
         'allowed_login_roles_hint' => 'Faqat belgilangan rollardan biriga ega hisoblar kira oladi. Hech narsa belgilanmasa — barcha rollarga ruxsat beriladi.',
         'default_registration_role' => 'Roʻyxatdan oʻtishdagi standart rol',
         'default_registration_role_hint' => 'Roʻyxatdan oʻtgandan keyin yangi hisobga avtomatik beriladigan rol.',
-
         'security_hint' => 'Butun ilova uchun chegaralar, hisoblar soni va API/audit sozlamalari.',
-
         'favicon' => 'Favicon',
         'favicon_hint' => 'Butun sayt boʻylab brauzer yorliqlari va xatchoʻplarda koʻrsatiladi.',
         'favicon_upload' => 'Yangi favicon yuklash',
@@ -272,12 +324,10 @@ return [
         'favicon_dropzone' => 'Faylni shu yerga tashlang yoki yuqoridagi tugmadan foydalaning.',
         'favicon_updated' => 'Favicon yangilandi.',
         'favicon_error' => 'Faviconni yangilab boʻlmadi.',
-
         'developer_mode' => 'Dasturchi rejimi',
         'developer_mode_hint' => 'Odatiy interfeys yonida API texnik tafsilotlarini (endpoint, holat, vaqt, soʻrov ID) koʻrsatish.',
         'about' => 'Ilova haqida',
         'version' => 'Versiya :version',
-
         'notif_prefs' => 'Bildirishnoma sozlamalari',
         'notif_prefs_hint' => 'Nima haqida va qanday xabardor qilinishingiz.',
         'notif_pref_database' => 'Bildirishnomalarni bildirishnomalar markazida saqlash',
@@ -285,13 +335,11 @@ return [
         'notif_pref_sound' => 'Yangi xabarlar uchun tovush chalish',
         'notif_pref_message' => 'Yangi xabarlar haqida xabardor qilish',
         'notif_pref_system' => 'Tizim eʼlonlari haqida xabardor qilish',
-
         'keys' => [
             'system_site_name' => 'Sayt nomi',
             'system_site_name_hint' => 'Butun sayt boʻylab sahifa sarlavhalarida, header va kirish sahifalarida koʻrsatiladi.',
             'system_timezone' => 'Ilova vaqt mintaqasi',
             'system_timezone_hint' => 'Shaxsiy sozlamalarida oʻz vaqt mintaqasini belgilamagan foydalanuvchilar uchun ishlatiladi.',
-
             'auth_registration_open' => 'Yangi roʻyxatdan oʻtishga ruxsat berish',
             'auth_registration_open_hint' => 'Yangi hisoblar roʻyxatdan oʻtishini toʻxtatish uchun oʻchiring.',
             'auth_login_open' => 'Kirishga ruxsat berish',
@@ -302,12 +350,10 @@ return [
             'auth_remember_me_enabled_hint' => 'Foydalanuvchiga brauzer qayta ishga tushirilgandan keyin ham tizimda qolish imkonini beradi.',
             'auth_session_lifetime' => 'Sessiya davomiyligi (daqiqa)',
             'auth_session_lifetime_hint' => 'Faollik boʻlmasa sessiya qancha vaqt amal qiladi.',
-
             'localization_allow_locale_switch' => 'Foydalanuvchilarga tilni oʻzgartirishga ruxsat berish',
             'localization_allow_locale_switch_hint' => 'Hammani standart tilga qulflash uchun oʻchiring.',
             'localization_auto_detect_browser_locale' => 'Tilni brauzerdan avtomatik aniqlash',
             'localization_auto_detect_browser_locale_hint' => 'Standart tilga oʻtishdan oldin tashrif buyuruvchining brauzer tilidan foydalanish.',
-
             'notification_database' => 'Ilova ichidagi bildirishnomalar',
             'notification_database_hint' => 'Bildirishnomalarni foydalanuvchining bildirishnomalar markaziga umuman saqlash mumkinmi.',
             'notification_email' => 'Email bildirishnomalari',
@@ -318,7 +364,6 @@ return [
             'notification_push_hint' => 'Ilova mobil/veb push-bildirishnomalar yubora oladimi.',
             'notification_sms' => 'SMS-bildirishnomalar',
             'notification_sms_hint' => 'Ilova SMS orqali bildirishnoma yubora oladimi.',
-
             'auth_max_register_users_count' => 'Kunlik maks. roʻyxatdan oʻtishlar',
             'auth_max_register_users_count_hint' => 'Butun ilova boʻyicha kunlik yangi roʻyxatdan oʻtish chegarasi. 0 — chegara yoʻq.',
             'auth_max_users_count' => 'Maks. jami hisoblar',
@@ -333,7 +378,6 @@ return [
             'security_enable_api_hint' => 'Barcha API kirishini bloklash uchun oʻchiring.',
             'security_audit_log' => 'Audit jurnalini yuritish',
             'security_audit_log_hint' => 'Kim nimani oʻzgartirganini keyingi koʻrib chiqish uchun yozib borish.',
-
             'upload_max_upload_size' => 'Maks. yuklash hajmi (KB)',
             'upload_max_upload_size_hint' => 'Har qanday yuklash nuqtasi qabul qiladigan eng katta fayl.',
             'upload_allowed_extensions' => 'Ruxsat etilgan fayl kengaytmalari',
@@ -350,7 +394,6 @@ return [
             'upload_max_document_size_hint' => 'Foydalanuvchilar yuklashi mumkin boʻlgan eng katta hujjat fayli.',
             'upload_image_quality' => 'Rasm siqish sifati (%)',
             'upload_image_quality_hint' => 'Past qiymatlar rasm sifati hisobidan joy tejaydi.',
-
             'user_allow_avatar_upload' => 'Avatar yuklashga ruxsat berish',
             'user_allow_avatar_upload_hint' => 'Foydalanuvchilarga profil rasmini yuklash imkonini beradi.',
             'user_default_avatar' => 'Standart avatar',
@@ -385,15 +428,12 @@ return [
         'group_notification' => 'Bildirishnomalar',
         'group_user' => 'Foydalanuvchi',
         'group_security' => 'Xavfsizlik',
-
         'sessions_title' => 'Seanslar',
         'sessions_subtitle' => 'Barcha hisoblarning barcha seanslari.',
         'sessions_search_placeholder' => 'Foydalanuvchi, IP yoki qurilma boʻyicha qidirish…',
         'user' => 'Foydalanuvchi',
-
         'request_logs_title' => 'Soʻrovlar jurnali',
         'request_logs_subtitle' => 'Butun tizimda qayd etilgan barcha API soʻrovlari.',
-
         'users_title' => 'Foydalanuvchilar',
         'users_subtitle' => 'Hisoblar, rollar va bloklarni boshqarish.',
         'users_search_placeholder' => 'Ism yoki email boʻyicha qidirish…',
@@ -452,6 +492,9 @@ return [
         'minutes_ago' => ':count daqiqa oldin',
         'hours_ago' => ':count soat oldin',
         'days_ago' => ':count kun oldin',
+        'new_count' => ':count ta yangi',
+        'read_all' => 'Hammasini oʻqish',
+        'all' => 'Barcha bildirishnomalar',
     ],
 
     'chat' => [
@@ -472,7 +515,6 @@ return [
         'start_group' => 'Guruh yaratish',
         'recipient_id' => 'Foydalanuvchi ID',
         'create' => 'Yaratish',
-
         'search_all' => 'Barcha suhbatlarni qidirish',
         'jump_to_newest' => 'Oxirgilarga oʻtish',
         'replying_to' => 'Javob berilmoqda',
@@ -557,5 +599,4 @@ return [
         'banned_notice_reason' => 'Hisobingiz bloklangan: :reason',
         'banned_notice_until' => ' (:date gacha)',
     ],
-
 ];

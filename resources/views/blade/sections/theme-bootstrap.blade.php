@@ -4,27 +4,39 @@
      synchronously ahead of CSS/paint; the full picker logic lives in
      resources/js/blade/shared/theme.js.
 
-     The theme/dark-code lists are rendered from ThemeCatalog — the ONE
-     server-side source of truth — and published as `window.__themeCatalog`
-     so shared/theme.js reads the exact same lists instead of keeping its
-     own hardcoded copy. A hand-duplicated copy here previously drifted out
-     of date as new palettes were added, so any saved theme outside the
-     stale list silently fell back to system light/dark on every reload;
-     publishing one source both scripts read closes that off for good.
+     Both lists are rendered from ThemeCatalog — the ONE server-side source
+     of truth — and published as `window.__themeCatalog` so shared/theme.js
+     reads the exact same lists instead of keeping its own copy.
+
+     Theme and accent are read from the localStorage cache: for a guest
+     that cache is the only store; for a signed-in user it mirrors
+     `user_settings`, and app-state.js refreshes it from the server once
+     the user has loaded — so this never waits on the network.
      ===================================================== --}}
 <script>
     (() => {
         const THEMES = @json(\App\Domain\Setting\Services\ThemeCatalog::codes());
-        const DARK_THEMES = @json(\App\Domain\Setting\Services\ThemeCatalog::darkCodes());
-        window.__themeCatalog = { codes: THEMES, darkCodes: DARK_THEMES };
+        const ACCENTS = @json(\App\Domain\Setting\Services\ThemeCatalog::accents());
+        window.__themeCatalog = { codes: THEMES, accents: ACCENTS };
 
-        const saved = localStorage.getItem('theme');
+        const read = (key) => {
+            try {
+                return localStorage.getItem(key);
+            } catch {
+                return null;
+            }
+        };
 
-        const applied = (THEMES.includes(saved) && saved !== 'system')
-            ? saved
-            : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        const root = document.documentElement;
+        const theme = THEMES.includes(read('theme')) ? read('theme') : 'auto';
+        const accent = read('accent');
 
-        document.documentElement.dataset.theme = applied;
-        document.documentElement.style.colorScheme = DARK_THEMES.includes(applied) ? 'dark' : 'light';
+        root.dataset.theme = theme === 'auto'
+            ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+            : theme;
+
+        if (ACCENTS.includes(accent) && accent !== 'default') {
+            root.dataset.accent = accent;
+        }
     })();
 </script>

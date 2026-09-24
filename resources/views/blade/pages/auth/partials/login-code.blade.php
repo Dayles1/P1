@@ -11,20 +11,20 @@
 
             @csrf
 
-            <div class="form-group">
-                <label for="login-code-email" class="form-label">Email address</label>
+            <div class="field-group">
+                <label for="login-code-email" class="field-label">Email address</label>
 
                 <input
                     id="login-code-email"
                     type="email"
                     name="email"
-                    class="form-input"
+                    class="field-input"
                     placeholder="you@example.com"
                     autocomplete="email"
                     required
                 >
 
-                <span class="form-error" data-error-for="email"></span>
+                <span class="field-error" data-field-error="email"></span>
             </div>
 
             <button type="submit" class="auth-button">
@@ -52,7 +52,7 @@
 
             @include('blade.pages.auth.partials._code-input')
 
-            <span class="form-error" data-error-for="code" style="text-align:center;"></span>
+            <span class="field-error text-center" data-field-error="code"></span>
 
             <button type="submit" class="auth-button">
                 <span class="auth-button__text">Sign in</span>
@@ -64,7 +64,7 @@
             </div>
 
             <div class="auth-page-switch">
-                <button type="button" class="auth-step-back" data-back-to-request>&larr; Use a different email</button>
+                <button type="button" class="auth-step-back" data-back-to-request><x-blade.u-i.icon name="back" size="16" /> Use a different email</button>
             </div>
 
         </form>

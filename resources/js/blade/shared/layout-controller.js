@@ -44,6 +44,10 @@ function apply(sourceDoc) {
 }
 
 /**
+ * Every permanent nav link (sidebar, phone tab bar) carries
+ * `data-nav-link="<block class>"`; its `<block>--active` modifier is
+ * recomputed here on every navigation.
+ *
  * `<x-sidebar-link>` used to decide its own `--active` state server-side
  * via `request()->is(...)`, which only ever ran once now that the sidebar
  * is permanent — every subsequent Turbo visit left the *first* page's link
@@ -61,7 +65,7 @@ function apply(sourceDoc) {
 function updateActiveNav() {
     const path = window.location.pathname;
 
-    document.querySelectorAll('.sidebar-link').forEach((link) => {
+    document.querySelectorAll('[data-nav-link]').forEach((link) => {
         let linkPath;
 
         try {
@@ -75,7 +79,7 @@ function updateActiveNav() {
 
         const isActive = path === linkPath || path.startsWith(`${linkPath}/`);
 
-        link.classList.toggle('sidebar-link--active', isActive);
+        link.classList.toggle(`${link.dataset.navLink}--active`, isActive);
 
         if (isActive) {
             link.setAttribute('aria-current', 'page');

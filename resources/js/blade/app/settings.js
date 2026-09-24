@@ -258,7 +258,7 @@ function boot() {
 
         if (setting.type === 'boolean') {
             return `
-                <div class="select-field" style="max-width:160px;">
+                <div class="select-field mw-sm">
                     <select class="field-select" id="${id}" data-setting-value data-type="boolean">
                         <option value="true" ${setting.value ? 'selected' : ''}>${t('common.yes')}</option>
                         <option value="false" ${!setting.value ? 'selected' : ''}>${t('common.no')}</option>
@@ -268,14 +268,14 @@ function boot() {
         }
 
         if (setting.type === 'integer') {
-            return `<input class="field-input" id="${id}" type="number" data-setting-value data-type="integer" value="${setting.value ?? 0}" style="max-width:160px;">`;
+            return `<input class="field-input mw-sm" id="${id}" type="number" data-setting-value data-type="integer" value="${setting.value ?? 0}">`;
         }
 
         if (setting.type === 'json') {
-            return `<textarea class="field-input" id="${id}" data-setting-value data-type="json" ${requiredAttr} rows="3" style="max-width:360px; height:auto;">${escapeHtml(JSON.stringify(setting.value ?? [], null, 2))}</textarea>`;
+            return `<textarea class="field-input mw-xl h-auto" id="${id}" data-setting-value data-type="json" ${requiredAttr} rows="3">${escapeHtml(JSON.stringify(setting.value ?? [], null, 2))}</textarea>`;
         }
 
-        return `<input class="field-input" id="${id}" type="text" data-setting-value data-type="${setting.type}" ${requiredAttr} value="${escapeHtml(setting.value ?? '')}" style="max-width:360px;">`;
+        return `<input class="field-input mw-xl" id="${id}" type="text" data-setting-value data-type="${setting.type}" ${requiredAttr} value="${escapeHtml(setting.value ?? '')}">`;
     }
 
     function genericSettingRow(setting) {
@@ -360,7 +360,7 @@ function boot() {
         return profile.roles
             .map(
                 (role) =>
-                    `<span class="pill pill--primary" style="margin-right:6px;">${escapeHtml(role.name)}</span>`,
+                    `<span class="pill pill--primary mr-2">${escapeHtml(role.name)}</span>`,
             )
             .join('');
     }
@@ -376,7 +376,7 @@ function boot() {
             ${
                 p?.ban?.is_active
                     ? `
-                <div class="alert alert--error" style="margin-bottom:20px;">
+                <div class="alert alert--error mb-5">
                     <span class="alert__icon" aria-hidden="true">!</span>
                     <div class="alert__content">${escapeHtml(banMessage(p.ban))}</div>
                 </div>
@@ -394,7 +394,7 @@ function boot() {
                     <div>
                         <input type="file" accept="image/*" hidden data-avatar-input>
                         <button type="button" class="btn btn--secondary btn--sm" data-avatar-trigger>${t('profile.avatar_upload')}</button>
-                        <div class="field-hint" style="margin-top:8px;">${t('profile.avatar_formats')}</div>
+                        <div class="field-hint mt-2">${t('profile.avatar_formats')}</div>
                     </div>
                 </div>
             </div>
@@ -696,14 +696,14 @@ function boot() {
                 <h2 class="settings-panel__section-title">${t('settings.nav.language_region')}</h2>
                 <p class="settings-panel__section-hint">${t('settings.language_region_hint')}</p>
 
-                <div class="field-group" style="max-width:320px;">
+                <div class="field-group mw-lg">
                     <label class="field-label">${t('ui.locale.label')}</label>
                     <div class="select-field">
                         <select class="field-select" data-personal-locale>${languageOptions(state.personal?.locale || getLocale())}</select>
                     </div>
                 </div>
 
-                <div class="field-group" style="max-width:320px; position:relative;">
+                <div class="field-group mw-lg relative">
                     <label class="field-label" for="timezone-search">${t('settings.timezone')}</label>
                     <input
                         class="field-input"
@@ -718,12 +718,12 @@ function boot() {
                     <div class="timezone-dropdown" data-timezone-dropdown hidden></div>
                 </div>
 
-                <div class="field-group" style="max-width:320px;">
+                <div class="field-group mw-lg">
                     <label class="field-label">${t('settings.currency')}</label>
                     <div class="select-field">
                         <select class="field-select" data-personal="preferred_currency_id">${currencyOptions(p?.currency?.id)}</select>
                     </div>
-                    <p class="settings-panel__section-hint" style="margin:6px 0 0;" data-currency-rate></p>
+                    <p class="settings-panel__section-hint m-0 mt-2" data-currency-rate></p>
                 </div>
 
                 <div class="field-row">
@@ -962,7 +962,7 @@ function boot() {
         const enabled = prefs?.[key] !== false;
 
         return `
-            <label class="checkbox" style="display:flex; margin-bottom:10px;">
+            <label class="checkbox row mb-3">
                 <input type="checkbox" class="checkbox__input" data-notif-pref="${key}" ${enabled ? 'checked' : ''}>
                 <span class="checkbox__box"></span>
                 ${t(`settings.notif_pref_${key}`)}
@@ -1324,7 +1324,7 @@ function boot() {
             <div class="settings-panel__section">
                 <h2 class="settings-panel__section-title">${t('settings.default_registration_role')}</h2>
                 <p class="settings-panel__section-hint">${t('settings.default_registration_role_hint')}</p>
-                <div class="field-group" style="max-width:320px;">
+                <div class="field-group mw-lg">
                     <div class="select-field">
                         <select class="field-select" data-default-role data-setting-id="${defaultRole?.id ?? ''}">
                             ${state.roles.map((role) => `<option value="${role.id}" ${role.id === defaultRole?.value ? 'selected' : ''}>${escapeHtml(role.name)}</option>`).join('')}
@@ -1436,12 +1436,12 @@ function boot() {
                 <h2 class="settings-panel__section-title">${t('settings.app_currency')}</h2>
                 <p class="settings-panel__section-hint">${t('settings.app_currency_hint')}</p>
 
-                <div class="field-group" style="max-width:320px;">
+                <div class="field-group mw-lg">
                     <label class="field-label">${t('settings.app_currency')}</label>
                     <div class="select-field">
                         <select class="field-select" data-setting-select="${baseCurrency?.id ?? ''}">${currencyCodeOptions(baseCurrency?.value)}</select>
                     </div>
-                    <p class="settings-panel__section-hint" style="margin:6px 0 0;">
+                    <p class="settings-panel__section-hint m-0 mt-2">
                         ${escapeHtml(state.currencyMeta.ratesAsOf ? t('settings.rates_as_of', { date: state.currencyMeta.ratesAsOf }) : t('settings.rates_missing'))}
                     </p>
                 </div>

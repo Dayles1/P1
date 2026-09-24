@@ -62,7 +62,7 @@ function boot() {
             : [currentRole].map((code) => ({ value: code, label: code }));
 
         return `
-            <div class="select-field" style="max-width:150px;">
+            <div class="select-field mw-sm">
                 <select class="field-select" data-role-select="${user.id}" data-current-role="${currentRole}">
                     ${options.map((role) => `<option value="${role.value}" ${role.value === currentRole ? 'selected' : ''}>${escapeHtml(role.label)}</option>`).join('')}
                 </select>
@@ -86,12 +86,12 @@ function boot() {
                 return `
                     <tr>
                         <td>
-                            <div style="font-weight:600;">${escapeHtml(user.name)}</div>
-                            <div style="font-size:11.5px; color:var(--ui-text-muted);">${escapeHtml(user.email)}</div>
+                            <div class="font-semibold">${escapeHtml(user.name)}</div>
+                            <div class="text-xs muted">${escapeHtml(user.email)}</div>
                         </td>
                         <td>${roleSelect(user)}</td>
                         <td>${statusPill}</td>
-                        <td style="text-align:right;">
+                        <td class="text-right">
                             ${
                                 user.is_banned
                                     ? `<button type="button" class="btn btn--outline btn--sm" data-unban="${user.id}">${t('admin.unban')}</button>`
@@ -223,10 +223,10 @@ function boot() {
         const { close, modal } = openModal({
             title: t('confirm.ban_user_title'),
             bodyHtml: `
-                <p style="margin:0 0 14px;">${t('confirm.ban_user_message')}</p>
+                <p class="m-0 mb-3">${t('confirm.ban_user_message')}</p>
                 <div class="field-group">
                     <label class="field-label">${t('admin.ban_reason')}</label>
-                    <textarea class="field-input" rows="3" data-ban-reason style="height:auto;"></textarea>
+                    <textarea class="field-input h-auto" rows="3" data-ban-reason></textarea>
                 </div>
                 <div class="field-group">
                     <label class="field-label">${t('admin.ban_ends_at')}</label>

@@ -1,0 +1,112 @@
+@layer components {
+    /* =========================================================
+       SKELETON LOADING
+       ========================================================= */
+    .skeleton {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--ui-radius-sm);
+        background: var(--ui-surface-soft);
+    }
+
+    .skeleton::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            color-mix(in srgb, var(--ui-text) 6%, transparent),
+            transparent
+        );
+        animation: skeleton-sweep 1.4s ease-in-out infinite;
+    }
+
+    @keyframes skeleton-sweep {
+        from {
+            transform: translateX(-100%);
+        }
+
+        to {
+            transform: translateX(100%);
+        }
+    }
+
+    .skeleton-row {
+        height: 56px;
+        margin-bottom: 8px;
+    }
+
+    /* A line of text still loading, sitting inline in a sentence. */
+    .skeleton--text {
+        display: inline-block;
+        width: 200px;
+        height: 13px;
+        vertical-align: middle;
+    }
+
+    /* Placeholder for a stat card while the dashboard loads. */
+    .skeleton--card {
+        height: 96px;
+    }
+
+    /* Building blocks for list placeholders (skeletonList()). */
+    .skeleton--circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    .skeleton--line {
+        height: 12px;
+        border-radius: 6px;
+    }
+
+    .skeleton--line-sm {
+        height: 10px;
+        border-radius: 5px;
+    }
+
+    .skeleton-list {
+        padding: 6px 16px;
+    }
+
+    .skeleton-list__row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 0;
+    }
+
+    .skeleton-list__lines {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    /* Varied line lengths so a stack of rows reads as text. */
+    .skeleton-list__row:nth-child(3n + 1) .skeleton--line {
+        width: 40%;
+    }
+
+    .skeleton-list__row:nth-child(3n + 1) .skeleton--line-sm {
+        width: 70%;
+    }
+
+    .skeleton-list__row:nth-child(3n + 2) .skeleton--line {
+        width: 55%;
+    }
+
+    .skeleton-list__row:nth-child(3n + 2) .skeleton--line-sm {
+        width: 60%;
+    }
+
+    .skeleton-list__row:nth-child(3n) .skeleton--line {
+        width: 35%;
+    }
+
+    .skeleton-list__row:nth-child(3n) .skeleton--line-sm {
+        width: 80%;
+    }
+}

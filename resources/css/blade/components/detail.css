@@ -1,0 +1,65 @@
+@layer components {
+    /* =========================================================
+       DETAIL FIELDS (session / request-log detail views)
+       -----------------------------------------------------------
+       A caption-over-value pair laid out in an auto-fit grid, plus a
+       preformatted block for payloads and headers.
+       ========================================================= */
+    .detail-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: var(--space-4);
+    }
+
+    .detail-grid--dense {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: var(--space-3);
+        margin-bottom: var(--space-4);
+    }
+
+    .detail-field__label {
+        margin-bottom: 3px;
+        color: var(--ui-text-muted);
+        font-size: var(--text-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+
+    .detail-field__value {
+        color: var(--ui-text);
+        font-size: 13.5px;
+        font-weight: var(--weight-semibold);
+    }
+
+    .detail-block {
+        margin-bottom: 14px;
+    }
+
+    .detail-block .detail-field__label {
+        margin-bottom: 5px;
+    }
+
+    .detail-block__code {
+        margin: 0;
+        padding: 10px var(--space-3);
+        border-radius: var(--ui-radius-sm);
+        background: var(--ui-surface-soft);
+        font-size: 12px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+
+    /* =========================================================
+       KEYBOARD SHORTCUTS LIST (shortcuts help modal)
+       ========================================================= */
+    .shortcut-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--space-2) 0;
+        border-bottom: 1px solid var(--ui-border);
+        color: var(--ui-text);
+        font-size: var(--text-sm);
+    }
+}
