@@ -53,3 +53,28 @@ test('a video format a browser cannot play is refused', function () {
         ->assertUnprocessable()
         ->assertJsonValidationErrors('file');
 });
+
+test('only the current avatar is kept, in storage and in the database', function () {
+    $first = ($this->upload)(UploadedFile::fake()->image('first.png'))->assertOk()->json('data.path');
+    $second = ($this->upload)(UploadedFile::fake()->createWithContent('second.gif', animatedGif()))->assertOk()->json('data.path');
+
+    expect($this->user->avatars()->pluck('path')->all())->toBe([$second])
+        ->and(Storage::disk('public')->allFiles("avatars/{$this->user->id}"))->toBe([$second])
+        ->and($this->user->fresh()->avatar->path)->toBe($second);
+
+    Storage::disk('public')->assertMissing($first);
+});
+
+test('another user\'s avatar is left alone', function () {
+    $other = User::factory()->create();
+    $theirs = $other->avatars()->create([
+        'collection' => 'avatar', 'disk' => 'public', 'path' => "avatars/{$other->id}/theirs.png",
+        'original_name' => 'theirs.png', 'filename' => 'theirs.png', 'extension' => 'png', 'mime_type' => 'image/png', 'size' => 1,
+    ]);
+    Storage::disk('public')->put($theirs->path, 'x');
+
+    ($this->upload)(UploadedFile::fake()->image('mine.png'))->assertOk();
+
+    expect(Attachment::query()->find($theirs->id))->not->toBeNull();
+    Storage::disk('public')->assertExists($theirs->path);
+});

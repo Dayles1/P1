@@ -86,12 +86,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->ban?->isActive() ?? false;
     }
 
+    /** @return MorphMany<Attachment, $this> */
     public function avatars(): MorphMany
     {
         return $this->morphMany(Attachment::class, 'attachable')
             ->where('collection', 'avatar');
     }
 
+    /** @return MorphOne<Attachment, $this> */
     public function avatar(): MorphOne
     {
         return $this->morphOne(Attachment::class, 'attachable')

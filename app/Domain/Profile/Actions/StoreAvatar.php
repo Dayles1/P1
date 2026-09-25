@@ -8,6 +8,11 @@ use App\Domain\Setting\Services\SettingService;
 use App\Infrastructure\Storage\FileStorage;
 use Illuminate\Http\UploadedFile;
 
+/**
+ * Sets a user's avatar. Only the current one is kept: once the new file
+ * is stored, every earlier avatar — its file and its row — is deleted,
+ * so storage holds one avatar per user rather than their whole history.
+ */
 class StoreAvatar
 {
     public function __construct(
@@ -27,7 +32,7 @@ class StoreAvatar
             disk: 'public'
         );
 
-        return $user->avatars()->create([
+        $avatar = $user->avatars()->create([
             'collection' => 'avatar',
             'disk' => $stored['disk'],
             'path' => $stored['path'],
@@ -37,5 +42,28 @@ class StoreAvatar
             'mime_type' => $stored['mime_type'],
             'size' => $stored['size'],
         ]);
+
+        $this->deleteOthers($user, $avatar);
+
+        return $avatar;
+    }
+
+    /**
+     * Deletes every avatar of the user's except `$current`. The new one
+     * is saved first, so a failure here never leaves a user without one.
+     */
+    public function deleteOthers(User $user, Attachment $current): int
+    {
+        $previous = $user->avatars()->whereKeyNot($current->getKey())->get();
+
+        foreach ($previous as $avatar) {
+            if ($avatar->path && $avatar->path !== $current->path) {
+                $this->fileStorage->delete(path: $avatar->path, disk: $avatar->disk);
+            }
+
+            $avatar->delete();
+        }
+
+        return $previous->count();
     }
 }
