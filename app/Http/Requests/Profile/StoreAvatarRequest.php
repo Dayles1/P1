@@ -26,7 +26,12 @@ class StoreAvatarRequest extends FormRequest
                 'required',
                 'file',
                 'max:'.$maxSize,
-                'mimes:jpg,jpeg,png,webp,gif,mp4,mov,avi,mkv',
+                /*
+                 * Only what a browser can show as an avatar: an animated
+                 * GIF plays in an <img>, a short video (often what a "GIF"
+                 * from Telegram or Giphy really is) loops in a muted <video>.
+                 */
+                'mimes:jpg,jpeg,png,webp,gif,mp4,webm,mov',
             ],
         ];
     }

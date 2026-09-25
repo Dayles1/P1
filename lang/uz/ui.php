@@ -925,7 +925,7 @@ return [
         'avatar' => 'Avatar',
         'avatar_hint' => 'Hisobingizni shaxsiylashtirish uchun rasm yuklang.',
         'avatar_upload' => 'Yangi avatar yuklash',
-        'avatar_formats' => 'JPG, PNG, WEBP yoki GIF.',
+        'avatar_formats' => 'JPG, PNG, WEBP, GIF yoki qisqa MP4/WEBM video.',
         'account_details' => 'Hisob maʼlumotlari',
         'account_details_hint' => 'Ismingiz va email manzilingiz.',
         'name' => 'Ism',

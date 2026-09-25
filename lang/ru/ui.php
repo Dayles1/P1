@@ -925,7 +925,7 @@ return [
         'avatar' => 'Аватар',
         'avatar_hint' => 'Загрузите изображение, чтобы персонализировать аккаунт.',
         'avatar_upload' => 'Загрузить новый аватар',
-        'avatar_formats' => 'JPG, PNG, WEBP или GIF.',
+        'avatar_formats' => 'JPG, PNG, WEBP, GIF или короткое видео MP4/WEBM.',
         'account_details' => 'Данные аккаунта',
         'account_details_hint' => 'Ваше имя и email-адрес.',
         'name' => 'Имя',

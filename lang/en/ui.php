@@ -925,7 +925,7 @@ return [
         'avatar' => 'Avatar',
         'avatar_hint' => 'Upload a picture to personalize your account.',
         'avatar_upload' => 'Upload new avatar',
-        'avatar_formats' => 'JPG, PNG, WEBP or GIF.',
+        'avatar_formats' => 'JPG, PNG, WEBP, GIF or a short MP4/WEBM video.',
         'account_details' => 'Account details',
         'account_details_hint' => 'Your name and email address.',
         'name' => 'Name',

@@ -485,7 +485,7 @@ function boot() {
                     <span class="avatar avatar--lg" data-profile-avatar>${avatarInner}</span>
 
                     <div>
-                        <input type="file" accept="image/*" hidden data-avatar-input>
+                        <input type="file" accept="image/*,video/mp4,video/webm,video/quicktime" hidden data-avatar-input>
                         <button type="button" class="btn btn--secondary btn--sm" data-avatar-trigger>${t('profile.avatar_upload')}</button>
                         <div class="field-hint mt-2">${t('profile.avatar_formats')}</div>
                     </div>
