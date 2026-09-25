@@ -9,7 +9,9 @@
         "avatar--hue-{$hue}" => ! $src,
     ]) }}
 >
-    @if ($src)
+    @if ($src && $isVideo)
+        <video src="{{ $src }}" class="avatar__image" autoplay loop muted playsinline disablepictureinpicture aria-hidden="true"></video>
+    @elseif ($src)
         <img src="{{ $src }}" alt="" class="avatar__image">
     @else
         <span class="avatar__initials" aria-hidden="true">{{ $initials }}</span>

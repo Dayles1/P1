@@ -17,9 +17,20 @@ class Avatar extends Component
      */
     public const HUES = ['blue', 'sky', 'violet', 'green', 'amber', 'rose', 'teal', 'orange'];
 
+    /**
+     * Formats an avatar can be uploaded in that are video, not image — a
+     * "GIF" saved from Telegram or Giphy is usually an MP4. The same list
+     * as AVATAR_VIDEO_EXTENSIONS in resources/js/blade/shared/auth-state.js.
+     *
+     * @var list<string>
+     */
+    public const VIDEO_EXTENSIONS = ['mp4', 'webm', 'mov', 'm4v'];
+
     public string $initials;
 
     public string $hue;
+
+    public bool $isVideo;
 
     /**
      * @param  string  $size  xs | sm | md | lg | xl
@@ -33,6 +44,7 @@ class Avatar extends Component
     ) {
         $this->initials = self::initialsFor($name);
         $this->hue = self::hueFor($name);
+        $this->isVideo = self::isVideoUrl($src);
     }
 
     /**
@@ -56,6 +68,21 @@ class Avatar extends Component
         $sum = array_sum(array_map('mb_ord', mb_str_split($name) ?: []));
 
         return self::HUES[$sum % count(self::HUES)];
+    }
+
+    /**
+     * Whether `$src` is a video, which needs a <video> — an <img> cannot
+     * play one.
+     */
+    public static function isVideoUrl(?string $src): bool
+    {
+        if ($src === null) {
+            return false;
+        }
+
+        $extension = strtolower(pathinfo((string) parse_url($src, PHP_URL_PATH), PATHINFO_EXTENSION));
+
+        return in_array($extension, self::VIDEO_EXTENSIONS, true);
     }
 
     public function render(): View|Closure|string

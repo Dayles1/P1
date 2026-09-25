@@ -1,6 +1,6 @@
 import { api } from '../axios';
 import { bootstrapAppState, getState } from '../shared/app-state';
-import { avatarHue, initials } from '../shared/auth-state';
+import { avatarHue, avatarMedia, initials } from '../shared/auth-state';
 import { startCreate, toggleTheme } from '../shared/command-palette';
 import { confirmDialog } from '../shared/confirm';
 import { escapeHtml } from '../shared/forms';
@@ -700,7 +700,7 @@ function boot() {
                     .map((conversation) => {
                         const title = conversation.title || t('common.unknown');
                         const avatar = conversation.avatar
-                            ? `<span class="avatar dashboard-list__avatar"><img class="avatar__image" src="${escapeHtml(conversation.avatar)}" alt=""></span>`
+                            ? `<span class="avatar dashboard-list__avatar">${avatarMedia(conversation.avatar)}</span>`
                             : `<span class="avatar avatar--hue-${avatarHue(title)} dashboard-list__avatar"><span class="avatar__initials" aria-hidden="true">${escapeHtml(initials(title))}</span></span>`;
 
                         return `

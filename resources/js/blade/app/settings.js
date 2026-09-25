@@ -1,5 +1,10 @@
 import { api } from '../axios';
-import { fetchCurrentUser, hasRole, initials } from '../shared/auth-state';
+import {
+    avatarMedia,
+    fetchCurrentUser,
+    hasRole,
+    initials,
+} from '../shared/auth-state';
 import {
     apiErrors,
     clearFieldErrors,
@@ -457,7 +462,7 @@ function boot() {
         const p = state.profile;
 
         const avatarInner = p?.avatar?.url
-            ? `<img class="avatar__image" src="${escapeHtml(p.avatar.url)}" alt="${escapeHtml(p.name || '')}">`
+            ? avatarMedia(p.avatar.url, p?.name || '')
             : `<span class="avatar__initials" data-profile-avatar-initials>${escapeHtml(initials(p?.name || ''))}</span>`;
 
         return `
@@ -677,7 +682,10 @@ function boot() {
                     );
 
                     if (data.data?.url) {
-                        avatarEl.innerHTML = `<img class="avatar__image" src="${data.data.url}" alt="avatar">`;
+                        avatarEl.innerHTML = avatarMedia(
+                            data.data.url,
+                            'avatar',
+                        );
                     }
 
                     showToast(t('profile.avatar_updated'));

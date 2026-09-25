@@ -1,6 +1,6 @@
 import { api } from '../axios';
 import { getState, logout, setTheme } from './app-state';
-import { hasRole, initials } from './auth-state';
+import { avatarMedia, hasRole, initials } from './auth-state';
 import { escapeHtml } from './forms';
 import { t } from './i18n';
 import { icon } from './icon';
@@ -177,7 +177,7 @@ function highlight(text, query) {
 function tileHtml(item) {
     if (item.avatar) {
         return item.avatar.url
-            ? `<span class="avatar avatar--sm"><img class="avatar__image" src="${escapeHtml(item.avatar.url)}" alt=""></span>`
+            ? `<span class="avatar avatar--sm">${avatarMedia(item.avatar.url)}</span>`
             : `<span class="avatar avatar--sm"><span class="avatar__initials">${escapeHtml(initials(item.avatar.name))}</span></span>`;
     }
 
