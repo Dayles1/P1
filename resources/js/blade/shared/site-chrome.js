@@ -7,7 +7,7 @@ import {
     setTheme,
     subscribe,
 } from './app-state';
-import { hasRole, initials } from './auth-state';
+import { avatarMedia, hasRole, initials } from './auth-state';
 import { initCommandPalette, startCreate } from './command-palette';
 import { initDatePickers } from './date-picker';
 import { initDevPanel } from './dev-panel';
@@ -213,7 +213,7 @@ function paintUserHeader(user) {
 
     document.querySelectorAll('[data-user-avatar]').forEach((el) => {
         el.innerHTML = avatarUrl
-            ? `<img class="avatar__image" src="${avatarUrl}" alt="">`
+            ? avatarMedia(avatarUrl)
             : `<span class="avatar__initials" aria-hidden="true">${initials(name)}</span>`;
     });
 }

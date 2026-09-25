@@ -8,3 +8,11 @@ import * as Turbo from '@hotwired/turbo';
  * package a second time.
  */
 window.Turbo = Turbo;
+
+/*
+ * Turbo only shows its progress bar once a visit has taken 500ms, and a
+ * link hovered long enough is prefetched and opens instantly — so the
+ * bar appeared on some page changes and not others. With no delay it
+ * shows on every one, and simply finishes fast when the page is ready.
+ */
+Turbo.config.drive.progressBarDelay = 0;

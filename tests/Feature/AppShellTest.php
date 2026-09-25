@@ -32,10 +32,11 @@ function shellTabbar(TestResponse $response): string
 test('the sidebar holds only the product sections', function () {
     $sidebar = shellSidebar($this->get('/dashboard')->assertOk());
 
-    expect(substr_count($sidebar, 'data-nav-link="sidebar-link"'))->toBe(3)
+    expect(substr_count($sidebar, 'data-nav-link="sidebar-link"'))->toBe(4)
         ->and($sidebar)->toContain('href="'.route('dashboard').'"')
         ->and($sidebar)->toContain('href="'.route('profile').'"')
         ->and($sidebar)->toContain('href="'.route('chat').'"')
+        ->and($sidebar)->toContain('href="'.route('currencies').'"')
         ->and($sidebar)->not->toContain(route('settings'))
         ->and($sidebar)->not->toContain(route('sessions'))
         ->and($sidebar)->not->toContain(route('notifications'))

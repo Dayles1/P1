@@ -45,6 +45,25 @@ return [
         'no_rate' => 'Нет курса для конвертации :from в :to.',
     ],
 
+    'payment' => [
+        'created' => 'Платёж создан.',
+        'not_pending' => 'Платёж :payment больше нельзя оплатить.',
+        'invalid_amount' => 'Сумма должна быть больше нуля.',
+        'unsupported_provider' => 'Оплата через :provider недоступна.',
+        'unsupported_currency' => ':provider не принимает платежи в :currency.',
+        'card_unusable' => 'Эту карту нельзя использовать для этого платежа.',
+        'wallet_cannot_pay_itself' => 'Кошелёк нельзя пополнить с его же баланса.',
+        'provider_failed' => 'Платёжная система не отвечает. Попробуйте позже.',
+        'provider_rejected' => 'Платёжная система отклонила запрос.',
+        'card_code_sent' => 'Введите код, отправленный на телефон, привязанный к карте.',
+        'card_verified' => 'Карта сохранена.',
+        'card_removed' => 'Карта удалена.',
+    ],
+
+    'wallet' => [
+        'insufficient_funds' => 'В кошельке недостаточно средств.',
+        'top_up_description' => 'Пополнение кошелька',
+    ],
     'notifications' => [
         'marked_read' => 'Уведомление отмечено как прочитанное.',
         'all_marked_read' => 'Все уведомления отмечены как прочитанные.',

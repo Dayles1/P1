@@ -1,5 +1,11 @@
 import { api } from '../axios';
-import { fetchCurrentUser, hasRole, initials } from '../shared/auth-state';
+import { setUser } from '../shared/app-state';
+import {
+    avatarMedia,
+    fetchCurrentUser,
+    hasRole,
+    initials,
+} from '../shared/auth-state';
 import {
     apiErrors,
     clearFieldErrors,
@@ -177,7 +183,7 @@ function boot() {
     };
 
     const SECTION_DATA = {
-        'personal-profile': ['profile'],
+        'personal-profile': ['profile', 'personal', 'currencies'],
         'personal-appearance': [],
         'personal-language': [
             'personal',
@@ -365,11 +371,99 @@ function boot() {
             .join('');
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Preferred currency — the same select lives in Profile and in
+    | Language & region, and saves the same `preferred_currency_id`.
+    |--------------------------------------------------------------------------
+    */
+
+    function currencySectionHtml() {
+        return `
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('settings.currency')}</h2>
+                <p class="settings-panel__section-hint">${t('profile.currency_hint')}</p>
+
+                <div class="field-group mw-lg">
+                    <label class="field-label" for="profile-currency">${t('settings.currency')}</label>
+                    <div class="select-field">
+                        <select class="field-select" id="profile-currency" data-personal="preferred_currency_id">${currencyOptions(state.personal?.currency?.id)}</select>
+                    </div>
+                    <p class="settings-panel__section-hint m-0 mt-2" data-currency-rate></p>
+                </div>
+
+                <a class="btn btn--outline btn--sm" href="/currencies" data-profile-currencies-link>${t('profile.all_currencies')}</a>
+            </div>
+        `;
+    }
+
+    function wireCurrencySelect() {
+        const currencySelect = panel.querySelector(
+            '[data-personal="preferred_currency_id"]',
+        );
+        const currencyRate = panel.querySelector('[data-currency-rate]');
+
+        /**
+         * What one unit of the app currency is worth in the chosen one,
+         * and which day's rate that is — so the choice shows what it
+         * actually does instead of just being a label.
+         */
+        async function showCurrencyRate() {
+            if (!currencyRate) {
+                return;
+            }
+
+            const base = state.currencyMeta.baseCode;
+            const code = state.currencies.find(
+                (currency) =>
+                    String(currency.id) === String(currencySelect?.value),
+            )?.code;
+
+            if (!base || !code || code === base) {
+                currencyRate.textContent = base
+                    ? t('settings.currency_is_app_currency', { code: base })
+                    : '';
+
+                return;
+            }
+
+            try {
+                const { data } = await api.get('/currencies/convert', {
+                    params: { amount: 1, from: base, to: code },
+                });
+
+                currencyRate.textContent = t('settings.currency_rate', {
+                    from: base,
+                    amount: data.data.converted,
+                    to: code,
+                    date: data.data.as_of ?? '',
+                });
+            } catch {
+                currencyRate.textContent = t('settings.currency_rate_missing', {
+                    code,
+                });
+            }
+        }
+
+        currencySelect?.addEventListener(
+            'change',
+            () => {
+                savePersonal({
+                    preferred_currency_id: currencySelect.value || null,
+                });
+                showCurrencyRate();
+            },
+            { signal },
+        );
+
+        showCurrencyRate();
+    }
+
     function renderProfile() {
         const p = state.profile;
 
         const avatarInner = p?.avatar?.url
-            ? `<img class="avatar__image" src="${escapeHtml(p.avatar.url)}" alt="${escapeHtml(p.name || '')}">`
+            ? avatarMedia(p.avatar.url, p?.name || '')
             : `<span class="avatar__initials" data-profile-avatar-initials>${escapeHtml(initials(p?.name || ''))}</span>`;
 
         return `
@@ -392,7 +486,7 @@ function boot() {
                     <span class="avatar avatar--lg" data-profile-avatar>${avatarInner}</span>
 
                     <div>
-                        <input type="file" accept="image/*" hidden data-avatar-input>
+                        <input type="file" accept="image/*,video/mp4,video/webm,video/quicktime" hidden data-avatar-input>
                         <button type="button" class="btn btn--secondary btn--sm" data-avatar-trigger>${t('profile.avatar_upload')}</button>
                         <div class="field-hint mt-2">${t('profile.avatar_formats')}</div>
                     </div>
@@ -427,6 +521,8 @@ function boot() {
                     <button type="submit" class="btn btn--secondary btn--sm">${t('profile.save_changes')}</button>
                 </form>
             </div>
+
+            ${currencySectionHtml()}
 
             <div class="settings-panel__section">
                 <h2 class="settings-panel__section-title">${t('profile.change_password')}</h2>
@@ -465,6 +561,8 @@ function boot() {
     }
 
     function wireProfile() {
+        wireCurrencySelect();
+
         const profileForm = panel.querySelector('[data-profile-form]');
         const passwordForm = panel.querySelector('[data-password-form]');
         const currentPasswordField = panel.querySelector(
@@ -508,6 +606,11 @@ function boot() {
                     const { data } = await api.patch('/profile', payload);
 
                     state.profile = data.data;
+                    // The header and sidebar read the user from AppState.
+                    setUser({
+                        name: state.profile.name,
+                        email: state.profile.email,
+                    });
                     rolesEl.innerHTML = rolesHtml(state.profile);
                     currentPasswordField.hidden = true;
                     profileForm.querySelector(
@@ -585,7 +688,15 @@ function boot() {
                     );
 
                     if (data.data?.url) {
-                        avatarEl.innerHTML = `<img class="avatar__image" src="${data.data.url}" alt="avatar">`;
+                        avatarEl.innerHTML = avatarMedia(
+                            data.data.url,
+                            'avatar',
+                        );
+
+                        // Repaints every [data-user-avatar] in the layout.
+                        setUser({
+                            avatar: { id: data.data.id, url: data.data.url },
+                        });
                     }
 
                     showToast(t('profile.avatar_updated'));
@@ -788,65 +899,7 @@ function boot() {
                 );
             });
 
-        const currencySelect = panel.querySelector(
-            '[data-personal="preferred_currency_id"]',
-        );
-        const currencyRate = panel.querySelector('[data-currency-rate]');
-
-        /**
-         * What one unit of the app currency is worth in the chosen one,
-         * and which day's rate that is — so the choice shows what it
-         * actually does instead of just being a label.
-         */
-        async function showCurrencyRate() {
-            if (!currencyRate) {
-                return;
-            }
-
-            const base = state.currencyMeta.baseCode;
-            const code = state.currencies.find(
-                (currency) =>
-                    String(currency.id) === String(currencySelect?.value),
-            )?.code;
-
-            if (!base || !code || code === base) {
-                currencyRate.textContent = base
-                    ? t('settings.currency_is_app_currency', { code: base })
-                    : '';
-
-                return;
-            }
-
-            try {
-                const { data } = await api.get('/currencies/convert', {
-                    params: { amount: 1, from: base, to: code },
-                });
-
-                currencyRate.textContent = t('settings.currency_rate', {
-                    from: base,
-                    amount: data.data.converted,
-                    to: code,
-                    date: data.data.as_of ?? '',
-                });
-            } catch {
-                currencyRate.textContent = t('settings.currency_rate_missing', {
-                    code,
-                });
-            }
-        }
-
-        currencySelect?.addEventListener(
-            'change',
-            () => {
-                savePersonal({
-                    preferred_currency_id: currencySelect.value || null,
-                });
-                showCurrencyRate();
-            },
-            { signal },
-        );
-
-        showCurrencyRate();
+        wireCurrencySelect();
 
         const searchInput = panel.querySelector('[data-timezone-search]');
         const hiddenInput = panel.querySelector(

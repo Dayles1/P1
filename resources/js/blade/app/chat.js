@@ -1,6 +1,6 @@
 import { api } from '../axios';
 import { setActiveConversationId } from '../shared/active-context';
-import { fetchCurrentUser, initials } from '../shared/auth-state';
+import { avatarMedia, fetchCurrentUser, initials } from '../shared/auth-state';
 import { confirmDialog } from '../shared/confirm';
 import { openContextMenu, attachLongPress } from '../shared/context-menu';
 import { getEcho } from '../shared/echo';
@@ -192,7 +192,7 @@ function boot() {
                     data-conversation-id="${conversation.id}"
                 >
                     <span class="avatar avatar--md chat-list-item__avatar">
-                        ${conversation.avatar ? `<img class="avatar__image" src="${conversation.avatar}" alt="">` : `<span class="avatar__initials">${initials(conversation.title)}</span>`}
+                        ${conversation.avatar ? avatarMedia(conversation.avatar) : `<span class="avatar__initials">${initials(conversation.title)}</span>`}
                         ${online ? '<span class="chat-list-item__online-dot"></span>' : ''}
                     </span>
                     <div class="chat-list-item__body">
@@ -1143,7 +1143,7 @@ function boot() {
 
         threadTitle.textContent = conversation.title || t('common.unknown');
         threadAvatar.innerHTML = conversation.avatar
-            ? `<img class="avatar__image" src="${conversation.avatar}" alt="">`
+            ? avatarMedia(conversation.avatar)
             : `<span class="avatar__initials">${initials(conversation.title)}</span>`;
 
         renderConversationList();
@@ -1610,7 +1610,7 @@ function boot() {
                     id="mention-option-${index}"
                     aria-selected="${index === mentionActiveIndex}"
                 >
-                    <span class="avatar avatar--sm">${m.avatar ? `<img class="avatar__image" src="${m.avatar}" alt="">` : `<span class="avatar__initials">${initials(m.name)}</span>`}</span>
+                    <span class="avatar avatar--sm">${m.avatar ? avatarMedia(m.avatar) : `<span class="avatar__initials">${initials(m.name)}</span>`}</span>
                     ${escapeHtml(m.name)}
                 </button>
             `,
@@ -2193,7 +2193,7 @@ function boot() {
         detailsContent.innerHTML = `
             <div class="chat-details-header">
                 <span class="avatar avatar--lg">
-                    ${conversation.avatar ? `<img class="avatar__image" src="${conversation.avatar}" alt="">` : `<span class="avatar__initials">${initials(conversation.title)}</span>`}
+                    ${conversation.avatar ? avatarMedia(conversation.avatar) : `<span class="avatar__initials">${initials(conversation.title)}</span>`}
                 </span>
                 <div class="font-bold text-md">${escapeHtml(conversation.title || '')}</div>
                 <div class="text-xs secondary">${escapeHtml(otherMemberStatus(conversation))}</div>
@@ -2208,7 +2208,7 @@ function boot() {
                         .map(
                             (m) => `
                         <div class="row gap-2 mb-2">
-                            <span class="avatar avatar--sm">${m.avatar ? `<img class="avatar__image" src="${m.avatar}" alt="">` : `<span class="avatar__initials">${initials(m.name)}</span>`}</span>
+                            <span class="avatar avatar--sm">${m.avatar ? avatarMedia(m.avatar) : `<span class="avatar__initials">${initials(m.name)}</span>`}</span>
                             <span class="text-sm">${escapeHtml(m.name)}</span>
                         </div>
                     `,

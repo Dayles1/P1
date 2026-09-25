@@ -8,6 +8,20 @@
  */
 return [
     [
+        'version' => '3.1.0',
+        'date' => '2026-09-25',
+        'items' => [
+            ['type' => 'new', 'text' => 'A Currencies page: every currency against yours with the change over the day, filters, sorting, a quick converter, and one click to make a currency yours — with Undo.'],
+            ['type' => 'new', 'text' => 'Pick the currency you read prices in right from your profile.'],
+            ['type' => 'new', 'text' => 'Wallets and payments (API): top up through Click, Payme or OneQR, pay from your balance or a saved card, and every change to a balance is kept in a ledger. A provider retrying its callback never applies a payment twice.'],
+            ['type' => 'improved', 'text' => 'Video avatars (MP4, WEBM, MOV) now play on a loop, as a GIF saved from Telegram usually is one.'],
+            ['type' => 'improved', 'text' => 'Only your current avatar is kept; older ones are deleted when you upload a new one.'],
+            ['type' => 'fixed', 'text' => 'A new avatar or name shows in the header straight away, without reloading.'],
+            ['type' => 'fixed', 'text' => 'The loading bar now shows on every page change, not only on slow ones.'],
+            ['type' => 'fixed', 'text' => 'Video avatars no longer show as a broken image.'],
+        ],
+    ],
+    [
         'version' => '3.0.0',
         'date' => '2026-09-25',
         'items' => [

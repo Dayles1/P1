@@ -19,11 +19,15 @@ use App\Http\Controllers\Api\Currency\ExchangeRateController;
 use App\Http\Controllers\Api\Currency\FavoriteCurrencyController;
 use App\Http\Controllers\Api\Dashboard\DashboardController;
 use App\Http\Controllers\Api\NotificationController;
+use App\Http\Controllers\Api\Payment\CardController;
+use App\Http\Controllers\Api\Payment\PaymentCallbackController;
+use App\Http\Controllers\Api\Payment\PaymentController;
 use App\Http\Controllers\Api\Profile\AvatarController;
 use App\Http\Controllers\Api\Profile\ProfileController;
 use App\Http\Controllers\Api\Profile\UserSettingController;
 use App\Http\Controllers\Api\Setting\LanguageController;
 use App\Http\Controllers\Api\Setting\TimezoneController;
+use App\Http\Controllers\Api\Wallet\WalletController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')->group(function (): void {
@@ -166,6 +170,40 @@ Route::middleware('auth.api')->prefix('conversations')->controller(MessageContro
 Route::middleware('auth.api')->get('messages/search', [MessageController::class, 'search']);
 Route::middleware('auth.api')->post('conversations/{conversation}/typing', [TypingController::class, 'store']);
 Route::middleware('auth.api')->get('chat/users/search', [UserSearchController::class, 'index']);
+
+/*
+|--------------------------------------------------------------------------
+| Wallets, payments and saved cards (the caller's own)
+|--------------------------------------------------------------------------
+|
+| Every payment — a top-up, or paying for something — is a Payment; the
+| wallet ledger records what moved the balance.
+|
+*/
+Route::middleware('auth.api')->prefix('wallets')->controller(WalletController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::post('top-up', 'topUp');
+    Route::get('{wallet}/transactions', 'transactions')->whereNumber('wallet');
+});
+
+Route::middleware('auth.api')->prefix('payments')->controller(PaymentController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('{payment}', 'show')->whereUuid('payment');
+});
+
+Route::middleware('auth.api')->prefix('cards')->controller(CardController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::post('/', 'store')->middleware('throttle:10,1');
+    Route::post('{card}/verify', 'verify')->whereNumber('card')->middleware('throttle:verification-code');
+    Route::delete('{card}', 'destroy')->whereNumber('card');
+});
+
+/*
+| Provider callbacks — no user auth; each gateway verifies its provider's
+| signature or credentials itself.
+*/
+Route::post('payments/callback/{provider}', PaymentCallbackController::class)
+    ->name('payments.callback');
 
 /*
 |--------------------------------------------------------------------------

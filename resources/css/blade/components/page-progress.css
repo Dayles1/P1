@@ -1,0 +1,14 @@
+@layer components {
+    /* =========================================================
+       PAGE PROGRESS
+       -----------------------------------------------------------
+       Turbo's bar across the top on every page change. Turbo
+       injects its own unlayered <style> for it, and an unlayered
+       rule beats any layered one, so the colour and height here
+       need !important to take effect.
+       ========================================================= */
+    .turbo-progress-bar {
+        height: 2px !important;
+        background: var(--ui-primary) !important;
+    }
+}

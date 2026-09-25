@@ -55,6 +55,19 @@ test('the textarea counter starts from the current length', function () {
         ->and($html)->toContain(__('ui.components.char_count', ['count' => 5, 'max' => 500]));
 });
 
+test('a video avatar loops in a muted video, an image one (GIF included) stays an img', function () {
+    $video = renderBlade('<x-blade.u-i.avatar name="A" src="/storage/avatars/1/a.MP4?v=2" />');
+    $gif = renderBlade('<x-blade.u-i.avatar name="A" src="/storage/avatars/1/a.gif" />');
+
+    expect($video)->toContain('<video src="/storage/avatars/1/a.MP4?v=2" class="avatar__image" autoplay loop muted playsinline')
+        ->and($video)->not->toContain('<img')
+        ->and($gif)->toContain('<img src="/storage/avatars/1/a.gif"')
+        ->and($gif)->not->toContain('<video')
+        ->and(Avatar::isVideoUrl('https://cdn.test/x.webm'))->toBeTrue()
+        ->and(Avatar::isVideoUrl('https://cdn.test/x.png'))->toBeFalse()
+        ->and(Avatar::isVideoUrl(null))->toBeFalse();
+});
+
 test('avatar initials are multibyte-safe and the hue is stable per name', function () {
     expect(Avatar::initialsFor('Алишер Каримов'))->toBe('АК')
         ->and(Avatar::initialsFor('dilnoza'))->toBe('D')

@@ -120,6 +120,15 @@ Route::get('/notifications', function () {
     return view('blade.pages.notifications');
 })->name('notifications');
 
+/*
+ * Every currency against the one the user reads prices in, with a
+ * one-click switch — the same `preferred_currency_id` setting the
+ * Language & region section edits.
+ */
+Route::get('/currencies', function () {
+    return view('blade.pages.currencies');
+})->name('currencies');
+
 Route::get('/changelog', function () {
     return view('blade.pages.changelog', ['releases' => require base_path('resources/data/changelog.php')]);
 })->name('changelog');

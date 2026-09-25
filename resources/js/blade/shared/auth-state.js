@@ -1,4 +1,5 @@
 import { api } from '../axios';
+import { escapeHtml } from './forms';
 
 const TOKEN_KEY = 'auth_token';
 
@@ -96,6 +97,38 @@ const AVATAR_HUES = [
     'teal',
     'orange',
 ];
+
+/**
+ * Formats an avatar can be uploaded in that are video, not image — a
+ * "GIF" saved from Telegram or Giphy is usually an MP4. The same list as
+ * App\View\Components\Blade\UI\Avatar::VIDEO_EXTENSIONS.
+ */
+const AVATAR_VIDEO_EXTENSIONS = ['mp4', 'webm', 'mov', 'm4v'];
+
+export function isVideoAvatar(url) {
+    const extension = String(url || '')
+        .split(/[?#]/)[0]
+        .split('.')
+        .pop()
+        .toLowerCase();
+
+    return AVATAR_VIDEO_EXTENSIONS.includes(extension);
+}
+
+/**
+ * The media inside an `.avatar`: an <img> for images (an animated GIF
+ * animates on its own), or a muted, looping, autoplaying <video> for a
+ * video avatar — an <img> cannot play one and shows it broken.
+ */
+export function avatarMedia(url, alt = '') {
+    const src = escapeHtml(url);
+
+    if (isVideoAvatar(url)) {
+        return `<video class="avatar__image" src="${src}" autoplay loop muted playsinline disablepictureinpicture aria-hidden="true"></video>`;
+    }
+
+    return `<img class="avatar__image" src="${src}" alt="${escapeHtml(alt)}">`;
+}
 
 export function avatarHue(name) {
     const sum = [...(name || '')].reduce(
