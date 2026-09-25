@@ -3,18 +3,51 @@
        CURRENCIES (/currencies)
        -----------------------------------------------------------
        Page head · stale-rates notice · two cards (the user's
-       currency, a quick converter) · the rate table: toolbar
+       currency, a quick converter) — beside the table on wide
+       screens, above it otherwise · the rate table: toolbar
        (search, filter chips, sort), a column head, rows grouped
        into Popular / A–Z, and a footer with "Show more". On phones
        the cards stack, the column head and per-row buttons go, and
        a row opens a bottom sheet with the details and the button.
        ========================================================= */
 
+    /*
+     * The page takes the width it is given, like the dashboard. A fixed
+     * max-width left most of a 2K/4K screen empty; instead, once there is
+     * room, the two cards move into a column beside the table.
+     */
     .currency-page {
-        max-width: 1080px;
+        container: currency-page / inline-size;
         display: flex;
         flex-direction: column;
         gap: var(--space-5);
+    }
+
+    .currency-layout {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+    }
+
+    @container currency-page (min-width: 1400px) {
+        .currency-layout {
+            display: grid;
+            grid-template-columns: 400px minmax(0, 1fr);
+            align-items: start;
+        }
+
+        /* The cards stay in view while the table scrolls past them. */
+        .currency-layout > .currency-top {
+            position: sticky;
+            top: var(--space-5);
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+
+    @container currency-page (min-width: 2000px) {
+        .currency-layout {
+            grid-template-columns: 460px minmax(0, 1fr);
+        }
     }
 
     .currency-page .page-head,
@@ -264,10 +297,9 @@
     .currency-table__head,
     .currency-row {
         display: grid;
-        grid-template-columns: minmax(0, 2.4fr) minmax(0, 1.5fr) minmax(
-                0,
-                1fr
-            ) 168px;
+        grid-template-columns:
+            minmax(0, 2.4fr) minmax(0, 1.5fr) minmax(0, 1fr)
+            168px;
         gap: var(--space-4);
         align-items: center;
         padding: 0 20px;
