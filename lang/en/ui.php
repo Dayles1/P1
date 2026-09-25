@@ -890,5 +890,7 @@ return [
         'banned_notice' => 'Your account is banned.',
         'banned_notice_reason' => 'Your account is banned: :reason',
         'banned_notice_until' => ' (until :date)',
+        'currency_hint' => 'The currency you read prices in and set your own prices in.',
+        'all_currencies' => 'Compare all currencies',
     ],
 ];

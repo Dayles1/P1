@@ -890,5 +890,7 @@ return [
         'banned_notice' => 'Hisobingiz bloklangan.',
         'banned_notice_reason' => 'Hisobingiz bloklangan: :reason',
         'banned_notice_until' => ' (:date gacha)',
+        'currency_hint' => 'Narxlarni koʻradigan va oʻz narxlaringizni qoʻyadigan valyuta.',
+        'all_currencies' => 'Barcha valyutalarni solishtirish',
     ],
 ];

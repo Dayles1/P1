@@ -890,5 +890,7 @@ return [
         'banned_notice' => 'Ваш аккаунт заблокирован.',
         'banned_notice_reason' => 'Ваш аккаунт заблокирован: :reason',
         'banned_notice_until' => ' (до :date)',
+        'currency_hint' => 'Валюта, в которой вы видите цены и указываете свои.',
+        'all_currencies' => 'Сравнить все валюты',
     ],
 ];
