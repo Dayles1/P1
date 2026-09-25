@@ -1,4 +1,5 @@
 import { api } from '../axios';
+import { setUser } from '../shared/app-state';
 import {
     avatarMedia,
     fetchCurrentUser,
@@ -605,6 +606,11 @@ function boot() {
                     const { data } = await api.patch('/profile', payload);
 
                     state.profile = data.data;
+                    // The header and sidebar read the user from AppState.
+                    setUser({
+                        name: state.profile.name,
+                        email: state.profile.email,
+                    });
                     rolesEl.innerHTML = rolesHtml(state.profile);
                     currentPasswordField.hidden = true;
                     profileForm.querySelector(
@@ -686,6 +692,11 @@ function boot() {
                             data.data.url,
                             'avatar',
                         );
+
+                        // Repaints every [data-user-avatar] in the layout.
+                        setUser({
+                            avatar: { id: data.data.id, url: data.data.url },
+                        });
                     }
 
                     showToast(t('profile.avatar_updated'));
