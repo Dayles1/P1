@@ -11,6 +11,8 @@ class GetCurrentUser
         return $user->load([
             'roles',
             'avatar',
+            'settings.timezone',
+            'settings.preferredCurrency',
         ]);
     }
 }

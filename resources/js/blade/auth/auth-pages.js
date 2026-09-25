@@ -1595,8 +1595,12 @@ async function guardAuthPage() {
             params.get('redirect'),
             '/dashboard',
         );
-    } catch {
-        localStorage.removeItem('auth_token');
+    } catch (error) {
+        // Same rule as shared/auth-state.js: only a 401 means this token
+        // is dead. A server error must not throw away a valid session.
+        if (error?.response?.status === 401) {
+            localStorage.removeItem('auth_token');
+        }
     }
 }
 

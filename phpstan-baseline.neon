@@ -1452,12 +1452,6 @@ parameters:
 			path: app/Http/Resources/Profile/UserSessionResource.php
 
 		-
-			message: '#^Method App\\Http\\Resources\\Profile\\UserSettingResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: app/Http/Resources/Profile/UserSettingResource.php
-
-		-
 			message: '#^Access to an undefined property App\\Http\\Resources\\Session\\RequestLogListResource\:\:\$created_at\.$#'
 			identifier: property.notFound
 			count: 2

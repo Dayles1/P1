@@ -88,6 +88,42 @@ test('an authenticated user can fetch their own profile via /auth/me', function 
         ->assertJsonPath('data.user.email', $user->email);
 });
 
+/*
+ * `/auth/me` renders the user's settings, and SetLocale has already
+ * lazy-loaded that relation (it reads `settings->locale`) by the time the
+ * resource runs — with neither `timezone` nor `preferredCurrency` loaded
+ * with it. That combination used to 500, which the frontend read as a
+ * dead session: it dropped the token and bounced the user back to /login
+ * immediately after a successful sign-in.
+ */
+test('/auth/me works for a user whose settings have no timezone or currency', function () {
+    $user = User::factory()->create();
+    $user->assignRole(Role::USER);
+    $user->settings()->create(['locale' => 'en']);
+
+    $this->actingAs($user, 'sanctum')
+        ->getJson('/api/auth/me')
+        ->assertOk()
+        ->assertJsonPath('data.user.settings.timezone', null)
+        ->assertJsonPath('data.user.settings.currency', null);
+});
+
+test('/auth/me returns the timezone and currency the user did pick', function () {
+    $user = User::factory()->create();
+    $user->assignRole(Role::USER);
+    $user->settings()->create([
+        'timezone_id' => timezoneRow('Asia/Tashkent')->id,
+        'preferred_currency_id' => currencyRow('UZS', decimals: 0)->id,
+    ]);
+
+    $this->actingAs($user, 'sanctum')
+        ->getJson('/api/auth/me')
+        ->assertOk()
+        ->assertJsonPath('data.user.settings.timezone.name', 'Asia/Tashkent')
+        ->assertJsonPath('data.user.settings.currency.code', 'UZS')
+        ->assertJsonPath('data.user.settings.currency.decimals', 0);
+});
+
 test('a guest cannot access /auth/me', function () {
     $this->getJson('/api/auth/me')->assertUnauthorized();
 });
