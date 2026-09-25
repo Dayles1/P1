@@ -119,6 +119,12 @@ function localCommands() {
         },
         {
             group: 'navigation',
+            icon: 'coins',
+            label: t('nav.currencies'),
+            run: () => visit('/currencies'),
+        },
+        {
+            group: 'navigation',
             icon: 'shield',
             label: t('shell.security_sessions'),
             run: () => visit('/settings/security'),

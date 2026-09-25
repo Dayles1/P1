@@ -30,4 +30,8 @@
         {{ __('ui.nav.chat') }}
     </x-blade.navigation.sidebar-link>
 
+    <x-blade.navigation.sidebar-link :href="route('currencies')" icon="coins">
+        {{ __('ui.nav.currencies') }}
+    </x-blade.navigation.sidebar-link>
+
 </nav>
