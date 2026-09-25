@@ -47,11 +47,11 @@ test('the currencies page renders the hooks its script fills', function () {
         ->and($html)->toContain('data-currency-search')
         ->and($html)->toContain('data-currency-summary')
         ->and($html)->toContain('data-currency-stale')
-        ->and($html)->toContain('data-currency-select')
+        ->and($html)->toContain('data-currency-base')
         ->and($html)->toContain('data-currency-convert')
         ->and($html)->toContain('data-currency-filters')
         ->and($html)->toContain('data-currency-sort')
-        ->and(substr_count($html, 'data-filter='))->toBe(4)
+        ->and($html)->toContain('data-currency-more')
         ->and(substr_count($html, 'class="skeleton-list__row"'))->toBe(6);
 });
 
@@ -80,9 +80,9 @@ test('the currencies page is translated in every locale', function (string $loca
         expect(Arr::get($dictionary, $key))->toBeString("{$locale}: {$key} is missing");
     }
 
-    expect(Arr::get($dictionary, 'currencies.col_rate'))->toContain(':code')
-        ->and(Arr::get($dictionary, 'currencies.app_currency_option'))->toContain(':code')
-        ->and(Arr::get($dictionary, 'currencies.rates_from'))->toContain(':date');
+    expect(Arr::get($dictionary, 'currencies.summary'))->toContain(':count')->toContain(':code')
+        ->and(Arr::get($dictionary, 'currencies.col_rate'))->toContain(':code')
+        ->and(Arr::get($dictionary, 'currencies.shown'))->toContain(':shown')->toContain(':total');
 
     expect(Arr::get($dictionary, 'currencies.rate'))
         ->toContain(':from')
