@@ -45,6 +45,25 @@ return [
         'no_rate' => 'No exchange rate is available to convert :from to :to.',
     ],
 
+    'payment' => [
+        'created' => 'Payment created.',
+        'not_pending' => 'Payment :payment can no longer be paid.',
+        'invalid_amount' => 'The amount must be greater than zero.',
+        'unsupported_provider' => 'Payments through :provider are not available.',
+        'unsupported_currency' => ':provider does not accept payments in :currency.',
+        'card_unusable' => 'This card cannot be used for this payment.',
+        'wallet_cannot_pay_itself' => 'A wallet cannot be topped up from its own balance.',
+        'provider_failed' => 'The payment provider is not responding. Please try again later.',
+        'provider_rejected' => 'The payment provider declined the request.',
+        'card_code_sent' => 'Enter the code sent to the phone linked to your card.',
+        'card_verified' => 'Card saved.',
+        'card_removed' => 'Card removed.',
+    ],
+
+    'wallet' => [
+        'insufficient_funds' => 'There is not enough money in your wallet.',
+        'top_up_description' => 'Wallet top-up',
+    ],
     'notifications' => [
         'marked_read' => 'Notification marked as read.',
         'all_marked_read' => 'All notifications marked as read.',

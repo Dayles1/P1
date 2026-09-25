@@ -46,6 +46,7 @@ return [
         'private_key',
         'credit_card',
         'card_number',
+        'card_expiry',
         'cvv',
         'cvc',
     ],

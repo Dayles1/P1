@@ -45,6 +45,25 @@ return [
         'no_rate' => ':from dan :to ga oʻtkazish uchun kurs yoʻq.',
     ],
 
+    'payment' => [
+        'created' => 'Toʻlov yaratildi.',
+        'not_pending' => ':payment toʻlovini endi toʻlab boʻlmaydi.',
+        'invalid_amount' => 'Summa noldan katta boʻlishi kerak.',
+        'unsupported_provider' => ':provider orqali toʻlov mavjud emas.',
+        'unsupported_currency' => ':provider :currency valyutasidagi toʻlovlarni qabul qilmaydi.',
+        'card_unusable' => 'Bu kartani ushbu toʻlov uchun ishlatib boʻlmaydi.',
+        'wallet_cannot_pay_itself' => 'Hamyonni oʻz balansidan toʻldirib boʻlmaydi.',
+        'provider_failed' => 'Toʻlov tizimi javob bermayapti. Keyinroq qayta urinib koʻring.',
+        'provider_rejected' => 'Toʻlov tizimi soʻrovni rad etdi.',
+        'card_code_sent' => 'Kartaga bogʻlangan telefonga yuborilgan kodni kiriting.',
+        'card_verified' => 'Karta saqlandi.',
+        'card_removed' => 'Karta oʻchirildi.',
+    ],
+
+    'wallet' => [
+        'insufficient_funds' => 'Hamyoningizda mablagʻ yetarli emas.',
+        'top_up_description' => 'Hamyonni toʻldirish',
+    ],
     'notifications' => [
         'marked_read' => 'Bildirishnoma oʻqilgan deb belgilandi.',
         'all_marked_read' => 'Barcha bildirishnomalar oʻqilgan deb belgilandi.',

@@ -12,6 +12,9 @@ use App\Domain\Chat\Models\ConversationUser;
 use App\Domain\Identity\Notifications\VerifyEmailWithCode;
 use App\Domain\Identity\Services\VerificationCodeService;
 use App\Domain\Organization\Models\Department;
+use App\Domain\Payment\Models\Card;
+use App\Domain\Payment\Models\Payment;
+use App\Domain\Wallet\Models\Wallet;
 use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Database\Eloquent\Builder;
@@ -127,6 +130,24 @@ class User extends Authenticatable implements MustVerifyEmail
                 'notifications_enabled',
             ])
             ->withTimestamps();
+    }
+
+    /** @return HasMany<Wallet, $this> */
+    public function wallets(): HasMany
+    {
+        return $this->hasMany(Wallet::class);
+    }
+
+    /** @return HasMany<Payment, $this> */
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    /** @return HasMany<Card, $this> */
+    public function cards(): HasMany
+    {
+        return $this->hasMany(Card::class);
     }
 
     /** @return HasOne<UserSetting, $this> */
