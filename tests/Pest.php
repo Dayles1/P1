@@ -6,6 +6,9 @@ use App\Domain\Currency\Models\ExchangeRate;
 use App\Domain\Identity\Models\User;
 use App\Domain\Identity\Models\UserSession;
 use App\Domain\Setting\Models\Timezone;
+use App\Domain\Wallet\Enums\WalletTransactionType;
+use App\Domain\Wallet\Models\Wallet;
+use App\Domain\Wallet\Services\WalletLedger;
 use Database\Seeders\LanguageSeeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\SettingSeeder;
@@ -148,4 +151,50 @@ function createUserSession(User $user): array
     ]);
 
     return [$token->plainTextToken, $session];
+}
+
+/**
+ * Credentials for every payment provider, so the gateways consider
+ * themselves configured. Provider HTTP is always faked in tests.
+ */
+function configurePaymentProviders(): void
+{
+    config([
+        'payments.return_url' => 'https://app.test/payments/{payment}',
+        'payments.providers.click' => [
+            'service_id' => '1001',
+            'merchant_id' => '2002',
+            'merchant_user_id' => '3003',
+            'secret_key' => 'click-secret',
+            'checkout_url' => 'https://my.click.uz/services/pay',
+            'api_url' => 'https://api.click.uz/v2/merchant',
+        ],
+        'payments.providers.payme' => [
+            'merchant_id' => 'payme-merchant',
+            'key' => 'payme-key',
+            'checkout_url' => 'https://checkout.paycom.uz',
+            'api_url' => 'https://checkout.paycom.uz/api',
+            'account_key' => 'payment_id',
+        ],
+        'payments.providers.oneqr' => [
+            'api_url' => 'https://api.oneqr.test',
+            'api_key' => 'oneqr-key',
+            'secret' => 'oneqr-secret',
+        ],
+    ]);
+}
+
+/**
+ * A user's UZS wallet holding `$balance` tiyin, put there through the
+ * ledger like any real top-up would be.
+ */
+function fundedWallet(User $user, int $balance): Wallet
+{
+    $wallet = Wallet::resolveFor($user, currencyRow('UZS'));
+
+    if ($balance > 0) {
+        app(WalletLedger::class)->credit($wallet, $balance, WalletTransactionType::Adjustment);
+    }
+
+    return $wallet;
 }
