@@ -67,12 +67,12 @@
         align-items: center;
         gap: var(--space-2);
         flex-shrink: 0;
-        height: var(--control-md);
+        height: 36px;
         margin-bottom: -1px;
-        border-bottom: 2px solid transparent;
-        color: var(--ui-text-secondary);
-        font-size: 14.5px;
-        font-weight: var(--weight-semibold);
+        border-bottom: 1.5px solid transparent;
+        color: var(--ui-text-muted);
+        font-size: var(--text-base);
+        font-weight: var(--weight-regular);
         white-space: nowrap;
         transition:
             color 140ms ease,

@@ -1,7 +1,7 @@
 @extends('blade.layouts.authenticated')
 
 @php
-    $sidebarMode = 'compact';
+    $fullBleed = true;
 
     /*
     | The two settings groups. Each is its own URL space (see
@@ -23,12 +23,12 @@
             'index' => route('settings'),
             'roles' => null,
             'items' => [
-                'personal-profile' => [route('settings.profile'), __('ui.settings.nav.profile')],
-                'personal-appearance' => [route('settings.appearance'), __('ui.settings.nav.appearance')],
-                'personal-language' => [route('settings.language'), __('ui.settings.nav.language_region')],
-                'personal-notifications' => [route('settings.notifications'), __('ui.settings.nav.notifications')],
-                'personal-security' => [route('settings.security'), __('ui.settings.nav.security')],
-                'personal-developer' => [route('settings.developer'), __('ui.settings.nav.developer')],
+                'personal-profile' => [route('settings.profile'), __('ui.settings.nav.profile'), 'user'],
+                'personal-appearance' => [route('settings.appearance'), __('ui.settings.nav.appearance'), 'sun'],
+                'personal-language' => [route('settings.language'), __('ui.settings.nav.language_region'), 'globe'],
+                'personal-notifications' => [route('settings.notifications'), __('ui.settings.nav.notifications'), 'bell'],
+                'personal-security' => [route('settings.security'), __('ui.settings.nav.security'), 'shield'],
+                'personal-developer' => [route('settings.developer'), __('ui.settings.nav.developer'), 'code'],
             ],
         ],
         'application' => [
@@ -37,12 +37,12 @@
             'index' => route('admin.settings'),
             'roles' => 'SUPER_ADMIN,ADMIN',
             'items' => [
-                'application-general' => [route('admin.settings.general'), __('ui.settings.nav.general')],
-                'application-authentication' => [route('admin.settings.authentication'), __('ui.settings.nav.authentication')],
-                'application-localization' => [route('admin.settings.localization'), __('ui.settings.nav.localization')],
-                'application-notifications' => [route('admin.settings.notifications'), __('ui.settings.nav.notifications')],
-                'application-security' => [route('admin.settings.security'), __('ui.settings.nav.security')],
-                'application-system' => [route('admin.settings.system'), __('ui.settings.nav.system')],
+                'application-general' => [route('admin.settings.general'), __('ui.settings.nav.general'), 'sliders'],
+                'application-authentication' => [route('admin.settings.authentication'), __('ui.settings.nav.authentication'), 'key'],
+                'application-localization' => [route('admin.settings.localization'), __('ui.settings.nav.localization'), 'globe'],
+                'application-notifications' => [route('admin.settings.notifications'), __('ui.settings.nav.notifications'), 'bell'],
+                'application-security' => [route('admin.settings.security'), __('ui.settings.nav.security'), 'shield'],
+                'application-system' => [route('admin.settings.system'), __('ui.settings.nav.system'), 'server'],
             ],
         ],
     ];
@@ -65,15 +65,9 @@
 @endphp
 
 @section('title', $activeLabel ? $activeLabel.' · '.$current['title'] : $current['title'])
+@section('header-title', $activeLabel ? $current['title'].' / '.$activeLabel : $current['title'])
 
 @section('content')
-
-    <div class="page-head">
-        <div>
-            <h1>{{ $current['title'] }}</h1>
-            <p>{{ $current['subtitle'] }}</p>
-        </div>
-    </div>
 
     {{--
         `--detail` is the phone-only list/detail state (see the CSS): on
@@ -85,8 +79,13 @@
 
         @include('blade.sections.settings-nav', ['group' => $current, 'section' => $section])
 
-        <div class="grow">
+        <div class="settings-content">
             <a class="settings-back-btn" href="{{ $current['index'] }}"><x-blade.u-i.icon name="back" size="16" /> {{ __('ui.common.back') }}</a>
+
+            <div class="settings-content__head">
+                <h1>{{ $activeLabel ?? $current['title'] }}</h1>
+                <p>{{ $current['subtitle'] }}</p>
+            </div>
 
             <div
                 class="settings-panel"

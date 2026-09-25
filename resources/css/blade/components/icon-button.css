@@ -2,8 +2,9 @@
     /* =========================================================
        ICON BUTTON
        -----------------------------------------------------------
-       40px bordered square (header actions, "more" menus). --sm is
-       the 32px in-field / in-row version, --ghost drops the frame.
+       32px square without a frame, as the Graphite header draws it
+       (header actions, "more" menus). --sm is the 28px in-row version,
+       --framed adds a border.
        ========================================================= */
     .icon-btn {
         position: relative;
@@ -11,11 +12,11 @@
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        width: 40px;
-        height: 40px;
-        border: 1px solid var(--ui-border);
+        width: var(--control-md);
+        height: var(--control-md);
+        border: 1px solid transparent;
         border-radius: var(--ui-radius-sm);
-        background: var(--ui-surface);
+        background: transparent;
         color: var(--ui-text-secondary);
         cursor: pointer;
         transition:
@@ -27,12 +28,15 @@
     .icon-btn:hover {
         background: var(--ui-surface-soft);
         color: var(--ui-text);
-        border-color: var(--ui-border-hover);
     }
 
     .icon-btn--sm {
-        width: 32px;
-        height: 32px;
+        width: var(--control-sm);
+        height: var(--control-sm);
+    }
+
+    .icon-btn--framed {
+        border-color: var(--ui-border-hover);
     }
 
     .icon-btn--ghost {

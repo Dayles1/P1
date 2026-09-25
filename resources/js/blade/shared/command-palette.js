@@ -29,7 +29,7 @@ let searchTimer = null;
 let searchToken = 0;
 let previouslyFocused = null;
 
-function visit(url) {
+export function visit(url) {
     if (window.Turbo) {
         window.Turbo.visit(url);
     } else {
@@ -69,6 +69,7 @@ function localCommands() {
             group: 'commands',
             icon: 'edit',
             label: t('shell.new_chat'),
+            keys: ['C'],
             run: () => startCreate('private'),
         },
         {
@@ -87,7 +88,8 @@ function localCommands() {
         {
             group: 'commands',
             icon: 'user',
-            label: t('shell.my_account'),
+            label: t('nav.settings'),
+            keys: ['Ctrl', ','],
             run: () => visit('/settings/profile'),
         },
         {
@@ -103,18 +105,21 @@ function localCommands() {
             group: 'navigation',
             icon: 'home',
             label: t('nav.home'),
+            keys: ['G', 'H'],
             run: () => visit('/dashboard'),
         },
         {
             group: 'navigation',
             icon: 'chat',
             label: t('nav.chat'),
+            keys: ['G', 'C'],
             run: () => visit('/chat'),
         },
         {
             group: 'navigation',
             icon: 'bell',
             label: t('nav.notifications'),
+            keys: ['G', 'N'],
             run: () => visit('/notifications'),
         },
         {
@@ -125,9 +130,10 @@ function localCommands() {
         },
         {
             group: 'navigation',
-            icon: 'shield',
-            label: t('shell.security_sessions'),
-            run: () => visit('/settings/security'),
+            icon: 'monitor',
+            label: t('shell.sessions_devices'),
+            keys: ['G', 'S'],
+            run: () => visit('/sessions'),
         },
         {
             group: 'navigation',
@@ -177,17 +183,17 @@ function highlight(text, query) {
 function tileHtml(item) {
     if (item.avatar) {
         return item.avatar.url
-            ? `<span class="avatar avatar--sm">${avatarMedia(item.avatar.url)}</span>`
-            : `<span class="avatar avatar--sm"><span class="avatar__initials">${escapeHtml(initials(item.avatar.name))}</span></span>`;
+            ? `<span class="avatar command-palette__avatar">${avatarMedia(item.avatar.url)}</span>`
+            : `<span class="avatar command-palette__avatar"><span class="avatar__initials">${escapeHtml(initials(item.avatar.name))}</span></span>`;
     }
 
-    return `<span class="command-palette__tile">${icon(item.icon, { size: 18 })}</span>`;
+    return `<span class="command-palette__tile">${icon(item.icon, { size: 14 })}</span>`;
 }
 
 function itemHtml(item, index, query) {
     const keys = item.keys
         ? `<span class="command-palette__keys">${item.keys.map((key) => `<kbd class="kbd">${key}</kbd>`).join('')}</span>`
-        : icon('arrow', { size: 16, className: 'command-palette__arrow' });
+        : '<kbd class="kbd command-palette__arrow">↵</kbd>';
 
     return `
         <button
@@ -398,7 +404,7 @@ export function openCommandPalette() {
     overlay.innerHTML = `
         <div class="command-palette" role="dialog" aria-modal="true" aria-label="${t('palette.label')}">
             <div class="command-palette__search">
-                ${icon('search', { size: 20 })}
+                ${icon('search', { size: 16 })}
                 <input
                     type="text"
                     class="command-palette__input"

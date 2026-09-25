@@ -384,15 +384,15 @@ function boot() {
                 <h2 class="settings-panel__section-title">${t('settings.currency')}</h2>
                 <p class="settings-panel__section-hint">${t('profile.currency_hint')}</p>
 
-                <div class="field-group mw-lg">
+                <div class="field-group">
                     <label class="field-label" for="profile-currency">${t('settings.currency')}</label>
-                    <div class="select-field">
-                        <select class="field-select" id="profile-currency" data-personal="preferred_currency_id">${currencyOptions(state.personal?.currency?.id)}</select>
-                    </div>
-                    <p class="settings-panel__section-hint m-0 mt-2" data-currency-rate></p>
+                    <select class="field-select" id="profile-currency" data-personal="preferred_currency_id">${currencyOptions(state.personal?.currency?.id)}</select>
+                    <span class="field-hint" data-currency-rate></span>
                 </div>
 
-                <a class="btn btn--outline btn--sm" href="/currencies" data-profile-currencies-link>${t('profile.all_currencies')}</a>
+                <div class="settings-actions">
+                    <a class="btn btn--outline btn--sm" href="/currencies" data-profile-currencies-link>${t('profile.all_currencies')}</a>
+                </div>
             </div>
         `;
     }
@@ -1011,16 +1011,30 @@ function boot() {
         'system',
     ];
 
-    function notificationPrefCheckbox(key, prefs) {
-        const enabled = prefs?.[key] !== false;
-
+    /**
+     * One on/off setting as a row: its label (and hint) on the left, a
+     * switch on the right. `attributes` carries the data-* hook the
+     * section's wiring listens to.
+     */
+    function switchRow(label, attributes, checked, hint = '') {
         return `
-            <label class="checkbox row mb-3">
-                <input type="checkbox" class="checkbox__input" data-notif-pref="${key}" ${enabled ? 'checked' : ''}>
-                <span class="checkbox__box"></span>
-                ${t(`settings.notif_pref_${key}`)}
+            <label class="switch settings-switch">
+                <span class="switch__text">
+                    <span class="switch__label">${escapeHtml(label)}</span>
+                    ${hint ? `<span class="switch__hint">${escapeHtml(hint)}</span>` : ''}
+                </span>
+                <input type="checkbox" role="switch" class="switch__input" ${attributes} ${checked ? 'checked' : ''}>
+                <span class="switch__track" aria-hidden="true"></span>
             </label>
         `;
+    }
+
+    function notificationPrefCheckbox(key, prefs) {
+        return switchRow(
+            t(`settings.notif_pref_${key}`),
+            `data-notif-pref="${key}"`,
+            prefs?.[key] !== false,
+        );
     }
 
     function renderNotifications() {
@@ -1088,12 +1102,12 @@ function boot() {
                 <h2 class="settings-panel__section-title">${t('settings.login_security_title')}</h2>
                 <p class="settings-panel__section-hint">${t('settings.login_security_hint')}</p>
 
-                <label class="checkbox">
-                    <input type="checkbox" class="checkbox__input" data-require-login-verification ${p?.require_login_verification ? 'checked' : ''}>
-                    <span class="checkbox__box"></span>
-                    ${t('settings.require_login_verification')}
-                </label>
-                <p class="settings-panel__section-hint">${t('settings.require_login_verification_hint')}</p>
+                ${switchRow(
+                    t('settings.require_login_verification'),
+                    'data-require-login-verification',
+                    p?.require_login_verification,
+                    t('settings.require_login_verification_hint'),
+                )}
             </div>
         `;
     }
@@ -1126,11 +1140,11 @@ function boot() {
             <div class="settings-panel__section">
                 <h2 class="settings-panel__section-title">${t('settings.nav.developer')}</h2>
                 <p class="settings-panel__section-hint">${t('settings.developer_mode_hint')}</p>
-                <label class="checkbox">
-                    <input type="checkbox" class="checkbox__input" data-developer-mode ${enabled ? 'checked' : ''}>
-                    <span class="checkbox__box"></span>
-                    ${t('settings.developer_mode')}
-                </label>
+                ${switchRow(
+                    t('settings.developer_mode'),
+                    'data-developer-mode',
+                    enabled,
+                )}
             </div>
 
             <div class="settings-panel__section">

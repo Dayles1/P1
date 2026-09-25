@@ -1,161 +1,148 @@
 @extends('blade.layouts.authenticated')
 
 @section('title', __('ui.dashboard.title'))
+@section('header-title', __('ui.nav.home'))
+
+@php($fullBleed = true)
 
 @section('content')
 
+    {{-- =====================================================
+         HOME
+         -----------------------------------------------------
+         Two columns, each scrolling on its own: the greeting, the
+         figures, recent chats and requests; and beside it the profile
+         checklist, the sessions and (for admins) the instance. Below
+         1200px the side column follows the main one. Filled by
+         resources/js/blade/app/dashboard.js from /api/dashboard; the
+         markup here is the loading state.
+         ===================================================== --}}
     <div class="dashboard">
 
-        <div class="page-head">
-            <div>
-                {{--
-                    The greeting needs the user's name and local time, so it
-                    starts as a skeleton and is written once, never swapped
-                    from one value to another (the old "BBBB -> AAAA" flicker).
-                --}}
-                <h1 class="dashboard__greeting" data-dashboard-greeting>
-                    <span class="skeleton skeleton--text" aria-hidden="true"></span>
-                    <span class="sr-only">{{ __('ui.dashboard.title') }}</span>
-                </h1>
-                <p data-dashboard-welcome>
-                    <span data-dashboard-date></span>{{ __('ui.dashboard.overview_hint') }}
-                </p>
-            </div>
+        <div class="dashboard__main">
 
-            <div class="page-head__actions">
-                <x-blade.u-i.button size="sm" icon="plus" data-dashboard-new-chat>
+            <div class="dashboard__head">
+                <div class="dashboard__hello">
+                    <span class="dashboard__date" data-dashboard-date></span>
+                    {{--
+                        The greeting needs the user's name and local time, so it
+                        starts as a skeleton and is written once, never swapped
+                        from one value to another.
+                    --}}
+                    <h1 class="dashboard__greeting" data-dashboard-welcome>
+                        <span data-dashboard-greeting>
+                            <span class="skeleton skeleton--text" aria-hidden="true"></span>
+                            <span class="sr-only">{{ __('ui.dashboard.title') }}</span>
+                        </span><span class="dashboard__greeting-tail" data-dashboard-tail></span>
+                    </h1>
+                </div>
+
+                <x-blade.u-i.button variant="primary" size="sm" icon="plus" data-dashboard-new-chat>
                     {{ __('ui.dashboard.new_chat') }}
+                    <kbd class="kbd dashboard__kbd">C</kbd>
                 </x-blade.u-i.button>
             </div>
-        </div>
 
-        {{--
-            Like the greeting, the percentage and count start as skeletons
-            and the call to action stays hidden until the summary says the
-            profile is not complete yet.
-        --}}
-        <section class="card dashboard-profile" aria-labelledby="dashboard-profile-title" data-dashboard-profile>
-            <div class="dashboard-profile__progress">
-                <div class="dashboard-profile__head">
-                    <h2 class="dashboard-profile__title" id="dashboard-profile-title" data-completeness-value>
-                        <span class="skeleton skeleton--text" aria-hidden="true"></span>
-                        <span class="sr-only">{{ __('ui.dashboard.profile_completeness') }}</span>
-                    </h2>
-                    <span class="dashboard-profile__count" data-completeness-count>
-                        <span class="skeleton skeleton--text" aria-hidden="true"></span>
-                    </span>
-                </div>
-                <progress class="progress__bar" max="100" value="0" aria-labelledby="dashboard-profile-title" data-completeness-bar></progress>
+            <div class="dashboard-stats" data-stat-grid aria-busy="true">
+                @for ($i = 0; $i < 4; $i++)
+                    <div class="dashboard-stat">
+                        <span class="skeleton skeleton--text"></span>
+                        <span class="skeleton dashboard-stat__skeleton"></span>
+                    </div>
+                @endfor
             </div>
 
-            <ul class="dashboard-profile__checks" role="list">
-                @foreach (['name', 'avatar', 'email', 'timezone'] as $check)
-                    <li class="dashboard-check" data-profile-check="{{ $check }}">
-                        <x-blade.u-i.icon name="check" size="14" class="dashboard-check__icon dashboard-check__icon--done" />
-                        <x-blade.u-i.icon name="plus" size="14" class="dashboard-check__icon dashboard-check__icon--todo" />
-                        {{ __("ui.dashboard.checks.{$check}") }}
-                        <span class="sr-only" data-profile-check-state></span>
-                    </li>
-                @endforeach
-            </ul>
-
-            <a href="{{ route('settings.profile') }}" class="btn btn--outline btn--sm dashboard-profile__action dashboard-profile__action--pending" data-profile-fill aria-hidden="true" tabindex="-1">
-                {{ __('ui.dashboard.profile_fill') }}
-                <x-blade.u-i.icon name="arrow" size="16" />
-            </a>
-        </section>
-
-        <div class="stat-grid" data-stat-grid aria-busy="true">
-            @for ($i = 0; $i < 6; $i++)
-                <x-blade.u-i.skeleton type="card" />
-            @endfor
-        </div>
-
-        <div class="dashboard-grid">
-
-            <section class="card dashboard-card" aria-labelledby="dashboard-chats-title">
-                <div class="card__header dashboard-card__header">
-                    <h2 class="card__title" id="dashboard-chats-title">{{ __('ui.dashboard.recent_chats') }}</h2>
-                    <a href="{{ route('chat') }}" class="dashboard-card__link">{{ __('ui.dashboard.all_chats') }}</a>
+            <section class="dashboard-section" aria-labelledby="dashboard-chats-title">
+                <div class="dashboard-section__head">
+                    <h2 class="dashboard-section__title" id="dashboard-chats-title">{{ __('ui.dashboard.recent_chats') }}</h2>
+                    <a href="{{ route('chat') }}" class="btn btn--ghost btn--sm">
+                        {{ __('ui.dashboard.all') }}
+                        <span class="kbd-group"><kbd class="kbd">G</kbd><kbd class="kbd">C</kbd></span>
+                    </a>
                 </div>
-                <div class="dashboard-card__body" data-recent-conversations>
+                <div data-recent-conversations>
                     <x-blade.u-i.skeleton type="list" :rows="4" />
                 </div>
             </section>
 
-            <section class="card dashboard-card" aria-labelledby="dashboard-requests-title">
-                <div class="card__header dashboard-card__header">
-                    <h2 class="card__title" id="dashboard-requests-title">{{ __('ui.dashboard.recent_requests') }}</h2>
-                    <a href="{{ route('sessions') }}" class="dashboard-card__link">{{ __('ui.dashboard.all_requests') }}</a>
+            <section class="dashboard-section" aria-labelledby="dashboard-requests-title">
+                <div class="dashboard-section__head">
+                    <h2 class="dashboard-section__title" id="dashboard-requests-title">{{ __('ui.dashboard.recent_requests') }}</h2>
+                    <a href="{{ route('sessions') }}" class="btn btn--ghost btn--sm">{{ __('ui.dashboard.journal') }}</a>
                 </div>
-                <div class="dashboard-card__body" data-recent-requests>
-                    <x-blade.u-i.skeleton :rows="4" class="dashboard-card__skeleton" />
-                </div>
-            </section>
-
-            <section class="card dashboard-card" aria-labelledby="dashboard-actions-title">
-                <div class="card__header dashboard-card__header">
-                    <h2 class="card__title" id="dashboard-actions-title">{{ __('ui.dashboard.quick_actions') }}</h2>
-                </div>
-                <div class="dashboard-card__body">
-                    <div class="dashboard-actions">
-                        <button type="button" class="dashboard-action" data-dashboard-new-chat>
-                            <span class="dashboard-action__icon"><x-blade.u-i.icon name="chat" size="18" /></span>
-                            {{ __('ui.dashboard.new_chat') }}
-                        </button>
-                        <button type="button" class="dashboard-action" data-dashboard-toggle-theme>
-                            <span class="dashboard-action__icon">
-                                <x-blade.u-i.icon name="moon" size="18" class="dashboard-action__theme-icon--light" />
-                                <x-blade.u-i.icon name="sun" size="18" class="dashboard-action__theme-icon--dark" />
-                            </span>
-                            {{ __('ui.dashboard.change_theme') }}
-                        </button>
-                        <a href="{{ route('settings.security') }}" class="dashboard-action">
-                            <span class="dashboard-action__icon"><x-blade.u-i.icon name="shield" size="18" /></span>
-                            {{ __('ui.dashboard.security') }}
-                        </a>
-                        <a href="{{ route('settings.language') }}" class="dashboard-action">
-                            <span class="dashboard-action__icon"><x-blade.u-i.icon name="globe" size="18" /></span>
-                            {{ __('ui.dashboard.language') }}
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="card dashboard-card" aria-labelledby="dashboard-sessions-title">
-                <div class="card__header dashboard-card__header">
-                    <h2 class="card__title" id="dashboard-sessions-title">{{ __('ui.dashboard.recent_sessions') }}</h2>
-                    <a href="{{ route('sessions') }}" class="dashboard-card__link">{{ __('ui.dashboard.manage_sessions') }}</a>
-                </div>
-                <div class="dashboard-card__body" data-recent-sessions>
-                    <x-blade.u-i.skeleton type="list" :rows="3" />
+                <div data-recent-requests>
+                    <x-blade.u-i.skeleton :rows="4" />
                 </div>
             </section>
 
         </div>
 
-        <section
-            class="card dashboard-card"
-            aria-labelledby="dashboard-instance-title"
-            data-instance-overview
-            data-requires-role="SUPER_ADMIN,ADMIN"
-            hidden
-        >
-            <div class="card__header dashboard-card__header">
-                <div class="row gap-2">
-                    <h2 class="card__title" id="dashboard-instance-title">{{ __('ui.dashboard.instance_overview') }}</h2>
-                    <x-blade.u-i.badge variant="primary">{{ __('ui.dashboard.admin_badge') }}</x-blade.u-i.badge>
+        <aside class="dashboard__side">
+
+            <section class="dashboard-section" aria-labelledby="dashboard-profile-title" data-dashboard-profile>
+                <div class="dashboard-section__head">
+                    <h2 class="dashboard-section__title" id="dashboard-profile-title">{{ __('ui.dashboard.profile') }}</h2>
                 </div>
-                <a href="{{ route('admin.settings') }}" class="dashboard-card__link">{{ __('ui.dashboard.system_settings') }}</a>
-            </div>
-            <div class="dashboard-card__body">
-                <div class="dashboard-instance" data-instance-stats>
-                    @for ($i = 0; $i < 4; $i++)
-                        <x-blade.u-i.skeleton type="card" />
-                    @endfor
+
+                <div class="dashboard-profile">
+                    <svg class="dashboard-profile__ring" width="44" height="44" viewBox="0 0 36 36" aria-hidden="true">
+                        <circle cx="18" cy="18" r="15" class="dashboard-profile__track"></circle>
+                        <circle cx="18" cy="18" r="15" class="dashboard-profile__value" pathLength="100" stroke-dasharray="0 100" data-completeness-ring></circle>
+                    </svg>
+                    <div class="dashboard-profile__numbers">
+                        <span class="mono dashboard-profile__percent" data-completeness-value>
+                            <span class="skeleton skeleton--text" aria-hidden="true"></span>
+                        </span>
+                        <span class="dashboard-profile__left" data-completeness-count></span>
+                    </div>
                 </div>
-            </div>
-        </section>
+
+                <ul class="dashboard-checks" role="list">
+                    @foreach (['name', 'avatar', 'email', 'timezone'] as $check)
+                        <li>
+                            <a href="{{ route('settings.profile') }}" class="dashboard-check" data-profile-check="{{ $check }}">
+                                <span class="dashboard-check__box" aria-hidden="true">
+                                    <x-blade.u-i.icon name="check" size="11" />
+                                </span>
+                                <span class="dashboard-check__label">{{ __("ui.dashboard.checks.{$check}") }}</span>
+                                <span class="sr-only" data-profile-check-state></span>
+                                <x-blade.u-i.icon name="chev" size="13" class="dashboard-check__go" />
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </section>
+
+            <section class="dashboard-section" aria-labelledby="dashboard-sessions-title">
+                <div class="dashboard-section__head">
+                    <h2 class="dashboard-section__title" id="dashboard-sessions-title">{{ __('ui.dashboard.recent_sessions') }}</h2>
+                    <a href="{{ route('sessions') }}" class="btn btn--ghost btn--sm">
+                        {{ __('ui.dashboard.all') }}
+                        <span class="kbd-group"><kbd class="kbd">G</kbd><kbd class="kbd">S</kbd></span>
+                    </a>
+                </div>
+                <div data-recent-sessions>
+                    <x-blade.u-i.skeleton type="list" :rows="3" />
+                </div>
+            </section>
+
+            <section
+                class="dashboard-section"
+                aria-labelledby="dashboard-instance-title"
+                data-instance-overview
+                data-requires-role="SUPER_ADMIN,ADMIN"
+                hidden
+            >
+                <div class="dashboard-section__head">
+                    <h2 class="dashboard-section__title" id="dashboard-instance-title">{{ __('ui.dashboard.system_admin') }}</h2>
+                    <span class="dashboard-section__note" data-instance-status></span>
+                </div>
+                <div data-instance-stats>
+                    <x-blade.u-i.skeleton :rows="4" />
+                </div>
+            </section>
+
+        </aside>
 
     </div>
 

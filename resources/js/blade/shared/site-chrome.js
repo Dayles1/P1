@@ -18,6 +18,7 @@ import { initLocalePicker } from './i18n';
 import { initNotificationBell } from './notification-bell';
 import { initPresence, onPresenceChange } from './presence';
 import { initShortcuts } from './shortcuts';
+import { initSidebar } from './sidebar';
 import { initThemePicker } from './theme-picker';
 import { getUserSettings } from './user-settings-cache';
 
@@ -210,7 +211,6 @@ function paintUserHeader(user) {
         el.textContent = adminRole?.name || '';
         el.hidden = !adminRole;
     });
-
     document.querySelectorAll('[data-user-avatar]').forEach((el) => {
         el.innerHTML = avatarUrl
             ? avatarMedia(avatarUrl)
@@ -324,6 +324,7 @@ export function initSiteChrome(user) {
     // resolved guest is a legitimate outcome, not a loading state.
     if (arguments.length > 0) {
         initHeaderAuthState(user);
+        initSidebar();
 
         return;
     }

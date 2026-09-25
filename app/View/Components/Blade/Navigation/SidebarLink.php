@@ -12,11 +12,16 @@ class SidebarLink extends Component
 
     /**
      * Create a new component instance.
+     *
+     * @param  string|null  $keys  Keyboard shortcut shown at the end of the row ("G H").
+     * @param  string|null  $countKey  Names the unread counter shared/sidebar.js paints on the row.
      */
     public function __construct(
         public string $href,
         public string $icon = '',
         ?bool $active = null,
+        public ?string $keys = null,
+        public ?string $countKey = null,
     ) {
         $this->active = $active ?? request()->is(ltrim(parse_url($href, PHP_URL_PATH) ?: '/', '/').'*');
     }

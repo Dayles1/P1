@@ -1,11 +1,10 @@
 import { api } from '../axios';
 import { bootstrapAppState, getState } from '../shared/app-state';
 import { avatarHue, avatarMedia, initials } from '../shared/auth-state';
-import { startCreate, toggleTheme } from '../shared/command-palette';
+import { startCreate } from '../shared/command-palette';
 import { confirmDialog } from '../shared/confirm';
 import { escapeHtml } from '../shared/forms';
-import { getLocale, t } from '../shared/i18n';
-import { icon } from '../shared/icon';
+import { getLocale, t, tChoice } from '../shared/i18n';
 import { plainTextPreview } from '../shared/mentions';
 import { bootOnPage } from '../shared/page-boot';
 import { emptyState, errorState } from '../shared/skeleton';
@@ -276,6 +275,7 @@ function shortStamp(formatted, calendar, { capitalised = false } = {}) {
 function boot() {
     const greetingEl = document.querySelector('[data-dashboard-greeting]');
     const dateEl = document.querySelector('[data-dashboard-date]');
+    const tailEl = document.querySelector('[data-dashboard-tail]');
     const statGridEl = document.querySelector('[data-stat-grid]');
     const completenessValueEl = document.querySelector(
         '[data-completeness-value]',
@@ -283,20 +283,10 @@ function boot() {
     const completenessCountEl = document.querySelector(
         '[data-completeness-count]',
     );
-    const completenessBarEl = document.querySelector('[data-completeness-bar]');
-    const profileFillEl = document.querySelector('[data-profile-fill]');
-
-    /**
-     * The call to action is server-rendered as an invisible placeholder so
-     * the card keeps its final height while the summary loads; once the
-     * data is in it either becomes a real link or goes away entirely.
-     */
-    function settleProfileFill(isHidden) {
-        profileFillEl.classList.remove('dashboard-profile__action--pending');
-        profileFillEl.removeAttribute('aria-hidden');
-        profileFillEl.removeAttribute('tabindex');
-        profileFillEl.hidden = isHidden;
-    }
+    const completenessRingEl = document.querySelector(
+        '[data-completeness-ring]',
+    );
+    const instanceStatusEl = document.querySelector('[data-instance-status]');
     const profileCheckEls = document.querySelectorAll('[data-profile-check]');
     const recentRequestsEl = document.querySelector('[data-recent-requests]');
     const recentSessionsEl = document.querySelector('[data-recent-sessions]');
@@ -340,34 +330,32 @@ function boot() {
         renderGreeting();
     });
 
-    /** A formatted figure, stepped down a size when it is too long for a narrow card. */
+    /** A formatted figure, stepped down a size when it is too long for a narrow column. */
     function figure(value, className) {
         const formatted = formatNumber(value);
         const isLong = formatted.length >= LONG_VALUE_LENGTH;
 
-        return `<span class="${className}${isLong ? ` ${className}--long` : ''}">${escapeHtml(formatted)}</span>`;
+        return `<span class="mono ${className}${isLong ? ` ${className}--long` : ''}">${escapeHtml(formatted)}</span>`;
     }
 
-    function statCard({ label, iconName, value, meta = '', tone = '' }) {
+    function statCard({ label, value, meta = '', tone = '' }) {
         return `
-            <div class="stat-card">
-                <div class="stat-card__head">
-                    <span class="stat-card__label">${escapeHtml(label)}</span>
-                    <span class="stat-card__icon">${icon(iconName, { size: 16 })}</span>
-                </div>
-                ${figure(value, 'stat-card__value')}
-                ${meta ? `<div class="stat-card__meta${tone ? ` stat-card__meta--${tone}` : ''}">${escapeHtml(meta)}</div>` : ''}
+            <div class="dashboard-stat">
+                <span class="dashboard-stat__label">${escapeHtml(label)}</span>
+                ${figure(value, 'dashboard-stat__value')}
+                ${meta ? `<span class="dashboard-stat__meta${tone ? ` dashboard-stat__meta--${tone}` : ''}">${escapeHtml(meta)}</span>` : ''}
             </div>
         `;
     }
 
-    function instanceTile(label, value, meta = '') {
+    /** One line of the instance overview: a status dot, a label, a figure. */
+    function instanceRow(label, value, tone = 'success') {
         return `
-            <div class="dashboard-instance__tile">
-                <span class="dashboard-instance__label">${escapeHtml(label)}</span>
-                ${figure(value, 'dashboard-instance__value')}
-                ${meta ? `<span class="dashboard-instance__meta">${escapeHtml(meta)}</span>` : ''}
-            </div>
+            <li class="dashboard-instance__row">
+                <span class="dashboard-dot dashboard-dot--${tone}" aria-hidden="true"></span>
+                ${escapeHtml(label)}
+                <span class="mono dashboard-instance__value">${escapeHtml(formatNumber(value))}</span>
+            </li>
         `;
     }
 
@@ -410,23 +398,39 @@ function boot() {
         };
         checks.name = done > Object.values(checks).filter(Boolean).length;
 
-        completenessValueEl.textContent = t('dashboard.profile_filled', {
-            percent: formatNumber(percent),
-        });
-        completenessCountEl.textContent = t('dashboard.profile_steps', {
-            done,
-            total: PROFILE_CHECKS.length,
-        });
-        completenessBarEl.value = percent;
-        settleProfileFill(percent >= 100);
+        const left = PROFILE_CHECKS.length - done;
 
-        profileCheckEls.forEach((chip) => {
-            const isDone = checks[chip.dataset.profileCheck];
+        completenessValueEl.textContent = `${formatNumber(percent)}%`;
+        completenessCountEl.textContent =
+            left > 0
+                ? tChoice('dashboard.steps_left', left)
+                : t('dashboard.profile_done');
+        completenessRingEl.setAttribute('stroke-dasharray', `${percent} 100`);
 
-            chip.dataset.state = isDone ? 'done' : 'todo';
-            chip.querySelector('[data-profile-check-state]').textContent =
+        profileCheckEls.forEach((check) => {
+            const isDone = checks[check.dataset.profileCheck];
+
+            check.dataset.state = isDone ? 'done' : 'todo';
+            check.querySelector('[data-profile-check-state]').textContent =
                 isDone ? t('dashboard.check_done') : t('dashboard.check_todo');
         });
+    }
+
+    /** " — 12 unread." after the greeting, or " — all caught up." */
+    function renderTail(summary) {
+        if (!tailEl) {
+            return;
+        }
+
+        tailEl.textContent =
+            summary.unread_messages > 0
+                ? t('dashboard.tail_unread', {
+                      unread: tChoice(
+                          'dashboard.unread_messages_count',
+                          summary.unread_messages,
+                      ),
+                  })
+                : t('dashboard.tail_all_read');
     }
 
     function renderStats(summary) {
@@ -435,36 +439,24 @@ function boot() {
         statGridEl.removeAttribute('aria-busy');
         statGridEl.innerHTML = [
             statCard({
+                label: t('dashboard.stats.messages'),
+                value: summary.unread_messages,
+                ...unreadMeta(summary.unread_messages),
+            }),
+            statCard({
+                label: t('dashboard.stats.notifications'),
+                value: summary.unread_notifications,
+                ...unreadMeta(summary.unread_notifications),
+            }),
+            statCard({
                 label: t('dashboard.stats.sessions'),
-                iconName: 'monitor',
                 value: sessions.active,
                 meta: t('dashboard.stats_meta.sessions_total', {
                     count: formatNumber(sessions.total),
                 }),
             }),
             statCard({
-                label: t('dashboard.stats.messages'),
-                iconName: 'chat',
-                value: summary.unread_messages,
-                ...unreadMeta(summary.unread_messages),
-            }),
-            statCard({
-                label: t('dashboard.stats.notifications'),
-                iconName: 'bell',
-                value: summary.unread_notifications,
-                ...unreadMeta(summary.unread_notifications),
-            }),
-            statCard({
-                label: t('dashboard.stats.requests_today'),
-                iconName: 'activity',
-                value: requests.today,
-                meta: t('dashboard.stats_meta.requests_week', {
-                    count: formatNumber(requests.this_week),
-                }),
-            }),
-            statCard({
                 label: t('dashboard.stats.errors_week'),
-                iconName: 'alert',
                 value: requests.errors_this_week,
                 ...(requests.errors_this_week > 0
                     ? {
@@ -481,12 +473,6 @@ function boot() {
                           tone: 'success',
                       }),
             }),
-            statCard({
-                label: t('dashboard.stats.requests_avg'),
-                iconName: 'trend',
-                value: Math.round(requests.this_week / 7),
-                meta: t('dashboard.stats_meta.avg_period'),
-            }),
         ].join('');
     }
 
@@ -497,42 +483,39 @@ function boot() {
             return;
         }
 
+        const hasErrors = instance.errors_today > 0;
+
         instanceOverviewEl.hidden = false;
-        instanceStatsEl.innerHTML = [
-            instanceTile(t('dashboard.instance.users'), instance.total_users),
-            instanceTile(
-                t('dashboard.instance.active_sessions'),
-                instance.active_sessions,
-            ),
-            instanceTile(
-                t('dashboard.instance.requests_today'),
-                instance.requests_today,
-            ),
-            instanceTile(
-                t('dashboard.instance.errors_today'),
-                instance.errors_today,
-                instance.errors_today > 0
-                    ? t('dashboard.stats_meta.error_rate', {
-                          percent: percentOf(
-                              instance.errors_today,
-                              instance.requests_today,
-                          ),
-                      })
-                    : t('dashboard.stats_meta.no_errors'),
-            ),
-        ].join('');
+        instanceStatusEl.textContent = hasErrors
+            ? t('dashboard.stats_meta.error_rate', {
+                  percent: percentOf(
+                      instance.errors_today,
+                      instance.requests_today,
+                  ),
+              })
+            : t('dashboard.stats_meta.no_errors');
+        instanceStatusEl.dataset.tone = hasErrors ? 'danger' : 'success';
+        instanceStatsEl.innerHTML = `
+            <ul class="dashboard-instance" role="list">
+                ${instanceRow(t('dashboard.instance.users'), instance.total_users)}
+                ${instanceRow(t('dashboard.instance.active_sessions'), instance.active_sessions)}
+                ${instanceRow(t('dashboard.instance.requests_today'), instance.requests_today)}
+                ${instanceRow(t('dashboard.instance.errors_today'), instance.errors_today, hasErrors ? 'danger' : 'success')}
+            </ul>
+        `;
     }
 
+    /** The status code's color: green for 2xx, blue for 3xx, red from 400. */
     function statusTone(statusCode) {
         if (!statusCode) {
             return '';
         }
 
         if (statusCode >= 400) {
-            return 'badge--danger';
+            return 'danger';
         }
 
-        return statusCode >= 300 ? 'badge--info' : 'badge--success';
+        return statusCode >= 300 ? 'info' : 'success';
     }
 
     /** "42 ms", or "1.2 s" from a second up, so the column stays narrow. */
@@ -565,15 +548,15 @@ function boot() {
         }
 
         recentRequestsEl.innerHTML = `
-            <ul class="dashboard-list" role="list">
+            <ul class="mono dashboard-requests" role="list">
                 ${logs
                     .slice(0, RECENT_LIMIT)
                     .map(
                         (log) => `
-                    <li class="dashboard-list__row dashboard-request" title="${escapeHtml(log.created_at ?? '')}">
+                    <li class="dashboard-request" title="${escapeHtml(log.created_at ?? '')}">
                         <span class="dashboard-request__method">${escapeHtml(log.method)}</span>
                         <span class="dashboard-request__path">${escapeHtml(log.path)}</span>
-                        <span class="badge ${statusTone(log.status_code)}">${escapeHtml(log.status_code ?? '—')}</span>
+                        <span class="dashboard-request__status dashboard-request__status--${statusTone(log.status_code)}">${escapeHtml(log.status_code ?? '—')}</span>
                         <span class="dashboard-request__duration">${escapeHtml(requestDuration(log.duration_ms))}</span>
                     </li>
                 `,
@@ -598,7 +581,7 @@ function boot() {
      */
     function sessionAside(session) {
         if (session.is_current) {
-            return `<span class="badge badge--success">${t('dashboard.current_session')}</span>`;
+            return `<span class="dashboard-session__this">${t('dashboard.this_device')}</span>`;
         }
 
         if (session.status === 'active') {
@@ -607,14 +590,13 @@ function boot() {
             });
 
             return `
-                <button type="button" class="btn btn--outline btn--sm dashboard-session__end" data-revoke-session="${escapeHtml(session.id)}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">
-                    <span class="dashboard-session__end-icon">${icon('logout', { size: 16 })}</span>
-                    <span class="dashboard-session__end-text">${t('dashboard.end_session')}</span>
+                <button type="button" class="btn btn--ghost btn--sm" data-revoke-session="${escapeHtml(session.id)}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">
+                    ${t('dashboard.end_session')}
                 </button>
             `;
         }
 
-        return `<span class="badge">${t('dashboard.session_ended')}</span>`;
+        return `<span class="dashboard-session__ended">${t('dashboard.session_ended')}</span>`;
     }
 
     function renderRecentSessions(sessions) {
@@ -628,16 +610,16 @@ function boot() {
         }
 
         recentSessionsEl.innerHTML = `
-            <ul class="dashboard-list" role="list">
+            <ul class="dashboard-sessions" role="list">
                 ${sessions
                     .slice(0, RECENT_LIMIT)
                     .map(
                         (session) => `
-                    <li class="dashboard-list__row">
-                        <span class="dashboard-list__tile">${icon(session.device_type === 'mobile' || session.device_type === 'tablet' ? 'phone' : 'monitor', { size: 18 })}</span>
-                        <div class="dashboard-list__main">
-                            <a href="/sessions/${escapeHtml(session.id)}" class="dashboard-list__title">${escapeHtml(sessionDevice(session))}</a>
-                            <span class="dashboard-list__meta">${escapeHtml([session.ip_address, shortStamp(session.last_activity_at, calendar)].filter(Boolean).join(' · '))}</span>
+                    <li class="dashboard-session">
+                        <span class="dashboard-dot dashboard-dot--${session.is_current ? 'success' : 'muted'}" aria-hidden="true"></span>
+                        <div class="dashboard-session__main">
+                            <a href="/sessions/${escapeHtml(session.id)}" class="dashboard-session__device truncate">${escapeHtml(sessionDevice(session))}</a>
+                            <span class="dashboard-session__meta truncate">${escapeHtml([session.ip_address, shortStamp(session.last_activity_at, calendar)].filter(Boolean).join(' · '))}</span>
                         </div>
                         ${sessionAside(session)}
                     </li>
@@ -672,7 +654,7 @@ function boot() {
         }
 
         return `
-            <span class="badge badge--count">
+            <span class="mono dashboard-chat__unread">
                 <span aria-hidden="true">${escapeHtml(formatNumber(count))}</span>
                 <span class="sr-only">${escapeHtml(t('dashboard.unread_count', { count: formatNumber(count) }))}</span>
             </span>
@@ -694,27 +676,23 @@ function boot() {
         }
 
         recentConversationsEl.innerHTML = `
-            <ul class="dashboard-list" role="list">
+            <ul class="dashboard-chats" role="list">
                 ${conversations
                     .slice(0, RECENT_LIMIT)
                     .map((conversation) => {
                         const title = conversation.title || t('common.unknown');
                         const avatar = conversation.avatar
-                            ? `<span class="avatar dashboard-list__avatar">${avatarMedia(conversation.avatar)}</span>`
-                            : `<span class="avatar avatar--hue-${avatarHue(title)} dashboard-list__avatar"><span class="avatar__initials" aria-hidden="true">${escapeHtml(initials(title))}</span></span>`;
+                            ? `<span class="avatar avatar--xs">${avatarMedia(conversation.avatar)}</span>`
+                            : `<span class="avatar avatar--xs avatar--hue-${avatarHue(title)}"><span class="avatar__initials" aria-hidden="true">${escapeHtml(initials(title))}</span></span>`;
 
                         return `
                     <li>
-                        <a href="/chat/${escapeHtml(conversation.id)}" class="dashboard-list__row dashboard-list__row--link">
+                        <a href="/chat/${escapeHtml(conversation.id)}" class="dashboard-chat${conversation.unread_count > 0 ? ' dashboard-chat--unread' : ''}">
                             ${avatar}
-                            <span class="dashboard-list__main">
-                                <span class="dashboard-list__title">${escapeHtml(title)}</span>
-                                <span class="dashboard-list__meta">${escapeHtml(conversationPreview(conversation))}</span>
-                            </span>
-                            <span class="dashboard-list__aside">
-                                <span class="dashboard-list__time">${escapeHtml(shortStamp(conversation.last_message_at, calendar, { capitalised: true }))}</span>
-                                ${unreadBadge(conversation.unread_count)}
-                            </span>
+                            <span class="dashboard-chat__title truncate">${escapeHtml(title)}</span>
+                            <span class="dashboard-chat__preview truncate">${escapeHtml(conversationPreview(conversation))}</span>
+                            ${unreadBadge(conversation.unread_count)}
+                            <span class="mono dashboard-chat__time">${escapeHtml(shortStamp(conversation.last_message_at, calendar))}</span>
                         </a>
                     </li>
                 `;
@@ -750,13 +728,12 @@ function boot() {
             }
         });
 
-        completenessValueEl.textContent = t('dashboard.profile_completeness');
-        completenessCountEl.textContent = '—';
-        completenessBarEl.value = 0;
-        settleProfileFill(true);
-        profileCheckEls.forEach((chip) => {
-            delete chip.dataset.state;
-            chip.querySelector('[data-profile-check-state]').textContent = '';
+        completenessValueEl.textContent = '—';
+        completenessCountEl.textContent = '';
+        completenessRingEl.setAttribute('stroke-dasharray', '0 100');
+        profileCheckEls.forEach((check) => {
+            delete check.dataset.state;
+            check.querySelector('[data-profile-check-state]').textContent = '';
         });
     }
 
@@ -777,6 +754,7 @@ function boot() {
             const summary = data.data;
 
             renderProfile(summary.account);
+            renderTail(summary);
             renderStats(summary);
             renderInstance(summary.instance);
             renderRecentRequests(summary.recent_requests || []);
@@ -819,10 +797,6 @@ function boot() {
         button.addEventListener('click', () => startCreate('private'));
     });
 
-    document
-        .querySelector('[data-dashboard-toggle-theme]')
-        ?.addEventListener('click', toggleTheme);
-
     recentSessionsEl?.addEventListener('click', (event) => {
         const button = event.target.closest('[data-revoke-session]');
 
@@ -839,7 +813,7 @@ function boot() {
     });
 
     if (dateEl) {
-        dateEl.textContent = `${longDate(new Date())} · `;
+        dateEl.textContent = longDate(new Date());
     }
 
     loadDashboard();

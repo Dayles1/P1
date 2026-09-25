@@ -1,0 +1,321 @@
+@layer pages {
+    /* =========================================================
+       PROFILE (/profile)
+       -----------------------------------------------------------
+       A 64px avatar with the name, role and a line of details; then
+       figures and groups beside a 300px column of contact facts.
+       On phones the page ends with the settings menu (grouped rows
+       on raised cards), which is hidden on wider screens.
+       ========================================================= */
+    .profile-page {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+        max-width: 1080px;
+    }
+
+    .profile-head {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .profile-head__avatar {
+        flex-shrink: 0;
+        width: 64px;
+        height: 64px;
+        font-size: 25px;
+    }
+
+    .profile-head__who {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-width: 0;
+    }
+
+    .profile-head__line {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .profile-head__name {
+        margin: 0;
+        font-size: var(--text-2xl);
+        font-weight: var(--weight-medium);
+        letter-spacing: -0.02em;
+    }
+
+    .profile-head__name .skeleton--text {
+        display: inline-block;
+        width: 200px;
+        height: 24px;
+    }
+
+    .profile-head__meta {
+        color: var(--ui-text-muted);
+    }
+
+    .profile-head__online {
+        color: var(--ui-success);
+    }
+
+    .profile-head__edit {
+        margin-left: auto;
+    }
+
+    .profile-layout {
+        display: flex;
+        align-items: flex-start;
+        gap: 48px;
+        padding-top: var(--space-6);
+        border-top: 1px solid var(--ui-border);
+    }
+
+    .profile-main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        min-width: 0;
+    }
+
+    .profile-side {
+        flex-shrink: 0;
+        width: 300px;
+    }
+
+    .profile-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .profile-stat {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+        padding-left: var(--space-5);
+        border-left: 1px solid var(--ui-border);
+    }
+
+    .profile-stat:first-child {
+        padding-left: 0;
+        border-left: 0;
+    }
+
+    .profile-stat__label {
+        color: var(--ui-text-muted);
+        font-size: var(--text-sm);
+    }
+
+    .profile-stat__value {
+        font-size: var(--text-2xl);
+    }
+
+    .profile-stat__value .skeleton--text {
+        display: inline-block;
+        width: 48px;
+        height: 22px;
+    }
+
+    .profile-section__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 28px;
+    }
+
+    .profile-section__head .btn {
+        margin-right: -10px;
+    }
+
+    .profile-section__title {
+        margin: 0;
+        color: var(--ui-text-muted);
+        font-size: var(--text-sm);
+        font-weight: var(--weight-medium);
+    }
+
+    .profile-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 36px;
+        color: var(--ui-text);
+    }
+
+    .profile-group:hover .profile-group__title {
+        text-decoration: underline;
+    }
+
+    .profile-group__mark {
+        flex-shrink: 0;
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--ui-text-muted);
+    }
+
+    .profile-group__mark--blue {
+        background: var(--hue-blue);
+    }
+    .profile-group__mark--sky {
+        background: var(--hue-sky);
+    }
+    .profile-group__mark--violet {
+        background: var(--hue-violet);
+    }
+    .profile-group__mark--green {
+        background: var(--hue-green);
+    }
+    .profile-group__mark--amber {
+        background: var(--hue-amber);
+    }
+    .profile-group__mark--rose {
+        background: var(--hue-rose);
+    }
+    .profile-group__mark--teal {
+        background: var(--hue-teal);
+    }
+    .profile-group__mark--orange {
+        background: var(--hue-orange);
+    }
+
+    .profile-group__title {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .profile-group__time {
+        color: var(--ui-text-muted);
+        font-size: var(--text-xs);
+    }
+
+    .profile-facts {
+        margin: 0;
+    }
+
+    .profile-fact {
+        display: flex;
+        align-items: center;
+        min-height: 34px;
+    }
+
+    .profile-fact dt {
+        flex-shrink: 0;
+        width: 120px;
+        color: var(--ui-text-muted);
+    }
+
+    .profile-fact dd {
+        min-width: 0;
+        margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .profile-fact dd.mono {
+        font-size: 12.5px;
+    }
+
+    /* The phone settings menu */
+    .profile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .profile-menu__label {
+        padding: 12px var(--space-1) 0;
+        color: var(--ui-text-muted);
+        font-size: var(--text-sm);
+    }
+
+    .profile-menu__group {
+        margin-bottom: 12px;
+        border-radius: var(--ui-radius);
+        background: var(--ui-surface);
+        box-shadow: inset 0 0 0 1px var(--ui-border);
+    }
+
+    .profile-menu__item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        width: 100%;
+        height: 48px;
+        padding: 0 14px;
+        color: var(--ui-text);
+        font-size: var(--text-md);
+        text-align: left;
+    }
+
+    .profile-menu__item + .profile-menu__item {
+        border-top: 1px solid var(--ui-border);
+    }
+
+    .profile-menu__item > .icon:first-child {
+        color: var(--ui-text-muted);
+    }
+
+    .profile-menu__count {
+        color: var(--ui-primary);
+        font-size: var(--text-sm);
+    }
+
+    .profile-menu__chev {
+        margin-left: auto;
+        color: var(--ui-text-muted);
+    }
+
+    .profile-menu__item--danger,
+    .profile-menu__item--danger > .icon:first-child {
+        color: var(--ui-danger);
+    }
+
+    @media (max-width: 899px) {
+        .profile-layout {
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .profile-side {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 639px) {
+        .profile-page {
+            gap: 18px;
+        }
+
+        .profile-head {
+            padding: 14px;
+            border-radius: var(--ui-radius);
+            background: var(--ui-surface);
+            box-shadow: inset 0 0 0 1px var(--ui-border);
+        }
+
+        .profile-head__avatar {
+            width: 44px;
+            height: 44px;
+            font-size: 17px;
+        }
+
+        .profile-head__name {
+            font-size: var(--text-lg);
+            font-weight: var(--weight-semibold);
+        }
+
+        .profile-head__edit,
+        .profile-layout {
+            display: none;
+        }
+
+        .profile-menu {
+            display: flex;
+        }
+    }
+}

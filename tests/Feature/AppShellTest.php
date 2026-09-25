@@ -29,17 +29,19 @@ function shellTabbar(TestResponse $response): string
     return shellRegion($response, '/<nav class="app-tabbar".*?<\/nav>/s');
 }
 
-test('the sidebar holds only the product sections', function () {
+test('the sidebar holds search and the product sections, with the inbox', function () {
     $sidebar = shellSidebar($this->get('/dashboard')->assertOk());
 
-    expect(substr_count($sidebar, 'data-nav-link="sidebar-link"'))->toBe(4)
+    expect(substr_count($sidebar, 'data-nav-link="sidebar-link"'))->toBe(5)
+        ->and($sidebar)->toContain('data-command-palette-trigger')
         ->and($sidebar)->toContain('href="'.route('dashboard').'"')
         ->and($sidebar)->toContain('href="'.route('profile').'"')
         ->and($sidebar)->toContain('href="'.route('chat').'"')
+        ->and($sidebar)->toContain('href="'.route('notifications').'"')
         ->and($sidebar)->toContain('href="'.route('currencies').'"')
+        ->and($sidebar)->toContain('data-sidebar-pinned')
         ->and($sidebar)->not->toContain(route('settings'))
         ->and($sidebar)->not->toContain(route('sessions'))
-        ->and($sidebar)->not->toContain(route('notifications'))
         ->and($sidebar)->not->toContain('/admin/')
         ->and($sidebar)->not->toContain('data-logout');
 });
@@ -48,7 +50,7 @@ test('everything personal lives in the account menu, with sign-out last', functi
     $header = shellHeader($this->get('/dashboard')->assertOk());
 
     expect($header)->toContain('href="'.route('settings.profile').'"')
-        ->and($header)->toContain('href="'.route('settings.security').'"')
+        ->and($header)->toContain('href="'.route('sessions').'"')
         ->and($header)->toContain('href="'.route('notifications').'"')
         ->and($header)->toContain('href="'.route('changelog').'"')
         ->and($header)->toContain('data-theme-set="light"')
@@ -98,7 +100,7 @@ test('the permanent shell parts keep their Turbo markers and the page layout con
     expect($html)->toContain('<aside class="app-sidebar" id="app-sidebar" data-turbo-permanent>')
         ->and($html)->toContain('<header class="app-header" id="app-header" data-turbo-permanent>')
         ->and($html)->toContain('id="app-tabbar" data-turbo-permanent')
-        ->and($html)->toContain('<script type="application/json" id="page-layout-config">{"sidebar":"compact"');
+        ->and($html)->toContain('<script type="application/json" id="page-layout-config">{"sidebar":"default"');
 });
 
 test('the shell uses sprite icons, not glyphs', function () {

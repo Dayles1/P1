@@ -1,6 +1,11 @@
 import { api } from '../axios';
 import { setActiveConversationId } from '../shared/active-context';
-import { avatarMedia, fetchCurrentUser, initials } from '../shared/auth-state';
+import {
+    avatarHue,
+    avatarMedia,
+    fetchCurrentUser,
+    initials,
+} from '../shared/auth-state';
 import { confirmDialog } from '../shared/confirm';
 import { openContextMenu, attachLongPress } from '../shared/context-menu';
 import { getEcho } from '../shared/echo';
@@ -75,6 +80,7 @@ function boot() {
     */
 
     let currentUser = null;
+    let listType = 'all';
     let conversations = [];
     let activeConversation = null;
     let messages = []; // oldest-first, currently loaded page for the active conversation
@@ -171,14 +177,23 @@ function boot() {
     }
 
     function renderConversationList() {
-        if (!conversations.length) {
+        // "All / Private / Groups" above the list filters what is loaded.
+        const visible = conversations.filter(
+            (c) =>
+                listType === 'all' ||
+                (listType === 'private'
+                    ? c.type === 'private'
+                    : c.type !== 'private'),
+        );
+
+        if (!visible.length) {
             listEl.innerHTML = emptyState(t('chat.empty_list'));
 
             return;
         }
 
-        const pinned = conversations.filter((c) => c.is_pinned);
-        const rest = conversations.filter((c) => !c.is_pinned);
+        const pinned = visible.filter((c) => c.is_pinned);
+        const rest = visible.filter((c) => !c.is_pinned);
 
         const row = (conversation) => {
             const online = conversation.other_user_id
@@ -191,7 +206,7 @@ function boot() {
                     class="chat-list-item ${activeConversation?.id === conversation.id ? 'chat-list-item--active' : ''}"
                     data-conversation-id="${conversation.id}"
                 >
-                    <span class="avatar avatar--md chat-list-item__avatar">
+                    <span class="avatar chat-list-item__avatar ${conversation.avatar ? '' : `avatar--hue-${avatarHue(conversation.title || '')}`}">
                         ${conversation.avatar ? avatarMedia(conversation.avatar) : `<span class="avatar__initials">${initials(conversation.title)}</span>`}
                         ${online ? '<span class="chat-list-item__online-dot"></span>' : ''}
                     </span>
@@ -201,11 +216,13 @@ function boot() {
                                 ${conversation.is_pinned ? icon('pin', { size: 14, className: 'chat-list-item__pin-icon' }) : ''}
                                 ${escapeHtml(conversation.title || t('common.unknown'))}
                             </span>
-                            <span class="chat-list-item__time">${conversation.last_message_at ? timeOf(conversation.last_message_at) : ''}</span>
+                            <span class="mono chat-list-item__time">${conversation.last_message_at ? timeOf(conversation.last_message_at) : ''}</span>
                         </div>
-                        <div class="chat-list-item__preview">${conversationSubtitle(conversation)}</div>
+                        <div class="chat-list-item__preview-row">
+                            <span class="chat-list-item__preview">${conversationSubtitle(conversation)}</span>
+                            ${conversation.unread_count > 0 ? `<span class="mono chat-list-item__unread">${conversation.unread_count}</span>` : ''}
+                        </div>
                     </div>
-                    ${conversation.unread_count > 0 ? `<span class="chat-list-item__unread">${conversation.unread_count}</span>` : ''}
                 </button>
             `;
         };
@@ -678,18 +695,35 @@ function boot() {
             `
             : '';
 
+        const senderName = message.is_mine
+            ? t('chat.you')
+            : message.sender?.name || '';
+        const avatar = message.sender?.avatar
+            ? `<span class="avatar chat-bubble__avatar">${avatarMedia(message.sender.avatar)}</span>`
+            : `<span class="avatar chat-bubble__avatar avatar--hue-${avatarHue(message.sender?.name || '')}"><span class="avatar__initials">${escapeHtml(initials(message.sender?.name || ''))}</span></span>`;
+
+        // Flat rows, as in the Graphite design: an avatar and a name line
+        // start a run of messages from one sender; the rest of the run
+        // lines up under it, its time showing on hover.
         return `
             <div class="chat-bubble-row ${message.is_mine ? 'chat-bubble-row--mine' : ''} ${grouped ? 'chat-bubble-row--grouped' : ''}" data-message-id="${message.id}">
+                ${grouped ? `<span class="mono chat-bubble__gutter-time">${escapeHtml(timeOf(message.created_at ?? ''))}</span>` : avatar}
                 <div class="chat-bubble-wrap">
                     <div class="chat-bubble" data-bubble="${message.id}">
-                        ${message.is_pinned ? icon('pin', { size: 12, className: 'chat-bubble__pin-icon' }) : ''}
-                        ${!message.is_mine && !grouped ? `<span class="chat-bubble__sender">${escapeHtml(message.sender?.name || '')}</span>` : ''}
+                        ${
+                            grouped
+                                ? ''
+                                : `<div class="chat-bubble__head">
+                                    <span class="chat-bubble__sender">${escapeHtml(senderName)}</span>
+                                    <span class="mono chat-bubble__time">${escapeHtml(timeOf(message.created_at ?? ''))}</span>
+                                </div>`
+                        }
                         ${reply}
                         ${message.body ? `<div class="chat-bubble__body">${renderMessageBody(message.body)}</div>` : ''}
                         ${attachmentsHtml(message)}
                         <div class="chat-bubble__footer">
+                            ${message.is_pinned ? icon('pin', { size: 12, className: 'chat-bubble__pin-icon' }) : ''}
                             ${message.edited_at ? `<span class="chat-bubble__edited">${t('chat.edited')}</span>` : ''}
-                            <span>${message.created_at ?? ''}</span>
                             ${readTicks(message)}
                         </div>
                         ${reactionBar(message)}
@@ -1149,6 +1183,12 @@ function boot() {
         renderConversationList();
         subscribeToConversation(conversation.id);
 
+        // Details open beside the thread wherever there is room for them,
+        // unless the user closed them last time.
+        if (detailsPreferred() && window.innerWidth > 1200) {
+            openDetails();
+        }
+
         await loadMembers(conversation.id);
         threadStatus.textContent = otherMemberStatus(conversation);
 
@@ -1201,9 +1241,32 @@ function boot() {
         { signal },
     );
 
+    document.querySelector('[data-chat-details-close]')?.addEventListener(
+        'click',
+        () => {
+            shell.removeAttribute('data-details-open');
+            shell.dataset.view = 'conversation';
+            rememberDetails(false);
+        },
+        { signal },
+    );
+
     threadHeader?.addEventListener(
         'click',
         (event) => {
+            if (event.target.closest('[data-chat-details-toggle]')) {
+                if (shell.hasAttribute('data-details-open')) {
+                    shell.removeAttribute('data-details-open');
+                    shell.dataset.view = 'conversation';
+                    rememberDetails(false);
+                } else {
+                    openDetails();
+                    rememberDetails(true);
+                }
+
+                return;
+            }
+
             if (
                 event.target.closest(
                     '[data-chat-back], [data-chat-search-toggle]',
@@ -2171,6 +2234,23 @@ function boot() {
     |--------------------------------------------------------------------------
     */
 
+    /** Whether the details pane opens with a conversation (on by default). */
+    function detailsPreferred() {
+        try {
+            return localStorage.getItem('chat.details') !== 'closed';
+        } catch {
+            return true;
+        }
+    }
+
+    function rememberDetails(isOpen) {
+        try {
+            localStorage.setItem('chat.details', isOpen ? 'open' : 'closed');
+        } catch {
+            // Private mode: the choice lasts until the page is left.
+        }
+    }
+
     function openDetails() {
         if (!activeConversation) {
             return;
@@ -2477,6 +2557,25 @@ function boot() {
     */
 
     let conversationSearchTimer = null;
+
+    document.querySelectorAll('[data-chat-type]').forEach((button) => {
+        button.addEventListener(
+            'click',
+            () => {
+                listType = button.dataset.chatType;
+                document
+                    .querySelectorAll('[data-chat-type]')
+                    .forEach((other) =>
+                        other.setAttribute(
+                            'aria-pressed',
+                            String(other === button),
+                        ),
+                    );
+                renderConversationList();
+            },
+            { signal },
+        );
+    });
 
     searchInput?.addEventListener(
         'input',

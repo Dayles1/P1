@@ -91,8 +91,9 @@
     --}}
     <script type="application/json" id="page-layout-config">{!! json_encode([
         'sidebar' => $sidebarMode ?? 'default',
+        'title' => trim($__env->yieldContent('header-title', $__env->yieldContent('title'))),
         'secondarySidebar' => $secondarySidebar ?? null,
-    ]) !!}</script>
+    ], JSON_HEX_TAG | JSON_UNESCAPED_UNICODE) !!}</script>
 
     @include('blade.sections.scripts')
 

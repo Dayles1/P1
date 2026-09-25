@@ -1,0 +1,290 @@
+@layer pages {
+    /* =========================================================
+       SESSIONS (/sessions)
+       -----------------------------------------------------------
+       Page head · four figures split by hairlines · a search and
+       status filters · a table of sessions (device, IP, activity,
+       status, sign-out). On phones the head row goes and each
+       session is a two-line row.
+       ========================================================= */
+    .sessions-page {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+    }
+
+    .sessions-page .page-head {
+        margin-bottom: 0;
+    }
+
+    .sessions-stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .sessions-stat {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding-left: var(--space-5);
+        border-left: 1px solid var(--ui-border);
+    }
+
+    .sessions-stat:first-child {
+        padding-left: 0;
+        border-left: 0;
+    }
+
+    .sessions-stat__label {
+        color: var(--ui-text-muted);
+        font-size: var(--text-sm);
+    }
+
+    .sessions-stat__value {
+        font-size: 24px;
+        line-height: 1;
+    }
+
+    .sessions-stat__value .skeleton--text {
+        display: inline-block;
+        width: 40px;
+        height: 22px;
+    }
+
+    .sessions-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-2);
+        margin-bottom: calc(-1 * var(--space-3));
+    }
+
+    .sessions-toolbar__search {
+        width: 280px;
+    }
+
+    .sessions-toolbar__filters {
+        display: flex;
+        gap: var(--space-2);
+    }
+
+    .sessions-filter {
+        height: 28px;
+        padding: 0 10px;
+        border: 1px solid transparent;
+        border-radius: var(--ui-radius-sm);
+        color: var(--ui-text-muted);
+        font-size: 12.5px;
+    }
+
+    .sessions-filter:hover {
+        color: var(--ui-text);
+    }
+
+    .sessions-filter[aria-pressed='true'] {
+        border-color: var(--ui-border-hover);
+        background: var(--ui-surface-soft);
+        color: var(--ui-text);
+    }
+
+    .sessions-filter:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: 1px;
+    }
+
+    /* ---------------------------------------------------------
+       Table
+       --------------------------------------------------------- */
+    .sessions-table__head,
+    .sessions-row {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        padding: 0 var(--space-3);
+    }
+
+    .sessions-table__head {
+        height: 32px;
+        border-bottom: 1px solid var(--ui-border-hover);
+        color: var(--ui-text-muted);
+        font-size: var(--text-sm);
+    }
+
+    .sessions-row {
+        height: 48px;
+        border-radius: var(--ui-radius-sm);
+        cursor: pointer;
+    }
+
+    .sessions-row + .sessions-row {
+        border-top: 1px solid var(--ui-border);
+    }
+
+    .sessions-row:hover {
+        background: var(--ui-surface);
+        box-shadow: inset 0 0 0 1px var(--ui-border);
+    }
+
+    .sessions-row--ended {
+        opacity: 0.55;
+    }
+
+    .sessions-col--device {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+    }
+
+    .sessions-col--ip {
+        flex-shrink: 0;
+        width: 150px;
+        color: var(--ui-text-secondary);
+        font-size: var(--text-sm);
+    }
+
+    .sessions-col--activity {
+        flex-shrink: 0;
+        width: 160px;
+        color: var(--ui-text-muted);
+    }
+
+    .sessions-col--status {
+        flex-shrink: 0;
+        width: 130px;
+    }
+
+    .sessions-col--action {
+        flex-shrink: 0;
+        display: flex;
+        justify-content: flex-end;
+        width: 80px;
+    }
+
+    .sessions-row__icon {
+        flex-shrink: 0;
+        color: var(--ui-text-muted);
+    }
+
+    .sessions-row__device {
+        color: var(--ui-text);
+        font-weight: var(--weight-medium);
+    }
+
+    .sessions-row__device:hover {
+        text-decoration: underline;
+    }
+
+    .sessions-row__ended {
+        color: var(--ui-text-muted);
+        font-size: 11.5px;
+    }
+
+    .sessions-pagination {
+        padding: 0;
+        border: 0;
+    }
+
+    @media (max-width: 899px) {
+        .sessions-col--ip {
+            display: none;
+        }
+    }
+
+    @media (max-width: 639px) {
+        .sessions-stats {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: var(--space-2);
+        }
+
+        .sessions-stat,
+        .sessions-stat:first-child {
+            padding: 14px;
+            border: 0;
+            border-radius: var(--ui-radius);
+            background: var(--ui-surface);
+            box-shadow: inset 0 0 0 1px var(--ui-border);
+        }
+
+        .sessions-toolbar__search {
+            width: 100%;
+        }
+
+        .sessions-table__head {
+            display: none;
+        }
+
+        /* Device and status on the first line; activity and sign-out
+           under it. */
+        .sessions-row {
+            flex-wrap: wrap;
+            row-gap: 2px;
+            height: auto;
+            padding: 10px var(--space-2);
+        }
+
+        .sessions-col--device {
+            flex: 1 1 0;
+        }
+
+        .sessions-col--status {
+            width: auto;
+        }
+
+        .sessions-col--activity {
+            order: 5;
+            flex: 1 1 calc(100% - 120px);
+            width: auto;
+            padding-left: 25px;
+            font-size: var(--text-sm);
+        }
+
+        .sessions-col--action {
+            order: 6;
+            width: auto;
+            margin-left: auto;
+        }
+
+        .sessions-col--action:empty {
+            display: none;
+        }
+    }
+
+    /* =========================================================
+       SESSION DETAIL (/sessions/{id})
+       ========================================================= */
+    .session-detail__back {
+        margin: 0 0 var(--space-3) -10px;
+    }
+
+    .session-detail__summary {
+        margin-bottom: 28px;
+    }
+
+    .session-detail__title {
+        display: flex;
+        align-items: center;
+        min-height: 28px;
+        margin: 0 0 var(--space-1);
+        color: var(--ui-text-muted);
+        font-size: var(--text-sm);
+        font-weight: var(--weight-medium);
+    }
+
+    .session-detail__table {
+        border: 0;
+        border-radius: 0;
+    }
+
+    .session-detail__table td:nth-child(-n + 2),
+    .session-detail__table td:nth-child(n + 4) {
+        font-family: var(--font-mono);
+        font-size: var(--text-sm);
+    }
+
+    .session-detail__pagination {
+        padding: var(--space-3) 0 0;
+        border: 0;
+    }
+}

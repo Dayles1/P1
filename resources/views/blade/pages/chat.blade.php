@@ -2,7 +2,6 @@
 
 @section('title', __('ui.chat.title'))
 @php($fullBleed = true)
-@php($sidebarMode = 'compact')
 @php($secondarySidebar = 'conversations')
 
 @push('styles')
@@ -14,31 +13,45 @@
 
 @section('content')
 
-    <div class="page-head">
-        <div>
-            <h1>{{ __('ui.chat.title') }}</h1>
-        </div>
-
-        <div class="row gap-2">
-            <button type="button" class="icon-btn" data-chat-global-search aria-label="{{ __('ui.chat.search_all') }}" title="{{ __('ui.chat.search_all') }}"><x-blade.u-i.icon name="search" size="18" /></button>
-
-            <x-blade.u-i.dropdown align="right">
-                <x-slot:trigger>
-                    <span class="btn btn--primary btn--sm">{{ __('ui.chat.new_conversation') }}</span>
-                </x-slot:trigger>
-
-                <button type="button" class="dropdown__item" data-start-private>{{ __('ui.chat.start_private') }}</button>
-                <button type="button" class="dropdown__item" data-start-group>{{ __('ui.chat.start_group') }}</button>
-            </x-blade.u-i.dropdown>
-        </div>
-    </div>
-
     <div class="chat-shell" data-chat-shell data-view="list">
 
         {{-- CONVERSATIONS --}}
         <div class="chat-list-pane">
+            <div class="chat-list-pane__header">
+                <h1 class="chat-list-pane__title">{{ __('ui.chat.chats') }}</h1>
+
+                <div class="chat-list-pane__types" role="group" aria-label="{{ __('ui.chat.filter_label') }}">
+                    @foreach (['all', 'private', 'group'] as $chatType)
+                        <button type="button" class="chat-list-pane__type" data-chat-type="{{ $chatType }}" aria-pressed="{{ $chatType === 'all' ? 'true' : 'false' }}">
+                            {{ __("ui.chat.filter_{$chatType}") }}
+                        </button>
+                    @endforeach
+                </div>
+
+                <button type="button" class="icon-btn icon-btn--sm chat-list-pane__action" data-chat-global-search aria-label="{{ __('ui.chat.search_all') }}" title="{{ __('ui.chat.search_all') }}"><x-blade.u-i.icon name="search" size="15" /></button>
+
+                <x-blade.u-i.dropdown align="right" trigger-class="icon-btn icon-btn--sm" :label="__('ui.chat.new_conversation')">
+                    <x-slot:trigger>
+                        <x-blade.u-i.icon name="edit" size="15" />
+                    </x-slot:trigger>
+
+                    <button type="button" class="menu-item" role="menuitem" data-start-private>
+                        <x-blade.u-i.icon name="chat" size="16" class="menu-item__icon" />
+                        {{ __('ui.chat.start_private') }}
+                        <kbd class="kbd menu-item__end">C</kbd>
+                    </button>
+                    <button type="button" class="menu-item" role="menuitem" data-start-group>
+                        <x-blade.u-i.icon name="users" size="16" class="menu-item__icon" />
+                        {{ __('ui.chat.start_group') }}
+                    </button>
+                </x-blade.u-i.dropdown>
+            </div>
+
             <div class="chat-list-pane__search">
-                <input class="field-input" type="search" data-chat-search placeholder="{{ __('ui.chat.search_placeholder') }}" autocomplete="off">
+                <label class="field-box field-box--sm">
+                    <x-blade.u-i.icon name="search" size="14" class="field-box__icon" />
+                    <input class="field-box__input" type="search" data-chat-search placeholder="{{ __('ui.chat.search_placeholder') }}" aria-label="{{ __('ui.chat.search_placeholder') }}" autocomplete="off">
+                </label>
             </div>
 
             <div class="chat-list" data-chat-list>
@@ -50,8 +63,8 @@
         <div class="chat-thread-pane" data-chat-thread-pane>
 
             <div class="chat-thread-header" data-chat-thread-header hidden>
-                <button type="button" class="icon-btn chat-thread-header__back" data-chat-back aria-label="{{ __('ui.common.back') }}"><x-blade.u-i.icon name="back" size="18" /></button>
-                <span class="avatar avatar--sm" data-chat-thread-avatar>
+                <button type="button" class="icon-btn icon-btn--sm chat-thread-header__back" data-chat-back aria-label="{{ __('ui.common.back') }}"><x-blade.u-i.icon name="back" size="18" /></button>
+                <span class="avatar avatar--xs" data-chat-thread-avatar>
                     <span class="avatar__initials">--</span>
                 </span>
                 <div class="chat-thread-header__body">
@@ -59,7 +72,8 @@
                     <div class="chat-thread-header__status" data-chat-thread-status></div>
                 </div>
                 <div class="chat-thread-header__actions">
-                    <button type="button" class="icon-btn" data-chat-search-toggle aria-label="{{ __('ui.common.search') }}" title="{{ __('ui.common.search') }}"><x-blade.u-i.icon name="search" size="18" /></button>
+                    <button type="button" class="icon-btn icon-btn--sm" data-chat-search-toggle aria-label="{{ __('ui.common.search') }}" title="{{ __('ui.common.search') }}"><x-blade.u-i.icon name="search" size="16" /></button>
+                    <button type="button" class="icon-btn icon-btn--sm chat-thread-header__details" data-chat-details-toggle aria-label="{{ __('ui.chat.details') }}" title="{{ __('ui.chat.details') }}"><x-blade.u-i.icon name="panel" size="16" /></button>
                 </div>
             </div>
 
@@ -93,14 +107,18 @@
 
             <div class="chat-composer__attachments" data-chat-composer-attachments hidden></div>
 
+            {{-- The text on top, the tools and "Send" in a row below it. --}}
             <form class="chat-composer" data-chat-composer hidden>
-                <button type="button" class="icon-btn" data-chat-attach aria-label="{{ __('ui.chat.attach_file') }}" title="{{ __('ui.chat.attach_file') }}"><x-blade.u-i.icon name="clip" size="18" /></button>
-                <input type="file" multiple hidden data-chat-file-input>
-                <div class="grow relative">
-                    <textarea class="field-input" rows="1" data-chat-input placeholder="{{ __('ui.chat.message_placeholder') }}"></textarea>
+                <div class="chat-composer__field relative">
+                    <textarea class="chat-composer__input" rows="1" data-chat-input placeholder="{{ __('ui.chat.message_placeholder') }}" aria-label="{{ __('ui.chat.message_placeholder') }}"></textarea>
                     <div class="mention-autocomplete" data-chat-mentions hidden></div>
                 </div>
-                <x-blade.u-i.button type="submit" size="sm">{{ __('ui.common.send') }}</x-blade.u-i.button>
+                <div class="chat-composer__tools">
+                    <button type="button" class="icon-btn icon-btn--sm" data-chat-attach aria-label="{{ __('ui.chat.attach_file') }}" title="{{ __('ui.chat.attach_file') }}"><x-blade.u-i.icon name="clip" size="16" /></button>
+                    <input type="file" multiple hidden data-chat-file-input>
+                    <span class="chat-composer__hint"><kbd class="kbd">↵</kbd> {{ __('ui.chat.send_hint') }}</span>
+                    <button type="submit" class="chat-composer__send" aria-label="{{ __('ui.common.send') }}" title="{{ __('ui.common.send') }}"><x-blade.u-i.icon name="send" size="15" /></button>
+                </div>
             </form>
 
             <div class="chat-dropzone-overlay">{{ __('ui.chat.drop_files_here') }}</div>
@@ -118,7 +136,11 @@
 
         {{-- DETAILS --}}
         <div class="chat-details-pane" data-chat-details-pane>
-            <button type="button" class="icon-btn chat-thread-header__back chat-details-pane__back" data-chat-details-back aria-label="{{ __('ui.common.back') }}"><x-blade.u-i.icon name="back" size="18" /></button>
+            <div class="chat-details-pane__header">
+                <button type="button" class="icon-btn icon-btn--sm chat-details-pane__back" data-chat-details-back aria-label="{{ __('ui.common.back') }}"><x-blade.u-i.icon name="back" size="16" /></button>
+                <span class="chat-details-pane__title">{{ __('ui.chat.details') }}</span>
+                <button type="button" class="icon-btn icon-btn--sm chat-details-pane__close" data-chat-details-close aria-label="{{ __('ui.common.close') }}"><x-blade.u-i.icon name="x" size="16" /></button>
+            </div>
             <div data-chat-details-content>
                 <div class="skeleton skeleton-row m-3"></div>
             </div>

@@ -6,7 +6,6 @@
         border: 1px solid var(--ui-border);
         border-radius: var(--ui-radius);
         background: var(--ui-surface);
-        box-shadow: var(--ui-shadow-sm);
     }
 
     .card__header {
@@ -14,25 +13,25 @@
         align-items: center;
         justify-content: space-between;
         gap: 12px;
-        padding: 18px 20px;
+        padding: 14px 16px;
         border-bottom: 1px solid var(--ui-border);
     }
 
     .card__title {
         margin: 0;
-        font-size: var(--text-md);
-        font-weight: var(--weight-semibold);
+        font-size: var(--text-base);
+        font-weight: var(--weight-medium);
         color: var(--ui-text);
     }
 
     .card__subtitle {
         margin: 2px 0 0;
-        font-size: 12.5px;
-        color: var(--ui-text-secondary);
+        font-size: var(--text-sm);
+        color: var(--ui-text-muted);
     }
 
     .card__body {
-        padding: 20px;
+        padding: 16px;
     }
 
     .card__body--flush {
@@ -40,7 +39,7 @@
     }
 
     .card__footer {
-        padding: 14px 20px;
+        padding: 12px 16px;
         border-top: 1px solid var(--ui-border);
     }
 }

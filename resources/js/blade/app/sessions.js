@@ -1,6 +1,9 @@
 import { api } from '../axios';
+import { visit } from '../shared/command-palette';
 import { confirmDialog } from '../shared/confirm';
-import { t } from '../shared/i18n';
+import { escapeHtml } from '../shared/forms';
+import { formatNumber, t } from '../shared/i18n';
+import { icon } from '../shared/icon';
 import { bootOnPage } from '../shared/page-boot';
 import { renderPagination } from '../shared/pagination';
 import { showToast, apiErrorMessage } from '../shared/toast';
@@ -24,10 +27,15 @@ function boot() {
 
     const list = document.querySelector('[data-sessions-list]');
     const revokeOthersBtn = document.querySelector('[data-revoke-others]');
-    const statusFilter = document.querySelector('[data-sessions-status]');
+    const statusButtons = [
+        ...document.querySelectorAll('[data-sessions-status]'),
+    ];
+    const searchInput = document.querySelector('[data-sessions-search]');
     const paginationEl = document.querySelector('[data-sessions-pagination]');
 
     let currentPage = 1;
+    let status = 'all';
+    let sessions = [];
 
     function renderSkeleton() {
         list.innerHTML = Array.from({ length: 3 })
@@ -36,53 +44,113 @@ function boot() {
     }
 
     function renderEmpty(message) {
-        list.innerHTML = `<div class="empty-state"><strong>${message}</strong></div>`;
+        list.innerHTML = `<div class="empty-state empty-state--plain"><strong>${escapeHtml(message)}</strong></div>`;
     }
 
-    function renderSessions(sessions) {
-        if (!sessions.length) {
+    function deviceOf(session) {
+        return (
+            [session.browser, session.platform].filter(Boolean).join(' · ') ||
+            session.device_name ||
+            t('common.unknown')
+        );
+    }
+
+    function statusBadge(session) {
+        if (session.is_current) {
+            return `<span class="badge badge--success">${t('sessions.this_device')}</span>`;
+        }
+
+        return session.status === 'active'
+            ? `<span class="badge">${t('common.active')}</span>`
+            : `<span class="sessions-row__ended">${t('common.expired')}</span>`;
+    }
+
+    /**
+     * The loaded page, narrowed by the search box (device or IP).
+     */
+    function renderSessions() {
+        const query = (searchInput?.value || '').trim().toLowerCase();
+        const shown = sessions.filter(
+            (session) =>
+                !query ||
+                deviceOf(session).toLowerCase().includes(query) ||
+                String(session.ip_address || '').includes(query),
+        );
+
+        if (!shown.length) {
             renderEmpty(t('sessions.empty'));
 
             return;
         }
 
-        list.innerHTML = sessions
+        list.innerHTML = shown
             .map((session) => {
-                const statusPill =
-                    session.status === 'active'
-                        ? `<span class="pill pill--success">${t('common.active')}</span>`
-                        : `<span class="pill pill--muted">${t('common.expired')}</span>`;
-
-                const currentPill = session.is_current
-                    ? `<span class="pill pill--primary ml-2">${t('sessions.this_device')}</span>`
-                    : '';
-
-                const device =
-                    [session.browser, session.platform]
-                        .filter(Boolean)
-                        .join(' · ') ||
-                    session.device_name ||
-                    t('common.unknown');
-
+                const mobile = ['mobile', 'tablet'].includes(
+                    session.device_type,
+                );
                 const revokeButton =
                     session.status === 'active' && !session.is_current
-                        ? `<button type="button" class="btn btn--outline btn--sm" data-revoke="${session.id}">${t('sessions.sign_out')}</button>`
+                        ? `<button type="button" class="btn btn--ghost btn--sm" data-revoke="${escapeHtml(session.id)}">${t('sessions.sign_out')}</button>`
                         : '';
 
                 return `
-                <a href="/sessions/${session.id}" class="data-row ${session.is_current ? 'data-row--current' : ''} no-underline">
-                    <div class="data-row__main">
-                        <div class="data-row__title">${device} ${statusPill} ${currentPill}</div>
-                        <div class="data-row__meta">${session.ip_address ?? ''} &middot; ${t('sessions.last_active')}: ${session.last_activity_at ?? '—'}</div>
-                    </div>
-                    <div class="data-row__actions" onclick="event.stopPropagation(); event.preventDefault();">
-                        ${revokeButton}
-                        <a href="/sessions/${session.id}" class="btn btn--ghost btn--sm">${t('common.details')}</a>
-                    </div>
-                </a>
+                <div class="sessions-row${session.status === 'active' ? '' : ' sessions-row--ended'}" role="row" data-href="/sessions/${escapeHtml(session.id)}">
+                    <span class="sessions-col sessions-col--device" role="cell">
+                        ${icon(mobile ? 'phone' : 'monitor', { size: 15, className: 'sessions-row__icon' })}
+                        <a href="/sessions/${escapeHtml(session.id)}" class="sessions-row__device truncate">${escapeHtml(deviceOf(session))}</a>
+                    </span>
+                    <span class="sessions-col sessions-col--ip mono" role="cell">${escapeHtml(session.ip_address ?? '—')}</span>
+                    <span class="sessions-col sessions-col--activity" role="cell">${escapeHtml(session.last_activity_at ?? '—')}</span>
+                    <span class="sessions-col sessions-col--status" role="cell">${statusBadge(session)}</span>
+                    <span class="sessions-col sessions-col--action" role="cell">${revokeButton}</span>
+                </div>
             `;
             })
             .join('');
+    }
+
+    /** The figures and filter counts, from the dashboard summary. */
+    async function loadStats() {
+        try {
+            const { data } = await api.get('/dashboard');
+            const summary = data.data;
+            const values = {
+                active: summary.sessions.active,
+                total: summary.sessions.total,
+                requests_today: summary.requests.today,
+                errors_week: summary.requests.errors_this_week,
+            };
+
+            Object.entries(values).forEach(([key, value]) => {
+                const el = document.querySelector(
+                    `[data-sessions-stat="${key}"]`,
+                );
+
+                if (el) {
+                    el.textContent = formatNumber(value);
+                }
+            });
+
+            const counts = {
+                all: summary.sessions.total,
+                active: summary.sessions.active,
+                expired: summary.sessions.total - summary.sessions.active,
+            };
+
+            Object.entries(counts).forEach(([key, value]) => {
+                const el = document.querySelector(
+                    `[data-sessions-count="${key}"]`,
+                );
+
+                if (el) {
+                    el.textContent = ` · ${formatNumber(value)}`;
+                }
+            });
+        } catch {
+            document.querySelectorAll('[data-sessions-stat]').forEach((el) => {
+                el.textContent = '—';
+            });
+        }
     }
 
     async function loadSessions(page = 1) {
@@ -92,13 +160,14 @@ function boot() {
         try {
             const { data } = await api.get('/sessions', {
                 params: {
-                    status: statusFilter?.value || 'all',
+                    status,
                     page,
                     per_page: 10,
                 },
             });
 
-            renderSessions(data.data || []);
+            sessions = data.data || [];
+            renderSessions();
             renderPagination(paginationEl, data.pagination, loadSessions);
         } catch (error) {
             renderEmpty(t('sessions.error'));
@@ -110,8 +179,14 @@ function boot() {
         'click',
         async (event) => {
             const button = event.target.closest('[data-revoke]');
+            const row = event.target.closest('[data-href]');
 
+            // A click anywhere on a row opens the session, as its link does.
             if (!button) {
+                if (row && !event.target.closest('a')) {
+                    visit(row.dataset.href);
+                }
+
                 return;
             }
 
@@ -135,6 +210,7 @@ function boot() {
                 showToast(t('sessions.revoked'));
 
                 loadSessions(currentPage);
+                loadStats();
             } catch (error) {
                 showToast(apiErrorMessage(error, t('sessions.error')), 'error');
             }
@@ -171,6 +247,7 @@ function boot() {
                 );
 
                 loadSessions(currentPage);
+                loadStats();
             } catch (error) {
                 showToast(apiErrorMessage(error, t('sessions.error')), 'error');
             }
@@ -178,11 +255,27 @@ function boot() {
         { signal },
     );
 
-    statusFilter?.addEventListener('change', () => loadSessions(1), {
-        signal,
+    statusButtons.forEach((button) => {
+        button.addEventListener(
+            'click',
+            () => {
+                status = button.dataset.sessionsStatus;
+                statusButtons.forEach((other) =>
+                    other.setAttribute(
+                        'aria-pressed',
+                        String(other === button),
+                    ),
+                );
+                loadSessions(1);
+            },
+            { signal },
+        );
     });
 
+    searchInput?.addEventListener('input', renderSessions, { signal });
+
     loadSessions();
+    loadStats();
 
     currentCleanup = () => controller.abort();
 }

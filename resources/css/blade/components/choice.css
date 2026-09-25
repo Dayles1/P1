@@ -157,13 +157,13 @@
     }
 
     .switch__label {
-        font-size: 14.5px;
+        font-size: var(--text-base);
         font-weight: var(--weight-medium);
     }
 
     .switch__hint {
-        color: var(--ui-text-secondary);
-        font-size: var(--text-sm);
+        color: var(--ui-text-muted);
+        font-size: 12.5px;
     }
 
     .switch__input {
@@ -177,24 +177,25 @@
     .switch__track {
         position: relative;
         flex-shrink: 0;
-        width: 44px;
-        height: 26px;
-        border-radius: 13px;
-        background: var(--ui-border-hover);
+        width: 30px;
+        height: 18px;
+        border-radius: 9px;
+        background: color-mix(in srgb, var(--ui-text) 14%, transparent);
         transition: background 160ms ease;
     }
 
     .switch__track::after {
         content: '';
         position: absolute;
-        top: 3px;
-        left: 3px;
-        width: 20px;
-        height: 20px;
+        top: 2px;
+        left: 2px;
+        width: 14px;
+        height: 14px;
         border-radius: var(--ui-radius-full);
-        background: var(--ui-surface);
-        box-shadow: 0 1px 2px rgba(16, 24, 40, 0.2);
-        transition: transform 160ms ease;
+        background: var(--ui-text-secondary);
+        transition:
+            transform 160ms ease,
+            background 160ms ease;
     }
 
     .switch__input:checked + .switch__track {
@@ -202,7 +203,8 @@
     }
 
     .switch__input:checked + .switch__track::after {
-        transform: translateX(18px);
+        background: var(--ui-on-primary);
+        transform: translateX(12px);
     }
 
     .switch__input:focus-visible + .switch__track {
@@ -232,14 +234,14 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        height: 34px;
-        padding: 0 14px;
-        border: 1px solid var(--ui-border);
+        height: 28px;
+        padding: 0 10px;
+        border: 1px solid var(--ui-border-hover);
         border-radius: var(--ui-radius-full);
-        background: var(--ui-surface);
-        color: var(--ui-text);
-        font-size: 13.5px;
-        font-weight: var(--weight-semibold);
+        background: transparent;
+        color: var(--ui-text-secondary);
+        font-size: 12.5px;
+        font-weight: var(--weight-medium);
         white-space: nowrap;
         cursor: pointer;
         transition:
@@ -253,9 +255,9 @@
     }
 
     .chip[aria-pressed='true'] {
-        border-color: var(--ui-text);
-        background: var(--ui-text);
-        color: var(--ui-surface);
+        border-color: var(--ui-border-hover);
+        background: var(--ui-surface-soft);
+        color: var(--ui-text);
     }
 
     .chip:focus-visible {
@@ -300,9 +302,9 @@
     .segmented {
         display: flex;
         gap: 2px;
-        padding: 3px;
+        padding: 2px;
         border-radius: var(--ui-radius-sm);
-        background: var(--ui-surface-soft);
+        background: color-mix(in srgb, var(--ui-text) 5%, transparent);
     }
 
     .segmented--inline {
@@ -315,12 +317,12 @@
         align-items: center;
         justify-content: center;
         gap: 5px;
-        height: 30px;
-        padding: 0 var(--space-3);
-        border-radius: 6px;
-        color: var(--ui-text-secondary);
-        font-size: 12.5px;
-        font-weight: var(--weight-semibold);
+        height: 26px;
+        padding: 0 10px;
+        border-radius: 5px;
+        color: var(--ui-text-muted);
+        font-size: var(--text-sm);
+        font-weight: var(--weight-medium);
         white-space: nowrap;
     }
 
@@ -331,9 +333,13 @@
     .segmented__option[aria-pressed='true'],
     .segmented__option[aria-selected='true'],
     .segmented__option:has(:checked) {
-        background: var(--ui-surface);
+        background: var(--ui-surface-soft);
         color: var(--ui-text);
-        box-shadow: var(--ui-shadow-sm);
+        box-shadow: inset 0 0 0 1px var(--ui-border-hover);
+    }
+
+    .segmented--sm .segmented__option {
+        height: 24px;
     }
 
     label.segmented__option {

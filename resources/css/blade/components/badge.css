@@ -8,13 +8,13 @@
         display: inline-flex;
         align-items: center;
         gap: var(--space-1);
-        height: 22px;
-        padding: 0 var(--space-2);
-        border-radius: var(--ui-radius-full);
-        background: var(--ui-surface-soft);
+        height: 20px;
+        padding: 0 7px;
+        border-radius: 5px;
+        background: color-mix(in srgb, var(--ui-text) 6%, transparent);
         color: var(--ui-text-secondary);
-        font-size: 12px;
-        font-weight: var(--weight-semibold);
+        font-size: 11.5px;
+        font-weight: var(--weight-medium);
         white-space: nowrap;
         font-variant-numeric: tabular-nums;
     }
@@ -95,17 +95,32 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-width: 24px;
-        height: 24px;
-        padding: 0 6px;
-        border: 1px solid var(--ui-border);
-        border-bottom-width: 2px;
-        border-radius: 5px;
-        background: var(--ui-surface);
-        color: var(--ui-text);
-        font-family: inherit;
-        font-size: 12px;
-        font-weight: var(--weight-semibold);
+        min-width: 18px;
+        padding: 3px 5px;
+        border: 1px solid var(--ui-border-hover);
+        border-radius: 4px;
+        background: transparent;
+        color: var(--ui-text-muted);
+        font-family: var(--font-mono);
+        font-size: 10.5px;
+        font-weight: var(--weight-regular);
+        line-height: 1;
         white-space: nowrap;
+    }
+
+    /* Several keys side by side: G then H, Ctrl then K. */
+    .kbd-group {
+        display: inline-flex;
+        gap: 3px;
+    }
+
+    /* No keyboard to press them on a phone. */
+    @media (max-width: 639px) {
+        .btn .kbd,
+        .btn .kbd-group,
+        .menu-item .kbd,
+        .menu-item .kbd-group {
+            display: none;
+        }
     }
 }

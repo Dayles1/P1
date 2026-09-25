@@ -245,7 +245,7 @@
         flex: 1;
         min-height: 0;
         width: 100%;
-        padding: 28px 28px 64px;
+        padding: 28px 32px 56px;
     }
 
     .app-main__inner--narrow {
@@ -268,9 +268,9 @@
         flex-direction: column;
         gap: 2px;
         width: var(--ui-sidebar-width);
-        padding: 14px 12px;
+        padding: var(--space-3) 10px;
         overflow-y: auto;
-        background: var(--ui-surface);
+        background: var(--ui-chrome);
         border-right: 1px solid var(--ui-border);
     }
 
@@ -278,40 +278,65 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        height: var(--control-md);
-        margin-bottom: 14px;
-        padding: 0 8px 0 6px;
+        height: 36px;
+        margin-bottom: 10px;
+        padding: 0 var(--space-2);
         border-radius: var(--ui-radius-sm);
         color: var(--ui-text);
+    }
+
+    .sidebar-brand:hover {
+        background: var(--ui-surface-soft);
     }
 
     .sidebar-brand__mark {
         display: grid;
         place-items: center;
         flex-shrink: 0;
-        width: 32px;
-        height: 32px;
-        border-radius: 9px;
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
         background: var(--ui-primary);
         color: var(--ui-on-primary);
-        font-size: var(--text-md);
+        font-size: 12px;
         font-weight: var(--weight-bold);
-    }
-
-    .sidebar-brand__text {
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
     }
 
     .sidebar-brand__name {
-        font-size: var(--text-md);
-        font-weight: var(--weight-bold);
+        font-size: 13.5px;
+        font-weight: var(--weight-semibold);
     }
 
-    .sidebar-brand__caption {
-        color: var(--ui-text-secondary);
-        font-size: 12px;
+    .sidebar-search {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        height: 30px;
+        margin-bottom: var(--space-3);
+        padding: 0 6px 0 10px;
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius-sm);
+        background: var(--ui-bg);
+        color: var(--ui-text-muted);
+        font-size: 12.5px;
+        text-align: left;
+        transition: border-color 140ms ease;
+    }
+
+    .sidebar-search:hover {
+        border-color: var(--ui-border-hover);
+    }
+
+    .sidebar-search:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: 2px;
+    }
+
+    .sidebar-search__label {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .sidebar-nav {
@@ -324,16 +349,21 @@
         position: relative;
         display: flex;
         align-items: center;
-        gap: var(--space-3);
-        height: 38px;
+        gap: 10px;
+        height: 30px;
         padding: 0 10px;
         border-radius: var(--ui-radius-sm);
         color: var(--ui-text-secondary);
         font-size: var(--text-base);
         font-weight: var(--weight-medium);
         transition:
-            background 160ms ease,
-            color 160ms ease;
+            background 140ms ease,
+            color 140ms ease;
+    }
+
+    .sidebar-link__icon {
+        flex-shrink: 0;
+        color: var(--ui-text-muted);
     }
 
     .sidebar-link:hover {
@@ -343,9 +373,13 @@
 
     .sidebar-link--active,
     .sidebar-link--active:hover {
-        background: var(--ui-primary-soft);
+        background: var(--ui-surface-soft);
+        box-shadow: inset 0 0 0 1px var(--ui-border);
+        color: var(--ui-text);
+    }
+
+    .sidebar-link--active .sidebar-link__icon {
         color: var(--ui-primary);
-        font-weight: var(--weight-semibold);
     }
 
     .sidebar-link:focus-visible {
@@ -353,8 +387,107 @@
         outline-offset: 2px;
     }
 
+    .sidebar-link__label {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .sidebar-link__count {
+        color: var(--ui-primary);
+        font-size: 11px;
+    }
+
+    /* The shortcut shows on the current page and on hover. */
+    .sidebar-link__keys {
+        display: none;
+    }
+
+    .sidebar-link--active .sidebar-link__keys,
+    .sidebar-link:hover .sidebar-link__keys {
+        display: inline-flex;
+    }
+
+    /* Pinned conversations */
+    .sidebar-pinned {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .sidebar-pinned__title {
+        padding: 18px 10px 6px;
+        color: var(--ui-text-muted);
+        font-size: var(--text-xs);
+        font-weight: var(--weight-medium);
+    }
+
+    .sidebar-pinned__list {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .sidebar-pinned__link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 28px;
+        padding: 0 10px;
+        border-radius: var(--ui-radius-sm);
+        color: var(--ui-text-secondary);
+        font-size: 12.5px;
+    }
+
+    .sidebar-pinned__link:hover,
+    .sidebar-pinned__link--active {
+        background: var(--ui-surface-soft);
+        color: var(--ui-text);
+    }
+
+    .sidebar-pinned__mark {
+        flex-shrink: 0;
+        width: 7px;
+        height: 7px;
+        margin: 0 4px;
+        border-radius: 2px;
+        background: var(--ui-text-muted);
+    }
+
+    .sidebar-pinned__name {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .sidebar-pinned__mark--blue {
+        background: var(--hue-blue);
+    }
+    .sidebar-pinned__mark--sky {
+        background: var(--hue-sky);
+    }
+    .sidebar-pinned__mark--violet {
+        background: var(--hue-violet);
+    }
+    .sidebar-pinned__mark--green {
+        background: var(--hue-green);
+    }
+    .sidebar-pinned__mark--amber {
+        background: var(--hue-amber);
+    }
+    .sidebar-pinned__mark--rose {
+        background: var(--hue-rose);
+    }
+    .sidebar-pinned__mark--teal {
+        background: var(--hue-teal);
+    }
+    .sidebar-pinned__mark--orange {
+        background: var(--hue-orange);
+    }
+
     /*
-        The 72px icon rail — automatic from 640 to 1199px, and on any
+        The 60px icon rail — automatic from 640 to 1199px, and on any
         width when a page asks for it via $sidebarMode = 'compact' (set on
         the permanent sidebar by shared/layout-controller.js). Labels stay
         in the accessibility tree, just visually hidden.
@@ -362,20 +495,27 @@
     .app-sidebar[data-mode='compact'] {
         align-items: center;
         width: var(--ui-sidebar-compact);
-        padding: 14px 0;
-        gap: var(--space-1);
+        padding: var(--space-3) 0;
     }
 
-    .app-sidebar[data-mode='compact'] .sidebar-brand {
+    .app-sidebar[data-mode='compact'] .sidebar-brand,
+    .app-sidebar[data-mode='compact'] .sidebar-search,
+    .app-sidebar[data-mode='compact'] .sidebar-link {
         justify-content: center;
-        width: var(--control-md);
-        height: 40px;
-        margin-bottom: 10px;
+        width: 36px;
         padding: 0;
     }
 
-    .app-sidebar[data-mode='compact'] .sidebar-brand__text,
-    .app-sidebar[data-mode='compact'] .sidebar-link__label {
+    .app-sidebar[data-mode='compact'] .sidebar-search,
+    .app-sidebar[data-mode='compact'] .sidebar-link {
+        height: 36px;
+    }
+
+    .app-sidebar[data-mode='compact'] .sidebar-brand__name,
+    .app-sidebar[data-mode='compact'] .sidebar-search__label,
+    .app-sidebar[data-mode='compact'] .sidebar-search__keys,
+    .app-sidebar[data-mode='compact'] .sidebar-link__label,
+    .app-sidebar[data-mode='compact'] .sidebar-link__keys {
         position: absolute;
         width: 1px;
         height: 1px;
@@ -384,35 +524,48 @@
         white-space: nowrap;
     }
 
-    .app-sidebar[data-mode='compact'] .sidebar-nav {
-        gap: var(--space-1);
+    /* A count becomes a dot on the icon. */
+    .app-sidebar[data-mode='compact'] .sidebar-link__count {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        width: 6px;
+        height: 6px;
+        overflow: hidden;
+        border-radius: 3px;
+        background: var(--ui-primary);
+        color: transparent;
     }
 
-    .app-sidebar[data-mode='compact'] .sidebar-link {
-        justify-content: center;
-        width: var(--control-md);
-        height: var(--control-md);
-        padding: 0;
+    .app-sidebar[data-mode='compact'] .sidebar-pinned {
+        display: none;
     }
 
     @media (min-width: 640px) and (max-width: 1199px) {
         .app-sidebar {
             align-items: center;
             width: var(--ui-sidebar-compact);
-            padding: 14px 0;
-            gap: var(--space-1);
+            padding: var(--space-3) 0;
         }
 
-        .app-sidebar .sidebar-brand {
+        .app-sidebar .sidebar-brand,
+        .app-sidebar .sidebar-search,
+        .app-sidebar .sidebar-link {
             justify-content: center;
-            width: var(--control-md);
-            height: 40px;
-            margin-bottom: 10px;
+            width: 36px;
             padding: 0;
         }
 
-        .app-sidebar .sidebar-brand__text,
-        .app-sidebar .sidebar-link__label {
+        .app-sidebar .sidebar-search,
+        .app-sidebar .sidebar-link {
+            height: 36px;
+        }
+
+        .app-sidebar .sidebar-brand__name,
+        .app-sidebar .sidebar-search__label,
+        .app-sidebar .sidebar-search__keys,
+        .app-sidebar .sidebar-link__label,
+        .app-sidebar .sidebar-link__keys {
             position: absolute;
             width: 1px;
             height: 1px;
@@ -421,15 +574,21 @@
             white-space: nowrap;
         }
 
-        .app-sidebar .sidebar-nav {
-            gap: var(--space-1);
+        /* A count becomes a dot on the icon. */
+        .app-sidebar .sidebar-link__count {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 6px;
+            height: 6px;
+            overflow: hidden;
+            border-radius: 3px;
+            background: var(--ui-primary);
+            color: transparent;
         }
 
-        .app-sidebar .sidebar-link {
-            justify-content: center;
-            width: var(--control-md);
-            height: var(--control-md);
-            padding: 0;
+        .app-sidebar .sidebar-pinned {
+            display: none;
         }
     }
 
@@ -452,8 +611,8 @@
         .app-tabbar {
             display: flex;
             flex-shrink: 0;
-            padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
-            background: var(--ui-surface);
+            padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+            background: var(--ui-chrome);
             border-top: 1px solid var(--ui-border);
         }
     }
@@ -465,15 +624,14 @@
         align-items: center;
         justify-content: center;
         gap: var(--space-1);
-        min-height: 48px;
-        color: var(--ui-text-secondary);
-        font-size: 11px;
+        min-height: 44px;
+        color: var(--ui-text-muted);
+        font-size: 10.5px;
         font-weight: var(--weight-medium);
     }
 
     .app-tabbar__link--active {
         color: var(--ui-primary);
-        font-weight: var(--weight-semibold);
     }
 
     .app-tabbar__icon {
@@ -483,14 +641,12 @@
 
     .app-tabbar__dot {
         position: absolute;
-        top: -1px;
-        right: -3px;
-        width: 8px;
-        height: 8px;
-        border: 2px solid var(--ui-surface);
+        top: 0;
+        right: -2px;
+        width: 6px;
+        height: 6px;
         border-radius: var(--ui-radius-full);
-        background: var(--ui-danger);
-        box-sizing: content-box;
+        background: var(--ui-primary);
     }
 
     /* =========================================================
@@ -509,13 +665,14 @@
         margin: 0 0 var(--space-1);
         color: var(--ui-text);
         font-size: var(--text-2xl);
-        font-weight: var(--weight-semibold);
+        font-weight: var(--weight-medium);
         letter-spacing: -0.02em;
+        line-height: 1.3;
     }
 
     .page-head p {
         margin: 0;
-        color: var(--ui-text-secondary);
+        color: var(--ui-text-muted);
         font-size: var(--text-base);
     }
 
@@ -528,7 +685,7 @@
 
     @media (max-width: 639px) {
         .page-head h1 {
-            font-size: 22px;
+            font-size: var(--text-xl);
         }
 
         .page-head__actions,

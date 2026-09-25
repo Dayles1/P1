@@ -75,12 +75,11 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 /*
- * Profile now lives inside Settings (Personal -> Profile), same
- * retirement pattern as /admin/settings below — old bookmarks/links to
- * /profile still land somewhere sensible.
+ * How the user looks to others; editing it lives in Settings (Personal ->
+ * Profile). On a phone this page is also the way into settings.
  */
 Route::get('/profile', function () {
-    return redirect()->route('settings.profile');
+    return view('blade.pages.profile');
 })->name('profile');
 
 Route::get('/sessions', function () {

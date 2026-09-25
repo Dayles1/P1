@@ -1,670 +1,535 @@
 @layer pages {
     /* =========================================================
-       DASHBOARD
+       HOME (/dashboard)
        -----------------------------------------------------------
-       Columns follow the width the page actually gets (a container
-       query), not the viewport, so a collapsed or expanded sidebar
-       never leaves it with the wrong grid:
-       < 600px      phone — 2 stat columns, 1 card column
-       600–1079px   1024 — 3 stat columns, 2 card columns
-       1080–1179px  6 stat columns, still 2 card columns
-       ≥ 1180px     2K   — 6 stat columns, 4 card columns (the width
-                    the 2K mockup's cards were drawn for; narrower,
-                    their titles and actions no longer fit)
+       A full-bleed page of two columns, each scrolling on its own:
+       the greeting, four figures, recent chats and requests; and a
+       320px side column with the profile checklist, the sessions
+       and, for admins, the instance. Below 1200px the side column
+       follows the main one and the page scrolls as a whole.
        ========================================================= */
     .dashboard {
-        container: dashboard / inline-size;
+        display: flex;
+        flex: 1;
+        min-height: 0;
+    }
+
+    .dashboard__main {
+        flex: 1;
+        min-width: 0;
         display: flex;
         flex-direction: column;
-        gap: var(--space-5);
+        gap: 28px;
+        padding: 28px 32px 48px;
+        overflow-y: auto;
+    }
+
+    .dashboard__side {
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        width: 320px;
+        padding: 28px var(--space-6) 48px;
+        overflow-y: auto;
+        border-left: 1px solid var(--ui-border);
+    }
+
+    @media (max-width: 1199px) {
+        .dashboard {
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .dashboard__main,
+        .dashboard__side {
+            overflow: visible;
+        }
+
+        .dashboard__side {
+            width: auto;
+            padding-top: 0;
+            border-left: 0;
+        }
     }
 
     @media (max-width: 639px) {
-        .dashboard {
-            gap: var(--space-4);
+        .dashboard__main {
+            gap: var(--space-6);
+            padding: 20px var(--space-4);
         }
 
-        /* Work-Home-Phone: the full-width "New chat" is a 44px touch target. */
-        .dashboard .page-head__actions .btn {
-            height: var(--control-md);
-            padding-inline: var(--space-4);
-            font-size: var(--text-md);
+        .dashboard__side {
+            padding: 0 var(--space-4) var(--space-6);
         }
     }
 
-    .dashboard .page-head {
-        margin-bottom: 0;
+    /* ---------------------------------------------------------
+       Greeting
+       --------------------------------------------------------- */
+    .dashboard__head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: var(--space-4);
+    }
+
+    .dashboard__hello {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-width: 0;
+    }
+
+    .dashboard__date {
+        min-height: 18px;
+        color: var(--ui-text-muted);
+        font-size: var(--text-sm);
+    }
+
+    .dashboard__greeting {
+        margin: 0;
+        font-size: var(--text-2xl);
+        font-weight: var(--weight-medium);
+        letter-spacing: -0.02em;
+        line-height: 1.3;
     }
 
     .dashboard__greeting .skeleton--text {
-        width: 280px;
+        display: inline-block;
+        width: 260px;
         max-width: 100%;
+        height: 24px;
+    }
+
+    .dashboard__greeting-tail {
+        color: var(--ui-text-muted);
+    }
+
+    .dashboard__kbd {
+        border-color: color-mix(in srgb, var(--ui-on-primary) 25%, transparent);
+        color: inherit;
+        opacity: 0.7;
+    }
+
+    @media (max-width: 639px) {
+        .dashboard__greeting {
+            font-size: var(--text-xl);
+        }
+
+        .dashboard__head > .btn {
+            display: none;
+        }
+    }
+
+    /* ---------------------------------------------------------
+       Four figures in a row, split by hairlines
+       --------------------------------------------------------- */
+    .dashboard-stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .dashboard-stat {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-width: 0;
+        padding: 0 var(--space-5);
+        border-left: 1px solid var(--ui-border);
+    }
+
+    .dashboard-stat:first-child {
+        padding-left: 0;
+        border-left: 0;
+    }
+
+    .dashboard-stat__label {
+        color: var(--ui-text-muted);
+        font-size: var(--text-sm);
+    }
+
+    .dashboard-stat__value {
+        font-size: 26px;
+        font-weight: var(--weight-medium);
+        letter-spacing: -0.02em;
+        line-height: 1;
+    }
+
+    .dashboard-stat__value--long {
+        font-size: 20px;
+    }
+
+    .dashboard-stat__skeleton {
+        width: 64px;
         height: 26px;
     }
 
-    /* =========================================================
-       PROFILE COMPLETENESS
-       ========================================================= */
-    .dashboard-profile {
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-4) 28px;
-        padding: 18px var(--space-5);
-    }
-
-    .dashboard-profile__progress {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .dashboard-profile__head {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: var(--space-3);
-    }
-
-    .dashboard-profile__title {
-        margin: 0;
-        font-size: var(--text-md);
-        font-weight: var(--weight-semibold);
-    }
-
-    .dashboard-profile__title .skeleton--text {
-        width: 190px;
-        max-width: 100%;
-        height: 15px;
-    }
-
-    .dashboard-profile__count {
-        flex-shrink: 0;
-        color: var(--ui-text-secondary);
+    .dashboard-stat__meta {
+        color: var(--ui-text-muted);
         font-size: var(--text-sm);
-        font-variant-numeric: tabular-nums;
     }
 
-    .dashboard-profile__count .skeleton--text {
-        width: 40px;
-    }
-
-    .dashboard-profile__checks {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--space-2);
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-
-    /* One requirement of a complete profile: done (green check) or still to do. */
-    .dashboard-check {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        height: 28px;
-        padding: 0 10px;
-        border-radius: var(--ui-radius-full);
-        background: var(--ui-surface-soft);
-        color: var(--ui-text-secondary);
-        font-size: var(--text-sm);
-        font-weight: var(--weight-medium);
-        white-space: nowrap;
-    }
-
-    .dashboard-check[data-state='done'] {
-        background: var(--ui-success-bg);
-        color: var(--ui-success);
-    }
-
-    /* No icon until the summary says which state a check is in. */
-    .dashboard-check__icon {
-        display: none;
-    }
-
-    .dashboard-check[data-state='done'] .dashboard-check__icon--done,
-    .dashboard-check[data-state='todo'] .dashboard-check__icon--todo {
-        display: block;
-    }
-
-    /* =========================================================
-       STAT CARDS
-       ========================================================= */
-    .stat-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: var(--space-3);
-    }
-
-    /*
-     * A loaded card is 132px: 1 + 16 padding, the 32px head, 10 gap,
-     * the 28px value, 10 gap, an 18px meta line, 16 + 1. The skeleton
-     * takes exactly that, so nothing below jumps when the data lands.
-     */
-    .stat-grid > .skeleton--card {
-        height: 132px;
-        border-radius: var(--ui-radius);
-    }
-
-    .stat-grid > .error-state {
-        grid-column: 1 / -1;
-    }
-
-    /* Holds the call to action's place until the summary decides on it. */
-    .dashboard-profile__action--pending {
-        visibility: hidden;
-        pointer-events: none;
-    }
-
-    /* A container, so its figure can size itself to the card (below). */
-    .stat-card {
-        container-type: inline-size;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        min-width: 0;
-        min-height: 132px;
-        padding: var(--space-4) 18px;
-        border: 1px solid var(--ui-border);
-        border-radius: var(--ui-radius);
-        background: var(--ui-surface);
-        box-shadow: var(--ui-shadow-sm);
-    }
-
-    /* Two label lines are exactly the icon's height, so the values of a row line up. */
-    .stat-card__head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--space-2);
-        min-height: 32px;
-    }
-
-    .stat-card__label {
-        min-width: 0;
-        overflow-wrap: anywhere;
-        color: var(--ui-text-secondary);
-        font-size: var(--text-sm);
-        font-weight: var(--weight-medium);
-        line-height: 16px;
-    }
-
-    .stat-card__icon {
-        display: grid;
-        place-items: center;
-        flex-shrink: 0;
-        width: 32px;
-        height: 32px;
-        border-radius: var(--ui-radius-sm);
-        background: var(--ui-surface-soft);
-        color: var(--ui-text-secondary);
-    }
-
-    /*
-     * 28px, or less in a card too narrow for it: "123 456" is about 4.2em
-     * wide, so 23% of the card's width keeps six digits on one line.
-     */
-    .stat-card__value {
-        color: var(--ui-text);
-        font-size: min(28px, 23cqi);
-        font-weight: var(--weight-semibold);
-        letter-spacing: -0.02em;
-        line-height: 1;
-        overflow-wrap: anywhere;
-    }
-
-    /*
-     * Phone-width cards (360–375px screens): a smaller icon tile and label
-     * leave room for one long word such as "bildirishnomalar".
-     */
-    @container (max-width: 170px) {
-        .stat-card__icon {
-            width: 26px;
-            height: 26px;
-        }
-
-        .stat-card__label {
-            font-size: 11.5px;
-        }
-    }
-
-    /* Seven digits and more ("1 234 567"; nine digits are about 6.3em) step down further. */
-    .stat-card__value--long {
-        font-size: min(22px, 15.5cqi);
-    }
-
-    .stat-card__meta {
-        color: var(--ui-text-secondary);
-        font-size: 12.5px;
-        font-weight: var(--weight-medium);
-        line-height: 18px;
-    }
-
-    .stat-card__meta--primary {
+    .dashboard-stat__meta--primary {
         color: var(--ui-primary);
     }
 
-    .stat-card__meta--success {
+    .dashboard-stat__meta--success {
         color: var(--ui-success);
     }
 
-    .stat-card__meta--danger {
+    .dashboard-stat__meta--danger {
         color: var(--ui-danger);
     }
 
-    /* =========================================================
-       CARDS (recent chats, requests, quick actions, sessions)
-       ========================================================= */
-    .dashboard-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr);
-        gap: var(--space-4);
-        align-items: stretch;
+    @media (max-width: 639px) {
+        .dashboard-stats {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: var(--space-2);
+        }
+
+        .dashboard-stat,
+        .dashboard-stat:first-child {
+            padding: 14px;
+            border: 0;
+            border-radius: var(--ui-radius);
+            background: var(--ui-surface);
+            box-shadow: inset 0 0 0 1px var(--ui-border);
+        }
+
+        .dashboard-stat__value {
+            font-size: 22px;
+        }
     }
 
-    /* Each card is a container too, so a row can drop detail when the card is narrow. */
-    .dashboard-card {
-        container: dashboard-card / inline-size;
+    /* ---------------------------------------------------------
+       Sections: a small muted heading and a ghost link
+       --------------------------------------------------------- */
+    .dashboard-section {
         display: flex;
         flex-direction: column;
-        min-width: 0;
-    }
-
-    .dashboard-card__header {
-        padding-bottom: 14px;
-        border-bottom: 0;
-    }
-
-    .dashboard-card__link {
-        flex-shrink: 0;
-        color: var(--ui-primary);
-        font-size: var(--text-sm);
-        font-weight: var(--weight-semibold);
-        white-space: nowrap;
-    }
-
-    .dashboard-card__link:hover {
-        text-decoration: underline;
-    }
-
-    .dashboard-card__body {
-        display: flex;
-        flex-direction: column;
-        padding: var(--space-1) var(--space-5) var(--space-5);
-    }
-
-    .dashboard-card__body .skeleton-list {
-        padding: 0;
-    }
-
-    .dashboard-card__skeleton .skeleton-row {
-        height: 32px;
-    }
-
-    .dashboard-card__body .empty-state {
-        padding-block: var(--space-6);
-    }
-
-    /* A divided list of rows — chats, requests, sessions. */
-    .dashboard-list {
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-
-    .dashboard-list > li + li {
-        border-top: 1px solid var(--ui-border);
-    }
-
-    .dashboard-list__row {
-        display: flex;
-        align-items: center;
-        gap: var(--space-3);
-        min-width: 0;
-        padding: 10px 0;
-        color: var(--ui-text);
-    }
-
-    .dashboard-list__row--link:hover .dashboard-list__title,
-    a.dashboard-list__title:hover {
-        color: var(--ui-primary);
-    }
-
-    .dashboard-list__avatar {
-        width: 36px;
-        height: 36px;
-        font-size: var(--text-sm);
-    }
-
-    .dashboard-list__tile {
-        display: grid;
-        place-items: center;
-        flex-shrink: 0;
-        width: 36px;
-        height: 36px;
-        border-radius: var(--ui-radius-sm);
-        background: var(--ui-surface-soft);
-        color: var(--ui-text-secondary);
-    }
-
-    .dashboard-list__main {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-        min-width: 0;
-    }
-
-    .dashboard-list__title {
-        overflow: hidden;
-        font-size: var(--text-base);
-        font-weight: var(--weight-semibold);
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .dashboard-list__meta {
-        overflow: hidden;
-        color: var(--ui-text-secondary);
-        font-size: var(--text-sm);
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .dashboard-list__aside {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        flex-shrink: 0;
         gap: var(--space-1);
     }
 
-    .dashboard-list__time {
-        color: var(--ui-text-muted);
-        font-size: 12px;
-        white-space: nowrap;
+    .dashboard-section__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-3);
+        min-height: 28px;
     }
 
-    /* One request log line: METHOD  /path  status  duration. */
+    .dashboard-section__title {
+        margin: 0;
+        color: var(--ui-text-muted);
+        font-size: var(--text-sm);
+        font-weight: var(--weight-medium);
+    }
+
+    .dashboard-section__head .btn {
+        margin-right: -10px;
+    }
+
+    .dashboard-section__note {
+        font-size: var(--text-xs);
+    }
+
+    .dashboard-section__note[data-tone='success'] {
+        color: var(--ui-success);
+    }
+
+    .dashboard-section__note[data-tone='danger'] {
+        color: var(--ui-danger);
+    }
+
+    .dashboard-dot {
+        flex-shrink: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 3px;
+        background: var(--ui-text-muted);
+    }
+
+    .dashboard-dot--success {
+        background: var(--ui-success);
+    }
+
+    .dashboard-dot--danger {
+        background: var(--ui-danger);
+    }
+
+    /* ---------------------------------------------------------
+       Recent chats
+       --------------------------------------------------------- */
+    .dashboard-chat {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        height: 44px;
+        margin: 0 -12px;
+        padding: 0 var(--space-3);
+        border-radius: var(--ui-radius-sm);
+        color: var(--ui-text);
+    }
+
+    .dashboard-chat:hover,
+    .dashboard-chat--unread {
+        background: var(--ui-surface);
+    }
+
+    .dashboard-chat:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: -2px;
+    }
+
+    .dashboard-chat__title {
+        flex-shrink: 0;
+        width: 150px;
+        font-weight: var(--weight-medium);
+    }
+
+    .dashboard-chat__preview {
+        flex: 1;
+        min-width: 0;
+        color: var(--ui-text-secondary);
+    }
+
+    .dashboard-chat__unread {
+        padding: 1px 6px;
+        border-radius: 9px;
+        background: var(--ui-primary);
+        color: var(--ui-on-primary);
+        font-size: var(--text-xs);
+    }
+
+    .dashboard-chat__time {
+        flex-shrink: 0;
+        min-width: 44px;
+        color: var(--ui-text-muted);
+        font-size: 11.5px;
+        text-align: right;
+    }
+
+    @media (max-width: 639px) {
+        .dashboard-chat__title {
+            flex: 1;
+            width: auto;
+            min-width: 0;
+        }
+
+        .dashboard-chat__preview {
+            display: none;
+        }
+    }
+
+    /* ---------------------------------------------------------
+       Recent requests (monospace rows)
+       --------------------------------------------------------- */
     .dashboard-request {
-        gap: 10px;
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        height: 30px;
+        font-size: var(--text-sm);
     }
 
     .dashboard-request__method {
         flex-shrink: 0;
-        width: 50px;
-        color: var(--ui-text-secondary);
-        font-family: var(--font-mono);
-        font-size: 12px;
-        font-weight: var(--weight-semibold);
+        width: 48px;
+        color: var(--ui-text-muted);
     }
 
     .dashboard-request__path {
         flex: 1;
         min-width: 0;
         overflow: hidden;
-        font-family: var(--font-mono);
-        font-size: var(--text-sm);
+        color: var(--ui-text-secondary);
         text-overflow: ellipsis;
         white-space: nowrap;
     }
 
-    .dashboard-request__duration {
-        flex-shrink: 0;
-        width: 52px;
-        color: var(--ui-text-muted);
-        font-size: 12px;
-        text-align: right;
-        white-space: nowrap;
+    .dashboard-request__status--success {
+        color: var(--ui-success);
     }
 
-    .dashboard-session__end {
-        flex-shrink: 0;
-        height: 32px;
-        padding: 0 10px;
+    .dashboard-request__status--info {
+        color: var(--ui-info);
+    }
+
+    .dashboard-request__status--danger {
         color: var(--ui-danger);
+    }
+
+    .dashboard-request__duration {
+        flex-shrink: 0;
+        width: 56px;
+        color: var(--ui-text-muted);
+        text-align: right;
+    }
+
+    /* ---------------------------------------------------------
+       Profile checklist
+       --------------------------------------------------------- */
+    .dashboard-profile {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: var(--space-1);
+    }
+
+    .dashboard-profile__ring {
+        flex-shrink: 0;
+        transform: rotate(-90deg);
+    }
+
+    .dashboard-profile__track,
+    .dashboard-profile__value {
+        fill: none;
+        stroke-width: 3;
+    }
+
+    .dashboard-profile__track {
+        stroke: color-mix(in srgb, var(--ui-text) 8%, transparent);
+    }
+
+    .dashboard-profile__value {
+        stroke: var(--ui-primary);
+        stroke-linecap: round;
+        transition: stroke-dasharray 400ms ease;
+    }
+
+    .dashboard-profile__numbers {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .dashboard-profile__percent {
+        font-size: 18px;
+    }
+
+    .dashboard-profile__left {
+        color: var(--ui-text-muted);
         font-size: var(--text-sm);
     }
 
-    /* The icon stands in for the word only on a narrow card (below). */
-    .dashboard-session__end-icon {
-        display: none;
-    }
-
-    /* =========================================================
-       QUICK ACTIONS
-       ========================================================= */
-    .dashboard-actions {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-rows: 1fr;
-        gap: 10px;
-    }
-
-    .dashboard-action {
+    .dashboard-check {
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: 10px;
-        min-width: 0;
-        padding: 14px;
-        border: 1px solid var(--ui-border);
-        border-radius: var(--ui-radius-sm);
-        background: var(--ui-surface);
+        height: 30px;
+        margin: 0 -6px;
+        padding: 0 6px;
+        border-radius: 6px;
         color: var(--ui-text);
-        font: inherit;
-        font-size: var(--text-base);
-        font-weight: var(--weight-semibold);
-        text-align: left;
-        overflow-wrap: break-word;
-        cursor: pointer;
-        transition:
-            border-color 140ms ease,
-            background 140ms ease;
     }
 
-    .dashboard-action:hover {
-        border-color: var(--ui-border-hover);
+    .dashboard-check:hover {
         background: var(--ui-surface-soft);
     }
 
-    .dashboard-action:focus-visible {
-        outline: 2px solid var(--ui-primary);
-        outline-offset: 2px;
-    }
-
-    .dashboard-action__icon {
+    .dashboard-check__box {
         display: grid;
         place-items: center;
-        width: 34px;
-        height: 34px;
-        border-radius: var(--ui-radius-sm);
-        background: var(--ui-primary-soft);
-        color: var(--ui-primary);
+        flex-shrink: 0;
+        width: 15px;
+        height: 15px;
+        border: 1px solid var(--ui-border-hover);
+        border-radius: 4px;
+        color: transparent;
     }
 
-    /* "Change theme" shows where it would take you: a moon in light, a sun in dark. */
-    .dashboard-action__theme-icon--dark,
-    [data-theme='dark'] .dashboard-action__theme-icon--light {
-        display: none;
+    .dashboard-check__label {
+        flex: 1;
     }
 
-    [data-theme='dark'] .dashboard-action__theme-icon--dark {
-        display: block;
+    .dashboard-check__go {
+        color: var(--ui-text-muted);
     }
 
-    /* =========================================================
-       SYSTEM OVERVIEW (admins)
-       ========================================================= */
-
-    /* Rows of equal height, so a tile without a meta line matches one with it. */
-    .dashboard-instance {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-rows: 1fr;
-        gap: var(--space-3);
+    .dashboard-check[data-state='done'] {
+        color: var(--ui-text-muted);
+        pointer-events: none;
     }
 
-    /* A tile with its meta line: 14 + 18 label + 6 + 28 value + 6 + 18 meta + 14. */
-    .dashboard-instance > .skeleton--card {
-        height: 104px;
+    .dashboard-check[data-state='done'] .dashboard-check__box {
+        border-color: var(--ui-primary);
+        background: var(--ui-primary);
+        color: var(--ui-on-primary);
     }
 
-    .dashboard-instance > .empty-state {
-        grid-column: 1 / -1;
+    .dashboard-check[data-state='done'] .dashboard-check__label {
+        text-decoration: line-through;
     }
 
-    /* A container, like the stat card, so a long figure fits a narrow tile. */
-    .dashboard-instance__tile {
-        container-type: inline-size;
+    .dashboard-check[data-state='done'] .dashboard-check__go {
+        visibility: hidden;
+    }
+
+    /* ---------------------------------------------------------
+       Sessions
+       --------------------------------------------------------- */
+    .dashboard-session {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 44px;
+    }
+
+    .dashboard-session + .dashboard-session {
+        border-top: 1px solid var(--ui-border);
+    }
+
+    .dashboard-session__main {
+        flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 6px;
         min-width: 0;
-        padding: 14px var(--space-4);
-        border-radius: var(--ui-radius-sm);
-        background: var(--ui-surface-soft);
     }
 
-    .dashboard-instance__label {
-        color: var(--ui-text-secondary);
-        font-size: 12.5px;
+    .dashboard-session__device {
+        color: var(--ui-text);
         font-weight: var(--weight-medium);
-        line-height: 18px;
+    }
+
+    .dashboard-session__device:hover {
+        text-decoration: underline;
+    }
+
+    .dashboard-session__meta {
+        color: var(--ui-text-muted);
+        font-size: 11.5px;
+    }
+
+    .dashboard-session__this {
+        color: var(--ui-success);
+        font-size: var(--text-xs);
+        white-space: nowrap;
+    }
+
+    .dashboard-session__ended {
+        color: var(--ui-text-muted);
+        font-size: var(--text-xs);
+    }
+
+    .dashboard-session .btn {
+        margin-right: -10px;
+    }
+
+    /* ---------------------------------------------------------
+       Instance (admins)
+       --------------------------------------------------------- */
+    .dashboard-instance__row {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        height: 26px;
+        font-size: 12.5px;
     }
 
     .dashboard-instance__value {
-        font-size: min(22px, 23cqi);
-        font-weight: var(--weight-semibold);
-        letter-spacing: -0.01em;
-        line-height: 28px;
-        overflow-wrap: anywhere;
-    }
-
-    .dashboard-instance__value--long {
-        font-size: min(18px, 15.5cqi);
-    }
-
-    .dashboard-instance__meta {
+        margin-left: auto;
         color: var(--ui-text-muted);
-        font-size: 12px;
-        line-height: 18px;
-    }
-
-    /* =========================================================
-       ≥ 600px — the 1024 layout
-       ========================================================= */
-    @container dashboard (min-width: 600px) {
-        /*
-         * One row as in the mockup: the progress keeps about the width it
-         * needs, the chips take the rest (wrapping inside their own box),
-         * and a button that no longer fits drops below, still on the right.
-         */
-        .dashboard-profile {
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        /* As wide as its title and count need (they differ per language), at least 240px. */
-        .dashboard-profile__progress {
-            flex: 1 1 auto;
-            min-width: 240px;
-            max-width: 420px;
-        }
-
-        .dashboard-profile__checks {
-            flex: 999 1 180px;
-            min-width: 0;
-        }
-
-        .dashboard-profile__action {
-            margin-left: auto;
-        }
-
-        .stat-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: var(--space-4);
-        }
-
-        .dashboard-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .dashboard-instance {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-    }
-
-    /* =========================================================
-       ≥ 1080px — all six stats in one row
-       ========================================================= */
-    @container dashboard (min-width: 1080px) {
-        .stat-grid {
-            grid-template-columns: repeat(6, minmax(0, 1fr));
-        }
-    }
-
-    /* =========================================================
-       ≥ 1180px — the 2K layout: four cards in a row (≥ 283px each)
-       ========================================================= */
-    @container dashboard (min-width: 1180px) {
-        .dashboard-grid {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-    }
-
-    /* Phone: the "fill in" link spans the card, like the page-head button. */
-    @container dashboard (max-width: 599px) {
-        .dashboard-profile__action {
-            width: 100%;
-        }
-    }
-
-    /*
-     * A card under 290px keeps its titles readable: session rows show
-     * "End" as its icon (the button is still named by aria-label), and
-     * the quick-action tiles give their labels a little more room.
-     */
-    @container dashboard-card (max-width: 289px) {
-        .dashboard-session__end {
-            width: 32px;
-            padding: 0;
-        }
-
-        .dashboard-session__end-icon {
-            display: grid;
-            place-items: center;
-        }
-
-        .dashboard-session__end-text {
-            display: none;
-        }
-
-        .dashboard-action {
-            padding: var(--space-3);
-        }
-
-        /* Tighter request columns leave the path about 110px ("/api/auth/me"). */
-        .dashboard-request {
-            gap: var(--space-2);
-        }
-
-        .dashboard-request__method {
-            width: 46px;
-        }
-
-        .dashboard-request__duration {
-            width: 40px;
-        }
-    }
-
-    /* Too narrow for the duration as well; the path matters more. */
-    @container dashboard-card (max-width: 279px) {
-        .dashboard-request__duration {
-            display: none;
-        }
+        font-size: 11.5px;
     }
 }

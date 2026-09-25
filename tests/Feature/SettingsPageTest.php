@@ -88,12 +88,19 @@ test('back out of a section lands on that group index', function () {
         ->assertSee('settings-back-btn" href="'.route('admin.settings').'"', false);
 });
 
-test('only the application nav is role-gated', function () {
+test('only the application nav is role-gated, and the way to it from personal settings', function () {
     expect(settingsNav($this->get('/admin/settings')))
         ->toContain('data-requires-role="SUPER_ADMIN,ADMIN"');
 
-    expect(settingsNav($this->get('/settings')))
-        ->not->toContain('data-requires-role');
+    $personal = settingsNav($this->get('/settings'));
+
+    preg_match('/<nav[^>]*>/s', $personal, $opening);
+    preg_match('/<div class="settings-nav__admin"[^>]*>/s', $personal, $admin);
+
+    expect($opening[0] ?? '')->not->toContain('data-requires-role')
+        ->and($admin[0] ?? '')->toContain('data-requires-role="SUPER_ADMIN,ADMIN"')
+        ->and($admin[0] ?? '')->toContain('hidden')
+        ->and($personal)->toContain('href="'.route('admin.settings').'"');
 });
 
 /*
@@ -115,6 +122,6 @@ test('the page hands its JS the URL of every section in both groups', function (
     expect(settingsRoutes($this->get('/settings')))->toBe($expected);
 });
 
-test('the old standalone profile page redirects into settings', function () {
-    $this->get('/profile')->assertRedirect(route('settings.profile'));
+test('the profile page is its own page again, with editing in settings', function () {
+    $this->get('/profile')->assertOk()->assertSee('data-profile-page', false);
 });
