@@ -78,3 +78,26 @@ test('another user\'s avatar is left alone', function () {
     expect(Attachment::query()->find($theirs->id))->not->toBeNull();
     Storage::disk('public')->assertExists($theirs->path);
 });
+
+test('the prune command keeps each user\'s newest avatar and drops orphaned files', function () {
+    $disk = Storage::disk('public');
+
+    foreach (['old.png', 'new.png'] as $name) {
+        $path = "avatars/{$this->user->id}/{$name}";
+        $disk->put($path, 'x');
+        $this->user->avatars()->create([
+            'collection' => 'avatar', 'disk' => 'public', 'path' => $path,
+            'original_name' => $name, 'filename' => $name, 'extension' => 'png', 'mime_type' => 'image/png', 'size' => 1,
+        ]);
+    }
+
+    $disk->put("avatars/{$this->user->id}/orphan.png", 'x');
+
+    $this->artisan('avatars:prune', ['--dry-run' => true])->assertSuccessful();
+    expect($disk->allFiles("avatars/{$this->user->id}"))->toHaveCount(3);
+
+    $this->artisan('avatars:prune')->assertSuccessful();
+
+    expect($this->user->avatars()->pluck('path')->all())->toBe(["avatars/{$this->user->id}/new.png"])
+        ->and($disk->allFiles("avatars/{$this->user->id}"))->toBe(["avatars/{$this->user->id}/new.png"]);
+});
