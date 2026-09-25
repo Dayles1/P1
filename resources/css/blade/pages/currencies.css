@@ -2,24 +2,402 @@
     /* =========================================================
        CURRENCIES (/currencies)
        -----------------------------------------------------------
-       Page head · stale-rates notice · two cards (the user's
-       currency, a quick converter) · the rate table: toolbar
-       (search, filter chips, sort), a column head, rows grouped
-       into Popular / A–Z, and a footer with "Show more". On phones
-       the cards stack, the column head and per-row buttons go, and
-       a row opens a bottom sheet with the details and the button.
+       Title with one line under it (your currency, switchable in
+       place, and the rates' date) and search beside it · a slim
+       converter bar · one list panel: a segmented filter, sortable
+       column heads and rows that are each a single button opening
+       the currency's details. No per-row buttons, no extra cards.
        ========================================================= */
 
     .currency-page {
-        max-width: 1080px;
+        max-width: 960px;
         display: flex;
         flex-direction: column;
         gap: var(--space-5);
     }
 
-    .currency-page .page-head,
-    .currency-page__stale {
-        margin-bottom: 0;
+    .currency-page[data-state='error']
+        :is(.currency-convert, .currency-list__bar, .currency-list__head) {
+        display: none;
+    }
+
+    /* ---------------------------------------------------------
+       Title line
+       --------------------------------------------------------- */
+    .currency-hero {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: var(--space-4);
+    }
+
+    .currency-hero h1 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: var(--weight-semibold);
+        letter-spacing: -0.02em;
+    }
+
+    .currency-hero__meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px 8px;
+        margin: 8px 0 0;
+        color: var(--ui-text-secondary);
+        font-size: 14px;
+    }
+
+    .currency-hero__asof::before {
+        content: '·';
+        margin-right: 8px;
+        color: var(--ui-text-muted);
+    }
+
+    .currency-hero__asof:empty {
+        display: none;
+    }
+
+    .currency-hero__asof--stale {
+        color: var(--ui-warning);
+        cursor: help;
+    }
+
+    .currency-hero__search {
+        width: 280px;
+        max-width: 100%;
+        background: var(--ui-surface);
+    }
+
+    /* Your currency: reads as text, is a native <select> underneath. */
+    .currency-switch {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        height: 30px;
+        padding: 0 8px 0 10px;
+        border-radius: var(--ui-radius-full);
+        background: var(--ui-primary-soft);
+        color: var(--ui-primary);
+        font-weight: var(--weight-semibold);
+        cursor: pointer;
+        transition: background 140ms ease;
+    }
+
+    .currency-switch:hover {
+        background: color-mix(in srgb, var(--ui-primary) 16%, transparent);
+    }
+
+    .currency-switch:has(:focus-visible) {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: 2px;
+    }
+
+    .currency-switch__select {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    /* ---------------------------------------------------------
+       Converter bar
+       --------------------------------------------------------- */
+    .currency-convert {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px 14px;
+        padding: 8px 8px 8px 8px;
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius-lg);
+        background: var(--ui-surface);
+    }
+
+    .currency-convert:empty {
+        display: none;
+    }
+
+    .currency-convert__input {
+        display: flex;
+        align-items: center;
+        height: 44px;
+        border-radius: var(--ui-radius);
+        background: var(--ui-surface-soft);
+        transition: box-shadow 140ms ease;
+    }
+
+    .currency-convert__input:focus-within {
+        box-shadow: 0 0 0 2px var(--ui-primary);
+    }
+
+    .currency-convert__input input {
+        width: 140px;
+        height: 100%;
+        padding: 0 4px 0 14px;
+        border: none;
+        outline: none;
+        background: transparent;
+        color: var(--ui-text);
+        font-size: 17px;
+        font-weight: var(--weight-semibold);
+        font-variant-numeric: tabular-nums;
+    }
+
+    .currency-convert__code {
+        height: 100%;
+        padding: 0 12px;
+        border: none;
+        outline: none;
+        background: transparent;
+        color: var(--ui-text-secondary);
+        font-size: 14px;
+        font-weight: var(--weight-semibold);
+        cursor: pointer;
+    }
+
+    .currency-convert__code--fixed {
+        display: inline-flex;
+        align-items: center;
+        cursor: default;
+    }
+
+    .currency-convert__result .currency-convert__code {
+        height: 32px;
+        padding: 0 6px;
+        color: var(--ui-text);
+        font-size: 17px;
+    }
+
+    .currency-convert__swap {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: var(--ui-radius-full);
+        color: var(--ui-text-muted);
+        transition:
+            background 140ms ease,
+            color 140ms ease;
+    }
+
+    .currency-convert__swap:hover {
+        background: var(--ui-surface-soft);
+        color: var(--ui-text);
+    }
+
+    .currency-convert__result {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .currency-convert__result strong {
+        font-size: 20px;
+        font-weight: var(--weight-semibold);
+        letter-spacing: -0.01em;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .currency-convert__rate {
+        margin-left: auto;
+        padding-right: 8px;
+        color: var(--ui-text-muted);
+        font-size: 12.5px;
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* ---------------------------------------------------------
+       The list
+       --------------------------------------------------------- */
+    .currency-list {
+        overflow: hidden;
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius-lg);
+        background: var(--ui-surface);
+    }
+
+    .currency-list__bar {
+        padding: 14px 16px 10px;
+    }
+
+    .currency-list__head,
+    .currency-row {
+        display: grid;
+        grid-template-columns: 36px minmax(0, 1fr) 150px 96px;
+        gap: 14px;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .currency-list__head {
+        grid-template-columns: minmax(0, 1fr) 150px 96px;
+        padding-block: 6px;
+        border-bottom: 1px solid var(--ui-border);
+    }
+
+    .currency-list__sort {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        height: 28px;
+        color: var(--ui-text-muted);
+        font-size: 12px;
+        font-weight: var(--weight-semibold);
+        text-align: left;
+        transition: color 140ms ease;
+    }
+
+    .currency-list__sort:hover,
+    .currency-list__sort.is-sorted {
+        color: var(--ui-text);
+    }
+
+    .currency-list__sort.is-sorted::after {
+        content: '↑';
+        font-size: 11px;
+    }
+
+    .currency-list__sort[aria-sort='descending']::after {
+        content: '↓';
+    }
+
+    .currency-list__num {
+        justify-content: flex-end;
+    }
+
+    .currency-list__body > .skeleton-list,
+    .currency-list__body > .error-state {
+        padding: var(--space-5) 20px;
+    }
+
+    .currency-row {
+        width: 100%;
+        min-height: 64px;
+        padding-block: 10px;
+        border-bottom: 1px solid var(--ui-border);
+        color: inherit;
+        text-align: left;
+        cursor: pointer;
+        transition: background 120ms ease;
+    }
+
+    .currency-row:last-child {
+        border-bottom: none;
+    }
+
+    .currency-row:hover {
+        background: var(--ui-surface-soft);
+    }
+
+    .currency-row:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: -2px;
+    }
+
+    .currency-badge {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: var(--ui-radius-full);
+        background: var(--ui-surface-soft);
+        color: var(--ui-text);
+        font-size: 14px;
+        font-weight: var(--weight-semibold);
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+    }
+
+    .currency-badge--lg {
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+    }
+
+    .currency-row__id {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+    }
+
+    .currency-row__name {
+        overflow: hidden;
+        font-size: 15px;
+        font-weight: var(--weight-semibold);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .currency-row__code {
+        overflow: hidden;
+        color: var(--ui-text-muted);
+        font-size: 12.5px;
+        font-variant-numeric: tabular-nums;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .currency-row__rate {
+        font-size: 15px;
+        font-weight: var(--weight-semibold);
+        font-variant-numeric: tabular-nums;
+        text-align: right;
+        white-space: nowrap;
+    }
+
+    .currency-row__none {
+        color: var(--ui-text-muted);
+        font-size: 12.5px;
+        font-weight: var(--weight-medium);
+    }
+
+    .currency-trend {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 2px;
+        color: var(--ui-text-muted);
+        font-size: 13.5px;
+        font-weight: var(--weight-semibold);
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+    }
+
+    .currency-trend--up {
+        color: var(--ui-success);
+    }
+
+    .currency-trend--down {
+        color: var(--ui-danger);
+    }
+
+    .currency-trend__arrow--up {
+        transform: rotate(-45deg);
+    }
+
+    .currency-trend__arrow--down {
+        transform: rotate(45deg);
+    }
+
+    .currency-list__empty {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 48px 20px;
+        color: var(--ui-text-secondary);
+        font-size: 13.5px;
+        text-align: center;
+    }
+
+    .currency-list__empty strong {
+        color: var(--ui-text);
+        font-size: 15px;
     }
 
     .currency-page__note {
@@ -29,458 +407,9 @@
         line-height: 1.5;
     }
 
-    /* A failed load shows only the error state in the table. */
-    .currency-page[data-state='error']
-        :is(
-            .currency-top,
-            .currency-table__toolbar,
-            .currency-table__head,
-            .currency-table__foot
-        ) {
-        display: none;
-    }
-
-    /* The currency code "chip" used in the cards, rows and sheet. */
-    .currency-code {
-        display: inline-flex;
-        flex-shrink: 0;
-        align-items: center;
-        justify-content: center;
-        min-width: 50px;
-        height: 30px;
-        padding: 0 8px;
-        border-radius: 7px;
-        background: var(--ui-surface-soft);
-        color: var(--ui-text);
-        font-family: var(--font-mono, ui-monospace, Menlo, monospace);
-        font-size: 13px;
-        font-weight: 700;
-    }
-
-    .currency-code--lg {
-        min-width: 64px;
-        height: 44px;
-        padding: 0 10px;
-        border-radius: 10px;
-        font-size: 17px;
-    }
-
-    .currency-code--primary {
-        background: var(--ui-primary-soft);
-        color: var(--ui-primary);
-    }
-
-    .currency-code--solid {
-        background: var(--ui-primary);
-        color: var(--ui-on-primary);
-    }
-
-    /* ---------------------------------------------------------
-       The two cards
-       --------------------------------------------------------- */
-    .currency-top {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: var(--space-4);
-    }
-
-    .currency-card {
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-4);
-        padding: 20px 22px;
-        border-radius: var(--ui-radius-lg);
-    }
-
-    .currency-card__skeleton {
-        height: 96px;
-        border-radius: var(--ui-radius-sm);
-    }
-
-    .currency-card__head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--space-3);
-    }
-
-    .currency-card__label {
-        color: var(--ui-text-secondary);
-        font-size: 13px;
-        font-weight: var(--weight-semibold);
-    }
-
-    .currency-card__main {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-    }
-
-    .currency-card__text {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-        min-width: 0;
-    }
-
-    .currency-card__name {
-        font-size: 20px;
-        font-weight: var(--weight-semibold);
-        letter-spacing: -0.01em;
-    }
-
-    .currency-card__hint {
-        margin: 0;
-        color: var(--ui-text-secondary);
-        font-size: 13px;
-    }
-
-    .currency-card__foot {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--space-3);
-        min-height: 32px;
-        padding-top: 14px;
-        border-top: 1px solid var(--ui-border);
-        color: var(--ui-text-secondary);
-        font-size: 13px;
-    }
-
-    .currency-card__asof {
-        display: inline-flex;
-        align-items: center;
-        gap: var(--space-2);
-    }
-
-    .currency-convert__row {
-        display: flex;
-        align-items: flex-end;
-        gap: 10px;
-    }
-
-    .currency-convert__field {
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-        gap: 6px;
-        min-width: 0;
-    }
-
-    .currency-convert__label {
-        color: var(--ui-text-secondary);
-        font-size: 12.5px;
-    }
-
-    .currency-convert__box {
-        height: 44px;
-        padding: 0 0 0 var(--space-3);
-        overflow: hidden;
-    }
-
-    .currency-convert__box .field-box__input {
-        font-size: 16px;
-        font-weight: var(--weight-semibold);
-        font-variant-numeric: tabular-nums;
-    }
-
-    .currency-convert__select {
-        align-self: stretch;
-        padding: 0 10px;
-        border: none;
-        border-left: 1px solid var(--ui-border);
-        background: var(--ui-surface-soft);
-        color: var(--ui-text);
-        font-family: var(--font-mono, ui-monospace, Menlo, monospace);
-        font-size: 13px;
-        font-weight: 700;
-        cursor: pointer;
-    }
-
-    .currency-convert__row .btn--icon {
-        width: 44px;
-        height: 44px;
-        flex-shrink: 0;
-    }
-
-    .currency-convert__result {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: var(--space-3);
-        padding: 12px 14px;
-        border-radius: var(--ui-radius-sm);
-        background: var(--ui-surface-soft);
-    }
-
-    .currency-convert__result strong {
-        font-size: 22px;
-        font-weight: var(--weight-semibold);
-        letter-spacing: -0.01em;
-        font-variant-numeric: tabular-nums;
-    }
-
-    .currency-convert__result span {
-        color: var(--ui-text-secondary);
-        font-size: 12.5px;
-        white-space: nowrap;
-    }
-
-    /* ---------------------------------------------------------
-       The rate table
-       --------------------------------------------------------- */
-    .currency-table {
-        overflow: hidden;
-        border-radius: var(--ui-radius-lg);
-    }
-
-    .currency-table__toolbar {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: var(--space-3);
-        padding: 16px 20px;
-    }
-
-    .currency-table__search {
-        width: 340px;
-        max-width: 100%;
-    }
-
-    .currency-table__filters {
-        flex-wrap: nowrap;
-        gap: 6px;
-    }
-
-    .currency-table__sort {
-        display: flex;
-        align-items: center;
-        gap: var(--space-2);
-        margin-left: auto;
-        color: var(--ui-text-secondary);
-        font-size: 13px;
-    }
-
-    .currency-table__head,
-    .currency-row {
-        display: grid;
-        grid-template-columns: minmax(0, 2.4fr) minmax(0, 1.5fr) minmax(
-                0,
-                1fr
-            ) 168px;
-        gap: var(--space-4);
-        align-items: center;
-        padding: 0 20px;
-    }
-
-    .currency-table__head {
-        padding-block: 10px;
-        border-top: 1px solid var(--ui-border);
-        background: var(--ui-surface-soft);
-        color: var(--ui-text-secondary);
-        font-size: 12.5px;
-        font-weight: var(--weight-semibold);
-    }
-
-    .currency-table__num {
-        text-align: right;
-    }
-
-    .currency-table__body > .skeleton-list,
-    .currency-table__body > .empty-state,
-    .currency-table__body > .error-state {
-        border-top: 1px solid var(--ui-border);
-        padding: var(--space-5) 20px;
-    }
-
-    .currency-group {
-        display: flex;
-        justify-content: space-between;
-        padding: 14px 20px 8px;
-        border-top: 1px solid var(--ui-border);
-        color: var(--ui-text-muted);
-        font-size: 12.5px;
-        font-weight: var(--weight-semibold);
-    }
-
-    .currency-group span:last-child {
+    .currency-page__note a {
+        margin-left: 4px;
         font-weight: var(--weight-medium);
-        font-variant-numeric: tabular-nums;
-    }
-
-    .currency-row {
-        min-height: 60px;
-        padding-block: 11px;
-        border-top: 1px solid var(--ui-border);
-        transition: background 120ms ease;
-    }
-
-    .currency-row:hover {
-        background: var(--ui-surface-soft);
-    }
-
-    .currency-row--yours,
-    .currency-row--yours:hover {
-        background: var(--ui-primary-soft);
-    }
-
-    .currency-row__main {
-        display: flex;
-        align-items: center;
-        gap: var(--space-3);
-        min-width: 0;
-        padding: 0;
-        border: none;
-        background: none;
-        color: inherit;
-        text-align: left;
-        cursor: pointer;
-    }
-
-    .currency-row__main:focus-visible {
-        outline: 2px solid var(--ui-primary);
-        outline-offset: 4px;
-        border-radius: var(--ui-radius-sm);
-    }
-
-    .currency-row__text,
-    .currency-row__rate {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-        min-width: 0;
-    }
-
-    .currency-row__rate {
-        align-items: flex-end;
-    }
-
-    .currency-row__name {
-        overflow: hidden;
-        font-size: 14.5px;
-        font-weight: var(--weight-semibold);
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .currency-row__sub,
-    .currency-row__delta {
-        overflow: hidden;
-        color: var(--ui-text-secondary);
-        font-size: 12.5px;
-        font-variant-numeric: tabular-nums;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .currency-row__delta {
-        color: var(--ui-text-muted);
-        font-size: 12px;
-    }
-
-    /* The change under the rate — phones only, where its column goes. */
-    .currency-row__trend {
-        display: none;
-        color: var(--ui-text-secondary);
-        font-size: 12.5px;
-        font-weight: var(--weight-semibold);
-        font-variant-numeric: tabular-nums;
-    }
-
-    .currency-row__trend--up {
-        color: var(--ui-success);
-    }
-
-    .currency-row__trend--down {
-        color: var(--ui-danger);
-    }
-
-    .currency-row__value {
-        font-size: 15px;
-        font-weight: var(--weight-semibold);
-        font-variant-numeric: tabular-nums;
-        white-space: nowrap;
-    }
-
-    .currency-row__unit {
-        color: var(--ui-text-muted);
-        font-size: 12px;
-    }
-
-    .currency-row__change,
-    .currency-row__action {
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    .currency-row__pick {
-        opacity: 0.72;
-    }
-
-    .currency-row:hover .currency-row__pick,
-    .currency-row__pick:focus-visible {
-        opacity: 1;
-    }
-
-    .currency-row__pick[aria-disabled='true'] {
-        opacity: 0.4;
-        cursor: not-allowed;
-    }
-
-    .currency-row__yours {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        height: 32px;
-        padding: 0 10px;
-        color: var(--ui-primary);
-        font-size: 13px;
-        font-weight: var(--weight-semibold);
-    }
-
-    .change-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        height: 26px;
-        padding: 0 8px;
-        border-radius: var(--ui-radius-full);
-        background: var(--ui-surface-soft);
-        color: var(--ui-text-secondary);
-        font-size: 13px;
-        font-weight: var(--weight-semibold);
-        font-variant-numeric: tabular-nums;
-        white-space: nowrap;
-    }
-
-    .change-pill--up {
-        background: var(--ui-success-bg);
-        color: var(--ui-success);
-    }
-
-    .change-pill--down {
-        background: var(--ui-danger-bg);
-        color: var(--ui-danger);
-    }
-
-    .change-pill__arrow--up {
-        transform: rotate(-45deg);
-    }
-
-    .change-pill__arrow--down {
-        transform: rotate(45deg);
-    }
-
-    .currency-table__foot {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--space-3);
-        padding: 14px 20px;
-        border-top: 1px solid var(--ui-border);
-        color: var(--ui-text-secondary);
-        font-size: 13px;
-        font-variant-numeric: tabular-nums;
     }
 
     /* ---------------------------------------------------------
@@ -489,153 +418,138 @@
     .currency-sheet {
         display: flex;
         flex-direction: column;
-        gap: var(--space-4);
+        gap: var(--space-5);
     }
 
     .currency-sheet__id {
         display: flex;
         align-items: center;
         gap: var(--space-3);
+    }
+
+    .currency-sheet__code {
         color: var(--ui-text-secondary);
-        font-size: 13px;
+        font-size: 14px;
+        font-weight: var(--weight-semibold);
+        letter-spacing: 0.02em;
     }
 
     .currency-sheet__stats {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-    }
-
-    .currency-sheet__stat {
         display: flex;
         flex-direction: column;
-        gap: 4px;
-        padding: 12px 14px;
-        border-radius: var(--ui-radius-sm);
-        background: var(--ui-surface-soft);
-        color: var(--ui-text-secondary);
-        font-size: 12px;
+        margin: 0;
     }
 
-    .currency-sheet__stat strong {
-        color: var(--ui-text);
-        font-size: 17px;
+    .currency-sheet__stats > div {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: var(--space-3);
+        padding: 12px 0;
+        border-top: 1px solid var(--ui-border);
+    }
+
+    .currency-sheet__stats dt {
+        color: var(--ui-text-secondary);
+        font-size: 13.5px;
+    }
+
+    .currency-sheet__stats dd {
+        margin: 0;
+        font-size: 16px;
         font-weight: var(--weight-semibold);
         font-variant-numeric: tabular-nums;
     }
 
-    .currency-sheet__stat small {
+    .currency-sheet__stats small {
         color: var(--ui-text-muted);
         font-size: 12px;
     }
 
-    .currency-sheet__change {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--space-3);
-        color: var(--ui-text-secondary);
-        font-size: 14px;
-    }
-
-    .currency-sheet__trend {
-        color: var(--ui-text-secondary);
-        font-variant-numeric: tabular-nums;
-    }
-
-    .currency-sheet__trend--up {
-        color: var(--ui-success);
-    }
-
-    .currency-sheet__trend--down {
-        color: var(--ui-danger);
-    }
-
-    .currency-sheet__yours {
-        display: flex;
-        flex: 1;
-        align-items: center;
-        justify-content: center;
-        gap: var(--space-2);
-        height: 44px;
-        border-radius: var(--ui-radius-sm);
-        background: var(--ui-primary-soft);
-        color: var(--ui-primary);
-        font-weight: var(--weight-semibold);
-    }
-
     /* ---------------------------------------------------------
-       Tablet: the cards stack
-       --------------------------------------------------------- */
-    @media (max-width: 899px) {
-        .currency-top {
-            grid-template-columns: minmax(0, 1fr);
-        }
-
-        .currency-table__sort {
-            margin-left: 0;
-        }
-    }
-
-    /* ---------------------------------------------------------
-       Phone: no column head, no per-row button — a row opens the
-       details, which come up as a bottom sheet.
+       Phone
        --------------------------------------------------------- */
     @media (max-width: 639px) {
-        .currency-card {
-            padding: 14px 16px;
+        .currency-hero {
+            align-items: stretch;
         }
 
-        .currency-card__name {
-            font-size: 16px;
-        }
-
-        .currency-table__toolbar {
-            padding: 14px 16px;
-        }
-
-        .currency-table__search {
+        /* The date gets its own line under the currency, no separator. */
+        .currency-hero__asof {
             width: 100%;
         }
 
-        .currency-table__filters {
-            width: calc(100% + 32px);
-            margin: 0 -16px;
-            padding: 0 16px;
+        .currency-hero__asof::before {
+            display: none;
+        }
+
+        .currency-row__inverse {
+            display: none;
+        }
+
+        .currency-list__bar .segmented {
+            display: flex;
+            width: 100%;
+        }
+
+        .currency-list__bar .segmented__option {
+            padding: 0 6px;
+        }
+
+        .currency-hero__search {
+            width: 100%;
+        }
+
+        .currency-convert__input {
+            flex: 1;
+        }
+
+        .currency-convert__input input {
+            width: 100%;
+        }
+
+        .currency-convert__rate {
+            width: 100%;
+            margin-left: 0;
+            padding: 0 6px 4px;
+        }
+
+        .currency-list__bar {
             overflow-x: auto;
             scrollbar-width: none;
         }
 
-        .currency-table__filters::-webkit-scrollbar {
+        .currency-list__bar::-webkit-scrollbar {
             display: none;
         }
 
-        .currency-table__head {
+        .currency-list__head {
             display: none;
         }
 
         .currency-row {
-            grid-template-columns: minmax(0, 1fr) auto;
-            gap: var(--space-3);
+            grid-template-columns: 36px minmax(0, 1fr) auto;
+            grid-template-rows: auto auto;
+            column-gap: 12px;
+            row-gap: 2px;
             padding-inline: 16px;
         }
 
-        .currency-row__change,
-        .currency-row__action,
-        .currency-row__delta {
-            display: none;
+        .currency-badge {
+            grid-row: span 2;
         }
 
-        .currency-row__trend {
-            display: block;
+        .currency-row__id {
+            grid-row: span 2;
         }
 
-        .currency-group {
-            padding-inline: 16px;
+        .currency-row__rate,
+        .currency-trend {
+            grid-column: 3;
         }
 
-        .currency-table__foot {
-            padding-inline: 16px;
+        .currency-trend {
+            font-size: 12.5px;
         }
 
         .modal-overlay:has(.currency-sheet-modal) {
