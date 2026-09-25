@@ -1,25 +1,26 @@
-<div class="field-group">
-    @if ($label)
-        <label class="field-label" for="{{ $inputId }}">{{ $label }}</label>
-    @endif
+{{--
+    <x-blade.u-i.select name="locale" :label="__('ui.locale.label')" :options="$languages" :selected="$current" />
+--}}
+@php($message = $error ?? ($name ? ($errors ?? null)?->first($name) : null))
 
-    <div class="select-field">
-        <select
-            id="{{ $inputId }}"
-            @if ($name) name="{{ $name }}" @endif
-            {{ $attributes->class(['field-select']) }}
-        >
-            @if (count($options))
-                @foreach ($options as $value => $label)
-                    <option value="{{ $value }}" @selected((string) $value === (string) $selected)>{{ $label }}</option>
-                @endforeach
-            @else
-                {{ $slot }}
-            @endif
-        </select>
-    </div>
+<x-blade.u-i.field :label="$label" :for="$inputId" :name="$name" :hint="$hint" :error="$message" :required="$required">
+    <select
+        id="{{ $inputId }}"
+        @if ($name) name="{{ $name }}" @endif
+        @if ($required) required @endif
+        @if ($message) aria-invalid="true" @endif
+        {{ $attributes->class(['field-select', "field-select--{$size}" => $size !== 'md']) }}
+    >
+        @if ($placeholder)
+            <option value="" @selected($selected === null || $selected === '') disabled>{{ $placeholder }}</option>
+        @endif
 
-    @if ($name)
-        <span class="field-error" data-field-error="{{ $name }}">{{ $error }}</span>
-    @endif
-</div>
+        @if (count($options))
+            @foreach ($options as $value => $optionLabel)
+                <option value="{{ $value }}" @selected((string) $value === (string) $selected)>{{ $optionLabel }}</option>
+            @endforeach
+        @else
+            {{ $slot }}
+        @endif
+    </select>
+</x-blade.u-i.field>

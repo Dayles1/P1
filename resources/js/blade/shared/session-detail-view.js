@@ -10,8 +10,8 @@ import { showToast, apiErrorMessage } from './toast';
 function field(label, value) {
     return `
         <div>
-            <div style="font-size:11.5px; color: var(--ui-text-muted); text-transform:uppercase; letter-spacing:.03em; margin-bottom:3px;">${label}</div>
-            <div style="font-size:13.5px; color: var(--ui-text); font-weight:600;">${value ?? '—'}</div>
+            <div class="detail-field__label">${label}</div>
+            <div class="detail-field__value">${value ?? '—'}</div>
         </div>
     `;
 }
@@ -52,22 +52,22 @@ export function initSessionDetailView({
                 : `<span class="pill pill--muted">${t('common.expired')}</span>`;
 
         const currentPill = session.is_current
-            ? `<span class="pill pill--primary" style="margin-left:6px;">${t('sessions.this_device')}</span>`
+            ? `<span class="pill pill--primary ml-2">${t('sessions.this_device')}</span>`
             : '';
 
         const ownerBlock =
             showOwner && session.user
                 ? field(
                       t('admin.user'),
-                      `${escapeHtml(session.user.name)}<br><span style="font-weight:400; color:var(--ui-text-secondary);">${escapeHtml(session.user.email)}</span>`,
+                      `${escapeHtml(session.user.name)}<br><span class="font-regular secondary">${escapeHtml(session.user.email)}</span>`,
                   )
                 : '';
 
         summaryEl.innerHTML = `
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px;">
+            <div class="row gap-2 mb-4">
                 ${statusPill}${currentPill}
             </div>
-            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap:16px;">
+            <div class="detail-grid">
                 ${ownerBlock}
                 ${field(t('sessions.device'), escapeHtml([session.browser, session.platform].filter(Boolean).join(' · ') || session.device_name || t('common.unknown')))}
                 ${field(t('sessions.ip_address'), session.ip_address)}
@@ -77,7 +77,7 @@ export function initSessionDetailView({
                 ${field(t('sessions.last_active'), session.last_activity_at)}
                 ${field(t('sessions.signed_out'), session.logged_out_at)}
             </div>
-            ${session.user_agent ? `<div style="margin-top:16px;">${field(t('sessions.user_agent'), `<span style="font-weight:400; color:var(--ui-text-secondary); word-break:break-all;">${escapeHtml(session.user_agent)}</span>`)}</div>` : ''}
+            ${session.user_agent ? `<div class="mt-4">${field(t('sessions.user_agent'), `<span class="font-regular secondary break-all">${escapeHtml(session.user_agent)}</span>`)}</div>` : ''}
         `;
 
         if (revokeBtn) {
@@ -110,7 +110,7 @@ export function initSessionDetailView({
                 <tr class="table__row--clickable" data-log-id="${log.id}">
                     <td><span class="${statusClass(log.status_code)}">${log.status_code ?? '—'}</span></td>
                     <td><span class="${methodClass(log.method)}">${log.method}</span></td>
-                    <td class="table__cell--wrap" style="max-width:320px;">${escapeHtml(log.path)}</td>
+                    <td class="table__cell--wrap mw-lg">${escapeHtml(log.path)}</td>
                     <td>${log.duration_ms != null ? `${log.duration_ms} ms` : '—'}</td>
                     <td>${log.created_at ?? '—'}</td>
                 </tr>

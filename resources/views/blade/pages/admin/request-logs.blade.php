@@ -11,13 +11,13 @@
         </div>
     </div>
 
-    <div class="field-row" style="margin-bottom:16px;">
-        <div class="field-group" style="max-width:280px;">
+    <div class="field-row mb-4">
+        <div class="field-group mw-lg">
             <label class="field-label" for="logs-search">{{ __('ui.common.search') }}</label>
             <input class="field-input" type="search" id="logs-search" data-logs-search placeholder="/api/...">
         </div>
 
-        <div class="field-group" style="max-width:160px;">
+        <div class="field-group mw-sm">
             <label class="field-label" for="logs-method">{{ __('ui.sessions.method') }}</label>
             <div class="select-field">
                 <select class="field-select" id="logs-method" data-logs-method>
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="field-group" style="max-width:160px;">
+        <div class="field-group mw-sm">
             <label class="field-label" for="logs-status">{{ __('ui.common.status') }}</label>
             <div class="select-field">
                 <select class="field-select" id="logs-status" data-logs-status>

@@ -1,3 +1,4 @@
+@php($appVersion = collect(require base_path('resources/data/changelog.php'))->first()['version'] ?? '')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="app-shell-html">
 
@@ -18,9 +19,8 @@
     @include('blade.sections.theme-bootstrap')
     @include('blade.sections.i18n-bootstrap')
 
-
+    @fonts
     @vite([
-        'resources/css/app.css',
         'resources/css/blade/app/app.css',
         'resources/js/blade/app/authenticated.js',
     ])
@@ -29,7 +29,8 @@
 </head>
 
 
-<body data-app-version="{{ collect(require base_path('resources/data/changelog.php'))->first()['version'] ?? '' }}">
+<body data-app-version="{{ $appVersion }}">
+    @include('blade.sections.icons')
 
     {{--
         A real fixed-viewport application shell: <html>/<body> never
@@ -40,16 +41,15 @@
     --}}
     <div class="app-shell">
 
-        {{-- =====================================================
-        HEADER
-        ===================================================== --}}
-        @include('blade.sections.header')
+        {{-- SIDEBAR (hidden on phones — the tab bar below replaces it) --}}
+        <aside class="app-sidebar" id="app-sidebar" data-turbo-permanent>
+            @include('blade.sections.sidebar')
+        </aside>
 
-        <div class="app-shell__body">
+        <div class="app-shell__main">
 
-            <aside class="app-sidebar" id="app-sidebar" data-turbo-permanent>
-                @include('blade.sections.sidebar')
-            </aside>
+            {{-- HEADER --}}
+            @include('blade.sections.app-header')
 
             <main class="app-main" @if($fullBleed ?? false) data-full-bleed @endif>
 
@@ -73,6 +73,9 @@
                 </div>
 
             </main>
+
+            {{-- BOTTOM TAB BAR (phones only) --}}
+            @include('blade.sections.tabbar')
 
         </div>
 

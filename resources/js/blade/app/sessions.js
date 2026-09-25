@@ -54,7 +54,7 @@ function boot() {
                         : `<span class="pill pill--muted">${t('common.expired')}</span>`;
 
                 const currentPill = session.is_current
-                    ? `<span class="pill pill--primary" style="margin-left:6px;">${t('sessions.this_device')}</span>`
+                    ? `<span class="pill pill--primary ml-2">${t('sessions.this_device')}</span>`
                     : '';
 
                 const device =
@@ -70,7 +70,7 @@ function boot() {
                         : '';
 
                 return `
-                <a href="/sessions/${session.id}" class="data-row ${session.is_current ? 'data-row--current' : ''}" style="text-decoration:none;">
+                <a href="/sessions/${session.id}" class="data-row ${session.is_current ? 'data-row--current' : ''} no-underline">
                     <div class="data-row__main">
                         <div class="data-row__title">${device} ${statusPill} ${currentPill}</div>
                         <div class="data-row__meta">${session.ip_address ?? ''} &middot; ${t('sessions.last_active')}: ${session.last_activity_at ?? '—'}</div>

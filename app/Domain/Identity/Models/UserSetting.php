@@ -17,6 +17,7 @@ class UserSetting extends Model
         'favorite_currency_ids',
         'locale',
         'theme',
+        'accent',
         'date_format',
         'time_format',
         'meta',

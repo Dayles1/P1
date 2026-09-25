@@ -1,0 +1,235 @@
+@layer pages {
+    /* =========================================================
+       NOTIFICATION CENTER (/notifications)
+       -----------------------------------------------------------
+       Page head with the unread summary · filter chips · one feed
+       card grouped by day. Rows are the shared .notif-item, set a
+       size larger than in the header popover.
+       ========================================================= */
+
+    /* The 1440 content width: on 2K/4K screens the head's actions
+       stay next to the feed they act on. */
+    .notif-page {
+        max-width: 1136px;
+    }
+
+    .notif-page__summary {
+        min-height: calc(var(--text-base) * 1.5);
+    }
+
+    /* The scope ("from every module in one feed") only follows a count;
+       on its own it reads as a broken fragment. */
+    .notif-page__count:empty + .notif-page__scope {
+        display: none;
+    }
+
+    .notif-page__count:not(:empty) + .notif-page__scope::before {
+        content: '·';
+        content: '·' / '';
+        margin-inline: 0.4em;
+    }
+
+    .notif-page__actions .btn .icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .notif-filters {
+        margin-bottom: var(--space-5);
+    }
+
+    .notif-feed {
+        max-width: 920px;
+        overflow: hidden;
+    }
+
+    /* Focused from script after a page change — a landing spot for the
+       keyboard, not a control, so no ring around the whole list. */
+    .notif-feed__list:focus {
+        outline: none;
+    }
+
+    .notif-feed__day {
+        margin: 0;
+        padding: 14px var(--space-5) 6px;
+        color: var(--ui-text-secondary);
+        font-size: 12.5px;
+        font-weight: var(--weight-semibold);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    .notif-feed .notif-item {
+        align-items: center;
+        gap: 14px;
+        padding: var(--space-3) var(--space-5);
+        border-top: 1px solid var(--ui-border);
+        border-radius: 0;
+    }
+
+    [data-theme='dark'] .notif-feed .notif-item--unread {
+        border-top-color: color-mix(
+            in srgb,
+            var(--ui-primary) 22%,
+            var(--ui-border)
+        );
+    }
+
+    .notif-feed__list > .notif-item:first-child {
+        border-top: 0;
+    }
+
+    .notif-feed .notif-item__icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 9px;
+    }
+
+    .notif-feed .notif-item__text {
+        font-size: var(--text-base);
+    }
+
+    .notif-feed .notif-item__meta {
+        font-size: 12.5px;
+    }
+
+    .notif-feed .notif-item__dot {
+        margin-top: 0;
+    }
+
+    /* Loading: the same geometry as the rows it stands in for — a day
+       heading's worth of space, 38px tiles, row padding and dividers. */
+    .notif-feed .skeleton-list {
+        padding: 39px 0 0;
+    }
+
+    .notif-feed .skeleton-list__row {
+        gap: 14px;
+        padding: var(--space-3) var(--space-5);
+        border-top: 1px solid var(--ui-border);
+    }
+
+    .notif-feed .skeleton--circle {
+        width: 38px;
+        height: 38px;
+        border-radius: 9px;
+    }
+
+    .notif-feed .empty-state {
+        padding: var(--space-12) var(--space-6);
+    }
+
+    /* A failed load is one alert box, not a box inside the feed card. */
+    .notif-feed:has(> .notif-feed__list > .error-state) {
+        border-color: transparent;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .notif-feed .error-state {
+        margin: 0;
+    }
+
+    .notif-feed__pagination {
+        padding-inline: var(--space-5);
+    }
+
+    /* Tablet: the mockup keeps only the count and "Read all". */
+    @media (max-width: 1199px) {
+        .notif-page__scope,
+        .notif-page__settings {
+            display: none;
+        }
+
+        .notif-feed {
+            max-width: none;
+        }
+    }
+
+    /* Phone: one white bar under the shell header — the title with an
+       icon-only "Read all", then chips that scroll sideways — and the
+       feed edge to edge like a native list. */
+    @media (max-width: 639px) {
+        .notif-page__head {
+            flex-wrap: nowrap;
+            align-items: center;
+            min-height: 52px;
+            margin: calc(var(--space-5) * -1) calc(var(--space-4) * -1) 0;
+            padding: var(--space-1) var(--space-2) var(--space-1) var(--space-4);
+            background: var(--ui-surface);
+        }
+
+        /* A flash alert above the page keeps the bar off of it. */
+        .alert ~ .notif-page .notif-page__head {
+            margin-top: 0;
+        }
+
+        .notif-page__head h1 {
+            margin: 0;
+            font-size: var(--text-lg);
+            font-weight: var(--weight-bold);
+        }
+
+        .notif-page__summary {
+            display: none;
+        }
+
+        .notif-page .page-head__actions {
+            width: auto;
+            flex-shrink: 0;
+        }
+
+        .notif-page .page-head__actions .notif-page__read-all {
+            width: var(--control-md);
+            height: var(--control-md);
+            padding: 0;
+            border-color: transparent;
+            background: transparent;
+            color: var(--ui-primary);
+        }
+
+        .notif-page
+            .page-head__actions
+            .notif-page__read-all:hover:not([aria-disabled='true']) {
+            background: var(--ui-surface-soft);
+        }
+
+        .notif-page__actions .notif-page__read-all .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .notif-page__action-label {
+            display: none;
+        }
+
+        .notif-filters {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            margin: 0 calc(var(--space-4) * -1);
+            padding: var(--space-3) var(--space-4);
+            background: var(--ui-surface);
+            scrollbar-width: none;
+        }
+
+        .notif-filters::-webkit-scrollbar {
+            display: none;
+        }
+
+        .notif-feed {
+            margin-inline: calc(var(--space-4) * -1);
+            border-top: 0;
+            border-inline: 0;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .notif-feed .notif-item__text {
+            -webkit-line-clamp: 3;
+        }
+
+        .notif-feed .error-state {
+            margin: var(--space-4) var(--space-4) 0;
+        }
+    }
+}

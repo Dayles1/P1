@@ -1,0 +1,51 @@
+@layer components {
+    /* =========================================================
+       ICON BUTTON
+       -----------------------------------------------------------
+       40px bordered square (header actions, "more" menus). --sm is
+       the 32px in-field / in-row version, --ghost drops the frame.
+       ========================================================= */
+    .icon-btn {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius-sm);
+        background: var(--ui-surface);
+        color: var(--ui-text-secondary);
+        cursor: pointer;
+        transition:
+            background 160ms ease,
+            border-color 160ms ease,
+            color 160ms ease;
+    }
+
+    .icon-btn:hover {
+        background: var(--ui-surface-soft);
+        color: var(--ui-text);
+        border-color: var(--ui-border-hover);
+    }
+
+    .icon-btn--sm {
+        width: 32px;
+        height: 32px;
+    }
+
+    .icon-btn--ghost {
+        border-color: transparent;
+        background: transparent;
+    }
+
+    .icon-btn--ghost:hover {
+        border-color: transparent;
+    }
+
+    .icon-btn:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
+}

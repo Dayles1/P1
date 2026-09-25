@@ -11,9 +11,15 @@ class Checkbox extends Component
 {
     public string $inputId;
 
+    /**
+     * @param  string|null  $hint  Second line under the label.
+     * @param  bool  $indeterminate  Mixed state for a "select all" over a partial selection.
+     */
     public function __construct(
         public ?string $name = null,
         public bool $checked = false,
+        public ?string $hint = null,
+        public bool $indeterminate = false,
         ?string $id = null,
     ) {
         $this->inputId = $id ?? 'checkbox-'.Str::random(8);

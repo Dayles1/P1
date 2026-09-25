@@ -1,0 +1,119 @@
+@layer components {
+    /* =========================================================
+       LISTBOX — options panel for custom selects, comboboxes, the
+       time picker and date presets
+       -----------------------------------------------------------
+       role="listbox" > role="option" (.listbox__option). An option
+       may carry a second line (.listbox__meta); the selected one gets
+       aria-selected="true" and a trailing check. Keyboard focus is
+       shown with [data-active].
+       ========================================================= */
+    .listbox {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        max-height: 280px;
+        overflow-y: auto;
+        padding: 6px;
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius-sm);
+        background: var(--ui-surface);
+        box-shadow: var(--ui-shadow-md);
+    }
+
+    .listbox--flat {
+        box-shadow: none;
+    }
+
+    .listbox__option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        min-height: 38px;
+        padding: 6px 10px;
+        border-radius: 6px;
+        color: var(--ui-text);
+        font-size: 14.5px;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .listbox__option:hover,
+    .listbox__option[data-active] {
+        background: var(--ui-surface-soft);
+    }
+
+    .listbox__option[aria-selected='true'] {
+        background: var(--ui-primary-soft);
+        font-weight: var(--weight-semibold);
+    }
+
+    .listbox__option[aria-disabled='true'] {
+        color: var(--ui-text-muted);
+        cursor: not-allowed;
+    }
+
+    .listbox__text {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    .listbox__meta {
+        color: var(--ui-text-secondary);
+        font-size: 12.5px;
+        font-weight: var(--weight-regular);
+    }
+
+    .listbox__check {
+        margin-left: auto;
+        color: var(--ui-primary);
+        visibility: hidden;
+    }
+
+    .listbox__option[aria-selected='true'] .listbox__check {
+        visibility: visible;
+    }
+
+    .listbox__empty {
+        padding: var(--space-5) var(--space-3);
+        color: var(--ui-text-secondary);
+        font-size: var(--text-base);
+        text-align: center;
+    }
+
+    .listbox__footer {
+        margin-top: 4px;
+        padding: 8px 10px 4px;
+        border-top: 1px solid var(--ui-border);
+        color: var(--ui-text-secondary);
+        font-size: var(--text-sm);
+    }
+
+    /* Anchors a floating panel (listbox, calendar) under its field. */
+    .popover-anchor {
+        position: relative;
+    }
+
+    .popover {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        z-index: 60;
+    }
+
+    .popover > .listbox {
+        position: relative;
+        min-width: 160px;
+    }
+
+    .popover--end {
+        right: 0;
+        left: auto;
+    }
+
+    .popover[hidden] {
+        display: none;
+    }
+}

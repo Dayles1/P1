@@ -1,0 +1,183 @@
+@layer components {
+    /* =========================================================
+       THEME PICKER PANEL
+       ========================================================= */
+    .theme-picker-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+        gap: 12px;
+    }
+
+    .theme-picker-card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border: 1.5px solid var(--ui-border);
+        border-radius: var(--ui-radius);
+        background: var(--ui-surface);
+        cursor: pointer;
+        text-align: left;
+        transition:
+            border-color 140ms ease,
+            box-shadow 140ms ease,
+            transform 120ms ease;
+    }
+
+    .theme-picker-card:hover {
+        border-color: var(--ui-border-hover);
+        transform: translateY(-1px);
+    }
+
+    .theme-picker-card:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: 2px;
+    }
+
+    .theme-picker-card[aria-pressed='true'] {
+        border-color: var(--ui-primary);
+        box-shadow: 0 0 0 2px var(--ui-primary-soft);
+    }
+
+    .theme-picker-card__preview {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 8px;
+        border: 1px solid var(--ui-border);
+        border-radius: 10px;
+        background: var(--ui-bg);
+    }
+
+    .theme-picker-card__preview-header {
+        height: 10px;
+        width: 60%;
+        border-radius: 4px;
+        background: var(--ui-surface);
+        border: 1px solid var(--ui-border);
+    }
+
+    .theme-picker-card__preview-block {
+        height: 22px;
+        border-radius: 6px;
+        background: var(--ui-surface);
+        border: 1px solid var(--ui-border);
+    }
+
+    .theme-picker-card__preview-row {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+    }
+
+    .theme-picker-card__preview-input {
+        flex: 1;
+        height: 14px;
+        border-radius: 5px;
+        background: var(--ui-surface);
+        border: 1px solid var(--ui-border);
+    }
+
+    .theme-picker-card__preview-button {
+        width: 34px;
+        height: 16px;
+        border-radius: 6px;
+        background: var(--ui-primary);
+        flex-shrink: 0;
+    }
+
+    .theme-picker-card__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    .theme-picker-card__name {
+        font-size: 12.5px;
+        font-weight: var(--weight-semibold);
+        color: var(--ui-text);
+    }
+
+    .theme-picker-card__check {
+        opacity: 0;
+        color: var(--ui-primary);
+    }
+
+    .theme-picker-card[aria-pressed='true'] .theme-picker-card__check {
+        opacity: 1;
+    }
+
+    /* =========================================================
+       THEME + ACCENT PICKER
+       -----------------------------------------------------------
+       Each accent swatch carries its own data-theme/data-accent pair,
+       so it paints with the real tokens.css primary for that accent
+       in the current theme — no color is repeated here.
+       ========================================================= */
+    .theme-picker {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+    }
+
+    .theme-picker__hint {
+        color: var(--ui-text-secondary);
+        font-size: var(--text-sm);
+    }
+
+    .theme-picker__label {
+        margin-bottom: var(--space-2);
+        color: var(--ui-text-secondary);
+        font-size: var(--text-sm);
+        font-weight: var(--weight-semibold);
+    }
+
+    .accent-picker {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-3);
+    }
+
+    .accent-swatch {
+        display: inline-grid;
+        place-items: center;
+        width: var(--control-sm);
+        height: var(--control-sm);
+        border-radius: var(--ui-radius-full);
+        background: var(--ui-primary);
+        color: var(--ui-on-primary);
+        transition: box-shadow 140ms ease;
+    }
+
+    .accent-swatch:hover {
+        box-shadow:
+            0 0 0 2px var(--ui-surface),
+            0 0 0 4px var(--ui-border-hover);
+    }
+
+    .accent-swatch:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: 3px;
+    }
+
+    .accent-swatch[aria-checked='true'] {
+        box-shadow:
+            0 0 0 2px var(--ui-surface),
+            0 0 0 4px var(--ui-primary);
+    }
+
+    .accent-swatch .icon {
+        opacity: 0;
+    }
+
+    .accent-swatch[aria-checked='true'] .icon {
+        opacity: 1;
+    }
+
+    @media (max-width: 520px) {
+        .theme-picker-grid {
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        }
+    }
+}

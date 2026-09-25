@@ -1,0 +1,187 @@
+@layer components {
+    /* =========================================================
+       BUTTON
+       -----------------------------------------------------------
+       .btn + one variant (primary | secondary | outline | ghost |
+       danger) + one size (sm 36 | md 44 | lg 52). Icons go inside as
+       <x-blade.u-i.icon>; an icon-only button adds .btn--icon.
+       Loading: aria-busy="true" swaps in a spinner and blocks clicks.
+       ========================================================= */
+    .btn {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-2);
+        height: var(--control-md);
+        padding: 0 var(--space-4);
+        border: 1px solid transparent;
+        border-radius: var(--ui-radius-sm);
+        font-size: var(--text-md);
+        font-weight: var(--weight-semibold);
+        white-space: nowrap;
+        cursor: pointer;
+        transition:
+            background 160ms ease,
+            border-color 160ms ease,
+            color 160ms ease,
+            box-shadow 160ms ease;
+    }
+
+    .btn--sm {
+        height: var(--control-sm);
+        padding: 0 var(--space-3);
+        font-size: var(--text-base);
+    }
+
+    .btn--md {
+        height: var(--control-md);
+        padding: 0 var(--space-4);
+        font-size: var(--text-md);
+    }
+
+    .btn--lg {
+        height: var(--control-lg);
+        padding: 0 var(--space-5);
+        font-size: 16px;
+    }
+
+    .btn--block {
+        width: 100%;
+    }
+
+    /* Square, icon only — the label goes in aria-label. */
+    .btn--icon {
+        width: var(--control-md);
+        padding: 0;
+    }
+
+    .btn--icon.btn--sm {
+        width: var(--control-sm);
+    }
+
+    .btn--icon.btn--lg {
+        width: var(--control-lg);
+    }
+
+    .btn--primary {
+        background: var(--ui-primary);
+        border-color: var(--ui-primary);
+        color: var(--ui-on-primary);
+    }
+
+    .btn--primary:hover {
+        background: var(--ui-primary-hover);
+        border-color: var(--ui-primary-hover);
+    }
+
+    .btn--secondary {
+        background: var(--ui-surface-soft);
+        border-color: var(--ui-surface-soft);
+        color: var(--ui-text);
+    }
+
+    .btn--secondary:hover {
+        border-color: var(--ui-border-hover);
+    }
+
+    .btn--outline {
+        background: var(--ui-surface);
+        border-color: var(--ui-border);
+        color: var(--ui-text);
+    }
+
+    .btn--outline:hover {
+        background: var(--ui-surface-soft);
+        border-color: var(--ui-border-hover);
+    }
+
+    .btn--ghost {
+        background: transparent;
+        color: var(--ui-text);
+    }
+
+    .btn--ghost:hover {
+        background: var(--ui-surface-soft);
+    }
+
+    .btn--danger {
+        background: var(--ui-danger);
+        border-color: var(--ui-danger);
+        color: var(--ui-on-primary);
+    }
+
+    .btn--danger:hover {
+        background: color-mix(in srgb, var(--ui-danger) 86%, var(--ui-text));
+        border-color: color-mix(in srgb, var(--ui-danger) 86%, var(--ui-text));
+    }
+
+    .btn--outline.btn--danger-outline {
+        background: var(--ui-surface);
+        border-color: var(--ui-danger);
+        color: var(--ui-danger);
+    }
+
+    .btn--outline.btn--danger-outline:hover {
+        background: var(--ui-danger-bg);
+    }
+
+    .btn:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px
+            color-mix(in srgb, var(--ui-primary) 35%, transparent);
+    }
+
+    .btn--danger:focus-visible {
+        box-shadow: 0 0 0 3px
+            color-mix(in srgb, var(--ui-danger) 35%, transparent);
+    }
+
+    .btn:disabled,
+    .btn[aria-disabled='true'] {
+        opacity: 0.45;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    /* Loading: the spinner replaces the leading icon, the label stays. */
+    .btn[aria-busy='true'] {
+        cursor: progress;
+        pointer-events: none;
+    }
+
+    .btn[aria-busy='true'] > .icon:first-child {
+        display: none;
+    }
+
+    .btn .spinner {
+        border-color: color-mix(in srgb, currentColor 35%, transparent);
+        border-top-color: currentColor;
+    }
+
+    /* Legacy name for the confirm dialog's inline spinner. */
+    .btn__spinner {
+        width: 14px;
+        height: 14px;
+        border: 2px solid currentColor;
+        border-right-color: transparent;
+        border-radius: 50%;
+        animation: spin 700ms linear infinite;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* =========================================================
+       FOCUS (links and other interactive chrome)
+       ========================================================= */
+    .dropdown__trigger:focus-visible,
+    .nav-link:focus-visible,
+    .icon-btn:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: 2px;
+    }
+}

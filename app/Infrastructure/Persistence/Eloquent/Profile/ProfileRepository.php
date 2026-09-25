@@ -16,6 +16,7 @@ class ProfileRepository implements ProfileRepositoryInterface
             'ban',
             'avatar',
             'settings.timezone',
+            'settings.preferredCurrency',
         ]);
 
         return $user->withCurrentSession();

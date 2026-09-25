@@ -36,17 +36,22 @@ export async function fetchCurrentUser() {
     currentUserPromise ??= api
         .get('/auth/me')
         .then(({ data }) => data?.data?.user ?? null)
-        .catch(() => {
-            clearToken();
+        .catch((error) => {
+            // Only a 401 actually proves the token is dead. A 500, a
+            // timeout or a dropped connection says nothing about the
+            // session, and dropping the token there logged the user
+            // straight back out of a perfectly good login.
+            if (error?.response?.status === 401) {
+                clearToken();
+            }
 
             return null;
         })
         .finally(() => {
-            // Don't cache a null result forever — a later call (e.g. right
-            // after logging back in on the same page) should retry.
-            if (!getToken()) {
-                currentUserPromise = null;
-            }
+            // Don't cache a failed/null result forever — a later call
+            // (a retry, or logging back in on the same page) should ask
+            // again instead of replaying this one.
+            currentUserPromise = null;
         });
 
     return currentUserPromise;
@@ -74,4 +79,29 @@ export async function logout() {
     } finally {
         clearToken();
     }
+}
+
+/**
+ * The --hue-* pair an initials avatar takes — the same pick as
+ * App\View\Components\Blade\UI\Avatar::hueFor(), so a person keeps one
+ * color whether the avatar was rendered by Blade or by JS.
+ */
+const AVATAR_HUES = [
+    'blue',
+    'sky',
+    'violet',
+    'green',
+    'amber',
+    'rose',
+    'teal',
+    'orange',
+];
+
+export function avatarHue(name) {
+    const sum = [...(name || '')].reduce(
+        (total, char) => total + char.codePointAt(0),
+        0,
+    );
+
+    return AVATAR_HUES[sum % AVATAR_HUES.length];
 }

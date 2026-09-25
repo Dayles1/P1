@@ -1,17 +1,38 @@
 import { api } from '../axios';
-import { fetchCurrentUser } from '../shared/auth-state';
+import { bootstrapAppState } from '../shared/app-state';
 import { getEcho } from '../shared/echo';
-import { t } from '../shared/i18n';
+import { escapeHtml } from '../shared/forms';
+import { getLocale, t } from '../shared/i18n';
 import {
+    interpolate,
     markNotificationReadAndOpen,
-    notificationItemHtml,
+    normalizeNotification,
+    notificationFeedHtml,
+    pluralKey,
 } from '../shared/notification-renderers';
 import { bootOnPage } from '../shared/page-boot';
 import { renderPagination } from '../shared/pagination';
-import { emptyState } from '../shared/skeleton';
-import { showToast, apiErrorMessage } from '../shared/toast';
+import { emptyState, errorState, skeletonList } from '../shared/skeleton';
+import { apiErrorMessage, showToast, toastSuccess } from '../shared/toast';
+
+const PER_PAGE = 15;
 
 let currentCleanup = null;
+
+/** "4 unread" with the locale's plural form, or "All caught up" at zero. */
+function unreadSummary(count) {
+    if (count === 0) {
+        return t('notifications.all_read');
+    }
+
+    return t(pluralKey('notifications.unread_summary', count), {
+        count: new Intl.NumberFormat(getLocale()).format(count),
+    });
+}
+
+function prefersReducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
 
 /**
  * Everything below used to run once at module top level. Under Turbo
@@ -21,28 +42,125 @@ let currentCleanup = null;
  * `bootOnPage` on every `turbo:load` that lands on /notifications, re-
  * querying the (new) DOM each time instead of operating on detached
  * nodes from a previous visit. The AbortController removes this visit's
- * DOM listeners on `teardown()`, and the same teardown leaves the Echo
- * private channel subscribed by this visit so live updates don't stack
- * duplicate `prependLive` calls the next time this page boots.
+ * DOM listeners on `teardown()`, and the same teardown unbinds this
+ * visit's Echo listeners — only this page's callbacks, never the whole
+ * private channel, which the header bell keeps listening on.
  */
 function boot() {
     const controller = new AbortController();
     const { signal } = controller;
 
+    const pageRoot = document.querySelector('.notif-page');
     const list = document.querySelector('[data-notif-center-list]');
     const paginationEl = document.querySelector('[data-notif-pagination]');
-    const filterButtons = document.querySelectorAll('[data-notif-filter]');
+    const filterButtons = [...document.querySelectorAll('[data-notif-filter]')];
     const markAllBtn = document.querySelector('[data-notif-mark-all-page]');
+    const summaryEl = document.querySelector('[data-notif-unread-summary]');
 
-    let currentFilter = '';
+    // Taken from the chips, not assumed: a page Turbo restores from its
+    // cache (Back/Forward) comes back with the chip the user left pressed.
+    let currentFilter =
+        filterButtons.find(
+            (button) => button.getAttribute('aria-pressed') === 'true',
+        )?.dataset.notifFilter ?? '';
     let currentPage = 1;
-    let subscribedChannelName = null;
+    let items = [];
+    let unreadCount = null;
+    let latestLoad = 0;
+    let active = true;
+    let channel = null;
+    let markingAll = false;
+
+    /**
+     * aria-disabled, not `disabled`: a disabled button drops keyboard
+     * focus to <body> — right after "Read all" is pressed, for one.
+     */
+    function setMarkAllEnabled(enabled) {
+        markAllBtn?.setAttribute('aria-disabled', String(!enabled));
+    }
+
+    function setUnreadCount(count) {
+        unreadCount = Math.max(0, Number(count) || 0);
+
+        if (summaryEl) {
+            summaryEl.textContent = unreadSummary(unreadCount);
+        }
+
+        if (!markingAll) {
+            setMarkAllEnabled(unreadCount > 0);
+        }
+    }
+
+    async function refreshUnreadCount() {
+        try {
+            const { data } = await api.get('/notifications/unread-count');
+
+            if (active) {
+                setUnreadCount(data.data.count);
+            }
+        } catch {
+            // The summary just stays blank; the list itself still works.
+        }
+    }
+
+    function emptyHtml() {
+        if (currentFilter === 'unread') {
+            return emptyState(t('notifications.empty_unread'), {
+                hint: t('notifications.empty_unread_hint'),
+                icon: 'checks',
+                plain: true,
+            });
+        }
+
+        if (currentFilter) {
+            return emptyState(t('notifications.empty_filtered'), {
+                hint: t('notifications.empty_filtered_hint'),
+                icon: 'filter',
+                plain: true,
+                actionHtml: `<button type="button" class="btn btn--outline btn--sm" data-notif-show-all>${t('notifications.view_all')}</button>`,
+            });
+        }
+
+        return emptyState(t('notifications.empty'), {
+            hint: t('notifications.empty_hint'),
+            icon: 'bell',
+            plain: true,
+        });
+    }
+
+    function render() {
+        list.innerHTML = items.length
+            ? notificationFeedHtml(items)
+            : emptyHtml();
+    }
+
+    /**
+     * renderPagination(), with its "Showing 1–15 of 37" line written again
+     * through interpolate(): shared/i18n.js's t() still fills `:to` inside
+     * `:total` ("of 15tal"). Same text once t() fills in one pass.
+     */
+    function renderFeedPagination(pagination) {
+        renderPagination(paginationEl, pagination, goToPage);
+
+        const info = paginationEl?.querySelector('.pagination__info');
+        const { from, to, total } = pagination || {};
+
+        if (info && from && to) {
+            info.textContent = interpolate('components.showing', {
+                from,
+                to,
+                total,
+            });
+        }
+    }
 
     async function load(page = 1) {
+        const request = ++latestLoad;
         currentPage = page;
-        list.innerHTML = `<div class="skeleton skeleton-row" style="margin:12px;"></div>`;
+        list.setAttribute('aria-busy', 'true');
+        list.innerHTML = skeletonList(5);
 
-        const params = { page, per_page: 15 };
+        const params = { page, per_page: PER_PAGE };
 
         if (currentFilter === 'unread') {
             params.unread = true;
@@ -51,32 +169,123 @@ function boot() {
         }
 
         try {
-            const { data } = await api.get('/notifications', { params });
-            const items = data.data || [];
+            // The user (their timezone and clock) is needed to group by
+            // day; it is already loaded after the first page of a session.
+            const [{ data }] = await Promise.all([
+                api.get('/notifications', { params }),
+                bootstrapAppState(),
+            ]);
 
-            list.innerHTML = items.length
-                ? `<div style="padding:6px;">${items.map(notificationItemHtml).join('')}</div>`
-                : emptyState(t('notifications.empty'));
+            if (!active || request !== latestLoad) {
+                return;
+            }
 
-            renderPagination(paginationEl, data.pagination, load);
+            items = data.data || [];
+            render();
+            renderFeedPagination(data.pagination);
         } catch (error) {
-            list.innerHTML = emptyState(
-                apiErrorMessage(error, t('common.error_generic')),
-            );
+            if (!active || request !== latestLoad) {
+                return;
+            }
+
+            items = [];
+            list.innerHTML = errorState(t('notifications.load_error'), {
+                hint: escapeHtml(
+                    apiErrorMessage(error, t('common.error_generic')),
+                ),
+            });
+            renderFeedPagination(null);
+        } finally {
+            if (request === latestLoad) {
+                list.removeAttribute('aria-busy');
+            }
         }
+    }
+
+    /**
+     * A page number was clicked. Its button is re-rendered away, so focus
+     * moves to the list the new page lands in (instead of <body>), and
+     * the page scrolls back up to the top of the feed.
+     */
+    async function goToPage(page) {
+        pageRoot?.scrollIntoView({
+            block: 'start',
+            behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+        });
+
+        await load(page);
+
+        if (active) {
+            list.focus({ preventScroll: true });
+        }
+    }
+
+    /** Flips rows to read in place; returns how many were still unread. */
+    function markReadLocally(ids) {
+        let changed = 0;
+
+        ids.forEach((id) => {
+            const notification = items.find((n) => String(n.id) === String(id));
+
+            if (notification && !notification.read_at) {
+                notification.read_at = new Date().toISOString();
+            }
+
+            const row = list.querySelector(
+                `[data-notif-id="${CSS.escape(String(id))}"]`,
+            );
+
+            if (row?.classList.contains('notif-item--unread')) {
+                row.classList.remove('notif-item--unread');
+                row.querySelector('.notif-item__dot')?.remove();
+                changed += 1;
+            }
+        });
+
+        return changed;
+    }
+
+    function selectFilter(value) {
+        currentFilter = value;
+
+        filterButtons.forEach((button) => {
+            button.setAttribute(
+                'aria-pressed',
+                String(button.dataset.notifFilter === value),
+            );
+        });
+
+        load(1);
     }
 
     list.addEventListener(
         'click',
         (event) => {
+            if (event.target.closest('[data-retry]')) {
+                load(currentPage);
+
+                return;
+            }
+
+            if (event.target.closest('[data-notif-show-all]')) {
+                // The button goes away with the empty state it sits in.
+                selectFilter('');
+                filterButtons[0]?.focus();
+
+                return;
+            }
+
             const item = event.target.closest('[data-notif-id]');
 
             if (!item) {
                 return;
             }
 
-            item.classList.remove('notif-item--unread');
-            item.querySelector('.notif-item__dot')?.remove();
+            const changed = markReadLocally([item.dataset.notifId]);
+
+            if (changed && unreadCount !== null) {
+                setUnreadCount(unreadCount - changed);
+            }
 
             markNotificationReadAndOpen(api, {
                 id: item.dataset.notifId,
@@ -94,13 +303,9 @@ function boot() {
         button.addEventListener(
             'click',
             () => {
-                filterButtons.forEach((btn) => {
-                    btn.classList.toggle('btn--secondary', btn === button);
-                    btn.classList.toggle('btn--outline', btn !== button);
-                });
-
-                currentFilter = button.dataset.notifFilter;
-                load(1);
+                if (button.dataset.notifFilter !== currentFilter) {
+                    selectFilter(button.dataset.notifFilter);
+                }
             },
             { signal },
         );
@@ -109,24 +314,36 @@ function boot() {
     markAllBtn?.addEventListener(
         'click',
         async () => {
-            markAllBtn.disabled = true;
+            if (
+                markingAll ||
+                markAllBtn.getAttribute('aria-disabled') === 'true'
+            ) {
+                return;
+            }
+
+            markingAll = true;
+            setMarkAllEnabled(false);
 
             try {
                 await api.post('/notifications/read-all');
-                load(currentPage);
+                markingAll = false;
+                setUnreadCount(0);
+                toastSuccess(t('notifications.marked_all'));
+                load(currentFilter === 'unread' ? 1 : currentPage);
             } catch (error) {
+                markingAll = false;
+                setMarkAllEnabled(unreadCount !== 0);
                 showToast(
                     apiErrorMessage(error, t('common.error_generic')),
                     'error',
                 );
-            } finally {
-                markAllBtn.disabled = false;
             }
         },
         { signal },
     );
 
     load();
+    refreshUnreadCount();
 
     /*
     |--------------------------------------------------------------------------
@@ -138,62 +355,59 @@ function boot() {
     */
 
     function matchesCurrentFilter(notification) {
-        if (!currentFilter || currentFilter === 'unread') {
+        if (!currentFilter) {
             return true;
+        }
+
+        if (currentFilter === 'unread') {
+            return !notification.read_at;
         }
 
         return notification.type === currentFilter;
     }
 
-    function prependLive(notification) {
+    function onNotification(payload) {
+        const notification = normalizeNotification(payload);
+
+        if (unreadCount !== null) {
+            setUnreadCount(unreadCount + 1);
+        }
+
         if (currentPage !== 1 || !matchesCurrentFilter(notification)) {
             return;
         }
 
-        const wrapper = list.querySelector(':scope > div');
+        items = [notification, ...items];
+        render();
+    }
 
-        if (wrapper) {
-            wrapper.insertAdjacentHTML(
-                'afterbegin',
-                notificationItemHtml(notification),
-            );
-        } else {
-            list.innerHTML = `<div style="padding:6px;">${notificationItemHtml(notification)}</div>`;
+    // Reflects reads that happened elsewhere — another tab, the header
+    // bell, or reading the underlying message in Chat — without a refresh.
+    function onRead(payload) {
+        markReadLocally(payload.ids || []);
+
+        if (payload.unread_count !== undefined) {
+            setUnreadCount(payload.unread_count);
         }
     }
 
     (async () => {
-        const user = await fetchCurrentUser();
+        const user = await bootstrapAppState();
 
-        if (!user) {
+        if (!user || !active) {
             return;
         }
 
-        subscribedChannelName = `App.Models.User.${user.id}`;
-        const channel = getEcho()?.private(subscribedChannelName);
-
-        channel?.notification(prependLive);
-
-        // Reflects reads that happened elsewhere — another tab, or reading
-        // the underlying message in Chat — without a manual refresh.
-        channel?.listen('.notifications.read', (payload) => {
-            (payload.ids || []).forEach((id) => {
-                const item = list.querySelector(`[data-notif-id="${id}"]`);
-
-                if (item?.classList.contains('notif-item--unread')) {
-                    item.classList.remove('notif-item--unread');
-                    item.querySelector('.notif-item__dot')?.remove();
-                }
-            });
-        });
+        channel = getEcho()?.private(`App.Models.User.${user.id}`) ?? null;
+        channel?.notification(onNotification);
+        channel?.listen('.notifications.read', onRead);
     })();
 
     currentCleanup = () => {
+        active = false;
         controller.abort();
-
-        if (subscribedChannelName) {
-            getEcho()?.leave(subscribedChannelName);
-        }
+        channel?.stopListeningForNotification(onNotification);
+        channel?.stopListening('.notifications.read', onRead);
     };
 }
 

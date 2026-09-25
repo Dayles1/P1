@@ -41,25 +41,121 @@ export function t(key, params = {}) {
         return key;
     }
 
-    return Object.entries(params).reduce(
-        (result, [paramKey, paramValue]) =>
-            result.replaceAll(`:${paramKey}`, String(paramValue)),
-        value,
+    // One pass over the placeholders: a parameter that is a prefix of
+    // another (:to / :total) can't eat into it, and a substituted value
+    // that happens to contain ":name" is never substituted again.
+    return value.replace(/:([A-Za-z_]\w*)/g, (placeholder, name) =>
+        Object.hasOwn(params, name) ? String(params[name]) : placeholder,
     );
+}
+
+const localeDataCache = new Map();
+
+/**
+ * Whether the browser really carries the page locale's data. Some builds
+ * claim a locale (Chrome and `uz`) but only have its fallback patterns:
+ * they print "M09" for a month name and English separators for numbers.
+ * A month *name* with digits in it gives that away; callers then build
+ * dates and numbers from the dictionary (ui.components.*) instead.
+ */
+export function hasLocaleData() {
+    const locale = getLocale();
+
+    if (!localeDataCache.has(locale)) {
+        let available;
+
+        try {
+            available = !/\d/.test(
+                new Intl.DateTimeFormat(locale, { month: 'long' }).format(
+                    new Date(2026, 0, 15),
+                ),
+            );
+        } catch {
+            available = false;
+        }
+
+        localeDataCache.set(locale, available);
+    }
+
+    return localeDataCache.get(locale);
+}
+
+/**
+ * A number in the page locale. Without the locale's data the digits still
+ * come from Intl, but its group and decimal separators ("1,284.5") are
+ * swapped for the dictionary's ("1 284,5" in Uzbek).
+ */
+export function formatNumber(value, options = {}) {
+    const number = Number(value) || 0;
+    let formatter;
+
+    try {
+        formatter = new Intl.NumberFormat(getLocale(), options);
+    } catch {
+        formatter = new Intl.NumberFormat('en', options);
+    }
+
+    if (hasLocaleData()) {
+        return formatter.format(number);
+    }
+
+    const symbols = {
+        group: t('components.number.group'),
+        decimal: t('components.number.decimal'),
+    };
+
+    return formatter
+        .formatToParts(number)
+        .map((part) =>
+            part.type in symbols &&
+            symbols[part.type] !== `components.number.${part.type}`
+                ? symbols[part.type]
+                : part.value,
+        )
+        .join('');
+}
+
+/**
+ * Month name (nominative, "Сентябрь") and short weekday name ("Пн") for
+ * pickers — from Intl when the browser has the locale, else from the
+ * dictionary. `weekday` follows Date#getDay (0 = Sunday).
+ */
+export function monthName(monthIndex) {
+    if (hasLocaleData()) {
+        const name = new Intl.DateTimeFormat(getLocale(), {
+            month: 'long',
+        }).format(new Date(2026, monthIndex, 1));
+
+        return name.charAt(0).toLocaleUpperCase(getLocale()) + name.slice(1);
+    }
+
+    return t(`components.months.${monthIndex}`);
+}
+
+export function weekdayShort(weekday) {
+    if (hasLocaleData()) {
+        // 2026-09-20 is a Sunday; weekday 0..6 counts on from it.
+        const name = new Intl.DateTimeFormat(getLocale(), {
+            weekday: 'short',
+        })
+            .format(new Date(2026, 8, 20 + weekday))
+            .replace('.', '');
+
+        return name.charAt(0).toLocaleUpperCase(getLocale()) + name.slice(1);
+    }
+
+    return t(`components.weekdays_short.${weekday}`);
 }
 
 /**
  * Persists the chosen locale (cookie, read by the backend's SetLocale
  * middleware on every subsequent request — including plain page loads,
  * which can't carry a custom header) and, for a signed-in user, saves it
- * to their account too so it follows them across devices. Then revisits
- * the current URL so server-rendered text picks up the new language
- * immediately. Under Turbo Drive this is a soft revisit (`Turbo.visit`)
- * rather than a hard `location.reload()` — the permanent header/sidebar
- * and the Echo/Reverb connection are untouched, only the (non-permanent)
- * content and the `window.__i18n` head script re-render in the new
- * locale. Falls back to a hard reload if Turbo hasn't loaded for any
- * reason (e.g. on a page outside the authenticated shell).
+ * to their account too so it follows them across devices. Then reloads
+ * the page. It has to be a real reload, not a Turbo soft revisit: the
+ * permanent header, sidebar and tab bar (account menu, nav labels) are
+ * never re-rendered by Turbo, so a soft visit would leave them in the old
+ * language next to freshly translated page content.
  */
 export async function setLocale(locale, { api } = {}) {
     writeLocaleCookie(locale);
@@ -73,11 +169,7 @@ export async function setLocale(locale, { api } = {}) {
         }
     }
 
-    if (window.Turbo) {
-        window.Turbo.visit(window.location.href, { action: 'replace' });
-    } else {
-        window.location.reload();
-    }
+    window.location.reload();
 }
 
 export function initLocalePicker(apiClient) {
@@ -90,9 +182,14 @@ export function initLocalePicker(apiClient) {
     const current = getLocale();
 
     options.forEach((el) => {
+        const isCurrent = String(el.dataset.localeOption === current);
+
+        // Radio-style menu items use aria-checked, segmented buttons aria-pressed.
         el.setAttribute(
-            'aria-checked',
-            String(el.dataset.localeOption === current),
+            el.getAttribute('role') === 'menuitemradio'
+                ? 'aria-checked'
+                : 'aria-pressed',
+            isCurrent,
         );
 
         el.addEventListener('click', () => {

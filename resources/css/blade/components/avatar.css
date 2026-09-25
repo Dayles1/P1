@@ -1,0 +1,169 @@
+@layer components {
+    /* =========================================================
+       AVATAR
+       -----------------------------------------------------------
+       Sizes xs 24 · sm 32 · md 40 · lg 56 · xl 72. Initials take one
+       of the --hue-* pairs (.avatar--hue-*), picked from the name so a
+       person keeps their color everywhere. A presence dot sits in
+       .avatar__status; .avatar-group overlaps a stack with a +N tail.
+       ========================================================= */
+    .avatar {
+        position: relative;
+        display: inline-grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--ui-primary-soft);
+        color: var(--ui-primary);
+        font-size: var(--text-base);
+        font-weight: var(--weight-semibold);
+    }
+
+    .avatar--xs {
+        width: 24px;
+        height: 24px;
+        font-size: 8px;
+    }
+
+    .avatar--sm {
+        width: 32px;
+        height: 32px;
+        font-size: 11px;
+    }
+
+    .avatar--md {
+        width: 40px;
+        height: 40px;
+        font-size: var(--text-base);
+    }
+
+    .avatar--lg {
+        width: 56px;
+        height: 56px;
+        font-size: var(--text-xl);
+    }
+
+    .avatar--xl {
+        width: 72px;
+        height: 72px;
+        font-size: 27px;
+    }
+
+    .avatar__image {
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        object-fit: cover;
+    }
+
+    .avatar--hue-blue {
+        background: var(--hue-blue-bg);
+        color: var(--hue-blue);
+    }
+
+    .avatar--hue-sky {
+        background: var(--hue-sky-bg);
+        color: var(--hue-sky);
+    }
+
+    .avatar--hue-violet {
+        background: var(--hue-violet-bg);
+        color: var(--hue-violet);
+    }
+
+    .avatar--hue-green {
+        background: var(--hue-green-bg);
+        color: var(--hue-green);
+    }
+
+    .avatar--hue-amber {
+        background: var(--hue-amber-bg);
+        color: var(--hue-amber);
+    }
+
+    .avatar--hue-rose {
+        background: var(--hue-rose-bg);
+        color: var(--hue-rose);
+    }
+
+    .avatar--hue-teal {
+        background: var(--hue-teal-bg);
+        color: var(--hue-teal);
+    }
+
+    .avatar--hue-orange {
+        background: var(--hue-orange-bg);
+        color: var(--hue-orange);
+    }
+
+    .avatar__status {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 10px;
+        height: 10px;
+        border: 2px solid var(--ui-surface);
+        border-radius: 50%;
+        background: var(--ui-border-hover);
+    }
+
+    .avatar--lg .avatar__status,
+    .avatar--xl .avatar__status {
+        width: 14px;
+        height: 14px;
+    }
+
+    .avatar__status--online {
+        background: var(--ui-success);
+    }
+
+    .avatar__status--away {
+        background: var(--ui-warning);
+    }
+
+    .avatar__status--busy {
+        background: var(--ui-danger);
+    }
+
+    /* Camera badge on an editable avatar (profile photo). */
+    .avatar__edit {
+        position: absolute;
+        right: -2px;
+        bottom: -2px;
+        display: grid;
+        place-items: center;
+        width: 26px;
+        height: 26px;
+        border: 1px solid var(--ui-border);
+        border-radius: 50%;
+        background: var(--ui-surface);
+        color: var(--ui-text-secondary);
+    }
+
+    .avatar-group {
+        display: inline-flex;
+        padding-left: 10px;
+    }
+
+    .avatar-group > .avatar {
+        margin-left: -10px;
+        box-shadow: 0 0 0 2px var(--ui-surface);
+    }
+
+    .avatar-group__more {
+        background: var(--ui-surface-soft);
+        color: var(--ui-text);
+        font-size: 12.5px;
+    }
+
+    /* =========================================================
+       AVATAR UPLOAD (settings profile photo)
+       ========================================================= */
+    .avatar-upload {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+    }
+}

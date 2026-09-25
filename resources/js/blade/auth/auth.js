@@ -6,10 +6,14 @@
  */
 
 import { api } from '../axios';
+import { initDropdowns } from '../shared/dropdown';
+import { initFormControls } from '../shared/form-controls';
 import { initLocalePicker } from '../shared/i18n';
 import { initShortcuts } from '../shared/shortcuts';
 import { initThemePicker } from '../shared/theme-picker';
 
 initThemePicker();
 initLocalePicker(api);
+initDropdowns();
 initShortcuts();
+initFormControls();

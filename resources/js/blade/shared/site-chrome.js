@@ -4,10 +4,16 @@ import {
     getState,
     logout as appStateLogout,
     setPresence,
+    setTheme,
     subscribe,
 } from './app-state';
 import { hasRole, initials } from './auth-state';
+import { initCommandPalette, startCreate } from './command-palette';
+import { initDatePickers } from './date-picker';
 import { initDevPanel } from './dev-panel';
+import { closeAllDropdowns, initDropdowns } from './dropdown';
+import { initDropzones } from './dropzone';
+import { initFormControls } from './form-controls';
 import { initLocalePicker } from './i18n';
 import { initNotificationBell } from './notification-bell';
 import { initPresence, onPresenceChange } from './presence';
@@ -41,72 +47,6 @@ function initMobileNav() {
         }
 
         navToggle.setAttribute('aria-expanded', String(!isOpen));
-    });
-}
-
-/*
-|--------------------------------------------------------------------------
-| Dropdowns
-|--------------------------------------------------------------------------
-*/
-
-function closeDropdown(dropdown) {
-    const trigger = dropdown.querySelector('[data-dropdown-trigger]');
-    const menu = dropdown.querySelector('[data-dropdown-menu]');
-
-    menu?.setAttribute('hidden', '');
-    trigger?.setAttribute('aria-expanded', 'false');
-}
-
-function closeAllDropdowns(except = null) {
-    document.querySelectorAll('[data-dropdown]').forEach((dropdown) => {
-        if (dropdown !== except) {
-            closeDropdown(dropdown);
-        }
-    });
-}
-
-function initDropdowns() {
-    document.addEventListener('click', (event) => {
-        if (event.target.closest('[data-theme-option], [data-locale-option]')) {
-            closeAllDropdowns();
-
-            return;
-        }
-
-        const trigger = event.target.closest('[data-dropdown-trigger]');
-
-        if (trigger) {
-            const dropdown = trigger.closest('[data-dropdown]');
-            const menu = dropdown?.querySelector('[data-dropdown-menu]');
-
-            if (!dropdown || !menu) {
-                return;
-            }
-
-            const isOpen = !menu.hasAttribute('hidden');
-
-            closeAllDropdowns(dropdown);
-
-            if (isOpen) {
-                closeDropdown(dropdown);
-            } else {
-                menu.removeAttribute('hidden');
-                trigger.setAttribute('aria-expanded', 'true');
-            }
-
-            return;
-        }
-
-        if (!event.target.closest('[data-dropdown]')) {
-            closeAllDropdowns();
-        }
-    });
-
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-            closeAllDropdowns();
-        }
     });
 }
 
@@ -185,6 +125,59 @@ function initLogout() {
 
 /*
 |--------------------------------------------------------------------------
+| Account menu: theme switch
+|--------------------------------------------------------------------------
+|
+| The Light / Dark / Auto segmented control. The menu stays open while
+| switching, so the pressed state is re-synced from AppState on every
+| change (including ones made elsewhere: settings page, Ctrl+Shift+L).
+|
+*/
+
+function syncThemeSwitch() {
+    const { choice } = getState().theme;
+
+    document.querySelectorAll('[data-theme-set]').forEach((el) => {
+        el.setAttribute('aria-pressed', String(el.dataset.themeSet === choice));
+    });
+}
+
+function initThemeSwitch() {
+    if (!document.querySelector('[data-theme-set]')) {
+        return;
+    }
+
+    syncThemeSwitch();
+    subscribe('theme', syncThemeSwitch);
+
+    document.addEventListener('click', (event) => {
+        const option = event.target.closest('[data-theme-set]');
+
+        if (option) {
+            setTheme(option.dataset.themeSet);
+        }
+    });
+}
+
+/*
+|--------------------------------------------------------------------------
+| Header "Create" menu
+|--------------------------------------------------------------------------
+*/
+
+function initCreateMenu() {
+    document.addEventListener('click', (event) => {
+        const action = event.target.closest('[data-create]');
+
+        if (action) {
+            closeAllDropdowns();
+            startCreate(action.dataset.create);
+        }
+    });
+}
+
+/*
+|--------------------------------------------------------------------------
 | Header auth state
 |--------------------------------------------------------------------------
 |
@@ -194,9 +187,28 @@ function initLogout() {
 |
 */
 
-function paintUserHeader(name, avatarUrl) {
+const ADMIN_ROLES = ['SUPER_ADMIN', 'ADMIN'];
+
+function paintUserHeader(user) {
+    const name = user.name;
+    const avatarUrl = user.avatar?.url || null;
+
     document.querySelectorAll('[data-user-name]').forEach((el) => {
         el.textContent = name;
+    });
+
+    document.querySelectorAll('[data-user-email]').forEach((el) => {
+        el.textContent = user.email || '';
+    });
+
+    // The account menu names an admin's role; everyone else gets no chip.
+    const adminRole = (user.roles || []).find((role) =>
+        ADMIN_ROLES.includes(role.code),
+    );
+
+    document.querySelectorAll('[data-user-role]').forEach((el) => {
+        el.textContent = adminRole?.name || '';
+        el.hidden = !adminRole;
     });
 
     document.querySelectorAll('[data-user-avatar]').forEach((el) => {
@@ -246,11 +258,11 @@ function initHeaderAuthState(user) {
     }
 
     userEls.forEach((el) => el.removeAttribute('hidden'));
-    paintUserHeader(user.name, user.avatar?.url || null);
+    paintUserHeader(user);
 
     subscribe('user', (current) => {
         if (current) {
-            paintUserHeader(current.name, current.avatar?.url || null);
+            paintUserHeader(current);
         }
     });
 
@@ -269,6 +281,7 @@ function initHeaderAuthState(user) {
         applyRoleVisibility(getState().user);
     });
 
+    initThemeSwitch();
     initNotificationBell(api, user);
     initPresence();
     onPresenceChange((onlineIds) => setPresence(onlineIds));
@@ -299,6 +312,11 @@ export function initSiteChrome(user) {
     initAlerts();
     initLogout();
     initShortcuts();
+    initCommandPalette();
+    initCreateMenu();
+    initFormControls();
+    initDatePickers();
+    initDropzones();
 
     // authenticated.js already resolved the user via bootstrapAppState()
     // and passes it in directly. Public pages (app.js) call this with no

@@ -1,0 +1,87 @@
+@layer components {
+    /* =========================================================
+       DROPDOWN
+       ========================================================= */
+    .dropdown {
+        position: relative;
+    }
+
+    /* Zero-specificity reset, so a trigger that is itself a .btn / .icon-btn
+       (via the component's trigger-class) keeps that styling. */
+    :where(.dropdown__trigger) {
+        display: flex;
+        align-items: center;
+        padding: 0;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    .dropdown__menu {
+        position: absolute;
+        top: calc(100% + 10px);
+        z-index: 50;
+        display: flex;
+        flex-direction: column;
+        min-width: 180px;
+        padding: 6px;
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius);
+        background: var(--ui-surface);
+        box-shadow: var(--ui-shadow-md);
+    }
+
+    /*
+        `display` here beats the browser's own `[hidden] { display: none }`
+        (author styles outrank the UA stylesheet), so the attribute the
+        dropdown JS toggles did nothing on its own and every menu rendered
+        permanently open. Re-state the rule as an author declaration.
+    */
+    .dropdown__menu[hidden] {
+        display: none;
+    }
+
+    .dropdown__menu--right {
+        right: 0;
+    }
+
+    .dropdown__menu--left {
+        left: 0;
+    }
+
+    .dropdown__item {
+        display: block;
+        width: 100%;
+        padding: 9px 12px;
+        border: none;
+        border-radius: var(--ui-radius-sm);
+        background: transparent;
+        color: var(--ui-text);
+        font-size: 13px;
+        font-weight: 600;
+        text-align: left;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .dropdown__item:hover {
+        background: var(--ui-surface-soft);
+    }
+
+    .dropdown__item--danger {
+        color: var(--ui-danger);
+    }
+
+    .dropdown__label {
+        padding: 8px 12px 6px;
+        color: var(--ui-text-muted);
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 220px;
+    }
+}

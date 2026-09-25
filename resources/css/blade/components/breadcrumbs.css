@@ -1,0 +1,291 @@
+@layer components {
+    /* =========================================================
+       BREADCRUMBS
+       ========================================================= */
+    .breadcrumb {
+        margin-bottom: var(--space-5);
+    }
+
+    .breadcrumb__list {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-2);
+        font-size: var(--text-base);
+    }
+
+    .breadcrumb__item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        min-width: 0;
+    }
+
+    .breadcrumb__link {
+        color: var(--ui-text-secondary);
+        font-weight: var(--weight-medium);
+    }
+
+    .breadcrumb__link:hover {
+        color: var(--ui-text);
+    }
+
+    .breadcrumb__current {
+        overflow: hidden;
+        color: var(--ui-text);
+        font-weight: var(--weight-semibold);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .breadcrumb__separator {
+        display: flex;
+        color: var(--ui-text-muted);
+    }
+
+    /* =========================================================
+       TABS — underline (role="tablist" > role="tab")
+       -----------------------------------------------------------
+       shared/tabs.js moves aria-selected and the arrow-key focus; a
+       tab that is a link to its own route just carries
+       aria-selected="true" server-side.
+       ========================================================= */
+    .tabs {
+        display: flex;
+        gap: var(--space-6);
+        overflow-x: auto;
+        border-bottom: 1px solid var(--ui-border);
+        scrollbar-width: none;
+    }
+
+    .tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tabs__tab {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        flex-shrink: 0;
+        height: var(--control-md);
+        margin-bottom: -1px;
+        border-bottom: 2px solid transparent;
+        color: var(--ui-text-secondary);
+        font-size: 14.5px;
+        font-weight: var(--weight-semibold);
+        white-space: nowrap;
+        transition:
+            color 140ms ease,
+            border-color 140ms ease;
+    }
+
+    .tabs__tab:hover {
+        color: var(--ui-text);
+    }
+
+    .tabs__tab[aria-selected='true'] {
+        border-bottom-color: var(--ui-primary);
+        color: var(--ui-text);
+    }
+
+    .tabs__tab[aria-selected='true'] .badge {
+        background: var(--ui-primary-soft);
+        color: var(--ui-primary);
+    }
+
+    .tabs__tab:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: -2px;
+    }
+
+    /* =========================================================
+       PAGINATION (shared/pagination.js)
+       ========================================================= */
+    .pagination {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+        padding: var(--space-3) var(--space-4);
+        border-top: 1px solid var(--ui-border);
+        color: var(--ui-text-secondary);
+        font-size: var(--text-sm);
+    }
+
+    .pagination__info {
+        margin-right: auto;
+    }
+
+    .pagination__controls {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .pagination__btn {
+        display: inline-grid;
+        place-items: center;
+        min-width: 34px;
+        height: 34px;
+        padding: 0 var(--space-2);
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius-sm);
+        background: var(--ui-surface);
+        color: var(--ui-text);
+        font-size: 13.5px;
+        font-weight: var(--weight-semibold);
+        font-variant-numeric: tabular-nums;
+    }
+
+    .pagination__btn:hover:not(:disabled) {
+        border-color: var(--ui-border-hover);
+        background: var(--ui-surface-soft);
+    }
+
+    .pagination__btn--active,
+    .pagination__btn--active:hover:not(:disabled) {
+        border-color: var(--ui-primary);
+        background: var(--ui-primary);
+        color: var(--ui-on-primary);
+    }
+
+    .pagination__btn:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
+
+    .pagination__btn:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: 1px;
+    }
+
+    .pagination__ellipsis,
+    .pagination__ellipsis:hover {
+        border-color: transparent;
+        background: none;
+        cursor: default;
+    }
+
+    @media (max-width: 639px) {
+        .pagination__info {
+            width: 100%;
+        }
+    }
+
+    /* =========================================================
+       STEPPER
+       ========================================================= */
+    .stepper {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+    }
+
+    .stepper__step {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+        color: var(--ui-text-secondary);
+        font-size: var(--text-base);
+        font-weight: var(--weight-medium);
+    }
+
+    .stepper__marker {
+        display: grid;
+        place-items: center;
+        width: 30px;
+        height: 30px;
+        border: 1.5px solid var(--ui-border-hover);
+        border-radius: var(--ui-radius-full);
+        color: var(--ui-text-secondary);
+        font-size: 13.5px;
+        font-weight: var(--weight-semibold);
+    }
+
+    .stepper__step--done {
+        color: var(--ui-text);
+    }
+
+    .stepper__step--done .stepper__marker {
+        border-color: var(--ui-success);
+        background: var(--ui-success);
+        color: var(--ui-on-primary);
+    }
+
+    .stepper__step--current {
+        color: var(--ui-text);
+        font-weight: var(--weight-semibold);
+    }
+
+    .stepper__step--current .stepper__marker {
+        border-color: var(--ui-primary);
+        background: var(--ui-primary);
+        color: var(--ui-on-primary);
+    }
+
+    .stepper__line {
+        flex: 1;
+        min-width: 40px;
+        height: 2px;
+        background: var(--ui-border);
+    }
+
+    @media (max-width: 639px) {
+        .stepper__step:not(.stepper__step--current) .stepper__label {
+            display: none;
+        }
+
+        .stepper__line {
+            min-width: 16px;
+        }
+    }
+
+    /* =========================================================
+       ACCORDION (<details> rows)
+       ========================================================= */
+    .accordion {
+        padding: 0 20px;
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius);
+        background: var(--ui-surface);
+        box-shadow: var(--ui-shadow-sm);
+    }
+
+    .accordion__item + .accordion__item {
+        border-top: 1px solid var(--ui-border);
+    }
+
+    .accordion__summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-3);
+        min-height: 52px;
+        color: var(--ui-text);
+        font-size: var(--text-md);
+        font-weight: var(--weight-semibold);
+        list-style: none;
+        cursor: pointer;
+    }
+
+    .accordion__summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .accordion__chevron {
+        color: var(--ui-text-secondary);
+        transition: transform 160ms ease;
+    }
+
+    .accordion__item[open] .accordion__chevron {
+        transform: rotate(180deg);
+    }
+
+    .accordion__body {
+        margin-bottom: var(--space-4);
+        color: var(--ui-text-secondary);
+        font-size: 14.5px;
+        line-height: 1.55;
+    }
+}

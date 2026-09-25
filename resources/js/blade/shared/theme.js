@@ -1,24 +1,53 @@
 const THEME_KEY = 'theme';
+const ACCENT_KEY = 'accent';
 
 /**
  * Read from `window.__themeCatalog` (published by
  * blade.sections.theme-bootstrap, itself rendered from the server-side
- * ThemeCatalog) rather than hand-duplicated here — two independent copies
- * of this list previously drifted apart as palettes were added, which is
- * exactly what silently broke persisting anything but the original 6
- * themes. The fallback below only matters if this module is ever loaded on
- * a page that, unusually, doesn't include the bootstrap script.
+ * ThemeCatalog) rather than hand-duplicated here, so the two lists can
+ * never drift apart. The fallbacks only matter on a page that, unusually,
+ * doesn't include the bootstrap script.
  */
-const FALLBACK_THEMES = ['system', 'light', 'dark'];
-const FALLBACK_DARK_THEMES = ['dark'];
+export const THEMES = window.__themeCatalog?.codes || ['auto', 'light', 'dark'];
+export const ACCENTS = window.__themeCatalog?.accents || ['default'];
 
-export const THEMES = window.__themeCatalog?.codes || FALLBACK_THEMES;
-const DARK_THEMES = window.__themeCatalog?.darkCodes || FALLBACK_DARK_THEMES;
+const DEFAULT_THEME = 'auto';
+const DEFAULT_ACCENT = 'default';
+
+/**
+ * Storage can throw (private mode, blocked site data) — a theme that can't
+ * be remembered still has to apply, so every access goes through these.
+ */
+function readStorage(key) {
+    try {
+        return localStorage.getItem(key);
+    } catch {
+        return null;
+    }
+}
+
+function writeStorage(key, value) {
+    try {
+        if (value === null) {
+            localStorage.removeItem(key);
+        } else {
+            localStorage.setItem(key, value);
+        }
+    } catch {
+        // Nothing to do — the choice still applies for this page view.
+    }
+}
 
 export function getStoredTheme() {
-    const value = localStorage.getItem(THEME_KEY);
+    const value = readStorage(THEME_KEY);
 
-    return THEMES.includes(value) ? value : 'system';
+    return THEMES.includes(value) ? value : DEFAULT_THEME;
+}
+
+export function getStoredAccent() {
+    const value = readStorage(ACCENT_KEY);
+
+    return ACCENTS.includes(value) ? value : DEFAULT_ACCENT;
 }
 
 function systemPrefersDark() {
@@ -26,12 +55,12 @@ function systemPrefersDark() {
 }
 
 /**
- * Resolves `system` down to `light`/`dark` for the actual `data-theme`
- * attribute — `system` itself is never written to the DOM or persisted as
- * an applied value, only remembered as the user's *choice*.
+ * Resolves `auto` down to `light`/`dark` for the actual `data-theme`
+ * attribute — `auto` itself is never written to the DOM, only remembered
+ * as the user's *choice*.
  */
 export function resolveAppliedTheme(theme) {
-    if (theme === 'system') {
+    if (theme === 'auto') {
         return systemPrefersDark() ? 'dark' : 'light';
     }
 
@@ -39,31 +68,35 @@ export function resolveAppliedTheme(theme) {
 }
 
 export function applyTheme(theme, { persist = true } = {}) {
-    const applied = resolveAppliedTheme(theme);
-
-    document.documentElement.dataset.theme = applied;
-    document.documentElement.style.colorScheme = DARK_THEMES.includes(applied)
-        ? 'dark'
-        : 'light';
+    document.documentElement.dataset.theme = resolveAppliedTheme(theme);
 
     if (persist) {
-        if (theme === 'system') {
-            localStorage.removeItem(THEME_KEY);
-        } else {
-            localStorage.setItem(THEME_KEY, theme);
-        }
+        writeStorage(THEME_KEY, theme === DEFAULT_THEME ? null : theme);
     }
 }
 
-export function setTheme(theme) {
-    if (!THEMES.includes(theme)) {
-        return;
+export function applyAccent(accent, { persist = true } = {}) {
+    if (accent === DEFAULT_ACCENT) {
+        delete document.documentElement.dataset.accent;
+    } else {
+        document.documentElement.dataset.accent = accent;
     }
 
+    if (persist) {
+        writeStorage(ACCENT_KEY, accent === DEFAULT_ACCENT ? null : accent);
+    }
+}
+
+/**
+ * Runs a visual change inside a view transition when the browser supports
+ * one and the user hasn't asked for reduced motion. The animation itself
+ * can reject (e.g. the tab loses visibility mid-transition) even though
+ * `apply()` already ran — that's cosmetic, so it's swallowed.
+ */
+function withTransition(apply) {
     const prefersReducedMotion = window.matchMedia(
         '(prefers-reduced-motion: reduce)',
     ).matches;
-    const apply = () => applyTheme(theme);
 
     if (
         !document.startViewTransition ||
@@ -75,26 +108,37 @@ export function setTheme(theme) {
         return;
     }
 
-    // The animation itself can reject (e.g. the tab loses visibility mid-
-    // transition) even though `apply()` already ran and the theme is
-    // correctly applied — that's a cosmetic animation failure, not a
-    // functional one, so it's swallowed rather than left as an unhandled
-    // rejection.
     const transition = document.startViewTransition(apply);
     transition.ready.catch(() => {});
     transition.finished.catch(() => {});
 }
 
+export function setTheme(theme) {
+    if (!THEMES.includes(theme)) {
+        return;
+    }
+
+    withTransition(() => applyTheme(theme));
+}
+
+export function setAccent(accent) {
+    if (!ACCENTS.includes(accent)) {
+        return;
+    }
+
+    withTransition(() => applyAccent(accent));
+}
+
 /**
  * Re-applies the resolved theme whenever the OS preference changes while
- * `system` is selected. The picker UI itself lives in `./theme-picker.js`.
+ * `auto` is selected. The picker UI itself lives in `./theme-picker.js`.
  */
 export function watchSystemTheme() {
     window
         .matchMedia('(prefers-color-scheme: dark)')
         .addEventListener('change', () => {
-            if (getStoredTheme() === 'system') {
-                applyTheme('system');
+            if (getStoredTheme() === 'auto') {
+                applyTheme('auto');
             }
         });
 }

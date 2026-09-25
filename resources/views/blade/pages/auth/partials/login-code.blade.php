@@ -1,73 +1,85 @@
 <div class="auth-card">
 
-    <div data-auth-step="request">
+    {{-- STEP 1: where to send the code --}}
+    <div class="auth-step" data-auth-step="request">
+
+        <span class="auth-card__icon">
+            <x-blade.u-i.icon name="mail" size="26" />
+        </span>
 
         <div class="auth-card__header">
-            <h1>Login with one-time code</h1>
-            <p>We'll email you a 6-digit code — no password needed.</p>
+            <h1 class="auth-card__title">{{ __('ui.auth.code.request_title') }}</h1>
+            <p class="auth-card__subtitle">{{ __('ui.auth.code.request_subtitle') }}</p>
         </div>
 
         <form class="auth-form" data-auth-form="login-code-request" novalidate>
-
             @csrf
 
-            <div class="form-group">
-                <label for="login-code-email" class="form-label">Email address</label>
+            <x-blade.u-i.input
+                id="login-code-email"
+                type="email"
+                name="email"
+                icon="mail"
+                :label="__('ui.auth.email')"
+                :placeholder="__('ui.auth.email_placeholder')"
+                autocomplete="email"
+                aria-required="true"
+            />
 
-                <input
-                    id="login-code-email"
-                    type="email"
-                    name="email"
-                    class="form-input"
-                    placeholder="you@example.com"
-                    autocomplete="email"
-                    required
-                >
-
-                <span class="form-error" data-error-for="email"></span>
-            </div>
-
-            <button type="submit" class="auth-button">
-                <span class="auth-button__text">Send login code</span>
-                <span class="auth-button__loader" aria-hidden="true"></span>
-            </button>
-
-            <div class="auth-page-switch">
-                <a href="/login" class="auth-link" data-auth-link="login">Login with password instead</a>
-            </div>
-
+            <x-blade.u-i.button type="submit" size="lg" block>
+                {{ __('ui.auth.code.send') }}
+            </x-blade.u-i.button>
         </form>
+
+        <p class="auth-card__footer">
+            <a href="/login" class="auth-link auth-link--back" data-auth-link="login">
+                <x-blade.u-i.icon name="arrow" size="16" />
+                {{ __('ui.auth.code.with_password') }}
+            </a>
+        </p>
 
     </div>
 
 
-    <div data-auth-step="verify" hidden>
+    {{-- STEP 2: the code from the e-mail --}}
+    <div class="auth-step" data-auth-step="verify" hidden>
+
+        <span class="auth-card__icon">
+            <x-blade.u-i.icon name="mail" size="26" />
+        </span>
 
         <div class="auth-card__header">
-            <h1>Enter your code</h1>
-            <p>Enter the 6-digit code we sent to your email.</p>
+            <h1 class="auth-card__title" id="login-code-verify-title">{{ __('ui.auth.code.title') }}</h1>
+            <p class="auth-card__subtitle" id="login-code-verify-text">
+                @include('blade.pages.auth.partials._email-sentence', ['key' => 'ui.auth.code.text'])
+            </p>
         </div>
 
         <form class="auth-form" data-auth-form="login-code-verify" novalidate>
+            @include('blade.pages.auth.partials._code-input', [
+                'labelledBy' => 'login-code-verify-title',
+                'describedBy' => 'login-code-verify-text login-code-verify-code-error',
+            ])
 
-            @include('blade.pages.auth.partials._code-input')
+            <span class="field-error" id="login-code-verify-code-error" role="alert" data-field-error="code"></span>
 
-            <span class="form-error" data-error-for="code" style="text-align:center;"></span>
+            <div class="auth-form__resend">
+                <button type="button" class="auth-resend" data-resend-code>{{ __('ui.auth.resend_code') }}</button>
 
-            <button type="submit" class="auth-button">
-                <span class="auth-button__text">Sign in</span>
-                <span class="auth-button__loader" aria-hidden="true"></span>
-            </button>
-
-            <div class="auth-page-switch">
-                <button type="button" class="auth-link" data-resend-code>Resend code</button>
+                <button type="button" class="auth-link" data-back-to-request>{{ __('ui.auth.code.change_email') }}</button>
             </div>
 
-            <div class="auth-page-switch">
-                <button type="button" class="auth-step-back" data-back-to-request>&larr; Use a different email</button>
-            </div>
-
+            <x-blade.u-i.button type="submit" size="lg" block>
+                {{ __('ui.auth.code.submit') }}
+            </x-blade.u-i.button>
         </form>
+
+        <p class="auth-card__footer">
+            <a href="/login" class="auth-link auth-link--back" data-auth-link="login">
+                <x-blade.u-i.icon name="arrow" size="16" />
+                {{ __('ui.auth.code.with_password') }}
+            </a>
+        </p>
 
     </div>
 

@@ -11,13 +11,13 @@
         </div>
     </div>
 
-    <div class="field-row" style="margin-bottom:16px;">
-        <div class="field-group" style="max-width:320px;">
+    <div class="field-row mb-4">
+        <div class="field-group mw-lg">
             <label class="field-label" for="admin-sessions-search">{{ __('ui.common.search') }}</label>
             <input class="field-input" type="search" id="admin-sessions-search" data-sessions-search placeholder="{{ __('ui.admin.sessions_search_placeholder') }}">
         </div>
 
-        <div class="field-group" style="max-width:200px;">
+        <div class="field-group mw-md">
             <label class="field-label" for="admin-sessions-status">{{ __('ui.common.status') }}</label>
             <div class="select-field">
                 <select class="field-select" id="admin-sessions-status" data-sessions-status>

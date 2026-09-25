@@ -5,6 +5,7 @@ import { t } from './i18n';
 import {
     markNotificationReadAndOpen,
     notificationItemHtml,
+    pluralKey,
 } from './notification-renderers';
 import { playNotificationSound } from './notification-sound';
 import { emptyState } from './skeleton';
@@ -19,12 +20,11 @@ import { getUserSettings } from './user-settings-cache';
  * everything after that. No polling loop.
  */
 export function initNotificationBell(api, user) {
-    const badge = document.querySelector('[data-notif-badge]');
     const list = document.querySelector('[data-notif-list]');
     const markAllBtn = document.querySelector('[data-notif-mark-all]');
     const dropdown = document.querySelector('[data-notif-dropdown]');
 
-    if (!badge || !list || !user) {
+    if (!list || !user) {
         return;
     }
 
@@ -41,10 +41,37 @@ export function initNotificationBell(api, user) {
         })
         .catch(() => {});
 
+    /**
+     * Every unread indicator in the chrome: the bell dot, the tab-bar dot,
+     * the count next to "Notifications" in the account menu
+     * (`[data-notif-badge-count]`) and the popover's "N new" pill.
+     */
     function updateBadge(count) {
         unreadCount = Math.max(0, count);
-        badge.textContent = unreadCount > 99 ? '99+' : String(unreadCount);
-        badge.hidden = unreadCount === 0;
+
+        const label = unreadCount > 99 ? '99+' : String(unreadCount);
+
+        document.querySelectorAll('[data-notif-badge]').forEach((el) => {
+            el.hidden = unreadCount === 0;
+
+            if (el.hasAttribute('data-notif-badge-count')) {
+                el.textContent = label;
+            }
+        });
+
+        // "1 новое" / "3 новых" / "5 новых" — the plural form for the count.
+        document.querySelectorAll('[data-notif-new-count]').forEach((el) => {
+            el.hidden = unreadCount === 0;
+            el.textContent = t(
+                pluralKey('notifications.new_count_forms', unreadCount),
+                { count: label },
+            );
+        });
+
+        // "Read all" has nothing to do once everything is read.
+        if (markAllBtn) {
+            markAllBtn.disabled = unreadCount === 0;
+        }
     }
 
     function maybeAlert(notification) {

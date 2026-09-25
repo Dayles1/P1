@@ -33,7 +33,7 @@
                 title="{{ __('ui.theme.label') }}"
                 data-theme-picker-trigger
             >
-                ◐
+                <x-blade.u-i.icon name="sun" size="18" />
             </button>
 
             {{-- LANGUAGE PICKER --}}
@@ -54,7 +54,7 @@
                         data-locale-option="{{ $localeOption }}"
                     >
                         <span>{{ __('ui.locale.' . $localeOption) }}</span>
-                        <span class="dropdown__check" aria-hidden="true">✓</span>
+                        <x-blade.u-i.icon name="check" size="16" class="dropdown__check" />
                     </button>
                 @endforeach
             </x-blade.u-i.dropdown>
@@ -88,23 +88,23 @@
                 <x-blade.u-i.dropdown align="right" data-notif-dropdown>
                     <x-slot:trigger>
                         <span class="icon-btn notif-bell" aria-label="{{ __('ui.notifications.label') }}" title="{{ __('ui.notifications.label') }}">
-                            🔔
-                            <span class="notif-badge" data-notif-badge hidden>0</span>
+                            <x-blade.u-i.icon name="bell" size="18" />
+                            <span class="notif-badge" data-notif-badge data-notif-badge-count hidden>0</span>
                         </span>
                     </x-slot:trigger>
 
                     <div class="notif-dropdown-header">
-                        <span class="dropdown__label" style="padding:0;">{{ __('ui.notifications.label') }}</span>
-                        <button type="button" class="btn btn--ghost btn--sm" style="height:auto; padding:3px 8px; font-size:11px;" data-notif-mark-all>
+                        <span class="dropdown__label p-0">{{ __('ui.notifications.label') }}</span>
+                        <button type="button" class="btn btn--ghost btn--sm notif-dropdown-header__action" data-notif-mark-all>
                             {{ __('ui.notifications.mark_all_read') }}
                         </button>
                     </div>
 
                     <div class="notif-list" data-notif-list>
-                        <div class="skeleton skeleton-row" style="margin:8px;"></div>
+                        <div class="skeleton skeleton-row m-2"></div>
                     </div>
 
-                    <a href="{{ route('notifications') }}" class="dropdown__item" role="menuitem" style="text-align:center; font-weight:700;">
+                    <a href="{{ route('notifications') }}" class="dropdown__item text-center font-bold" role="menuitem">
                         {{ __('ui.notifications.view_all') }}
                     </a>
                 </x-blade.u-i.dropdown>

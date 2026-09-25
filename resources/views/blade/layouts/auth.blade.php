@@ -1,16 +1,25 @@
+@php
+    $appName = config('app.name', 'Laravel');
+    $brandLetter = mb_strtoupper(mb_substr($appName, 0, 1));
+    $showcaseFeatures = [
+        ['icon' => 'chat', 'title' => __('ui.auth.showcase.chat_title'), 'text' => __('ui.auth.showcase.chat_text')],
+        ['icon' => 'shield', 'title' => __('ui.auth.showcase.sessions_title'), 'text' => __('ui.auth.showcase.sessions_text')],
+        ['icon' => 'globe', 'title' => __('ui.auth.showcase.languages_title'), 'text' => __('ui.auth.showcase.languages_text')],
+    ];
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>
-        @yield('title', 'Authentication')
-        · {{ config('app.name', 'Laravel') }}
+        @yield('title', __('ui.auth.page_title'))
+        · {{ $appName }}
     </title>
 
     @include('blade.sections.favicon')
@@ -18,14 +27,12 @@
     @include('blade.sections.theme-bootstrap')
     @include('blade.sections.i18n-bootstrap')
 
-
     {{--
-        app.css supplies the shared `--ui-*` design tokens (all themes) and
-        generic components (icon buttons, dropdown, modal, theme picker) the
-        theme/language pickers below need — auth.css/auth-pages.css layer
-        the auth-specific showcase/card/form styling on top; the two share
-        no class names, so there's nothing to reconcile.
+        app.css brings the tokens and the shared components (fields,
+        buttons, segmented control, alerts, the theme picker modal);
+        auth.css is the two-pane frame, auth-pages.css the form column.
     --}}
+    @fonts
     @vite([
         'resources/css/blade/app/app.css',
         'resources/css/blade/auth/auth.css',
@@ -38,217 +45,108 @@
 </head>
 
 
-<body>
+<body class="auth-body">
+    @include('blade.sections.icons')
 
     <div class="auth-layout">
 
-        {{-- =====================================================
-        LEFT SIDE
-        ===================================================== --}}
+        {{-- SHOWCASE (desktop only, ≥ 1200px) --}}
         <aside class="auth-showcase">
+            <a href="{{ route('home') }}" class="auth-brand auth-brand--inverse">
+                <span class="auth-brand__mark" aria-hidden="true">{{ $brandLetter }}</span>
+                <span class="auth-brand__name">{{ $appName }}</span>
+            </a>
 
-            <div class="auth-showcase__glow
-                   auth-showcase__glow--one"></div>
+            <div class="auth-showcase__body">
+                {{-- Not a heading: the page's own h1 is the first one a screen reader meets. --}}
+                <p class="auth-showcase__title">{{ __('ui.auth.showcase.title') }}</p>
 
-            <div class="auth-showcase__glow
-                   auth-showcase__glow--two"></div>
-
-
-            <div class="auth-showcase__content">
-
-                {{-- LOGO --}}
-                <a href="{{ route('home') }}" class="auth-logo">
-                    <span class="auth-logo__mark">
-                        {{ strtoupper(substr(config('app.name', 'L'), 0, 1)) }}
-                    </span>
-
-                    <span class="auth-logo__name">
-                        {{ config('app.name', 'Laravel') }}
-                    </span>
-                </a>
-
-
-                {{-- MESSAGE --}}
-                <div class="auth-showcase__message">
-
-                    <span class="auth-showcase__badge">
-                        <span class="auth-showcase__badge-dot"></span>
-                        Secure workspace
-                    </span>
-
-                    <h1>
-                        Everything you need,
-                        <span>in one place.</span>
-                    </h1>
-
-                    <p>
-                        A secure and simple way to manage your account,
-                        projects and personal workspace.
-                    </p>
-
-                </div>
-
-
-                {{-- BOTTOM --}}
-                <div class="auth-showcase__bottom">
-
-                    <div class="auth-security">
-
-                        <span class="auth-security__icon">
-                            ✓
-                        </span>
-
-                        <span>
-                            Your data is protected
-                        </span>
-
-                    </div>
-
-                    <span class="auth-copyright">
-                        © {{ date('Y') }}
-                        {{ config('app.name', 'Laravel') }}
-                    </span>
-
-                </div>
-
+                <ul class="auth-features">
+                    @foreach ($showcaseFeatures as $feature)
+                        <li class="auth-feature">
+                            <span class="auth-feature__icon">
+                                <x-blade.u-i.icon :name="$feature['icon']" size="20" />
+                            </span>
+                            <span class="auth-feature__text">
+                                <span class="auth-feature__title">{{ $feature['title'] }}</span>
+                                <span class="auth-feature__desc">{{ $feature['text'] }}</span>
+                            </span>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
 
+            <span class="auth-showcase__copyright">© {{ date('Y') }} {{ $appName }}</span>
         </aside>
 
 
-        {{-- =====================================================
-        RIGHT SIDE
-        ===================================================== --}}
         <main class="auth-main">
 
-            {{-- TOPBAR --}}
+            {{-- TOPBAR: brand (below 1200px), language + theme --}}
             <header class="auth-topbar">
-
-                {{-- Mobile logo --}}
-                <a href="{{ route('home') }}" class="auth-mobile-logo">
-                    <span class="auth-logo__mark">
-                        {{ strtoupper(substr(config('app.name', 'L'), 0, 1)) }}
-                    </span>
-
-                    <span class="auth-logo__name">
-                        {{ config('app.name', 'Laravel') }}
-                    </span>
+                <a href="{{ route('home') }}" class="auth-brand auth-topbar__brand">
+                    <span class="auth-brand__mark" aria-hidden="true">{{ $brandLetter }}</span>
+                    <span class="auth-brand__name">{{ $appName }}</span>
                 </a>
 
-
                 <div class="auth-topbar__actions">
-
-                    {{-- THEME PICKER --}}
-                    <button
-                        type="button"
-                        class="icon-btn"
-                        aria-label="{{ __('ui.theme.label') }}"
-                        title="{{ __('ui.theme.label') }}"
-                        data-theme-picker-trigger
-                    >
-                        ◐
-                    </button>
-
-                    {{-- LANGUAGE PICKER --}}
-                    <x-blade.u-i.dropdown align="right">
-                        <x-slot:trigger>
-                            <span class="icon-btn" aria-label="{{ __('ui.locale.label') }}" title="{{ __('ui.locale.label') }}">
-                                {{ strtoupper(app()->getLocale()) }}
-                            </span>
-                        </x-slot:trigger>
-
-                        <div class="dropdown__label">{{ __('ui.locale.label') }}</div>
-
-                        @foreach (['en', 'ru', 'uz'] as $localeOption)
+                    {{-- Named by what they show (RU / UZ / EN); the full name is the tooltip. --}}
+                    <div class="segmented segmented--inline auth-locale" role="group" aria-label="{{ __('ui.locale.label') }}">
+                        @foreach (['ru', 'uz', 'en'] as $localeOption)
                             <button
                                 type="button"
-                                class="dropdown__item dropdown__item--picker"
-                                role="menuitemradio"
+                                class="segmented__option auth-locale__option"
+                                lang="{{ $localeOption }}"
+                                title="{{ __('ui.locale.' . $localeOption) }}"
+                                aria-pressed="{{ app()->getLocale() === $localeOption ? 'true' : 'false' }}"
                                 data-locale-option="{{ $localeOption }}"
-                            >
-                                <span>{{ __('ui.locale.' . $localeOption) }}</span>
-                                <span class="dropdown__check" aria-hidden="true">✓</span>
-                            </button>
+                            >{{ mb_strtoupper($localeOption) }}</button>
                         @endforeach
-                    </x-blade.u-i.dropdown>
+                    </div>
 
+                    <button
+                        type="button"
+                        class="icon-btn auth-theme-toggle"
+                        aria-label="{{ __('ui.auth.change_theme') }}"
+                        title="{{ __('ui.auth.change_theme') }}"
+                        data-theme-picker-trigger
+                    >
+                        <x-blade.u-i.icon name="moon" size="18" class="auth-theme-toggle__moon" />
+                        <x-blade.u-i.icon name="sun" size="18" class="auth-theme-toggle__sun" />
+                    </button>
                 </div>
-
             </header>
 
 
-            {{-- CONTENT --}}
-            <div class="auth-main__scroll">
+            {{-- FORM COLUMN (a card on tablets) --}}
+            <div class="auth-main__body">
+                <div class="auth-panel">
 
-                <div class="auth-main__content">
+                    @if ($errors->any())
+                        <x-blade.feedback.alert type="error" :dismissible="false" :title="__('ui.common.check_following')" class="auth-panel__alert">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </x-blade.feedback.alert>
+                    @endif
 
-                    <div class="auth-container">
+                    @if (session('status'))
+                        <x-blade.feedback.alert type="success" :dismissible="false" class="auth-panel__alert">
+                            {{ session('status') }}
+                        </x-blade.feedback.alert>
+                    @endif
 
-                        {{-- VALIDATION ERRORS --}}
-                        @if ($errors->any())
+                    @yield('content')
 
-                            <div class="auth-alert auth-alert--error">
-
-                                <div class="auth-alert__icon">
-                                    !
-                                </div>
-
-                                <div class="auth-alert__content">
-
-                                    <strong>
-                                        Please check the following:
-                                    </strong>
-
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>
-                                                {{ $error }}
-                                            </li>
-                                        @endforeach
-                                    </ul>
-
-                                </div>
-
-                            </div>
-
-                        @endif
-
-
-                        {{-- SESSION STATUS --}}
-                        @if (session('status'))
-
-                            <div class="auth-alert auth-alert--success">
-
-                                <div class="auth-alert__icon">
-                                    ✓
-                                </div>
-
-                                <div class="auth-alert__content">
-                                    {{ session('status') }}
-                                </div>
-
-                            </div>
-
-                        @endif
-
-
-                        {{-- CURRENT PAGE --}}
-                        @yield('content')
-
-
-                        {{-- FOOTER --}}
-                        @hasSection('footer')
-
-                            <footer class="auth-footer">
-                                @yield('footer')
-                            </footer>
-
-                        @endif
-
-                    </div>
+                    @hasSection('footer')
+                        <footer class="auth-footer">
+                            @yield('footer')
+                        </footer>
+                    @endif
 
                 </div>
-
             </div>
 
         </main>

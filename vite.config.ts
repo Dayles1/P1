@@ -1,5 +1,4 @@
 import { wayfinder } from '@laravel/vite-plugin-wayfinder';
-import tailwindcss from '@tailwindcss/vite';
 import laravel from 'laravel-vite-plugin';
 import { bunny } from 'laravel-vite-plugin/fonts';
 import { defineConfig } from 'vite';
@@ -8,8 +7,6 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/css/app.css',
-
                 // Auth Blade
                 'resources/css/blade/auth/auth.css',
                 'resources/css/blade/auth/auth-pages.css',
@@ -38,13 +35,14 @@ export default defineConfig({
             refresh: true,
 
             fonts: [
-                bunny('Instrument Sans', {
-                    weights: [400, 500, 600],
+                // Cyrillic for ru, Latin for uz/en — without it every
+                // Cyrillic glyph falls back to the system font.
+                bunny('Onest', {
+                    weights: [400, 500, 600, 700],
+                    subsets: ['latin', 'cyrillic'],
                 }),
             ],
         }),
-
-        tailwindcss(),
 
         wayfinder({
             formVariants: true,

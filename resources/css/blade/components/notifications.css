@@ -1,0 +1,281 @@
+@layer components {
+    /* =========================================================
+       NOTIFICATION BELL
+       -----------------------------------------------------------
+       The header bell shows a dot, not a count — the count lives in the
+       popover header ("N new") and next to "Notifications" in the
+       account menu.
+       ========================================================= */
+    .notif-bell {
+        position: relative;
+    }
+
+    .notif-bell__dot {
+        position: absolute;
+        top: 10px;
+        right: 11px;
+        width: 8px;
+        height: 8px;
+        box-sizing: content-box;
+        border: 2px solid var(--ui-surface);
+        border-radius: var(--ui-radius-full);
+        background: var(--ui-danger);
+    }
+
+    /* Count badge — still used by the public site header's bell. */
+    .notif-badge {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        display: inline-grid;
+        place-items: center;
+        min-width: 16px;
+        height: 16px;
+        padding: 0 4px;
+        border-radius: var(--ui-radius-full);
+        background: var(--ui-danger);
+        color: var(--ui-on-primary);
+        font-size: 10px;
+        font-weight: var(--weight-bold);
+        line-height: 1;
+    }
+
+    .notif-dropdown-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 8px 12px 6px;
+    }
+
+    .notif-dropdown-header .dropdown__label {
+        padding: 0;
+    }
+
+    .notif-dropdown-header__action {
+        height: auto;
+        padding: 3px 8px;
+        font-size: 11px;
+    }
+
+    /* =========================================================
+       NOTIFICATION POPOVER (header dropdown panel)
+       ========================================================= */
+    .dropdown__menu.notif-popover {
+        width: 400px;
+        max-width: calc(100vw - 24px);
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .notif-popover__header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px var(--space-4);
+    }
+
+    .notif-popover__title {
+        margin: 0;
+        font-size: 16px;
+        font-weight: var(--weight-semibold);
+    }
+
+    .notif-popover__action {
+        margin-left: auto;
+        color: var(--ui-primary);
+        font-size: var(--text-sm);
+        font-weight: var(--weight-semibold);
+    }
+
+    .notif-popover__action:hover {
+        color: var(--ui-primary-hover);
+    }
+
+    /* Nothing to read: the "N new" pill is hidden exactly when the
+       unread count is zero (shared/notification-bell.js). */
+    .notif-popover__action:disabled,
+    .notif-popover__header:has(> [data-notif-new-count][hidden])
+        .notif-popover__action {
+        color: var(--ui-text-muted);
+        cursor: default;
+    }
+
+    .notif-popover__footer {
+        display: flex;
+        justify-content: center;
+        padding: var(--space-3);
+        border-top: 1px solid var(--ui-border);
+        color: var(--ui-primary);
+        font-size: var(--text-base);
+        font-weight: var(--weight-semibold);
+    }
+
+    .notif-popover__footer:hover {
+        background: var(--ui-surface-soft);
+        color: var(--ui-primary-hover);
+    }
+
+    .notif-popover .notif-list {
+        min-width: 0;
+        max-width: none;
+        max-height: 420px;
+        overflow-y: auto;
+    }
+
+    .notif-popover .notif-item {
+        border-top: 1px solid var(--ui-border);
+        border-radius: 0;
+    }
+
+    /* The panel is the frame — no dashed box inside it. */
+    .notif-popover .empty-state {
+        margin: 0;
+        padding: var(--space-8) var(--space-4);
+        border: 0;
+        border-top: 1px solid var(--ui-border);
+        border-radius: 0;
+    }
+
+    /* Phone: anchored under the bell, 400px ran off the left edge — span
+       the viewport instead, just below the 60px phone header. */
+    @media (max-width: 639px) {
+        .dropdown__menu.notif-popover {
+            position: fixed;
+            top: calc(60px + var(--space-2));
+            right: var(--space-3);
+            left: var(--space-3);
+            width: auto;
+            max-width: none;
+        }
+
+        .notif-popover .notif-list {
+            max-height: 60dvh;
+        }
+    }
+
+    /* Public site header dropdown keeps its narrower list. */
+    .notif-list {
+        min-width: 320px;
+        max-width: 400px;
+        max-height: 380px;
+        overflow-y: auto;
+    }
+
+    @media (max-width: 520px) {
+        .notif-list {
+            min-width: 0;
+            max-width: none;
+        }
+    }
+
+    /* =========================================================
+       NOTIFICATION ITEM (popover + Notification Center)
+       -----------------------------------------------------------
+       Rendered by shared/notification-renderers.js:
+       icon · one line of text ("<b>Name</b> mentioned you in «Chat»")
+       over a meta line (time, or "module · time") · unread dot.
+       The Notification Center enlarges it (pages/notifications.css).
+       ========================================================= */
+    .notif-item {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-3);
+        width: 100%;
+        padding: var(--space-3) var(--space-4);
+        border-radius: var(--ui-radius-sm);
+        color: var(--ui-text);
+        text-align: left;
+        transition: background 140ms ease;
+    }
+
+    .notif-item:hover {
+        background: var(--ui-surface-soft);
+    }
+
+    .notif-item:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: -2px;
+    }
+
+    .notif-item--unread {
+        background: var(--ui-primary-soft);
+    }
+
+    /* A touch more of the accent than the resting unread tint. */
+    .notif-item--unread:hover {
+        background: color-mix(
+            in srgb,
+            var(--ui-primary) 8%,
+            var(--ui-primary-soft)
+        );
+    }
+
+    /* Dark: the border and the unread tint have almost the same
+       luminance, so dividers between unread rows take a little accent. */
+    [data-theme='dark'] .notif-item--unread {
+        border-top-color: color-mix(
+            in srgb,
+            var(--ui-primary) 22%,
+            var(--ui-border)
+        );
+    }
+
+    .notif-item__icon {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 34px;
+        height: 34px;
+        border-radius: var(--ui-radius-sm);
+        background: var(--hue-amber-bg);
+        color: var(--hue-amber);
+    }
+
+    .notif-item--mention .notif-item__icon {
+        background: var(--hue-blue-bg);
+        color: var(--hue-blue);
+    }
+
+    .notif-item--message .notif-item__icon {
+        background: var(--hue-rose-bg);
+        color: var(--hue-rose);
+    }
+
+    .notif-item__body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        min-width: 0;
+    }
+
+    .notif-item__text {
+        display: -webkit-box;
+        overflow: hidden;
+        font-size: 13.5px;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .notif-item__text strong {
+        font-weight: var(--weight-semibold);
+    }
+
+    .notif-item__meta {
+        color: var(--ui-text-secondary);
+        font-size: 12px;
+        line-height: 1.3;
+    }
+
+    .notif-item__dot {
+        flex-shrink: 0;
+        width: 8px;
+        height: 8px;
+        margin-top: 6px;
+        border-radius: var(--ui-radius-full);
+        background: var(--ui-primary);
+    }
+}

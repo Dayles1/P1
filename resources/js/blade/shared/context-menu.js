@@ -1,7 +1,10 @@
+import { icon } from './icon';
+
 /**
  * Generic right-click (desktop) / long-press (mobile) context menu.
- * Not chat-specific — any `items` array of {label, icon, danger, onClick}
- * works. Only one menu is ever open at a time.
+ * Not chat-specific — any `items` array of {label, icon, danger,
+ * shortcut, onClick} (or {divider: true}) works. Only one menu is ever
+ * open at a time.
  */
 let currentMenu = null;
 let cleanup = null;
@@ -17,14 +20,17 @@ export function openContextMenu(x, y, items) {
     closeContextMenu();
 
     const menu = document.createElement('div');
-    menu.className = 'context-menu';
+    menu.className = 'menu menu--compact menu--floating';
     menu.setAttribute('role', 'menu');
     menu.innerHTML = items
-        .map(
-            (item, index) => `
-            <button type="button" class="context-menu__item ${item.danger ? 'context-menu__item--danger' : ''}" data-index="${index}" role="menuitem">
-                ${item.icon ? `<span aria-hidden="true">${item.icon}</span>` : ''}
+        .map((item, index) =>
+            item.divider
+                ? '<hr class="menu-divider">'
+                : `
+            <button type="button" class="menu-item ${item.danger ? 'menu-item--danger' : ''}" data-index="${index}" role="menuitem">
+                ${item.icon ? icon(item.icon, { size: 16, className: 'menu-item__icon' }) : ''}
                 <span>${item.label}</span>
+                ${item.shortcut ? `<span class="menu-item__kbd">${item.shortcut}</span>` : ''}
             </button>
         `,
         )

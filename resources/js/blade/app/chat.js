@@ -6,6 +6,7 @@ import { openContextMenu, attachLongPress } from '../shared/context-menu';
 import { getEcho } from '../shared/echo';
 import { escapeHtml } from '../shared/forms';
 import { t } from '../shared/i18n';
+import { icon } from '../shared/icon';
 import { renderMessageBody, mentionToken } from '../shared/mentions';
 import { openModal } from '../shared/modal';
 import { bootOnPage } from '../shared/page-boot';
@@ -159,6 +160,16 @@ function boot() {
         return `<span>${prefix}${escapeHtml(last.body || t('chat.attachment_preview'))}</span>`;
     }
 
+    /**
+     * The time part of an API "<date> <time>" stamp. Everything after the
+     * first space, so a 12h time keeps its "PM" instead of being cut to it.
+     */
+    function timeOf(stamp) {
+        const [, ...time] = String(stamp).split(' ');
+
+        return time.join(' ') || String(stamp);
+    }
+
     function renderConversationList() {
         if (!conversations.length) {
             listEl.innerHTML = emptyState(t('chat.empty_list'));
@@ -187,10 +198,10 @@ function boot() {
                     <div class="chat-list-item__body">
                         <div class="chat-list-item__title-row">
                             <span class="chat-list-item__name">
-                                ${conversation.is_pinned ? '<span class="chat-list-item__pin-icon" aria-hidden="true">&#128204;</span>' : ''}
+                                ${conversation.is_pinned ? icon('pin', { size: 14, className: 'chat-list-item__pin-icon' }) : ''}
                                 ${escapeHtml(conversation.title || t('common.unknown'))}
                             </span>
-                            <span class="chat-list-item__time">${conversation.last_message_at ? conversation.last_message_at.split(' ').pop() : ''}</span>
+                            <span class="chat-list-item__time">${conversation.last_message_at ? timeOf(conversation.last_message_at) : ''}</span>
                         </div>
                         <div class="chat-list-item__preview">${conversationSubtitle(conversation)}</div>
                     </div>
@@ -207,7 +218,7 @@ function boot() {
 
     async function loadConversations(search = '') {
         if (!search) {
-            listEl.innerHTML = `<div class="skeleton skeleton-row" style="margin:10px;"></div>`;
+            listEl.innerHTML = `<div class="skeleton skeleton-row m-3"></div>`;
         }
 
         try {
@@ -599,7 +610,7 @@ function boot() {
         );
         const isRead = otherReaders.length > 0;
 
-        return `<span class="chat-bubble__ticks ${isRead ? 'chat-bubble__ticks--read' : ''}" title="${isRead ? t('chat.read') : t('chat.sent')}">${isRead ? '✓✓' : '✓'}</span>`;
+        return `<span class="chat-bubble__ticks ${isRead ? 'chat-bubble__ticks--read' : ''}" title="${isRead ? t('chat.read') : t('chat.sent')}">${icon(isRead ? 'checks' : 'check', { size: 14 })}</span>`;
     }
 
     function attachmentsHtml(message) {
@@ -617,7 +628,7 @@ function boot() {
 
                         return `
                         <a class="chat-attachment-file" href="${a.url}" target="_blank" rel="noopener" download>
-                            <span class="chat-attachment-file__icon" aria-hidden="true">&#128196;</span>
+                            <span class="chat-attachment-file__icon">${icon('file')}</span>
                             <span class="chat-attachment-file__name">${escapeHtml(a.original_name || '')}</span>
                         </a>
                     `;
@@ -671,7 +682,7 @@ function boot() {
             <div class="chat-bubble-row ${message.is_mine ? 'chat-bubble-row--mine' : ''} ${grouped ? 'chat-bubble-row--grouped' : ''}" data-message-id="${message.id}">
                 <div class="chat-bubble-wrap">
                     <div class="chat-bubble" data-bubble="${message.id}">
-                        ${message.is_pinned ? '<span class="chat-bubble__pin-icon" aria-hidden="true">&#128204;</span>' : ''}
+                        ${message.is_pinned ? icon('pin', { size: 12, className: 'chat-bubble__pin-icon' }) : ''}
                         ${!message.is_mine && !grouped ? `<span class="chat-bubble__sender">${escapeHtml(message.sender?.name || '')}</span>` : ''}
                         ${reply}
                         ${message.body ? `<div class="chat-bubble__body">${renderMessageBody(message.body)}</div>` : ''}
@@ -1284,7 +1295,7 @@ function boot() {
                 (file, index) => `
                 <span class="chat-composer__attachment-chip">
                     ${escapeHtml(file.name)}
-                    <button type="button" data-remove-attachment="${index}" aria-label="${t('common.delete')}">&times;</button>
+                    <button type="button" data-remove-attachment="${index}" aria-label="${t('common.delete')}">${icon('x', { size: 14 })}</button>
                 </span>
             `,
             )
@@ -1784,18 +1795,18 @@ function boot() {
         const items = [
             {
                 label: t('chat.reply'),
-                icon: '↩',
+                icon: 'back',
                 onClick: () => setReplyTarget(message),
             },
             {
                 label: t('chat.copy'),
-                icon: '⧉',
+                icon: 'copy',
                 onClick: () =>
                     navigator.clipboard?.writeText(message.body || ''),
             },
             {
                 label: t('chat.react'),
-                icon: '☺',
+                icon: 'smile',
                 onClick: (event) => openReactionPicker(message, event),
             },
         ];
@@ -1803,12 +1814,12 @@ function boot() {
         if (message.is_mine) {
             items.push({
                 label: t('common.edit'),
-                icon: '✎',
+                icon: 'edit',
                 onClick: () => setEditTarget(message),
             });
             items.push({
                 label: t('common.delete'),
-                icon: '🗑',
+                icon: 'trash',
                 danger: true,
                 onClick: () => deleteMessage(message),
             });
@@ -1816,7 +1827,7 @@ function boot() {
 
         items.push({
             label: message.is_pinned ? t('chat.unpin') : t('chat.pin'),
-            icon: '📌',
+            icon: 'pin',
             onClick: () => togglePin(message),
         });
 
@@ -1992,8 +2003,8 @@ function boot() {
         box.className = 'lightbox';
         box.innerHTML = `
             <img src="${url}" alt="">
-            <a class="lightbox__download" href="${url}" download aria-label="${t('chat.download')}">&#8681;</a>
-            <button type="button" class="lightbox__close" aria-label="${t('common.close')}">&times;</button>
+            <a class="lightbox__download" href="${url}" download aria-label="${t('chat.download')}">${icon('upload', { className: 'lightbox__download-icon' })}</a>
+            <button type="button" class="lightbox__close" aria-label="${t('common.close')}">${icon('x')}</button>
         `;
         document.body.appendChild(box);
 
@@ -2071,7 +2082,7 @@ function boot() {
             return;
         }
 
-        searchPanelResults.innerHTML = `<div class="skeleton skeleton-row" style="margin:10px;"></div>`;
+        searchPanelResults.innerHTML = `<div class="skeleton skeleton-row m-3"></div>`;
 
         try {
             const params = { q: query, per_page: 30 };
@@ -2184,8 +2195,8 @@ function boot() {
                 <span class="avatar avatar--lg">
                     ${conversation.avatar ? `<img class="avatar__image" src="${conversation.avatar}" alt="">` : `<span class="avatar__initials">${initials(conversation.title)}</span>`}
                 </span>
-                <div style="font-weight:700; font-size:15px;">${escapeHtml(conversation.title || '')}</div>
-                <div style="font-size:12px; color:var(--ui-text-secondary);">${escapeHtml(otherMemberStatus(conversation))}</div>
+                <div class="font-bold text-md">${escapeHtml(conversation.title || '')}</div>
+                <div class="text-xs secondary">${escapeHtml(otherMemberStatus(conversation))}</div>
             </div>
 
             ${
@@ -2196,9 +2207,9 @@ function boot() {
                     ${members
                         .map(
                             (m) => `
-                        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                        <div class="row gap-2 mb-2">
                             <span class="avatar avatar--sm">${m.avatar ? `<img class="avatar__image" src="${m.avatar}" alt="">` : `<span class="avatar__initials">${initials(m.name)}</span>`}</span>
-                            <span style="font-size:13px;">${escapeHtml(m.name)}</span>
+                            <span class="text-sm">${escapeHtml(m.name)}</span>
                         </div>
                     `,
                         )
@@ -2218,7 +2229,7 @@ function boot() {
                                       `<div class="chat-pinned-item" data-details-scroll-to="${m.id}">${escapeHtml(m.body || t('chat.attachment_preview'))}</div>`,
                               )
                               .join('')
-                        : `<div style="font-size:12px; color:var(--ui-text-muted);">${t('chat.no_pinned_messages')}</div>`
+                        : `<div class="text-xs muted">${t('chat.no_pinned_messages')}</div>`
                 }
             </div>
 
@@ -2227,7 +2238,7 @@ function boot() {
                 ${
                     media.length
                         ? `<div class="chat-media-grid">${media.map((a) => `<img src="${a.url}" alt="" data-details-lightbox="${a.url}">`).join('')}</div>`
-                        : `<div style="font-size:12px; color:var(--ui-text-muted);">${t('chat.no_shared_media')}</div>`
+                        : `<div class="text-xs muted">${t('chat.no_shared_media')}</div>`
                 }
             </div>
         `;
@@ -2278,8 +2289,8 @@ function boot() {
                 <div class="field-group">
                     <input class="field-input" type="search" data-user-query placeholder="${t('common.search')}" autocomplete="off">
                 </div>
-                <div data-user-results style="max-height:220px; overflow-y:auto;"></div>
-                ${multi ? '<div data-selected-users style="margin-top:10px; display:flex; flex-wrap:wrap; gap:6px;"></div>' : ''}
+                <div class="user-picker__results" data-user-results></div>
+                ${multi ? '<div class="row row--wrap gap-2 mt-3" data-selected-users></div>' : ''}
             `,
             footerHtml: `
                 <button type="button" class="btn btn--outline btn--sm" data-action="cancel">${t('common.cancel')}</button>
@@ -2304,7 +2315,7 @@ function boot() {
             selectedEl.innerHTML = [...selected.values()]
                 .map(
                     (user) =>
-                        `<span class="pill pill--primary">${escapeHtml(user.name)} <button type="button" data-remove-user="${user.id}" style="border:none;background:none;color:inherit;cursor:pointer;">&times;</button></span>`,
+                        `<span class="pill pill--primary">${escapeHtml(user.name)} <button class="pill__remove" type="button" data-remove-user="${user.id}" aria-label="${t('common.delete')}">${icon('x', { size: 12 })}</button></span>`,
                 )
                 .join('');
 
@@ -2331,12 +2342,12 @@ function boot() {
                         .map(
                             (user) => `
                         <button type="button" class="dropdown__item" data-pick-user='${escapeHtml(JSON.stringify(user))}'>
-                            ${escapeHtml(user.name)} <span style="color:var(--ui-text-muted); font-size:11.5px;">${escapeHtml(user.email)}</span>
+                            ${escapeHtml(user.name)} <span class="text-xs muted">${escapeHtml(user.email)}</span>
                         </button>
                     `,
                         )
                         .join('') ||
-                    `<div class="field-hint" style="padding:8px;">${t('chat.empty_list')}</div>`;
+                    `<div class="field-hint p-2">${t('chat.empty_list')}</div>`;
             } catch {
                 resultsEl.innerHTML = '';
             }
@@ -2595,6 +2606,22 @@ function boot() {
                     );
                 }
             }
+        }
+
+        // "New chat" / "New group" from the header or the command palette
+        // on another page lands here as ?new=private|group. The parameter
+        // is dropped straight away so a reload doesn't reopen the picker.
+        const newParam = new URLSearchParams(window.location.search).get('new');
+
+        if (!match && (newParam === 'private' || newParam === 'group')) {
+            window.history.replaceState(window.history.state, '', '/chat');
+            document
+                .querySelector(
+                    newParam === 'group'
+                        ? '[data-start-group]'
+                        : '[data-start-private]',
+                )
+                ?.click();
         }
     })();
 }

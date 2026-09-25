@@ -15,7 +15,7 @@
         </x-blade.u-i.button>
     </div>
 
-    <div class="field-group" style="max-width: 220px; margin-bottom: 16px;">
+    <div class="field-group mw-md mb-4">
         <label class="field-label" for="sessions-status">{{ __('ui.common.status') }}</label>
         <div class="select-field">
             <select class="field-select" id="sessions-status" data-sessions-status>

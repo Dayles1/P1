@@ -2,7 +2,7 @@
 
 use App\Domain\Identity\Models\User;
 
-test('a user can update their date/time/theme/locale preferences', function () {
+test('a user can update their date/time/theme/accent/locale preferences', function () {
     $user = User::factory()->create();
     $token = $user->createToken('test')->plainTextToken;
     $timezone = timezoneRow('Asia/Tashkent');
@@ -10,14 +10,16 @@ test('a user can update their date/time/theme/locale preferences', function () {
     $response = $this->withHeader('Authorization', "Bearer {$token}")
         ->putJson('/api/profile/settings', [
             'timezone_id' => $timezone->id,
-            'theme' => 'green',
+            'theme' => 'dark',
+            'accent' => 'teal',
             'time_format' => '12h',
             'date_format' => 'd.m.Y',
             'locale' => 'ru',
         ]);
 
     $response->assertOk()
-        ->assertJsonPath('data.theme', 'green')
+        ->assertJsonPath('data.theme', 'dark')
+        ->assertJsonPath('data.accent', 'teal')
         ->assertJsonPath('data.time_format', '12h')
         ->assertJsonPath('data.date_format', 'd.m.Y')
         ->assertJsonPath('data.locale', 'ru');
@@ -106,4 +108,24 @@ test('a currency the app has switched off cannot be chosen', function () {
         ->putJson('/api/profile/settings', ['preferred_currency_id' => $old->id])
         ->assertUnprocessable()
         ->assertJsonValidationErrors('preferred_currency_id');
+});
+
+test('a palette from the retired theme catalog is rejected', function () {
+    $user = User::factory()->create();
+    $token = $user->createToken('test')->plainTextToken;
+
+    $this->withHeader('Authorization', "Bearer {$token}")
+        ->putJson('/api/profile/settings', ['theme' => 'green-dark'])
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors('theme');
+});
+
+test('an invalid accent value is rejected', function () {
+    $user = User::factory()->create();
+    $token = $user->createToken('test')->plainTextToken;
+
+    $this->withHeader('Authorization', "Bearer {$token}")
+        ->putJson('/api/profile/settings', ['accent' => 'green'])
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors('accent');
 });

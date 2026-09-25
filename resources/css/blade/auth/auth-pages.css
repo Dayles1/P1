@@ -1,581 +1,253 @@
-/* =========================================================
-   FORM
-   ========================================================= */
-
-.auth-card {
-    width: 100%;
-}
-
-.auth-card__header {
-    margin-bottom: 30px;
-}
-
-.auth-card__header h1 {
-    margin: 0;
-    color: var(--auth-text);
-    font-size: 32px;
-    line-height: 1.15;
-    letter-spacing: -0.04em;
-    font-weight: 760;
-}
-
-.auth-card__header p {
-    margin: 10px 0 0;
-    color: var(--auth-text-secondary);
-    font-size: 15px;
-    line-height: 1.6;
-}
-
-.auth-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.form-label {
-    color: var(--auth-text);
-    font-size: 13px;
-    font-weight: 650;
-}
-
-.form-input {
-    width: 100%;
-    height: 48px;
-    padding: 0 14px;
-    border: 1px solid var(--auth-border);
-    border-radius: var(--auth-radius);
-    outline: none;
-    background: var(--auth-surface);
-    color: var(--auth-text);
-    box-shadow: var(--auth-shadow-sm);
-
-    transition:
-        border-color 180ms ease,
-        box-shadow 180ms ease,
-        background 220ms ease,
-        color 220ms ease;
-}
-
-.form-input::placeholder {
-    color: var(--auth-text-muted);
-}
-
-.form-input:hover {
-    border-color: var(--auth-border-hover);
-}
-
-.form-input:focus {
-    border-color: var(--auth-border-focus);
-
-    box-shadow: 0 0 0 4px var(--auth-primary-soft);
-}
-
-.form-input.is-invalid {
-    border-color: var(--auth-danger);
-}
-
-.form-error {
-    color: var(--auth-danger);
-    font-size: 12px;
-    line-height: 1.4;
-}
-
-/* =========================================================
-   OPTIONS
-   ========================================================= */
-
-.auth-form__options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    font-size: 13px;
-}
-
-.auth-checkbox {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--auth-text-secondary);
-    cursor: pointer;
-}
-
-.auth-checkbox input {
-    width: 16px;
-    height: 16px;
-    margin: 0;
-    accent-color: var(--auth-primary);
-    cursor: pointer;
-}
-
-.auth-link {
-    color: var(--auth-primary);
-    font-weight: 650;
-    text-decoration: none;
-}
-
-.auth-link:hover {
-    text-decoration: underline;
-}
-
-/* =========================================================
-   BUTTON
-   ========================================================= */
-
-.auth-button {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-    height: 48px;
-
-    border: 0;
-    border-radius: var(--auth-radius);
-
-    background: var(--auth-primary);
-    color: #ffffff;
-
-    font-size: 14px;
-    font-weight: 650;
-
-    cursor: pointer;
-
-    box-shadow: 0 4px 12px
-        color-mix(in srgb, var(--auth-primary) 18%, transparent);
-
-    transition:
-        background 180ms ease,
-        transform 180ms ease,
-        box-shadow 180ms ease;
-}
-
-.auth-button:hover {
-    background: var(--auth-primary-hover);
-
-    transform: translateY(-1px);
-
-    box-shadow: 0 8px 22px
-        color-mix(in srgb, var(--auth-primary) 24%, transparent);
-}
-
-.auth-button:active {
-    transform: translateY(0);
-}
-
-.auth-button:focus-visible {
-    outline: 3px solid var(--auth-primary-soft);
-
-    outline-offset: 2px;
-}
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-.auth-footer {
-    margin-top: 28px;
-    color: var(--auth-text-secondary);
-    font-size: 14px;
-    text-align: center;
-}
-
-.auth-footer a {
-    color: var(--auth-primary);
-    font-weight: 650;
-    text-decoration: none;
-}
-
-.auth-footer a:hover {
-    text-decoration: underline;
-}
-
-/* =========================================================
-   AUTH SPA
-   ========================================================= */
-
-.auth-spa {
-    width: 100%;
-}
-
-.auth-spa__viewport {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    width: 100%;
-    overflow: hidden;
-}
-
-/* =========================================================
-   AUTH PAGE
-   ========================================================= */
-
-.auth-page {
-    grid-column: 1;
-    grid-row: 1;
-
-    width: 100%;
-    min-width: 0;
-
-    opacity: 0;
-    visibility: hidden;
-
-    pointer-events: none;
-
-    z-index: 0;
-
-    /*
-     * Страницы не двигаются.
-     * Меняется только прозрачность.
-     */
-
-    transition: opacity 320ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* =========================================================
-   ACTIVE PAGE
-   ========================================================= */
-
-.auth-page.is-active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    z-index: 1;
-}
-
-/* =========================================================
-   PAGE ENTER
-   ========================================================= */
-
-.auth-page.is-entering {
-    animation: auth-page-fade-in 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
-
-    z-index: 2;
-}
-
-/* =========================================================
-   PAGE LEAVE
-   ========================================================= */
-
-.auth-page.is-leaving {
-    animation: auth-page-fade-out 260ms cubic-bezier(0.4, 0, 1, 1) both;
-
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* =========================================================
-   PAGE FADE IN
-   ========================================================= */
-
-@keyframes auth-page-fade-in {
-    from {
-        opacity: 0;
+@layer pages {
+    /* =========================================================
+       AUTH SPA — one screen on show at a time
+       -----------------------------------------------------------
+       Only the active page is displayed, so each one centres on its
+       own height. auth-pages.js swaps pages in two steps: the old one
+       fades out where it stands (is-leaving, still the active one),
+       then the new one replaces it and fades in (is-entering). The
+       column changes height only while nothing is visible.
+       ========================================================= */
+    .auth-spa,
+    .auth-spa__viewport {
+        width: 100%;
     }
 
-    to {
-        opacity: 1;
-    }
-}
-
-/* =========================================================
-   PAGE FADE OUT
-   ========================================================= */
-
-@keyframes auth-page-fade-out {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-    }
-}
-
-/* =========================================================
-   INPUT WRAPPER
-   ========================================================= */
-
-.form-input-wrapper {
-    position: relative;
-    width: 100%;
-}
-
-.form-input-wrapper .form-input {
-    padding-right: 48px;
-}
-
-/* =========================================================
-   PASSWORD TOGGLE
-   ========================================================= */
-
-.password-toggle {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-
-    display: grid;
-    place-items: center;
-
-    width: 32px;
-    height: 32px;
-
-    padding: 0;
-
-    transform: translateY(-50%);
-
-    border: 0;
-    border-radius: 8px;
-
-    background: transparent;
-    color: var(--auth-text-muted);
-
-    cursor: pointer;
-
-    transition:
-        color 160ms ease,
-        background 160ms ease;
-}
-
-.password-toggle:hover {
-    background: var(--auth-surface-soft);
-    color: var(--auth-text);
-}
-
-/* =========================================================
-   PAGE SWITCH
-   ========================================================= */
-
-.auth-page-switch {
-    margin-top: 4px;
-    color: var(--auth-text-secondary);
-    font-size: 13px;
-    text-align: center;
-}
-
-.auth-page-switch .auth-link {
-    margin-left: 4px;
-}
-
-/* =========================================================
-   GENERAL FORM ERROR
-   ========================================================= */
-
-.auth-form-error {
-    width: 100%;
-
-    padding: 12px 14px;
-
-    margin-bottom: 2px;
-
-    border: 1px solid rgba(217, 45, 32, 0.18);
-
-    border-radius: var(--auth-radius);
-
-    background: var(--auth-danger-bg);
-    color: var(--auth-danger);
-
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-/* =========================================================
-   FORM SUCCESS
-   ========================================================= */
-
-.auth-form-success {
-    width: 100%;
-
-    padding: 12px 14px;
-
-    border: 1px solid rgba(3, 152, 85, 0.18);
-
-    border-radius: var(--auth-radius);
-
-    background: var(--auth-success-bg);
-    color: var(--auth-success);
-
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-/* =========================================================
-   BUTTON LOADING
-   ========================================================= */
-
-.auth-button {
-    position: relative;
-}
-
-.auth-button__loader {
-    position: absolute;
-
-    width: 18px;
-    height: 18px;
-
-    border: 2px solid rgba(255, 255, 255, 0.35);
-
-    border-top-color: #ffffff;
-
-    border-radius: 50%;
-
-    opacity: 0;
-    pointer-events: none;
-}
-
-.auth-button.is-loading {
-    pointer-events: none;
-}
-
-.auth-button.is-loading .auth-button__text {
-    opacity: 0;
-}
-
-.auth-button.is-loading .auth-button__loader {
-    opacity: 1;
-
-    animation: auth-spin 700ms linear infinite;
-}
-
-.auth-button:disabled {
-    cursor: wait;
-}
-
-/* =========================================================
-   LOADING SPINNER
-   ========================================================= */
-
-@keyframes auth-spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* =========================================================
-   CENTERED CARD
-   ========================================================= */
-
-.auth-card--centered {
-    text-align: center;
-}
-
-.auth-card__icon {
-    display: grid;
-    place-items: center;
-
-    width: 52px;
-    height: 52px;
-
-    margin: 0 auto 20px;
-
-    border: 1px solid var(--auth-border);
-
-    border-radius: 16px;
-
-    background: var(--auth-surface-soft);
-    color: var(--auth-primary);
-
-    font-size: 22px;
-}
-
-/* =========================================================
-   INFO BOX
-   ========================================================= */
-
-.auth-info-box {
-    margin-top: 20px;
-
-    padding: 14px 16px;
-
-    border: 1px solid var(--auth-border);
-
-    border-radius: var(--auth-radius);
-
-    background: var(--auth-surface-soft);
-    color: var(--auth-text-secondary);
-
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-    .auth-page,
-    .auth-page.is-entering,
-    .auth-page.is-leaving {
-        animation: none !important;
-        transition: none !important;
-    }
-
-    .auth-page.is-active {
-        opacity: 1 !important;
-        visibility: visible !important;
+    .auth-page {
+        min-width: 0;
     }
 
     .auth-page:not(.is-active) {
-        opacity: 0 !important;
-        visibility: hidden !important;
+        display: none;
     }
-}
 
-/* =========================================================
-   CODE INPUT (login 2FA / passwordless / email verification)
-   ========================================================= */
+    .auth-page.is-leaving {
+        pointer-events: none;
+        animation: auth-page-fade-out 140ms cubic-bezier(0.4, 0, 1, 1) both;
+    }
 
-.code-input {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-}
+    .auth-page.is-entering {
+        animation: auth-page-fade-in 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
 
-.code-input__box {
-    width: 44px;
-    height: 52px;
-    text-align: center;
-    font-size: 22px;
-    font-weight: 600;
-    border: 1px solid var(--auth-border);
-    border-radius: var(--auth-radius);
-    outline: none;
-    background: var(--auth-surface);
-    color: var(--auth-text);
-    box-shadow: var(--auth-shadow-sm);
-    transition:
-        border-color 180ms ease,
-        box-shadow 180ms ease;
-}
+    @keyframes auth-page-fade-in {
+        from {
+            opacity: 0;
+        }
 
-.code-input__box:focus {
-    border-color: var(--auth-border-focus);
-    box-shadow: 0 0 0 4px var(--auth-primary-soft);
-}
+        to {
+            opacity: 1;
+        }
+    }
 
-.code-input__box.is-invalid {
-    border-color: var(--auth-danger);
-}
+    @keyframes auth-page-fade-out {
+        from {
+            opacity: 1;
+        }
 
-.auth-step-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: none;
-    border: none;
-    padding: 0;
-    color: var(--auth-text-secondary, inherit);
-    font-size: 13px;
-    cursor: pointer;
+        to {
+            opacity: 0;
+        }
+    }
+
+    /* =========================================================
+       CARD — icon, heading, form, footer line
+       ========================================================= */
+    .auth-card,
+    .auth-step {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+    }
+
+    .auth-card__icon {
+        display: grid;
+        place-items: center;
+        width: 56px;
+        height: 56px;
+        border-radius: var(--ui-radius-lg);
+        background: var(--ui-primary-soft);
+        color: var(--ui-primary);
+    }
+
+    .auth-card__header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .auth-card__title {
+        margin: 0;
+        color: var(--ui-text);
+        font-size: 28px;
+        font-weight: var(--weight-semibold);
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+    }
+
+    /* auth-pages.js focuses the heading of a screen it has just shown. */
+    .auth-card__title:focus {
+        outline: none;
+    }
+
+    .auth-card__subtitle {
+        margin: 0;
+        color: var(--ui-text-secondary);
+        font-size: var(--text-md);
+        line-height: 1.5;
+    }
+
+    .auth-card__email {
+        color: var(--ui-text);
+        font-weight: var(--weight-semibold);
+        overflow-wrap: anywhere;
+    }
+
+    .auth-card__footer {
+        margin: 0;
+        color: var(--ui-text-secondary);
+        font-size: var(--text-base);
+        text-align: center;
+    }
+
+    /* =========================================================
+       FORM
+       ========================================================= */
+    .auth-form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        margin: 0;
+    }
+
+    /* The form's gap spaces the fields; the field's own margin would double it. */
+    .auth-form .field-group {
+        margin-bottom: 0;
+    }
+
+    .auth-form__options,
+    .auth-form__resend {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-2) var(--space-3);
+        font-size: var(--text-base);
+    }
+
+    .auth-form__options .checkbox {
+        align-items: center;
+        min-height: 32px;
+    }
+
+    .auth-form__options .checkbox__box {
+        margin-top: 0;
+    }
+
+    .auth-form__options .checkbox__label {
+        font-size: var(--text-base);
+        font-weight: var(--weight-regular);
+    }
+
+    /* "or" between the password sign-in and the e-mailed code */
+    .auth-divider {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        color: var(--ui-text-muted);
+        font-size: var(--text-sm);
+    }
+
+    .auth-divider::before,
+    .auth-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--ui-border);
+    }
+
+    /*
+       A wrong code: shared/forms.js marks the hidden code field
+       aria-invalid, and every box turns red until the next try.
+    */
+    .code-input:has([data-code-value][aria-invalid='true']) .code-input__box {
+        border-color: var(--ui-danger);
+    }
+
+    .code-input:has([data-code-value][aria-invalid='true'])
+        .code-input__box:focus {
+        box-shadow: inset 0 0 0 1px var(--ui-danger);
+    }
+
+    /* Status / error banner auth-pages.js puts at the top of a form. */
+    .auth-form .auth-alert {
+        margin-bottom: 0;
+    }
+
+    .auth-alert:has(> .alert__content:empty) {
+        display: none;
+    }
+
+    /* =========================================================
+       LINKS
+       ========================================================= */
+    .auth-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0;
+        border: 0;
+        background: none;
+        color: var(--ui-primary);
+        font-size: var(--text-base);
+        font-weight: var(--weight-semibold);
+        cursor: pointer;
+    }
+
+    .auth-link:hover {
+        color: var(--ui-primary-hover);
+    }
+
+    .auth-link:focus-visible,
+    .auth-resend:focus-visible {
+        border-radius: calc(var(--ui-radius-sm) / 2);
+        outline: 2px solid var(--ui-primary);
+        outline-offset: 2px;
+    }
+
+    /* The sprite has a right arrow only; a back link points left. */
+    .auth-link--back .icon {
+        transform: scaleX(-1);
+    }
+
+    /* Resend: a link when it can be pressed, a quiet countdown until then. */
+    .auth-resend {
+        padding: 0;
+        border: 0;
+        background: none;
+        color: var(--ui-primary);
+        font-size: inherit;
+        font-weight: var(--weight-semibold);
+        cursor: pointer;
+    }
+
+    .auth-resend:hover {
+        color: var(--ui-primary-hover);
+    }
+
+    .auth-resend:disabled {
+        color: var(--ui-text-secondary);
+        font-weight: var(--weight-regular);
+        font-variant-numeric: tabular-nums;
+        cursor: default;
+    }
+
+    /* =========================================================
+       PHONE
+       ========================================================= */
+    @media (max-width: 639px) {
+        .auth-card__title {
+            font-size: 24px;
+        }
+    }
 }
