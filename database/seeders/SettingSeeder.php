@@ -132,7 +132,7 @@ class SettingSeeder extends Seeder
             // SYSTEM
             [
                 'key' => 'system.site_name',
-                'value' => 'IziTruck',
+                'value' => 'P',
                 'type' => Setting::TYPE_STRING,
                 'group' => Setting::GROUP_SYSTEM,
                 'is_public' => true,
