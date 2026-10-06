@@ -18,7 +18,12 @@ Broadcast::channel('online', function (User $user) {
     return ['id' => $user->id, 'name' => $user->name];
 });
 
-/** Only current members (not left) of the conversation may subscribe to its live updates. */
-Broadcast::channel('conversation.{id}', function (User $user, int $id) {
-    return $user->conversations()->where('conversations.id', $id)->exists();
+/**
+ * Only current members (not left) of the conversation may subscribe to its
+ * live updates. Kept for older clients: every chat event now goes to the
+ * members' own `App.Models.User.{id}` channels instead.
+ */
+Broadcast::channel('conversation.{id}', function (User $user, string $id) {
+    return ctype_digit($id)
+        && $user->conversations()->where('conversations.id', (int) $id)->exists();
 });

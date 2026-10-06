@@ -6,6 +6,7 @@ use App\Domain\AccessControl\Models\Permission;
 use App\Domain\AccessControl\Models\Role;
 use App\Domain\Attachment\Models\Attachment;
 use App\Domain\Audit\Traits\RecordsAudits;
+use App\Domain\Ban\Enums\BanStatus;
 use App\Domain\Ban\Models\Ban;
 use App\Domain\Chat\Models\Conversation;
 use App\Domain\Chat\Models\ConversationUser;
@@ -39,6 +40,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'position',
+        'bio',
+        'profile_tags',
+        'phone',
+        'phone_visible',
+        'telegram',
     ];
 
     protected $hidden = [
@@ -50,17 +57,21 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return [
             'email_verified_at' => 'datetime',
+            'profile_tags' => 'array',
+            'phone_visible' => 'boolean',
             'last_seen_at' => 'datetime',
             'password' => 'hashed',
             'created_at' => 'datetime',
         ];
     }
 
+    /** @return BelongsTo<Department, $this> */
     public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class);
     }
 
+    /** @return BelongsToMany<Role, $this> */
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
@@ -84,6 +95,29 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isBanned(): bool
     {
         return $this->ban?->isActive() ?? false;
+    }
+
+    /**
+     * Users without a ban in force — Ban::isActive(), in SQL.
+     */
+    public function scopeNotBanned(Builder $query): Builder
+    {
+        return $query->whereDoesntHave('ban', fn ($ban) => $ban
+            ->where('status', BanStatus::Active)
+            ->whereNull('unbanned_at')
+            ->where(fn ($ends) => $ends->whereNull('ends_at')->orWhere('ends_at', '>', now())));
+    }
+
+    /**
+     * The role shown next to the name: the most privileged one held.
+     */
+    public function primaryRole(): ?Role
+    {
+        $rank = [Role::SUPER_ADMIN => 0, Role::ADMIN => 1, Role::USER => 2];
+
+        return $this->roles
+            ->sortBy(fn (Role $role) => [$rank[$role->code] ?? 3, $role->id])
+            ->first();
     }
 
     /** @return MorphMany<Attachment, $this> */
@@ -111,6 +145,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return UserFactory::new();
     }
 
+    /** @return BelongsToMany<Conversation, $this, ConversationUser> */
     public function conversations(): BelongsToMany
     {
         return $this->belongsToMany(
@@ -126,12 +161,48 @@ class User extends Authenticatable implements MustVerifyEmail
                 'muted_until',
                 'last_read_at',
                 'last_read_message_id',
+                'cleared_up_to_message_id',
                 'is_pinned',
+                'pinned_at',
                 'is_hidden',
+                'archived_at',
                 'unread_count',
+                'marked_unread',
                 'notifications_enabled',
             ])
             ->withTimestamps();
+    }
+
+    /**
+     * People this user has blocked.
+     *
+     * @return BelongsToMany<User, $this>
+     */
+    public function blockedUsers(): BelongsToMany
+    {
+        return $this->belongsToMany(self::class, 'user_blocks', 'user_id', 'blocked_user_id')
+            ->withPivot('created_at');
+    }
+
+    public function hasBlocked(User|int $user): bool
+    {
+        $userId = $user instanceof User ? $user->getKey() : $user;
+
+        return UserBlock::query()
+            ->where('user_id', $this->getKey())
+            ->where('blocked_user_id', $userId)
+            ->exists();
+    }
+
+    /** Whether either of the two has blocked the other. */
+    public function isBlockedWith(User|int $user): bool
+    {
+        $userId = $user instanceof User ? $user->getKey() : $user;
+
+        return UserBlock::query()
+            ->where(fn ($query) => $query->where('user_id', $this->getKey())->where('blocked_user_id', $userId))
+            ->orWhere(fn ($query) => $query->where('user_id', $userId)->where('blocked_user_id', $this->getKey()))
+            ->exists();
     }
 
     /** @return HasMany<Wallet, $this> */

@@ -47,6 +47,7 @@ class LogApiRequest
 
         $user = $request->user();
         $tokenId = $user?->currentAccessToken()?->id;
+        $withoutContent = $this->matches($request, 'request-logging.body_excluded_paths');
 
         $userSessionId = $tokenId
             ? UserSession::query()->where('personal_access_token_id', $tokenId)->value('id')
@@ -57,11 +58,11 @@ class LogApiRequest
         // — an UploadedFile can't be JSON-encoded, and previously any new
         // upload field with a different name (e.g. chat's `attachments`)
         // would reach RequestLog::create() unsanitized and throw.
-        [$body, $bodyTruncated] = $this->sanitizer->capture(
+        [$body, $bodyTruncated] = $withoutContent ? [null, false] : $this->sanitizer->capture(
             $this->sanitizer->sanitizeFields($request->except(array_keys($request->allFiles())))
         );
 
-        [$responseBody, $responseTruncated] = $this->sanitizer->capture(
+        [$responseBody, $responseTruncated] = $withoutContent ? [null, false] : $this->sanitizer->capture(
             $this->sanitizer->sanitizeFields($this->decodeResponse($response))
         );
 
@@ -72,7 +73,7 @@ class LogApiRequest
             'path' => '/'.ltrim($request->path(), '/'),
             'route_name' => $request->route()?->getName(),
             'status_code' => $response->getStatusCode(),
-            'query' => $this->sanitizer->sanitizeFields($request->query()) ?: null,
+            'query' => $withoutContent ? null : ($this->sanitizer->sanitizeFields($request->query()) ?: null),
             'headers' => $this->sanitizer->sanitizeHeaders($request->headers->all()),
             'body' => $body ?: null,
             'body_truncated' => $bodyTruncated,
@@ -99,7 +100,15 @@ class LogApiRequest
 
     private function isExcluded(Request $request): bool
     {
-        foreach (config('request-logging.excluded_paths', []) as $pattern) {
+        return $this->matches($request, 'request-logging.excluded_paths');
+    }
+
+    /**
+     * Whether the request path matches one of the patterns in the config list `$key`.
+     */
+    private function matches(Request $request, string $key): bool
+    {
+        foreach (config($key, []) as $pattern) {
             if ($request->is(ltrim($pattern, '/'))) {
                 return true;
             }

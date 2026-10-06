@@ -21,7 +21,7 @@ test('the profile page renders the hooks its script fills', function () {
         ->and($html)->toContain('data-profile-avatar')
         ->and($html)->toContain('data-profile-role')
         ->and($html)->toContain('data-profile-meta')
-        ->and($html)->toContain('data-profile-groups')
+        ->and($html)->not->toContain('data-profile-groups')
         ->and(substr_count($html, 'data-profile-stat="'))->toBe(3)
         ->and(substr_count($html, 'data-profile-fact="'))->toBe(5);
 });

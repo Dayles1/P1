@@ -36,7 +36,17 @@ export async function fetchCurrentUser() {
 
     currentUserPromise ??= api
         .get('/auth/me')
-        .then(({ data }) => data?.data?.user ?? null)
+        .then(({ data }) => {
+            const user = data?.data?.user ?? null;
+
+            // The header bell starts from this count (no request of its own).
+            if (user && data.data.unread_notifications_count !== undefined) {
+                user.unread_notifications_count =
+                    data.data.unread_notifications_count;
+            }
+
+            return user;
+        })
         .catch((error) => {
             // Only a 401 actually proves the token is dead. A 500, a
             // timeout or a dropped connection says nothing about the

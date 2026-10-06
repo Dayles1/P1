@@ -5,6 +5,7 @@ namespace App\Domain\Identity\Actions\Authentication\Concerns;
 use App\Application\DTO\Identity\DeviceData;
 use App\Domain\Identity\Models\User;
 use App\Domain\Identity\Models\UserSession;
+use App\Domain\Notification\Services\LoginNotifier;
 
 /**
  * Shared by every action that completes a login (password, 2FA
@@ -18,7 +19,7 @@ trait IssuesAuthenticatedSession
     {
         $token = $user->createToken('auth');
 
-        UserSession::create([
+        $session = UserSession::create([
             'user_id' => $user->id,
             'personal_access_token_id' => $token->accessToken->id,
             'ip_address' => $device->ip_address,
@@ -30,6 +31,10 @@ trait IssuesAuthenticatedSession
             'logged_in_at' => now(),
             'last_activity_at' => now(),
         ]);
+
+        // A sign-in from a device/browser/address this account was never
+        // used from before is announced to its owner (see LoginNotifier).
+        app(LoginNotifier::class)->sessionIssued($user, $session);
 
         return [
             'user' => $user,

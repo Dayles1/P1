@@ -70,11 +70,193 @@ const RENDERERS = {
         text: messageLine,
     },
     mention: {
-        icon: 'chat',
+        icon: 'at',
         source: 'notifications.source.chat',
         text: mentionLine,
     },
+    reply: {
+        icon: 'reply',
+        source: 'notifications.source.chat',
+        text: (n) => chatEventLine(n, 'reply', true),
+    },
+    reaction: {
+        icon: 'smile',
+        source: 'notifications.source.chat',
+        text: (n) => chatEventLine(n, 'reaction', true),
+    },
+    added_to_chat: {
+        icon: 'user-plus',
+        source: 'notifications.source.chat',
+        text: addedLine,
+    },
+    pinned: {
+        icon: 'pin',
+        source: 'notifications.source.chat',
+        text: (n) => chatEventLine(n, 'pinned', true),
+    },
+    new_login: {
+        icon: 'shield',
+        source: 'notifications.source.security',
+        text: newLoginLine,
+    },
+    role_changed: {
+        icon: 'key',
+        source: 'notifications.source.account',
+        text: roleChangedLine,
+    },
+    user_report: {
+        icon: 'flag',
+        source: 'notifications.source.moderation',
+        text: userReportLine,
+    },
 };
+
+/** A field of the payload, wherever it sits (a live one arrives flat). */
+function field(notification, key) {
+    return notification.data?.[key] ?? notification[key] ?? null;
+}
+
+/**
+ * Who did it and where, for the chat event types: the actor's name, and
+ * the chat's title when it is a group (a private chat is titled with the
+ * other person's name, which would only repeat it).
+ */
+function chatActor(notification) {
+    const sender = String(
+        field(notification, 'sender_name') ||
+            field(notification, 'actor')?.name ||
+            '',
+    ).trim();
+    const chat = plainField(notification.title);
+    const isPrivate = field(notification, 'conversation_type') === 'private';
+
+    return { sender, chat: !isPrivate && chat !== sender ? chat : '' };
+}
+
+/**
+ * "<b>Name</b> replied to you in «Chat»: preview" and its siblings
+ * (`notifications.text.{key}` / `{key}_in`), with `:emoji` for reactions.
+ */
+function chatEventLine(notification, key, withPreview) {
+    const { sender, chat } = chatActor(notification);
+
+    if (!sender) {
+        return leadLine(notification, t(`notifications.types.${key}`));
+    }
+
+    const lead = interpolate(`notifications.text.${chat ? `${key}_in` : key}`, {
+        name: `<strong>${escapeHtml(sender)}</strong>`,
+        chat: escapeHtml(chat),
+        emoji: escapeHtml(field(notification, 'emoji') || ''),
+    });
+    const preview = withPreview
+        ? plainField(field(notification, 'preview'))
+        : '';
+
+    return preview ? `${lead}: ${escapeHtml(preview)}` : lead;
+}
+
+/** "<b>Name</b> added you to the group «Design»". */
+function addedLine(notification) {
+    const { sender } = chatActor(notification);
+    const key =
+        field(notification, 'conversation_type') === 'channel'
+            ? 'notifications.text.added_channel'
+            : 'notifications.text.added';
+
+    if (!sender) {
+        return leadLine(notification, t('notifications.types.added_to_chat'));
+    }
+
+    return interpolate(key, {
+        name: `<strong>${escapeHtml(sender)}</strong>`,
+        chat: escapeHtml(plainField(notification.title)),
+    });
+}
+
+/** "New sign-in to your account: <b>Chrome, Windows</b> · IP 10.0.0.1". */
+function newLoginLine(notification) {
+    const device =
+        [field(notification, 'browser'), field(notification, 'platform')]
+            .filter(Boolean)
+            .join(', ') ||
+        field(notification, 'device_name') ||
+        '';
+    const ip = field(notification, 'ip_address');
+
+    if (!device && !ip) {
+        return leadLine(notification, t('notifications.types.new_login'));
+    }
+
+    const lead = interpolate('notifications.text.new_login', {
+        device: `<strong>${escapeHtml(device || '—')}</strong>`,
+    });
+
+    return ip
+        ? `${lead} · ${escapeHtml(interpolate('notifications.text.new_login_ip', { ip }))}`
+        : lead;
+}
+
+/** "<b>Name</b> gave you the «Admin» role". */
+function roleChangedLine(notification) {
+    const role = field(notification, 'role_name');
+    const actor = field(notification, 'actor')?.name;
+
+    if (!role) {
+        return leadLine(notification, t('notifications.types.role_changed'));
+    }
+
+    return actor
+        ? interpolate('notifications.text.role_changed', {
+              name: `<strong>${escapeHtml(actor)}</strong>`,
+              role: escapeHtml(role),
+          })
+        : interpolate('notifications.text.role_changed_plain', {
+              role: escapeHtml(role),
+          });
+}
+
+/** "<b>Alex</b> reported <b>Maria</b>: Spam — comment". */
+function userReportLine(notification) {
+    const reporter = field(notification, 'reporter_name');
+    const reported = field(notification, 'user_name');
+
+    if (!reporter || !reported) {
+        return leadLine(notification, t('notifications.types.user_report'));
+    }
+
+    const lead = interpolate('notifications.text.user_report', {
+        reporter: `<strong>${escapeHtml(reporter)}</strong>`,
+        name: `<strong>${escapeHtml(reported)}</strong>`,
+    });
+    const body = plainField(notification.body);
+
+    return body ? `${lead}: ${escapeHtml(body)}` : lead;
+}
+
+/**
+ * A short heading for a toast or an OS popup: "Reply to your message",
+ * "New sign-in"; a system notification keeps its own title.
+ */
+export function notificationTitle(notification) {
+    const type = typeOf(notification);
+
+    if (type === 'system') {
+        return plainField(notification.title) || t('notifications.type_system');
+    }
+
+    return t(`notifications.types.${type}`);
+}
+
+/** The row's line as plain text — for a toast or an OS popup. */
+export function notificationPlainText(notification) {
+    const normalized = normalizeNotification(notification);
+    const holder = document.createElement('div');
+
+    holder.innerHTML = RENDERERS[typeOf(normalized)].text(normalized);
+
+    return holder.textContent.replace(/\s+/g, ' ').trim();
+}
 
 function typeOf(notification) {
     return Object.hasOwn(RENDERERS, notification.type)

@@ -324,7 +324,7 @@ export function initSiteChrome(user) {
     // resolved guest is a legitimate outcome, not a loading state.
     if (arguments.length > 0) {
         initHeaderAuthState(user);
-        initSidebar();
+        initSidebar(user);
 
         return;
     }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Domain\AccessControl\Models\Role;
+use App\Domain\Chat\Models\Conversation;
 use App\Domain\Identity\Models\User;
 
 test('a user can start a private conversation with another user', function () {
@@ -31,6 +32,25 @@ test('starting a private conversation twice reuses the same conversation', funct
     ])->json('data.id');
 
     expect($second)->toBe($first);
+});
+
+test('the other person starting the same private chat gets the existing conversation, not a duplicate', function () {
+    $userA = userWithRole(Role::USER);
+    $userB = userWithRole(Role::USER);
+
+    $first = startPrivateConversation($userA, $userB);
+
+    forgetAuthGuards();
+
+    $this->actingAs($userB, 'sanctum')->postJson('/api/conversations', [
+        'type' => 'private',
+        'user_ids' => [$userA->id],
+    ])
+        ->assertOk()
+        ->assertJsonPath('data.id', $first)
+        ->assertJsonPath('data.type', 'private');
+
+    expect(Conversation::query()->where('type', 'private')->count())->toBe(1);
 });
 
 test('a private conversation requires exactly one recipient', function () {
@@ -94,7 +114,7 @@ test('a non-member cannot send messages to a conversation', function () {
         ->assertNotFound();
 });
 
-test('unread count increments for the recipient and resets when they read it', function () {
+test('unread count increments for the recipient and resets when they mark the chat read', function () {
     $userA = userWithRole(Role::USER);
     $userB = userWithRole(Role::USER);
 
@@ -109,7 +129,11 @@ test('unread count increments for the recipient and resets when they read it', f
     $list = $this->actingAs($userB, 'sanctum')->getJson('/api/conversations');
     expect($list->json('data.0.unread_count'))->toBe(1);
 
+    // Listing has no read side effects; reading is its own call.
     $this->actingAs($userB, 'sanctum')->getJson("/api/conversations/{$conversationId}/messages");
+    expect($this->actingAs($userB, 'sanctum')->getJson('/api/conversations')->json('data.0.unread_count'))->toBe(1);
+
+    $this->actingAs($userB, 'sanctum')->postJson("/api/conversations/{$conversationId}/read")->assertOk();
 
     $listAfter = $this->actingAs($userB, 'sanctum')->getJson('/api/conversations');
     expect($listAfter->json('data.0.unread_count'))->toBe(0);
@@ -130,4 +154,53 @@ test('user search excludes the requester and requires a minimum query length', f
 
     expect($ids)->toContain($target->id);
     expect($ids)->not->toContain($user->id);
+});
+
+/**
+ * A group titled `$title` and a private chat with a user named `$name`,
+ * both with `$owner` in them.
+ *
+ * @return array{group: int, private: int}
+ */
+function conversationsToSearch(User $owner, string $title, string $name): array
+{
+    $group = test()->actingAs($owner, 'sanctum')->postJson('/api/conversations', [
+        'type' => 'group',
+        'title' => $title,
+        'user_ids' => [userWithRole(Role::USER)->id],
+    ])->json('data.id');
+
+    $private = test()->actingAs($owner, 'sanctum')->postJson('/api/conversations', [
+        'type' => 'private',
+        'user_ids' => [userWithRole(Role::USER, ['name' => $name])->id],
+    ])->json('data.id');
+
+    return ['group' => $group, 'private' => $private];
+}
+
+test('searching all conversations finds groups by title and private chats by the other person', function () {
+    $user = userWithRole(Role::USER);
+    $ids = conversationsToSearch($user, 'Product team', 'Maria Kim');
+
+    $byTitle = $this->actingAs($user, 'sanctum')
+        ->getJson('/api/conversations?type=all&search=product')
+        ->assertOk();
+
+    $byName = $this->actingAs($user, 'sanctum')
+        ->getJson('/api/conversations?type=all&search=maria')
+        ->assertOk();
+
+    expect(array_column($byTitle->json('data'), 'id'))->toBe([$ids['group']])
+        ->and(array_column($byName->json('data'), 'id'))->toBe([$ids['private']]);
+});
+
+test('searching groups matches their title', function () {
+    $user = userWithRole(Role::USER);
+    $ids = conversationsToSearch($user, 'Product team', 'Maria Kim');
+
+    $response = $this->actingAs($user, 'sanctum')
+        ->getJson('/api/conversations?type=group&search=team')
+        ->assertOk();
+
+    expect(array_column($response->json('data'), 'id'))->toBe([$ids['group']]);
 });

@@ -4,21 +4,30 @@ namespace App\Http\Controllers\Api\Chat;
 
 use App\Domain\Chat\Actions\DeleteMessage;
 use App\Domain\Chat\Actions\EditMessage;
+use App\Domain\Chat\Actions\ForwardMessages;
 use App\Domain\Chat\Actions\ListMessages;
 use App\Domain\Chat\Actions\MarkMessageRead;
 use App\Domain\Chat\Actions\PinMessage;
 use App\Domain\Chat\Actions\SearchMessages;
 use App\Domain\Chat\Actions\SendMessage;
+use App\Domain\Chat\Actions\ShowMessageInfo;
 use App\Domain\Chat\Actions\ToggleMessageReaction;
-use App\Domain\Chat\Actions\UnpinMessage;
 use App\Domain\Chat\Models\Message;
+use App\Domain\Chat\Services\ChatAccess;
+use App\Domain\Chat\Services\MessageHydrator;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Chat\DeleteMessagesRequest;
+use App\Http\Requests\Chat\ForwardMessagesRequest;
+use App\Http\Requests\Chat\ListMessagesRequest;
+use App\Http\Requests\Chat\MarkConversationReadRequest;
+use App\Http\Requests\Chat\SearchMessagesRequest;
 use App\Http\Requests\Chat\StoreMessageRequest;
 use App\Http\Requests\Chat\ToggleReactionRequest;
 use App\Http\Requests\Chat\UpdateMessageRequest;
 use App\Http\Resources\Chat\MessageResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class MessageController extends Controller
 {
@@ -30,22 +39,19 @@ class MessageController extends Controller
         protected ToggleMessageReaction $toggleMessageReaction,
         protected MarkMessageRead $markMessageRead,
         protected PinMessage $pinMessage,
-        protected UnpinMessage $unpinMessage,
         protected SearchMessages $searchMessages,
     ) {}
 
-    public function index(Request $request, int $conversation): JsonResponse
+    public function index(ListMessagesRequest $request, int $conversation): JsonResponse
     {
-        $filters = $request->validate([
-            'per_page' => ['nullable', 'integer', 'min:1', 'max:100'],
-            'before_id' => ['nullable', 'integer', 'min:1'],
-        ]);
+        $filters = $request->validated();
+        $filters['limit'] ??= $filters['per_page'] ?? null;
 
-        $messages = $this->listMessages->handle($request->user(), $conversation, $filters);
+        $window = $this->listMessages->handle($request->user(), $conversation, $filters);
 
-        return $this->responsePagination(
-            $messages,
-            MessageResource::collection($messages)
+        return $this->success(
+            MessageResource::collection($window['messages']),
+            meta: ['meta' => $window['meta']],
         );
     }
 
@@ -60,7 +66,8 @@ class MessageController extends Controller
         return $this->success(
             new MessageResource($message),
             __('messages.chat.message_sent'),
-            201
+            // A retried send (same client_id) returns the original message.
+            $message->wasRecentlyCreated ? 201 : 200
         );
     }
 
@@ -81,28 +88,80 @@ class MessageController extends Controller
 
     public function destroy(Request $request, int $conversation, int $message): JsonResponse
     {
-        $this->deleteMessage->handle($request->user(), $conversation, $message);
+        $for = $request->validate([
+            'for' => ['nullable', Rule::in([DeleteMessage::FOR_EVERYONE, DeleteMessage::FOR_ME])],
+        ])['for'] ?? DeleteMessage::FOR_EVERYONE;
 
-        return $this->success(message: __('messages.chat.message_deleted'));
+        $result = $this->deleteMessage->handle($request->user(), $conversation, [$message], $for, failWhenMissing: true);
+
+        return $this->success($result, __('messages.chat.message_deleted'));
+    }
+
+    public function destroyMany(DeleteMessagesRequest $request, int $conversation): JsonResponse
+    {
+        $result = $this->deleteMessage->handle(
+            $request->user(),
+            $conversation,
+            $request->validated('message_ids'),
+            $request->validated('for') ?? DeleteMessage::FOR_EVERYONE,
+        );
+
+        return $this->success($result, __('messages.chat.message_deleted'));
+    }
+
+    public function forward(ForwardMessagesRequest $request, ForwardMessages $forwardMessages): JsonResponse
+    {
+        $results = $forwardMessages->handle(
+            $request->user(),
+            (int) $request->validated('from_conversation_id'),
+            $request->validated('message_ids'),
+            $request->validated('conversation_ids'),
+            $request->validated('comment'),
+            (bool) $request->validated('hide_sender'),
+        );
+
+        return $this->success([
+            'conversations' => array_map(fn (array $result): array => [
+                'conversation_id' => $result['conversation_id'],
+                'messages' => MessageResource::collection($result['messages']),
+            ], $results),
+        ], __('messages.chat.message_sent'), 201);
+    }
+
+    public function info(Request $request, int $conversation, int $message, ShowMessageInfo $showMessageInfo): JsonResponse
+    {
+        return $this->success($showMessageInfo->handle($request->user(), $conversation, $message));
     }
 
     public function react(ToggleReactionRequest $request, int $conversation, int $message): JsonResponse
     {
-        $reactions = $this->toggleMessageReaction->handle(
+        $result = $this->toggleMessageReaction->handle(
             $request->user(),
             $conversation,
             $message,
             $request->validated('emoji')
         );
 
-        return $this->success(data: ['reactions' => $reactions]);
+        return $this->success(data: $result);
     }
 
+    /**
+     * Older endpoint: "read up to this message" — the same as `POST …/read {message_id}`.
+     */
     public function markRead(Request $request, int $conversation, int $message): JsonResponse
     {
-        $this->markMessageRead->handle($request->user(), $conversation, $message);
+        $state = $this->markMessageRead->handle($request->user(), $conversation, $message);
 
-        return $this->success(message: __('messages.chat.message_read'));
+        return $this->success($state, __('messages.chat.message_read'));
+    }
+
+    public function read(MarkConversationReadRequest $request, int $conversation): JsonResponse
+    {
+        $messageId = $request->validated('message_id');
+
+        $state = $this->markMessageRead->handle($request->user(), $conversation, $messageId !== null ? (int) $messageId : null);
+
+        return $this->success($state, __('messages.chat.message_read'));
     }
 
     public function pin(Request $request, int $conversation, int $message): JsonResponse
@@ -114,40 +173,39 @@ class MessageController extends Controller
 
     public function unpin(Request $request, int $conversation, int $message): JsonResponse
     {
-        $unpinned = $this->unpinMessage->handle($request->user(), $conversation, $message);
+        $unpinned = $this->pinMessage->unpin($request->user(), $conversation, $message);
 
         return $this->success(new MessageResource($unpinned), __('messages.chat.message_unpinned'));
     }
 
-    public function pinned(Request $request, int $conversation): JsonResponse
+    public function pinned(Request $request, int $conversation, ChatAccess $access, MessageHydrator $hydrator): JsonResponse
     {
-        $request->user()->conversations()->findOrFail($conversation);
+        $membership = $access->membership($request->user(), $conversation);
 
-        $messages = Message::query()
-            ->where('conversation_id', $conversation)
+        $messages = $this->listMessages->visible($membership)
             ->where('is_pinned', true)
-            ->with(['user.avatar'])
-            ->latest('pinned_at')
+            ->orderByDesc('pinned_at')
+            ->orderByDesc('id')
             ->get();
+
+        $hydrator->hydrate($messages);
 
         return $this->success(data: MessageResource::collection($messages));
     }
 
-    public function search(Request $request): JsonResponse
+    public function search(SearchMessagesRequest $request): JsonResponse
     {
-        $data = $request->validate([
-            'q' => ['required', 'string', 'min:1', 'max:200'],
-            'conversation_id' => ['nullable', 'integer'],
-            'per_page' => ['nullable', 'integer', 'min:1', 'max:50'],
+        $results = $this->searchMessages->handle($request->user(), $request->validated());
+
+        $items = collect($results->items())->map(fn (Message $message): array => [
+            ...(new MessageResource($message))->resolve($request),
+            'conversation' => $message->conversation ? [
+                'id' => $message->conversation->id,
+                'type' => $message->conversation->type,
+                'title' => $message->conversation->viewerContext['search_title'] ?? $message->conversation->title,
+            ] : null,
         ]);
 
-        $results = $this->searchMessages->handle(
-            $request->user(),
-            $data['q'],
-            $data['conversation_id'] ?? null,
-            $data['per_page'] ?? 20,
-        );
-
-        return $this->responsePagination($results, MessageResource::collection($results));
+        return $this->responsePagination($results, $items);
     }
 }

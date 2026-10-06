@@ -25,6 +25,7 @@ export default defineConfig({
                 'resources/js/blade/app/currencies.js',
                 'resources/js/blade/app/changelog.js',
                 'resources/js/blade/app/profile.js',
+                'resources/js/blade/app/user-profile.js',
                 'resources/js/blade/app/chat.js',
                 'resources/js/blade/app/admin-users.js',
                 'resources/js/blade/app/admin-sessions.js',

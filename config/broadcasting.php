@@ -43,6 +43,10 @@ return [
             ],
             'client_options' => [
                 // Guzzle client options: https://docs.guzzlephp.org/en/stable/request-options.html
+                // Broadcasts go out inside the request (see LiveUpdates), so a
+                // stopped or unreachable Reverb must fail fast, not stall it.
+                'connect_timeout' => 1,
+                'timeout' => 2,
             ],
         ],
 

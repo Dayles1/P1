@@ -5,6 +5,8 @@ namespace App\Domain\Identity\Actions\User;
 use App\Domain\AccessControl\Models\Role;
 use App\Domain\Identity\Models\User;
 use App\Domain\Identity\Services\SuperAdminGuard;
+use App\Domain\Notification\Notifications\RoleChangedNotification;
+use App\Infrastructure\Broadcasting\LiveUpdates;
 use Illuminate\Validation\ValidationException;
 
 class ChangeUserRole
@@ -26,7 +28,20 @@ class ChangeUserRole
             ]);
         }
 
+        $previousRoles = $target->roles()->get(['roles.id', 'roles.name']);
+
         $target->roles()->sync([$role->id]);
+
+        $changed = $previousRoles->count() !== 1 || (int) $previousRoles->first()->id !== (int) $role->id;
+
+        if ($changed && (int) $actor->id !== (int) $target->id) {
+            LiveUpdates::safely(fn () => $target->notify(new RoleChangedNotification(
+                actor: $actor,
+                roleCode: (string) $role->code,
+                roleName: (string) $role->name,
+                previousRoleName: $previousRoles->first()?->name,
+            )));
+        }
 
         return $target->fresh(['roles']);
     }

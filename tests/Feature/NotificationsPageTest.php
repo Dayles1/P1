@@ -49,10 +49,10 @@ test('the notification list can take focus after a page change', function () {
 test('the notification filters are chips with "all" pressed', function () {
     $html = notificationsContent($this->get('/notifications')->assertOk());
 
-    preg_match_all('/<button type="button" class="chip" data-notif-filter="([a-z]*)" aria-pressed="(true|false)">/', $html, $chips);
+    preg_match_all('/<button type="button" class="chip" data-notif-filter="([a-z_,]*)" aria-pressed="(true|false)">/', $html, $chips);
 
-    expect($chips[1])->toBe(['', 'unread', 'message', 'mention', 'system'])
-        ->and($chips[2])->toBe(['true', 'false', 'false', 'false', 'false'])
+    expect($chips[1])->toBe(['', 'unread', 'message,reply', 'mention', 'reaction', 'added_to_chat,pinned', 'new_login,role_changed', 'system,user_report'])
+        ->and($chips[2])->toBe(['true', 'false', 'false', 'false', 'false', 'false', 'false', 'false'])
         ->and($html)->toContain('role="group" aria-label="'.e(__('ui.notifications.filters_label')).'"');
 });
 

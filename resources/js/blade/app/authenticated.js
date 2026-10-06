@@ -1,6 +1,7 @@
 import '../shared/turbo-boot';
 import '../shared/layout-controller';
 import { bootstrapAppState } from '../shared/app-state';
+import { initOnlineWatch } from '../shared/online-watch';
 import { initSiteChrome } from '../shared/site-chrome';
 
 /*
@@ -29,4 +30,5 @@ bootstrapAppState().then((user) => {
     }
 
     initSiteChrome(user);
+    initOnlineWatch();
 });

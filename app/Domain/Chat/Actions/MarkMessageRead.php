@@ -5,91 +5,136 @@ namespace App\Domain\Chat\Actions;
 use App\Domain\Chat\Events\MessageRead as MessageReadEvent;
 use App\Domain\Chat\Models\ConversationUser;
 use App\Domain\Chat\Models\Message;
-use App\Domain\Chat\Models\MessageRead;
+use App\Domain\Chat\Services\ChatAccess;
+use App\Domain\Chat\Services\UnreadCounter;
 use App\Domain\Identity\Models\User;
 use App\Domain\Notification\Actions\MarkNotificationsRead;
+use App\Domain\Setting\Services\UserDateFormatter;
+use App\Infrastructure\Broadcasting\LiveUpdates;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * "Read up to and including message X" (default: the last message).
+ *
+ * The read pointer only moves forward. Receipts (`message_reads`, with the
+ * time each message was read — the "Подробно" view shows them) are written
+ * in one INSERT … SELECT for the messages between the old and the new
+ * pointer, ignoring rows that already exist, so two tabs reading at once
+ * never collide. The unread count is recomputed (messages from others after
+ * the pointer) instead of zeroed, so reading an older message keeps the
+ * newer ones unread.
+ */
 class MarkMessageRead
 {
     public function __construct(
         private readonly MarkNotificationsRead $markNotificationsRead,
+        private readonly ChatAccess $access,
+        private readonly UnreadCounter $unreadCounter,
+        private readonly UserDateFormatter $formatter,
     ) {}
 
     /**
-     * "Read up to and including message X" — not just message X itself.
-     * A client only ever calls this for the newest message it can see
-     * (opening a conversation, scrolling to the bottom), so without this,
-     * every earlier message in the same batch would never get its own
-     * MessageRead row and would show as unread forever even though the
-     * viewer plainly scrolled past it.
+     * @return array{conversation_id: int, last_read_message_id: int|null, unread_count: int, marked_unread: bool}
      */
-    public function handle(User $user, int $conversationId, int $messageId): void
+    public function handle(User $user, int $conversationId, ?int $messageId = null): array
     {
-        $message = Message::query()
-            ->where('conversation_id', $conversationId)
-            ->findOrFail($messageId);
+        $membership = $this->access->membership($user, $conversationId);
 
-        $newlyReadIds = DB::transaction(function () use ($user, $conversationId, $message) {
-            $now = now();
-
-            $alreadyRead = MessageRead::query()
-                ->where('user_id', $user->id)
-                ->whereIn('message_id', function ($query) use ($conversationId, $message) {
-                    $query->select('id')->from('messages')
-                        ->where('conversation_id', $conversationId)
-                        ->where('id', '<=', $message->id);
-                })
-                ->pluck('message_id');
-
-            $unreadIds = Message::query()
+        if ($messageId !== null) {
+            $messageId = (int) Message::query()
                 ->where('conversation_id', $conversationId)
-                ->where('id', '<=', $message->id)
-                ->where('user_id', '!=', $user->id) // no self-read-receipts on your own messages
-                ->whereNotIn('id', $alreadyRead)
-                ->pluck('id');
-
-            if ($unreadIds->isNotEmpty()) {
-                MessageRead::insert($unreadIds->map(fn ($id) => [
-                    'message_id' => $id,
-                    'user_id' => $user->id,
-                    'read_at' => $now,
-                    'created_at' => $now,
-                    'updated_at' => $now,
-                ])->all());
-            }
-
-            $membership = ConversationUser::query()
-                ->where('conversation_id', $conversationId)
-                ->where('user_id', $user->id)
-                ->first();
-
-            if ($membership && (int) ($membership->last_read_message_id ?? 0) < $message->id) {
-                $membership->update([
-                    'last_read_message_id' => $message->id,
-                    'last_read_at' => $now,
-                    'unread_count' => 0,
-                ]);
-            }
-
-            return $unreadIds;
-        });
-
-        if ($newlyReadIds->isNotEmpty()) {
-            // One event carrying "read up to here" rather than one per
-            // message — the frontend applies it to every local message id
-            // <= this one instead of matching a single id.
-            broadcast(new MessageReadEvent($conversationId, $message->id, $user->id))->toOthers();
+                ->whereKey($messageId)
+                ->valueOrFail('id');
+        } else {
+            $messageId = $membership->conversation->last_message_id !== null
+                ? (int) $membership->conversation->last_message_id
+                : null;
         }
 
-        // Reading a message in Chat should also clear whatever notification
-        // it generated (mention/message) — otherwise the bell keeps
-        // counting something the user has plainly already seen.
-        $this->markNotificationsRead->handle(
-            $user,
-            $user->notifications()
+        return $this->advance($user, $membership, $messageId);
+    }
+
+    /**
+     * @return array{conversation_id: int, last_read_message_id: int|null, unread_count: int, marked_unread: bool}
+     */
+    public function advance(User $user, ConversationUser $membership, ?int $messageId): array
+    {
+        $conversationId = (int) $membership->conversation_id;
+        $now = now();
+
+        [$newlyRead, $wasMarkedUnread, $pointer, $unreadCount] = DB::transaction(function () use ($user, $conversationId, $messageId, $now): array {
+            $locked = ConversationUser::query()
                 ->where('conversation_id', $conversationId)
-                ->where('message_id', '<=', $message->id),
-        );
+                ->where('user_id', $user->id)
+                ->lockForUpdate()
+                ->first();
+
+            $previous = (int) $locked?->last_read_message_id;
+            $wasMarkedUnread = (bool) $locked?->marked_unread;
+            $target = max($previous, (int) $messageId);
+            $newlyRead = 0;
+
+            if ($messageId !== null && $target > $previous) {
+                $newlyRead = DB::table('message_reads')->insertOrIgnoreUsing(
+                    ['message_id', 'user_id', 'read_at', 'created_at', 'updated_at'],
+                    Message::query()
+                        ->where('conversation_id', $conversationId)
+                        ->where('id', '>', $previous)
+                        ->where('id', '<=', $target)
+                        ->where('type', '!=', Message::TYPE_SYSTEM)
+                        ->where(fn ($query) => $query->whereNull('user_id')->orWhere('user_id', '!=', $user->id))
+                        ->select('id')
+                        ->selectRaw('?, ?, ?, ?', [$user->id, $now, $now, $now])
+                        ->toBase(),
+                );
+            }
+
+            ConversationUser::query()
+                ->where('conversation_id', $conversationId)
+                ->where('user_id', $user->id)
+                ->update([
+                    'last_read_message_id' => $target > 0 ? $target : null,
+                    'last_read_at' => $now,
+                    'marked_unread' => false,
+                ]);
+
+            $this->unreadCounter->recompute($conversationId, [(int) $user->id]);
+
+            $unreadCount = (int) ConversationUser::query()
+                ->where('conversation_id', $conversationId)
+                ->where('user_id', $user->id)
+                ->value('unread_count');
+
+            return [$newlyRead, $wasMarkedUnread, $target > 0 ? $target : null, $unreadCount];
+        });
+
+        if ($pointer !== null && ($newlyRead > 0 || $wasMarkedUnread)) {
+            LiveUpdates::toOthers(new MessageReadEvent(
+                $this->access->memberIds($conversationId),
+                $conversationId,
+                (int) $user->id,
+                $pointer,
+                (string) $this->formatter->iso($now, null),
+                $unreadCount,
+            ));
+        }
+
+        if ($pointer !== null) {
+            // Reading a message in Chat also clears the notifications it
+            // caused — otherwise the bell keeps counting what was plainly seen.
+            $this->markNotificationsRead->handle(
+                $user,
+                $user->notifications()
+                    ->where('conversation_id', $conversationId)
+                    ->where('message_id', '<=', $pointer),
+            );
+        }
+
+        return [
+            'conversation_id' => $conversationId,
+            'last_read_message_id' => $pointer,
+            'unread_count' => $unreadCount,
+            'marked_unread' => false,
+        ];
     }
 }

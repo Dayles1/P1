@@ -4,6 +4,7 @@ namespace App\Domain\Notification\Actions;
 
 use App\Domain\Identity\Models\User;
 use App\Domain\Notification\Events\NotificationsMarkedRead;
+use App\Infrastructure\Broadcasting\LiveUpdates;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Notifications\DatabaseNotification;
@@ -36,7 +37,8 @@ class MarkNotificationsRead
 
         DatabaseNotification::query()->whereIn('id', $ids)->update(['read_at' => now()]);
 
-        broadcast(new NotificationsMarkedRead(
+        // Every open tab of this user, the one that asked included.
+        LiveUpdates::toEveryone(new NotificationsMarkedRead(
             userId: $user->id,
             notificationIds: $ids->all(),
             unreadCount: $user->unreadNotifications()->count(),

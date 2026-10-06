@@ -10,7 +10,7 @@
          PROFILE
          -----------------------------------------------------
          How the user looks to others: avatar, name, role and
-         department, a few figures, their groups, and their contact
+         department, a few figures and their contact
          details. On a phone the page is also the way into settings:
          a list of sections under the card, as the account menu has
          them. Filled by resources/js/blade/app/profile.js from
@@ -34,9 +34,15 @@
                 <span class="profile-head__meta" data-profile-meta></span>
             </div>
 
-            <x-blade.u-i.button variant="outline" size="sm" icon="edit" :href="route('settings.profile')" class="profile-head__edit">
-                {{ __('ui.profile_page.edit') }}
-            </x-blade.u-i.button>
+            <div class="profile-head__edit row gap-2">
+                {{-- Filled with /users/{me} by profile.js — the page itself does not know the user. --}}
+                <x-blade.u-i.button variant="ghost" size="sm" icon="eye" href="#" data-profile-public-link hidden>
+                    {{ __('ui.user_profile.how_others_see') }}
+                </x-blade.u-i.button>
+                <x-blade.u-i.button variant="outline" size="sm" icon="edit" :href="route('settings.profile')">
+                    {{ __('ui.profile_page.edit') }}
+                </x-blade.u-i.button>
+            </div>
         </div>
 
         <div class="profile-layout">
@@ -52,16 +58,6 @@
                         </div>
                     @endforeach
                 </div>
-
-                <section class="profile-section" aria-labelledby="profile-groups-title">
-                    <div class="profile-section__head">
-                        <h2 class="profile-section__title" id="profile-groups-title">{{ __('ui.profile_page.groups') }}</h2>
-                        <a href="{{ route('chat') }}" class="btn btn--ghost btn--sm">{{ __('ui.profile_page.all_chats') }}</a>
-                    </div>
-                    <div data-profile-groups>
-                        <x-blade.u-i.skeleton :rows="3" />
-                    </div>
-                </section>
             </div>
 
             <aside class="profile-side">

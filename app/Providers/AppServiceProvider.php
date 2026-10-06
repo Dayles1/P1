@@ -18,7 +18,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // One instance per request (and per queued job), so the settings
+        // table is read once per request instead of once per formatted
+        // date — see SettingService::all().
+        $this->app->scoped(SettingService::class);
     }
 
     /**

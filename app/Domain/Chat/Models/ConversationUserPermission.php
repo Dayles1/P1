@@ -20,6 +20,7 @@ class ConversationUserPermission extends Model
         ];
     }
 
+    /** @return BelongsTo<ConversationUser, $this> */
     public function conversationUser(): BelongsTo
     {
         return $this->belongsTo(ConversationUser::class);

@@ -82,6 +82,15 @@ Route::get('/profile', function () {
     return view('blade.pages.profile');
 })->name('profile');
 
+/*
+ * Anyone's profile as everyone sees it, with a button to message them.
+ * The id is only handed to the page — the page itself loads the user
+ * from /api/users/{id}, which also decides who may see whom.
+ */
+Route::get('/users/{user}', function (string $user) {
+    return view('blade.pages.user-profile', ['userId' => (int) $user]);
+})->whereNumber('user')->name('users.show');
+
 Route::get('/sessions', function () {
     return view('blade.pages.sessions');
 })->name('sessions');

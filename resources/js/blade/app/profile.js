@@ -3,14 +3,10 @@ import { avatarHue, avatarMedia, initials } from '../shared/auth-state';
 import { escapeHtml } from '../shared/forms';
 import { formatNumber, getLocale, t } from '../shared/i18n';
 import { bootOnPage } from '../shared/page-boot';
-import { emptyState } from '../shared/skeleton';
 import { apiErrorMessage, showToast } from '../shared/toast';
 
 /** Admin roles are named next to the name; everyone else has no chip. */
 const ADMIN_ROLES = ['SUPER_ADMIN', 'ADMIN'];
-
-/** Groups listed at most. */
-const GROUPS_LIMIT = 6;
 
 const LANGUAGES = { ru: 'Русский', uz: 'Oʻzbekcha', en: 'English' };
 
@@ -44,7 +40,6 @@ function boot() {
     const roleEl = root.querySelector('[data-profile-role]');
     const metaEl = root.querySelector('[data-profile-meta]');
     const statsEl = root.querySelector('[data-profile-stats]');
-    const groupsEl = root.querySelector('[data-profile-groups]');
 
     function stat(key, value) {
         const el = root.querySelector(`[data-profile-stat="${key}"]`);
@@ -64,6 +59,13 @@ function boot() {
         );
         const timezone = profile.settings?.timezone;
         const time = localTime(timezone?.name);
+
+        const publicLink = root.querySelector('[data-profile-public-link]');
+
+        if (publicLink && profile.id) {
+            publicLink.href = `/users/${profile.id}`;
+            publicLink.hidden = false;
+        }
 
         nameEl.textContent = name;
         avatarEl.className = `avatar profile-head__avatar${profile.avatar?.url ? '' : ` avatar--hue-${avatarHue(name)}`}`;
@@ -96,43 +98,6 @@ function boot() {
         fact('language', LANGUAGES[profile.settings?.locale || getLocale()]);
         fact('timezone', timezone?.label || timezone?.name);
         fact('joined', String(profile.created_at || '').split(' ')[0]);
-    }
-
-    function renderGroups(conversations) {
-        const groups = conversations
-            .filter((conversation) => conversation.type !== 'private')
-            .slice(0, GROUPS_LIMIT);
-
-        if (!groups.length) {
-            groupsEl.innerHTML = emptyState(t('profile_page.no_groups'), {
-                icon: 'users',
-                plain: true,
-            });
-
-            return;
-        }
-
-        groupsEl.innerHTML = `
-            <ul class="profile-groups" role="list">
-                ${groups
-                    .map(
-                        (group) => `
-                    <li>
-                        <a href="/chat/${escapeHtml(group.id)}" class="profile-group">
-                            <span class="profile-group__mark profile-group__mark--${avatarHue(group.title || '')}" aria-hidden="true"></span>
-                            <span class="profile-group__title truncate">${escapeHtml(group.title || '')}</span>
-                            <span class="mono profile-group__time">${escapeHtml(
-                                String(group.last_message_at || '')
-                                    .split(' ')
-                                    .slice(-1)[0],
-                            )}</span>
-                        </a>
-                    </li>
-                `,
-                    )
-                    .join('')}
-            </ul>
-        `;
     }
 
     async function load() {
@@ -171,15 +136,6 @@ function boot() {
                 : null,
         );
         statsEl.removeAttribute('aria-busy');
-
-        if (list) {
-            renderGroups(list);
-        } else {
-            groupsEl.innerHTML = emptyState(t('dashboard.load_failed'), {
-                icon: 'alert',
-                plain: true,
-            });
-        }
     }
 
     load();

@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\Auth\SessionController;
 use App\Http\Controllers\Api\Chat\ConversationController;
 use App\Http\Controllers\Api\Chat\MemberController;
 use App\Http\Controllers\Api\Chat\MessageController;
+use App\Http\Controllers\Api\Chat\PollController;
 use App\Http\Controllers\Api\Chat\TypingController;
 use App\Http\Controllers\Api\Chat\UserSearchController;
 use App\Http\Controllers\Api\Currency\CurrencyController;
@@ -27,6 +28,10 @@ use App\Http\Controllers\Api\Profile\ProfileController;
 use App\Http\Controllers\Api\Profile\UserSettingController;
 use App\Http\Controllers\Api\Setting\LanguageController;
 use App\Http\Controllers\Api\Setting\TimezoneController;
+use App\Http\Controllers\Api\User\UserBlockController;
+use App\Http\Controllers\Api\User\UserDirectoryController;
+use App\Http\Controllers\Api\User\UserReportController;
+use App\Http\Controllers\Api\User\UserSharedController;
 use App\Http\Controllers\Api\Wallet\WalletController;
 use Illuminate\Support\Facades\Route;
 
@@ -141,35 +146,75 @@ Route::middleware('auth.api')->prefix('notifications')->controller(NotificationC
     Route::post('{notification}/read', 'markAsRead');
 });
 
+/*
+| Chat. Rate limits (`chat-*`) are defined in ConversationServiceProvider.
+*/
 Route::middleware('auth.api')->prefix('conversations')->controller(ConversationController::class)->group(function () {
     Route::get('/', 'index');
     Route::post('/', 'store');
-    Route::get('{conversation}', 'show');
-    Route::patch('{conversation}', 'update');
-    Route::delete('{conversation}', 'destroy');
-    Route::post('{conversation}/pin', 'pin');
-    Route::post('{conversation}/unpin', 'unpin');
-
+    Route::get('unread', 'unread');
+    Route::get('saved', 'saved');
+    Route::get('{conversation}', 'show')->whereNumber('conversation');
+    Route::get('{conversation}/summary', 'summary')->whereNumber('conversation');
+    Route::patch('{conversation}', 'update')->whereNumber('conversation');
+    Route::delete('{conversation}', 'destroy')->whereNumber('conversation');
+    Route::post('{conversation}/avatar', 'storeAvatar')->whereNumber('conversation');
+    Route::delete('{conversation}/avatar', 'destroyAvatar')->whereNumber('conversation');
+    Route::patch('{conversation}/settings', 'settings')->whereNumber('conversation');
+    Route::post('{conversation}/clear', 'clear')->whereNumber('conversation');
+    Route::post('{conversation}/leave', 'leave')->whereNumber('conversation');
+    Route::post('{conversation}/pin', 'pin')->whereNumber('conversation');
+    Route::post('{conversation}/unpin', 'unpin')->whereNumber('conversation');
 });
 Route::middleware('auth.api')->prefix('conversations')->controller(MemberController::class)->group(function () {
     Route::get('{conversation}/members', 'index');
     Route::post('{conversation}/members', 'store');
     Route::delete('{conversation}/members', 'destroy');
+    Route::patch('{conversation}/members/{user}', 'updateRole')->whereNumber('user');
+    Route::post('{conversation}/transfer', 'transfer');
 });
 Route::middleware('auth.api')->prefix('conversations')->controller(MessageController::class)->group(function () {
     Route::get('{conversation}/messages', 'index');
-    Route::post('{conversation}/messages', 'store');
+    Route::post('{conversation}/messages', 'store')->middleware('throttle:chat-send');
     Route::get('{conversation}/messages/pinned', 'pinned');
-    Route::patch('{conversation}/messages/{message}', 'update');
-    Route::delete('{conversation}/messages/{message}', 'destroy');
-    Route::post('{conversation}/messages/{message}/reactions', 'react');
-    Route::post('{conversation}/messages/{message}/read', 'markRead');
-    Route::post('{conversation}/messages/{message}/pin', 'pin');
-    Route::delete('{conversation}/messages/{message}/pin', 'unpin');
+    Route::post('{conversation}/messages/delete', 'destroyMany');
+    Route::post('{conversation}/read', 'read');
+    Route::patch('{conversation}/messages/{message}', 'update')->whereNumber('message');
+    Route::delete('{conversation}/messages/{message}', 'destroy')->whereNumber('message');
+    Route::get('{conversation}/messages/{message}/info', 'info')->whereNumber('message');
+    Route::post('{conversation}/messages/{message}/reactions', 'react')->whereNumber('message')->middleware('throttle:chat-reactions');
+    Route::post('{conversation}/messages/{message}/read', 'markRead')->whereNumber('message');
+    Route::post('{conversation}/messages/{message}/pin', 'pin')->whereNumber('message');
+    Route::delete('{conversation}/messages/{message}/pin', 'unpin')->whereNumber('message');
 });
-Route::middleware('auth.api')->get('messages/search', [MessageController::class, 'search']);
-Route::middleware('auth.api')->post('conversations/{conversation}/typing', [TypingController::class, 'store']);
-Route::middleware('auth.api')->get('chat/users/search', [UserSearchController::class, 'index']);
+Route::middleware('auth.api')->prefix('conversations')->controller(PollController::class)->group(function () {
+    Route::post('{conversation}/polls', 'store')->middleware('throttle:chat-send');
+    Route::post('{conversation}/messages/{message}/vote', 'vote')->whereNumber('message');
+    Route::delete('{conversation}/messages/{message}/vote', 'retract')->whereNumber('message');
+    Route::post('{conversation}/messages/{message}/close', 'close')->whereNumber('message');
+});
+Route::middleware('auth.api')->get('messages/search', [MessageController::class, 'search'])->middleware('throttle:chat-search');
+Route::middleware('auth.api')->post('messages/forward', [MessageController::class, 'forward'])->middleware('throttle:chat-send');
+Route::middleware('auth.api')->post('conversations/{conversation}/typing', [TypingController::class, 'store'])->middleware('throttle:chat-typing');
+Route::middleware('auth.api')->get('chat/users/search', [UserSearchController::class, 'index'])->middleware('throttle:chat-search');
+Route::middleware('auth.api')->prefix('users')->controller(UserBlockController::class)->group(function () {
+    Route::get('blocked', 'index');
+    Route::post('{user}/block', 'store')->whereNumber('user');
+    Route::delete('{user}/block', 'destroy')->whereNumber('user');
+});
+
+/*
+| People directory and public profiles — banned accounts are visible to a
+| super admin only.
+*/
+Route::middleware('auth.api')->prefix('users')->controller(UserDirectoryController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('{user}', 'show')->whereNumber('user');
+});
+Route::middleware('auth.api')->prefix('users')->group(function () {
+    Route::get('{user}/shared', [UserSharedController::class, 'index'])->whereNumber('user');
+    Route::post('{user}/report', [UserReportController::class, 'store'])->whereNumber('user')->middleware('throttle:10,1');
+});
 
 /*
 |--------------------------------------------------------------------------

@@ -1,10 +1,11 @@
 import { api } from '../axios';
 import { bootstrapAppState, getState } from '../shared/app-state';
 import { avatarHue, avatarMedia, initials } from '../shared/auth-state';
-import { startCreate } from '../shared/command-palette';
+import { startCreate, toggleTheme } from '../shared/command-palette';
 import { confirmDialog } from '../shared/confirm';
 import { escapeHtml } from '../shared/forms';
-import { getLocale, t, tChoice } from '../shared/i18n';
+import { getLocale, t } from '../shared/i18n';
+import { icon } from '../shared/icon';
 import { plainTextPreview } from '../shared/mentions';
 import { bootOnPage } from '../shared/page-boot';
 import { emptyState, errorState } from '../shared/skeleton';
@@ -12,9 +13,6 @@ import { showToast, apiErrorMessage } from '../shared/toast';
 
 /** How many rows each "recent" card shows, so the cards of a row line up. */
 const RECENT_LIMIT = 5;
-
-/** The checks behind `account.profile_completeness` (GetDashboardSummary). */
-const PROFILE_CHECKS = ['name', 'avatar', 'email', 'timezone'];
 
 /**
  * The date formats a user can pick (UserDateFormatter::availableDateFormats),
@@ -263,40 +261,51 @@ function shortStamp(formatted, calendar, { capitalised = false } = {}) {
     return capitalised ? capitalise(label) : label;
 }
 
+/** The profile steps the bar counts, in the order its chips show. */
+function profileSteps(account) {
+    return {
+        avatar: Boolean(account.has_avatar),
+        email: Boolean(account.email_verified),
+        two_factor: Boolean(account.has_two_factor),
+        timezone: Boolean(account.has_timezone_set),
+    };
+}
+
+/** "+18" / "−4" (percent) for the last day against the one before, or null without a base. */
+function change(current, previous) {
+    if (!(previous > 0)) {
+        return null;
+    }
+
+    const percent = Math.round(((current - previous) / previous) * 100);
+    const sign = percent > 0 ? '+' : percent < 0 ? '−' : '';
+
+    return `${sign}${formatNumber(Math.abs(percent))}`;
+}
+
 /**
- * Everything below used to run once at module top level. Under Turbo
- * Drive, `<main>` (and everything in it) is replaced by fresh server
- * HTML on every navigation, but this module is only ever evaluated once
- * per session — so all of this is wrapped in `boot()` and re-run via
- * `bootOnPage` on every `turbo:load` that lands on /dashboard, re-
- * querying the (new) DOM each time instead of operating on detached
- * nodes from a previous visit.
+ * Everything below is wrapped in `boot()` and re-run via `bootOnPage` on
+ * every `turbo:load` that lands on /dashboard: Turbo replaces `<main>`
+ * on each visit, while this module is evaluated once per session.
  */
 function boot() {
-    const greetingEl = document.querySelector('[data-dashboard-greeting]');
-    const dateEl = document.querySelector('[data-dashboard-date]');
-    const tailEl = document.querySelector('[data-dashboard-tail]');
-    const statGridEl = document.querySelector('[data-stat-grid]');
-    const completenessValueEl = document.querySelector(
-        '[data-completeness-value]',
-    );
-    const completenessCountEl = document.querySelector(
-        '[data-completeness-count]',
-    );
-    const completenessRingEl = document.querySelector(
-        '[data-completeness-ring]',
-    );
-    const instanceStatusEl = document.querySelector('[data-instance-status]');
+    const $ = (selector) => document.querySelector(selector);
+
+    const greetingEl = $('[data-dashboard-greeting]');
+    const dateEl = $('[data-dashboard-date]');
+    const tailEl = $('[data-dashboard-tail]');
+    const statGridEl = $('[data-stat-grid]');
+    const completenessValueEl = $('[data-completeness-value]');
+    const completenessCountEl = $('[data-completeness-count]');
+    const completenessBarEl = $('[data-completeness-bar]');
+    const completenessGoEl = $('[data-completeness-go]');
+    const instanceStatusEl = $('[data-instance-status]');
     const profileCheckEls = document.querySelectorAll('[data-profile-check]');
-    const recentRequestsEl = document.querySelector('[data-recent-requests]');
-    const recentSessionsEl = document.querySelector('[data-recent-sessions]');
-    const recentConversationsEl = document.querySelector(
-        '[data-recent-conversations]',
-    );
-    const instanceOverviewEl = document.querySelector(
-        '[data-instance-overview]',
-    );
-    const instanceStatsEl = document.querySelector('[data-instance-stats]');
+    const recentRequestsEl = $('[data-recent-requests]');
+    const recentSessionsEl = $('[data-recent-sessions]');
+    const recentConversationsEl = $('[data-recent-conversations]');
+    const instanceOverviewEl = $('[data-instance-overview]');
+    const instanceStatsEl = $('[data-instance-stats]');
 
     /*
      * Every widget the summary fills starts as server-rendered skeletons;
@@ -330,43 +339,35 @@ function boot() {
         renderGreeting();
     });
 
-    /** A formatted figure, stepped down a size when it is too long for a narrow column. */
+    /** A figure (or ready text), stepped down a size when it is too long for a narrow column. */
     function figure(value, className) {
-        const formatted = formatNumber(value);
+        const formatted =
+            typeof value === 'string' ? value : formatNumber(value);
         const isLong = formatted.length >= LONG_VALUE_LENGTH;
 
         return `<span class="mono ${className}${isLong ? ` ${className}--long` : ''}">${escapeHtml(formatted)}</span>`;
     }
 
-    function statCard({ label, value, meta = '', tone = '' }) {
+    function statCard({
+        label,
+        value,
+        iconName,
+        meta = '',
+        tone = '',
+        href = '',
+    }) {
+        const tag = href ? 'a' : 'div';
+
         return `
-            <div class="dashboard-stat">
-                <span class="dashboard-stat__label">${escapeHtml(label)}</span>
+            <${tag} class="dashboard-stat"${href ? ` href="${escapeHtml(href)}"` : ''}>
+                <span class="dashboard-stat__top">
+                    <span class="dashboard-stat__label">${escapeHtml(label)}</span>
+                    <span class="dashboard-stat__icon" aria-hidden="true">${icon(iconName, { size: 15 })}</span>
+                </span>
                 ${figure(value, 'dashboard-stat__value')}
                 ${meta ? `<span class="dashboard-stat__meta${tone ? ` dashboard-stat__meta--${tone}` : ''}">${escapeHtml(meta)}</span>` : ''}
-            </div>
+            </${tag}>
         `;
-    }
-
-    /** One line of the instance overview: a status dot, a label, a figure. */
-    function instanceRow(label, value, tone = 'success') {
-        return `
-            <li class="dashboard-instance__row">
-                <span class="dashboard-dot dashboard-dot--${tone}" aria-hidden="true"></span>
-                ${escapeHtml(label)}
-                <span class="mono dashboard-instance__value">${escapeHtml(formatNumber(value))}</span>
-            </li>
-        `;
-    }
-
-    /** "Waiting to be read" (accent) or "All caught up" under an unread count. */
-    function unreadMeta(count) {
-        return count > 0
-            ? {
-                  meta: t('dashboard.stats_meta.unread_waiting'),
-                  tone: 'primary',
-              }
-            : { meta: t('dashboard.stats_meta.all_read') };
     }
 
     function renderGreeting() {
@@ -383,32 +384,24 @@ function boot() {
             : greeting;
     }
 
-    /**
-     * The API returns the percentage and three of its four checks; the
-     * fourth (a name) is whatever the percentage counts beyond those
-     * three, so the chips always agree with the title.
-     */
     function renderProfile(account) {
-        const percent = account.profile_completeness ?? 0;
-        const done = Math.round((percent * PROFILE_CHECKS.length) / 100);
-        const checks = {
-            avatar: Boolean(account.has_avatar),
-            email: Boolean(account.email_verified),
-            timezone: Boolean(account.has_timezone_set),
-        };
-        checks.name = done > Object.values(checks).filter(Boolean).length;
+        const steps = profileSteps(account);
+        const total = Object.keys(steps).length;
+        const done = Object.values(steps).filter(Boolean).length;
+        const percent = Math.round((done / total) * 100);
 
-        const left = PROFILE_CHECKS.length - done;
-
-        completenessValueEl.textContent = `${formatNumber(percent)}%`;
-        completenessCountEl.textContent =
-            left > 0
-                ? tChoice('dashboard.steps_left', left)
-                : t('dashboard.profile_done');
-        completenessRingEl.setAttribute('stroke-dasharray', `${percent} 100`);
+        completenessValueEl.textContent = t('dashboard.profile_filled', {
+            percent: formatNumber(percent),
+        });
+        completenessCountEl.textContent = t('dashboard.profile_steps', {
+            done: formatNumber(done),
+            total: formatNumber(total),
+        });
+        completenessBarEl.value = percent;
+        completenessGoEl.hidden = done === total;
 
         profileCheckEls.forEach((check) => {
-            const isDone = checks[check.dataset.profileCheck];
+            const isDone = steps[check.dataset.profileCheck];
 
             check.dataset.state = isDone ? 'done' : 'todo';
             check.querySelector('[data-profile-check-state]').textContent =
@@ -416,64 +409,110 @@ function boot() {
         });
     }
 
-    /** " — 12 unread." after the greeting, or " — all caught up." */
-    function renderTail(summary) {
-        if (!tailEl) {
-            return;
+    /** " · an overview of your workspace" after the date. */
+    function renderTail() {
+        if (tailEl) {
+            tailEl.textContent = ` · ${t('dashboard.overview_hint')}`;
+        }
+    }
+
+    function errorMeta(requests) {
+        if (!(requests.errors_24h > 0)) {
+            return { meta: t('dashboard.meta_no_errors'), tone: 'success' };
         }
 
-        tailEl.textContent =
-            summary.unread_messages > 0
-                ? t('dashboard.tail_unread', {
-                      unread: tChoice(
-                          'dashboard.unread_messages_count',
-                          summary.unread_messages,
-                      ),
-                  })
-                : t('dashboard.tail_all_read');
+        const status = requests.top_error_status;
+        const reason = dictionary(`dashboard.status_${status}`);
+
+        return {
+            meta: reason
+                ? t('dashboard.meta_error_top', { status, reason })
+                : String(status ?? ''),
+            tone: 'danger',
+        };
     }
 
     function renderStats(summary) {
-        const { sessions, requests } = summary;
+        const { sessions, requests, conversations = {} } = summary;
+        const growth = change(requests.last_24h, requests.previous_24h);
 
         statGridEl.removeAttribute('aria-busy');
         statGridEl.innerHTML = [
             statCard({
-                label: t('dashboard.stats.messages'),
-                value: summary.unread_messages,
-                ...unreadMeta(summary.unread_messages),
-            }),
-            statCard({
-                label: t('dashboard.stats.notifications'),
-                value: summary.unread_notifications,
-                ...unreadMeta(summary.unread_notifications),
-            }),
-            statCard({
-                label: t('dashboard.stats.sessions'),
+                label: t('dashboard.card_sessions'),
                 value: sessions.active,
-                meta: t('dashboard.stats_meta.sessions_total', {
-                    count: formatNumber(sessions.total),
+                iconName: 'monitor',
+                href: '/sessions',
+                meta: t('dashboard.meta_new_this_week', {
+                    count: formatNumber(sessions.new_this_week ?? 0),
                 }),
             }),
             statCard({
-                label: t('dashboard.stats.errors_week'),
-                value: requests.errors_this_week,
-                ...(requests.errors_this_week > 0
+                label: t('dashboard.card_unread'),
+                value: summary.unread_notifications,
+                iconName: 'bell',
+                href: '/notifications',
+                ...(summary.unread_notifications_today > 0
                     ? {
-                          meta: t('dashboard.stats_meta.error_rate', {
-                              percent: percentOf(
-                                  requests.errors_this_week,
-                                  requests.this_week,
+                          meta: t('dashboard.meta_new_today', {
+                              count: formatNumber(
+                                  summary.unread_notifications_today,
                               ),
                           }),
-                          tone: 'danger',
+                          tone: 'primary',
                       }
-                    : {
-                          meta: t('dashboard.stats_meta.no_errors'),
-                          tone: 'success',
-                      }),
+                    : { meta: t('dashboard.meta_nothing_new') }),
+            }),
+            statCard({
+                label: t('dashboard.card_chats'),
+                value: conversations.total ?? 0,
+                iconName: 'chat',
+                href: '/chat',
+                meta: t('dashboard.meta_with_new', {
+                    count: formatNumber(conversations.with_unread ?? 0),
+                }),
+                tone: conversations.with_unread > 0 ? 'primary' : '',
+            }),
+            statCard({
+                label: t('dashboard.card_requests_24h'),
+                value: requests.last_24h ?? 0,
+                iconName: 'activity',
+                ...(growth
+                    ? {
+                          meta: t('dashboard.meta_vs_yesterday', {
+                              percent: growth,
+                          }),
+                          tone: growth.startsWith('+') ? 'success' : '',
+                      }
+                    : {}),
+            }),
+            statCard({
+                label: t('dashboard.card_errors_24h'),
+                value: requests.errors_24h ?? 0,
+                iconName: 'alert',
+                ...errorMeta(requests),
+            }),
+            statCard({
+                label: t('dashboard.card_devices'),
+                value: sessions.devices ?? 0,
+                iconName: 'phone',
+                meta: sessions.latest_device
+                    ? t('dashboard.meta_latest_device', {
+                          device: sessions.latest_device,
+                      })
+                    : '',
             }),
         ].join('');
+    }
+
+    function instanceTile(label, value, meta = '', tone = '') {
+        return `
+            <div class="dashboard-tile">
+                <span class="dashboard-tile__label">${escapeHtml(label)}</span>
+                ${figure(value, 'dashboard-tile__value')}
+                ${meta ? `<span class="dashboard-tile__meta${tone ? ` dashboard-stat__meta--${tone}` : ''}">${escapeHtml(meta)}</span>` : ''}
+            </div>
+        `;
     }
 
     function renderInstance(instance) {
@@ -483,24 +522,82 @@ function boot() {
             return;
         }
 
-        const hasErrors = instance.errors_today > 0;
+        const services = instance.services || {};
+        const failed = instance.queue_failed ?? 0;
 
         instanceOverviewEl.hidden = false;
-        instanceStatusEl.textContent = hasErrors
-            ? t('dashboard.stats_meta.error_rate', {
-                  percent: percentOf(
-                      instance.errors_today,
-                      instance.requests_today,
-                  ),
-              })
-            : t('dashboard.stats_meta.no_errors');
-        instanceStatusEl.dataset.tone = hasErrors ? 'danger' : 'success';
+        instanceStatusEl.textContent = '';
         instanceStatsEl.innerHTML = `
-            <ul class="dashboard-instance" role="list">
-                ${instanceRow(t('dashboard.instance.users'), instance.total_users)}
-                ${instanceRow(t('dashboard.instance.active_sessions'), instance.active_sessions)}
-                ${instanceRow(t('dashboard.instance.requests_today'), instance.requests_today)}
-                ${instanceRow(t('dashboard.instance.errors_today'), instance.errors_today, hasErrors ? 'danger' : 'success')}
+            <div class="dashboard-tiles">
+                ${instanceTile(
+                    t('dashboard.instance_users'),
+                    instance.total_users,
+                    t('dashboard.instance_users_month', {
+                        count: formatNumber(instance.users_this_month ?? 0),
+                    }),
+                )}
+                ${instanceTile(
+                    t('dashboard.instance_active_today'),
+                    instance.active_today ?? 0,
+                    t('dashboard.instance_active_share', {
+                        percent: percentOf(
+                            instance.active_today,
+                            instance.total_users,
+                        ),
+                    }),
+                )}
+                ${instanceTile(
+                    t('dashboard.instance_rpm'),
+                    instance.requests_last_minute ?? 0,
+                    t('dashboard.instance_rpm_peak', {
+                        count: formatNumber(
+                            instance.requests_peak_per_minute ?? 0,
+                        ),
+                    }),
+                )}
+                ${instanceTile(
+                    t('dashboard.instance_5xx'),
+                    `${percentOf(instance.server_errors_24h, instance.requests_24h)}%`,
+                    t('dashboard.instance_5xx_period'),
+                    instance.server_errors_24h > 0 ? 'danger' : '',
+                )}
+                ${instanceTile(
+                    t('dashboard.instance_queue'),
+                    instance.queue_pending ?? 0,
+                    failed > 0
+                        ? t('dashboard.instance_queue_failed', {
+                              count: formatNumber(failed),
+                          })
+                        : t('dashboard.instance_queue_pending'),
+                    failed > 0 ? 'danger' : '',
+                )}
+                ${instanceTile(
+                    t('dashboard.instance_version'),
+                    instance.version || '—',
+                    instance.released_at
+                        ? t('dashboard.instance_released', {
+                              date: shortStamp(instance.released_at, {
+                                  ...calendar,
+                                  order: DATE_ORDERS['Y-m-d'],
+                              }),
+                          })
+                        : '',
+                )}
+            </div>
+            <ul class="dashboard-services" role="list">
+                ${['reverb', 'queue', 'mail', 'database']
+                    .map((service) => {
+                        const up = Boolean(services[service]);
+
+                        return `
+                        <li class="dashboard-service">
+                            <span class="dashboard-dot dashboard-dot--${up ? 'success' : 'danger'}" aria-hidden="true"></span>
+                            ${escapeHtml(t(`dashboard.service_${service}`))}
+                            <span class="sr-only">${escapeHtml(up ? t('dashboard.service_up') : t('dashboard.service_down'))}</span>
+                        </li>
+                    `;
+                    })
+                    .join('')}
             </ul>
         `;
     }
@@ -574,14 +671,23 @@ function boot() {
         );
     }
 
+    function sessionIcon(session) {
+        const kind =
+            `${session.device_type || ''} ${session.platform || ''}`.toLowerCase();
+
+        return /mobile|phone|iphone|android|ios/.test(kind)
+            ? 'phone'
+            : 'monitor';
+    }
+
     /**
      * The current session's badge, an "End" button for the other active
      * ones (named after its device, since every row has one), or an
-     * "Ended" badge. A narrow card shows the button as its icon alone.
+     * "Ended" note.
      */
     function sessionAside(session) {
         if (session.is_current) {
-            return `<span class="dashboard-session__this">${t('dashboard.this_device')}</span>`;
+            return `<span class="badge badge--success">${escapeHtml(t('dashboard.current_session'))}</span>`;
         }
 
         if (session.status === 'active') {
@@ -590,13 +696,13 @@ function boot() {
             });
 
             return `
-                <button type="button" class="btn btn--ghost btn--sm" data-revoke-session="${escapeHtml(session.id)}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">
-                    ${t('dashboard.end_session')}
+                <button type="button" class="btn btn--sm dashboard-session__end" data-revoke-session="${escapeHtml(session.id)}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">
+                    ${escapeHtml(t('dashboard.end_session'))}
                 </button>
             `;
         }
 
-        return `<span class="dashboard-session__ended">${t('dashboard.session_ended')}</span>`;
+        return `<span class="dashboard-session__ended">${escapeHtml(t('dashboard.session_ended'))}</span>`;
     }
 
     function renderRecentSessions(sessions) {
@@ -616,10 +722,10 @@ function boot() {
                     .map(
                         (session) => `
                     <li class="dashboard-session">
-                        <span class="dashboard-dot dashboard-dot--${session.is_current ? 'success' : 'muted'}" aria-hidden="true"></span>
+                        <span class="dashboard-session__icon" aria-hidden="true">${icon(sessionIcon(session), { size: 16 })}</span>
                         <div class="dashboard-session__main">
                             <a href="/sessions/${escapeHtml(session.id)}" class="dashboard-session__device truncate">${escapeHtml(sessionDevice(session))}</a>
-                            <span class="dashboard-session__meta truncate">${escapeHtml([session.ip_address, shortStamp(session.last_activity_at, calendar)].filter(Boolean).join(' · '))}</span>
+                            <span class="dashboard-session__meta truncate">${escapeHtml([session.location || session.ip_address, shortStamp(session.last_activity_at, calendar)].filter(Boolean).join(' · '))}</span>
                         </div>
                         ${sessionAside(session)}
                     </li>
@@ -682,17 +788,21 @@ function boot() {
                     .map((conversation) => {
                         const title = conversation.title || t('common.unknown');
                         const avatar = conversation.avatar
-                            ? `<span class="avatar avatar--xs">${avatarMedia(conversation.avatar)}</span>`
-                            : `<span class="avatar avatar--xs avatar--hue-${avatarHue(title)}"><span class="avatar__initials" aria-hidden="true">${escapeHtml(initials(title))}</span></span>`;
+                            ? `<span class="avatar dashboard-chat__avatar">${avatarMedia(conversation.avatar)}</span>`
+                            : `<span class="avatar dashboard-chat__avatar avatar--hue-${avatarHue(title)}"><span class="avatar__initials" aria-hidden="true">${escapeHtml(initials(title))}</span></span>`;
 
                         return `
                     <li>
                         <a href="/chat/${escapeHtml(conversation.id)}" class="dashboard-chat${conversation.unread_count > 0 ? ' dashboard-chat--unread' : ''}">
                             ${avatar}
-                            <span class="dashboard-chat__title truncate">${escapeHtml(title)}</span>
-                            <span class="dashboard-chat__preview truncate">${escapeHtml(conversationPreview(conversation))}</span>
-                            ${unreadBadge(conversation.unread_count)}
-                            <span class="mono dashboard-chat__time">${escapeHtml(shortStamp(conversation.last_message_at, calendar))}</span>
+                            <span class="dashboard-chat__body">
+                                <span class="dashboard-chat__title truncate">${escapeHtml(title)}</span>
+                                <span class="dashboard-chat__preview truncate">${escapeHtml(conversationPreview(conversation))}</span>
+                            </span>
+                            <span class="dashboard-chat__side">
+                                <span class="mono dashboard-chat__time">${escapeHtml(shortStamp(conversation.last_message_at, calendar, { capitalised: true }))}</span>
+                                ${unreadBadge(conversation.unread_count)}
+                            </span>
                         </a>
                     </li>
                 `;
@@ -705,8 +815,8 @@ function boot() {
     /**
      * Nothing may stay a skeleton, nor look like real data, once the
      * summary has failed: the stat grid offers a retry, every other
-     * widget says it could not load, and the profile card falls back to
-     * its neutral title with no figures and no call to action.
+     * widget says it could not load, and the profile bar falls back to
+     * its neutral title with no figures.
      */
     function renderLoadError() {
         statGridEl.removeAttribute('aria-busy');
@@ -728,9 +838,9 @@ function boot() {
             }
         });
 
-        completenessValueEl.textContent = '—';
+        completenessValueEl.textContent = t('dashboard.profile');
         completenessCountEl.textContent = '';
-        completenessRingEl.setAttribute('stroke-dasharray', '0 100');
+        completenessBarEl.value = 0;
         profileCheckEls.forEach((check) => {
             delete check.dataset.state;
             check.querySelector('[data-profile-check-state]').textContent = '';
@@ -754,7 +864,7 @@ function boot() {
             const summary = data.data;
 
             renderProfile(summary.account);
-            renderTail(summary);
+            renderTail();
             renderStats(summary);
             renderInstance(summary.instance);
             renderRecentRequests(summary.recent_requests || []);
@@ -796,6 +906,8 @@ function boot() {
     document.querySelectorAll('[data-dashboard-new-chat]').forEach((button) => {
         button.addEventListener('click', () => startCreate('private'));
     });
+
+    $('[data-dashboard-toggle-theme]')?.addEventListener('click', toggleTheme);
 
     recentSessionsEl?.addEventListener('click', (event) => {
         const button = event.target.closest('[data-revoke-session]');

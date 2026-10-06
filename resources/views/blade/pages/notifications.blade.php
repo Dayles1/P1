@@ -47,9 +47,12 @@
         <div class="chips notif-filters" role="group" aria-label="{{ __('ui.notifications.filters_label') }}">
             <x-blade.u-i.chip :pressed="true" data-notif-filter="">{{ __('ui.notifications.filters.all') }}</x-blade.u-i.chip>
             <x-blade.u-i.chip data-notif-filter="unread">{{ __('ui.notifications.filters.unread') }}</x-blade.u-i.chip>
-            <x-blade.u-i.chip data-notif-filter="message">{{ __('ui.notifications.filters.message') }}</x-blade.u-i.chip>
+            <x-blade.u-i.chip data-notif-filter="message,reply">{{ __('ui.notifications.filters.message') }}</x-blade.u-i.chip>
             <x-blade.u-i.chip data-notif-filter="mention">{{ __('ui.notifications.filters.mention') }}</x-blade.u-i.chip>
-            <x-blade.u-i.chip data-notif-filter="system">{{ __('ui.notifications.filters.system') }}</x-blade.u-i.chip>
+            <x-blade.u-i.chip data-notif-filter="reaction">{{ __('ui.notifications.filters.reaction') }}</x-blade.u-i.chip>
+            <x-blade.u-i.chip data-notif-filter="added_to_chat,pinned">{{ __('ui.notifications.filters.chat') }}</x-blade.u-i.chip>
+            <x-blade.u-i.chip data-notif-filter="new_login,role_changed">{{ __('ui.notifications.filters.security') }}</x-blade.u-i.chip>
+            <x-blade.u-i.chip data-notif-filter="system,user_report">{{ __('ui.notifications.filters.system') }}</x-blade.u-i.chip>
         </div>
 
         <section class="card notif-feed" aria-label="{{ __('ui.notifications.label') }}">

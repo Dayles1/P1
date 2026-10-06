@@ -3,45 +3,58 @@
 namespace App\Domain\Chat\Actions;
 
 use App\Domain\Chat\Models\Conversation;
+use App\Domain\Chat\Services\ChatAccess;
+use App\Domain\Chat\Services\ConversationBroadcaster;
+use App\Domain\Chat\Services\SystemMessages;
 use App\Domain\Identity\Models\User;
-use Illuminate\Validation\ValidationException;
 
+/**
+ * Renames a group or channel and/or changes its description — creator and
+ * admins only. Each change leaves a service line in the chat.
+ */
 class UpdateConversation
 {
-    public function handle(User $user, Conversation $conversation, array $data): Conversation
+    public function __construct(
+        private readonly ChatAccess $access,
+        private readonly SystemMessages $systemMessages,
+        private readonly ConversationBroadcaster $broadcaster,
+    ) {}
+
+    /**
+     * @param  array{title?: string|null, description?: string|null}  $data
+     */
+    public function handle(User $user, int $conversationId, array $data): Conversation
     {
-        $this->ensureCanManage($user, $conversation);
+        $membership = $this->access->membership($user, $conversationId);
+        $this->access->ensureManager($membership);
+        $conversation = $membership->conversation;
 
-        if (! in_array($conversation->type, ['group', 'channel'], true)) {
-            throw ValidationException::withMessages([
-                'conversation' => __('messages.chat.cannot_update_private_chat'),
-            ]);
+        $changes = [];
+
+        if (array_key_exists('title', $data) && $data['title'] !== null && $data['title'] !== $conversation->title) {
+            $changes['title'] = $data['title'];
         }
 
-        $conversation->update([
-            'title' => $data['title'] ?? $conversation->title,
-            'meta' => $data['meta'] ?? $conversation->meta,
-        ]);
-
-        return $conversation->refresh();
-    }
-
-    protected function ensureCanManage(User $user, Conversation $conversation): void
-    {
-        $pivot = $conversation->participants()
-            ->where('user_id', $user->id)
-            ->first();
-
-        if (! $pivot) {
-            throw ValidationException::withMessages([
-                'conversation' => __('messages.chat.not_a_member'),
-            ]);
+        if (array_key_exists('description', $data) && ($data['description'] ?: null) !== $conversation->description) {
+            $changes['description'] = $data['description'] ?: null;
         }
 
-        if ($pivot->role !== 'creator') {
-            throw ValidationException::withMessages([
-                'conversation' => __('messages.chat.not_allowed'),
-            ]);
+        if ($changes === []) {
+            return $conversation;
         }
+
+        $conversation->update($changes);
+
+        if (array_key_exists('title', $changes)) {
+            $this->systemMessages->post($conversation, $user, SystemMessages::TITLE_CHANGED, ['title' => $changes['title']]);
+        }
+
+        if (array_key_exists('description', $changes)) {
+            $this->systemMessages->post($conversation, $user, SystemMessages::DESCRIPTION_CHANGED, ['description' => (string) $changes['description']]);
+        }
+
+        $this->broadcaster->updated($conversation, 'info');
+
+        return $conversation;
     }
 }
