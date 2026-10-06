@@ -55,12 +55,34 @@ abstract class BaseNotification extends Notification
         $data = $this->toDatabase($notifiable);
         unset($data['type']);
 
-        return new BroadcastMessage($data);
+        // Straight to Reverb in this request, not through the queue, so a
+        // bell rings live without a queue worker.
+        return (new BroadcastMessage($data))->onConnection('sync');
     }
 
     public function broadcastType(): string
     {
         return $this->type();
+    }
+
+    /** The language the recipient reads the app in. */
+    protected function localeFor(User $notifiable): string
+    {
+        return $notifiable->settings?->locale ?: app()->getLocale();
+    }
+
+    /**
+     * Who did it, as every type's `data.actor`.
+     *
+     * @return array{id: int, name: string, avatar: string|null}
+     */
+    public static function actorPayload(User $user): array
+    {
+        return [
+            'id' => (int) $user->id,
+            'name' => (string) $user->name,
+            'avatar' => $user->avatar?->url,
+        ];
     }
 
     // Deliberately no broadcastAs() override — Echo's channel.notification()

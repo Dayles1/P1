@@ -8,14 +8,14 @@
     .menu-item {
         display: flex;
         align-items: center;
-        gap: var(--space-3);
+        gap: 10px;
         width: 100%;
-        height: 40px;
-        padding: 0 10px;
-        border-radius: var(--ui-radius-sm);
+        height: 30px;
+        padding: 0 var(--space-2);
+        border-radius: 6px;
         color: var(--ui-text);
         font-size: var(--text-base);
-        font-weight: var(--weight-medium);
+        font-weight: var(--weight-regular);
         text-align: left;
         white-space: nowrap;
     }
@@ -27,7 +27,13 @@
     }
 
     .menu-item__icon {
-        color: var(--ui-text-secondary);
+        flex-shrink: 0;
+        color: var(--ui-text-muted);
+    }
+
+    .menu-item__count {
+        color: var(--ui-primary);
+        font-size: 11px;
     }
 
     .menu-item__end {
@@ -56,9 +62,8 @@
         flex-direction: column;
         min-width: 240px;
         padding: 6px;
-        border: 1px solid var(--ui-border);
-        border-radius: var(--ui-radius-sm);
-        background: var(--ui-surface);
+        border-radius: var(--ui-radius);
+        background: var(--ui-elevated);
         box-shadow: var(--ui-shadow-md);
     }
 
@@ -70,7 +75,7 @@
 
     .menu--compact .menu-item {
         gap: 10px;
-        height: 36px;
+        height: 30px;
         border-radius: 6px;
     }
 
@@ -80,27 +85,26 @@
 
     .menu-divider {
         height: 1px;
-        margin: 6px 0;
+        margin: 4px 0;
         background: var(--ui-border);
     }
 
     /* =========================================================
-       ACCOUNT MENU (header avatar dropdown)
+       ACCOUNT MENU (the user at the foot of the sidebar)
        ========================================================= */
     .account-trigger {
-        gap: var(--space-2);
-        height: 40px;
-        margin-left: var(--space-1);
-        padding: 0 var(--space-2) 0 var(--space-1);
-        border: 1px solid var(--ui-border);
-        border-radius: 22px;
-        background: var(--ui-surface);
+        gap: 6px;
+        height: var(--control-md);
+        padding: 0 6px 0 3px;
+        border: 1px solid var(--ui-border-hover);
+        border-radius: var(--ui-radius-full);
         color: var(--ui-text-secondary);
-        transition: border-color 160ms ease;
+        transition: background 140ms ease;
     }
 
-    .account-trigger:hover {
-        border-color: var(--ui-border-hover);
+    .account-trigger:hover,
+    .account-trigger[aria-expanded='true'] {
+        background: var(--ui-surface-soft);
     }
 
     .account-trigger:focus-visible {
@@ -109,70 +113,57 @@
     }
 
     .dropdown__menu.account-menu {
-        width: 320px;
+        width: 260px;
         max-width: calc(100vw - 24px);
         max-height: calc(100dvh - 80px);
-        padding: var(--space-2);
         overflow-y: auto;
     }
 
     .account-menu__profile {
         display: flex;
         align-items: center;
-        gap: var(--space-3);
-        padding: 10px;
-    }
-
-    .account-menu__avatar {
-        width: 44px;
-        height: 44px;
-        font-size: 16px;
+        gap: 10px;
+        padding: var(--space-2);
     }
 
     .account-menu__who {
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 2px;
         min-width: 0;
     }
 
     .account-menu__name {
-        font-size: var(--text-md);
-        font-weight: var(--weight-semibold);
+        font-weight: var(--weight-medium);
     }
 
     .account-menu__email {
-        color: var(--ui-text-secondary);
+        color: var(--ui-text-muted);
         font-size: var(--text-sm);
     }
 
     .account-menu__prefs {
         display: flex;
         flex-direction: column;
-        gap: var(--space-2);
-        padding: 6px 10px 10px;
+        gap: 6px;
+        padding: 6px var(--space-2);
     }
 
     .account-menu__label {
-        color: var(--ui-text-secondary);
-        font-size: 12.5px;
-        font-weight: var(--weight-semibold);
+        color: var(--ui-text-muted);
+        font-size: 11.5px;
     }
 
     .account-menu__label + .segmented + .account-menu__label {
-        margin-top: var(--space-1);
+        margin-top: 2px;
     }
 
     @media (max-width: 639px) {
         .account-trigger {
             width: var(--control-md);
-            height: var(--control-md);
-            margin: 0;
             padding: 0;
             justify-content: center;
             border: 0;
-            background: transparent;
         }
 
         .account-trigger__chevron {

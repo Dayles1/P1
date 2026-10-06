@@ -94,7 +94,7 @@ test('sending a message resets the sender\'s unread count and increments it for 
     ]);
 });
 
-test('listing messages marks the conversation as read for the viewer', function () {
+test('marking the conversation read clears the unread count of the viewer, listing alone does not', function () {
     $sender = User::factory()->create();
     [$senderToken] = createUserSession($sender);
     $recipient = User::factory()->create();
@@ -117,6 +117,17 @@ test('listing messages marks the conversation as read for the viewer', function 
     $this->assertDatabaseHas('conversation_users', [
         'conversation_id' => $conversationId,
         'user_id' => $recipient->id,
+        'unread_count' => 1,
+    ]);
+
+    $this->withHeader('Authorization', "Bearer {$recipientToken}")
+        ->postJson("/api/conversations/{$conversationId}/read")
+        ->assertOk()
+        ->assertJsonPath('data.unread_count', 0);
+
+    $this->assertDatabaseHas('conversation_users', [
+        'conversation_id' => $conversationId,
+        'user_id' => $recipient->id,
         'unread_count' => 0,
     ]);
 });
@@ -131,7 +142,7 @@ test('a non-member cannot list the members of a conversation by guessing its id'
 
     $this->withHeader('Authorization', "Bearer {$outsiderToken}")
         ->getJson("/api/conversations/{$conversation->id}/members")
-        ->assertStatus(422);
+        ->assertNotFound();
 });
 
 test('a member can list the members of their own conversation', function () {

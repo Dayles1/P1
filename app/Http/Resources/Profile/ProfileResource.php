@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Profile;
 
+use App\Domain\Identity\Models\User;
 use App\Domain\Setting\Services\UserDateFormatter;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -30,6 +31,8 @@ class ProfileResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
+
+            ...self::publicFields($this->resource),
 
             'department' => $this->department ? [
                 'id' => $this->department->id,
@@ -74,6 +77,23 @@ class ProfileResource extends JsonResource
 
             'created_at' => $formatter->format($this->created_at, $this->resource),
             'updated_at' => $formatter->format($this->updated_at, $this->resource),
+        ];
+    }
+
+    /**
+     * What the person tells colleagues on their public profile.
+     *
+     * @return array{position: string|null, bio: string|null, tags: array<int, string>, phone: string|null, phone_visible: bool, telegram: string|null}
+     */
+    private static function publicFields(User $user): array
+    {
+        return [
+            'position' => $user->position,
+            'bio' => $user->bio,
+            'tags' => array_values($user->profile_tags ?? []),
+            'phone' => $user->phone,
+            'phone_visible' => (bool) $user->phone_visible,
+            'telegram' => $user->telegram,
         ];
     }
 }

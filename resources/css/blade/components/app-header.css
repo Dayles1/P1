@@ -1,6 +1,9 @@
 @layer components {
     /* =========================================================
        APP HEADER
+       -----------------------------------------------------------
+       48px: the page's title on the left, "Create" and the bell on
+       the right. On phones: the app name, a search button, the bell.
        ========================================================= */
     .app-header {
         position: relative;
@@ -8,11 +11,12 @@
         flex-shrink: 0;
         display: flex;
         align-items: center;
-        gap: var(--space-3);
+        gap: 10px;
         height: var(--ui-header-height);
-        padding: 0 var(--space-6);
-        background: var(--ui-surface);
+        padding: 0 var(--space-5);
+        background: var(--ui-bg);
         border-bottom: 1px solid var(--ui-border);
+        font-size: var(--text-base);
     }
 
     .app-header__brand {
@@ -25,51 +29,22 @@
 
     .app-header__brand-name {
         overflow: hidden;
-        font-size: 16px;
-        font-weight: var(--weight-bold);
+        font-size: var(--text-lg);
+        font-weight: var(--weight-semibold);
         text-overflow: ellipsis;
         white-space: nowrap;
     }
 
-    .app-search {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        width: 440px;
+    .app-header__title {
         min-width: 0;
-        height: 40px;
-        padding: 0 var(--space-3);
-        border-radius: var(--ui-radius-sm);
-        background: var(--ui-surface-soft);
+        color: var(--ui-text);
+        font-weight: var(--weight-medium);
+    }
+
+    .app-header__crumb {
         color: var(--ui-text-muted);
-        font-size: var(--text-base);
-        text-align: left;
-        transition: color 160ms ease;
-    }
-
-    .app-search:hover {
-        color: var(--ui-text-secondary);
-    }
-
-    .app-search:focus-visible {
-        outline: 2px solid var(--ui-primary);
-        outline-offset: 2px;
-    }
-
-    .app-search__label {
-        flex: 1;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .app-search__kbd {
-        padding: 2px 6px;
-        border: 1px solid var(--ui-border);
-        border-radius: 5px;
-        color: var(--ui-text-secondary);
-        font-family: inherit;
-        font-size: 12px;
+        font-weight: var(--weight-regular);
+        white-space: pre;
     }
 
     .app-header__actions {
@@ -83,17 +58,11 @@
         display: none;
     }
 
-    @media (max-width: 1199px) {
-        .app-search {
-            width: 320px;
-        }
-    }
-
     @media (max-width: 639px) {
         .app-header {
-            gap: 10px;
-            height: 60px;
-            padding: 0 var(--space-3) 0 var(--space-4);
+            height: 52px;
+            padding: 0 var(--space-2) 0 var(--space-4);
+            background: var(--ui-chrome);
         }
 
         .app-header__brand,
@@ -101,7 +70,7 @@
             display: flex;
         }
 
-        .app-search,
+        .app-header__title,
         .app-header__create {
             display: none;
         }

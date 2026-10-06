@@ -5,63 +5,79 @@ namespace App\Domain\Chat\Actions;
 use App\Domain\Chat\Events\MessageReactionToggled;
 use App\Domain\Chat\Models\Message;
 use App\Domain\Chat\Models\MessageReaction;
+use App\Domain\Chat\Services\ChatAccess;
 use App\Domain\Identity\Models\User;
+use App\Domain\Notification\Services\ChatNotifier;
+use App\Infrastructure\Broadcasting\LiveUpdates;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class ToggleMessageReaction
 {
+    public function __construct(
+        private readonly ChatAccess $access,
+        private readonly ChatNotifier $notifier,
+    ) {}
+
     /**
-     * Returns the objective, viewer-independent summary (who reacted with
-     * what) — deliberately no `mine` flag baked in here, since this exact
-     * same payload is also broadcast to every other participant, for whom
-     * "mine" would mean something different. Each client derives its own
-     * "did I react" by checking `user_ids` against its own user id.
+     * Adds the reaction, or removes it when the member already reacted
+     * with that emoji. Done as delete-or-insert-ignore, so a double click
+     * never trips the unique key.
      *
-     * @return array<int, array{emoji: string, count: int, user_ids: array<int, int>}>
+     * The summary is viewer-independent (who reacted with what) — the same
+     * payload goes to every member; each client checks `user_ids` itself.
+     *
+     * @return array{reactions: array<int, array{emoji: string, count: int, user_ids: array<int, int>}>, added: bool}
      */
     public function handle(User $user, int $conversationId, int $messageId, string $emoji): array
     {
-        // Membership check — being a participant is enough to react, no extra permission.
-        $user->conversations()->findOrFail($conversationId);
+        $this->access->membership($user, $conversationId);
 
         $message = Message::query()
             ->where('conversation_id', $conversationId)
             ->findOrFail($messageId);
 
-        $existing = MessageReaction::query()
-            ->where('message_id', $message->id)
-            ->where('user_id', $user->id)
-            ->where('emoji', $emoji)
-            ->first();
-
-        if ($existing) {
-            $existing->delete();
-        } else {
-            MessageReaction::create([
-                'message_id' => $message->id,
-                'user_id' => $user->id,
-                'emoji' => $emoji,
+        if ($message->isSystem()) {
+            throw ValidationException::withMessages([
+                'emoji' => __('messages.chat.cannot_react_to_system'),
             ]);
         }
 
-        $summary = $this->summarize($message);
+        $removed = MessageReaction::query()
+            ->where('message_id', $message->id)
+            ->where('user_id', $user->id)
+            ->where('emoji', $emoji)
+            ->delete();
 
-        broadcast(new MessageReactionToggled($conversationId, $message->id, $summary))->toOthers();
+        $added = false;
 
-        return $summary;
-    }
-
-    /** @return array<int, array{emoji: string, count: int, user_ids: array<int, int>}> */
-    private function summarize(Message $message): array
-    {
-        return $message->reactions()
-            ->get()
-            ->groupBy('emoji')
-            ->map(fn ($reactions, $emoji) => [
+        if ($removed === 0) {
+            $now = now();
+            $added = DB::table('message_reactions')->insertOrIgnore([
+                'message_id' => $message->id,
+                'user_id' => $user->id,
                 'emoji' => $emoji,
-                'count' => $reactions->count(),
-                'user_ids' => $reactions->pluck('user_id')->all(),
-            ])
-            ->values()
-            ->all();
+                'created_at' => $now,
+                'updated_at' => $now,
+            ]) > 0;
+        }
+
+        $summary = $message->load('reactions')->reactionSummary();
+
+        LiveUpdates::toOthers(new MessageReactionToggled(
+            $this->access->memberIds($conversationId),
+            $conversationId,
+            $message->id,
+            $summary,
+            (int) $user->id,
+            $emoji,
+            $added,
+        ));
+
+        if ($added) {
+            $this->notifier->reactionAdded($user, $message, $emoji);
+        }
+
+        return ['reactions' => $summary, 'added' => $added];
     }
 }

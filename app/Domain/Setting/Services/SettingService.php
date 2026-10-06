@@ -8,20 +8,35 @@ use Illuminate\Support\Facades\Cache;
 
 class SettingService
 {
+    /** @var Collection<string, Setting>|null */
+    private ?Collection $loaded = null;
+
+    /** The request the settings above were read for. */
+    private ?object $loadedFor = null;
+
+    /**
+     * Every setting, keyed by its key — read from the database once per
+     * request. Formatting a single date reads the app timezone from here,
+     * and a page of messages formats dozens of them; reading the table
+     * each time cost about 60 queries per page.
+     *
+     * Bound as scoped (AppServiceProvider), so a queued job starts fresh;
+     * the request check covers the one container serving many requests
+     * (the test suite) and a write made between two of them.
+     *
+     * @return Collection<string, Setting>
+     */
     public function all(): Collection
     {
-        return Setting::query()
-            ->get()
-            ->keyBy('key');
+        $request = app()->bound('request') ? app('request') : null;
+
+        if ($this->loaded === null || $this->loadedFor !== $request) {
+            $this->loaded = Setting::query()->get()->keyBy('key');
+            $this->loadedFor = $request;
+        }
+
+        return $this->loaded;
     }
-    // public function all(): Collection
-    //     {
-    //         return Cache::rememberForever('settings.all', function () {
-    //             return Setting::query()
-    //                 ->get()
-    //                 ->keyBy('key');
-    //         });
-    //     }
 
     public function get(string $key, mixed $default = null): mixed
     {
@@ -58,6 +73,8 @@ class SettingService
 
     public function forget(): void
     {
+        $this->loaded = null;
+
         Cache::forget('settings.all');
     }
 }

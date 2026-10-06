@@ -17,10 +17,13 @@ class SearchUsers
 
         return User::query()
             ->whereKeyNot($requester->id)
-            ->whereDoesntHave('ban')
+            ->notBanned()
             ->where(function ($q) use ($query) {
-                $q->where('name', 'like', "%{$query}%")
-                    ->orWhere('email', 'like', "%{$query}%");
+                // Wildcards in what was typed are matched literally.
+                $pattern = '%'.str_replace(['!', '%', '_'], ['!!', '!%', '!_'], $query).'%';
+
+                $q->whereRaw("name like ? escape '!'", [$pattern])
+                    ->orWhereRaw("email like ? escape '!'", [$pattern]);
             })
             ->orderBy('name')
             ->limit(self::MAX_RESULTS)

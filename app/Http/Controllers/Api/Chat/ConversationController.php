@@ -3,17 +3,23 @@
 namespace App\Http\Controllers\Api\Chat;
 
 use App\Domain\Chat\Actions\ChatStore;
+use App\Domain\Chat\Actions\ClearConversationHistory;
 use App\Domain\Chat\Actions\DeleteConversation;
-use App\Domain\Chat\Actions\PinConversation;
+use App\Domain\Chat\Actions\FindOrCreateSavedConversation;
+use App\Domain\Chat\Actions\GetUnreadSummary;
+use App\Domain\Chat\Actions\LeaveConversation;
 use App\Domain\Chat\Actions\ShowConversation;
-use App\Domain\Chat\Actions\UnpinConversation;
 use App\Domain\Chat\Actions\UpdateConversation;
-use App\Domain\Chat\Models\Conversation;
+use App\Domain\Chat\Actions\UpdateConversationAvatar;
+use App\Domain\Chat\Actions\UpdateConversationSettings;
 use App\Domain\Chat\Queries\GetConversationsQuery;
+use App\Domain\Chat\Services\ConversationPresenter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Chat\ChatStoreRequest;
+use App\Http\Requests\Chat\ConversationAvatarRequest;
 use App\Http\Requests\Chat\GetConversationsRequest;
 use App\Http\Requests\Chat\UpdateConversationRequest;
+use App\Http\Requests\Chat\UpdateConversationSettingsRequest;
 use App\Http\Resources\Chat\ConversationListResource;
 use App\Http\Resources\Chat\ConversationShowResource;
 use Illuminate\Http\JsonResponse;
@@ -26,25 +32,22 @@ class ConversationController extends Controller
         protected ShowConversation $showConversation,
         protected UpdateConversation $updateConversation,
         protected DeleteConversation $deleteConversation,
-        protected PinConversation $pinConversation,
-        protected UnpinConversation $unpinConversation,
+        protected UpdateConversationSettings $updateSettings,
+        protected ConversationPresenter $presenter,
     ) {}
 
     public function store(ChatStoreRequest $request): JsonResponse
     {
-        $conversation = $this->chatStore->handle($request->validated());
+        $conversation = $this->chatStore->handle($request->user(), $request->validated());
 
         return $this->success(
-            new ConversationShowResource($conversation->load('creator', 'users')->loadCount('users')),
+            new ConversationShowResource($this->showConversation->handle($request->user(), $conversation->id)),
         );
     }
 
     public function index(GetConversationsRequest $request, GetConversationsQuery $query): JsonResponse
     {
-        $conversations = $query->execute(
-            $request->user(),
-            $request->validated()
-        );
+        $conversations = $query->execute($request->user(), $request->validated());
 
         return $this->responsePagination(
             $conversations,
@@ -53,67 +56,114 @@ class ConversationController extends Controller
         );
     }
 
-    public function show(Request $request, int $conversationId): JsonResponse
+    public function show(Request $request, int $conversation): JsonResponse
     {
-        $conversation = $this->showConversation->handle(
-            $request->user(),
-            $conversationId
-        );
-
         return $this->success(
-            new ConversationShowResource($conversation)
+            new ConversationShowResource($this->showConversation->handle($request->user(), $conversation))
         );
     }
 
-    public function update(
-        UpdateConversationRequest $request,
-        Conversation $conversation
-    ): JsonResponse {
-        $updated = $this->updateConversation->handle(
-            user: $request->user(),
-            conversation: $conversation,
-            data: $request->validated()
+    /**
+     * One chat-list row — to refresh a single chat without the whole list.
+     */
+    public function summary(Request $request, int $conversation): JsonResponse
+    {
+        return $this->success(
+            new ConversationListResource($this->presenter->findForViewer($request->user(), $conversation))
         );
+    }
+
+    public function unread(Request $request, GetUnreadSummary $unreadSummary): JsonResponse
+    {
+        return $this->success($unreadSummary->handle($request->user()));
+    }
+
+    public function saved(Request $request, FindOrCreateSavedConversation $savedConversation): JsonResponse
+    {
+        $conversation = $savedConversation->handle($request->user());
 
         return $this->success(
-            new ConversationShowResource($updated),
+            new ConversationListResource($this->presenter->findForViewer($request->user(), $conversation->id))
+        );
+    }
+
+    public function update(UpdateConversationRequest $request, int $conversation): JsonResponse
+    {
+        $this->updateConversation->handle($request->user(), $conversation, $request->validated());
+
+        return $this->success(
+            new ConversationShowResource($this->showConversation->handle($request->user(), $conversation)),
             __('messages.chat.updated')
         );
     }
 
-    public function destroy(Request $request, Conversation $conversation): JsonResponse
+    public function storeAvatar(ConversationAvatarRequest $request, int $conversation, UpdateConversationAvatar $avatar): JsonResponse
     {
-        $this->deleteConversation->handle(
-            user: $request->user(),
-            conversation: $conversation
-        );
+        $avatar->store($request->user(), $conversation, $request->file('file'));
 
         return $this->success(
-            message: __('messages.chat.deleted')
+            new ConversationShowResource($this->showConversation->handle($request->user(), $conversation)),
+            __('messages.chat.updated')
         );
     }
 
-    public function pin(Conversation $conversation): JsonResponse
+    public function destroyAvatar(Request $request, int $conversation, UpdateConversationAvatar $avatar): JsonResponse
     {
-        $this->pinConversation->handle(
-            auth()->user(),
-            $conversation
-        );
+        $avatar->destroy($request->user(), $conversation);
 
         return $this->success(
-            message: __('messages.chat.pinned')
+            new ConversationShowResource($this->showConversation->handle($request->user(), $conversation)),
+            __('messages.chat.updated')
         );
     }
 
-    public function unpin(Conversation $conversation): JsonResponse
+    public function settings(UpdateConversationSettingsRequest $request, int $conversation): JsonResponse
     {
-        $this->unpinConversation->handle(
-            auth()->user(),
-            $conversation
-        );
+        $this->updateSettings->handle($request->user(), $conversation, $request->validated());
 
         return $this->success(
-            message: __('messages.chat.unpinned')
+            new ConversationListResource($this->presenter->findForViewer($request->user(), $conversation))
         );
+    }
+
+    public function clear(Request $request, int $conversation, ClearConversationHistory $clearHistory): JsonResponse
+    {
+        $clearHistory->handle($request->user(), $conversation);
+
+        return $this->success(
+            new ConversationListResource($this->presenter->findForViewer($request->user(), $conversation)),
+            __('messages.chat.cleared')
+        );
+    }
+
+    public function leave(Request $request, int $conversation, LeaveConversation $leaveConversation): JsonResponse
+    {
+        $leaveConversation->handle($request->user(), $conversation);
+
+        return $this->success(message: __('messages.chat.left'));
+    }
+
+    public function destroy(Request $request, int $conversation): JsonResponse
+    {
+        $this->deleteConversation->handle($request->user(), $conversation);
+
+        return $this->success(message: __('messages.chat.deleted'));
+    }
+
+    /**
+     * Older endpoint: the same as `PATCH …/settings {pinned: true}`.
+     */
+    public function pin(Request $request, int $conversation): JsonResponse
+    {
+        $this->updateSettings->handle($request->user(), $conversation, ['pinned' => true]);
+
+        return $this->success(message: __('messages.chat.pinned'));
+    }
+
+    public function unpin(Request $request, int $conversation): JsonResponse
+    {
+        $this->updateSettings->handle($request->user(), $conversation, ['pinned' => false]);
+
+        return $this->success(message: __('messages.chat.unpinned'));
     }
 }

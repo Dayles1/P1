@@ -363,7 +363,8 @@ function boot() {
             return !notification.read_at;
         }
 
-        return notification.type === currentFilter;
+        // A chip may stand for several types ("message,reply").
+        return currentFilter.split(',').includes(notification.type);
     }
 
     function onNotification(payload) {

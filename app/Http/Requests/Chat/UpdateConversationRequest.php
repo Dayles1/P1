@@ -17,7 +17,8 @@ class UpdateConversationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'min:3', 'max:60'],
+            'title' => ['sometimes', 'required', 'string', 'min:3', 'max:60'],
+            'description' => ['sometimes', 'nullable', 'string', 'max:255'],
         ];
     }
 }

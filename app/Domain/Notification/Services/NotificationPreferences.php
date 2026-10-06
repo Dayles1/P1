@@ -12,23 +12,55 @@ use App\Domain\Identity\Models\User;
  */
 class NotificationPreferences
 {
+    /**
+     * The per-type switch (a key in `meta.notifications`) each notification
+     * type answers to. A type missing here (mention) has no switch.
+     *
+     * @var array<string, string>
+     */
+    public const TYPE_SWITCHES = [
+        'message' => 'message',
+        'reply' => 'reply',
+        'reaction' => 'reaction',
+        'added_to_chat' => 'added_to_chat',
+        'pinned' => 'pinned',
+        'new_login' => 'security',
+        'role_changed' => 'account',
+        'system' => 'system',
+        'user_report' => 'system',
+    ];
+
+    /**
+     * @param  array<string, bool>  $switches  per-type switches (see TYPE_SWITCHES), missing ones on
+     */
     public function __construct(
         public readonly bool $database = true,
         public readonly bool $browser = true,
-        public readonly bool $message = true,
-        public readonly bool $system = true,
+        public readonly array $switches = [],
     ) {}
 
     public static function for(User $user): self
     {
-        $meta = $user->settings?->meta['notifications'] ?? [];
+        $meta = (array) ($user->settings?->meta['notifications'] ?? []);
+        $switches = [];
+
+        foreach (array_unique(array_values(self::TYPE_SWITCHES)) as $switch) {
+            $switches[$switch] = (bool) ($meta[$switch] ?? true);
+        }
 
         return new self(
             database: (bool) ($meta['database'] ?? true),
             browser: (bool) ($meta['browser'] ?? true),
-            message: (bool) ($meta['message'] ?? true),
-            system: (bool) ($meta['system'] ?? true),
+            switches: $switches,
         );
+    }
+
+    /** Whether the user left this type's own switch on. */
+    public function wants(string $type): bool
+    {
+        $switch = self::TYPE_SWITCHES[$type] ?? null;
+
+        return $switch === null || ($this->switches[$switch] ?? true);
     }
 
     /**
@@ -40,27 +72,11 @@ class NotificationPreferences
      */
     public function allowsDatabase(string $type): bool
     {
-        if (! $this->database) {
-            return false;
-        }
-
-        return match ($type) {
-            'system' => $this->system,
-            'message' => $this->message,
-            default => true,
-        };
+        return $this->database && $this->wants($type);
     }
 
     public function allowsBrowser(string $type): bool
     {
-        if (! $this->browser) {
-            return false;
-        }
-
-        return match ($type) {
-            'system' => $this->system,
-            'message' => $this->message,
-            default => true,
-        };
+        return $this->browser && $this->wants($type);
     }
 }

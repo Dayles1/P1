@@ -79,7 +79,11 @@ export function renderPagination(container, pagination, onPage) {
     });
 }
 
-function pageWindow(current, last) {
+/**
+ * The page numbers to show around `current`: the first, the last, the
+ * current one and its neighbours, with '…' wherever pages are skipped.
+ */
+export function pageWindow(current, last) {
     const span = 1;
     const pages = new Set([1, last, current]);
 

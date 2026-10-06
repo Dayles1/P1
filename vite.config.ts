@@ -23,6 +23,9 @@ export default defineConfig({
                 'resources/js/blade/app/dashboard.js',
                 'resources/js/blade/app/notifications.js',
                 'resources/js/blade/app/currencies.js',
+                'resources/js/blade/app/changelog.js',
+                'resources/js/blade/app/profile.js',
+                'resources/js/blade/app/user-profile.js',
                 'resources/js/blade/app/chat.js',
                 'resources/js/blade/app/admin-users.js',
                 'resources/js/blade/app/admin-sessions.js',
@@ -40,6 +43,11 @@ export default defineConfig({
                 // Cyrillic glyph falls back to the system font.
                 bunny('Onest', {
                     weights: [400, 500, 600, 700],
+                    subsets: ['latin', 'cyrillic'],
+                }),
+                // Numbers, versions, times and paths in the Graphite design.
+                bunny('JetBrains Mono', {
+                    weights: [400, 500],
                     subsets: ['latin', 'cyrillic'],
                 }),
             ],

@@ -15,8 +15,17 @@ class ListNotifications
     {
         $query = $unreadOnly ? $user->unreadNotifications() : $user->notifications();
 
-        if ($type !== null && $type !== '') {
-            $query->where('data->type', $type);
+        // One type, or several separated by commas ("message,reply").
+        $types = array_values(array_filter(array_map('trim', explode(',', (string) $type))));
+
+        if (count($types) === 1) {
+            $query->where('data->type', $types[0]);
+        } elseif ($types !== []) {
+            $query->where(function ($query) use ($types): void {
+                foreach ($types as $one) {
+                    $query->orWhere('data->type', $one);
+                }
+            });
         }
 
         return $query->paginate($perPage);

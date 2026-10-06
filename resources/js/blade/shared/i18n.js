@@ -49,6 +49,35 @@ export function t(key, params = {}) {
     );
 }
 
+/**
+ * The JS twin of trans_choice() for the dictionary's plain plural forms
+ * (":count change|:count changes", three forms in Russian, one in
+ * Uzbek): picks the form for `count` by the locale's plural rules and
+ * fills in :count along with any other params.
+ */
+export function tChoice(key, count, params = {}) {
+    const forms = t(key, { ...params, count }).split('|');
+
+    if (forms.length === 1) {
+        return forms[0];
+    }
+
+    let category = 'other';
+
+    try {
+        category = new Intl.PluralRules(getLocale()).select(count);
+    } catch {
+        category = count === 1 ? 'one' : 'other';
+    }
+
+    const index =
+        forms.length === 2
+            ? Number(category !== 'one')
+            : ({ one: 0, few: 1 }[category] ?? 2);
+
+    return forms[index];
+}
+
 const localeDataCache = new Map();
 
 /**

@@ -1,7 +1,13 @@
 import { api } from '../axios';
 import { bootstrapAppState } from '../shared/app-state';
 import { escapeHtml } from '../shared/forms';
-import { formatNumber, getLocale, t } from '../shared/i18n';
+import {
+    formatNumber,
+    getLocale,
+    hasLocaleData,
+    monthName,
+    t,
+} from '../shared/i18n';
 import { icon } from '../shared/icon';
 import { openModal } from '../shared/modal';
 import { bootOnPage } from '../shared/page-boot';
@@ -70,6 +76,12 @@ function rateTable(rows, baseCode) {
  * "AQSH dollari"), falling back to the catalogue's English name.
  */
 function localName(currency) {
+    // A browser without the locale's data (Chrome and `uz`) answers in
+    // some other language; the catalogue's own name reads better.
+    if (!hasLocaleData()) {
+        return currency.name;
+    }
+
     try {
         const names = new Intl.DisplayNames([getLocale()], {
             type: 'currency',
@@ -120,6 +132,13 @@ function formatPercent(change) {
 }
 
 function formatDay(isoDate) {
+    // Without the locale's data Intl prints "M09" for the month.
+    if (!hasLocaleData()) {
+        const date = new Date(`${isoDate}T00:00:00Z`);
+
+        return `${date.getUTCDate()} ${monthName(date.getUTCMonth()).toLocaleLowerCase(getLocale())}`;
+    }
+
     try {
         return new Intl.DateTimeFormat(getLocale(), {
             day: 'numeric',

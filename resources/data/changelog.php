@@ -8,6 +8,21 @@
  */
 return [
     [
+        'version' => '3.2.0',
+        'date' => '2026-09-25',
+        'items' => [
+            ['type' => 'new', 'text' => 'The Graphite look: the dark theme is now graphite with a lime accent, numbers and times are set in JetBrains Mono, and every page is denser and quieter. The light theme follows the same layout.'],
+            ['type' => 'new', 'text' => 'The sidebar has search and commands, unread counts for chats and the inbox, and your pinned chats.'],
+            ['type' => 'new', 'text' => 'Keyboard shortcuts: G then H, C, P, S or N to go to a section, C for a new chat, Ctrl+, for settings.'],
+            ['type' => 'new', 'text' => 'Your profile has its own page again; on a phone it is also the way into every settings section.'],
+            ['type' => 'improved', 'text' => 'Home shows your figures, recent chats and requests, and beside them your profile checklist, sessions and, for admins, the system.'],
+            ['type' => 'improved', 'text' => 'Chat messages are flat rows instead of bubbles, the list filters by private chats and groups, and the details panel opens and closes with one button.'],
+            ['type' => 'improved', 'text' => 'Settings are rows with the label on the left and the control on the right, with switches for everything that turns on or off.'],
+            ['type' => 'improved', 'text' => 'Sessions show four figures, a search by device or IP, status filters and a table.'],
+            ['type' => 'improved', 'text' => 'The header names the page you are on, as a path in settings.'],
+        ],
+    ],
+    [
         'version' => '3.1.0',
         'date' => '2026-09-25',
         'items' => [
@@ -16,6 +31,7 @@ return [
             ['type' => 'new', 'text' => 'Wallets and payments (API): top up through Click, Payme or OneQR, pay from your balance or a saved card, and every change to a balance is kept in a ledger. A provider retrying its callback never applies a payment twice.'],
             ['type' => 'improved', 'text' => 'Video avatars (MP4, WEBM, MOV) now play on a loop, as a GIF saved from Telegram usually is one.'],
             ['type' => 'improved', 'text' => 'Only your current avatar is kept; older ones are deleted when you upload a new one.'],
+            ['type' => 'improved', 'text' => 'What’s new has a search across every change, filters by type, a version index, pages, and a link to each version.'],
             ['type' => 'fixed', 'text' => 'A new avatar or name shows in the header straight away, without reloading.'],
             ['type' => 'fixed', 'text' => 'The loading bar now shows on every page change, not only on slow ones.'],
             ['type' => 'fixed', 'text' => 'Video avatars no longer show as a broken image.'],

@@ -10,7 +10,7 @@
         ['dashboard', 'home', 'ui.nav.home'],
         ['chat', 'chat', 'ui.nav.chat'],
         ['profile', 'user', 'ui.nav.profile'],
-        ['notifications', 'bell', 'ui.nav.notifications'],
+        ['notifications', 'bell', 'ui.nav.inbox'],
     ] as [$tabRoute, $tabIcon, $tabLabel])
         <a href="{{ route($tabRoute) }}" class="app-tabbar__link" data-nav-link="app-tabbar__link">
             <span class="app-tabbar__icon">

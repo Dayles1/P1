@@ -75,4 +75,20 @@ return [
         'api/admin/sessions/*/request-logs*',
         'api/up',
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Paths logged without their content
+    |--------------------------------------------------------------------------
+    |
+    | Requests to these paths are still logged (method, path, status, timing),
+    | but without the query string, request body or response body — they
+    | carry people's private chat messages, which admins must not be able to
+    | read through the request log.
+    |
+    */
+    'body_excluded_paths' => [
+        'api/conversations*',
+        'api/messages*',
+    ],
 ];

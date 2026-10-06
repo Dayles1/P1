@@ -3,62 +3,119 @@
 namespace App\Domain\Chat\Actions;
 
 use App\Domain\Chat\Models\ConversationUser;
+use App\Domain\Chat\Models\Message;
+use App\Domain\Chat\Services\ChatAccess;
+use App\Domain\Chat\Services\MessageHydrator;
 use App\Domain\Identity\Models\User;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * A window of a conversation's history, oldest first: the newest messages
+ * (`from=end`, the default), the oldest (`from=start`), the ones before or
+ * after an id (scrolling), or the ones around an id (jumping to a reply, a
+ * pin or a search hit). Ids are the cursor, so a message arriving between
+ * two calls never shifts a page.
+ *
+ * Reading is a separate call (POST …/read): listing has no side effects,
+ * so a prefetch or a background tab never marks a chat read.
+ */
 class ListMessages
 {
+    public const DEFAULT_LIMIT = 30;
+
+    public function __construct(
+        private readonly ChatAccess $access,
+        private readonly MessageHydrator $hydrator,
+    ) {}
+
     /**
-     * `before_id` (when present) turns this into "give me the next older
-     * page below this id" — always requested/answered as page 1 of a query
-     * already filtered to `id < before_id`, which is what makes it a real
-     * cursor rather than an offset: a message arriving between two calls
-     * can never shift where the "next page" starts, so nothing gets
-     * skipped or duplicated the way page-number pagination would risk.
+     * @param  array{limit?: int|null, before_id?: int|null, after_id?: int|null, around_id?: int|null, from?: string|null}  $filters
+     * @return array{messages: Collection<int, Message>, meta: array{has_more_before: bool, has_more_after: bool, first_unread_id: int|null, last_read_message_id: int|null, unread_count: int}}
      */
-    public function handle(User $user, int $conversationId, array $filters = []): LengthAwarePaginator
+    public function handle(User $user, int $conversationId, array $filters = []): array
     {
-        $conversation = $user->conversations()->findOrFail($conversationId);
+        $membership = $this->access->membership($user, $conversationId);
+        $limit = (int) ($filters['limit'] ?? self::DEFAULT_LIMIT);
 
-        $query = $conversation->messages()
-            ->with(['user.avatar', 'attachments', 'reactions', 'reads', 'parent.user']);
+        if (! empty($filters['around_id'])) {
+            $anchor = (int) $filters['around_id'];
+            $older = intdiv($limit, 2);
 
-        $beforeId = $filters['before_id'] ?? null;
-
-        if ($beforeId) {
-            $query->where('id', '<', $beforeId);
+            $messages = $this->visible($membership)->where('id', '<', $anchor)->orderByDesc('id')->limit($older)->get()
+                ->merge($this->visible($membership)->where('id', '>=', $anchor)->orderBy('id')->limit($limit - $older)->get());
+        } elseif (! empty($filters['before_id'])) {
+            $messages = $this->visible($membership)->where('id', '<', (int) $filters['before_id'])->orderByDesc('id')->limit($limit)->get();
+        } elseif (! empty($filters['after_id'])) {
+            $messages = $this->visible($membership)->where('id', '>', (int) $filters['after_id'])->orderBy('id')->limit($limit)->get();
+        } elseif (($filters['from'] ?? 'end') === 'start') {
+            $messages = $this->visible($membership)->orderBy('id')->limit($limit)->get();
+        } else {
+            $messages = $this->visible($membership)->orderByDesc('id')->limit($limit)->get();
         }
 
-        $messages = $query->latest('id')->paginate($filters['per_page'] ?? 30);
+        /** @var Collection<int, Message> $messages */
+        $messages = $messages->sortBy('id')->values();
+        $this->hydrator->hydrate($messages);
 
-        // Only the newest (no before_id) page reflects what the viewer is
-        // actually looking at right now — marking read off an older,
-        // scrolled-back-into page would move last_read_message_id
-        // *backwards*, which would make the conversation look less-read
-        // than it already was.
-        if (! $beforeId) {
-            $this->markRead($conversation->id, $user->id, $messages->first()?->id);
-        }
-
-        return $messages;
+        return [
+            'messages' => $messages,
+            'meta' => [
+                ...$this->edges($membership, $messages, $filters),
+                'first_unread_id' => $this->firstUnreadId($membership, $user),
+                'last_read_message_id' => $membership->last_read_message_id !== null ? (int) $membership->last_read_message_id : null,
+                'unread_count' => (int) $membership->unread_count,
+            ],
+        ];
     }
 
-    private function markRead(int $conversationId, int $userId, ?int $lastMessageId): void
+    /**
+     * What this member can see: not deleted, not deleted for them, not
+     * before the point they cleared the history at.
+     *
+     * @return Builder<Message>
+     */
+    public function visible(ConversationUser $membership): Builder
     {
-        if (! $lastMessageId) {
-            return;
+        return Message::query()
+            ->where('conversation_id', $membership->conversation_id)
+            ->when($membership->cleared_up_to_message_id, fn (Builder $query, $clearedUpTo) => $query->where('id', '>', (int) $clearedUpTo))
+            ->whereNotExists(fn ($query) => $query->selectRaw('1')
+                ->from('message_user_hides')
+                ->whereColumn('message_user_hides.message_id', 'messages.id')
+                ->where('message_user_hides.user_id', $membership->user_id));
+    }
+
+    /**
+     * @param  Collection<int, Message>  $messages
+     * @param  array<string, mixed>  $filters
+     * @return array{has_more_before: bool, has_more_after: bool}
+     */
+    private function edges(ConversationUser $membership, Collection $messages, array $filters): array
+    {
+        if ($messages->isEmpty()) {
+            return [
+                'has_more_before' => ! empty($filters['after_id'])
+                    && $this->visible($membership)->where('id', '<=', (int) $filters['after_id'])->exists(),
+                'has_more_after' => ! empty($filters['before_id'])
+                    && $this->visible($membership)->where('id', '>=', (int) $filters['before_id'])->exists(),
+            ];
         }
 
-        DB::transaction(function () use ($conversationId, $userId, $lastMessageId) {
-            ConversationUser::query()
-                ->where('conversation_id', $conversationId)
-                ->where('user_id', $userId)
-                ->update([
-                    'unread_count' => 0,
-                    'last_read_message_id' => $lastMessageId,
-                    'last_read_at' => now(),
-                ]);
-        });
+        return [
+            'has_more_before' => $this->visible($membership)->where('id', '<', (int) $messages->first()->id)->exists(),
+            'has_more_after' => $this->visible($membership)->where('id', '>', (int) $messages->last()->id)->exists(),
+        ];
+    }
+
+    private function firstUnreadId(ConversationUser $membership, User $user): ?int
+    {
+        $id = $this->visible($membership)
+            ->where('id', '>', (int) $membership->last_read_message_id)
+            ->where('type', '!=', Message::TYPE_SYSTEM)
+            ->where(fn ($query) => $query->whereNull('user_id')->orWhere('user_id', '!=', $user->id))
+            ->min('id');
+
+        return $id !== null ? (int) $id : null;
     }
 }

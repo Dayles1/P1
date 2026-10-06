@@ -32,6 +32,28 @@ function apply(sourceDoc) {
         sidebar.dataset.mode = config.sidebar || 'default';
     }
 
+    // The permanent header names the page being shown; "Settings /
+    // Profile" shows the parents muted before the page itself.
+    document.querySelectorAll('[data-header-title]').forEach((el) => {
+        const parts = String(config.title || '').split(' / ');
+        const current = parts.pop();
+
+        el.replaceChildren(
+            ...parts.flatMap((part) => {
+                const parent = document.createElement('span');
+                const separator = document.createElement('span');
+
+                parent.className = 'app-header__crumb';
+                parent.textContent = part;
+                separator.className = 'app-header__crumb';
+                separator.textContent = ' / ';
+
+                return [parent, separator];
+            }),
+            document.createTextNode(current),
+        );
+    });
+
     if (newMain) {
         if (config.secondarySidebar) {
             newMain.dataset.secondarySidebar = config.secondarySidebar;

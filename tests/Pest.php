@@ -72,6 +72,17 @@ function userWithRole(string $code, array $attributes = []): User
     return $user->fresh();
 }
 
+/**
+ * Opens (or reuses) the 1:1 conversation between two users, as `$from`.
+ */
+function startPrivateConversation(User $from, User $to): int
+{
+    return test()->actingAs($from, 'sanctum')->postJson('/api/conversations', [
+        'type' => 'private',
+        'user_ids' => [$to->id],
+    ])->json('data.id');
+}
+
 function timezoneRow(string $name = 'UTC'): Timezone
 {
     return Timezone::query()->firstOrCreate(
@@ -197,4 +208,29 @@ function fundedWallet(User $user, int $balance): Wallet
     }
 
     return $wallet;
+}
+
+/**
+ * A group (or channel) created by `$creator` with `$members` in it.
+ *
+ * @param  array<int, User>  $members
+ */
+function startGroupConversation(User $creator, array $members, string $type = 'group', string $title = 'Team chat'): int
+{
+    return test()->actingAs($creator, 'sanctum')->postJson('/api/conversations', [
+        'type' => $type,
+        'title' => $title,
+        'user_ids' => array_map(fn (User $member) => $member->id, $members),
+    ])->assertOk()->json('data.id');
+}
+
+/**
+ * Sends a text message as `$sender` and returns its id.
+ */
+function sendChatMessage(User $sender, int $conversationId, string $body = 'Hello', array $extra = []): int
+{
+    return test()->actingAs($sender, 'sanctum')
+        ->postJson("/api/conversations/{$conversationId}/messages", ['body' => $body, ...$extra])
+        ->assertCreated()
+        ->json('data.id');
 }

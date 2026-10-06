@@ -4,11 +4,12 @@
 
 @section('content')
 
+    <a href="{{ route('sessions') }}" class="btn btn--ghost btn--sm session-detail__back">
+        <x-blade.u-i.icon name="back" size="15" /> {{ __('ui.sessions.back_to_sessions') }}
+    </a>
+
     <div class="page-head">
         <div>
-            <a href="{{ route('sessions') }}" class="btn btn--ghost btn--sm mb-3">
-                <x-blade.u-i.icon name="back" size="16" /> {{ __('ui.sessions.back_to_sessions') }}
-            </a>
             <h1>{{ __('ui.sessions.detail_title') }}</h1>
         </div>
 
@@ -17,19 +18,15 @@
         </x-blade.u-i.button>
     </div>
 
-    <div class="card mb-5">
-        <div class="card__body" data-session-summary>
-            <div class="skeleton skeleton-row"></div>
-        </div>
+    <div class="session-detail__summary" data-session-summary>
+        <div class="skeleton skeleton-row"></div>
     </div>
 
-    <div class="card">
-        <div class="card__header">
-            <h2 class="card__title">{{ __('ui.sessions.request_log_history') }}</h2>
-        </div>
+    <section class="session-detail__log">
+        <h2 class="session-detail__title">{{ __('ui.sessions.request_log_history') }}</h2>
 
-        <div class="card__body card__body--flush">
-            <div class="table-wrap">
+        <div>
+            <div class="table-wrap session-detail__table">
                 <table class="table" data-request-log-table>
                     <thead>
                         <tr>
@@ -47,10 +44,8 @@
             </div>
         </div>
 
-        <div class="card__footer">
-            <div class="pagination" data-request-log-pagination hidden></div>
-        </div>
-    </div>
+        <div class="pagination session-detail__pagination" data-request-log-pagination hidden></div>
+    </section>
 
 @endsection
 

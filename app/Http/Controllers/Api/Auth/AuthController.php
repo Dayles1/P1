@@ -193,11 +193,15 @@ class AuthController extends Controller
 
     public function me(): JsonResponse
     {
+        $user = Auth::user();
+
         return $this->success(
             data: [
                 'user' => new ProfileResource(
-                    $this->getCurrentUser->handle(Auth::user())
+                    $this->getCurrentUser->handle($user)
                 ),
+                // The header bell starts from this instead of asking for it separately.
+                'unread_notifications_count' => $user->unreadNotifications()->count(),
             ],
             message: __('messages.auth.me_success')
         );

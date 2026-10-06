@@ -2,41 +2,46 @@
 
 namespace App\Domain\Chat\Events;
 
-use Illuminate\Broadcasting\Channel;
+use App\Domain\Chat\Events\Concerns\BroadcastsToMembers;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
-use Illuminate\Queue\SerializesModels;
 
-class MessageRead implements ShouldBroadcast
+/**
+ * `user_id` has read everything up to and including `message_id`. Sent to
+ * every member — the reader's own other devices use `unread_count` (the
+ * reader's) to update their badge.
+ */
+class MessageRead implements ShouldBroadcastNow
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use BroadcastsToMembers, Dispatchable, InteractsWithSockets;
 
+    /**
+     * @param  array<int, int>  $userIds
+     */
     public function __construct(
+        public array $userIds,
         public int $conversationId,
-        public int $messageId,
         public int $userId,
+        public int $messageId,
+        public string $readAtIso,
+        public int $unreadCount,
     ) {}
-
-    /** @return array<int, Channel> */
-    public function broadcastOn(): array
-    {
-        return [new PrivateChannel("conversation.{$this->conversationId}")];
-    }
 
     public function broadcastAs(): string
     {
         return 'message.read';
     }
 
+    /** @return array<string, mixed> */
     public function broadcastWith(): array
     {
         return [
             'conversation_id' => $this->conversationId,
-            'message_id' => $this->messageId,
             'user_id' => $this->userId,
-            'read_at' => now()->toIso8601String(),
+            'message_id' => $this->messageId,
+            'read_at_iso' => $this->readAtIso,
+            'unread_count' => $this->unreadCount,
         ];
     }
 }

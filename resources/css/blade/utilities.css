@@ -197,6 +197,7 @@
 
     .mono {
         font-family: var(--font-mono);
+        font-feature-settings: 'zero' 1;
     }
 
     .truncate {

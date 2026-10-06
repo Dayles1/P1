@@ -13,31 +13,20 @@ class GetConversationsRequest extends FormRequest
     }
 
     /**
+     * `type` is the older name of `folder`.
+     *
      * @return array<string, mixed>
      */
     public function rules(): array
     {
+        $folders = ['all', 'private', 'group', 'channel', 'archived'];
+
         return [
-            'type' => [
-                'nullable',
-                Rule::in([
-                    'all',
-                    'private',
-                    'group',
-                    'channel',
-                ]),
-            ],
-
-            'search' => [
-                'nullable',
-                'string',
-                'max:255',
-            ],
-
-            'page' => [
-                'nullable',
-                'integer',
-            ],
+            'folder' => ['nullable', Rule::in($folders)],
+            'type' => ['nullable', Rule::in($folders)],
+            'search' => ['nullable', 'string', 'max:255'],
+            'page' => ['nullable', 'integer', 'min:1'],
+            'per_page' => ['nullable', 'integer', 'min:1', 'max:100'],
         ];
     }
 }

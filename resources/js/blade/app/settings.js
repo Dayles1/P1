@@ -384,15 +384,15 @@ function boot() {
                 <h2 class="settings-panel__section-title">${t('settings.currency')}</h2>
                 <p class="settings-panel__section-hint">${t('profile.currency_hint')}</p>
 
-                <div class="field-group mw-lg">
+                <div class="field-group">
                     <label class="field-label" for="profile-currency">${t('settings.currency')}</label>
-                    <div class="select-field">
-                        <select class="field-select" id="profile-currency" data-personal="preferred_currency_id">${currencyOptions(state.personal?.currency?.id)}</select>
-                    </div>
-                    <p class="settings-panel__section-hint m-0 mt-2" data-currency-rate></p>
+                    <select class="field-select" id="profile-currency" data-personal="preferred_currency_id">${currencyOptions(state.personal?.currency?.id)}</select>
+                    <span class="field-hint" data-currency-rate></span>
                 </div>
 
-                <a class="btn btn--outline btn--sm" href="/currencies" data-profile-currencies-link>${t('profile.all_currencies')}</a>
+                <div class="settings-actions">
+                    <a class="btn btn--outline btn--sm" href="/currencies" data-profile-currencies-link>${t('profile.all_currencies')}</a>
+                </div>
             </div>
         `;
     }
@@ -522,6 +522,62 @@ function boot() {
                 </form>
             </div>
 
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${escapeHtml(t('profile.public.title'))}</h2>
+                <p class="settings-panel__section-hint">${escapeHtml(t('profile.public.hint'))}</p>
+
+                <form data-public-profile-form novalidate>
+                    <div class="field-group">
+                        <label class="field-label" for="profile-position">${escapeHtml(t('profile.public.position'))}</label>
+                        <input class="field-input" type="text" id="profile-position" name="position" maxlength="120" value="${escapeHtml(p?.position || '')}" placeholder="${escapeHtml(t('profile.public.position_placeholder'))}">
+                        <span class="field-error" data-field-error="position"></span>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label" for="profile-bio">${escapeHtml(t('profile.public.bio'))}</label>
+                        <textarea class="field-input h-auto" id="profile-bio" name="bio" rows="3" maxlength="200" placeholder="${escapeHtml(t('profile.public.bio_placeholder'))}" data-profile-bio>${escapeHtml(p?.bio || '')}</textarea>
+                        <span class="field-hint mono" data-profile-bio-count>${(p?.bio || '').length}/200</span>
+                        <span class="field-error" data-field-error="bio"></span>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label" for="profile-tags">${escapeHtml(t('profile.public.tags'))}</label>
+                        <input class="field-input" type="text" id="profile-tags" name="tags" value="${escapeHtml((p?.tags || []).join(', '))}">
+                        <span class="field-hint">${escapeHtml(t('profile.public.tags_hint'))}</span>
+                        <span class="field-error" data-field-error="tags"></span>
+                    </div>
+
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label class="field-label" for="profile-phone">${escapeHtml(t('profile.public.phone'))}</label>
+                            <input class="field-input" type="tel" id="profile-phone" name="phone" maxlength="32" autocomplete="tel" value="${escapeHtml(p?.phone || '')}" placeholder="+998 90 123-45-67">
+                            <span class="field-error" data-field-error="phone"></span>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label" for="profile-telegram">${escapeHtml(t('profile.public.telegram'))}</label>
+                            <input class="field-input" type="text" id="profile-telegram" name="telegram" maxlength="33" value="${escapeHtml(p?.telegram ? `@${p.telegram}` : '')}" placeholder="@username">
+                            <span class="field-hint">${escapeHtml(t('profile.public.telegram_hint'))}</span>
+                            <span class="field-error" data-field-error="telegram"></span>
+                        </div>
+                    </div>
+
+                    <label class="switch settings-switch mb-5">
+                        <span class="switch__text">
+                            <span class="switch__label">${escapeHtml(t('profile.public.phone_visible'))}</span>
+                            <span class="switch__hint">${escapeHtml(t('profile.public.phone_visible_hint'))}</span>
+                        </span>
+                        <input type="checkbox" role="switch" class="switch__input" name="phone_visible" ${p?.phone_visible ? 'checked' : ''}>
+                        <span class="switch__track" aria-hidden="true"></span>
+                    </label>
+
+                    <div class="settings-actions">
+                        <button type="submit" class="btn btn--secondary btn--sm">${escapeHtml(t('profile.public.save'))}</button>
+                        ${p?.id ? `<a class="btn btn--ghost btn--sm" href="/users/${escapeHtml(p.id)}">${escapeHtml(t('profile.public.view'))}</a>` : ''}
+                    </div>
+                </form>
+            </div>
+
             ${currencySectionHtml()}
 
             <div class="settings-panel__section">
@@ -562,6 +618,76 @@ function boot() {
 
     function wireProfile() {
         wireCurrencySelect();
+
+        const publicForm = panel.querySelector('[data-public-profile-form]');
+        const bioInput = panel.querySelector('[data-profile-bio]');
+        const bioCount = panel.querySelector('[data-profile-bio-count]');
+
+        bioInput?.addEventListener(
+            'input',
+            () => {
+                bioCount.textContent = `${bioInput.value.length}/200`;
+                bioCount.toggleAttribute(
+                    'data-over',
+                    bioInput.value.length > 200,
+                );
+            },
+            { signal },
+        );
+
+        publicForm?.addEventListener(
+            'submit',
+            async (event) => {
+                event.preventDefault();
+                clearFieldErrors(publicForm);
+
+                const fields = publicForm.elements;
+                const payload = {
+                    position: fields.position.value.trim() || null,
+                    bio: fields.bio.value.trim() || null,
+                    tags: fields.tags.value
+                        .split(',')
+                        .map((tag) => tag.trim())
+                        .filter(Boolean),
+                    phone: fields.phone.value.trim() || null,
+                    phone_visible: fields.phone_visible.checked,
+                    telegram: fields.telegram.value.trim() || null,
+                };
+                const submitButton = publicForm.querySelector(
+                    'button[type="submit"]',
+                );
+
+                submitButton.disabled = true;
+
+                try {
+                    const { data } = await api.patch('/profile', payload);
+
+                    state.profile = data.data;
+                    fields.telegram.value = state.profile.telegram
+                        ? `@${state.profile.telegram}`
+                        : '';
+                    fields.tags.value = (state.profile.tags || []).join(', ');
+                    showToast(t('profile.updated'));
+                } catch (error) {
+                    const errors = apiErrors(error);
+
+                    // "tags.3" → the tags field.
+                    Object.keys(errors).forEach((key) => {
+                        if (key.startsWith('tags.')) {
+                            errors.tags = errors[key];
+                        }
+                    });
+                    showFieldErrors(publicForm, errors);
+                    showToast(
+                        apiErrorMessage(error, t('profile.save_error')),
+                        'error',
+                    );
+                } finally {
+                    submitButton.disabled = false;
+                }
+            },
+            { signal },
+        );
 
         const profileForm = panel.querySelector('[data-profile-form]');
         const passwordForm = panel.querySelector('[data-password-form]');
@@ -1003,24 +1129,71 @@ function boot() {
     |--------------------------------------------------------------------------
     */
 
-    const NOTIFICATION_PREF_KEYS = [
-        'database',
-        'browser',
-        'sound',
+    /** How notifications reach the user (labels under `settings.notif_pref_*`). */
+    const NOTIFICATION_DELIVERY_KEYS = ['database', 'browser', 'sound'];
+
+    /**
+     * What to be notified about — one switch per kind (labels and hints
+     * under `notifications.prefs.*`); see NotificationPreferences on the
+     * server. Mentions are always on, shown as a locked switch.
+     */
+    const NOTIFICATION_TYPE_KEYS = [
         'message',
+        'mention',
+        'reply',
+        'reaction',
+        'added_to_chat',
+        'pinned',
+        'security',
+        'account',
         'system',
     ];
 
-    function notificationPrefCheckbox(key, prefs) {
-        const enabled = prefs?.[key] !== false;
-
+    /**
+     * One on/off setting as a row: its label (and hint) on the left, a
+     * switch on the right. `attributes` carries the data-* hook the
+     * section's wiring listens to.
+     */
+    function switchRow(label, attributes, checked, hint = '') {
         return `
-            <label class="checkbox row mb-3">
-                <input type="checkbox" class="checkbox__input" data-notif-pref="${key}" ${enabled ? 'checked' : ''}>
-                <span class="checkbox__box"></span>
-                ${t(`settings.notif_pref_${key}`)}
+            <label class="switch settings-switch">
+                <span class="switch__text">
+                    <span class="switch__label">${escapeHtml(label)}</span>
+                    ${hint ? `<span class="switch__hint">${escapeHtml(hint)}</span>` : ''}
+                </span>
+                <input type="checkbox" role="switch" class="switch__input" ${attributes} ${checked ? 'checked' : ''}>
+                <span class="switch__track" aria-hidden="true"></span>
             </label>
         `;
+    }
+
+    function notificationPrefCheckbox(key, prefs) {
+        return switchRow(
+            t(`settings.notif_pref_${key}`),
+            `data-notif-pref="${key}"`,
+            prefs?.[key] !== false,
+        );
+    }
+
+    function notificationTypeSwitch(key, prefs) {
+        const hintKey = `notifications.prefs.${key}_hint`;
+        const hint = t(hintKey) === hintKey ? '' : t(hintKey);
+
+        if (key === 'mention') {
+            return switchRow(
+                t('notifications.prefs.mention'),
+                'disabled aria-disabled="true"',
+                true,
+                hint,
+            );
+        }
+
+        return switchRow(
+            t(`notifications.prefs.${key}`),
+            `data-notif-pref="${key}"`,
+            prefs?.[key] !== false,
+            hint,
+        );
     }
 
     function renderNotifications() {
@@ -1028,9 +1201,14 @@ function boot() {
 
         return `
             <div class="settings-panel__section">
-                <h2 class="settings-panel__section-title">${t('settings.notif_prefs')}</h2>
-                <p class="settings-panel__section-hint">${t('settings.notif_prefs_hint')}</p>
-                ${NOTIFICATION_PREF_KEYS.map((key) => notificationPrefCheckbox(key, prefs)).join('')}
+                <h2 class="settings-panel__section-title">${t('notifications.prefs.delivery')}</h2>
+                <p class="settings-panel__section-hint">${t('notifications.prefs.delivery_hint')}</p>
+                ${NOTIFICATION_DELIVERY_KEYS.map((key) => notificationPrefCheckbox(key, prefs)).join('')}
+            </div>
+            <div class="settings-panel__section">
+                <h2 class="settings-panel__section-title">${t('notifications.prefs.types')}</h2>
+                <p class="settings-panel__section-hint">${t('notifications.prefs.types_hint')}</p>
+                ${NOTIFICATION_TYPE_KEYS.map((key) => notificationTypeSwitch(key, prefs)).join('')}
             </div>
         `;
     }
@@ -1088,12 +1266,12 @@ function boot() {
                 <h2 class="settings-panel__section-title">${t('settings.login_security_title')}</h2>
                 <p class="settings-panel__section-hint">${t('settings.login_security_hint')}</p>
 
-                <label class="checkbox">
-                    <input type="checkbox" class="checkbox__input" data-require-login-verification ${p?.require_login_verification ? 'checked' : ''}>
-                    <span class="checkbox__box"></span>
-                    ${t('settings.require_login_verification')}
-                </label>
-                <p class="settings-panel__section-hint">${t('settings.require_login_verification_hint')}</p>
+                ${switchRow(
+                    t('settings.require_login_verification'),
+                    'data-require-login-verification',
+                    p?.require_login_verification,
+                    t('settings.require_login_verification_hint'),
+                )}
             </div>
         `;
     }
@@ -1126,11 +1304,11 @@ function boot() {
             <div class="settings-panel__section">
                 <h2 class="settings-panel__section-title">${t('settings.nav.developer')}</h2>
                 <p class="settings-panel__section-hint">${t('settings.developer_mode_hint')}</p>
-                <label class="checkbox">
-                    <input type="checkbox" class="checkbox__input" data-developer-mode ${enabled ? 'checked' : ''}>
-                    <span class="checkbox__box"></span>
-                    ${t('settings.developer_mode')}
-                </label>
+                ${switchRow(
+                    t('settings.developer_mode'),
+                    'data-developer-mode',
+                    enabled,
+                )}
             </div>
 
             <div class="settings-panel__section">

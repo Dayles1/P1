@@ -22,7 +22,7 @@ function dashboardContent(TestResponse $response): string
  */
 function dashboardScriptKeys(): array
 {
-    preg_match_all("/\b(?:t|dictionary)\(\s*'(dashboard\.[a-z0-9_.]+)'/", file_get_contents(resource_path('js/blade/app/dashboard.js')), $matches);
+    preg_match_all("/\b(?:t|tChoice|dictionary)\(\s*'(dashboard\.[a-z0-9_.]+)'/", file_get_contents(resource_path('js/blade/app/dashboard.js')), $matches);
 
     return array_values(array_unique($matches[1]));
 }
@@ -32,41 +32,38 @@ test('the dashboard renders its widgets as hooks the page script fills', functio
 
     expect($html)->toContain('data-dashboard-welcome')
         ->and($html)->toContain('data-dashboard-greeting')
+        ->and($html)->toContain('data-dashboard-tail')
         ->and($html)->toContain('data-dashboard-date')
         ->and($html)->toContain('data-stat-grid')
         ->and($html)->toContain('data-recent-conversations')
         ->and($html)->toContain('data-recent-requests')
         ->and($html)->toContain('data-recent-sessions')
-        ->and($html)->toMatch('/<progress class="progress__bar" max="100" value="0"[^>]*data-completeness-bar>/')
+        ->and($html)->toContain('data-completeness-bar')
         ->and(substr_count($html, 'data-profile-check="'))->toBe(4)
-        ->and(substr_count($html, 'class="skeleton skeleton--card"'))->toBe(10);
+        ->and(substr_count($html, 'class="dashboard-stat"'))->toBe(6)
+        ->and(substr_count($html, 'class="dashboard-action"'))->toBe(4);
 });
 
-test('the profile card waits for the summary before it shows figures or its call to action', function () {
+test('the profile bar waits for the summary before it shows figures', function () {
     $html = dashboardContent($this->get('/dashboard')->assertOk());
 
-    preg_match('/<h2[^>]*data-completeness-value>.*?<\/h2>/s', $html, $title);
-    preg_match('/<span[^>]*data-completeness-count>.*?<\/span>\s*<\/span>/s', $html, $count);
-    preg_match('/<a[^>]*data-profile-fill[^>]*>/', $html, $fill);
+    preg_match('/<h2[^>]*data-completeness-value>.*?<\/h2>/s', $html, $percent);
+    preg_match('/<progress[^>]*data-completeness-bar[^>]*>/', $html, $bar);
 
-    expect($title[0] ?? '')->toContain('skeleton skeleton--text')
-        ->and($count[0] ?? '')->toContain('skeleton skeleton--text')
-        ->and($fill[0] ?? '')->toContain('dashboard-profile__action--pending')
-        ->and($fill[0] ?? '')->toContain('aria-hidden="true"')
-        ->and($fill[0] ?? '')->toContain('tabindex="-1"')
-        ->and(substr_count($html, 'data-profile-check-state'))->toBe(4);
+    expect($percent[0] ?? '')->toContain('skeleton skeleton--text')
+        ->and($bar[0] ?? '')->toContain('value="0"')
+        ->and(substr_count($html, 'data-profile-check-state'))->toBe(4)
+        ->and($html)->toContain('href="'.route('settings.security').'" class="dashboard-check" data-profile-check="two_factor"');
 });
 
-test('the dashboard quick actions start a chat, switch the theme and open settings', function () {
+test('the dashboard starts a chat and links to every list it previews', function () {
     $html = dashboardContent($this->get('/dashboard')->assertOk());
 
     expect(preg_match_all('/\sdata-dashboard-new-chat[\s=>]/', $html))->toBe(2)
         ->and($html)->toContain('data-dashboard-toggle-theme')
-        ->and($html)->toContain('href="'.route('settings.security').'"')
-        ->and($html)->toContain('href="'.route('settings.language').'"')
-        ->and($html)->toContain('href="'.route('settings.profile').'"')
-        ->and($html)->toContain('<use href="#i-moon">')
-        ->and($html)->toContain('<use href="#i-sun">');
+        ->and($html)->toContain('href="'.route('chat').'"')
+        ->and($html)->toContain('href="'.route('sessions').'"')
+        ->and($html)->toContain('href="'.route('settings.language').'"');
 });
 
 test('the system overview stays hidden and admin-only until the summary says otherwise', function () {
@@ -76,7 +73,7 @@ test('the system overview stays hidden and admin-only until the summary says oth
 
     expect($overview[0] ?? '')->toContain('data-requires-role="SUPER_ADMIN,ADMIN"')
         ->and($overview[0] ?? '')->toContain('hidden')
-        ->and($html)->toContain('href="'.route('admin.settings').'"');
+        ->and($html)->toContain('data-instance-status');
 });
 
 test('the dashboard markup carries no inline styles or emoji', function () {
@@ -95,7 +92,7 @@ test('the dashboard is translated in every locale', function (string $locale) {
 
     expect($html)->not->toContain('ui.dashboard.')
         ->and($html)->toContain(e(Arr::get($dictionary, 'dashboard.checks.avatar')))
-        ->and($html)->toContain(e(Arr::get($dictionary, 'dashboard.change_theme')));
+        ->and($html)->toContain(e(Arr::get($dictionary, 'dashboard.recent_chats')));
 
     foreach (dashboardScriptKeys() as $key) {
         expect(Arr::get($dictionary, $key))->toBeString("{$locale}: {$key} is missing");

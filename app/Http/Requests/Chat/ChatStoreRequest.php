@@ -31,6 +31,12 @@ class ChatStoreRequest extends FormRequest
                 'max:60',
             ],
 
+            'description' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+
             'user_ids' => [
                 'required',
                 'array',
