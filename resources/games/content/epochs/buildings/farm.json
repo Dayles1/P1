@@ -1,0 +1,284 @@
+{
+    "id": "farm",
+    "name": "Ферма",
+    "names": { "e1750": "Хутор", "e2000": "Агроферма" },
+    "icon": "🌾",
+    "category": "food",
+    "description": "Поля и амбар. Урожай зависит от плодородия земли и времени года; зимой поля отдыхают.",
+    "epoch": "e1000",
+    "size": { "w": 2, "h": 2 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": {
+        "place": "place",
+        "upgrade": "upgrade",
+        "demolish": "demolish",
+        "select": "moo",
+        "ambient": "moo"
+    },
+    "levels": [
+        {
+            "level": 1,
+            "cost": { "wood": 30 },
+            "buildTime": 6,
+            "effects": {
+                "housing": 0,
+                "jobs": 4,
+                "produces": { "food": 1.4 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": true,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "field",
+                        "x": 0.08,
+                        "y": 0.08,
+                        "w": 1.84,
+                        "d": 1.84,
+                        "rows": 7,
+                        "color": "crop"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 1.15,
+                        "y": 0.12,
+                        "w": 0.7,
+                        "d": 0.68,
+                        "z": 0,
+                        "h": 12,
+                        "color": "#a0482f"
+                    },
+                    {
+                        "kind": "door",
+                        "face": "left",
+                        "x": 1.15,
+                        "y": 0.12,
+                        "w": 0.7,
+                        "d": 0.68,
+                        "width": 0.25,
+                        "height": 8,
+                        "color": "#5b2a1c"
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "gable",
+                        "x": 1.15,
+                        "y": 0.12,
+                        "w": 0.7,
+                        "d": 0.68,
+                        "z": 12,
+                        "h": 10,
+                        "color": "#7b3d2b",
+                        "axis": "y"
+                    }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "cost": { "wood": 60, "stone": 20 },
+            "buildTime": 8,
+            "effects": {
+                "housing": 0,
+                "jobs": 6,
+                "produces": { "food": 2.3 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": true,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "field",
+                        "x": 0.08,
+                        "y": 0.08,
+                        "w": 1.84,
+                        "d": 1.84,
+                        "rows": 9,
+                        "color": "crop"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 1.15,
+                        "y": 0.12,
+                        "w": 0.7,
+                        "d": 0.68,
+                        "z": 0,
+                        "h": 15,
+                        "color": "#a0482f"
+                    },
+                    {
+                        "kind": "door",
+                        "face": "left",
+                        "x": 1.15,
+                        "y": 0.12,
+                        "w": 0.7,
+                        "d": 0.68,
+                        "width": 0.25,
+                        "height": 9,
+                        "color": "#5b2a1c"
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "gable",
+                        "x": 1.15,
+                        "y": 0.12,
+                        "w": 0.7,
+                        "d": 0.68,
+                        "z": 15,
+                        "h": 11,
+                        "color": "#7b3d2b",
+                        "axis": "y"
+                    },
+                    {
+                        "kind": "cylinder",
+                        "x": 0.35,
+                        "y": 1.7,
+                        "r": 0.12,
+                        "z": 0,
+                        "h": 6,
+                        "color": "#e0c25a",
+                        "taper": 1
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "cone",
+                        "x": 0.22,
+                        "y": 1.57,
+                        "w": 0.26,
+                        "d": 0.26,
+                        "z": 6,
+                        "h": 6,
+                        "color": "#d1b04a"
+                    }
+                ]
+            }
+        },
+        {
+            "level": 3,
+            "cost": { "wood": 90, "stone": 60, "tools": 15 },
+            "buildTime": 10,
+            "requiresEpoch": "e1500",
+            "effects": {
+                "housing": 0,
+                "jobs": 8,
+                "produces": { "food": 3.4 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": true,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "field",
+                        "x": 0.08,
+                        "y": 0.08,
+                        "w": 1.84,
+                        "d": 1.84,
+                        "rows": 11,
+                        "color": "crop"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 1.15,
+                        "y": 0.12,
+                        "w": 0.7,
+                        "d": 0.68,
+                        "z": 0,
+                        "h": 18,
+                        "color": "#a0482f"
+                    },
+                    {
+                        "kind": "door",
+                        "face": "left",
+                        "x": 1.15,
+                        "y": 0.12,
+                        "w": 0.7,
+                        "d": 0.68,
+                        "width": 0.25,
+                        "height": 9,
+                        "color": "#5b2a1c"
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "gable",
+                        "x": 1.15,
+                        "y": 0.12,
+                        "w": 0.7,
+                        "d": 0.68,
+                        "z": 18,
+                        "h": 12,
+                        "color": "#7b3d2b",
+                        "axis": "y"
+                    },
+                    {
+                        "kind": "cylinder",
+                        "x": 0.35,
+                        "y": 1.7,
+                        "r": 0.12,
+                        "z": 0,
+                        "h": 6,
+                        "color": "#e0c25a",
+                        "taper": 1
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "cone",
+                        "x": 0.22,
+                        "y": 1.57,
+                        "w": 0.26,
+                        "d": 0.26,
+                        "z": 6,
+                        "h": 6,
+                        "color": "#d1b04a"
+                    },
+                    {
+                        "kind": "cylinder",
+                        "x": 1.75,
+                        "y": 1.05,
+                        "r": 0.16,
+                        "z": 0,
+                        "h": 30,
+                        "color": "metal",
+                        "taper": 1
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "dome",
+                        "x": 1.59,
+                        "y": 0.89,
+                        "w": 0.32,
+                        "d": 0.32,
+                        "z": 30,
+                        "h": 0,
+                        "color": "metal"
+                    }
+                ]
+            }
+        }
+    ]
+}

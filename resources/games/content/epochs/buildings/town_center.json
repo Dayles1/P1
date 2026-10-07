@@ -1,0 +1,614 @@
+{
+    "id": "town_center",
+    "name": "Дом старейшины",
+    "names": {
+        "e1500": "Ратуша",
+        "e1750": "Губернаторский дворец",
+        "e2000": "Мэрия",
+        "e2500": "Шпиль совета"
+    },
+    "icon": "🏛️",
+    "category": "civic",
+    "description": "Сердце города: жильё, склад, налоги и защита. Сам меняется с каждой эпохой.",
+    "epoch": "e1000",
+    "size": { "w": 2, "h": 2 },
+    "unique": true,
+    "hidden": true,
+    "autoLevelByEpoch": true,
+    "placement": { "requiresRoad": false },
+    "sounds": {
+        "place": "place",
+        "upgrade": "upgrade",
+        "demolish": "demolish",
+        "select": "bell",
+        "ambient": null
+    },
+    "levels": [
+        {
+            "level": 1,
+            "cost": {},
+            "buildTime": 0,
+            "requiresEpoch": "e1000",
+            "effects": {
+                "housing": 10,
+                "jobs": 0,
+                "produces": { "gold": 0.3, "wood": 0.15 },
+                "consumes": {},
+                "storage": 300,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 4, "happiness": 6 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 10
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "ground",
+                        "x": 0.05,
+                        "y": 0.05,
+                        "w": 1.9,
+                        "d": 1.9,
+                        "color": "plaza"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.3,
+                        "y": 0.45,
+                        "w": 1.4,
+                        "d": 1.1,
+                        "z": 0,
+                        "h": 14,
+                        "color": "walls"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "left",
+                        "x": 0.3,
+                        "y": 0.45,
+                        "w": 1.4,
+                        "d": 1.1,
+                        "z": 2,
+                        "h": 10,
+                        "rows": 1,
+                        "cols": 4,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "door",
+                        "face": "left",
+                        "x": 0.3,
+                        "y": 0.45,
+                        "w": 1.4,
+                        "d": 1.1,
+                        "width": 0.22,
+                        "height": 9,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "gable",
+                        "x": 0.3,
+                        "y": 0.45,
+                        "w": 1.4,
+                        "d": 1.1,
+                        "z": 14,
+                        "h": 18,
+                        "color": "roof",
+                        "axis": "x"
+                    },
+                    {
+                        "kind": "flag",
+                        "x": 1.75,
+                        "y": 1.7,
+                        "z": 0,
+                        "h": 34,
+                        "color": "flag"
+                    },
+                    {
+                        "kind": "light",
+                        "x": 0.35,
+                        "y": 1.75,
+                        "z": 4,
+                        "radius": 0.6,
+                        "color": "#ff9a3a"
+                    }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "cost": {},
+            "buildTime": 0,
+            "requiresEpoch": "e1500",
+            "effects": {
+                "housing": 20,
+                "jobs": 0,
+                "produces": { "gold": 0.8, "wood": 0.2 },
+                "consumes": {},
+                "storage": 700,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 5, "happiness": 8 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 25
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "ground",
+                        "x": 0.05,
+                        "y": 0.05,
+                        "w": 1.9,
+                        "d": 1.9,
+                        "color": "plaza"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.2,
+                        "y": 0.4,
+                        "w": 1.6,
+                        "d": 1.2,
+                        "z": 0,
+                        "h": 22,
+                        "color": "walls"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "left",
+                        "x": 0.2,
+                        "y": 0.4,
+                        "w": 1.6,
+                        "d": 1.2,
+                        "z": 3,
+                        "h": 17,
+                        "rows": 2,
+                        "cols": 6,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "right",
+                        "x": 0.2,
+                        "y": 0.4,
+                        "w": 1.6,
+                        "d": 1.2,
+                        "z": 3,
+                        "h": 17,
+                        "rows": 2,
+                        "cols": 4,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "beams",
+                        "face": "left",
+                        "x": 0.2,
+                        "y": 0.4,
+                        "w": 1.6,
+                        "d": 1.2,
+                        "z": 0,
+                        "h": 22,
+                        "count": 9,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "door",
+                        "face": "left",
+                        "x": 0.2,
+                        "y": 0.4,
+                        "w": 1.6,
+                        "d": 1.2,
+                        "width": 0.3,
+                        "height": 11,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "gable",
+                        "x": 0.2,
+                        "y": 0.4,
+                        "w": 1.6,
+                        "d": 1.2,
+                        "z": 22,
+                        "h": 16,
+                        "color": "roof",
+                        "axis": "x"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.78,
+                        "y": 0.12,
+                        "w": 0.44,
+                        "d": 0.44,
+                        "z": 0,
+                        "h": 46,
+                        "color": "wall"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "left",
+                        "x": 0.78,
+                        "y": 0.12,
+                        "w": 0.44,
+                        "d": 0.44,
+                        "z": 30,
+                        "h": 12,
+                        "rows": 1,
+                        "cols": 1,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "pyramid",
+                        "x": 0.75,
+                        "y": 0.09,
+                        "w": 0.5,
+                        "d": 0.5,
+                        "z": 46,
+                        "h": 18,
+                        "color": "roof"
+                    },
+                    {
+                        "kind": "flag",
+                        "x": 1,
+                        "y": 0.34,
+                        "z": 64,
+                        "h": 14,
+                        "color": "flag"
+                    }
+                ]
+            }
+        },
+        {
+            "level": 3,
+            "cost": {},
+            "buildTime": 0,
+            "requiresEpoch": "e1750",
+            "effects": {
+                "housing": 35,
+                "jobs": 0,
+                "produces": { "gold": 1.6, "wood": 0.25 },
+                "consumes": {},
+                "storage": 1400,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 6, "happiness": 10 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 40
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "ground",
+                        "x": 0.05,
+                        "y": 0.05,
+                        "w": 1.9,
+                        "d": 1.9,
+                        "color": "plaza"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.15,
+                        "y": 0.35,
+                        "w": 1.7,
+                        "d": 1.3,
+                        "z": 0,
+                        "h": 24,
+                        "color": "#efe6d2"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "left",
+                        "x": 0.15,
+                        "y": 0.35,
+                        "w": 1.7,
+                        "d": 1.3,
+                        "z": 2,
+                        "h": 20,
+                        "rows": 2,
+                        "cols": 8,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "right",
+                        "x": 0.15,
+                        "y": 0.35,
+                        "w": 1.7,
+                        "d": 1.3,
+                        "z": 2,
+                        "h": 20,
+                        "rows": 2,
+                        "cols": 5,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "door",
+                        "face": "left",
+                        "x": 0.15,
+                        "y": 0.35,
+                        "w": 1.7,
+                        "d": 1.3,
+                        "width": 0.3,
+                        "height": 11,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "flat",
+                        "x": 0.13,
+                        "y": 0.33,
+                        "w": 1.74,
+                        "d": 1.34,
+                        "z": 24,
+                        "h": 3,
+                        "color": "#c7b99a"
+                    },
+                    {
+                        "kind": "cylinder",
+                        "x": 1,
+                        "y": 1,
+                        "r": 0.38,
+                        "z": 27,
+                        "h": 8,
+                        "color": "#efe6d2",
+                        "taper": 1
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "dome",
+                        "x": 0.62,
+                        "y": 0.62,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "z": 35,
+                        "h": 0,
+                        "color": "#5f8f7e"
+                    },
+                    {
+                        "kind": "flag",
+                        "x": 1,
+                        "y": 1,
+                        "z": 54,
+                        "h": 14,
+                        "color": "flag"
+                    }
+                ]
+            }
+        },
+        {
+            "level": 4,
+            "cost": {},
+            "buildTime": 0,
+            "requiresEpoch": "e2000",
+            "effects": {
+                "housing": 60,
+                "jobs": 0,
+                "produces": { "gold": 3, "wood": 0.3 },
+                "consumes": {},
+                "storage": 3000,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 7, "happiness": 12 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 60
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "ground",
+                        "x": 0.05,
+                        "y": 0.05,
+                        "w": 1.9,
+                        "d": 1.9,
+                        "color": "plaza"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.15,
+                        "y": 0.3,
+                        "w": 1.7,
+                        "d": 1.4,
+                        "z": 0,
+                        "h": 30,
+                        "color": "wall"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "left",
+                        "x": 0.15,
+                        "y": 0.3,
+                        "w": 1.7,
+                        "d": 1.4,
+                        "z": 2,
+                        "h": 26,
+                        "rows": 4,
+                        "cols": 8,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "right",
+                        "x": 0.15,
+                        "y": 0.3,
+                        "w": 1.7,
+                        "d": 1.4,
+                        "z": 2,
+                        "h": 26,
+                        "rows": 4,
+                        "cols": 6,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "door",
+                        "face": "left",
+                        "x": 0.15,
+                        "y": 0.3,
+                        "w": 1.7,
+                        "d": 1.4,
+                        "width": 0.35,
+                        "height": 10,
+                        "color": "glass"
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "flat",
+                        "x": 0.13,
+                        "y": 0.28,
+                        "w": 1.74,
+                        "d": 1.44,
+                        "z": 30,
+                        "h": 2,
+                        "color": "roof"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.7,
+                        "y": 0.55,
+                        "w": 0.6,
+                        "d": 0.6,
+                        "z": 30,
+                        "h": 50,
+                        "color": "glass"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "left",
+                        "x": 0.7,
+                        "y": 0.55,
+                        "w": 0.6,
+                        "d": 0.6,
+                        "z": 30,
+                        "h": 50,
+                        "rows": 8,
+                        "cols": 3,
+                        "color": "glass"
+                    },
+                    {
+                        "kind": "pole",
+                        "x": 1,
+                        "y": 0.85,
+                        "z": 80,
+                        "h": 26,
+                        "color": "metal",
+                        "blink": "#ff4a4a"
+                    },
+                    {
+                        "kind": "flag",
+                        "x": 1.8,
+                        "y": 1.8,
+                        "z": 0,
+                        "h": 30,
+                        "color": "flag"
+                    }
+                ]
+            }
+        },
+        {
+            "level": 5,
+            "cost": {},
+            "buildTime": 0,
+            "requiresEpoch": "e2500",
+            "effects": {
+                "housing": 120,
+                "jobs": 0,
+                "produces": { "gold": 6, "wood": 0.4 },
+                "consumes": {},
+                "storage": 6000,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 8, "happiness": 15 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 90
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "ground",
+                        "x": 0.05,
+                        "y": 0.05,
+                        "w": 1.9,
+                        "d": 1.9,
+                        "color": "plaza"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.25,
+                        "y": 0.25,
+                        "w": 1.5,
+                        "d": 1.5,
+                        "z": 0,
+                        "h": 18,
+                        "color": "glass"
+                    },
+                    {
+                        "kind": "cylinder",
+                        "x": 1,
+                        "y": 1,
+                        "r": 0.45,
+                        "z": 18,
+                        "h": 90,
+                        "color": "glass",
+                        "taper": 0.55
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "dome",
+                        "x": 0.72,
+                        "y": 0.72,
+                        "w": 0.56,
+                        "d": 0.56,
+                        "z": 108,
+                        "h": 0,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "light",
+                        "x": 1,
+                        "y": 1,
+                        "z": 112,
+                        "radius": 1.2,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "light",
+                        "x": 1,
+                        "y": 1,
+                        "z": 18,
+                        "radius": 1.4,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "tree",
+                        "x": 0.3,
+                        "y": 1.75,
+                        "scale": 0.9,
+                        "conifer": false
+                    },
+                    {
+                        "kind": "tree",
+                        "x": 1.75,
+                        "y": 0.3,
+                        "scale": 0.9,
+                        "conifer": false
+                    }
+                ]
+            }
+        }
+    ]
+}

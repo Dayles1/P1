@@ -1,0 +1,208 @@
+{
+    "$doc": "Звуки. Каждый пресет синтезируется в браузере по описанию synth; если указать file (например \"/sounds/hammer.ogg\"), будет играть файл. notes — последовательность тонов (Гц), noise — шумовой удар, filter — частота фильтра, duration — секунды, volume — 0..1. ambience — фоновые звуки для дня и ночи по типу поселения эпохи.",
+    "master": 0.5,
+    "presets": {
+        "click": {
+            "file": null,
+            "synth": {
+                "wave": "sine",
+                "notes": [880],
+                "duration": 0.05,
+                "volume": 0.15
+            }
+        },
+        "place": {
+            "file": null,
+            "synth": {
+                "noise": true,
+                "filter": 900,
+                "duration": 0.12,
+                "repeat": 3,
+                "gap": 0.11,
+                "volume": 0.35
+            }
+        },
+        "upgrade": {
+            "file": null,
+            "synth": {
+                "wave": "triangle",
+                "notes": [523, 659, 784, 1046],
+                "duration": 0.09,
+                "volume": 0.25
+            }
+        },
+        "demolish": {
+            "file": null,
+            "synth": {
+                "noise": true,
+                "filter": 300,
+                "duration": 0.5,
+                "volume": 0.45
+            }
+        },
+        "error": {
+            "file": null,
+            "synth": {
+                "wave": "square",
+                "notes": [220, 180],
+                "duration": 0.09,
+                "volume": 0.12
+            }
+        },
+        "coin": {
+            "file": null,
+            "synth": {
+                "wave": "square",
+                "notes": [988, 1319],
+                "duration": 0.07,
+                "volume": 0.12
+            }
+        },
+        "epoch": {
+            "file": null,
+            "synth": {
+                "wave": "sawtooth",
+                "notes": [392, 523, 659, 784, 1046],
+                "duration": 0.22,
+                "filter": 2200,
+                "volume": 0.25
+            }
+        },
+        "bell": {
+            "file": null,
+            "synth": {
+                "wave": "sine",
+                "notes": [660],
+                "duration": 1.4,
+                "harmonics": [1, 2.76, 5.4],
+                "volume": 0.25
+            }
+        },
+        "hammer": {
+            "file": null,
+            "synth": {
+                "noise": true,
+                "filter": 2400,
+                "duration": 0.05,
+                "repeat": 3,
+                "gap": 0.25,
+                "volume": 0.3
+            }
+        },
+        "water": {
+            "file": null,
+            "synth": {
+                "noise": true,
+                "filter": 1200,
+                "duration": 0.8,
+                "volume": 0.18
+            }
+        },
+        "wind": {
+            "file": null,
+            "synth": {
+                "noise": true,
+                "filter": 500,
+                "duration": 2.5,
+                "volume": 0.12
+            }
+        },
+        "machine": {
+            "file": null,
+            "synth": {
+                "wave": "sawtooth",
+                "notes": [70, 70, 90],
+                "duration": 0.2,
+                "filter": 400,
+                "volume": 0.2
+            }
+        },
+        "hum": {
+            "file": null,
+            "synth": {
+                "wave": "sine",
+                "notes": [110],
+                "duration": 1.2,
+                "harmonics": [1, 2, 3],
+                "volume": 0.12
+            }
+        },
+        "chime": {
+            "file": null,
+            "synth": {
+                "wave": "sine",
+                "notes": [1318, 1568, 2093],
+                "duration": 0.18,
+                "volume": 0.15
+            }
+        },
+        "moo": {
+            "file": null,
+            "synth": {
+                "wave": "sawtooth",
+                "notes": [150, 130],
+                "duration": 0.45,
+                "filter": 700,
+                "volume": 0.18
+            }
+        },
+        "bird": {
+            "file": null,
+            "synth": {
+                "wave": "sine",
+                "notes": [2600, 3200, 2800],
+                "duration": 0.06,
+                "volume": 0.06
+            }
+        },
+        "cricket": {
+            "file": null,
+            "synth": {
+                "wave": "square",
+                "notes": [4200, 4200, 4200],
+                "duration": 0.025,
+                "volume": 0.03
+            }
+        },
+        "rain": {
+            "file": null,
+            "synth": {
+                "noise": true,
+                "filter": 3000,
+                "duration": 2,
+                "volume": 0.08
+            }
+        },
+        "traffic": {
+            "file": null,
+            "synth": {
+                "noise": true,
+                "filter": 250,
+                "duration": 1.8,
+                "volume": 0.07
+            }
+        }
+    },
+    "ambience": {
+        "village": {
+            "day": ["bird", "moo"],
+            "night": ["cricket"],
+            "every": [3, 9]
+        },
+        "town": {
+            "day": ["bird", "bell", "hammer"],
+            "night": ["cricket"],
+            "every": [3, 9]
+        },
+        "city": {
+            "day": ["traffic", "bird"],
+            "night": ["traffic", "cricket"],
+            "every": [4, 10]
+        },
+        "future": {
+            "day": ["hum", "chime"],
+            "night": ["hum"],
+            "every": [4, 10]
+        }
+    }
+}

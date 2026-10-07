@@ -1,0 +1,233 @@
+{
+    "$doc": "Эпохи по порядку. year — с какого года начинается, yearsPerDay — сколько лет проходит за игровые сутки, territory — полуширина своей земли вокруг центра. palette — материалы архитектуры (ключи используются в моделях зданий), theme — оформление интерфейса. next — что нужно для перехода в следующую эпоху.",
+    "epochs": [
+        {
+            "id": "e1000",
+            "year": 1000,
+            "name": "Раннее средневековье",
+            "tagline": "Несколько семей, лес вокруг и дом старейшины. Всё только начинается.",
+            "yearsPerDay": 40,
+            "territory": 11,
+            "palette": {
+                "wall": "#9a6b3f",
+                "walls": ["#9a6b3f", "#a87849", "#8d6239"],
+                "roof": "#c9a24d",
+                "trim": "#5e3d22",
+                "window": "#3a2919",
+                "lit": "#f7c96a",
+                "glass": "#9fc7de",
+                "metal": "#7a7f86",
+                "road": "#b8925a",
+                "roadEdge": "#9a7646",
+                "roadMark": null,
+                "roadStyle": "dirt",
+                "plaza": "#a98d63",
+                "crop": "#d8bf4f",
+                "flag": "#b33a2b",
+                "accent": "#e0a530",
+                "sky": ["#a8d8ea", "#e8f4ea"]
+            },
+            "theme": {
+                "bg": "rgba(53,38,24,0.88)",
+                "solid": "#3a2a1b",
+                "border": "rgba(232,196,130,0.35)",
+                "text": "#f8ecd4",
+                "muted": "#d4bf98",
+                "accent": "#e9b44c",
+                "accentText": "#2a1c0e",
+                "font": "Georgia, 'Times New Roman', serif",
+                "radius": 10
+            },
+            "ambience": "village",
+            "next": {
+                "population": 60,
+                "buildings": [
+                    { "type": "market", "count": 1 },
+                    { "type": "chapel", "count": 1 }
+                ],
+                "cost": { "wood": 300, "stone": 200, "gold": 250 }
+            }
+        },
+        {
+            "id": "e1500",
+            "year": 1500,
+            "name": "Возрождение",
+            "tagline": "Фахверковые дома, мельницы и мастерские. Город богатеет и учится ремёслам.",
+            "yearsPerDay": 25,
+            "territory": 13,
+            "palette": {
+                "wall": "#e6d9bd",
+                "walls": ["#e6d9bd", "#efe3c4", "#e2cfb0"],
+                "roof": "#8f3b2c",
+                "trim": "#5b3b22",
+                "window": "#334250",
+                "lit": "#f6d27a",
+                "glass": "#9fc7de",
+                "metal": "#7a7f86",
+                "road": "#a29d93",
+                "roadEdge": "#858076",
+                "roadMark": null,
+                "roadStyle": "cobble",
+                "plaza": "#c7beac",
+                "crop": "#d6be52",
+                "flag": "#2f4f9c",
+                "accent": "#c9a24a",
+                "sky": ["#9ccbe6", "#ecf0ea"]
+            },
+            "theme": {
+                "bg": "rgba(44,40,48,0.88)",
+                "solid": "#2e2a33",
+                "border": "rgba(214,181,110,0.4)",
+                "text": "#f4eee2",
+                "muted": "#c9bda4",
+                "accent": "#c9a24a",
+                "accentText": "#1f1a10",
+                "font": "'Palatino Linotype', 'Book Antiqua', Georgia, serif",
+                "radius": 10
+            },
+            "ambience": "town",
+            "next": {
+                "population": 250,
+                "buildings": [
+                    { "type": "workshop", "count": 2 },
+                    { "type": "windmill", "count": 1 }
+                ],
+                "cost": { "stone": 900, "tools": 200, "gold": 1200 }
+            }
+        },
+        {
+            "id": "e1750",
+            "year": 1750,
+            "name": "Век мануфактур",
+            "tagline": "Кирпич, черепица и первые фабричные трубы. Каждый день — новое ремесло.",
+            "yearsPerDay": 25,
+            "territory": 17,
+            "palette": {
+                "wall": "#b5654a",
+                "walls": ["#b5654a", "#a35c43", "#c9a27e", "#d8c3a5"],
+                "roof": "#4d5560",
+                "trim": "#6b3326",
+                "window": "#2e4152",
+                "lit": "#f3c86b",
+                "glass": "#9fc7de",
+                "metal": "#5f646b",
+                "road": "#8d8a84",
+                "roadEdge": "#6f6c67",
+                "roadMark": null,
+                "roadStyle": "paved",
+                "plaza": "#b6b0a4",
+                "crop": "#cdb758",
+                "flag": "#8f1d1d",
+                "accent": "#c8813e",
+                "sky": ["#aab6ba", "#e3e2da"]
+            },
+            "theme": {
+                "bg": "rgba(38,32,28,0.9)",
+                "solid": "#2a231e",
+                "border": "rgba(196,140,80,0.45)",
+                "text": "#f1e6d8",
+                "muted": "#c4ad94",
+                "accent": "#c8813e",
+                "accentText": "#1c120a",
+                "font": "Rockwell, 'Courier New', serif",
+                "radius": 4
+            },
+            "ambience": "town",
+            "next": {
+                "population": 700,
+                "buildings": [
+                    { "type": "tenement", "count": 3 },
+                    { "type": "park", "count": 1 }
+                ],
+                "cost": { "stone": 2500, "tools": 800, "gold": 4000 }
+            }
+        },
+        {
+            "id": "e2000",
+            "year": 2000,
+            "name": "Современность",
+            "tagline": "Бетон, стекло, электричество и машины. Город не спит по ночам.",
+            "yearsPerDay": 50,
+            "territory": 22,
+            "palette": {
+                "wall": "#d4d2cc",
+                "walls": ["#d4d2cc", "#e2d6c2", "#c9cfd6", "#ddd0c8"],
+                "roof": "#7d8188",
+                "trim": "#9a9893",
+                "window": "#3c5466",
+                "lit": "#ffe39a",
+                "glass": "#86bfe0",
+                "metal": "#9aa3ad",
+                "road": "#4a4c50",
+                "roadEdge": "#3a3c40",
+                "roadMark": "#f2f2f2",
+                "roadStyle": "asphalt",
+                "plaza": "#a5a6a8",
+                "crop": "#c7c45a",
+                "flag": "#1f5fbf",
+                "accent": "#2f6fe0",
+                "sky": ["#8fc3e8", "#eef2f2"]
+            },
+            "theme": {
+                "bg": "rgba(250,251,252,0.9)",
+                "solid": "#f4f6f8",
+                "border": "rgba(20,40,70,0.14)",
+                "text": "#17202b",
+                "muted": "#5b6878",
+                "accent": "#2f6fe0",
+                "accentText": "#ffffff",
+                "font": "Onest, 'Segoe UI', system-ui, sans-serif",
+                "radius": 12
+            },
+            "ambience": "city",
+            "next": {
+                "population": 2000,
+                "buildings": [
+                    { "type": "apartment", "count": 4 },
+                    { "type": "power_plant", "count": 1, "level": 2 }
+                ],
+                "cost": { "stone": 6000, "tools": 2500, "gold": 15000 }
+            }
+        },
+        {
+            "id": "e2500",
+            "year": 2500,
+            "name": "Город будущего",
+            "tagline": "Башни-сады, термоядерный свет и летающие машины. Город, о котором мечтали.",
+            "yearsPerDay": 10,
+            "territory": 28,
+            "palette": {
+                "wall": "#e9f3f5",
+                "walls": ["#e9f3f5", "#d6ecef", "#f2f6f8", "#cfe6ea"],
+                "roof": "#3a4f5c",
+                "trim": "#35e0d0",
+                "window": "#1f3c55",
+                "lit": "#9ff6ff",
+                "glass": "#7fd3e6",
+                "metal": "#c9d6de",
+                "road": "#2f3540",
+                "roadEdge": "#232831",
+                "roadMark": "#35e0d0",
+                "roadStyle": "glow",
+                "plaza": "#c4d2d8",
+                "crop": "#9be06a",
+                "flag": "#35e0d0",
+                "accent": "#35e0d0",
+                "sky": ["#7fbfe9", "#eaf5fb"]
+            },
+            "theme": {
+                "bg": "rgba(10,18,30,0.78)",
+                "solid": "#0d1624",
+                "border": "rgba(90,220,255,0.35)",
+                "text": "#e9f8ff",
+                "muted": "#8fb6c8",
+                "accent": "#35e0d0",
+                "accentText": "#04201d",
+                "font": "Onest, 'Segoe UI', system-ui, sans-serif",
+                "radius": 16
+            },
+            "ambience": "future",
+            "next": null
+        }
+    ]
+}

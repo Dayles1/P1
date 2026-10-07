@@ -80,6 +80,7 @@ return [
         'chat' => 'Chat',
         'notifications' => 'Notifications',
         'currencies' => 'Currencies',
+        'games' => 'Games',
         'admin' => 'Administration',
         'admin_settings' => 'App settings',
         'admin_users' => 'Users',

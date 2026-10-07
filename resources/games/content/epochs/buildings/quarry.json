@@ -1,0 +1,263 @@
+{
+    "id": "quarry",
+    "name": "Каменоломня",
+    "names": { "e2000": "Карьер" },
+    "icon": "🧱",
+    "category": "resources",
+    "description": "Камень. Ставьте рядом со скалами — выработка заметно выше.",
+    "epoch": "e1000",
+    "size": { "w": 1, "h": 1 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": {
+        "place": "place",
+        "upgrade": "upgrade",
+        "demolish": "demolish",
+        "select": "hammer",
+        "ambient": "hammer"
+    },
+    "levels": [
+        {
+            "level": 1,
+            "cost": { "wood": 30 },
+            "buildTime": 5,
+            "effects": {
+                "housing": 0,
+                "jobs": 4,
+                "produces": { "stone": 0.4 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": {
+                    "feature": "rock",
+                    "radius": 2,
+                    "perTile": 0.1,
+                    "max": 0.7
+                },
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "ground",
+                        "x": 0.08,
+                        "y": 0.08,
+                        "w": 0.84,
+                        "d": 0.84,
+                        "color": "#7d776f"
+                    },
+                    {
+                        "kind": "ground",
+                        "x": 0.25,
+                        "y": 0.25,
+                        "w": 0.5,
+                        "d": 0.5,
+                        "color": "#5d5852"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.15,
+                        "y": 0.6,
+                        "w": 0.18,
+                        "d": 0.16,
+                        "z": 0,
+                        "h": 5,
+                        "color": "#c4bfb6"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.6,
+                        "y": 0.15,
+                        "w": 0.18,
+                        "d": 0.16,
+                        "z": 0,
+                        "h": 5,
+                        "color": "#c4bfb6"
+                    }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "cost": { "wood": 50, "gold": 30 },
+            "buildTime": 7,
+            "effects": {
+                "housing": 0,
+                "jobs": 5,
+                "produces": { "stone": 0.7 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": {
+                    "feature": "rock",
+                    "radius": 2,
+                    "perTile": 0.12,
+                    "max": 0.9
+                },
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "ground",
+                        "x": 0.08,
+                        "y": 0.08,
+                        "w": 0.84,
+                        "d": 0.84,
+                        "color": "#7d776f"
+                    },
+                    {
+                        "kind": "ground",
+                        "x": 0.25,
+                        "y": 0.25,
+                        "w": 0.5,
+                        "d": 0.5,
+                        "color": "#5d5852"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.15,
+                        "y": 0.6,
+                        "w": 0.18,
+                        "d": 0.16,
+                        "z": 0,
+                        "h": 5,
+                        "color": "#c4bfb6"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.6,
+                        "y": 0.15,
+                        "w": 0.18,
+                        "d": 0.16,
+                        "z": 0,
+                        "h": 5,
+                        "color": "#c4bfb6"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.62,
+                        "y": 0.6,
+                        "w": 0.18,
+                        "d": 0.16,
+                        "z": 0,
+                        "h": 5,
+                        "color": "#c4bfb6"
+                    },
+                    {
+                        "kind": "pole",
+                        "x": 0.85,
+                        "y": 0.85,
+                        "z": 0,
+                        "h": 30,
+                        "color": "#6b4a2b",
+                        "blink": null
+                    }
+                ]
+            }
+        },
+        {
+            "level": 3,
+            "cost": { "wood": 80, "gold": 60, "tools": 20 },
+            "buildTime": 9,
+            "requiresEpoch": "e1500",
+            "effects": {
+                "housing": 0,
+                "jobs": 6,
+                "produces": { "stone": 1.05 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": {
+                    "feature": "rock",
+                    "radius": 3,
+                    "perTile": 0.12,
+                    "max": 1.2
+                },
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "ground",
+                        "x": 0.05,
+                        "y": 0.05,
+                        "w": 0.9,
+                        "d": 0.9,
+                        "color": "#7d776f"
+                    },
+                    {
+                        "kind": "ground",
+                        "x": 0.2,
+                        "y": 0.2,
+                        "w": 0.6,
+                        "d": 0.6,
+                        "color": "#4d4842"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.12,
+                        "y": 0.62,
+                        "w": 0.2,
+                        "d": 0.18,
+                        "z": 0,
+                        "h": 6,
+                        "color": "#c4bfb6"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.62,
+                        "y": 0.12,
+                        "w": 0.2,
+                        "d": 0.18,
+                        "z": 0,
+                        "h": 6,
+                        "color": "#c4bfb6"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.62,
+                        "y": 0.62,
+                        "w": 0.2,
+                        "d": 0.18,
+                        "z": 0,
+                        "h": 6,
+                        "color": "#c4bfb6"
+                    },
+                    {
+                        "kind": "pole",
+                        "x": 0.85,
+                        "y": 0.85,
+                        "z": 0,
+                        "h": 40,
+                        "color": "metal",
+                        "blink": null
+                    },
+                    {
+                        "kind": "emitter",
+                        "x": 0.5,
+                        "y": 0.5,
+                        "z": 4,
+                        "type": "dust"
+                    }
+                ]
+            }
+        }
+    ]
+}

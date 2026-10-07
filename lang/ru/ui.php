@@ -80,6 +80,7 @@ return [
         'chat' => 'Чат',
         'notifications' => 'Уведомления',
         'currencies' => 'Валюты',
+        'games' => 'Игры',
         'admin' => 'Администрирование',
         'admin_settings' => 'Настройки приложения',
         'admin_users' => 'Пользователи',
