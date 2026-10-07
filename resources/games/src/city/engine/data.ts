@@ -874,7 +874,7 @@ export const TECHS: TechDef[] = [
     {
         id: 'council',
         name: 'Совет старейшин',
-        icon: '🪶',
+        icon: '🗣️',
         epoch: 0,
         cost: 40,
         requires: ['agriculture', 'carpentry'],
