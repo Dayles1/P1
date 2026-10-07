@@ -80,6 +80,7 @@ return [
         'chat' => 'Chat',
         'notifications' => 'Bildirishnomalar',
         'currencies' => 'Valyutalar',
+        'games' => 'O‘yinlar',
         'admin' => 'Boshqaruv',
         'admin_settings' => 'Ilova sozlamalari',
         'admin_users' => 'Foydalanuvchilar',

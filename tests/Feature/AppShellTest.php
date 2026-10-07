@@ -32,13 +32,14 @@ function shellTabbar(TestResponse $response): string
 test('the sidebar holds search and the product sections, with the inbox', function () {
     $sidebar = shellSidebar($this->get('/dashboard')->assertOk());
 
-    expect(substr_count($sidebar, 'data-nav-link="sidebar-link"'))->toBe(5)
+    expect(substr_count($sidebar, 'data-nav-link="sidebar-link"'))->toBe(6)
         ->and($sidebar)->toContain('data-command-palette-trigger')
         ->and($sidebar)->toContain('href="'.route('dashboard').'"')
         ->and($sidebar)->toContain('href="'.route('profile').'"')
         ->and($sidebar)->toContain('href="'.route('chat').'"')
         ->and($sidebar)->toContain('href="'.route('notifications').'"')
         ->and($sidebar)->toContain('href="'.route('currencies').'"')
+        ->and($sidebar)->toContain('href="'.route('games').'"')
         ->and($sidebar)->toContain('data-sidebar-pinned')
         ->and($sidebar)->not->toContain(route('settings'))
         ->and($sidebar)->not->toContain(route('sessions'))

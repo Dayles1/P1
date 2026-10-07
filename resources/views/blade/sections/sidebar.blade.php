@@ -48,6 +48,11 @@
         {{ __('ui.nav.currencies') }}
     </x-blade.navigation.sidebar-link>
 
+    {{-- The games are their own React app, not a Turbo page: a full load. --}}
+    <x-blade.navigation.sidebar-link :href="route('games')" icon="gamepad" data-turbo="false">
+        {{ __('ui.nav.games') }}
+    </x-blade.navigation.sidebar-link>
+
 </nav>
 
 {{-- Filled with the user's pinned conversations by shared/sidebar.js. --}}
