@@ -1,26 +1,21 @@
 {
     "id": "park",
-    "name": "Сад",
-    "names": { "e2000": "Парк", "e2500": "Био-парк" },
+    "name": "Парк",
     "icon": "🌳",
-    "category": "civic",
-    "description": "Зелень и тень. Дорога не нужна.",
-    "epoch": "e1750",
+    "category": "services",
+    "description": "Зелень и отдых рядом с домом.",
     "size": { "w": 1, "h": 1 },
     "unique": false,
     "hidden": false,
-    "placement": { "requiresRoad": false },
-    "sounds": {
-        "place": "place",
-        "upgrade": "upgrade",
-        "demolish": "demolish",
-        "select": "bird",
-        "ambient": "bird"
-    },
+    "placement": { "requiresRoad": true },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": "bird" },
     "levels": [
         {
             "level": 1,
-            "cost": { "stone": 50, "gold": 150 },
+            "name": "Роща",
+            "epoch": "e0",
+            "description": "Священная роща с камнем для отдыха.",
+            "cost": { "wood": 5, "gold": 5 },
             "buildTime": 4,
             "effects": {
                 "housing": 0,
@@ -30,7 +25,7 @@
                 "storage": 0,
                 "power": 0,
                 "powerUse": 0,
-                "aura": { "radius": 4, "happiness": 14 },
+                "aura": { "radius": 2, "happiness": 3 },
                 "pollution": null,
                 "boost": null,
                 "near": null,
@@ -39,65 +34,21 @@
             },
             "model": {
                 "parts": [
-                    {
-                        "kind": "ground",
-                        "x": 0.04,
-                        "y": 0.04,
-                        "w": 0.92,
-                        "d": 0.92,
-                        "color": "#5f9d45"
-                    },
-                    {
-                        "kind": "ground",
-                        "x": 0.44,
-                        "y": 0.04,
-                        "w": 0.12,
-                        "d": 0.92,
-                        "color": "#d8c9a3"
-                    },
-                    {
-                        "kind": "ground",
-                        "x": 0.04,
-                        "y": 0.44,
-                        "w": 0.92,
-                        "d": 0.12,
-                        "color": "#d8c9a3"
-                    },
-                    {
-                        "kind": "tree",
-                        "x": 0.22,
-                        "y": 0.22,
-                        "scale": 0.9,
-                        "conifer": false
-                    },
-                    {
-                        "kind": "tree",
-                        "x": 0.78,
-                        "y": 0.22,
-                        "scale": 0.9,
-                        "conifer": true
-                    },
-                    {
-                        "kind": "tree",
-                        "x": 0.22,
-                        "y": 0.78,
-                        "scale": 0.9,
-                        "conifer": true
-                    },
-                    {
-                        "kind": "tree",
-                        "x": 0.78,
-                        "y": 0.78,
-                        "scale": 0.9,
-                        "conifer": false
-                    }
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "#7fa05a" },
+                    { "kind": "tree", "x": 0.3, "y": 0.3, "scale": 0.7, "conifer": false },
+                    { "kind": "tree", "x": 0.72, "y": 0.4, "scale": 0.6, "conifer": false },
+                    { "kind": "tree", "x": 0.4, "y": 0.75, "scale": 0.55, "conifer": false },
+                    { "kind": "box", "x": 0.62, "y": 0.7, "z": 0, "w": 0.18, "d": 0.12, "h": 0.06, "color": "trim" }
                 ]
             }
         },
         {
             "level": 2,
-            "cost": { "stone": 90, "gold": 300 },
-            "buildTime": 5,
+            "name": "Сад",
+            "epoch": "e1500",
+            "description": "Регулярный сад: дорожки, стриженые кусты и беседка.",
+            "cost": { "stone": 40, "wood": 30, "gold": 60 },
+            "buildTime": 8,
             "effects": {
                 "housing": 0,
                 "jobs": 0,
@@ -106,7 +57,7 @@
                 "storage": 0,
                 "power": 0,
                 "powerUse": 0,
-                "aura": { "radius": 5, "happiness": 17 },
+                "aura": { "radius": 3, "happiness": 5 },
                 "pollution": null,
                 "boost": null,
                 "near": null,
@@ -115,84 +66,25 @@
             },
             "model": {
                 "parts": [
-                    {
-                        "kind": "ground",
-                        "x": 0.04,
-                        "y": 0.04,
-                        "w": 0.92,
-                        "d": 0.92,
-                        "color": "#5f9d45"
-                    },
-                    {
-                        "kind": "ground",
-                        "x": 0.44,
-                        "y": 0.04,
-                        "w": 0.12,
-                        "d": 0.92,
-                        "color": "#d8c9a3"
-                    },
-                    {
-                        "kind": "ground",
-                        "x": 0.04,
-                        "y": 0.44,
-                        "w": 0.92,
-                        "d": 0.12,
-                        "color": "#d8c9a3"
-                    },
-                    {
-                        "kind": "tree",
-                        "x": 0.22,
-                        "y": 0.22,
-                        "scale": 1.05,
-                        "conifer": false
-                    },
-                    {
-                        "kind": "tree",
-                        "x": 0.78,
-                        "y": 0.22,
-                        "scale": 1.05,
-                        "conifer": true
-                    },
-                    {
-                        "kind": "tree",
-                        "x": 0.22,
-                        "y": 0.78,
-                        "scale": 1.05,
-                        "conifer": true
-                    },
-                    {
-                        "kind": "tree",
-                        "x": 0.78,
-                        "y": 0.78,
-                        "scale": 1.05,
-                        "conifer": false
-                    },
-                    {
-                        "kind": "cylinder",
-                        "x": 0.5,
-                        "y": 0.5,
-                        "r": 0.1,
-                        "z": 0,
-                        "h": 3,
-                        "color": "#c9c3b6",
-                        "taper": 1
-                    },
-                    {
-                        "kind": "light",
-                        "x": 0.5,
-                        "y": 0.5,
-                        "z": 14,
-                        "radius": 0.5,
-                        "color": "lit"
-                    }
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "#86a86a" },
+                    { "kind": "ground", "x": 0.45, "y": 0.05, "w": 0.1, "d": 0.9, "color": "plaza" },
+                    { "kind": "tree", "x": 0.2, "y": 0.2, "scale": 0.4, "conifer": true },
+                    { "kind": "tree", "x": 0.8, "y": 0.2, "scale": 0.4, "conifer": true },
+                    { "kind": "tree", "x": 0.2, "y": 0.8, "scale": 0.4, "conifer": true },
+                    { "kind": "tree", "x": 0.8, "y": 0.8, "scale": 0.4, "conifer": true },
+                    { "kind": "cylinder", "x": 0.4, "y": 0.5, "z": 0, "r": 0.02, "h": 0.25, "color": "trim", "segments": 10 },
+                    { "kind": "cylinder", "x": 0.6, "y": 0.5, "z": 0, "r": 0.02, "h": 0.25, "color": "trim", "segments": 10 },
+                    { "kind": "sphere", "x": 0.5, "y": 0.5, "z": 0.25, "r": 0.12, "color": "roof", "half": true }
                 ]
             }
         },
         {
             "level": 3,
-            "cost": { "stone": 150, "tools": 30, "gold": 600 },
-            "buildTime": 6,
-            "requiresEpoch": "e2000",
+            "name": "Парк",
+            "epoch": "e1800",
+            "description": "Аллеи, скамейки, газовые фонари и ротонда для оркестра.",
+            "cost": { "bricks": 60, "steel": 10, "gold": 200 },
+            "buildTime": 10,
             "effects": {
                 "housing": 0,
                 "jobs": 0,
@@ -201,7 +93,7 @@
                 "storage": 0,
                 "power": 0,
                 "powerUse": 0,
-                "aura": { "radius": 6, "happiness": 21 },
+                "aura": { "radius": 3, "happiness": 6 },
                 "pollution": null,
                 "boost": null,
                 "near": null,
@@ -210,83 +102,122 @@
             },
             "model": {
                 "parts": [
-                    {
-                        "kind": "ground",
-                        "x": 0.04,
-                        "y": 0.04,
-                        "w": 0.92,
-                        "d": 0.92,
-                        "color": "#5f9d45"
-                    },
-                    {
-                        "kind": "ground",
-                        "x": 0.44,
-                        "y": 0.04,
-                        "w": 0.12,
-                        "d": 0.92,
-                        "color": "#d8c9a3"
-                    },
-                    {
-                        "kind": "ground",
-                        "x": 0.04,
-                        "y": 0.44,
-                        "w": 0.92,
-                        "d": 0.12,
-                        "color": "#d8c9a3"
-                    },
-                    {
-                        "kind": "tree",
-                        "x": 0.22,
-                        "y": 0.22,
-                        "scale": 1.2,
-                        "conifer": false
-                    },
-                    {
-                        "kind": "tree",
-                        "x": 0.78,
-                        "y": 0.22,
-                        "scale": 1.2,
-                        "conifer": true
-                    },
-                    {
-                        "kind": "tree",
-                        "x": 0.22,
-                        "y": 0.78,
-                        "scale": 1.2,
-                        "conifer": true
-                    },
-                    {
-                        "kind": "tree",
-                        "x": 0.78,
-                        "y": 0.78,
-                        "scale": 1.2,
-                        "conifer": false
-                    },
-                    {
-                        "kind": "cylinder",
-                        "x": 0.5,
-                        "y": 0.5,
-                        "r": 0.16,
-                        "z": 0,
-                        "h": 4,
-                        "color": "#c9c3b6",
-                        "taper": 1
-                    },
-                    {
-                        "kind": "emitter",
-                        "x": 0.5,
-                        "y": 0.5,
-                        "z": 8,
-                        "type": "water"
-                    },
-                    {
-                        "kind": "light",
-                        "x": 0.5,
-                        "y": 0.5,
-                        "z": 14,
-                        "radius": 0.7,
-                        "color": "lit"
-                    }
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "#7fa05a" },
+                    { "kind": "tree", "x": 0.2, "y": 0.2, "scale": 0.6, "conifer": false },
+                    { "kind": "tree", "x": 0.8, "y": 0.25, "scale": 0.55, "conifer": false },
+                    { "kind": "tree", "x": 0.25, "y": 0.8, "scale": 0.55, "conifer": false },
+                    { "kind": "cylinder", "x": 0.65, "y": 0.65, "z": 0, "r": 0.16, "h": 0.04, "color": "trim" },
+                    { "kind": "cylinder", "x": 0.53, "y": 0.65, "z": 0.04, "r": 0.015, "h": 0.25, "color": "metal", "segments": 10 },
+                    { "kind": "cylinder", "x": 0.65, "y": 0.65, "z": 0.04, "r": 0.015, "h": 0.25, "color": "metal", "segments": 10 },
+                    { "kind": "cylinder", "x": 0.77, "y": 0.65, "z": 0.04, "r": 0.015, "h": 0.25, "color": "metal", "segments": 10 },
+                    { "kind": "roof", "shape": "cone", "x": 0.48, "y": 0.48, "z": 0.29, "w": 0.34, "d": 0.34, "h": 0.12, "color": "roof" },
+                    { "kind": "pole", "x": 0.05, "y": 0.5, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.05, "y": 0.5, "z": 0.3, "radius": 1.4, "color": "#f3c86b" }
+                ]
+            }
+        },
+        {
+            "level": 4,
+            "name": "Сквер с фонтаном",
+            "epoch": "e1900",
+            "description": "Фонтан с подсветкой, клумбы и кованые скамейки.",
+            "cost": { "concrete": 80, "steel": 30, "gold": 600 },
+            "buildTime": 14,
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 1,
+                "aura": { "radius": 4, "happiness": 8 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "plaza" },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0, "r": 0.3, "h": 0.08, "color": "trim", "segments": 20 },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0.07, "r": 0.26, "h": 0.02, "color": "#3f8fc4" },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0.08, "r": 0.06, "h": 0.18, "color": "trim" },
+                    { "kind": "emitter", "x": 0.5, "y": 0.5, "z": 0.26, "type": "water" },
+                    { "kind": "tree", "x": 0.12, "y": 0.12, "scale": 0.4, "conifer": false },
+                    { "kind": "tree", "x": 0.88, "y": 0.88, "scale": 0.4, "conifer": false },
+                    { "kind": "light", "x": 0.5, "y": 0.5, "z": 0.1, "radius": 1.2, "color": "#9fd2ff" },
+                    { "kind": "pole", "x": 0.9, "y": 0.1, "z": 0, "h": 0.35, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.9, "y": 0.1, "z": 0.35, "radius": 1.4, "color": "#ffd98a" }
+                ]
+            }
+        },
+        {
+            "level": 5,
+            "name": "Эко-парк",
+            "epoch": "e2100",
+            "description": "Дикий луг, пруд с камышом и пешеходный мост.",
+            "cost": { "composites": 60, "glass": 200, "electronics": 20, "gold": 3000 },
+            "buildTime": 25,
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 2,
+                "aura": { "radius": 5, "happiness": 10 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "#8ad06a" },
+                    { "kind": "cylinder", "x": 0.6, "y": 0.6, "z": 0, "r": 0.25, "h": 0.02, "color": "#3fa0c0", "segments": 16 },
+                    { "kind": "tree", "x": 0.2, "y": 0.2, "scale": 0.55, "conifer": false },
+                    { "kind": "tree", "x": 0.75, "y": 0.2, "scale": 0.45, "conifer": false },
+                    { "kind": "tree", "x": 0.2, "y": 0.75, "scale": 0.5, "conifer": false },
+                    { "kind": "box", "x": 0.35, "y": 0.55, "z": 0.06, "w": 0.55, "d": 0.1, "h": 0.03, "color": "trim" },
+                    { "kind": "light", "x": 0.6, "y": 0.6, "z": 0.1, "radius": 1, "color": "#b5fff0" }
+                ]
+            }
+        },
+        {
+            "level": 6,
+            "name": "Голопарк",
+            "epoch": "e2500",
+            "description": "Настоящие деревья и голографические бабочки.",
+            "cost": { "ai_cores": 5, "composites": 300, "gold": 10000 },
+            "buildTime": 35,
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 6,
+                "aura": { "radius": 6, "happiness": 13 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "#5f9a6a" },
+                    { "kind": "tree", "x": 0.2, "y": 0.2, "scale": 0.6, "conifer": false },
+                    { "kind": "tree", "x": 0.8, "y": 0.8, "scale": 0.6, "conifer": false },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0, "r": 0.2, "h": 0.05, "color": "walls" },
+                    { "kind": "sphere", "x": 0.5, "y": 0.5, "z": 0.5, "r": 0.15, "color": "accent", "material": "glow" },
+                    { "kind": "torus", "x": 0.5, "y": 0.5, "z": 0.5, "r": 0.25, "tube": 0.02, "color": "trim", "spin": 0.5, "material": "glow" },
+                    { "kind": "light", "x": 0.5, "y": 0.5, "z": 0.5, "radius": 1.5, "color": "#c06cff" }
                 ]
             }
         }

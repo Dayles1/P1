@@ -31,6 +31,9 @@ export type GameEvent =
       }
     | { type: 'cleared'; x: number; y: number; text: string }
     | { type: 'epoch'; epoch: number }
+    | { type: 'researched'; tech: string }
+    | { type: 'achievement'; goal: string }
+    | { type: 'restyled'; uid: number }
     | { type: 'season'; season: string }
     | { type: 'weather'; weather: string }
     | { type: 'sound'; id: string }

@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * A building a player placed: which one (`type` is a file in
- * content/epochs/buildings), where, and at which level. Everything else
- * about it comes from that file.
+ * content/epochs/buildings), where, at which level, how the player styled
+ * it and — for a district hall — the district's name and policy.
+ * Everything else about it comes from that file.
  *
  * @property int $id
  * @property int $world_id
@@ -19,6 +20,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $level
  * @property int $build_start
  * @property int $build_end
+ * @property array{blueprint: string|null, colors: array<string, string>}|null $style
+ * @property array{name: string, policy: string|null}|null $district
  */
 class Building extends Model
 {
@@ -40,6 +43,8 @@ class Building extends Model
             'level' => 'integer',
             'build_start' => 'integer',
             'build_end' => 'integer',
+            'style' => 'array',
+            'district' => 'array',
         ];
     }
 

@@ -1,0 +1,882 @@
+{
+    "$doc": "Технологии. Изучаются за знания 📜 (и немного материалов), занимают time игровых секунд, образуют дерево (requires). bonus — прибавка ко всему городу в процентах (happiness — в очках). Уровни зданий с полем tech открываются только после изучения; для перехода в следующую эпоху нужны её ключевые технологии.",
+    "techs": [
+        {
+            "id": "agriculture",
+            "name": "Земледелие",
+            "icon": "🌾",
+            "epoch": "e0",
+            "description": "Севооборот и ирригационные канавы: поля родят больше.",
+            "cost": { "knowledge": 20 },
+            "time": 30,
+            "requires": [],
+            "bonus": {
+                "produces": { "food": 10 }
+            }
+        },
+        {
+            "id": "pottery",
+            "name": "Гончарное дело",
+            "icon": "🏺",
+            "epoch": "e0",
+            "description": "Кувшины для зерна и глина для стен. Открывает глинобитные дома.",
+            "cost": { "knowledge": 25, "wood": 20 },
+            "time": 35,
+            "requires": [],
+            "bonus": { "storage": 10 }
+        },
+        {
+            "id": "writing",
+            "name": "Письменность",
+            "icon": "✍️",
+            "epoch": "e0",
+            "description": "Знания можно записать и передать. Открывает школу философов.",
+            "cost": { "knowledge": 30 },
+            "time": 40,
+            "requires": [],
+            "bonus": { "research": 10 }
+        },
+        {
+            "id": "masonry",
+            "name": "Каменная кладка",
+            "icon": "🧱",
+            "epoch": "e0",
+            "description": "Тёсаный камень и прочные стены.",
+            "cost": { "knowledge": 35, "stone": 30 },
+            "time": 40,
+            "requires": [],
+            "bonus": {
+                "produces": { "stone": 15 }
+            }
+        },
+        {
+            "id": "mathematics",
+            "name": "Математика",
+            "icon": "📐",
+            "epoch": "e0",
+            "description": "Геометрия и счёт. Открывает акведуки, ускоряет стройку.",
+            "cost": { "knowledge": 45 },
+            "time": 50,
+            "requires": ["writing"],
+            "bonus": { "buildSpeed": 10 }
+        },
+        {
+            "id": "philosophy",
+            "name": "Философия",
+            "icon": "🏛️",
+            "epoch": "e0",
+            "description": "Споры о добре и красоте. Открывает амфитеатр.",
+            "cost": { "knowledge": 55 },
+            "time": 55,
+            "requires": ["writing"],
+            "bonus": { "happiness": 3 }
+        },
+        {
+            "id": "coinage",
+            "name": "Чеканка монет",
+            "icon": "🪙",
+            "epoch": "e0",
+            "description": "Монеты упрощают торговлю и сбор налогов.",
+            "cost": { "knowledge": 50, "stone": 40 },
+            "time": 60,
+            "requires": ["mathematics"],
+            "bonus": { "tax": 10 }
+        },
+        {
+            "id": "three_field",
+            "name": "Трёхполье",
+            "icon": "🌱",
+            "epoch": "e1000",
+            "description": "Поле отдыхает каждый третий год. Открывает фермы с амбаром.",
+            "cost": { "knowledge": 80, "wood": 60 },
+            "time": 60,
+            "requires": ["agriculture"],
+            "bonus": {
+                "produces": { "food": 15 }
+            }
+        },
+        {
+            "id": "metallurgy",
+            "name": "Металлургия",
+            "icon": "⛏️",
+            "epoch": "e1000",
+            "description": "Плавка железной руды. Открывает рудники.",
+            "cost": { "knowledge": 90, "stone": 100 },
+            "time": 70,
+            "requires": ["masonry"],
+            "bonus": null
+        },
+        {
+            "id": "smithing",
+            "name": "Кузнечное дело",
+            "icon": "🔨",
+            "epoch": "e1000",
+            "description": "Ковка железа в инструменты. Открывает кузницу.",
+            "cost": { "knowledge": 110, "iron": 40 },
+            "time": 75,
+            "requires": ["metallurgy"],
+            "bonus": {
+                "produces": { "tools": 15 }
+            }
+        },
+        {
+            "id": "brickmaking",
+            "name": "Обжиг кирпича",
+            "icon": "🧱",
+            "epoch": "e1000",
+            "description": "Глина, обожжённая в печи, прочнее камня. Открывает печь обжига.",
+            "cost": { "knowledge": 100, "stone": 80 },
+            "time": 70,
+            "requires": ["pottery", "masonry"],
+            "bonus": null
+        },
+        {
+            "id": "local_government",
+            "name": "Местное самоуправление",
+            "icon": "📜",
+            "epoch": "e1000",
+            "description": "Старосты и управы. Открывает управы районов.",
+            "cost": { "knowledge": 150, "gold": 200 },
+            "time": 90,
+            "requires": ["philosophy"],
+            "bonus": null
+        },
+        {
+            "id": "guilds",
+            "name": "Гильдии",
+            "icon": "🛡️",
+            "epoch": "e1000",
+            "description": "Цеха ремесленников и купцов. Открывает ярмарку.",
+            "cost": { "knowledge": 130, "gold": 150 },
+            "time": 80,
+            "requires": ["coinage"],
+            "bonus": { "tax": 10 }
+        },
+        {
+            "id": "scholasticism",
+            "name": "Схоластика",
+            "icon": "📚",
+            "epoch": "e1000",
+            "description": "Учёные монахи и переписчики. Открывает монастырскую школу.",
+            "cost": { "knowledge": 120 },
+            "time": 80,
+            "requires": ["philosophy"],
+            "bonus": { "research": 10 }
+        },
+        {
+            "id": "herbalism",
+            "name": "Травничество",
+            "icon": "🌿",
+            "epoch": "e1000",
+            "description": "Лечебные травы и отвары. Открывает знахаря.",
+            "cost": { "knowledge": 80 },
+            "time": 60,
+            "requires": ["agriculture"],
+            "bonus": { "happiness": 2 }
+        },
+        {
+            "id": "watermill",
+            "name": "Водяная мельница",
+            "icon": "⚙️",
+            "epoch": "e1000",
+            "description": "Вода крутит жернова и пилы.",
+            "cost": { "knowledge": 140, "wood": 150, "tools": 20 },
+            "time": 100,
+            "requires": ["three_field"],
+            "bonus": {
+                "produces": { "food": 10, "wood": 10 }
+            }
+        },
+        {
+            "id": "printing",
+            "name": "Книгопечатание",
+            "icon": "📖",
+            "epoch": "e1500",
+            "description": "Печатный станок делает книги доступными. Открывает университеты.",
+            "cost": { "knowledge": 300, "wood": 200 },
+            "time": 100,
+            "requires": ["scholasticism"],
+            "bonus": { "research": 15 }
+        },
+        {
+            "id": "architecture",
+            "name": "Архитектура",
+            "icon": "🏛️",
+            "epoch": "e1500",
+            "description": "Пропорции, ордера и чертежи. Открывает бюро архитекторов.",
+            "cost": { "knowledge": 350, "bricks": 200 },
+            "time": 110,
+            "requires": ["mathematics", "brickmaking"],
+            "bonus": { "buildSpeed": 10 }
+        },
+        {
+            "id": "glassblowing",
+            "name": "Стеклоделие",
+            "icon": "🔮",
+            "epoch": "e1500",
+            "description": "Прозрачное стекло для окон. Открывает стеклодувню.",
+            "cost": { "knowledge": 250, "bricks": 100 },
+            "time": 90,
+            "requires": ["brickmaking"],
+            "bonus": null
+        },
+        {
+            "id": "navigation",
+            "name": "Мореплавание",
+            "icon": "⛵",
+            "epoch": "e1500",
+            "description": "Компас и карты: торговля за морем, богатый улов.",
+            "cost": { "knowledge": 280, "wood": 300, "gold": 300 },
+            "time": 100,
+            "requires": ["guilds"],
+            "bonus": {
+                "produces": { "gold": 10, "food": 5 }
+            }
+        },
+        {
+            "id": "banking",
+            "name": "Банковское дело",
+            "icon": "🏦",
+            "epoch": "e1500",
+            "description": "Векселя и кредит. Открывает торговый дом.",
+            "cost": { "knowledge": 320, "gold": 500 },
+            "time": 110,
+            "requires": ["guilds"],
+            "bonus": { "tax": 15 }
+        },
+        {
+            "id": "anatomy",
+            "name": "Анатомия",
+            "icon": "🫀",
+            "epoch": "e1500",
+            "description": "Врачи изучают тело человека. Открывает лазарет.",
+            "cost": { "knowledge": 260 },
+            "time": 100,
+            "requires": ["herbalism"],
+            "bonus": { "happiness": 3 }
+        },
+        {
+            "id": "optics",
+            "name": "Оптика",
+            "icon": "🔭",
+            "epoch": "e1500",
+            "description": "Линзы, очки и подзорные трубы.",
+            "cost": { "knowledge": 380, "glass": 50 },
+            "time": 120,
+            "requires": ["glassblowing"],
+            "bonus": { "research": 10 }
+        },
+        {
+            "id": "scientific_method",
+            "name": "Научный метод",
+            "icon": "🔬",
+            "epoch": "e1500",
+            "description": "Опыт и проверка вместо догм.",
+            "cost": { "knowledge": 500, "glass": 80 },
+            "time": 140,
+            "requires": ["printing", "optics"],
+            "bonus": { "research": 15 }
+        },
+        {
+            "id": "coal_mining",
+            "name": "Угледобыча",
+            "icon": "⛏️",
+            "epoch": "e1800",
+            "description": "Глубокие шахты за чёрным золотом. Открывает угольные шахты.",
+            "cost": { "knowledge": 600, "iron": 200 },
+            "time": 120,
+            "requires": ["metallurgy"],
+            "bonus": null
+        },
+        {
+            "id": "steam_engine",
+            "name": "Паровая машина",
+            "icon": "🚂",
+            "epoch": "e1800",
+            "description": "Сила пара заменяет мускулы. Открывает паровые лесопилки, шахты и водокачки.",
+            "cost": { "knowledge": 900, "iron": 300, "tools": 150 },
+            "time": 150,
+            "requires": ["scientific_method", "coal_mining"],
+            "bonus": {
+                "produces": { "*": 5 }
+            }
+        },
+        {
+            "id": "steelmaking",
+            "name": "Сталеварение",
+            "icon": "🔥",
+            "epoch": "e1800",
+            "description": "Бессемеровский процесс: сталь вместо чугуна. Открывает литейные.",
+            "cost": { "knowledge": 1000, "coal": 300 },
+            "time": 160,
+            "requires": ["steam_engine"],
+            "bonus": null
+        },
+        {
+            "id": "factory_system",
+            "name": "Фабричное производство",
+            "icon": "🏭",
+            "epoch": "e1800",
+            "description": "Разделение труда и станки. Открывает заводы.",
+            "cost": { "knowledge": 900, "tools": 200 },
+            "time": 150,
+            "requires": ["steam_engine"],
+            "bonus": {
+                "produces": { "*": 5 }
+            }
+        },
+        {
+            "id": "railways",
+            "name": "Железные дороги",
+            "icon": "🚆",
+            "epoch": "e1800",
+            "description": "Грузы едут быстрее: стройка ускоряется.",
+            "cost": { "knowledge": 1100, "steel": 200 },
+            "time": 170,
+            "requires": ["steelmaking"],
+            "bonus": { "buildSpeed": 15 }
+        },
+        {
+            "id": "vaccination",
+            "name": "Вакцинация",
+            "icon": "💉",
+            "epoch": "e1800",
+            "description": "Прививки побеждают оспу. Открывает больницы.",
+            "cost": { "knowledge": 700 },
+            "time": 130,
+            "requires": ["anatomy"],
+            "bonus": { "happiness": 4 }
+        },
+        {
+            "id": "gas_lighting",
+            "name": "Газовое освещение",
+            "icon": "🏮",
+            "epoch": "e1800",
+            "description": "Фонари на улицах: вечерами светло и безопасно.",
+            "cost": { "knowledge": 650, "coal": 200 },
+            "time": 120,
+            "requires": ["coal_mining"],
+            "bonus": { "happiness": 3 }
+        },
+        {
+            "id": "public_education",
+            "name": "Всеобщее образование",
+            "icon": "🎓",
+            "epoch": "e1800",
+            "description": "Школы для всех детей. Открывает академию наук.",
+            "cost": { "knowledge": 800, "bricks": 300 },
+            "time": 140,
+            "requires": ["printing"],
+            "bonus": { "research": 10 }
+        },
+        {
+            "id": "electricity",
+            "name": "Электричество",
+            "icon": "⚡",
+            "epoch": "e1900",
+            "description": "Динамо-машины и провода. Открывает электростанции.",
+            "cost": { "knowledge": 1500, "steel": 300 },
+            "time": 180,
+            "requires": ["steam_engine"],
+            "bonus": null
+        },
+        {
+            "id": "reinforced_concrete",
+            "name": "Железобетон",
+            "icon": "🏗️",
+            "epoch": "e1900",
+            "description": "Бетон со стальной арматурой. Открывает цементные заводы.",
+            "cost": { "knowledge": 1400, "steel": 200 },
+            "time": 170,
+            "requires": ["steelmaking"],
+            "bonus": null
+        },
+        {
+            "id": "oil_drilling",
+            "name": "Нефтедобыча",
+            "icon": "🛢️",
+            "epoch": "e1900",
+            "description": "Буровые вышки и нефтепроводы.",
+            "cost": { "knowledge": 1300, "steel": 200 },
+            "time": 160,
+            "requires": ["steam_engine"],
+            "bonus": null
+        },
+        {
+            "id": "internal_combustion",
+            "name": "Двигатель внутреннего сгорания",
+            "icon": "🚗",
+            "epoch": "e1900",
+            "description": "Тракторы, грузовики, экскаваторы.",
+            "cost": { "knowledge": 1600, "oil": 200 },
+            "time": 190,
+            "requires": ["oil_drilling"],
+            "bonus": { "buildSpeed": 10 }
+        },
+        {
+            "id": "assembly_line",
+            "name": "Конвейер",
+            "icon": "⚙️",
+            "epoch": "e1900",
+            "description": "Поточное производство: всё делается быстрее.",
+            "cost": { "knowledge": 2000, "steel": 400 },
+            "time": 220,
+            "requires": ["electricity", "factory_system"],
+            "bonus": {
+                "produces": { "*": 10 }
+            }
+        },
+        {
+            "id": "radio",
+            "name": "Радио",
+            "icon": "📻",
+            "epoch": "e1900",
+            "description": "Новости и музыка в каждом доме.",
+            "cost": { "knowledge": 1500 },
+            "time": 170,
+            "requires": ["electricity"],
+            "bonus": { "happiness": 3 }
+        },
+        {
+            "id": "cinema",
+            "name": "Кинематограф",
+            "icon": "🎬",
+            "epoch": "e1900",
+            "description": "Движущиеся картинки. Открывает кинотеатры.",
+            "cost": { "knowledge": 1300 },
+            "time": 150,
+            "requires": ["electricity"],
+            "bonus": { "happiness": 2 }
+        },
+        {
+            "id": "antibiotics",
+            "name": "Антибиотики",
+            "icon": "💊",
+            "epoch": "e1900",
+            "description": "Пенициллин спасает миллионы. Открывает поликлиники.",
+            "cost": { "knowledge": 1600 },
+            "time": 180,
+            "requires": ["vaccination"],
+            "bonus": { "happiness": 4 }
+        },
+        {
+            "id": "computers",
+            "name": "Компьютеры",
+            "icon": "💻",
+            "epoch": "e2000",
+            "description": "Электронные вычислительные машины. Открывает технопарки.",
+            "cost": { "knowledge": 3000, "steel": 500, "glass": 500 },
+            "time": 200,
+            "requires": ["electricity", "radio"],
+            "bonus": { "research": 10 }
+        },
+        {
+            "id": "semiconductors",
+            "name": "Полупроводники",
+            "icon": "🔌",
+            "epoch": "e2000",
+            "description": "Транзисторы и микросхемы. Открывает заводы электроники.",
+            "cost": { "knowledge": 3500, "glass": 600 },
+            "time": 220,
+            "requires": ["computers"],
+            "bonus": null
+        },
+        {
+            "id": "internet",
+            "name": "Интернет",
+            "icon": "🌐",
+            "epoch": "e2000",
+            "description": "Весь мир в одной сети.",
+            "cost": { "knowledge": 4000, "electronics": 100 },
+            "time": 240,
+            "requires": ["computers"],
+            "bonus": { "research": 15 }
+        },
+        {
+            "id": "plastics",
+            "name": "Пластмассы",
+            "icon": "🧴",
+            "epoch": "e2000",
+            "description": "Полимеры из нефти. Открывает нефтехимию.",
+            "cost": { "knowledge": 2800, "oil": 400 },
+            "time": 190,
+            "requires": ["oil_drilling"],
+            "bonus": null
+        },
+        {
+            "id": "highrise_engineering",
+            "name": "Высотное строительство",
+            "icon": "🏙️",
+            "epoch": "e2000",
+            "description": "Стальные каркасы и скоростные лифты. Открывает небоскрёбы.",
+            "cost": { "knowledge": 3000, "steel": 800 },
+            "time": 210,
+            "requires": ["reinforced_concrete"],
+            "bonus": { "housing": 5 }
+        },
+        {
+            "id": "genetics",
+            "name": "Генетика",
+            "icon": "🧬",
+            "epoch": "e2000",
+            "description": "Селекция и сорта-рекордсмены. Открывает агрохолдинги.",
+            "cost": { "knowledge": 3200 },
+            "time": 220,
+            "requires": ["antibiotics"],
+            "bonus": {
+                "produces": { "food": 20 }
+            }
+        },
+        {
+            "id": "logistics",
+            "name": "Логистика",
+            "icon": "📦",
+            "epoch": "e2000",
+            "description": "Контейнеры и цепочки поставок. Открывает логистические центры.",
+            "cost": { "knowledge": 2600, "concrete": 800 },
+            "time": 180,
+            "requires": ["internal_combustion"],
+            "bonus": { "storage": 20 }
+        },
+        {
+            "id": "mobile_communication",
+            "name": "Мобильная связь",
+            "icon": "📱",
+            "epoch": "e2000",
+            "description": "Телефон в каждом кармане — торговля оживает.",
+            "cost": { "knowledge": 3800, "electronics": 200 },
+            "time": 250,
+            "requires": ["semiconductors"],
+            "bonus": { "tax": 10 }
+        },
+        {
+            "id": "big_data",
+            "name": "Большие данные",
+            "icon": "💾",
+            "epoch": "e2100",
+            "description": "Анализ всего на свете. Открывает дата-центры.",
+            "cost": { "knowledge": 6000, "electronics": 300 },
+            "time": 240,
+            "requires": ["internet"],
+            "bonus": null
+        },
+        {
+            "id": "composites",
+            "name": "Композиты",
+            "icon": "🧪",
+            "epoch": "e2100",
+            "description": "Углеволокно и сплавы. Открывает заводы композитов.",
+            "cost": { "knowledge": 5500, "plastic": 600 },
+            "time": 230,
+            "requires": ["plastics"],
+            "bonus": null
+        },
+        {
+            "id": "solar_power",
+            "name": "Солнечная энергетика",
+            "icon": "☀️",
+            "epoch": "e2100",
+            "description": "Дешёвые эффективные панели. Открывает солнечные фермы и ветропарки.",
+            "cost": { "knowledge": 5000, "glass": 1000 },
+            "time": 220,
+            "requires": ["semiconductors"],
+            "bonus": null
+        },
+        {
+            "id": "robotics",
+            "name": "Робототехника",
+            "icon": "🤖",
+            "epoch": "e2100",
+            "description": "Роботы на заводах, в шахтах и на стройке.",
+            "cost": { "knowledge": 6500, "electronics": 400 },
+            "time": 260,
+            "requires": ["computers", "assembly_line"],
+            "bonus": { "buildSpeed": 15 }
+        },
+        {
+            "id": "hydroponics",
+            "name": "Гидропоника",
+            "icon": "💧",
+            "epoch": "e2100",
+            "description": "Растения без почвы под светодиодами. Открывает вертикальные фермы.",
+            "cost": { "knowledge": 5000 },
+            "time": 220,
+            "requires": ["genetics"],
+            "bonus": null
+        },
+        {
+            "id": "smart_city",
+            "name": "Умный город",
+            "icon": "🏙️",
+            "epoch": "e2100",
+            "description": "Датчики и ИИ-светофоры: жить удобнее.",
+            "cost": { "knowledge": 8000, "data": 400 },
+            "time": 300,
+            "requires": ["big_data"],
+            "bonus": { "happiness": 5 }
+        },
+        {
+            "id": "printing_3d",
+            "name": "3D-печать",
+            "icon": "🖨️",
+            "epoch": "e2100",
+            "description": "Печать домов и деталей. Открывает модульные кварталы.",
+            "cost": { "knowledge": 7000, "composites": 200 },
+            "time": 280,
+            "requires": ["composites"],
+            "bonus": { "buildSpeed": 15 }
+        },
+        {
+            "id": "holography",
+            "name": "Голография",
+            "icon": "✨",
+            "epoch": "e2100",
+            "description": "Объёмные изображения в воздухе. Открывает голо-моллы и голотеатры.",
+            "cost": { "knowledge": 6500, "electronics": 300 },
+            "time": 260,
+            "requires": ["internet"],
+            "bonus": { "happiness": 3 }
+        },
+        {
+            "id": "spaceflight",
+            "name": "Космические полёты",
+            "icon": "🚀",
+            "epoch": "e2300",
+            "description": "Многоразовые ракеты. Открывает космодром.",
+            "cost": { "knowledge": 9000, "composites": 1000, "electronics": 500 },
+            "time": 280,
+            "requires": ["composites", "robotics"],
+            "bonus": null
+        },
+        {
+            "id": "hydrogen_economy",
+            "name": "Водородная энергетика",
+            "icon": "🫧",
+            "epoch": "e2300",
+            "description": "Водород из воды. Открывает электролизёры.",
+            "cost": { "knowledge": 8000, "composites": 500 },
+            "time": 260,
+            "requires": ["solar_power"],
+            "bonus": null
+        },
+        {
+            "id": "asteroid_mining",
+            "name": "Добыча на астероидах",
+            "icon": "☄️",
+            "epoch": "e2300",
+            "description": "Металлы из космоса.",
+            "cost": { "knowledge": 12000, "hydrogen": 500 },
+            "time": 340,
+            "requires": ["spaceflight"],
+            "bonus": {
+                "produces": { "rare_metals": 20 }
+            }
+        },
+        {
+            "id": "orbital_habitats",
+            "name": "Орбитальные поселения",
+            "icon": "🛰️",
+            "epoch": "e2300",
+            "description": "Технологии жизни в космосе. Открывает космо-башни.",
+            "cost": { "knowledge": 10000, "composites": 1500 },
+            "time": 300,
+            "requires": ["spaceflight"],
+            "bonus": { "housing": 10 }
+        },
+        {
+            "id": "gene_therapy",
+            "name": "Генная терапия",
+            "icon": "🧬",
+            "epoch": "e2300",
+            "description": "Болезни лечат в генах. Открывает нанобольницы.",
+            "cost": { "knowledge": 9000 },
+            "time": 280,
+            "requires": ["genetics"],
+            "bonus": { "happiness": 5 }
+        },
+        {
+            "id": "superconductors",
+            "name": "Сверхпроводники",
+            "icon": "🧲",
+            "epoch": "e2300",
+            "description": "Ток без потерь: всё работает лучше.",
+            "cost": { "knowledge": 11000, "rare_metals": 100 },
+            "time": 320,
+            "requires": ["hydrogen_economy"],
+            "bonus": {
+                "produces": { "*": 10 }
+            }
+        },
+        {
+            "id": "quantum_computing",
+            "name": "Квантовые вычисления",
+            "icon": "⚛️",
+            "epoch": "e2300",
+            "description": "Кубиты вместо битов. Открывает квантовые дата-центры.",
+            "cost": { "knowledge": 12000, "electronics": 1000 },
+            "time": 360,
+            "requires": ["big_data"],
+            "bonus": { "research": 20 }
+        },
+        {
+            "id": "artificial_intelligence",
+            "name": "Искусственный интеллект",
+            "icon": "🧠",
+            "epoch": "e2500",
+            "description": "Разум, созданный человеком. Открывает литейные ИИ-ядер.",
+            "cost": { "knowledge": 15000, "electronics": 2000, "data": 1000 },
+            "time": 320,
+            "requires": ["quantum_computing"],
+            "bonus": { "research": 15 }
+        },
+        {
+            "id": "fusion",
+            "name": "Термоядерный синтез",
+            "icon": "☢️",
+            "epoch": "e2500",
+            "description": "Энергия звёзд на Земле. Открывает термоядерный реактор.",
+            "cost": { "knowledge": 16000, "rare_metals": 500, "hydrogen": 1000 },
+            "time": 340,
+            "requires": ["superconductors", "hydrogen_economy"],
+            "bonus": null
+        },
+        {
+            "id": "space_elevator",
+            "name": "Космический лифт",
+            "icon": "🛗",
+            "epoch": "e2500",
+            "description": "Трос до орбиты из сверхпрочных композитов.",
+            "cost": { "knowledge": 14000, "composites": 3000 },
+            "time": 320,
+            "requires": ["asteroid_mining"],
+            "bonus": {
+                "produces": { "rare_metals": 15 }
+            }
+        },
+        {
+            "id": "neural_interfaces",
+            "name": "Нейроинтерфейсы",
+            "icon": "🔗",
+            "epoch": "e2500",
+            "description": "Мозг напрямую связан с сетью. Открывает ИИ-театр.",
+            "cost": { "knowledge": 18000, "ai_cores": 50 },
+            "time": 360,
+            "requires": ["artificial_intelligence"],
+            "bonus": { "happiness": 6 }
+        },
+        {
+            "id": "autonomous_cities",
+            "name": "Автономные города",
+            "icon": "🏙️",
+            "epoch": "e2500",
+            "description": "Город строит и чинит себя сам. Открывает ИИ-аркологии.",
+            "cost": { "knowledge": 20000, "ai_cores": 80 },
+            "time": 380,
+            "requires": ["artificial_intelligence"],
+            "bonus": { "buildSpeed": 20 }
+        },
+        {
+            "id": "weather_control",
+            "name": "Управление погодой",
+            "icon": "🌦️",
+            "epoch": "e2500",
+            "description": "Дожди по расписанию: урожай в любой сезон.",
+            "cost": { "knowledge": 15000, "hydrogen": 800 },
+            "time": 300,
+            "requires": ["fusion"],
+            "bonus": {
+                "produces": { "food": 20 }
+            }
+        },
+        {
+            "id": "post_scarcity",
+            "name": "Экономика изобилия",
+            "icon": "♾️",
+            "epoch": "e2500",
+            "description": "Машины делают всё необходимое — налоги растут сами.",
+            "cost": { "knowledge": 22000, "ai_cores": 100 },
+            "time": 420,
+            "requires": ["autonomous_cities"],
+            "bonus": { "tax": 20 }
+        },
+        {
+            "id": "nanotechnology",
+            "name": "Нанотехнологии",
+            "icon": "🔬",
+            "epoch": "e3000",
+            "description": "Машины размером с молекулу. Открывает нанофабрику.",
+            "cost": { "knowledge": 25000, "ai_cores": 200 },
+            "time": 400,
+            "requires": ["artificial_intelligence", "quantum_computing"],
+            "bonus": null
+        },
+        {
+            "id": "molecular_assembly",
+            "name": "Молекулярная сборка",
+            "icon": "⚗️",
+            "epoch": "e3000",
+            "description": "Сборка любых веществ из атомов.",
+            "cost": { "knowledge": 30000, "nanomaterials": 50 },
+            "time": 450,
+            "requires": ["nanotechnology"],
+            "bonus": { "buildSpeed": 20 }
+        },
+        {
+            "id": "antimatter",
+            "name": "Антиматерия",
+            "icon": "🌀",
+            "epoch": "e3000",
+            "description": "Ловушки для антивещества. Открывает коллайдер и антиматерийный реактор.",
+            "cost": { "knowledge": 30000, "rare_metals": 2000 },
+            "time": 450,
+            "requires": ["fusion"],
+            "bonus": null
+        },
+        {
+            "id": "matter_synthesis",
+            "name": "Синтез материи",
+            "icon": "🍞",
+            "epoch": "e3000",
+            "description": "Еда из ничего. Открывает синтезатор пищи.",
+            "cost": { "knowledge": 28000, "nanomaterials": 80 },
+            "time": 420,
+            "requires": ["molecular_assembly"],
+            "bonus": {
+                "produces": { "food": 30 }
+            }
+        },
+        {
+            "id": "noosphere",
+            "name": "Ноосфера",
+            "icon": "🌌",
+            "epoch": "e3000",
+            "description": "Разум всех жителей сливается в единое поле. Открывает Ноосферу.",
+            "cost": { "knowledge": 35000, "nanomaterials": 100 },
+            "time": 500,
+            "requires": ["neural_interfaces", "nanotechnology"],
+            "bonus": { "research": 25 }
+        },
+        {
+            "id": "wormholes",
+            "name": "Червоточины",
+            "icon": "🕳️",
+            "epoch": "e3000",
+            "description": "Мгновенные туннели сквозь пространство. Открывает звёздные врата.",
+            "cost": { "knowledge": 40000, "antimatter": 10 },
+            "time": 600,
+            "requires": ["antimatter"],
+            "bonus": null
+        },
+        {
+            "id": "immortality",
+            "name": "Бессмертие",
+            "icon": "🧬",
+            "epoch": "e3000",
+            "description": "Старость побеждена: город счастлив как никогда.",
+            "cost": { "knowledge": 38000, "nanomaterials": 150 },
+            "time": 550,
+            "requires": ["gene_therapy", "nanotechnology"],
+            "bonus": { "happiness": 10 }
+        }
+    ]
+}

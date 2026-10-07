@@ -13,6 +13,8 @@ export interface GameEntry {
     genre: Genre;
     /** Client route; null while the game is not out yet. */
     path: string | null;
+    /** API path (under /api/games) that deletes the player's progress. */
+    resetPath?: string;
 }
 
 export const CATALOG: GameEntry[] = [
@@ -21,7 +23,8 @@ export const CATALOG: GameEntry[] = [
         cover: '🏙️',
         hue: '#35b8e0',
         genre: 'strategy',
-        path: '/epochs',
+        path: '/city2',
+        resetPath: 'epochs/world',
     },
     {
         slug: 'city',
@@ -29,6 +32,7 @@ export const CATALOG: GameEntry[] = [
         hue: '#e8a33d',
         genre: 'strategy',
         path: '/city',
+        resetPath: 'city/save',
     },
     { slug: 'dice', cover: '🎲', hue: '#8b5cf6', genre: 'party', path: null },
     { slug: 'quiz', cover: '🧠', hue: '#0ea5e9', genre: 'quiz', path: null },

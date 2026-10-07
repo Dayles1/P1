@@ -18,7 +18,11 @@ trait WorldPayloadRules
      */
     protected function worldRules(): array
     {
-        $epochs = array_column(app(ContentRepository::class)->read('epochs')['epochs'] ?? [], 'id');
+        $content = app(ContentRepository::class);
+        $epochs = array_column($content->read('epochs')['epochs'] ?? [], 'id');
+        $techs = array_column($content->read('techs')['techs'] ?? [], 'id');
+        $blueprints = array_column($content->read('blueprints')['blueprints'] ?? [], 'id');
+        $goals = array_column($content->read('goals')['goals'] ?? [], 'id');
 
         return [
             'world' => ['required', 'array'],
@@ -40,6 +44,16 @@ trait WorldPayloadRules
             'world.moods' => ['present', 'array', 'max:50'],
             'world.next_uid' => ['required', 'integer', 'min:1'],
             'world.stats' => ['present', 'array'],
+            'world.techs' => ['present', 'array', 'max:500'],
+            'world.techs.*' => ['string', Rule::in($techs)],
+            'world.research' => ['nullable', 'array'],
+            'world.research.id' => ['required_with:world.research', 'string', Rule::in($techs)],
+            'world.research.start' => ['required_with:world.research', 'integer', 'min:0'],
+            'world.research.end' => ['required_with:world.research', 'integer', 'min:0'],
+            'world.blueprints' => ['present', 'array', 'max:500'],
+            'world.blueprints.*' => ['string', Rule::in($blueprints)],
+            'world.achievements' => ['present', 'array', 'max:1000'],
+            'world.achievements.*' => ['string', Rule::in($goals)],
         ];
     }
 
@@ -54,9 +68,16 @@ trait WorldPayloadRules
             "{$prefix}.*.type" => ['required', 'string', Rule::in(app(ContentRepository::class)->buildingIds())],
             "{$prefix}.*.x" => ['required', 'integer', 'min:0', 'max:255'],
             "{$prefix}.*.y" => ['required', 'integer', 'min:0', 'max:255'],
-            "{$prefix}.*.level" => ['required', 'integer', 'min:1', 'max:20'],
+            "{$prefix}.*.level" => ['required', 'integer', 'min:1', 'max:60'],
             "{$prefix}.*.build_start" => ['required', 'integer', 'min:0'],
             "{$prefix}.*.build_end" => ['required', 'integer', 'min:0'],
+            "{$prefix}.*.style" => ['nullable', 'array'],
+            "{$prefix}.*.style.blueprint" => ['nullable', 'string', 'max:64'],
+            "{$prefix}.*.style.colors" => ['sometimes', 'array', 'max:12'],
+            "{$prefix}.*.style.colors.*" => ['string', 'regex:/^#[0-9a-fA-F]{6}$/'],
+            "{$prefix}.*.district" => ['nullable', 'array'],
+            "{$prefix}.*.district.name" => ['required_with:'.$prefix.'.*.district', 'string', 'max:40'],
+            "{$prefix}.*.district.policy" => ['nullable', 'string', 'max:64'],
         ];
     }
 

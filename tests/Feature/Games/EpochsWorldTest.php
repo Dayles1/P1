@@ -1,6 +1,7 @@
 <?php
 
 use App\Domain\Identity\Models\User;
+use App\Games\Epochs\Content\ContentRepository;
 use App\Games\Epochs\Models\Building;
 use App\Games\Epochs\Models\Npc;
 use App\Games\Epochs\Models\Tile;
@@ -13,19 +14,23 @@ function epochsWorld(array $overrides = []): array
         'seed' => 777,
         'width' => 16,
         'height' => 16,
-        'epoch' => 'e1000',
+        'epoch' => 'e0',
         'epoch_index' => 0,
-        'year' => 1000,
+        'year' => 0,
         'time' => 72,
         'population' => 6,
         'happiness' => 55,
         'score' => 16,
-        'resources' => ['food' => 120, 'wood' => 160, 'stone' => 60, 'gold' => 80, 'tools' => 0],
+        'resources' => ['food' => 120, 'wood' => 160, 'stone' => 60, 'gold' => 80, 'knowledge' => 0],
         'weather' => 'clear',
         'weather_until' => 0,
         'next_event_at' => 200,
         'moods' => [],
         'next_uid' => 3,
+        'techs' => [],
+        'research' => null,
+        'blueprints' => [],
+        'achievements' => [],
         'stats' => ['built' => 0, 'upgraded' => 0, 'demolished' => 0, 'events' => 0],
         ...$overrides,
     ];
@@ -47,7 +52,7 @@ function epochsCreatePayload(): array
     return [
         'world' => epochsWorld(),
         'tiles' => $tiles,
-        'buildings' => [['uid' => 1, 'type' => 'town_center', 'x' => 7, 'y' => 7, 'level' => 1, 'build_start' => 0, 'build_end' => 0]],
+        'buildings' => [['uid' => 1, 'type' => 'town_center', 'x' => 7, 'y' => 7, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null]],
         'npcs' => [['uid' => 2, 'type' => 'peasant', 'name' => 'Алишер Каримов', 'age' => 30, 'home_uid' => 1, 'work_uid' => null, 'x' => 8.5, 'y' => 8.5, 'activity' => 'home', 'offset' => 0.01]],
     ];
 }
@@ -83,7 +88,9 @@ test('a world loads back exactly as it was created', function () {
     $this->getJson('/api/games/epochs/world')
         ->assertOk()
         ->assertJsonPath('data.world.seed', 777)
-        ->assertJsonPath('data.world.epoch', 'e1000')
+        ->assertJsonPath('data.world.epoch', 'e0')
+        ->assertJsonPath('data.world.techs', [])
+        ->assertJsonPath('data.world.research', null)
         ->assertJsonCount(256, 'data.tiles')
         ->assertJsonPath('data.tiles.0', [0, 0, 'meadow', 120, 'tree'])
         ->assertJsonPath('data.buildings.0.type', 'town_center')
@@ -109,7 +116,7 @@ test('sync applies only the changes and moves the revision on', function () {
         'buildings' => [
             'upsert' => [
                 ['uid' => 3, 'type' => 'road', 'x' => 6, 'y' => 7, 'level' => 1, 'build_start' => 400, 'build_end' => 400],
-                ['uid' => 4, 'type' => 'hut', 'x' => 5, 'y' => 7, 'level' => 2, 'build_start' => 400, 'build_end' => 410],
+                ['uid' => 4, 'type' => 'house', 'x' => 5, 'y' => 7, 'level' => 2, 'build_start' => 400, 'build_end' => 410, 'style' => null, 'district' => null],
             ],
             'delete' => [],
         ],
@@ -129,9 +136,66 @@ test('sync applies only the changes and moves the revision on', function () {
     expect($world->time)->toBe(600)
         ->and(Tile::query()->where(['x' => 0, 'y' => 5])->value('feature'))->toBeNull()
         ->and(Tile::query()->where(['x' => 0, 'y' => 6])->value('feature'))->toBe('tree')
-        ->and(Building::query()->orderBy('uid')->pluck('type')->all())->toBe(['town_center', 'hut'])
+        ->and(Building::query()->orderBy('uid')->pluck('type')->all())->toBe(['town_center', 'house'])
         ->and(Building::query()->where('uid', 4)->value('level'))->toBe(2)
         ->and(Npc::query()->count())->toBe(0);
+});
+
+test('research, blueprints, goals, building styles and districts are saved and load back', function () {
+    $user = User::factory()->create();
+    $tech = (new ContentRepository)->read('techs')['techs'][0]['id'];
+    $next = (new ContentRepository)->read('techs')['techs'][1]['id'];
+    $blueprint = (new ContentRepository)->read('blueprints')['blueprints'][0]['id'];
+    $goal = (new ContentRepository)->read('goals')['goals'][0]['id'];
+
+    $this->actingAs($user, 'sanctum')->postJson('/api/games/epochs/world', epochsCreatePayload())->assertCreated();
+
+    $this->putJson('/api/games/epochs/world', [
+        'revision' => 1,
+        'world' => epochsWorld([
+            'techs' => [$tech],
+            'research' => ['id' => $next, 'start' => 100, 'end' => 160],
+            'blueprints' => [$blueprint],
+            'achievements' => [$goal],
+        ]),
+        'tiles' => [],
+        'buildings' => [
+            'upsert' => [
+                ['uid' => 4, 'type' => 'house', 'x' => 5, 'y' => 7, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => ['blueprint' => $blueprint, 'colors' => ['roof' => '#aa3322']], 'district' => null],
+                ['uid' => 5, 'type' => 'district_hall', 'x' => 2, 'y' => 2, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => ['name' => 'Заречье', 'policy' => 'historic']],
+            ],
+            'delete' => [],
+        ],
+        'npcs' => [],
+    ])->assertOk();
+
+    $this->getJson('/api/games/epochs/world')
+        ->assertOk()
+        ->assertJsonPath('data.world.techs', [$tech])
+        ->assertJsonPath('data.world.research.id', $next)
+        ->assertJsonPath('data.world.blueprints', [$blueprint])
+        ->assertJsonPath('data.world.achievements', [$goal])
+        ->assertJsonPath('data.buildings.1.style.colors.roof', '#aa3322')
+        ->assertJsonPath('data.buildings.2.district.name', 'Заречье');
+});
+
+test('unknown technologies and bad colours are refused', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user, 'sanctum')->postJson('/api/games/epochs/world', epochsCreatePayload())->assertCreated();
+
+    $this->putJson('/api/games/epochs/world', [
+        'revision' => 1,
+        'world' => epochsWorld(['techs' => ['time_travel']]),
+        'tiles' => [],
+        'buildings' => [
+            'upsert' => [
+                ['uid' => 4, 'type' => 'house', 'x' => 5, 'y' => 7, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => ['blueprint' => null, 'colors' => ['wall' => 'red; drop table']], 'district' => null],
+            ],
+            'delete' => [],
+        ],
+        'npcs' => [],
+    ])->assertUnprocessable()->assertJsonValidationErrors(['world.techs.0', 'buildings.upsert.0.style.colors.wall']);
 });
 
 test('a save from a tab that fell behind is refused', function () {
@@ -179,15 +243,16 @@ test('starting over removes the world and all its rows', function () {
     expect(World::query()->count() + Tile::query()->count() + Building::query()->count() + Npc::query()->count())->toBe(0);
 });
 
-test('the games menu shows progress in City of Eras', function () {
+test('the games menu shows progress in Летопись города 2', function () {
     $user = User::factory()->create();
 
-    World::factory()->inEpoch('e1500', 1, 1520, 180)->create(['user_id' => $user->id]);
+    World::factory()->inEpoch('e1500', 2, 1520, 180)->create(['user_id' => $user->id]);
 
     $this->actingAs($user, 'sanctum')
         ->getJson('/api/games/progress')
         ->assertOk()
-        ->assertJsonPath('data.epochs.epoch_index', 1)
+        ->assertJsonPath('data.epochs.epoch_index', 2)
+        ->assertJsonPath('data.epochs.epoch_name', 'Возрождение')
         ->assertJsonPath('data.epochs.population', 180);
 });
 

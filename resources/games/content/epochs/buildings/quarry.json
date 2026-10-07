@@ -1,31 +1,26 @@
 {
     "id": "quarry",
     "name": "Каменоломня",
-    "names": { "e2000": "Карьер" },
-    "icon": "🧱",
+    "icon": "⛏️",
     "category": "resources",
-    "description": "Камень. Ставьте рядом со скалами — выработка заметно выше.",
-    "epoch": "e1000",
-    "size": { "w": 1, "h": 1 },
+    "description": "Добывает камень. Скалы рядом увеличивают добычу.",
+    "size": { "w": 2, "h": 2 },
     "unique": false,
     "hidden": false,
     "placement": { "requiresRoad": true },
-    "sounds": {
-        "place": "place",
-        "upgrade": "upgrade",
-        "demolish": "demolish",
-        "select": "hammer",
-        "ambient": "hammer"
-    },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": "hammer" },
     "levels": [
         {
             "level": 1,
-            "cost": { "wood": 30 },
-            "buildTime": 5,
+            "name": "Каменоломня",
+            "epoch": "e0",
+            "description": "Уступы, сложенные блоки и деревянный ворот.",
+            "cost": { "wood": 40, "gold": 10 },
+            "buildTime": 8,
             "effects": {
                 "housing": 0,
                 "jobs": 4,
-                "produces": { "stone": 0.4 },
+                "produces": { "stone": 0.5 },
                 "consumes": {},
                 "storage": 0,
                 "power": 0,
@@ -33,64 +28,34 @@
                 "aura": null,
                 "pollution": null,
                 "boost": null,
-                "near": {
-                    "feature": "rock",
-                    "radius": 2,
-                    "perTile": 0.1,
-                    "max": 0.7
-                },
+                "near": { "feature": "rock", "radius": 2, "perTile": 0.05, "max": 0.5 },
                 "seasonal": false,
                 "defense": 0
             },
             "model": {
                 "parts": [
-                    {
-                        "kind": "ground",
-                        "x": 0.08,
-                        "y": 0.08,
-                        "w": 0.84,
-                        "d": 0.84,
-                        "color": "#7d776f"
-                    },
-                    {
-                        "kind": "ground",
-                        "x": 0.25,
-                        "y": 0.25,
-                        "w": 0.5,
-                        "d": 0.5,
-                        "color": "#5d5852"
-                    },
-                    {
-                        "kind": "box",
-                        "x": 0.15,
-                        "y": 0.6,
-                        "w": 0.18,
-                        "d": 0.16,
-                        "z": 0,
-                        "h": 5,
-                        "color": "#c4bfb6"
-                    },
-                    {
-                        "kind": "box",
-                        "x": 0.6,
-                        "y": 0.15,
-                        "w": 0.18,
-                        "d": 0.16,
-                        "z": 0,
-                        "h": 5,
-                        "color": "#c4bfb6"
-                    }
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#b5ab98" },
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0, "w": 1, "d": 0.8, "h": 0.3, "color": "#a59c8c" },
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0.3, "w": 0.6, "d": 0.5, "h": 0.2, "color": "#9a907f" },
+                    { "kind": "box", "x": 1.3, "y": 1.3, "z": 0, "w": 0.25, "d": 0.2, "h": 0.15, "color": "wall" },
+                    { "kind": "box", "x": 1.6, "y": 1.3, "z": 0, "w": 0.25, "d": 0.2, "h": 0.15, "color": "wall" },
+                    { "kind": "box", "x": 1.45, "y": 1.55, "z": 0, "w": 0.25, "d": 0.2, "h": 0.15, "color": "wall" },
+                    { "kind": "pole", "x": 1.2, "y": 0.5, "z": 0, "h": 0.5, "color": "#6b4a2a", "blink": null },
+                    { "kind": "box", "x": 1, "y": 0.48, "z": 0.45, "w": 0.25, "d": 0.04, "h": 0.04, "color": "#6b4a2a" }
                 ]
             }
         },
         {
             "level": 2,
-            "cost": { "wood": 50, "gold": 30 },
-            "buildTime": 7,
+            "name": "Карьер",
+            "epoch": "e1000",
+            "description": "Глубокий карьер с подъёмным краном и тачками.",
+            "cost": { "wood": 80, "stone": 40, "tools": 15 },
+            "buildTime": 12,
             "effects": {
                 "housing": 0,
-                "jobs": 5,
-                "produces": { "stone": 0.7 },
+                "jobs": 6,
+                "produces": { "stone": 1.2 },
                 "consumes": {},
                 "storage": 0,
                 "power": 0,
@@ -98,164 +63,160 @@
                 "aura": null,
                 "pollution": null,
                 "boost": null,
-                "near": {
-                    "feature": "rock",
-                    "radius": 2,
-                    "perTile": 0.12,
-                    "max": 0.9
-                },
+                "near": { "feature": "rock", "radius": 3, "perTile": 0.08, "max": 1 },
                 "seasonal": false,
                 "defense": 0
             },
             "model": {
                 "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#a8a08e" },
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0, "w": 1.2, "d": 1, "h": 0.35, "color": "#9f9686" },
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0.35, "w": 0.8, "d": 0.7, "h": 0.25, "color": "#958c7c" },
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0.6, "w": 0.4, "d": 0.4, "h": 0.15, "color": "#8b8272" },
+                    { "kind": "box", "x": 1.35, "y": 1.3, "z": 0, "w": 0.5, "d": 0.5, "h": 0.28, "color": "walls" },
                     {
-                        "kind": "ground",
-                        "x": 0.08,
-                        "y": 0.08,
-                        "w": 0.84,
-                        "d": 0.84,
-                        "color": "#7d776f"
-                    },
-                    {
-                        "kind": "ground",
-                        "x": 0.25,
-                        "y": 0.25,
+                        "kind": "beams",
+                        "faces": ["n", "e", "s", "w"],
+                        "x": 1.35,
+                        "y": 1.3,
+                        "z": 0,
                         "w": 0.5,
                         "d": 0.5,
-                        "color": "#5d5852"
+                        "h": 0.28,
+                        "count": 4,
+                        "color": "trim"
                     },
-                    {
-                        "kind": "box",
-                        "x": 0.15,
-                        "y": 0.6,
-                        "w": 0.18,
-                        "d": 0.16,
-                        "z": 0,
-                        "h": 5,
-                        "color": "#c4bfb6"
-                    },
-                    {
-                        "kind": "box",
-                        "x": 0.6,
-                        "y": 0.15,
-                        "w": 0.18,
-                        "d": 0.16,
-                        "z": 0,
-                        "h": 5,
-                        "color": "#c4bfb6"
-                    },
-                    {
-                        "kind": "box",
-                        "x": 0.62,
-                        "y": 0.6,
-                        "w": 0.18,
-                        "d": 0.16,
-                        "z": 0,
-                        "h": 5,
-                        "color": "#c4bfb6"
-                    },
-                    {
-                        "kind": "pole",
-                        "x": 0.85,
-                        "y": 0.85,
-                        "z": 0,
-                        "h": 30,
-                        "color": "#6b4a2b",
-                        "blink": null
-                    }
+                    { "kind": "door", "face": "s", "x": 1.35, "y": 1.3, "w": 0.5, "d": 0.5, "width": 0.14, "height": 0.154, "color": "trim" },
+                    { "kind": "roof", "shape": "gable", "x": 1.35, "y": 1.3, "z": 0.28, "w": 0.5, "d": 0.5, "h": 0.2, "color": "roof", "axis": "x", "overhang": 0.04 },
+                    { "kind": "pole", "x": 1.4, "y": 0.4, "z": 0, "h": 0.7, "color": "#6b4a2a", "blink": null },
+                    { "kind": "box", "x": 1.05, "y": 0.38, "z": 0.65, "w": 0.4, "d": 0.04, "h": 0.04, "color": "#6b4a2a" },
+                    { "kind": "box", "x": 0.6, "y": 1.5, "z": 0, "w": 0.2, "d": 0.14, "h": 0.1, "color": "#7a5532" }
                 ]
             }
         },
         {
             "level": 3,
-            "cost": { "wood": 80, "gold": 60, "tools": 20 },
-            "buildTime": 9,
-            "requiresEpoch": "e1500",
+            "name": "Динамитный карьер",
+            "epoch": "e1800",
+            "tech": "steam_engine",
+            "description": "Взрывы, пыль и узкоколейка с вагонетками.",
+            "cost": { "bricks": 100, "steel": 80, "tools": 60, "gold": 500 },
+            "buildTime": 20,
             "effects": {
                 "housing": 0,
-                "jobs": 6,
-                "produces": { "stone": 1.05 },
+                "jobs": 10,
+                "produces": { "stone": 3.5 },
                 "consumes": {},
                 "storage": 0,
                 "power": 0,
                 "powerUse": 0,
                 "aura": null,
-                "pollution": null,
+                "pollution": { "radius": 3, "amount": 6 },
                 "boost": null,
-                "near": {
-                    "feature": "rock",
-                    "radius": 3,
-                    "perTile": 0.12,
-                    "max": 1.2
-                },
+                "near": { "feature": "rock", "radius": 3, "perTile": 0.15, "max": 2 },
                 "seasonal": false,
                 "defense": 0
             },
             "model": {
                 "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#a39a88" },
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0, "w": 1.3, "d": 1.1, "h": 0.4, "color": "#9a917f" },
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0.4, "w": 0.9, "d": 0.8, "h": 0.3, "color": "#908775" },
+                    { "kind": "emitter", "x": 0.5, "y": 0.5, "z": 0.75, "type": "dust" },
+                    { "kind": "box", "x": 0.1, "y": 1.6, "z": 0, "w": 1.8, "d": 0.1, "h": 0.03, "color": "metal" },
+                    { "kind": "box", "x": 0.4, "y": 1.57, "z": 0.03, "w": 0.22, "d": 0.16, "h": 0.1, "color": "#4a4d52" },
+                    { "kind": "box", "x": 0.8, "y": 1.57, "z": 0.03, "w": 0.22, "d": 0.16, "h": 0.1, "color": "#4a4d52" },
+                    { "kind": "box", "x": 1.5, "y": 0.2, "z": 0, "w": 0.4, "d": 0.5, "h": 0.35, "color": "walls" },
                     {
-                        "kind": "ground",
-                        "x": 0.05,
-                        "y": 0.05,
-                        "w": 0.9,
-                        "d": 0.9,
-                        "color": "#7d776f"
-                    },
-                    {
-                        "kind": "ground",
-                        "x": 0.2,
+                        "kind": "windows",
+                        "faces": ["s", "e"],
+                        "x": 1.5,
                         "y": 0.2,
-                        "w": 0.6,
-                        "d": 0.6,
-                        "color": "#4d4842"
+                        "z": 0.053,
+                        "w": 0.4,
+                        "d": 0.5,
+                        "h": 0.262,
+                        "rows": 1,
+                        "cols": 1,
+                        "color": "window"
                     },
-                    {
-                        "kind": "box",
-                        "x": 0.12,
-                        "y": 0.62,
-                        "w": 0.2,
-                        "d": 0.18,
-                        "z": 0,
-                        "h": 6,
-                        "color": "#c4bfb6"
-                    },
-                    {
-                        "kind": "box",
-                        "x": 0.62,
-                        "y": 0.12,
-                        "w": 0.2,
-                        "d": 0.18,
-                        "z": 0,
-                        "h": 6,
-                        "color": "#c4bfb6"
-                    },
-                    {
-                        "kind": "box",
-                        "x": 0.62,
-                        "y": 0.62,
-                        "w": 0.2,
-                        "d": 0.18,
-                        "z": 0,
-                        "h": 6,
-                        "color": "#c4bfb6"
-                    },
-                    {
-                        "kind": "pole",
-                        "x": 0.85,
-                        "y": 0.85,
-                        "z": 0,
-                        "h": 40,
-                        "color": "metal",
-                        "blink": null
-                    },
-                    {
-                        "kind": "emitter",
-                        "x": 0.5,
-                        "y": 0.5,
-                        "z": 4,
-                        "type": "dust"
-                    }
+                    { "kind": "door", "face": "s", "x": 1.5, "y": 0.2, "w": 0.4, "d": 0.5, "width": 0.14, "height": 0.193, "color": "trim" },
+                    { "kind": "roof", "shape": "shed", "x": 1.5, "y": 0.2, "z": 0.35, "w": 0.4, "d": 0.5, "h": 0.1, "color": "roof", "axis": "x", "overhang": 0.04 }
+                ]
+            }
+        },
+        {
+            "level": 4,
+            "name": "Экскаваторный карьер",
+            "epoch": "e1900",
+            "tech": "internal_combustion",
+            "description": "Экскаваторы и самосвалы. Работают на нефти.",
+            "cost": { "steel": 300, "concrete": 100, "gold": 2000 },
+            "buildTime": 30,
+            "effects": {
+                "housing": 0,
+                "jobs": 12,
+                "produces": { "stone": 7 },
+                "consumes": { "oil": 0.2 },
+                "storage": 0,
+                "power": 0,
+                "powerUse": 2,
+                "aura": null,
+                "pollution": { "radius": 3, "amount": 8 },
+                "boost": null,
+                "near": { "feature": "rock", "radius": 3, "perTile": 0.25, "max": 4 },
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#9d9583" },
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0, "w": 1.4, "d": 1.3, "h": 0.45, "color": "#958c7a" },
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0.45, "w": 1, "d": 0.9, "h": 0.3, "color": "#8b8270" },
+                    { "kind": "box", "x": 1.3, "y": 1.4, "z": 0, "w": 0.35, "d": 0.3, "h": 0.18, "color": "#e0a530" },
+                    { "kind": "box", "x": 1.35, "y": 1.45, "z": 0.18, "w": 0.15, "d": 0.15, "h": 0.12, "color": "#e0a530" },
+                    { "kind": "box", "x": 1, "y": 1.5, "z": 0.15, "w": 0.32, "d": 0.06, "h": 0.06, "color": "#3a3a3a" },
+                    { "kind": "box", "x": 1.6, "y": 0.4, "z": 0, "w": 0.3, "d": 0.2, "h": 0.14, "color": "#c43a2a" },
+                    { "kind": "emitter", "x": 0.6, "y": 0.6, "z": 0.8, "type": "dust" },
+                    { "kind": "pole", "x": 1.9, "y": 1.9, "z": 0, "h": 0.5, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.9, "y": 1.9, "z": 0.5, "radius": 1.4, "color": "#ffd98a" }
+                ]
+            }
+        },
+        {
+            "level": 5,
+            "name": "Роботизированный карьер",
+            "epoch": "e2100",
+            "tech": "robotics",
+            "description": "Роботы режут камень лазером почти без пыли.",
+            "cost": { "composites": 300, "electronics": 150, "gold": 9000 },
+            "buildTime": 45,
+            "effects": {
+                "housing": 0,
+                "jobs": 8,
+                "produces": { "stone": 16 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 8,
+                "aura": null,
+                "pollution": { "radius": 2, "amount": 4 },
+                "boost": null,
+                "near": { "feature": "rock", "radius": 3, "perTile": 0.4, "max": 6 },
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#b9bfba" },
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0, "w": 1.4, "d": 1.4, "h": 0.4, "color": "#a7aca8" },
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0.4, "w": 0.9, "d": 0.9, "h": 0.3, "color": "#9da29e" },
+                    { "kind": "cylinder", "x": 1.6, "y": 0.4, "z": 0, "r": 0.12, "h": 0.3, "color": "metal", "material": "metal" },
+                    { "kind": "box", "x": 1.25, "y": 0.37, "z": 0.3, "w": 0.4, "d": 0.06, "h": 0.06, "color": "metal", "material": "metal" },
+                    { "kind": "cylinder", "x": 1.6, "y": 1.6, "z": 0, "r": 0.12, "h": 0.3, "color": "metal", "material": "metal" },
+                    { "kind": "box", "x": 1.57, "y": 1.25, "z": 0.3, "w": 0.06, "d": 0.4, "h": 0.06, "color": "metal", "material": "metal" },
+                    { "kind": "light", "x": 0.6, "y": 0.6, "z": 0.8, "radius": 1.2, "color": "#2fb5a3" },
+                    { "kind": "emitter", "x": 1.2, "y": 0.4, "z": 0.3, "type": "sparks" }
                 ]
             }
         }

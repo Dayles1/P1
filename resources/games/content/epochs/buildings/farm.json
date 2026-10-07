@@ -1,31 +1,26 @@
 {
     "id": "farm",
     "name": "Ферма",
-    "names": { "e1750": "Хутор", "e2000": "Агроферма" },
     "icon": "🌾",
     "category": "food",
-    "description": "Поля и амбар. Урожай зависит от плодородия земли и времени года; зимой поля отдыхают.",
-    "epoch": "e1000",
+    "description": "Кормит город. Урожай зависит от сезона, погоды и плодородия земли (пока не появятся закрытые теплицы).",
     "size": { "w": 2, "h": 2 },
     "unique": false,
     "hidden": false,
     "placement": { "requiresRoad": true },
-    "sounds": {
-        "place": "place",
-        "upgrade": "upgrade",
-        "demolish": "demolish",
-        "select": "moo",
-        "ambient": "moo"
-    },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": "moo" },
     "levels": [
         {
             "level": 1,
+            "name": "Поле",
+            "epoch": "e0",
+            "description": "Распаханное поле, шалаш сторожа и пугало.",
             "cost": { "wood": 30 },
             "buildTime": 6,
             "effects": {
                 "housing": 0,
                 "jobs": 4,
-                "produces": { "food": 1.4 },
+                "produces": { "food": 1.5 },
                 "consumes": {},
                 "storage": 0,
                 "power": 0,
@@ -39,59 +34,27 @@
             },
             "model": {
                 "parts": [
-                    {
-                        "kind": "field",
-                        "x": 0.08,
-                        "y": 0.08,
-                        "w": 1.84,
-                        "d": 1.84,
-                        "rows": 7,
-                        "color": "crop"
-                    },
-                    {
-                        "kind": "box",
-                        "x": 1.15,
-                        "y": 0.12,
-                        "w": 0.7,
-                        "d": 0.68,
-                        "z": 0,
-                        "h": 12,
-                        "color": "#a0482f"
-                    },
-                    {
-                        "kind": "door",
-                        "face": "left",
-                        "x": 1.15,
-                        "y": 0.12,
-                        "w": 0.7,
-                        "d": 0.68,
-                        "width": 0.25,
-                        "height": 8,
-                        "color": "#5b2a1c"
-                    },
-                    {
-                        "kind": "roof",
-                        "shape": "gable",
-                        "x": 1.15,
-                        "y": 0.12,
-                        "w": 0.7,
-                        "d": 0.68,
-                        "z": 12,
-                        "h": 10,
-                        "color": "#7b3d2b",
-                        "axis": "y"
-                    }
+                    { "kind": "field", "x": 0.08, "y": 0.08, "w": 1.84, "d": 1.3, "rows": 6, "color": "crop" },
+                    { "kind": "roof", "shape": "cone", "x": 0.2, "y": 1.48, "z": 0, "w": 0.4, "d": 0.4, "h": 0.36, "color": "#c9a85a" },
+                    { "kind": "box", "x": 0.75, "y": 1.55, "z": 0, "w": 0.3, "d": 0.2, "h": 0.08, "color": "#7a5532" },
+                    { "kind": "pole", "x": 1.5, "y": 1.7, "z": 0, "h": 0.3, "color": "#6b4a2a", "blink": null },
+                    { "kind": "box", "x": 1.42, "y": 1.69, "z": 0.2, "w": 0.16, "d": 0.02, "h": 0.03, "color": "#6b4a2a" },
+                    { "kind": "box", "x": 0.08, "y": 1.92, "z": 0, "w": 1.84, "d": 0.02, "h": 0.06, "color": "trim" }
                 ]
             }
         },
         {
             "level": 2,
-            "cost": { "wood": 60, "stone": 20 },
-            "buildTime": 8,
+            "name": "Ферма с амбаром",
+            "epoch": "e1000",
+            "tech": "three_field",
+            "description": "Трёхпольное хозяйство с бревенчатым амбаром и стогом сена.",
+            "cost": { "wood": 80, "stone": 40, "tools": 10 },
+            "buildTime": 10,
             "effects": {
                 "housing": 0,
                 "jobs": 6,
-                "produces": { "food": 2.3 },
+                "produces": { "food": 2.6 },
                 "consumes": {},
                 "storage": 0,
                 "power": 0,
@@ -105,81 +68,39 @@
             },
             "model": {
                 "parts": [
+                    { "kind": "field", "x": 0.08, "y": 0.08, "w": 1.84, "d": 1.1, "rows": 5, "color": "crop" },
+                    { "kind": "box", "x": 0.15, "y": 1.3, "z": 0, "w": 0.9, "d": 0.55, "h": 0.35, "color": "walls" },
                     {
-                        "kind": "field",
-                        "x": 0.08,
-                        "y": 0.08,
-                        "w": 1.84,
-                        "d": 1.84,
-                        "rows": 9,
-                        "color": "crop"
-                    },
-                    {
-                        "kind": "box",
-                        "x": 1.15,
-                        "y": 0.12,
-                        "w": 0.7,
-                        "d": 0.68,
+                        "kind": "beams",
+                        "faces": ["n", "e", "s", "w"],
+                        "x": 0.15,
+                        "y": 1.3,
                         "z": 0,
-                        "h": 15,
-                        "color": "#a0482f"
+                        "w": 0.9,
+                        "d": 0.55,
+                        "h": 0.35,
+                        "count": 8,
+                        "color": "trim"
                     },
-                    {
-                        "kind": "door",
-                        "face": "left",
-                        "x": 1.15,
-                        "y": 0.12,
-                        "w": 0.7,
-                        "d": 0.68,
-                        "width": 0.25,
-                        "height": 9,
-                        "color": "#5b2a1c"
-                    },
-                    {
-                        "kind": "roof",
-                        "shape": "gable",
-                        "x": 1.15,
-                        "y": 0.12,
-                        "w": 0.7,
-                        "d": 0.68,
-                        "z": 15,
-                        "h": 11,
-                        "color": "#7b3d2b",
-                        "axis": "y"
-                    },
-                    {
-                        "kind": "cylinder",
-                        "x": 0.35,
-                        "y": 1.7,
-                        "r": 0.12,
-                        "z": 0,
-                        "h": 6,
-                        "color": "#e0c25a",
-                        "taper": 1
-                    },
-                    {
-                        "kind": "roof",
-                        "shape": "cone",
-                        "x": 0.22,
-                        "y": 1.57,
-                        "w": 0.26,
-                        "d": 0.26,
-                        "z": 6,
-                        "h": 6,
-                        "color": "#d1b04a"
-                    }
+                    { "kind": "door", "face": "s", "x": 0.15, "y": 1.3, "w": 0.9, "d": 0.55, "width": 0.24, "height": 0.22, "color": "trim" },
+                    { "kind": "roof", "shape": "gable", "x": 0.15, "y": 1.3, "z": 0.35, "w": 0.9, "d": 0.55, "h": 0.3, "color": "roof", "axis": "x", "overhang": 0.04 },
+                    { "kind": "roof", "shape": "cone", "x": 1.3, "y": 1.35, "z": 0, "w": 0.4, "d": 0.4, "h": 0.35, "color": "#d8bf6a" },
+                    { "kind": "box", "x": 1.75, "y": 1.4, "z": 0, "w": 0.18, "d": 0.4, "h": 0.12, "color": "trim" },
+                    { "kind": "tree", "x": 1.85, "y": 1.85, "scale": 0.5, "conifer": false }
                 ]
             }
         },
         {
             "level": 3,
-            "cost": { "wood": 90, "stone": 60, "tools": 15 },
-            "buildTime": 10,
-            "requiresEpoch": "e1500",
+            "name": "Мельничная ферма",
+            "epoch": "e1500",
+            "description": "Поля, кирпичный амбар и своя мельница для зерна.",
+            "cost": { "wood": 150, "bricks": 80, "tools": 30, "gold": 150 },
+            "buildTime": 14,
             "effects": {
                 "housing": 0,
                 "jobs": 8,
-                "produces": { "food": 3.4 },
+                "produces": { "food": 4 },
                 "consumes": {},
                 "storage": 0,
                 "power": 0,
@@ -193,90 +114,248 @@
             },
             "model": {
                 "parts": [
+                    { "kind": "field", "x": 0.08, "y": 0.08, "w": 1.84, "d": 1.05, "rows": 6, "color": "crop" },
+                    { "kind": "box", "x": 0.15, "y": 1.25, "z": 0, "w": 1, "d": 0.6, "h": 0.4, "color": "walls" },
                     {
-                        "kind": "field",
-                        "x": 0.08,
-                        "y": 0.08,
-                        "w": 1.84,
-                        "d": 1.84,
-                        "rows": 11,
-                        "color": "crop"
+                        "kind": "windows",
+                        "faces": ["s"],
+                        "x": 0.15,
+                        "y": 1.25,
+                        "z": 0.06,
+                        "w": 1,
+                        "d": 0.6,
+                        "h": 0.3,
+                        "rows": 1,
+                        "cols": 3,
+                        "color": "window"
                     },
-                    {
-                        "kind": "box",
-                        "x": 1.15,
-                        "y": 0.12,
-                        "w": 0.7,
-                        "d": 0.68,
-                        "z": 0,
-                        "h": 18,
-                        "color": "#a0482f"
-                    },
-                    {
-                        "kind": "door",
-                        "face": "left",
-                        "x": 1.15,
-                        "y": 0.12,
-                        "w": 0.7,
-                        "d": 0.68,
-                        "width": 0.25,
-                        "height": 9,
-                        "color": "#5b2a1c"
-                    },
-                    {
-                        "kind": "roof",
-                        "shape": "gable",
-                        "x": 1.15,
-                        "y": 0.12,
-                        "w": 0.7,
-                        "d": 0.68,
-                        "z": 18,
-                        "h": 12,
-                        "color": "#7b3d2b",
-                        "axis": "y"
-                    },
-                    {
-                        "kind": "cylinder",
-                        "x": 0.35,
-                        "y": 1.7,
-                        "r": 0.12,
-                        "z": 0,
-                        "h": 6,
-                        "color": "#e0c25a",
-                        "taper": 1
-                    },
-                    {
-                        "kind": "roof",
-                        "shape": "cone",
-                        "x": 0.22,
-                        "y": 1.57,
-                        "w": 0.26,
-                        "d": 0.26,
-                        "z": 6,
-                        "h": 6,
-                        "color": "#d1b04a"
-                    },
-                    {
-                        "kind": "cylinder",
-                        "x": 1.75,
-                        "y": 1.05,
-                        "r": 0.16,
-                        "z": 0,
-                        "h": 30,
-                        "color": "metal",
-                        "taper": 1
-                    },
-                    {
-                        "kind": "roof",
-                        "shape": "dome",
-                        "x": 1.59,
-                        "y": 0.89,
-                        "w": 0.32,
-                        "d": 0.32,
-                        "z": 30,
-                        "h": 0,
-                        "color": "metal"
-                    }
+                    { "kind": "door", "face": "s", "x": 0.15, "y": 1.25, "w": 1, "d": 0.6, "width": 0.14, "height": 0.2, "color": "trim" },
+                    { "kind": "roof", "shape": "gable", "x": 0.15, "y": 1.25, "z": 0.4, "w": 1, "d": 0.6, "h": 0.3, "color": "roof", "axis": "x", "overhang": 0.04 },
+                    { "kind": "cylinder", "x": 1.5, "y": 1.5, "z": 0, "r": 0.22, "h": 0.75, "color": "walls", "taper": 0.7, "segments": 12 },
+                    { "kind": "roof", "shape": "cone", "x": 1.32, "y": 1.32, "z": 0.75, "w": 0.36, "d": 0.36, "h": 0.25, "color": "roof" },
+                    { "kind": "blades", "x": 1.5, "y": 1.26, "z": 0.7, "r": 0.4, "speed": 0.25, "color": "trim", "axis": "y" }
+                ]
+            }
+        },
+        {
+            "level": 4,
+            "name": "Механизированная ферма",
+            "epoch": "e1900",
+            "tech": "internal_combustion",
+            "description": "Тракторы, металлический ангар и силосные башни. Трактора едят нефть.",
+            "cost": { "steel": 150, "concrete": 100, "tools": 80, "gold": 1200 },
+            "buildTime": 25,
+            "effects": {
+                "housing": 0,
+                "jobs": 10,
+                "produces": { "food": 9 },
+                "consumes": { "oil": 0.15 },
+                "storage": 0,
+                "power": 0,
+                "powerUse": 1,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": true,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "field", "x": 0.08, "y": 0.08, "w": 1.84, "d": 1.15, "rows": 8, "color": "crop" },
+                    { "kind": "box", "x": 0.15, "y": 1.35, "z": 0, "w": 0.9, "d": 0.55, "h": 0.38, "color": "#a8442f" },
+                    { "kind": "roof", "shape": "gable", "x": 0.15, "y": 1.35, "z": 0.38, "w": 0.9, "d": 0.55, "h": 0.22, "color": "metal", "axis": "x", "material": "metal" },
+                    { "kind": "door", "face": "s", "x": 0.15, "y": 1.35, "w": 0.9, "d": 0.55, "width": 0.3, "height": 0.28, "color": "#e7dcc8" },
+                    { "kind": "cylinder", "x": 1.35, "y": 1.6, "z": 0, "r": 0.17, "h": 0.9, "color": "metal", "segments": 16 },
+                    { "kind": "sphere", "x": 1.35, "y": 1.6, "z": 0.9, "r": 0.17, "color": "metal", "half": true },
+                    { "kind": "cylinder", "x": 1.75, "y": 1.6, "z": 0, "r": 0.15, "h": 0.75, "color": "metal", "segments": 16 },
+                    { "kind": "sphere", "x": 1.75, "y": 1.6, "z": 0.75, "r": 0.15, "color": "metal", "half": true },
+                    { "kind": "box", "x": 1.1, "y": 0.5, "z": 0, "w": 0.2, "d": 0.14, "h": 0.12, "color": "#c43a2a" }
+                ]
+            }
+        },
+        {
+            "level": 5,
+            "name": "Агрохолдинг",
+            "epoch": "e2000",
+            "tech": "genetics",
+            "description": "Огромные поля, круговое орошение, элеватор и техника.",
+            "cost": { "steel": 400, "concrete": 300, "plastic": 100, "gold": 3500 },
+            "buildTime": 35,
+            "effects": {
+                "housing": 0,
+                "jobs": 14,
+                "produces": { "food": 16 },
+                "consumes": { "oil": 0.3 },
+                "storage": 0,
+                "power": 0,
+                "powerUse": 2,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": true,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "field", "x": 0.05, "y": 0.05, "w": 1.3, "d": 1.9, "rows": 10, "color": "crop" },
+                    { "kind": "torus", "x": 0.7, "y": 1, "z": 0.12, "r": 0.55, "tube": 0.02, "color": "metal", "spin": 0.03 },
+                    { "kind": "cylinder", "x": 1.55, "y": 0.3, "z": 0, "r": 0.2, "h": 1.3, "color": "#d6d4ce", "segments": 16 },
+                    { "kind": "sphere", "x": 1.55, "y": 0.3, "z": 1.3, "r": 0.2, "color": "#d6d4ce", "half": true },
+                    { "kind": "cylinder", "x": 1.55, "y": 0.75, "z": 0, "r": 0.2, "h": 1.3, "color": "#d6d4ce", "segments": 16 },
+                    { "kind": "sphere", "x": 1.55, "y": 0.75, "z": 1.3, "r": 0.2, "color": "#d6d4ce", "half": true },
+                    { "kind": "box", "x": 1.38, "y": 1.1, "z": 0, "w": 0.55, "d": 0.8, "h": 0.45, "color": "walls" },
+                    { "kind": "roof", "shape": "flat", "x": 1.38, "y": 1.1, "z": 0.45, "w": 0.55, "d": 0.8, "h": 0.04, "color": "roof" },
+                    { "kind": "box", "x": 1.4, "y": 0.2, "z": 1.3, "w": 0.3, "d": 0.6, "h": 0.08, "color": "metal" },
+                    { "kind": "pole", "x": 1.95, "y": 1.95, "z": 0, "h": 0.4, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.95, "y": 1.95, "z": 0.4, "radius": 1.4, "color": "#ffe39a" }
+                ]
+            }
+        },
+        {
+            "level": 6,
+            "name": "Гидропоника",
+            "epoch": "e2100",
+            "tech": "hydroponics",
+            "description": "Стеклянные теплицы с растворами и светодиодами — урожай круглый год.",
+            "cost": { "glass": 1200, "composites": 200, "electronics": 100, "gold": 9000 },
+            "buildTime": 40,
+            "effects": {
+                "housing": 0,
+                "jobs": 16,
+                "produces": { "food": 26 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 6,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0, "w": 0.85, "d": 1.8, "h": 0.3, "color": "glass", "material": "glass" },
+                    { "kind": "roof", "shape": "gable", "x": 0.1, "y": 0.1, "z": 0.3, "w": 0.85, "d": 1.8, "h": 0.25, "color": "glass", "axis": "y", "material": "glass" },
+                    { "kind": "field", "x": 0.15, "y": 0.15, "w": 0.75, "d": 1.7, "rows": 8, "color": "crop" },
+                    { "kind": "box", "x": 1.05, "y": 0.1, "z": 0, "w": 0.85, "d": 1.8, "h": 0.3, "color": "glass", "material": "glass" },
+                    { "kind": "roof", "shape": "gable", "x": 1.05, "y": 0.1, "z": 0.3, "w": 0.85, "d": 1.8, "h": 0.25, "color": "glass", "axis": "y", "material": "glass" },
+                    { "kind": "field", "x": 1.1, "y": 0.15, "w": 0.75, "d": 1.7, "rows": 8, "color": "crop" },
+                    { "kind": "light", "x": 0.52, "y": 1, "z": 0.3, "radius": 1.2, "color": "#ff7adf" },
+                    { "kind": "light", "x": 1.48, "y": 1, "z": 0.3, "radius": 1.2, "color": "#ff7adf" },
+                    { "kind": "box", "x": 0.92, "y": 1.85, "z": 0, "w": 0.16, "d": 0.1, "h": 0.2, "color": "trim", "material": "glow" }
+                ]
+            }
+        },
+        {
+            "level": 7,
+            "name": "Биокупол",
+            "epoch": "e2300",
+            "description": "Два купола со своим климатом: сады, поля и пасеки внутри.",
+            "cost": { "composites": 800, "glass": 2000, "hydrogen": 200, "gold": 20000 },
+            "buildTime": 50,
+            "effects": {
+                "housing": 0,
+                "jobs": 18,
+                "produces": { "food": 42 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 10,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "field", "x": 0.2, "y": 0.2, "w": 0.8, "d": 0.8, "rows": 5, "color": "crop" },
+                    { "kind": "sphere", "x": 0.6, "y": 0.6, "z": 0, "r": 0.5, "color": "glass", "half": true, "material": "glass" },
+                    { "kind": "torus", "x": 0.6, "y": 0.6, "z": 0, "r": 0.5, "tube": 0.04, "color": "trim" },
+                    { "kind": "field", "x": 1, "y": 1, "w": 0.8, "d": 0.8, "rows": 5, "color": "crop" },
+                    { "kind": "sphere", "x": 1.4, "y": 1.4, "z": 0, "r": 0.5, "color": "glass", "half": true, "material": "glass" },
+                    { "kind": "torus", "x": 1.4, "y": 1.4, "z": 0, "r": 0.5, "tube": 0.04, "color": "trim" },
+                    { "kind": "tree", "x": 0.55, "y": 0.55, "scale": 0.35, "conifer": false },
+                    { "kind": "tree", "x": 1.45, "y": 1.45, "scale": 0.35, "conifer": false },
+                    { "kind": "box", "x": 1.3, "y": 0.3, "z": 0, "w": 0.5, "d": 0.4, "h": 0.3, "color": "walls" },
+                    { "kind": "pole", "x": 1.55, "y": 0.5, "z": 0.3, "h": 0.4, "color": "metal", "blink": "#f0a43a" }
+                ]
+            }
+        },
+        {
+            "level": 8,
+            "name": "ИИ-агрокомплекс",
+            "epoch": "e2500",
+            "description": "ИИ следит за каждым ростком; ярусы грядок светятся ночью.",
+            "cost": { "ai_cores": 30, "composites": 1500, "rare_metals": 200, "gold": 35000 },
+            "buildTime": 60,
+            "effects": {
+                "housing": 0,
+                "jobs": 20,
+                "produces": { "food": 65 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 14,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "floors", "x": 0.1, "y": 0.1, "z": 0, "w": 1.2, "d": 1.8, "floors": 6, "floorHeight": 0.2, "color": "walls", "window": "crop", "band": "trim" },
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 1.2, "w": 1.2, "d": 1.8, "h": 0.04, "color": "trim", "material": "glow" },
+                    { "kind": "field", "x": 0.15, "y": 0.15, "w": 1.1, "d": 1.7, "rows": 8, "color": "crop" },
+                    { "kind": "floors", "x": 1.35, "y": 0.4, "z": 0, "w": 0.55, "d": 0.55, "floors": 9, "floorHeight": 0.2, "color": "glass", "window": "accent", "band": "trim", "material": "glass" },
+                    { "kind": "roof", "shape": "pyramid", "x": 1.35, "y": 0.4, "z": 1.8, "w": 0.55, "d": 0.55, "h": 0.3, "color": "accent", "material": "glow" },
+                    { "kind": "field", "x": 1.35, "y": 1.1, "w": 0.55, "d": 0.8, "rows": 4, "color": "crop" },
+                    { "kind": "light", "x": 0.7, "y": 1, "z": 1.3, "radius": 2, "color": "#9ad0a0" }
+                ]
+            }
+        },
+        {
+            "level": 9,
+            "name": "Синтезатор пищи",
+            "epoch": "e3000",
+            "tech": "matter_synthesis",
+            "description": "Собирает еду из молекул: никаких полей, только перламутровый реактор.",
+            "cost": { "nanomaterials": 100, "ai_cores": 50, "gold": 50000 },
+            "buildTime": 70,
+            "effects": {
+                "housing": 0,
+                "jobs": 15,
+                "produces": { "food": 110 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 25,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0, "r": 0.6, "h": 0.6, "color": "walls", "segments": 24 },
+                    { "kind": "sphere", "x": 1, "y": 1, "z": 0.6, "r": 0.6, "color": "walls", "half": true },
+                    { "kind": "torus", "x": 1, "y": 1, "z": 0.65, "r": 0.68, "tube": 0.05, "color": "trim", "spin": 0.15, "material": "glow" },
+                    { "kind": "sphere", "x": 0.3, "y": 0.3, "z": 0.2, "r": 0.2, "color": "glass", "material": "glass" },
+                    { "kind": "sphere", "x": 1.7, "y": 0.3, "z": 0.2, "r": 0.2, "color": "glass", "material": "glass" },
+                    { "kind": "sphere", "x": 0.3, "y": 1.7, "z": 0.2, "r": 0.2, "color": "glass", "material": "glass" },
+                    { "kind": "field", "x": 1.4, "y": 1.4, "w": 0.5, "d": 0.5, "rows": 3, "color": "crop" },
+                    { "kind": "light", "x": 1, "y": 1, "z": 1.3, "radius": 2.2, "color": "#b6f08a" }
                 ]
             }
         }

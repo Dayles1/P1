@@ -13,14 +13,7 @@
         },
         "place": {
             "file": null,
-            "synth": {
-                "noise": true,
-                "filter": 900,
-                "duration": 0.12,
-                "repeat": 3,
-                "gap": 0.11,
-                "volume": 0.35
-            }
+            "synth": { "noise": true, "filter": 900, "duration": 0.12, "repeat": 3, "gap": 0.11, "volume": 0.35 }
         },
         "upgrade": {
             "file": null,
@@ -33,12 +26,7 @@
         },
         "demolish": {
             "file": null,
-            "synth": {
-                "noise": true,
-                "filter": 300,
-                "duration": 0.5,
-                "volume": 0.45
-            }
+            "synth": { "noise": true, "filter": 300, "duration": 0.5, "volume": 0.45 }
         },
         "error": {
             "file": null,
@@ -80,32 +68,15 @@
         },
         "hammer": {
             "file": null,
-            "synth": {
-                "noise": true,
-                "filter": 2400,
-                "duration": 0.05,
-                "repeat": 3,
-                "gap": 0.25,
-                "volume": 0.3
-            }
+            "synth": { "noise": true, "filter": 2400, "duration": 0.05, "repeat": 3, "gap": 0.25, "volume": 0.3 }
         },
         "water": {
             "file": null,
-            "synth": {
-                "noise": true,
-                "filter": 1200,
-                "duration": 0.8,
-                "volume": 0.18
-            }
+            "synth": { "noise": true, "filter": 1200, "duration": 0.8, "volume": 0.18 }
         },
         "wind": {
             "file": null,
-            "synth": {
-                "noise": true,
-                "filter": 500,
-                "duration": 2.5,
-                "volume": 0.12
-            }
+            "synth": { "noise": true, "filter": 500, "duration": 2.5, "volume": 0.12 }
         },
         "machine": {
             "file": null,
@@ -166,26 +137,53 @@
         },
         "rain": {
             "file": null,
-            "synth": {
-                "noise": true,
-                "filter": 3000,
-                "duration": 2,
-                "volume": 0.08
-            }
+            "synth": { "noise": true, "filter": 3000, "duration": 2, "volume": 0.08 }
         },
         "traffic": {
             "file": null,
+            "synth": { "noise": true, "filter": 250, "duration": 1.8, "volume": 0.07 }
+        },
+        "fire": {
+            "file": null,
+            "synth": { "noise": true, "filter": 1800, "duration": 0.06, "repeat": 5, "gap": 0.09, "volume": 0.06 }
+        },
+        "whistle": {
+            "file": null,
             "synth": {
-                "noise": true,
-                "filter": 250,
-                "duration": 1.8,
+                "wave": "sine",
+                "notes": [880, 740],
+                "duration": 0.4,
+                "volume": 0.06
+            }
+        },
+        "pulse": {
+            "file": null,
+            "synth": {
+                "wave": "sine",
+                "notes": [220, 330],
+                "duration": 0.6,
+                "harmonics": [1, 1.5],
                 "volume": 0.07
+            }
+        },
+        "shimmer": {
+            "file": null,
+            "synth": {
+                "wave": "triangle",
+                "notes": [1568, 2093, 2637, 3136],
+                "duration": 0.12,
+                "volume": 0.06
             }
         }
     },
     "ambience": {
+        "camp": {
+            "day": ["bird", "fire", "wind"],
+            "night": ["cricket", "fire"],
+            "every": [3, 9]
+        },
         "village": {
-            "day": ["bird", "moo"],
+            "day": ["bird", "moo", "hammer"],
             "night": ["cricket"],
             "every": [3, 9]
         },
@@ -194,15 +192,35 @@
             "night": ["cricket"],
             "every": [3, 9]
         },
+        "industrial": {
+            "day": ["machine", "hammer", "whistle"],
+            "night": ["machine", "cricket"],
+            "every": [3, 8]
+        },
         "city": {
             "day": ["traffic", "bird"],
             "night": ["traffic", "cricket"],
             "every": [4, 10]
         },
         "future": {
-            "day": ["hum", "chime"],
+            "day": ["hum", "chime", "bird"],
             "night": ["hum"],
             "every": [4, 10]
+        },
+        "space": {
+            "day": ["hum", "chime"],
+            "night": ["hum", "pulse"],
+            "every": [4, 10]
+        },
+        "ai": {
+            "day": ["pulse", "chime", "hum"],
+            "night": ["pulse"],
+            "every": [4, 10]
+        },
+        "nano": {
+            "day": ["shimmer", "chime"],
+            "night": ["shimmer", "hum"],
+            "every": [4, 11]
         }
     }
 }

@@ -1,0 +1,105 @@
+{
+    "id": "chemical_plant",
+    "name": "Химический завод",
+    "icon": "🧴",
+    "category": "industry",
+    "description": "Перерабатывает нефть в пластик.",
+    "size": { "w": 2, "h": 2 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": "machine" },
+    "levels": [
+        {
+            "level": 1,
+            "name": "Нефтехимзавод",
+            "epoch": "e2000",
+            "tech": "plastics",
+            "description": "Колонны крекинга, резервуары и факел.",
+            "cost": { "steel": 800, "concrete": 600, "gold": 6000 },
+            "buildTime": 40,
+            "effects": {
+                "housing": 0,
+                "jobs": 16,
+                "produces": { "plastic": 2 },
+                "consumes": { "oil": 2.5 },
+                "storage": 0,
+                "power": 0,
+                "powerUse": 10,
+                "aura": null,
+                "pollution": { "radius": 3, "amount": 12 },
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#8f9092" },
+                    { "kind": "cylinder", "x": 0.35, "y": 0.35, "z": 0, "r": 0.14, "h": 1.8, "color": "metal", "segments": 12, "material": "metal" },
+                    { "kind": "cylinder", "x": 0.75, "y": 0.35, "z": 0, "r": 0.12, "h": 1.4, "color": "metal", "segments": 12, "material": "metal" },
+                    { "kind": "cylinder", "x": 1.1, "y": 0.35, "z": 0, "r": 0.1, "h": 1.1, "color": "metal", "segments": 12, "material": "metal" },
+                    { "kind": "box", "x": 0.2, "y": 0.25, "z": 0.6, "w": 1.1, "d": 0.06, "h": 0.06, "color": "trim" },
+                    { "kind": "cylinder", "x": 0.5, "y": 1.4, "z": 0, "r": 0.38, "h": 0.35, "color": "walls", "segments": 16 },
+                    { "kind": "sphere", "x": 0.5, "y": 1.4, "z": 0.35, "r": 0.38, "color": "walls", "half": true },
+                    { "kind": "cylinder", "x": 1.4, "y": 1.4, "z": 0, "r": 0.38, "h": 0.35, "color": "walls", "segments": 16 },
+                    { "kind": "sphere", "x": 1.4, "y": 1.4, "z": 0.35, "r": 0.38, "color": "walls", "half": true },
+                    { "kind": "pole", "x": 1.7, "y": 0.3, "z": 0, "h": 1.6, "color": "metal", "blink": null },
+                    { "kind": "emitter", "x": 1.7, "y": 0.3, "z": 1.6, "type": "sparks" },
+                    { "kind": "light", "x": 1.7, "y": 0.3, "z": 1.6, "radius": 1.4, "color": "#ff9a3a" },
+                    { "kind": "emitter", "x": 0.35, "y": 0.35, "z": 1.8, "type": "steam" }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "name": "Биопластиковый завод",
+            "epoch": "e2100",
+            "tech": "composites",
+            "description": "Пластик из растений, а не из нефти: ферменты вместо факела.",
+            "cost": { "composites": 300, "glass": 800, "electronics": 100, "gold": 12000 },
+            "buildTime": 45,
+            "effects": {
+                "housing": 0,
+                "jobs": 12,
+                "produces": { "plastic": 6 },
+                "consumes": { "food": 4 },
+                "storage": 0,
+                "power": 0,
+                "powerUse": 14,
+                "aura": null,
+                "pollution": { "radius": 1, "amount": 2 },
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "cylinder", "x": 0.45, "y": 0.45, "z": 0, "r": 0.32, "h": 0.9, "color": "glass", "segments": 24, "material": "glass" },
+                    { "kind": "cylinder", "x": 0.45, "y": 0.45, "z": 0, "r": 0.22, "h": 0.85, "color": "crop", "segments": 16 },
+                    { "kind": "cylinder", "x": 1.25, "y": 0.45, "z": 0, "r": 0.32, "h": 0.9, "color": "glass", "segments": 24, "material": "glass" },
+                    { "kind": "cylinder", "x": 1.25, "y": 0.45, "z": 0, "r": 0.22, "h": 0.85, "color": "crop", "segments": 16 },
+                    { "kind": "box", "x": 0.1, "y": 1, "z": 0, "w": 1.8, "d": 0.85, "h": 0.45, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e", "w"],
+                        "x": 0.1,
+                        "y": 1,
+                        "z": 0.08,
+                        "w": 1.8,
+                        "d": 0.85,
+                        "h": 0.3,
+                        "rows": 1,
+                        "cols": 6,
+                        "color": "glass"
+                    },
+                    { "kind": "roof", "shape": "flat", "x": 0.1, "y": 1, "z": 0.45, "w": 1.8, "d": 0.85, "h": 0.04, "color": "roof" },
+                    { "kind": "tree", "x": 1.8, "y": 1.8, "scale": 0.3, "conifer": false },
+                    { "kind": "light", "x": 0.85, "y": 0.45, "z": 0.5, "radius": 1.4, "color": "#b6f08a" }
+                ]
+            }
+        }
+    ]
+}

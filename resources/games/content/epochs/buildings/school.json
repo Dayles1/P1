@@ -1,0 +1,472 @@
+{
+    "id": "school",
+    "name": "Школа",
+    "icon": "📚",
+    "category": "science",
+    "description": "Даёт знания 📜 — на них изучают технологии.",
+    "size": { "w": 2, "h": 2 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": "chime" },
+    "levels": [
+        {
+            "level": 1,
+            "name": "Школа философов",
+            "epoch": "e0",
+            "tech": "writing",
+            "description": "Портик, где учитель спорит с учениками о природе вещей.",
+            "cost": { "stone": 60, "wood": 40, "gold": 30 },
+            "buildTime": 12,
+            "effects": {
+                "housing": 0,
+                "jobs": 3,
+                "produces": { "knowledge": 0.15 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "box", "x": 0.2, "y": 0.2, "z": 0, "w": 1.6, "d": 0.7, "h": 0.06, "color": "trim" },
+                    { "kind": "box", "x": 0.25, "y": 0.25, "z": 0.06, "w": 1.5, "d": 0.3, "h": 0.4, "color": "walls" },
+                    { "kind": "cylinder", "x": 0.3, "y": 0.8, "z": 0.06, "r": 0.04, "h": 0.4, "color": "trim", "segments": 10 },
+                    { "kind": "cylinder", "x": 0.58, "y": 0.8, "z": 0.06, "r": 0.04, "h": 0.4, "color": "trim", "segments": 10 },
+                    { "kind": "cylinder", "x": 0.86, "y": 0.8, "z": 0.06, "r": 0.04, "h": 0.4, "color": "trim", "segments": 10 },
+                    { "kind": "cylinder", "x": 1.14, "y": 0.8, "z": 0.06, "r": 0.04, "h": 0.4, "color": "trim", "segments": 10 },
+                    { "kind": "cylinder", "x": 1.42, "y": 0.8, "z": 0.06, "r": 0.04, "h": 0.4, "color": "trim", "segments": 10 },
+                    { "kind": "cylinder", "x": 1.7, "y": 0.8, "z": 0.06, "r": 0.04, "h": 0.4, "color": "trim", "segments": 10 },
+                    { "kind": "roof", "shape": "gable", "x": 0.2, "y": 0.2, "z": 0.46, "w": 1.6, "d": 0.7, "h": 0.18, "color": "roof", "axis": "x" },
+                    { "kind": "tree", "x": 0.4, "y": 1.4, "scale": 0.6, "conifer": true },
+                    { "kind": "tree", "x": 1.6, "y": 1.5, "scale": 0.55, "conifer": true },
+                    { "kind": "box", "x": 0.9, "y": 1.3, "z": 0, "w": 0.2, "d": 0.2, "h": 0.15, "color": "trim" }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "name": "Монастырская школа",
+            "epoch": "e1000",
+            "tech": "scholasticism",
+            "description": "Скрипторий при монастыре: монахи переписывают книги.",
+            "cost": { "stone": 200, "wood": 100, "bricks": 30, "gold": 100 },
+            "buildTime": 16,
+            "effects": {
+                "housing": 0,
+                "jobs": 5,
+                "produces": { "knowledge": 0.35 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "box", "x": 0.15, "y": 0.15, "z": 0, "w": 1.7, "d": 0.6, "h": 0.45, "color": "#b5ad9c" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s"],
+                        "x": 0.15,
+                        "y": 0.15,
+                        "z": 0.06,
+                        "w": 1.7,
+                        "d": 0.6,
+                        "h": 0.35,
+                        "rows": 1,
+                        "cols": 6,
+                        "color": "window"
+                    },
+                    { "kind": "door", "face": "s", "x": 0.15, "y": 0.15, "w": 1.7, "d": 0.6, "width": 0.14, "height": 0.2, "color": "trim" },
+                    { "kind": "roof", "shape": "gable", "x": 0.15, "y": 0.15, "z": 0.45, "w": 1.7, "d": 0.6, "h": 0.3, "color": "roof", "axis": "x", "overhang": 0.04 },
+                    { "kind": "box", "x": 0.15, "y": 0.75, "z": 0, "w": 0.6, "d": 1.1, "h": 0.45, "color": "#b5ad9c" },
+                    {
+                        "kind": "windows",
+                        "faces": ["e"],
+                        "x": 0.15,
+                        "y": 0.75,
+                        "z": 0.06,
+                        "w": 0.6,
+                        "d": 1.1,
+                        "h": 0.35,
+                        "rows": 1,
+                        "cols": 3,
+                        "color": "window"
+                    },
+                    { "kind": "roof", "shape": "gable", "x": 0.15, "y": 0.75, "z": 0.45, "w": 0.6, "d": 1.1, "h": 0.3, "color": "roof", "axis": "y", "overhang": 0.04 },
+                    { "kind": "box", "x": 1.4, "y": 1.3, "z": 0, "w": 0.35, "d": 0.35, "h": 0.9, "color": "#b5ad9c" },
+                    { "kind": "roof", "shape": "pyramid", "x": 1.4, "y": 1.3, "z": 0.9, "w": 0.35, "d": 0.35, "h": 0.3, "color": "roof" },
+                    { "kind": "tree", "x": 1.1, "y": 1.2, "scale": 0.45, "conifer": false }
+                ]
+            }
+        },
+        {
+            "level": 3,
+            "name": "Университет",
+            "epoch": "e1500",
+            "tech": "printing",
+            "description": "Здание с внутренним двором, библиотекой и часовой башней.",
+            "cost": { "bricks": 400, "glass": 60, "gold": 600 },
+            "buildTime": 22,
+            "effects": {
+                "housing": 0,
+                "jobs": 8,
+                "produces": { "knowledge": 0.8 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0, "w": 1.8, "d": 0.55, "h": 0.65, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "n"],
+                        "x": 0.1,
+                        "y": 0.1,
+                        "z": 0.08,
+                        "w": 1.8,
+                        "d": 0.55,
+                        "h": 0.5,
+                        "rows": 2,
+                        "cols": 7,
+                        "color": "window"
+                    },
+                    { "kind": "roof", "shape": "gable", "x": 0.1, "y": 0.1, "z": 0.65, "w": 1.8, "d": 0.55, "h": 0.28, "color": "roof", "axis": "x" },
+                    { "kind": "box", "x": 0.1, "y": 0.65, "z": 0, "w": 0.5, "d": 1.25, "h": 0.65, "color": "walls" },
+                    { "kind": "roof", "shape": "gable", "x": 0.1, "y": 0.65, "z": 0.65, "w": 0.5, "d": 1.25, "h": 0.28, "color": "roof", "axis": "y" },
+                    { "kind": "box", "x": 1.4, "y": 0.65, "z": 0, "w": 0.5, "d": 1.25, "h": 0.65, "color": "walls" },
+                    { "kind": "roof", "shape": "gable", "x": 1.4, "y": 0.65, "z": 0.65, "w": 0.5, "d": 1.25, "h": 0.28, "color": "roof", "axis": "y" },
+                    { "kind": "box", "x": 0.82, "y": 0.12, "z": 0.65, "w": 0.36, "d": 0.36, "h": 0.6, "color": "walls" },
+                    { "kind": "roof", "shape": "pyramid", "x": 0.82, "y": 0.12, "z": 1.25, "w": 0.36, "d": 0.36, "h": 0.35, "color": "roof" },
+                    { "kind": "box", "x": 0.95, "y": 0.11, "z": 0.95, "w": 0.1, "d": 0.01, "h": 0.1, "color": "#f4efe4" },
+                    { "kind": "tree", "x": 1, "y": 1.3, "scale": 0.5, "conifer": false }
+                ]
+            }
+        },
+        {
+            "level": 4,
+            "name": "Академия наук",
+            "epoch": "e1800",
+            "tech": "public_education",
+            "description": "Классицизм: портик, купол обсерватории и кабинеты учёных.",
+            "cost": { "bricks": 800, "glass": 250, "steel": 60, "gold": 2000 },
+            "buildTime": 28,
+            "effects": {
+                "housing": 0,
+                "jobs": 12,
+                "produces": { "knowledge": 1.6 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "box", "x": 0.15, "y": 0.15, "z": 0, "w": 1.7, "d": 1.2, "h": 0.8, "color": "#e7dcc8" },
+                    {
+                        "kind": "windows",
+                        "faces": ["e", "w", "n", "s"],
+                        "x": 0.15,
+                        "y": 0.15,
+                        "z": 0.1,
+                        "w": 1.7,
+                        "d": 1.2,
+                        "h": 0.6,
+                        "rows": 2,
+                        "cols": 6,
+                        "color": "window"
+                    },
+                    { "kind": "cylinder", "x": 0.6, "y": 1.45, "z": 0, "r": 0.045, "h": 0.6, "color": "#f4efe4", "segments": 10 },
+                    { "kind": "cylinder", "x": 0.8, "y": 1.45, "z": 0, "r": 0.045, "h": 0.6, "color": "#f4efe4", "segments": 10 },
+                    { "kind": "cylinder", "x": 1, "y": 1.45, "z": 0, "r": 0.045, "h": 0.6, "color": "#f4efe4", "segments": 10 },
+                    { "kind": "cylinder", "x": 1.2, "y": 1.45, "z": 0, "r": 0.045, "h": 0.6, "color": "#f4efe4", "segments": 10 },
+                    { "kind": "cylinder", "x": 1.4, "y": 1.45, "z": 0, "r": 0.045, "h": 0.6, "color": "#f4efe4", "segments": 10 },
+                    { "kind": "roof", "shape": "gable", "x": 0.55, "y": 1.35, "z": 0.6, "w": 0.9, "d": 0.2, "h": 0.18, "color": "#e7dcc8", "axis": "y" },
+                    { "kind": "roof", "shape": "hip", "x": 0.15, "y": 0.15, "z": 0.8, "w": 1.7, "d": 1.2, "h": 0.2, "color": "roof" },
+                    { "kind": "cylinder", "x": 1.5, "y": 0.45, "z": 0.8, "r": 0.22, "h": 0.2, "color": "#e7dcc8" },
+                    { "kind": "sphere", "x": 1.5, "y": 0.45, "z": 1, "r": 0.22, "color": "metal", "half": true, "material": "metal" },
+                    { "kind": "pole", "x": 0.1, "y": 1.9, "z": 0, "h": 0.4, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.1, "y": 1.9, "z": 0.4, "radius": 1.4, "color": "#f3c86b" }
+                ]
+            }
+        },
+        {
+            "level": 5,
+            "name": "НИИ",
+            "epoch": "e1900",
+            "description": "Научно-исследовательский институт с лабораториями и антенной.",
+            "cost": { "concrete": 500, "glass": 300, "steel": 200, "gold": 5000 },
+            "buildTime": 32,
+            "effects": {
+                "housing": 0,
+                "jobs": 16,
+                "produces": { "knowledge": 3 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 5,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "floors", "x": 0.1, "y": 0.1, "z": 0, "w": 1.8, "d": 0.7, "floors": 5, "floorHeight": 0.22, "color": "walls", "window": "window", "band": "trim" },
+                    { "kind": "roof", "shape": "flat", "x": 0.1, "y": 0.1, "z": 1.1, "w": 1.8, "d": 0.7, "h": 0.04, "color": "roof" },
+                    { "kind": "box", "x": 0.1, "y": 0.9, "z": 0, "w": 0.8, "d": 0.95, "h": 0.45, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["e", "s"],
+                        "x": 0.1,
+                        "y": 0.9,
+                        "z": 0.08,
+                        "w": 0.8,
+                        "d": 0.95,
+                        "h": 0.3,
+                        "rows": 1,
+                        "cols": 3,
+                        "color": "window"
+                    },
+                    { "kind": "roof", "shape": "sawtooth", "x": 0.1, "y": 0.9, "z": 0.45, "w": 0.8, "d": 0.95, "h": 0.12, "color": "roof", "axis": "y" },
+                    { "kind": "pole", "x": 1.6, "y": 0.4, "z": 1.14, "h": 0.7, "color": "metal", "blink": "#ff3b3b" },
+                    { "kind": "sphere", "x": 1.4, "y": 1.4, "z": 0, "r": 0.4, "color": "#e3d5b8", "half": true },
+                    { "kind": "pole", "x": 1.9, "y": 1.9, "z": 0, "h": 0.4, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.9, "y": 1.9, "z": 0.4, "radius": 1.4, "color": "#ffd98a" }
+                ]
+            }
+        },
+        {
+            "level": 6,
+            "name": "Технопарк",
+            "epoch": "e2000",
+            "tech": "computers",
+            "description": "Стеклянные офисы стартапов, лаборатории и серверная.",
+            "cost": { "concrete": 1200, "glass": 1200, "electronics": 120, "gold": 12000 },
+            "buildTime": 42,
+            "effects": {
+                "housing": 0,
+                "jobs": 20,
+                "produces": { "knowledge": 5 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 12,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "floors", "x": 0.1, "y": 0.1, "z": 0, "w": 0.9, "d": 0.9, "floors": 8, "floorHeight": 0.22, "color": "glass", "window": "window", "band": "metal", "material": "glass" },
+                    { "kind": "roof", "shape": "flat", "x": 0.1, "y": 0.1, "z": 1.76, "w": 0.9, "d": 0.9, "h": 0.05, "color": "roof" },
+                    { "kind": "box", "x": 1.1, "y": 0.1, "z": 0, "w": 0.8, "d": 1.8, "h": 0.5, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["e", "n", "s"],
+                        "x": 1.1,
+                        "y": 0.1,
+                        "z": 0.08,
+                        "w": 0.8,
+                        "d": 1.8,
+                        "h": 0.35,
+                        "rows": 1,
+                        "cols": 6,
+                        "color": "glass"
+                    },
+                    { "kind": "roof", "shape": "flat", "x": 1.1, "y": 0.1, "z": 0.5, "w": 0.8, "d": 1.8, "h": 0.04, "color": "#7fa05a" },
+                    { "kind": "ground", "x": 0.1, "y": 1.1, "w": 0.9, "d": 0.8, "color": "#86a86a" },
+                    { "kind": "tree", "x": 0.4, "y": 1.5, "scale": 0.45, "conifer": false },
+                    { "kind": "pole", "x": 0.5, "y": 0.5, "z": 1.81, "h": 0.5, "color": "metal", "blink": "#ff3b3b" }
+                ]
+            }
+        },
+        {
+            "level": 7,
+            "name": "Лаборатория будущего",
+            "epoch": "e2100",
+            "description": "Белые корпуса с зелёными крышами и исследовательским куполом.",
+            "cost": { "composites": 500, "glass": 2000, "electronics": 400, "gold": 22000 },
+            "buildTime": 50,
+            "effects": {
+                "housing": 0,
+                "jobs": 22,
+                "produces": { "knowledge": 8 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 18,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0, "w": 1.8, "d": 0.8, "h": 0.6, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e", "w", "n"],
+                        "x": 0.1,
+                        "y": 0.1,
+                        "z": 0.08,
+                        "w": 1.8,
+                        "d": 0.8,
+                        "h": 0.45,
+                        "rows": 2,
+                        "cols": 8,
+                        "color": "glass"
+                    },
+                    { "kind": "roof", "shape": "flat", "x": 0.1, "y": 0.1, "z": 0.6, "w": 1.8, "d": 0.8, "h": 0.05, "color": "roof" },
+                    { "kind": "sphere", "x": 0.6, "y": 1.4, "z": 0, "r": 0.45, "color": "glass", "half": true, "material": "glass" },
+                    { "kind": "box", "x": 1.2, "y": 1, "z": 0, "w": 0.7, "d": 0.9, "h": 1, "color": "walls" },
+                    { "kind": "box", "x": 1.2, "y": 1, "z": 1, "w": 0.7, "d": 0.9, "h": 0.03, "color": "trim", "material": "glow" },
+                    { "kind": "roof", "shape": "flat", "x": 1.2, "y": 1, "z": 1.03, "w": 0.7, "d": 0.9, "h": 0.04, "color": "roof" },
+                    { "kind": "light", "x": 0.6, "y": 1.4, "z": 0.3, "radius": 1.4, "color": "#b5fff0" }
+                ]
+            }
+        },
+        {
+            "level": 8,
+            "name": "Орбитальная обсерватория",
+            "epoch": "e2300",
+            "description": "Наземный центр управления телескопами на орбите.",
+            "cost": { "composites": 1500, "rare_metals": 300, "electronics": 800, "gold": 40000 },
+            "buildTime": 60,
+            "effects": {
+                "housing": 0,
+                "jobs": 24,
+                "produces": { "knowledge": 12 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 25,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0, "r": 0.7, "h": 0.6, "color": "walls", "segments": 24 },
+                    { "kind": "sphere", "x": 1, "y": 1, "z": 0.6, "r": 0.65, "color": "metal", "half": true, "material": "metal" },
+                    { "kind": "box", "x": 0.95, "y": 0.4, "z": 0.6, "w": 0.1, "d": 0.5, "h": 0.6, "color": "glass", "material": "glass" },
+                    { "kind": "cylinder", "x": 0.3, "y": 1.7, "z": 0, "r": 0.12, "h": 1.2, "color": "metal" },
+                    { "kind": "sphere", "x": 0.3, "y": 1.7, "z": 1.35, "r": 0.25, "color": "trim", "half": true },
+                    { "kind": "pole", "x": 1.7, "y": 0.3, "z": 0, "h": 1, "color": "metal", "blink": "#f0a43a" },
+                    { "kind": "light", "x": 1, "y": 1, "z": 1.3, "radius": 2, "color": "#9fd2ff" }
+                ]
+            }
+        },
+        {
+            "level": 9,
+            "name": "ИИ-институт",
+            "epoch": "e2500",
+            "tech": "artificial_intelligence",
+            "description": "Люди и ИИ ведут исследования вместе: башня-нейросеть.",
+            "cost": { "ai_cores": 60, "composites": 2500, "gold": 60000 },
+            "buildTime": 70,
+            "effects": {
+                "housing": 0,
+                "jobs": 20,
+                "produces": { "knowledge": 18 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 35,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0, "w": 1.8, "d": 1.8, "h": 0.4, "color": "walls" },
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0.4, "w": 1.8, "d": 1.8, "h": 0.03, "color": "trim", "material": "glow" },
+                    { "kind": "floors", "x": 0.4, "y": 0.4, "z": 0.43, "w": 1.2, "d": 1.2, "floors": 10, "floorHeight": 0.22, "color": "walls", "window": "accent", "band": "trim" },
+                    { "kind": "roof", "shape": "pyramid", "x": 0.4, "y": 0.4, "z": 2.63, "w": 1.2, "d": 1.2, "h": 0.5, "color": "accent", "material": "glow" },
+                    { "kind": "torus", "x": 1, "y": 1, "z": 1.5, "r": 0.8, "tube": 0.04, "color": "accent", "spin": 0.2, "material": "glow" },
+                    { "kind": "torus", "x": 1, "y": 1, "z": 2.2, "r": 0.75, "tube": 0.04, "color": "trim", "spin": -0.2, "material": "glow" },
+                    { "kind": "light", "x": 1, "y": 1, "z": 3.2, "radius": 3, "color": "#c06cff" }
+                ]
+            }
+        },
+        {
+            "level": 10,
+            "name": "Ноосфера",
+            "epoch": "e3000",
+            "tech": "noosphere",
+            "description": "Сфера коллективного разума: знания всех жителей в одном сиянии.",
+            "cost": { "nanomaterials": 200, "ai_cores": 100, "gold": 100000 },
+            "buildTime": 80,
+            "effects": {
+                "housing": 0,
+                "jobs": 15,
+                "produces": { "knowledge": 30 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 50,
+                "aura": { "radius": 5, "happiness": 6 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0, "r": 0.6, "h": 0.3, "color": "walls", "segments": 32 },
+                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0.3, "r": 0.12, "h": 1, "color": "walls", "taper": 0.5 },
+                    { "kind": "sphere", "x": 1, "y": 1, "z": 1.75, "r": 0.6, "color": "glass", "material": "glass" },
+                    { "kind": "sphere", "x": 1, "y": 1, "z": 1.75, "r": 0.3, "color": "accent", "material": "glow" },
+                    { "kind": "torus", "x": 1, "y": 1, "z": 1.75, "r": 0.8, "tube": 0.04, "color": "trim", "spin": 0.3, "material": "glow" },
+                    { "kind": "torus", "x": 1, "y": 1, "z": 1.75, "r": 0.7, "tube": 0.03, "color": "accent", "spin": -0.4, "material": "glow" },
+                    { "kind": "light", "x": 1, "y": 1, "z": 1.75, "radius": 4, "color": "#7ae0ff" }
+                ]
+            }
+        }
+    ]
+}

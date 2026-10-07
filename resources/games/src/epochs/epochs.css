@@ -1,5 +1,5 @@
 /* =========================================================
-   CITY OF ERAS — additions to the shared HUD styles, and the Workshop.
+   ЛЕТОПИСЬ ГОРОДА 2 — additions to the shared HUD styles, and the Workshop.
    The HUD colours come from the current era's `theme` in epochs.json,
    set as --hud-* variables on the game's root element.
    ========================================================= */
@@ -107,6 +107,940 @@
 a.hud-button {
     color: inherit;
     text-decoration: none;
+}
+
+/* ——————————————————————————————— Shared bits ——————————————————————————————— */
+
+.bar {
+    position: relative;
+    display: block;
+    height: 5px;
+    overflow: hidden;
+    border-radius: 3px;
+    background: rgba(127, 127, 127, 0.25);
+}
+
+.bar > span {
+    position: absolute;
+    inset: 0 auto 0 0;
+    border-radius: inherit;
+    background: var(--hud-muted);
+    transition: width 0.3s ease;
+}
+
+.bar--good > span {
+    background: var(--g-good);
+}
+
+.bar--accent > span {
+    background: var(--hud-accent);
+}
+
+.cost--free {
+    color: var(--hud-muted);
+    font-size: 12px;
+}
+
+.thumb {
+    display: block;
+    flex: none;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.thumb--icon {
+    display: grid;
+    place-items: center;
+    font-family: var(--g-emoji);
+    font-size: 34px;
+}
+
+/* ——————————————————————————————— Research button in the top bar ——————————————————————————————— */
+
+.hud-research {
+    display: flex;
+    width: 190px;
+    height: 40px;
+    align-items: center;
+    gap: 8px;
+    padding: 0 10px;
+    border: 1px solid var(--hud-border);
+    border-radius: 8px;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+}
+
+.hud-research--on {
+    border-color: var(--hud-accent);
+}
+
+.hud-research:not(.hud-research--on) {
+    animation: pulse 2.4s ease-in-out infinite;
+}
+
+.hud-research__icon {
+    font-family: var(--g-emoji);
+    font-size: 20px;
+}
+
+.hud-research__body {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: 2px;
+    line-height: 1.1;
+}
+
+.hud-research__body b {
+    overflow: hidden;
+    font-size: 12.5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.hud-research__body small {
+    color: var(--hud-muted);
+    font-size: 10.5px;
+}
+
+/* ——————————————————————————————— Goals widget ——————————————————————————————— */
+
+.goals-widget {
+    position: absolute;
+    top: 74px;
+    left: 10px;
+    width: 250px;
+    padding: 8px;
+    border: 1px solid var(--hud-border);
+    border-radius: var(--hud-radius);
+    background: var(--hud-bg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+}
+
+.goals-widget header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.goals-widget header button {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-family: var(--hud-font);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.goals-widget header small {
+    color: var(--hud-muted);
+    font-weight: 400;
+}
+
+.goals-widget__toggle {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+}
+
+.goals-widget ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.goals-widget li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.goals-widget__icon {
+    font-family: var(--g-emoji);
+    font-size: 20px;
+}
+
+.goals-widget__body {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.goals-widget__body b {
+    overflow: hidden;
+    font-size: 12.5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.goals-widget__body small,
+.goals-widget__empty {
+    color: var(--hud-muted);
+    font-size: 11px;
+}
+
+/* ——————————————————————————————— Camera controls ——————————————————————————————— */
+
+.camera-controls {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 6px;
+    border: 1px solid var(--hud-border);
+    border-radius: calc(var(--hud-radius) + 4px);
+    background: var(--hud-bg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transform: translateY(-50%);
+    backdrop-filter: blur(10px);
+}
+
+.camera-controls button {
+    width: 36px;
+    height: 34px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: inherit;
+    font-family: var(--g-emoji);
+    font-size: 17px;
+}
+
+.camera-controls button:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.camera-controls button[aria-pressed='true'] {
+    background: var(--hud-accent);
+    color: var(--hud-accent-text);
+}
+
+.camera-controls__row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 4px;
+    border-top: 1px solid var(--hud-border);
+}
+
+.camera-controls__compass {
+    position: relative;
+    height: 42px !important;
+    border: 1px solid var(--hud-border) !important;
+    border-radius: 50% !important;
+}
+
+.camera-controls__compass span {
+    display: inline-block;
+    color: var(--g-bad);
+    transition: transform 0.2s ease;
+}
+
+.camera-controls__compass small {
+    position: absolute;
+    right: 3px;
+    bottom: 1px;
+    color: var(--hud-muted);
+    font-family: var(--hud-font);
+    font-size: 9px;
+}
+
+.game-menu__tester {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+    border: 1px dashed var(--hud-accent);
+    border-radius: 10px;
+}
+
+.game-menu__tester span {
+    color: var(--hud-muted);
+    font-size: 12px;
+}
+
+.game-menu__tester div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.hud-speed button {
+    min-width: 32px;
+    width: auto;
+    padding: 0 6px;
+}
+
+.game-menu__toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.hud-tester {
+    padding: 2px 6px;
+    border-radius: 6px;
+    background: var(--hud-accent);
+    color: var(--hud-accent-text);
+    font-family: var(--g-emoji);
+}
+
+.game-menu__quality {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.game-menu__quality .hud-speed {
+    align-self: flex-start;
+}
+
+.game-menu__quality .hud-speed button {
+    padding: 0 12px;
+}
+
+.game-menu__quality span {
+    color: var(--hud-muted);
+    font-size: 12px;
+}
+
+.hud-slow {
+    height: 30px;
+    padding: 0 8px;
+    border: 1px solid var(--g-bad);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--g-bad) 18%, transparent);
+    color: inherit;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* ——————————————————————————————— Build dock ——————————————————————————————— */
+
+.dock {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--hud-border);
+    border-radius: calc(var(--hud-radius) + 4px);
+    background: var(--hud-bg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+}
+
+.dock__tabs {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    overflow-x: auto;
+    padding: 6px 6px 0;
+    border-bottom: 1px solid var(--hud-border);
+    scrollbar-width: none;
+}
+
+.dock__tabs [role='tab'] {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 10px 7px;
+    border: 0;
+    border-radius: 8px 8px 0 0;
+    background: transparent;
+    color: var(--hud-muted);
+    font-family: var(--hud-font);
+    font-size: 13px;
+}
+
+.dock__tabs [role='tab'] span {
+    font-family: var(--g-emoji);
+}
+
+.dock__tabs [role='tab'] em {
+    padding: 0 5px;
+    border-radius: 8px;
+    background: rgba(127, 127, 127, 0.22);
+    font-size: 10.5px;
+    font-style: normal;
+}
+
+.dock__tabs [role='tab'][aria-selected='true'] {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--hud-text);
+    box-shadow: inset 0 -2px 0 var(--hud-accent);
+}
+
+.dock__search {
+    width: 150px;
+    min-width: 110px;
+    height: 28px;
+    margin-left: auto;
+    padding: 0 8px;
+    border: 1px solid var(--hud-border);
+    border-radius: 7px;
+    background: rgba(0, 0, 0, 0.12);
+    color: inherit;
+    font: inherit;
+    font-size: 12.5px;
+}
+
+.dock__collapse {
+    width: 28px;
+    height: 28px;
+    flex: none;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: inherit;
+}
+
+.dock__list {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 8px;
+}
+
+.dock__empty {
+    margin: 12px;
+    color: var(--hud-muted);
+}
+
+.dock-card {
+    display: flex;
+    width: 158px;
+    flex: none;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--hud-border);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.dock-card--active {
+    border-color: var(--hud-accent);
+    box-shadow: 0 0 0 2px var(--hud-accent) inset;
+}
+
+.dock-card--locked {
+    opacity: 0.55;
+}
+
+.dock-card--poor .thumb {
+    filter: grayscale(0.6);
+}
+
+.dock-card__pick {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 6px 8px 8px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    text-align: center;
+}
+
+.dock-card__pick:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.dock-card__name {
+    font-family: var(--hud-font);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.dock-card__family,
+.dock-card__lock {
+    color: var(--hud-muted);
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.dock-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3px;
+}
+
+.dock-card__tags em {
+    padding: 0 4px;
+    border-radius: 4px;
+    background: rgba(127, 127, 127, 0.18);
+    font-size: 10.5px;
+    font-style: normal;
+}
+
+.dock-card .cost {
+    justify-content: center;
+    font-size: 11.5px;
+}
+
+.dock-card__levels {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--hud-border);
+}
+
+.dock-card__levels button {
+    width: 34px;
+    height: 26px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-size: 16px;
+}
+
+.dock-card__levels button:disabled {
+    opacity: 0.3;
+}
+
+.dock-card__levels span {
+    font-size: 12px;
+}
+
+.dock-card__levels small {
+    color: var(--hud-muted);
+}
+
+/* ——————————————————————————————— Inspector additions ——————————————————————————————— */
+
+.inspector__others {
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 6px 8px;
+    border: 1px dashed var(--hud-border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--hud-accent);
+    font-size: 12px;
+    text-align: left;
+}
+
+.level-path {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin: 0 0 8px;
+    padding: 0;
+    list-style: none;
+}
+
+.level-path__step {
+    display: grid;
+    width: 20px;
+    height: 20px;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(127, 127, 127, 0.2);
+    color: var(--hud-muted);
+    font-size: 10.5px;
+}
+
+.level-path__step--past {
+    background: color-mix(in srgb, var(--hud-accent) 45%, transparent);
+    color: var(--hud-text);
+}
+
+.level-path__step--now {
+    background: var(--hud-accent);
+    color: var(--hud-accent-text);
+    font-weight: 700;
+}
+
+.level-path__step--open {
+    box-shadow: inset 0 0 0 1.5px var(--hud-accent);
+    color: var(--hud-text);
+}
+
+.level-path__step--locked {
+    opacity: 0.45;
+}
+
+.inspector__next {
+    display: flex;
+    gap: 8px;
+}
+
+.inspector__section {
+    margin-top: 10px;
+    padding: 8px 10px;
+    border: 1px solid var(--hud-border);
+    border-radius: 8px;
+}
+
+.inspector__section summary {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.inspector__section--open > b {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 8px 0;
+    font-size: 12px;
+}
+
+.field span {
+    color: var(--hud-muted);
+}
+
+.field input,
+.field select {
+    height: 30px;
+    padding: 0 8px;
+    border: 1px solid var(--hud-border);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.15);
+    color: inherit;
+    font: inherit;
+}
+
+.field select option {
+    background: var(--hud-bg-solid);
+}
+
+.swatches {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    margin: 6px 0;
+    font-size: 12px;
+}
+
+.swatches > span {
+    width: 48px;
+    color: var(--hud-muted);
+}
+
+.swatches button {
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.swatches button[aria-pressed='true'] {
+    outline: 2px solid var(--hud-accent);
+    outline-offset: 1px;
+}
+
+.swatches .swatches__reset {
+    width: auto;
+    padding: 0 4px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+}
+
+.policies {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+}
+
+.policies button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px;
+    border: 1px solid var(--hud-border);
+    border-radius: 7px;
+    background: transparent;
+    color: inherit;
+    font-size: 12px;
+    text-align: left;
+}
+
+.policies button[aria-pressed='true'] {
+    border-color: var(--hud-accent);
+    background: color-mix(in srgb, var(--hud-accent) 18%, transparent);
+}
+
+.policies span {
+    font-family: var(--g-emoji);
+}
+
+/* ——————————————————————————————— Technologies, blueprints, goals ——————————————————————————————— */
+
+.era-tabs {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+}
+
+.era-tabs button {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 6px 10px;
+    border: 1px solid var(--hud-border);
+    border-radius: 8px;
+    background: transparent;
+    color: inherit;
+    line-height: 1.2;
+}
+
+.era-tabs button[aria-pressed='true'] {
+    border-color: var(--hud-accent);
+    background: color-mix(in srgb, var(--hud-accent) 18%, transparent);
+}
+
+.era-tabs span {
+    font-size: 12px;
+}
+
+.era-tabs small {
+    color: var(--hud-muted);
+    font-size: 10.5px;
+}
+
+.tech-modal__lead {
+    margin: 8px 0 12px;
+    color: var(--hud-muted);
+    font-size: 13px;
+}
+
+.tech-grid,
+.blueprint-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.tech-card,
+.blueprint {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 12px;
+    border: 1px solid var(--hud-border);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.tech-card header,
+.blueprint header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tech-card header div,
+.blueprint header div {
+    display: flex;
+    flex-direction: column;
+}
+
+.tech-card__icon,
+.blueprint__icon {
+    font-family: var(--g-emoji);
+    font-size: 26px;
+}
+
+.tech-card p,
+.blueprint p {
+    margin: 0;
+    color: var(--hud-muted);
+    font-size: 12.5px;
+}
+
+.tech-card__key {
+    color: var(--hud-accent);
+    font-size: 11px;
+}
+
+.tech-card--key {
+    border-color: color-mix(in srgb, var(--hud-accent) 60%, transparent);
+}
+
+.tech-card--done,
+.blueprint--done {
+    background: color-mix(in srgb, var(--g-good) 10%, transparent);
+}
+
+.tech-card--active {
+    border-color: var(--hud-accent);
+    box-shadow: 0 0 0 1px var(--hud-accent) inset;
+}
+
+.tech-card--locked,
+.blueprint--locked {
+    opacity: 0.6;
+}
+
+.tech-card__requires {
+    font-size: 11.5px !important;
+}
+
+.tech-card__gives {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tech-card__gives li {
+    padding: 2px 6px;
+    border-radius: 6px;
+    background: rgba(127, 127, 127, 0.18);
+    font-size: 11.5px;
+}
+
+.tech-card footer,
+.blueprint footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+}
+
+.tech-card footer .hud-button,
+.blueprint footer .hud-button {
+    margin-left: auto;
+}
+
+.tech-card footer small {
+    color: var(--hud-muted);
+    font-size: 11.5px;
+}
+
+.tech-card__done {
+    color: var(--g-good);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tech-card__progress {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.blueprint header small,
+.blueprint__fits,
+.blueprint__lock {
+    color: var(--hud-muted);
+    font-size: 11.5px !important;
+}
+
+.blueprint__swatches {
+    display: flex;
+    gap: 3px;
+}
+
+.blueprint__swatches span {
+    width: 22px;
+    height: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+}
+
+.goal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 8px;
+}
+
+.goal {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid var(--hud-border);
+    border-radius: 10px;
+}
+
+.goal > div {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.goal p {
+    margin: 0;
+    color: var(--hud-muted);
+    font-size: 12px;
+}
+
+.goal__icon {
+    font-family: var(--g-emoji);
+    font-size: 26px;
+}
+
+.goal--done {
+    background: color-mix(in srgb, var(--g-good) 10%, transparent);
+}
+
+.goal--future {
+    opacity: 0.5;
+}
+
+.goal__progress {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.goal__progress small,
+.goal__reward {
+    color: var(--hud-muted);
+    font-size: 11px;
+}
+
+.epoch-panel__note {
+    margin: 10px 0;
+    color: var(--hud-muted);
+    font-size: 12.5px;
+}
+
+@media (max-width: 900px) {
+    .goals-widget {
+        display: none;
+    }
+
+    .hud-research {
+        width: auto;
+    }
+
+    .hud-research__body {
+        display: none;
+    }
+
+    .dock-card {
+        width: 132px;
+    }
 }
 
 /* ——————————————————————————————— Workshop ——————————————————————————————— */
@@ -521,9 +1455,15 @@ a.hud-button {
 }
 
 .ws-mini {
-    width: 260px;
-    height: 150px;
+    display: flex;
+    min-height: 56px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
     border-radius: 8px;
+    background: rgba(0, 0, 0, 0.15);
+    font-family: var(--g-emoji);
 }
 
 .ws-swatches {

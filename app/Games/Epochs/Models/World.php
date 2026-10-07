@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
- * A player's world in "City of Eras". `user_id` is the main application's
+ * A player's world in "Летопись города 2". `user_id` is the main application's
  * user id (another database, so no relation). The numbers here are the
  * player's progress; the rules they are read against live in the content
  * files.
@@ -34,6 +34,10 @@ use Illuminate\Support\Carbon;
  * @property list<array<string, mixed>> $moods
  * @property int $next_uid
  * @property array<string, int> $stats
+ * @property list<string>|null $techs
+ * @property array{id: string, start: int, end: int}|null $research
+ * @property list<string>|null $blueprints
+ * @property list<string>|null $achievements
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
@@ -71,6 +75,10 @@ class World extends Model
             'moods' => 'array',
             'next_uid' => 'integer',
             'stats' => 'array',
+            'techs' => 'array',
+            'research' => 'array',
+            'blueprints' => 'array',
+            'achievements' => 'array',
         ];
     }
 

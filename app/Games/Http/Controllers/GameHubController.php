@@ -3,6 +3,7 @@
 namespace App\Games\Http\Controllers;
 
 use App\Games\CityBuilder\Models\CitySave;
+use App\Games\Epochs\Content\ContentRepository;
 use App\Games\Epochs\Models\World;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class GameHubController extends GameController
      * The player's progress in each game they have started, keyed by the
      * game's slug — the Games menu turns "Play" into "Continue" with it.
      */
-    public function progress(Request $request): JsonResponse
+    public function progress(Request $request, ContentRepository $content): JsonResponse
     {
         $playerId = $this->playerId($request);
 
@@ -36,6 +37,7 @@ class GameHubController extends GameController
             'epochs' => $epochs === null ? null : [
                 'epoch' => $epochs->epoch,
                 'epoch_index' => $epochs->epoch_index,
+                'epoch_name' => collect($content->read('epochs')['epochs'] ?? [])->firstWhere('id', $epochs->epoch)['name'] ?? null,
                 'year' => $epochs->year,
                 'population' => $epochs->population,
                 'score' => $epochs->score,

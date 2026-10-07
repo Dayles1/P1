@@ -1,8 +1,8 @@
 /**
  * The shape of the game's content files (resources/games/content/epochs).
- * Everything the game is made of — map, biomes, climate, eras, buildings,
- * NPCs, sounds — is data described by these types; the engine only
- * interprets it.
+ * Everything the game is made of — map, biomes, climate, eras, resources,
+ * technologies, buildings with their levels, blueprints, goals, NPCs and
+ * sounds — is data described by these types; the engine only interprets it.
  */
 
 export type ResourceId = string;
@@ -12,8 +12,6 @@ export interface WorldFile {
     map: {
         width: number;
         height: number;
-        tileWidth: number;
-        tileHeight: number;
         seed: number | null;
     };
     time: {
@@ -26,7 +24,11 @@ export interface WorldFile {
         epoch: string;
         population: number;
         resources: Amounts;
-        buildings: { type: string; at: 'center' | [number, number] }[];
+        buildings: {
+            type: string;
+            level?: number;
+            at: 'center' | [number, number];
+        }[];
     };
     population: {
         foodPerPerson: number;
@@ -46,8 +48,15 @@ export interface WorldFile {
     economy: {
         storageBase: number;
         refundShare: number;
+        /** An upgrade without its own `upgrade` cost costs this share of the level's `cost`. */
+        upgradeShare: number;
         moveCostPerTile: number;
         clearFeature: Record<string, { cost: Amounts; gain: Amounts }>;
+    };
+    districts: {
+        /** Tiles around a district hall that belong to its district. */
+        radius: number;
+        policies: DistrictPolicyDef[];
     };
     npc: {
         residentsPerNpc: number;
@@ -59,6 +68,28 @@ export interface WorldFile {
         firstAfter: number;
         every: [number, number];
         list: GameEventDef[];
+    };
+}
+
+export interface DistrictPolicyDef {
+    id: string;
+    name: string;
+    icon: string;
+    description: string;
+    effects: {
+        /** Percent to the output of buildings in the district; "*" means every resource. */
+        produces?: Record<ResourceId | '*', number>;
+        /** Added to the happiness of homes in the district. */
+        happiness?: number;
+        /** Percent to the housing of homes in the district. */
+        housing?: number;
+        /** Percent to the pollution made in the district (negative = cleaner). */
+        pollution?: number;
+        /**
+         * Gold per second for every building in the district, times how many
+         * eras older its level is than the current era (old houses draw tourists).
+         */
+        tourism?: number;
     };
 }
 
@@ -78,7 +109,10 @@ export interface ResourceDef {
     id: ResourceId;
     name: string;
     icon: string;
+    /** The era it is discovered in; the HUD hides it before that. */
+    epoch: string;
     capped: boolean;
+    description: string;
 }
 
 export interface BiomeDef {
@@ -152,23 +186,34 @@ export interface ClimateFile {
     };
 }
 
+export type RoadStyle =
+    'dirt' | 'cobble' | 'paved' | 'asphalt' | 'smart' | 'glow';
+
+/**
+ * The materials of an era's architecture. A building level is drawn with
+ * the palette of the era it belongs to — a straw hut keeps its straw in
+ * the year 3000 — and a blueprint or the player's colours override keys.
+ */
 export interface Palette {
     wall: string;
+    /** Wall colours picked per building for variety ("walls" in a model). */
     walls: string[];
     roof: string;
     trim: string;
     window: string;
+    /** Lit windows at night. */
     lit: string;
     glass: string;
     metal: string;
     road: string;
     roadEdge: string;
     roadMark: string | null;
-    roadStyle: 'dirt' | 'cobble' | 'paved' | 'asphalt' | 'glow';
+    roadStyle: RoadStyle;
     plaza: string;
     crop: string;
     flag: string;
     accent: string;
+    /** Sky gradient while this era is the current one: zenith, horizon. */
     sky: [string, string];
     [key: string]: unknown;
 }
@@ -198,41 +243,162 @@ export interface EpochDef {
     next: {
         population: number;
         buildings: { type: string; count: number; level?: number }[];
+        techs: string[];
         cost: Amounts;
     } | null;
 }
 
+/** Bonuses a researched technology gives the whole city, in percent unless noted. */
+export interface TechBonus {
+    /** Percent to the output of a resource; "*" means every resource. */
+    produces?: Record<ResourceId | '*', number>;
+    /** Points added to every home's happiness. */
+    happiness?: number;
+    housing?: number;
+    storage?: number;
+    /** Percent shorter construction. */
+    buildSpeed?: number;
+    tax?: number;
+    /** Percent shorter research. */
+    research?: number;
+}
+
+export interface TechDef {
+    id: string;
+    name: string;
+    icon: string;
+    /** The era it can be researched from. */
+    epoch: string;
+    description: string;
+    cost: Amounts;
+    /** Game seconds the research takes. */
+    time: number;
+    requires: string[];
+    bonus: TechBonus | null;
+}
+
+export type RoofShape =
+    | 'gable'
+    | 'hip'
+    | 'pyramid'
+    | 'flat'
+    | 'dome'
+    | 'cone'
+    | 'shed'
+    | 'sawtooth'
+    | 'mansard';
+
+export type PaletteKey =
+    'wall' | 'roof' | 'trim' | 'window' | 'glass' | 'metal' | 'accent';
+
+/**
+ * A style the Architects' Bureau can unlock: it recolours (and may change
+ * the roof of) the buildings it applies to, whatever their level.
+ */
+export interface BlueprintDef {
+    id: string;
+    name: string;
+    icon: string;
+    description: string;
+    epoch: string;
+    /** The Bureau level needed to unlock it. */
+    tier: number;
+    cost: Amounts;
+    /** Building ids it fits; empty means every ordinary building. */
+    buildings: string[];
+    colors: Partial<Record<PaletteKey, string>>;
+    roof: RoofShape | null;
+}
+
+export type GoalCondition =
+    | { type: 'population'; value: number }
+    | { type: 'building'; building: string; count: number; level?: number }
+    | { type: 'epoch'; epoch: string }
+    | { type: 'tech'; tech: string }
+    | { type: 'techs'; count: number }
+    | { type: 'resource'; resource: ResourceId; value: number }
+    | { type: 'happiness'; value: number }
+    | { type: 'districts'; count: number }
+    | { type: 'blueprints'; count: number }
+    /** Buildings standing at a level at least `age` eras older than now. */
+    | { type: 'heritage'; count: number; age: number };
+
+/** A goal — shown as a task while open, kept as an achievement once done. */
+export interface GoalDef {
+    id: string;
+    name: string;
+    icon: string;
+    description: string;
+    /** Shown from this era on. */
+    epoch: string;
+    condition: GoalCondition;
+    reward: Amounts;
+}
+
+/** How a part looks: plain, see-through glass, shiny metal, or glowing. */
+export type Material = 'matte' | 'glass' | 'metal' | 'glow';
+
+/** A side of a box: n = towards y−, s = towards y+, w = x−, e = x+. */
+export type Face = 'n' | 'e' | 's' | 'w';
+
+/**
+ * One piece of a building's 3D model. x, y, w, d are in tiles from the
+ * building's corner (x east, y south); z and h are in tiles upward.
+ * Colours are palette keys (see Palette; "walls" picks a wall variant per
+ * building) or "#hex" values.
+ */
 export type ModelPart =
     | {
           kind: 'box';
           x: number;
           y: number;
+          z: number;
           w: number;
           d: number;
-          z: number;
           h: number;
           color: string;
+          material?: Material;
       }
     | {
           kind: 'roof';
-          shape: 'gable' | 'pyramid' | 'flat' | 'dome' | 'cone' | 'sawtooth';
+          shape: RoofShape;
           x: number;
           y: number;
+          z: number;
           w: number;
           d: number;
-          z: number;
           h: number;
           color: string;
+          /** Ridge direction of gable / shed / sawtooth roofs. */
           axis?: 'x' | 'y';
+          /** How far the roof sticks out past the walls, in tiles. */
+          overhang?: number;
+          material?: Material;
+      }
+    | {
+          /** A stack of storeys with a grid of windows on every side. */
+          kind: 'floors';
+          x: number;
+          y: number;
+          z: number;
+          w: number;
+          d: number;
+          floors: number;
+          floorHeight: number;
+          color: string;
+          window: string;
+          /** A slab line between storeys. */
+          band?: string;
+          material?: Material;
       }
     | {
           kind: 'windows';
-          face: 'left' | 'right';
+          faces: Face[];
           x: number;
           y: number;
+          z: number;
           w: number;
           d: number;
-          z: number;
           h: number;
           rows: number;
           cols: number;
@@ -240,7 +406,8 @@ export type ModelPart =
       }
     | {
           kind: 'door';
-          face: 'left' | 'right';
+          face: Face;
+          /** The wall it is in, as the box of that wall. */
           x: number;
           y: number;
           w: number;
@@ -250,13 +417,14 @@ export type ModelPart =
           color: string;
       }
     | {
+          /** Timber framing on the walls of a box. */
           kind: 'beams';
-          face: 'left' | 'right';
+          faces: Face[];
           x: number;
           y: number;
+          z: number;
           w: number;
           d: number;
-          z: number;
           h: number;
           count: number;
           color: string;
@@ -282,11 +450,37 @@ export type ModelPart =
           kind: 'cylinder';
           x: number;
           y: number;
-          r: number;
           z: number;
+          r: number;
           h: number;
           color: string;
-          taper: number;
+          /** Top radius as a share of r (1 = straight, 0 = cone). */
+          taper?: number;
+          segments?: number;
+          material?: Material;
+      }
+    | {
+          kind: 'sphere';
+          x: number;
+          y: number;
+          z: number;
+          r: number;
+          color: string;
+          /** Only the upper half — a dome. */
+          half?: boolean;
+          material?: Material;
+      }
+    | {
+          kind: 'torus';
+          x: number;
+          y: number;
+          z: number;
+          r: number;
+          tube: number;
+          color: string;
+          /** Turns per second around the vertical axis. */
+          spin?: number;
+          material?: Material;
       }
     | {
           kind: 'flag';
@@ -310,7 +504,7 @@ export type ModelPart =
           x: number;
           y: number;
           z: number;
-          type: 'smoke' | 'steam' | 'dust' | 'water';
+          type: 'smoke' | 'steam' | 'dust' | 'water' | 'sparks';
       }
     | {
           kind: 'light';
@@ -327,8 +521,11 @@ export type ModelPart =
           y: number;
           z: number;
           r: number;
+          /** Turns per second. */
           speed: number;
           color: string;
+          /** The axis the blades turn around (the way the hub faces). */
+          axis?: 'x' | 'y' | 'z';
       };
 
 export type PartKind = ModelPart['kind'];
@@ -356,9 +553,18 @@ export interface Effects {
 
 export interface LevelDef {
     level: number;
+    /** What this level is called (Hut, Log house, …, Skyscraper). */
+    name: string;
+    /** The era it can be built or upgraded to in; also its architecture. */
+    epoch: string;
+    /** A technology it needs, if any. */
+    tech?: string;
+    description?: string;
+    /** Price to build it straight away. */
     cost: Amounts;
+    /** Price to upgrade the level below to it; defaults to a share of `cost`. */
+    upgrade?: Amounts;
     buildTime: number;
-    requiresEpoch?: string;
     effects: Effects;
     model: { parts: ModelPart[] };
 }
@@ -368,25 +574,25 @@ export type Category =
     | 'food'
     | 'resources'
     | 'industry'
+    | 'power'
     | 'trade'
-    | 'civic'
+    | 'services'
+    | 'science'
     | 'infrastructure';
 
 export interface BuildingDef {
     id: string;
     name: string;
-    names: Record<string, string>;
     icon: string;
     category: Category;
     description: string;
-    epoch: string;
     size: { w: number; h: number };
     unique: boolean;
+    /** Not in the build menu (the town centre). */
     hidden: boolean;
-    autoLevelByEpoch?: boolean;
-    render?: 'road';
+    /** Special roles the engine knows about. */
+    role?: 'road' | 'center' | 'district' | 'bureau';
     placement: { requiresRoad: boolean; biomes?: string[]; nearWater?: number };
-    costByEpoch?: Record<string, Amounts>;
     sounds: {
         place: string | null;
         upgrade: string | null;
@@ -407,7 +613,7 @@ export interface NpcTypeDef {
     skin?: string[];
     hat?: string | null;
     glow?: string | null;
-    vehicle?: 'cart' | 'car' | 'hover';
+    vehicle?: 'cart' | 'car' | 'bus' | 'hover' | 'drone';
 }
 
 export interface NpcsFile {
@@ -455,6 +661,9 @@ export interface ContentBundle {
     biomes: BiomesFile;
     climate: ClimateFile;
     epochs: { epochs: EpochDef[] };
+    techs: { techs: TechDef[] };
+    blueprints: { blueprints: BlueprintDef[] };
+    goals: { goals: GoalDef[] };
     npcs: NpcsFile;
     sounds: SoundsFile;
     buildings: Record<string, BuildingDef>;
@@ -466,6 +675,9 @@ export const CONTENT_FILES = [
     'biomes',
     'climate',
     'epochs',
+    'techs',
+    'blueprints',
+    'goals',
     'npcs',
     'sounds',
 ] as const;

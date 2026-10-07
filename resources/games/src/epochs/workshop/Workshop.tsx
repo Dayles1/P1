@@ -58,6 +58,24 @@ const FILES: FileEntry[] = [
         hint: 'Еда, дерево, камень и остальное',
     },
     {
+        key: 'techs',
+        title: 'Технологии',
+        icon: '🔬',
+        hint: 'Древо технологий: цены, время, требования, бонусы',
+    },
+    {
+        key: 'blueprints',
+        title: 'Чертежи',
+        icon: '📐',
+        hint: 'Стили бюро архитекторов: цвета, крыши, уровни бюро',
+    },
+    {
+        key: 'goals',
+        title: 'Цели',
+        icon: '🏆',
+        hint: 'Задания и достижения с наградами',
+    },
+    {
         key: 'npcs',
         title: 'Жители (NPC)',
         icon: '🚶',
@@ -109,7 +127,7 @@ function parseError(text: string, error: unknown): string {
 }
 
 /**
- * The Workshop: every content file of "City of Eras" with a live preview.
+ * The Workshop: every content file of «Летопись города 2» with a live preview.
  * Edits are checked against the whole set as you type; saving writes the
  * file on the server, and the next game load uses it.
  */
@@ -121,7 +139,7 @@ export default function Workshop() {
     const [saved, setSaved] = useState<ContentBundle | null>(null);
     const [editable, setEditable] = useState(false);
     const [loadError, setLoadError] = useState('');
-    const [active, setActive] = useState('buildings/hut');
+    const [active, setActive] = useState('buildings/house');
     const [texts, setTexts] = useState<Record<string, string>>({});
     const [newFiles, setNewFiles] = useState<string[]>([]);
     const [serverIssues, setServerIssues] = useState<ContentIssue[]>([]);
@@ -130,7 +148,7 @@ export default function Workshop() {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     useEffect(() => {
-        document.title = 'Мастерская · Город эпох';
+        document.title = 'Мастерская · Летопись города 2';
         loadContent()
             .then((loaded) => {
                 setSaved(loaded.bundle);
@@ -262,7 +280,7 @@ export default function Workshop() {
         return (
             <div className="ws-center">
                 <p>Мастерская доступна только редакторам игры.</p>
-                <Link to="/epochs">← К игре</Link>
+                <Link to="/city2">← К игре</Link>
             </div>
         );
     }
@@ -301,12 +319,11 @@ export default function Workshop() {
         }
 
         const template = structuredClone(
-            saved.buildings.hut ?? Object.values(saved.buildings)[0],
+            saved.buildings.house ?? Object.values(saved.buildings)[0],
         );
 
         template.id = id;
         template.name = 'Новое здание';
-        template.names = {};
         template.description = 'Описание нового здания.';
 
         const key = `buildings/${id}`;
@@ -330,7 +347,7 @@ export default function Workshop() {
 
                 return next;
             });
-            setActive('buildings/hut');
+            setActive('buildings/house');
 
             return;
         }
@@ -348,7 +365,7 @@ export default function Workshop() {
 
                 return { ...bundle, buildings };
             });
-            setActive('buildings/hut');
+            setActive('buildings/house');
             setStatus('✓ Удалено');
         } catch (failure) {
             if (failure instanceof GameApiError && failure.status === 422) {
@@ -387,7 +404,7 @@ export default function Workshop() {
         <div className="ws">
             <aside className="ws-side">
                 <div className="ws-side__head">
-                    <Link to="/epochs" className="ws-back">
+                    <Link to="/city2" className="ws-back">
                         ← В игру
                     </Link>
                     <h1>🛠️ Мастерская</h1>

@@ -19,7 +19,11 @@ class WorldStore
     private const array WORLD_FIELDS = [
         'seed', 'width', 'height', 'epoch', 'epoch_index', 'year', 'time', 'population', 'happiness', 'score',
         'resources', 'weather', 'weather_until', 'next_event_at', 'moods', 'next_uid', 'stats',
+        'techs', 'research', 'blueprints', 'achievements',
     ];
+
+    /** Building columns the browser sends and reads back. */
+    private const array BUILDING_FIELDS = ['uid', 'type', 'x', 'y', 'level', 'build_start', 'build_end', 'style', 'district'];
 
     public function find(int $userId): ?World
     {
@@ -39,8 +43,8 @@ class WorldStore
             'world' => $this->worldPayload($world),
             'tiles' => $world->tiles()->orderBy('y')->orderBy('x')->get(['x', 'y', 'biome', 'elevation', 'feature'])
                 ->map(fn (Tile $t): array => [$t->x, $t->y, $t->biome, $t->elevation, $t->feature])->all(),
-            'buildings' => $world->buildings()->orderBy('uid')->get(['uid', 'type', 'x', 'y', 'level', 'build_start', 'build_end'])
-                ->map(fn (Building $b): array => $b->only(['uid', 'type', 'x', 'y', 'level', 'build_start', 'build_end']))->all(),
+            'buildings' => $world->buildings()->orderBy('uid')->get(self::BUILDING_FIELDS)
+                ->map(fn (Building $b): array => $b->only(self::BUILDING_FIELDS))->all(),
             'npcs' => $world->npcs()->orderBy('uid')->get()
                 ->map(fn (Npc $n): array => $n->only(['uid', 'type', 'name', 'age', 'home_uid', 'work_uid', 'x', 'y', 'activity', 'offset']))->all(),
         ];
@@ -111,7 +115,12 @@ class WorldStore
      */
     public function worldPayload(World $world): array
     {
-        return $world->only(self::WORLD_FIELDS);
+        return [
+            ...$world->only(self::WORLD_FIELDS),
+            'techs' => $world->techs ?? [],
+            'blueprints' => $world->blueprints ?? [],
+            'achievements' => $world->achievements ?? [],
+        ];
     }
 
     /**
@@ -145,7 +154,7 @@ class WorldStore
     }
 
     /**
-     * @param  list<array<string, int|string>>  $buildings
+     * @param  list<array<string, mixed>>  $buildings
      */
     private function upsertBuildings(World $world, array $buildings): void
     {
@@ -162,11 +171,13 @@ class WorldStore
                     'level' => $b['level'],
                     'build_start' => $b['build_start'],
                     'build_end' => $b['build_end'],
+                    'style' => isset($b['style']) ? json_encode($b['style'], JSON_THROW_ON_ERROR) : null,
+                    'district' => isset($b['district']) ? json_encode($b['district'], JSON_THROW_ON_ERROR) : null,
                     'created_at' => $now,
                     'updated_at' => $now,
                 ], $chunk),
                 ['world_id', 'uid'],
-                ['type', 'x', 'y', 'level', 'build_start', 'build_end', 'updated_at'],
+                ['type', 'x', 'y', 'level', 'build_start', 'build_end', 'style', 'district', 'updated_at'],
             );
         }
     }

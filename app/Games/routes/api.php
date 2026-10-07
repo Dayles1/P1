@@ -1,6 +1,9 @@
 <?php
 
 use App\Games\CityBuilder\Http\Controllers\CitySaveController;
+use App\Games\Community\Http\Controllers\LeaderboardController;
+use App\Games\Community\Http\Controllers\PlaytimeController;
+use App\Games\Community\Http\Controllers\RatingController;
 use App\Games\Epochs\Http\Controllers\ContentController;
 use App\Games\Epochs\Http\Controllers\WorldController;
 use App\Games\Http\Controllers\GameHubController;
@@ -26,7 +29,7 @@ Route::middleware('auth.api')->group(function (): void {
     });
 
     /*
-     * "City of Eras": the content files (settings) and the player's world.
+     * "Летопись города 2": the content files (settings) and the player's world.
      * Writing content is the Workshop's job and is gated in the controller.
      */
     Route::prefix('epochs')->name('epochs.')->group(function (): void {
@@ -42,5 +45,18 @@ Route::middleware('auth.api')->group(function (): void {
         Route::post('world', [WorldController::class, 'store'])->middleware('throttle:10,1')->name('world.store');
         Route::put('world', [WorldController::class, 'sync'])->middleware('throttle:60,1')->name('world.sync');
         Route::delete('world', [WorldController::class, 'destroy'])->name('world.destroy');
+    });
+
+    /*
+     * Shared by every playable game (App\Games\Game; any other `{game}` is
+     * a 404): play time from the SPA's heartbeat, ratings, leaderboards.
+     */
+    Route::get('ratings', [RatingController::class, 'index'])->name('ratings.index');
+
+    Route::prefix('{game}')->group(function (): void {
+        Route::post('playtime', [PlaytimeController::class, 'store'])->middleware('throttle:10,1')->name('playtime.store');
+        Route::put('rating', [RatingController::class, 'update'])->middleware('throttle:20,1')->name('rating.update');
+        Route::delete('rating', [RatingController::class, 'destroy'])->name('rating.destroy');
+        Route::get('leaderboard', [LeaderboardController::class, 'show'])->name('leaderboard.show');
     });
 });

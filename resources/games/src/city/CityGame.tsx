@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GameApiError, gameApi } from '../shared/api';
+import { usePlaytime } from '../shared/usePlaytime';
 import { BUILDING, EPOCHS, TECHS } from './engine/data';
 import { CENTER } from './engine/map';
 import { City, SAVE_VERSION } from './engine/sim';
@@ -48,6 +49,7 @@ let toastId = 0;
  * loop, mouse/keyboard/touch control and saving to /api/games/city/save.
  */
 export default function CityGame() {
+    usePlaytime('city');
     const navigate = useNavigate();
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const cityRef = useRef<City | null>(null);
