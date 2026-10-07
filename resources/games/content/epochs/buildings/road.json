@@ -1,0 +1,57 @@
+{
+    "id": "road",
+    "name": "Дорога",
+    "names": {
+        "e1500": "Мощёная улица",
+        "e2000": "Асфальтовая дорога",
+        "e2500": "Магистраль"
+    },
+    "icon": "🛤️",
+    "category": "infrastructure",
+    "description": "Связывает здания с центром города. Здание без дороги до центра не работает. Тяните мышью, чтобы проложить линию.",
+    "epoch": "e1000",
+    "size": { "w": 1, "h": 1 },
+    "unique": false,
+    "hidden": false,
+    "render": "road",
+    "placement": { "requiresRoad": false },
+    "costByEpoch": {
+        "e1000": { "wood": 2 },
+        "e1500": { "stone": 3 },
+        "e1750": { "stone": 3 },
+        "e2000": { "stone": 4, "gold": 2 },
+        "e2500": { "stone": 5, "gold": 4 }
+    },
+    "sounds": {
+        "place": "click",
+        "upgrade": null,
+        "demolish": "demolish",
+        "select": "click",
+        "ambient": null
+    },
+    "levels": [
+        {
+            "level": 1,
+            "cost": { "wood": 2 },
+            "buildTime": 0,
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": []
+            }
+        }
+    ]
+}

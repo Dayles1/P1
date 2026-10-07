@@ -1,0 +1,218 @@
+{
+    "id": "windmill",
+    "name": "Мельница",
+    "names": { "e2000": "Ветрогенератор" },
+    "icon": "🌬️",
+    "category": "food",
+    "description": "Мелет зерно: фермы в радиусе получают прибавку к урожаю.",
+    "epoch": "e1500",
+    "size": { "w": 1, "h": 1 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": {
+        "place": "place",
+        "upgrade": "upgrade",
+        "demolish": "demolish",
+        "select": "wind",
+        "ambient": "wind"
+    },
+    "levels": [
+        {
+            "level": 1,
+            "cost": { "wood": 80, "stone": 30 },
+            "buildTime": 6,
+            "effects": {
+                "housing": 0,
+                "jobs": 2,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": {
+                    "targets": ["farm"],
+                    "radius": 3,
+                    "percent": 30
+                },
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "box",
+                        "x": 0.25,
+                        "y": 0.25,
+                        "w": 0.5,
+                        "d": 0.5,
+                        "z": 0,
+                        "h": 24,
+                        "color": "#d8cbb0"
+                    },
+                    {
+                        "kind": "door",
+                        "face": "left",
+                        "x": 0.25,
+                        "y": 0.25,
+                        "w": 0.5,
+                        "d": 0.5,
+                        "width": 0.14,
+                        "height": 7,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "pyramid",
+                        "x": 0.22,
+                        "y": 0.22,
+                        "w": 0.56,
+                        "d": 0.56,
+                        "z": 24,
+                        "h": 12,
+                        "color": "roof"
+                    },
+                    {
+                        "kind": "blades",
+                        "x": 0.5,
+                        "y": 0.8,
+                        "z": 21,
+                        "r": 20,
+                        "speed": 1,
+                        "color": "#f4ecd8"
+                    }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "cost": { "wood": 120, "stone": 60, "tools": 10 },
+            "buildTime": 8,
+            "effects": {
+                "housing": 0,
+                "jobs": 3,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": {
+                    "targets": ["farm"],
+                    "radius": 4,
+                    "percent": 45
+                },
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "box",
+                        "x": 0.22,
+                        "y": 0.22,
+                        "w": 0.56,
+                        "d": 0.56,
+                        "z": 0,
+                        "h": 30,
+                        "color": "#d8cbb0"
+                    },
+                    {
+                        "kind": "door",
+                        "face": "left",
+                        "x": 0.22,
+                        "y": 0.22,
+                        "w": 0.56,
+                        "d": 0.56,
+                        "width": 0.14,
+                        "height": 8,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "pyramid",
+                        "x": 0.19,
+                        "y": 0.19,
+                        "w": 0.62,
+                        "d": 0.62,
+                        "z": 30,
+                        "h": 14,
+                        "color": "roof"
+                    },
+                    {
+                        "kind": "blades",
+                        "x": 0.5,
+                        "y": 0.82,
+                        "z": 27,
+                        "r": 24,
+                        "speed": 1.3,
+                        "color": "#f4ecd8"
+                    }
+                ]
+            }
+        },
+        {
+            "level": 3,
+            "cost": { "stone": 150, "tools": 40, "gold": 200 },
+            "buildTime": 10,
+            "requiresEpoch": "e2000",
+            "effects": {
+                "housing": 0,
+                "jobs": 3,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 6,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": {
+                    "targets": ["farm"],
+                    "radius": 5,
+                    "percent": 60
+                },
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "cylinder",
+                        "x": 0.5,
+                        "y": 0.5,
+                        "r": 0.14,
+                        "z": 0,
+                        "h": 46,
+                        "color": "metal",
+                        "taper": 0.7
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.42,
+                        "y": 0.42,
+                        "w": 0.16,
+                        "d": 0.16,
+                        "z": 46,
+                        "h": 6,
+                        "color": "metal"
+                    },
+                    {
+                        "kind": "blades",
+                        "x": 0.5,
+                        "y": 0.62,
+                        "z": 49,
+                        "r": 26,
+                        "speed": 1.8,
+                        "color": "#f2f4f6"
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,366 @@
+{
+    "id": "townhouse",
+    "name": "Фахверковый дом",
+    "names": { "e1750": "Городской дом", "e2000": "Таунхаус" },
+    "icon": "🏠",
+    "category": "housing",
+    "description": "Двух-трёхэтажный дом с деревянным каркасом. Вмещает гораздо больше людей.",
+    "epoch": "e1500",
+    "size": { "w": 1, "h": 1 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": {
+        "place": "place",
+        "upgrade": "upgrade",
+        "demolish": "demolish",
+        "select": "click",
+        "ambient": null
+    },
+    "levels": [
+        {
+            "level": 1,
+            "cost": { "wood": 40, "stone": 50 },
+            "buildTime": 6,
+            "effects": {
+                "housing": 16,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "box",
+                        "x": 0.16,
+                        "y": 0.16,
+                        "w": 0.68,
+                        "d": 0.68,
+                        "z": 0,
+                        "h": 22,
+                        "color": "walls"
+                    },
+                    {
+                        "kind": "beams",
+                        "face": "left",
+                        "x": 0.16,
+                        "y": 0.16,
+                        "w": 0.68,
+                        "d": 0.68,
+                        "z": 0,
+                        "h": 22,
+                        "count": 4,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "beams",
+                        "face": "right",
+                        "x": 0.16,
+                        "y": 0.16,
+                        "w": 0.68,
+                        "d": 0.68,
+                        "z": 0,
+                        "h": 22,
+                        "count": 4,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "left",
+                        "x": 0.16,
+                        "y": 0.16,
+                        "w": 0.68,
+                        "d": 0.68,
+                        "z": 2,
+                        "h": 18,
+                        "rows": 2,
+                        "cols": 2,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "right",
+                        "x": 0.16,
+                        "y": 0.16,
+                        "w": 0.68,
+                        "d": 0.68,
+                        "z": 2,
+                        "h": 18,
+                        "rows": 2,
+                        "cols": 2,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "door",
+                        "face": "left",
+                        "x": 0.16,
+                        "y": 0.16,
+                        "w": 0.68,
+                        "d": 0.68,
+                        "width": 0.14,
+                        "height": 8,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "gable",
+                        "x": 0.16,
+                        "y": 0.16,
+                        "w": 0.68,
+                        "d": 0.68,
+                        "z": 22,
+                        "h": 13,
+                        "color": "roof"
+                    }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "cost": { "wood": 60, "stone": 90, "tools": 10 },
+            "buildTime": 8,
+            "effects": {
+                "housing": 24,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "box",
+                        "x": 0.14,
+                        "y": 0.14,
+                        "w": 0.72,
+                        "d": 0.72,
+                        "z": 0,
+                        "h": 30,
+                        "color": "walls"
+                    },
+                    {
+                        "kind": "beams",
+                        "face": "left",
+                        "x": 0.14,
+                        "y": 0.14,
+                        "w": 0.72,
+                        "d": 0.72,
+                        "z": 0,
+                        "h": 30,
+                        "count": 5,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "beams",
+                        "face": "right",
+                        "x": 0.14,
+                        "y": 0.14,
+                        "w": 0.72,
+                        "d": 0.72,
+                        "z": 0,
+                        "h": 30,
+                        "count": 5,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "left",
+                        "x": 0.14,
+                        "y": 0.14,
+                        "w": 0.72,
+                        "d": 0.72,
+                        "z": 2,
+                        "h": 26,
+                        "rows": 3,
+                        "cols": 2,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "right",
+                        "x": 0.14,
+                        "y": 0.14,
+                        "w": 0.72,
+                        "d": 0.72,
+                        "z": 2,
+                        "h": 26,
+                        "rows": 3,
+                        "cols": 2,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "door",
+                        "face": "left",
+                        "x": 0.14,
+                        "y": 0.14,
+                        "w": 0.72,
+                        "d": 0.72,
+                        "width": 0.14,
+                        "height": 8,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "gable",
+                        "x": 0.14,
+                        "y": 0.14,
+                        "w": 0.72,
+                        "d": 0.72,
+                        "z": 30,
+                        "h": 14,
+                        "color": "roof"
+                    }
+                ]
+            }
+        },
+        {
+            "level": 3,
+            "cost": { "wood": 80, "stone": 140, "tools": 30 },
+            "buildTime": 10,
+            "requiresEpoch": "e1750",
+            "effects": {
+                "housing": 34,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 1, "happiness": 3 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "box",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "z": 0,
+                        "h": 38,
+                        "color": "walls"
+                    },
+                    {
+                        "kind": "beams",
+                        "face": "left",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "z": 0,
+                        "h": 38,
+                        "count": 5,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "beams",
+                        "face": "right",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "z": 0,
+                        "h": 38,
+                        "count": 5,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "left",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "z": 2,
+                        "h": 34,
+                        "rows": 4,
+                        "cols": 2,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "right",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "z": 2,
+                        "h": 34,
+                        "rows": 4,
+                        "cols": 2,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "door",
+                        "face": "left",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "width": 0.14,
+                        "height": 8,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "gable",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "z": 38,
+                        "h": 15,
+                        "color": "roof"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.6,
+                        "y": 0.2,
+                        "w": 0.1,
+                        "d": 0.1,
+                        "z": 40,
+                        "h": 12,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "emitter",
+                        "x": 0.65,
+                        "y": 0.25,
+                        "z": 54,
+                        "type": "smoke"
+                    },
+                    {
+                        "kind": "flag",
+                        "x": 0.5,
+                        "y": 0.5,
+                        "z": 52,
+                        "h": 10,
+                        "color": "flag"
+                    }
+                ]
+            }
+        }
+    ]
+}

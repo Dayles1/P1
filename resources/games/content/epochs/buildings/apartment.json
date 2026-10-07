@@ -1,0 +1,321 @@
+{
+    "id": "apartment",
+    "name": "Многоэтажка",
+    "names": {},
+    "icon": "🏢",
+    "category": "housing",
+    "description": "Высокий жилой дом из бетона и стекла. Нужна электроэнергия.",
+    "epoch": "e2000",
+    "size": { "w": 1, "h": 1 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": {
+        "place": "place",
+        "upgrade": "upgrade",
+        "demolish": "demolish",
+        "select": "hum",
+        "ambient": null
+    },
+    "levels": [
+        {
+            "level": 1,
+            "cost": { "stone": 400, "tools": 60, "gold": 400 },
+            "buildTime": 10,
+            "effects": {
+                "housing": 90,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 3,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "box",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "z": 0,
+                        "h": 50,
+                        "color": "#d6d3cb"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "left",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "z": 0,
+                        "h": 50,
+                        "rows": 6,
+                        "cols": 3,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "right",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "z": 0,
+                        "h": 50,
+                        "rows": 6,
+                        "cols": 3,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "door",
+                        "face": "left",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "width": 0.16,
+                        "height": 6,
+                        "color": "glass"
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "flat",
+                        "x": 0.1,
+                        "y": 0.1,
+                        "w": 0.8,
+                        "d": 0.8,
+                        "z": 50,
+                        "h": 2,
+                        "color": "#8d8f94"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.2,
+                        "y": 0.2,
+                        "w": 0.25,
+                        "d": 0.2,
+                        "z": 52,
+                        "h": 6,
+                        "color": "#9fa2a8"
+                    }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "cost": { "stone": 600, "tools": 100, "gold": 700 },
+            "buildTime": 12,
+            "effects": {
+                "housing": 130,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 4,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "box",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "z": 0,
+                        "h": 72,
+                        "color": "#d6d3cb"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "left",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "z": 0,
+                        "h": 72,
+                        "rows": 9,
+                        "cols": 3,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "right",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "z": 0,
+                        "h": 72,
+                        "rows": 9,
+                        "cols": 3,
+                        "color": "window"
+                    },
+                    {
+                        "kind": "door",
+                        "face": "left",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "width": 0.16,
+                        "height": 6,
+                        "color": "glass"
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "flat",
+                        "x": 0.1,
+                        "y": 0.1,
+                        "w": 0.8,
+                        "d": 0.8,
+                        "z": 72,
+                        "h": 2,
+                        "color": "#8d8f94"
+                    },
+                    {
+                        "kind": "box",
+                        "x": 0.2,
+                        "y": 0.2,
+                        "w": 0.25,
+                        "d": 0.2,
+                        "z": 74,
+                        "h": 6,
+                        "color": "#9fa2a8"
+                    },
+                    {
+                        "kind": "pole",
+                        "x": 0.7,
+                        "y": 0.7,
+                        "z": 74,
+                        "h": 14,
+                        "color": "metal",
+                        "blink": null
+                    }
+                ]
+            }
+        },
+        {
+            "level": 3,
+            "cost": { "stone": 900, "tools": 160, "gold": 1100 },
+            "buildTime": 14,
+            "requiresEpoch": "e2500",
+            "effects": {
+                "housing": 180,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 5,
+                "aura": { "radius": 1, "happiness": 3 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "box",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "z": 0,
+                        "h": 96,
+                        "color": "#cfd6dd"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "left",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "z": 0,
+                        "h": 96,
+                        "rows": 12,
+                        "cols": 3,
+                        "color": "glass"
+                    },
+                    {
+                        "kind": "windows",
+                        "face": "right",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "z": 0,
+                        "h": 96,
+                        "rows": 12,
+                        "cols": 3,
+                        "color": "glass"
+                    },
+                    {
+                        "kind": "door",
+                        "face": "left",
+                        "x": 0.12,
+                        "y": 0.12,
+                        "w": 0.76,
+                        "d": 0.76,
+                        "width": 0.16,
+                        "height": 6,
+                        "color": "glass"
+                    },
+                    {
+                        "kind": "roof",
+                        "shape": "flat",
+                        "x": 0.1,
+                        "y": 0.1,
+                        "w": 0.8,
+                        "d": 0.8,
+                        "z": 96,
+                        "h": 2,
+                        "color": "#8d8f94"
+                    },
+                    {
+                        "kind": "tree",
+                        "x": 0.3,
+                        "y": 0.3,
+                        "scale": 0.5,
+                        "conifer": false
+                    },
+                    {
+                        "kind": "tree",
+                        "x": 0.6,
+                        "y": 0.5,
+                        "scale": 0.5,
+                        "conifer": false
+                    },
+                    {
+                        "kind": "pole",
+                        "x": 0.7,
+                        "y": 0.7,
+                        "z": 98,
+                        "h": 18,
+                        "color": "metal",
+                        "blink": "#ff4a4a"
+                    }
+                ]
+            }
+        }
+    ]
+}

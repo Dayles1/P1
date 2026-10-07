@@ -1,0 +1,10 @@
+{
+    "$doc": "Ресурсы города. capped — копятся до объёма складов.",
+    "resources": [
+        { "id": "food", "name": "Еда", "icon": "🌾", "capped": true },
+        { "id": "wood", "name": "Дерево", "icon": "🌲", "capped": true },
+        { "id": "stone", "name": "Камень", "icon": "🧱", "capped": true },
+        { "id": "tools", "name": "Инструменты", "icon": "⚒️", "capped": true },
+        { "id": "gold", "name": "Золото", "icon": "💰", "capped": false }
+    ]
+}

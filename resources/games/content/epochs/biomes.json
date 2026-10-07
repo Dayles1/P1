@@ -1,0 +1,122 @@
+{
+    "$doc": "Биомы и генератор карты. Правила проверяются сверху вниз: побеждает первый подходящий биом.",
+    "generator": {
+        "elevationScale": 16,
+        "moistureScale": 11,
+        "temperatureScale": 24,
+        "octaves": 3,
+        "edgeFalloff": 0.25,
+        "lake": {
+            "count": 1,
+            "radius": [4, 7]
+        },
+        "river": { "count": 1, "width": 1 },
+        "clearRadius": 6
+    },
+    "biomes": [
+        {
+            "id": "deep_water",
+            "name": "Глубокая вода",
+            "colors": ["#2f6fa8", "#2c68a0"],
+            "buildable": false,
+            "walkable": false,
+            "fertility": 0,
+            "speed": 0,
+            "when": {
+                "elevation": [0, 0.24]
+            },
+            "features": []
+        },
+        {
+            "id": "water",
+            "name": "Мелководье",
+            "colors": ["#3f8fc4", "#3b88bc"],
+            "buildable": false,
+            "walkable": false,
+            "fertility": 0,
+            "speed": 0,
+            "water": true,
+            "when": {
+                "elevation": [0, 0.31]
+            },
+            "features": []
+        },
+        {
+            "id": "beach",
+            "name": "Берег",
+            "colors": ["#d8c48c", "#d1bc84"],
+            "buildable": true,
+            "walkable": true,
+            "fertility": 0.3,
+            "speed": 0.8,
+            "when": {
+                "elevation": [0, 0.35]
+            },
+            "features": { "rock": 0.02 }
+        },
+        {
+            "id": "mountain",
+            "name": "Горы",
+            "colors": ["#8a8580", "#7f7a75"],
+            "buildable": false,
+            "walkable": false,
+            "fertility": 0,
+            "speed": 0,
+            "when": {
+                "elevation": [0.84, 1]
+            },
+            "features": { "rock": 1 }
+        },
+        {
+            "id": "hills",
+            "name": "Холмы",
+            "colors": ["#98a084", "#909878"],
+            "buildable": true,
+            "walkable": true,
+            "fertility": 0.4,
+            "speed": 0.6,
+            "when": {
+                "elevation": [0.7, 1]
+            },
+            "features": { "rock": 0.4, "tree": 0.08 }
+        },
+        {
+            "id": "marsh",
+            "name": "Болото",
+            "colors": ["#6f8f5a", "#678752"],
+            "buildable": true,
+            "walkable": true,
+            "fertility": 0.6,
+            "speed": 0.45,
+            "when": {
+                "elevation": [0, 0.46],
+                "moisture": [0.72, 1]
+            },
+            "features": { "reeds": 0.45 }
+        },
+        {
+            "id": "forest",
+            "name": "Лес",
+            "colors": ["#5f9440", "#588c3b"],
+            "buildable": true,
+            "walkable": true,
+            "fertility": 0.8,
+            "speed": 0.7,
+            "when": {
+                "moisture": [0.58, 1]
+            },
+            "features": { "tree": 0.75 }
+        },
+        {
+            "id": "meadow",
+            "name": "Луг",
+            "colors": ["#7cae4c", "#73a545"],
+            "buildable": true,
+            "walkable": true,
+            "fertility": 1,
+            "speed": 1,
+            "when": [],
+            "features": { "tree": 0.04, "rock": 0.01 }
+        }
+    ]
+}

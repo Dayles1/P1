@@ -1,0 +1,294 @@
+{
+    "id": "park",
+    "name": "Сад",
+    "names": { "e2000": "Парк", "e2500": "Био-парк" },
+    "icon": "🌳",
+    "category": "civic",
+    "description": "Зелень и тень. Дорога не нужна.",
+    "epoch": "e1750",
+    "size": { "w": 1, "h": 1 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": false },
+    "sounds": {
+        "place": "place",
+        "upgrade": "upgrade",
+        "demolish": "demolish",
+        "select": "bird",
+        "ambient": "bird"
+    },
+    "levels": [
+        {
+            "level": 1,
+            "cost": { "stone": 50, "gold": 150 },
+            "buildTime": 4,
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 4, "happiness": 14 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "ground",
+                        "x": 0.04,
+                        "y": 0.04,
+                        "w": 0.92,
+                        "d": 0.92,
+                        "color": "#5f9d45"
+                    },
+                    {
+                        "kind": "ground",
+                        "x": 0.44,
+                        "y": 0.04,
+                        "w": 0.12,
+                        "d": 0.92,
+                        "color": "#d8c9a3"
+                    },
+                    {
+                        "kind": "ground",
+                        "x": 0.04,
+                        "y": 0.44,
+                        "w": 0.92,
+                        "d": 0.12,
+                        "color": "#d8c9a3"
+                    },
+                    {
+                        "kind": "tree",
+                        "x": 0.22,
+                        "y": 0.22,
+                        "scale": 0.9,
+                        "conifer": false
+                    },
+                    {
+                        "kind": "tree",
+                        "x": 0.78,
+                        "y": 0.22,
+                        "scale": 0.9,
+                        "conifer": true
+                    },
+                    {
+                        "kind": "tree",
+                        "x": 0.22,
+                        "y": 0.78,
+                        "scale": 0.9,
+                        "conifer": true
+                    },
+                    {
+                        "kind": "tree",
+                        "x": 0.78,
+                        "y": 0.78,
+                        "scale": 0.9,
+                        "conifer": false
+                    }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "cost": { "stone": 90, "gold": 300 },
+            "buildTime": 5,
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 5, "happiness": 17 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "ground",
+                        "x": 0.04,
+                        "y": 0.04,
+                        "w": 0.92,
+                        "d": 0.92,
+                        "color": "#5f9d45"
+                    },
+                    {
+                        "kind": "ground",
+                        "x": 0.44,
+                        "y": 0.04,
+                        "w": 0.12,
+                        "d": 0.92,
+                        "color": "#d8c9a3"
+                    },
+                    {
+                        "kind": "ground",
+                        "x": 0.04,
+                        "y": 0.44,
+                        "w": 0.92,
+                        "d": 0.12,
+                        "color": "#d8c9a3"
+                    },
+                    {
+                        "kind": "tree",
+                        "x": 0.22,
+                        "y": 0.22,
+                        "scale": 1.05,
+                        "conifer": false
+                    },
+                    {
+                        "kind": "tree",
+                        "x": 0.78,
+                        "y": 0.22,
+                        "scale": 1.05,
+                        "conifer": true
+                    },
+                    {
+                        "kind": "tree",
+                        "x": 0.22,
+                        "y": 0.78,
+                        "scale": 1.05,
+                        "conifer": true
+                    },
+                    {
+                        "kind": "tree",
+                        "x": 0.78,
+                        "y": 0.78,
+                        "scale": 1.05,
+                        "conifer": false
+                    },
+                    {
+                        "kind": "cylinder",
+                        "x": 0.5,
+                        "y": 0.5,
+                        "r": 0.1,
+                        "z": 0,
+                        "h": 3,
+                        "color": "#c9c3b6",
+                        "taper": 1
+                    },
+                    {
+                        "kind": "light",
+                        "x": 0.5,
+                        "y": 0.5,
+                        "z": 14,
+                        "radius": 0.5,
+                        "color": "lit"
+                    }
+                ]
+            }
+        },
+        {
+            "level": 3,
+            "cost": { "stone": 150, "tools": 30, "gold": 600 },
+            "buildTime": 6,
+            "requiresEpoch": "e2000",
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 6, "happiness": 21 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    {
+                        "kind": "ground",
+                        "x": 0.04,
+                        "y": 0.04,
+                        "w": 0.92,
+                        "d": 0.92,
+                        "color": "#5f9d45"
+                    },
+                    {
+                        "kind": "ground",
+                        "x": 0.44,
+                        "y": 0.04,
+                        "w": 0.12,
+                        "d": 0.92,
+                        "color": "#d8c9a3"
+                    },
+                    {
+                        "kind": "ground",
+                        "x": 0.04,
+                        "y": 0.44,
+                        "w": 0.92,
+                        "d": 0.12,
+                        "color": "#d8c9a3"
+                    },
+                    {
+                        "kind": "tree",
+                        "x": 0.22,
+                        "y": 0.22,
+                        "scale": 1.2,
+                        "conifer": false
+                    },
+                    {
+                        "kind": "tree",
+                        "x": 0.78,
+                        "y": 0.22,
+                        "scale": 1.2,
+                        "conifer": true
+                    },
+                    {
+                        "kind": "tree",
+                        "x": 0.22,
+                        "y": 0.78,
+                        "scale": 1.2,
+                        "conifer": true
+                    },
+                    {
+                        "kind": "tree",
+                        "x": 0.78,
+                        "y": 0.78,
+                        "scale": 1.2,
+                        "conifer": false
+                    },
+                    {
+                        "kind": "cylinder",
+                        "x": 0.5,
+                        "y": 0.5,
+                        "r": 0.16,
+                        "z": 0,
+                        "h": 4,
+                        "color": "#c9c3b6",
+                        "taper": 1
+                    },
+                    {
+                        "kind": "emitter",
+                        "x": 0.5,
+                        "y": 0.5,
+                        "z": 8,
+                        "type": "water"
+                    },
+                    {
+                        "kind": "light",
+                        "x": 0.5,
+                        "y": 0.5,
+                        "z": 14,
+                        "radius": 0.7,
+                        "color": "lit"
+                    }
+                ]
+            }
+        }
+    ]
+}

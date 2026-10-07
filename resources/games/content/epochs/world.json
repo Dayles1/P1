@@ -1,0 +1,105 @@
+{
+    "$doc": "Основные правила мира: размер карты, время, старт, население и экономика.",
+    "map": {
+        "width": 64,
+        "height": 64,
+        "tileWidth": 64,
+        "tileHeight": 32,
+        "seed": null
+    },
+    "time": {
+        "secondsPerDay": 240,
+        "daysPerSeason": 1,
+        "tickSeconds": 1,
+        "maxOfflineSeconds": 3600
+    },
+    "start": {
+        "epoch": "e1000",
+        "population": 6,
+        "resources": {
+            "food": 120,
+            "wood": 160,
+            "stone": 60,
+            "gold": 80,
+            "tools": 0
+        },
+        "buildings": [{ "type": "town_center", "at": "center" }]
+    },
+    "population": {
+        "foodPerPerson": 0.04,
+        "workforceShare": 0.6,
+        "growthRate": 0.03,
+        "taxPerPerson": 0.02,
+        "baseHappiness": 45,
+        "starvingPenalty": 25,
+        "noPowerPenalty": 20,
+        "coldPenalty": 8,
+        "starvingDecline": 0.003,
+        "unhappyDecline": 0.002,
+        "overcrowdingDecline": 0.1
+    },
+    "economy": {
+        "storageBase": 250,
+        "refundShare": 0.5,
+        "moveCostPerTile": 6,
+        "clearFeature": {
+            "tree": {
+                "cost": { "gold": 4 },
+                "gain": { "wood": 4 }
+            },
+            "rock": {
+                "cost": { "gold": 10 },
+                "gain": { "stone": 5 }
+            },
+            "reeds": {
+                "cost": { "gold": 2 },
+                "gain": {}
+            }
+        }
+    },
+    "npc": {
+        "residentsPerNpc": 5,
+        "maxNpcs": 140,
+        "trafficPerRoads": 6,
+        "maxTraffic": 30
+    },
+    "events": {
+        "firstAfter": 200,
+        "every": [120, 220],
+        "list": [
+            {
+                "id": "harvest",
+                "weight": 2,
+                "text": "🌾 Урожайный год: +:amount еды",
+                "gain": { "food": 0.2 },
+                "seasons": ["summer", "autumn"]
+            },
+            {
+                "id": "caravan",
+                "weight": 2,
+                "text": "🐪 Караван купцов: +:amount золота",
+                "gain": { "gold": 60 }
+            },
+            {
+                "id": "festival",
+                "weight": 1,
+                "text": "🎉 Городской праздник: жители счастливее",
+                "mood": { "amount": 10, "seconds": 120 }
+            },
+            {
+                "id": "fire",
+                "weight": 1,
+                "text": "🔥 Пожар на складе: сгорела часть дерева",
+                "lose": { "wood": 0.2 },
+                "epochs": ["e1000", "e1500"]
+            },
+            {
+                "id": "flu",
+                "weight": 1,
+                "text": "🤒 Зимняя простуда: настроение падает",
+                "mood": { "amount": -10, "seconds": 120 },
+                "seasons": ["winter"]
+            }
+        ]
+    }
+}
