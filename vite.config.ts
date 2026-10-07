@@ -1,4 +1,5 @@
 import { wayfinder } from '@laravel/vite-plugin-wayfinder';
+import react from '@vitejs/plugin-react';
 import laravel from 'laravel-vite-plugin';
 import { bunny } from 'laravel-vite-plugin/fonts';
 import { defineConfig } from 'vite';
@@ -32,6 +33,9 @@ export default defineConfig({
                 'resources/js/blade/app/admin-session-detail.js',
                 'resources/js/blade/app/admin-request-logs.js',
 
+                // Games SPA (React) — everything else of it is in resources/games
+                'resources/games/src/main.tsx',
+
                 // Если здесь будут другие Blade-страницы,
                 // добавляй их сюда
             ],
@@ -52,6 +56,9 @@ export default defineConfig({
                 }),
             ],
         }),
+
+        // Only the games SPA is written in React.
+        react({ include: /resources\/games\/.*\.tsx?$/ }),
 
         wayfinder({
             formVariants: true,
