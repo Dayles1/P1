@@ -27,8 +27,8 @@ test('the shipped content files are valid', function () {
     $repository = new ContentRepository;
 
     expect((new ContentValidator)->validate($repository->bundle()))->toBe([])
-        ->and($repository->buildingIds())->toContain('town_center', 'hut', 'farm', 'road')
-        ->and(array_column($repository->read('epochs')['epochs'], 'year'))->toBe([1000, 1500, 1750, 2000, 2500]);
+        ->and($repository->buildingIds())->toContain('town_center', 'house', 'farm', 'road', 'architect_bureau', 'district_hall')
+        ->and(array_column($repository->read('epochs')['epochs'], 'year'))->toBe([0, 1000, 1500, 1800, 1900, 2000, 2100, 2300, 2500, 3000]);
 });
 
 test('every building has levels with a model, a cost and effects', function () {
@@ -38,7 +38,7 @@ test('every building has levels with a model, a cost and effects', function () {
         $building = $repository->read("buildings/{$id}");
 
         foreach ($building['levels'] as $level) {
-            expect($level)->toHaveKeys(['level', 'cost', 'buildTime', 'effects', 'model'])
+            expect($level)->toHaveKeys(['level', 'name', 'epoch', 'cost', 'buildTime', 'effects', 'model'])
                 ->and($level['model'])->toHaveKey('parts');
         }
     }
@@ -49,7 +49,7 @@ test('the game gets every content file in one request', function () {
         ->getJson('/api/games/epochs/content')
         ->assertOk()
         ->assertJsonPath('data.editable', true)
-        ->assertJsonStructure(['data' => ['version', 'content' => ['world', 'resources', 'biomes', 'climate', 'epochs', 'npcs', 'sounds', 'buildings' => ['hut']]]]);
+        ->assertJsonStructure(['data' => ['version', 'content' => ['world', 'resources', 'biomes', 'climate', 'epochs', 'techs', 'blueprints', 'goals', 'npcs', 'sounds', 'buildings' => ['house']]]]);
 });
 
 test('empty objects reach the browser as {} so the workshop never rewrites them as []', function () {
@@ -64,13 +64,13 @@ test('empty objects reach the browser as {} so the workshop never rewrites them 
 
 test('the workshop saves a file exactly as edited, keeping the content layout', function () {
     // The browser sends the edited text, with {} kept as {}.
-    $text = str_replace('"cost": { "wood": 20 }', '"cost": { "wood": 25 }', file_get_contents($this->contentPath.'/buildings/hut.json'));
+    $text = str_replace('"cost": { "wood": 12 }', '"cost": { "wood": 25 }', file_get_contents($this->contentPath.'/buildings/house.json'));
 
     $this->actingAs(User::factory()->create(), 'sanctum')
-        ->putJson('/api/games/epochs/content/buildings/hut', ['json' => $text])
+        ->putJson('/api/games/epochs/content/buildings/house', ['json' => $text])
         ->assertOk();
 
-    $written = file_get_contents($this->contentPath.'/buildings/hut.json');
+    $written = file_get_contents($this->contentPath.'/buildings/house.json');
 
     expect(json_decode($written, true)['levels'][0]['cost'])->toBe(['wood' => 25])
         ->and($written)->toContain('"cost": { "wood": 25 }')
@@ -78,7 +78,7 @@ test('the workshop saves a file exactly as edited, keeping the content layout', 
 });
 
 test('the workshop creates a new building file', function () {
-    $hut = (new ContentRepository)->read('buildings/hut');
+    $hut = (new ContentRepository)->read('buildings/house');
     $hut['id'] = 'tea_house';
     $hut['name'] = 'Чайхана';
 
@@ -90,16 +90,16 @@ test('the workshop creates a new building file', function () {
 });
 
 test('the workshop refuses settings that do not add up', function () {
-    $hut = (new ContentRepository)->read('buildings/hut');
-    $hut['epoch'] = 'e3000';
+    $hut = (new ContentRepository)->read('buildings/house');
+    $hut['levels'][0]['epoch'] = 'e9999';
     $hut['levels'][0]['cost'] = ['diamonds' => 5];
 
     $this->actingAs(User::factory()->create(), 'sanctum')
-        ->putJson('/api/games/epochs/content/buildings/hut', ['json' => json_encode($hut)])
+        ->putJson('/api/games/epochs/content/buildings/house', ['json' => json_encode($hut)])
         ->assertUnprocessable()
-        ->assertJsonPath('data.issues.0.file', 'buildings/hut');
+        ->assertJsonPath('data.issues.0.file', 'buildings/house');
 
-    expect(json_decode(file_get_contents($this->contentPath.'/buildings/hut.json'), true)['epoch'])->toBe('e1000');
+    expect(json_decode(file_get_contents($this->contentPath.'/buildings/house.json'), true)['levels'][0]['epoch'])->toBe('e0');
 });
 
 test('the workshop refuses broken JSON and unknown files', function () {

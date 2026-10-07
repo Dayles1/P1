@@ -67,7 +67,9 @@ class RequestLogSanitizer
             return [$value, false];
         }
 
-        $truncated = substr($encoded, 0, $maxBytes);
+        // mb_strcut never splits a multi-byte character, which would make
+        // the preview invalid UTF-8 and the log row unsavable.
+        $truncated = mb_strcut($encoded, 0, $maxBytes, 'UTF-8');
 
         return [
             [

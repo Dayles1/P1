@@ -1,0 +1,97 @@
+{
+    "id": "ai_foundry",
+    "name": "Литейная ИИ-ядер",
+    "icon": "🧠",
+    "category": "industry",
+    "description": "Создаёт ИИ-ядра из электроники, редких металлов и данных.",
+    "size": { "w": 2, "h": 2 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": "hum" },
+    "levels": [
+        {
+            "level": 1,
+            "name": "Литейная ИИ-ядер",
+            "epoch": "e2500",
+            "tech": "artificial_intelligence",
+            "description": "Тёмный монолит с пульсирующими гранями: здесь учат и собирают ИИ.",
+            "cost": { "composites": 3000, "rare_metals": 800, "electronics": 1000, "gold": 40000 },
+            "buildTime": 70,
+            "effects": {
+                "housing": 0,
+                "jobs": 16,
+                "produces": { "ai_cores": 0.3 },
+                "consumes": { "electronics": 1, "rare_metals": 0.4, "data": 1.5 },
+                "storage": 0,
+                "power": 0,
+                "powerUse": 50,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.2, "y": 0.2, "z": 0, "w": 1.6, "d": 1.6, "h": 0.4, "color": "walls" },
+                    { "kind": "box", "x": 0.45, "y": 0.45, "z": 0.4, "w": 1.1, "d": 1.1, "h": 1.4, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["n", "e", "s", "w"],
+                        "x": 0.45,
+                        "y": 0.45,
+                        "z": 0.45,
+                        "w": 1.1,
+                        "d": 1.1,
+                        "h": 1.3,
+                        "rows": 6,
+                        "cols": 3,
+                        "color": "accent"
+                    },
+                    { "kind": "box", "x": 0.45, "y": 0.45, "z": 1.8, "w": 1.1, "d": 1.1, "h": 0.04, "color": "trim", "material": "glow" },
+                    { "kind": "roof", "shape": "pyramid", "x": 0.45, "y": 0.45, "z": 1.84, "w": 1.1, "d": 1.1, "h": 0.35, "color": "walls" },
+                    { "kind": "sphere", "x": 1, "y": 1, "z": 2.3, "r": 0.12, "color": "accent", "material": "glow" },
+                    { "kind": "torus", "x": 1, "y": 1, "z": 0.45, "r": 0.75, "tube": 0.03, "color": "accent", "spin": 0.2, "material": "glow" },
+                    { "kind": "light", "x": 1, "y": 1, "z": 2.3, "radius": 2.4, "color": "#c06cff" }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "name": "Нейрокузница",
+            "epoch": "e3000",
+            "description": "Ядра растут как кристаллы в наноматрице — вчетверо быстрее.",
+            "cost": { "nanomaterials": 100, "composites": 3000, "gold": 70000 },
+            "buildTime": 80,
+            "effects": {
+                "housing": 0,
+                "jobs": 16,
+                "produces": { "ai_cores": 1.2 },
+                "consumes": { "electronics": 2, "rare_metals": 0.8, "data": 3 },
+                "storage": 0,
+                "power": 0,
+                "powerUse": 90,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0, "r": 0.75, "h": 0.4, "color": "walls", "segments": 6 },
+                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0.4, "r": 0.45, "h": 1.4, "color": "glass", "taper": 0.4, "segments": 6, "material": "glass" },
+                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0.4, "r": 0.2, "h": 1.6, "color": "accent", "taper": 0, "segments": 6, "material": "glow" },
+                    { "kind": "cylinder", "x": 0.35, "y": 0.35, "z": 0, "r": 0.15, "h": 0.8, "color": "glass", "taper": 0, "segments": 6, "material": "glass" },
+                    { "kind": "cylinder", "x": 1.65, "y": 1.65, "z": 0, "r": 0.15, "h": 0.8, "color": "glass", "taper": 0, "segments": 6, "material": "glass" },
+                    { "kind": "torus", "x": 1, "y": 1, "z": 1, "r": 0.6, "tube": 0.04, "color": "trim", "spin": 0.3, "material": "glow" },
+                    { "kind": "light", "x": 1, "y": 1, "z": 1.8, "radius": 2.5, "color": "#7ae0ff" }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,88 @@
+{
+    "id": "nanofab",
+    "name": "Нанофабрика",
+    "icon": "🔬",
+    "category": "industry",
+    "description": "Собирает наноматериалы атом за атомом из редких металлов, композитов и ИИ-ядер.",
+    "size": { "w": 2, "h": 2 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": "hum" },
+    "levels": [
+        {
+            "level": 1,
+            "name": "Нанофабрика",
+            "epoch": "e3000",
+            "tech": "nanotechnology",
+            "description": "Белые сферы реакторов и рои нанороботов.",
+            "cost": { "ai_cores": 200, "composites": 5000, "rare_metals": 2000, "gold": 80000 },
+            "buildTime": 80,
+            "effects": {
+                "housing": 0,
+                "jobs": 14,
+                "produces": { "nanomaterials": 0.5 },
+                "consumes": { "rare_metals": 0.5, "composites": 1, "ai_cores": 0.1 },
+                "storage": 0,
+                "power": 0,
+                "powerUse": 80,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "sphere", "x": 0.6, "y": 0.6, "z": 0.45, "r": 0.45, "color": "walls" },
+                    { "kind": "sphere", "x": 1.4, "y": 0.6, "z": 0.35, "r": 0.35, "color": "walls" },
+                    { "kind": "sphere", "x": 1, "y": 1.4, "z": 0.5, "r": 0.5, "color": "glass", "material": "glass" },
+                    { "kind": "sphere", "x": 1, "y": 1.4, "z": 0.5, "r": 0.2, "color": "accent", "material": "glow" },
+                    { "kind": "torus", "x": 0.6, "y": 0.6, "z": 0.45, "r": 0.5, "tube": 0.03, "color": "trim", "spin": 0.4, "material": "glow" },
+                    { "kind": "torus", "x": 1.4, "y": 0.6, "z": 0.35, "r": 0.4, "tube": 0.03, "color": "trim", "spin": -0.4, "material": "glow" },
+                    { "kind": "emitter", "x": 1, "y": 1.4, "z": 1, "type": "sparks" },
+                    { "kind": "light", "x": 1, "y": 1, "z": 1, "radius": 2.4, "color": "#7ae0ff" }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "name": "Молекулярный ассемблер",
+            "epoch": "e3000",
+            "tech": "molecular_assembly",
+            "description": "Универсальный сборщик: втрое больше наноматериалов из того же сырья.",
+            "cost": { "nanomaterials": 400, "ai_cores": 200, "gold": 120000 },
+            "buildTime": 90,
+            "effects": {
+                "housing": 0,
+                "jobs": 10,
+                "produces": { "nanomaterials": 1.5 },
+                "consumes": { "rare_metals": 1, "composites": 1.5, "ai_cores": 0.2 },
+                "storage": 0,
+                "power": 0,
+                "powerUse": 140,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0, "r": 0.8, "h": 0.25, "color": "walls", "segments": 32 },
+                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0.25, "r": 0.55, "h": 1.6, "color": "glass", "taper": 0.6, "segments": 32, "material": "glass" },
+                    { "kind": "sphere", "x": 1, "y": 1, "z": 1, "r": 0.3, "color": "accent", "material": "glow" },
+                    { "kind": "torus", "x": 1, "y": 1, "z": 0.6, "r": 0.62, "tube": 0.04, "color": "trim", "spin": 0.5, "material": "glow" },
+                    { "kind": "torus", "x": 1, "y": 1, "z": 1.2, "r": 0.5, "tube": 0.04, "color": "accent", "spin": -0.5, "material": "glow" },
+                    { "kind": "torus", "x": 1, "y": 1, "z": 1.8, "r": 0.38, "tube": 0.04, "color": "trim", "spin": 0.5, "material": "glow" },
+                    { "kind": "cylinder", "x": 1, "y": 1, "z": 1.85, "r": 0.03, "h": 0.6, "color": "metal", "taper": 0 },
+                    { "kind": "light", "x": 1, "y": 1, "z": 1.4, "radius": 2.8, "color": "#ff7ad9" }
+                ]
+            }
+        }
+    ]
+}

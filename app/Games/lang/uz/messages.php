@@ -11,4 +11,6 @@ return [
     'content_in_use' => 'Bu bino boshqa sozlamalarda ishlatilmoqda.',
     'workshop_forbidden' => 'Ustaxona sizga ochiq emas.',
     'content_unknown_file' => 'Bunday sozlamalar fayli yo‘q.',
+    'rating_too_early' => 'O‘yinni kamida 5 daqiqa o‘ynaganingizdan keyin baholashingiz mumkin.',
+    'player_fallback' => 'O‘yinchi #:id',
 ];

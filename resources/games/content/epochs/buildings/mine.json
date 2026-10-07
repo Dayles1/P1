@@ -1,0 +1,253 @@
+{
+    "id": "mine",
+    "name": "Рудник",
+    "icon": "⚙️",
+    "category": "resources",
+    "description": "Добывает железную руду. Скалы рядом увеличивают добычу.",
+    "size": { "w": 2, "h": 2 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": "hammer" },
+    "levels": [
+        {
+            "level": 1,
+            "name": "Железный рудник",
+            "epoch": "e1000",
+            "tech": "metallurgy",
+            "description": "Штольня в склоне, деревянная крепь и вагонетка.",
+            "cost": { "wood": 100, "stone": 60, "gold": 60 },
+            "buildTime": 12,
+            "effects": {
+                "housing": 0,
+                "jobs": 6,
+                "produces": { "iron": 0.5 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": { "feature": "rock", "radius": 2, "perTile": 0.04, "max": 0.4 },
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#9c8f7e" },
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0, "w": 1.4, "d": 0.9, "h": 0.5, "color": "#8a8072" },
+                    { "kind": "roof", "shape": "hip", "x": 0.1, "y": 0.1, "z": 0.5, "w": 1.4, "d": 0.9, "h": 0.3, "color": "#7d7466" },
+                    { "kind": "box", "x": 0.55, "y": 0.95, "z": 0, "w": 0.4, "d": 0.1, "h": 0.3, "color": "trim" },
+                    { "kind": "door", "face": "s", "x": 0.55, "y": 0.95, "w": 0.4, "d": 0.1, "width": 0.24, "height": 0.24, "color": "#1d1610" },
+                    { "kind": "box", "x": 0.7, "y": 1.05, "z": 0, "w": 0.06, "d": 0.8, "h": 0.02, "color": "metal" },
+                    { "kind": "box", "x": 0.62, "y": 1.4, "z": 0.02, "w": 0.2, "d": 0.16, "h": 0.1, "color": "#5b3d22" },
+                    { "kind": "box", "x": 1.4, "y": 1.4, "z": 0, "w": 0.35, "d": 0.3, "h": 0.15, "color": "#7d4a3a" },
+                    { "kind": "pole", "x": 0.5, "y": 1.1, "z": 0, "h": 0.25, "color": "#5a3e26", "blink": null },
+                    { "kind": "light", "x": 0.5, "y": 1.1, "z": 0.25, "radius": 1, "color": "#ffad4a" }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "name": "Шахта",
+            "epoch": "e1500",
+            "description": "Вертикальный ствол, деревянный копёр и ворот.",
+            "cost": { "wood": 150, "bricks": 100, "tools": 40, "gold": 200 },
+            "buildTime": 15,
+            "effects": {
+                "housing": 0,
+                "jobs": 8,
+                "produces": { "iron": 1 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": { "feature": "rock", "radius": 3, "perTile": 0.06, "max": 0.6 },
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#9c8f7e" },
+                    { "kind": "pole", "x": 0.5, "y": 0.5, "z": 0, "h": 0.9, "color": "trim", "blink": null },
+                    { "kind": "pole", "x": 0.9, "y": 0.5, "z": 0, "h": 0.9, "color": "trim", "blink": null },
+                    { "kind": "pole", "x": 0.5, "y": 0.9, "z": 0, "h": 0.9, "color": "trim", "blink": null },
+                    { "kind": "pole", "x": 0.9, "y": 0.9, "z": 0, "h": 0.9, "color": "trim", "blink": null },
+                    { "kind": "box", "x": 0.45, "y": 0.45, "z": 0.85, "w": 0.5, "d": 0.5, "h": 0.06, "color": "trim" },
+                    { "kind": "box", "x": 1.15, "y": 0.3, "z": 0, "w": 0.7, "d": 0.6, "h": 0.35, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e"],
+                        "x": 1.15,
+                        "y": 0.3,
+                        "z": 0.053,
+                        "w": 0.7,
+                        "d": 0.6,
+                        "h": 0.262,
+                        "rows": 1,
+                        "cols": 2,
+                        "color": "window"
+                    },
+                    { "kind": "door", "face": "s", "x": 1.15, "y": 0.3, "w": 0.7, "d": 0.6, "width": 0.14, "height": 0.193, "color": "trim" },
+                    { "kind": "roof", "shape": "gable", "x": 1.15, "y": 0.3, "z": 0.35, "w": 0.7, "d": 0.6, "h": 0.25, "color": "roof", "axis": "x", "overhang": 0.04 },
+                    { "kind": "box", "x": 0.3, "y": 1.4, "z": 0, "w": 0.5, "d": 0.4, "h": 0.18, "color": "#7d4a3a" },
+                    { "kind": "box", "x": 1.3, "y": 1.4, "z": 0, "w": 0.2, "d": 0.16, "h": 0.1, "color": "#5b3d22" }
+                ]
+            }
+        },
+        {
+            "level": 3,
+            "name": "Паровая шахта",
+            "epoch": "e1800",
+            "tech": "steam_engine",
+            "description": "Паровая подъёмная машина в кирпичном доме, колесо копра крутится.",
+            "cost": { "bricks": 300, "steel": 60, "tools": 80, "gold": 800 },
+            "buildTime": 20,
+            "effects": {
+                "housing": 0,
+                "jobs": 12,
+                "produces": { "iron": 2.5 },
+                "consumes": { "coal": 0.3 },
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": { "radius": 3, "amount": 6 },
+                "boost": null,
+                "near": { "feature": "rock", "radius": 3, "perTile": 0.1, "max": 1.2 },
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#8f8678" },
+                    { "kind": "pole", "x": 0.4, "y": 0.4, "z": 0, "h": 1.2, "color": "metal", "blink": null },
+                    { "kind": "pole", "x": 0.9, "y": 0.4, "z": 0, "h": 1.2, "color": "metal", "blink": null },
+                    { "kind": "pole", "x": 0.65, "y": 0.9, "z": 0, "h": 1.2, "color": "metal", "blink": null },
+                    { "kind": "torus", "x": 0.65, "y": 0.55, "z": 1.2, "r": 0.18, "tube": 0.025, "color": "metal", "spin": 0.3 },
+                    { "kind": "box", "x": 1.1, "y": 0.9, "z": 0, "w": 0.8, "d": 0.9, "h": 0.5, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "w"],
+                        "x": 1.1,
+                        "y": 0.9,
+                        "z": 0.06,
+                        "w": 0.8,
+                        "d": 0.9,
+                        "h": 0.4,
+                        "rows": 1,
+                        "cols": 3,
+                        "color": "window"
+                    },
+                    { "kind": "door", "face": "s", "x": 1.1, "y": 0.9, "w": 0.8, "d": 0.9, "width": 0.14, "height": 0.2, "color": "trim" },
+                    { "kind": "roof", "shape": "gable", "x": 1.1, "y": 0.9, "z": 0.5, "w": 0.8, "d": 0.9, "h": 0.2, "color": "roof", "axis": "y", "overhang": 0.04 },
+                    { "kind": "cylinder", "x": 1.75, "y": 0.3, "z": 0, "r": 0.08, "h": 1.1, "color": "#7a3e2e", "taper": 0.75, "segments": 12 },
+                    { "kind": "box", "x": 1.686, "y": 0.29, "z": 0.935, "w": 0.128, "d": 0.02, "h": 0.03, "color": "#c9c2b8" },
+                    { "kind": "emitter", "x": 1.75, "y": 0.3, "z": 1.1, "type": "smoke" },
+                    { "kind": "box", "x": 0.2, "y": 1.4, "z": 0, "w": 0.6, "d": 0.45, "h": 0.2, "color": "#6b4535" }
+                ]
+            }
+        },
+        {
+            "level": 4,
+            "name": "Глубокая шахта",
+            "epoch": "e1900",
+            "tech": "electricity",
+            "description": "Стальной копёр, электрические клети и прожекторы.",
+            "cost": { "steel": 300, "concrete": 200, "gold": 2500 },
+            "buildTime": 30,
+            "effects": {
+                "housing": 0,
+                "jobs": 14,
+                "produces": { "iron": 5 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 4,
+                "aura": null,
+                "pollution": { "radius": 3, "amount": 7 },
+                "boost": null,
+                "near": { "feature": "rock", "radius": 3, "perTile": 0.15, "max": 2 },
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#8a8478" },
+                    { "kind": "box", "x": 0.3, "y": 0.3, "z": 0, "w": 0.6, "d": 0.6, "h": 1.6, "color": "metal", "material": "metal" },
+                    {
+                        "kind": "beams",
+                        "faces": ["n", "e", "s", "w"],
+                        "x": 0.3,
+                        "y": 0.3,
+                        "z": 0,
+                        "w": 0.6,
+                        "d": 0.6,
+                        "h": 1.6,
+                        "count": 4,
+                        "color": "#2f3338"
+                    },
+                    { "kind": "torus", "x": 0.6, "y": 0.6, "z": 1.65, "r": 0.2, "tube": 0.03, "color": "metal", "spin": 0.4 },
+                    { "kind": "box", "x": 1.1, "y": 0.3, "z": 0, "w": 0.75, "d": 1, "h": 0.55, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "w"],
+                        "x": 1.1,
+                        "y": 0.3,
+                        "z": 0.1,
+                        "w": 0.75,
+                        "d": 1,
+                        "h": 0.35,
+                        "rows": 1,
+                        "cols": 4,
+                        "color": "window"
+                    },
+                    { "kind": "roof", "shape": "flat", "x": 1.1, "y": 0.3, "z": 0.55, "w": 0.75, "d": 1, "h": 0.04, "color": "roof" },
+                    { "kind": "box", "x": 0.3, "y": 1.45, "z": 0, "w": 0.8, "d": 0.4, "h": 0.25, "color": "#6b4535" },
+                    { "kind": "pole", "x": 1.9, "y": 1.9, "z": 0, "h": 0.6, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.9, "y": 1.9, "z": 0.6, "radius": 1.4, "color": "#ffd98a" }
+                ]
+            }
+        },
+        {
+            "level": 5,
+            "name": "Автошахта",
+            "epoch": "e2100",
+            "tech": "robotics",
+            "description": "Роботы добывают руду сами, люди только следят с пульта.",
+            "cost": { "composites": 300, "electronics": 200, "gold": 10000 },
+            "buildTime": 45,
+            "effects": {
+                "housing": 0,
+                "jobs": 8,
+                "produces": { "iron": 11 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 10,
+                "aura": null,
+                "pollution": { "radius": 2, "amount": 4 },
+                "boost": null,
+                "near": { "feature": "rock", "radius": 3, "perTile": 0.25, "max": 3 },
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#a8aeab" },
+                    { "kind": "cylinder", "x": 0.6, "y": 0.6, "z": 0, "r": 0.4, "h": 0.5, "color": "walls", "segments": 16 },
+                    { "kind": "sphere", "x": 0.6, "y": 0.6, "z": 0.5, "r": 0.4, "color": "glass", "half": true, "material": "glass" },
+                    { "kind": "box", "x": 1, "y": 0.55, "z": 0.25, "w": 0.9, "d": 0.12, "h": 0.08, "color": "metal", "material": "metal" },
+                    { "kind": "box", "x": 1.2, "y": 1.1, "z": 0, "w": 0.7, "d": 0.7, "h": 0.4, "color": "walls" },
+                    { "kind": "box", "x": 1.2, "y": 1.1, "z": 0.4, "w": 0.7, "d": 0.7, "h": 0.03, "color": "trim", "material": "glow" },
+                    { "kind": "box", "x": 0.2, "y": 1.3, "z": 0, "w": 0.6, "d": 0.5, "h": 0.25, "color": "#6b4535" },
+                    { "kind": "light", "x": 0.6, "y": 0.6, "z": 1, "radius": 1.4, "color": "#2fb5a3" }
+                ]
+            }
+        }
+    ]
+}

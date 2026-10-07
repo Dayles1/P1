@@ -1,0 +1,83 @@
+{
+    "id": "solar_farm",
+    "name": "Солнечная ферма",
+    "icon": "☀️",
+    "category": "power",
+    "description": "Чистая энергия без топлива и дыма.",
+    "size": { "w": 2, "h": 2 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": "hum" },
+    "levels": [
+        {
+            "level": 1,
+            "name": "Солнечная ферма",
+            "epoch": "e2100",
+            "tech": "solar_power",
+            "description": "Ряды панелей, поворачивающихся за солнцем.",
+            "cost": { "glass": 1500, "electronics": 200, "composites": 100, "gold": 9000 },
+            "buildTime": 40,
+            "effects": {
+                "housing": 0,
+                "jobs": 4,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 120,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#8ad06a" },
+                    { "kind": "roof", "shape": "shed", "x": 0.1, "y": 0.1, "z": 0.1, "w": 1.8, "d": 0.35, "h": 0.12, "color": "#1d3f6e", "axis": "x", "material": "glass" },
+                    { "kind": "roof", "shape": "shed", "x": 0.1, "y": 0.55, "z": 0.1, "w": 1.8, "d": 0.35, "h": 0.12, "color": "#1d3f6e", "axis": "x", "material": "glass" },
+                    { "kind": "roof", "shape": "shed", "x": 0.1, "y": 1, "z": 0.1, "w": 1.8, "d": 0.35, "h": 0.12, "color": "#1d3f6e", "axis": "x", "material": "glass" },
+                    { "kind": "roof", "shape": "shed", "x": 0.1, "y": 1.45, "z": 0.1, "w": 1.2, "d": 0.35, "h": 0.12, "color": "#1d3f6e", "axis": "x", "material": "glass" },
+                    { "kind": "box", "x": 1.45, "y": 1.45, "z": 0, "w": 0.45, "d": 0.45, "h": 0.3, "color": "walls" },
+                    { "kind": "pole", "x": 1.8, "y": 1.8, "z": 0.3, "h": 0.3, "color": "metal", "blink": "#2fb5a3" }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "name": "Орбитальный приёмник",
+            "epoch": "e2300",
+            "description": "Антенна принимает энергию с орбитальных солнечных станций.",
+            "cost": { "composites": 1500, "rare_metals": 200, "electronics": 500, "gold": 25000 },
+            "buildTime": 55,
+            "effects": {
+                "housing": 0,
+                "jobs": 6,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 400,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0, "r": 0.3, "h": 0.6, "color": "walls", "segments": 16 },
+                    { "kind": "sphere", "x": 1, "y": 1, "z": 1.25, "r": 0.85, "color": "metal", "half": true, "material": "metal" },
+                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0.6, "r": 0.06, "h": 1.3, "color": "metal" },
+                    { "kind": "sphere", "x": 1, "y": 1, "z": 1.95, "r": 0.08, "color": "accent", "material": "glow" },
+                    { "kind": "torus", "x": 1, "y": 1, "z": 1.25, "r": 0.86, "tube": 0.03, "color": "trim" },
+                    { "kind": "light", "x": 1, "y": 1, "z": 1.9, "radius": 2, "color": "#9fd2ff" }
+                ]
+            }
+        }
+    ]
+}

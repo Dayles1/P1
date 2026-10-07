@@ -1,13 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import { gameApi } from '../shared/api';
-import { format, t } from '../shared/i18n';
+import { format, plural, t } from '../shared/i18n';
 import { CATALOG } from './catalog';
 import type { Genre } from './catalog';
+import { LeaderboardDialog, RateDialog, RatingLine } from './ratings';
+import type { GameRatings, RatingsSummary } from './ratings';
 
 interface GameProgress {
     epoch: number | string;
+    epoch_name?: string | null;
     year: number;
     population: number;
     score: number;
@@ -22,13 +25,47 @@ interface Progress {
 export function Hub({ homeUrl }: { homeUrl: string }) {
     const [genre, setGenre] = useState<Genre | null>(null);
     const [progress, setProgress] = useState<Progress | null>(null);
+    const [resetting, setResetting] = useState<string | null>(null);
+    const [ratings, setRatings] = useState<RatingsSummary | null>(null);
+    const [dialog, setDialog] = useState<{
+        kind: 'rate' | 'board';
+        slug: string;
+        title: string;
+    } | null>(null);
+
+    const loadProgress = useCallback(
+        () =>
+            gameApi<Progress>('progress')
+                .then(setProgress)
+                .catch(() => setProgress(null)),
+        [],
+    );
 
     useEffect(() => {
         document.title = t.games;
-        gameApi<Progress>('progress')
-            .then(setProgress)
-            .catch(() => setProgress(null));
-    }, []);
+        void loadProgress();
+        gameApi<RatingsSummary>('ratings')
+            .then(setRatings)
+            .catch(() => setRatings(null));
+    }, [loadProgress]);
+
+    const updateRatings = (slug: string, updated: GameRatings) =>
+        setRatings((current) => ({ ...current, [slug]: updated }));
+
+    const reset = async (slug: string, resetPath: string, title: string) => {
+        if (!window.confirm(format(t.reset_confirm, { game: title }))) {
+            return;
+        }
+
+        setResetting(slug);
+
+        try {
+            await gameApi(resetPath, { method: 'DELETE' });
+            await loadProgress();
+        } finally {
+            setResetting(null);
+        }
+    };
 
     const genres = [...new Set(CATALOG.map((game) => game.genre))];
     const games = CATALOG.filter((game) => !genre || game.genre === genre);
@@ -79,6 +116,14 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
                         game.slug,
                         '',
                     ];
+                    const rated = game.path
+                        ? (ratings?.[game.slug] ?? null)
+                        : null;
+                    const myStars = rated?.mine
+                        ? format(t.rate_edit, {
+                              stars: plural(t.stars_label, rated.mine.stars),
+                          })
+                        : t.rate;
                     const played =
                         progress?.[game.slug as keyof Progress] ?? null;
                     const line = played
@@ -91,7 +136,7 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
                                   epoch:
                                       typeof played.epoch === 'number'
                                           ? (t.epochs[played.epoch] ?? '')
-                                          : '',
+                                          : (played.epoch_name ?? ''),
                                   population: new Intl.NumberFormat().format(
                                       played.population,
                                   ),
@@ -121,6 +166,7 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
                                     </span>
                                 </div>
                                 <h2>{title}</h2>
+                                {rated && <RatingLine ratings={rated} />}
                                 <p>{description}</p>
                                 {line && (
                                     <p className="game-card__progress">
@@ -130,9 +176,66 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
                             </div>
                             <div className="game-card__foot">
                                 {game.path ? (
-                                    <Link className="hub-button" to={game.path}>
-                                        ▶ {played ? t.continue : t.play}
-                                    </Link>
+                                    <>
+                                        <Link
+                                            className="hub-button"
+                                            to={game.path}
+                                        >
+                                            ▶ {played ? t.continue : t.play}
+                                        </Link>
+                                        {rated && (
+                                            <div className="game-card__actions">
+                                                <button
+                                                    type="button"
+                                                    className="hub-button hub-button--soft"
+                                                    aria-label={myStars}
+                                                    onClick={() =>
+                                                        setDialog({
+                                                            kind: 'rate',
+                                                            slug: game.slug,
+                                                            title,
+                                                        })
+                                                    }
+                                                >
+                                                    {rated.mine
+                                                        ? `★ ${rated.mine.stars}/5`
+                                                        : `☆ ${t.rate}`}
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    className="hub-button hub-button--soft"
+                                                    onClick={() =>
+                                                        setDialog({
+                                                            kind: 'board',
+                                                            slug: game.slug,
+                                                            title,
+                                                        })
+                                                    }
+                                                >
+                                                    🏆 {t.leaderboard}
+                                                </button>
+                                            </div>
+                                        )}
+                                        {played && game.resetPath && (
+                                            <button
+                                                type="button"
+                                                className="hub-button hub-button--ghost hub-button--danger"
+                                                disabled={
+                                                    resetting === game.slug
+                                                }
+                                                onClick={() =>
+                                                    reset(
+                                                        game.slug,
+                                                        game.resetPath!,
+                                                        title,
+                                                    )
+                                                }
+                                                title={t.reset}
+                                            >
+                                                🗑 {t.reset}
+                                            </button>
+                                        )}
+                                    </>
                                 ) : (
                                     <button
                                         type="button"
@@ -149,6 +252,24 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
             </div>
 
             {games.length === 0 && <p className="hub__empty">{t.empty}</p>}
+
+            {dialog?.kind === 'rate' && ratings?.[dialog.slug] && (
+                <RateDialog
+                    slug={dialog.slug}
+                    title={dialog.title}
+                    ratings={ratings[dialog.slug]}
+                    onSaved={(updated) => updateRatings(dialog.slug, updated)}
+                    onClose={() => setDialog(null)}
+                />
+            )}
+            {dialog?.kind === 'board' && (
+                <LeaderboardDialog
+                    slug={dialog.slug}
+                    title={dialog.title}
+                    ratings={ratings?.[dialog.slug] ?? null}
+                    onClose={() => setDialog(null)}
+                />
+            )}
         </div>
     );
 }

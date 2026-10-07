@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './epochs.css';
 import { GameApiError, gameApi } from '../shared/api';
+import { usePlaytime } from '../shared/usePlaytime';
 import { AudioEngine } from './audio/audio';
 import { loadContent } from './content-api';
 import type { LoadedContent } from './content-api';
@@ -16,24 +17,23 @@ import {
 } from './engine/save/serializer';
 import type { LoadedWorld } from './engine/save/serializer';
 import { Game } from './engine/sim/game';
-import { Renderer } from './render/renderer';
-import type { Overlay } from './render/renderer';
-import {
-    BuildMenu,
-    EpochPanel,
-    EpochSplash,
-    Inspector,
-    Modal,
-    NpcPanel,
-    Stats,
-    TopBar,
-} from './ui/panels';
+import { Renderer } from './scene/renderer';
+import type { Overlay, Quality } from './scene/renderer';
+import { BuildDock } from './ui/build';
+import { Bureau } from './ui/bureau';
+import { Modal } from './ui/common';
+import { EpochPanel, EpochSplash, Goals, Stats } from './ui/epoch';
+import { CameraControls, GoalsWidget, TopBar } from './ui/hud';
+import { Inspector, NpcPanel } from './ui/inspector';
+import { TechTree } from './ui/research';
 
 type Tool =
     | { kind: 'select' }
-    | { kind: 'build'; type: string }
+    | { kind: 'build'; type: string; level: number }
     | { kind: 'bulldoze' }
     | { kind: 'move'; uid: number };
+
+type Panel = 'stats' | 'epoch' | 'menu' | 'tech' | 'bureau' | 'goals' | null;
 
 interface Toast {
     id: number;
@@ -41,15 +41,37 @@ interface Toast {
     tone: 'info' | 'good' | 'bad';
 }
 
+/** The last click on buildings: clicking the same spot again picks the next one behind. */
+interface PickCycle {
+    x: number;
+    y: number;
+    uids: number[];
+    index: number;
+}
+
 const AUTOSAVE_MS = 20_000;
+const TITLE = 'Летопись города 2';
+const QUALITY_KEY = 'city2.quality';
+
+function savedQuality(): Quality {
+    try {
+        const value = localStorage.getItem(QUALITY_KEY);
+
+        return value === 'low' || value === 'medium' ? value : 'high';
+    } catch {
+        return 'high';
+    }
+}
 
 let toastSeq = 0;
 
 /**
- * "City of Eras": the canvas, the HUD around it, the loop, input, sound
- * and saving. Everything the game is made of comes from the content files.
+ * «Летопись города 2»: the 3D scene, the HUD around it, the loop, input,
+ * sound and saving. Everything the game is made of comes from the content
+ * files.
  */
 export default function EpochsGame() {
+    usePlaytime('epochs');
     const navigate = useNavigate();
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const gameRef = useRef<Game | null>(null);
@@ -66,10 +88,13 @@ export default function EpochsGame() {
         selectedUid: null,
         selectedNpc: null,
         bulldoze: false,
+        xray: false,
+        showDistricts: false,
     });
     const toolRef = useRef<Tool>({ kind: 'select' });
     const speedRef = useRef(1);
     const followRef = useRef<number | null>(null);
+    const pickRef = useRef<PickCycle | null>(null);
 
     const [loaded, setLoaded] = useState<LoadedContent | null>(null);
     const [game, setGame] = useState<Game | null>(null);
@@ -82,15 +107,24 @@ export default function EpochsGame() {
     const [selectedUid, setSelectedUid] = useState<number | null>(null);
     const [selectedNpc, setSelectedNpc] = useState<number | null>(null);
     const [following, setFollowing] = useState(false);
-    const [panel, setPanel] = useState<'stats' | 'epoch' | 'menu' | null>(null);
-    const [buildOpen, setBuildOpen] = useState(false);
+    const [panel, setPanel] = useState<Panel>(null);
+    const [dockOpen, setDockOpen] = useState(true);
+    const [goalsCollapsed, setGoalsCollapsed] = useState(false);
+    const [levels, setLevels] = useState<Record<string, number>>({});
     const [speed, setSpeedState] = useState(1);
     const [muted, setMuted] = useState(false);
+    const [xray, setXray] = useState(false);
+    const [districts, setDistricts] = useState(false);
     const [toasts, setToasts] = useState<Toast[]>([]);
     const [splash, setSplash] = useState<number | null>(null);
     const [saveLabel, setSaveLabel] = useState('');
     const [conflict, setConflict] = useState(false);
     const [hint, setHint] = useState<string | null>(null);
+    const [yaw, setYaw] = useState(0);
+    const [infinite, setInfiniteState] = useState(false);
+    const [quality, setQualityState] = useState<Quality>(savedQuality);
+    const [fps, setFps] = useState(60);
+    const [others, setOthers] = useState(0);
 
     const toast = useCallback((text: string, tone: Toast['tone'] = 'info') => {
         const id = ++toastSeq;
@@ -118,6 +152,11 @@ export default function EpochsGame() {
         setSelectedUid(uid);
         setSelectedNpc(null);
         setFollowing(false);
+
+        if (uid === null) {
+            pickRef.current = null;
+            setOthers(0);
+        }
     }, []);
 
     const selectNpc = useCallback((uid: number | null) => {
@@ -130,6 +169,37 @@ export default function EpochsGame() {
     const setSpeed = useCallback((value: number) => {
         speedRef.current = value;
         setSpeedState(value);
+    }, []);
+
+    const setInfinite = useCallback((on: boolean) => {
+        if (gameRef.current) {
+            gameRef.current.infinite = on;
+
+            if (on) {
+                gameRef.current.testerGrant();
+            }
+        }
+
+        setInfiniteState(on);
+    }, []);
+
+    const setQuality = useCallback((value: Quality) => {
+        rendererRef.current?.setQuality(value);
+        setQualityState(value);
+
+        try {
+            localStorage.setItem(QUALITY_KEY, value);
+        } catch {
+            // Storage blocked: the choice lasts until the page closes.
+        }
+    }, []);
+
+    const toggleXray = useCallback(() => {
+        setXray((on) => {
+            overlayRef.current.xray = !on;
+
+            return !on;
+        });
     }, []);
 
     // ——————————————————————————————————— Saving
@@ -182,8 +252,11 @@ export default function EpochsGame() {
     // ——————————————————————————————————— Loading
 
     useEffect(() => {
-        rendererRef.current = new Renderer(canvasRef.current!);
-        document.title = 'Город эпох';
+        const renderer = new Renderer(canvasRef.current!);
+
+        rendererRef.current = renderer;
+        renderer.setQuality(savedQuality());
+        document.title = TITLE;
 
         let cancelled = false;
 
@@ -245,16 +318,8 @@ export default function EpochsGame() {
             gameRef.current = world;
             savedGameRevision.current = world.revision;
 
-            const renderer = rendererRef.current!;
-
             renderer.attach(world);
             renderer.resize();
-            renderer.camera.zoom =
-                window.innerWidth > 1600
-                    ? 1.3
-                    : window.innerWidth < 700
-                      ? 0.8
-                      : 1.05;
 
             const center = world.center;
 
@@ -277,6 +342,7 @@ export default function EpochsGame() {
 
         return () => {
             cancelled = true;
+            renderer.dispose();
         };
     }, [toast]);
 
@@ -304,6 +370,13 @@ export default function EpochsGame() {
                 case 'upgraded':
                 case 'removed':
                     audio?.play(event.sound);
+                    break;
+                case 'sound':
+                    audio?.play(event.id);
+                    break;
+                case 'researched':
+                case 'achievement':
+                    audio?.play('upgrade');
                     break;
                 case 'epoch':
                     audio?.play('epoch');
@@ -348,34 +421,45 @@ export default function EpochsGame() {
 
             game.npcs.move(gameDt);
 
-            const pan = 600 * dt;
+            const pan = 700 * dt;
 
             if (keys.has('a') || keys.has('arrowleft')) {
-                renderer.pan(pan, 0);
+                renderer.panBy(pan, 0);
             }
 
             if (keys.has('d') || keys.has('arrowright')) {
-                renderer.pan(-pan, 0);
+                renderer.panBy(-pan, 0);
             }
 
             if (keys.has('w') || keys.has('arrowup')) {
-                renderer.pan(0, pan);
+                renderer.panBy(0, pan);
             }
 
             if (keys.has('s') || keys.has('arrowdown')) {
-                renderer.pan(0, -pan);
+                renderer.panBy(0, -pan);
+            }
+
+            if (keys.has('q')) {
+                renderer.rotateBy(-1.6 * dt);
+            }
+
+            if (keys.has('e')) {
+                renderer.rotateBy(1.6 * dt);
+            }
+
+            if (keys.has('pageup')) {
+                renderer.tiltBy(1.2 * dt);
+            }
+
+            if (keys.has('pagedown')) {
+                renderer.tiltBy(-1.2 * dt);
             }
 
             if (followRef.current) {
                 const npc = game.npcs.get(followRef.current);
 
                 if (npc) {
-                    const [sx, sy] = renderer.worldToScreen(npc.x, npc.y);
-
-                    renderer.pan(
-                        (renderer.width / 2 - sx) * Math.min(1, dt * 4),
-                        (renderer.height / 2 - sy) * Math.min(1, dt * 4),
-                    );
+                    renderer.centerOn(npc.x, npc.y, true);
                 }
             }
 
@@ -388,6 +472,8 @@ export default function EpochsGame() {
 
             if (now - lastUi > 250) {
                 lastUi = now;
+                setYaw(renderer.view.yaw);
+                setFps(renderer.fps);
                 rerender();
             }
 
@@ -399,7 +485,8 @@ export default function EpochsGame() {
         const onKeyDown = (event: KeyboardEvent) => {
             if (
                 event.target instanceof HTMLInputElement ||
-                event.target instanceof HTMLTextAreaElement
+                event.target instanceof HTMLTextAreaElement ||
+                event.target instanceof HTMLSelectElement
             ) {
                 return;
             }
@@ -413,18 +500,39 @@ export default function EpochsGame() {
                 setSpeed(speedRef.current === 0 ? 1 : 0);
             } else if (key === 'escape') {
                 setTool({ kind: 'select' });
-                setBuildOpen(false);
                 selectBuilding(null);
             } else if (key === 'b') {
-                setBuildOpen((open) => !open);
+                setDockOpen((open) => !open);
             } else if (key === 'r') {
-                setTool({ kind: 'build', type: 'road' });
+                const road = game.content.byRole('road');
+
+                if (road) {
+                    setTool({
+                        kind: 'build',
+                        type: road.id,
+                        level: game.availableLevels(road).at(-1) ?? 1,
+                    });
+                }
             } else if (key === 'x') {
                 setTool({ kind: 'bulldoze' });
+            } else if (key === 't') {
+                setPanel((open) => (open === 'tech' ? null : 'tech'));
+            } else if (key === 'g') {
+                setPanel((open) => (open === 'goals' ? null : 'goals'));
+            } else if (key === 'v') {
+                toggleXray();
+            } else if (key === 'home') {
+                const center = game.center;
+
+                renderer.centerOn(
+                    center ? center.x + 1 : game.map.width / 2,
+                    center ? center.y + 1 : game.map.height / 2,
+                    true,
+                );
             } else if (key === '+' || key === '=') {
-                renderer.zoomAt(1.15);
+                renderer.zoomBy(1.2);
             } else if (key === '-') {
-                renderer.zoomAt(1 / 1.15);
+                renderer.zoomBy(1 / 1.2);
             }
         };
         const onKeyUp = (event: KeyboardEvent) =>
@@ -444,7 +552,7 @@ export default function EpochsGame() {
             window.removeEventListener('blur', onBlur);
             window.removeEventListener('resize', onResize);
         };
-    }, [game, selectBuilding, setSpeed, setTool]);
+    }, [game, selectBuilding, setSpeed, setTool, toggleXray]);
 
     // Autosave, plus a last save when the tab hides or the page is left.
     useEffect(() => {
@@ -482,11 +590,18 @@ export default function EpochsGame() {
         let drag: {
             x: number;
             y: number;
-            panning: boolean;
+            startX: number;
+            startY: number;
+            moved: boolean;
             button: number;
             roadFrom: { x: number; y: number } | null;
         } | null = null;
-        let pinch: { distance: number; x: number; y: number } | null = null;
+        let pinch: {
+            distance: number;
+            angle: number;
+            x: number;
+            y: number;
+        } | null = null;
 
         const local = (event: PointerEvent | MouseEvent) => {
             const box = canvas.getBoundingClientRect();
@@ -494,19 +609,25 @@ export default function EpochsGame() {
             return { x: event.clientX - box.left, y: event.clientY - box.top };
         };
         const tileAt = (px: number, py: number) => {
-            const world = renderer.screenToWorld(px, py);
+            const world = renderer.groundAt(px, py);
 
-            return { x: Math.floor(world.x), y: Math.floor(world.y) };
+            return world
+                ? { x: Math.floor(world.x), y: Math.floor(world.y) }
+                : null;
         };
         const footprintAt = (type: string, px: number, py: number) => {
             const size = game.content.building(type).size;
-            const world = renderer.screenToWorld(px, py);
+            const world = renderer.groundAt(px, py);
 
-            return {
-                x: Math.round(world.x - size.w / 2),
-                y: Math.round(world.y - size.h / 2),
-            };
+            return world
+                ? {
+                      x: Math.round(world.x - size.w / 2),
+                      y: Math.round(world.y - size.h / 2),
+                  }
+                : null;
         };
+        const isRoadType = (type: string) =>
+            game.content.building(type).role === 'road';
         const roadPath = (
             from: { x: number; y: number },
             to: { x: number; y: number },
@@ -514,14 +635,18 @@ export default function EpochsGame() {
             const path: { x: number; y: number; ok: boolean }[] = [];
             const sx = Math.sign(to.x - from.x);
             const sy = Math.sign(to.y - from.y);
-            const push = (x: number, y: number) =>
+            const push = (x: number, y: number) => {
+                const existing = game.buildingAt(x, y);
+
                 path.push({
                     x,
                     y,
                     ok:
-                        game.buildingAt(x, y)?.type === 'road' ||
-                        game.canPlace('road', x, y).ok,
+                        (existing !== undefined &&
+                            game.def(existing).role === 'road') ||
+                        game.canPlace(game.content.byRole('road')!.id, x, y).ok,
                 });
+            };
 
             for (let x = from.x; ; x += sx) {
                 push(x, from.y);
@@ -549,17 +674,28 @@ export default function EpochsGame() {
 
             overlay.hover = hover;
 
-            if (active.kind === 'build' && active.type !== 'road') {
-                const at = footprintAt(active.type, px, py);
+            if (!hover) {
+                overlay.ghost = null;
+
+                return;
+            }
+
+            if (active.kind === 'build' && !isRoadType(active.type)) {
+                const at = footprintAt(active.type, px, py)!;
                 const check = game.canPlace(active.type, at.x, at.y);
 
-                overlay.ghost = { type: active.type, ...at, ok: check.ok };
+                overlay.ghost = {
+                    type: active.type,
+                    level: active.level,
+                    ...at,
+                    ok: check.ok,
+                };
                 setHint(check.ok ? null : (check.reason ?? null));
             } else if (active.kind === 'move') {
                 const moving = game.buildings.get(active.uid);
 
                 if (moving) {
-                    const at = footprintAt(moving.type, px, py);
+                    const at = footprintAt(moving.type, px, py)!;
                     const check = game.canPlace(
                         moving.type,
                         at.x,
@@ -569,6 +705,7 @@ export default function EpochsGame() {
 
                     overlay.ghost = {
                         type: moving.type,
+                        level: moving.level,
                         ...at,
                         ok: check.ok,
                         moving: moving.uid,
@@ -577,7 +714,7 @@ export default function EpochsGame() {
                 }
             } else if (
                 active.kind === 'build' &&
-                active.type === 'road' &&
+                isRoadType(active.type) &&
                 !drag?.roadFrom
             ) {
                 overlay.roadPath = roadPath(hover, hover);
@@ -586,35 +723,64 @@ export default function EpochsGame() {
             }
         };
 
-        const click = (px: number, py: number) => {
-            const active = toolRef.current;
+        const pickAt = (px: number, py: number) => {
+            const npc = renderer.pickNpc(px, py);
 
-            if (active.kind === 'select') {
-                const npc = renderer.pickNpc(px, py);
+            if (npc) {
+                pickRef.current = null;
+                selectNpc(npc.uid);
+                audioRef.current?.play('click');
 
-                if (npc) {
-                    selectNpc(npc.uid);
-                    audioRef.current?.play('click');
+                return;
+            }
 
-                    return;
-                }
+            const hits = renderer.pickBuildings(px, py).map((b) => b.uid);
+            const last = pickRef.current;
+            let index = 0;
 
-                const building = renderer.pickBuilding(px, py);
+            if (
+                last &&
+                Math.hypot(last.x - px, last.y - py) < 6 &&
+                hits.length > 1 &&
+                hits.join() === last.uids.join()
+            ) {
+                index = (last.index + 1) % hits.length;
+            }
 
-                selectBuilding(
-                    building && building.type !== 'road' ? building.uid : null,
-                );
+            pickRef.current = hits.length
+                ? { x: px, y: py, uids: hits, index }
+                : null;
+
+            const uid = hits[index] ?? null;
+
+            selectBuilding(uid);
+
+            if (uid !== null) {
+                pickRef.current = { x: px, y: py, uids: hits, index };
+                setOthers(hits.length - 1);
+
+                const building = game.buildings.get(uid);
 
                 if (building) {
                     audioRef.current?.play(game.def(building).sounds.select);
                 }
+            }
+        };
+
+        const click = (px: number, py: number) => {
+            const active = toolRef.current;
+
+            if (active.kind === 'select') {
+                pickAt(px, py);
 
                 return;
             }
 
             if (active.kind === 'bulldoze') {
-                const { x, y } = tileAt(px, py);
-                const building = game.buildingAt(x, y);
+                const tile = tileAt(px, py);
+                const building =
+                    renderer.pickBuildings(px, py)[0] ??
+                    (tile ? game.buildingAt(tile.x, tile.y) : undefined);
 
                 if (building) {
                     game.demolish(building.uid);
@@ -622,8 +788,8 @@ export default function EpochsGame() {
                     if (building.uid === overlayRef.current.selectedUid) {
                         selectBuilding(null);
                     }
-                } else {
-                    game.clear(x, y);
+                } else if (tile) {
+                    game.clear(tile.x, tile.y);
                 }
 
                 return;
@@ -648,8 +814,9 @@ export default function EpochsGame() {
                 const def = game.content.building(active.type);
 
                 if (
-                    game.place(active.type, ghost.x, ghost.y).ok &&
-                    (def.unique || !game.canAfford(game.buildCost(def)))
+                    game.place(active.type, ghost.x, ghost.y, active.level)
+                        .ok &&
+                    def.unique
                 ) {
                     setTool({ kind: 'select' });
                 }
@@ -658,23 +825,43 @@ export default function EpochsGame() {
             }
         };
 
-        const buildRoad = () => {
+        const buildRoad = (level: number) => {
+            const road = game.content.byRole('road')!;
+            let upgraded = 0;
+
             for (const step of overlayRef.current.roadPath) {
-                if (game.buildingAt(step.x, step.y)?.type === 'road') {
+                const existing = game.buildingAt(step.x, step.y);
+
+                if (existing && game.def(existing).role === 'road') {
+                    // Laying a better road over an old one upgrades it.
+                    if (existing.level < level) {
+                        if (game.relevel(existing.uid, level, true).ok) {
+                            upgraded++;
+                        } else if (
+                            !game.canAfford(game.relevelCost(existing, level))
+                        ) {
+                            break;
+                        }
+                    }
+
                     continue;
                 }
 
                 if (
-                    !game.place('road', step.x, step.y).ok &&
-                    !game.canAfford(
-                        game.buildCost(game.content.building('road')),
-                    )
+                    !game.place(road.id, step.x, step.y, level).ok &&
+                    !game.canAfford(game.buildCost(road, level))
                 ) {
                     break;
                 }
             }
 
             overlayRef.current.roadPath = [];
+
+            if (upgraded) {
+                game.structureChanged();
+                audioRef.current?.play(road.sounds.upgrade);
+                toast(`🛤️ Дорога улучшена: ${upgraded} кл.`, 'good');
+            }
         };
 
         const onDown = (event: PointerEvent) => {
@@ -687,6 +874,7 @@ export default function EpochsGame() {
 
                 pinch = {
                     distance: Math.hypot(a.x - b.x, a.y - b.y),
+                    angle: Math.atan2(b.y - a.y, b.x - a.x),
                     x: (a.x + b.x) / 2,
                     y: (a.y + b.y) / 2,
                 };
@@ -700,11 +888,18 @@ export default function EpochsGame() {
             const roadFrom =
                 event.button === 0 &&
                 active.kind === 'build' &&
-                active.type === 'road'
+                isRoadType(active.type)
                     ? tileAt(point.x, point.y)
                     : null;
 
-            drag = { ...point, panning: false, button: event.button, roadFrom };
+            drag = {
+                ...point,
+                startX: point.x,
+                startY: point.y,
+                moved: false,
+                button: event.button,
+                roadFrom,
+            };
 
             if (roadFrom) {
                 overlayRef.current.roadPath = roadPath(roadFrom, roadFrom);
@@ -721,35 +916,49 @@ export default function EpochsGame() {
             if (pinch && pointers.size === 2) {
                 const [a, b] = [...pointers.values()];
                 const distance = Math.hypot(a.x - b.x, a.y - b.y);
+                const angle = Math.atan2(b.y - a.y, b.x - a.x);
                 const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
 
-                renderer.zoomAt(distance / pinch.distance, mid.x, mid.y);
-                renderer.pan(mid.x - pinch.x, mid.y - pinch.y);
-                pinch = { distance, ...mid };
+                renderer.zoomBy(distance / pinch.distance, mid.x, mid.y);
+                renderer.rotateBy(pinch.angle - angle);
+                renderer.panBy(mid.x - pinch.x, mid.y - pinch.y);
+                pinch = { distance, angle, ...mid };
 
                 return;
             }
 
             if (drag?.roadFrom) {
-                overlayRef.current.roadPath = roadPath(
-                    drag.roadFrom,
-                    tileAt(point.x, point.y),
-                );
+                const tile = tileAt(point.x, point.y);
+
+                if (tile) {
+                    overlayRef.current.roadPath = roadPath(drag.roadFrom, tile);
+                }
 
                 return;
             }
 
             if (
                 drag &&
-                (drag.panning ||
-                    Math.hypot(point.x - drag.x, point.y - drag.y) > 5)
+                (drag.moved ||
+                    Math.hypot(point.x - drag.startX, point.y - drag.startY) >
+                        5)
             ) {
-                renderer.pan(point.x - drag.x, point.y - drag.y);
+                const dx = point.x - drag.x;
+                const dy = point.y - drag.y;
+
+                if (drag.button === 2 || drag.button === 1 || event.shiftKey) {
+                    renderer.rotateBy(-dx * 0.008);
+                    renderer.tiltBy(dy * 0.006);
+                } else {
+                    renderer.panBy(dx, dy);
+                    followRef.current = null;
+                }
+
                 drag.x = point.x;
                 drag.y = point.y;
-                drag.panning = true;
-                followRef.current = null;
-                canvas.style.cursor = 'grabbing';
+                drag.moved = true;
+                canvas.style.cursor =
+                    drag.button === 0 && !event.shiftKey ? 'grabbing' : 'move';
 
                 return;
             }
@@ -778,12 +987,14 @@ export default function EpochsGame() {
             }
 
             if (finished.roadFrom) {
-                buildRoad();
+                const active = toolRef.current;
+
+                buildRoad(active.kind === 'build' ? active.level : 1);
 
                 return;
             }
 
-            if (finished.panning) {
+            if (finished.moved) {
                 return;
             }
 
@@ -801,8 +1012,8 @@ export default function EpochsGame() {
 
             const point = local(event);
 
-            renderer.zoomAt(
-                event.deltaY < 0 ? 1.12 : 1 / 1.12,
+            renderer.zoomBy(
+                Math.exp(-Math.sign(event.deltaY) * 0.12),
                 point.x,
                 point.y,
             );
@@ -829,7 +1040,7 @@ export default function EpochsGame() {
             canvas.removeEventListener('wheel', onWheel);
             canvas.removeEventListener('contextmenu', onContext);
         };
-    }, [game, selectBuilding, selectNpc, setTool]);
+    }, [game, selectBuilding, selectNpc, setTool, toast]);
 
     // ——————————————————————————————————— HUD
 
@@ -859,12 +1070,14 @@ export default function EpochsGame() {
               '--hud-radius': `${theme.radius}px`,
           } as CSSProperties)
         : undefined;
-    const activeBuild = tool.kind === 'build' ? tool.type : null;
+    const activeBuild =
+        tool.kind === 'build' ? { type: tool.type, level: tool.level } : null;
+    const roadDef = game?.content.byRole('road');
     const toolHint =
-        tool.kind === 'build' && tool.type === 'road'
-            ? 'Тяните мышью, чтобы проложить дорогу. Esc или ПКМ — отмена.'
+        tool.kind === 'build' && game && roadDef?.id === tool.type
+            ? `Дорога «${game.content.level(roadDef, tool.level).name}»: тяните мышью. Esc или ПКМ — отмена.`
             : tool.kind === 'build' && game
-              ? `Строим: ${game.content.nameOf(game.content.building(tool.type), game.state.epoch)}. Клик — поставить, Esc — отмена.`
+              ? `Строим: ${game.content.level(game.content.building(tool.type), tool.level).name}. Клик — поставить, Esc — отмена.`
               : tool.kind === 'bulldoze'
                 ? 'Снос: клик по зданию (вернётся половина стоимости), по дереву, камню или камышу — расчистить.'
                 : tool.kind === 'move'
@@ -898,7 +1111,7 @@ export default function EpochsGame() {
                                 {loaded?.editable && (
                                     <Link
                                         className="hud-button hud-button--primary"
-                                        to="/epochs/workshop"
+                                        to="/city2/workshop"
                                     >
                                         🛠️ Мастерская
                                     </Link>
@@ -931,14 +1144,96 @@ export default function EpochsGame() {
                         saveLabel={saveLabel}
                         onBack={() => navigate('/')}
                         onMenu={() => setPanel('menu')}
+                        onResearch={() => setPanel('tech')}
+                        tester={Boolean(loaded?.editable)}
+                        infinite={infinite}
+                        fps={fps}
+                        onLowerQuality={
+                            quality === 'low'
+                                ? undefined
+                                : () =>
+                                      setQuality(
+                                          quality === 'high' ? 'medium' : 'low',
+                                      )
+                        }
+                    />
+
+                    <GoalsWidget
+                        game={game}
+                        collapsed={goalsCollapsed}
+                        onToggle={() => setGoalsCollapsed((on) => !on)}
+                        onOpen={() => setPanel('goals')}
+                    />
+
+                    <CameraControls
+                        yaw={yaw}
+                        xray={xray}
+                        districts={districts}
+                        onRotate={(direction) =>
+                            rendererRef.current?.setYaw(
+                                yaw + (direction * Math.PI) / 2,
+                                true,
+                            )
+                        }
+                        onNorth={() => rendererRef.current?.setYaw(0, true)}
+                        onTilt={(direction) =>
+                            rendererRef.current?.tiltBy(direction * 0.25)
+                        }
+                        onZoom={(direction) =>
+                            rendererRef.current?.zoomBy(
+                                direction > 0 ? 1.25 : 0.8,
+                            )
+                        }
+                        onCenter={() => {
+                            const center = game.center;
+
+                            rendererRef.current?.centerOn(
+                                center ? center.x + 1 : game.map.width / 2,
+                                center ? center.y + 1 : game.map.height / 2,
+                                true,
+                            );
+                        }}
+                        onXray={toggleXray}
+                        onDistricts={() =>
+                            setDistricts((on) => {
+                                overlayRef.current.showDistricts = !on;
+
+                                return !on;
+                            })
+                        }
                     />
 
                     {selected && (
                         <Inspector
+                            key={selected.uid}
                             game={game}
                             building={selected}
+                            others={others}
+                            onNext={() => {
+                                const cycle = pickRef.current;
+
+                                if (cycle && cycle.uids.length > 1) {
+                                    cycle.index =
+                                        (cycle.index + 1) % cycle.uids.length;
+                                    selectBuilding(cycle.uids[cycle.index]);
+                                    pickRef.current = cycle;
+                                }
+                            }}
                             onClose={() => selectBuilding(null)}
                             onUpgrade={() => game.upgrade(selected.uid)}
+                            onUpgradeAll={() => {
+                                const count = game.upgradeAll(
+                                    selected.type,
+                                    selected.level,
+                                );
+
+                                toast(
+                                    count
+                                        ? `⏫ Улучшено: ${count}`
+                                        : 'Не хватает ресурсов',
+                                    count ? 'good' : 'bad',
+                                );
+                            }}
                             onMove={() => {
                                 setTool({ kind: 'move', uid: selected.uid });
                                 selectBuilding(null);
@@ -992,35 +1287,58 @@ export default function EpochsGame() {
                             </div>
                         )}
 
-                        {buildOpen && (
-                            <BuildMenu
+                        {dockOpen && (
+                            <BuildDock
                                 game={game}
                                 active={activeBuild}
-                                onPick={(type) => {
-                                    setTool({ kind: 'build', type });
+                                levels={levels}
+                                onLevel={(type, level) =>
+                                    setLevels((map) => ({
+                                        ...map,
+                                        [type]: level,
+                                    }))
+                                }
+                                onPick={(type, level) => {
+                                    setTool({ kind: 'build', type, level });
                                     selectBuilding(null);
                                 }}
-                                onClose={() => setBuildOpen(false)}
+                                onCollapse={() => setDockOpen(false)}
                             />
                         )}
 
                         <nav className="toolbar">
                             <button
                                 type="button"
-                                aria-pressed={buildOpen}
-                                onClick={() => setBuildOpen((open) => !open)}
+                                aria-pressed={dockOpen}
+                                onClick={() => setDockOpen((open) => !open)}
                                 title="Строительство (B)"
                             >
                                 🏗️ <span>Строить</span>
                             </button>
                             <button
                                 type="button"
-                                aria-pressed={activeBuild === 'road'}
+                                aria-pressed={
+                                    tool.kind === 'build' &&
+                                    roadDef?.id === tool.type
+                                }
                                 onClick={() =>
+                                    roadDef &&
                                     setTool(
-                                        activeBuild === 'road'
+                                        tool.kind === 'build' &&
+                                            tool.type === roadDef.id
                                             ? { kind: 'select' }
-                                            : { kind: 'build', type: 'road' },
+                                            : {
+                                                  kind: 'build',
+                                                  type: roadDef.id,
+                                                  level:
+                                                      levels[roadDef.id] ??
+                                                      game
+                                                          .availableLevels(
+                                                              roadDef,
+                                                          )
+                                                          .at(-1) ??
+                                                      1,
+                                              },
                                     )
                                 }
                                 title="Дороги (R)"
@@ -1042,6 +1360,33 @@ export default function EpochsGame() {
                                 🧨 <span>Снос</span>
                             </button>
                             <span className="toolbar__sep" />
+                            <button
+                                type="button"
+                                aria-pressed={panel === 'tech'}
+                                onClick={() => setPanel('tech')}
+                                title="Технологии (T)"
+                            >
+                                🔬 <span>Наука</span>
+                                {!game.state.research && (
+                                    <i className="toolbar__dot" />
+                                )}
+                            </button>
+                            <button
+                                type="button"
+                                aria-pressed={panel === 'bureau'}
+                                onClick={() => setPanel('bureau')}
+                                title="Бюро архитекторов: чертежи"
+                            >
+                                📐 <span>Чертежи</span>
+                            </button>
+                            <button
+                                type="button"
+                                aria-pressed={panel === 'goals'}
+                                onClick={() => setPanel('goals')}
+                                title="Цели и достижения (G)"
+                            >
+                                🏆 <span>Цели</span>
+                            </button>
                             <button
                                 type="button"
                                 onClick={() => setPanel('stats')}
@@ -1069,48 +1414,26 @@ export default function EpochsGame() {
                             {loaded?.editable && (
                                 <Link
                                     className="toolbar__link"
-                                    to="/epochs/workshop"
+                                    to="/city2/workshop"
                                     title="Мастерская: настройки игры"
                                 >
                                     🛠️ <span>Мастерская</span>
                                 </Link>
                             )}
-                            <span className="toolbar__sep" />
-                            <button
-                                type="button"
-                                onClick={() => rendererRef.current?.zoomAt(1.2)}
-                                title="Приблизить (+)"
-                            >
-                                ＋
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() =>
-                                    rendererRef.current?.zoomAt(1 / 1.2)
-                                }
-                                title="Отдалить (−)"
-                            >
-                                －
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    const center = game.center;
-
-                                    rendererRef.current?.centerOn(
-                                        center ? center.x + 1 : 32,
-                                        center ? center.y + 1 : 32,
-                                    );
-                                }}
-                                title="К центру города"
-                            >
-                                🎯
-                            </button>
                         </nav>
                     </div>
 
                     {panel === 'stats' && (
                         <Stats game={game} onClose={() => setPanel(null)} />
+                    )}
+                    {panel === 'tech' && (
+                        <TechTree game={game} onClose={() => setPanel(null)} />
+                    )}
+                    {panel === 'bureau' && (
+                        <Bureau game={game} onClose={() => setPanel(null)} />
+                    )}
+                    {panel === 'goals' && (
+                        <Goals game={game} onClose={() => setPanel(null)} />
                     )}
                     {panel === 'epoch' && (
                         <EpochPanel
@@ -1138,7 +1461,7 @@ export default function EpochsGame() {
                                 {loaded?.editable && (
                                     <Link
                                         className="hud-button hud-button--big"
-                                        to="/epochs/workshop"
+                                        to="/city2/workshop"
                                     >
                                         🛠️ Мастерская
                                     </Link>
@@ -1157,19 +1480,118 @@ export default function EpochsGame() {
                                 >
                                     🔄 Начать новый мир
                                 </button>
+                                <div className="game-menu__quality">
+                                    <b>🖥️ Графика</b>
+                                    <div
+                                        className="hud-speed"
+                                        role="group"
+                                        aria-label="Качество графики"
+                                    >
+                                        {(
+                                            [
+                                                ['low', 'Быстро'],
+                                                ['medium', 'Средне'],
+                                                ['high', 'Красиво'],
+                                            ] as const
+                                        ).map(([value, label]) => (
+                                            <button
+                                                key={value}
+                                                type="button"
+                                                aria-pressed={quality === value}
+                                                onClick={() =>
+                                                    setQuality(value)
+                                                }
+                                            >
+                                                {label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                    <span>
+                                        Сейчас {fps} кадров/с. Если игра
+                                        тормозит — выберите «Быстро»: без теней
+                                        и с обычной чёткостью.
+                                    </span>
+                                </div>
+                                {loaded?.editable && (
+                                    <div className="game-menu__tester">
+                                        <b>🧪 Режим тестера</b>
+                                        <span>
+                                            Виден только редакторам игры.
+                                            Скорость ×20 и ×50 — в верхней
+                                            панели.
+                                        </span>
+                                        <label className="game-menu__toggle">
+                                            <input
+                                                type="checkbox"
+                                                checked={infinite}
+                                                onChange={(event) =>
+                                                    setInfinite(
+                                                        event.target.checked,
+                                                    )
+                                                }
+                                            />
+                                            ♾️ Бесконечные ресурсы — всё
+                                            бесплатно, склады всегда полные
+                                        </label>
+                                        <div>
+                                            <button
+                                                type="button"
+                                                className="hud-button"
+                                                onClick={() =>
+                                                    game.testerGrant()
+                                                }
+                                            >
+                                                💰 Заполнить ресурсы
+                                            </button>
+                                            <button
+                                                type="button"
+                                                className="hud-button"
+                                                onClick={() =>
+                                                    game.testerFinish()
+                                                }
+                                            >
+                                                ⚡ Достроить всё
+                                            </button>
+                                            <button
+                                                type="button"
+                                                className="hud-button"
+                                                onClick={() =>
+                                                    game.testerResearchAll()
+                                                }
+                                            >
+                                                🔬 Изучить всё в эпохе
+                                            </button>
+                                            <button
+                                                type="button"
+                                                className="hud-button"
+                                                disabled={!game.epoch.next}
+                                                onClick={() => {
+                                                    game.testerNextEpoch();
+                                                    setPanel(null);
+                                                }}
+                                            >
+                                                ⏭ Следующая эпоха
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
                                 <div className="game-menu__keys">
                                     <b>Управление</b>
                                     <span>
-                                        Перетаскивание / WASD / стрелки —
-                                        двигать карту
-                                    </span>
-                                    <span>Колесо / + − — масштаб</span>
-                                    <span>
-                                        Клик по жителю — его имя, работа, мысли
+                                        Левая кнопка — двигать карту · правая
+                                        (или Shift) — вращать и наклонять
                                     </span>
                                     <span>
-                                        B — строить · R — дорога · X — снос ·
-                                        Пробел — пауза
+                                        Колесо / + − — масштаб · Q / E — поворот
+                                        · PageUp / PageDown — наклон
+                                    </span>
+                                    <span>
+                                        Клик по зданию ещё раз — выбрать то, что
+                                        за ним · V — прозрачные здания
+                                    </span>
+                                    <span>
+                                        B — строить · R — дорога · X — снос · T
+                                        — наука · G — цели · Пробел — пауза
                                     </span>
                                 </div>
                             </div>

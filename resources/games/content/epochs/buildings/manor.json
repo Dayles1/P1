@@ -1,0 +1,464 @@
+{
+    "id": "manor",
+    "name": "Усадьба",
+    "icon": "🏡",
+    "category": "housing",
+    "description": "Дом знати и богачей: людей вмещает немного, зато приносит золото и радует соседей.",
+    "size": { "w": 2, "h": 2 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": null },
+    "levels": [
+        {
+            "level": 1,
+            "name": "Усадьба",
+            "epoch": "e1000",
+            "description": "Бревенчатый господский дом с садом и амбаром.",
+            "cost": { "wood": 120, "stone": 80, "gold": 150 },
+            "buildTime": 15,
+            "effects": {
+                "housing": 8,
+                "jobs": 0,
+                "produces": { "gold": 0.3 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 3, "happiness": 6 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#9db36a" },
+                    { "kind": "box", "x": 0.3, "y": 0.4, "z": 0, "w": 1.2, "d": 0.7, "h": 0.45, "color": "walls" },
+                    {
+                        "kind": "beams",
+                        "faces": ["n", "e", "s", "w"],
+                        "x": 0.3,
+                        "y": 0.4,
+                        "z": 0,
+                        "w": 1.2,
+                        "d": 0.7,
+                        "h": 0.45,
+                        "count": 9,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e", "w"],
+                        "x": 0.3,
+                        "y": 0.4,
+                        "z": 0.06,
+                        "w": 1.2,
+                        "d": 0.7,
+                        "h": 0.35,
+                        "rows": 1,
+                        "cols": 4,
+                        "color": "window"
+                    },
+                    { "kind": "door", "face": "s", "x": 0.3, "y": 0.4, "w": 1.2, "d": 0.7, "width": 0.14, "height": 0.2, "color": "trim" },
+                    { "kind": "roof", "shape": "gable", "x": 0.3, "y": 0.4, "z": 0.45, "w": 1.2, "d": 0.7, "h": 0.42, "color": "roof", "axis": "x", "overhang": 0.04 },
+                    { "kind": "box", "x": 1.25, "y": 1.35, "z": 0, "w": 0.5, "d": 0.4, "h": 0.3, "color": "walls" },
+                    { "kind": "roof", "shape": "gable", "x": 1.25, "y": 1.35, "z": 0.3, "w": 0.5, "d": 0.4, "h": 0.22, "color": "roof", "axis": "x" },
+                    { "kind": "cylinder", "x": 0.55, "y": 0.6, "z": 0.7, "r": 0.05, "h": 0.22, "color": "#7b6f66", "segments": 8 },
+                    { "kind": "emitter", "x": 0.55, "y": 0.6, "z": 0.92, "type": "smoke" },
+                    { "kind": "box", "x": 0.05, "y": 1.92, "z": 0, "w": 1.9, "d": 0.03, "h": 0.1, "color": "trim" },
+                    { "kind": "tree", "x": 0.25, "y": 1.5, "scale": 0.6, "conifer": false },
+                    { "kind": "tree", "x": 0.65, "y": 1.7, "scale": 0.5, "conifer": false },
+                    { "kind": "tree", "x": 1.8, "y": 0.3, "scale": 0.6, "conifer": false },
+                    { "kind": "pole", "x": 0.95, "y": 1.25, "z": 0, "h": 0.24, "color": "#5a3e26", "blink": null },
+                    { "kind": "light", "x": 0.95, "y": 1.25, "z": 0.24, "radius": 1, "color": "#ffad4a" }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "name": "Палаццо",
+            "epoch": "e1500",
+            "description": "Дворец богатой семьи с внутренним двором, кипарисами и фонтаном.",
+            "cost": { "bricks": 200, "glass": 40, "stone": 150, "gold": 600 },
+            "buildTime": 20,
+            "effects": {
+                "housing": 14,
+                "jobs": 0,
+                "produces": { "gold": 0.8 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 4, "happiness": 8 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "box", "x": 0.2, "y": 0.2, "z": 0, "w": 1.6, "d": 1.2, "h": 0.72, "color": "walls" },
+                    { "kind": "box", "x": 0.2, "y": 0.2, "z": 0.34, "w": 1.6, "d": 1.2, "h": 0.03, "color": "trim" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e", "w", "n"],
+                        "x": 0.2,
+                        "y": 0.2,
+                        "z": 0.07,
+                        "w": 1.6,
+                        "d": 1.2,
+                        "h": 0.6,
+                        "rows": 2,
+                        "cols": 6,
+                        "color": "window"
+                    },
+                    { "kind": "door", "face": "s", "x": 0.2, "y": 0.2, "w": 1.6, "d": 1.2, "width": 0.24, "height": 0.26, "color": "trim" },
+                    { "kind": "box", "x": 0.18, "y": 0.18, "z": 0.72, "w": 1.64, "d": 1.24, "h": 0.05, "color": "trim" },
+                    { "kind": "roof", "shape": "hip", "x": 0.2, "y": 0.2, "z": 0.77, "w": 1.6, "d": 1.2, "h": 0.22, "color": "roof", "overhang": 0.06 },
+                    { "kind": "cylinder", "x": 1, "y": 1.68, "z": 0, "r": 0.14, "h": 0.08, "color": "trim", "segments": 16 },
+                    { "kind": "emitter", "x": 1, "y": 1.68, "z": 0.1, "type": "water" },
+                    { "kind": "tree", "x": 0.15, "y": 1.6, "scale": 0.55, "conifer": true },
+                    { "kind": "tree", "x": 1.85, "y": 1.6, "scale": 0.55, "conifer": true },
+                    { "kind": "tree", "x": 0.4, "y": 1.85, "scale": 0.5, "conifer": true },
+                    { "kind": "tree", "x": 1.6, "y": 1.85, "scale": 0.5, "conifer": true }
+                ]
+            }
+        },
+        {
+            "level": 3,
+            "name": "Особняк",
+            "epoch": "e1800",
+            "description": "Кирпичный особняк с колоннадой, каминами и газовыми фонарями.",
+            "cost": { "bricks": 500, "glass": 120, "steel": 40, "gold": 1800 },
+            "buildTime": 25,
+            "effects": {
+                "housing": 20,
+                "jobs": 0,
+                "produces": { "gold": 1.5 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 4, "happiness": 10 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#7fa05a" },
+                    { "kind": "box", "x": 0.25, "y": 0.2, "z": 0, "w": 1.5, "d": 1, "h": 0.8, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e", "w"],
+                        "x": 0.25,
+                        "y": 0.2,
+                        "z": 0.06,
+                        "w": 1.5,
+                        "d": 1,
+                        "h": 0.7,
+                        "rows": 2,
+                        "cols": 5,
+                        "color": "window"
+                    },
+                    { "kind": "door", "face": "s", "x": 0.25, "y": 0.2, "w": 1.5, "d": 1, "width": 0.22, "height": 0.26, "color": "trim" },
+                    { "kind": "roof", "shape": "mansard", "x": 0.25, "y": 0.2, "z": 0.8, "w": 1.5, "d": 1, "h": 0.3, "color": "roof", "overhang": 0.04 },
+                    { "kind": "box", "x": 0.7, "y": 1.2, "z": 0.5, "w": 0.6, "d": 0.25, "h": 0.05, "color": "trim" },
+                    { "kind": "cylinder", "x": 0.75, "y": 1.4, "z": 0, "r": 0.04, "h": 0.5, "color": "trim" },
+                    { "kind": "cylinder", "x": 0.92, "y": 1.4, "z": 0, "r": 0.04, "h": 0.5, "color": "trim" },
+                    { "kind": "cylinder", "x": 1.08, "y": 1.4, "z": 0, "r": 0.04, "h": 0.5, "color": "trim" },
+                    { "kind": "cylinder", "x": 1.25, "y": 1.4, "z": 0, "r": 0.04, "h": 0.5, "color": "trim" },
+                    { "kind": "cylinder", "x": 0.4, "y": 0.35, "z": 1, "r": 0.05, "h": 0.25, "color": "#7a3e2e", "segments": 8 },
+                    { "kind": "emitter", "x": 0.4, "y": 0.35, "z": 1.25, "type": "smoke" },
+                    { "kind": "cylinder", "x": 1.6, "y": 0.35, "z": 1, "r": 0.05, "h": 0.25, "color": "#7a3e2e", "segments": 8 },
+                    { "kind": "emitter", "x": 1.6, "y": 0.35, "z": 1.25, "type": "smoke" },
+                    { "kind": "pole", "x": 0.3, "y": 1.85, "z": 0, "h": 0.4, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.3, "y": 1.85, "z": 0.4, "radius": 1.4, "color": "#f3c86b" },
+                    { "kind": "pole", "x": 1.7, "y": 1.85, "z": 0, "h": 0.4, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.7, "y": 1.85, "z": 0.4, "radius": 1.4, "color": "#f3c86b" },
+                    { "kind": "tree", "x": 0.15, "y": 0.15, "scale": 0.5, "conifer": false },
+                    { "kind": "tree", "x": 1.85, "y": 1.3, "scale": 0.55, "conifer": false }
+                ]
+            }
+        },
+        {
+            "level": 4,
+            "name": "Вилла модерн",
+            "epoch": "e1900",
+            "description": "Асимметричная вилла с плавными линиями, башенкой и медной крышей.",
+            "cost": { "concrete": 300, "glass": 250, "steel": 100, "gold": 4000 },
+            "buildTime": 30,
+            "effects": {
+                "housing": 28,
+                "jobs": 0,
+                "produces": { "gold": 3 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 2,
+                "aura": { "radius": 5, "happiness": 12 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#86a86a" },
+                    { "kind": "box", "x": 0.2, "y": 0.3, "z": 0, "w": 1.2, "d": 0.9, "h": 0.75, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e", "w"],
+                        "x": 0.2,
+                        "y": 0.3,
+                        "z": 0.06,
+                        "w": 1.2,
+                        "d": 0.9,
+                        "h": 0.65,
+                        "rows": 2,
+                        "cols": 4,
+                        "color": "window"
+                    },
+                    { "kind": "door", "face": "s", "x": 0.2, "y": 0.3, "w": 1.2, "d": 0.9, "width": 0.14, "height": 0.2, "color": "trim" },
+                    { "kind": "roof", "shape": "hip", "x": 0.2, "y": 0.3, "z": 0.75, "w": 1.2, "d": 0.9, "h": 0.3, "color": "roof", "overhang": 0.04 },
+                    { "kind": "cylinder", "x": 1.45, "y": 0.6, "z": 0, "r": 0.28, "h": 1.1, "color": "walls", "segments": 16 },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e"],
+                        "x": 1.17,
+                        "y": 0.32,
+                        "z": 0.1,
+                        "w": 0.56,
+                        "d": 0.56,
+                        "h": 0.9,
+                        "rows": 3,
+                        "cols": 2,
+                        "color": "window"
+                    },
+                    { "kind": "sphere", "x": 1.45, "y": 0.6, "z": 1.1, "r": 0.28, "color": "roof", "half": true },
+                    { "kind": "pole", "x": 1.45, "y": 0.6, "z": 1.38, "h": 0.2, "color": "metal", "blink": null },
+                    { "kind": "box", "x": 0.4, "y": 1.2, "z": 0, "w": 0.8, "d": 0.3, "h": 0.3, "color": "glass", "material": "glass" },
+                    { "kind": "pole", "x": 0.2, "y": 1.85, "z": 0, "h": 0.42, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.2, "y": 1.85, "z": 0.42, "radius": 1.4, "color": "#ffd98a" },
+                    { "kind": "tree", "x": 1.6, "y": 1.6, "scale": 0.6, "conifer": false },
+                    { "kind": "tree", "x": 1.85, "y": 1.2, "scale": 0.45, "conifer": false }
+                ]
+            }
+        },
+        {
+            "level": 5,
+            "name": "Пентхаус-комплекс",
+            "epoch": "e2000",
+            "description": "Две стеклянные башни с бассейном на крыше.",
+            "cost": { "glass": 800, "steel": 400, "concrete": 600, "electronics": 40, "gold": 9000 },
+            "buildTime": 40,
+            "effects": {
+                "housing": 45,
+                "jobs": 0,
+                "produces": { "gold": 6 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 4,
+                "aura": { "radius": 5, "happiness": 14 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0, "w": 1.8, "d": 1.8, "h": 0.3, "color": "walls" },
+                    { "kind": "floors", "x": 0.2, "y": 0.2, "z": 0.3, "w": 0.7, "d": 0.7, "floors": 8, "floorHeight": 0.22, "color": "glass", "window": "window", "band": "metal", "material": "glass" },
+                    { "kind": "roof", "shape": "flat", "x": 0.2, "y": 0.2, "z": 2.06, "w": 0.7, "d": 0.7, "h": 0.05, "color": "metal" },
+                    { "kind": "floors", "x": 1.1, "y": 1, "z": 0.3, "w": 0.7, "d": 0.7, "floors": 10, "floorHeight": 0.22, "color": "glass", "window": "window", "band": "metal", "material": "glass" },
+                    { "kind": "roof", "shape": "flat", "x": 1.1, "y": 1, "z": 2.5, "w": 0.7, "d": 0.7, "h": 0.05, "color": "metal" },
+                    { "kind": "box", "x": 1.15, "y": 1.05, "z": 2.55, "w": 0.6, "d": 0.4, "h": 0.04, "color": "#4fb3e0", "material": "glass" },
+                    { "kind": "box", "x": 0.9, "y": 0.5, "z": 1.2, "w": 0.3, "d": 0.2, "h": 0.1, "color": "metal", "material": "metal" },
+                    { "kind": "tree", "x": 1.5, "y": 0.4, "scale": 0.5, "conifer": false },
+                    { "kind": "tree", "x": 0.4, "y": 1.6, "scale": 0.5, "conifer": false },
+                    { "kind": "light", "x": 1.45, "y": 1.35, "z": 2.6, "radius": 1.2, "color": "#7fd3ff" }
+                ]
+            }
+        },
+        {
+            "level": 6,
+            "name": "Эко-поместье",
+            "epoch": "e2100",
+            "description": "Террасы с садами на крышах, стеклянные стены и солнечные панели.",
+            "cost": { "composites": 300, "glass": 1000, "electronics": 100, "gold": 16000 },
+            "buildTime": 45,
+            "effects": {
+                "housing": 60,
+                "jobs": 0,
+                "produces": { "gold": 10 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 5,
+                "aura": { "radius": 6, "happiness": 16 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#8ad06a" },
+                    { "kind": "box", "x": 0.15, "y": 0.15, "z": 0, "w": 1.7, "d": 1.1, "h": 0.35, "color": "glass", "material": "glass" },
+                    { "kind": "roof", "shape": "flat", "x": 0.15, "y": 0.15, "z": 0.35, "w": 1.7, "d": 1.1, "h": 0.05, "color": "roof" },
+                    { "kind": "box", "x": 0.35, "y": 0.25, "z": 0.4, "w": 1.2, "d": 0.8, "h": 0.35, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e", "w"],
+                        "x": 0.35,
+                        "y": 0.25,
+                        "z": 0.42,
+                        "w": 1.2,
+                        "d": 0.8,
+                        "h": 0.28,
+                        "rows": 1,
+                        "cols": 5,
+                        "color": "glass"
+                    },
+                    { "kind": "roof", "shape": "flat", "x": 0.35, "y": 0.25, "z": 0.75, "w": 1.2, "d": 0.8, "h": 0.05, "color": "roof" },
+                    { "kind": "box", "x": 0.5, "y": 0.35, "z": 0.8, "w": 0.8, "d": 0.5, "h": 0.03, "color": "#1d3f6e", "material": "metal" },
+                    { "kind": "tree", "x": 0.3, "y": 0.3, "scale": 0.35, "conifer": false },
+                    { "kind": "tree", "x": 1.7, "y": 0.3, "scale": 0.35, "conifer": false },
+                    { "kind": "tree", "x": 0.3, "y": 1.6, "scale": 0.6, "conifer": false },
+                    { "kind": "tree", "x": 1, "y": 1.7, "scale": 0.5, "conifer": false },
+                    { "kind": "tree", "x": 1.7, "y": 1.6, "scale": 0.6, "conifer": false },
+                    { "kind": "light", "x": 1, "y": 1.35, "z": 0.1, "radius": 1.5, "color": "#b5fff0" }
+                ]
+            }
+        },
+        {
+            "level": 7,
+            "name": "Орбитальная вилла",
+            "epoch": "e2300",
+            "description": "Жилой купол со своей посадочной площадкой и вращающимся кольцом.",
+            "cost": { "composites": 800, "rare_metals": 150, "hydrogen": 300, "gold": 30000 },
+            "buildTime": 50,
+            "effects": {
+                "housing": 80,
+                "jobs": 0,
+                "produces": { "gold": 16 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 8,
+                "aura": { "radius": 6, "happiness": 18 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "cylinder", "x": 0.85, "y": 0.85, "z": 0, "r": 0.75, "h": 0.2, "color": "metal", "segments": 24, "material": "metal" },
+                    { "kind": "sphere", "x": 0.85, "y": 0.85, "z": 0.2, "r": 0.7, "color": "glass", "half": true, "material": "glass" },
+                    { "kind": "box", "x": 0.6, "y": 0.6, "z": 0.2, "w": 0.5, "d": 0.5, "h": 0.4, "color": "walls" },
+                    { "kind": "torus", "x": 0.85, "y": 0.85, "z": 0.5, "r": 0.75, "tube": 0.04, "color": "trim", "spin": 0.04 },
+                    { "kind": "cylinder", "x": 1.6, "y": 1.6, "z": 0, "r": 0.3, "h": 0.06, "color": "trim", "segments": 16 },
+                    { "kind": "light", "x": 1.6, "y": 1.6, "z": 0.1, "radius": 0.8, "color": "#f0a43a" },
+                    { "kind": "pole", "x": 1.85, "y": 0.2, "z": 0, "h": 0.6, "color": "metal", "blink": "#f0a43a" }
+                ]
+            }
+        },
+        {
+            "level": 8,
+            "name": "ИИ-резиденция",
+            "epoch": "e2500",
+            "description": "Консольные этажи, светящиеся грани и домашний ИИ.",
+            "cost": { "ai_cores": 40, "composites": 1500, "rare_metals": 300, "gold": 50000 },
+            "buildTime": 60,
+            "effects": {
+                "housing": 100,
+                "jobs": 0,
+                "produces": { "gold": 25 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 10,
+                "aura": { "radius": 7, "happiness": 20 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "box", "x": 0.6, "y": 0.6, "z": 0, "w": 0.8, "d": 0.8, "h": 0.5, "color": "walls" },
+                    { "kind": "box", "x": 0.15, "y": 0.3, "z": 0.5, "w": 1.4, "d": 0.9, "h": 0.4, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e", "w", "n"],
+                        "x": 0.15,
+                        "y": 0.3,
+                        "z": 0.52,
+                        "w": 1.4,
+                        "d": 0.9,
+                        "h": 0.34,
+                        "rows": 1,
+                        "cols": 6,
+                        "color": "accent"
+                    },
+                    { "kind": "box", "x": 0.15, "y": 0.3, "z": 0.9, "w": 1.4, "d": 0.9, "h": 0.03, "color": "trim", "material": "glow" },
+                    { "kind": "box", "x": 0.5, "y": 0.15, "z": 0.93, "w": 1.3, "d": 0.8, "h": 0.35, "color": "glass", "material": "glass" },
+                    { "kind": "box", "x": 0.5, "y": 0.15, "z": 1.28, "w": 1.3, "d": 0.8, "h": 0.03, "color": "trim", "material": "glow" },
+                    { "kind": "box", "x": 0.3, "y": 1.4, "z": 0, "w": 0.6, "d": 0.4, "h": 0.03, "color": "#4f6cff", "material": "glass" },
+                    { "kind": "light", "x": 1, "y": 1, "z": 1.4, "radius": 2, "color": "#c06cff" }
+                ]
+            }
+        },
+        {
+            "level": 9,
+            "name": "Нано-дворец",
+            "epoch": "e3000",
+            "description": "Сферы и шпили из живого материала, переливающиеся всеми цветами.",
+            "cost": { "nanomaterials": 150, "ai_cores": 60, "antimatter": 5, "gold": 80000 },
+            "buildTime": 70,
+            "effects": {
+                "housing": 130,
+                "jobs": 0,
+                "produces": { "gold": 40 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 12,
+                "aura": { "radius": 8, "happiness": 24 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "sphere", "x": 1, "y": 1, "z": 0, "r": 0.7, "color": "walls", "half": true },
+                    { "kind": "sphere", "x": 1, "y": 1, "z": 0.95, "r": 0.35, "color": "glass", "material": "glass" },
+                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0.6, "r": 0.12, "h": 1, "color": "walls", "taper": 0.4 },
+                    { "kind": "cylinder", "x": 0.35, "y": 0.35, "z": 0, "r": 0.12, "h": 1.1, "color": "walls", "taper": 0 },
+                    { "kind": "cylinder", "x": 1.65, "y": 0.35, "z": 0, "r": 0.12, "h": 1.1, "color": "walls", "taper": 0 },
+                    { "kind": "torus", "x": 1, "y": 1, "z": 0.7, "r": 0.75, "tube": 0.04, "color": "trim", "spin": 0.1, "material": "glow" },
+                    { "kind": "sphere", "x": 1, "y": 1, "z": 1.65, "r": 0.08, "color": "accent", "material": "glow" },
+                    { "kind": "light", "x": 1, "y": 1, "z": 1.7, "radius": 2.4, "color": "#ff7ad9" }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,100 @@
+{
+    "id": "electrolyzer",
+    "name": "Электролизёр",
+    "icon": "💧",
+    "category": "resources",
+    "description": "Расщепляет воду на водород электричеством. Ставится не дальше двух клеток от воды и требует много энергии.",
+    "size": { "w": 2, "h": 2 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true, "nearWater": 2 },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": "hum" },
+    "levels": [
+        {
+            "level": 1,
+            "name": "Электролизёр",
+            "epoch": "e2300",
+            "tech": "hydrogen_economy",
+            "description": "Ряды ячеек электролиза и шаровые резервуары водорода.",
+            "cost": { "composites": 800, "electronics": 300, "glass": 1000, "gold": 15000 },
+            "buildTime": 50,
+            "effects": {
+                "housing": 0,
+                "jobs": 10,
+                "produces": { "hydrogen": 4 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 40,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0, "w": 1, "d": 1.8, "h": 0.4, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["e", "w"],
+                        "x": 0.1,
+                        "y": 0.1,
+                        "z": 0.05,
+                        "w": 1,
+                        "d": 1.8,
+                        "h": 0.3,
+                        "rows": 1,
+                        "cols": 6,
+                        "color": "glass"
+                    },
+                    { "kind": "roof", "shape": "flat", "x": 0.1, "y": 0.1, "z": 0.4, "w": 1, "d": 1.8, "h": 0.04, "color": "roof" },
+                    { "kind": "sphere", "x": 1.5, "y": 0.5, "z": 0.35, "r": 0.3, "color": "metal", "material": "metal" },
+                    { "kind": "cylinder", "x": 1.5, "y": 0.5, "z": 0, "r": 0.08, "h": 0.35, "color": "trim" },
+                    { "kind": "sphere", "x": 1.5, "y": 1.4, "z": 0.35, "r": 0.3, "color": "metal", "material": "metal" },
+                    { "kind": "cylinder", "x": 1.5, "y": 1.4, "z": 0, "r": 0.08, "h": 0.35, "color": "trim" },
+                    { "kind": "box", "x": 1.1, "y": 0.9, "z": 0.2, "w": 0.4, "d": 0.06, "h": 0.06, "color": "trim" },
+                    { "kind": "emitter", "x": 0.6, "y": 0.6, "z": 0.45, "type": "steam" },
+                    { "kind": "light", "x": 1.5, "y": 0.95, "z": 0.3, "radius": 1.2, "color": "#9fd2ff" }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "name": "Плазменный электролизёр",
+            "epoch": "e2500",
+            "description": "Плазменная камера с ИИ-управлением: втрое больше водорода.",
+            "cost": { "ai_cores": 20, "composites": 1500, "rare_metals": 300, "gold": 30000 },
+            "buildTime": 60,
+            "effects": {
+                "housing": 0,
+                "jobs": 10,
+                "produces": { "hydrogen": 10 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 70,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "cylinder", "x": 0.7, "y": 0.7, "z": 0, "r": 0.55, "h": 0.7, "color": "walls", "segments": 24 },
+                    { "kind": "torus", "x": 0.7, "y": 0.7, "z": 0.75, "r": 0.45, "tube": 0.06, "color": "accent", "spin": 0.3, "material": "glow" },
+                    { "kind": "sphere", "x": 0.7, "y": 0.7, "z": 0.7, "r": 0.3, "color": "glass", "half": true, "material": "glass" },
+                    { "kind": "sphere", "x": 1.55, "y": 1.55, "z": 0.35, "r": 0.33, "color": "metal", "material": "metal" },
+                    { "kind": "cylinder", "x": 1.55, "y": 1.55, "z": 0, "r": 0.08, "h": 0.35, "color": "trim" },
+                    { "kind": "sphere", "x": 1.55, "y": 0.45, "z": 0.3, "r": 0.28, "color": "metal", "material": "metal" },
+                    { "kind": "cylinder", "x": 1.55, "y": 0.45, "z": 0, "r": 0.08, "h": 0.3, "color": "trim" },
+                    { "kind": "emitter", "x": 0.7, "y": 0.7, "z": 1, "type": "steam" },
+                    { "kind": "light", "x": 0.7, "y": 0.7, "z": 1, "radius": 1.8, "color": "#c06cff" }
+                ]
+            }
+        }
+    ]
+}

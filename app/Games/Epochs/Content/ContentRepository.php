@@ -8,7 +8,7 @@ use JsonException;
 use stdClass;
 
 /**
- * The game's content files — the settings everything in "City of Eras" is
+ * The game's content files — the settings everything in "Летопись города 2" is
  * built from (map, biomes, climate, eras, resources, NPCs, sounds and one
  * file per building). Reads them for the game and writes them back for
  * the Workshop, always in the same human-friendly JSON layout.
@@ -16,7 +16,7 @@ use stdClass;
 class ContentRepository
 {
     /** Top-level files, by key. Buildings are files in buildings/. */
-    public const array FILES = ['world', 'resources', 'biomes', 'climate', 'epochs', 'npcs', 'sounds'];
+    public const array FILES = ['world', 'resources', 'biomes', 'climate', 'epochs', 'techs', 'blueprints', 'goals', 'npcs', 'sounds'];
 
     public function path(string $relative = ''): string
     {

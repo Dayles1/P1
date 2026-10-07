@@ -1,33 +1,28 @@
 {
     "id": "storehouse",
     "name": "Склад",
-    "names": { "e1750": "Пакгауз", "e2000": "Логистический центр" },
     "icon": "📦",
-    "category": "infrastructure",
-    "description": "Увеличивает запас еды, дерева, камня и инструментов.",
-    "epoch": "e1000",
+    "category": "trade",
+    "description": "Увеличивает вместимость складов для всех ресурсов, которые копятся (кроме золота и знаний).",
     "size": { "w": 1, "h": 1 },
     "unique": false,
     "hidden": false,
     "placement": { "requiresRoad": true },
-    "sounds": {
-        "place": "place",
-        "upgrade": "upgrade",
-        "demolish": "demolish",
-        "select": "click",
-        "ambient": null
-    },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": null },
     "levels": [
         {
             "level": 1,
-            "cost": { "wood": 60, "stone": 20 },
-            "buildTime": 5,
+            "name": "Амбар",
+            "epoch": "e0",
+            "description": "Амбар на сваях от мышей, с кувшинами для зерна.",
+            "cost": { "wood": 40, "stone": 10 },
+            "buildTime": 6,
             "effects": {
                 "housing": 0,
                 "jobs": 1,
                 "produces": {},
                 "consumes": {},
-                "storage": 300,
+                "storage": 400,
                 "power": 0,
                 "powerUse": 0,
                 "aura": null,
@@ -39,61 +34,30 @@
             },
             "model": {
                 "parts": [
-                    {
-                        "kind": "box",
-                        "x": 0.1,
-                        "y": 0.18,
-                        "w": 0.8,
-                        "d": 0.64,
-                        "z": 0,
-                        "h": 14,
-                        "color": "walls"
-                    },
-                    {
-                        "kind": "door",
-                        "face": "left",
-                        "x": 0.1,
-                        "y": 0.18,
-                        "w": 0.8,
-                        "d": 0.64,
-                        "width": 0.36,
-                        "height": 10,
-                        "color": "trim"
-                    },
-                    {
-                        "kind": "roof",
-                        "shape": "gable",
-                        "x": 0.1,
-                        "y": 0.18,
-                        "w": 0.8,
-                        "d": 0.64,
-                        "z": 14,
-                        "h": 9,
-                        "color": "roof"
-                    },
-                    {
-                        "kind": "box",
-                        "x": 0.62,
-                        "y": 0.84,
-                        "w": 0.18,
-                        "d": 0.14,
-                        "z": 0,
-                        "h": 5,
-                        "color": "#9b7444"
-                    }
+                    { "kind": "pole", "x": 0.25, "y": 0.25, "z": 0, "h": 0.12, "color": "trim", "blink": null },
+                    { "kind": "pole", "x": 0.75, "y": 0.25, "z": 0, "h": 0.12, "color": "trim", "blink": null },
+                    { "kind": "pole", "x": 0.25, "y": 0.75, "z": 0, "h": 0.12, "color": "trim", "blink": null },
+                    { "kind": "pole", "x": 0.75, "y": 0.75, "z": 0, "h": 0.12, "color": "trim", "blink": null },
+                    { "kind": "box", "x": 0.18, "y": 0.18, "z": 0.12, "w": 0.64, "d": 0.64, "h": 0.28, "color": "walls" },
+                    { "kind": "door", "face": "s", "x": 0.18, "y": 0.18, "w": 0.64, "d": 0.64, "width": 0.14, "height": 0.154, "color": "trim" },
+                    { "kind": "roof", "shape": "gable", "x": 0.18, "y": 0.18, "z": 0.4, "w": 0.64, "d": 0.64, "h": 0.22, "color": "#c9a85a", "axis": "x", "overhang": 0.04 },
+                    { "kind": "cylinder", "x": 0.1, "y": 0.9, "z": 0, "r": 0.06, "h": 0.12, "color": "roof", "taper": 0.6 }
                 ]
             }
         },
         {
             "level": 2,
-            "cost": { "wood": 100, "stone": 80 },
-            "buildTime": 7,
+            "name": "Склад",
+            "epoch": "e1000",
+            "description": "Бревенчатый склад с широкими воротами.",
+            "cost": { "wood": 80, "stone": 80, "tools": 5 },
+            "buildTime": 9,
             "effects": {
                 "housing": 0,
                 "jobs": 2,
                 "produces": {},
                 "consumes": {},
-                "storage": 700,
+                "storage": 1000,
                 "power": 0,
                 "powerUse": 0,
                 "aura": null,
@@ -105,72 +69,39 @@
             },
             "model": {
                 "parts": [
+                    { "kind": "box", "x": 0.1, "y": 0.12, "z": 0, "w": 0.8, "d": 0.7, "h": 0.38, "color": "walls" },
                     {
-                        "kind": "box",
-                        "x": 0.08,
-                        "y": 0.15,
-                        "w": 0.84,
-                        "d": 0.7,
+                        "kind": "beams",
+                        "faces": ["n", "e", "s", "w"],
+                        "x": 0.1,
+                        "y": 0.12,
                         "z": 0,
-                        "h": 18,
-                        "color": "walls"
-                    },
-                    {
-                        "kind": "door",
-                        "face": "left",
-                        "x": 0.08,
-                        "y": 0.15,
-                        "w": 0.84,
+                        "w": 0.8,
                         "d": 0.7,
-                        "width": 0.36,
-                        "height": 12,
+                        "h": 0.38,
+                        "count": 7,
                         "color": "trim"
                     },
-                    {
-                        "kind": "roof",
-                        "shape": "gable",
-                        "x": 0.08,
-                        "y": 0.15,
-                        "w": 0.84,
-                        "d": 0.7,
-                        "z": 18,
-                        "h": 10,
-                        "color": "roof"
-                    },
-                    {
-                        "kind": "box",
-                        "x": 0.62,
-                        "y": 0.86,
-                        "w": 0.18,
-                        "d": 0.12,
-                        "z": 0,
-                        "h": 5,
-                        "color": "#9b7444"
-                    },
-                    {
-                        "kind": "box",
-                        "x": 0.2,
-                        "y": 0.86,
-                        "w": 0.18,
-                        "d": 0.12,
-                        "z": 0,
-                        "h": 5,
-                        "color": "#9b7444"
-                    }
+                    { "kind": "door", "face": "s", "x": 0.1, "y": 0.12, "w": 0.8, "d": 0.7, "width": 0.3, "height": 0.26, "color": "trim" },
+                    { "kind": "roof", "shape": "gable", "x": 0.1, "y": 0.12, "z": 0.38, "w": 0.8, "d": 0.7, "h": 0.28, "color": "roof", "axis": "x", "overhang": 0.04 },
+                    { "kind": "box", "x": 0.12, "y": 0.84, "z": 0, "w": 0.18, "d": 0.12, "h": 0.12, "color": "#8d6a43" },
+                    { "kind": "cylinder", "x": 0.85, "y": 0.9, "z": 0, "r": 0.06, "h": 0.14, "color": "#7a5532" }
                 ]
             }
         },
         {
             "level": 3,
-            "cost": { "stone": 250, "tools": 30, "gold": 150 },
-            "buildTime": 9,
-            "requiresEpoch": "e1750",
+            "name": "Пакгауз",
+            "epoch": "e1500",
+            "description": "Двухэтажный пакгауз с лебёдкой под коньком.",
+            "cost": { "bricks": 200, "wood": 120, "tools": 20, "gold": 150 },
+            "buildTime": 12,
             "effects": {
                 "housing": 0,
                 "jobs": 3,
                 "produces": {},
                 "consumes": {},
-                "storage": 1500,
+                "storage": 2500,
                 "power": 0,
                 "powerUse": 0,
                 "aura": null,
@@ -182,48 +113,195 @@
             },
             "model": {
                 "parts": [
+                    { "kind": "box", "x": 0.1, "y": 0.1, "z": 0, "w": 0.8, "d": 0.75, "h": 0.6, "color": "walls" },
                     {
-                        "kind": "box",
-                        "x": 0.06,
-                        "y": 0.12,
-                        "w": 0.88,
-                        "d": 0.76,
-                        "z": 0,
-                        "h": 22,
-                        "color": "wall"
-                    },
-                    {
-                        "kind": "door",
-                        "face": "left",
-                        "x": 0.06,
-                        "y": 0.12,
-                        "w": 0.88,
-                        "d": 0.76,
-                        "width": 0.4,
-                        "height": 14,
-                        "color": "metal"
-                    },
-                    {
-                        "kind": "roof",
-                        "shape": "flat",
-                        "x": 0.04,
+                        "kind": "beams",
+                        "faces": ["n", "e", "s", "w"],
+                        "x": 0.1,
                         "y": 0.1,
-                        "w": 0.92,
-                        "d": 0.8,
-                        "z": 22,
-                        "h": 3,
-                        "color": "roof"
+                        "z": 0,
+                        "w": 0.8,
+                        "d": 0.75,
+                        "h": 0.6,
+                        "count": 6,
+                        "color": "trim"
                     },
                     {
-                        "kind": "box",
-                        "x": 0.15,
-                        "y": 0.9,
-                        "w": 0.25,
-                        "d": 0.08,
-                        "z": 0,
-                        "h": 6,
+                        "kind": "windows",
+                        "faces": ["s", "e"],
+                        "x": 0.1,
+                        "y": 0.1,
+                        "z": 0.06,
+                        "w": 0.8,
+                        "d": 0.75,
+                        "h": 0.5,
+                        "rows": 2,
+                        "cols": 2,
+                        "color": "window"
+                    },
+                    { "kind": "door", "face": "s", "x": 0.1, "y": 0.1, "w": 0.8, "d": 0.75, "width": 0.24, "height": 0.24, "color": "trim" },
+                    { "kind": "roof", "shape": "gable", "x": 0.1, "y": 0.1, "z": 0.6, "w": 0.8, "d": 0.75, "h": 0.35, "color": "roof", "axis": "y", "overhang": 0.04 },
+                    { "kind": "box", "x": 0.45, "y": 0.82, "z": 0.62, "w": 0.1, "d": 0.12, "h": 0.06, "color": "trim" },
+                    { "kind": "pole", "x": 0.5, "y": 0.92, "z": 0.3, "h": 0.32, "color": "metal", "blink": null }
+                ]
+            }
+        },
+        {
+            "level": 4,
+            "name": "Товарный склад",
+            "epoch": "e1800",
+            "description": "Кирпичный склад у железнодорожной ветки.",
+            "cost": { "bricks": 500, "steel": 60, "gold": 500 },
+            "buildTime": 18,
+            "effects": {
+                "housing": 0,
+                "jobs": 4,
+                "produces": {},
+                "consumes": {},
+                "storage": 5000,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.06, "y": 0.06, "z": 0, "w": 0.88, "d": 0.65, "h": 0.5, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e"],
+                        "x": 0.06,
+                        "y": 0.06,
+                        "z": 0.06,
+                        "w": 0.88,
+                        "d": 0.65,
+                        "h": 0.4,
+                        "rows": 1,
+                        "cols": 4,
+                        "color": "window"
+                    },
+                    { "kind": "door", "face": "s", "x": 0.06, "y": 0.06, "w": 0.88, "d": 0.65, "width": 0.24, "height": 0.3, "color": "trim" },
+                    { "kind": "roof", "shape": "gable", "x": 0.06, "y": 0.06, "z": 0.5, "w": 0.88, "d": 0.65, "h": 0.18, "color": "roof", "axis": "x", "overhang": 0.04 },
+                    { "kind": "box", "x": 0.05, "y": 0.82, "z": 0, "w": 0.9, "d": 0.06, "h": 0.02, "color": "metal" },
+                    { "kind": "box", "x": 0.15, "y": 0.77, "z": 0.02, "w": 0.35, "d": 0.16, "h": 0.16, "color": "#5a3a2a" },
+                    { "kind": "pole", "x": 0.92, "y": 0.92, "z": 0, "h": 0.35, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.92, "y": 0.92, "z": 0.35, "radius": 1.4, "color": "#f3c86b" }
+                ]
+            }
+        },
+        {
+            "level": 5,
+            "name": "Логистический центр",
+            "epoch": "e2000",
+            "tech": "logistics",
+            "description": "Высокостеллажный ангар с доками для фур.",
+            "cost": { "concrete": 1500, "steel": 600, "gold": 4000 },
+            "buildTime": 30,
+            "effects": {
+                "housing": 0,
+                "jobs": 8,
+                "produces": {},
+                "consumes": {},
+                "storage": 15000,
+                "power": 0,
+                "powerUse": 3,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.05, "y": 0.05, "z": 0, "w": 0.9, "d": 0.7, "h": 0.6, "color": "#c9cfd6" },
+                    { "kind": "box", "x": 0.05, "y": 0.05, "z": 0.45, "w": 0.9, "d": 0.7, "h": 0.05, "color": "accent" },
+                    { "kind": "roof", "shape": "flat", "x": 0.05, "y": 0.05, "z": 0.6, "w": 0.9, "d": 0.7, "h": 0.03, "color": "roof" },
+                    { "kind": "door", "face": "s", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.7, "width": 0.2, "height": 0.25, "color": "#6f747b" },
+                    { "kind": "box", "x": 0.1, "y": 0.8, "z": 0, "w": 0.35, "d": 0.15, "h": 0.18, "color": "#f2f2f2" },
+                    { "kind": "box", "x": 0.55, "y": 0.8, "z": 0, "w": 0.35, "d": 0.15, "h": 0.18, "color": "#d64545" }
+                ]
+            }
+        },
+        {
+            "level": 6,
+            "name": "Автосклад",
+            "epoch": "e2100",
+            "description": "Роботы-кладовщики и вертикальные стеллажи до потолка.",
+            "cost": { "composites": 300, "electronics": 150, "steel": 1500, "gold": 9000 },
+            "buildTime": 40,
+            "effects": {
+                "housing": 0,
+                "jobs": 4,
+                "produces": {},
+                "consumes": {},
+                "storage": 30000,
+                "power": 0,
+                "powerUse": 6,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.05, "y": 0.05, "z": 0, "w": 0.9, "d": 0.9, "h": 1.1, "color": "walls" },
+                    { "kind": "box", "x": 0.05, "y": 0.05, "z": 0.35, "w": 0.9, "d": 0.9, "h": 0.03, "color": "trim", "material": "glow" },
+                    { "kind": "box", "x": 0.05, "y": 0.05, "z": 0.75, "w": 0.9, "d": 0.9, "h": 0.03, "color": "trim", "material": "glow" },
+                    { "kind": "roof", "shape": "flat", "x": 0.05, "y": 0.05, "z": 1.1, "w": 0.9, "d": 0.9, "h": 0.04, "color": "roof" },
+                    { "kind": "door", "face": "s", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "width": 0.24, "height": 0.25, "color": "glass" },
+                    { "kind": "pole", "x": 0.85, "y": 0.85, "z": 1.14, "h": 0.3, "color": "metal", "blink": "#2fb5a3" }
+                ]
+            }
+        },
+        {
+            "level": 7,
+            "name": "Квантовое хранилище",
+            "epoch": "e2500",
+            "description": "Материю хранят сжатой в стазисе: огромный объём в маленьком кубе.",
+            "cost": { "ai_cores": 20, "composites": 2000, "rare_metals": 500, "gold": 30000 },
+            "buildTime": 60,
+            "effects": {
+                "housing": 0,
+                "jobs": 4,
+                "produces": {},
+                "consumes": {},
+                "storage": 80000,
+                "power": 0,
+                "powerUse": 20,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.15, "y": 0.15, "z": 0, "w": 0.7, "d": 0.7, "h": 0.15, "color": "walls" },
+                    { "kind": "box", "x": 0.25, "y": 0.25, "z": 0.25, "w": 0.5, "d": 0.5, "h": 0.5, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["n", "e", "s", "w"],
+                        "x": 0.25,
+                        "y": 0.25,
+                        "z": 0.3,
+                        "w": 0.5,
+                        "d": 0.5,
+                        "h": 0.4,
+                        "rows": 2,
+                        "cols": 2,
                         "color": "accent"
-                    }
+                    },
+                    { "kind": "torus", "x": 0.5, "y": 0.5, "z": 0.2, "r": 0.35, "tube": 0.03, "color": "accent", "spin": 0.4, "material": "glow" },
+                    { "kind": "torus", "x": 0.5, "y": 0.5, "z": 0.8, "r": 0.3, "tube": 0.03, "color": "trim", "spin": -0.4, "material": "glow" },
+                    { "kind": "light", "x": 0.5, "y": 0.5, "z": 0.9, "radius": 1.4, "color": "#c06cff" }
                 ]
             }
         }

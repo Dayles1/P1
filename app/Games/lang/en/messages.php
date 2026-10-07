@@ -11,4 +11,6 @@ return [
     'content_in_use' => 'This building is still used by other settings.',
     'workshop_forbidden' => 'The Workshop is not available to you.',
     'content_unknown_file' => 'There is no such settings file.',
+    'rating_too_early' => 'You can rate a game once you have played it for at least 5 minutes.',
+    'player_fallback' => 'Player #:id',
 ];

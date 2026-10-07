@@ -10,7 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
- * The player's world in "City of Eras": load it, create it, save changes,
+ * The player's world in "Летопись города 2": load it, create it, save changes,
  * start over.
  */
 class WorldController extends GameController

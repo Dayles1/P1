@@ -1,0 +1,54 @@
+{
+    "id": "antimatter_collider",
+    "name": "Коллайдер антиматерии",
+    "icon": "✴️",
+    "category": "industry",
+    "description": "Огромное кольцо ускорителя рождает антиматерию по крупицам. Съедает море энергии.",
+    "size": { "w": 3, "h": 3 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": "hum" },
+    "levels": [
+        {
+            "level": 1,
+            "name": "Коллайдер антиматерии",
+            "epoch": "e3000",
+            "tech": "antimatter",
+            "description": "Кольцо ускорителя, магнитные ловушки и детектор в центре.",
+            "cost": { "nanomaterials": 300, "ai_cores": 300, "rare_metals": 3000, "gold": 150000 },
+            "buildTime": 90,
+            "effects": {
+                "housing": 0,
+                "jobs": 30,
+                "produces": { "antimatter": 0.05 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 600,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 2.9, "d": 2.9, "color": "plaza" },
+                    { "kind": "torus", "x": 1.5, "y": 1.5, "z": 0.2, "r": 1.2, "tube": 0.18, "color": "walls" },
+                    { "kind": "torus", "x": 1.5, "y": 1.5, "z": 0.2, "r": 1.2, "tube": 0.06, "color": "accent", "spin": 1.5, "material": "glow" },
+                    { "kind": "cylinder", "x": 1.5, "y": 1.5, "z": 0, "r": 0.45, "h": 0.8, "color": "walls", "segments": 24 },
+                    { "kind": "sphere", "x": 1.5, "y": 1.5, "z": 0.8, "r": 0.45, "color": "glass", "half": true, "material": "glass" },
+                    { "kind": "sphere", "x": 1.5, "y": 1.5, "z": 0.9, "r": 0.18, "color": "accent", "material": "glow" },
+                    { "kind": "box", "x": 0.15, "y": 1.4, "z": 0, "w": 0.3, "d": 0.2, "h": 0.5, "color": "metal", "material": "metal" },
+                    { "kind": "box", "x": 2.55, "y": 1.4, "z": 0, "w": 0.3, "d": 0.2, "h": 0.5, "color": "metal", "material": "metal" },
+                    { "kind": "box", "x": 1.4, "y": 0.15, "z": 0, "w": 0.2, "d": 0.3, "h": 0.5, "color": "metal", "material": "metal" },
+                    { "kind": "box", "x": 1.4, "y": 2.55, "z": 0, "w": 0.2, "d": 0.3, "h": 0.5, "color": "metal", "material": "metal" },
+                    { "kind": "emitter", "x": 1.5, "y": 1.5, "z": 1.2, "type": "sparks" },
+                    { "kind": "light", "x": 1.5, "y": 1.5, "z": 1, "radius": 4, "color": "#ff7ad9" }
+                ]
+            }
+        }
+    ]
+}

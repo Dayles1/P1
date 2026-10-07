@@ -1,39 +1,231 @@
 {
     "id": "road",
     "name": "Дорога",
-    "names": {
-        "e1500": "Мощёная улица",
-        "e2000": "Асфальтовая дорога",
-        "e2500": "Магистраль"
-    },
-    "icon": "🛤️",
+    "icon": "🛣️",
     "category": "infrastructure",
-    "description": "Связывает здания с центром города. Здание без дороги до центра не работает. Тяните мышью, чтобы проложить линию.",
-    "epoch": "e1000",
+    "description": "Соединяет здания с центром города или управой района. Дороги рисуются в стиле своей эпохи.",
     "size": { "w": 1, "h": 1 },
     "unique": false,
     "hidden": false,
-    "render": "road",
+    "role": "road",
     "placement": { "requiresRoad": false },
-    "costByEpoch": {
-        "e1000": { "wood": 2 },
-        "e1500": { "stone": 3 },
-        "e1750": { "stone": 3 },
-        "e2000": { "stone": 4, "gold": 2 },
-        "e2500": { "stone": 5, "gold": 4 }
-    },
-    "sounds": {
-        "place": "click",
-        "upgrade": null,
-        "demolish": "demolish",
-        "select": "click",
-        "ambient": null
-    },
+    "sounds": { "place": "click", "upgrade": "click", "demolish": "demolish", "select": "click", "ambient": null },
     "levels": [
         {
             "level": 1,
-            "cost": { "wood": 2 },
-            "buildTime": 0,
+            "name": "Тропа",
+            "epoch": "e0",
+            "description": "Утоптанная земляная тропа.",
+            "cost": { "gold": 1 },
+            "buildTime": 1,
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": []
+            }
+        },
+        {
+            "level": 2,
+            "name": "Мостовая",
+            "epoch": "e1000",
+            "description": "Дорога, мощённая булыжником.",
+            "cost": { "stone": 4, "gold": 2 },
+            "buildTime": 1,
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": []
+            }
+        },
+        {
+            "level": 3,
+            "name": "Брусчатка",
+            "epoch": "e1500",
+            "description": "Ровная брусчатка с бордюром.",
+            "cost": { "stone": 6, "bricks": 2, "gold": 4 },
+            "buildTime": 1,
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": []
+            }
+        },
+        {
+            "level": 4,
+            "name": "Макадам",
+            "epoch": "e1800",
+            "description": "Щебёночное шоссе, укатанное катком.",
+            "cost": { "stone": 10, "gold": 8 },
+            "buildTime": 1,
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": []
+            }
+        },
+        {
+            "level": 5,
+            "name": "Асфальт",
+            "epoch": "e1900",
+            "description": "Асфальт с разметкой — для автомобилей.",
+            "cost": { "concrete": 6, "oil": 2, "gold": 15 },
+            "buildTime": 1,
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": []
+            }
+        },
+        {
+            "level": 6,
+            "name": "Магистраль",
+            "epoch": "e2000",
+            "description": "Широкая улица с фонарями и разметкой.",
+            "cost": { "concrete": 15, "steel": 4, "gold": 30 },
+            "buildTime": 1,
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": []
+            }
+        },
+        {
+            "level": 7,
+            "name": "Смарт-дорога",
+            "epoch": "e2100",
+            "description": "Датчики и светящаяся разметка.",
+            "cost": { "concrete": 20, "electronics": 2, "gold": 60 },
+            "buildTime": 1,
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": []
+            }
+        },
+        {
+            "level": 8,
+            "name": "Маглев-полоса",
+            "epoch": "e2300",
+            "description": "Магнитная полоса для парящего транспорта.",
+            "cost": { "composites": 10, "rare_metals": 1, "gold": 120 },
+            "buildTime": 1,
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": []
+            }
+        },
+        {
+            "level": 9,
+            "name": "Световая трасса",
+            "epoch": "e2500",
+            "description": "Трасса из света для дронов и аэромобилей.",
+            "cost": { "composites": 15, "gold": 200 },
+            "buildTime": 1,
             "effects": {
                 "housing": 0,
                 "jobs": 0,

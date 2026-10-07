@@ -1,0 +1,131 @@
+{
+    "id": "oil_well",
+    "name": "Нефтяная вышка",
+    "icon": "🛢️",
+    "category": "resources",
+    "description": "Качает нефть — топливо для машин, электростанций и сырьё для пластика.",
+    "size": { "w": 1, "h": 1 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": "machine" },
+    "levels": [
+        {
+            "level": 1,
+            "name": "Нефтяная вышка",
+            "epoch": "e1900",
+            "tech": "oil_drilling",
+            "description": "Деревянная буровая вышка и бочки с нефтью.",
+            "cost": { "steel": 150, "concrete": 50, "gold": 1200 },
+            "buildTime": 22,
+            "effects": {
+                "housing": 0,
+                "jobs": 5,
+                "produces": { "oil": 1.5 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": { "radius": 2, "amount": 6 },
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "#5a5248" },
+                    { "kind": "cylinder", "x": 0.45, "y": 0.45, "z": 0, "r": 0.3, "h": 1.4, "color": "trim", "taper": 0.15, "segments": 4 },
+                    {
+                        "kind": "beams",
+                        "faces": ["n", "e", "s", "w"],
+                        "x": 0.25,
+                        "y": 0.25,
+                        "z": 0,
+                        "w": 0.4,
+                        "d": 0.4,
+                        "h": 0.8,
+                        "count": 3,
+                        "color": "#3a2e22"
+                    },
+                    { "kind": "cylinder", "x": 0.82, "y": 0.2, "z": 0, "r": 0.07, "h": 0.14, "color": "#2f2f35" },
+                    { "kind": "cylinder", "x": 0.82, "y": 0.38, "z": 0, "r": 0.07, "h": 0.14, "color": "#2f2f35" },
+                    { "kind": "box", "x": 0.1, "y": 0.75, "z": 0, "w": 0.3, "d": 0.2, "h": 0.2, "color": "walls" }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "name": "Насосная станция",
+            "epoch": "e2000",
+            "description": "Станок-качалка кивает день и ночь; рядом резервуар.",
+            "cost": { "steel": 400, "concrete": 200, "electronics": 10, "gold": 3500 },
+            "buildTime": 30,
+            "effects": {
+                "housing": 0,
+                "jobs": 6,
+                "produces": { "oil": 3.5 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 3,
+                "aura": null,
+                "pollution": { "radius": 2, "amount": 6 },
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "#6a645a" },
+                    { "kind": "box", "x": 0.15, "y": 0.2, "z": 0, "w": 0.12, "d": 0.1, "h": 0.35, "color": "#c43a2a" },
+                    { "kind": "box", "x": 0.08, "y": 0.2, "z": 0.35, "w": 0.5, "d": 0.08, "h": 0.06, "color": "#c43a2a" },
+                    { "kind": "box", "x": 0.52, "y": 0.18, "z": 0.2, "w": 0.08, "d": 0.12, "h": 0.18, "color": "#3a3a3a" },
+                    { "kind": "cylinder", "x": 0.65, "y": 0.65, "z": 0, "r": 0.25, "h": 0.4, "color": "metal", "segments": 16 },
+                    { "kind": "sphere", "x": 0.65, "y": 0.65, "z": 0.4, "r": 0.25, "color": "metal", "half": true },
+                    { "kind": "pole", "x": 0.1, "y": 0.9, "z": 0, "h": 0.4, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.1, "y": 0.9, "z": 0.4, "radius": 1.4, "color": "#ffe39a" }
+                ]
+            }
+        },
+        {
+            "level": 3,
+            "name": "Глубоководная платформа",
+            "epoch": "e2100",
+            "description": "Стальные опоры, буровая и факел попутного газа.",
+            "cost": { "composites": 200, "steel": 800, "electronics": 80, "gold": 8000 },
+            "buildTime": 45,
+            "effects": {
+                "housing": 0,
+                "jobs": 8,
+                "produces": { "oil": 7 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 5,
+                "aura": null,
+                "pollution": { "radius": 2, "amount": 5 },
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "cylinder", "x": 0.15, "y": 0.15, "z": 0, "r": 0.06, "h": 0.4, "color": "metal", "material": "metal" },
+                    { "kind": "cylinder", "x": 0.85, "y": 0.15, "z": 0, "r": 0.06, "h": 0.4, "color": "metal", "material": "metal" },
+                    { "kind": "cylinder", "x": 0.15, "y": 0.85, "z": 0, "r": 0.06, "h": 0.4, "color": "metal", "material": "metal" },
+                    { "kind": "cylinder", "x": 0.85, "y": 0.85, "z": 0, "r": 0.06, "h": 0.4, "color": "metal", "material": "metal" },
+                    { "kind": "box", "x": 0.05, "y": 0.05, "z": 0.4, "w": 0.9, "d": 0.9, "h": 0.08, "color": "walls" },
+                    { "kind": "cylinder", "x": 0.35, "y": 0.35, "z": 0.48, "r": 0.18, "h": 1, "color": "trim", "taper": 0.2, "segments": 4 },
+                    { "kind": "box", "x": 0.6, "y": 0.55, "z": 0.48, "w": 0.3, "d": 0.3, "h": 0.3, "color": "walls" },
+                    { "kind": "pole", "x": 0.85, "y": 0.15, "z": 0.48, "h": 0.45, "color": "metal", "blink": null },
+                    { "kind": "emitter", "x": 0.85, "y": 0.15, "z": 0.93, "type": "sparks" },
+                    { "kind": "light", "x": 0.85, "y": 0.15, "z": 0.95, "radius": 1, "color": "#ff9a3a" }
+                ]
+            }
+        }
+    ]
+}

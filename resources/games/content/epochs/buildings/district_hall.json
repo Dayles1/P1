@@ -1,0 +1,237 @@
+{
+    "id": "district_hall",
+    "name": "Управа района",
+    "icon": "🏢",
+    "category": "infrastructure",
+    "description": "Центр района: дороги, подключённые к управе, считаются подключёнными к городу. Клетки вокруг образуют район со своим названием и политикой.",
+    "size": { "w": 1, "h": 1 },
+    "unique": false,
+    "hidden": false,
+    "role": "district",
+    "placement": { "requiresRoad": true },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": null },
+    "levels": [
+        {
+            "level": 1,
+            "name": "Сельская управа",
+            "epoch": "e1000",
+            "tech": "local_government",
+            "description": "Изба старосты с вывеской и колоколом.",
+            "cost": { "wood": 80, "stone": 80, "gold": 100 },
+            "buildTime": 12,
+            "effects": {
+                "housing": 0,
+                "jobs": 2,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 3, "happiness": 3 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.15, "y": 0.2, "z": 0, "w": 0.7, "d": 0.55, "h": 0.36, "color": "walls" },
+                    {
+                        "kind": "beams",
+                        "faces": ["n", "e", "s", "w"],
+                        "x": 0.15,
+                        "y": 0.2,
+                        "z": 0,
+                        "w": 0.7,
+                        "d": 0.55,
+                        "h": 0.36,
+                        "count": 6,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e"],
+                        "x": 0.15,
+                        "y": 0.2,
+                        "z": 0.054,
+                        "w": 0.7,
+                        "d": 0.55,
+                        "h": 0.27,
+                        "rows": 1,
+                        "cols": 2,
+                        "color": "window"
+                    },
+                    { "kind": "door", "face": "s", "x": 0.15, "y": 0.2, "w": 0.7, "d": 0.55, "width": 0.14, "height": 0.198, "color": "trim" },
+                    { "kind": "roof", "shape": "gable", "x": 0.15, "y": 0.2, "z": 0.36, "w": 0.7, "d": 0.55, "h": 0.3, "color": "roof", "axis": "x", "overhang": 0.04 },
+                    { "kind": "pole", "x": 0.88, "y": 0.88, "z": 0, "h": 0.45, "color": "trim", "blink": null },
+                    { "kind": "flag", "x": 0.88, "y": 0.88, "z": 0.2, "h": 0.3, "color": "flag" },
+                    { "kind": "pole", "x": 0.1, "y": 0.9, "z": 0, "h": 0.22, "color": "#5a3e26", "blink": null },
+                    { "kind": "light", "x": 0.1, "y": 0.9, "z": 0.22, "radius": 1, "color": "#ffad4a" }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "name": "Управа",
+            "epoch": "e1500",
+            "description": "Каменный дом управы с часами на фронтоне.",
+            "cost": { "bricks": 200, "glass": 20, "gold": 300 },
+            "buildTime": 16,
+            "effects": {
+                "housing": 0,
+                "jobs": 3,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 3, "happiness": 4 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.12, "y": 0.15, "z": 0, "w": 0.76, "d": 0.65, "h": 0.5, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e"],
+                        "x": 0.12,
+                        "y": 0.15,
+                        "z": 0.06,
+                        "w": 0.76,
+                        "d": 0.65,
+                        "h": 0.4,
+                        "rows": 2,
+                        "cols": 2,
+                        "color": "window"
+                    },
+                    { "kind": "door", "face": "s", "x": 0.12, "y": 0.15, "w": 0.76, "d": 0.65, "width": 0.14, "height": 0.2, "color": "trim" },
+                    { "kind": "roof", "shape": "gable", "x": 0.12, "y": 0.15, "z": 0.5, "w": 0.76, "d": 0.65, "h": 0.32, "color": "roof", "axis": "y", "overhang": 0.04 },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.15, "z": 0.6, "r": 0.07, "h": 0.01, "color": "#f4efe4" },
+                    { "kind": "flag", "x": 0.9, "y": 0.9, "z": 0, "h": 0.6, "color": "flag" }
+                ]
+            }
+        },
+        {
+            "level": 3,
+            "name": "Префектура",
+            "epoch": "e1900",
+            "description": "Здание префектуры с колоннами и электрическими фонарями.",
+            "cost": { "concrete": 300, "steel": 100, "glass": 150, "gold": 2500 },
+            "buildTime": 25,
+            "effects": {
+                "housing": 0,
+                "jobs": 6,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 2,
+                "aura": { "radius": 4, "happiness": 5 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "floors", "x": 0.1, "y": 0.1, "z": 0, "w": 0.8, "d": 0.65, "floors": 3, "floorHeight": 0.25, "color": "walls", "window": "window", "band": "trim" },
+                    { "kind": "roof", "shape": "hip", "x": 0.1, "y": 0.1, "z": 0.75, "w": 0.8, "d": 0.65, "h": 0.18, "color": "roof" },
+                    { "kind": "cylinder", "x": 0.2, "y": 0.8, "z": 0, "r": 0.03, "h": 0.4, "color": "trim", "segments": 10 },
+                    { "kind": "cylinder", "x": 0.4, "y": 0.8, "z": 0, "r": 0.03, "h": 0.4, "color": "trim", "segments": 10 },
+                    { "kind": "cylinder", "x": 0.6, "y": 0.8, "z": 0, "r": 0.03, "h": 0.4, "color": "trim", "segments": 10 },
+                    { "kind": "cylinder", "x": 0.8, "y": 0.8, "z": 0, "r": 0.03, "h": 0.4, "color": "trim", "segments": 10 },
+                    { "kind": "box", "x": 0.15, "y": 0.75, "z": 0.4, "w": 0.7, "d": 0.1, "h": 0.04, "color": "trim" },
+                    { "kind": "flag", "x": 0.5, "y": 0.4, "z": 0.93, "h": 0.35, "color": "flag" },
+                    { "kind": "pole", "x": 0.05, "y": 0.95, "z": 0, "h": 0.4, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.05, "y": 0.95, "z": 0.4, "radius": 1.4, "color": "#ffd98a" }
+                ]
+            }
+        },
+        {
+            "level": 4,
+            "name": "Мэрия округа",
+            "epoch": "e2000",
+            "description": "Офисное здание администрации с флагом и стеклянным входом.",
+            "cost": { "concrete": 800, "glass": 600, "electronics": 40, "gold": 7000 },
+            "buildTime": 35,
+            "effects": {
+                "housing": 0,
+                "jobs": 10,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 5,
+                "aura": { "radius": 4, "happiness": 6 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.08, "y": 0.08, "z": 0, "w": 0.84, "d": 0.84, "h": 0.3, "color": "glass", "material": "glass" },
+                    { "kind": "floors", "x": 0.1, "y": 0.1, "z": 0.3, "w": 0.8, "d": 0.8, "floors": 6, "floorHeight": 0.22, "color": "walls", "window": "window", "band": "trim" },
+                    { "kind": "roof", "shape": "flat", "x": 0.1, "y": 0.1, "z": 1.62, "w": 0.8, "d": 0.8, "h": 0.04, "color": "roof" },
+                    { "kind": "pole", "x": 0.5, "y": 0.5, "z": 1.66, "h": 0.4, "color": "metal", "blink": null },
+                    { "kind": "flag", "x": 0.5, "y": 0.5, "z": 1.8, "h": 0.25, "color": "flag" },
+                    { "kind": "light", "x": 0.5, "y": 0.95, "z": 0.3, "radius": 1.2, "color": "#ffe39a" }
+                ]
+            }
+        },
+        {
+            "level": 5,
+            "name": "Цифровой хаб",
+            "epoch": "e2100",
+            "description": "Хаб района: сервисы, данные и соседские сады на крыше.",
+            "cost": { "composites": 300, "glass": 800, "electronics": 200, "gold": 14000 },
+            "buildTime": 45,
+            "effects": {
+                "housing": 0,
+                "jobs": 8,
+                "produces": { "data": 0.3 },
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 8,
+                "aura": { "radius": 5, "happiness": 7 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0, "r": 0.42, "h": 0.4, "color": "glass", "segments": 24, "material": "glass" },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0.4, "r": 0.38, "h": 1, "color": "walls", "taper": 0.8, "segments": 24 },
+                    {
+                        "kind": "windows",
+                        "faces": ["n", "e", "s", "w"],
+                        "x": 0.2,
+                        "y": 0.2,
+                        "z": 0.45,
+                        "w": 0.6,
+                        "d": 0.6,
+                        "h": 0.8,
+                        "rows": 3,
+                        "cols": 2,
+                        "color": "glass"
+                    },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 1.4, "r": 0.3, "h": 0.04, "color": "roof" },
+                    { "kind": "tree", "x": 0.4, "y": 0.45, "scale": 0.25, "conifer": false },
+                    { "kind": "tree", "x": 0.6, "y": 0.55, "scale": 0.22, "conifer": false },
+                    { "kind": "torus", "x": 0.5, "y": 0.5, "z": 0.4, "r": 0.42, "tube": 0.03, "color": "trim", "material": "glow" },
+                    { "kind": "light", "x": 0.5, "y": 0.5, "z": 1.5, "radius": 1.4, "color": "#2fb5a3" }
+                ]
+            }
+        }
+    ]
+}

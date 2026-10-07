@@ -8,7 +8,14 @@
 import type { Content } from '../content/registry';
 import type { Amounts } from '../content/types';
 import { Game } from '../sim/game';
-import type { BuildingState, Mood, NpcState, WorldState } from '../sim/state';
+import type {
+    BuildingState,
+    BuildingStyle,
+    Mood,
+    NpcState,
+    Research,
+    WorldState,
+} from '../sim/state';
 import { WorldMap } from '../world/world-map';
 import type { TileRow } from '../world/world-map';
 
@@ -29,6 +36,10 @@ export interface WorldPayload {
     next_event_at: number;
     moods: Mood[];
     next_uid: number;
+    techs: string[];
+    research: Research | null;
+    blueprints: string[];
+    achievements: string[];
     stats: WorldState['stats'];
 }
 
@@ -40,6 +51,8 @@ export interface BuildingRow {
     level: number;
     build_start: number;
     build_end: number;
+    style: BuildingStyle | null;
+    district: BuildingState['district'];
 }
 
 export interface NpcRow {
@@ -104,6 +117,16 @@ function worldPayload(game: Game): WorldPayload {
         next_event_at: Math.floor(s.nextEventAt),
         moods: s.moods,
         next_uid: s.nextUid,
+        techs: s.techs,
+        research: s.research
+            ? {
+                  id: s.research.id,
+                  start: Math.floor(s.research.start),
+                  end: Math.ceil(s.research.end),
+              }
+            : null,
+        blueprints: s.blueprints,
+        achievements: s.achievements,
         stats: s.stats,
     };
 }
@@ -116,6 +139,8 @@ const buildingRow = (b: BuildingState): BuildingRow => ({
     level: b.level,
     build_start: Math.floor(b.buildStart),
     build_end: Math.ceil(b.buildEnd),
+    style: b.style,
+    district: b.district,
 });
 
 const npcRow = (n: NpcState): NpcRow => ({
@@ -209,6 +234,10 @@ export function fromServer(content: Content, loaded: LoadedWorld): Game {
         nextEventAt: w.next_event_at,
         moods: w.moods ?? [],
         nextUid: w.next_uid,
+        techs: (w.techs ?? []).filter((id) => content.tech(id)),
+        research: w.research && content.tech(w.research.id) ? w.research : null,
+        blueprints: (w.blueprints ?? []).filter((id) => content.blueprint(id)),
+        achievements: w.achievements ?? [],
         stats: {
             ...{ built: 0, upgraded: 0, demolished: 0, events: 0 },
             ...(w.stats ?? {}),
@@ -231,6 +260,8 @@ export function fromServer(content: Content, loaded: LoadedWorld): Game {
         ),
         buildStart: b.build_start,
         buildEnd: b.build_end,
+        style: b.style ?? null,
+        district: b.district ?? null,
     }));
     const game = new Game(content, state, map, [], []);
 

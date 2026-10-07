@@ -34,7 +34,7 @@ return [
     'max_save_kb' => (int) env('GAMES_MAX_SAVE_KB', 512),
 
     /*
-     * "City of Eras": where its content files (the settings the game is
+     * "Летопись города 2": where its content files (the settings the game is
      * built from) live.
      */
     'epochs' => [

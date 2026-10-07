@@ -38,14 +38,42 @@ class ContentValidator
         $weather = $this->ids($bundle['climate']['weather'] ?? []);
         $sounds = array_map('strval', array_keys($bundle['sounds']['presets'] ?? []));
         $buildings = array_map('strval', array_keys($bundle['buildings']));
+        $techs = [];
+
+        foreach ($bundle['techs']['techs'] ?? [] as $tech) {
+            if (is_array($tech) && is_string($tech['id'] ?? null)) {
+                $techs[$tech['id']] = $tech;
+            }
+        }
 
         $this->checkWorld($bundle['world'], $resources, $epochs, $buildings, $seasons);
+        $this->checkResources($bundle['resources']['resources'] ?? [], $epochs);
         $this->checkClimate($bundle['climate'], $weather);
-        $this->checkEpochs($bundle['epochs']['epochs'] ?? [], $resources, $buildings, array_map('strval', array_keys($bundle['sounds']['ambience'] ?? [])));
+        $this->checkEpochs($bundle['epochs']['epochs'] ?? [], $resources, $buildings, $techs, $epochs, array_map('strval', array_keys($bundle['sounds']['ambience'] ?? [])));
+        $this->checkTechs($techs, $resources, $epochs);
+        $this->checkBlueprints($bundle['blueprints']['blueprints'] ?? [], $resources, $epochs, $buildings);
+        $this->checkGoals($bundle['goals']['goals'] ?? [], $resources, $epochs, $buildings, array_keys($techs));
         $this->checkNpcs($bundle['npcs']['types'] ?? [], $epochs);
 
+        $roles = [];
+
         foreach ($bundle['buildings'] as $key => $building) {
-            $this->checkBuilding((string) $key, is_array($building) ? $building : [], $resources, $epochs, $biomes, $sounds, $buildings);
+            $building = is_array($building) ? $building : [];
+            $this->checkBuilding((string) $key, $building, $resources, $epochs, $biomes, $sounds, $buildings, $techs);
+
+            if (isset($building['role']) && is_string($building['role'])) {
+                if (isset($roles[$building['role']])) {
+                    $this->add("buildings/{$key}", 'role', "Роль «{$building['role']}» уже у здания «{$roles[$building['role']]}»");
+                }
+
+                $roles[$building['role']] = (string) $key;
+            }
+        }
+
+        foreach (['road', 'center'] as $role) {
+            if (! isset($roles[$role])) {
+                $this->add('buildings', '', "Нужно здание с ролью «{$role}»");
+            }
         }
 
         return $this->issues;
@@ -83,6 +111,18 @@ class ContentValidator
             }
         }
 
+        if (($world['districts']['radius'] ?? 0) < 1) {
+            $this->add('world', 'districts.radius', 'Радиус округа — от 1 клетки');
+        }
+
+        foreach ($world['districts']['policies'] ?? [] as $index => $policy) {
+            foreach (array_keys($policy['effects']['produces'] ?? []) as $id) {
+                if ($id !== '*' && ! in_array($id, $resources, true)) {
+                    $this->add('world', "districts.policies[{$index}].effects.produces.{$id}", "Нет такого ресурса «{$id}»");
+                }
+            }
+        }
+
         foreach ($world['events']['list'] ?? [] as $index => $event) {
             $this->checkAmounts('world', "events.list[{$index}].gain", $event['gain'] ?? [], $resources);
             $this->checkAmounts('world', "events.list[{$index}].lose", $event['lose'] ?? [], $resources);
@@ -92,6 +132,142 @@ class ContentValidator
                     $this->add('world', "events.list[{$index}].seasons", "Нет сезона «{$season}»");
                 }
             }
+
+            foreach ($event['epochs'] ?? [] as $epoch) {
+                $this->checkEpochRef('world', "events.list[{$index}].epochs", $epoch, $epochs);
+            }
+        }
+    }
+
+    /**
+     * @param  list<array<string, mixed>>  $resources
+     * @param  list<string>  $epochs
+     */
+    private function checkResources(array $resources, array $epochs): void
+    {
+        foreach ($resources as $index => $resource) {
+            $this->checkEpochRef('resources', "resources[{$index}].epoch", $resource['epoch'] ?? null, $epochs);
+        }
+    }
+
+    /**
+     * @param  array<string, array<string, mixed>>  $techs
+     * @param  list<string>  $resources
+     * @param  list<string>  $epochs
+     */
+    private function checkTechs(array $techs, array $resources, array $epochs): void
+    {
+        foreach (array_values($techs) as $index => $tech) {
+            $path = "techs[{$index}]";
+            $this->checkEpochRef('techs', "{$path}.epoch", $tech['epoch'] ?? null, $epochs);
+            $this->checkAmounts('techs', "{$path}.cost", $tech['cost'] ?? [], $resources);
+
+            foreach ($tech['requires'] ?? [] as $required) {
+                if (! isset($techs[$required])) {
+                    $this->add('techs', "{$path}.requires", "Нет технологии «{$required}»");
+                } elseif (array_search($techs[$required]['epoch'] ?? null, $epochs, true) > array_search($tech['epoch'] ?? null, $epochs, true)) {
+                    $this->add('techs', "{$path}.requires", "«{$required}» — из более поздней эпохи");
+                }
+            }
+
+            foreach (array_keys($tech['bonus']['produces'] ?? []) as $id) {
+                if ($id !== '*' && ! in_array($id, $resources, true)) {
+                    $this->add('techs', "{$path}.bonus.produces.{$id}", "Нет такого ресурса «{$id}»");
+                }
+            }
+        }
+
+        $state = [];
+        $cyclic = function (string $id) use (&$cyclic, &$state, $techs): bool {
+            if (($state[$id] ?? null) === 'done') {
+                return false;
+            }
+
+            if (($state[$id] ?? null) === 'visiting') {
+                return true;
+            }
+
+            $state[$id] = 'visiting';
+            $found = false;
+
+            foreach ($techs[$id]['requires'] ?? [] as $required) {
+                if (isset($techs[$required]) && $cyclic($required)) {
+                    $found = true;
+                    break;
+                }
+            }
+
+            $state[$id] = 'done';
+
+            return $found;
+        };
+
+        foreach (array_keys($techs) as $id) {
+            if ($cyclic($id)) {
+                $this->add('techs', $id, 'Технологии требуют друг друга по кругу');
+                break;
+            }
+        }
+    }
+
+    /**
+     * @param  list<array<string, mixed>>  $blueprints
+     * @param  list<string>  $resources
+     * @param  list<string>  $epochs
+     * @param  list<string>  $buildings
+     */
+    private function checkBlueprints(array $blueprints, array $resources, array $epochs, array $buildings): void
+    {
+        foreach ($blueprints as $index => $blueprint) {
+            $path = "blueprints[{$index}]";
+            $this->checkEpochRef('blueprints', "{$path}.epoch", $blueprint['epoch'] ?? null, $epochs);
+            $this->checkAmounts('blueprints', "{$path}.cost", $blueprint['cost'] ?? [], $resources);
+
+            foreach ($blueprint['buildings'] ?? [] as $building) {
+                if (! in_array($building, $buildings, true)) {
+                    $this->add('blueprints', "{$path}.buildings", "Нет здания «{$building}»");
+                }
+            }
+        }
+    }
+
+    /**
+     * @param  list<array<string, mixed>>  $goals
+     * @param  list<string>  $resources
+     * @param  list<string>  $epochs
+     * @param  list<string>  $buildings
+     * @param  list<string>  $techs
+     */
+    private function checkGoals(array $goals, array $resources, array $epochs, array $buildings, array $techs): void
+    {
+        foreach ($goals as $index => $goal) {
+            $path = "goals[{$index}]";
+            $condition = $goal['condition'] ?? [];
+            $this->checkEpochRef('goals', "{$path}.epoch", $goal['epoch'] ?? null, $epochs);
+            $this->checkAmounts('goals', "{$path}.reward", $goal['reward'] ?? [], $resources);
+
+            $missing = match ($condition['type'] ?? null) {
+                'building' => in_array($condition['building'] ?? null, $buildings, true) ? null : 'Нет такого здания',
+                'epoch' => in_array($condition['epoch'] ?? null, $epochs, true) ? null : 'Нет такой эпохи',
+                'tech' => in_array($condition['tech'] ?? null, $techs, true) ? null : 'Нет такой технологии',
+                'resource' => in_array($condition['resource'] ?? null, $resources, true) ? null : 'Нет такого ресурса',
+                'population', 'techs', 'happiness', 'districts', 'blueprints', 'heritage' => null,
+                default => 'Неизвестный тип условия',
+            };
+
+            if ($missing !== null) {
+                $this->add('goals', "{$path}.condition", $missing);
+            }
+        }
+    }
+
+    /**
+     * @param  list<string>  $epochs
+     */
+    private function checkEpochRef(string $file, string $path, mixed $epoch, array $epochs): void
+    {
+        if (! in_array($epoch, $epochs, true)) {
+            $this->add($file, $path, 'Нет эпохи «'.(is_string($epoch) ? $epoch : '').'»');
         }
     }
 
@@ -120,9 +296,11 @@ class ContentValidator
      * @param  list<array<string, mixed>>  $epochs
      * @param  list<string>  $resources
      * @param  list<string>  $buildings
+     * @param  array<string, array<string, mixed>>  $techs
+     * @param  list<string>  $epochIds
      * @param  list<string>  $ambience
      */
-    private function checkEpochs(array $epochs, array $resources, array $buildings, array $ambience): void
+    private function checkEpochs(array $epochs, array $resources, array $buildings, array $techs, array $epochIds, array $ambience): void
     {
         $previous = null;
 
@@ -143,6 +321,14 @@ class ContentValidator
                 foreach ($epoch['next']['buildings'] ?? [] as $need) {
                     if (! in_array($need['type'] ?? null, $buildings, true)) {
                         $this->add('epochs', "epochs[{$index}].next.buildings", "Нет здания «{$need['type']}»");
+                    }
+                }
+
+                foreach ($epoch['next']['techs'] ?? [] as $tech) {
+                    if (! isset($techs[$tech])) {
+                        $this->add('epochs', "epochs[{$index}].next.techs", "Нет технологии «{$tech}»");
+                    } elseif (array_search($techs[$tech]['epoch'] ?? null, $epochIds, true) > $index) {
+                        $this->add('epochs', "epochs[{$index}].next.techs", "Технология «{$tech}» из более поздней эпохи");
                     }
                 }
             }
@@ -175,17 +361,14 @@ class ContentValidator
      * @param  list<string>  $biomes
      * @param  list<string>  $sounds
      * @param  list<string>  $buildings
+     * @param  array<string, array<string, mixed>>  $techs
      */
-    private function checkBuilding(string $key, array $building, array $resources, array $epochs, array $biomes, array $sounds, array $buildings): void
+    private function checkBuilding(string $key, array $building, array $resources, array $epochs, array $biomes, array $sounds, array $buildings, array $techs): void
     {
         $file = "buildings/{$key}";
 
         if (($building['id'] ?? null) !== $key) {
             $this->add($file, 'id', "id должен совпадать с именем файла «{$key}»");
-        }
-
-        if (! in_array($building['epoch'] ?? null, $epochs, true)) {
-            $this->add($file, 'epoch', 'Нет такой эпохи');
         }
 
         $w = $building['size']['w'] ?? 0;
@@ -215,6 +398,8 @@ class ContentValidator
             return;
         }
 
+        $previousEpoch = -1;
+
         foreach (array_values($levels) as $index => $level) {
             $path = "levels[{$index}]";
 
@@ -222,11 +407,25 @@ class ContentValidator
                 $this->add($file, "{$path}.level", 'Уровни нумеруются по порядку: ожидался '.($index + 1));
             }
 
-            if (isset($level['requiresEpoch']) && ! in_array($level['requiresEpoch'], $epochs, true)) {
-                $this->add($file, "{$path}.requiresEpoch", 'Нет такой эпохи');
+            $this->checkEpochRef($file, "{$path}.epoch", $level['epoch'] ?? null, $epochs);
+            $epochIndex = array_search($level['epoch'] ?? null, $epochs, true);
+
+            if ($epochIndex !== false && $epochIndex < $previousEpoch) {
+                $this->add($file, "{$path}.epoch", 'Эпохи уровней не должны идти назад');
+            }
+
+            $previousEpoch = max($previousEpoch, $epochIndex === false ? -1 : $epochIndex);
+
+            if (isset($level['tech'])) {
+                if (! isset($techs[$level['tech']])) {
+                    $this->add($file, "{$path}.tech", "Нет технологии «{$level['tech']}»");
+                } elseif (array_search($techs[$level['tech']]['epoch'] ?? null, $epochs, true) > $epochIndex) {
+                    $this->add($file, "{$path}.tech", "Технология «{$level['tech']}» из более поздней эпохи, чем уровень");
+                }
             }
 
             $this->checkAmounts($file, "{$path}.cost", $level['cost'] ?? [], $resources);
+            $this->checkAmounts($file, "{$path}.upgrade", $level['upgrade'] ?? [], $resources);
             $this->checkAmounts($file, "{$path}.effects.produces", $level['effects']['produces'] ?? [], $resources);
             $this->checkAmounts($file, "{$path}.effects.consumes", $level['effects']['consumes'] ?? [], $resources);
 

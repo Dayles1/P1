@@ -28,8 +28,12 @@ createRoot(root).render(
                 <Routes>
                     <Route path="/" element={<Hub homeUrl={homeUrl} />} />
                     <Route path="/city" element={<CityGame />} />
-                    <Route path="/epochs" element={<EpochsGame />} />
-                    <Route path="/epochs/workshop" element={<Workshop />} />
+                    <Route path="/city2" element={<EpochsGame />} />
+                    <Route path="/city2/workshop" element={<Workshop />} />
+                    <Route
+                        path="/epochs/*"
+                        element={<Navigate to="/city2" replace />}
+                    />
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </Suspense>

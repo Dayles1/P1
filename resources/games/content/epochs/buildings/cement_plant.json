@@ -1,0 +1,163 @@
+{
+    "id": "cement_plant",
+    "name": "Цементный завод",
+    "icon": "🏗️",
+    "category": "industry",
+    "description": "Делает бетон из камня, обжигая его на угле. Пыльно и дымно.",
+    "size": { "w": 2, "h": 2 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": "machine" },
+    "levels": [
+        {
+            "level": 1,
+            "name": "Цементный завод",
+            "epoch": "e1900",
+            "tech": "reinforced_concrete",
+            "description": "Вращающаяся печь, силосы и пыль до горизонта.",
+            "cost": { "steel": 200, "bricks": 400, "gold": 2500 },
+            "buildTime": 28,
+            "effects": {
+                "housing": 0,
+                "jobs": 14,
+                "produces": { "concrete": 2 },
+                "consumes": { "stone": 1.5, "coal": 0.6 },
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": null,
+                "pollution": { "radius": 3, "amount": 10 },
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#b8b3a8" },
+                    { "kind": "cylinder", "x": 0.35, "y": 0.35, "z": 0, "r": 0.25, "h": 1.2, "color": "#d6d1c4", "segments": 16 },
+                    { "kind": "sphere", "x": 0.35, "y": 0.35, "z": 1.2, "r": 0.25, "color": "#d6d1c4", "half": true },
+                    { "kind": "cylinder", "x": 0.85, "y": 0.35, "z": 0, "r": 0.25, "h": 1.2, "color": "#d6d1c4", "segments": 16 },
+                    { "kind": "sphere", "x": 0.85, "y": 0.35, "z": 1.2, "r": 0.25, "color": "#d6d1c4", "half": true },
+                    { "kind": "box", "x": 0.1, "y": 0.9, "z": 0.2, "w": 1.6, "d": 0.25, "h": 0.25, "color": "metal" },
+                    { "kind": "box", "x": 0.2, "y": 0.92, "z": 0, "w": 0.1, "d": 0.2, "h": 0.2, "color": "walls" },
+                    { "kind": "box", "x": 1.2, "y": 0.92, "z": 0, "w": 0.1, "d": 0.2, "h": 0.2, "color": "walls" },
+                    { "kind": "box", "x": 1.2, "y": 1.25, "z": 0, "w": 0.7, "d": 0.65, "h": 0.5, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e"],
+                        "x": 1.2,
+                        "y": 1.25,
+                        "z": 0.08,
+                        "w": 0.7,
+                        "d": 0.65,
+                        "h": 0.3,
+                        "rows": 1,
+                        "cols": 2,
+                        "color": "window"
+                    },
+                    { "kind": "door", "face": "s", "x": 1.2, "y": 1.25, "w": 0.7, "d": 0.65, "width": 0.22, "height": 0.26, "color": "trim" },
+                    { "kind": "roof", "shape": "gable", "x": 1.2, "y": 1.25, "z": 0.5, "w": 0.7, "d": 0.65, "h": 0.2, "color": "roof", "axis": "x" },
+                    { "kind": "cylinder", "x": 1.6, "y": 0.4, "z": 0, "r": 0.09, "h": 1.4, "color": "walls", "taper": 0.75, "segments": 12 },
+                    { "kind": "box", "x": 1.528, "y": 0.39, "z": 1.19, "w": 0.144, "d": 0.02, "h": 0.03, "color": "#c9c2b8" },
+                    { "kind": "emitter", "x": 1.6, "y": 0.4, "z": 1.4, "type": "smoke" },
+                    { "kind": "emitter", "x": 1, "y": 1, "z": 0.5, "type": "dust" }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "name": "Бетонный комбинат",
+            "epoch": "e2000",
+            "description": "Бетонные заводы, силосы и миксеры — бетон для целого района.",
+            "cost": { "steel": 600, "concrete": 600, "gold": 6000 },
+            "buildTime": 38,
+            "effects": {
+                "housing": 0,
+                "jobs": 16,
+                "produces": { "concrete": 5 },
+                "consumes": { "stone": 3, "coal": 1 },
+                "storage": 0,
+                "power": 0,
+                "powerUse": 8,
+                "aura": null,
+                "pollution": { "radius": 3, "amount": 10 },
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "#a7a8aa" },
+                    { "kind": "cylinder", "x": 0.3, "y": 0.3, "z": 0, "r": 0.22, "h": 1.5, "color": "#e0ddd6", "segments": 16 },
+                    { "kind": "sphere", "x": 0.3, "y": 0.3, "z": 1.5, "r": 0.22, "color": "#e0ddd6", "half": true },
+                    { "kind": "cylinder", "x": 0.75, "y": 0.3, "z": 0, "r": 0.22, "h": 1.5, "color": "#e0ddd6", "segments": 16 },
+                    { "kind": "sphere", "x": 0.75, "y": 0.3, "z": 1.5, "r": 0.22, "color": "#e0ddd6", "half": true },
+                    { "kind": "cylinder", "x": 1.2, "y": 0.3, "z": 0, "r": 0.22, "h": 1.5, "color": "#e0ddd6", "segments": 16 },
+                    { "kind": "sphere", "x": 1.2, "y": 0.3, "z": 1.5, "r": 0.22, "color": "#e0ddd6", "half": true },
+                    { "kind": "box", "x": 0.1, "y": 0.6, "z": 1.2, "w": 1.4, "d": 0.15, "h": 0.15, "color": "metal" },
+                    { "kind": "box", "x": 0.1, "y": 1, "z": 0, "w": 1.1, "d": 0.85, "h": 0.55, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e"],
+                        "x": 0.1,
+                        "y": 1,
+                        "z": 0.08,
+                        "w": 1.1,
+                        "d": 0.85,
+                        "h": 0.33,
+                        "rows": 1,
+                        "cols": 3,
+                        "color": "window"
+                    },
+                    { "kind": "door", "face": "s", "x": 0.1, "y": 1, "w": 1.1, "d": 0.85, "width": 0.22, "height": 0.26, "color": "trim" },
+                    { "kind": "roof", "shape": "flat", "x": 0.1, "y": 1, "z": 0.55, "w": 1.1, "d": 0.85, "h": 0.04, "color": "roof", "axis": "x" },
+                    { "kind": "box", "x": 1.4, "y": 1.4, "z": 0, "w": 0.45, "d": 0.25, "h": 0.2, "color": "#e0a530" },
+                    { "kind": "cylinder", "x": 1.7, "y": 0.4, "z": 0, "r": 0.09, "h": 1.7, "color": "walls", "taper": 0.75, "segments": 12 },
+                    { "kind": "box", "x": 1.628, "y": 0.39, "z": 1.445, "w": 0.144, "d": 0.02, "h": 0.03, "color": "#c9c2b8" },
+                    { "kind": "emitter", "x": 1.7, "y": 0.4, "z": 1.7, "type": "steam" },
+                    { "kind": "emitter", "x": 0.75, "y": 0.6, "z": 1.4, "type": "dust" }
+                ]
+            }
+        },
+        {
+            "level": 3,
+            "name": "Геополимерный завод",
+            "epoch": "e2100",
+            "tech": "printing_3d",
+            "description": "Бетон без обжига: геополимеры и печать строительных блоков.",
+            "cost": { "composites": 300, "electronics": 150, "gold": 12000 },
+            "buildTime": 45,
+            "effects": {
+                "housing": 0,
+                "jobs": 12,
+                "produces": { "concrete": 10 },
+                "consumes": { "stone": 4 },
+                "storage": 0,
+                "power": 0,
+                "powerUse": 14,
+                "aura": null,
+                "pollution": { "radius": 2, "amount": 4 },
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
+                    { "kind": "cylinder", "x": 0.45, "y": 0.45, "z": 0, "r": 0.32, "h": 1, "color": "walls", "segments": 24 },
+                    { "kind": "sphere", "x": 0.45, "y": 0.45, "z": 1, "r": 0.32, "color": "walls", "half": true },
+                    { "kind": "cylinder", "x": 1.25, "y": 0.45, "z": 0, "r": 0.32, "h": 0.8, "color": "walls", "segments": 24 },
+                    { "kind": "sphere", "x": 1.25, "y": 0.45, "z": 0.8, "r": 0.32, "color": "walls", "half": true },
+                    { "kind": "box", "x": 0.1, "y": 1, "z": 0, "w": 1.8, "d": 0.85, "h": 0.5, "color": "glass", "material": "glass" },
+                    { "kind": "roof", "shape": "flat", "x": 0.1, "y": 1, "z": 0.5, "w": 1.8, "d": 0.85, "h": 0.04, "color": "roof" },
+                    { "kind": "box", "x": 0.1, "y": 0.95, "z": 0.5, "w": 1.8, "d": 0.05, "h": 0.04, "color": "trim", "material": "glow" },
+                    { "kind": "light", "x": 1, "y": 1.4, "z": 0.6, "radius": 1.5, "color": "#b5fff0" }
+                ]
+            }
+        }
+    ]
+}

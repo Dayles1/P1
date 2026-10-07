@@ -1,7 +1,8 @@
 /**
  * The saved state of one player's world. Rules and looks are never here —
- * a building is only its type id, position and level; what it costs, gives
- * and looks like comes from the content files.
+ * a building is only its type id, position, level and the player's choices
+ * (style, district name and policy); what it costs, gives and looks like
+ * comes from the content files.
  */
 
 import type { Amounts } from '../content/types';
@@ -10,6 +11,12 @@ export interface Mood {
     until: number;
     amount: number;
     reason: string;
+}
+
+export interface Research {
+    id: string;
+    start: number;
+    end: number;
 }
 
 export interface WorldState {
@@ -28,12 +35,25 @@ export interface WorldState {
     nextEventAt: number;
     moods: Mood[];
     nextUid: number;
+    /** Researched technologies. */
+    techs: string[];
+    research: Research | null;
+    /** Blueprints unlocked in the Architects' Bureau. */
+    blueprints: string[];
+    /** Goals reached. */
+    achievements: string[];
     stats: {
         built: number;
         upgraded: number;
         demolished: number;
         events: number;
     };
+}
+
+/** How the player dressed a building: a blueprint and/or own colours. */
+export interface BuildingStyle {
+    blueprint: string | null;
+    colors: Record<string, string>;
 }
 
 export interface BuildingState {
@@ -45,6 +65,9 @@ export interface BuildingState {
     /** Game time construction (or the last upgrade) started and ends. */
     buildStart: number;
     buildEnd: number;
+    style: BuildingStyle | null;
+    /** District halls: the district's name and policy. */
+    district: { name: string; policy: string | null } | null;
 }
 
 export type NpcActivity = 'home' | 'walking' | 'working' | 'leisure';

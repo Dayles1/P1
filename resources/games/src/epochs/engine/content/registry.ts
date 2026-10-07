@@ -1,20 +1,24 @@
 /**
  * The loaded content with lookups the engine needs, plus validation of
- * the cross-file references (a building's era exists, a cost names a real
- * resource, …). The Workshop runs the same validation on every edit.
+ * the cross-file references (a level's era exists, a cost names a real
+ * resource, a technology's prerequisites exist, …). The Workshop runs the
+ * same validation on every edit.
  */
 
 import type {
     Amounts,
     BiomeDef,
+    BlueprintDef,
     BuildingDef,
     ContentBundle,
     EpochDef,
+    GoalDef,
     LevelDef,
     NpcTypeDef,
     Palette,
     ResourceDef,
     SeasonDef,
+    TechDef,
     WeatherDef,
 } from './types';
 
@@ -32,11 +36,17 @@ export class Content {
     readonly seasons: SeasonDef[];
     readonly weather: WeatherDef[];
     readonly buildings: BuildingDef[];
+    readonly techs: TechDef[];
+    readonly blueprints: BlueprintDef[];
+    readonly goals: GoalDef[];
     readonly npcTypes: NpcTypeDef[];
 
     private readonly epochIndex = new Map<string, number>();
     private readonly biomeIndex = new Map<string, number>();
     private readonly buildingById = new Map<string, BuildingDef>();
+    private readonly techById = new Map<string, TechDef>();
+    private readonly blueprintById = new Map<string, BlueprintDef>();
+    private readonly resourceById = new Map<string, ResourceDef>();
 
     constructor(bundle: ContentBundle) {
         this.bundle = bundle;
@@ -46,17 +56,28 @@ export class Content {
         this.seasons = bundle.climate.seasons;
         this.weather = bundle.climate.weather;
         this.npcTypes = bundle.npcs.types;
-        this.buildings = Object.values(bundle.buildings).sort(
-            (a, b) =>
-                this.epochOrder(a.epoch) - this.epochOrder(b.epoch) ||
-                a.id.localeCompare(b.id),
-        );
+        this.techs = bundle.techs.techs;
+        this.blueprints = bundle.blueprints.blueprints;
+        this.goals = bundle.goals.goals;
 
         this.epochs.forEach((epoch, index) =>
             this.epochIndex.set(epoch.id, index),
         );
         this.biomes.forEach((biome, index) =>
             this.biomeIndex.set(biome.id, index),
+        );
+        this.techs.forEach((tech) => this.techById.set(tech.id, tech));
+        this.blueprints.forEach((blueprint) =>
+            this.blueprintById.set(blueprint.id, blueprint),
+        );
+        this.resources.forEach((resource) =>
+            this.resourceById.set(resource.id, resource),
+        );
+
+        this.buildings = Object.values(bundle.buildings).sort(
+            (a, b) =>
+                this.firstEpoch(a) - this.firstEpoch(b) ||
+                a.id.localeCompare(b.id),
         );
         this.buildings.forEach((building) =>
             this.buildingById.set(building.id, building),
@@ -77,8 +98,8 @@ export class Content {
         ];
     }
 
-    palette(epochIndex: number): Palette {
-        return this.epoch(epochIndex).palette;
+    epochById(id: string): EpochDef {
+        return this.epoch(this.epochIndex.get(id) ?? 0);
     }
 
     biomeIndexOf(id: string): number {
@@ -99,24 +120,37 @@ export class Content {
         return this.buildingById.has(id);
     }
 
+    /** The building with a special role (the town centre, roads, …). */
+    byRole(role: NonNullable<BuildingDef['role']>): BuildingDef | undefined {
+        return this.buildings.find((def) => def.role === role);
+    }
+
     level(def: BuildingDef, level: number): LevelDef {
         return def.levels[
             Math.max(0, Math.min(def.levels.length - 1, level - 1))
         ];
     }
 
-    nameOf(def: BuildingDef, epochIndex: number): string {
-        let name = def.name;
+    /** The era a building first appears in (its first level's). */
+    firstEpoch(def: BuildingDef): number {
+        return this.epochOrder(def.levels[0]?.epoch ?? '');
+    }
 
-        for (const epoch of this.epochs.slice(0, epochIndex + 1)) {
-            name = def.names[epoch.id] ?? name;
-        }
+    /** The architecture a level is drawn with: its own era's palette. */
+    levelPalette(level: LevelDef): Palette {
+        return this.epochById(level.epoch).palette;
+    }
 
-        return name;
+    tech(id: string): TechDef | undefined {
+        return this.techById.get(id);
+    }
+
+    blueprint(id: string): BlueprintDef | undefined {
+        return this.blueprintById.get(id);
     }
 
     resource(id: string): ResourceDef | undefined {
-        return this.resources.find((resource) => resource.id === id);
+        return this.resourceById.get(id);
     }
 
     emptyAmounts(): Amounts {
@@ -151,6 +185,9 @@ export function validateContent(
         'biomes',
         'climate',
         'epochs',
+        'techs',
+        'blueprints',
+        'goals',
         'npcs',
         'sounds',
         'buildings',
@@ -168,12 +205,16 @@ export function validateContent(
     const resources = new Set(
         (content.resources.resources ?? []).map((r) => r.id),
     );
-    const epochs = new Set((content.epochs.epochs ?? []).map((e) => e.id));
+    const epochList = (content.epochs.epochs ?? []).map((e) => e.id);
+    const epochs = new Set(epochList);
+    const order = (id: string) => epochList.indexOf(id);
     const biomes = new Set((content.biomes.biomes ?? []).map((b) => b.id));
     const seasons = new Set((content.climate.seasons ?? []).map((s) => s.id));
     const weather = new Set((content.climate.weather ?? []).map((w) => w.id));
     const sounds = new Set(Object.keys(content.sounds.presets ?? {}));
     const buildings = new Set(Object.keys(content.buildings));
+    const techList = content.techs.techs ?? [];
+    const techs = new Map(techList.map((t) => [t.id, t]));
 
     const checkAmounts = (file: string, path: string, amounts: unknown) => {
         if (amounts === undefined || amounts === null) {
@@ -194,6 +235,21 @@ export function validateContent(
             if (typeof value !== 'number' || value < 0) {
                 add(file, `${path}.${id}`, 'Нужно неотрицательное число');
             }
+        }
+    };
+    const checkEpoch = (file: string, path: string, id: unknown) => {
+        if (!epochs.has(id as string)) {
+            add(file, path, `Нет эпохи «${String(id)}»`);
+        }
+    };
+    const checkTech = (file: string, path: string, id: unknown) => {
+        if (!techs.has(id as string)) {
+            add(file, path, `Нет технологии «${String(id)}»`);
+        }
+    };
+    const checkBuilding = (file: string, path: string, id: unknown) => {
+        if (!buildings.has(id as string)) {
+            add(file, path, `Нет здания «${String(id)}»`);
         }
     };
 
@@ -217,19 +273,26 @@ export function validateContent(
         add('world', 'time.secondsPerDay', 'Сутки — не короче 10 секунд');
     }
 
-    if (!epochs.has(world.start?.epoch)) {
-        add('world', 'start.epoch', `Нет эпохи «${world.start?.epoch}»`);
-    }
-
+    checkEpoch('world', 'start.epoch', world.start?.epoch);
     checkAmounts('world', 'start.resources', world.start?.resources);
 
     for (const [index, start] of (world.start?.buildings ?? []).entries()) {
-        if (!buildings.has(start.type)) {
-            add(
-                'world',
-                `start.buildings[${index}]`,
-                `Нет здания «${start.type}»`,
-            );
+        checkBuilding('world', `start.buildings[${index}]`, start.type);
+    }
+
+    if (!(world.districts?.radius >= 1)) {
+        add('world', 'districts.radius', 'Радиус округа — от 1 клетки');
+    }
+
+    for (const [index, policy] of (world.districts?.policies ?? []).entries()) {
+        for (const id of Object.keys(policy.effects?.produces ?? {})) {
+            if (id !== '*' && !resources.has(id)) {
+                add(
+                    'world',
+                    `districts.policies[${index}].effects.produces.${id}`,
+                    `Нет такого ресурса «${id}»`,
+                );
+            }
         }
     }
 
@@ -245,15 +308,16 @@ export function validateContent(
                     `Нет сезона «${s}»`,
                 ),
             );
-        (event.epochs ?? [])
-            .filter((e) => !epochs.has(e))
-            .forEach((e) =>
-                add(
-                    'world',
-                    `events.list[${index}].epochs`,
-                    `Нет эпохи «${e}»`,
-                ),
-            );
+        (event.epochs ?? []).forEach((e) =>
+            checkEpoch('world', `events.list[${index}].epochs`, e),
+        );
+    }
+
+    // resources
+    for (const [index, resource] of (
+        content.resources.resources ?? []
+    ).entries()) {
+        checkEpoch('resources', `resources[${index}].epoch`, resource.epoch);
     }
 
     // biomes
@@ -310,15 +374,24 @@ export function validateContent(
                 `epochs[${index}].next.cost`,
                 epoch.next.cost,
             );
-            epoch.next.buildings
-                .filter((b) => !buildings.has(b.type))
-                .forEach((b) =>
+            epoch.next.buildings.forEach((b) =>
+                checkBuilding(
+                    'epochs',
+                    `epochs[${index}].next.buildings`,
+                    b.type,
+                ),
+            );
+            (epoch.next.techs ?? []).forEach((t) => {
+                checkTech('epochs', `epochs[${index}].next.techs`, t);
+
+                if (techs.has(t) && order(techs.get(t)!.epoch) > index) {
                     add(
                         'epochs',
-                        `epochs[${index}].next.buildings`,
-                        `Нет здания «${b.type}»`,
-                    ),
-                );
+                        `epochs[${index}].next.techs`,
+                        `Технология «${t}» из более поздней эпохи`,
+                    );
+                }
+            });
         }
 
         if (!content.sounds.ambience?.[epoch.ambience]) {
@@ -330,13 +403,115 @@ export function validateContent(
         }
     }
 
+    // techs
+    for (const [index, tech] of techList.entries()) {
+        const path = `techs[${index}]`;
+
+        checkEpoch('techs', `${path}.epoch`, tech.epoch);
+        checkAmounts('techs', `${path}.cost`, tech.cost);
+
+        for (const required of tech.requires ?? []) {
+            checkTech('techs', `${path}.requires`, required);
+
+            if (
+                techs.has(required) &&
+                order(techs.get(required)!.epoch) > order(tech.epoch)
+            ) {
+                add(
+                    'techs',
+                    `${path}.requires`,
+                    `«${required}» — из более поздней эпохи`,
+                );
+            }
+        }
+
+        for (const id of Object.keys(tech.bonus?.produces ?? {})) {
+            if (id !== '*' && !resources.has(id)) {
+                add(
+                    'techs',
+                    `${path}.bonus.produces.${id}`,
+                    `Нет такого ресурса «${id}»`,
+                );
+            }
+        }
+    }
+
+    const visiting = new Set<string>();
+    const done = new Set<string>();
+    const cyclic = (id: string): boolean => {
+        if (done.has(id)) {
+            return false;
+        }
+
+        if (visiting.has(id)) {
+            return true;
+        }
+
+        visiting.add(id);
+
+        const found = (techs.get(id)?.requires ?? []).some(cyclic);
+
+        visiting.delete(id);
+        done.add(id);
+
+        return found;
+    };
+
+    for (const tech of techList) {
+        if (cyclic(tech.id)) {
+            add('techs', tech.id, 'Технологии требуют друг друга по кругу');
+            break;
+        }
+    }
+
+    // blueprints
+    for (const [index, blueprint] of (
+        content.blueprints.blueprints ?? []
+    ).entries()) {
+        const path = `blueprints[${index}]`;
+
+        checkEpoch('blueprints', `${path}.epoch`, blueprint.epoch);
+        checkAmounts('blueprints', `${path}.cost`, blueprint.cost);
+        (blueprint.buildings ?? []).forEach((b) =>
+            checkBuilding('blueprints', `${path}.buildings`, b),
+        );
+    }
+
+    // goals
+    for (const [index, goal] of (content.goals.goals ?? []).entries()) {
+        const path = `goals[${index}]`;
+        const condition = goal.condition;
+
+        checkEpoch('goals', `${path}.epoch`, goal.epoch);
+        checkAmounts('goals', `${path}.reward`, goal.reward);
+
+        if (condition?.type === 'building') {
+            checkBuilding(
+                'goals',
+                `${path}.condition.building`,
+                condition.building,
+            );
+        } else if (condition?.type === 'epoch') {
+            checkEpoch('goals', `${path}.condition.epoch`, condition.epoch);
+        } else if (condition?.type === 'tech') {
+            checkTech('goals', `${path}.condition.tech`, condition.tech);
+        } else if (
+            condition?.type === 'resource' &&
+            !resources.has(condition.resource)
+        ) {
+            add(
+                'goals',
+                `${path}.condition.resource`,
+                `Нет такого ресурса «${condition.resource}»`,
+            );
+        }
+    }
+
     // npcs
     for (const [index, type] of (content.npcs.types ?? []).entries()) {
-        type.epochs
-            .filter((e) => !epochs.has(e))
-            .forEach((e) =>
-                add('npcs', `types[${index}].epochs`, `Нет эпохи «${e}»`),
-            );
+        type.epochs.forEach((e) =>
+            checkEpoch('npcs', `types[${index}].epochs`, e),
+        );
 
         if (!type.body?.length) {
             add('npcs', `types[${index}].body`, 'Нужен хотя бы один цвет');
@@ -363,6 +538,8 @@ export function validateContent(
     }
 
     // buildings
+    const roles = new Map<string, string>();
+
     for (const [key, building] of Object.entries(content.buildings)) {
         const file = `buildings/${key}`;
 
@@ -374,8 +551,16 @@ export function validateContent(
             );
         }
 
-        if (!epochs.has(building.epoch)) {
-            add(file, 'epoch', `Нет эпохи «${building.epoch}»`);
+        if (building.role) {
+            if (roles.has(building.role)) {
+                add(
+                    file,
+                    'role',
+                    `Роль «${building.role}» уже у здания «${roles.get(building.role)}»`,
+                );
+            }
+
+            roles.set(building.role, key);
         }
 
         if (!(
@@ -393,16 +578,6 @@ export function validateContent(
             }
         }
 
-        for (const [epoch, cost] of Object.entries(
-            building.costByEpoch ?? {},
-        )) {
-            if (!epochs.has(epoch)) {
-                add(file, `costByEpoch.${epoch}`, `Нет эпохи «${epoch}»`);
-            }
-
-            checkAmounts(file, `costByEpoch.${epoch}`, cost);
-        }
-
         for (const [slot, sound] of Object.entries(building.sounds ?? {})) {
             if (sound && !sounds.has(sound)) {
                 add(
@@ -418,6 +593,8 @@ export function validateContent(
             continue;
         }
 
+        let previousEpoch = -1;
+
         building.levels.forEach((level, index) => {
             const path = `levels[${index}]`;
 
@@ -429,15 +606,35 @@ export function validateContent(
                 );
             }
 
-            if (level.requiresEpoch && !epochs.has(level.requiresEpoch)) {
+            checkEpoch(file, `${path}.epoch`, level.epoch);
+
+            if (order(level.epoch) < previousEpoch) {
                 add(
                     file,
-                    `${path}.requiresEpoch`,
-                    `Нет эпохи «${level.requiresEpoch}»`,
+                    `${path}.epoch`,
+                    'Эпохи уровней не должны идти назад',
                 );
             }
 
+            previousEpoch = Math.max(previousEpoch, order(level.epoch));
+
+            if (level.tech) {
+                checkTech(file, `${path}.tech`, level.tech);
+
+                if (
+                    techs.has(level.tech) &&
+                    order(techs.get(level.tech)!.epoch) > order(level.epoch)
+                ) {
+                    add(
+                        file,
+                        `${path}.tech`,
+                        `Технология «${level.tech}» из более поздней эпохи, чем уровень`,
+                    );
+                }
+            }
+
             checkAmounts(file, `${path}.cost`, level.cost);
+            checkAmounts(file, `${path}.upgrade`, level.upgrade);
             checkAmounts(
                 file,
                 `${path}.effects.produces`,
@@ -450,19 +647,19 @@ export function validateContent(
             );
 
             for (const target of level.effects?.boost?.targets ?? []) {
-                if (!buildings.has(target)) {
-                    add(
-                        file,
-                        `${path}.effects.boost.targets`,
-                        `Нет здания «${target}»`,
-                    );
-                }
+                checkBuilding(file, `${path}.effects.boost.targets`, target);
             }
 
             if (!Array.isArray(level.model?.parts)) {
                 add(file, `${path}.model.parts`, 'Нужен массив деталей модели');
             }
         });
+    }
+
+    for (const role of ['road', 'center'] as const) {
+        if (!roles.has(role)) {
+            add('buildings', '', `Нужно здание с ролью «${role}»`);
+        }
     }
 
     return issues;

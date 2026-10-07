@@ -9,8 +9,9 @@ import type {
 import { Clock } from '../engine/core/clock';
 import { generateMap } from '../engine/world/generator';
 import { FEATURES } from '../engine/world/world-map';
-import { HW, P, box, poly, rect, shade, tile } from '../render/iso';
-import { drawModel, modelHeight } from '../render/model';
+import { box, shade } from '../render/iso';
+import { renderThumbnail } from '../scene/thumbnails';
+import { ModelViewer } from '../scene/viewer';
 
 function useAnimationFrame(callback: (t: number) => void): void {
     const ref = useRef(callback);
@@ -66,145 +67,53 @@ export function BuildingPreview({
 }) {
     const content = useMemo(() => new Content(bundle), [bundle]);
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const viewerRef = useRef<ModelViewer | null>(null);
     const [level, setLevel] = useState(1);
-    const [epoch, setEpoch] = useState(() =>
-        Math.max(0, content.epochOrder(building.epoch)),
-    );
+    const [epoch, setEpoch] = useState<number | null>(null);
     const [night, setNight] = useState(false);
     const [winter, setWinter] = useState(false);
+    const [spin, setSpin] = useState(true);
     const levels = building.levels ?? [];
     const levelDef = levels[Math.min(level, levels.length) - 1];
+    const palette = levelDef
+        ? epoch === null
+            ? content.levelPalette(levelDef)
+            : content.epoch(epoch).palette
+        : null;
 
-    useAnimationFrame((t) => {
+    useEffect(() => {
         const canvas = canvasRef.current;
 
-        if (!canvas || !levelDef) {
+        if (!canvas) {
             return;
         }
 
-        const width = canvas.clientWidth || 420;
-        const height = 320;
-        const ctx = setupCanvas(canvas, width, height);
-        const palette = content.palette(epoch);
-        const { w, h } = building.size ?? { w: 1, h: 1 };
-        const parts = levelDef.model?.parts ?? [];
-        const top = modelHeight(parts);
-        const span = Math.max(w, h) + 2;
-        const zoom = Math.min(
-            2.4,
-            Math.max(
-                0.7,
-                Math.min(
-                    width / (span * HW * 2.2),
-                    (height - 40) / (span * 16 * 2 + top),
-                ),
-            ),
-        );
-        const [cx, cy] = P(w / 2, h / 2);
-        const sky = ctx.createLinearGradient(0, 0, 0, height);
+        const viewer = new ModelViewer(canvas);
 
-        sky.addColorStop(0, palette.sky[0]);
-        sky.addColorStop(1, palette.sky[1]);
-        ctx.fillStyle = sky;
-        ctx.fillRect(0, 0, width, height);
-        ctx.save();
-        ctx.translate(
-            width / 2 - cx * zoom,
-            height * 0.62 - cy * zoom + (top * zoom) / 3,
-        );
-        ctx.scale(zoom, zoom);
+        viewerRef.current = viewer;
 
-        const glows: {
-            x: number;
-            y: number;
-            z: number;
-            r: number;
-            c: string;
-        }[] = [];
+        return () => {
+            viewer.dispose();
+            viewerRef.current = null;
+        };
+    }, []);
 
-        for (let y = -1; y < h + 1; y++) {
-            for (let x = -1; x < w + 1; x++) {
-                const inside = x >= 0 && y >= 0 && x < w && y < h;
-
-                poly(
-                    ctx,
-                    tile(x, y),
-                    winter
-                        ? '#e9eff3'
-                        : inside
-                          ? '#7cae4c'
-                          : (x + y) % 2
-                            ? '#73a545'
-                            : '#79ab4a',
-                );
-            }
+    useEffect(() => {
+        if (!levelDef || !palette) {
+            return;
         }
 
-        if (building.render === 'road') {
-            poly(ctx, tile(0, 0, 0.5), palette.road);
-        }
-
-        poly(ctx, rect(0.05, 0.05, w + 0.1, h + 0.1), 'rgba(0,0,0,0.12)');
-        drawModel(parts, {
-            ctx,
-            x: 0,
-            y: 0,
+        viewerRef.current?.show(
+            levelDef.model?.parts ?? [],
             palette,
-            seed: 11,
-            time: t,
-            night,
-            grow: 1,
-            snow: winter ? 0.75 : 0,
-            treeTint: winter ? '#2f5f3a' : '#3f8a3e',
-            emit: (x, y, z, kind) => {
-                const [sx, sy] = P(x, y, z + ((t * 12) % 14));
+            building.size ?? { w: 1, h: 1 },
+            { night, snow: winter ? 0.75 : 0 },
+        );
+    }, [levelDef, palette, building.size, night, winter]);
 
-                ctx.fillStyle =
-                    kind === 'water'
-                        ? 'rgba(159,216,245,0.8)'
-                        : 'rgba(150,150,150,0.4)';
-                ctx.beginPath();
-                ctx.arc(sx + Math.sin(t * 2) * 2, sy, 3, 0, Math.PI * 2);
-                ctx.fill();
-            },
-            light: (x, y, z, r, c) => glows.push({ x, y, z, r, c }),
-        });
-        ctx.restore();
-
-        if (night) {
-            ctx.fillStyle = 'rgba(8,14,40,0.62)';
-            ctx.fillRect(0, 0, width, height);
-            ctx.globalCompositeOperation = 'lighter';
-
-            for (const g of glows) {
-                const [gx, gy] = P(g.x, g.y, g.z);
-                const sx = width / 2 + (gx - cx) * zoom;
-                const sy = height * 0.62 + (gy - cy) * zoom + (top * zoom) / 3;
-                const radius = Math.max(6, g.r * HW * zoom * 0.8);
-                const gradient = ctx.createRadialGradient(
-                    sx,
-                    sy,
-                    0,
-                    sx,
-                    sy,
-                    radius,
-                );
-
-                gradient.addColorStop(
-                    0,
-                    `${g.c.length === 7 ? g.c : '#ffd27a'}88`,
-                );
-                gradient.addColorStop(
-                    1,
-                    `${g.c.length === 7 ? g.c : '#ffd27a'}00`,
-                );
-                ctx.fillStyle = gradient;
-                ctx.fillRect(sx - radius, sy - radius, radius * 2, radius * 2);
-            }
-
-            ctx.globalCompositeOperation = 'source-over';
-        }
-    });
+    useEffect(() => {
+        viewerRef.current?.setAutoRotate(spin);
+    }, [spin]);
 
     if (!levelDef) {
         return <p className="ws-empty">У здания нет уровней.</p>;
@@ -212,6 +121,7 @@ export function BuildingPreview({
 
     const effects = levelDef.effects;
     const resource = (id: string) => content.resource(id)?.icon ?? id;
+    const era = content.epochById(levelDef.epoch);
 
     return (
         <div className="ws-preview">
@@ -223,16 +133,24 @@ export function BuildingPreview({
                             type="button"
                             aria-pressed={l.level === level}
                             onClick={() => setLevel(l.level)}
+                            title={l.name}
                         >
-                            Ур. {l.level}
+                            {l.level}
                         </button>
                     ))}
                 </div>
                 <select
-                    value={epoch}
-                    onChange={(event) => setEpoch(Number(event.target.value))}
-                    aria-label="Эпоха (палитра)"
+                    value={epoch ?? ''}
+                    onChange={(event) =>
+                        setEpoch(
+                            event.target.value === ''
+                                ? null
+                                : Number(event.target.value),
+                        )
+                    }
+                    aria-label="Палитра"
                 >
+                    <option value="">Палитра своей эпохи</option>
                     {content.epochs.map((e, index) => (
                         <option key={e.id} value={index}>
                             {e.year} · {e.name}
@@ -253,28 +171,41 @@ export function BuildingPreview({
                 >
                     ❄️
                 </button>
+                <button
+                    type="button"
+                    aria-pressed={spin}
+                    onClick={() => setSpin(!spin)}
+                    title="Вращать"
+                >
+                    🔄
+                </button>
             </div>
 
             <canvas
                 ref={canvasRef}
                 className="ws-preview__canvas"
-                style={{ height: 320 }}
+                style={{ height: 340 }}
             />
 
             <div className="ws-facts">
                 <div>
-                    <b>{content.nameOf(building, epoch)}</b> ·{' '}
-                    {building.size?.w}×{building.size?.h} · с эпохи{' '}
-                    {content.epochs[content.epochOrder(building.epoch)]?.year ??
-                        building.epoch}
-                    {levelDef.requiresEpoch &&
-                        ` · уровень ${level} с ${content.epochs[content.epochOrder(levelDef.requiresEpoch)]?.year}`}
+                    <b>
+                        {levelDef.level}. {levelDef.name}
+                    </b>{' '}
+                    · {building.name} · {building.size?.w}×{building.size?.h} ·{' '}
+                    {era.year} г. ({era.name})
+                    {levelDef.tech &&
+                        ` · 🔬 ${content.tech(levelDef.tech)?.name ?? levelDef.tech}`}
                 </div>
                 <div>
                     Цена:{' '}
                     {Object.entries(levelDef.cost ?? {})
                         .map(([id, v]) => `${resource(id)} ${v}`)
-                        .join('  ') || '—'}{' '}
+                        .join('  ') || '—'}
+                    {levelDef.upgrade &&
+                        ` · улучшение: ${Object.entries(levelDef.upgrade)
+                            .map(([id, v]) => `${resource(id)} ${v}`)
+                            .join('  ')}`}{' '}
                     · стройка {levelDef.buildTime} с
                 </div>
                 <div>
@@ -541,68 +472,43 @@ function MiniStreet({
     bundle: ContentBundle;
     epochIndex: number;
 }) {
-    const canvasRef = useRef<HTMLCanvasElement>(null);
     const content = useMemo(() => new Content(bundle), [bundle]);
+    const epoch = content.epoch(epochIndex);
+    const sample = content.buildings
+        .flatMap((def) =>
+            def.levels
+                .filter((level) => level.epoch === epoch.id && !def.hidden)
+                .map((level) => ({ def, level: level.level })),
+        )
+        .slice(0, 6);
 
-    useAnimationFrame((t) => {
-        const canvas = canvasRef.current;
+    return (
+        <div className="ws-mini">
+            {sample.map(({ def, level }) => {
+                let src: string | null = null;
 
-        if (!canvas) {
-            return;
-        }
+                try {
+                    src = renderThumbnail(content, def, level, 96);
+                } catch {
+                    src = null;
+                }
 
-        const ctx = setupCanvas(canvas, 260, 150);
-        const palette = content.palette(epochIndex);
-        const sample = content.buildings
-            .filter(
-                (b) =>
-                    !b.hidden &&
-                    b.render !== 'road' &&
-                    content.epochOrder(b.epoch) <= epochIndex &&
-                    b.size.w === 1,
-            )
-            .slice(-3);
-        const sky = ctx.createLinearGradient(0, 0, 0, 150);
-
-        sky.addColorStop(0, palette.sky[0]);
-        sky.addColorStop(1, palette.sky[1]);
-        ctx.fillStyle = sky;
-        ctx.fillRect(0, 0, 260, 150);
-        ctx.save();
-        ctx.translate(130, 40);
-        ctx.scale(0.9, 0.9);
-
-        for (let y = 0; y < 2; y++) {
-            for (let x = 0; x < 4; x++) {
-                poly(ctx, tile(x, y), y === 1 ? palette.road : '#7cae4c');
-            }
-        }
-
-        sample.forEach((def, i) => {
-            const level = def.levels.filter(
-                (l) =>
-                    !l.requiresEpoch ||
-                    content.epochOrder(l.requiresEpoch) <= epochIndex,
-            ).length;
-
-            drawModel(content.level(def, Math.max(1, level)).model.parts, {
-                ctx,
-                x: i + 0.5,
-                y: 0,
-                palette,
-                seed: i * 13,
-                time: t,
-                night: false,
-                grow: 1,
-                snow: 0,
-                treeTint: '#3f8a3e',
-            });
-        });
-
-        ctx.restore();
-    });
-
-    return <canvas ref={canvasRef} className="ws-mini" />;
+                return src ? (
+                    <img
+                        key={`${def.id}${level}`}
+                        src={src}
+                        alt=""
+                        width={48}
+                        height={48}
+                        title={content.level(def, level).name}
+                    />
+                ) : (
+                    <span key={`${def.id}${level}`}>{def.icon}</span>
+                );
+            })}
+            {sample.length === 0 && <small>Нет уровней этой эпохи</small>}
+        </div>
+    );
 }
 
 export function EpochsPreview({ bundle }: { bundle: ContentBundle }) {

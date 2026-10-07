@@ -1,0 +1,280 @@
+{
+    "id": "clinic",
+    "name": "Лечебница",
+    "icon": "⚕️",
+    "category": "services",
+    "description": "Лечит жителей: здоровые соседи — счастливые соседи.",
+    "size": { "w": 1, "h": 1 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": null },
+    "levels": [
+        {
+            "level": 1,
+            "name": "Знахарь",
+            "epoch": "e1000",
+            "tech": "herbalism",
+            "description": "Избушка с пучками трав под крышей.",
+            "cost": { "wood": 40, "stone": 20, "gold": 30 },
+            "buildTime": 8,
+            "effects": {
+                "housing": 0,
+                "jobs": 2,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 3, "happiness": 5 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.2, "y": 0.2, "z": 0, "w": 0.55, "d": 0.5, "h": 0.3, "color": "walls" },
+                    {
+                        "kind": "beams",
+                        "faces": ["n", "e", "s", "w"],
+                        "x": 0.2,
+                        "y": 0.2,
+                        "z": 0,
+                        "w": 0.55,
+                        "d": 0.5,
+                        "h": 0.3,
+                        "count": 5,
+                        "color": "trim"
+                    },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e"],
+                        "x": 0.2,
+                        "y": 0.2,
+                        "z": 0.045,
+                        "w": 0.55,
+                        "d": 0.5,
+                        "h": 0.225,
+                        "rows": 1,
+                        "cols": 1,
+                        "color": "window"
+                    },
+                    { "kind": "door", "face": "s", "x": 0.2, "y": 0.2, "w": 0.55, "d": 0.5, "width": 0.14, "height": 0.165, "color": "trim" },
+                    { "kind": "roof", "shape": "gable", "x": 0.2, "y": 0.2, "z": 0.3, "w": 0.55, "d": 0.5, "h": 0.28, "color": "roof", "axis": "x", "overhang": 0.04 },
+                    { "kind": "field", "x": 0.15, "y": 0.78, "w": 0.7, "d": 0.15, "rows": 2, "color": "#6aa84f" },
+                    { "kind": "cylinder", "x": 0.65, "y": 0.35, "z": 0.4, "r": 0.035, "h": 0.15, "color": "#6e625a", "segments": 8 },
+                    { "kind": "emitter", "x": 0.65, "y": 0.35, "z": 0.55, "type": "smoke" }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "name": "Лазарет",
+            "epoch": "e1500",
+            "tech": "anatomy",
+            "description": "Госпиталь при монастыре с аптекарским огородом.",
+            "cost": { "bricks": 150, "wood": 60, "glass": 10, "gold": 150 },
+            "buildTime": 14,
+            "effects": {
+                "housing": 0,
+                "jobs": 4,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 4, "happiness": 7 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.1, "y": 0.15, "z": 0, "w": 0.8, "d": 0.55, "h": 0.42, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e"],
+                        "x": 0.1,
+                        "y": 0.15,
+                        "z": 0.06,
+                        "w": 0.8,
+                        "d": 0.55,
+                        "h": 0.32,
+                        "rows": 1,
+                        "cols": 3,
+                        "color": "window"
+                    },
+                    { "kind": "door", "face": "s", "x": 0.1, "y": 0.15, "w": 0.8, "d": 0.55, "width": 0.14, "height": 0.2, "color": "trim" },
+                    { "kind": "roof", "shape": "gable", "x": 0.1, "y": 0.15, "z": 0.42, "w": 0.8, "d": 0.55, "h": 0.3, "color": "roof", "axis": "x", "overhang": 0.04 },
+                    { "kind": "box", "x": 0.42, "y": 0.13, "z": 0.3, "w": 0.16, "d": 0.02, "h": 0.06, "color": "#b33a2b" },
+                    { "kind": "field", "x": 0.1, "y": 0.78, "w": 0.8, "d": 0.16, "rows": 2, "color": "#6aa84f" }
+                ]
+            }
+        },
+        {
+            "level": 3,
+            "name": "Больница",
+            "epoch": "e1800",
+            "tech": "vaccination",
+            "description": "Кирпичная больница с палатами и садом для выздоравливающих.",
+            "cost": { "bricks": 400, "glass": 100, "steel": 40, "gold": 800 },
+            "buildTime": 20,
+            "effects": {
+                "housing": 0,
+                "jobs": 10,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 5, "happiness": 9 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "box", "x": 0.08, "y": 0.08, "z": 0, "w": 0.84, "d": 0.65, "h": 0.62, "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e", "w"],
+                        "x": 0.08,
+                        "y": 0.08,
+                        "z": 0.06,
+                        "w": 0.84,
+                        "d": 0.65,
+                        "h": 0.52,
+                        "rows": 3,
+                        "cols": 4,
+                        "color": "window"
+                    },
+                    { "kind": "door", "face": "s", "x": 0.08, "y": 0.08, "w": 0.84, "d": 0.65, "width": 0.14, "height": 0.2, "color": "trim" },
+                    { "kind": "roof", "shape": "hip", "x": 0.08, "y": 0.08, "z": 0.62, "w": 0.84, "d": 0.65, "h": 0.2, "color": "roof", "overhang": 0.04 },
+                    { "kind": "box", "x": 0.42, "y": 0.06, "z": 0.45, "w": 0.16, "d": 0.02, "h": 0.12, "color": "#ffffff" },
+                    { "kind": "box", "x": 0.47, "y": 0.055, "z": 0.47, "w": 0.06, "d": 0.02, "h": 0.08, "color": "#b33a2b" },
+                    { "kind": "tree", "x": 0.2, "y": 0.88, "scale": 0.3, "conifer": false },
+                    { "kind": "tree", "x": 0.8, "y": 0.88, "scale": 0.3, "conifer": false }
+                ]
+            }
+        },
+        {
+            "level": 4,
+            "name": "Поликлиника",
+            "epoch": "e1900",
+            "tech": "antibiotics",
+            "description": "Светлое здание с рентгеном, лабораторией и машиной скорой помощи.",
+            "cost": { "concrete": 250, "glass": 150, "steel": 100, "gold": 2500 },
+            "buildTime": 26,
+            "effects": {
+                "housing": 0,
+                "jobs": 14,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 3,
+                "aura": { "radius": 6, "happiness": 11 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "floors", "x": 0.08, "y": 0.08, "z": 0, "w": 0.84, "d": 0.65, "floors": 4, "floorHeight": 0.2, "color": "#f2efe8", "window": "window", "band": "trim" },
+                    { "kind": "roof", "shape": "flat", "x": 0.08, "y": 0.08, "z": 0.8, "w": 0.84, "d": 0.65, "h": 0.04, "color": "roof" },
+                    { "kind": "box", "x": 0.4, "y": 0.06, "z": 0.6, "w": 0.2, "d": 0.02, "h": 0.15, "color": "#b33a2b" },
+                    { "kind": "box", "x": 0.15, "y": 0.78, "z": 0, "w": 0.3, "d": 0.15, "h": 0.12, "color": "#f2f2f2" },
+                    { "kind": "pole", "x": 0.92, "y": 0.92, "z": 0, "h": 0.35, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.92, "y": 0.92, "z": 0.35, "radius": 1.4, "color": "#ffd98a" }
+                ]
+            }
+        },
+        {
+            "level": 5,
+            "name": "Медцентр",
+            "epoch": "e2000",
+            "description": "Медицинский центр с вертолётной площадкой на крыше.",
+            "cost": { "concrete": 700, "glass": 600, "electronics": 60, "gold": 7000 },
+            "buildTime": 36,
+            "effects": {
+                "housing": 0,
+                "jobs": 20,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 8,
+                "aura": { "radius": 7, "happiness": 13 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "floors", "x": 0.06, "y": 0.06, "z": 0, "w": 0.88, "d": 0.88, "floors": 7, "floorHeight": 0.2, "color": "walls", "window": "glass", "band": "trim" },
+                    { "kind": "roof", "shape": "flat", "x": 0.06, "y": 0.06, "z": 1.4, "w": 0.88, "d": 0.88, "h": 0.04, "color": "roof" },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 1.44, "r": 0.3, "h": 0.02, "color": "#3a3a3a" },
+                    { "kind": "box", "x": 0.42, "y": 0.04, "z": 1.1, "w": 0.16, "d": 0.02, "h": 0.16, "color": "#d64545" },
+                    { "kind": "light", "x": 0.5, "y": 0.5, "z": 1.5, "radius": 1.2, "color": "#ff5a5a" }
+                ]
+            }
+        },
+        {
+            "level": 6,
+            "name": "Нанобольница",
+            "epoch": "e2500",
+            "tech": "gene_therapy",
+            "description": "Нанороботы лечат изнутри; капсулы восстановления светятся мягким светом.",
+            "cost": { "ai_cores": 20, "composites": 1000, "rare_metals": 200, "gold": 25000 },
+            "buildTime": 55,
+            "effects": {
+                "housing": 0,
+                "jobs": 16,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 18,
+                "aura": { "radius": 8, "happiness": 16 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0, "r": 0.42, "h": 0.3, "color": "walls", "segments": 24 },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0.3, "r": 0.32, "h": 1.4, "color": "walls", "taper": 0.8, "segments": 24 },
+                    {
+                        "kind": "windows",
+                        "faces": ["n", "e", "s", "w"],
+                        "x": 0.18,
+                        "y": 0.18,
+                        "z": 0.35,
+                        "w": 0.64,
+                        "d": 0.64,
+                        "h": 1.2,
+                        "rows": 6,
+                        "cols": 2,
+                        "color": "accent"
+                    },
+                    { "kind": "torus", "x": 0.5, "y": 0.5, "z": 1, "r": 0.36, "tube": 0.03, "color": "trim", "spin": 0.2, "material": "glow" },
+                    { "kind": "sphere", "x": 0.5, "y": 0.5, "z": 1.7, "r": 0.26, "color": "glass", "half": true, "material": "glass" },
+                    { "kind": "box", "x": 0.42, "y": 0.06, "z": 0.12, "w": 0.16, "d": 0.02, "h": 0.12, "color": "#ff5a8a", "material": "glow" },
+                    { "kind": "light", "x": 0.5, "y": 0.5, "z": 1.8, "radius": 1.6, "color": "#c06cff" }
+                ]
+            }
+        }
+    ]
+}
