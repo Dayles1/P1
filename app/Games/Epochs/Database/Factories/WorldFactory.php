@@ -20,9 +20,9 @@ class WorldFactory extends Factory
         return [
             'user_id' => fake()->unique()->numberBetween(1, 1_000_000),
             'revision' => 1,
-            'seed' => fake()->numberBetween(1, 2_000_000_000),
-            'width' => 72,
-            'height' => 72,
+            'seed' => fake()->numberBetween(999_999_999, 2_000_000_000),
+            'width' => 96,
+            'height' => 96,
             'epoch' => 'e0',
             'epoch_index' => 0,
             'year' => 0,
