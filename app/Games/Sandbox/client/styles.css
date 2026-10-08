@@ -134,6 +134,18 @@ body {
     background: #457d50;
 }
 
+/* Something that cannot be undone (starting over). */
+.sb-button--danger {
+    border-color: rgb(217 83 79 / 0.4);
+    color: var(--sb-danger);
+}
+
+.sb-button--danger:hover {
+    border-color: transparent;
+    background: var(--sb-danger);
+    color: #fff;
+}
+
 .sb-button--small {
     min-height: 32px;
     padding: 0 10px;
@@ -163,8 +175,51 @@ body {
         transform 0.1s;
 }
 
+.sb-round {
+    position: relative;
+}
+
 .sb-round:hover {
     background: #fff;
+}
+
+/* The key that does the same as a button (computers only). */
+.sb-key {
+    display: inline-grid;
+    place-items: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border: 1px solid var(--sb-line);
+    border-bottom-width: 2px;
+    border-radius: 5px;
+    background: #fff;
+    color: var(--sb-muted);
+    font: 700 10px/1 var(--sb-mono);
+    white-space: nowrap;
+}
+
+.sb-round .sb-key {
+    position: absolute;
+    right: -5px;
+    bottom: -5px;
+    pointer-events: none;
+}
+
+.sb-button .sb-key,
+.sb-tab .sb-key,
+.sb-chip .sb-key,
+.sb-create__class .sb-key {
+    margin-left: 4px;
+}
+
+.sb-button--primary .sb-key,
+.sb-tab--active .sb-key,
+.sb-chip--active .sb-key,
+.sb-create__class--active .sb-key {
+    border-color: rgb(255 255 255 / 0.35);
+    background: rgb(255 255 255 / 0.18);
+    color: #fff;
 }
 
 .sb-round:active {
@@ -317,6 +372,92 @@ body {
 
 .sb-bar--large {
     height: 18px;
+}
+
+/* The hero's level, class and experience above the bars. */
+.sb-vitals__hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px 8px;
+}
+
+.sb-level {
+    display: grid;
+    place-items: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: var(--sb-ink);
+    color: #fff;
+    font: 700 12px/1 var(--sb-mono);
+}
+
+.sb-level--points {
+    background: var(--sb-gold);
+    animation: sb-beat 1.2s ease-in-out infinite;
+}
+
+.sb-level--large {
+    min-width: 46px;
+    height: 46px;
+    font-size: 19px;
+}
+
+.sb-vitals__name {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--sb-muted);
+}
+
+.sb-xp {
+    flex-basis: 100%;
+    height: 4px;
+    border-radius: 999px;
+    background: rgb(29 33 38 / 0.12);
+    overflow: hidden;
+}
+
+.sb-xp--large {
+    height: 8px;
+}
+
+.sb-xp__fill {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #c9a043, #e6c46a);
+    transition: width 0.3s ease-out;
+}
+
+.sb-vitals__mana {
+    color: #4f7fd0;
+}
+
+.sb-bar--mana .sb-bar__fill {
+    background: linear-gradient(90deg, #3f6fc4, #5f8fe0);
+}
+
+/* Stamina: a thin bar under the others, red when spent. */
+.sb-vitals__row--stamina {
+    padding-left: 32px;
+}
+
+.sb-bar--stamina {
+    height: 5px;
+}
+
+.sb-bar--stamina .sb-bar__fill {
+    background: linear-gradient(90deg, #b8a33e, #9fbf5a);
+    transition: width 0.12s linear;
+}
+
+.sb-bar--stamina .sb-bar__text {
+    display: none;
+}
+
+.sb-bar--out .sb-bar__fill {
+    background: var(--sb-danger);
 }
 
 /* A red glow around the edges when hurt, and while health is low. */
@@ -623,6 +764,96 @@ body {
     font: 600 10px/1 var(--sb-mono);
 }
 
+/* The class skill, right of the hotbar: dark while it cools down. */
+.sb-skill {
+    margin-left: 10px;
+    overflow: hidden;
+    color: #6b4fbf;
+}
+
+.sb-skill .sb-skill__icon {
+    width: 26px;
+    height: 26px;
+}
+
+.sb-skill__shade {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0;
+    background: rgb(29 33 38 / 0.45);
+    pointer-events: none;
+}
+
+.sb-skill__cost {
+    position: absolute;
+    right: 5px;
+    bottom: 4px;
+    color: #3f6fc4;
+    font: 700 10px/1 var(--sb-mono);
+}
+
+.sb-skill--short {
+    opacity: 0.55;
+}
+
+.sb-skill--active {
+    border-color: var(--sb-gold);
+    box-shadow: 0 0 0 2px var(--sb-gold);
+}
+
+/* "Level up" across the screen. */
+.sb-banner {
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    top: 20%;
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    padding: 12px 26px;
+    border-radius: 18px;
+    background: var(--sb-dark-glass);
+    backdrop-filter: blur(6px);
+    color: #f6f7f8;
+    text-align: center;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.sb-banner strong {
+    color: #f3d27a;
+    font-size: 26px;
+    letter-spacing: -0.01em;
+}
+
+.sb-banner span {
+    font-weight: 600;
+}
+
+.sb-banner--shown {
+    animation: sb-banner 3.6s ease-out forwards;
+}
+
+@keyframes sb-banner {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 10px) scale(0.96);
+    }
+
+    10%,
+    80% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -10px);
+    }
+}
+
 .sb-hotbar__count,
 .sb-slot__count {
     position: absolute;
@@ -854,6 +1085,271 @@ body {
 
 .sb-short {
     color: #b0503f;
+}
+
+.sb-up {
+    margin-left: 4px;
+    color: var(--sb-accent);
+}
+
+.sb-down {
+    margin-left: 4px;
+    color: #b0503f;
+}
+
+/* The card to make a hero: the turning figure, then the choices. */
+.sb-create {
+    z-index: 7;
+}
+
+.sb-create__card {
+    grid-template-columns: minmax(200px, 0.85fr) minmax(0, 1.2fr);
+    align-items: stretch;
+    justify-items: stretch;
+    gap: 18px;
+    width: min(880px, 100%);
+    padding: 18px;
+    text-align: left;
+}
+
+.sb-create__preview {
+    min-height: 360px;
+    border-radius: 16px;
+    background: radial-gradient(ellipse at 50% 35%, #fff, #dde3e7);
+    overflow: hidden;
+}
+
+.sb-create__preview canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.sb-create__side {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+}
+
+.sb-create__side h3 {
+    margin: 4px 0 0;
+    color: var(--sb-muted);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.sb-create__classes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+}
+
+.sb-create__class {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 8px;
+    border: 1px solid var(--sb-line);
+    border-radius: 12px;
+    background: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.sb-create__class--active {
+    border-color: var(--sb-ink);
+    background: var(--sb-ink);
+    color: #fff;
+}
+
+.sb-create__genders {
+    display: flex;
+    gap: 6px;
+}
+
+.sb-create__details {
+    display: grid;
+    gap: 10px;
+}
+
+.sb-create__about,
+.sb-create__skill {
+    margin: 0;
+    font-size: 14px;
+}
+
+.sb-create__skill {
+    color: var(--sb-muted);
+    font-size: 13px;
+}
+
+/* Attributes as bars (the card) or with a "+" (the character tab). */
+.sb-attributes {
+    display: grid;
+    gap: 6px;
+}
+
+.sb-attribute {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.sb-attribute b {
+    font: 700 13px/1 var(--sb-mono);
+}
+
+.sb-attribute__bar {
+    height: 8px;
+    border-radius: 999px;
+    background: rgb(29 33 38 / 0.1);
+    overflow: hidden;
+}
+
+.sb-attribute__bar span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--sb-accent);
+}
+
+.sb-attribute--wide {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--sb-line);
+}
+
+.sb-attribute--wide .sb-attribute__name b {
+    display: block;
+    font: 700 14px/1.3 var(--sb-font);
+}
+
+.sb-attribute__name small {
+    display: block;
+    color: var(--sb-muted);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.sb-attribute__value {
+    font: 700 18px/1 var(--sb-mono);
+}
+
+.sb-attribute__add {
+    width: 32px;
+    height: 32px;
+    border-color: transparent;
+    background: var(--sb-gold);
+    color: #fff;
+}
+
+.sb-attribute__add:hover {
+    background: #b58d33;
+}
+
+.sb-derived {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto;
+    gap: 5px 12px;
+    margin: 0;
+    font-size: 13px;
+}
+
+.sb-derived--wide {
+    grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.sb-derived dt {
+    color: var(--sb-muted);
+}
+
+.sb-derived dd {
+    margin: 0;
+    font: 700 13px/1.3 var(--sb-mono);
+    text-align: right;
+}
+
+.sb-hero__title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sb-hero__title strong {
+    display: block;
+    font-size: 16px;
+}
+
+.sb-hero__title small {
+    color: var(--sb-muted);
+    font-weight: 600;
+}
+
+.sb-hero__points {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: rgb(201 160 67 / 0.15);
+    color: #8a6a1f;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.sb-hero__skill p {
+    margin: 0;
+    font-size: 13px;
+}
+
+/* Knowledge points on the crafting tab; locked recipes. */
+.sb-craft__top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.sb-craft__top .sb-chips {
+    flex: 1;
+    min-width: 0;
+}
+
+.sb-knowledge {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    gap: 6px;
+    min-height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--sb-line);
+    border-radius: 999px;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.sb-knowledge .sb-ui-icon {
+    width: 16px;
+    height: 16px;
+    color: #8a6a1f;
+}
+
+.sb-recipe--locked .sb-recipe__name {
+    color: var(--sb-muted);
+}
+
+.sb-recipe__lock {
+    width: 16px;
+    height: 16px;
+    color: #8a6a1f;
 }
 
 /* Slots, wherever they are. */
@@ -1815,11 +2311,474 @@ body {
 
 /* Narrow windows: tab labels give way to icons, except the open one. */
 @media (max-width: 720px) {
-    .sb-tab:not(.sb-tab--active) span:last-child {
+    .sb-tab:not(.sb-tab--active) > span:not(.sb-ui-icon),
+    .sb-tab:not(.sb-tab--active) .sb-key {
         display: none;
     }
 
     .sb-craft__body {
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+}
+
+/* The hero card on short or narrow screens: a smaller figure, tighter choices. */
+@media (max-width: 720px), (max-height: 560px) {
+    .sb-create__card {
+        grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .sb-create__preview {
+        min-height: 200px;
+    }
+
+    .sb-create__class {
+        min-height: 38px;
+        font-size: 13px;
+    }
+
+    .sb-derived {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .sb-craft__top {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* The crosshair in the middle of the screen: red over a creature. */
+.sb-aim {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    width: 22px;
+    height: 22px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.sb-aim::before,
+.sb-aim::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    transition:
+        border-color 0.12s,
+        background 0.12s,
+        transform 0.12s;
+}
+
+.sb-aim::before {
+    inset: 0;
+    border: 2px solid rgb(255 255 255 / 0.75);
+    box-shadow: 0 0 0 1px rgb(29 33 38 / 0.35);
+}
+
+.sb-aim::after {
+    left: 50%;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    margin: -2px 0 0 -2px;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgb(29 33 38 / 0.45);
+}
+
+.sb-aim--thing::before {
+    border-color: #f3d27a;
+    transform: scale(0.85);
+}
+
+.sb-aim--enemy::before {
+    border-color: #ff6b5f;
+    transform: scale(0.75);
+}
+
+.sb-aim--enemy::after {
+    background: #ff6b5f;
+}
+
+/* Dive (in deep water) takes the build button's place on a phone. */
+.sb-tb--dive {
+    background: rgb(79 127 208 / 0.75);
+    color: #fff;
+}
+
+/* The character tab: profile across the top, cards below. */
+.sb-profile {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(150px, 220px) minmax(0, 1fr);
+    align-items: stretch;
+    gap: 16px;
+}
+
+.sb-profile__portrait {
+    min-height: 260px;
+    border-radius: 14px;
+    background: radial-gradient(ellipse at 50% 35%, #fff, #dde3e7);
+    overflow: hidden;
+}
+
+.sb-profile__portrait canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.sb-profile__info {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+}
+
+.sb-skill-card {
+    display: flex;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgb(107 79 191 / 0.08);
+}
+
+.sb-skill-card__icon {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: #6b4fbf;
+    color: #fff;
+}
+
+.sb-skill-card__icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.sb-skill-card b,
+.sb-skill-card small {
+    display: block;
+}
+
+.sb-skill-card small {
+    color: var(--sb-muted);
+    font-size: 12px;
+}
+
+.sb-skill-card .sb-skill-card__cost {
+    margin-top: 2px;
+    color: #3f6fc4;
+    font: 700 11px/1.3 var(--sb-mono);
+}
+
+.sb-passives {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.sb-passive {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #f08a3c, #c94a8a);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: help;
+}
+
+/* An attribute row: icon, name with where it comes from, value, "+". */
+.sb-stat {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--sb-line);
+}
+
+.sb-stat:last-child {
+    border-bottom: 0;
+}
+
+.sb-stat__icon {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.sb-stat--strength .sb-stat__icon {
+    color: #c94a45;
+}
+
+.sb-stat--agility .sb-stat__icon {
+    color: #4f8a5b;
+}
+
+.sb-stat--spirit .sb-stat__icon {
+    color: #3f6fc4;
+}
+
+.sb-stat__label b {
+    display: block;
+    font-size: 14px;
+}
+
+.sb-stat__label small {
+    display: block;
+    color: var(--sb-muted);
+    font-size: 12px;
+}
+
+.sb-stat__label .sb-stat__sources {
+    font: 600 11px/1.4 var(--sb-mono);
+}
+
+.sb-stat__value {
+    font: 700 22px/1 var(--sb-mono);
+}
+
+/* Figures, in groups with a small heading each. */
+.sb-figures + .sb-figures {
+    margin-top: 6px;
+    padding-top: 8px;
+    border-top: 1px solid var(--sb-line);
+}
+
+.sb-figures__head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+    color: var(--sb-muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.sb-figures__head .sb-ui-icon {
+    width: 15px;
+    height: 15px;
+}
+
+.sb-absorbed {
+    display: grid;
+    gap: 6px;
+}
+
+.sb-absorbed__row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 10px 6px 6px;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.sb-absorbed__row b,
+.sb-absorbed__row small {
+    display: block;
+}
+
+.sb-absorbed__row small {
+    color: var(--sb-muted);
+    font-size: 12px;
+}
+
+.sb-hero__piece small {
+    display: block;
+    color: var(--sb-muted);
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* The artifacts tab. */
+.sb-relics {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 12px;
+    height: 100%;
+}
+
+.sb-relics__top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sb-relics__top .sb-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.sb-relics__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(240px, 1fr);
+    gap: 14px;
+    min-height: 0;
+}
+
+.sb-relics__list {
+    display: grid;
+    align-content: start;
+    gap: 14px;
+    min-height: 0;
+    overflow: auto;
+    padding-right: 4px;
+}
+
+.sb-relics__tier h3 {
+    margin: 0 0 2px;
+}
+
+.sb-relics__tier--rare h3 {
+    color: #3f6fc4;
+}
+
+.sb-relics__tier--legendary h3 {
+    color: #c06a1f;
+}
+
+.sb-relics__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.sb-relic {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    padding: 10px 6px 8px;
+    border: 1px solid var(--sb-line);
+    border-radius: 12px;
+    background: rgb(255 255 255 / 0.5);
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.sb-relic--owned {
+    background: #fff;
+    opacity: 1;
+}
+
+.sb-relic--rare.sb-relic--owned {
+    border-color: rgb(63 111 196 / 0.5);
+}
+
+.sb-relic--legendary.sb-relic--owned {
+    border-color: rgb(192 106 31 / 0.6);
+    background: linear-gradient(180deg, #fff, #fff4e6);
+}
+
+.sb-relic--chosen {
+    border-color: var(--sb-ink);
+    box-shadow: 0 0 0 1px var(--sb-ink);
+    opacity: 1;
+}
+
+.sb-relic__name {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.sb-relic__count {
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    font: 700 11px/1 var(--sb-mono);
+}
+
+.sb-relic__dots {
+    display: flex;
+    gap: 3px;
+}
+
+.sb-relic__dots i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgb(29 33 38 / 0.15);
+}
+
+.sb-relic__dots i.on {
+    background: var(--sb-gold);
+}
+
+.sb-relic--done .sb-relic__name::after {
+    content: ' ✓';
+    color: var(--sb-accent);
+}
+
+.sb-relics__detail {
+    overflow: auto;
+}
+
+.sb-relics__detail h4 {
+    margin: 8px 0 2px;
+    color: var(--sb-muted);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.sb-tier {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--sb-muted);
+}
+
+.sb-tier--rare {
+    color: #3f6fc4;
+}
+
+.sb-tier--legendary {
+    color: #c06a1f;
+}
+
+.sb-gives {
+    display: grid;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sb-gives li {
+    padding: 6px 10px;
+    border-radius: 10px;
+    background: rgb(79 138 91 / 0.1);
+    color: #2f6a3b;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+@media (max-width: 720px), (max-height: 560px) {
+    .sb-relics__body {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .sb-relics__top .sb-hint {
+        display: none;
+    }
+
+    .sb-profile {
+        grid-template-columns: 130px minmax(0, 1fr);
+    }
+
+    .sb-profile__portrait {
+        min-height: 190px;
     }
 }

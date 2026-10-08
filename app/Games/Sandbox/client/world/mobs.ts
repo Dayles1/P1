@@ -12,6 +12,9 @@
  *
  * Nothing hostile comes close to a burning fire, so a campfire is a safe
  * spot at night. Walls and closed doors stop everything.
+ *
+ * They grow with the player: every level above the first gives new ones
+ * a little more health and harder bites (see `strength`).
  */
 
 import * as THREE from 'three';
@@ -97,6 +100,7 @@ const KINDS: Record<MobType, Kind> = {
             ['iron', 1, 1, 0.35],
             ['flint', 1, 2, 0.5],
             ['bandage', 1, 1, 0.15],
+            ['old_notes', 1, 1, 0.3],
         ],
     },
 };
@@ -187,6 +191,11 @@ export class Mobs {
     onDeath: (death: MobDeath) => void = () => {};
     /** A creature made a sound worth hearing (a growl, a moan, a bleat). */
     onCall: (mob: Mob) => void = () => {};
+    /**
+     * How much tougher than at the start new creatures are: [health,
+     * damage] multipliers, set from the player's level.
+     */
+    strength: [number, number] = [1, 1];
 
     private nextId = 1;
     private sinceSpawn = 0;
@@ -274,6 +283,59 @@ export class Mobs {
         }
 
         return best;
+    }
+
+    /**
+     * The living creature most nearly in line with where the player looks,
+     * up to `range` away — what a bolt flies at.
+     */
+    aimed(position: THREE.Vector3, facing: number, range: number): Mob | null {
+        const forwardX = Math.sin(facing);
+        const forwardZ = Math.cos(facing);
+        let best: Mob | null = null;
+        let bestScore = -Infinity;
+
+        for (const mob of this.list) {
+            if (mob.state === 'dead') {
+                continue;
+            }
+
+            const dx = mob.position.x - position.x;
+            const dz = mob.position.z - position.z;
+            const distance = Math.hypot(dx, dz);
+
+            if (distance > range || distance < 0.01) {
+                continue;
+            }
+
+            const aim = (dx * forwardX + dz * forwardZ) / distance;
+
+            // Within a cone of about 35°, nearer and straighter first.
+            if (aim > 0.82) {
+                const score = aim * 2 - distance / range;
+
+                if (score > bestScore) {
+                    best = mob;
+                    bestScore = score;
+                }
+            }
+        }
+
+        return best;
+    }
+
+    /** Every living creature within `radius` of a point. */
+    around(position: THREE.Vector3, radius: number): Mob[] {
+        return this.list.filter(
+            (mob) =>
+                mob.state !== 'dead' &&
+                Math.hypot(
+                    mob.position.x - position.x,
+                    mob.position.z - position.z,
+                ) -
+                    mob.radius <
+                    radius,
+        );
     }
 
     /** Whether a creature is still within reach for a blow that lands now. */
@@ -453,8 +515,8 @@ export class Mobs {
             id: this.nextId++,
             position: new THREE.Vector3(x, heightAt(x, z), z),
             facing: Math.random() * Math.PI * 2,
-            health: kind.health,
-            maxHealth: kind.health,
+            health: Math.round(kind.health * this.strength[0]),
+            maxHealth: Math.round(kind.health * this.strength[0]),
             radius: kind.radius,
             state: 'idle',
             model,
@@ -570,7 +632,7 @@ export class Mobs {
                     distance - mob.radius < 1.25 &&
                     Math.abs(player.y - mob.position.y) < 1.5
                 ) {
-                    this.onStrike(mob, kind.damage);
+                    this.onStrike(mob, kind.damage * this.strength[1]);
                 }
             }
 

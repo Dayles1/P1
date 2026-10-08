@@ -1,7 +1,8 @@
 /**
  * What the player has done so far, for the character tab: creatures
- * beaten by kind, trees felled, rocks broken, things made, deaths. Saved
- * with the character.
+ * beaten by kind, trees felled, rocks broken, excavations dug out,
+ * artifacts picked up, things made, recipes learnt, deaths. Saved with
+ * the character.
  */
 
 export type StatKey =
@@ -11,7 +12,10 @@ export type StatKey =
     | 'zombie'
     | 'trees'
     | 'rocks'
+    | 'digs'
+    | 'artifacts'
     | 'crafted'
+    | 'researched'
     | 'deaths';
 
 export const STAT_KEYS: StatKey[] = [
@@ -21,7 +25,10 @@ export const STAT_KEYS: StatKey[] = [
     'zombie',
     'trees',
     'rocks',
+    'digs',
+    'artifacts',
     'crafted',
+    'researched',
     'deaths',
 ];
 

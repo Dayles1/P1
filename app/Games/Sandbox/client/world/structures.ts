@@ -1,34 +1,45 @@
 /**
  * Things the player builds: chests to keep things in, a workbench for the
- * better recipes, wooden walls and doors, and a sleeping bag to wake up at.
+ * better recipes, wooden and stone walls, doors, roofs, and a sleeping
+ * bag to wake up at.
  *
  * Walls and doors snap to a 2 m grid — each one sits on the edge between
- * two cells, so they close into rooms — and everything else to a quarter
- * metre; all of it turns in right angles, which keeps the colliders
- * axis-aligned boxes. Holding something buildable shows a see-through copy
- * where it would go: green where it fits, red where it does not.
+ * two cells, so they close into rooms — a roof covers one whole cell on
+ * top of the walls, and everything else snaps to a quarter metre; all of
+ * it turns in right angles, which keeps the colliders axis-aligned boxes.
+ * Holding something buildable shows a see-through copy where it would
+ * go: green where it fits, red where it does not.
  *
- * An axe takes a building apart again (a chest spills what it held).
- * Everything is saved with the player, chests with their contents.
+ * An axe takes a wooden building apart again, a pickaxe a stone one (a
+ * chest spills what it held). Everything is saved with the player,
+ * chests with their contents.
  */
 
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { readStack } from '../inventory';
 import type { Stack } from '../inventory';
-import type { ItemId } from '../items';
+import type { ItemId, ToolKind } from '../items';
 import { RADIUS } from '../physics/character';
 import type { BoxCollider, ColliderGrid } from '../physics/colliders';
 import { heightAt, WATER_LEVEL } from './terrain';
 
 export type StructureType =
-    'chest' | 'workbench' | 'wood_wall' | 'wood_door' | 'sleeping_bag';
+    | 'chest'
+    | 'workbench'
+    | 'wood_wall'
+    | 'wood_door'
+    | 'wood_roof'
+    | 'stone_wall'
+    | 'sleeping_bag';
 
 export const STRUCTURE_TYPES: StructureType[] = [
     'chest',
     'workbench',
     'wood_wall',
     'wood_door',
+    'wood_roof',
+    'stone_wall',
     'sleeping_bag',
 ];
 
@@ -39,8 +50,18 @@ export const CHEST_SLOTS = 12;
 const MAX_STRUCTURES = 160;
 const GRID = 2;
 const DOOR_OPEN = 1.65;
+/** Where a roof sits: on top of the walls. */
+const ROOF_HEIGHT = 2.4;
 
-type Role = 'wood' | 'dark' | 'brass' | 'iron' | 'cloth' | 'pillow';
+type Role =
+    | 'wood'
+    | 'dark'
+    | 'brass'
+    | 'iron'
+    | 'cloth'
+    | 'pillow'
+    | 'stone'
+    | 'mortar';
 
 /** [centre x, centre z, half width, half depth, bottom, top] above the ground. */
 type Box = [number, number, number, number, number, number];
@@ -52,6 +73,10 @@ interface Shape {
     health: number;
     /** On the grid's cell edges (walls, doors) or anywhere. */
     edge: boolean;
+    /** Covers a whole grid cell, up on top of the walls (a roof). */
+    cell?: boolean;
+    /** What takes it apart. */
+    breaks: ToolKind;
     /** Ground under it may differ by at most this much. */
     slope: number;
     solid: Box[];
@@ -63,6 +88,7 @@ const SHAPES: Record<StructureType, Shape> = {
         depth: 0.6,
         health: 4,
         edge: false,
+        breaks: 'axe',
         slope: 0.45,
         solid: [[0, 0, 0.45, 0.3, -0.6, 0.6]],
     },
@@ -71,6 +97,7 @@ const SHAPES: Record<StructureType, Shape> = {
         depth: 0.7,
         health: 5,
         edge: false,
+        breaks: 'axe',
         slope: 0.45,
         solid: [[0, 0, 0.7, 0.35, -0.6, 0.95]],
     },
@@ -79,14 +106,35 @@ const SHAPES: Record<StructureType, Shape> = {
         depth: 0.2,
         health: 6,
         edge: true,
+        breaks: 'axe',
         slope: 1.2,
         solid: [[0, 0, 1, 0.1, -1, 2.4]],
+    },
+    stone_wall: {
+        width: 2,
+        depth: 0.24,
+        health: 16,
+        edge: true,
+        breaks: 'pickaxe',
+        slope: 1.2,
+        solid: [[0, 0, 1, 0.12, -1, 2.4]],
+    },
+    wood_roof: {
+        width: 2,
+        depth: 2,
+        health: 5,
+        edge: false,
+        cell: true,
+        breaks: 'axe',
+        slope: 2,
+        solid: [[0, 0, 1, 1, ROOF_HEIGHT, ROOF_HEIGHT + 0.16]],
     },
     wood_door: {
         width: 2,
         depth: 0.2,
         health: 5,
         edge: true,
+        breaks: 'axe',
         slope: 1.2,
         solid: [
             [-0.75, 0, 0.25, 0.1, -1, 2.4],
@@ -99,6 +147,7 @@ const SHAPES: Record<StructureType, Shape> = {
         depth: 1.9,
         health: 2,
         edge: false,
+        breaks: 'axe',
         slope: 0.35,
         solid: [],
     },
@@ -124,6 +173,15 @@ const PAINT: Record<Role, THREE.MeshStandardMaterial> = {
     pillow: new THREE.MeshStandardMaterial({
         color: 0xefe6d8,
         roughness: 0.95,
+    }),
+    stone: new THREE.MeshStandardMaterial({
+        color: 0xb0aea8,
+        roughness: 0.95,
+        flatShading: true,
+    }),
+    mortar: new THREE.MeshStandardMaterial({
+        color: 0x86837d,
+        roughness: 1,
     }),
 };
 
@@ -226,6 +284,56 @@ function design(type: GhostType): Blueprint {
                 ['dark', block(2, 0.16, 0.2, 0, 1.95, 0)],
                 ['dark', block(0.14, 3.1, 0.22, 0.95, 0.85, 0)],
                 ['dark', block(0.14, 3.1, 0.22, -0.95, 0.85, 0)],
+            );
+            break;
+        case 'stone_wall':
+            fixed.push(['mortar', block(1.96, 2.5, 0.16, 0, 1.15, 0)]);
+
+            for (let row = 0; row < 6; row++) {
+                const offset = row % 2 ? 0.25 : 0;
+                const y = 0.15 + row * 0.42;
+
+                for (let stone = -2; stone <= 2; stone++) {
+                    const x = stone * 0.5 + offset;
+                    const left = Math.max(-0.98, x - 0.23);
+                    const right = Math.min(0.98, x + 0.23);
+
+                    if (right - left > 0.1) {
+                        fixed.push([
+                            'stone',
+                            block(
+                                right - left,
+                                0.36,
+                                0.24,
+                                (left + right) / 2,
+                                y,
+                                0,
+                            ),
+                        ]);
+                    }
+                }
+            }
+
+            break;
+        case 'wood_roof':
+            for (let plank = 0; plank < 5; plank++) {
+                fixed.push([
+                    'wood',
+                    block(
+                        0.38,
+                        0.08,
+                        2,
+                        -0.8 + plank * 0.4,
+                        ROOF_HEIGHT + 0.12,
+                        0,
+                    ),
+                ]);
+            }
+
+            fixed.push(
+                ['dark', block(2, 0.08, 0.16, 0, ROOF_HEIGHT + 0.04, 0.92)],
+                ['dark', block(2, 0.08, 0.16, 0, ROOF_HEIGHT + 0.04, -0.92)],
+                ['dark', block(0.16, 0.08, 2, 0, ROOF_HEIGHT + 0.04, 0)],
             );
             break;
         case 'wood_door':
@@ -524,6 +632,14 @@ export class Structures {
             };
         }
 
+        if (SHAPES[type].cell) {
+            return {
+                x: Math.floor((position.x + forwardX * 0.9) / GRID) * GRID + 1,
+                z: Math.floor((position.z + forwardZ * 0.9) / GRID) * GRID + 1,
+                yaw: 0,
+            };
+        }
+
         const reach = RADIUS + 0.35 + SHAPES[type].depth / 2;
 
         return {
@@ -542,6 +658,19 @@ export class Structures {
 
         if (this.full) {
             return false;
+        }
+
+        if (shape.cell) {
+            // Up on the walls: anywhere dry that has no roof yet.
+            return (
+                this.base(type, spot.x, spot.z) > WATER_LEVEL + 0.1 &&
+                !this.list.some(
+                    (structure) =>
+                        structure.type === type &&
+                        structure.x === spot.x &&
+                        structure.z === spot.z,
+                )
+            );
         }
 
         const turns = quarters(spot.yaw);
@@ -615,7 +744,7 @@ export class Structures {
     /** Puts a building up (no checks — see fits()). */
     place(type: StructureType, x: number, z: number, yaw: number): Structure {
         const shape = SHAPES[type];
-        const ground = heightAt(x, z);
+        const ground = this.base(type, x, z);
         const turned = quarters(yaw) * (Math.PI / 2);
         const built = build(type, (role) => PAINT[role], true);
         built.group.position.set(x, ground, z);
@@ -690,7 +819,7 @@ export class Structures {
 
         const group = this.ghost.built.group;
         group.visible = true;
-        group.position.set(spot.x, heightAt(spot.x, spot.z), spot.z);
+        group.position.set(spot.x, this.base(type, spot.x, spot.z), spot.z);
         group.rotation.y = quarters(spot.yaw) * (Math.PI / 2);
 
         if (this.ghost.ok !== ok) {
@@ -725,12 +854,21 @@ export class Structures {
             }
 
             const [dx, dz] = this.offset(structure, position);
-            const distance = Math.hypot(dx, dz);
+            const flat = Math.hypot(dx, dz);
+            // A roof is up above the head: that far away even right under it.
+            const above = SHAPES[structure.type].cell
+                ? Math.max(
+                      0,
+                      structure.ground + ROOF_HEIGHT - (position.y + 1.7),
+                  )
+                : 0;
+            const distance = Math.hypot(flat, above);
 
             if (
                 distance < bestDistance &&
                 (distance < 0.35 ||
-                    (dx * forwardX + dz * forwardZ) / distance > 0.2)
+                    (flat > 0.05 &&
+                        (dx * forwardX + dz * forwardZ) / flat > 0.2))
             ) {
                 best = structure;
                 bestDistance = distance;
@@ -758,6 +896,21 @@ export class Structures {
             { item: structure.type as ItemId, count: 1 },
             ...(structure.items ?? []).filter((slot) => slot !== null),
         ];
+    }
+
+    /** What takes the building apart: an axe, or a pickaxe for stone. */
+    breaksWith(type: StructureType): ToolKind {
+        return SHAPES[type].breaks;
+    }
+
+    /** Whether E does anything with it (walls and roofs just stand there). */
+    usable(type: StructureType): boolean {
+        return (
+            type === 'chest' ||
+            type === 'workbench' ||
+            type === 'wood_door' ||
+            type === 'sleeping_bag'
+        );
     }
 
     toggleDoor(door: Structure): void {
@@ -848,6 +1001,29 @@ export class Structures {
                 );
             }
         }
+    }
+
+    /**
+     * The height a building stands on: the ground at its middle, or for a
+     * roof the highest ground under its cell (so it clears every wall).
+     */
+    private base(type: GhostType, x: number, z: number): number {
+        if (type === 'campfire' || !SHAPES[type].cell) {
+            return heightAt(x, z);
+        }
+
+        let high = heightAt(x, z);
+
+        for (const [dx, dz] of [
+            [-1, -1],
+            [1, -1],
+            [-1, 1],
+            [1, 1],
+        ]) {
+            high = Math.max(high, heightAt(x + dx, z + dz));
+        }
+
+        return high;
     }
 
     /** From a point to the nearest spot of the building's footprint. */

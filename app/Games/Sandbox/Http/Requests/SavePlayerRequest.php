@@ -2,7 +2,9 @@
 
 namespace App\Games\Sandbox\Http\Requests;
 
+use App\Games\Sandbox\Heroes;
 use App\Games\Sandbox\Item;
+use App\Games\Sandbox\Models\Player;
 use Closure;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -30,21 +32,24 @@ class SavePlayerRequest extends FormRequest
      */
     public const int CHEST_SLOTS = 12;
 
-    public const int MAX_HEALTH = 100;
+    /**
+     * Most knowledge points a player can hoard.
+     */
+    public const int MAX_KNOWLEDGE = 100000;
 
     /**
      * What can be put down in the world.
      *
      * @var list<string>
      */
-    public const array PLACEABLE = ['campfire', 'chest', 'workbench', 'wood_wall', 'wood_door', 'sleeping_bag'];
+    public const array PLACEABLE = ['campfire', 'chest', 'workbench', 'wood_wall', 'wood_door', 'wood_roof', 'stone_wall', 'sleeping_bag'];
 
     /**
      * The counters on the character tab.
      *
      * @var list<string>
      */
-    public const array STATS = ['deer', 'boar', 'wolf', 'zombie', 'trees', 'rocks', 'crafted', 'deaths'];
+    public const array STATS = ['deer', 'boar', 'wolf', 'zombie', 'trees', 'rocks', 'digs', 'artifacts', 'crafted', 'researched', 'deaths'];
 
     public function authorize(): bool
     {
@@ -66,7 +71,18 @@ class SavePlayerRequest extends FormRequest
             'y' => ['required', 'numeric', 'between:-100,500'],
             'z' => ['required', 'numeric', "between:-{$half},{$half}"],
             'yaw' => ['required', 'numeric', 'between:-7,7'],
-            'health' => ['sometimes', 'numeric', 'between:0,'.self::MAX_HEALTH],
+            'hero' => ['sometimes', 'array:class,gender,level,xp,points,absorbed'],
+            'hero.class' => ['required_with:hero', Rule::in(Heroes::classes())],
+            'hero.gender' => ['required_with:hero', Rule::in(Heroes::genders())],
+            'hero.level' => ['required_with:hero', 'integer', 'between:1,'.Heroes::maxLevel()],
+            'hero.xp' => ['required_with:hero', 'integer', 'min:0', $this->belowNextLevel(...)],
+            'hero.points' => ['present_with:hero', 'array:'.implode(',', Heroes::attributes()), $this->earnedPoints(...)],
+            'hero.points.*' => ['integer', 'min:0'],
+            'hero.absorbed' => ['sometimes', 'array:'.implode(',', Heroes::artifacts())],
+            'hero.absorbed.*' => ['integer', 'min:1', $this->withinAbsorbLimit(...)],
+
+            'health' => ['sometimes', 'numeric', 'min:0', $this->notAbove('health')],
+            'mana' => ['sometimes', 'numeric', 'min:0', $this->notAbove('mana')],
 
             'inventory' => ['sometimes', 'array', 'max:'.Item::SLOTS],
             'inventory.*' => ['nullable', $this->validStack(...)],
@@ -78,7 +94,7 @@ class SavePlayerRequest extends FormRequest
 
             'harvested' => ['sometimes', 'array', 'max:'.self::MAX_HARVESTED],
             'harvested.*' => ['array:id,at'],
-            'harvested.*.id' => ['required', 'string', 'regex:/^(tree|rock|pick|art):\d{1,5}$/'],
+            'harvested.*.id' => ['required', 'string', 'regex:/^(tree|rock|pick|art|dig):\d{1,5}$/'],
             'harvested.*.at' => ['required', 'integer', 'min:0'],
 
             'placed' => ['sometimes', 'array', 'max:'.self::MAX_PLACED],
@@ -94,6 +110,11 @@ class SavePlayerRequest extends FormRequest
 
             'stats' => ['sometimes', 'array:'.implode(',', self::STATS)],
             'stats.*' => ['integer', 'min:0', 'max:1000000000'],
+
+            'research' => ['sometimes', 'array:points,known'],
+            'research.points' => ['required_with:research', 'integer', 'min:0', 'max:'.self::MAX_KNOWLEDGE],
+            'research.known' => ['present_with:research', 'array', 'max:'.count(Item::cases())],
+            'research.known.*' => ['distinct', Rule::enum(Item::class)],
         ];
     }
 
@@ -129,6 +150,86 @@ class SavePlayerRequest extends FormRequest
         ksort($slots);
 
         return array_values($slots);
+    }
+
+    /**
+     * The hero the save is about: the one it sends, else the stored one.
+     *
+     * @return array{class?: string, gender?: string, level?: int, points?: array<string, int>, absorbed?: array<string, int>}|null
+     */
+    private function hero(): ?array
+    {
+        $sent = $this->input('hero');
+
+        if (is_array($sent) && in_array($sent['class'] ?? null, Heroes::classes(), true) && in_array($sent['gender'] ?? null, Heroes::genders(), true)) {
+            return [
+                'class' => $sent['class'],
+                'gender' => $sent['gender'],
+                'level' => max(1, min(Heroes::maxLevel(), (int) ($sent['level'] ?? 1))),
+                'points' => is_array($sent['points'] ?? null) ? $sent['points'] : [],
+                'absorbed' => is_array($sent['absorbed'] ?? null) ? $sent['absorbed'] : [],
+            ];
+        }
+
+        return Player::query()->where('user_id', $this->user()?->getAuthIdentifier())->value('hero');
+    }
+
+    /**
+     * Health or mana no higher than the hero's attributes allow.
+     */
+    private function notAbove(string $what): Closure
+    {
+        return function (string $attribute, mixed $value, Closure $fail) use ($what): void {
+            $hero = $this->hero();
+            $most = $what === 'health' ? Heroes::maxHealth($hero) : Heroes::maxMana($hero);
+
+            if (is_numeric($value) && $value > $most + 0.01) {
+                $fail("The {$attribute} cannot be above {$most}.");
+            }
+        };
+    }
+
+    /**
+     * Experience is spent on reaching levels: what is left is below what
+     * the next one takes (at the top level it just keeps counting).
+     */
+    private function belowNextLevel(string $attribute, mixed $value, Closure $fail): void
+    {
+        $level = $this->input('hero.level');
+
+        if (is_int($level) && $level < Heroes::maxLevel() && is_int($value) && $value >= Heroes::experienceToNext($level)) {
+            $fail("The {$attribute} is enough for the next level.");
+        }
+    }
+
+    /**
+     * An artifact absorbed no more often than it can be.
+     */
+    private function withinAbsorbLimit(string $attribute, mixed $value, Closure $fail): void
+    {
+        $artifact = str($attribute)->afterLast('.')->toString();
+
+        if (is_int($value) && $value > Heroes::absorbLimit($artifact)) {
+            $fail("The {$artifact} can be absorbed at most ".Heroes::absorbLimit($artifact).' times.');
+        }
+    }
+
+    /**
+     * No more free points put into attributes than the level has given.
+     */
+    private function earnedPoints(string $attribute, mixed $value, Closure $fail): void
+    {
+        $level = $this->input('hero.level');
+
+        if (! is_array($value) || ! is_int($level)) {
+            return;
+        }
+
+        $spent = array_sum(array_map(fn (mixed $points): int => is_int($points) ? $points : 0, $value));
+
+        if ($spent > Heroes::bonusPointsUpTo($level)) {
+            $fail("The {$attribute} add up to more than level {$level} gives.");
+        }
     }
 
     /**

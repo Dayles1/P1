@@ -1,7 +1,7 @@
 /**
  * The settings tab: graphics quality, camera sensitivity, volume and
- * sound, the FPS counter, and which graphics card the browser uses — with
- * a warning when it draws without one.
+ * sound, the FPS counter, which graphics card the browser uses — with a
+ * warning when it draws without one — and starting over from scratch.
  */
 
 import { t } from '../i18n';
@@ -80,6 +80,13 @@ export class SettingsTab implements TabView {
             gpu.append(element('p', 'sb-warning', t.gpu_software));
         }
 
+        const startOver = button(
+            'sb-button sb-button--danger',
+            t.start_over,
+            () => this.host.startOver(),
+            'exit',
+        );
+
         this.element.replaceChildren(
             this.row(t.quality, quality, this.note),
             this.row(t.sensitivity, sensitivity),
@@ -87,6 +94,11 @@ export class SettingsTab implements TabView {
             this.row(t.sound, sound),
             this.row(t.show_fps, fps),
             this.row(t.gpu, gpu),
+            this.row(
+                t.start_over,
+                startOver,
+                element('p', 'sb-hint', t.start_over_hint),
+            ),
         );
     }
 

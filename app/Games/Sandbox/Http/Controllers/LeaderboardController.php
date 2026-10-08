@@ -90,7 +90,7 @@ class LeaderboardController
         return [
             'kills' => Score::kills($stats),
             'trees' => max(0, (int) ($stats['trees'] ?? 0)),
-            'artifacts' => Score::artifacts($player->harvested ?? []),
+            'artifacts' => Score::found($stats, $player->harvested ?? []),
         ];
     }
 

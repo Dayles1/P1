@@ -17,9 +17,11 @@ export type Action =
     | 'sit'
     | 'interact'
     | 'use'
+    | 'skill'
     | 'inventory'
     | 'crafting'
     | 'character'
+    | 'artifacts'
     | 'escape'
     | 'mute'
     | 'debug'
@@ -40,10 +42,12 @@ const BINDINGS: Record<string, Action> = {
     KeyE: 'interact',
     KeyF: 'interact',
     KeyR: 'use',
+    KeyG: 'skill',
     KeyI: 'inventory',
     Tab: 'inventory',
     KeyQ: 'crafting',
     KeyP: 'character',
+    KeyO: 'artifacts',
     Escape: 'escape',
     KeyM: 'mute',
     F3: 'debug',

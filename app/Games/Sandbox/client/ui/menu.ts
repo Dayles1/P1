@@ -1,23 +1,33 @@
 /**
  * The game menu: one window with tabs — inventory, crafting, character,
- * settings — and, while a chest is open, the chest. It slides in and out;
- * the ✕, Esc or a tap outside closes it. On a phone held sideways it
- * fills the screen, with everything sized for thumbs.
+ * artifacts, settings — and, while a chest is open, the chest. It slides
+ * in and out; the ✕, Esc or a tap outside closes it. On a phone held
+ * sideways it fills the screen, with everything sized for thumbs.
+ *
+ * On a computer each tab shows its key (I, Q, P, O), the ✕ shows Esc, and
+ * Enter does the open tab's main thing — make or learn the chosen recipe,
+ * eat, drink, study or put on the chosen item.
  */
 
+import type { Fusion } from '../artifacts';
+import type { Attribute, Hero } from '../hero';
 import type { Tab } from '../i18n';
 import { t } from '../i18n';
 import type { Inventory } from '../inventory';
-import type { ArmorSlot } from '../items';
+import type { ArmorSlot, ItemId } from '../items';
+import type { Vitals } from '../player/vitals';
 import type { Recipe, Station } from '../recipes';
+import type { Research } from '../research';
 import type { Quality, Settings } from '../settings';
 import type { Stats } from '../stats';
 import type { Structure } from '../world/structures';
+import { ArtifactsTab } from './artifacts-tab';
 import { BagTab } from './bag-tab';
 import { ChestTab } from './chest-tab';
 import { CraftTab } from './craft-tab';
 import { button, element } from './dom';
 import { HeroTab } from './hero-tab';
+import { keyBadge } from './hud';
 import type { IconName } from './icons';
 import { SettingsTab } from './settings-tab';
 
@@ -26,6 +36,13 @@ export interface MenuHost {
     inventory: Inventory;
     settings: Settings;
     graphics: { gpu: string; software: boolean; smoothing: boolean };
+    research: Research;
+    /** A touch screen: no key labels. */
+    touch: boolean;
+    hero: () => Hero | null;
+    vitals: () => Vitals;
+    /** Armour points with the hero's defence. */
+    armor: () => number;
     health: () => number;
     stats: () => Stats;
     stations: () => Record<Station, boolean>;
@@ -36,7 +53,17 @@ export interface MenuHost {
     equip: (index: number) => void;
     unequip: (slot: ArmorSlot, index: number | null) => void;
     chestChanged: () => void;
+    spendPoint: (attribute: Attribute) => void;
+    learn: (recipe: Recipe) => void;
+    study: (index: number) => void;
+    salvage: (index: number) => void;
+    salvageable: (item: ItemId) => boolean;
+    absorb: (index: number) => void;
+    recycle: (index: number) => void;
+    fuse: (fusion: Fusion) => void;
     changeSettings: (change: Partial<Settings>) => void;
+    /** Deletes everything and starts again from a new hero. */
+    startOver: () => void;
     toggleMute: () => void;
     close: () => void;
 }
@@ -44,14 +71,17 @@ export interface MenuHost {
 export interface TabView {
     element: HTMLElement;
     render: () => void;
+    /** What Enter does on the tab, if anything. */
+    primary?: () => void;
 }
 
-const TABS: [Tab, IconName][] = [
-    ['bag', 'bag'],
-    ['craft', 'craft'],
-    ['hero', 'hero'],
-    ['settings', 'settings'],
-    ['chest', 'chest'],
+const TABS: [Tab, IconName, string | null][] = [
+    ['bag', 'bag', 'I'],
+    ['craft', 'craft', 'Q'],
+    ['hero', 'hero', 'P'],
+    ['artifacts', 'gem', 'O'],
+    ['settings', 'settings', null],
+    ['chest', 'chest', null],
 ];
 
 export class Menu {
@@ -75,21 +105,34 @@ export class Menu {
         const header = element('header', 'sb-menu__header');
         const tabs = element('nav', 'sb-tabs');
 
-        for (const [tab, iconName] of TABS) {
+        for (const [tab, iconName, key] of TABS) {
             const tabButton = button(
                 'sb-tab',
                 t.tabs[tab],
                 () => this.switchTo(tab),
                 iconName,
             );
+
+            if (key && !host.touch) {
+                tabButton.append(keyBadge(key));
+            }
+
             this.buttons.set(tab, tabButton);
             tabs.append(tabButton);
         }
 
-        header.append(
-            tabs,
-            button('sb-round sb-menu__close', '', () => host.close(), 'close'),
+        const close = button(
+            'sb-round sb-menu__close',
+            '',
+            () => host.close(),
+            'close',
         );
+
+        if (!host.touch) {
+            close.append(keyBadge('Esc'));
+        }
+
+        header.append(tabs, close);
 
         this.body = element('div', 'sb-menu__body');
         sheet.append(header, this.body);
@@ -105,9 +148,21 @@ export class Menu {
             bag: new BagTab(host),
             craft: new CraftTab(host),
             hero: new HeroTab(host),
+            artifacts: new ArtifactsTab(host),
             settings: new SettingsTab(host),
         };
         this.chestView = new ChestTab(host, () => this.chest);
+
+        window.addEventListener('keydown', (event) => {
+            if (
+                this.open &&
+                (event.code === 'Enter' || event.code === 'NumpadEnter') &&
+                !(event.target instanceof HTMLInputElement)
+            ) {
+                event.preventDefault();
+                this.view(this.current).primary?.();
+            }
+        });
     }
 
     get open(): boolean {

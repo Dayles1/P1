@@ -1,9 +1,11 @@
 /**
- * The crafting tab: filters by group (tools, weapons, armour, building,
- * survival) and "can make now" across the top, the recipes on the left —
- * the ones that can be made first — and the chosen recipe on the right:
+ * The crafting tab: the knowledge points and filters by group (tools,
+ * weapons, armour, building, survival) and "can make now" across the
+ * top, the recipes on the left — the ones that can be made first, ones
+ * still to be learnt with a lock — and the chosen recipe on the right:
  * what it takes, what is missing, where it has to be made, and a big
- * button to make it.
+ * button to make it (or, while it is locked, to learn it for knowledge).
+ * Enter presses that button.
  */
 
 import { t } from '../i18n';
@@ -11,6 +13,7 @@ import { ITEMS } from '../items';
 import { RECIPE_GROUPS, RECIPES } from '../recipes';
 import type { Recipe, RecipeGroup } from '../recipes';
 import { button, element, escape, icon } from './dom';
+import { keyBadge } from './hud';
 import type { MenuHost, TabView } from './menu';
 
 type Filter = RecipeGroup | 'all' | 'ready';
@@ -18,6 +21,7 @@ type Filter = RecipeGroup | 'all' | 'ready';
 export class CraftTab implements TabView {
     readonly element: HTMLElement;
     private filters: HTMLElement;
+    private knowledge: HTMLElement;
     private list: HTMLElement;
     private detail: HTMLElement;
     private filter: Filter = 'all';
@@ -26,15 +30,39 @@ export class CraftTab implements TabView {
     constructor(private host: MenuHost) {
         this.element = element('div', 'sb-craft');
         this.filters = element('nav', 'sb-chips');
+        this.knowledge = element('div', 'sb-knowledge');
         this.list = element('div', 'sb-craft__list');
         this.detail = element('section', 'sb-details sb-craft__detail');
 
+        const top = element('div', 'sb-craft__top');
+        top.append(this.knowledge, this.filters);
         const body = element('div', 'sb-craft__body');
         body.append(this.list, this.detail);
-        this.element.append(this.filters, body);
+        this.element.append(top, body);
+    }
+
+    /** Enter: learn the chosen recipe while it is locked, else make it. */
+    primary(): void {
+        const recipe = this.chosen;
+
+        if (!recipe) {
+            return;
+        }
+
+        if (!this.known(recipe)) {
+            this.host.learn(recipe);
+        } else if (this.ready(recipe)) {
+            this.host.craft(recipe);
+        }
     }
 
     render(): void {
+        this.knowledge.replaceChildren(
+            icon('book'),
+            element('span', '', `${t.knowledge}: `),
+            element('b', '', String(this.host.research.points)),
+        );
+        this.knowledge.title = t.knowledge_hint;
         this.renderFilters();
         const recipes = this.visible();
 
@@ -48,9 +76,10 @@ export class CraftTab implements TabView {
         this.list.replaceChildren(
             ...recipes.map((recipe) => {
                 const ready = this.ready(recipe);
+                const locked = !this.known(recipe);
                 const row = element(
                     'button',
-                    `sb-recipe${ready ? ' sb-recipe--ready' : ''}${recipe === this.chosen ? ' sb-recipe--chosen' : ''}`,
+                    `sb-recipe${ready ? ' sb-recipe--ready' : ''}${locked ? ' sb-recipe--locked' : ''}${recipe === this.chosen ? ' sb-recipe--chosen' : ''}`,
                 );
                 row.type = 'button';
                 row.innerHTML = `
@@ -66,7 +95,9 @@ export class CraftTab implements TabView {
                     );
                 }
 
-                if (ready) {
+                if (locked) {
+                    row.append(icon('lock', 'sb-ui-icon sb-recipe__lock'));
+                } else if (ready) {
                     row.append(icon('check', 'sb-ui-icon sb-recipe__ready'));
                 }
 
@@ -91,16 +122,23 @@ export class CraftTab implements TabView {
                   : recipe.group === this.filter,
         );
 
-        // What can be made now comes first; otherwise the order of the list.
-        return recipes.sort(
-            (a, b) => Number(this.ready(b)) - Number(this.ready(a)),
-        );
+        // What can be made now comes first, locked ones last; otherwise
+        // the order of the list.
+        const rank = (recipe: Recipe) =>
+            this.ready(recipe) ? 0 : this.known(recipe) ? 1 : 2;
+
+        return recipes.sort((a, b) => rank(a) - rank(b));
+    }
+
+    private known(recipe: Recipe): boolean {
+        return this.host.research.knows(recipe.result);
     }
 
     private ready(recipe: Recipe): boolean {
         const inventory = this.host.inventory;
 
         return (
+            this.known(recipe) &&
             (!recipe.near || this.host.stations()[recipe.near]) &&
             recipe.needs.every(
                 ([item, count]) => inventory.total(item) >= count,
@@ -178,6 +216,41 @@ export class CraftTab implements TabView {
             this.detail.append(station);
         }
 
+        const actions = element('div', 'sb-details__actions');
+
+        if (!this.known(recipe)) {
+            const cost = recipe.research ?? 0;
+            const points = this.host.research.points;
+            const lock = element(
+                'p',
+                `sb-details__fact sb-station${points >= cost ? '' : ' sb-short'}`,
+            );
+            lock.append(
+                icon('lock'),
+                element(
+                    'span',
+                    '',
+                    `${t.locked}: ${cost} ${t.research_cost} (${t.knowledge}: ${points})`,
+                ),
+            );
+            const learn = button(
+                'sb-button sb-button--primary sb-button--wide',
+                `${t.research} · ${cost}`,
+                () => this.host.learn(recipe),
+                'book',
+            );
+            learn.disabled = points < cost;
+            this.withKey(learn);
+            actions.append(learn);
+            this.detail.append(
+                lock,
+                element('p', 'sb-hint', t.knowledge_hint),
+                actions,
+            );
+
+            return;
+        }
+
         const make = button(
             'sb-button sb-button--primary sb-button--wide',
             t.craft,
@@ -185,8 +258,15 @@ export class CraftTab implements TabView {
             'craft',
         );
         make.disabled = !this.ready(recipe);
-        const actions = element('div', 'sb-details__actions');
+        this.withKey(make);
         actions.append(make);
         this.detail.append(actions);
+    }
+
+    /** "Enter" on the main button, on a computer. */
+    private withKey(target: HTMLButtonElement): void {
+        if (!this.host.touch) {
+            target.append(keyBadge(t.enter));
+        }
     }
 }

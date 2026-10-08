@@ -130,7 +130,17 @@ export class Character {
     swimScale = 1;
     breathScale = 1;
     sittingOnGround = false;
+    /** Jumps that can be made in the air (the storm eye's double jump). */
+    extraJumps = 0;
+    private airJumps = 0;
     private climb: Climb | null = null;
+    /** A leap forward (the assassin's dash): direction, speed, time left. */
+    private lunge: {
+        x: number;
+        z: number;
+        speed: number;
+        time: number;
+    } | null = null;
 
     private accumulator = 0;
     private sinceGrounded = 0;
@@ -160,6 +170,27 @@ export class Character {
     }
 
     /** Whether the body is free to act (not sitting, climbing or swimming). */
+    /**
+     * Leaps along (x, z) at `speed` m/s for `seconds` — on the ground only;
+     * false while sitting, swimming, climbing or crawling.
+     */
+    dash(x: number, z: number, speed: number, seconds: number): boolean {
+        const length = Math.hypot(x, z);
+
+        if (
+            !this.free ||
+            this.swimming ||
+            this.stance === 'crawl' ||
+            length < 1e-3
+        ) {
+            return false;
+        }
+
+        this.lunge = { x: x / length, z: z / length, speed, time: seconds };
+
+        return true;
+    }
+
     get free(): boolean {
         return !this.sitting && !this.climb && !this.swimming;
     }
@@ -423,6 +454,16 @@ export class Character {
         velocity.x += dx * scale;
         velocity.z += dz * scale;
 
+        if (this.lunge) {
+            velocity.x = this.lunge.x * this.lunge.speed;
+            velocity.z = this.lunge.z * this.lunge.speed;
+            this.lunge.time -= STEP;
+
+            if (this.lunge.time <= 0) {
+                this.lunge = null;
+            }
+        }
+
         let jumped = false;
 
         if (
@@ -436,6 +477,20 @@ export class Character {
                 (this.stance === 'crouch' ? 0.75 : 1);
             this.jumpBuffered = 0;
             this.sinceGrounded = COYOTE_TIME + 1;
+            jumped = true;
+        }
+
+        if (wasGrounded) {
+            this.airJumps = this.extraJumps;
+        } else if (
+            !jumped &&
+            this.jumpBuffered > 0 &&
+            this.airJumps > 0 &&
+            this.stance !== 'crawl'
+        ) {
+            velocity.y = JUMP_SPEED * this.jumpScale * 0.9;
+            this.jumpBuffered = 0;
+            this.airJumps--;
             jumped = true;
         }
 

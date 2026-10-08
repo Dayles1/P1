@@ -7,7 +7,8 @@
  * - jump next to it (held in water: swim up);
  * - the hand above it, which shows what it would do right now (pick up,
  *   open, sit…) and lights up when there is something to do;
- * - build / eat, which only shows while holding something to build or eat;
+ * - build / eat, which only shows while holding something to build or eat
+ *   — and in deep water gives way to "dive" (held: go down);
  * - a "more" button that folds out the rarer moves: crouch (held in
  *   water: dive), crawl and sit.
  *
@@ -34,7 +35,9 @@ export interface TouchContext {
     /** What the hand button would do, or null when there is nothing. */
     use: IconName | null;
     /** Build or eat with what is held, or null. */
-    place: 'build' | 'eat' | null;
+    place: 'build' | 'eat' | 'book' | null;
+    /** In deep water: the dive button shows instead. */
+    swimming: boolean;
 }
 
 export class TouchControls {
@@ -43,9 +46,10 @@ export class TouchControls {
     private knob: HTMLElement;
     private useButton: HTMLElement;
     private placeButton: HTMLElement;
+    private diveButton: HTMLElement;
     private more: HTMLElement;
     private moreButton: HTMLElement;
-    private context: TouchContext = { use: null, place: null };
+    private context: TouchContext = { use: null, place: null, swimming: false };
     private stickTouch: number | null = null;
     private stickOrigin = { x: 0, y: 0 };
     private lookTouch: { id: number; x: number; y: number } | null = null;
@@ -93,6 +97,13 @@ export class TouchControls {
             className: 'sb-tb sb-tb--place',
         });
         this.placeButton.hidden = true;
+        this.diveButton = this.button({
+            name: 'crouch',
+            label: '',
+            hold: 'dive',
+            className: 'sb-tb sb-tb--place sb-tb--dive',
+        });
+        this.diveButton.hidden = true;
         this.moreButton = this.button({
             name: 'more',
             label: '',
@@ -127,6 +138,7 @@ export class TouchControls {
         cluster.append(
             this.useButton,
             this.placeButton,
+            this.diveButton,
             this.moreButton,
             this.more,
         );
@@ -157,7 +169,8 @@ export class TouchControls {
     setContext(context: TouchContext): void {
         if (
             context.use === this.context.use &&
-            context.place === this.context.place
+            context.place === this.context.place &&
+            context.swimming === this.context.swimming
         ) {
             return;
         }
@@ -167,7 +180,8 @@ export class TouchControls {
         this.useButton
             .querySelector('.sb-ui-icon')!
             .replaceWith(icon(context.use ?? 'hand'));
-        this.placeButton.hidden = context.place === null;
+        this.placeButton.hidden = context.place === null || context.swimming;
+        this.diveButton.hidden = !context.swimming;
 
         if (context.place) {
             this.placeButton

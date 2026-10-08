@@ -24,6 +24,7 @@ class SandboxServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/config/sandbox.php', 'sandbox');
+        $this->mergeConfigFrom(__DIR__.'/config/heroes.php', 'sandbox.heroes');
         $this->registerConnection();
     }
 

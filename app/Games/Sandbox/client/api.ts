@@ -3,7 +3,9 @@
  * the host application: the bearer token the user signed in with.
  */
 
+import type { SavedHero } from './hero';
 import type { Stack, Worn } from './inventory';
+import type { SavedResearch } from './research';
 import type { Stats } from './stats';
 import type { Harvested, Placed } from './world/resources';
 import type { PlacedStructure } from './world/structures';
@@ -11,21 +13,30 @@ import type { PlacedStructure } from './world/structures';
 const TOKEN_KEY = 'auth_token';
 
 export interface PlayerState {
+    hero: SavedHero;
     x: number;
     y: number;
     z: number;
     yaw: number;
     health: number;
+    mana: number;
     inventory: (Stack | null)[];
     equipment: Worn;
     harvested: Harvested[];
     placed: (Placed | PlacedStructure)[];
     stats: Stats;
+    research: SavedResearch;
 }
 
-export interface SavedPlayer extends Omit<PlayerState, 'health'> {
-    /** Null for a character saved before there was health. */
+export interface SavedPlayer extends Omit<
+    PlayerState,
+    'hero' | 'health' | 'mana' | 'research'
+> {
+    /** Null for a character saved before there were heroes (and so on). */
+    hero: SavedHero | null;
     health: number | null;
+    mana: number | null;
+    research: SavedResearch | null;
     saved_at: string | null;
 }
 
@@ -118,8 +129,13 @@ export function loadPlayer(): Promise<SavedPlayer | null> {
     return request<SavedPlayer | null>('player');
 }
 
+/** Deletes the character and everything it did: the next visit starts over. */
+export function resetPlayer(): Promise<null> {
+    return request<null>('player', 'DELETE');
+}
+
 export function savePlayer(
-    player: PlayerState,
+    player: Partial<PlayerState>,
     keepalive = false,
 ): Promise<SavedPlayer> {
     return request<SavedPlayer>('player', 'PUT', player, keepalive);

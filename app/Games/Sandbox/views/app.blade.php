@@ -14,6 +14,8 @@
 
 <body>
     <div id="sandbox-root" data-back-url="{{ url(config('sandbox.back_url')) }}"></div>
+    {{-- The hero rules (config/heroes.php), the same ones the server checks saves against. --}}
+    <script type="application/json" id="sandbox-heroes">@json(config('sandbox.heroes'))</script>
 </body>
 
 </html>

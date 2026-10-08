@@ -1,9 +1,9 @@
 /**
  * Everything a player can carry. Ids, stack sizes and durability match
- * the server's App\Games\Sandbox\Item; names live in i18n.ts. Food and
- * bandages give health back, armour is worn on the head, body or feet
- * and wears out like tools do, and placeable things are built into the
- * world.
+ * the server's App\Games\Sandbox\Item; names live in i18n.ts. Food,
+ * bandages and potions give health (or mana) back, armour is worn on the
+ * head, body or feet and wears out like tools do, placeable things are
+ * built into the world, and notes and relics are studied for knowledge.
  *
  * Icons are small inline SVGs (emoji for logs and rocks are missing on
  * Windows 10).
@@ -27,12 +27,20 @@ export type ItemId =
     | 'iron_axe'
     | 'iron_pickaxe'
     | 'iron_sword'
+    | 'shovel'
+    | 'dagger'
+    | 'war_hammer'
+    | 'staff'
     | 'torch'
     | 'campfire'
     | 'raw_meat'
     | 'cooked_meat'
     | 'hide'
     | 'bandage'
+    | 'healing_potion'
+    | 'mana_potion'
+    | 'old_notes'
+    | 'relic_shard'
     | 'leather_helmet'
     | 'leather_jacket'
     | 'leather_boots'
@@ -43,14 +51,27 @@ export type ItemId =
     | 'workbench'
     | 'wood_wall'
     | 'wood_door'
+    | 'wood_roof'
+    | 'stone_wall'
     | 'sleeping_bag'
     | 'wind_feather'
     | 'sun_stone'
     | 'frost_crystal'
     | 'forest_heart'
-    | 'golden_clover';
+    | 'golden_clover'
+    | 'strength_rune'
+    | 'agility_rune'
+    | 'spirit_rune'
+    | 'vital_shard'
+    | 'mana_pearl'
+    | 'swift_charm'
+    | 'storm_eye'
+    | 'deep_pearl'
+    | 'blood_ruby'
+    | 'phoenix_feather'
+    | 'essence';
 
-export type ToolKind = 'axe' | 'pickaxe' | 'sword';
+export type ToolKind = 'axe' | 'pickaxe' | 'sword' | 'shovel';
 
 /** Where a piece of armour is worn. */
 export type ArmorSlot = 'head' | 'body' | 'feet';
@@ -62,7 +83,17 @@ export type ArtifactId =
     | 'sun_stone'
     | 'frost_crystal'
     | 'forest_heart'
-    | 'golden_clover';
+    | 'golden_clover'
+    | 'strength_rune'
+    | 'agility_rune'
+    | 'spirit_rune'
+    | 'vital_shard'
+    | 'mana_pearl'
+    | 'swift_charm'
+    | 'storm_eye'
+    | 'deep_pearl'
+    | 'blood_ruby'
+    | 'phoenix_feather';
 
 export interface ItemDefinition {
     maxStack: number;
@@ -75,6 +106,15 @@ export interface ItemDefinition {
     artifact?: boolean;
     /** Eaten or put on: the health it gives back. */
     heals?: number;
+    /** Drunk: the mana it gives back. */
+    mana?: number;
+    /** Studied (read, examined): the knowledge it gives. */
+    knowledge?: number;
+    /**
+     * How a weapon differs from a plain one: blows `speed` times as quick,
+     * `crit` more chance of a critical hit, spells `spell` times as strong.
+     */
+    weapon?: { speed?: number; crit?: number; spell?: number };
     /** Worn: where, and how many armour points it adds. */
     armor?: { slot: ArmorSlot; points: number };
 }
@@ -129,6 +169,30 @@ function torso([fill, dark]: readonly [string, string], iron: boolean) {
 function boots([fill, dark]: readonly [string, string]) {
     return svg(
         `<path d="M7 5h8v14l9.5 3.2c1.6.5 2.5 1.6 2.5 3V27H7z" fill="${fill}"/><path d="M7 24.5h20V28H7z" fill="${dark}"/><path d="M7 10h8" stroke="${dark}" stroke-width="1.5"/>`,
+    );
+}
+
+function rune(glyph: string, color: string): string {
+    return svg(
+        `<path d="M9 4h14l3 6-3 18H9L6 10z" fill="#8f8b83"/><path d="M9 4h14l3 6H6z" fill="#aaa69e"/><path d="${glyph}" stroke="${color}" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="17" r="11" fill="none" stroke="${color}" stroke-opacity=".35" stroke-width="1.5"/>`,
+    );
+}
+
+function pearl(fill: string, shine: string): string {
+    return svg(
+        `<circle cx="16" cy="17" r="9" fill="${fill}"/><circle cx="12.5" cy="13.5" r="3" fill="${shine}" fill-opacity=".8"/><path d="M5 26c3-2 19-2 22 0" stroke="#b9a37a" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="16" cy="17" r="13" fill="none" stroke="${fill}" stroke-opacity=".35" stroke-width="1.5"/>`,
+    );
+}
+
+function shovel(): string {
+    return svg(
+        `<path d="M8 27 20 10" stroke="#9c7e5f" stroke-width="3" stroke-linecap="round"/><path d="M6 25.5 9.5 29" stroke="#6f5a45" stroke-width="3" stroke-linecap="round"/><path d="M18 12.5c-1-3.5 1-7 4.5-8.5L28 9.5c-1.5 3.5-5 5.5-8.5 4.5z" fill="${STONE_HEAD}" stroke="#6f6d69" stroke-width="1"/>`,
+    );
+}
+
+function potion(fill: string, shine: string): string {
+    return svg(
+        `<path d="M13 4h6v3h-6z" fill="#b48a60"/><path d="M13.5 7h5v4.5c4 1.6 6.5 5 6.5 9 0 5-4 7.5-9 7.5s-9-2.5-9-7.5c0-4 2.5-7.4 6.5-9z" fill="#e8eef0" fill-opacity=".55" stroke="#9aa6ac" stroke-width="1"/><path d="M8.3 19.5h15.4c.3 4.6-3.2 6.6-7.7 6.6s-8-2-7.7-6.6z" fill="${fill}"/><circle cx="12.5" cy="17" r="1.4" fill="${shine}"/>`,
     );
 }
 
@@ -252,6 +316,38 @@ export const ITEMS: Record<ItemId, ItemDefinition> = {
         tool: { kind: 'sword', power: 5 },
         icon: sword(IRON_HEAD),
     },
+    shovel: {
+        maxStack: 1,
+        durability: 80,
+        tool: { kind: 'shovel', power: 2 },
+        icon: shovel(),
+    },
+    dagger: {
+        maxStack: 1,
+        durability: 150,
+        tool: { kind: 'sword', power: 2 },
+        weapon: { speed: 1.4, crit: 0.12 },
+        icon: svg(
+            `<path d="M22 5 25 6 24 9 15.5 17.5 13.5 15.5z" fill="${IRON_HEAD}" stroke="#6f6d69" stroke-width="1"/><path d="M11 15l5 5" stroke="#6f5a45" stroke-width="2.5" stroke-linecap="round"/><path d="M8 24l4.5-4.5" stroke="#3f3a44" stroke-width="3.4" stroke-linecap="round"/>`,
+        ),
+    },
+    war_hammer: {
+        maxStack: 1,
+        durability: 260,
+        tool: { kind: 'sword', power: 6 },
+        weapon: { speed: 0.75 },
+        icon: svg(
+            `<path d="M8 27 19 12" stroke="#9c7e5f" stroke-width="3" stroke-linecap="round"/><path d="M14 9.5 21 3l8 8-6.5 7z" fill="${IRON_HEAD}" stroke="#6f6d69" stroke-width="1"/><path d="M17.5 6.2l8.3 8.3" stroke="#8f979f" stroke-width="1.6"/>`,
+        ),
+    },
+    staff: {
+        maxStack: 1,
+        durability: 200,
+        weapon: { spell: 1.4 },
+        icon: svg(
+            '<path d="M8 28 22 10" stroke="#7e5a37" stroke-width="2.8" stroke-linecap="round"/><path d="M20 12c-2-3-1-7 3-8 2 1 3 2 4 4-1 3-4 5-7 4z" fill="none" stroke="#7e5a37" stroke-width="2"/><circle cx="23.5" cy="8" r="2.6" fill="#9fd7f2"/><circle cx="23.5" cy="8" r="5" fill="#9fd7f2" fill-opacity=".25"/>',
+        ),
+    },
     torch: {
         maxStack: 10,
         icon: svg(
@@ -286,6 +382,30 @@ export const ITEMS: Record<ItemId, ItemDefinition> = {
         heals: 25,
         icon: svg(
             '<rect x="5" y="9" width="22" height="14" rx="3.5" fill="#efe9de"/><path d="M21 9v14" stroke="#d8d0c2" stroke-width="1.4"/><path d="M14 12.5v7M10.5 16h7" stroke="#c4565b" stroke-width="2.6" stroke-linecap="round"/>',
+        ),
+    },
+    healing_potion: {
+        maxStack: 10,
+        heals: 60,
+        icon: potion('#c4565b', '#f3b1b4'),
+    },
+    mana_potion: {
+        maxStack: 10,
+        mana: 60,
+        icon: potion('#4f7fd0', '#b8d0f7'),
+    },
+    old_notes: {
+        maxStack: 20,
+        knowledge: 10,
+        icon: svg(
+            '<path d="M7 6h15l3 3v17H7z" fill="#efe3c4"/><path d="M22 6v3h3" fill="#d8c79d"/><path d="M10.5 12h11M10.5 16h11M10.5 20h7" stroke="#9c8a66" stroke-width="1.4" stroke-linecap="round"/><path d="M5 9c0-2 1-3 2-3v20c-1 0-2-1-2-3z" fill="#c9b78f"/>',
+        ),
+    },
+    relic_shard: {
+        maxStack: 20,
+        knowledge: 25,
+        icon: svg(
+            '<path d="M9 5 22 7 27 17 18 27 6 21z" fill="#a49b8a"/><path d="M9 5 22 7 16 15z" fill="#bfb6a3"/><path d="M12 12c2 1 3 3 3 5M19 11l2 6M11 19l5 1" stroke="#d9b45a" stroke-width="1.5" stroke-linecap="round" fill="none"/>',
         ),
     },
     leather_helmet: {
@@ -352,6 +472,20 @@ export const ITEMS: Record<ItemId, ItemDefinition> = {
             '<rect x="8" y="3" width="16" height="26" rx="1.5" fill="#a57a4f"/><path d="M8 11h16M8 21h16" stroke="#7e5a37" stroke-width="1.5"/><path d="M13.3 3v26M18.6 3v26" stroke="#946c45" stroke-width=".8"/><circle cx="20.5" cy="16" r="1.6" fill="#d8c27a"/>',
         ),
     },
+    wood_roof: {
+        maxStack: 20,
+        placeable: true,
+        icon: svg(
+            '<path d="M3 17 16 6l13 11z" fill="#a57a4f"/><path d="M3 17 16 6l13 11h-4L16 9.5 7 17z" fill="#8c6a48"/><path d="M8 13h16M5.5 15.5h21" stroke="#7e5a37" stroke-width="1"/><path d="M7 17v9h18v-9" fill="none" stroke="#b48a60" stroke-width="2" stroke-dasharray="2 2"/>',
+        ),
+    },
+    stone_wall: {
+        maxStack: 20,
+        placeable: true,
+        icon: svg(
+            '<rect x="4" y="5" width="24" height="22" rx="1.5" fill="#a7a6a2"/><path d="M4 12.3h24M4 19.6h24M11 5v7.3M20 5v7.3M15 12.3v7.3M24 12.3v7.3M9 19.6V27M19 19.6V27" stroke="#7d7c78" stroke-width="1.3"/>',
+        ),
+    },
     sleeping_bag: {
         maxStack: 2,
         placeable: true,
@@ -384,10 +518,80 @@ export const ITEMS: Record<ItemId, ItemDefinition> = {
             '<circle cx="12" cy="11" r="5" fill="#d9b44a"/><circle cx="20" cy="11" r="5" fill="#e3c25e"/><circle cx="12" cy="19" r="5" fill="#e3c25e"/><circle cx="20" cy="19" r="5" fill="#d9b44a"/><path d="M16 15c1 6 3 9 6 12" stroke="#a88a35" stroke-width="2" fill="none"/>',
         ),
     },
+    strength_rune: {
+        maxStack: 10,
+        artifact: true,
+        icon: rune('M12 11l4 4 4-4M16 15v8', '#e0675f'),
+    },
+    agility_rune: {
+        maxStack: 10,
+        artifact: true,
+        icon: rune('M11 22l5-11 5 11M13 18h6', '#6fbf6a'),
+    },
+    spirit_rune: {
+        maxStack: 10,
+        artifact: true,
+        icon: rune(
+            'M16 10v13M11 13c3 3 7 3 10 0M11 19c3-3 7-3 10 0',
+            '#6f9fe8',
+        ),
+    },
+    vital_shard: {
+        maxStack: 10,
+        artifact: true,
+        icon: gem('#d9534f', '#f2a5a2'),
+    },
+    mana_pearl: {
+        maxStack: 10,
+        artifact: true,
+        icon: pearl('#5f8fe0', '#d6e4fb'),
+    },
+    swift_charm: {
+        maxStack: 10,
+        artifact: true,
+        icon: svg(
+            '<path d="M16 3v6" stroke="#b9a37a" stroke-width="1.6"/><circle cx="16" cy="18" r="8" fill="#d8eef2" stroke="#7fb8c6" stroke-width="2"/><path d="M11 21c4-1 7-4 9-9-1 5-1 8 1 10" stroke="#4f97a8" stroke-width="2" fill="none" stroke-linecap="round"/>',
+        ),
+    },
+    storm_eye: {
+        maxStack: 1,
+        artifact: true,
+        icon: svg(
+            '<ellipse cx="16" cy="16" rx="12" ry="8" fill="#3d4a73"/><circle cx="16" cy="16" r="5.5" fill="#9fd7f2"/><path d="M17 11l-3 5h4l-3 5" stroke="#fff27a" stroke-width="1.8" fill="none" stroke-linejoin="round"/><circle cx="16" cy="16" r="14" fill="none" stroke="#9fd7f2" stroke-opacity=".4" stroke-width="1.5"/>',
+        ),
+    },
+    deep_pearl: {
+        maxStack: 1,
+        artifact: true,
+        icon: pearl('#2f7f8f', '#bdf0f2'),
+    },
+    blood_ruby: {
+        maxStack: 1,
+        artifact: true,
+        icon: gem('#8f1f2f', '#e0505f'),
+    },
+    phoenix_feather: {
+        maxStack: 1,
+        artifact: true,
+        icon: svg(
+            '<path d="M24 4C12 6 7 15 8 26l3-3c1-6 5-11 13-19z" fill="#f08a3c"/><path d="M21 8c-6 3-9 8-9 14" stroke="#ffd36b" stroke-width="2" fill="none"/><path d="M8 26 22 7" stroke="#b5441f" stroke-width="1.2"/><circle cx="16" cy="16" r="13" fill="none" stroke="#f08a3c" stroke-opacity=".4" stroke-width="1.5"/>',
+        ),
+    },
+    essence: {
+        maxStack: 50,
+        icon: svg(
+            '<path d="M12 4h8v4c4 2 6 6 6 10a10 10 0 0 1-20 0c0-4 2-8 6-10z" fill="#e8e2f5" fill-opacity=".6" stroke="#9a8fc0" stroke-width="1"/><path d="M8 19c3-3 6 2 9-1s5 1 7 0c0 5-3.5 8-8 8s-8-3-8-7z" fill="#a587e0"/><circle cx="13" cy="15" r="1.3" fill="#fff"/><circle cx="19" cy="21" r="1" fill="#fff"/>',
+        ),
+    },
 };
 
 export function isItem(value: unknown): value is ItemId {
     return typeof value === 'string' && value in ITEMS;
+}
+
+/** Items that are studied for knowledge (notes, relics). */
+export function studied(item: ItemId): boolean {
+    return Boolean(ITEMS[item].knowledge);
 }
 
 /**

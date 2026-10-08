@@ -278,8 +278,8 @@ test('the score is worked out on the server from what was saved', function () {
         ]))
         ->assertOk();
 
-    // 2 wolves ×15 + 1 dead ×20 + 10 trees ×2 + 3 made ×1 + 1 artifact ×100.
-    expect(Player::query()->sole()->score)->toBe(173);
+    // 2 wolves ×15 + 1 dead ×20 + 10 trees ×2 + 3 made ×1 + 1 artifact ×20.
+    expect(Player::query()->sole()->score)->toBe(93);
 });
 
 test('the leaderboard ranks players by score and shows the player their place', function () {

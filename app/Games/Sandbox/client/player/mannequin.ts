@@ -5,28 +5,38 @@
  * clothes: a helmet on the head, a jacket or breastplate over the chest
  * and shoulders, boots up the shins.
  *
+ * The hero shows (see setLook): strength makes the figure broader and
+ * thicker in the arms and legs, agility leaner; a woman has narrower
+ * shoulders and waist, fuller hips, a bust and a ponytail; and every
+ * class dresses its own way — a tank in red with iron pauldrons, a
+ * fighter in blue with leather bracers, an assassin in near-black with a
+ * hood, a mage in an indigo robe.
+ *
  * It has joints but no animation clips: every frame a target pose is
  * worked out from what the body does (walk, run, crouch, crawl, sit,
  * swim, jump, climb, hit, pick up) and the figure eases into it. While on its
  * feet the legs are placed by inverse kinematics: each foot follows a
  * step path that matches the ground speed (no sliding) and lands on the
  * real ground height under it, so the knees bend on slopes and steps.
+ *
+ * Once the realistic body (see Human) has loaded, it is what is seen: the
+ * shapes here are hidden and only drive its bones; the held item moves
+ * into its right hand, and armour is seated on the body.
  */
 
 import * as THREE from 'three';
+import type { Attributes, Gender, HeroClass } from '../hero';
 import { ARMOR_SLOTS } from '../items';
 import type { ArmorSlot, ItemId } from '../items';
 import type { Stance } from '../physics/character';
 import { createHeld } from './held';
+import { Human, loadHuman } from './human';
 
 const cloth = (color: number, roughness = 0.85) =>
     new THREE.MeshStandardMaterial({ color, roughness });
 
 const SKIN = cloth(0xe2b896, 0.6);
-const SHIRT = cloth(0x5f8296);
-const TROUSERS = cloth(0x4a4b55);
 const SHOES = cloth(0x3b3029);
-const HAIR = cloth(0x3a2a1e, 0.9);
 const EYES = new THREE.MeshStandardMaterial({
     color: 0x1d2126,
     roughness: 0.3,
@@ -43,6 +53,21 @@ const IRON_DARK = new THREE.MeshStandardMaterial({
     roughness: 0.45,
     metalness: 0.6,
 });
+
+/** Clothes per class: shirt, trousers, trim. */
+const OUTFITS: Record<HeroClass, [number, number, number]> = {
+    tank: [0x7d3b34, 0x4a4440, 0x8f979f],
+    fighter: [0x5f8296, 0x4a4b55, 0x6f4a2c],
+    assassin: [0x3c3a44, 0x2f2d35, 0x6b3550],
+    mage: [0x4b4f8f, 0x3d3a5c, 0xd8c27a],
+};
+
+/** Who the figure is: the hero's class, gender and attributes. */
+export interface Look {
+    heroClass: HeroClass;
+    gender: Gender;
+    attributes: Attributes;
+}
 
 const HIPS = 0.98;
 /** Hip joint below the hips' origin. */
@@ -149,6 +174,8 @@ interface Pose {
     /** Whole body leaning sideways (into a turn). */
     roll: number;
     hipsYaw: number;
+    /** Hips tilting sideways (the swing leg's side drops). */
+    hipsRoll: number;
     lean: number;
     side: number;
     twist: number;
@@ -168,6 +195,8 @@ interface Pose {
     footR: number;
     spreadL: number;
     spreadR: number;
+    /** Thighs turned outward about their length (knees to the sides). */
+    turnOut: number;
     armL: number;
     armR: number;
     armOutL: number;
@@ -182,6 +211,7 @@ const REST: Pose = {
     pitch: 0,
     roll: 0,
     hipsYaw: 0,
+    hipsRoll: 0,
     lean: 0,
     side: 0,
     twist: 0,
@@ -200,6 +230,7 @@ const REST: Pose = {
     footR: 0,
     spreadL: 0,
     spreadR: 0,
+    turnOut: 0,
     armL: 0,
     armR: 0,
     armOutL: 0.08,
@@ -239,11 +270,28 @@ export interface MotionState {
 export class Mannequin {
     readonly root = new THREE.Group();
 
+    private shirt = cloth(0x5f8296);
+    private trousers = cloth(0x4a4b55);
+    private hairPaint = cloth(0x3a2a1e, 0.9);
+    private trim = cloth(0x6f4a2c, 0.7);
+    private build = { female: false, torso: 1, chestDepth: 1 };
+    private pelvis: THREE.Mesh;
+    private belt: THREE.Mesh;
+    private waist: THREE.Mesh;
+    private hair: THREE.Mesh;
+    private limbs: { mesh: THREE.Mesh; kind: 'arm' | 'thigh' | 'shin' }[] = [];
+    /** Parts that depend on the look (bust, robe, hood…), rebuilt with it. */
+    private extras: THREE.Object3D[] = [];
     private body: THREE.Group;
     private hips: THREE.Group;
     private spine: THREE.Group;
     private head: THREE.Group;
+    private neck: THREE.Group;
     private chest: THREE.Mesh;
+    /** The realistic body, once loaded, and the gender it was asked for. */
+    private human: Human | null = null;
+    private humanGender: Gender | null = null;
+    private grip = new THREE.Vector3();
     private shoulderL: THREE.Group;
     private shoulderR: THREE.Group;
     private elbowL: THREE.Group;
@@ -285,44 +333,44 @@ export class Mannequin {
         this.hips = joint(this.body, 0, 0);
         this.head = new THREE.Group();
 
-        const pelvis = part(new THREE.SphereGeometry(1, 20, 14), TROUSERS);
-        pelvis.scale.set(0.17, 0.12, 0.12);
-        pelvis.position.y = 0.02;
-        this.hips.add(pelvis);
+        this.pelvis = part(new THREE.SphereGeometry(1, 20, 14), this.trousers);
+        this.pelvis.scale.set(0.17, 0.12, 0.12);
+        this.pelvis.position.y = 0.02;
+        this.hips.add(this.pelvis);
 
-        const belt = part(new THREE.CylinderGeometry(1, 1, 1, 20), SHOES);
-        belt.scale.set(0.155, 0.03, 0.105);
-        belt.position.y = 0.075;
-        this.hips.add(belt);
+        this.belt = part(new THREE.CylinderGeometry(1, 1, 1, 20), SHOES);
+        this.belt.scale.set(0.155, 0.03, 0.105);
+        this.belt.position.y = 0.075;
+        this.hips.add(this.belt);
 
         this.spine = joint(this.hips, 0, 0.06);
 
-        const waist = limb(0.12, 0.26, SHIRT);
-        waist.position.y = 0.24;
-        waist.scale.set(1.05, 1, 0.82);
-        this.spine.add(waist);
+        this.waist = limb(0.12, 0.26, this.shirt);
+        this.waist.position.y = 0.24;
+        this.waist.scale.set(1.05, 1, 0.82);
+        this.spine.add(this.waist);
 
-        this.chest = part(new THREE.SphereGeometry(1, 24, 16), SHIRT);
+        this.chest = part(new THREE.SphereGeometry(1, 24, 16), this.shirt);
         this.chest.scale.set(0.2, 0.2, 0.13);
         this.chest.position.y = 0.33;
         this.spine.add(this.chest);
 
-        const neck = joint(this.spine, 0, 0.5);
+        this.neck = joint(this.spine, 0, 0.5);
         const neckMesh = limb(0.048, 0.11, SKIN);
         neckMesh.position.y = 0.09;
-        neck.add(neckMesh);
+        this.neck.add(neckMesh);
 
         this.head.position.y = 0.08;
         this.head.rotation.order = 'YXZ';
-        neck.add(this.head);
+        this.neck.add(this.head);
         const skull = part(new THREE.SphereGeometry(1, 24, 18), SKIN);
         skull.scale.set(0.105, 0.128, 0.115);
         skull.position.set(0, 0.11, 0.01);
-        const hair = part(dome(0.5), HAIR);
-        hair.scale.set(0.11, 0.135, 0.12);
-        hair.position.set(0, 0.125, -0.005);
-        hair.rotation.x = -0.25;
-        this.head.add(skull, hair);
+        this.hair = part(dome(0.5), this.hairPaint);
+        this.hair.scale.set(0.11, 0.135, 0.12);
+        this.hair.position.set(0, 0.125, -0.005);
+        this.hair.rotation.x = -0.25;
+        this.head.add(skull, this.hair);
 
         for (const side of [1, -1]) {
             const eye = part(new THREE.SphereGeometry(1, 10, 8), EYES);
@@ -344,15 +392,22 @@ export class Mannequin {
     /** Side: 1 is the figure's left (+X), -1 its right. */
     private arm(side: number): [THREE.Group, THREE.Group] {
         const shoulder = joint(this.spine, side * 0.215, 0.43);
-        shoulder.add(part(new THREE.SphereGeometry(0.062, 14, 10), SHIRT));
-        shoulder.add(limb(0.052, 0.29, SHIRT));
+        const ball = part(new THREE.SphereGeometry(0.062, 14, 10), this.shirt);
+        const upper = limb(0.052, 0.29, this.shirt);
+        shoulder.add(ball, upper);
 
         const elbow = joint(shoulder, 0, -0.28);
-        elbow.add(limb(0.044, 0.26, SKIN));
+        const lower = limb(0.044, 0.26, SKIN);
+        elbow.add(lower);
+        this.limbs.push(
+            { mesh: ball, kind: 'arm' },
+            { mesh: upper, kind: 'arm' },
+            { mesh: lower, kind: 'arm' },
+        );
 
         const cuff = part(
             new THREE.CylinderGeometry(0.05, 0.05, 0.05, 14),
-            SHIRT,
+            this.shirt,
         );
         cuff.position.y = -0.02;
         elbow.add(cuff);
@@ -367,10 +422,16 @@ export class Mannequin {
 
     private leg(side: number): [THREE.Group, THREE.Group, THREE.Group] {
         const hip = joint(this.hips, side * LEG_SPREAD, -HIP_JOINT);
-        hip.add(limb(0.074, 0.46, TROUSERS));
+        const thigh = limb(0.074, 0.46, this.trousers);
+        hip.add(thigh);
 
         const knee = joint(hip, 0, -THIGH);
-        knee.add(limb(0.056, SHIN, TROUSERS));
+        const shin = limb(0.056, SHIN, this.trousers);
+        knee.add(shin);
+        this.limbs.push(
+            { mesh: thigh, kind: 'thigh' },
+            { mesh: shin, kind: 'shin' },
+        );
 
         const ankle = joint(knee, 0, -SHIN);
         const foot = part(new THREE.CapsuleGeometry(0.042, 0.16, 4, 10), SHOES);
@@ -380,6 +441,245 @@ export class Mannequin {
         ankle.add(foot);
 
         return [hip, knee, ankle];
+    }
+
+    /**
+     * Shapes and dresses the figure for the hero: build from strength and
+     * agility, the gender's figure, the class's clothes.
+     */
+    setLook(look: Look): void {
+        const { strength, agility } = look.attributes;
+        const female = look.gender === 'female';
+        const bulk = clamp((strength - 10) / 15, -0.4, 1.4);
+        const lean = clamp((agility - 8) / 15, -0.3, 1.2);
+        const torso = (1 + 0.22 * bulk - 0.08 * lean) * (female ? 0.9 : 1);
+        const thickness = (1 + 0.28 * bulk - 0.1 * lean) * (female ? 0.9 : 1);
+        const hips = female ? 1.2 : 1;
+        const [shirt, trousers, trim] = OUTFITS[look.heroClass];
+
+        this.shirt.color.setHex(shirt);
+        this.trousers.color.setHex(trousers);
+        this.trim.color.setHex(trim);
+        this.hairPaint.color.setHex(female ? 0x4a2f1f : 0x3a2a1e);
+        this.build = {
+            female,
+            torso,
+            chestDepth: 1 + 0.18 * Math.max(0, bulk),
+        };
+
+        this.pelvis.scale.set(
+            0.17 * hips * (1 + 0.08 * bulk),
+            0.12,
+            0.12 * (female ? 1.12 : 1),
+        );
+        this.belt.scale.set(
+            0.155 * hips * (1 + 0.08 * bulk),
+            0.03,
+            0.105 * (female ? 1.1 : 1),
+        );
+        this.waist.scale.set(
+            1.05 * torso * (female ? 0.86 : 1),
+            1,
+            0.82 * this.build.chestDepth,
+        );
+        this.chest.scale.x = 0.2 * torso;
+        this.chest.scale.z = 0.13 * this.build.chestDepth;
+        this.shoulderL.position.x = 0.215 * torso * (1 + 0.06 * bulk);
+        this.shoulderR.position.x = -this.shoulderL.position.x;
+        this.hair.scale.set(
+            female ? 0.118 : 0.11,
+            female ? 0.142 : 0.135,
+            female ? 0.13 : 0.12,
+        );
+
+        for (const { mesh, kind } of this.limbs) {
+            const scale = thickness * (kind === 'thigh' && female ? 1.12 : 1);
+            mesh.scale.x = scale;
+            mesh.scale.z = scale;
+        }
+
+        for (const extra of this.extras) {
+            extra.removeFromParent();
+        }
+
+        this.extras = [];
+        const add = (parent: THREE.Object3D, mesh: THREE.Mesh) => {
+            parent.add(mesh);
+            this.extras.push(mesh);
+
+            return mesh;
+        };
+
+        if (female) {
+            for (const side of [1, -1]) {
+                const breast = add(
+                    this.spine,
+                    part(new THREE.SphereGeometry(1, 16, 12), this.shirt),
+                );
+                breast.scale.set(0.078, 0.07, 0.068);
+                breast.position.set(
+                    side * 0.074 * torso,
+                    0.34,
+                    0.09 * this.build.chestDepth,
+                );
+
+                const glute = add(
+                    this.hips,
+                    part(new THREE.SphereGeometry(1, 16, 12), this.trousers),
+                );
+                glute.scale.set(0.088, 0.09, 0.08);
+                glute.position.set(side * 0.072 * hips, -0.02, -0.07);
+            }
+
+            const tail = add(this.head, limb(0.035, 0.26, this.hairPaint));
+            tail.position.set(0, 0.16, -0.12);
+            tail.rotation.x = 0.35;
+        }
+
+        switch (look.heroClass) {
+            case 'tank':
+                for (const shoulder of [this.shoulderL, this.shoulderR]) {
+                    const pauldron = add(shoulder, part(dome(0.55), this.trim));
+                    pauldron.scale.set(0.1, 0.075, 0.1);
+                    pauldron.position.y = 0.01;
+                }
+
+                break;
+            case 'fighter':
+                for (const elbow of [this.elbowL, this.elbowR]) {
+                    const bracer = add(
+                        elbow,
+                        part(
+                            new THREE.CylinderGeometry(0.052, 0.048, 0.12, 14),
+                            this.trim,
+                        ),
+                    );
+                    bracer.position.y = -0.17;
+                }
+
+                break;
+            case 'assassin': {
+                const hood = add(this.head, part(dome(0.62), this.trim));
+                hood.scale.set(0.135, 0.158, 0.145);
+                hood.position.set(0, 0.105, -0.015);
+                hood.rotation.x = -0.35;
+                const scarf = add(
+                    this.spine,
+                    part(new THREE.TorusGeometry(0.07, 0.03, 8, 18), this.trim),
+                );
+                scarf.rotation.x = Math.PI / 2;
+                scarf.position.y = 0.5;
+                break;
+            }
+            case 'mage': {
+                const robe = add(
+                    this.hips,
+                    part(
+                        new THREE.CylinderGeometry(
+                            0.16 * hips,
+                            0.27,
+                            0.52,
+                            18,
+                            1,
+                            true,
+                        ),
+                        this.shirt,
+                    ),
+                );
+                robe.position.y = -0.19;
+                (robe.material as THREE.MeshStandardMaterial).side =
+                    THREE.DoubleSide;
+                const hem = add(
+                    this.hips,
+                    part(
+                        new THREE.TorusGeometry(0.27, 0.014, 6, 24),
+                        this.trim,
+                    ),
+                );
+                hem.rotation.x = Math.PI / 2;
+                hem.position.y = -0.45;
+                break;
+            }
+        }
+
+        // Armour is shaped to the body: put it on again.
+        const worn = { ...this.worn };
+        this.wear({ head: null, body: null, feet: null });
+        this.wear(worn);
+        this.useBody(look.gender);
+    }
+
+    /** Swaps in the realistic body for the gender once it has loaded. */
+    private useBody(gender: Gender): void {
+        if (gender === this.humanGender) {
+            return;
+        }
+
+        this.humanGender = gender;
+        loadHuman(gender)
+            .then((gltf) => {
+                if (gender !== this.humanGender) {
+                    return;
+                }
+
+                this.human?.dispose();
+                this.human = new Human(
+                    gltf,
+                    gender,
+                    this.root,
+                    {
+                        hips: this.hips,
+                        spine: this.spine,
+                        neck: this.neck,
+                        head: this.head,
+                        shoulderL: this.shoulderL,
+                        shoulderR: this.shoulderR,
+                        elbowL: this.elbowL,
+                        elbowR: this.elbowR,
+                        hipL: this.hipL,
+                        hipR: this.hipR,
+                        kneeL: this.kneeL,
+                        kneeR: this.kneeR,
+                        ankleL: this.ankleL,
+                        ankleR: this.ankleR,
+                    },
+                    HIPS - HIP_JOINT,
+                    new THREE.Vector3(0, HIPS, 0),
+                );
+
+                // Put the armour on again, now cut to the body.
+                const worn = { ...this.worn };
+                this.wear({ head: null, body: null, feet: null });
+                this.wear(worn);
+                this.apply(null);
+            })
+            .catch((error: unknown) => {
+                // Without the model the simple figure stays.
+                console.warn('Sandbox: the player model did not load', error);
+            });
+    }
+
+    /** Hides the simple figure under the realistic body (the held item stays). */
+    private hideShapes(): void {
+        const human = this.human;
+
+        if (!human) {
+            return;
+        }
+
+        const hide = (object: THREE.Object3D) => {
+            if (object === human.holder || object === this.hand) {
+                return;
+            }
+
+            if (object instanceof THREE.Mesh) {
+                object.visible = false;
+            }
+
+            object.children.forEach(hide);
+        };
+
+        hide(this.root);
     }
 
     /** Dresses the figure in what is worn (null takes a piece off). */
@@ -398,6 +698,9 @@ export class Mannequin {
                 ? this.armorPieces(slot, worn[slot])
                 : [];
         }
+
+        this.human?.coverHair(this.worn.head !== null);
+        this.hideShapes();
     }
 
     private armorPieces(slot: ArmorSlot, item: ItemId): THREE.Object3D[] {
@@ -405,6 +708,16 @@ export class Mannequin {
         const shell = iron ? IRON : LEATHER;
         const trim = iron ? IRON_DARK : LEATHER_DARK;
         const pieces: THREE.Object3D[] = [];
+
+        // On the realistic body armour is cut to fit it.
+        if (this.human) {
+            return this.human.dress(
+                slot,
+                item,
+                slot === 'body' || iron ? shell : trim,
+            );
+        }
+
         const put = (parent: THREE.Object3D, mesh: THREE.Mesh) => {
             parent.add(mesh);
             pieces.push(mesh);
@@ -439,11 +752,21 @@ export class Mannequin {
                 this.spine,
                 part(new THREE.SphereGeometry(1, 24, 16), shell),
             );
-            plate.scale.set(0.212, 0.212, 0.142);
+            const { torso, chestDepth, female } = this.build;
+            plate.scale.set(
+                0.212 * torso,
+                0.212,
+                (female ? 0.17 : 0.142) * chestDepth,
+            );
             plate.position.y = 0.33;
+            plate.position.z = female ? 0.02 : 0;
             const lower = put(this.spine, limb(0.129, 0.24, shell));
             lower.position.y = 0.25;
-            lower.scale.set(1.06, 1, 0.84);
+            lower.scale.set(
+                1.06 * torso * (female ? 0.88 : 1),
+                1,
+                0.84 * chestDepth,
+            );
             const belt = put(
                 this.spine,
                 part(new THREE.CylinderGeometry(1, 1, 1, 20), trim),
@@ -655,10 +978,22 @@ export class Mannequin {
         pose.armOutL = pose.armOutR = 0.08 + run * 0.06;
         pose.twist = swingL * (0.08 + 0.06 * run) * moving;
         pose.hipsYaw = -swingL * 0.08 * moving;
+        // The hip over the swinging leg drops a little each step.
+        pose.hipsRoll =
+            Math.sin(this.stepPhase * Math.PI * 2) *
+            (0.045 - 0.02 * run) *
+            moving *
+            (crouch ? 0.5 : 1);
 
-        // Breathing and a slow sway while standing still.
+        // Breathing and a slow shift of weight while standing still.
         const idle = 1 - moving;
         const breath = Math.sin(this.time * 1.7);
+
+        pose.hipsRoll += Math.sin(this.time * 0.45) * 0.03 * idle;
+        pose.armL -= 0.05 * idle;
+        pose.armR -= 0.05 * idle;
+        pose.elbowL -= 0.1 * idle;
+        pose.elbowR -= 0.1 * idle;
         pose.lean += breath * 0.012 * idle;
         pose.armOutL += breath * 0.015 * idle;
         pose.armOutR += breath * 0.015 * idle;
@@ -731,6 +1066,8 @@ export class Mannequin {
         pose.thighR = -0.05 - 0.15 * s;
         pose.spreadL = 0.22 + 0.25 * Math.max(0, s);
         pose.spreadR = 0.22 + 0.25 * Math.max(0, -s);
+        // Knees bend out to the sides, not up into the air.
+        pose.turnOut = 1.3;
         pose.kneeL = 0.35 + 0.8 * Math.max(0, s);
         pose.kneeR = 0.35 + 0.8 * Math.max(0, -s);
         pose.footL = pose.footR = 0.4;
@@ -859,8 +1196,13 @@ export class Mannequin {
 
         this.body.position.set(0, HIPS + bodyY, pose.bodyZ);
         this.body.rotation.set(pose.pitch, 0, pose.roll);
-        this.hips.rotation.y = pose.hipsYaw;
-        this.spine.rotation.set(pose.lean, pose.twist, pose.side);
+        this.hips.rotation.set(0, pose.hipsYaw, pose.hipsRoll);
+        // The back straightens above the tilting hips.
+        this.spine.rotation.set(
+            pose.lean,
+            pose.twist,
+            pose.side - pose.hipsRoll * 0.8,
+        );
         this.head.rotation.set(pose.headX, pose.headY, 0);
         this.chest.scale.y = 0.2 * (1 + Math.sin(this.time * 1.7) * 0.012);
 
@@ -884,8 +1226,8 @@ export class Mannequin {
             footR = lerp(footR, right[2], pose.ik);
         }
 
-        this.hipL.rotation.set(thighL, 0, pose.spreadL);
-        this.hipR.rotation.set(thighR, 0, -pose.spreadR);
+        this.hipL.rotation.set(thighL, pose.turnOut, pose.spreadL);
+        this.hipR.rotation.set(thighR, -pose.turnOut, -pose.spreadR);
         this.kneeL.rotation.x = kneeL;
         this.kneeR.rotation.x = kneeR;
         this.ankleL.rotation.x = footL;
@@ -937,5 +1279,15 @@ export class Mannequin {
         this.shoulderR.rotation.set(armR, 0, -armOutR);
         this.elbowL.rotation.x = elbowL;
         this.elbowR.rotation.x = elbowR;
+
+        if (this.human) {
+            this.human.setGrip(0, this.heldItem ? 1 : 0);
+            this.human.update();
+            // The held item goes into the body's own hand.
+            this.elbowR.updateWorldMatrix(true, false);
+            this.hand.position.copy(
+                this.elbowR.worldToLocal(this.human.grip(this.grip)),
+            );
+        }
     }
 }

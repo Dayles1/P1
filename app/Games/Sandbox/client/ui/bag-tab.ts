@@ -1,8 +1,9 @@
 /**
  * The inventory tab: what is worn (head, body, feet) on the left, the
  * slots in the middle (the top row is the hotbar), and what the chosen
- * item is on the right — with buttons to eat it, put it on or take it
- * off, and drop some.
+ * item is on the right — with buttons to eat or drink it, study it, put
+ * it on or take it off, take it apart and drop some. Enter does the
+ * first of those.
  *
  * Drag a stack onto another slot to move, merge or swap it; drag armour
  * onto its place on the body to put it on, or off the body to take it
@@ -15,6 +16,7 @@ import { ARMOR_SLOTS, ITEMS } from '../items';
 import type { ArmorSlot } from '../items';
 import { throughArmor } from '../player/vitals';
 import { button, element, escape, icon } from './dom';
+import { keyBadge } from './hud';
 import type { MenuHost, TabView } from './menu';
 import { stackHtml } from './slots';
 
@@ -139,6 +141,15 @@ export class BagTab implements TabView {
         this.renderDetails();
     }
 
+    /** Enter: the chosen item's main action. */
+    primary(): void {
+        this.details
+            .querySelector<HTMLButtonElement>(
+                '.sb-details__actions .sb-button--primary',
+            )
+            ?.click();
+    }
+
     private stackOf(pick: Pick | null) {
         if (!pick) {
             return null;
@@ -179,6 +190,38 @@ export class BagTab implements TabView {
             facts.push(`${t.health}: +${definition.heals}`);
         }
 
+        if (definition.mana) {
+            facts.push(`${t.mana}: +${definition.mana}`);
+        }
+
+        if (definition.knowledge) {
+            facts.push(`${t.knowledge}: +${definition.knowledge}`);
+        }
+
+        if (definition.weapon?.speed) {
+            facts.push(
+                `${t.derived.attack_speed}: ×${definition.weapon.speed}`,
+            );
+        }
+
+        if (definition.weapon?.crit) {
+            facts.push(
+                `${t.derived.crit}: +${Math.round(definition.weapon.crit * 100)}%`,
+            );
+        }
+
+        if (definition.weapon?.spell) {
+            facts.push(`${t.skills.bolt[0]}: ×${definition.weapon.spell}`);
+        }
+
+        if (this.host.salvageable(stack.item)) {
+            facts.push(
+                this.host.research.knows(stack.item)
+                    ? `${t.learnt} ✓`
+                    : `${t.locked} — ${t.disassemble_note}`,
+            );
+        }
+
         this.details.innerHTML = `
             <div class="sb-details__head">
                 <span class="sb-icon sb-icon--large">${definition.icon}</span>
@@ -205,13 +248,28 @@ export class BagTab implements TabView {
         } else {
             const index = picked.index;
 
-            if (definition.heals) {
+            if (definition.heals || definition.mana) {
                 actions.append(
                     button(
                         'sb-button sb-button--primary',
-                        stack.item === 'bandage' ? t.bandage_up : t.eat,
+                        stack.item === 'bandage'
+                            ? t.bandage_up
+                            : stack.item.endsWith('_potion')
+                              ? t.drink
+                              : t.eat,
                         () => this.host.consume(index),
                         'eat',
+                    ),
+                );
+            }
+
+            if (definition.knowledge) {
+                actions.append(
+                    button(
+                        'sb-button sb-button--primary',
+                        t.study,
+                        () => this.host.study(index),
+                        'book',
                     ),
                 );
             }
@@ -234,6 +292,17 @@ export class BagTab implements TabView {
                 );
             }
 
+            if (this.host.salvageable(stack.item)) {
+                const apart = button(
+                    'sb-button',
+                    t.disassemble,
+                    () => this.host.salvage(index),
+                    'apart',
+                );
+                apart.title = t.disassemble_note;
+                actions.append(apart);
+            }
+
             actions.append(
                 button(
                     'sb-button',
@@ -250,6 +319,14 @@ export class BagTab implements TabView {
                     ),
                 );
             }
+        }
+
+        const first = actions.querySelector<HTMLButtonElement>(
+            '.sb-button--primary',
+        );
+
+        if (first && !this.host.touch) {
+            first.append(keyBadge(t.enter));
         }
 
         this.details.append(actions);

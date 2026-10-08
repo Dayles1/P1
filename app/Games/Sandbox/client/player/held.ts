@@ -1,7 +1,7 @@
 /**
- * What the figure holds in its right hand: tools, weapons, a torch, an
- * artifact. Built along the hand's +Z (forward when the arm hangs), with
- * the grip at the origin.
+ * What the figure holds in its right hand: tools, weapons, a staff, a
+ * torch, an artifact. Built along the hand's +Z (forward when the arm
+ * hangs), with the grip at the origin.
  */
 
 import * as THREE from 'three';
@@ -27,6 +27,17 @@ const LIGHT_WOOD = new THREE.MeshStandardMaterial({
     roughness: 0.8,
 });
 const FLAME = new THREE.MeshBasicMaterial({ color: 0xffc06a });
+const DARK_WOOD = new THREE.MeshStandardMaterial({
+    color: 0x6f4a2c,
+    roughness: 0.85,
+});
+const CRYSTAL = new THREE.MeshStandardMaterial({
+    color: 0x9fd7f2,
+    emissive: 0x5fb6e6,
+    emissiveIntensity: 0.9,
+    roughness: 0.2,
+    flatShading: true,
+});
 
 function box(
     width: number,
@@ -85,6 +96,32 @@ export function createHeld(item: ItemId): THREE.Group | null {
                 box(0.18, 0.035, 0.035, WOOD, 0, 0, 0.1),
                 box(0.022, 0.07, 0.7, blade, 0, 0, 0.47),
             );
+            break;
+        }
+        case 'shovel':
+            group.add(handle(0.7), box(0.16, 0.025, 0.2, STONE, 0, 0, 0.66));
+            break;
+        case 'dagger':
+            group.add(
+                handle(0.14, DARK_WOOD),
+                box(0.12, 0.03, 0.03, IRON, 0, 0, 0.07),
+                box(0.03, 0.018, 0.3, IRON, 0, 0, 0.24),
+            );
+            break;
+        case 'war_hammer':
+            group.add(handle(0.72), box(0.12, 0.12, 0.26, IRON, 0, 0.0, 0.6));
+            group.children[1].rotation.x = Math.PI / 2;
+            break;
+        case 'staff': {
+            const pole = handle(1.25, DARK_WOOD);
+            pole.position.z = 0.35;
+            const gem = new THREE.Mesh(
+                new THREE.OctahedronGeometry(0.06, 0),
+                CRYSTAL,
+            );
+            gem.position.z = 1.02;
+            gem.name = 'flame';
+            group.add(pole, gem);
             break;
         }
         case 'torch': {

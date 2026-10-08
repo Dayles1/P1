@@ -9,11 +9,12 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
- * Loads, saves and resets the player's character: where it stands, its
- * health, inventory and armour, what it has used up, the campfires and
- * buildings it has put down and its statistics. Answers
- * with the same `{success, message, data}` envelope as the host API,
- * without depending on its controllers.
+ * Loads, saves and resets the player's character: the hero (class,
+ * gender, level), where it stands, its health, mana, inventory and
+ * armour, what it has used up, the campfires and buildings it has put
+ * down, its statistics and what it has learnt. Answers with the same
+ * `{success, message, data}` envelope as the host API, without
+ * depending on its controllers.
  */
 class PlayerController
 {
@@ -46,21 +47,24 @@ class PlayerController
     }
 
     /**
-     * @return array{x: float, y: float, z: float, yaw: float, health: float|null, inventory: list<array{item: string, count: int, wear?: int}|null>, equipment: array<string, array{item: string, count: int, wear?: int}|null>, harvested: list<array{id: string, at: int}>, placed: list<array<string, mixed>>, stats: array<string, int>, saved_at: string|null}
+     * @return array{hero: array<string, mixed>|null, x: float, y: float, z: float, yaw: float, health: float|null, mana: float|null, inventory: list<array{item: string, count: int, wear?: int}|null>, equipment: array<string, array{item: string, count: int, wear?: int}|null>, harvested: list<array{id: string, at: int}>, placed: list<array<string, mixed>>, stats: array<string, int>, research: array{points: int, known: list<string>}|null, saved_at: string|null}
      */
     private function present(Player $player): array
     {
         return [
+            'hero' => $player->hero,
             'x' => $player->x,
             'y' => $player->y,
             'z' => $player->z,
             'yaw' => $player->yaw,
             'health' => $player->health,
+            'mana' => $player->mana,
             'inventory' => $player->inventory ?? [],
             'equipment' => $player->equipment ?? ['head' => null, 'body' => null, 'feet' => null],
             'harvested' => $player->harvested ?? [],
             'placed' => $player->placed ?? [],
             'stats' => $player->stats ?? [],
+            'research' => $player->research,
             'saved_at' => $player->updated_at?->toIso8601String(),
         ];
     }

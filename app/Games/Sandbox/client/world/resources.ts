@@ -9,12 +9,16 @@
  * Everything comes from one seeded list, so the world is the same every
  * time and an id ("tree:12") always means the same thing. What the player
  * used up is remembered by id and time and grows back after a while —
- * artifacts never do. Campfires the player put down are kept too.
+ * artifacts too, a few minutes after being picked up: the five rare ones
+ * deep in their lands and common runes, shards and charms all over.
+ * Campfires the player put down are kept too.
  */
 
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
+import { ARTIFACT_LIST } from '../artifacts';
 import type { HitMaterial } from '../audio';
+import { RULES } from '../hero';
 import { ITEMS } from '../items';
 import type { ArtifactId, ItemId, ToolKind } from '../items';
 import { RADIUS } from '../physics/character';
@@ -43,6 +47,8 @@ const MAX_ROCKS = 420;
 const MAX_FINDS = 900;
 const STUMP_HEIGHT = 0.45;
 const MAX_FIRES = 30;
+/** Spots where common artifacts lie (each always the same kind). */
+const COMMON_ARTIFACTS = 36;
 
 /** Trees are drawn as far as the land is; shadows only close by. */
 const TREE_REACH = (view: number): Reach => ({ reach: view, shadowReach: 45 });
@@ -60,7 +66,7 @@ const REGROW: Record<string, number> = {
     tree: 15 * 60_000,
     rock: 20 * 60_000,
     pick: 6 * 60_000,
-    art: Infinity,
+    art: RULES.artifact_respawn_minutes * 60_000,
 };
 
 const mat = (
@@ -119,6 +125,16 @@ const ARTIFACT_COLORS: Record<ArtifactId, number> = {
     sun_stone: 0xffc35a,
     frost_crystal: 0x9fdcf5,
     wind_feather: 0xe8f4f8,
+    strength_rune: 0xe0675f,
+    agility_rune: 0x6fbf6a,
+    spirit_rune: 0x6f9fe8,
+    vital_shard: 0xd9534f,
+    mana_pearl: 0x5f8fe0,
+    swift_charm: 0x7fd0e0,
+    storm_eye: 0x9fd7f2,
+    deep_pearl: 0x5fc0c8,
+    blood_ruby: 0xc0303f,
+    phoenix_feather: 0xf08a3c,
 };
 
 /**
@@ -470,6 +486,9 @@ export class Resources {
                 const find = this.finds[index];
                 find.taken = false;
                 this.drawFind(find);
+            } else if (type === 'art' && this.artifacts[index]) {
+                this.artifacts[index].taken = false;
+                this.artifacts[index].group.visible = true;
             }
         }
 
@@ -1298,8 +1317,10 @@ export class Resources {
     }
 
     /**
-     * One artifact deep in each biome, glowing, with a beam of light that
-     * shows from far away.
+     * One rare artifact deep in each biome, glowing, with a tall beam of
+     * light that shows from far away — then the common ones all over the
+     * world, with shorter beams (from their own seeded stream, so nothing
+     * else moves).
      */
     private hideArtifacts(random: () => number): void {
         for (const biome of [
@@ -1320,56 +1341,95 @@ export class Resources {
                     continue;
                 }
 
-                const index = this.artifacts.length;
-                const item = ARTIFACTS[biome];
-                const color = ARTIFACT_COLORS[item];
-                const group = new THREE.Group();
-                group.position.set(spot.x, spot.ground, spot.z);
-
-                const gem = new THREE.Mesh(
-                    new THREE.OctahedronGeometry(0.28, 0),
-                    new THREE.MeshStandardMaterial({
-                        color,
-                        emissive: color,
-                        emissiveIntensity: 0.8,
-                        roughness: 0.3,
-                        flatShading: true,
-                    }),
+                this.addArtifact(
+                    ARTIFACTS[biome],
+                    spot.x,
+                    spot.z,
+                    spot.ground,
+                    60,
                 );
-                gem.castShadow = true;
-                gem.position.y = 0.9;
-
-                const beam = new THREE.Mesh(
-                    new THREE.CylinderGeometry(0.12, 0.35, 60, 8, 1, true),
-                    new THREE.MeshBasicMaterial({
-                        color,
-                        transparent: true,
-                        opacity: 0.22,
-                        depthWrite: false,
-                        blending: THREE.AdditiveBlending,
-                        fog: false,
-                        side: THREE.DoubleSide,
-                    }),
-                );
-                beam.position.y = 30;
-
-                group.add(gem, beam);
-                this.group.add(group);
-                this.artifacts.push({
-                    kind: 'artifact',
-                    id: `art:${index}`,
-                    index,
-                    item,
-                    x: spot.x,
-                    z: spot.z,
-                    ground: spot.ground,
-                    group,
-                    taken: false,
-                });
 
                 break;
             }
         }
+
+        const commons = createRandom(5151);
+        const kinds = ARTIFACT_LIST.common;
+
+        for (
+            let attempt = 0;
+            attempt < COMMON_ARTIFACTS * 40 &&
+            this.artifacts.length < 5 + COMMON_ARTIFACTS;
+            attempt++
+        ) {
+            const spot = this.place(commons, 20);
+
+            if (
+                spot &&
+                this.artifacts.every(
+                    (other) =>
+                        Math.hypot(other.x - spot.x, other.z - spot.z) > 30,
+                )
+            ) {
+                const item = kinds[(this.artifacts.length - 5) % kinds.length];
+                this.addArtifact(item, spot.x, spot.z, spot.ground, 14);
+            }
+        }
+    }
+
+    /** A glowing artifact over the ground with a beam `beam` metres tall. */
+    private addArtifact(
+        item: ArtifactId,
+        x: number,
+        z: number,
+        ground: number,
+        beam: number,
+    ): void {
+        const index = this.artifacts.length;
+        const color = ARTIFACT_COLORS[item];
+        const group = new THREE.Group();
+        group.position.set(x, ground, z);
+
+        const gem = new THREE.Mesh(
+            new THREE.OctahedronGeometry(beam > 20 ? 0.28 : 0.2, 0),
+            new THREE.MeshStandardMaterial({
+                color,
+                emissive: color,
+                emissiveIntensity: 0.8,
+                roughness: 0.3,
+                flatShading: true,
+            }),
+        );
+        gem.castShadow = true;
+        gem.position.y = 0.9;
+
+        const light = new THREE.Mesh(
+            new THREE.CylinderGeometry(0.12, 0.35, beam, 8, 1, true),
+            new THREE.MeshBasicMaterial({
+                color,
+                transparent: true,
+                opacity: 0.22,
+                depthWrite: false,
+                blending: THREE.AdditiveBlending,
+                fog: false,
+                side: THREE.DoubleSide,
+            }),
+        );
+        light.position.y = beam / 2;
+
+        group.add(gem, light);
+        this.group.add(group);
+        this.artifacts.push({
+            kind: 'artifact',
+            id: `art:${index}`,
+            index,
+            item,
+            x,
+            z,
+            ground,
+            group,
+            taken: false,
+        });
     }
 
     private clearOfBlocks(x: number, z: number): boolean {
