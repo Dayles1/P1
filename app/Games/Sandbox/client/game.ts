@@ -49,12 +49,11 @@ import type { HitTarget, Tool, UseTarget, Yield } from './world/resources';
 import { Sky } from './world/sky';
 import { Structures } from './world/structures';
 import type { Structure, StructureType } from './world/structures';
-import { createTerrainMesh, heightAt, WATER_LEVEL } from './world/terrain';
+import { heightAt, Terrain, WATER_LEVEL } from './world/terrain';
 import { Water } from './world/water';
 
 const AUTOSAVE_SECONDS = 10;
 const REGROW_SECONDS = 20;
-const LIGHTS = 4;
 
 const HIT_SECONDS = 0.55;
 const SWORD_SECONDS = 0.42;
@@ -107,6 +106,9 @@ export class Game {
     private clouds = new Clouds();
     private water = new Water();
     private lights: THREE.PointLight[] = [];
+    private terrain: Terrain;
+    /** The view distance last handed to the land, the things on it and the fog. */
+    private viewDistance = 0;
     private view: ThirdPersonCamera;
     private input: Input;
     private touch: TouchControls | null = null;
@@ -174,18 +176,15 @@ export class Game {
         this.graphics = new Graphics(this.renderer, this.scene, this.sun);
         this.graphics.apply(quality);
 
-        for (let index = 0; index < LIGHTS; index++) {
-            const light = new THREE.PointLight(0xffa652, 0, 16, 1.1);
-            this.lights.push(light);
-            this.scene.add(light);
-        }
+        this.setLamps(this.graphics.lamps);
+        this.terrain = new Terrain(this.graphics.groundDetail);
 
         const colliders = new ColliderGrid();
         this.resources = new Resources(colliders, this.chips);
         this.structures = new Structures(colliders);
         this.mobs = new Mobs(colliders, this.chips, () => this.resources.fires);
         this.scene.add(
-            createTerrainMesh(TOUCH || quality === 'low' ? 256 : 384),
+            this.terrain.group,
             this.water.mesh,
             this.resources.group,
             this.structures.group,
@@ -274,6 +273,8 @@ export class Game {
             );
 
         this.spawn(options.saved);
+        this.applyView();
+        this.terrain.update(this.character.position, Infinity);
 
         this.input.onAction = (action) => this.act(action);
         this.input.onLockChange = (locked) => {
@@ -1149,6 +1150,8 @@ export class Game {
         this.mode = 'paused';
         this.hud.showDeath(null);
         this.view.update(0, character.position, 1.55, false, true);
+        // Far from where the player fell: build the land around them at once.
+        this.terrain.update(character.position, Infinity);
         this.dirty = true;
         this.resume();
     }
@@ -1159,6 +1162,8 @@ export class Game {
 
         if (change.quality) {
             this.graphics.apply(change.quality);
+            this.terrain.detail = this.graphics.groundDetail;
+            this.setLamps(this.graphics.lamps);
             this.menu.qualityChanged(change.quality);
         }
 
@@ -1296,6 +1301,10 @@ export class Game {
 
         this.updateGhost();
         this.view.update(dt, character.position, this.eyeHeight(), running);
+        this.applyView();
+        this.terrain.update(character.position);
+        this.resources.refresh(character.position, this.view.camera);
+        this.structures.cull(character.position, this.viewDistance);
         this.updateLights(now);
         this.updateUnderwater(skyState.color);
         this.graphics.update(dt);
@@ -1597,6 +1606,38 @@ export class Game {
     }
 
     /** Under water the view turns blue and short. */
+    /**
+     * Hands the graphics' view distance (which "auto" changes with the
+     * frame rate) to the land, the things on it and the fog.
+     */
+    private applyView(): void {
+        const distance = this.graphics.viewDistance;
+
+        if (distance === this.viewDistance) {
+            return;
+        }
+
+        this.viewDistance = distance;
+        this.terrain.viewDistance = distance;
+        this.resources.setViewDistance(distance);
+    }
+
+    /**
+     * As many point lights as the quality allows. Each one costs every
+     * pixel, so a weak card gets fewer; the nearest fires get them.
+     */
+    private setLamps(count: number): void {
+        while (this.lights.length > count) {
+            this.scene.remove(this.lights.pop()!);
+        }
+
+        while (this.lights.length < count) {
+            const light = new THREE.PointLight(0xffa652, 0, 16, 1.1);
+            this.lights.push(light);
+            this.scene.add(light);
+        }
+    }
+
     private updateUnderwater(sky: THREE.Color): void {
         const fog = this.scene.fog as THREE.Fog;
         const under = this.view.camera.position.y < WATER_LEVEL + 0.02;
@@ -1607,8 +1648,9 @@ export class Game {
             fog.near = 0.5;
             fog.far = 26;
         } else {
-            fog.near = 70;
-            fog.far = 320;
+            // The land ends where the fog is thickest, so its edge never shows.
+            fog.near = this.viewDistance * 0.3;
+            fog.far = this.viewDistance;
         }
 
         this.sky.dome.visible = !under;

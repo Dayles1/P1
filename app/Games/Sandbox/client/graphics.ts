@@ -1,14 +1,17 @@
 /**
  * How much the graphics card is asked to do. Four settings:
  *
- * - low: below-native resolution, no shadows;
+ * - low: below-native resolution, no shadows, a short view, one lamp;
  * - medium: native resolution (no more than one pixel per CSS pixel),
- *   plain shadows;
+ *   plain shadows, a middling view, two lamps;
  * - high: up to twice the resolution on sharp screens, soft and finer
- *   shadows, edge smoothing;
- * - auto (the default): plain shadows and a resolution that follows the
- *   frame rate — down when the game stutters, back up when it runs
- *   smoothly; on a very weak card the shadows go too.
+ *   shadows, edge smoothing, a long view, finer ground, four lamps;
+ * - auto (the default): like medium, but following the frame rate — when
+ *   the game stutters the resolution goes down first, then the view
+ *   distance, then the shadows; they come back when it runs smoothly.
+ *
+ * "Lamps" are the point lights fires and torches use: each costs every
+ * pixel on screen, lit or not.
  *
  * Edge smoothing can only be chosen when the drawing surface is made, so
  * switching to or from "high" takes effect after a reload.
@@ -24,6 +27,13 @@ import type { Quality } from './settings';
 
 const AUTO_MIN = 0.5;
 const AUTO_WINDOW = 2;
+const VIEW: Record<Quality, number> = {
+    low: 130,
+    medium: 190,
+    high: 260,
+    auto: 190,
+};
+const AUTO_VIEW_MIN = 110;
 
 export function createRenderer(quality: Quality): THREE.WebGLRenderer {
     return new THREE.WebGLRenderer({
@@ -39,6 +49,9 @@ export class Graphics {
     quality: Quality = 'auto';
     /** Frames per second over the last second or so. */
     fps = 60;
+
+    /** How far the land and what stands on it are drawn, metres. */
+    viewDistance = VIEW.auto;
 
     private ratio = 1;
     private shadows = true;
@@ -79,8 +92,21 @@ export class Graphics {
         }
     }
 
+    /** Point lights for fires and torches. */
+    get lamps(): number {
+        return { low: 1, medium: 2, high: 4, auto: TOUCH ? 1 : 2 }[
+            this.quality
+        ];
+    }
+
+    /** Squares along a nearby ground chunk's side. */
+    get groundDetail(): number {
+        return { low: 16, medium: 24, high: 32, auto: 24 }[this.quality];
+    }
+
     apply(quality: Quality): void {
         this.quality = quality;
+        this.viewDistance = VIEW[quality];
         this.ratio =
             quality === 'auto'
                 ? Math.min(window.devicePixelRatio || 1, 1)
@@ -114,6 +140,9 @@ export class Graphics {
         if (this.fps < 40 && this.ratio > AUTO_MIN) {
             this.setRatio(this.ratio - 0.15);
             this.smoothWindows = 0;
+        } else if (this.fps < 40 && this.viewDistance > AUTO_VIEW_MIN) {
+            this.viewDistance = Math.max(AUTO_VIEW_MIN, this.viewDistance - 30);
+            this.smoothWindows = 0;
         } else if (this.fps < 28 && this.shadows) {
             this.setShadows(false, false);
         } else if (this.fps >= 55) {
@@ -124,6 +153,11 @@ export class Graphics {
 
                 if (!this.shadows && this.ratio >= 0.8) {
                     this.setShadows(true, false);
+                } else if (this.viewDistance < VIEW.auto) {
+                    this.viewDistance = Math.min(
+                        VIEW.auto,
+                        this.viewDistance + 20,
+                    );
                 } else if (this.ratio < this.ceiling) {
                     this.setRatio(this.ratio + 0.1);
                 }
@@ -137,7 +171,7 @@ export class Graphics {
     get summary(): string {
         const size = this.renderer.getDrawingBufferSize(new THREE.Vector2());
 
-        return `${size.x}×${size.y} · ${this.ratio.toFixed(2)}× · ${this.shadows ? 'shadows' : 'no shadows'}`;
+        return `${size.x}×${size.y} · ${this.ratio.toFixed(2)}× · ${this.shadows ? 'shadows' : 'no shadows'} · view ${this.viewDistance} m`;
     }
 
     private setRatio(ratio: number): void {
