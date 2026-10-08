@@ -4,6 +4,7 @@ namespace App\Games\Sandbox\Http\Controllers;
 
 use App\Games\Sandbox\Http\Requests\SavePlayerRequest;
 use App\Games\Sandbox\Models\Player;
+use App\Games\Sandbox\Score;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,10 @@ class PlayerController
             ['user_id' => $this->playerId($request)],
             $request->player(),
         );
+
+        // Worked out here, from what was saved, never taken from the browser.
+        $player->score = Score::of($player->stats ?? [], $player->harvested ?? []);
+        $player->save();
 
         return $this->success($this->present($player));
     }

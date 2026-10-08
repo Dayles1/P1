@@ -26,6 +26,7 @@ use Illuminate\Support\Carbon;
  * @property list<array{id: string, at: int}>|null $harvested
  * @property list<array{type: string, x: float, z: float, yaw?: float, items?: list<array{item: string, count: int, wear?: int}|null>, open?: bool, spawn?: bool}>|null $placed
  * @property array<string, int>|null $stats
+ * @property int $score
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
@@ -48,6 +49,7 @@ class Player extends Model
         'harvested',
         'placed',
         'stats',
+        'score',
     ];
 
     /**
@@ -67,6 +69,7 @@ class Player extends Model
             'harvested' => 'array',
             'placed' => 'array',
             'stats' => 'array',
+            'score' => 'integer',
         ];
     }
 
