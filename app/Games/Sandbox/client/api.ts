@@ -88,6 +88,32 @@ async function request<T>(
     return (payload?.data ?? null) as T;
 }
 
+/**
+ * Tells the games hub the player is playing (POST
+ * /api/games/sandbox/playtime), so the Sandbox can be rated there after a
+ * few minutes of play. The hub measures the time between beats itself.
+ * Without the hub this simply fails, quietly.
+ */
+export function playtimeBeat(): void {
+    const bearer = token();
+
+    if (!bearer) {
+        return;
+    }
+
+    fetch('/api/games/sandbox/playtime', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+            Authorization: `Bearer ${bearer}`,
+        },
+        credentials: 'same-origin',
+    }).catch(() => {
+        // Offline or throttled: the next beat catches up.
+    });
+}
+
 export function loadPlayer(): Promise<SavedPlayer | null> {
     return request<SavedPlayer | null>('player');
 }

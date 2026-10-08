@@ -10,7 +10,7 @@
  */
 
 import * as THREE from 'three';
-import { savePlayer } from './api';
+import { playtimeBeat, savePlayer } from './api';
 import type { SavedPlayer } from './api';
 import { Sound } from './audio';
 import type { Surface } from './audio';
@@ -53,6 +53,8 @@ import { heightAt, Terrain, WATER_LEVEL } from './world/terrain';
 import { Water } from './world/water';
 
 const AUTOSAVE_SECONDS = 10;
+/** How often the games hub hears that the player is playing (for rating). */
+const PLAYTIME_BEAT_MS = 60_000;
 const REGROW_SECONDS = 20;
 
 const HIT_SECONDS = 0.55;
@@ -281,6 +283,7 @@ export class Game {
             if (locked) {
                 this.mode = 'play';
                 this.started = true;
+                this.beat();
                 this.menu.hide();
                 this.hud.showPaused(false);
                 this.touch?.show(true);
@@ -305,6 +308,17 @@ export class Game {
 
     start(): void {
         this.renderer.setAnimationLoop(this.frame);
+        window.setInterval(() => this.beat(), PLAYTIME_BEAT_MS);
+    }
+
+    /** A playtime heartbeat — only while actually playing, in a visible tab. */
+    private beat(): void {
+        if (
+            document.visibilityState === 'visible' &&
+            (this.mode === 'play' || this.mode === 'menu')
+        ) {
+            playtimeBeat();
+        }
     }
 
     private spawn(saved: SavedPlayer | null): void {
