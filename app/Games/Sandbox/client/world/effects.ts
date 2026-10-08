@@ -77,11 +77,14 @@ export class Chips {
     }
 
     update(dt: number): void {
+        let changed = false;
+
         this.chips.forEach((chip, index) => {
             if (chip.life <= 0) {
                 return;
             }
 
+            changed = true;
             chip.life -= dt;
 
             if (chip.life <= 0) {
@@ -104,7 +107,12 @@ export class Chips {
             this.mesh.setMatrixAt(index, this.matrix);
         });
 
-        this.mesh.instanceMatrix.needsUpdate = true;
+        // Nothing flying: nothing to send to the graphics card, nothing to draw.
+        this.mesh.visible = changed;
+
+        if (changed) {
+            this.mesh.instanceMatrix.needsUpdate = true;
+        }
     }
 
     private hide(index: number): void {

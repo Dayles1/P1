@@ -804,6 +804,17 @@ export class Structures {
         );
     }
 
+    /** Buildings farther than `reach` are not drawn. */
+    cull(center: THREE.Vector3, reach: number): void {
+        const reach2 = reach * reach;
+
+        for (const structure of this.list) {
+            const dx = structure.x - center.x;
+            const dz = structure.z - center.z;
+            structure.group.visible = dx * dx + dz * dz < reach2;
+        }
+    }
+
     update(dt: number): void {
         for (const structure of this.list) {
             const wanted = structure.open ? 1 : 0;
