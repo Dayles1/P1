@@ -13,4 +13,9 @@ parameters:
 
     level: 7
 
+    # Self-contained games keep their config next to their code.
+    configDirectories:
+        - %currentWorkingDirectory%/config
+        - %currentWorkingDirectory%/app/Games/*/config
+
     parseModelCastsMethod: true
