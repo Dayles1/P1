@@ -525,7 +525,7 @@ export class People {
             const bob = moving
                 ? Math.abs(Math.sin(time * 9 + track.phase)) * 0.012
                 : 0;
-            const h = this.terrain.heightAt(npc.x, npc.y) + bob;
+            const h = this.terrain.surfaceAt(npc.x, npc.y) + bob;
 
             seen.add(npc.uid);
             this.position.set(npc.x, h, npc.y);
@@ -657,7 +657,7 @@ export class People {
             dx /= length;
             dz /= length;
 
-            const ground = this.terrain.heightAt(x, z);
+            const ground = this.terrain.surfaceAt(x, z);
             const hover =
                 kind === 'hover'
                     ? Math.sin(time * 2 + i) * 0.02

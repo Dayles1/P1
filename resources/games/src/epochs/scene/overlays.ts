@@ -18,6 +18,7 @@ import { buildModel } from './model';
 import type { ModelGeometry } from './model';
 import type { People } from './people';
 import type { Overlay } from './renderer';
+import { WATER_Y } from './terrain';
 import type { Terrain } from './terrain';
 
 type RGBA = [number, number, number, number];
@@ -66,8 +67,9 @@ class TileMesh {
 
         const positions: number[] = [];
         const colors: number[] = [];
+        // Over water, tiles lie on its surface (where a bridge would go).
         const h = (x: number, y: number) =>
-            this.terrain.heightAt(x, y) + this.lift;
+            Math.max(this.terrain.heightAt(x, y), WATER_Y) + this.lift;
 
         for (const { x, y, c } of fill()) {
             for (let j = 0; j < 2; j++) {

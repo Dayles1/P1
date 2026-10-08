@@ -3,12 +3,12 @@
     "name": "Дорога",
     "icon": "🛣️",
     "category": "infrastructure",
-    "description": "Соединяет здания с центром города или управой района. Дороги рисуются в стиле своей эпохи.",
+    "description": "Соединяет здания с центром города или управой района. Дороги рисуются в стиле своей эпохи; над рекой или озером дорога становится мостом.",
     "size": { "w": 1, "h": 1 },
     "unique": false,
     "hidden": false,
     "role": "road",
-    "placement": { "requiresRoad": false },
+    "placement": { "requiresRoad": false, "overWater": true },
     "sounds": { "place": "click", "upgrade": "click", "demolish": "demolish", "select": "click", "ambient": null },
     "levels": [
         {
