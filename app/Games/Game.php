@@ -5,12 +5,15 @@ namespace App\Games;
 /**
  * The games that can be played — and so timed, rated and ranked. The one
  * list of them on the server: a `{game}` route parameter outside it is a
- * 404. Values are the SPA catalog's slugs.
+ * 404. Values are the SPA catalog's slugs. The Sandbox lives on a page of
+ * its own but is timed and rated here all the same; it keeps no score, so
+ * it has no leaderboard.
  */
 enum Game: string
 {
     case City = 'city';
     case Epochs = 'epochs';
+    case Sandbox = 'sandbox';
 
     /**
      * Play time a player needs in a game before they may rate it.

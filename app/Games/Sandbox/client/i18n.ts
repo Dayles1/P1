@@ -1,0 +1,1804 @@
+/** The game's words, in the page's language (ru, en or uz). */
+
+import type {
+    ArtifactTier,
+    Attribute,
+    BonusKey,
+    Gender,
+    HeroClass,
+    Passive,
+    SkillRules,
+} from './hero';
+import type { ArmorSlot, ItemId, ToolKind } from './items';
+import type { RecipeGroup } from './recipes';
+import type { Quality } from './settings';
+import type { StatKey } from './stats';
+import type { MobType } from './world/mob-models';
+
+export type DeathCause = MobType | 'fall' | 'drown';
+
+export type Tab = 'bag' | 'craft' | 'hero' | 'artifacts' | 'settings' | 'chest';
+
+export type SkillName = SkillRules['name'];
+
+interface Texts {
+    title: string;
+    back: string;
+    start: string;
+    start_touch: string;
+    play: string;
+    resume: string;
+    paused: string;
+    exit: string;
+    rotate: string;
+    controls_title: string;
+    controls: [string, string][];
+    saving: string;
+    saved: string;
+    save_failed: string;
+    tabs: Record<Tab, string>;
+    inventory_hint: string;
+    craft: string;
+    needs_fire: string;
+    needs_workbench: string;
+    crafted: string;
+    sort: string;
+    drop_one: string;
+    drop_all: string;
+    empty_slot: string;
+    full: string;
+    lmb: string;
+    chop: string;
+    mine: string;
+    cut: string;
+    attack: string;
+    pick_up: string;
+    take_fire: string;
+    place: string;
+    no_place: string;
+    too_many: string;
+    sit: string;
+    stand_up: string;
+    tree: string;
+    pine: string;
+    cactus: string;
+    rock: string;
+    ore: string;
+    stump: string;
+    log: string;
+    bundle: string;
+    no_room: string;
+    needs: Record<ToolKind, string>;
+    broke: string;
+    durability: string;
+    artifact_found: string;
+    out_of_breath: string;
+    sound_on: string;
+    sound_off: string;
+    equip: string;
+    unequip: string;
+    eat: string;
+    bandage_up: string;
+    armor_slots: Record<ArmorSlot, string>;
+    health: string;
+    armor: string;
+    armor_blocks: string;
+    health_full: string;
+    low_health: string;
+    died: string;
+    death_causes: Record<DeathCause, string>;
+    respawn: string;
+    wake_bag: string;
+    wake_camp: string;
+    mobs: Record<MobType, string>;
+    dismantle: string;
+    open: string;
+    close: string;
+    craft_here: string;
+    sleep_here: string;
+    spawn_set: string;
+    groups: Record<RecipeGroup, string>;
+    all: string;
+    craftable: string;
+    pick_recipe: string;
+    take_all: string;
+    put_all: string;
+    chest_hint: string;
+    equipment: string;
+    artifacts: string;
+    not_found: string;
+    stats: string;
+    stat_names: Record<StatKey, string>;
+    quality: string;
+    qualities: Record<Quality, string>;
+    quality_hint: string;
+    smoothing_note: string;
+    sensitivity: string;
+    volume: string;
+    sound: string;
+    show_fps: string;
+    start_over: string;
+    start_over_hint: string;
+    start_over_confirm: string;
+    start_over_failed: string;
+    gpu: string;
+    gpu_software: string;
+    stances: { crouch: string; crawl: string; sit: string; swim: string };
+    biomes: Record<
+        'meadow' | 'forest' | 'desert' | 'snow' | 'mountains',
+        string
+    >;
+    hero_title: string;
+    hero_pick_class: string;
+    hero_pick_gender: string;
+    hero_start: string;
+    hero_keeps: string;
+    hero_gender_note: string;
+    classes: Record<HeroClass, [string, string]>;
+    genders: Record<Gender, string>;
+    attributes: Record<Attribute, [string, string]>;
+    attributes_title: string;
+    derived_title: string;
+    derived: {
+        health: string;
+        mana: string;
+        stamina: string;
+        defense: string;
+        damage: string;
+        speed: string;
+        attack_speed: string;
+        crit: string;
+        knowledge: string;
+    };
+    level: string;
+    level_short: string;
+    level_up: string;
+    xp: string;
+    max_level: string;
+    free_points: string;
+    points_hint: string;
+    add_point: string;
+    skills: Record<SkillName, [string, string]>;
+    skill_title: string;
+    skill_ready: string;
+    no_mana: string;
+    mana: string;
+    stamina: string;
+    mana_full: string;
+    crit: string;
+    knowledge: string;
+    knowledge_hint: string;
+    research: string;
+    research_cost: string;
+    locked: string;
+    learnt: string;
+    not_enough_knowledge: string;
+    study: string;
+    drink: string;
+    disassemble: string;
+    disassembled: string;
+    disassemble_note: string;
+    dig: string;
+    dig_site: string;
+    enter: string;
+    key_space: string;
+    swim_up: string;
+    swim_down: string;
+    absorb: string;
+    absorbed: string;
+    absorb_full: string;
+    recycle: string;
+    fuse: string;
+    fused: string;
+    second_wind: string;
+    tiers: Record<ArtifactTier, string>;
+    tier_where: Record<ArtifactTier, string>;
+    artifacts_hint: string;
+    absorb_gives: string;
+    carry_gives: string;
+    absorbed_count: string;
+    owned: string;
+    fusion_needs: string;
+    recycle_gives: string;
+    absorbed_title: string;
+    none_absorbed: string;
+    bonuses: Record<BonusKey, string>;
+    passives: Record<Passive, [string, string]>;
+    sources: {
+        start: string;
+        levels: string;
+        points: string;
+        artifacts: string;
+    };
+    groups_profile: { survival: string; combat: string; other: string };
+    regen: string;
+    jump: string;
+    swim: string;
+    items: Record<ItemId, [string, string]>;
+}
+
+const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
+    ru: {
+        title: 'Песочница',
+        back: 'Игры',
+        start: 'Нажмите, чтобы играть',
+        start_touch: 'Коснитесь, чтобы играть',
+        play: 'Играть',
+        resume: 'Продолжить',
+        paused: 'Пауза',
+        exit: 'Выйти',
+        rotate: 'Поверните телефон горизонтально',
+        controls_title: 'Управление',
+        controls: [
+            ['W A S D', 'ходьба · Shift — бег'],
+            ['Пробел', 'прыжок · залезть · всплыть'],
+            ['C · Z · X', 'присесть (нырнуть) · ползти · сесть'],
+            ['ЛКМ', 'рубить · добывать · бить'],
+            ['E', 'подобрать · открыть · сесть'],
+            ['ПКМ / R', 'построить · съесть'],
+            ['1–6', 'выбрать предмет'],
+            ['I / Tab', 'инвентарь'],
+            ['Q · P', 'крафт · персонаж'],
+            ['M · F3 · F4', 'звук · отладка · промотать время'],
+            ['G', 'умение класса'],
+            ['Enter', 'создать · изучить (в меню)'],
+            ['Esc', 'пауза'],
+        ],
+        saving: 'Сохранение…',
+        saved: 'Сохранено',
+        save_failed: 'Не удалось сохранить',
+        tabs: {
+            bag: 'Инвентарь',
+            craft: 'Крафт',
+            hero: 'Персонаж',
+            artifacts: 'Артефакты',
+            settings: 'Настройки',
+            chest: 'Сундук',
+        },
+        inventory_hint:
+            'Перетаскивайте предметы между ячейками · верхний ряд — быстрые слоты 1–6',
+        craft: 'Создать',
+        needs_fire: 'Нужен костёр рядом',
+        needs_workbench: 'Нужен верстак рядом',
+        crafted: 'Создано',
+        sort: 'Сортировать',
+        drop_one: 'Выбросить 1',
+        drop_all: 'Выбросить всё',
+        empty_slot: 'Выберите предмет',
+        full: 'Инвентарь полон',
+        lmb: 'ЛКМ',
+        chop: 'Рубить',
+        mine: 'Добывать',
+        cut: 'Срезать',
+        attack: 'Атаковать',
+        pick_up: 'Подобрать',
+        take_fire: 'Забрать костёр',
+        place: 'Поставить',
+        no_place: 'Сюда не поставить',
+        too_many: 'Слишком много построек',
+        sit: 'Сесть',
+        stand_up: 'Встать',
+        tree: 'Дерево',
+        pine: 'Ель',
+        cactus: 'Кактус',
+        rock: 'Валун',
+        ore: 'Железная руда',
+        stump: 'Пень',
+        log: 'Бревно',
+        bundle: 'Свёрток',
+        no_room: 'Здесь не встать',
+        needs: {
+            axe: 'Нужен топор',
+            pickaxe: 'Нужна кирка',
+            sword: 'Нужен меч',
+            shovel: 'Нужна лопата',
+        },
+        broke: 'сломался',
+        durability: 'Прочность',
+        artifact_found: 'Найден артефакт',
+        out_of_breath: 'Воздух кончается!',
+        sound_on: 'Звук включён',
+        sound_off: 'Звук выключен',
+        equip: 'Надеть',
+        unequip: 'Снять',
+        eat: 'Съесть',
+        bandage_up: 'Перевязаться',
+        armor_slots: { head: 'Голова', body: 'Тело', feet: 'Ноги' },
+        health: 'Здоровье',
+        armor: 'Броня',
+        armor_blocks: 'поглощает урона',
+        health_full: 'Здоровье и так полное',
+        low_health: 'Мало здоровья!',
+        died: 'Вы погибли',
+        death_causes: {
+            deer: 'Вас затоптал олень',
+            boar: 'Вас забодал кабан',
+            wolf: 'Вас загрыз волк',
+            zombie: 'Вас настиг мертвец',
+            fall: 'Неудачное падение',
+            drown: 'Вы утонули',
+        },
+        respawn: 'Возродиться',
+        wake_bag: 'Вы проснётесь у спальника. Вещи остаются с вами.',
+        wake_camp: 'Вы проснётесь в лагере. Вещи остаются с вами.',
+        mobs: {
+            deer: 'Олень',
+            boar: 'Кабан',
+            wolf: 'Волк',
+            zombie: 'Мертвец',
+        },
+        dismantle: 'Разобрать',
+        open: 'Открыть',
+        close: 'Закрыть',
+        craft_here: 'Крафт',
+        sleep_here: 'Просыпаться здесь',
+        spawn_set: 'Теперь вы будете просыпаться здесь',
+        groups: {
+            tools: 'Инструменты',
+            weapons: 'Оружие',
+            armor: 'Броня',
+            building: 'Постройки',
+            survival: 'Выживание',
+        },
+        all: 'Всё',
+        craftable: 'Можно создать',
+        pick_recipe: 'Выберите рецепт слева',
+        take_all: 'Взять всё',
+        put_all: 'Положить всё',
+        chest_hint: 'Нажмите на предмет, чтобы переложить его',
+        equipment: 'Снаряжение',
+        artifacts: 'Артефакты',
+        not_found: 'Ещё не найден',
+        stats: 'Статистика',
+        stat_names: {
+            deer: 'Оленей',
+            boar: 'Кабанов',
+            wolf: 'Волков',
+            zombie: 'Мертвецов',
+            trees: 'Срублено деревьев',
+            rocks: 'Разбито валунов',
+            crafted: 'Создано предметов',
+            artifacts: 'Найдено артефактов',
+            digs: 'Раскопок',
+            researched: 'Изучено рецептов',
+            deaths: 'Смертей',
+        },
+        quality: 'Графика',
+        qualities: {
+            auto: 'Авто',
+            low: 'Низкая',
+            medium: 'Средняя',
+            high: 'Высокая',
+        },
+        quality_hint:
+            '«Авто» сама снижает чёткость, когда игра начинает тормозить.',
+        smoothing_note: 'Сглаживание краёв включится после перезагрузки.',
+        sensitivity: 'Чувствительность камеры',
+        volume: 'Громкость',
+        sound: 'Звук',
+        show_fps: 'Показывать FPS',
+        start_over: 'Начать заново',
+        start_over_hint:
+            'Удаляет героя, вещи, постройки, знания и статистику — игра начнётся с выбора класса.',
+        start_over_confirm:
+            'Начать заново? Герой, вещи, постройки, изученные рецепты и статистика будут удалены навсегда.',
+        start_over_failed: 'Не удалось сбросить прогресс',
+        gpu: 'Видеокарта',
+        gpu_software:
+            'Браузер рисует без видеокарты — поэтому игра тормозит. Включите «аппаратное ускорение» в настройках браузера.',
+        stances: {
+            crouch: 'Присед',
+            crawl: 'Ползком',
+            sit: 'Сидя',
+            swim: 'Плаваю',
+        },
+        biomes: {
+            meadow: 'Луга',
+            forest: 'Лес',
+            desert: 'Пустыня',
+            snow: 'Снега',
+            mountains: 'Горы',
+        },
+        hero_title: 'Новый герой',
+        hero_pick_class: 'Выберите класс',
+        hero_pick_gender: 'Пол',
+        hero_start: 'В путь',
+        hero_keeps: 'Ваши вещи, постройки и статистика останутся с вами.',
+        hero_gender_note:
+            'Женщины ловчее и быстрее, мужчины сильнее (у танка — на 2 очка, у остальных — на 1).',
+        classes: {
+            tank: [
+                'Танк',
+                'Много здоровья и защиты, тяжёлые удары. Медленный. Умение — «Стальная кожа».',
+            ],
+            fighter: [
+                'Боец',
+                'Сильный и надёжный, хорош во всём понемногу. Умение — «Вихрь».',
+            ],
+            assassin: [
+                'Убийца',
+                'Быстрый и ловкий: частые удары и критические попадания. Умение — «Рывок».',
+            ],
+            mage: [
+                'Маг',
+                'Много маны, бьёт огнём издалека, но хрупкий. Умение — «Огненный шар».',
+            ],
+        },
+        attributes: {
+            strength: ['Сила', 'Сила ударов, здоровье, защита'],
+            agility: [
+                'Ловкость',
+                'Скорость, частота ударов, криты, выносливость',
+            ],
+            spirit: ['Дух', 'Мана, сила магии, знания из записей'],
+        },
+        genders: {
+            male: 'Мужчина',
+            female: 'Женщина',
+        },
+        attributes_title: 'Характеристики',
+        derived_title: 'Показатели',
+        derived: {
+            health: 'Здоровье',
+            mana: 'Мана',
+            stamina: 'Выносливость',
+            defense: 'Защита',
+            damage: 'Сила удара',
+            speed: 'Скорость',
+            attack_speed: 'Частота ударов',
+            crit: 'Шанс крита',
+            knowledge: 'Знания из записей',
+        },
+        level: 'Уровень',
+        level_short: 'Ур.',
+        level_up: 'Новый уровень',
+        xp: 'Опыт',
+        max_level: 'Максимальный уровень',
+        free_points: 'Свободные очки',
+        points_hint: 'Нажмите «+», чтобы вложить очко в характеристику.',
+        add_point: 'Вложить очко',
+        skills: {
+            guard: [
+                'Стальная кожа',
+                'На несколько секунд урон по вам сильно снижен.',
+            ],
+            whirlwind: ['Вихрь', 'Удар по всем врагам вокруг.'],
+            dash: ['Рывок', 'Прыжок вперёд; следующий удар — критический.'],
+            bolt: [
+                'Огненный шар',
+                'Шар огня летит во врага впереди. С посохом — сильнее.',
+            ],
+        },
+        skill_title: 'Умение',
+        skill_ready: 'готово',
+        no_mana: 'Не хватает маны',
+        mana: 'Мана',
+        stamina: 'Выносливость',
+        mana_full: 'Мана и так полная',
+        crit: 'Крит!',
+        knowledge: 'Знания',
+        knowledge_hint:
+            'Знания дают старые записи и древние обломки с раскопок и от мертвецов, а ещё разборка вещей. Простые вещи изучать не нужно.',
+        research: 'Изучить',
+        research_cost: 'знаний',
+        locked: 'Нужно изучить',
+        learnt: 'Изучено',
+        not_enough_knowledge: 'Не хватает знаний',
+        study: 'Изучить',
+        drink: 'Выпить',
+        disassemble: 'Разобрать',
+        disassembled: 'Разобрано',
+        disassemble_note:
+            'Вернётся часть материалов. Если рецепт ещё не изучен — вы его узнаете.',
+        dig: 'Копать',
+        dig_site: 'Раскопки',
+        enter: 'Enter',
+        key_space: 'Пробел',
+        swim_up: 'Всплыть',
+        swim_down: 'Нырнуть',
+        absorb: 'Поглотить',
+        absorbed: 'Поглощено',
+        absorb_full: 'Больше этот артефакт не поглотить',
+        recycle: 'Переработать',
+        fuse: 'Соединить',
+        fused: 'Создан артефакт',
+        second_wind: 'Второе дыхание! Перо феникса спасло вас',
+        tiers: {
+            common: 'Обычные',
+            rare: 'Редкие',
+            legendary: 'Легендарные',
+        },
+        tier_where: {
+            common: 'Лежат по всему миру (короткий луч света). Появляются снова через 5 минут.',
+            rare: 'По одному в глубине своей земли (высокий луч света). Появляются снова через 5 минут.',
+            legendary: 'Только слиянием других артефактов с эссенцией.',
+        },
+        bonuses: {
+            health: 'к здоровью',
+            mana: 'к мане',
+            speed: 'к скорости бега',
+            jump: 'к прыжку',
+            swim: 'к скорости плавания',
+            breath: 'к запасу воздуха',
+            gather: 'к добыче ресурсов',
+            light: 'свет вокруг ночью',
+        },
+        sources: {
+            start: 'класс',
+            levels: 'уровни',
+            points: 'очки',
+            artifacts: 'артефакты',
+        },
+        groups_profile: {
+            survival: 'Выживание',
+            combat: 'Бой',
+            other: 'Движение и знания',
+        },
+        artifacts_hint:
+            'Поглощение даёт силу навсегда (артефакт исчезает). Переработка превращает артефакт в эссенцию. Из артефактов и эссенции соединяются легендарные.',
+        absorb_gives: 'При поглощении',
+        carry_gives: 'Пока в сумке',
+        absorbed_count: 'Поглощено',
+        owned: 'В сумке',
+        fusion_needs: 'Для слияния',
+        recycle_gives: 'Переработка даст',
+        absorbed_title: 'Поглощённые артефакты',
+        none_absorbed:
+            'Пока ничего не поглощено — откройте вкладку «Артефакты» (O).',
+        regen: 'Восстановление',
+        jump: 'Прыжок',
+        swim: 'Плавание',
+        passives: {
+            double_jump: [
+                'Двойной прыжок',
+                'Можно прыгнуть ещё раз в воздухе.',
+            ],
+            water_breathing: [
+                'Дыхание под водой',
+                'Воздух под водой не кончается.',
+            ],
+            vampirism: [
+                'Вампиризм',
+                '10% нанесённого урона возвращается здоровьем.',
+            ],
+            second_wind: [
+                'Второе дыхание',
+                'Смертельный удар оставляет 30% здоровья (раз в 5 минут).',
+            ],
+        },
+        items: {
+            wood: ['Древесина', 'Рубится из деревьев. Топором — быстрее.'],
+            stone: ['Камень', 'Добывается из валунов. Киркой — быстрее.'],
+            stick: ['Ветка', 'Валяется под ногами в лесу и в поле.'],
+            pebble: ['Галька', 'Мелкие камешки — можно найти на земле.'],
+            berries: [
+                'Ягоды',
+                'Растут на кустах; снова появляются через несколько минут. Немного лечат.',
+            ],
+            mushroom: ['Гриб', 'Чаще всего в лесу. Немного лечит.'],
+            fiber: [
+                'Волокно',
+                'Из травы на лугах и из кактусов. Связывает инструменты.',
+            ],
+            flint: [
+                'Кремень',
+                'Попадается в пустыне, горах и снегах. Нужен для костра.',
+            ],
+            iron_ore: [
+                'Железная руда',
+                'Рыжие валуны в горах. Добывается только киркой.',
+            ],
+            iron: ['Железо', 'Переплавляется из руды у костра.'],
+            stone_axe: ['Каменный топор', 'Рубит деревья вдвое быстрее рук.'],
+            stone_pickaxe: [
+                'Каменная кирка',
+                'Бьёт камень вдвое быстрее и добывает руду.',
+            ],
+            wood_sword: [
+                'Деревянный меч',
+                'Лёгкий и быстрый. Срезает кактусы.',
+            ],
+            stone_sword: ['Каменный меч', 'Тяжелее и крепче деревянного.'],
+            iron_axe: ['Железный топор', 'Валит дерево за пару ударов.'],
+            iron_pickaxe: [
+                'Железная кирка',
+                'Лучшая кирка: камень и руда — в разы быстрее.',
+            ],
+            iron_sword: ['Железный меч', 'Самое сильное оружие.'],
+            torch: ['Факел', 'Возьмите в руку — светит в темноте.'],
+            campfire: [
+                'Костёр',
+                'Поставьте (ПКМ / R): греет, светит ночью, на нём жарят мясо и плавят железо. Ночные твари к огню не подходят.',
+            ],
+            raw_meat: [
+                'Сырое мясо',
+                'Добывается из животных. Лучше пожарить на костре.',
+            ],
+            cooked_meat: [
+                'Жареное мясо',
+                'Сытное: хорошо восстанавливает здоровье.',
+            ],
+            hide: [
+                'Шкура',
+                'Снимается с животных. Из неё шьют броню и спальник.',
+            ],
+            bandage: ['Бинт', 'Перевяжитесь (ПКМ / R) — вернёт здоровье.'],
+            leather_helmet: ['Кожаный шлем', 'Лёгкая защита головы.'],
+            leather_jacket: ['Кожаная куртка', 'Хорошо держит укусы.'],
+            leather_boots: ['Кожаные сапоги', 'Лёгкая защита ног.'],
+            iron_helmet: ['Железный шлем', 'Крепкая защита головы.'],
+            iron_chestplate: [
+                'Железный нагрудник',
+                'Лучшая защита тела. Делается у верстака.',
+            ],
+            iron_boots: ['Железные сапоги', 'Крепкая защита ног.'],
+            chest: ['Сундук', 'Хранит 12 стопок вещей. Разбирается топором.'],
+            workbench: [
+                'Верстак',
+                'Рядом с ним делают железные инструменты и броню.',
+            ],
+            wood_wall: [
+                'Деревянная стена',
+                'Встаёт по сетке, стены складываются в дом. Звери через неё не пройдут.',
+            ],
+            wood_door: [
+                'Деревянная дверь',
+                'Стена с дверью: открывается и закрывается (E).',
+            ],
+            sleeping_bag: ['Спальник', 'После гибели вы проснётесь у него.'],
+            wind_feather: [
+                'Перо ветра',
+                'Артефакт гор. Пока оно с вами, вы прыгаете выше.',
+            ],
+            sun_stone: [
+                'Солнечный камень',
+                'Артефакт пустыни. Ночью светится вокруг вас.',
+            ],
+            frost_crystal: [
+                'Ледяной кристалл',
+                'Артефакт снегов. Дольше без воздуха и быстрее плаваете.',
+            ],
+            forest_heart: [
+                'Сердце леса',
+                'Артефакт леса. Добыча ресурсов в полтора раза больше.',
+            ],
+            golden_clover: [
+                'Золотой клевер',
+                'Артефакт лугов. Бегаете быстрее.',
+            ],
+            shovel: [
+                'Лопата',
+                'Раскапывает раскопки быстро (кирка — медленно).',
+            ],
+            dagger: [
+                'Кинжал',
+                'Короткий клинок: удары очень частые, критов больше. Оружие убийцы.',
+            ],
+            war_hammer: [
+                'Боевой молот',
+                'Тяжёлый и медленный, но бьёт сильнее всего. Оружие танка.',
+            ],
+            staff: [
+                'Посох',
+                'Огненные шары мага сильнее на 40%. Каждый шар немного изнашивает посох.',
+            ],
+            healing_potion: [
+                'Лечебное зелье',
+                'Сразу возвращает много здоровья.',
+            ],
+            mana_potion: ['Зелье маны', 'Возвращает ману.'],
+            old_notes: [
+                'Старые записи',
+                'Изучите (ПКМ / R или в инвентаре), чтобы получить знания.',
+            ],
+            relic_shard: [
+                'Древний обломок',
+                'Изучите, чтобы получить много знаний. Нужен для посоха и зелья маны.',
+            ],
+            wood_roof: [
+                'Крыша',
+                'Кладётся на клетку 2×2 поверх стен. Простая — изучать не нужно.',
+            ],
+            stone_wall: [
+                'Каменная стена',
+                'Намного крепче деревянной. Разбирается только киркой.',
+            ],
+            strength_rune: [
+                'Руна силы',
+                'Обычный артефакт. Поглощение: +2 к силе (до 5 раз).',
+            ],
+            agility_rune: [
+                'Руна ловкости',
+                'Обычный артефакт. Поглощение: +2 к ловкости (до 5 раз).',
+            ],
+            spirit_rune: [
+                'Руна духа',
+                'Обычный артефакт. Поглощение: +2 к духу (до 5 раз).',
+            ],
+            vital_shard: [
+                'Осколок жизни',
+                'Обычный артефакт. Поглощение: +20 к здоровью (до 5 раз).',
+            ],
+            mana_pearl: [
+                'Жемчужина маны',
+                'Обычный артефакт. Поглощение: +20 к мане (до 5 раз).',
+            ],
+            swift_charm: [
+                'Амулет ветра',
+                'Обычный артефакт. Поглощение: +5% к скорости бега (до 3 раз).',
+            ],
+            storm_eye: [
+                'Око бури',
+                'Легендарный. Поглощение даёт навык «Двойной прыжок».',
+            ],
+            deep_pearl: [
+                'Жемчужина глубин',
+                'Легендарный. Поглощение даёт навык «Дыхание под водой».',
+            ],
+            blood_ruby: [
+                'Кровавый рубин',
+                'Легендарный. Поглощение даёт навык «Вампиризм».',
+            ],
+            phoenix_feather: [
+                'Перо феникса',
+                'Легендарный. Поглощение даёт навык «Второе дыхание».',
+            ],
+            essence: [
+                'Эссенция артефактов',
+                'Получается переработкой артефактов. Нужна для слияния легендарных.',
+            ],
+        },
+    },
+    en: {
+        title: 'Sandbox',
+        back: 'Games',
+        start: 'Click to play',
+        start_touch: 'Tap to play',
+        play: 'Play',
+        resume: 'Resume',
+        paused: 'Paused',
+        exit: 'Exit',
+        rotate: 'Turn your phone sideways',
+        controls_title: 'Controls',
+        controls: [
+            ['W A S D', 'walk · Shift to run'],
+            ['Space', 'jump · climb · swim up'],
+            ['C · Z · X', 'crouch (dive) · crawl · sit'],
+            ['LMB', 'chop · mine · strike'],
+            ['E', 'pick up · open · sit'],
+            ['RMB / R', 'build · eat'],
+            ['1–6', 'pick an item'],
+            ['I / Tab', 'inventory'],
+            ['Q · P', 'crafting · character'],
+            ['M · F3 · F4', 'sound · debug · skip time'],
+            ['G', 'class skill'],
+            ['Enter', 'make · learn (in the menu)'],
+            ['Esc', 'pause'],
+        ],
+        saving: 'Saving…',
+        saved: 'Saved',
+        save_failed: 'Could not save',
+        tabs: {
+            bag: 'Inventory',
+            craft: 'Crafting',
+            hero: 'Character',
+            artifacts: 'Artifacts',
+            settings: 'Settings',
+            chest: 'Chest',
+        },
+        inventory_hint:
+            'Drag items between slots · the top row is the 1–6 hotbar',
+        craft: 'Make',
+        needs_fire: 'Needs a fire nearby',
+        needs_workbench: 'Needs a workbench nearby',
+        crafted: 'Made',
+        sort: 'Sort',
+        drop_one: 'Drop 1',
+        drop_all: 'Drop all',
+        empty_slot: 'Pick an item',
+        full: 'Inventory full',
+        lmb: 'LMB',
+        chop: 'Chop',
+        mine: 'Mine',
+        cut: 'Cut',
+        attack: 'Attack',
+        pick_up: 'Pick up',
+        take_fire: 'Take the campfire',
+        place: 'Place',
+        no_place: 'Cannot place it here',
+        too_many: 'Too many buildings',
+        sit: 'Sit',
+        stand_up: 'Stand up',
+        tree: 'Tree',
+        pine: 'Fir',
+        cactus: 'Cactus',
+        rock: 'Boulder',
+        ore: 'Iron ore',
+        stump: 'Stump',
+        log: 'Log',
+        bundle: 'Bundle',
+        no_room: 'No room to stand',
+        needs: {
+            axe: 'Needs an axe',
+            pickaxe: 'Needs a pickaxe',
+            sword: 'Needs a sword',
+            shovel: 'Needs a shovel',
+        },
+        broke: 'broke',
+        durability: 'Durability',
+        artifact_found: 'Artifact found',
+        out_of_breath: 'Running out of air!',
+        sound_on: 'Sound on',
+        sound_off: 'Sound off',
+        equip: 'Put on',
+        unequip: 'Take off',
+        eat: 'Eat',
+        bandage_up: 'Bandage up',
+        armor_slots: { head: 'Head', body: 'Body', feet: 'Feet' },
+        health: 'Health',
+        armor: 'Armour',
+        armor_blocks: 'of damage blocked',
+        health_full: 'Health is already full',
+        low_health: 'Low health!',
+        died: 'You died',
+        death_causes: {
+            deer: 'Trampled by a deer',
+            boar: 'Gored by a boar',
+            wolf: 'Mauled by a wolf',
+            zombie: 'Caught by the dead',
+            fall: 'A bad fall',
+            drown: 'You drowned',
+        },
+        respawn: 'Respawn',
+        wake_bag:
+            'You will wake up at your sleeping bag. You keep your things.',
+        wake_camp: 'You will wake up at the camp. You keep your things.',
+        mobs: {
+            deer: 'Deer',
+            boar: 'Boar',
+            wolf: 'Wolf',
+            zombie: 'The dead',
+        },
+        dismantle: 'Take apart',
+        open: 'Open',
+        close: 'Close',
+        craft_here: 'Craft',
+        sleep_here: 'Wake up here',
+        spawn_set: 'You will wake up here from now on',
+        groups: {
+            tools: 'Tools',
+            weapons: 'Weapons',
+            armor: 'Armour',
+            building: 'Building',
+            survival: 'Survival',
+        },
+        all: 'All',
+        craftable: 'Can make',
+        pick_recipe: 'Pick a recipe on the left',
+        take_all: 'Take all',
+        put_all: 'Put all in',
+        chest_hint: 'Tap an item to move it across',
+        equipment: 'Equipment',
+        artifacts: 'Artifacts',
+        not_found: 'Not found yet',
+        stats: 'Statistics',
+        stat_names: {
+            deer: 'Deer',
+            boar: 'Boars',
+            wolf: 'Wolves',
+            zombie: 'The dead',
+            trees: 'Trees felled',
+            rocks: 'Boulders broken',
+            crafted: 'Things made',
+            artifacts: 'Artifacts found',
+            digs: 'Excavations',
+            researched: 'Recipes learnt',
+            deaths: 'Deaths',
+        },
+        quality: 'Graphics',
+        qualities: {
+            auto: 'Auto',
+            low: 'Low',
+            medium: 'Medium',
+            high: 'High',
+        },
+        quality_hint:
+            '“Auto” lowers the sharpness by itself when the game starts to stutter.',
+        smoothing_note: 'Edge smoothing takes effect after a reload.',
+        sensitivity: 'Camera sensitivity',
+        volume: 'Volume',
+        sound: 'Sound',
+        show_fps: 'Show FPS',
+        start_over: 'Start over',
+        start_over_hint:
+            'Deletes the hero, things, buildings, knowledge and stats — the game starts again from choosing a class.',
+        start_over_confirm:
+            'Start over? The hero, things, buildings, learnt recipes and stats will be deleted for good.',
+        start_over_failed: 'Could not reset the progress',
+        gpu: 'Graphics card',
+        gpu_software:
+            'The browser is drawing without the graphics card — that is why the game is slow. Turn on “hardware acceleration” in the browser settings.',
+        stances: {
+            crouch: 'Crouching',
+            crawl: 'Crawling',
+            sit: 'Sitting',
+            swim: 'Swimming',
+        },
+        biomes: {
+            meadow: 'Meadows',
+            forest: 'Forest',
+            desert: 'Desert',
+            snow: 'Snowlands',
+            mountains: 'Mountains',
+        },
+        hero_title: 'New hero',
+        hero_pick_class: 'Choose a class',
+        hero_pick_gender: 'Gender',
+        hero_start: 'Set off',
+        hero_keeps: 'Your things, buildings and stats stay with you.',
+        hero_gender_note:
+            'Women are nimbler and quicker, men stronger (2 points for a tank, 1 for the rest).',
+        classes: {
+            tank: [
+                'Tank',
+                'Lots of health and defence, heavy blows. Slow. Skill: Iron skin.',
+            ],
+            fighter: [
+                'Fighter',
+                'Strong and steady, good at a bit of everything. Skill: Whirlwind.',
+            ],
+            assassin: [
+                'Assassin',
+                'Fast and nimble: quick blows and critical hits. Skill: Dash.',
+            ],
+            mage: [
+                'Mage',
+                'Lots of mana, strikes with fire from afar, but fragile. Skill: Fire bolt.',
+            ],
+        },
+        attributes: {
+            strength: ['Strength', 'How hard blows land, health, defence'],
+            agility: [
+                'Agility',
+                'Speed, quicker blows, critical hits, stamina',
+            ],
+            spirit: ['Spirit', 'Mana, spell power, knowledge from notes'],
+        },
+        genders: {
+            male: 'Man',
+            female: 'Woman',
+        },
+        attributes_title: 'Attributes',
+        derived_title: 'Figures',
+        derived: {
+            health: 'Health',
+            mana: 'Mana',
+            stamina: 'Stamina',
+            defense: 'Defence',
+            damage: 'Blow strength',
+            speed: 'Speed',
+            attack_speed: 'Blow rate',
+            crit: 'Critical chance',
+            knowledge: 'Knowledge from notes',
+        },
+        level: 'Level',
+        level_short: 'Lv',
+        level_up: 'Level up',
+        xp: 'Experience',
+        max_level: 'Top level',
+        free_points: 'Free points',
+        points_hint: 'Press “+” to put a point into an attribute.',
+        add_point: 'Add a point',
+        skills: {
+            guard: ['Iron skin', 'For a few seconds you take far less damage.'],
+            whirlwind: ['Whirlwind', 'Strikes every enemy around you.'],
+            dash: ['Dash', 'A leap forward; the next blow is critical.'],
+            bolt: [
+                'Fire bolt',
+                'A ball of fire flies at the enemy ahead. Stronger with a staff.',
+            ],
+        },
+        skill_title: 'Skill',
+        skill_ready: 'ready',
+        no_mana: 'Not enough mana',
+        mana: 'Mana',
+        stamina: 'Stamina',
+        mana_full: 'Mana is already full',
+        crit: 'Critical!',
+        knowledge: 'Knowledge',
+        knowledge_hint:
+            'Knowledge comes from old notes and relic shards (dug up, or dropped by the dead) and from taking things apart. Simple things need no learning.',
+        research: 'Learn',
+        research_cost: 'knowledge',
+        locked: 'Needs learning',
+        learnt: 'Learnt',
+        not_enough_knowledge: 'Not enough knowledge',
+        study: 'Study',
+        drink: 'Drink',
+        disassemble: 'Take apart',
+        disassembled: 'Taken apart',
+        disassemble_note:
+            'Some of the materials come back. If its recipe is not learnt yet, you learn it.',
+        dig: 'Dig',
+        dig_site: 'Excavation',
+        enter: 'Enter',
+        key_space: 'Space',
+        swim_up: 'Swim up',
+        swim_down: 'Dive',
+        absorb: 'Absorb',
+        absorbed: 'Absorbed',
+        absorb_full: 'This artifact cannot be absorbed any more',
+        recycle: 'Recycle',
+        fuse: 'Fuse',
+        fused: 'Artifact made',
+        second_wind: 'Second wind! The phoenix feather saved you',
+        tiers: {
+            common: 'Common',
+            rare: 'Rare',
+            legendary: 'Legendary',
+        },
+        tier_where: {
+            common: 'Lying all over the world (a short beam of light). Back 5 minutes after being taken.',
+            rare: 'One deep in each land (a tall beam of light). Back 5 minutes after being taken.',
+            legendary: 'Only by fusing other artifacts with essence.',
+        },
+        bonuses: {
+            health: 'health',
+            mana: 'mana',
+            speed: 'running speed',
+            jump: 'jump',
+            swim: 'swimming speed',
+            breath: 'breath',
+            gather: 'resources gathered',
+            light: 'light around you at night',
+        },
+        sources: {
+            start: 'class',
+            levels: 'levels',
+            points: 'points',
+            artifacts: 'artifacts',
+        },
+        groups_profile: {
+            survival: 'Survival',
+            combat: 'Combat',
+            other: 'Movement and knowledge',
+        },
+        artifacts_hint:
+            'Absorbing gives its power for good (the artifact is gone). Recycling turns it into essence. Artifacts and essence fuse into legendary ones.',
+        absorb_gives: 'Absorbed',
+        carry_gives: 'While carried',
+        absorbed_count: 'Absorbed',
+        owned: 'Carried',
+        fusion_needs: 'To fuse',
+        recycle_gives: 'Recycling gives',
+        absorbed_title: 'Absorbed artifacts',
+        none_absorbed: 'Nothing absorbed yet — open the Artifacts tab (O).',
+        regen: 'Regeneration',
+        jump: 'Jump',
+        swim: 'Swimming',
+        passives: {
+            double_jump: ['Double jump', 'Jump once more in the air.'],
+            water_breathing: [
+                'Water breathing',
+                'Air never runs out under water.',
+            ],
+            vampirism: [
+                'Vampirism',
+                '10% of the damage you deal comes back as health.',
+            ],
+            second_wind: [
+                'Second wind',
+                'A lethal blow leaves 30% health instead (once every 5 minutes).',
+            ],
+        },
+        items: {
+            wood: ['Wood', 'Chopped from trees. Faster with an axe.'],
+            stone: ['Stone', 'Mined from boulders. Faster with a pickaxe.'],
+            stick: ['Stick', 'Lies about in the woods and fields.'],
+            pebble: ['Pebble', 'Small stones found on the ground.'],
+            berries: [
+                'Berries',
+                'Grow on bushes, which bear fruit again after a few minutes. Heal a little.',
+            ],
+            mushroom: ['Mushroom', 'Mostly in the forest. Heals a little.'],
+            fiber: [
+                'Fiber',
+                'From meadow grass and cacti. Binds tools together.',
+            ],
+            flint: [
+                'Flint',
+                'Found in deserts, mountains and snow. Needed for a campfire.',
+            ],
+            iron_ore: [
+                'Iron ore',
+                'Rusty boulders in the mountains. Only a pickaxe gets it out.',
+            ],
+            iron: ['Iron', 'Smelted from ore at a campfire.'],
+            stone_axe: [
+                'Stone axe',
+                'Chops trees twice as fast as bare hands.',
+            ],
+            stone_pickaxe: [
+                'Stone pickaxe',
+                'Breaks stone twice as fast and mines ore.',
+            ],
+            wood_sword: ['Wooden sword', 'Light and quick. Cuts cacti.'],
+            stone_sword: ['Stone sword', 'Heavier and tougher than wood.'],
+            iron_axe: ['Iron axe', 'Fells a tree in a couple of blows.'],
+            iron_pickaxe: [
+                'Iron pickaxe',
+                'The best pickaxe: stone and ore go much faster.',
+            ],
+            iron_sword: ['Iron sword', 'The strongest weapon.'],
+            torch: ['Torch', 'Hold it to light the dark.'],
+            campfire: [
+                'Campfire',
+                'Place it (RMB / R): warm, bright at night, cooks meat and smelts iron. Night creatures keep away from fire.',
+            ],
+            raw_meat: [
+                'Raw meat',
+                'From animals. Better cooked on a campfire.',
+            ],
+            cooked_meat: ['Cooked meat', 'Filling: heals well.'],
+            hide: [
+                'Hide',
+                'From animals. Made into armour and a sleeping bag.',
+            ],
+            bandage: ['Bandage', 'Bandage up (RMB / R) to get health back.'],
+            leather_helmet: ['Leather cap', 'Light protection for the head.'],
+            leather_jacket: ['Leather jacket', 'Stands up well to bites.'],
+            leather_boots: ['Leather boots', 'Light protection for the feet.'],
+            iron_helmet: ['Iron helmet', 'Strong protection for the head.'],
+            iron_chestplate: [
+                'Iron breastplate',
+                'The best protection for the body. Made at a workbench.',
+            ],
+            iron_boots: ['Iron boots', 'Strong protection for the feet.'],
+            chest: ['Chest', 'Holds 12 stacks. An axe takes it apart.'],
+            workbench: [
+                'Workbench',
+                'Iron tools and armour are made next to it.',
+            ],
+            wood_wall: [
+                'Wooden wall',
+                'Snaps to a grid, so walls make a house. Animals cannot get through.',
+            ],
+            wood_door: [
+                'Wooden door',
+                'A wall with a door that opens and closes (E).',
+            ],
+            sleeping_bag: [
+                'Sleeping bag',
+                'After dying you wake up next to it.',
+            ],
+            wind_feather: [
+                'Wind feather',
+                'Mountain artifact. While you carry it, you jump higher.',
+            ],
+            sun_stone: [
+                'Sun stone',
+                'Desert artifact. Glows around you at night.',
+            ],
+            frost_crystal: [
+                'Frost crystal',
+                'Snow artifact. Longer breath and faster swimming.',
+            ],
+            forest_heart: [
+                'Heart of the forest',
+                'Forest artifact. Half as much again from gathering.',
+            ],
+            golden_clover: [
+                'Golden clover',
+                'Meadow artifact. You run faster.',
+            ],
+            shovel: [
+                'Shovel',
+                'Digs out excavations quickly (a pickaxe does it slowly).',
+            ],
+            dagger: [
+                'Dagger',
+                'A short blade: very quick blows and more critical hits. The assassin’s weapon.',
+            ],
+            war_hammer: [
+                'War hammer',
+                'Heavy and slow, but hits hardest of all. The tank’s weapon.',
+            ],
+            staff: [
+                'Staff',
+                'Makes a mage’s fire bolts 40% stronger. Every bolt wears it a little.',
+            ],
+            healing_potion: [
+                'Healing potion',
+                'Gives back a lot of health at once.',
+            ],
+            mana_potion: ['Mana potion', 'Gives back mana.'],
+            old_notes: [
+                'Old notes',
+                'Study them (RMB / R, or in the inventory) for knowledge.',
+            ],
+            relic_shard: [
+                'Relic shard',
+                'Study it for a lot of knowledge. Needed for a staff and mana potions.',
+            ],
+            wood_roof: [
+                'Roof',
+                'Covers a 2×2 cell on top of the walls. Simple: no learning needed.',
+            ],
+            stone_wall: [
+                'Stone wall',
+                'Much tougher than wood. Only a pickaxe takes it down.',
+            ],
+            strength_rune: [
+                'Rune of strength',
+                'Common artifact. Absorbed: +2 strength (up to 5 times).',
+            ],
+            agility_rune: [
+                'Rune of agility',
+                'Common artifact. Absorbed: +2 agility (up to 5 times).',
+            ],
+            spirit_rune: [
+                'Rune of spirit',
+                'Common artifact. Absorbed: +2 spirit (up to 5 times).',
+            ],
+            vital_shard: [
+                'Shard of life',
+                'Common artifact. Absorbed: +20 health (up to 5 times).',
+            ],
+            mana_pearl: [
+                'Mana pearl',
+                'Common artifact. Absorbed: +20 mana (up to 5 times).',
+            ],
+            swift_charm: [
+                'Wind charm',
+                'Common artifact. Absorbed: +5% running speed (up to 3 times).',
+            ],
+            storm_eye: [
+                'Eye of the storm',
+                'Legendary. Absorbed, it gives the Double jump skill.',
+            ],
+            deep_pearl: [
+                'Pearl of the deep',
+                'Legendary. Absorbed, it gives the Water breathing skill.',
+            ],
+            blood_ruby: [
+                'Blood ruby',
+                'Legendary. Absorbed, it gives the Vampirism skill.',
+            ],
+            phoenix_feather: [
+                'Phoenix feather',
+                'Legendary. Absorbed, it gives the Second wind skill.',
+            ],
+            essence: [
+                'Artifact essence',
+                'Made by recycling artifacts. Needed to fuse legendary ones.',
+            ],
+        },
+    },
+    uz: {
+        title: 'Qumdon',
+        back: "O'yinlar",
+        start: "O'ynash uchun bosing",
+        start_touch: "O'ynash uchun teging",
+        play: "O'ynash",
+        resume: 'Davom etish',
+        paused: 'Pauza',
+        exit: 'Chiqish',
+        rotate: 'Telefonni yotqizib ushlang',
+        controls_title: 'Boshqaruv',
+        controls: [
+            ['W A S D', 'yurish · Shift — yugurish'],
+            ['Probel', 'sakrash · chiqish · suzib chiqish'],
+            ['C · Z · X', 'cho‘kkalash (sho‘ng‘ish) · emaklash · o‘tirish'],
+            ['SChT', 'kesish · qazish · urish'],
+            ['E', 'olish · ochish · o‘tirish'],
+            ['SOT / R', 'qurish · yeyish'],
+            ['1–6', 'buyumni tanlash'],
+            ['I / Tab', 'inventar'],
+            ['Q · P', 'yasash · qahramon'],
+            ['M · F3 · F4', 'ovoz · nosozlik · vaqtni o‘tkazish'],
+            ['G', 'sinf mahorati'],
+            ['Enter', 'yasash · o‘rganish (menyuda)'],
+            ['Esc', 'pauza'],
+        ],
+        saving: 'Saqlanmoqda…',
+        saved: 'Saqlandi',
+        save_failed: 'Saqlab bo‘lmadi',
+        tabs: {
+            bag: 'Inventar',
+            craft: 'Yasash',
+            hero: 'Qahramon',
+            artifacts: 'Artefaktlar',
+            settings: 'Sozlamalar',
+            chest: 'Sandiq',
+        },
+        inventory_hint:
+            'Buyumlarni kataklar orasida suring · yuqori qator — 1–6 tezkor kataklar',
+        craft: 'Yasash',
+        needs_fire: 'Yonida gulxan kerak',
+        needs_workbench: 'Yonida dastgoh kerak',
+        crafted: 'Yasaldi',
+        sort: 'Saralash',
+        drop_one: '1 tasini tashlash',
+        drop_all: 'Hammasini tashlash',
+        empty_slot: 'Buyumni tanlang',
+        full: 'Inventar to‘la',
+        lmb: 'SChT',
+        chop: 'Kesish',
+        mine: 'Qazish',
+        cut: 'Kesib olish',
+        attack: 'Hujum',
+        pick_up: 'Olish',
+        take_fire: 'Gulxanni olish',
+        place: 'Qo‘yish',
+        no_place: 'Bu yerga qo‘yib bo‘lmaydi',
+        too_many: 'Qurilmalar juda ko‘p',
+        sit: 'O‘tirish',
+        stand_up: 'Turish',
+        tree: 'Daraxt',
+        pine: 'Archa',
+        cactus: 'Kaktus',
+        rock: 'Xarsang',
+        ore: 'Temir rudasi',
+        stump: 'To‘nka',
+        log: 'Xoda',
+        bundle: 'Tugun',
+        no_room: 'Bu yerda turib bo‘lmaydi',
+        needs: {
+            axe: 'Bolta kerak',
+            pickaxe: 'Cho‘kich kerak',
+            sword: 'Qilich kerak',
+            shovel: 'Belkurak kerak',
+        },
+        broke: 'sindi',
+        durability: 'Mustahkamlik',
+        artifact_found: 'Artefakt topildi',
+        out_of_breath: 'Havo tugayapti!',
+        sound_on: 'Ovoz yoqildi',
+        sound_off: 'Ovoz o‘chirildi',
+        equip: 'Kiyish',
+        unequip: 'Yechish',
+        eat: 'Yeyish',
+        bandage_up: 'Bog‘lash',
+        armor_slots: { head: 'Bosh', body: 'Tana', feet: 'Oyoq' },
+        health: 'Sog‘liq',
+        armor: 'Zirh',
+        armor_blocks: 'zarbani to‘sadi',
+        health_full: 'Sog‘liq to‘la',
+        low_health: 'Sog‘liq kam!',
+        died: 'Siz halok bo‘ldingiz',
+        death_causes: {
+            deer: 'Bug‘u toptab ketdi',
+            boar: 'To‘ng‘iz suzdi',
+            wolf: 'Bo‘ri g‘ajidi',
+            zombie: 'O‘liklar yetib oldi',
+            fall: 'Baland joydan yiqildingiz',
+            drown: 'Suvga cho‘kdingiz',
+        },
+        respawn: 'Qayta tirilish',
+        wake_bag: 'Uyqu xaltasi yonida uyg‘onasiz. Buyumlar o‘zingizda qoladi.',
+        wake_camp: 'Lagerda uyg‘onasiz. Buyumlar o‘zingizda qoladi.',
+        mobs: {
+            deer: 'Bug‘u',
+            boar: 'To‘ng‘iz',
+            wolf: 'Bo‘ri',
+            zombie: 'O‘lik',
+        },
+        dismantle: 'Buzish',
+        open: 'Ochish',
+        close: 'Yopish',
+        craft_here: 'Yasash',
+        sleep_here: 'Shu yerda uyg‘onish',
+        spawn_set: 'Endi shu yerda uyg‘onasiz',
+        groups: {
+            tools: 'Asboblar',
+            weapons: 'Qurollar',
+            armor: 'Zirh',
+            building: 'Qurilish',
+            survival: 'Omon qolish',
+        },
+        all: 'Hammasi',
+        craftable: 'Yasash mumkin',
+        pick_recipe: 'Chapdan retsept tanlang',
+        take_all: 'Hammasini olish',
+        put_all: 'Hammasini solish',
+        chest_hint: 'Ko‘chirish uchun buyumni bosing',
+        equipment: 'Jihozlar',
+        artifacts: 'Artefaktlar',
+        not_found: 'Hali topilmagan',
+        stats: 'Statistika',
+        stat_names: {
+            deer: 'Bug‘ular',
+            boar: 'To‘ng‘izlar',
+            wolf: 'Bo‘rilar',
+            zombie: 'O‘liklar',
+            trees: 'Kesilgan daraxtlar',
+            rocks: 'Sindirilgan xarsanglar',
+            crafted: 'Yasalgan buyumlar',
+            artifacts: 'Topilgan artefaktlar',
+            digs: 'Qazishmalar',
+            researched: 'O‘rganilgan retseptlar',
+            deaths: 'O‘limlar',
+        },
+        quality: 'Grafika',
+        qualities: {
+            auto: 'Avto',
+            low: 'Past',
+            medium: 'O‘rta',
+            high: 'Yuqori',
+        },
+        quality_hint: '«Avto» o‘yin sekinlashsa, aniqlikni o‘zi pasaytiradi.',
+        smoothing_note:
+            'Qirralarni silliqlash qayta yuklangandan so‘ng yoqiladi.',
+        sensitivity: 'Kamera sezgirligi',
+        volume: 'Ovoz balandligi',
+        sound: 'Ovoz',
+        show_fps: 'FPS ni ko‘rsatish',
+        start_over: 'Qaytadan boshlash',
+        start_over_hint:
+            'Qahramon, buyumlar, qurilmalar, bilim va statistikani o‘chiradi — o‘yin sinf tanlashdan boshlanadi.',
+        start_over_confirm:
+            'Qaytadan boshlansinmi? Qahramon, buyumlar, qurilmalar, o‘rganilgan retseptlar va statistika butunlay o‘chiriladi.',
+        start_over_failed: 'Jarayonni tiklab bo‘lmadi',
+        gpu: 'Videokarta',
+        gpu_software:
+            'Brauzer videokartasiz chizmoqda — shuning uchun o‘yin sekin. Brauzer sozlamalarida «apparat tezlashtirish»ni yoqing.',
+        stances: {
+            crouch: 'Cho‘kkalab',
+            crawl: 'Emaklab',
+            sit: 'O‘tirib',
+            swim: 'Suzmoqda',
+        },
+        biomes: {
+            meadow: 'O‘tloqlar',
+            forest: 'O‘rmon',
+            desert: 'Cho‘l',
+            snow: 'Qorliklar',
+            mountains: 'Tog‘lar',
+        },
+        hero_title: 'Yangi qahramon',
+        hero_pick_class: 'Sinfni tanlang',
+        hero_pick_gender: 'Jins',
+        hero_start: 'Yo‘lga',
+        hero_keeps:
+            'Buyumlaringiz, qurilmalaringiz va statistikangiz saqlanadi.',
+        hero_gender_note:
+            'Ayollar chaqqonroq va tezroq, erkaklar kuchliroq (tankda 2 ochko, boshqalarda 1).',
+        classes: {
+            tank: [
+                'Tank',
+                'Ko‘p sog‘liq va himoya, og‘ir zarbalar. Sekin. Mahorat: Po‘lat teri.',
+            ],
+            fighter: [
+                'Jangchi',
+                'Kuchli va ishonchli, hamma narsada yaxshi. Mahorat: Quyun.',
+            ],
+            assassin: [
+                'Qotil',
+                'Tez va chaqqon: tez-tez zarba va kritik urishlar. Mahorat: Otilish.',
+            ],
+            mage: [
+                'Sehrgar',
+                'Ko‘p mana, uzoqdan olov bilan uradi, lekin nozik. Mahorat: Olov shari.',
+            ],
+        },
+        attributes: {
+            strength: ['Kuch', 'Zarba kuchi, sog‘liq, himoya'],
+            agility: [
+                'Chaqqonlik',
+                'Tezlik, zarba tezligi, kritlar, chidamlilik',
+            ],
+            spirit: ['Ruh', 'Mana, sehr kuchi, yozuvlardan bilim'],
+        },
+        genders: {
+            male: 'Erkak',
+            female: 'Ayol',
+        },
+        attributes_title: 'Xususiyatlar',
+        derived_title: 'Ko‘rsatkichlar',
+        derived: {
+            health: 'Sog‘liq',
+            mana: 'Mana',
+            stamina: 'Chidamlilik',
+            defense: 'Himoya',
+            damage: 'Zarba kuchi',
+            speed: 'Tezlik',
+            attack_speed: 'Zarba tezligi',
+            crit: 'Krit ehtimoli',
+            knowledge: 'Yozuvlardan bilim',
+        },
+        level: 'Daraja',
+        level_short: 'Dr.',
+        level_up: 'Yangi daraja',
+        xp: 'Tajriba',
+        max_level: 'Eng yuqori daraja',
+        free_points: 'Bo‘sh ochkolar',
+        points_hint: 'Xususiyatga ochko qo‘shish uchun «+» ni bosing.',
+        add_point: 'Ochko qo‘shish',
+        skills: {
+            guard: ['Po‘lat teri', 'Bir necha soniya sizga zarar ancha kam.'],
+            whirlwind: ['Quyun', 'Atrofdagi barcha dushmanlarga zarba.'],
+            dash: ['Otilish', 'Oldinga sakrash; keyingi zarba kritik.'],
+            bolt: [
+                'Olov shari',
+                'Olov shari oldingi dushmanga uchadi. Hassa bilan kuchliroq.',
+            ],
+        },
+        skill_title: 'Mahorat',
+        skill_ready: 'tayyor',
+        no_mana: 'Mana yetmaydi',
+        mana: 'Mana',
+        stamina: 'Chidamlilik',
+        mana_full: 'Mana allaqachon to‘la',
+        crit: 'Krit!',
+        knowledge: 'Bilim',
+        knowledge_hint:
+            'Bilimni eski yozuvlar va qadimiy parchalar (qazishmalardan va o‘liklardan) hamda buyumlarni qismlarga ajratish beradi. Oddiy narsalarni o‘rganish shart emas.',
+        research: 'O‘rganish',
+        research_cost: 'bilim',
+        locked: 'O‘rganish kerak',
+        learnt: 'O‘rganilgan',
+        not_enough_knowledge: 'Bilim yetmaydi',
+        study: 'O‘rganish',
+        drink: 'Ichish',
+        disassemble: 'Qismlarga ajratish',
+        disassembled: 'Ajratildi',
+        disassemble_note:
+            'Materiallarning bir qismi qaytadi. Retsept hali o‘rganilmagan bo‘lsa — uni bilib olasiz.',
+        dig: 'Qazish',
+        dig_site: 'Qazishma',
+        enter: 'Enter',
+        key_space: 'Probel',
+        swim_up: 'Suzib chiqish',
+        swim_down: 'Sho‘ng‘ish',
+        absorb: 'Singdirish',
+        absorbed: 'Singdirildi',
+        absorb_full: 'Bu artefaktni boshqa singdirib bo‘lmaydi',
+        recycle: 'Qayta ishlash',
+        fuse: 'Birlashtirish',
+        fused: 'Artefakt yaratildi',
+        second_wind: 'Ikkinchi nafas! Feniks pati sizni qutqardi',
+        tiers: {
+            common: 'Oddiy',
+            rare: 'Noyob',
+            legendary: 'Afsonaviy',
+        },
+        tier_where: {
+            common: 'Butun dunyo bo‘ylab yotadi (qisqa nur). Olingandan 5 daqiqa keyin qaytadi.',
+            rare: 'Har bir yerning ichkarisida bittadan (baland nur). Olingandan 5 daqiqa keyin qaytadi.',
+            legendary: 'Faqat boshqa artefaktlarni mohiyat bilan birlashtirib.',
+        },
+        bonuses: {
+            health: 'sog‘liqqa',
+            mana: 'managa',
+            speed: 'yugurish tezligiga',
+            jump: 'sakrashga',
+            swim: 'suzish tezligiga',
+            breath: 'nafas zaxirasiga',
+            gather: 'resurs yig‘ishga',
+            light: 'kechasi atrofda yorug‘lik',
+        },
+        sources: {
+            start: 'sinf',
+            levels: 'darajalar',
+            points: 'ochkolar',
+            artifacts: 'artefaktlar',
+        },
+        groups_profile: {
+            survival: 'Omon qolish',
+            combat: 'Jang',
+            other: 'Harakat va bilim',
+        },
+        artifacts_hint:
+            'Singdirish kuchni abadiy beradi (artefakt yo‘qoladi). Qayta ishlash uni mohiyatga aylantiradi. Artefaktlar va mohiyatdan afsonaviylari birlashtiriladi.',
+        absorb_gives: 'Singdirilganda',
+        carry_gives: 'Sumkada bo‘lsa',
+        absorbed_count: 'Singdirilgan',
+        owned: 'Sumkada',
+        fusion_needs: 'Birlashtirish uchun',
+        recycle_gives: 'Qayta ishlash beradi',
+        absorbed_title: 'Singdirilgan artefaktlar',
+        none_absorbed:
+            'Hali hech narsa singdirilmagan — «Artefaktlar» bo‘limini oching (O).',
+        regen: 'Tiklanish',
+        jump: 'Sakrash',
+        swim: 'Suzish',
+        passives: {
+            double_jump: [
+                'Ikki marta sakrash',
+                'Havoda yana bir marta sakrash mumkin.',
+            ],
+            water_breathing: ['Suv ostida nafas', 'Suv ostida havo tugamaydi.'],
+            vampirism: [
+                'Vampirizm',
+                'Yetkazilgan zararning 10% i sog‘liq bo‘lib qaytadi.',
+            ],
+            second_wind: [
+                'Ikkinchi nafas',
+                'O‘ldiruvchi zarba 30% sog‘liq qoldiradi (5 daqiqada bir marta).',
+            ],
+        },
+        items: {
+            wood: ['Yog‘och', 'Daraxtlardan kesiladi. Bolta bilan tezroq.'],
+            stone: ['Tosh', 'Xarsanglardan qaziladi. Cho‘kich bilan tezroq.'],
+            stick: ['Shox', 'O‘rmon va dalada yotadi.'],
+            pebble: ['Shag‘al', 'Yerda topiladigan mayda toshlar.'],
+            berries: [
+                'Rezavor',
+                'Butalarda o‘sadi; bir necha daqiqadan so‘ng yana chiqadi. Biroz davolaydi.',
+            ],
+            mushroom: ['Qo‘ziqorin', 'Ko‘pincha o‘rmonda. Biroz davolaydi.'],
+            fiber: [
+                'Tola',
+                'O‘tloq o‘tlari va kaktuslardan. Asboblarni bog‘laydi.',
+            ],
+            flint: [
+                'Chaqmoqtosh',
+                'Cho‘l, tog‘ va qorliklarda uchraydi. Gulxan uchun kerak.',
+            ],
+            iron_ore: [
+                'Temir rudasi',
+                'Tog‘lardagi zang rangli xarsanglar. Faqat cho‘kich bilan.',
+            ],
+            iron: ['Temir', 'Gulxanda rudadan eritiladi.'],
+            stone_axe: [
+                'Tosh bolta',
+                'Daraxtni qo‘ldan ikki baravar tez kesadi.',
+            ],
+            stone_pickaxe: [
+                'Tosh cho‘kich',
+                'Toshni ikki baravar tez sindiradi va ruda qazadi.',
+            ],
+            wood_sword: ['Yog‘och qilich', 'Yengil va tez. Kaktus kesadi.'],
+            stone_sword: ['Tosh qilich', 'Yog‘ochdan og‘irroq va pishiqroq.'],
+            iron_axe: ['Temir bolta', 'Daraxtni bir-ikki zarbada yiqitadi.'],
+            iron_pickaxe: ['Temir cho‘kich', 'Eng yaxshi cho‘kich.'],
+            iron_sword: ['Temir qilich', 'Eng kuchli qurol.'],
+            torch: ['Mash‘al', 'Qo‘lga oling — qorong‘ida yoritadi.'],
+            campfire: [
+                'Gulxan',
+                'Qo‘ying (SOT / R): kechasi yoritadi, go‘sht pishiradi, temir eritadi. Tungi maxluqlar olovga yaqinlashmaydi.',
+            ],
+            raw_meat: [
+                'Xom go‘sht',
+                'Hayvonlardan olinadi. Gulxanda pishirgan ma’qul.',
+            ],
+            cooked_meat: ['Qovurilgan go‘sht', 'To‘yimli: yaxshi davolaydi.'],
+            hide: [
+                'Teri',
+                'Hayvonlardan olinadi. Undan zirh va uyqu xaltasi tikiladi.',
+            ],
+            bandage: ['Bint', 'Bog‘lang (SOT / R) — sog‘liqni tiklaydi.'],
+            leather_helmet: ['Charm dubulg‘a', 'Boshni yengil himoya qiladi.'],
+            leather_jacket: ['Charm kurtka', 'Tishlashlarga yaxshi chidaydi.'],
+            leather_boots: ['Charm etik', 'Oyoqni yengil himoya qiladi.'],
+            iron_helmet: ['Temir dubulg‘a', 'Boshni mustahkam himoya qiladi.'],
+            iron_chestplate: [
+                'Temir sovut',
+                'Tanani eng yaxshi himoya qiladi. Dastgohda yasaladi.',
+            ],
+            iron_boots: ['Temir etik', 'Oyoqni mustahkam himoya qiladi.'],
+            chest: ['Sandiq', '12 dasta buyum sig‘adi. Bolta bilan buziladi.'],
+            workbench: [
+                'Dastgoh',
+                'Uning yonida temir asbob va zirh yasaladi.',
+            ],
+            wood_wall: [
+                'Yog‘och devor',
+                'To‘r bo‘yicha turadi, devorlardan uy yasaladi. Hayvonlar o‘tolmaydi.',
+            ],
+            wood_door: [
+                'Yog‘och eshik',
+                'Eshikli devor: ochiladi va yopiladi (E).',
+            ],
+            sleeping_bag: [
+                'Uyqu xaltasi',
+                'Halok bo‘lgach, uning yonida uyg‘onasiz.',
+            ],
+            wind_feather: [
+                'Shamol pati',
+                'Tog‘ artefakti. U bilan balandroq sakraysiz.',
+            ],
+            sun_stone: [
+                'Quyosh toshi',
+                'Cho‘l artefakti. Kechasi atrofingizni yoritadi.',
+            ],
+            frost_crystal: [
+                'Muz kristali',
+                'Qor artefakti. Nafas uzoqroq, suzish tezroq.',
+            ],
+            forest_heart: [
+                'O‘rmon yuragi',
+                'O‘rmon artefakti. Resurslar bir yarim baravar ko‘p.',
+            ],
+            golden_clover: [
+                'Oltin beda',
+                'O‘tloq artefakti. Tezroq yugurasiz.',
+            ],
+            shovel: [
+                'Belkurak',
+                'Qazishmalarni tez qazadi (cho‘kich — sekin).',
+            ],
+            dagger: [
+                'Xanjar',
+                'Qisqa tig‘: juda tez zarbalar va ko‘proq kritlar. Qotil quroli.',
+            ],
+            war_hammer: [
+                'Jang bolg‘asi',
+                'Og‘ir va sekin, lekin eng kuchli uradi. Tank quroli.',
+            ],
+            staff: [
+                'Hassa',
+                'Sehrgarning olov sharlari 40% kuchliroq. Har bir shar hassani biroz yeyiltiradi.',
+            ],
+            healing_potion: [
+                'Shifo damlamasi',
+                'Darhol ko‘p sog‘liq qaytaradi.',
+            ],
+            mana_potion: ['Mana damlamasi', 'Manani qaytaradi.'],
+            old_notes: [
+                'Eski yozuvlar',
+                'Bilim olish uchun o‘rganing (SOT / R yoki inventarda).',
+            ],
+            relic_shard: [
+                'Qadimiy parcha',
+                'Ko‘p bilim uchun o‘rganing. Hassa va mana damlamasi uchun kerak.',
+            ],
+            wood_roof: [
+                'Tom',
+                'Devorlar ustidagi 2×2 katakni yopadi. Oddiy — o‘rganish shart emas.',
+            ],
+            stone_wall: [
+                'Tosh devor',
+                'Yog‘ochnikidan ancha mustahkam. Faqat cho‘kich bilan buziladi.',
+            ],
+            strength_rune: [
+                'Kuch runasi',
+                'Oddiy artefakt. Singdirilganda: +2 kuch (5 martagacha).',
+            ],
+            agility_rune: [
+                'Chaqqonlik runasi',
+                'Oddiy artefakt. Singdirilganda: +2 chaqqonlik (5 martagacha).',
+            ],
+            spirit_rune: [
+                'Ruh runasi',
+                'Oddiy artefakt. Singdirilganda: +2 ruh (5 martagacha).',
+            ],
+            vital_shard: [
+                'Hayot parchasi',
+                'Oddiy artefakt. Singdirilganda: +20 sog‘liq (5 martagacha).',
+            ],
+            mana_pearl: [
+                'Mana marvaridi',
+                'Oddiy artefakt. Singdirilganda: +20 mana (5 martagacha).',
+            ],
+            swift_charm: [
+                'Shamol tumori',
+                'Oddiy artefakt. Singdirilganda: +5% yugurish tezligi (3 martagacha).',
+            ],
+            storm_eye: [
+                'Bo‘ron ko‘zi',
+                'Afsonaviy. Singdirilganda «Ikki marta sakrash» mahoratini beradi.',
+            ],
+            deep_pearl: [
+                'Chuqurlik marvaridi',
+                'Afsonaviy. Singdirilganda «Suv ostida nafas» mahoratini beradi.',
+            ],
+            blood_ruby: [
+                'Qonli yoqut',
+                'Afsonaviy. Singdirilganda «Vampirizm» mahoratini beradi.',
+            ],
+            phoenix_feather: [
+                'Feniks pati',
+                'Afsonaviy. Singdirilganda «Ikkinchi nafas» mahoratini beradi.',
+            ],
+            essence: [
+                'Artefakt mohiyati',
+                'Artefaktlarni qayta ishlab olinadi. Afsonaviylarni birlashtirish uchun kerak.',
+            ],
+        },
+    },
+};
+
+const language = document.documentElement.lang.slice(0, 2);
+
+export const t: Texts = TEXTS[language as keyof typeof TEXTS] ?? TEXTS.en;

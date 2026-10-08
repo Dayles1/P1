@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
-import { gameApi } from '../shared/api';
+import { apiRequest, gameApi } from '../shared/api';
 import { format, plural, t } from '../shared/i18n';
 import { CATALOG } from './catalog';
 import type { Genre } from './catalog';
@@ -16,9 +16,38 @@ interface GameProgress {
     score: number;
 }
 
-interface Progress {
-    city: GameProgress | null;
-    epochs: GameProgress | null;
+/** A Sandbox player's progress, from the game's own API. */
+interface SandboxProgress {
+    score: number;
+    kills: number;
+    trees: number;
+    artifacts: number;
+}
+
+/** Each game's progress by slug; null before the player ever played it. */
+type Progress = Record<string, GameProgress | SandboxProgress | null>;
+
+/** The card's line about how far the player has got. */
+function progressLine(
+    slug: string,
+    played: GameProgress | SandboxProgress,
+): string {
+    if ('kills' in played) {
+        return format(t.progress_sandbox, {
+            score: new Intl.NumberFormat().format(played.score),
+            kills: played.kills,
+            artifacts: played.artifacts,
+        });
+    }
+
+    return format(slug === 'city' ? t.progress_city : t.progress_epochs, {
+        year: played.year,
+        epoch:
+            typeof played.epoch === 'number'
+                ? (t.epochs[played.epoch] ?? '')
+                : (played.epoch_name ?? ''),
+        population: new Intl.NumberFormat().format(played.population),
+    });
 }
 
 /** The Games menu: every game as a card, with a genre filter. */
@@ -33,11 +62,17 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
         title: string;
     } | null>(null);
 
+    // The shared games' progress, plus each own-API game's summary.
     const loadProgress = useCallback(
         () =>
-            gameApi<Progress>('progress')
-                .then(setProgress)
-                .catch(() => setProgress(null)),
+            Promise.all([
+                gameApi<Progress>('progress').catch(() => ({}) as Progress),
+                ...CATALOG.filter((game) => game.api).map((game) =>
+                    apiRequest<SandboxProgress | null>(`${game.api}/summary`)
+                        .then((summary) => ({ [game.slug]: summary }))
+                        .catch(() => ({})),
+                ),
+            ]).then((parts) => setProgress(Object.assign({}, ...parts))),
         [],
     );
 
@@ -52,15 +87,25 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
     const updateRatings = (slug: string, updated: GameRatings) =>
         setRatings((current) => ({ ...current, [slug]: updated }));
 
-    const reset = async (slug: string, resetPath: string, title: string) => {
-        if (!window.confirm(format(t.reset_confirm, { game: title }))) {
+    const reset = async (
+        slug: string,
+        resetPath: string,
+        title: string,
+        ownApi = false,
+    ) => {
+        const confirm =
+            slug === 'sandbox' ? t.reset_confirm_sandbox : t.reset_confirm;
+
+        if (!window.confirm(format(confirm, { game: title }))) {
             return;
         }
 
         setResetting(slug);
 
         try {
-            await gameApi(resetPath, { method: 'DELETE' });
+            await (ownApi
+                ? apiRequest(resetPath, { method: 'DELETE' })
+                : gameApi(resetPath, { method: 'DELETE' }));
             await loadProgress();
         } finally {
             setResetting(null);
@@ -116,7 +161,8 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
                         game.slug,
                         '',
                     ];
-                    const rated = game.path
+                    const playable = Boolean(game.path || game.href);
+                    const rated = playable
                         ? (ratings?.[game.slug] ?? null)
                         : null;
                     const myStars = rated?.mine
@@ -124,30 +170,72 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
                               stars: plural(t.stars_label, rated.mine.stars),
                           })
                         : t.rate;
-                    const played =
-                        progress?.[game.slug as keyof Progress] ?? null;
+                    const played = progress?.[game.slug] ?? null;
                     const line = played
-                        ? format(
-                              game.slug === 'city'
-                                  ? t.progress_city
-                                  : t.progress_epochs,
-                              {
-                                  year: played.year,
-                                  epoch:
-                                      typeof played.epoch === 'number'
-                                          ? (t.epochs[played.epoch] ?? '')
-                                          : (played.epoch_name ?? ''),
-                                  population: new Intl.NumberFormat().format(
-                                      played.population,
-                                  ),
-                              },
-                          )
+                        ? progressLine(game.slug, played)
                         : null;
+                    const actions = rated && (
+                        <div className="game-card__actions">
+                            <button
+                                type="button"
+                                className="hub-button hub-button--soft"
+                                aria-label={myStars}
+                                onClick={() =>
+                                    setDialog({
+                                        kind: 'rate',
+                                        slug: game.slug,
+                                        title,
+                                    })
+                                }
+                            >
+                                {rated.mine
+                                    ? `★ ${rated.mine.stars}/5`
+                                    : `☆ ${t.rate}`}
+                            </button>
+                            <button
+                                type="button"
+                                className="hub-button hub-button--soft"
+                                onClick={() =>
+                                    setDialog({
+                                        kind: 'board',
+                                        slug: game.slug,
+                                        title,
+                                    })
+                                }
+                            >
+                                🏆 {t.leaderboard}
+                            </button>
+                        </div>
+                    );
+                    // A shared game resets under /api/games, an own-API one at its own.
+                    const resetTarget = game.resetPath
+                        ? { path: game.resetPath, own: false }
+                        : game.api
+                          ? { path: `${game.api}/player`, own: true }
+                          : null;
+                    const resetButton = played && resetTarget && (
+                        <button
+                            type="button"
+                            className="hub-button hub-button--ghost hub-button--danger"
+                            disabled={resetting === game.slug}
+                            onClick={() =>
+                                reset(
+                                    game.slug,
+                                    resetTarget.path,
+                                    title,
+                                    resetTarget.own,
+                                )
+                            }
+                            title={t.reset}
+                        >
+                            🗑 {t.reset}
+                        </button>
+                    );
 
                     return (
                         <article
                             key={game.slug}
-                            className={`game-card${game.path ? '' : ' game-card--soon'}`}
+                            className={`game-card${playable ? '' : ' game-card--soon'}`}
                             style={{ '--hue': game.hue } as CSSProperties}
                         >
                             <div
@@ -160,9 +248,9 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
                                 <div className="game-card__meta">
                                     <span>{t.genres[game.genre]}</span>
                                     <span
-                                        className={`game-card__badge${game.path ? ' game-card__badge--new' : ''}`}
+                                        className={`game-card__badge${playable ? ' game-card__badge--new' : ''}`}
                                     >
-                                        {game.path ? t.new : t.soon}
+                                        {playable ? t.new : t.soon}
                                     </span>
                                 </div>
                                 <h2>{title}</h2>
@@ -183,58 +271,19 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
                                         >
                                             ▶ {played ? t.continue : t.play}
                                         </Link>
-                                        {rated && (
-                                            <div className="game-card__actions">
-                                                <button
-                                                    type="button"
-                                                    className="hub-button hub-button--soft"
-                                                    aria-label={myStars}
-                                                    onClick={() =>
-                                                        setDialog({
-                                                            kind: 'rate',
-                                                            slug: game.slug,
-                                                            title,
-                                                        })
-                                                    }
-                                                >
-                                                    {rated.mine
-                                                        ? `★ ${rated.mine.stars}/5`
-                                                        : `☆ ${t.rate}`}
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    className="hub-button hub-button--soft"
-                                                    onClick={() =>
-                                                        setDialog({
-                                                            kind: 'board',
-                                                            slug: game.slug,
-                                                            title,
-                                                        })
-                                                    }
-                                                >
-                                                    🏆 {t.leaderboard}
-                                                </button>
-                                            </div>
-                                        )}
-                                        {played && game.resetPath && (
-                                            <button
-                                                type="button"
-                                                className="hub-button hub-button--ghost hub-button--danger"
-                                                disabled={
-                                                    resetting === game.slug
-                                                }
-                                                onClick={() =>
-                                                    reset(
-                                                        game.slug,
-                                                        game.resetPath!,
-                                                        title,
-                                                    )
-                                                }
-                                                title={t.reset}
-                                            >
-                                                🗑 {t.reset}
-                                            </button>
-                                        )}
+                                        {actions}
+                                        {resetButton}
+                                    </>
+                                ) : game.href ? (
+                                    <>
+                                        <a
+                                            className="hub-button"
+                                            href={game.href}
+                                        >
+                                            ▶ {played ? t.continue : t.play}
+                                        </a>
+                                        {actions}
+                                        {resetButton}
                                     </>
                                 ) : (
                                     <button
@@ -265,6 +314,7 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
             {dialog?.kind === 'board' && (
                 <LeaderboardDialog
                     slug={dialog.slug}
+                    api={CATALOG.find((game) => game.slug === dialog.slug)?.api}
                     title={dialog.title}
                     ratings={ratings?.[dialog.slug] ?? null}
                     onClose={() => setDialog(null)}

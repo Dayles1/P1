@@ -36,6 +36,9 @@ export default defineConfig({
                 // Games SPA (React) — everything else of it is in resources/games
                 'resources/games/src/main.tsx',
 
+                // Sandbox — a self-contained game, all of it in app/Games/Sandbox
+                'app/Games/Sandbox/client/main.ts',
+
                 // Если здесь будут другие Blade-страницы,
                 // добавляй их сюда
             ],

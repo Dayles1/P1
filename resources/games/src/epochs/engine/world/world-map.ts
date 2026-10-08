@@ -10,6 +10,14 @@ import type { BiomeDef, FeatureId } from '../content/types';
 
 export const FEATURES: (FeatureId | null)[] = [null, 'tree', 'rock', 'reeds'];
 
+/**
+ * Open water — rivers, lakes and the sea, deep or shallow. Elevation is
+ * 0..1. Mountains are not walkable either but stand high.
+ */
+export function isWaterBiome(biome: BiomeDef, elevation: number): boolean {
+    return Boolean(biome.water) || (!biome.walkable && elevation < 0.45);
+}
+
 export function featureCode(feature: FeatureId | null): number {
     return Math.max(0, FEATURES.indexOf(feature));
 }
@@ -103,6 +111,17 @@ export class WorldMap {
         return (
             this.inBounds(x, y) &&
             Boolean(this.biomeAt(x, y).water || !this.biomeAt(x, y).walkable)
+        );
+    }
+
+    /** Open water a bridge can span. */
+    isOpenWater(x: number, y: number): boolean {
+        return (
+            this.inBounds(x, y) &&
+            isWaterBiome(
+                this.biomeAt(x, y),
+                this.elevation[this.index(x, y)] / 255,
+            )
         );
     }
 

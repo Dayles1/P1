@@ -4,13 +4,17 @@
  * seamlessly, lane markings, cobbles — in the style of the road level's
  * era. Roads not connected to the centre are darker with a red marker.
  * Street lamps stand along connected roads from the era of paved streets
- * on and glow at night. Rebuilt only when the roads change.
+ * on and glow at night. A road over water becomes a bridge: its deck
+ * sits level with the shore on piles, with railings along the open sides
+ * — timber, then stone, then concrete and steel. Rebuilt only when the
+ * roads change.
  */
 
 import * as THREE from 'three';
 import type { Palette } from '../engine/content/types';
 import type { Game } from '../engine/sim/game';
 import { color, hash3 } from './colors';
+import { DECK_Y } from './terrain';
 import type { Terrain } from './terrain';
 
 const DIRS: [number, number][] = [
@@ -20,9 +24,55 @@ const DIRS: [number, number][] = [
     [-1, 0],
 ];
 
+/** Bridge looks by road style; `solid` railings are stone parapets. */
+const BRIDGE_LOOKS: Record<
+    'dirt' | 'stone' | 'modern',
+    {
+        deck: string;
+        pile: string;
+        rail: string;
+        pileWidth: number;
+        solid: boolean;
+    }
+> = {
+    dirt: {
+        deck: '#7a5636',
+        pile: '#5e4229',
+        rail: '#6b4b2f',
+        pileWidth: 0.05,
+        solid: false,
+    },
+    stone: {
+        deck: '#a39a8a',
+        pile: '#8f8778',
+        rail: '#9c9383',
+        pileWidth: 0.12,
+        solid: true,
+    },
+    modern: {
+        deck: '#b4b1aa',
+        pile: '#9d9a94',
+        rail: '#5d636b',
+        pileWidth: 0.09,
+        solid: false,
+    },
+};
+
+interface BridgeTile {
+    x: number;
+    y: number;
+    near: boolean[];
+    inset: number;
+    style: string;
+    /** Over water (on piles), or a raised approach on the shore. */
+    water: boolean;
+}
+
 class Layer {
     readonly position: number[] = [];
     readonly color: number[] = [];
+    /** Nothing in this layer lies lower than this (bridge decks). */
+    floor = -Infinity;
 
     constructor(private terrain: Terrain) {}
 
@@ -58,7 +108,8 @@ class Layer {
         c: THREE.Color,
         lift: number,
     ): void {
-        const h = (x: number, y: number) => this.terrain.heightAt(x, y) + lift;
+        const h = (x: number, y: number) =>
+            Math.max(this.terrain.heightAt(x, y), this.floor) + lift;
         const a: [number, number, number] = [x0, h(x0, y0), y0];
         const b: [number, number, number] = [x1, h(x1, y0), y0];
         const cc: [number, number, number] = [x0, h(x0, y1), y1];
@@ -112,6 +163,12 @@ export class Roads {
     private headGeometry: THREE.BufferGeometry;
     private poleMaterial: THREE.MeshStandardMaterial;
     private headMaterial: THREE.MeshBasicMaterial;
+    private bridges: THREE.InstancedMesh | null = null;
+    private bridgeGeometry = new THREE.BoxGeometry(1, 1, 1);
+    private bridgeMaterial = new THREE.MeshStandardMaterial({
+        roughness: 0.85,
+        metalness: 0,
+    });
     private signature = 0;
     private mask: Uint8Array;
 
@@ -223,6 +280,27 @@ export class Roads {
 
         const road = (x: number, y: number) =>
             x >= 0 && y >= 0 && x < W && y < H && this.mask[y * W + x] === 1;
+        const decks = new Set<number>();
+        const bridges: BridgeTile[] = [];
+
+        for (let i = 0; i < W * H; i++) {
+            const x = i % W;
+            const y = Math.floor(i / W);
+
+            if (!this.mask[i] || !map.isOpenWater(x, y)) {
+                continue;
+            }
+
+            decks.add(i);
+
+            for (const [dx, dy] of DIRS) {
+                if (road(x + dx, y + dy)) {
+                    decks.add((y + dy) * W + x + dx);
+                }
+            }
+        }
+
+        this.terrain.setDecks(decks);
 
         for (let y = 0; y < H; y++) {
             for (let x = 0; x < W; x++) {
@@ -255,6 +333,23 @@ export class Roads {
                 if (!connected) {
                     surfaceColor = surfaceColor.multiplyScalar(0.62);
                     edgeColor = edgeColor.lerp(red, 0.55);
+                }
+
+                const floor = decks.has(index) ? DECK_Y : -Infinity;
+
+                surface.floor = floor;
+                marks.floor = floor;
+                glow.floor = floor;
+
+                if (decks.has(index)) {
+                    bridges.push({
+                        x,
+                        y,
+                        near,
+                        inset: m0,
+                        style,
+                        water: map.isOpenWater(x, y),
+                    });
                 }
 
                 this.shape(surface, x, y, m0, near, road, edgeColor, 0.016);
@@ -350,6 +445,166 @@ export class Roads {
         this.replace(this.marks, marks.toGeometry());
         this.replace(this.glowMarks, glow.toGeometry());
         this.buildLamps(lamps, road);
+        this.buildBridges(bridges);
+    }
+
+    /** Decks, piles and railings under and along the roads over water. */
+    private buildBridges(tiles: BridgeTile[]): void {
+        if (this.bridges) {
+            this.group.remove(this.bridges);
+            this.bridges.dispose();
+            this.bridges = null;
+        }
+
+        const boxes: {
+            min: THREE.Vector3;
+            max: THREE.Vector3;
+            c: THREE.Color;
+        }[] = [];
+        const box = (
+            x0: number,
+            x1: number,
+            y0: number,
+            y1: number,
+            z0: number,
+            z1: number,
+            c: THREE.Color,
+        ) =>
+            boxes.push({
+                min: new THREE.Vector3(x0, y0, z0),
+                max: new THREE.Vector3(x1, y1, z1),
+                c,
+            });
+        const deckBottom = DECK_Y - 0.06;
+
+        for (const { x, y, near, inset, style, water } of tiles) {
+            const look =
+                BRIDGE_LOOKS[
+                    style === 'dirt'
+                        ? 'dirt'
+                        : style === 'cobble' || style === 'paved'
+                          ? 'stone'
+                          : 'modern'
+                ];
+            const shade = 0.92 + hash3(x, y, 77) * 0.12;
+            const deck = color(look.deck).clone().multiplyScalar(shade);
+            const pile = color(look.pile).clone().multiplyScalar(shade);
+            const rail = color(look.rail).clone().multiplyScalar(shade);
+            const [n, e, s, w] = near;
+            const l = w ? x : x + inset;
+            const r = e ? x + 1 : x + 1 - inset;
+            const t = n ? y : y + inset;
+            const b = s ? y + 1 : y + 1 - inset;
+
+            box(l, r, deckBottom, DECK_Y + 0.012, t, b, deck);
+
+            if (!water) {
+                continue;
+            }
+
+            const p = look.pileWidth / 2;
+            const piles: [number, number][] =
+                (e || w) && !(n || s)
+                    ? [
+                          [x + 0.5, t + p],
+                          [x + 0.5, b - p],
+                      ]
+                    : (n || s) && !(e || w)
+                      ? [
+                            [l + p, y + 0.5],
+                            [r - p, y + 0.5],
+                        ]
+                      : [
+                            [l + p, t + p],
+                            [r - p, t + p],
+                            [l + p, b - p],
+                            [r - p, b - p],
+                        ];
+
+            for (const [px, pz] of piles) {
+                box(
+                    px - p,
+                    px + p,
+                    this.terrain.heightAt(px, pz) - 0.05,
+                    deckBottom,
+                    pz - p,
+                    pz + p,
+                    pile,
+                );
+            }
+
+            const sides: [number, number, number, number][] = [];
+
+            if (!n) {
+                sides.push([l, r, t, t + 0.02]);
+            }
+
+            if (!s) {
+                sides.push([l, r, b - 0.02, b]);
+            }
+
+            if (!w) {
+                sides.push([l, l + 0.02, t, b]);
+            }
+
+            if (!e) {
+                sides.push([r - 0.02, r, t, b]);
+            }
+
+            for (const [x0, x1, z0, z1] of sides) {
+                if (look.solid) {
+                    box(x0, x1, DECK_Y, DECK_Y + 0.06, z0, z1, rail);
+
+                    continue;
+                }
+
+                box(x0, x1, DECK_Y + 0.055, DECK_Y + 0.07, z0, z1, rail);
+
+                const alongX = x1 - x0 > z1 - z0;
+
+                for (const k of [0.1, 0.5, 0.9]) {
+                    const px = alongX ? x0 + (x1 - x0) * k : (x0 + x1) / 2;
+                    const pz = alongX ? (z0 + z1) / 2 : z0 + (z1 - z0) * k;
+
+                    box(
+                        px - 0.008,
+                        px + 0.008,
+                        DECK_Y,
+                        DECK_Y + 0.06,
+                        pz - 0.008,
+                        pz + 0.008,
+                        rail,
+                    );
+                }
+            }
+        }
+
+        if (!boxes.length) {
+            return;
+        }
+
+        const mesh = new THREE.InstancedMesh(
+            this.bridgeGeometry,
+            this.bridgeMaterial,
+            boxes.length,
+        );
+        const matrix = new THREE.Matrix4();
+        const center = new THREE.Vector3();
+        const size = new THREE.Vector3();
+        const rotation = new THREE.Quaternion();
+
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
+        boxes.forEach(({ min, max, c }, i) => {
+            center.addVectors(min, max).multiplyScalar(0.5);
+            size.subVectors(max, min);
+            matrix.compose(center, rotation, size);
+            mesh.setMatrixAt(i, matrix);
+            mesh.setColorAt(i, c);
+        });
+        mesh.computeBoundingSphere();
+        this.bridges = mesh;
+        this.group.add(mesh);
     }
 
     private replace(mesh: THREE.Mesh, geometry: THREE.BufferGeometry): void {
@@ -490,7 +745,7 @@ export class Roads {
         const matrix = new THREE.Matrix4();
 
         placed.forEach((lamp, i) => {
-            const h = this.terrain.heightAt(lamp.x, lamp.z);
+            const h = this.terrain.surfaceAt(lamp.x, lamp.z);
 
             matrix.makeTranslation(lamp.x, h, lamp.z);
             this.poles!.setMatrixAt(i, matrix);
@@ -526,6 +781,9 @@ export class Roads {
         this.glowMaterial.dispose();
         this.poles?.dispose();
         this.heads?.dispose();
+        this.bridges?.dispose();
+        this.bridgeGeometry.dispose();
+        this.bridgeMaterial.dispose();
         this.poleGeometry.dispose();
         this.headGeometry.dispose();
         this.poleMaterial.dispose();

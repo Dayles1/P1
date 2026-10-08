@@ -2,6 +2,24 @@
 
 @section('title', 'Home')
 
+{{-- Someone already signed in has no business on the landing page: off
+     to the dashboard before it paints. Only the token's presence is
+     checked — a stale one is caught by the dashboard, which drops it and
+     sends them to /login, so this cannot loop. --}}
+@push('head')
+    <script>
+        (() => {
+            try {
+                if (localStorage.getItem('auth_token')) {
+                    window.location.replace(@json(route('dashboard', absolute: false)));
+                }
+            } catch {
+                // No storage (private mode, blocked): stay on the landing page.
+            }
+        })();
+    </script>
+@endpush
+
 @section('content')
 
     <section class="hero">

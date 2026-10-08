@@ -592,7 +592,13 @@ export interface BuildingDef {
     hidden: boolean;
     /** Special roles the engine knows about. */
     role?: 'road' | 'center' | 'district' | 'bureau';
-    placement: { requiresRoad: boolean; biomes?: string[]; nearWater?: number };
+    placement: {
+        requiresRoad: boolean;
+        biomes?: string[];
+        nearWater?: number;
+        /** May also stand on open water (a road there becomes a bridge). */
+        overWater?: boolean;
+    };
     sounds: {
         place: string | null;
         upgrade: string | null;

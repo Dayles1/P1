@@ -11,9 +11,12 @@
 import * as THREE from 'three';
 import type { BiomeDef } from '../engine/content/types';
 import type { Game } from '../engine/sim/game';
+import { isWaterBiome } from '../engine/world/world-map';
 import { color, hash3 } from './colors';
 
 export const WATER_Y = -0.1;
+/** Top of a bridge over water, level with the low shore. */
+export const DECK_Y = 0;
 const SUB = 2;
 const SKIRT_BOTTOM = -1.4;
 
@@ -26,10 +29,6 @@ export interface Footprint {
 }
 
 type Rect = { minX: number; minY: number; maxX: number; maxY: number };
-
-function isWaterBiome(biome: BiomeDef, elevation: number): boolean {
-    return Boolean(biome.water) || (!biome.walkable && elevation < 0.45);
-}
 
 function isMountainBiome(biome: BiomeDef, elevation: number): boolean {
     return !biome.walkable && !isWaterBiome(biome, elevation);
@@ -124,6 +123,7 @@ export class Terrain {
     private roughNatural: Float32Array;
     private rough: Float32Array;
     private tileColors: Float32Array;
+    private decks = new Set<number>();
 
     private geometry = new THREE.BufferGeometry();
     private mesh: THREE.Mesh;
@@ -345,6 +345,22 @@ export class Terrain {
         return rough > 0
             ? base + rough * valueNoise(x * 2, y * 2) * 0.32
             : base;
+    }
+
+    /** Tiles raised onto a bridge deck: bridges and the roads leading onto them. */
+    setDecks(decks: Set<number>): void {
+        this.decks = decks;
+    }
+
+    /** What stands at float tile coordinates rests on: the ground or a bridge deck. */
+    surfaceAt(x: number, y: number): number {
+        const ground = this.heightAt(x, y);
+        const tx = Math.floor(x);
+        const ty = Math.floor(y);
+
+        return this.decks.has(ty * this.width + tx)
+            ? Math.max(ground, DECK_Y)
+            : ground;
     }
 
     /** The height a building with this footprint stands at. */

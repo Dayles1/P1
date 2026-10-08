@@ -2,6 +2,7 @@
 
 use App\Domain\Chat\Providers\ConversationServiceProvider;
 use App\Games\GamesServiceProvider;
+use App\Games\Sandbox\SandboxServiceProvider;
 use App\Providers\AppServiceProvider;
 use App\Providers\AuthServiceProvider;
 use App\Providers\InfrastructureServiceProvider;
@@ -11,5 +12,7 @@ return [
     AuthServiceProvider::class,
     InfrastructureServiceProvider::class,
     ConversationServiceProvider::class,
+    // Before GamesServiceProvider: its /games catch-all would shadow /games/sandbox.
+    SandboxServiceProvider::class,
     GamesServiceProvider::class,
 ];

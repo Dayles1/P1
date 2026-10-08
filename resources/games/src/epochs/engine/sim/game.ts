@@ -814,8 +814,10 @@ export class Game {
                 }
 
                 const biome = this.map.biomeAt(tx, ty);
+                const bridge =
+                    def.placement.overWater && this.map.isOpenWater(tx, ty);
 
-                if (!biome.buildable) {
+                if (!biome.buildable && !bridge) {
                     return {
                         ok: false,
                         reason: `Здесь нельзя строить: ${biome.name.toLowerCase()}`,

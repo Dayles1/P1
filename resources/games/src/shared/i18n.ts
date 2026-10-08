@@ -22,9 +22,12 @@ const ru = {
     empty: 'В этом жанре пока нет игр.',
     progress_city: ':year год · :epoch · :population жителей',
     progress_epochs: ':year год · :epoch · :population жителей',
+    progress_sandbox: ':score очков · побед: :kills · артефактов: :artifacts',
     reset: 'Сбросить прогресс',
     reset_confirm:
         'Сбросить прогресс в игре «:game»? Город, достижения и открытия будут удалены навсегда.',
+    reset_confirm_sandbox:
+        'Сбросить прогресс в игре «:game»? Герой, вещи, постройки, изученные рецепты и статистика будут удалены навсегда.',
     reset_done: 'Прогресс сброшен',
     rating_none: 'Ещё нет оценок',
     ratings_count: {
@@ -67,6 +70,9 @@ const ru = {
     board_you: 'вы',
     board_not_played: 'Сыграйте, чтобы попасть в рейтинг.',
     board_details: ':epoch · :population жит.',
+    board_details_sandbox:
+        'побед: :kills · деревьев: :trees · артефактов: :artifacts',
+    board_anonymous: 'Игрок',
     reviews_empty: 'Отзывов с комментариями пока нет.',
     reviews_distribution: 'Распределение оценок',
     genres: {
@@ -75,6 +81,7 @@ const ru = {
         quiz: 'Викторины',
         duel: 'Дуэли',
         puzzle: 'Головоломки',
+        adventure: 'Приключения',
     },
     epochs: [
         'Раннее поселение',
@@ -88,6 +95,10 @@ const ru = {
         'Мегаполис',
     ],
     titles: {
+        sandbox: [
+            'Песочница',
+            'Открытый мир без кубиков: холмы, горы, лес и камни. Пока можно бегать, прыгать и исследовать — дальше будет больше.',
+        ],
         epochs: [
             'Летопись города 2',
             'Десять эпох от античности до 3000 года: стройте в 3D, улучшайте дома от шалаша до нанобашни, изучайте технологии, открывайте чертежи и создавайте свои округа.',
@@ -119,9 +130,12 @@ const en: Dictionary = {
     empty: 'No games in this genre yet.',
     progress_city: 'Year :year · :epoch · :population residents',
     progress_epochs: 'Year :year · :epoch · :population residents',
+    progress_sandbox: ':score points · :kills beaten · artifacts: :artifacts',
     reset: 'Reset progress',
     reset_confirm:
         'Reset your progress in “:game”? The city, achievements and discoveries will be deleted for good.',
+    reset_confirm_sandbox:
+        'Reset your progress in “:game”? The hero, things, buildings, learnt recipes and stats will be deleted for good.',
     reset_done: 'Progress reset',
     rating_none: 'No ratings yet',
     ratings_count: { one: ':n rating', other: ':n ratings' },
@@ -154,6 +168,9 @@ const en: Dictionary = {
     board_you: 'you',
     board_not_played: 'Play to get on the leaderboard.',
     board_details: ':epoch · :population res.',
+    board_details_sandbox:
+        ':kills beaten · :trees trees · :artifacts artifacts',
+    board_anonymous: 'Player',
     reviews_empty: 'No reviews with comments yet.',
     reviews_distribution: 'Rating distribution',
     genres: {
@@ -162,6 +179,7 @@ const en: Dictionary = {
         quiz: 'Quizzes',
         duel: 'Duels',
         puzzle: 'Puzzles',
+        adventure: 'Adventure',
     },
     epochs: [
         'Early settlement',
@@ -175,6 +193,10 @@ const en: Dictionary = {
         'Megalopolis',
     ],
     titles: {
+        sandbox: [
+            'Sandbox',
+            'An open world without cubes: hills, mountains, woods and rocks. For now you can run, jump and explore — more is coming.',
+        ],
         epochs: [
             'City Chronicle 2',
             'Ten eras from antiquity to the year 3000: build in 3D, grow homes from a hut to a nano tower, research technologies, unlock blueprints and found your own districts.',
@@ -207,9 +229,13 @@ const uz: Dictionary = {
     empty: 'Bu janrda hozircha o‘yinlar yo‘q.',
     progress_city: ':year-yil · :epoch · :population aholi',
     progress_epochs: ':year-yil · :epoch · :population aholi',
+    progress_sandbox:
+        ':score ochko · g‘alabalar: :kills · artefaktlar: :artifacts',
     reset: 'Jarayonni tiklash',
     reset_confirm:
         '«:game» o‘yinidagi jarayon o‘chirilsinmi? Shahar, yutuqlar va kashfiyotlar butunlay o‘chiriladi.',
+    reset_confirm_sandbox:
+        '«:game» o‘yinidagi jarayon o‘chirilsinmi? Qahramon, buyumlar, qurilmalar, o‘rganilgan retseptlar va statistika butunlay o‘chiriladi.',
     reset_done: 'Jarayon tiklandi',
     rating_none: 'Hali baholar yo‘q',
     ratings_count: { other: ':n ta baho' },
@@ -242,6 +268,9 @@ const uz: Dictionary = {
     board_you: 'siz',
     board_not_played: 'Reytingga kirish uchun o‘ynang.',
     board_details: ':epoch · :population aholi',
+    board_details_sandbox:
+        'g‘alabalar: :kills · daraxtlar: :trees · artefaktlar: :artifacts',
+    board_anonymous: 'O‘yinchi',
     reviews_empty: 'Izohli sharhlar hali yo‘q.',
     reviews_distribution: 'Baholar taqsimoti',
     genres: {
@@ -250,6 +279,7 @@ const uz: Dictionary = {
         quiz: 'Viktorinalar',
         duel: 'Duellar',
         puzzle: 'Boshqotirmalar',
+        adventure: 'Sarguzashtlar',
     },
     epochs: [
         'Ilk manzilgoh',
@@ -263,6 +293,10 @@ const uz: Dictionary = {
         'Megapolis',
     ],
     titles: {
+        sandbox: [
+            'Qumdon',
+            'Kubiklarsiz ochiq dunyo: tepaliklar, tog‘lar, o‘rmon va toshlar. Hozircha yugurish, sakrash va kezish mumkin — davomi bor.',
+        ],
         epochs: [
             'Shahar solnomasi 2',
             'Antik davrdan 3000-yilgacha o‘nta davr: 3D’da quring, uylarni kulbadan nanominoragacha yaxshilang, texnologiyalarni o‘rganing, chizmalarni oching va o‘z tumanlaringizni yarating.',

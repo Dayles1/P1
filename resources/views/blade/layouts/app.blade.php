@@ -17,6 +17,9 @@
 
     @include('blade.sections.favicon')
 
+    {{-- Inline scripts a page needs before its first paint. --}}
+    @stack('head')
+
     @include('blade.sections.theme-bootstrap')
     @include('blade.sections.i18n-bootstrap')
 
