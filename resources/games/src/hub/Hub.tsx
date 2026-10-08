@@ -117,7 +117,7 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
                         '',
                     ];
                     const playable = Boolean(game.path || game.href);
-                    const rated = game.path
+                    const rated = playable
                         ? (ratings?.[game.slug] ?? null)
                         : null;
                     const myStars = rated?.mine
@@ -144,6 +144,41 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
                               },
                           )
                         : null;
+                    const actions = rated && (
+                        <div className="game-card__actions">
+                            <button
+                                type="button"
+                                className="hub-button hub-button--soft"
+                                aria-label={myStars}
+                                onClick={() =>
+                                    setDialog({
+                                        kind: 'rate',
+                                        slug: game.slug,
+                                        title,
+                                    })
+                                }
+                            >
+                                {rated.mine
+                                    ? `★ ${rated.mine.stars}/5`
+                                    : `☆ ${t.rate}`}
+                            </button>
+                            {game.leaderboard !== false && (
+                                <button
+                                    type="button"
+                                    className="hub-button hub-button--soft"
+                                    onClick={() =>
+                                        setDialog({
+                                            kind: 'board',
+                                            slug: game.slug,
+                                            title,
+                                        })
+                                    }
+                                >
+                                    🏆 {t.leaderboard}
+                                </button>
+                            )}
+                        </div>
+                    );
 
                     return (
                         <article
@@ -184,39 +219,7 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
                                         >
                                             ▶ {played ? t.continue : t.play}
                                         </Link>
-                                        {rated && (
-                                            <div className="game-card__actions">
-                                                <button
-                                                    type="button"
-                                                    className="hub-button hub-button--soft"
-                                                    aria-label={myStars}
-                                                    onClick={() =>
-                                                        setDialog({
-                                                            kind: 'rate',
-                                                            slug: game.slug,
-                                                            title,
-                                                        })
-                                                    }
-                                                >
-                                                    {rated.mine
-                                                        ? `★ ${rated.mine.stars}/5`
-                                                        : `☆ ${t.rate}`}
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    className="hub-button hub-button--soft"
-                                                    onClick={() =>
-                                                        setDialog({
-                                                            kind: 'board',
-                                                            slug: game.slug,
-                                                            title,
-                                                        })
-                                                    }
-                                                >
-                                                    🏆 {t.leaderboard}
-                                                </button>
-                                            </div>
-                                        )}
+                                        {actions}
                                         {played && game.resetPath && (
                                             <button
                                                 type="button"
@@ -238,9 +241,15 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
                                         )}
                                     </>
                                 ) : game.href ? (
-                                    <a className="hub-button" href={game.href}>
-                                        ▶ {t.play}
-                                    </a>
+                                    <>
+                                        <a
+                                            className="hub-button"
+                                            href={game.href}
+                                        >
+                                            ▶ {t.play}
+                                        </a>
+                                        {actions}
+                                    </>
                                 ) : (
                                     <button
                                         type="button"

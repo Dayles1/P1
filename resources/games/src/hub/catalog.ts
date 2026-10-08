@@ -21,6 +21,8 @@ export interface GameEntry {
     href?: string;
     /** API path (under /api/games) that deletes the player's progress. */
     resetPath?: string;
+    /** False for a game that keeps no score: rated, but not ranked. */
+    leaderboard?: boolean;
 }
 
 export const CATALOG: GameEntry[] = [
@@ -39,6 +41,7 @@ export const CATALOG: GameEntry[] = [
         genre: 'adventure',
         path: null,
         href: '/games/sandbox',
+        leaderboard: false,
     },
     {
         slug: 'city',
