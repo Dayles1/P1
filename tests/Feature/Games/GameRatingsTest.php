@@ -223,3 +223,32 @@ test('a player without a save has no place on the leaderboard', function () {
         ->assertJsonCount(1, 'data.entries')
         ->assertJsonPath('data.me', null);
 });
+
+test('the sandbox is timed and rated like any game, but has no leaderboard', function () {
+    $user = User::factory()->create();
+    $this->actingAs($user, 'sanctum');
+
+    foreach (range(1, 6) as $ignored) {
+        $this->postJson('/api/games/sandbox/playtime')->assertOk();
+        $this->travel(60)->seconds();
+    }
+
+    $this->putJson('/api/games/sandbox/rating', ['stars' => 5, 'comment' => 'Классно строить дом'])
+        ->assertOk()
+        ->assertJsonPath('data.mine.stars', 5);
+
+    $this->getJson('/api/games/ratings')
+        ->assertOk()
+        ->assertJsonPath('data.sandbox.count', 1)
+        ->assertJsonPath('data.sandbox.can_rate', true);
+
+    $this->getJson('/api/games/sandbox/leaderboard')->assertNotFound();
+});
+
+test('every catalog game the hub can rate is known to the server', function () {
+    $catalog = file_get_contents(resource_path('games/src/hub/catalog.ts'));
+    preg_match_all("/slug: '([a-z0-9]+)',[^}]*?(?:path: '|href: ')/s", $catalog, $playable);
+
+    expect(collect($playable[1])->sort()->values()->all())
+        ->toBe(collect(Game::cases())->pluck('value')->sort()->values()->all());
+});
