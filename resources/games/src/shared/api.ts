@@ -28,8 +28,19 @@ export function hasToken(): boolean {
  * Calls /api/games/{path} and answers with the envelope's `data`. A
  * missing or expired token sends the player to the app's login page.
  */
-export async function gameApi<T = unknown>(
+export function gameApi<T = unknown>(
     path: string,
+    options: { method?: string; body?: unknown; keepalive?: boolean } = {},
+): Promise<T> {
+    return apiRequest<T>(`/api/games/${path}`, options);
+}
+
+/**
+ * The same for any URL — a game with an API of its own (like the Sandbox,
+ * under /api/sandbox) answers in the same envelope.
+ */
+export async function apiRequest<T = unknown>(
+    url: string,
     {
         method = 'GET',
         body,
@@ -55,7 +66,7 @@ export async function gameApi<T = unknown>(
         headers['Content-Type'] = 'application/json';
     }
 
-    const response = await fetch(`/api/games/${path}`, {
+    const response = await fetch(url, {
         method,
         headers,
         body: body === undefined ? undefined : JSON.stringify(body),

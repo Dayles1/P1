@@ -22,6 +22,7 @@ const ru = {
     empty: 'В этом жанре пока нет игр.',
     progress_city: ':year год · :epoch · :population жителей',
     progress_epochs: ':year год · :epoch · :population жителей',
+    progress_sandbox: ':score очков · побед: :kills · артефактов: :artifacts/5',
     reset: 'Сбросить прогресс',
     reset_confirm:
         'Сбросить прогресс в игре «:game»? Город, достижения и открытия будут удалены навсегда.',
@@ -67,6 +68,9 @@ const ru = {
     board_you: 'вы',
     board_not_played: 'Сыграйте, чтобы попасть в рейтинг.',
     board_details: ':epoch · :population жит.',
+    board_details_sandbox:
+        'побед: :kills · деревьев: :trees · артефактов: :artifacts',
+    board_anonymous: 'Игрок',
     reviews_empty: 'Отзывов с комментариями пока нет.',
     reviews_distribution: 'Распределение оценок',
     genres: {
@@ -124,6 +128,7 @@ const en: Dictionary = {
     empty: 'No games in this genre yet.',
     progress_city: 'Year :year · :epoch · :population residents',
     progress_epochs: 'Year :year · :epoch · :population residents',
+    progress_sandbox: ':score points · :kills beaten · artifacts: :artifacts/5',
     reset: 'Reset progress',
     reset_confirm:
         'Reset your progress in “:game”? The city, achievements and discoveries will be deleted for good.',
@@ -159,6 +164,9 @@ const en: Dictionary = {
     board_you: 'you',
     board_not_played: 'Play to get on the leaderboard.',
     board_details: ':epoch · :population res.',
+    board_details_sandbox:
+        ':kills beaten · :trees trees · :artifacts artifacts',
+    board_anonymous: 'Player',
     reviews_empty: 'No reviews with comments yet.',
     reviews_distribution: 'Rating distribution',
     genres: {
@@ -217,6 +225,8 @@ const uz: Dictionary = {
     empty: 'Bu janrda hozircha o‘yinlar yo‘q.',
     progress_city: ':year-yil · :epoch · :population aholi',
     progress_epochs: ':year-yil · :epoch · :population aholi',
+    progress_sandbox:
+        ':score ochko · g‘alabalar: :kills · artefaktlar: :artifacts/5',
     reset: 'Jarayonni tiklash',
     reset_confirm:
         '«:game» o‘yinidagi jarayon o‘chirilsinmi? Shahar, yutuqlar va kashfiyotlar butunlay o‘chiriladi.',
@@ -252,6 +262,9 @@ const uz: Dictionary = {
     board_you: 'siz',
     board_not_played: 'Reytingga kirish uchun o‘ynang.',
     board_details: ':epoch · :population aholi',
+    board_details_sandbox:
+        'g‘alabalar: :kills · daraxtlar: :trees · artefaktlar: :artifacts',
+    board_anonymous: 'O‘yinchi',
     reviews_empty: 'Izohli sharhlar hali yo‘q.',
     reviews_distribution: 'Baholar taqsimoti',
     genres: {

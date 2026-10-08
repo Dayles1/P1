@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
-import { GameApiError, gameApi } from '../shared/api';
+import { apiRequest, GameApiError, gameApi } from '../shared/api';
 import { format, locale, plural, t } from '../shared/i18n';
 
 /** Play time needed before a game can be rated (mirrors the server's rule). */
@@ -27,16 +27,27 @@ export interface GameRatings {
 
 export type RatingsSummary = Record<string, GameRatings>;
 
-interface LeaderDetails {
+/** How far a city has come… */
+interface CityDetails {
     epoch: number | string;
     epoch_name?: string | null;
     year: number;
     population: number;
 }
 
+/** …or what a Sandbox player has done. */
+interface SandboxDetails {
+    kills: number;
+    trees: number;
+    artifacts: number;
+}
+
+type LeaderDetails = CityDetails | SandboxDetails;
+
 interface LeaderEntry {
     rank: number;
-    name: string;
+    /** Null when the player has no display name. */
+    name: string | null;
     score: number;
     details: LeaderDetails;
     is_me: boolean;
@@ -320,6 +331,14 @@ export function RateDialog({
 }
 
 function detailsLine(details: LeaderDetails): string {
+    if ('kills' in details) {
+        return format(t.board_details_sandbox, {
+            kills: numbers.format(details.kills),
+            trees: numbers.format(details.trees),
+            artifacts: details.artifacts,
+        });
+    }
+
     const epoch =
         typeof details.epoch === 'number'
             ? (t.epochs[details.epoch] ?? '')
@@ -331,21 +350,24 @@ function detailsLine(details: LeaderDetails): string {
     });
 }
 
-function LeadersTab({ slug }: { slug: string }) {
+function LeadersTab({ slug, api }: { slug: string; api?: string }) {
     const [board, setBoard] = useState<Leaderboard | null>(null);
     const [failed, setFailed] = useState(false);
 
     useEffect(() => {
         let alive = true;
 
-        gameApi<Leaderboard>(`${slug}/leaderboard`)
+        (api
+            ? apiRequest<Leaderboard>(`${api}/leaderboard`)
+            : gameApi<Leaderboard>(`${slug}/leaderboard`)
+        )
             .then((data) => alive && setBoard(data))
             .catch(() => alive && setFailed(true));
 
         return () => {
             alive = false;
         };
-    }, [slug]);
+    }, [slug, api]);
 
     if (failed) {
         return <p className="board__note">{t.load_error}</p>;
@@ -397,7 +419,7 @@ function LeadersTab({ slug }: { slug: string }) {
                                         : entry.rank}
                                 </td>
                                 <td>
-                                    {entry.name}
+                                    {entry.name ?? t.board_anonymous}
                                     {entry.is_me && (
                                         <span className="board__you">
                                             {t.board_you}
@@ -510,11 +532,14 @@ function ReviewsTab({ ratings }: { ratings: GameRatings }) {
 /** The game's leaderboard and its reviews, as two tabs. */
 export function LeaderboardDialog({
     slug,
+    api,
     title,
     ratings,
     onClose,
 }: {
     slug: string;
+    /** The game's own API, when its leaderboard lives there. */
+    api?: string;
     title: string;
     ratings: GameRatings | null;
     onClose: () => void;
@@ -568,7 +593,7 @@ export function LeaderboardDialog({
                 aria-labelledby={`${baseId}-tab-${tab}`}
             >
                 {tab === 'leaders' ? (
-                    <LeadersTab slug={slug} />
+                    <LeadersTab slug={slug} api={api} />
                 ) : ratings ? (
                     <ReviewsTab ratings={ratings} />
                 ) : (

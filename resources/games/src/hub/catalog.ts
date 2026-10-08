@@ -21,8 +21,12 @@ export interface GameEntry {
     href?: string;
     /** API path (under /api/games) that deletes the player's progress. */
     resetPath?: string;
-    /** False for a game that keeps no score: rated, but not ranked. */
-    leaderboard?: boolean;
+    /**
+     * A game with an API of its own (like the Sandbox's /api/sandbox): the
+     * hub reads its leaderboard and the card's progress line there
+     * (`/leaderboard`, `/summary`) and resets it with DELETE `/player`.
+     */
+    api?: string;
 }
 
 export const CATALOG: GameEntry[] = [
@@ -41,7 +45,7 @@ export const CATALOG: GameEntry[] = [
         genre: 'adventure',
         path: null,
         href: '/games/sandbox',
-        leaderboard: false,
+        api: '/api/sandbox',
     },
     {
         slug: 'city',
