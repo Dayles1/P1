@@ -267,3 +267,56 @@ test('a player can reset their position', function () {
 
     expect(Player::query()->count())->toBe(0);
 });
+
+test('the score is worked out on the server from what was saved', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user, 'sanctum')
+        ->putJson('/api/sandbox/player', sandboxPosition([
+            'stats' => ['wolf' => 2, 'zombie' => 1, 'trees' => 10, 'crafted' => 3],
+            'harvested' => [['id' => 'art:0', 'at' => 1], ['id' => 'tree:5', 'at' => 1]],
+        ]))
+        ->assertOk();
+
+    // 2 wolves ×15 + 1 dead ×20 + 10 trees ×2 + 3 made ×1 + 1 artifact ×100.
+    expect(Player::query()->sole()->score)->toBe(173);
+});
+
+test('the leaderboard ranks players by score and shows the player their place', function () {
+    $user = User::factory()->create(['name' => 'Анна']);
+    $rival = User::factory()->create(['name' => 'Борис']);
+    Player::factory()->create(['user_id' => $rival->id, 'score' => 500, 'stats' => ['wolf' => 3]]);
+    Player::factory()->create(['user_id' => 999_999, 'score' => 50]);
+    Player::factory()->create(['user_id' => $user->id, 'score' => 120, 'stats' => ['deer' => 2, 'boar' => 1, 'trees' => 4], 'harvested' => [['id' => 'art:3', 'at' => 1]]]);
+
+    $this->actingAs($user, 'sanctum')
+        ->getJson('/api/sandbox/leaderboard')
+        ->assertOk()
+        ->assertJsonPath('data.game', 'sandbox')
+        ->assertJsonPath('data.entries.0.name', 'Борис')
+        ->assertJsonPath('data.entries.0.rank', 1)
+        ->assertJsonPath('data.entries.0.details.kills', 3)
+        ->assertJsonPath('data.entries.1.is_me', true)
+        ->assertJsonPath('data.entries.2.name', null)
+        ->assertJsonPath('data.me.rank', 2)
+        ->assertJsonPath('data.me.details', ['kills' => 3, 'trees' => 4, 'artifacts' => 1]);
+});
+
+test('the summary for the hub card is null before playing and the progress after', function () {
+    $user = User::factory()->create();
+    $this->actingAs($user, 'sanctum')->getJson('/api/sandbox/summary')->assertOk()->assertJsonPath('data', null);
+
+    Player::factory()->create(['user_id' => $user->id, 'score' => 42, 'stats' => ['zombie' => 2, 'trees' => 1]]);
+
+    $this->getJson('/api/sandbox/summary')
+        ->assertOk()
+        ->assertJsonPath('data.score', 42)
+        ->assertJsonPath('data.kills', 2)
+        ->assertJsonPath('data.trees', 1)
+        ->assertJsonPath('data.artifacts', 0);
+});
+
+test('guests see neither the leaderboard nor a summary', function () {
+    $this->getJson('/api/sandbox/leaderboard')->assertUnauthorized();
+    $this->getJson('/api/sandbox/summary')->assertUnauthorized();
+});
