@@ -26,6 +26,8 @@ import type {
 } from '../physics/colliders';
 import { biomeWeights, dominantBiome } from './biomes';
 import type { Biome } from './biomes';
+import { CulledInstances } from './culled';
+import type { Reach } from './culled';
 import type { Chips } from './effects';
 import { createRandom } from './noise';
 import {
@@ -41,6 +43,17 @@ const MAX_ROCKS = 420;
 const MAX_FINDS = 900;
 const STUMP_HEIGHT = 0.45;
 const MAX_FIRES = 30;
+
+/** Trees are drawn as far as the land is; shadows only close by. */
+const TREE_REACH = (view: number): Reach => ({ reach: view, shadowReach: 45 });
+/** Sticks, pebbles, mushrooms… are too small to see from far away. */
+const FIND_REACH = (view: number): Reach => ({
+    reach: Math.min(view, 70),
+    shadowReach: 25,
+});
+/** Refresh what is drawn after walking this far (m) or turning this much. */
+const REFRESH_MOVE = 3;
+const REFRESH_TURN = 0.996;
 
 /** How long until something used up grows back, ms. */
 const REGROW: Record<string, number> = {
@@ -295,14 +308,24 @@ export class Resources {
     /** Each find's turn and size, so redrawing it keeps its look. */
     private findLook = new Map<number, [number, number]>();
     private time = 0;
+    private viewDistance = 200;
 
-    private trunks: THREE.InstancedMesh;
-    private crowns: THREE.InstancedMesh;
-    private pines: THREE.InstancedMesh;
-    private cacti: THREE.InstancedMesh;
-    private stumps: THREE.InstancedMesh;
-    private rockMesh: THREE.InstancedMesh;
-    private findMeshes: Record<FindType, THREE.InstancedMesh[]>;
+    private trunks: CulledInstances;
+    private crowns: CulledInstances;
+    private pines: CulledInstances;
+    private cacti: CulledInstances;
+    private stumps: CulledInstances;
+    private rockMesh: CulledInstances;
+    private findMeshes: Record<FindType, CulledInstances[]>;
+    /** Every culled set and how far it is drawn for a given view distance. */
+    private culled: [CulledInstances, (view: number) => Reach][] = [];
+    private lastRefresh = {
+        center: new THREE.Vector3(Infinity, 0, 0),
+        look: new THREE.Vector3(),
+    };
+    private cullCamera = new THREE.PerspectiveCamera();
+    private frustum = new THREE.Frustum();
+    private look = new THREE.Vector3();
     private fireGeometry = this.createFireGeometry();
 
     private matrix = new THREE.Matrix4();
@@ -322,23 +345,37 @@ export class Resources {
             new THREE.CylinderGeometry(0.75, 1, 1, 8),
             TRUNK,
             MAX_TREES,
+            TREE_REACH,
         );
         this.crowns = this.instanced(
             new THREE.IcosahedronGeometry(1, 1),
             CROWN,
             MAX_TREES,
+            TREE_REACH,
         );
-        this.pines = this.instanced(this.pineGeometry(), PINE, MAX_TREES);
-        this.cacti = this.instanced(this.cactusGeometry(), CACTUS, MAX_TREES);
+        this.pines = this.instanced(
+            this.pineGeometry(),
+            PINE,
+            MAX_TREES,
+            TREE_REACH,
+        );
+        this.cacti = this.instanced(
+            this.cactusGeometry(),
+            CACTUS,
+            MAX_TREES,
+            TREE_REACH,
+        );
         this.stumps = this.instanced(
             this.stumpGeometry(),
             [TRUNK, STUMP_TOP],
             MAX_TREES,
+            (view) => ({ reach: Math.min(view, 110), shadowReach: 30 }),
         );
         this.rockMesh = this.instanced(
             new THREE.IcosahedronGeometry(1, 1),
             ROCK,
             MAX_ROCKS,
+            (view) => ({ reach: view, shadowReach: 40 }),
         );
         this.findMeshes = this.createFindMeshes();
 
@@ -423,13 +460,6 @@ export class Resources {
                 }
 
                 this.drawTree(tree);
-                this.touch(
-                    this.trunks,
-                    this.crowns,
-                    this.pines,
-                    this.cacti,
-                    this.stumps,
-                );
             } else if (type === 'rock') {
                 const rock = this.rocks[index];
                 rock.gone = false;
@@ -735,6 +765,58 @@ export class Resources {
         return best;
     }
 
+    /** How far things are drawn (the land's view distance). */
+    setViewDistance(view: number): void {
+        this.viewDistance = view;
+
+        for (const [instances, reach] of this.culled) {
+            instances.setLimits(reach(view));
+        }
+    }
+
+    /**
+     * Picks which trees, rocks and finds to draw: near ones all round (they
+     * cast shadows), farther ones only in view. Only redone after walking
+     * a few metres, turning the camera, or when something reappeared.
+     */
+    refresh(center: THREE.Vector3, camera: THREE.PerspectiveCamera): void {
+        camera.getWorldDirection(this.look);
+        const last = this.lastRefresh;
+
+        if (
+            center.distanceToSquared(last.center) < REFRESH_MOVE ** 2 &&
+            this.look.dot(last.look) > REFRESH_TURN &&
+            !this.culled.some(([instances]) => instances.stale)
+        ) {
+            return;
+        }
+
+        last.center.copy(center);
+        last.look.copy(this.look);
+
+        // A slightly wider view than the camera's, so turning a little does
+        // not show anything popping in at the edges.
+        const cull = this.cullCamera;
+        cull.position.copy(camera.position);
+        cull.quaternion.copy(camera.quaternion);
+        cull.fov = Math.min(170, camera.fov + 25);
+        cull.aspect = camera.aspect * 1.25;
+        cull.near = camera.near;
+        cull.far = camera.far;
+        cull.updateProjectionMatrix();
+        cull.updateMatrixWorld();
+        this.frustum.setFromProjectionMatrix(
+            new THREE.Matrix4().multiplyMatrices(
+                cull.projectionMatrix,
+                cull.matrixWorldInverse,
+            ),
+        );
+
+        for (const [instances] of this.culled) {
+            instances.refresh(center, this.frustum);
+        }
+    }
+
     update(dt: number): void {
         this.time += dt;
 
@@ -742,7 +824,6 @@ export class Resources {
             if (tree.shake > 0) {
                 tree.shake = Math.max(0, tree.shake - dt * 2.5);
                 this.drawTree(tree);
-                this.touch(this.trunks, this.crowns, this.pines, this.cacti);
             }
         }
 
@@ -1302,11 +1383,13 @@ export class Resources {
     }
 
     private buildBlocks(): void {
-        const blocks = this.instanced(
+        const blocks = new THREE.InstancedMesh(
             new THREE.BoxGeometry(1, 1, 1),
             BLOCK,
             BLOCKS.length,
         );
+        blocks.castShadow = blocks.receiveShadow = true;
+        this.group.add(blocks);
 
         BLOCKS.forEach(([x, z, width, depth, height, raised], index) => {
             const ground = heightAt(x, z);
@@ -1433,7 +1516,7 @@ export class Resources {
     }
 
     /** The crown, fir or cactus mesh the tree is drawn in. */
-    private body(tree: Tree): THREE.InstancedMesh {
+    private body(tree: Tree): CulledInstances {
         return { broad: this.crowns, pine: this.pines, cactus: this.cacti }[
             tree.species
         ];
@@ -1536,14 +1619,6 @@ export class Resources {
             this.stumps.setMatrixAt(tree.trunk, this.matrix);
         }
 
-        this.touch(
-            this.trunks,
-            this.crowns,
-            this.pines,
-            this.cacti,
-            this.stumps,
-        );
-
         if (!from) {
             return;
         }
@@ -1609,7 +1684,6 @@ export class Resources {
     private drawRock(rock: Rock): void {
         if (rock.gone) {
             this.rockMesh.setMatrixAt(rock.index, hiddenMatrix());
-            this.rockMesh.instanceMatrix.needsUpdate = true;
 
             return;
         }
@@ -1629,7 +1703,6 @@ export class Resources {
             this.scale.setScalar(radius),
         );
         this.rockMesh.setMatrixAt(rock.index, this.matrix);
-        this.rockMesh.instanceMatrix.needsUpdate = true;
     }
 
     private breakRock(rock: Rock): void {
@@ -1656,17 +1729,10 @@ export class Resources {
             const shown =
                 !find.taken || (find.type === 'berries' && part === 0);
             mesh.setMatrixAt(find.slot, shown ? this.matrix : hiddenMatrix());
-            mesh.instanceMatrix.needsUpdate = true;
         });
     }
 
-    private touch(...meshes: THREE.InstancedMesh[]): void {
-        for (const mesh of meshes) {
-            mesh.instanceMatrix.needsUpdate = true;
-        }
-    }
-
-    private createFindMeshes(): Record<FindType, THREE.InstancedMesh[]> {
+    private createFindMeshes(): Record<FindType, CulledInstances[]> {
         const stick = new THREE.CylinderGeometry(0.022, 0.03, 0.75, 5);
         stick.rotateZ(Math.PI / 2);
         stick.translate(0, 0.03, 0);
@@ -1707,7 +1773,7 @@ export class Resources {
                 [0.05, 0.4, 0.45],
                 [-0.25, 0.36, -0.32],
             ].map(([x, y, z]) =>
-                new THREE.SphereGeometry(0.055, 8, 6).translate(x, y, z),
+                new THREE.SphereGeometry(0.055, 6, 4).translate(x, y, z),
             ),
         );
 
@@ -1731,27 +1797,21 @@ export class Resources {
             }),
         );
 
-        const finds = {
-            stick: [this.instanced(stick, STICK, MAX_FINDS)],
-            pebble: [this.instanced(pebble, PEBBLE, MAX_FINDS)],
-            flint: [this.instanced(flint, FLINT, MAX_FINDS)],
-            mushroom: [
-                this.instanced(stem, STEM, MAX_FINDS),
-                this.instanced(cap, CAP, MAX_FINDS),
-            ],
-            berries: [
-                this.instanced(bush, BUSH, MAX_FINDS),
-                this.instanced(berries, BERRY, MAX_FINDS),
-            ],
-            grass: [this.instanced(grass, GRASS, MAX_FINDS)],
+        // Small things: drawn only close by, and too small for shadows — but a bush.
+        const small = (
+            geometry: THREE.BufferGeometry,
+            material: THREE.Material,
+            shadows = false,
+        ) => this.instanced(geometry, material, MAX_FINDS, FIND_REACH, shadows);
+
+        return {
+            stick: [small(stick, STICK)],
+            pebble: [small(pebble, PEBBLE)],
+            flint: [small(flint, FLINT)],
+            mushroom: [small(stem, STEM), small(cap, CAP)],
+            berries: [small(bush, BUSH, true), small(berries, BERRY)],
+            grass: [small(grass, GRASS)],
         };
-
-        // Shadows of things this small are not worth drawing.
-        for (const mesh of Object.values(finds).flat()) {
-            mesh.castShadow = mesh.geometry === bush;
-        }
-
-        return finds;
     }
 
     /** A fir: three cones stacked, 1 unit wide and tall at scale 1. */
@@ -1861,19 +1921,20 @@ export class Resources {
         geometry: THREE.BufferGeometry,
         material: THREE.Material | THREE.Material[],
         count: number,
-    ): THREE.InstancedMesh {
-        const mesh = new THREE.InstancedMesh(geometry, material, count);
-        mesh.castShadow = true;
-        mesh.receiveShadow = true;
-        mesh.frustumCulled = false;
+        reach: (view: number) => Reach,
+        shadows = true,
+    ): CulledInstances {
+        const instances = new CulledInstances(
+            geometry,
+            material,
+            count,
+            reach(this.viewDistance),
+            shadows,
+        );
+        this.culled.push([instances, reach]);
+        this.group.add(instances.group);
 
-        for (let index = 0; index < count; index++) {
-            mesh.setMatrixAt(index, hiddenMatrix());
-        }
-
-        this.group.add(mesh);
-
-        return mesh;
+        return instances;
     }
 }
 
