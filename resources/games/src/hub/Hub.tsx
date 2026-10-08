@@ -116,6 +116,7 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
                         game.slug,
                         '',
                     ];
+                    const playable = Boolean(game.path || game.href);
                     const rated = game.path
                         ? (ratings?.[game.slug] ?? null)
                         : null;
@@ -147,7 +148,7 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
                     return (
                         <article
                             key={game.slug}
-                            className={`game-card${game.path ? '' : ' game-card--soon'}`}
+                            className={`game-card${playable ? '' : ' game-card--soon'}`}
                             style={{ '--hue': game.hue } as CSSProperties}
                         >
                             <div
@@ -160,9 +161,9 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
                                 <div className="game-card__meta">
                                     <span>{t.genres[game.genre]}</span>
                                     <span
-                                        className={`game-card__badge${game.path ? ' game-card__badge--new' : ''}`}
+                                        className={`game-card__badge${playable ? ' game-card__badge--new' : ''}`}
                                     >
-                                        {game.path ? t.new : t.soon}
+                                        {playable ? t.new : t.soon}
                                     </span>
                                 </div>
                                 <h2>{title}</h2>
@@ -236,6 +237,10 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
                                             </button>
                                         )}
                                     </>
+                                ) : game.href ? (
+                                    <a className="hub-button" href={game.href}>
+                                        ▶ {t.play}
+                                    </a>
                                 ) : (
                                     <button
                                         type="button"

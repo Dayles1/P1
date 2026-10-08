@@ -4,7 +4,8 @@
  * app/Games on the server).
  */
 
-export type Genre = 'strategy' | 'party' | 'quiz' | 'duel' | 'puzzle';
+export type Genre =
+    'strategy' | 'adventure' | 'party' | 'quiz' | 'duel' | 'puzzle';
 
 export interface GameEntry {
     slug: string;
@@ -13,6 +14,11 @@ export interface GameEntry {
     genre: Genre;
     /** Client route; null while the game is not out yet. */
     path: string | null;
+    /**
+     * A self-contained game with a page of its own (outside this SPA):
+     * opened with a full page load instead of `path`.
+     */
+    href?: string;
     /** API path (under /api/games) that deletes the player's progress. */
     resetPath?: string;
 }
@@ -25,6 +31,14 @@ export const CATALOG: GameEntry[] = [
         genre: 'strategy',
         path: '/city2',
         resetPath: 'epochs/world',
+    },
+    {
+        slug: 'sandbox',
+        cover: '🏃',
+        hue: '#7c8b9a',
+        genre: 'adventure',
+        path: null,
+        href: '/games/sandbox',
     },
     {
         slug: 'city',

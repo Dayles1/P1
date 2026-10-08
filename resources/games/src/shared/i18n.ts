@@ -75,6 +75,7 @@ const ru = {
         quiz: 'Викторины',
         duel: 'Дуэли',
         puzzle: 'Головоломки',
+        adventure: 'Приключения',
     },
     epochs: [
         'Раннее поселение',
@@ -88,6 +89,10 @@ const ru = {
         'Мегаполис',
     ],
     titles: {
+        sandbox: [
+            'Песочница',
+            'Открытый мир без кубиков: холмы, горы, лес и камни. Пока можно бегать, прыгать и исследовать — дальше будет больше.',
+        ],
         epochs: [
             'Летопись города 2',
             'Десять эпох от античности до 3000 года: стройте в 3D, улучшайте дома от шалаша до нанобашни, изучайте технологии, открывайте чертежи и создавайте свои округа.',
@@ -162,6 +167,7 @@ const en: Dictionary = {
         quiz: 'Quizzes',
         duel: 'Duels',
         puzzle: 'Puzzles',
+        adventure: 'Adventure',
     },
     epochs: [
         'Early settlement',
@@ -175,6 +181,10 @@ const en: Dictionary = {
         'Megalopolis',
     ],
     titles: {
+        sandbox: [
+            'Sandbox',
+            'An open world without cubes: hills, mountains, woods and rocks. For now you can run, jump and explore — more is coming.',
+        ],
         epochs: [
             'City Chronicle 2',
             'Ten eras from antiquity to the year 3000: build in 3D, grow homes from a hut to a nano tower, research technologies, unlock blueprints and found your own districts.',
@@ -250,6 +260,7 @@ const uz: Dictionary = {
         quiz: 'Viktorinalar',
         duel: 'Duellar',
         puzzle: 'Boshqotirmalar',
+        adventure: 'Sarguzashtlar',
     },
     epochs: [
         'Ilk manzilgoh',
@@ -263,6 +274,10 @@ const uz: Dictionary = {
         'Megapolis',
     ],
     titles: {
+        sandbox: [
+            'Qumdon',
+            'Kubiklarsiz ochiq dunyo: tepaliklar, tog‘lar, o‘rmon va toshlar. Hozircha yugurish, sakrash va kezish mumkin — davomi bor.',
+        ],
         epochs: [
             'Shahar solnomasi 2',
             'Antik davrdan 3000-yilgacha o‘nta davr: 3D’da quring, uylarni kulbadan nanominoragacha yaxshilang, texnologiyalarni o‘rganing, chizmalarni oching va o‘z tumanlaringizni yarating.',
