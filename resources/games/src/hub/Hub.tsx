@@ -93,7 +93,10 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
         title: string,
         ownApi = false,
     ) => {
-        if (!window.confirm(format(t.reset_confirm, { game: title }))) {
+        const confirm =
+            slug === 'sandbox' ? t.reset_confirm_sandbox : t.reset_confirm;
+
+        if (!window.confirm(format(confirm, { game: title }))) {
             return;
         }
 

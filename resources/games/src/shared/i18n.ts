@@ -22,10 +22,12 @@ const ru = {
     empty: 'В этом жанре пока нет игр.',
     progress_city: ':year год · :epoch · :population жителей',
     progress_epochs: ':year год · :epoch · :population жителей',
-    progress_sandbox: ':score очков · побед: :kills · артефактов: :artifacts/5',
+    progress_sandbox: ':score очков · побед: :kills · артефактов: :artifacts',
     reset: 'Сбросить прогресс',
     reset_confirm:
         'Сбросить прогресс в игре «:game»? Город, достижения и открытия будут удалены навсегда.',
+    reset_confirm_sandbox:
+        'Сбросить прогресс в игре «:game»? Герой, вещи, постройки, изученные рецепты и статистика будут удалены навсегда.',
     reset_done: 'Прогресс сброшен',
     rating_none: 'Ещё нет оценок',
     ratings_count: {
@@ -128,10 +130,12 @@ const en: Dictionary = {
     empty: 'No games in this genre yet.',
     progress_city: 'Year :year · :epoch · :population residents',
     progress_epochs: 'Year :year · :epoch · :population residents',
-    progress_sandbox: ':score points · :kills beaten · artifacts: :artifacts/5',
+    progress_sandbox: ':score points · :kills beaten · artifacts: :artifacts',
     reset: 'Reset progress',
     reset_confirm:
         'Reset your progress in “:game”? The city, achievements and discoveries will be deleted for good.',
+    reset_confirm_sandbox:
+        'Reset your progress in “:game”? The hero, things, buildings, learnt recipes and stats will be deleted for good.',
     reset_done: 'Progress reset',
     rating_none: 'No ratings yet',
     ratings_count: { one: ':n rating', other: ':n ratings' },
@@ -226,10 +230,12 @@ const uz: Dictionary = {
     progress_city: ':year-yil · :epoch · :population aholi',
     progress_epochs: ':year-yil · :epoch · :population aholi',
     progress_sandbox:
-        ':score ochko · g‘alabalar: :kills · artefaktlar: :artifacts/5',
+        ':score ochko · g‘alabalar: :kills · artefaktlar: :artifacts',
     reset: 'Jarayonni tiklash',
     reset_confirm:
         '«:game» o‘yinidagi jarayon o‘chirilsinmi? Shahar, yutuqlar va kashfiyotlar butunlay o‘chiriladi.',
+    reset_confirm_sandbox:
+        '«:game» o‘yinidagi jarayon o‘chirilsinmi? Qahramon, buyumlar, qurilmalar, o‘rganilgan retseptlar va statistika butunlay o‘chiriladi.',
     reset_done: 'Jarayon tiklandi',
     rating_none: 'Hali baholar yo‘q',
     ratings_count: { other: ':n ta baho' },
