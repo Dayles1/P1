@@ -1,0 +1,1069 @@
+<title>Мастерская зданий Epochs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a drafting table — the 3D model on a blueprint-grid stage, the part sheet beside it. */
+:root {
+  --bg: #eef0ea;
+  --panel: #f8f9f5;
+  --sunk: #e3e6dd;
+  --line: #c9cec0;
+  --fg: #1f2620;
+  --muted: #5f685f;
+  --accent: #2f6b4f;
+  --accent-fg: #f4f8f3;
+  --sel: #d9822b;
+  --danger: #a53a2a;
+  --stage-top: #dbe7ec;
+  --stage-bot: #eef0e6;
+  --grid: rgba(47, 107, 79, .09);
+  --f-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --f-body: "Golos Text", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Menlo, monospace;
+  --r: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #151a17; --panel: #1c221e; --sunk: #232a25; --line: #344037; --fg: #e4ebe3; --muted: #99a598;
+    --accent: #6cc59a; --accent-fg: #0f1a14; --sel: #f0a24f; --danger: #ef7d6a;
+    --stage-top: #1d2a33; --stage-bot: #18201b; --grid: rgba(108, 197, 154, .08); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #151a17; --panel: #1c221e; --sunk: #232a25; --line: #344037; --fg: #e4ebe3; --muted: #99a598;
+  --accent: #6cc59a; --accent-fg: #0f1a14; --sel: #f0a24f; --danger: #ef7d6a;
+  --stage-top: #1d2a33; --stage-bot: #18201b; --grid: rgba(108, 197, 154, .08); color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 14px; line-height: 1.45; }
+.app { display: flex; flex-direction: column; min-height: 100%; padding-inline: 16px; padding-block: 12px 16px; gap: 12px; }
+header { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+h1 { font-family: var(--f-display); font-weight: 700; font-size: 18px; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+h1 small { display: block; font-family: var(--f-body); font-weight: 500; font-size: 12px; color: var(--muted); letter-spacing: 0; }
+.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-left: auto; }
+label.inline { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
+select, input, textarea, button { font: inherit; color: var(--fg); }
+select, input[type=text], input[type=number] {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 5px 8px; min-width: 0;
+}
+input[type=number] { width: 100%; font-family: var(--f-mono); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+input[type=color] { width: 30px; height: 30px; padding: 2px; border: 1px solid var(--line); border-radius: var(--r); background: var(--panel); flex: none; }
+button { cursor: pointer; border: 1px solid var(--line); background: var(--panel); border-radius: var(--r); padding: 6px 11px; font-weight: 500; }
+button:hover { border-color: var(--accent); }
+button.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+button.ghost { background: transparent; }
+button.danger { color: var(--danger); }
+button:disabled { opacity: .45; cursor: default; }
+:focus-visible { outline: 2px solid var(--sel); outline-offset: 2px; }
+
+.main { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(320px, 1fr); gap: 14px; flex: 1; min-height: 0; }
+.stage {
+  position: relative; border-radius: 10px; overflow: hidden; min-height: 420px; border: 1px solid var(--line);
+  background:
+    linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(var(--stage-top), var(--stage-bot));
+}
+.stage canvas { display: block; width: 100%; height: 100%; position: absolute; inset: 0; touch-action: none; cursor: grab; }
+.stage canvas:active { cursor: grabbing; }
+.stamp {
+  position: absolute; left: 12px; bottom: 12px; pointer-events: none; font-family: var(--f-mono); font-size: 11px;
+  color: var(--muted); background: color-mix(in srgb, var(--panel) 80%, transparent); padding: 6px 9px; border-radius: var(--r);
+  border: 1px solid var(--line); line-height: 1.5; font-variant-numeric: tabular-nums;
+}
+.stamp b { font-family: var(--f-display); font-weight: 500; color: var(--fg); font-size: 12px; }
+.stage-tools { position: absolute; top: 10px; right: 10px; display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.stage-tools button { background: color-mix(in srgb, var(--panel) 88%, transparent); font-size: 12.5px; }
+.stage-tools button[aria-pressed="true"] { border-color: var(--sel); color: var(--sel); }
+.hint { position: absolute; top: 12px; left: 12px; font-size: 11.5px; color: var(--muted); pointer-events: none; }
+
+.side { display: flex; flex-direction: column; gap: 10px; min-width: 0; min-height: 0; }
+.tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--line); }
+.tabs button { border: none; border-bottom: 2px solid transparent; border-radius: 0; background: none; padding: 8px 12px; color: var(--muted); }
+.tabs button[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--accent); }
+.pane { display: flex; flex-direction: column; gap: 10px; min-height: 0; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.row .grow { flex: 1; min-width: 120px; }
+
+.parts { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: var(--r); background: var(--panel); max-height: 260px; overflow: auto; }
+.parts li { display: grid; grid-template-columns: 14px 78px minmax(0, 1fr); gap: 8px; align-items: center; padding: 6px 10px; border-bottom: 1px solid var(--line); cursor: pointer; font-size: 12.5px; }
+.parts li:last-child { border-bottom: none; }
+.parts li:hover { background: var(--sunk); }
+.parts li[aria-selected="true"] { background: var(--sunk); box-shadow: inset 3px 0 0 var(--sel); }
+.sw { width: 14px; height: 14px; border-radius: 3px; border: 1px solid rgba(0,0,0,.2); }
+.kind { font-family: var(--f-mono); font-size: 11.5px; color: var(--accent); }
+.sum { font-family: var(--f-mono); font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.editor { border: 1px solid var(--line); border-radius: var(--r); background: var(--panel); padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+.editor-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.editor-head .title { font-family: var(--f-display); font-size: 13px; font-weight: 500; margin-right: auto; }
+.fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; }
+.field { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.field.wide { grid-column: 1 / -1; }
+.field > span { font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.colorpick { display: flex; gap: 6px; align-items: center; }
+.colorpick select { flex: 1; min-width: 0; }
+.chips { display: flex; gap: 4px; flex-wrap: wrap; }
+.chips button { padding: 3px 9px; font-family: var(--f-mono); font-size: 12px; }
+.chips button[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 13px; padding: 14px; text-align: center; }
+
+textarea { width: 100%; min-height: 260px; font-family: var(--f-mono); font-size: 11.5px; line-height: 1.5; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 10px; resize: vertical; }
+.note { font-size: 12.5px; color: var(--muted); max-width: 65ch; }
+.note code { font-family: var(--f-mono); font-size: 11.5px; color: var(--fg); }
+.status { font-size: 12.5px; color: var(--accent); min-height: 1.2em; }
+.status.err { color: var(--danger); }
+
+.designs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.designs li { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border: 1px solid var(--line); border-radius: var(--r); background: var(--panel); flex-wrap: wrap; }
+.designs .meta { flex: 1; min-width: 140px; }
+.designs .meta b { display: block; font-weight: 600; }
+.designs .meta span { font-size: 11.5px; color: var(--muted); font-family: var(--f-mono); }
+.examples { display: flex; gap: 6px; flex-wrap: wrap; }
+.examples button { font-size: 12.5px; }
+.section-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+
+.snap { position: fixed; inset: 0; background: rgba(10, 14, 12, .6); display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 20; }
+.snap-card { background: var(--panel); border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 10px; max-width: 520px; width: 100%; border: 1px solid var(--line); }
+.snap-card img { background: repeating-conic-gradient(var(--sunk) 0 25%, var(--panel) 0 50%) 0 0 / 16px 16px; border-radius: var(--r); }
+
+@media (max-width: 860px) {
+  .main { grid-template-columns: minmax(0, 1fr); }
+  .stage { min-height: 340px; height: 52vh; }
+  .bar { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="app">
+  <header>
+    <h1>Мастерская зданий Epochs<small>Модель уровня здания из деталей — тот же формат, что в content/epochs/buildings</small></h1>
+    <div class="bar">
+      <label class="inline" for="epoch">Эпоха <select id="epoch"></select></label>
+      <label class="inline" for="sizeW">Клетки
+        <select id="sizeW"><option>1</option><option>2</option><option>3</option><option>4</option></select>×<select id="sizeH" aria-label="Глубина в клетках"><option>1</option><option>2</option><option>3</option><option>4</option></select>
+      </label>
+      <button id="randomBtn" class="primary" type="button">Случайное здание</button>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="stage" id="stage">
+      <canvas id="view" aria-label="3D-модель здания"></canvas>
+      <div class="hint">Тяните — вращать · колесо — масштаб</div>
+      <div class="stage-tools">
+        <button id="nightBtn" type="button" aria-pressed="false">Ночь</button>
+        <button id="spinBtn" type="button" aria-pressed="true">Поворот</button>
+        <button id="snapBtn" type="button">PNG</button>
+      </div>
+      <div class="stamp" id="stamp"></div>
+    </div>
+
+    <div class="side">
+      <div class="tabs" role="tablist">
+        <button role="tab" id="tab-parts" aria-selected="true" type="button">Детали</button>
+        <button role="tab" id="tab-saved" aria-selected="false" type="button">Мои здания</button>
+        <button role="tab" id="tab-json" aria-selected="false" type="button">JSON</button>
+      </div>
+
+      <section class="pane" id="pane-parts">
+        <div class="row">
+          <input type="text" id="designName" class="grow" placeholder="Название, например «Купеческий дом»" aria-label="Название здания">
+          <input type="text" id="buildingId" style="width:120px" placeholder="id: house" aria-label="id здания">
+        </div>
+        <div>
+          <div class="section-label">Примеры из игры</div>
+          <div class="examples" id="examples"></div>
+        </div>
+        <div class="row">
+          <select id="addKind" class="grow" aria-label="Тип новой детали"></select>
+          <button id="addBtn" type="button">Добавить деталь</button>
+        </div>
+        <ul class="parts" id="parts" role="listbox" aria-label="Детали модели"></ul>
+        <div class="editor" id="editor"></div>
+        <div class="row">
+          <button id="saveBtn" class="primary" type="button">Сохранить</button>
+          <button id="saveNewBtn" type="button">Сохранить как новое</button>
+          <button id="clearBtn" class="ghost danger" type="button">Очистить</button>
+        </div>
+        <div class="status" id="status" role="status"></div>
+      </section>
+
+      <section class="pane" id="pane-saved" hidden>
+        <p class="note">Здания хранятся в базе этой страницы: они не пропадут при закрытии вкладки и доступны с любого устройства.</p>
+        <ul class="designs" id="designs"></ul>
+      </section>
+
+      <section class="pane" id="pane-json" hidden>
+        <p class="note">Вставьте этот блок в уровень здания в <code>resources/games/content/epochs/buildings/&lt;id&gt;.json</code> вместо его <code>"model"</code>. Сюда же можно вставить готовый <code>model</code> или целый файл здания и нажать «Загрузить».</p>
+        <textarea id="json" spellcheck="false" aria-label="JSON модели"></textarea>
+        <div class="row">
+          <button id="copyBtn" class="primary" type="button">Копировать</button>
+          <button id="dlBtn" type="button" hidden>Скачать .json</button>
+          <button id="importBtn" type="button">Загрузить из поля</button>
+        </div>
+        <div class="row" id="levelPick"></div>
+        <div class="status" id="jsonStatus" role="status"></div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="snap" id="snap" hidden>
+  <div class="snap-card">
+    <img id="snapImg" alt="Снимок здания с прозрачным фоном">
+    <p class="note" id="snapNote">Прозрачный фон. Чтобы сохранить, нажмите на картинку правой кнопкой или удерживайте палец.</p>
+    <div class="row">
+      <button id="snapSave" class="primary" type="button" hidden>Скачать PNG</button>
+      <button id="snapClose" type="button">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+<script>
+(() => {
+'use strict';
+const PALETTES = {"e0":{"name":"Античность","year":0,"wall":"#e8dcc0","walls":["#e8dcc0","#efe6d0","#dccaa4","#e3d2b0"],"roof":"#b5532f","trim":"#f4efe4","window":"#3b2a1e","glass":"#a9c9d6","metal":"#b08a4a","accent":"#c99a3a","plaza":"#d9c9a5","crop":"#d9b84a","flag":"#8e2a2a","lit":"#f7c46a"},"e1000":{"name":"Средневековье","year":1000,"wall":"#8b6a48","walls":["#8b6a48","#9a7652","#7e5e3f","#a3876a"],"roof":"#b8964e","trim":"#4e3420","window":"#2f2418","glass":"#8fae9f","metal":"#6e7177","accent":"#c08a30","plaza":"#a39274","crop":"#d4b64a","flag":"#a8322a","lit":"#f2b85a"},"e1500":{"name":"Возрождение","year":1500,"wall":"#e9dcc4","walls":["#e9dcc4","#e6cfa8","#d9b99a","#efe2c8"],"roof":"#a3452e","trim":"#6a4528","window":"#2e3d4c","glass":"#a8cfe0","metal":"#7d7a74","accent":"#c9a24a","plaza":"#cfc5b2","crop":"#d2bb54","flag":"#24508f","lit":"#f6d27a"},"e1800":{"name":"Индустриальная эра","year":1800,"wall":"#a8573f","walls":["#a8573f","#984d37","#b9694c","#c9a27e"],"roof":"#4f565f","trim":"#e7dcc8","window":"#24323f","glass":"#9fb8c4","metal":"#4a4d52","accent":"#b9783a","plaza":"#9e978a","crop":"#c9b25a","flag":"#7d1f1f","lit":"#f3c86b"},"e1900":{"name":"Эпоха модерна","year":1900,"wall":"#e3d5b8","walls":["#e3d5b8","#d8c3a0","#cfd3c7","#e8c9b0"],"roof":"#3f6b5b","trim":"#f5efe2","window":"#2b3a48","glass":"#9cc6d8","metal":"#3c4146","accent":"#3f8a6e","plaza":"#b9b4a8","crop":"#c6c25a","flag":"#8a2432","lit":"#ffd98a"},"e2000":{"name":"Современность","year":2000,"wall":"#d6d4ce","walls":["#d6d4ce","#c9cfd6","#e0d7c8","#b9bec6"],"roof":"#6f747b","trim":"#9a9893","window":"#34505f","glass":"#7fb3d5","metal":"#a3acb5","accent":"#2f6fe0","plaza":"#a7a8aa","crop":"#bfc25a","flag":"#1f5fbf","lit":"#ffe39a"},"e2100":{"name":"Ближнее будущее","year":2100,"wall":"#eef3f2","walls":["#eef3f2","#dde9e6","#e6ece9","#cfe0dc"],"roof":"#5d8a62","trim":"#2fb5a3","window":"#1d3f4c","glass":"#7fd0d6","metal":"#c5d0d3","accent":"#2fb5a3","plaza":"#c6d3d1","crop":"#8ad06a","flag":"#2fb5a3","lit":"#b5fff0"},"e2300":{"name":"Космическая эра","year":2300,"wall":"#c9ced8","walls":["#c9ced8","#b7bfcc","#d8dde6","#aeb6c4"],"roof":"#2b3550","trim":"#f0a43a","window":"#0f1a2e","glass":"#6aa8d8","metal":"#d7dde5","accent":"#4f8cff","plaza":"#9aa3b4","crop":"#7cc46a","flag":"#f0a43a","lit":"#9fd2ff"},"e2500":{"name":"Эра ИИ","year":2500,"wall":"#24213a","walls":["#24213a","#2d2947","#1f1d33","#35304f"],"roof":"#151326","trim":"#a07cff","window":"#120f22","glass":"#8b7cf0","metal":"#8e8aa8","accent":"#c06cff","plaza":"#3a3654","crop":"#9ad0a0","flag":"#a07cff","lit":"#c9a6ff"},"e3000":{"name":"Нано-эра","year":3000,"wall":"#f2f0f7","walls":["#f2f0f7","#e6f0f5","#f5e9f2","#e9f5ec"],"roof":"#d7d2ea","trim":"#5ef0d8","window":"#1a2440","glass":"#b8e8ff","metal":"#e8e6f2","accent":"#7ae0ff","plaza":"#ece8f6","crop":"#b6f08a","flag":"#ff7ad9","lit":"#fff2b0"}}
+;
+const EXAMPLES = [{"name":"Изба","building":"house","epoch":"e1000","w":1,"h":1,"parts":[{"kind":"box","x":0.18,"y":0.22,"z":0,"w":0.64,"d":0.52,"h":0.34,"color":"walls"},{"kind":"beams","faces":["n","e","s","w"],"x":0.18,"y":0.22,"z":0,"w":0.64,"d":0.52,"h":0.34,"count":7,"color":"trim"},{"kind":"windows","faces":["s","e"],"x":0.18,"y":0.22,"z":0.051,"w":0.64,"d":0.52,"h":0.255,"rows":1,"cols":2,"color":"window"},{"kind":"door","face":"s","x":0.18,"y":0.22,"w":0.64,"d":0.52,"width":0.14,"height":0.187,"color":"trim"},{"kind":"roof","shape":"gable","x":0.18,"y":0.22,"z":0.34,"w":0.64,"d":0.52,"h":0.3,"color":"roof","axis":"x","overhang":0.06},{"kind":"cylinder","x":0.65,"y":0.4,"z":0.5,"r":0.04,"h":0.2,"color":"#7b6f66","segments":8},{"kind":"emitter","x":0.65,"y":0.4,"z":0.7,"type":"smoke"},{"kind":"box","x":0.1,"y":0.84,"z":0,"w":0.8,"d":0.03,"h":0.1,"color":"trim"},{"kind":"box","x":0.06,"y":0.1,"z":0,"w":0.14,"d":0.12,"h":0.1,"color":"#8d6a43"}]},{"name":"Фахверковый дом","building":"house","epoch":"e1500","w":1,"h":1,"parts":[{"kind":"box","x":0.18,"y":0.18,"z":0,"w":0.64,"d":0.64,"h":0.24,"color":"walls"},{"kind":"beams","faces":["n","e","s","w"],"x":0.18,"y":0.18,"z":0,"w":0.64,"d":0.64,"h":0.24,"count":5,"color":"trim"},{"kind":"windows","faces":["s","e"],"x":0.18,"y":0.18,"z":0.06,"w":0.64,"d":0.64,"h":0.14,"rows":1,"cols":2,"color":"window"},{"kind":"door","face":"s","x":0.18,"y":0.18,"w":0.64,"d":0.64,"width":0.14,"height":0.17,"color":"trim"},{"kind":"box","x":0.14,"y":0.14,"z":0.24,"w":0.72,"d":0.72,"h":0.24,"color":"walls"},{"kind":"beams","faces":["n","e","s","w"],"x":0.14,"y":0.14,"z":0.24,"w":0.72,"d":0.72,"h":0.24,"count":6,"color":"trim"},{"kind":"windows","faces":["s","e","w"],"x":0.14,"y":0.14,"z":0.3,"w":0.72,"d":0.72,"h":0.14,"rows":1,"cols":3,"color":"window"},{"kind":"roof","shape":"gable","x":0.14,"y":0.14,"z":0.48,"w":0.72,"d":0.72,"h":0.42,"color":"roof","axis":"y","overhang":0.04},{"kind":"cylinder","x":0.7,"y":0.3,"z":0.68,"r":0.05,"h":0.18,"color":"#6e625a","segments":8},{"kind":"emitter","x":0.7,"y":0.3,"z":0.86,"type":"smoke"}]},{"name":"Доходный дом","building":"house","epoch":"e1800","w":1,"h":1,"parts":[{"kind":"floors","x":0.1,"y":0.1,"z":0,"w":0.8,"d":0.8,"floors":4,"floorHeight":0.21,"color":"walls","window":"window","band":"trim"},{"kind":"door","face":"s","x":0.1,"y":0.1,"w":0.8,"d":0.8,"width":0.16,"height":0.18,"color":"trim"},{"kind":"roof","shape":"mansard","x":0.1,"y":0.1,"z":0.84,"w":0.8,"d":0.8,"h":0.26,"color":"roof","overhang":0.02},{"kind":"windows","faces":["s","e"],"x":0.1,"y":0.1,"z":0.88,"w":0.8,"d":0.8,"h":0.12,"rows":1,"cols":3,"color":"window"},{"kind":"cylinder","x":0.2,"y":0.2,"z":1.05,"r":0.045,"h":0.18,"color":"#7a3e2e","segments":8},{"kind":"emitter","x":0.2,"y":0.2,"z":1.23,"type":"smoke"},{"kind":"cylinder","x":0.8,"y":0.8,"z":1.05,"r":0.045,"h":0.18,"color":"#7a3e2e","segments":8},{"kind":"emitter","x":0.8,"y":0.8,"z":1.23,"type":"smoke"},{"kind":"pole","x":0.05,"y":0.95,"z":0,"h":0.32,"color":"metal","blink":null},{"kind":"light","x":0.05,"y":0.95,"z":0.32,"radius":1.4,"color":"#f3c86b"}]},{"name":"Небоскрёб","building":"house","epoch":"e2000","w":1,"h":1,"parts":[{"kind":"box","x":0.06,"y":0.06,"z":0,"w":0.88,"d":0.88,"h":0.3,"color":"metal","material":"metal"},{"kind":"floors","x":0.1,"y":0.1,"z":0.3,"w":0.8,"d":0.8,"floors":10,"floorHeight":0.2,"color":"glass","window":"window","band":"metal","material":"glass"},{"kind":"floors","x":0.18,"y":0.18,"z":2.3,"w":0.64,"d":0.64,"floors":6,"floorHeight":0.2,"color":"glass","window":"window","band":"metal","material":"glass"},{"kind":"floors","x":0.28,"y":0.28,"z":3.5,"w":0.44,"d":0.44,"floors":3,"floorHeight":0.2,"color":"glass","window":"window","band":"metal","material":"glass"},{"kind":"roof","shape":"flat","x":0.28,"y":0.28,"z":4.1,"w":0.44,"d":0.44,"h":0.05,"color":"metal"},{"kind":"pole","x":0.5,"y":0.5,"z":4.15,"h":0.6,"color":"metal","blink":"#ff3b3b"},{"kind":"door","face":"s","x":0.06,"y":0.06,"w":0.88,"d":0.88,"width":0.24,"height":0.24,"color":"glass"},{"kind":"light","x":0.5,"y":0.95,"z":0.3,"radius":1.2,"color":"#ffe39a"}]},{"name":"Космо-башня","building":"house","epoch":"e2300","w":1,"h":1,"parts":[{"kind":"cylinder","x":0.5,"y":0.5,"z":0,"r":0.42,"h":0.3,"color":"metal","segments":16,"material":"metal"},{"kind":"cylinder","x":0.5,"y":0.5,"z":0.3,"r":0.3,"h":3.4,"color":"walls","taper":0.8,"segments":16},{"kind":"cylinder","x":0.5,"y":0.5,"z":0.3,"r":0.32,"h":3.2,"color":"glass","taper":0.75,"segments":16,"material":"glass"},{"kind":"torus","x":0.5,"y":0.5,"z":1.1,"r":0.34,"tube":0.06,"color":"trim","spin":0.05},{"kind":"torus","x":0.5,"y":0.5,"z":2.1,"r":0.3,"tube":0.06,"color":"trim","spin":-0.05},{"kind":"torus","x":0.5,"y":0.5,"z":3,"r":0.26,"tube":0.05,"color":"accent","spin":0.08,"material":"glow"},{"kind":"sphere","x":0.5,"y":0.5,"z":3.7,"r":0.18,"color":"glass","material":"glass"},{"kind":"pole","x":0.5,"y":0.5,"z":3.85,"h":0.5,"color":"metal","blink":"#f0a43a"}]},{"name":"Ветряная мельница","building":"windmill","epoch":"e1500","w":1,"h":1,"parts":[{"kind":"cylinder","x":0.5,"y":0.5,"z":0,"r":0.3,"h":0.75,"color":"walls","taper":0.7,"segments":8},{"kind":"roof","shape":"cone","x":0.27,"y":0.27,"z":0.75,"w":0.46,"d":0.46,"h":0.3,"color":"roof"},{"kind":"blades","x":0.5,"y":0.25,"z":0.75,"r":0.45,"speed":0.25,"color":"trim","axis":"y"},{"kind":"door","face":"s","x":0.2,"y":0.2,"w":0.6,"d":0.6,"width":0.14,"height":0.18,"color":"trim"},{"kind":"box","x":0.75,"y":0.75,"z":0,"w":0.18,"d":0.14,"h":0.1,"color":"#c9b25a"}]}]
+;
+
+const COLOR_KEYS = ['walls', 'wall', 'roof', 'trim', 'window', 'glass', 'metal', 'accent', 'plaza', 'crop', 'flag', 'lit'];
+const KEY_NAMES = { walls: 'стены (вариант)', wall: 'стена', roof: 'крыша', trim: 'отделка', window: 'окно', glass: 'стекло', metal: 'металл', accent: 'акцент', plaza: 'площадка', crop: 'посевы', flag: 'флаг', lit: 'свет окон' };
+const ROOFS = ['gable', 'hip', 'pyramid', 'flat', 'dome', 'cone', 'shed', 'sawtooth', 'mansard'];
+const MATS = ['', 'matte', 'glass', 'metal', 'glow'];
+const FACES = ['n', 'e', 's', 'w'];
+
+/* Field schema per part kind: [key, type, default]. Types mirror ModelPart in engine/content/types.ts. */
+const SCHEMA = {
+  box: { label: 'Короб', f: [['x','n',.2],['y','n',.2],['z','n',0],['w','n',.6],['d','n',.6],['h','n',.4],['color','c','walls'],['material','m','']] },
+  roof: { label: 'Крыша', f: [['shape','roof','gable'],['x','n',.2],['y','n',.2],['z','n',.4],['w','n',.6],['d','n',.6],['h','n',.3],['axis','axis','x'],['overhang','n',.04],['color','c','roof'],['material','m','']] },
+  floors: { label: 'Этажи', f: [['x','n',.1],['y','n',.1],['z','n',0],['w','n',.8],['d','n',.8],['floors','i',4],['floorHeight','n',.21],['color','c','walls'],['window','c','window'],['band','c?','trim'],['material','m','']] },
+  windows: { label: 'Окна', f: [['faces','faces',['s','e']],['x','n',.2],['y','n',.2],['z','n',.05],['w','n',.6],['d','n',.6],['h','n',.3],['rows','i',1],['cols','i',2],['color','c','window']] },
+  door: { label: 'Дверь', f: [['face','face','s'],['x','n',.2],['y','n',.2],['w','n',.6],['d','n',.6],['width','n',.14],['height','n',.2],['color','c','trim']] },
+  beams: { label: 'Фахверк', f: [['faces','faces',['n','e','s','w']],['x','n',.2],['y','n',.2],['z','n',0],['w','n',.6],['d','n',.6],['h','n',.3],['count','i',5],['color','c','trim']] },
+  ground: { label: 'Площадка', f: [['x','n',.05],['y','n',.05],['w','n',.9],['d','n',.9],['color','c','plaza']] },
+  field: { label: 'Поле', f: [['x','n',.05],['y','n',.05],['w','n',.9],['d','n',.9],['rows','i',4],['color','c','crop']] },
+  cylinder: { label: 'Цилиндр', f: [['x','n',.5],['y','n',.5],['z','n',0],['r','n',.2],['h','n',.5],['taper','n',1],['segments','i',14],['color','c','walls'],['material','m','']] },
+  sphere: { label: 'Сфера', f: [['x','n',.5],['y','n',.5],['z','n',.5],['r','n',.15],['half','b',true],['color','c','roof'],['material','m','']] },
+  torus: { label: 'Кольцо', f: [['x','n',.5],['y','n',.5],['z','n',.5],['r','n',.3],['tube','n',.04],['spin','n',.05],['color','c','accent'],['material','m','']] },
+  flag: { label: 'Флаг', f: [['x','n',.85],['y','n',.85],['z','n',0],['h','n',.5],['color','c','flag']] },
+  pole: { label: 'Столб', f: [['x','n',.9],['y','n',.9],['z','n',0],['h','n',.3],['color','c','metal'],['blink','c?',null]] },
+  emitter: { label: 'Дым/пар', f: [['x','n',.7],['y','n',.3],['z','n',.8],['type','emit','smoke']] },
+  light: { label: 'Фонарь', f: [['x','n',.9],['y','n',.9],['z','n',.3],['radius','n',1],['color','c','#f3c86b']] },
+  tree: { label: 'Дерево', f: [['x','n',.85],['y','n',.85],['scale','n',.4],['conifer','b',false]] },
+  blades: { label: 'Лопасти', f: [['x','n',.5],['y','n',.25],['z','n',.75],['r','n',.4],['speed','n',.25],['color','c','trim'],['axis','axis3','y']] },
+};
+const EMITS = ['smoke', 'steam', 'dust', 'water', 'sparks'];
+
+/* ---------- state ---------- */
+const state = {
+  epoch: 'e1500', w: 1, h: 1, parts: [], selected: -1, night: false, spin: true,
+  name: '', building: '', docId: null,
+};
+const $ = (id) => document.getElementById(id);
+const r2 = (v) => Math.round(v * 1000) / 1000;
+
+function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+/* ---------- palette ---------- */
+function pal() { return PALETTES[state.epoch] || PALETTES.e1500; }
+function paint(c) {
+  if (!c) { return '#ff00ff'; }
+  if (c[0] === '#') { return c; }
+  const p = pal();
+  if (state.night && c === 'window') { return p.lit; }
+  if (c === 'walls') { return p.walls[wallVariant % p.walls.length]; }
+  return typeof p[c] === 'string' ? p[c] : '#ff00ff';
+}
+let wallVariant = 0;
+
+/* ---------- three.js scene ---------- */
+const canvas = $('view');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.outputEncoding = THREE.sRGBEncoding;
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(30, 1, 0.05, 200);
+const hemi = new THREE.HemisphereLight(0xffffff, 0x8a8f78, 0.75);
+const sun = new THREE.DirectionalLight(0xfff4e0, 0.95);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+sun.shadow.bias = -0.0008;
+scene.add(hemi, sun, sun.target);
+const world = new THREE.Group();
+scene.add(world);
+const model = new THREE.Group();
+world.add(model);
+let tileGroup = new THREE.Group();
+world.add(tileGroup);
+let selBox = null;
+const animated = [];
+const puffs = [];
+
+function mat(color, kind) {
+  const c = new THREE.Color(color);
+  if (kind === 'glass') { return new THREE.MeshStandardMaterial({ color: c, roughness: .08, metalness: .3, transparent: true, opacity: .62 }); }
+  if (kind === 'metal') { return new THREE.MeshStandardMaterial({ color: c, roughness: .32, metalness: .75 }); }
+  if (kind === 'glow') { return new THREE.MeshBasicMaterial({ color: c }); }
+  return new THREE.MeshStandardMaterial({ color: c, roughness: .88, metalness: 0, side: THREE.DoubleSide });
+}
+function mesh(geo, color, kind, x, y, z) {
+  const m = new THREE.Mesh(geo, mat(color, kind));
+  m.position.set(x, y, z);
+  m.castShadow = kind !== 'glow';
+  m.receiveShadow = true;
+  return m;
+}
+/* Box from game coords: x0,y0 (plan), z0 (height) to x1,y1,z1. Three's y is up, z is game y. */
+function boxXYZ(x0, y0, z0, x1, y1, z1, color, kind) {
+  const w = Math.max(.002, x1 - x0), d = Math.max(.002, y1 - y0), h = Math.max(.002, z1 - z0);
+  return mesh(new THREE.BoxGeometry(w, h, d), color, kind, x0 + w / 2, z0 + h / 2, y0 + d / 2);
+}
+function polyGeo(polys) {
+  const pos = [];
+  for (const p of polys) {
+    for (let i = 1; i < p.length - 1; i++) { pos.push(...p[0], ...p[i], ...p[i + 1]); }
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  g.computeVertexNormals();
+  return g;
+}
+/* Roof geometry, base centred at origin at height 0, spanning w (x) × d (z). */
+function roofGeo(shape, w, d, h, axis) {
+  const a = w / 2, b = d / 2;
+  const B = [[-a, 0, -b], [a, 0, -b], [a, 0, b], [-a, 0, b]];
+  switch (shape) {
+    case 'flat': return new THREE.BoxGeometry(w, h, d).translate(0, h / 2, 0);
+    case 'pyramid': { const t = [0, h, 0]; return polyGeo([[B[0], B[1], t], [B[1], B[2], t], [B[2], B[3], t], [B[3], B[0], t], B]); }
+    case 'cone': return new THREE.ConeGeometry(a, h, 20).scale(1, 1, d / w).translate(0, h / 2, 0);
+    case 'dome': return new THREE.SphereGeometry(1, 20, 8, 0, Math.PI * 2, 0, Math.PI / 2).scale(a, h, b);
+    case 'hip': {
+      if (w >= d) { const r = (w - d) / 2, p = [-r, h, 0], q = [r, h, 0]; return polyGeo([[B[0], B[1], q, p], [B[2], B[3], p, q], [B[1], B[2], q], [B[3], B[0], p], B]); }
+      const r = (d - w) / 2, p = [0, h, -r], q = [0, h, r];
+      return polyGeo([[B[1], B[2], q, p], [B[3], B[0], p, q], [B[0], B[1], p], [B[2], B[3], q], B]);
+    }
+    case 'mansard': {
+      const ia = a * .62, ib = b * .62, T = [[-ia, h, -ib], [ia, h, -ib], [ia, h, ib], [-ia, h, ib]];
+      return polyGeo([[B[0], B[1], T[1], T[0]], [B[1], B[2], T[2], T[1]], [B[2], B[3], T[3], T[2]], [B[3], B[0], T[0], T[3]], T, B]);
+    }
+    case 'shed': {
+      if (axis === 'y') { const p = [-a, h, -b], q = [-a, h, b]; return polyGeo([[B[0], B[3], q, p], [p, q, B[2], B[1]], [B[0], p, B[1]], [B[3], B[2], q], B]); }
+      const p = [-a, h, -b], q = [a, h, -b];
+      return polyGeo([[B[0], B[1], q, p], [p, q, B[2], B[3]], [B[0], p, B[3]], [B[1], B[2], q], B]);
+    }
+    case 'sawtooth': {
+      const n = 3, polys = [];
+      for (let i = 0; i < n; i++) {
+        if (axis === 'y') {
+          const x0 = -a + (w / n) * i, x1 = x0 + w / n;
+          polys.push([[x0, 0, -b], [x0, h, -b], [x0, h, b], [x0, 0, b]], [[x0, h, -b], [x1, 0, -b], [x1, 0, b], [x0, h, b]], [[x0, 0, -b], [x0, h, -b], [x1, 0, -b]], [[x0, 0, b], [x0, h, b], [x1, 0, b]]);
+        } else {
+          const z0 = -b + (d / n) * i, z1 = z0 + d / n;
+          polys.push([[-a, 0, z0], [-a, h, z0], [a, h, z0], [a, 0, z0]], [[-a, h, z0], [-a, 0, z1], [a, 0, z1], [a, h, z0]], [[-a, 0, z0], [-a, h, z0], [-a, 0, z1]], [[a, 0, z0], [a, h, z0], [a, 0, z1]]);
+        }
+      }
+      polys.push(B);
+      return polyGeo(polys);
+    }
+    default: { /* gable */
+      if (axis === 'y') { const p = [0, h, -b], q = [0, h, b]; return polyGeo([[B[0], B[3], q, p], [B[1], p, q, B[2]], [B[0], p, B[1]], [B[3], B[2], q], B]); }
+      const p = [-a, h, 0], q = [a, h, 0];
+      return polyGeo([[B[0], B[1], q, p], [B[3], p, q, B[2]], [B[0], p, B[3]], [B[1], B[2], q], B]);
+    }
+  }
+}
+/* A face of a wall box: origin corner, unit direction along the face, outward normal, length. */
+function faceFrame(face, x0, y0, x1, y1) {
+  switch (face) {
+    case 'n': return { o: [x0, y0], u: [1, 0], n: [0, -1], len: x1 - x0 };
+    case 'e': return { o: [x1, y0], u: [0, 1], n: [1, 0], len: y1 - y0 };
+    case 'w': return { o: [x0, y1], u: [0, -1], n: [-1, 0], len: y1 - y0 };
+    default: return { o: [x0, y1], u: [1, 0], n: [0, 1], len: x1 - x0 };
+  }
+}
+function faceRect(g, f, u0, u1, z0, z1, proud, color, kind) {
+  const w = u1 - u0, h = z1 - z0, t = .012;
+  const geo = new THREE.BoxGeometry(f.u[0] ? w : t, h, f.u[1] ? w : t);
+  const cu = (u0 + u1) / 2;
+  const px = f.o[0] + f.u[0] * cu + f.n[0] * (proud - t / 2 + .003);
+  const py = f.o[1] + f.u[1] * cu + f.n[1] * (proud - t / 2 + .003);
+  const m = mesh(geo, color, kind, px, z0 + h / 2, py);
+  m.castShadow = false;
+  g.add(m);
+}
+function shade(hex, k) { const c = new THREE.Color(hex); c.multiplyScalar(k); return '#' + c.getHexString(); }
+
+function buildPart(p, g) {
+  const n = (v, d) => (typeof v === 'number' && isFinite(v) ? v : d);
+  const color = paint(p.color);
+  const k = p.material || 'matte';
+  switch (p.kind) {
+    case 'box': g.add(boxXYZ(n(p.x, 0), n(p.y, 0), n(p.z, 0), n(p.x, 0) + n(p.w, .1), n(p.y, 0) + n(p.d, .1), n(p.z, 0) + n(p.h, .1), color, k)); break;
+    case 'roof': {
+      const o = n(p.overhang, 0), w = n(p.w, .5) + o * 2, d = n(p.d, .5) + o * 2;
+      const m = mesh(roofGeo(p.shape || 'gable', w, d, n(p.h, .2), p.axis || 'x'), color, k, n(p.x, 0) - o + w / 2, n(p.z, 0), n(p.y, 0) - o + d / 2);
+      g.add(m); break;
+    }
+    case 'floors': {
+      const x0 = n(p.x, 0), y0 = n(p.y, 0), w = n(p.w, .5), d = n(p.d, .5), z0 = n(p.z, 0);
+      const fl = Math.max(1, Math.round(n(p.floors, 1))), fh = n(p.floorHeight, .2);
+      g.add(boxXYZ(x0, y0, z0, x0 + w, y0 + d, z0 + fl * fh, color, k));
+      const win = paint(p.window);
+      for (const face of FACES) {
+        const f = faceFrame(face, x0, y0, x0 + w, y0 + d);
+        const cols = Math.max(1, Math.round(f.len / .16)), cw = f.len / cols;
+        for (let i = 0; i < fl; i++) {
+          for (let c = 0; c < cols; c++) {
+            faceRect(g, f, c * cw + cw * .22, c * cw + cw * .78, z0 + i * fh + fh * .25, z0 + i * fh + fh * .8, .004, win, state.night ? 'glow' : 'matte');
+          }
+        }
+      }
+      if (p.band) {
+        const bc = paint(p.band);
+        for (let i = 1; i <= fl; i++) { g.add(boxXYZ(x0 - .01, y0 - .01, z0 + i * fh - .012, x0 + w + .01, y0 + d + .01, z0 + i * fh, bc, 'matte')); }
+      }
+      break;
+    }
+    case 'windows': {
+      const x0 = n(p.x, 0), y0 = n(p.y, 0), rows = Math.max(1, Math.round(n(p.rows, 1))), cols = Math.max(1, Math.round(n(p.cols, 1)));
+      const z0 = n(p.z, 0), h = n(p.h, .1), c = paint(p.color);
+      for (const face of p.faces || []) {
+        const f = faceFrame(face, x0, y0, x0 + n(p.w, .1), y0 + n(p.d, .1));
+        const cw = f.len / cols, ch = h / rows;
+        for (let r = 0; r < rows; r++) {
+          for (let col = 0; col < cols; col++) {
+            faceRect(g, f, col * cw + cw * .2, col * cw + cw * .8, z0 + r * ch + ch * .18, z0 + r * ch + ch * .82, .004, c, state.night && p.color === 'window' ? 'glow' : 'matte');
+          }
+        }
+      }
+      break;
+    }
+    case 'door': {
+      const x0 = n(p.x, 0), y0 = n(p.y, 0);
+      const f = faceFrame(p.face || 's', x0, y0, x0 + n(p.w, .1), y0 + n(p.d, .1));
+      const width = Math.min(f.len, n(p.width, .08)), u = (f.len - width) / 2, h = n(p.height, .12);
+      faceRect(g, f, u - .012, u + width + .012, 0, h + .012, .003, shade(color, .6), 'matte');
+      faceRect(g, f, u, u + width, 0, h, .006, color, 'matte');
+      break;
+    }
+    case 'beams': {
+      const x0 = n(p.x, 0), y0 = n(p.y, 0), z0 = n(p.z, 0), z1 = z0 + n(p.h, .1);
+      const count = Math.max(1, Math.round(n(p.count, 2)));
+      for (const face of p.faces || []) {
+        const f = faceFrame(face, x0, y0, x0 + n(p.w, .1), y0 + n(p.d, .1));
+        for (let i = 0; i <= count; i++) {
+          const u = Math.min(f.len - .011, Math.max(.011, (i * f.len) / count));
+          faceRect(g, f, u - .011, u + .011, z0, z1, .005, color, 'matte');
+        }
+        faceRect(g, f, 0, f.len, z0, z0 + .022, .005, color, 'matte');
+        faceRect(g, f, 0, f.len, z1 - .022, z1, .005, color, 'matte');
+      }
+      break;
+    }
+    case 'ground': g.add(boxXYZ(n(p.x, 0), n(p.y, 0), 0, n(p.x, 0) + n(p.w, 1), n(p.y, 0) + n(p.d, 1), .008, color, 'matte')); break;
+    case 'field': {
+      const x0 = n(p.x, 0), y0 = n(p.y, 0), w = n(p.w, 1), d = n(p.d, 1), rows = Math.max(1, Math.round(n(p.rows, 4)));
+      g.add(boxXYZ(x0, y0, 0, x0 + w, y0 + d, .01, '#7d5d36', 'matte'));
+      for (let i = 0; i < rows; i++) {
+        g.add(boxXYZ(x0 + .03, y0 + (i * d) / rows + d / rows / 5, .01, x0 + w - .03, y0 + ((i + 1) * d) / rows - d / rows / 5, .055, i % 2 ? shade(color, .88) : color, 'matte'));
+      }
+      break;
+    }
+    case 'cylinder': {
+      const r = n(p.r, .1), h = n(p.h, .1);
+      g.add(mesh(new THREE.CylinderGeometry(r * Math.max(0, n(p.taper, 1)), r, h, Math.max(3, Math.round(n(p.segments, 14)))), color, k, n(p.x, 0), n(p.z, 0) + h / 2, n(p.y, 0)));
+      break;
+    }
+    case 'sphere': {
+      const r = n(p.r, .1);
+      const geo = p.half ? new THREE.SphereGeometry(r, 18, 7, 0, Math.PI * 2, 0, Math.PI / 2) : new THREE.SphereGeometry(r, 18, 12);
+      g.add(mesh(geo, color, k, n(p.x, 0), n(p.z, 0), n(p.y, 0)));
+      break;
+    }
+    case 'torus': {
+      const geo = new THREE.TorusGeometry(n(p.r, .2), n(p.tube, .03), 8, 32);
+      const m = mesh(geo, color, k, n(p.x, 0), n(p.z, 0), n(p.y, 0));
+      m.rotation.x = Math.PI / 2 - (p.spin ? .3 : 0);
+      if (p.spin) { const piv = new THREE.Group(); piv.position.copy(m.position); m.position.set(0, 0, 0); piv.add(m); g.add(piv); animated.push({ obj: piv, axis: 'y', speed: p.spin }); }
+      else { g.add(m); }
+      break;
+    }
+    case 'flag': {
+      const h = n(p.h, .4), x = n(p.x, 0), y = n(p.y, 0), z = n(p.z, 0);
+      g.add(mesh(new THREE.CylinderGeometry(.008, .01, h, 6), paint('metal'), 'metal', x, z + h / 2, y));
+      const cloth = mesh(new THREE.PlaneGeometry(h * .38, h * .24, 6, 1).translate(h * .19, 0, 0), color, 'matte', x, z + h - h * .13, y);
+      cloth.material.side = THREE.DoubleSide;
+      g.add(cloth); animated.push({ obj: cloth, wave: true });
+      break;
+    }
+    case 'pole': {
+      const h = n(p.h, .3);
+      g.add(mesh(new THREE.CylinderGeometry(.008, .012, h, 6), color, 'metal', n(p.x, 0), n(p.z, 0) + h / 2, n(p.y, 0)));
+      if (p.blink) { const b = mesh(new THREE.SphereGeometry(.022, 8, 6), paint(p.blink), 'glow', n(p.x, 0), n(p.z, 0) + h + .01, n(p.y, 0)); g.add(b); animated.push({ obj: b, blink: true }); }
+      break;
+    }
+    case 'emitter': puffs.push({ x: n(p.x, 0), y: n(p.y, 0), z: n(p.z, 0), type: p.type || 'smoke' }); break;
+    case 'light': {
+      g.add(mesh(new THREE.SphereGeometry(.026, 8, 6), color, 'glow', n(p.x, 0), n(p.z, 0), n(p.y, 0)));
+      if (state.night) { const l = new THREE.PointLight(color, 1.2, n(p.radius, .4) * 1.4, 2); l.position.set(n(p.x, 0), n(p.z, 0) + .02, n(p.y, 0)); g.add(l); }
+      break;
+    }
+    case 'tree': {
+      const s = n(p.scale, 1), x = n(p.x, 0), y = n(p.y, 0);
+      g.add(mesh(new THREE.CylinderGeometry(.02 * s, .03 * s, .25 * s, 6), '#6b4a2b', 'matte', x, .125 * s, y));
+      if (p.conifer) { g.add(mesh(new THREE.ConeGeometry(.16 * s, .5 * s, 8), '#2f5d3a', 'matte', x, .45 * s, y)); }
+      else { g.add(mesh(new THREE.IcosahedronGeometry(.17 * s, 1), '#4f8a43', 'matte', x, .38 * s, y)); }
+      break;
+    }
+    case 'blades': {
+      const r = n(p.r, .3), piv = new THREE.Group(), inner = new THREE.Group();
+      piv.position.set(n(p.x, 0), n(p.z, 0), n(p.y, 0));
+      if (p.axis === 'x') { piv.rotation.y = Math.PI / 2; } else if (p.axis === 'z') { piv.rotation.x = -Math.PI / 2; }
+      for (let i = 0; i < 4; i++) {
+        const blade = mesh(new THREE.BoxGeometry(r * .18, r, .01), color, 'matte', 0, r / 2, 0);
+        const arm = new THREE.Group(); arm.rotation.z = (i * Math.PI) / 2; arm.add(blade); inner.add(arm);
+      }
+      inner.add(mesh(new THREE.SphereGeometry(.03, 8, 6), color, 'matte', 0, 0, 0));
+      piv.add(inner); g.add(piv); animated.push({ obj: inner, axis: 'z', speed: n(p.speed, .25) });
+      break;
+    }
+  }
+}
+
+function disposeGroup(g) {
+  g.traverse((o) => { if (o.geometry) { o.geometry.dispose(); } if (o.material) { o.material.dispose(); } });
+  while (g.children.length) { g.remove(g.children[0]); }
+}
+let smoke = [];
+function rebuild() {
+  disposeGroup(model);
+  animated.length = 0; puffs.length = 0; smoke = [];
+  state.parts.forEach((p, i) => {
+    const g = new THREE.Group(); g.userData.index = i;
+    try { buildPart(p, g); } catch (e) { /* a half-typed part draws nothing */ }
+    model.add(g);
+  });
+  for (const pf of puffs) {
+    for (let i = 0; i < 5; i++) {
+      const c = pf.type === 'sparks' ? '#ffb347' : pf.type === 'water' ? '#9fd3ef' : pf.type === 'dust' ? '#c8b68e' : pf.type === 'steam' ? '#ffffff' : '#9a9a9a';
+      const m = mesh(new THREE.SphereGeometry(.035, 8, 6), c, 'matte', pf.x, pf.z, pf.y);
+      m.castShadow = false; m.material.transparent = true;
+      model.add(m); smoke.push({ m, pf, t: i / 5 });
+    }
+  }
+  model.position.set(-state.w / 2, 0, -state.h / 2);
+  drawSelection();
+  updateStamp();
+  frameCamera(false);
+}
+function rebuildTiles() {
+  disposeGroup(tileGroup);
+  const pad = 1, W = state.w, H = state.h;
+  const grass = state.night ? '#3c5236' : '#8fb26a';
+  for (let x = -pad; x < W + pad; x++) {
+    for (let y = -pad; y < H + pad; y++) {
+      const inside = x >= 0 && y >= 0 && x < W && y < H;
+      const c = inside ? grass : shade(grass, ((x + y) & 1) ? .9 : .95);
+      const t = boxXYZ(x + .01, y + .01, -.05, x + .99, y + .99, 0, c, 'matte');
+      t.castShadow = false;
+      if (!inside) { t.material.transparent = true; t.material.opacity = .55; }
+      tileGroup.add(t);
+    }
+  }
+  tileGroup.position.set(-W / 2, 0, -H / 2);
+}
+function drawSelection() {
+  if (selBox) { scene.remove(selBox); selBox.geometry.dispose(); selBox = null; }
+  const g = model.children.find((c) => c.userData.index === state.selected);
+  if (!g || !g.children.length) { return; }
+  const b = new THREE.Box3().setFromObject(g);
+  if (b.isEmpty()) { return; }
+  selBox = new THREE.Box3Helper(b.expandByScalar(.01), new THREE.Color(getComputedStyle(document.documentElement).getPropertyValue('--sel').trim() || '#d9822b'));
+  scene.add(selBox);
+}
+
+/* ---------- camera ---------- */
+const orbit = { yaw: Math.PI / 4, pitch: .62, dist: 4, target: new THREE.Vector3(0, .4, 0) };
+function frameCamera(force) {
+  const b = new THREE.Box3().setFromObject(model);
+  const top = b.isEmpty() ? .5 : b.max.y;
+  const span = Math.max(state.w, state.h, top * .9);
+  orbit.target.set(0, Math.min(top * .45, 2), 0);
+  const want = span * 2.6 + 1.2;
+  if (force || orbit.dist < want * .5 || orbit.dist > want * 1.8) { orbit.dist = want; }
+}
+function placeCamera() {
+  const { yaw, pitch, dist, target } = orbit;
+  camera.position.set(target.x + dist * Math.cos(pitch) * Math.sin(yaw), target.y + dist * Math.sin(pitch), target.z + dist * Math.cos(pitch) * Math.cos(yaw));
+  camera.lookAt(target);
+  sun.position.set(3, 6, 4); sun.target.position.set(0, 0, 0);
+  const s = Math.max(state.w, state.h) + 3;
+  Object.assign(sun.shadow.camera, { left: -s, right: s, top: s, bottom: -s, near: .5, far: 30 });
+  sun.shadow.camera.updateProjectionMatrix();
+}
+let drag = null;
+canvas.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clientY, moved: false }; canvas.setPointerCapture(e.pointerId); });
+canvas.addEventListener('pointermove', (e) => {
+  if (!drag) { return; }
+  const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+  if (Math.abs(dx) + Math.abs(dy) > 3) { drag.moved = true; setSpin(false); }
+  orbit.yaw -= dx * .008; orbit.pitch = Math.min(1.45, Math.max(.08, orbit.pitch + dy * .006));
+  drag.x = e.clientX; drag.y = e.clientY;
+});
+canvas.addEventListener('pointerup', (e) => {
+  if (drag && !drag.moved) { pick(e); }
+  drag = null;
+});
+canvas.addEventListener('wheel', (e) => { e.preventDefault(); orbit.dist = Math.min(40, Math.max(1, orbit.dist * (1 + Math.sign(e.deltaY) * .1))); }, { passive: false });
+const ray = new THREE.Raycaster();
+function pick(e) {
+  const r = canvas.getBoundingClientRect();
+  ray.setFromCamera({ x: ((e.clientX - r.left) / r.width) * 2 - 1, y: -((e.clientY - r.top) / r.height) * 2 + 1 }, camera);
+  const hit = ray.intersectObjects(model.children, true)[0];
+  if (!hit) { return; }
+  let o = hit.object;
+  while (o && o.parent !== model) { o = o.parent; }
+  if (o && typeof o.userData.index === 'number') { select(o.userData.index); }
+}
+function resize() {
+  const r = canvas.parentElement.getBoundingClientRect();
+  renderer.setSize(r.width, r.height, false);
+  camera.aspect = r.width / Math.max(1, r.height);
+  camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(canvas.parentElement);
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let last = performance.now(), clock = 0;
+function tick(now) {
+  const dt = Math.min(.05, (now - last) / 1000); last = now; clock += dt;
+  if (state.spin && !reduced) { orbit.yaw += dt * .18; }
+  for (const a of animated) {
+    if (a.wave) { const pos = a.obj.geometry.attributes.position; for (let i = 0; i < pos.count; i++) { const x = pos.getX(i); pos.setZ(i, Math.sin(clock * 5 + x * 30) * .012 * x * 6); } pos.needsUpdate = true; }
+    else if (a.blink) { a.obj.visible = Math.sin(clock * 5) > -.2; }
+    else if (!reduced) { a.obj.rotation[a.axis] += dt * a.speed * Math.PI * 2; }
+  }
+  for (const s of smoke) {
+    s.t = (s.t + dt * .35) % 1;
+    s.m.position.set(s.pf.x + Math.sin(s.t * 6 + s.pf.x * 9) * .03 * s.t, s.pf.z + s.t * (s.pf.type === 'water' ? -.1 : .45), s.pf.y);
+    s.m.scale.setScalar(.6 + s.t * 1.8);
+    s.m.material.opacity = (1 - s.t) * .7;
+  }
+  placeCamera();
+  renderer.render(scene, camera);
+  requestAnimationFrame(tick);
+}
+
+function applyLighting() {
+  if (state.night) { hemi.intensity = .28; hemi.color.set('#8aa0d6'); sun.intensity = .18; sun.color.set('#9fb4ff'); }
+  else { hemi.intensity = .75; hemi.color.set('#ffffff'); sun.intensity = .95; sun.color.set('#fff4e0'); }
+}
+
+/* ---------- UI: parts list and editor ---------- */
+function summary(p) {
+  if (p.kind === 'roof') { return `${p.shape} ${r2(p.w)}×${r2(p.d)} h${r2(p.h)} @z${r2(p.z)}`; }
+  if (p.kind === 'floors') { return `${p.floors} эт. × ${r2(p.floorHeight)} · ${r2(p.w)}×${r2(p.d)}`; }
+  if ('w' in p && 'h' in p) { return `${r2(p.w)}×${r2(p.d ?? 0)}×${r2(p.h)} @${r2(p.x)},${r2(p.y)},${r2(p.z ?? 0)}`; }
+  if ('r' in p) { return `r${r2(p.r)} @${r2(p.x)},${r2(p.y)},${r2(p.z ?? 0)}`; }
+  return `@${r2(p.x)},${r2(p.y)}${'z' in p ? ',' + r2(p.z) : ''}`;
+}
+function renderList() {
+  const ul = $('parts');
+  ul.textContent = '';
+  if (!state.parts.length) {
+    const li = document.createElement('li'); li.className = 'empty'; li.style.display = 'block';
+    li.textContent = 'Деталей пока нет. Нажмите «Случайное здание», выберите пример или добавьте деталь.';
+    ul.append(li); return;
+  }
+  state.parts.forEach((p, i) => {
+    const li = document.createElement('li');
+    li.setAttribute('role', 'option'); li.setAttribute('aria-selected', String(i === state.selected)); li.tabIndex = 0;
+    const sw = document.createElement('span'); sw.className = 'sw'; sw.style.background = p.kind === 'tree' ? '#4f8a43' : p.kind === 'emitter' ? '#9a9a9a' : paint(p.color);
+    const k = document.createElement('span'); k.className = 'kind'; k.textContent = p.kind === 'roof' ? 'roof' : p.kind;
+    const s = document.createElement('span'); s.className = 'sum'; s.textContent = summary(p);
+    li.append(sw, k, s);
+    li.addEventListener('click', () => select(i));
+    li.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(i); } });
+    ul.append(li);
+  });
+}
+function select(i) {
+  state.selected = i;
+  renderList(); renderEditor(); drawSelection();
+  const li = $('parts').children[i]; if (li && li.scrollIntoView) { li.scrollIntoView({ block: 'nearest' }); }
+}
+function colorControl(value, onChange, nullable) {
+  const wrap = document.createElement('div'); wrap.className = 'colorpick';
+  const sel = document.createElement('select');
+  if (nullable) { sel.append(new Option('нет', '')); }
+  for (const k of COLOR_KEYS) { sel.append(new Option(KEY_NAMES[k], k)); }
+  sel.append(new Option('свой цвет', '#'));
+  const pick = document.createElement('input'); pick.type = 'color';
+  const sync = (v) => {
+    if (v == null || v === '') { sel.value = ''; pick.value = '#888888'; pick.disabled = true; return; }
+    pick.disabled = false;
+    if (v[0] === '#') { sel.value = '#'; pick.value = v.length === 7 ? v : '#888888'; } else { sel.value = v; pick.value = paint(v); }
+  };
+  sync(value);
+  sel.addEventListener('change', () => { const v = sel.value === '' ? null : sel.value === '#' ? pick.value : sel.value; sync(v); onChange(v); });
+  pick.addEventListener('input', () => { sel.value = '#'; onChange(pick.value); });
+  wrap.append(sel, pick);
+  return wrap;
+}
+function renderEditor() {
+  const ed = $('editor');
+  ed.textContent = '';
+  const p = state.parts[state.selected];
+  if (!p) {
+    const d = document.createElement('div'); d.className = 'empty';
+    d.textContent = 'Выберите деталь в списке или кликните по ней на модели. Координаты — в клетках от угла здания: x на восток, y на юг, z вверх.';
+    ed.append(d); return;
+  }
+  const head = document.createElement('div'); head.className = 'editor-head';
+  const t = document.createElement('span'); t.className = 'title'; t.textContent = `${SCHEMA[p.kind]?.label || p.kind} · #${state.selected + 1}`;
+  const up = btn('↑', () => move(-1), 'Переместить выше'); up.disabled = state.selected === 0;
+  const dn = btn('↓', () => move(1), 'Переместить ниже'); dn.disabled = state.selected === state.parts.length - 1;
+  const dup = btn('Копия', duplicate); const del = btn('Удалить', remove); del.classList.add('danger');
+  head.append(t, up, dn, dup, del);
+  const fields = document.createElement('div'); fields.className = 'fields';
+  const schema = SCHEMA[p.kind]?.f || [];
+  for (const [key, type, def] of schema) {
+    const f = document.createElement('label'); f.className = 'field';
+    const lab = document.createElement('span'); lab.textContent = key; f.append(lab);
+    const id = `f-${state.selected}-${key}`;
+    const set = (v) => { if (v === '' || v === null || v === undefined) { delete p[key]; } else { p[key] = v; } changed(true); };
+    let ctl;
+    if (type === 'n' || type === 'i') {
+      ctl = document.createElement('input'); ctl.type = 'number'; ctl.step = type === 'i' ? '1' : '0.01'; ctl.value = p[key] ?? '';
+      ctl.placeholder = String(def ?? '');
+      ctl.addEventListener('input', () => { const v = ctl.value === '' ? null : Number(ctl.value); set(v === null || isNaN(v) ? null : type === 'i' ? Math.round(v) : v); });
+    } else if (type === 'c' || type === 'c?') {
+      f.classList.add('wide'); ctl = colorControl(p[key], (v) => { if (key === 'blink') { p[key] = v; changed(true); } else { set(v); } }, type === 'c?');
+    } else if (type === 'm') {
+      ctl = document.createElement('select'); for (const m of MATS) { ctl.append(new Option(m || 'обычный', m)); } ctl.value = p[key] || '';
+      ctl.addEventListener('change', () => set(ctl.value || null));
+    } else if (type === 'roof') {
+      ctl = document.createElement('select'); for (const s of ROOFS) { ctl.append(new Option(s, s)); } ctl.value = p[key] || 'gable';
+      ctl.addEventListener('change', () => set(ctl.value));
+    } else if (type === 'emit') {
+      ctl = document.createElement('select'); for (const s of EMITS) { ctl.append(new Option(s, s)); } ctl.value = p[key] || 'smoke';
+      ctl.addEventListener('change', () => set(ctl.value));
+    } else if (type === 'axis' || type === 'axis3') {
+      ctl = document.createElement('select'); if (type === 'axis') { ctl.append(new Option('—', '')); } for (const s of (type === 'axis' ? ['x', 'y'] : ['x', 'y', 'z'])) { ctl.append(new Option(s, s)); } ctl.value = p[key] || '';
+      ctl.addEventListener('change', () => set(ctl.value || null));
+    } else if (type === 'b') {
+      ctl = document.createElement('select'); ctl.append(new Option('да', '1'), new Option('нет', '0')); ctl.value = p[key] ? '1' : '0';
+      ctl.addEventListener('change', () => { p[key] = ctl.value === '1'; changed(true); });
+    } else if (type === 'face') {
+      ctl = chips(FACES, [p[key] || 's'], (v) => { p[key] = v[v.length - 1]; changed(true); renderEditor(); }, true);
+    } else if (type === 'faces') {
+      f.classList.add('wide'); ctl = chips(FACES, p[key] || [], (v) => { p[key] = v; changed(true); });
+    }
+    if (ctl && ctl.tagName !== 'DIV') { ctl.id = id; f.htmlFor = id; }
+    if (ctl) { f.append(ctl); }
+    fields.append(f);
+  }
+  ed.append(head, fields);
+}
+function chips(options, value, onChange, single) {
+  const wrap = document.createElement('div'); wrap.className = 'chips';
+  const cur = new Set(value);
+  for (const o of options) {
+    const b = document.createElement('button'); b.type = 'button'; b.textContent = o; b.setAttribute('aria-pressed', String(cur.has(o)));
+    b.addEventListener('click', () => {
+      if (single) { cur.clear(); cur.add(o); } else if (cur.has(o)) { cur.delete(o); } else { cur.add(o); }
+      for (const x of wrap.children) { x.setAttribute('aria-pressed', String(cur.has(x.textContent))); }
+      onChange(FACES.filter((f) => cur.has(f)));
+    });
+    wrap.append(b);
+  }
+  return wrap;
+}
+function btn(text, fn, label) { const b = document.createElement('button'); b.type = 'button'; b.textContent = text; if (label) { b.setAttribute('aria-label', label); } b.addEventListener('click', fn); return b; }
+function move(dir) { const i = state.selected, j = i + dir; if (j < 0 || j >= state.parts.length) { return; } [state.parts[i], state.parts[j]] = [state.parts[j], state.parts[i]]; state.selected = j; changed(); renderEditor(); }
+function duplicate() { const p = state.parts[state.selected]; if (!p) { return; } state.parts.splice(state.selected + 1, 0, JSON.parse(JSON.stringify(p))); state.selected++; changed(); renderEditor(); }
+function remove() { state.parts.splice(state.selected, 1); state.selected = Math.min(state.selected, state.parts.length - 1); changed(); renderEditor(); }
+
+let pendingRebuild = 0;
+function changed(fromEditor) {
+  cancelAnimationFrame(pendingRebuild);
+  pendingRebuild = requestAnimationFrame(() => { rebuild(); renderList(); renderJson(); saveDraft(); });
+  if (!fromEditor) { renderList(); }
+  setStatus('');
+}
+function newPart(kind) {
+  const p = { kind };
+  for (const [key, , def] of SCHEMA[kind].f) { if (def !== '' && def !== null) { p[key] = Array.isArray(def) ? def.slice() : def; } }
+  if (kind === 'pole') { p.blink = null; }
+  return p;
+}
+
+/* ---------- JSON ---------- */
+function partOrder(p) {
+  const keys = ['kind', ...(SCHEMA[p.kind]?.f || []).map((f) => f[0])];
+  const out = {};
+  for (const k of keys) { if (p[k] !== undefined && p[k] !== '') { out[k] = typeof p[k] === 'number' ? r2(p[k]) : p[k]; } }
+  for (const k of Object.keys(p)) { if (!(k in out) && p[k] !== undefined) { out[k] = p[k]; } }
+  if (p.kind === 'pole' && !('blink' in out)) { out.blink = null; }
+  return out;
+}
+function modelJson() {
+  const lines = state.parts.map((p) => '        ' + JSON.stringify(partOrder(p)).replace(/":/g, '": ').replace(/,"/g, ', "').replace(/^\{/, '{ ').replace(/\}$/, ' }'));
+  return '"model": {\n    "parts": [\n' + lines.join(',\n') + '\n    ]\n}';
+}
+function renderJson() { if (!$('pane-json').hidden) { $('json').value = modelJson(); } }
+function importJson() {
+  const raw = $('json').value.trim();
+  $('levelPick').textContent = '';
+  let data;
+  try { data = JSON.parse(raw.startsWith('"model"') ? '{' + raw + '}' : raw); }
+  catch (e) { return jsonStatus('Не получилось прочитать JSON: ' + e.message, true); }
+  if (data.levels && Array.isArray(data.levels)) {
+    $('levelPick').append(Object.assign(document.createElement('span'), { className: 'section-label', textContent: 'Уровни:' }));
+    data.levels.forEach((l) => {
+      $('levelPick').append(btn(`${l.level}. ${l.name || ''}`, () => {
+        loadDesign({ name: l.name || '', building: data.id || '', epoch: l.epoch, w: data.size?.w, h: data.size?.h, parts: l.model?.parts || [] });
+        jsonStatus(`Загружен уровень ${l.level}.`);
+      }));
+    });
+    return jsonStatus(`Файл «${data.name || data.id}»: выберите уровень.`);
+  }
+  const parts = Array.isArray(data) ? data : data.model?.parts || data.parts;
+  if (!Array.isArray(parts)) { return jsonStatus('Не нашёл массив parts. Вставьте блок "model" или целый файл здания.', true); }
+  state.parts = parts.filter((p) => p && SCHEMA[p.kind] || (p && p.kind));
+  state.selected = -1; changed(); renderEditor();
+  jsonStatus(`Загружено деталей: ${state.parts.length}.`);
+}
+function jsonStatus(t, err) { const s = $('jsonStatus'); s.textContent = t; s.classList.toggle('err', !!err); }
+function setStatus(t, err) { const s = $('status'); s.textContent = t; s.classList.toggle('err', !!err); }
+
+/* ---------- random generator ---------- */
+function rnd(a, b) { return a + Math.random() * (b - a); }
+function pickOne(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function q(v) { return Math.round(v * 100) / 100; }
+function generate() {
+  const year = pal().year, W = state.w, H = state.h, parts = [];
+  const inset = rnd(.08, .16);
+  const bx = q(inset), by = q(inset + rnd(0, .06)), bw = q(W - inset * 2), bd = q(H - inset * 2 - .08);
+  const door = (x, y, w, d) => parts.push({ kind: 'door', face: 's', x, y, w, d, width: .14, height: q(rnd(.17, .22)), color: 'trim' });
+  const chimney = (x, y, z) => { parts.push({ kind: 'cylinder', x, y, z, r: .045, h: .2, color: '#7a6a60', segments: 8 }); parts.push({ kind: 'emitter', x, y, z: q(z + .2), type: 'smoke' }); };
+  const lamp = () => { const x = q(W - .06), y = q(H - .06), h = q(rnd(.2, .35)); parts.push({ kind: 'pole', x, y, z: 0, h, color: year < 1800 ? '#5a3e26' : 'metal', blink: null }); parts.push({ kind: 'light', x, y, z: h, radius: 1.2, color: '#f3c86b' }); };
+  const trees = () => { if (Math.random() < .7) { parts.push({ kind: 'tree', x: q(rnd(.08, .2)), y: q(H - rnd(.1, .2)), scale: q(rnd(.3, .45)), conifer: Math.random() < .35 }); } };
+
+  if (year < 1000) {
+    parts.push({ kind: 'ground', x: .06, y: .06, w: q(W - .12), d: q(H - .12), color: 'plaza' });
+    const h = q(rnd(.28, .38));
+    parts.push({ kind: 'box', x: bx, y: by, z: 0, w: bw, d: bd, h, color: 'walls' });
+    parts.push({ kind: 'windows', faces: ['s', 'e'], x: bx, y: by, z: q(h * .15), w: bw, d: bd, h: q(h * .7), rows: 1, cols: Math.max(1, Math.round(bw / .3)), color: 'window' });
+    door(bx, by, bw, bd);
+    const roof = pickOne(['flat', 'gable', 'pyramid']);
+    parts.push({ kind: 'roof', shape: roof, x: bx, y: by, z: h, w: bw, d: bd, h: roof === 'flat' ? .04 : q(rnd(.16, .26)), color: roof === 'flat' ? 'trim' : 'roof', axis: 'x', overhang: .04 });
+    if (Math.random() < .6) { parts.push({ kind: 'cylinder', x: q(W - .2), y: q(H - .15), z: 0, r: .05, h: .1, color: '#b5532f', taper: .6 }); }
+    trees();
+  } else if (year < 1800) {
+    const storeys = W * H > 1 ? pickOne([1, 2, 2]) : pickOne([1, 2]);
+    const fh = q(rnd(.24, .3));
+    let z = 0, x = bx, y = by, w = bw, d = bd;
+    for (let s = 0; s < storeys; s++) {
+      parts.push({ kind: 'box', x, y, z: q(z), w, d, h: fh, color: 'walls' });
+      if (year >= 1000 && Math.random() < .75) { parts.push({ kind: 'beams', faces: ['n', 'e', 's', 'w'], x, y, z: q(z), w, d, h: fh, count: Math.max(3, Math.round(w / .13)), color: 'trim' }); }
+      parts.push({ kind: 'windows', faces: ['s', 'e', 'w'], x, y, z: q(z + fh * .22), w, d, h: q(fh * .6), rows: 1, cols: Math.max(1, Math.round(w / .24)), color: 'window' });
+      if (s === 0) { door(x, y, w, d); }
+      z += fh;
+      if (s === 0 && storeys > 1) { x = q(x - .04); y = q(y - .04); w = q(w + .08); d = q(d + .08); }
+    }
+    const shape = pickOne(['gable', 'gable', 'hip', 'mansard']);
+    parts.push({ kind: 'roof', shape, x, y, z: q(z), w, d, h: q(rnd(.28, .42) * Math.min(w, d) / .6), color: 'roof', axis: pickOne(['x', 'y']), overhang: .05 });
+    chimney(q(x + w * rnd(.6, .8)), q(y + d * .3), q(z + .12));
+    if (Math.random() < .5) { parts.push({ kind: 'box', x: .06, y: q(H - .12), z: 0, w: q(W - .12), d: .03, h: .1, color: 'trim' }); }
+    lamp(); trees();
+  } else if (year < 2000) {
+    const floors = Math.round(rnd(2, year >= 1900 ? 6 : 4) + (W * H > 1 ? 1 : 0));
+    const fh = q(rnd(.19, .22));
+    parts.push({ kind: 'floors', x: bx, y: by, z: 0, w: bw, d: bd, floors, floorHeight: fh, color: 'walls', window: 'window', band: 'trim' });
+    door(bx, by, bw, bd);
+    const top = q(floors * fh);
+    if (year >= 1900 && Math.random() < .5) {
+      parts.push({ kind: 'box', x: q(bx - .02), y: q(by - .02), z: top, w: q(bw + .04), d: q(bd + .04), h: .05, color: 'trim' });
+      parts.push({ kind: 'roof', shape: 'flat', x: bx, y: by, z: q(top + .05), w: bw, d: bd, h: .03, color: 'roof' });
+      parts.push({ kind: 'cylinder', x: q(bx + bw * .78), y: q(by + bd * .78), z: top, r: .1, h: .22, color: 'walls', segments: 12 });
+      parts.push({ kind: 'sphere', x: q(bx + bw * .78), y: q(by + bd * .78), z: q(top + .22), r: .1, color: 'roof', half: true });
+    } else {
+      parts.push({ kind: 'roof', shape: pickOne(['mansard', 'hip']), x: bx, y: by, z: top, w: bw, d: bd, h: q(rnd(.2, .28)), color: 'roof', overhang: .02 });
+      chimney(q(bx + .1), q(by + .1), q(top + .1)); chimney(q(bx + bw - .1), q(by + bd - .1), q(top + .1));
+    }
+    lamp();
+  } else if (year < 2300) {
+    const tiers = pickOne([2, 3]);
+    let z = 0, x = q(bx - .03), y = q(by - .02), w = q(bw + .06), d = q(bd + .04);
+    const glassy = Math.random() < .5;
+    parts.push({ kind: 'box', x, y, z: 0, w, d, h: .25, color: 'glass', material: 'glass' });
+    z = .25;
+    for (let t = 0; t < tiers; t++) {
+      const fl = Math.round(rnd(3, 8));
+      x = q(x + .05); y = q(y + .05); w = q(w - .1); d = q(d - .1);
+      parts.push({ kind: 'floors', x, y, z: q(z), w, d, floors: fl, floorHeight: .2, color: glassy ? 'glass' : 'walls', window: year >= 2100 ? 'glass' : 'window', band: glassy ? 'metal' : 'trim', ...(glassy ? { material: 'glass' } : {}) });
+      z += fl * .2;
+      if (year >= 2100 && t < tiers - 1) { parts.push({ kind: 'tree', x: q(x + .06), y: q(y + .06), scale: .3, conifer: false }); }
+    }
+    parts.push({ kind: 'roof', shape: 'flat', x, y, z: q(z), w, d, h: .04, color: 'roof' });
+    parts.push({ kind: 'pole', x: q(x + w / 2), y: q(y + d / 2), z: q(z + .04), h: .4, color: 'metal', blink: '#ff3b3b' });
+    door(.08, .08, q(W - .16), q(H - .16));
+    parts[parts.length - 1].color = 'glass';
+  } else {
+    const cx = q(W / 2), cy = q(H / 2), R = q(Math.min(W, H) * rnd(.3, .4)), H1 = q(rnd(2.2, 3.6));
+    parts.push({ kind: 'cylinder', x: cx, y: cy, z: 0, r: q(R * 1.25), h: .3, color: 'metal', segments: 16, material: 'metal' });
+    parts.push({ kind: 'cylinder', x: cx, y: cy, z: .3, r: R, h: H1, color: 'walls', taper: q(rnd(.5, .85)), segments: 20 });
+    parts.push({ kind: 'cylinder', x: cx, y: cy, z: .3, r: q(R * 1.05), h: q(H1 * .9), color: 'glass', taper: .7, segments: 20, material: 'glass' });
+    const rings = Math.round(rnd(2, 4));
+    for (let i = 0; i < rings; i++) { parts.push({ kind: 'torus', x: cx, y: cy, z: q(.6 + (H1 * .8 * i) / rings), r: q(R * (1.1 - i * .12)), tube: .05, color: i === rings - 1 ? 'accent' : 'trim', spin: q((i % 2 ? -1 : 1) * rnd(.04, .1)), ...(i === rings - 1 ? { material: 'glow' } : {}) }); }
+    parts.push({ kind: 'sphere', x: cx, y: cy, z: q(H1 + .4), r: q(R * .55), color: year >= 2500 ? 'accent' : 'glass', material: year >= 2500 ? 'glow' : 'glass' });
+    parts.push({ kind: 'light', x: cx, y: cy, z: q(H1 + .6), radius: 2, color: pal().accent });
+  }
+  wallVariant = Math.floor(Math.random() * 4);
+  state.parts = parts; state.selected = -1; state.docId = null;
+  if (!$('designName').value) { $('designName').placeholder = 'Название для этого варианта'; }
+  changed(); renderEditor(); frameCamera(true);
+  setStatus(`Сгенерировано: ${parts.length} деталей в стиле «${pal().name}». Не нравится — нажмите ещё раз.`);
+}
+
+/* ---------- saving (db) ---------- */
+let db = null, designsUnsub = null, designs = [];
+function draft() { return { name: $('designName').value.trim(), building: $('buildingId').value.trim(), epoch: state.epoch, w: state.w, h: state.h, parts: JSON.stringify(state.parts), updatedAt: Date.now() }; }
+function saveDraft() { store('epochs-workshop-draft', JSON.stringify(draft())); }
+async function save(asNew) {
+  if (!db) { return setStatus('Сохранение недоступно: откройте страницу на claude.ai, войдя в аккаунт.', true); }
+  if (!state.parts.length) { return setStatus('Сначала добавьте детали.', true); }
+  const d = draft();
+  if (!d.name) { d.name = `${pal().name}, ${state.w}×${state.h}`; $('designName').value = d.name; }
+  try {
+    if (state.docId && !asNew) { await db.collection('designs').doc(state.docId).set(d); }
+    else { const ref = await db.collection('designs').add(d); state.docId = ref.id; }
+    setStatus(`Сохранено: «${d.name}».`);
+  } catch (e) { setStatus('Не сохранилось: ' + (e.message || e.code) + '. Попробуйте ещё раз.', true); }
+}
+function renderDesigns() {
+  const ul = $('designs'); ul.textContent = '';
+  if (!db) { ul.append(Object.assign(document.createElement('li'), { className: 'empty', textContent: 'База недоступна в этом окне. Откройте страницу на claude.ai, войдя в аккаунт, — тогда здесь появятся сохранённые здания.' })); return; }
+  if (!designs.length) { ul.append(Object.assign(document.createElement('li'), { className: 'empty', textContent: 'Сохранённых зданий пока нет. Соберите модель и нажмите «Сохранить» на вкладке «Детали».' })); return; }
+  for (const d of designs) {
+    const li = document.createElement('li');
+    const meta = document.createElement('div'); meta.className = 'meta';
+    const b = document.createElement('b'); b.textContent = d.name || 'Без названия';
+    let n = 0; try { n = JSON.parse(d.parts).length; } catch (e) {}
+    const s = document.createElement('span'); s.textContent = `${d.building || '—'} · ${PALETTES[d.epoch]?.name || d.epoch} · ${d.w}×${d.h} · ${n} дет.`;
+    meta.append(b, s);
+    const open = btn('Открыть', () => { loadDesign({ ...d, parts: JSON.parse(d.parts || '[]') }); state.docId = d.id; showTab('parts'); setStatus(`Открыто: «${d.name}». «Сохранить» обновит его.`); });
+    const del = btn('Удалить', () => {
+      if (del.dataset.armed) { db.collection('designs').doc(d.id).delete().catch((e) => setStatus('Не удалилось: ' + e.message, true)); if (state.docId === d.id) { state.docId = null; } return; }
+      del.dataset.armed = '1'; del.textContent = 'Точно удалить?'; setTimeout(() => { delete del.dataset.armed; del.textContent = 'Удалить'; }, 3000);
+    });
+    del.classList.add('danger');
+    li.append(meta, open, del); ul.append(li);
+  }
+}
+function loadDesign(d) {
+  if (d.epoch && PALETTES[d.epoch]) { state.epoch = d.epoch; $('epoch').value = d.epoch; }
+  state.w = Number(d.w) || 1; state.h = Number(d.h) || 1; $('sizeW').value = state.w; $('sizeH').value = state.h;
+  $('designName').value = d.name || ''; $('buildingId').value = d.building || '';
+  state.parts = (d.parts || []).map((p) => ({ ...p })); state.selected = -1; state.docId = null;
+  rebuildTiles(); changed(); renderEditor(); frameCamera(true);
+}
+
+/* ---------- tabs, header ---------- */
+function showTab(name) {
+  for (const t of ['parts', 'saved', 'json']) { $('tab-' + t).setAttribute('aria-selected', String(t === name)); $('pane-' + t).hidden = t !== name; }
+  if (name === 'json') { $('json').value = modelJson(); jsonStatus(''); }
+  if (name === 'saved') { renderDesigns(); }
+  store('epochs-workshop-tab', name);
+}
+function updateStamp() {
+  const p = pal();
+  const b = new THREE.Box3().setFromObject(model);
+  const top = b.isEmpty() ? 0 : b.max.y;
+  $('stamp').innerHTML = '';
+  const t = document.createElement('b'); t.textContent = $('designName').value || 'Без названия';
+  $('stamp').append(t, document.createElement('br'), `${p.name} · ${p.year} г. · ${state.w}×${state.h} кл. · высота ${top.toFixed(2)} · ${state.parts.length} дет.`);
+}
+function setSpin(on) { state.spin = on; $('spinBtn').setAttribute('aria-pressed', String(on)); }
+
+for (const [id, p] of Object.entries(PALETTES)) { $('epoch').append(new Option(`${p.year} · ${p.name}`, id)); }
+for (const [k, s] of Object.entries(SCHEMA)) { $('addKind').append(new Option(`${s.label} (${k})`, k)); }
+EXAMPLES.forEach((ex) => $('examples').append(btn(ex.name, () => { loadDesign(ex); setStatus(`Пример из игры: ${ex.building}, «${ex.name}». Меняйте детали — оригинал не пострадает.`); })));
+
+$('epoch').addEventListener('change', () => { state.epoch = $('epoch').value; changed(); renderEditor(); });
+$('sizeW').addEventListener('change', () => { state.w = Number($('sizeW').value); rebuildTiles(); changed(); frameCamera(true); });
+$('sizeH').addEventListener('change', () => { state.h = Number($('sizeH').value); rebuildTiles(); changed(); frameCamera(true); });
+$('randomBtn').addEventListener('click', generate);
+$('addBtn').addEventListener('click', () => { state.parts.push(newPart($('addKind').value)); state.selected = state.parts.length - 1; changed(); renderEditor(); });
+$('saveBtn').addEventListener('click', () => save(false));
+$('saveNewBtn').addEventListener('click', () => save(true));
+let clearArmed = false;
+$('clearBtn').addEventListener('click', () => {
+  if (!clearArmed) { clearArmed = true; $('clearBtn').textContent = 'Точно очистить?'; setTimeout(() => { clearArmed = false; $('clearBtn').textContent = 'Очистить'; }, 3000); return; }
+  clearArmed = false; $('clearBtn').textContent = 'Очистить';
+  state.parts = []; state.selected = -1; state.docId = null; $('designName').value = ''; changed(); renderEditor();
+});
+$('designName').addEventListener('input', () => { updateStamp(); saveDraft(); });
+$('buildingId').addEventListener('input', saveDraft);
+for (const t of ['parts', 'saved', 'json']) { $('tab-' + t).addEventListener('click', () => showTab(t)); }
+$('nightBtn').addEventListener('click', () => { state.night = !state.night; $('nightBtn').setAttribute('aria-pressed', String(state.night)); applyLighting(); rebuildTiles(); changed(); });
+$('spinBtn').addEventListener('click', () => setSpin(!state.spin));
+$('copyBtn').addEventListener('click', () => {
+  const text = $('json').value;
+  navigator.clipboard.writeText(text).then(() => jsonStatus('Скопировано.'), () => { $('json').focus(); $('json').select(); jsonStatus('Текст выделен — нажмите Ctrl+C.'); });
+});
+$('importBtn').addEventListener('click', importJson);
+
+/* PNG snapshot with a transparent background */
+let downloads = null, lastPng = null;
+$('snapBtn').addEventListener('click', () => {
+  if (selBox) { selBox.visible = false; }
+  const prev = tileGroup.visible; tileGroup.visible = false;
+  renderer.render(scene, camera);
+  const url = renderer.domElement.toDataURL('image/png');
+  tileGroup.visible = prev; if (selBox) { selBox.visible = true; }
+  lastPng = url; $('snapImg').src = url; $('snap').hidden = false; $('snapSave').hidden = !downloads;
+});
+$('snapClose').addEventListener('click', () => { $('snap').hidden = true; });
+$('snapSave').addEventListener('click', async () => {
+  try { const blob = await (await fetch(lastPng)).blob(); await downloads.save({ filename: ($('buildingId').value || 'building') + '.png', data: blob }); $('snapNote').textContent = 'Готово.'; }
+  catch (e) { $('snapNote').textContent = e.code === 'declined' ? 'Сохранение отменено.' : 'Не получилось скачать. Сохраните картинку правой кнопкой мыши.'; }
+});
+$('dlBtn').addEventListener('click', async () => {
+  try { await downloads.save({ filename: ($('buildingId').value || 'building') + '.model.json', data: '{\n' + modelJson() + '\n}\n' }); jsonStatus('Файл отправлен на сохранение.'); }
+  catch (e) { jsonStatus(e.code === 'declined' ? 'Сохранение отменено.' : 'Не получилось скачать. Используйте «Копировать».', true); }
+});
+
+/* ---------- boot ---------- */
+let restored = null;
+try { restored = JSON.parse(load('epochs-workshop-draft') || 'null'); } catch (e) {}
+applyLighting();
+if (restored && restored.parts && restored.parts !== '[]') { loadDesign({ ...restored, parts: JSON.parse(restored.parts) }); }
+else { loadDesign(EXAMPLES[2] || EXAMPLES[0]); }
+$('epoch').value = state.epoch;
+const savedTab = load('epochs-workshop-tab');
+showTab(savedTab === 'json' || savedTab === 'saved' ? savedTab : 'parts');
+resize();
+requestAnimationFrame(tick);
+
+if (window.claude && window.claude.use) {
+  window.claude.use('db').then((d) => {
+    db = d;
+    if (!db) { renderDesigns(); return; }
+    designsUnsub = db.collection('designs').orderBy('updatedAt', 'desc').onSnapshot((snap) => {
+      designs = snap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      renderDesigns();
+    }, (e) => { designs = []; renderDesigns(); setStatus('База не отвечает: ' + e.message, true); });
+  });
+  window.claude.use('downloads').then((d) => { downloads = d; $('dlBtn').hidden = !d; });
+}
+})();
+</script>
