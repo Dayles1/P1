@@ -39,6 +39,14 @@ export const CATALOG: GameEntry[] = [
         resetPath: 'epochs/world',
     },
     {
+        slug: 'gu-world',
+        cover: '🐛',
+        hue: '#a8261f',
+        genre: 'adventure',
+        path: null,
+        href: '/games/gu-world',
+    },
+    {
         slug: 'sandbox',
         cover: '🏃',
         hue: '#7c8b9a',

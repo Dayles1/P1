@@ -1,0 +1,59 @@
+/* GU World — everything is scoped under #gu-world-root or gw- classes. */
+
+:root {
+    /* Near-black basalt, dim bone for text, ash for the quiet, old blood. */
+    --gw-basalt: #0c0d0f;
+    --gw-window: #101114;
+    --gw-bone: #e2d8c4;
+    --gw-ash: #8e8778;
+    --gw-blood: #a8261f;
+    --gw-font:
+        'Golos Text', system-ui, -apple-system, 'Segoe UI', Roboto, Arial,
+        sans-serif;
+    --gw-display: 'Unbounded', 'Golos Text', system-ui, sans-serif;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    background: var(--gw-basalt);
+    font-family: var(--gw-font);
+    color: var(--gw-bone);
+}
+
+#gu-world-root {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.gw-card {
+    display: grid;
+    gap: 12px;
+    width: min(520px, 100%);
+    padding: 28px 26px 22px;
+    box-sizing: border-box;
+    border-left: 2px solid var(--gw-blood);
+    background: var(--gw-window);
+}
+
+.gw-card h1 {
+    margin: 0;
+    font-family: var(--gw-display);
+    font-size: 28px;
+}
+
+.gw-card p {
+    margin: 0;
+    color: var(--gw-ash);
+    line-height: 1.5;
+}
+
+.gw-back {
+    justify-self: start;
+    color: var(--gw-bone);
+}

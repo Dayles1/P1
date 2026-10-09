@@ -39,6 +39,9 @@ export default defineConfig({
                 // Sandbox — a self-contained game, all of it in app/Games/Sandbox
                 'app/Games/Sandbox/client/main.ts',
 
+                // GU World — a self-contained game, all of it in app/Games/GuWorld
+                'app/Games/GuWorld/client/main.ts',
+
                 // Если здесь будут другие Blade-страницы,
                 // добавляй их сюда
             ],
