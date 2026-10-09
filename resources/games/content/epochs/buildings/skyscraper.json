@@ -3,7 +3,7 @@
     "name": "Небоскрёб",
     "icon": "🏙️",
     "category": "housing",
-    "description": "Башня на 2×2 клетки для плотного центра: от арт-деко до мегабашни. Каждый уровень собран в «Студии небоскрёбов» — откройте его в Мастерской на вкладке «Студия».",
+    "description": "Башня на 2×2 клетки для плотного центра: от арт-деко Chrysler Building до перламутровых башен-близнецов.",
     "size": { "w": 2, "h": 2 },
     "unique": false,
     "hidden": false,
@@ -35,31 +35,39 @@
             },
             "model": {
                 "parts": [
-                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
-                    { "kind": "floors", "x": 0.08, "y": 0.08, "z": 0, "w": 1.84, "d": 1.84, "floors": 10, "floorHeight": 0.122, "color": "#cfc6b8", "window": "#2b3946", "band": "#5d666d" },
-                    { "kind": "floors", "x": 0.387, "y": 0.387, "z": 1.221, "w": 1.227, "d": 1.227, "floors": 29, "floorHeight": 0.12, "color": "#cfc6b8", "window": "#2b3946", "band": "#5d666d" },
-                    { "kind": "box", "x": 0.387, "y": 0.387, "z": 4.702, "w": 1.227, "d": 1.227, "h": 0.191, "color": "#d8dde0", "material": "metal" },
-                    { "kind": "box", "x": 0.54, "y": 0.54, "z": 4.893, "w": 0.92, "d": 0.92, "h": 0.191, "color": "#d8dde0", "material": "metal" },
-                    { "kind": "box", "x": 0.693, "y": 0.693, "z": 5.084, "w": 0.613, "d": 0.613, "h": 0.191, "color": "#d8dde0", "material": "metal" },
-                    { "kind": "cylinder", "x": 1, "y": 1, "z": 5.275, "r": 0.077, "h": 0.725, "color": "#e4e8ea", "taper": 0, "segments": 12, "material": "metal" }
-                ],
-                "studio": {
-                    "name": "Арт-деко с иглой",
-                    "parts": [
-                        { "type": "block", "plan": "rect", "w": 60, "d": 60, "r": 8, "wa": 40, "wb": 40, "wc": 40, "wingW": 20, "floors": 16, "fh": 4, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "deco", "color": "#cfc6b8", "trim": "#5d666d" },
-                        { "type": "block", "plan": "rect", "w": 40, "d": 40, "r": 8, "wa": 40, "wb": 40, "wc": 40, "wingW": 20, "floors": 48, "fh": 3.8, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "deco", "color": "#cfc6b8", "trim": "#5d666d" },
-                        { "type": "crown", "style": "deco", "h": 30, "color": "#d8dde0", "stack": 0 },
-                        { "type": "spire", "h": 38, "r": 2.5, "color": "#e4e8ea", "stack": 0 }
-                    ],
-                    "height": 6
-                }
+                    { "kind": "ground", "x": 0.02, "y": 0.02, "w": 1.96, "d": 1.96, "color": "#a7a8aa" },
+                    { "kind": "floors", "x": 0.15, "y": 0.15, "z": 0, "w": 1.7, "d": 1.7, "floors": 3, "floorHeight": 0.16, "color": "#c9c2b4", "window": "#2b3a48", "facade": "deco", "cornice": "#9a9893", "plinth": "#8a8478" },
+                    { "kind": "floors", "x": 0.35, "y": 0.35, "z": 0.48, "w": 1.3, "d": 1.3, "floors": 6, "floorHeight": 0.14, "color": "#d8d2c6", "window": "#2b3a48", "facade": "deco", "cornice": "#9a9893" },
+                    { "kind": "tower", "x": 0.55, "y": 0.55, "z": 1.32, "w": 0.9, "d": 0.9, "plan": "rect", "floors": 22, "floorHeight": 0.12, "facade": "deco", "color": "#d8d2c6", "window": "#2b3a48", "trim": "#6f747b" },
+                    { "kind": "box", "x": 0.5, "y": 0.5, "z": 3.91, "w": 0.1, "d": 0.1, "h": 0.04, "color": "#d7dde5", "material": "metal" },
+                    { "kind": "box", "x": 1.4, "y": 0.5, "z": 3.91, "w": 0.1, "d": 0.1, "h": 0.04, "color": "#d7dde5", "material": "metal" },
+                    { "kind": "box", "x": 0.5, "y": 1.4, "z": 3.91, "w": 0.1, "d": 0.1, "h": 0.04, "color": "#d7dde5", "material": "metal" },
+                    { "kind": "box", "x": 1.4, "y": 1.4, "z": 3.91, "w": 0.1, "d": 0.1, "h": 0.04, "color": "#d7dde5", "material": "metal" },
+                    { "kind": "crown", "x": 0.57, "y": 0.57, "z": 3.96, "w": 0.86, "d": 0.86, "h": 0.14, "plan": "chamfer", "r": 0.215, "style": "stepped", "color": "#d7dde5", "glow": "#fff1c4" },
+                    { "kind": "neon", "x": 0.57, "y": 0.57, "z": 3.96, "w": 0.86, "d": 0.86, "h": 0.14, "color": "#fff1c4", "rings": 1, "corners": false },
+                    { "kind": "crown", "x": 0.63, "y": 0.63, "z": 4.1, "w": 0.74, "d": 0.74, "h": 0.14, "plan": "chamfer", "r": 0.185, "style": "stepped", "color": "#d7dde5", "glow": "#fff1c4" },
+                    { "kind": "neon", "x": 0.63, "y": 0.63, "z": 4.1, "w": 0.74, "d": 0.74, "h": 0.14, "color": "#fff1c4", "rings": 1, "corners": false },
+                    { "kind": "crown", "x": 0.69, "y": 0.69, "z": 4.24, "w": 0.62, "d": 0.62, "h": 0.14, "plan": "chamfer", "r": 0.155, "style": "stepped", "color": "#d7dde5", "glow": "#fff1c4" },
+                    { "kind": "neon", "x": 0.69, "y": 0.69, "z": 4.24, "w": 0.62, "d": 0.62, "h": 0.14, "color": "#fff1c4", "rings": 1, "corners": false },
+                    { "kind": "crown", "x": 0.75, "y": 0.75, "z": 4.38, "w": 0.5, "d": 0.5, "h": 0.14, "plan": "chamfer", "r": 0.125, "style": "stepped", "color": "#d7dde5", "glow": "#fff1c4" },
+                    { "kind": "neon", "x": 0.75, "y": 0.75, "z": 4.38, "w": 0.5, "d": 0.5, "h": 0.14, "color": "#fff1c4", "rings": 1, "corners": false },
+                    { "kind": "crown", "x": 0.81, "y": 0.81, "z": 4.52, "w": 0.38, "d": 0.38, "h": 0.14, "plan": "chamfer", "r": 0.095, "style": "stepped", "color": "#d7dde5", "glow": "#fff1c4" },
+                    { "kind": "neon", "x": 0.81, "y": 0.81, "z": 4.52, "w": 0.38, "d": 0.38, "h": 0.14, "color": "#fff1c4", "rings": 1, "corners": false },
+                    { "kind": "crown", "x": 0.87, "y": 0.87, "z": 4.66, "w": 0.26, "d": 0.26, "h": 0.14, "plan": "chamfer", "r": 0.065, "style": "stepped", "color": "#d7dde5", "glow": "#fff1c4" },
+                    { "kind": "neon", "x": 0.87, "y": 0.87, "z": 4.66, "w": 0.26, "d": 0.26, "h": 0.14, "color": "#fff1c4", "rings": 1, "corners": false },
+                    { "kind": "crown", "x": 0.94, "y": 0.94, "z": 4.8, "w": 0.12, "d": 0.12, "h": 0.9, "plan": "ellipse", "style": "spike", "color": "#d7dde5", "glow": "#fff1c4" },
+                    { "kind": "pole", "x": 0.08, "y": 1.92, "z": 0, "h": 0.32, "color": "#a3acb5", "blink": null },
+                    { "kind": "light", "x": 0.08, "y": 1.92, "z": 0.32, "radius": 1.3, "color": "#e8f4ff" },
+                    { "kind": "pole", "x": 1.92, "y": 1.92, "z": 0, "h": 0.32, "color": "#a3acb5", "blink": null },
+                    { "kind": "light", "x": 1.92, "y": 1.92, "z": 0.32, "radius": 1.3, "color": "#e8f4ff" }
+                ]
             }
         },
         {
             "level": 2,
             "name": "Стеклянная башня",
             "epoch": "e2100",
-            "description": "Ленточное остекление, скоростные лифты, квартиры над офисами.",
+            "description": "Стеклянные «осколки», сходящиеся в иглу, как у лондонского The Shard.",
             "cost": { "composites": 1500, "glass": 3500, "steel": 2500, "electronics": 400, "gold": 30000 },
             "buildTime": 70,
             "effects": {
@@ -79,32 +87,25 @@
             },
             "model": {
                 "parts": [
-                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
-                    { "kind": "floors", "x": 0.08, "y": 0.354, "z": 0, "w": 1.84, "d": 1.293, "floors": 4, "floorHeight": 0.177, "color": "#3f5f73", "window": "#6d95ae", "band": "#d7dde2", "material": "metal" },
-                    { "kind": "floors", "x": 0.428, "y": 0.627, "z": 0.707, "w": 1.144, "d": 0.746, "floors": 30, "floorHeight": 0.141, "color": "#6f8ea3", "window": "#a9d0ea", "band": "#e9ecee", "material": "metal" },
-                    { "kind": "floors", "x": 0.528, "y": 0.677, "z": 4.946, "w": 0.945, "d": 0.646, "floors": 8, "floorHeight": 0.141, "color": "#6f8ea3", "window": "#a9d0ea", "band": "#e9ecee", "material": "metal" },
-                    { "kind": "box", "x": 0.528, "y": 0.677, "z": 6.076, "w": 0.945, "d": 0.039, "h": 0.424, "color": "#e9ecee", "material": "metal" },
-                    { "kind": "box", "x": 0.528, "y": 1.284, "z": 6.076, "w": 0.945, "d": 0.039, "h": 0.424, "color": "#e9ecee", "material": "metal" },
-                    { "kind": "box", "x": 0.528, "y": 0.677, "z": 6.076, "w": 0.039, "d": 0.646, "h": 0.424, "color": "#e9ecee", "material": "metal" },
-                    { "kind": "box", "x": 1.433, "y": 0.677, "z": 6.076, "w": 0.039, "d": 0.646, "h": 0.424, "color": "#e9ecee", "material": "metal" }
-                ],
-                "studio": {
-                    "name": "Офисный центр",
-                    "parts": [
-                        { "type": "block", "plan": "rect", "w": 74, "d": 52, "r": 8, "wa": 40, "wb": 40, "wc": 40, "wingW": 20, "floors": 4, "fh": 5, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "glass", "color": "#3f5f73", "trim": "#d7dde2" },
-                        { "type": "block", "plan": "rect", "w": 46, "d": 30, "r": 8, "wa": 40, "wb": 40, "wc": 40, "wingW": 20, "floors": 30, "fh": 4, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "ribbon", "color": "#6f8ea3", "trim": "#e9ecee" },
-                        { "type": "block", "plan": "rect", "w": 38, "d": 26, "r": 8, "wa": 40, "wb": 40, "wc": 40, "wingW": 20, "floors": 8, "fh": 4, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "ribbon", "color": "#6f8ea3", "trim": "#e9ecee" },
-                        { "type": "crown", "style": "fins", "h": 12, "color": "#e9ecee", "stack": 0 }
-                    ],
-                    "height": 6.5
-                }
+                    { "kind": "ground", "x": 0.02, "y": 0.02, "w": 1.96, "d": 1.96, "color": "#c6d3d1" },
+                    { "kind": "tower", "x": 0.3, "y": 0.35, "z": 0, "w": 1.4, "d": 1.3, "plan": "chamfer", "r": 0.3, "floors": 48, "floorHeight": 0.11, "taper": 0.16, "facade": "glass", "color": "#d7e3ec", "window": "#a8cfe0", "trim": "#eef3f2" },
+                    { "kind": "crown", "x": 0.88, "y": 0.9, "z": 5.23, "w": 0.12, "d": 0.12, "h": 0.55, "plan": "tri", "style": "spike", "color": "#d7e3ec", "glow": "#e8f4ff" },
+                    { "kind": "crown", "x": 1, "y": 0.91, "z": 5.23, "w": 0.12, "d": 0.12, "h": 0.55, "plan": "tri", "style": "spike", "color": "#d7e3ec", "glow": "#e8f4ff" },
+                    { "kind": "crown", "x": 0.89, "y": 0.99, "z": 5.23, "w": 0.12, "d": 0.12, "h": 0.55, "plan": "tri", "style": "spike", "color": "#d7e3ec", "glow": "#e8f4ff" },
+                    { "kind": "crown", "x": 0.99, "y": 1, "z": 5.23, "w": 0.12, "d": 0.12, "h": 0.55, "plan": "tri", "style": "spike", "color": "#d7e3ec", "glow": "#e8f4ff" },
+                    { "kind": "box", "x": 0.25, "y": 1.75, "z": 0, "w": 1.5, "d": 0.15, "h": 0.012, "color": "#5aa6b8" },
+                    { "kind": "tree", "x": 0.15, "y": 0.15, "scale": 0.4, "conifer": false },
+                    { "kind": "tree", "x": 1.85, "y": 0.2, "scale": 0.4, "conifer": false },
+                    { "kind": "tree", "x": 0.15, "y": 1.6, "scale": 0.4, "conifer": false },
+                    { "kind": "light", "x": 1, "y": 1, "z": 5.58, "radius": 1.8, "color": "#e8f4ff" }
+                ]
             }
         },
         {
             "level": 3,
             "name": "Городской комплекс",
             "epoch": "e2300",
-            "description": "Башня с венцом-ламелями, отель и офисы на общем стилобате, как у Nest One.",
+            "description": "Скруглённая башня с ламелями и венцом-рамой, отель и офисы на общем стилобате, как у ташкентского Nest One.",
             "cost": { "composites": 3000, "rare_metals": 500, "glass": 5000, "hydrogen": 600, "gold": 52000 },
             "buildTime": 80,
             "effects": {
@@ -124,34 +125,26 @@
             },
             "model": {
                 "parts": [
-                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
-                    { "kind": "floors", "x": 0.523, "y": 0.696, "z": 0, "w": 0.798, "d": 0.538, "floors": 4, "floorHeight": 0.141, "color": "#5f7f93", "window": "#95bdd6", "band": "#cdd5da", "material": "metal" },
-                    { "kind": "floors", "x": 0.688, "y": 0.831, "z": 0.563, "w": 0.469, "d": 0.269, "floors": 46, "floorHeight": 0.122, "color": "#6f95ad", "window": "#a9d8f6", "band": "#eef1f3", "material": "metal" },
-                    { "kind": "box", "x": 0.688, "y": 0.831, "z": 6.184, "w": 0.469, "d": 0.02, "h": 1.316, "color": "#eef1f3", "material": "metal" },
-                    { "kind": "box", "x": 0.688, "y": 1.08, "z": 6.184, "w": 0.469, "d": 0.02, "h": 1.316, "color": "#eef1f3", "material": "metal" },
-                    { "kind": "box", "x": 0.688, "y": 0.831, "z": 6.184, "w": 0.02, "d": 0.269, "h": 1.316, "color": "#eef1f3", "material": "metal" },
-                    { "kind": "box", "x": 1.136, "y": 0.831, "z": 6.184, "w": 0.02, "d": 0.269, "h": 1.316, "color": "#eef1f3", "material": "metal" },
-                    { "kind": "floors", "x": 1.312, "y": 0.965, "z": 0, "w": 0.608, "d": 0.208, "floors": 14, "floorHeight": 0.122, "color": "#7c97a8", "window": "#b9dbf0", "band": "#dde2e5", "material": "metal" },
-                    { "kind": "floors", "x": 0.08, "y": 0.939, "z": 0, "w": 0.365, "d": 0.365, "floors": 9, "floorHeight": 0.125, "color": "#5b7a8f", "window": "#90b7d1", "band": "#cfd6db", "material": "metal" }
-                ],
-                "studio": {
-                    "name": "Nest One",
-                    "parts": [
-                        { "type": "block", "plan": "rect", "w": 92, "d": 62, "r": 8, "wa": 40, "wb": 40, "wc": 40, "wingW": 20, "floors": 4, "fh": 5, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "glass", "color": "#5f7f93", "trim": "#cdd5da", "label": "Стилобат" },
-                        { "type": "block", "plan": "rounded", "w": 54, "d": 31, "r": 15.5, "wa": 40, "wb": 40, "wc": 40, "wingW": 20, "floors": 47, "fh": 4.25, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#6f95ad", "trim": "#eef1f3", "label": "Башня" },
-                        { "type": "crown", "style": "fins", "h": 46.75, "color": "#eef1f3", "stack": 0, "label": "Венец" },
-                        { "type": "block", "plan": "rect", "w": 70, "d": 24, "r": 8, "wa": 40, "wb": 40, "wc": 40, "wingW": 20, "floors": 16, "fh": 3.8, "taper": 1, "twist": 0, "rot": 0, "x": 80, "z": 12, "stack": 1, "facade": "ribbon", "color": "#7c97a8", "trim": "#dde2e5", "label": "Отель" },
-                        { "type": "block", "plan": "chamfer", "w": 42, "d": 42, "r": 8, "wa": 40, "wb": 40, "wc": 40, "wingW": 20, "floors": 10, "fh": 4, "taper": 1, "twist": 0, "rot": 0, "x": -76, "z": 18, "stack": 2, "facade": "glass", "color": "#5b7a8f", "trim": "#cfd6db", "label": "Офисы" }
-                    ],
-                    "height": 7.5
-                }
+                    { "kind": "ground", "x": 0.02, "y": 0.02, "w": 1.96, "d": 1.96, "color": "#9aa3b4" },
+                    { "kind": "floors", "x": 0.1, "y": 0.25, "z": 0, "w": 1.8, "d": 1.3, "floors": 2, "floorHeight": 0.15, "color": "#5f7f93", "window": "#9fd0ee", "facade": "glass", "cornice": "#cdd5da" },
+                    { "kind": "tower", "x": 0.55, "y": 0.62, "z": 0.3, "w": 0.95, "d": 0.56, "plan": "rounded", "r": 0.28, "floors": 30, "floorHeight": 0.12, "facade": "fins", "color": "#6f95ad", "window": "#5f7f93", "trim": "#eef1f3" },
+                    { "kind": "crown", "x": 0.55, "y": 0.62, "z": 3.9, "w": 0.95, "d": 0.56, "h": 0.75, "plan": "rounded", "r": 0.28, "style": "fins", "color": "#eef1f3", "glow": "#cfe0ff" },
+                    { "kind": "floors", "x": 1.3, "y": 1.05, "z": 0.3, "w": 0.55, "d": 0.42, "floors": 9, "floorHeight": 0.11, "color": "#7c97a8", "window": "#9fd0ee", "band": "#dde2e5", "facade": "ribbon" },
+                    { "kind": "floors", "x": 0.15, "y": 1.05, "z": 0.3, "w": 0.42, "d": 0.42, "floors": 6, "floorHeight": 0.12, "color": "#5b7a8f", "window": "#9fd0ee", "facade": "glass", "cornice": "#cfd6db" },
+                    { "kind": "box", "x": 0.62, "y": 1.6, "z": 0, "w": 0.8, "d": 0.3, "h": 0.012, "color": "#5aa6b8" },
+                    { "kind": "tree", "x": 0.1, "y": 0.1, "scale": 0.36, "conifer": false },
+                    { "kind": "tree", "x": 1.9, "y": 0.12, "scale": 0.36, "conifer": false },
+                    { "kind": "tree", "x": 0.2, "y": 1.8, "scale": 0.36, "conifer": false },
+                    { "kind": "tree", "x": 1.8, "y": 1.85, "scale": 0.36, "conifer": false },
+                    { "kind": "light", "x": 1.02, "y": 0.9, "z": 4.3, "radius": 2, "color": "#cfe0ff" }
+                ]
             }
         },
         {
             "level": 4,
             "name": "Мегабашня",
             "epoch": "e2500",
-            "description": "Y-образный план и ярусы, уходящие в облака, как у Burj Khalifa.",
+            "description": "Y-образный план и спираль уступов, уходящая в шпиль, как у Burj Khalifa.",
             "cost": { "ai_cores": 160, "composites": 5000, "rare_metals": 1500, "gold": 90000 },
             "buildTime": 90,
             "effects": {
@@ -171,98 +164,34 @@
             },
             "model": {
                 "parts": [
-                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
-                    { "kind": "floors", "x": 0.8, "y": 0.173, "z": 0, "w": 0.4, "d": 1.028, "floors": 7, "floorHeight": 0.128, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.08, "y": 1, "z": 0, "w": 1.84, "d": 0.414, "floors": 7, "floorHeight": 0.128, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.8, "y": 0.184, "z": 0.895, "w": 0.4, "d": 1.016, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.096, "y": 1, "z": 0.895, "w": 1.808, "d": 0.406, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.8, "y": 0.199, "z": 1.167, "w": 0.4, "d": 1.001, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.111, "y": 0.999, "z": 1.167, "w": 1.778, "d": 0.4, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.801, "y": 0.217, "z": 1.438, "w": 0.399, "d": 0.983, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.128, "y": 0.995, "z": 1.438, "w": 1.745, "d": 0.399, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.802, "y": 0.236, "z": 1.71, "w": 0.397, "d": 0.962, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.146, "y": 0.991, "z": 1.71, "w": 1.709, "d": 0.397, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.803, "y": 0.257, "z": 1.982, "w": 0.394, "d": 0.941, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.165, "y": 0.987, "z": 1.982, "w": 1.669, "d": 0.394, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.805, "y": 0.278, "z": 2.253, "w": 0.391, "d": 0.917, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.186, "y": 0.983, "z": 2.253, "w": 1.628, "d": 0.391, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.807, "y": 0.3, "z": 2.525, "w": 0.387, "d": 0.893, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.208, "y": 0.98, "z": 2.525, "w": 1.584, "d": 0.387, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.809, "y": 0.324, "z": 2.797, "w": 0.382, "d": 0.867, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.231, "y": 0.976, "z": 2.797, "w": 1.538, "d": 0.382, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.812, "y": 0.348, "z": 3.068, "w": 0.376, "d": 0.841, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.255, "y": 0.973, "z": 3.068, "w": 1.49, "d": 0.376, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.815, "y": 0.372, "z": 3.34, "w": 0.37, "d": 0.813, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.28, "y": 0.97, "z": 3.34, "w": 1.44, "d": 0.37, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.819, "y": 0.397, "z": 3.612, "w": 0.363, "d": 0.784, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.306, "y": 0.967, "z": 3.612, "w": 1.389, "d": 0.363, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.823, "y": 0.423, "z": 3.884, "w": 0.355, "d": 0.754, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.332, "y": 0.965, "z": 3.884, "w": 1.335, "d": 0.355, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.827, "y": 0.45, "z": 4.155, "w": 0.346, "d": 0.723, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.36, "y": 0.962, "z": 4.155, "w": 1.28, "d": 0.346, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.832, "y": 0.476, "z": 4.427, "w": 0.336, "d": 0.692, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.388, "y": 0.96, "z": 4.427, "w": 1.224, "d": 0.336, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.837, "y": 0.504, "z": 4.699, "w": 0.326, "d": 0.659, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.417, "y": 0.959, "z": 4.699, "w": 1.165, "d": 0.326, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.842, "y": 0.532, "z": 4.97, "w": 0.315, "d": 0.626, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.447, "y": 0.957, "z": 4.97, "w": 1.106, "d": 0.315, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.848, "y": 0.56, "z": 5.242, "w": 0.303, "d": 0.592, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.478, "y": 0.956, "z": 5.242, "w": 1.044, "d": 0.303, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.855, "y": 0.589, "z": 5.514, "w": 0.291, "d": 0.557, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.509, "y": 0.955, "z": 5.514, "w": 0.982, "d": 0.291, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.861, "y": 0.618, "z": 5.786, "w": 0.278, "d": 0.521, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.541, "y": 0.954, "z": 5.786, "w": 0.917, "d": 0.278, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.868, "y": 0.647, "z": 6.057, "w": 0.264, "d": 0.485, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.574, "y": 0.954, "z": 6.057, "w": 0.852, "d": 0.264, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.876, "y": 0.677, "z": 6.329, "w": 0.249, "d": 0.447, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.608, "y": 0.954, "z": 6.329, "w": 0.785, "d": 0.249, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.883, "y": 0.707, "z": 6.601, "w": 0.233, "d": 0.41, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.642, "y": 0.954, "z": 6.601, "w": 0.716, "d": 0.233, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.891, "y": 0.738, "z": 6.872, "w": 0.217, "d": 0.371, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.677, "y": 0.954, "z": 6.872, "w": 0.647, "d": 0.217, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.9, "y": 0.769, "z": 7.144, "w": 0.2, "d": 0.331, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "floors", "x": 0.712, "y": 0.955, "z": 7.144, "w": 0.576, "d": 0.2, "floors": 2, "floorHeight": 0.136, "color": "#94adbf", "window": "#d7f6ff", "band": "#e3e9ee", "material": "metal" },
-                    { "kind": "cylinder", "x": 1, "y": 1, "z": 7.416, "r": 0.093, "h": 2.584, "color": "#cfd6db", "taper": 0, "segments": 12, "material": "metal" }
-                ],
-                "studio": {
-                    "name": "Burj Khalifa",
-                    "parts": [
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 62, "wb": 62, "wc": 62, "wingW": 30, "floors": 19, "fh": 3.9, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Подиум" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 61.15923844046008, "wb": 60.795390544380446, "wc": 60.40785072244887, "wingW": 30, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 1" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 60.000320742748684, "wb": 59.575379187681406, "wc": 59.134939729155334, "wingW": 29.97164461247637, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 2" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 58.6804866812003, "wb": 58.21320950197952, "wc": 57.73408561461055, "wingW": 29.886578449905482, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 3" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 57.243934399106756, "wb": 56.74345400236003, "wc": 56.233247357614104, "wingW": 29.744801512287335, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 4" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 55.713841133221635, "wb": 55.18569988199981, "wc": 54.64923683461355, "wingW": 29.546313799621927, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 5" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 54.10482228587421, "wb": 53.55279021613007, "wc": 52.99344359345869, "wingW": 29.291115311909262, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 6" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 52.42705867293121, "wb": 51.85388852180482, "wc": 51.27416593915673, "wingW": 28.97920604914934, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 7" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 50.68810589599613, "wb": 50.095907591458385, "wc": 49.497756198534944, "wingW": 28.610586011342154, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 8" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 48.8938243564341, "wb": 48.2842734544279, "wc": 47.669254742771116, "wingW": 28.185255198487713, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 9" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 47.04891029917945, "wb": 46.42337387386282, "wc": 45.792771631820585, "wingW": 27.703213610586012, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 10" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 45.15722280772623, "wb": 44.516840286045024, "wc": 43.871731116878934, "wingW": 27.16446124763705, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 11" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 43.22199697630137, "wb": 42.567734578538136, "wc": 41.90903604620257, "wingW": 26.56899810964083, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 12" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 41.24598924384982, "wb": 40.57867807933547, "wc": 39.90718277681651, "wingW": 25.916824196597354, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 13" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 39.231580124692414, "wb": 38.55194370133055, "wc": 37.86834408103903, "wingW": 25.207939508506616, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 14" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 37.1808490224263, "wb": 36.48952364101331, "wc": 35.79443056772928, "wingW": 24.44234404536862, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 15" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 35.09563009472252, "wb": 34.3931803097455, "wc": 33.68713722022487, "wingW": 23.620037807183365, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 16" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 32.97755486799947, "wb": 32.264485435598196, "wc": 31.547979344832086, "wingW": 22.741020793950852, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 17" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 30.828085348392133, "wb": 30.10485061506909, "wc": 29.37832080914793, "wingW": 21.80529300567108, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 18" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 28.648540164472237, "wb": 27.915551553623814, "wc": 27.17939655261857, "wingW": 20.812854442344044, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 19" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 26.440115501480584, "wb": 25.697747561021416, "wc": 24.952330766120788, "wingW": 19.763705103969755, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 20" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 24.203902075777457, "wb": 23.45249742017419, "wc": 22.69815174497895, "wingW": 18.657844990548206, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 21" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 21.94089905308497, "wb": 21.180772443973908, "wc": 20.41780415087161, "wingW": 17.495274102079396, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 22" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 19.652025575850416, "wb": 18.883467323019985, "wc": 18.112159229936537, "wingW": 16.27599243856333, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 23" },
-                        { "type": "block", "plan": "y", "w": 36, "d": 28, "r": 8, "wa": 17.338130397349957, "wb": 16.561409217398477, "wc": 15.782023400352394, "wingW": 15, "floors": 6, "fh": 3.75, "taper": 1, "twist": 0, "rot": 0, "x": 0, "z": 0, "stack": 0, "facade": "fins", "color": "#94adbf", "trim": "#e3e9ee", "label": "Ярус 24" },
-                        { "type": "spire", "h": 214, "r": 7, "color": "#cfd6db", "stack": 0 }
-                    ],
-                    "height": 10
-                }
+                    { "kind": "ground", "x": 0.02, "y": 0.02, "w": 1.96, "d": 1.96, "color": "#d8cdb6" },
+                    { "kind": "box", "x": 0.2, "y": 1.65, "z": 0, "w": 1.6, "d": 0.22, "h": 0.012, "color": "#5aa6b8", "material": "glow" },
+                    { "kind": "tower", "x": 0.12, "y": 0.15, "z": 0, "w": 1.76, "d": 1.6, "plan": "tri", "floors": 4, "floorHeight": 0.13, "facade": "fins", "color": "#e3e9ee", "window": "#94adbf", "trim": "#e3e9ee" },
+                    { "kind": "tower", "x": 0.07, "y": 0.188, "z": 0.52, "w": 1.76, "d": 1.584, "plan": "tri", "floors": 4, "floorHeight": 0.12, "facade": "fins", "color": "#e3e9ee", "window": "#94adbf", "trim": "#e3e9ee" },
+                    { "kind": "tower", "x": 0.185, "y": 0.287, "z": 1, "w": 1.629, "d": 1.466, "plan": "tri", "floors": 4, "floorHeight": 0.12, "facade": "fins", "color": "#e3e9ee", "window": "#94adbf", "trim": "#e3e9ee" },
+                    { "kind": "tower", "x": 0.3, "y": 0.265, "z": 1.48, "w": 1.5, "d": 1.35, "plan": "tri", "floors": 4, "floorHeight": 0.12, "facade": "fins", "color": "#e3e9ee", "window": "#94adbf", "trim": "#e3e9ee" },
+                    { "kind": "tower", "x": 0.264, "y": 0.362, "z": 1.96, "w": 1.372, "d": 1.235, "plan": "tri", "floors": 4, "floorHeight": 0.12, "facade": "fins", "color": "#e3e9ee", "window": "#94adbf", "trim": "#e3e9ee" },
+                    { "kind": "tower", "x": 0.377, "y": 0.459, "z": 2.44, "w": 1.247, "d": 1.122, "plan": "tri", "floors": 4, "floorHeight": 0.12, "facade": "fins", "color": "#e3e9ee", "window": "#94adbf", "trim": "#e3e9ee" },
+                    { "kind": "tower", "x": 0.489, "y": 0.435, "z": 2.92, "w": 1.123, "d": 1.01, "plan": "tri", "floors": 4, "floorHeight": 0.12, "facade": "fins", "color": "#e3e9ee", "window": "#94adbf", "trim": "#e3e9ee" },
+                    { "kind": "tower", "x": 0.45, "y": 0.53, "z": 3.4, "w": 1.001, "d": 0.901, "plan": "tri", "floors": 4, "floorHeight": 0.12, "facade": "fins", "color": "#e3e9ee", "window": "#94adbf", "trim": "#e3e9ee" },
+                    { "kind": "tower", "x": 0.559, "y": 0.624, "z": 3.88, "w": 0.881, "d": 0.793, "plan": "tri", "floors": 4, "floorHeight": 0.12, "facade": "fins", "color": "#e3e9ee", "window": "#94adbf", "trim": "#e3e9ee" },
+                    { "kind": "tower", "x": 0.668, "y": 0.596, "z": 4.36, "w": 0.764, "d": 0.687, "plan": "tri", "floors": 4, "floorHeight": 0.12, "facade": "fins", "color": "#e3e9ee", "window": "#94adbf", "trim": "#e3e9ee" },
+                    { "kind": "tower", "x": 0.625, "y": 0.688, "z": 4.84, "w": 0.65, "d": 0.585, "plan": "tri", "floors": 4, "floorHeight": 0.12, "facade": "fins", "color": "#e3e9ee", "window": "#94adbf", "trim": "#e3e9ee" },
+                    { "kind": "tower", "x": 0.731, "y": 0.778, "z": 5.32, "w": 0.539, "d": 0.485, "plan": "tri", "floors": 4, "floorHeight": 0.12, "facade": "fins", "color": "#e3e9ee", "window": "#94adbf", "trim": "#e3e9ee" },
+                    { "kind": "tower", "x": 0.834, "y": 0.746, "z": 5.8, "w": 0.432, "d": 0.389, "plan": "tri", "floors": 4, "floorHeight": 0.12, "facade": "fins", "color": "#e3e9ee", "window": "#94adbf", "trim": "#e3e9ee" },
+                    { "kind": "tower", "x": 0.785, "y": 0.831, "z": 6.28, "w": 0.331, "d": 0.298, "plan": "tri", "floors": 4, "floorHeight": 0.12, "facade": "fins", "color": "#e3e9ee", "window": "#94adbf", "trim": "#e3e9ee" },
+                    { "kind": "tower", "x": 0.882, "y": 0.913, "z": 6.76, "w": 0.237, "d": 0.213, "plan": "tri", "floors": 4, "floorHeight": 0.12, "facade": "fins", "color": "#e3e9ee", "window": "#94adbf", "trim": "#e3e9ee" },
+                    { "kind": "tower", "x": 0.91, "y": 0.9, "z": 7.24, "w": 0.18, "d": 0.18, "plan": "octagon", "floors": 4, "floorHeight": 0.12, "taper": 0.6, "facade": "glass", "color": "#e3e9ee", "window": "#94adbf", "trim": "#e3e9ee" },
+                    { "kind": "crown", "x": 0.94, "y": 0.93, "z": 7.72, "w": 0.12, "d": 0.12, "h": 1.6, "plan": "octagon", "style": "spike", "color": "#e3e9ee", "glow": "#e8f4ff" },
+                    { "kind": "light", "x": 1, "y": 1, "z": 9.24, "radius": 1.6, "color": "#ff4d4d" }
+                ]
             }
         },
         {
             "level": 5,
             "name": "Башни-близнецы",
             "epoch": "e3000",
-            "description": "Две башни из наноматериала, связанные небесным мостом.",
+            "description": "Две звёздчатые башни из наноматериала, связанные небесным мостом, как Петронас.",
             "cost": { "nanomaterials": 700, "ai_cores": 260, "antimatter": 14, "gold": 150000 },
             "buildTime": 100,
             "effects": {
@@ -282,34 +211,31 @@
             },
             "model": {
                 "parts": [
-                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
-                    { "kind": "floors", "x": 0.086, "y": 0.652, "z": 0, "w": 0.696, "d": 0.696, "floors": 10, "floorHeight": 0.123, "color": "#a9b6bf", "window": "#f1ffff", "band": "#e9edef", "material": "metal" },
-                    { "kind": "floors", "x": 0.098, "y": 0.664, "z": 1.23, "w": 0.672, "d": 0.672, "floors": 10, "floorHeight": 0.123, "color": "#a9b6bf", "window": "#f1ffff", "band": "#e9edef", "material": "metal" },
-                    { "kind": "floors", "x": 0.109, "y": 0.676, "z": 2.46, "w": 0.649, "d": 0.649, "floors": 10, "floorHeight": 0.123, "color": "#a9b6bf", "window": "#f1ffff", "band": "#e9edef", "material": "metal" },
-                    { "kind": "floors", "x": 0.121, "y": 0.687, "z": 3.691, "w": 0.625, "d": 0.625, "floors": 10, "floorHeight": 0.123, "color": "#a9b6bf", "window": "#f1ffff", "band": "#e9edef", "material": "metal" },
-                    { "kind": "floors", "x": 0.133, "y": 0.699, "z": 4.921, "w": 0.602, "d": 0.602, "floors": 10, "floorHeight": 0.123, "color": "#a9b6bf", "window": "#f1ffff", "band": "#e9edef", "material": "metal" },
-                    { "kind": "floors", "x": 0.145, "y": 0.711, "z": 6.151, "w": 0.578, "d": 0.578, "floors": 10, "floorHeight": 0.123, "color": "#a9b6bf", "window": "#f1ffff", "band": "#e9edef", "material": "metal" },
-                    { "kind": "cylinder", "x": 0.434, "y": 1, "z": 7.381, "r": 0.044, "h": 1.619, "color": "#c9d1d6", "taper": 0, "segments": 12, "material": "metal" },
-                    { "kind": "floors", "x": 1.218, "y": 0.652, "z": 0, "w": 0.696, "d": 0.696, "floors": 10, "floorHeight": 0.123, "color": "#a9b6bf", "window": "#f1ffff", "band": "#e9edef", "material": "metal" },
-                    { "kind": "floors", "x": 1.23, "y": 0.664, "z": 1.23, "w": 0.672, "d": 0.672, "floors": 10, "floorHeight": 0.123, "color": "#a9b6bf", "window": "#f1ffff", "band": "#e9edef", "material": "metal" },
-                    { "kind": "floors", "x": 1.242, "y": 0.676, "z": 2.46, "w": 0.649, "d": 0.649, "floors": 10, "floorHeight": 0.123, "color": "#a9b6bf", "window": "#f1ffff", "band": "#e9edef", "material": "metal" },
-                    { "kind": "floors", "x": 1.254, "y": 0.687, "z": 3.691, "w": 0.625, "d": 0.625, "floors": 10, "floorHeight": 0.123, "color": "#a9b6bf", "window": "#f1ffff", "band": "#e9edef", "material": "metal" },
-                    { "kind": "floors", "x": 1.265, "y": 0.699, "z": 4.921, "w": 0.602, "d": 0.602, "floors": 10, "floorHeight": 0.123, "color": "#a9b6bf", "window": "#f1ffff", "band": "#e9edef", "material": "metal" },
-                    { "kind": "floors", "x": 1.277, "y": 0.711, "z": 6.151, "w": 0.578, "d": 0.578, "floors": 10, "floorHeight": 0.123, "color": "#a9b6bf", "window": "#f1ffff", "band": "#e9edef", "material": "metal" },
-                    { "kind": "cylinder", "x": 1.566, "y": 1, "z": 7.381, "r": 0.044, "h": 1.619, "color": "#c9d1d6", "taper": 0, "segments": 12, "material": "metal" },
-                    { "kind": "box", "x": 0.682, "y": 0.947, "z": 5.18, "w": 0.637, "d": 0.106, "h": 0.259, "color": "#c6d0d6", "material": "glass" }
-                ],
-                "studio": {
-                    "name": "Башни-близнецы с мостом",
-                    "parts": [
-                        { "type": "block", "plan": "chamfer", "w": 40, "d": 40, "r": 11, "wa": 40, "wb": 40, "wc": 40, "wingW": 20, "floors": 60, "fh": 3.8, "taper": 0.8, "twist": 0, "rot": 0, "x": -32, "z": 0, "stack": 0, "facade": "fins", "color": "#a9b6bf", "trim": "#e9edef" },
-                        { "type": "spire", "h": 50, "r": 2.5, "color": "#c9d1d6", "stack": 0 },
-                        { "type": "block", "plan": "chamfer", "w": 40, "d": 40, "r": 11, "wa": 40, "wb": 40, "wc": 40, "wingW": 20, "floors": 60, "fh": 3.8, "taper": 0.8, "twist": 0, "rot": 0, "x": 32, "z": 0, "stack": 1, "facade": "fins", "color": "#a9b6bf", "trim": "#e9edef" },
-                        { "type": "spire", "h": 50, "r": 2.5, "color": "#c9d1d6", "stack": 1 },
-                        { "type": "bridge", "y": 160, "x1": -18, "z1": 0, "x2": 18, "z2": 0, "w": 6, "h": 8, "color": "#c6d0d6", "stack": 0 }
-                    ],
-                    "height": 9
-                }
+                    { "kind": "ground", "x": 0.02, "y": 0.02, "w": 1.96, "d": 1.96, "color": "#ece8f6" },
+                    { "kind": "box", "x": 0.2, "y": 1.55, "z": 0, "w": 1.6, "d": 0.3, "h": 0.012, "color": "#7ae0ff", "material": "glow" },
+                    { "kind": "tower", "x": 0.1, "y": 0.55, "z": 0, "w": 0.7, "d": 0.7, "plan": "cross", "r": 0.238, "floors": 22, "floorHeight": 0.11, "facade": "fins", "color": "#f2f0f7", "window": "#b8e8ff", "trim": "#ffffff" },
+                    { "kind": "tower", "x": 0.15, "y": 0.6, "z": 2.42, "w": 0.6, "d": 0.6, "plan": "cross", "r": 0.204, "floors": 8, "floorHeight": 0.11, "facade": "fins", "color": "#f2f0f7", "window": "#b8e8ff", "trim": "#ffffff" },
+                    { "kind": "tower", "x": 0.21, "y": 0.66, "z": 3.3, "w": 0.48, "d": 0.48, "plan": "cross", "r": 0.163, "floors": 6, "floorHeight": 0.11, "facade": "fins", "color": "#f2f0f7", "window": "#b8e8ff", "trim": "#ffffff" },
+                    { "kind": "tower", "x": 0.27, "y": 0.72, "z": 3.96, "w": 0.36, "d": 0.36, "plan": "cross", "r": 0.122, "floors": 5, "floorHeight": 0.11, "facade": "fins", "color": "#f2f0f7", "window": "#b8e8ff", "trim": "#ffffff" },
+                    { "kind": "tower", "x": 0.32, "y": 0.77, "z": 4.51, "w": 0.26, "d": 0.26, "plan": "cross", "r": 0.088, "floors": 4, "floorHeight": 0.11, "facade": "fins", "color": "#f2f0f7", "window": "#b8e8ff", "trim": "#ffffff" },
+                    { "kind": "crown", "x": 0.39, "y": 0.84, "z": 4.95, "w": 0.12, "d": 0.12, "h": 1, "plan": "ellipse", "style": "spike", "color": "#f2f0f7", "glow": "#7ae0ff" },
+                    { "kind": "neon", "x": 0.1, "y": 0.55, "z": 0, "w": 0.7, "d": 0.7, "h": 2.42, "color": "#7ae0ff", "rings": 4, "corners": false },
+                    { "kind": "tower", "x": 1.2, "y": 0.55, "z": 0, "w": 0.7, "d": 0.7, "plan": "cross", "r": 0.238, "floors": 22, "floorHeight": 0.11, "facade": "fins", "color": "#f2f0f7", "window": "#b8e8ff", "trim": "#ffffff" },
+                    { "kind": "tower", "x": 1.25, "y": 0.6, "z": 2.42, "w": 0.6, "d": 0.6, "plan": "cross", "r": 0.204, "floors": 8, "floorHeight": 0.11, "facade": "fins", "color": "#f2f0f7", "window": "#b8e8ff", "trim": "#ffffff" },
+                    { "kind": "tower", "x": 1.31, "y": 0.66, "z": 3.3, "w": 0.48, "d": 0.48, "plan": "cross", "r": 0.163, "floors": 6, "floorHeight": 0.11, "facade": "fins", "color": "#f2f0f7", "window": "#b8e8ff", "trim": "#ffffff" },
+                    { "kind": "tower", "x": 1.37, "y": 0.72, "z": 3.96, "w": 0.36, "d": 0.36, "plan": "cross", "r": 0.122, "floors": 5, "floorHeight": 0.11, "facade": "fins", "color": "#f2f0f7", "window": "#b8e8ff", "trim": "#ffffff" },
+                    { "kind": "tower", "x": 1.42, "y": 0.77, "z": 4.51, "w": 0.26, "d": 0.26, "plan": "cross", "r": 0.088, "floors": 4, "floorHeight": 0.11, "facade": "fins", "color": "#f2f0f7", "window": "#b8e8ff", "trim": "#ffffff" },
+                    { "kind": "crown", "x": 1.49, "y": 0.84, "z": 4.95, "w": 0.12, "d": 0.12, "h": 1, "plan": "ellipse", "style": "spike", "color": "#f2f0f7", "glow": "#7ae0ff" },
+                    { "kind": "neon", "x": 1.2, "y": 0.55, "z": 0, "w": 0.7, "d": 0.7, "h": 2.42, "color": "#7ae0ff", "rings": 4, "corners": false },
+                    { "kind": "box", "x": 0.8, "y": 0.82, "z": 1.5, "w": 0.4, "d": 0.16, "h": 0.14, "color": "#f2f0f7" },
+                    { "kind": "box", "x": 0.82, "y": 0.83, "z": 1.52, "w": 0.36, "d": 0.14, "h": 0.1, "color": "#7ae0ff", "material": "glow" },
+                    { "kind": "box", "x": 0.98, "y": 0.86, "z": 0, "w": 0.04, "d": 0.08, "h": 1.5, "color": "#f2f0f7" },
+                    { "kind": "tree", "x": 0.2, "y": 1.85, "scale": 0.36, "conifer": false },
+                    { "kind": "tree", "x": 0.6, "y": 1.85, "scale": 0.36, "conifer": false },
+                    { "kind": "tree", "x": 1.4, "y": 1.85, "scale": 0.36, "conifer": false },
+                    { "kind": "tree", "x": 1.8, "y": 1.85, "scale": 0.36, "conifer": false },
+                    { "kind": "light", "x": 1, "y": 0.9, "z": 1.6, "radius": 1.6, "color": "#7ae0ff" }
+                ]
             }
         }
     ]
