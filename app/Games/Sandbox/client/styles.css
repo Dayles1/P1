@@ -766,7 +766,7 @@ body {
     }
 }
 
-/* ◆ The crosshair: four points and a diamond, red over a creature. */
+/* ◆ The marker on what is in reach (placed by the game): four points and a diamond, red on a creature. */
 .sb-aim {
     position: absolute;
     z-index: 2;

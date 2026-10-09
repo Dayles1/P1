@@ -58,7 +58,7 @@ import { artifactName } from './ui/artifacts-tab';
 import { CreateHero } from './ui/create';
 import type { HeroChoice } from './ui/create';
 import { Hud } from './ui/hud';
-import type { CompassMark, Effect, PromptLine } from './ui/hud';
+import type { CompassMark, Effect, PromptLine, ScreenPoint } from './ui/hud';
 import type { IconName } from './ui/icons';
 import { Menu } from './ui/menu';
 import { TouchControls } from './ui/touch';
@@ -752,6 +752,52 @@ export class Game {
         this.gainXp('merge');
         this.dirty = true;
         this.menu.render();
+    }
+
+    /** Where the marker of something in reach goes, in the world. */
+    private markPoint(target: Strike | Use): THREE.Vector3 {
+        const point = this.screen;
+
+        switch (target.kind) {
+            case 'mob':
+                return point
+                    .copy(target.position)
+                    .setY(target.position.y + 1.1);
+            case 'tree':
+                return point.set(target.x, target.ground + 1.3, target.z);
+            case 'rock':
+                return point
+                    .copy(target.center)
+                    .setY(target.center.y + target.size * 0.3);
+            case 'drop':
+                return point
+                    .copy(target.mesh.position)
+                    .setY(target.mesh.position.y + 0.3);
+            case 'seat':
+                return point.set(
+                    target.seat.x,
+                    target.seat.top + 0.3,
+                    target.seat.z,
+                );
+            case 'structure':
+                return point.set(target.x, target.ground + 1.1, target.z);
+            default:
+                return point.set(target.x, target.ground + 0.5, target.z);
+        }
+    }
+
+    /** A point of the world on the screen, in pixels (null behind the camera). */
+    private onScreen(point: THREE.Vector3): ScreenPoint | null {
+        point.project(this.view.camera);
+
+        if (point.z > 1) {
+            return null;
+        }
+
+        return {
+            x: ((point.x + 1) / 2) * window.innerWidth,
+            y: ((1 - point.y) / 2) * window.innerHeight,
+        };
     }
 
     /** Damage dealt, floating up from the creature on the screen. */
@@ -2338,13 +2384,11 @@ export class Game {
         this.renderer.render(this.scene, this.view.camera);
 
         this.hud.setPrompt(this.promptLines());
+        const reach = this.targets.hit ?? this.targets.use;
         this.hud.setAim(
             this.mode === 'play' && alive && !character.sitting,
-            this.targets.hit?.kind === 'mob'
-                ? 'enemy'
-                : this.targets.hit || this.targets.use
-                  ? 'thing'
-                  : null,
+            this.targets.hit?.kind === 'mob' ? 'enemy' : reach ? 'thing' : null,
+            reach ? this.onScreen(this.markPoint(reach)) : null,
         );
         this.touch?.setContext(this.touchContext());
         this.hud.setStance(

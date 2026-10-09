@@ -10,8 +10,10 @@
  *   under it the creature being fought, with its health;
  * - top right: the save status and the menu buttons; under them the feed
  *   of what was picked up ("+3 Wood 67", growing when it repeats);
- * - the middle: the crosshair (red over a creature), what the mouse would
- *   do, and the damage dealt floating up from where it landed;
+ * - over the world: a marker on what a blow, E or a pick-up would reach
+ *   (red on a creature) with what the mouse would do under it — nothing
+ *   when there is nothing in reach — and the damage dealt floating up
+ *   from where it landed;
  * - bottom left: carried resources; bottom middle: the held item with its
  *   durability, health (armour beside it), mana and stamina in bars of
  *   ten shares, the hotbar and the class skill as a diamond that fills as
@@ -40,8 +42,14 @@ import type { IconName } from './icons';
 
 export type PromptKey = 'attack' | 'use' | 'place' | 'skill' | 'rise' | 'dive';
 
-/** What the crosshair is over: a creature, something else to use, nothing. */
+/** What is in reach: a creature, something else to hit or use, nothing. */
 export type AimTarget = 'enemy' | 'thing' | null;
+
+/** A point on the screen, in pixels. */
+export interface ScreenPoint {
+    x: number;
+    y: number;
+}
 
 export interface PromptLine {
     key: PromptKey;
@@ -321,7 +329,7 @@ export class Hud {
 
         this.feed = element('div', 'sb-feed');
 
-        // ◆ The crosshair.
+        // ◆ The marker on what is in reach.
         this.aim = element('div', 'sb-aim');
         this.aim.hidden = true;
 
@@ -902,19 +910,34 @@ export class Hud {
         this.armorText.title = `${t.armor}: ${Math.round((1 - throughArmor(armor)) * 100)}% ${t.armor_blocks}`;
     }
 
-    /** The crosshair: shown while playing, red over a creature. */
-    setAim(shown: boolean, target: AimTarget): void {
-        const key = `${shown}|${target}`;
+    /**
+     * The marker on what is in reach, where it is on the screen (null, or
+     * nothing in reach, hides it), red on a creature.
+     */
+    setAim(shown: boolean, target: AimTarget, at: ScreenPoint | null): void {
+        const visible = shown && target !== null && at !== null;
+        const key = visible
+            ? `${target}|${Math.round(at.x)}|${Math.round(at.y)}`
+            : '';
 
         if (key === this.aimKey) {
             return;
         }
 
         this.aimKey = key;
-        this.aim.hidden = !shown;
-        this.aimHint.classList.toggle('sb-aim-hint--off', !shown);
+        this.aim.hidden = !visible;
+        this.aimHint.classList.toggle('sb-aim-hint--off', !visible);
+
+        if (!visible) {
+            return;
+        }
+
         this.aim.classList.toggle('sb-aim--enemy', target === 'enemy');
         this.aim.classList.toggle('sb-aim--thing', target === 'thing');
+        this.aim.style.left = `${at.x}px`;
+        this.aim.style.top = `${at.y}px`;
+        this.aimHint.style.left = `${at.x}px`;
+        this.aimHint.style.top = `${at.y + 30}px`;
     }
 
     /** The hero's portrait, level, class, experience and free points. */
