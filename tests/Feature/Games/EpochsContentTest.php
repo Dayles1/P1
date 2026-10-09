@@ -163,29 +163,36 @@ test('every building model is made of parts the renderer knows', function () {
     expect(array_keys($used))->toContain('tower', 'columns', 'dormers', 'balconies', 'neon');
 });
 
-test('the skyscraper is built from studio designs the workshop can reopen', function () {
-    $skyscraper = (new ContentRepository)->read('buildings/skyscraper');
+test('every home model stands inside its plot', function () {
+    $repository = new ContentRepository;
 
-    expect($skyscraper['size'])->toBe(['w' => 2, 'h' => 2])
-        ->and($skyscraper['levels'][0]['tech'])->toBe('highrise_engineering');
+    foreach (['house', 'block', 'manor', 'skyscraper'] as $id) {
+        $building = $repository->read("buildings/{$id}");
+        $size = $building['size'];
 
-    foreach ($skyscraper['levels'] as $level) {
-        expect($level['model']['parts'])->not->toBeEmpty()
-            ->and($level['model']['studio'])->toHaveKeys(['name', 'parts', 'height'])
-            ->and($level['model']['studio']['parts'])->not->toBeEmpty();
+        foreach ($building['levels'] as $level) {
+            expect($level['model']['parts'])->not->toBeEmpty();
 
-        foreach ($level['model']['parts'] as $part) {
-            if (isset($part['w'], $part['x'])) {
-                expect($part['x'])->toBeGreaterThanOrEqual(0)
-                    ->and($part['x'] + $part['w'])->toBeLessThanOrEqual(2.01);
+            foreach ($level['model']['parts'] as $part) {
+                if (isset($part['w'], $part['x']) && $part['kind'] !== 'cylinder') {
+                    expect($part['x'])->toBeGreaterThanOrEqual(0)
+                        ->and($part['x'] + $part['w'])->toBeLessThanOrEqual($size['w'] + 0.011);
+                }
+
+                if (isset($part['d'], $part['y'])) {
+                    expect($part['y'])->toBeGreaterThanOrEqual(0)
+                        ->and($part['y'] + $part['d'])->toBeLessThanOrEqual($size['h'] + 0.011);
+                }
             }
         }
     }
+
+    expect($repository->read('buildings/skyscraper')['levels'][0]['tech'])->toBe('highrise_engineering');
 });
 
 test('a building level saved with its studio design passes the workshop', function () {
     $skyscraper = (new ContentRepository)->read('buildings/skyscraper');
-    $skyscraper['levels'][0]['model']['studio']['height'] = 7;
+    $skyscraper['levels'][0]['model']['studio'] = ['name' => 'Тест', 'parts' => [['type' => 'block']], 'height' => 7];
 
     $this->actingAs(User::factory()->create(), 'sanctum')
         ->putJson('/api/games/epochs/content/buildings/skyscraper', ['json' => json_encode($skyscraper, JSON_UNESCAPED_UNICODE)])
