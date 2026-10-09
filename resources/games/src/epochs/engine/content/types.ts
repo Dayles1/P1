@@ -566,7 +566,14 @@ export interface LevelDef {
     upgrade?: Amounts;
     buildTime: number;
     effects: Effects;
-    model: { parts: ModelPart[] };
+    model: {
+        parts: ModelPart[];
+        /**
+         * The skyscraper-studio design the parts were made from, kept so
+         * the Workshop can open it again; the game draws `parts` only.
+         */
+        studio?: unknown;
+    };
 }
 
 export type Category =

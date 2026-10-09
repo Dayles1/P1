@@ -140,3 +140,34 @@ test('a disabled workshop is closed to everyone', function () {
         ->deleteJson('/api/games/epochs/content/buildings/park')
         ->assertForbidden();
 });
+
+test('the skyscraper is built from studio designs the workshop can reopen', function () {
+    $skyscraper = (new ContentRepository)->read('buildings/skyscraper');
+
+    expect($skyscraper['size'])->toBe(['w' => 2, 'h' => 2])
+        ->and($skyscraper['levels'][0]['tech'])->toBe('highrise_engineering');
+
+    foreach ($skyscraper['levels'] as $level) {
+        expect($level['model']['parts'])->not->toBeEmpty()
+            ->and($level['model']['studio'])->toHaveKeys(['name', 'parts', 'height'])
+            ->and($level['model']['studio']['parts'])->not->toBeEmpty();
+
+        foreach ($level['model']['parts'] as $part) {
+            if (isset($part['w'], $part['x'])) {
+                expect($part['x'])->toBeGreaterThanOrEqual(0)
+                    ->and($part['x'] + $part['w'])->toBeLessThanOrEqual(2.01);
+            }
+        }
+    }
+});
+
+test('a building level saved with its studio design passes the workshop', function () {
+    $skyscraper = (new ContentRepository)->read('buildings/skyscraper');
+    $skyscraper['levels'][0]['model']['studio']['height'] = 7;
+
+    $this->actingAs(User::factory()->create(), 'sanctum')
+        ->putJson('/api/games/epochs/content/buildings/skyscraper', ['json' => json_encode($skyscraper, JSON_UNESCAPED_UNICODE)])
+        ->assertOk();
+
+    expect((new ContentRepository)->read('buildings/skyscraper')['levels'][0]['model']['studio']['height'])->toBe(7);
+});

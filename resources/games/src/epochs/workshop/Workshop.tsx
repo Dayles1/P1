@@ -8,6 +8,7 @@ import { validateContent } from '../engine/content/registry';
 import type { ContentIssue } from '../engine/content/registry';
 import type { BuildingDef, ContentBundle } from '../engine/content/types';
 import { PreviewBoundary } from './PreviewBoundary';
+import { SkyscraperStudio } from './SkyscraperStudio';
 import {
     BuildingPreview,
     ClimatePreview,
@@ -145,6 +146,8 @@ export default function Workshop() {
     const [serverIssues, setServerIssues] = useState<ContentIssue[]>([]);
     const [status, setStatus] = useState('');
     const [filter, setFilter] = useState('');
+    const [studio, setStudio] = useState(false);
+    const [studioLevel, setStudioLevel] = useState(1);
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     useEffect(() => {
@@ -504,37 +507,85 @@ export default function Workshop() {
 
                 <div className="ws-split">
                     <section className="ws-editor">
-                        <textarea
-                            ref={textareaRef}
-                            spellCheck={false}
-                            value={text}
-                            onChange={(event) =>
-                                setTexts((all) => ({
-                                    ...all,
-                                    [active]: event.target.value,
-                                }))
-                            }
-                            onKeyDown={(event) => {
-                                if (event.key === 'Tab') {
-                                    event.preventDefault();
-
-                                    const el = event.currentTarget;
-                                    const start = el.selectionStart;
-                                    const value = `${text.slice(0, start)}    ${text.slice(el.selectionEnd)}`;
-
+                        {isBuilding && (
+                            <div className="ws-tabs ws-editor__tabs">
+                                <button
+                                    type="button"
+                                    aria-pressed={!studio}
+                                    onClick={() => setStudio(false)}
+                                >
+                                    {'{ }'} JSON
+                                </button>
+                                <button
+                                    type="button"
+                                    aria-pressed={studio}
+                                    onClick={() => setStudio(true)}
+                                    title="Собрать модель уровня как в «Студии небоскрёбов»"
+                                >
+                                    🏙️ Студия
+                                </button>
+                            </div>
+                        )}
+                        {isBuilding && studio ? (
+                            <div className="ws-studio">
+                                {draft.errors[active] || !current ? (
+                                    <p className="ws-empty">
+                                        Исправьте JSON, чтобы открыть студию.
+                                    </p>
+                                ) : (
+                                    <SkyscraperStudio
+                                        building={current as BuildingDef}
+                                        level={Math.min(
+                                            studioLevel,
+                                            Math.max(
+                                                1,
+                                                (current as BuildingDef).levels
+                                                    ?.length ?? 1,
+                                            ),
+                                        )}
+                                        onLevel={setStudioLevel}
+                                        onChange={(next) =>
+                                            setTexts((all) => ({
+                                                ...all,
+                                                [active]: formatContent(next),
+                                            }))
+                                        }
+                                    />
+                                )}
+                            </div>
+                        ) : (
+                            <textarea
+                                ref={textareaRef}
+                                spellCheck={false}
+                                value={text}
+                                onChange={(event) =>
                                     setTexts((all) => ({
                                         ...all,
-                                        [active]: value,
-                                    }));
-                                    requestAnimationFrame(() =>
-                                        el.setSelectionRange(
-                                            start + 4,
-                                            start + 4,
-                                        ),
-                                    );
+                                        [active]: event.target.value,
+                                    }))
                                 }
-                            }}
-                        />
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Tab') {
+                                        event.preventDefault();
+
+                                        const el = event.currentTarget;
+                                        const start = el.selectionStart;
+                                        const value = `${text.slice(0, start)}    ${text.slice(el.selectionEnd)}`;
+
+                                        setTexts((all) => ({
+                                            ...all,
+                                            [active]: value,
+                                        }));
+                                        requestAnimationFrame(() =>
+                                            el.setSelectionRange(
+                                                start + 4,
+                                                start + 4,
+                                            ),
+                                        );
+                                    }
+                                }}
+                            />
+                        )}
                         <div className="ws-issues">
                             {draft.errors[active] && (
                                 <p className="ws-error">
@@ -579,6 +630,9 @@ export default function Workshop() {
                                     bundle={draft.bundle}
                                     building={current as BuildingDef}
                                     audio={audio}
+                                    focusLevel={
+                                        studio ? studioLevel : undefined
+                                    }
                                 />
                             ) : active === 'world' || active === 'biomes' ? (
                                 <MapPreview bundle={draft.bundle} />

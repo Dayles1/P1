@@ -1562,3 +1562,226 @@ a.hud-button {
         min-height: 360px;
     }
 }
+
+/* Workshop: «Студия небоскрёбов» — a level's model as a tower of parts */
+
+.ws-editor__tabs {
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--g-border);
+}
+
+.ws-studio {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 14px 16px;
+}
+
+.ss {
+    display: grid;
+    gap: 12px;
+    font-size: 13px;
+}
+
+.ss-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    color: var(--g-muted);
+}
+
+.ss-meta {
+    margin: 0;
+    color: var(--g-accent);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+}
+
+.ss-presets {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.ss-preset,
+.ss-add button,
+.ss-ops button,
+.ss-part {
+    border: 1px solid var(--g-border);
+    border-radius: 8px;
+    background: var(--g-surface-2);
+    color: var(--g-text);
+    cursor: pointer;
+}
+
+.ss-preset {
+    display: grid;
+    gap: 2px;
+    padding: 8px 10px;
+    text-align: left;
+}
+
+.ss-preset small,
+.ss-part small {
+    color: var(--g-muted);
+    font-size: 11.5px;
+}
+
+.ss-preset:hover,
+.ss-add button:hover,
+.ss-part:hover {
+    border-color: var(--g-accent);
+}
+
+.ss-add {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.ss-add button {
+    min-height: 32px;
+    padding: 4px 9px;
+    font-size: 12px;
+}
+
+.ss-parts {
+    display: grid;
+    gap: 4px;
+    max-height: 280px;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    list-style: none;
+}
+
+.ss-parts li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 4px;
+}
+
+.ss-part {
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 4px 8px;
+    text-align: left;
+}
+
+.ss-part[aria-pressed='true'] {
+    border-color: var(--g-accent);
+    background: color-mix(in srgb, var(--g-accent) 14%, transparent);
+}
+
+.ss-part i {
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgb(255 255 255 / 20%);
+    border-radius: 5px;
+}
+
+.ss-part b {
+    display: block;
+    overflow: hidden;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ss-ops {
+    display: flex;
+    gap: 3px;
+}
+
+.ss-ops button {
+    width: 30px;
+    min-height: 40px;
+    color: var(--g-muted);
+}
+
+.ss-ops button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.ss-editor {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 10px 14px;
+    padding: 12px;
+    border: 1px solid var(--g-border);
+    border-radius: 10px;
+}
+
+.ss-field {
+    display: grid;
+    gap: 4px;
+    color: var(--g-muted);
+    font-size: 12px;
+}
+
+.ss-field > span {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.ss-field output {
+    color: var(--g-text);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+.ss-field input[type='range'] {
+    width: 100%;
+    accent-color: var(--g-accent);
+}
+
+.ss-field input[type='text'],
+.ss-field select {
+    min-height: 32px;
+    padding: 4px 8px;
+    border: 1px solid var(--g-border);
+    border-radius: 8px;
+    background: var(--g-surface-2);
+    color: var(--g-text);
+}
+
+.ss-field--inline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ss-field input[type='color'] {
+    width: 40px;
+    height: 28px;
+    padding: 0;
+    border: 1px solid var(--g-border);
+    border-radius: 6px;
+    background: none;
+    cursor: pointer;
+}
+
+.ss-import summary {
+    color: var(--g-muted);
+    cursor: pointer;
+}
+
+.ss-import textarea {
+    display: block;
+    width: 100%;
+    min-height: 120px;
+    margin: 8px 0;
+    padding: 8px 10px;
+    border: 1px solid var(--g-border);
+    border-radius: 8px;
+    background: #0e1016;
+    color: #d6e2ff;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+}
