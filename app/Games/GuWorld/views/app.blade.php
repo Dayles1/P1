@@ -19,6 +19,8 @@
 
 <body>
     <div id="gu-world-root" data-back-url="{{ url(config('gu_world.back_url')) }}"></div>
+    {{-- The world's settings (config/gu_world.php), the same ones the server checks saves against. --}}
+    <script type="application/json" id="gu-world-settings">@json(config('gu_world.world'))</script>
 </body>
 
 </html>

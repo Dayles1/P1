@@ -32,4 +32,51 @@ return [
      */
     'back_url' => env('GU_WORLD_BACK_URL', '/games'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | The world
+    |--------------------------------------------------------------------------
+    |
+    | Handed to the page as JSON (views/app.blade.php) and checked against by
+    | the server when a game is saved, so both use the same numbers. Every
+    | distance is in metres; Y is up.
+    |
+    | The world grows here — more locations, wider bounds — not in the
+    | engine. Sizes not confirmed by the novel are working assumptions.
+    |
+    */
+
+    'world' => [
+
+        /*
+         * The engine's limits for any location: the farthest from the
+         * centre on X and Z (the client's collider grid holds up to 32 768
+         * m), and the lowest and highest points. 16 km either way leaves
+         * room for the planned region of 10–20 km across — an assumption
+         * to be tuned after prototyping, not the novel's measure.
+         */
+        'limits' => ['half_extent' => 16000, 'min_y' => -1000, 'max_y' => 5000],
+
+        /*
+         * Where a new game begins.
+         */
+        'start' => 'test_grounds',
+
+        /*
+         * Each location: the box a hero may be in, and where they appear.
+         * Its ground and what stands on it are built by the client
+         * (client/content/).
+         */
+        'locations' => [
+
+            // The engine's proving ground (stage 2) — not part of the world of Gu.
+            'test_grounds' => [
+                'bounds' => ['min_x' => -80, 'max_x' => 80, 'min_y' => -20, 'max_y' => 120, 'min_z' => -80, 'max_z' => 80],
+                'spawn' => ['x' => 0, 'y' => 0, 'z' => 12, 'yaw' => 3.14159],
+            ],
+
+        ],
+
+    ],
+
 ];

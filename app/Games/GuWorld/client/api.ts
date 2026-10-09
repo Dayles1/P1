@@ -3,16 +3,15 @@
  * with the host application: the bearer token the user signed in with.
  */
 
+import type { SaveV1 } from './state/save';
+
 const TOKEN_KEY = 'auth_token';
 
-/** A saved game as the server keeps it (checked again by the client on load). */
-export interface SavedGame {
-    version: number;
-    location: string;
-    world_minutes: number;
-    player: { x: number; y: number; z: number; yaw: number };
-    saved_at: string | null;
-}
+/**
+ * A saved game as the server answers it — not trusted: restoreGame
+ * (state/save.ts) checks every part of it.
+ */
+export type SavedGame = unknown;
 
 function token(): string | null {
     try {
@@ -76,4 +75,14 @@ async function request<T>(
 /** The player's saved game, or null for a new one. */
 export function loadSave(): Promise<SavedGame | null> {
     return request<SavedGame | null>('save');
+}
+
+/** Creates or updates the saved game; `keepalive` lets it finish as the page closes. */
+export async function putSave(save: SaveV1, keepalive = false): Promise<void> {
+    await request('save', 'PUT', save, keepalive);
+}
+
+/** Deletes the player's saved game (only GU World's). */
+export async function deleteSave(): Promise<void> {
+    await request('save', 'DELETE');
 }

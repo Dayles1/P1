@@ -1,24 +1,37 @@
 /**
  * GU World — entry point of the browser client: checks the player is
- * signed in and loads where they left off. A new game starts on the first
- * morning; a saved one goes on from its saved time.
+ * signed in, reads the world's settings from the page, loads the saved
+ * game and starts it — a new game on the first morning, a saved one from
+ * its saved time and place (repaired where it had to be).
  *
- * The engine (the world loop, chunks, entities, NPCs) is being built in
- * stages; until it is, this page only shows the state it would start
- * from, and says so.
+ * If the save cannot be loaded (the network, the server), the game does
+ * not start at all: starting a new one would save over the real one. It
+ * says so and offers to try again.
  */
 
-import { goToLogin, hasToken, loadSave } from './api';
-import type { SavedGame } from './api';
-import { WorldClock } from './engine/clock';
+import { goToLogin, hasToken, loadSave, putSave } from './api';
+import { Game } from './game';
+import type { GameSnapshot } from './game';
 import { t } from './i18n';
+import { restoreGame } from './state/save';
+import { readPageConfig, WorldConfigError } from './world/config';
+import type { WorldConfig } from './world/config';
+import { CONTENT } from './world/locations';
 import './styles.css';
+
+declare global {
+    interface Window {
+        /** Read-only look at the running game (for checks and debugging). */
+        __GU_WORLD__?: { snapshot(): GameSnapshot };
+    }
+}
 
 const root = document.getElementById('gu-world-root')!;
 
-function show(lines: string[]): void {
+/** A card instead of the game: a message, and maybe a button. */
+function message(lines: string[], retry?: () => void): void {
     const card = document.createElement('main');
-    card.className = 'gw-card';
+    card.className = 'gw-card gw-card--message';
 
     const title = document.createElement('h1');
     title.textContent = t.title;
@@ -30,6 +43,15 @@ function show(lines: string[]): void {
         card.append(paragraph);
     }
 
+    if (retry) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'gw-button';
+        button.textContent = t.retry;
+        button.addEventListener('click', retry);
+        card.append(button);
+    }
+
     const back = document.createElement('a');
     back.className = 'gw-back';
     back.href = root.dataset.backUrl || '/';
@@ -39,30 +61,47 @@ function show(lines: string[]): void {
     root.replaceChildren(card);
 }
 
-function describe(saved: SavedGame | null): string[] {
-    if (!saved) {
-        const clock = WorldClock.newGame();
+async function boot(config: WorldConfig): Promise<void> {
+    message([t.loading]);
 
-        return [
-            `${t.new_game}: ${t.day} ${clock.day}, ${clock.label} (${t.phases[clock.phase]})`,
-            t.stage,
-        ];
+    let saved: unknown;
+
+    try {
+        saved = await loadSave();
+    } catch (error) {
+        console.error('GU World: the save could not be loaded', error);
+        message([t.load_failed], () => void boot(config));
+
+        return;
     }
 
-    const { clock, repaired } = WorldClock.fromSaved(saved.world_minutes);
+    const restored = restoreGame(saved, config, (id) => id in CONTENT);
 
-    return [
-        `${t.saved_game}: ${saved.location} · ${t.day} ${clock.day}, ${clock.label} (${t.phases[clock.phase]})`,
-        ...(repaired ? [t.repaired_time] : []),
-        t.stage,
-    ];
+    root.replaceChildren();
+
+    const game = new Game({
+        root,
+        config,
+        restored,
+        transport: { put: putSave },
+    });
+
+    game.start();
+    window.__GU_WORLD__ = { snapshot: () => game.snapshot() };
 }
 
 if (!hasToken()) {
     goToLogin();
 } else {
-    show([t.loading]);
-    loadSave()
-        .then((saved) => show(describe(saved)))
-        .catch(() => show([t.load_failed, t.stage]));
+    try {
+        void boot(readPageConfig(document.getElementById('gu-world-settings')));
+    } catch (error) {
+        console.error('GU World: the world settings are broken', error);
+        message([
+            t.settings_broken,
+            ...(error instanceof WorldConfigError
+                ? error.problems
+                : [String(error)]),
+        ]);
+    }
 }
