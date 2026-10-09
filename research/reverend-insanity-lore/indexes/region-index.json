@@ -1,0 +1,66 @@
+{
+ "schema_version": "1.0",
+ "count": 5,
+ "entities": [
+  {
+   "id": "reg_central_continent",
+   "file": "regions/reg_central_continent.json",
+   "type": "region",
+   "en": "Central Continent",
+   "zh": null,
+   "ru": null,
+   "aliases": [],
+   "confidence": "B",
+   "canon_status": "confirmed",
+   "first_chapter": 281
+  },
+  {
+   "id": "reg_eastern_sea",
+   "file": "regions/reg_eastern_sea.json",
+   "type": "region",
+   "en": "Eastern Sea",
+   "zh": null,
+   "ru": null,
+   "aliases": [],
+   "confidence": "B",
+   "canon_status": "confirmed",
+   "first_chapter": 334
+  },
+  {
+   "id": "reg_northern_plains",
+   "file": "regions/reg_northern_plains.json",
+   "type": "region",
+   "en": "Northern Plains",
+   "zh": null,
+   "ru": null,
+   "aliases": [],
+   "confidence": "B",
+   "canon_status": "confirmed",
+   "first_chapter": 426
+  },
+  {
+   "id": "reg_southern_border",
+   "file": "regions/reg_southern_border.json",
+   "type": "region",
+   "en": "Southern Border",
+   "zh": null,
+   "ru": null,
+   "aliases": [],
+   "confidence": "B",
+   "canon_status": "confirmed",
+   "first_chapter": 1
+  },
+  {
+   "id": "reg_western_desert",
+   "file": "regions/reg_western_desert.json",
+   "type": "region",
+   "en": "Western Desert",
+   "zh": null,
+   "ru": null,
+   "aliases": [],
+   "confidence": "B",
+   "canon_status": "confirmed",
+   "first_chapter": 157
+  }
+ ]
+}

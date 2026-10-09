@@ -1,0 +1,509 @@
+{
+  "id": "char_wu_shuai",
+  "entity_type": "character",
+  "schema_version": "1.0",
+  "names": {
+    "en": "Wu Shuai",
+    "zh": null,
+    "zh_source": null,
+    "pinyin": "wu shuai",
+    "pinyin_status": "derived_from_en_romanization",
+    "ru": "У Шуай",
+    "ru_status": "transliteration",
+    "aliases": [],
+    "translation_variants": []
+  },
+  "summary": {
+    "text": "Wu Shuai is the name Fang Yuan's dragonman clone takes in the Dragon Palace dream test.",
+    "text_origin": "source_excerpt",
+    "source_id": "src_sagaofgu"
+  },
+  "canon_status": "confirmed",
+  "confidence": "B",
+  "first_appearance": {
+    "chapter": 1827,
+    "volume": null,
+    "arc": null
+  },
+  "chapters_cited": [
+    1803,
+    1804,
+    1809,
+    1826,
+    1827
+  ],
+  "relations": [
+    {
+      "type": "in_region",
+      "target": "reg_eastern_sea",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "holds_gu",
+      "target": "gu_dream_token",
+      "role": "refiner",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1845,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "holds_gu",
+      "target": "gu_ant_nest_gu",
+      "role": "user",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1862,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "holds_gu",
+      "target": "gu_letter_seal_immortal_gu",
+      "role": "holder",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1862,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
+  "co_mentions": [
+    {
+      "target": "gu_dream_token",
+      "count": 3
+    },
+    {
+      "target": "gu_ant_nest_gu",
+      "count": 3
+    },
+    {
+      "target": "gu_letter_seal_immortal_gu",
+      "count": 3
+    },
+    {
+      "target": "fac_two_heavens_alliance",
+      "count": 2
+    },
+    {
+      "target": "reg_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "gu_commanding_leader_gu",
+      "count": 2
+    },
+    {
+      "target": "char_bai_ning_bing",
+      "count": 1
+    },
+    {
+      "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "char_granny_rong",
+      "count": 1
+    },
+    {
+      "target": "char_green_ant_ascetic",
+      "count": 1
+    },
+    {
+      "target": "char_huang_wei",
+      "count": 1
+    },
+    {
+      "target": "char_tai_qin",
+      "count": 1
+    },
+    {
+      "target": "res_dragonman_soul",
+      "count": 1
+    },
+    {
+      "target": "char_calligraphy_pavilion_lady",
+      "count": 1
+    },
+    {
+      "target": "char_shu_jiu_ling",
+      "count": 1
+    },
+    {
+      "target": "loc_south_flower_island",
+      "count": 1
+    },
+    {
+      "target": "char_gu_liang",
+      "count": 1
+    },
+    {
+      "target": "char_song_tao_zi",
+      "count": 1
+    },
+    {
+      "target": "res_dream_path_immortal_material",
+      "count": 1
+    },
+    {
+      "target": "char_long_ling",
+      "count": 1
+    },
+    {
+      "target": "char_wine_fairy",
+      "count": 1
+    },
+    {
+      "target": "char_army_ant",
+      "count": 1
+    },
+    {
+      "target": "fac_merman_imperial_court",
+      "count": 1
+    },
+    {
+      "target": "char_tang_qiong",
+      "count": 1
+    },
+    {
+      "target": "res_corpse_emperor_bird_feathers",
+      "count": 1
+    },
+    {
+      "target": "char_vortex_space_boy",
+      "count": 1
+    },
+    {
+      "target": "loc_hidden_dragon_cave",
+      "count": 1
+    },
+    {
+      "target": "char_lian_ke_xin",
+      "count": 1
+    },
+    {
+      "target": "char_black_locust",
+      "count": 1
+    },
+    {
+      "target": "char_crossing_heaven_immortal_monarch",
+      "count": 1
+    },
+    {
+      "target": "char_golden_fur_immortal_monarch",
+      "count": 1
+    },
+    {
+      "target": "char_green_forest_great_sage",
+      "count": 1
+    },
+    {
+      "target": "char_rainbow_rock_immortal_concubine",
+      "count": 1
+    },
+    {
+      "target": "loc_human_sea",
+      "count": 1
+    },
+    {
+      "target": "loc_human_mountain",
+      "count": 1
+    },
+    {
+      "target": "char_night_heavenly_wolf_lord",
+      "count": 1
+    },
+    {
+      "target": "loc_great_wisdom_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "char_ice_crystal_immortal_monarch",
+      "count": 1
+    },
+    {
+      "target": "char_luo_zu",
+      "count": 1
+    },
+    {
+      "target": "char_xiao_he_jian",
+      "count": 1
+    },
+    {
+      "target": "res_black_hard_qi",
+      "count": 1
+    },
+    {
+      "target": "loc_xi_land",
+      "count": 1
+    },
+    {
+      "target": "loc_profound_literature_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "char_old_immortal_hua_yu",
+      "count": 1
+    },
+    {
+      "target": "char_fairy_crescent_moon",
+      "count": 1
+    },
+    {
+      "target": "char_granny_skeleton",
+      "count": 1
+    },
+    {
+      "target": "loc_crescent_moon_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "loc_skeleton_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "char_forest_lightning_grotto_lord",
+      "count": 1
+    },
+    {
+      "target": "loc_forest_lightning_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "gu_lightning_gu",
+      "count": 1
+    },
+    {
+      "target": "loc_night_wolf_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "gu_forest_gu",
+      "count": 1
+    },
+    {
+      "target": "char_zui_xian_weng",
+      "count": 1
+    },
+    {
+      "target": "gu_wine_drinker_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "char_he_chun_qiu",
+      "count": 1
+    },
+    {
+      "target": "loc_star_collection_city",
+      "count": 1
+    }
+  ],
+  "claims": [
+    {
+      "text": "Fang Yuan refines a split soul in the Long Hair refinement path formation with Bai Ning Bing’s blood and raging wave rising dragon fire. A dragonman Gu Master walks out: muscular and handsome, with a tall nose bridge, firm lips, golden dragon scales, topaz dragon eyes, and golden coral-like dragon horns. The young rank one Gu Master is Fang Yuan’s dragonman clone.",
+      "chapters": [
+        1803
+      ],
+      "certainty": "canon",
+      "confidence": "B",
+      "verification": "citation_unchecked",
+      "source_id": "src_sagaofgu",
+      "section": "intro",
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "char_fang_yuan",
+        "char_bai_ning_bing"
+      ]
+    },
+    {
+      "text": "Fang Yuan created the clone to strive for the Immortal Gu House Dragon Palace, because transformation path killer moves and soul possession could not give the same assurance. After refinement the body and soul both match as dragonman. Dragonmen possess enslavement path dao marks from birth. The clone’s path is most likely going to be enslavement path.",
+      "chapters": [
+        1804
+      ],
+      "certainty": "inferred",
+      "confidence": "C",
+      "verification": "citation_unchecked",
+      "source_id": "src_sagaofgu",
+      "section": "intro",
+      "text_origin": "source_excerpt"
+    },
+    {
+      "text": "The clone advances to rank six as a dragonman Gu Immortal and possesses a high grade blessed land.",
+      "chapters": [
+        1809
+      ],
+      "certainty": "canon",
+      "confidence": "B",
+      "verification": "citation_unchecked",
+      "source_id": "src_sagaofgu",
+      "section": "intro",
+      "text_origin": "source_excerpt"
+    },
+    {
+      "text": "Fang Yuan’s main body notes that the dragonman clone is already a rank seven after immense nurturing. Four rank eight Gu Immortals who arrive before the clone say he has rank seven cultivation and is qualified to participate in the test.",
+      "chapters": [
+        1826
+      ],
+      "certainty": "canon",
+      "confidence": "B",
+      "verification": "citation_unchecked",
+      "source_id": "src_sagaofgu",
+      "section": "intro",
+      "text_origin": "source_excerpt"
+    },
+    {
+      "text": "He is a dragonman Gu Master. He is muscular and handsome, with a tall nose bridge and firm lips. He looks like a peerless hero. He has golden dragon scales on his body, a pair of dragon eyes like topaz, and a pair of golden coral-like dragon horns on his head.",
+      "chapters": [
+        1803
+      ],
+      "certainty": "canon",
+      "confidence": "B",
+      "verification": "citation_unchecked",
+      "source_id": "src_sagaofgu",
+      "section": "appearance",
+      "text_origin": "source_excerpt"
+    },
+    {
+      "text": "When the clone transforms dream realms, the Four Dragon Generals show themselves because he is a genuine dragonman in body and soul. Fang Yuan’s main body notes that the dragonman clone only has rank seven cultivation while the four generals are rank eight. Granny Rong says that to participate in the Dragon Palace test, soul and body must enter the dream realms. Once inside, a young dragon girl nudges him awake and calls him Wu Shuai. He inspects himself and finds rank three Gu Master cultivation in that scene. Human youngsters Chen Fu and Zhang Shuang challenge him on a school field covered by an immortal formation. He enslaves army ants faster than Zhang Shuang and wins the stake, a rank five commanding leader Gu.",
+      "chapters": [
+        1827
+      ],
+      "certainty": "canon",
+      "confidence": "B",
+      "verification": "citation_unchecked",
+      "source_id": "src_sagaofgu",
+      "section": "dream-test-name",
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "char_granny_rong",
+        "gu_commanding_leader_gu"
+      ]
+    }
+  ],
+  "conflicts": [],
+  "image": {
+    "url": "https://sagaofgu.com/art/characters/wu-shuai.webp",
+    "kind": "reference_site_art",
+    "canonical": false,
+    "source_id": "src_sagaofgu"
+  },
+  "sources": [
+    {
+      "source_id": "src_sagaofgu",
+      "url": "https://sagaofgu.com/characters/wu-shuai/",
+      "chapters": [
+        1803,
+        1804,
+        1809,
+        1826,
+        1827
+      ],
+      "accessed": "2026-10-09",
+      "note": null
+    }
+  ],
+  "research": {
+    "status": "extracted",
+    "is_stub_at_source": false,
+    "unresolved": [],
+    "notes": [],
+    "last_updated": "2026-10-09"
+  },
+  "game_proposals": [],
+  "attributes": {
+    "Ranks": {
+      "text": "I as of ch. 1803 VI as of ch. 1809 VII as of ch. 1826",
+      "unverified_at_source": false,
+      "linked": false
+    },
+    "Region": {
+      "text": "Eastern Sea",
+      "unverified_at_source": false,
+      "linked": true
+    },
+    "Race": {
+      "text": "Dragonmen",
+      "unverified_at_source": false,
+      "linked": false
+    },
+    "Status": {
+      "text": "Alive",
+      "unverified_at_source": false,
+      "linked": false
+    }
+  },
+  "cultivation": {
+    "rank_timeline": [
+      {
+        "rank": 1,
+        "as_of_chapter": 1803,
+        "confidence": "B"
+      },
+      {
+        "rank": 6,
+        "as_of_chapter": 1809,
+        "confidence": "B"
+      },
+      {
+        "rank": 7,
+        "as_of_chapter": 1826,
+        "confidence": "B"
+      }
+    ],
+    "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
+    "paths": [],
+    "aperture": null,
+    "talent_grade": null
+  },
+  "biography": {
+    "race": null,
+    "region": "reg_eastern_sea",
+    "status": "Alive",
+    "alignment": null,
+    "age": null,
+    "birthplace": null
+  },
+  "gu_held": [
+    {
+      "gu": "gu_ant_nest_gu",
+      "role": "user",
+      "recorded_chapter": 1862,
+      "from_chapter": null,
+      "to_chapter": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu"
+    },
+    {
+      "gu": "gu_dream_token",
+      "role": "refiner",
+      "recorded_chapter": 1845,
+      "from_chapter": null,
+      "to_chapter": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu"
+    },
+    {
+      "gu": "gu_letter_seal_immortal_gu",
+      "role": "holder",
+      "recorded_chapter": 1862,
+      "from_chapter": null,
+      "to_chapter": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu"
+    }
+  ]
+}

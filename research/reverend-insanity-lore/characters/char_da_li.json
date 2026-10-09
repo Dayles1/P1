@@ -1,0 +1,246 @@
+{
+  "id": "char_da_li",
+  "entity_type": "character",
+  "schema_version": "1.0",
+  "names": {
+    "en": "Da Li",
+    "zh": null,
+    "zh_source": null,
+    "pinyin": "da li",
+    "pinyin_status": "derived_from_en_romanization",
+    "ru": "Да Ли",
+    "ru_status": "transliteration",
+    "aliases": [
+      "Martial Duel Heavenly King immortal zombie Da Li"
+    ],
+    "translation_variants": []
+  },
+  "summary": {
+    "text": "Da Li is a Shadow Sect wisdom and strength path Gu Immortal, later named as the Great Strength True Martial immortal zombie and a second generation split soul of Spectral Soul.",
+    "text_origin": "source_excerpt",
+    "source_id": "src_sagaofgu"
+  },
+  "canon_status": "confirmed",
+  "confidence": "B",
+  "first_appearance": {
+    "chapter": 1016,
+    "volume": null,
+    "arc": null
+  },
+  "chapters_cited": [
+    1016,
+    1017,
+    1020,
+    1104,
+    1402
+  ],
+  "relations": [
+    {
+      "type": "member_of",
+      "target": "fac_shadow_sect",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1016,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
+  "co_mentions": [
+    {
+      "target": "fac_shadow_sect",
+      "count": 4
+    },
+    {
+      "target": "char_purple_mountain_true_monarch",
+      "count": 2
+    },
+    {
+      "target": "char_martial_duel_heavenly_king",
+      "count": 2
+    },
+    {
+      "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "char_tai_bai_yun_sheng",
+      "count": 1
+    },
+    {
+      "target": "char_red_lotus_demon_venerable",
+      "count": 1
+    },
+    {
+      "target": "char_great_strength_true_martial",
+      "count": 1
+    }
+  ],
+  "claims": [
+    {
+      "text": "Purple, one of Spectral Soul’s split souls, tells fellow Shadow Sect members that after he is gone, Gu Immortal Da Li will take over his position, and that Shadow Sect should lay low until a heaven defying deed can be done all at once.",
+      "chapters": [
+        1016
+      ],
+      "certainty": "canon",
+      "confidence": "B",
+      "verification": "citation_unchecked",
+      "source_id": "src_sagaofgu",
+      "section": "intro",
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "fac_shadow_sect"
+      ]
+    },
+    {
+      "text": "Fang Yuan later recognizes this Purple as Tai Bai Yun Sheng’s master, Purple Mountain True Monarch.",
+      "chapters": [
+        1020
+      ],
+      "certainty": "canon",
+      "confidence": "B",
+      "verification": "citation_unchecked",
+      "source_id": "src_sagaofgu",
+      "section": "intro",
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "char_fang_yuan",
+        "char_tai_bai_yun_sheng",
+        "char_purple_mountain_true_monarch"
+      ]
+    },
+    {
+      "text": "A time path Gu Immortal marked with a red lotus on the forehead insists Red Lotus Demon Venerable’s next true inheritance is with him. Da Li denies any link to Red Lotus true inheritances, then fights, and is suppressed by the Immortal Gu House Graceful Chaotic Duel Stage.",
+      "chapters": [
+        1017
+      ],
+      "certainty": "canon",
+      "confidence": "B",
+      "verification": "citation_unchecked",
+      "source_id": "src_sagaofgu",
+      "section": "red-lotus-pursuit",
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "char_red_lotus_demon_venerable"
+      ]
+    },
+    {
+      "text": "Fang Yuan concludes that the wisdom path Gu Immortal of Shadow Sect, Da Li, was the rank eight Great Strength True Martial immortal zombie that had been suppressed.",
+      "chapters": [
+        1020
+      ],
+      "certainty": "canon",
+      "confidence": "B",
+      "verification": "citation_unchecked",
+      "source_id": "src_sagaofgu",
+      "section": "identity-revealed",
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "char_great_strength_true_martial"
+      ]
+    },
+    {
+      "text": "Narration later states that Great Strength True Martial Physique immortal zombie Da Li was a rare cultivator of both wisdom and strength path, and that when he refined strength path Immortal Gu, Shadow Sect had not yet built Regret Pool, so he left no insignia to refine Gu.",
+      "chapters": [
+        1104
+      ],
+      "certainty": "canon",
+      "confidence": "B",
+      "verification": "citation_unchecked",
+      "source_id": "src_sagaofgu",
+      "section": "identity-revealed",
+      "text_origin": "source_excerpt"
+    },
+    {
+      "text": "Enslavement after victorious fight was created by immortal zombie Da Li. He is named a second generation split soul of Spectral Soul, known as the Martial Duel Heavenly King, cultivating strength path and wisdom path together with the Great Strength True Martial Physique.",
+      "chapters": [
+        1402
+      ],
+      "certainty": "canon",
+      "confidence": "B",
+      "verification": "citation_unchecked",
+      "source_id": "src_sagaofgu",
+      "section": "split-soul-lineage",
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "char_martial_duel_heavenly_king"
+      ]
+    }
+  ],
+  "conflicts": [],
+  "image": null,
+  "sources": [
+    {
+      "source_id": "src_sagaofgu",
+      "url": "https://sagaofgu.com/characters/da-li/",
+      "chapters": [
+        1016,
+        1017,
+        1020,
+        1104,
+        1402
+      ],
+      "accessed": "2026-10-09",
+      "note": null
+    }
+  ],
+  "research": {
+    "status": "extracted",
+    "is_stub_at_source": false,
+    "unresolved": [],
+    "notes": [],
+    "last_updated": "2026-10-09"
+  },
+  "game_proposals": [],
+  "attributes": {
+    "Ranks": {
+      "text": "VIII as of ch. 1020",
+      "unverified_at_source": false,
+      "linked": false
+    },
+    "Paths": {
+      "text": "Wisdom path Strength path",
+      "unverified_at_source": false,
+      "linked": false
+    },
+    "Race": {
+      "text": "Humans",
+      "unverified_at_source": false,
+      "linked": false
+    },
+    "Affiliations": {
+      "text": "Shadow Sect as of ch. 1016",
+      "unverified_at_source": false,
+      "linked": true
+    },
+    "Status": {
+      "text": "Alive",
+      "unverified_at_source": false,
+      "linked": false
+    }
+  },
+  "cultivation": {
+    "rank_timeline": [
+      {
+        "rank": 8,
+        "as_of_chapter": 1020,
+        "confidence": "B"
+      }
+    ],
+    "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
+    "paths": [],
+    "aperture": null,
+    "talent_grade": null
+  },
+  "biography": {
+    "race": null,
+    "region": null,
+    "status": "Alive",
+    "alignment": null,
+    "age": null,
+    "birthplace": null
+  },
+  "gu_held": []
+}
