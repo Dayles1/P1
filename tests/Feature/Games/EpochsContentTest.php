@@ -140,3 +140,25 @@ test('a disabled workshop is closed to everyone', function () {
         ->deleteJson('/api/games/epochs/content/buildings/park')
         ->assertForbidden();
 });
+
+test('every building model is made of parts the renderer knows', function () {
+    $kinds = [
+        'box', 'roof', 'floors', 'windows', 'door', 'beams', 'ground', 'field', 'cylinder', 'sphere', 'torus',
+        'flag', 'pole', 'emitter', 'light', 'tree', 'blades', 'tower', 'prism', 'crown', 'columns', 'arches',
+        'balconies', 'pilasters', 'cornice', 'crenels', 'dormers', 'awning', 'stairs', 'fence', 'solar',
+        'chimney', 'helipad', 'neon', 'clock',
+    ];
+    $repository = new ContentRepository;
+    $used = [];
+
+    foreach ($repository->buildingIds() as $id) {
+        foreach ($repository->read("buildings/{$id}")['levels'] as $level) {
+            foreach ($level['model']['parts'] as $part) {
+                expect($kinds)->toContain($part['kind']);
+                $used[$part['kind']] = true;
+            }
+        }
+    }
+
+    expect(array_keys($used))->toContain('tower', 'columns', 'dormers', 'balconies', 'neon');
+});

@@ -34,11 +34,12 @@
             },
             "model": {
                 "parts": [
-                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "#7fa05a" },
-                    { "kind": "tree", "x": 0.3, "y": 0.3, "scale": 0.7, "conifer": false },
-                    { "kind": "tree", "x": 0.72, "y": 0.4, "scale": 0.6, "conifer": false },
-                    { "kind": "tree", "x": 0.4, "y": 0.75, "scale": 0.55, "conifer": false },
-                    { "kind": "box", "x": 0.62, "y": 0.7, "z": 0, "w": 0.18, "d": 0.12, "h": 0.06, "color": "trim" }
+                    { "kind": "ground", "x": 0.04, "y": 0.04, "w": 0.92, "d": 0.92, "color": "#6f9a4a" },
+                    { "kind": "tree", "x": 0.25, "y": 0.3, "scale": 0.55, "conifer": true },
+                    { "kind": "tree", "x": 0.7, "y": 0.25, "scale": 0.5, "conifer": false },
+                    { "kind": "tree", "x": 0.75, "y": 0.7, "scale": 0.55, "conifer": false },
+                    { "kind": "tree", "x": 0.3, "y": 0.75, "scale": 0.45, "conifer": true },
+                    { "kind": "box", "x": 0.42, "y": 0.45, "z": 0, "w": 0.16, "d": 0.12, "h": 0.08, "color": "#8f8a80" }
                 ]
             }
         },
@@ -66,15 +67,19 @@
             },
             "model": {
                 "parts": [
-                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "#86a86a" },
-                    { "kind": "ground", "x": 0.45, "y": 0.05, "w": 0.1, "d": 0.9, "color": "plaza" },
-                    { "kind": "tree", "x": 0.2, "y": 0.2, "scale": 0.4, "conifer": true },
-                    { "kind": "tree", "x": 0.8, "y": 0.2, "scale": 0.4, "conifer": true },
-                    { "kind": "tree", "x": 0.2, "y": 0.8, "scale": 0.4, "conifer": true },
-                    { "kind": "tree", "x": 0.8, "y": 0.8, "scale": 0.4, "conifer": true },
-                    { "kind": "cylinder", "x": 0.4, "y": 0.5, "z": 0, "r": 0.02, "h": 0.25, "color": "trim", "segments": 10 },
-                    { "kind": "cylinder", "x": 0.6, "y": 0.5, "z": 0, "r": 0.02, "h": 0.25, "color": "trim", "segments": 10 },
-                    { "kind": "sphere", "x": 0.5, "y": 0.5, "z": 0.25, "r": 0.12, "color": "roof", "half": true }
+                    { "kind": "ground", "x": 0.04, "y": 0.04, "w": 0.92, "d": 0.92, "color": "#7da85a" },
+                    { "kind": "ground", "x": 0.46, "y": 0.04, "w": 0.08, "d": 0.92, "color": "plaza" },
+                    { "kind": "ground", "x": 0.04, "y": 0.46, "w": 0.92, "d": 0.08, "color": "plaza" },
+                    { "kind": "sphere", "x": 0.22, "y": 0.22, "z": 0.06, "r": 0.08, "color": "#4f8a3a" },
+                    { "kind": "sphere", "x": 0.78, "y": 0.22, "z": 0.06, "r": 0.08, "color": "#4f8a3a" },
+                    { "kind": "sphere", "x": 0.22, "y": 0.78, "z": 0.06, "r": 0.08, "color": "#4f8a3a" },
+                    { "kind": "prism", "x": 0.64, "y": 0.64, "z": 0, "w": 0.24, "d": 0.24, "h": 0.03, "plan": "octagon", "color": "trim" },
+                    { "kind": "columns", "face": "s", "x": 0.66, "y": 0.66, "w": 0.2, "d": 0.2, "z": 0.03, "h": 0.18, "count": 2, "depth": 0, "color": "trim" },
+                    { "kind": "columns", "face": "n", "x": 0.66, "y": 0.66, "w": 0.2, "d": 0.2, "z": 0.03, "h": 0.18, "count": 2, "depth": 0, "color": "trim" },
+                    { "kind": "roof", "shape": "dome", "x": 0.63, "y": 0.63, "z": 0.21, "w": 0.26, "d": 0.26, "h": 0.1, "color": "roof" },
+                    { "kind": "tree", "x": 0.12, "y": 0.12, "scale": 0.3, "conifer": true },
+                    { "kind": "tree", "x": 0.88, "y": 0.12, "scale": 0.3, "conifer": true },
+                    { "kind": "tree", "x": 0.12, "y": 0.88, "scale": 0.3, "conifer": true }
                 ]
             }
         },
@@ -102,17 +107,22 @@
             },
             "model": {
                 "parts": [
-                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "#7fa05a" },
-                    { "kind": "tree", "x": 0.2, "y": 0.2, "scale": 0.6, "conifer": false },
-                    { "kind": "tree", "x": 0.8, "y": 0.25, "scale": 0.55, "conifer": false },
-                    { "kind": "tree", "x": 0.25, "y": 0.8, "scale": 0.55, "conifer": false },
-                    { "kind": "cylinder", "x": 0.65, "y": 0.65, "z": 0, "r": 0.16, "h": 0.04, "color": "trim" },
-                    { "kind": "cylinder", "x": 0.53, "y": 0.65, "z": 0.04, "r": 0.015, "h": 0.25, "color": "metal", "segments": 10 },
-                    { "kind": "cylinder", "x": 0.65, "y": 0.65, "z": 0.04, "r": 0.015, "h": 0.25, "color": "metal", "segments": 10 },
-                    { "kind": "cylinder", "x": 0.77, "y": 0.65, "z": 0.04, "r": 0.015, "h": 0.25, "color": "metal", "segments": 10 },
-                    { "kind": "roof", "shape": "cone", "x": 0.48, "y": 0.48, "z": 0.29, "w": 0.34, "d": 0.34, "h": 0.12, "color": "roof" },
-                    { "kind": "pole", "x": 0.05, "y": 0.5, "z": 0, "h": 0.3, "color": "metal", "blink": null },
-                    { "kind": "light", "x": 0.05, "y": 0.5, "z": 0.3, "radius": 1.4, "color": "#f3c86b" }
+                    { "kind": "ground", "x": 0.04, "y": 0.04, "w": 0.92, "d": 0.92, "color": "#6f9a4a" },
+                    { "kind": "ground", "x": 0.04, "y": 0.44, "w": 0.92, "d": 0.12, "color": "plaza" },
+                    { "kind": "prism", "x": 0.35, "y": 0.12, "z": 0, "w": 0.3, "d": 0.3, "h": 0.04, "plan": "octagon", "color": "trim" },
+                    { "kind": "columns", "face": "s", "x": 0.37, "y": 0.14, "w": 0.26, "d": 0.26, "z": 0.04, "h": 0.2, "count": 3, "depth": 0, "color": "trim" },
+                    { "kind": "columns", "face": "n", "x": 0.37, "y": 0.14, "w": 0.26, "d": 0.26, "z": 0.04, "h": 0.2, "count": 3, "depth": 0, "color": "trim" },
+                    { "kind": "roof", "shape": "cone", "x": 0.33, "y": 0.1, "z": 0.24, "w": 0.34, "d": 0.34, "h": 0.14, "color": "roof", "material": "metal" },
+                    { "kind": "box", "x": 0.15, "y": 0.6, "z": 0, "w": 0.16, "d": 0.05, "h": 0.05, "color": "#7a5532" },
+                    { "kind": "box", "x": 0.65, "y": 0.6, "z": 0, "w": 0.16, "d": 0.05, "h": 0.05, "color": "#7a5532" },
+                    { "kind": "pole", "x": 0.1, "y": 0.5, "z": 0, "h": 0.28, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.1, "y": 0.5, "z": 0.28, "radius": 1.2, "color": "#f3c86b" },
+                    { "kind": "pole", "x": 0.9, "y": 0.5, "z": 0, "h": 0.28, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.9, "y": 0.5, "z": 0.28, "radius": 1.2, "color": "#f3c86b" },
+                    { "kind": "tree", "x": 0.2, "y": 0.8, "scale": 0.4, "conifer": false },
+                    { "kind": "tree", "x": 0.75, "y": 0.82, "scale": 0.4, "conifer": false },
+                    { "kind": "tree", "x": 0.12, "y": 0.2, "scale": 0.35, "conifer": false },
+                    { "kind": "fence", "x": 0.04, "y": 0.04, "w": 0.92, "d": 0.92, "h": 0.05, "color": "#2d2f33", "gate": "s" }
                 ]
             }
         },
@@ -140,16 +150,21 @@
             },
             "model": {
                 "parts": [
-                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "plaza" },
-                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0, "r": 0.3, "h": 0.08, "color": "trim", "segments": 20 },
-                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0.07, "r": 0.26, "h": 0.02, "color": "#3f8fc4" },
-                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0.08, "r": 0.06, "h": 0.18, "color": "trim" },
-                    { "kind": "emitter", "x": 0.5, "y": 0.5, "z": 0.26, "type": "water" },
-                    { "kind": "tree", "x": 0.12, "y": 0.12, "scale": 0.4, "conifer": false },
-                    { "kind": "tree", "x": 0.88, "y": 0.88, "scale": 0.4, "conifer": false },
-                    { "kind": "light", "x": 0.5, "y": 0.5, "z": 0.1, "radius": 1.2, "color": "#9fd2ff" },
-                    { "kind": "pole", "x": 0.9, "y": 0.1, "z": 0, "h": 0.35, "color": "metal", "blink": null },
-                    { "kind": "light", "x": 0.9, "y": 0.1, "z": 0.35, "radius": 1.4, "color": "#ffd98a" }
+                    { "kind": "ground", "x": 0.04, "y": 0.04, "w": 0.92, "d": 0.92, "color": "#6f9a4a" },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0, "r": 0.26, "h": 0.05, "color": "trim", "taper": 1, "segments": 24 },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0.05, "r": 0.22, "h": 0.005, "color": "#3fa9d8", "taper": 1, "segments": 24, "material": "glass" },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0.05, "r": 0.05, "h": 0.16, "color": "trim" },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0.21, "r": 0.09, "h": 0.02, "color": "trim" },
+                    { "kind": "emitter", "x": 0.5, "y": 0.5, "z": 0.25, "type": "water" },
+                    { "kind": "light", "x": 0.5, "y": 0.5, "z": 0.1, "radius": 0.8, "color": "#7fd0ff" },
+                    { "kind": "box", "x": 0.08, "y": 0.2, "z": 0, "w": 0.18, "d": 0.06, "h": 0.05, "color": "#2d2f33" },
+                    { "kind": "box", "x": 0.74, "y": 0.2, "z": 0, "w": 0.18, "d": 0.06, "h": 0.05, "color": "#2d2f33" },
+                    { "kind": "pole", "x": 0.15, "y": 0.85, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.15, "y": 0.85, "z": 0.3, "radius": 1.2, "color": "#fff1c4" },
+                    { "kind": "pole", "x": 0.85, "y": 0.85, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.85, "y": 0.85, "z": 0.3, "radius": 1.2, "color": "#fff1c4" },
+                    { "kind": "tree", "x": 0.15, "y": 0.12, "scale": 0.3, "conifer": false },
+                    { "kind": "tree", "x": 0.85, "y": 0.12, "scale": 0.3, "conifer": false }
                 ]
             }
         },
@@ -177,13 +192,18 @@
             },
             "model": {
                 "parts": [
-                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "#8ad06a" },
-                    { "kind": "cylinder", "x": 0.6, "y": 0.6, "z": 0, "r": 0.25, "h": 0.02, "color": "#3fa0c0", "segments": 16 },
-                    { "kind": "tree", "x": 0.2, "y": 0.2, "scale": 0.55, "conifer": false },
+                    { "kind": "ground", "x": 0.04, "y": 0.04, "w": 0.92, "d": 0.92, "color": "#7fae5a" },
+                    { "kind": "cylinder", "x": 0.35, "y": 0.6, "z": 0, "r": 0.24, "h": 0.016, "color": "#3fa9d8", "taper": 1, "segments": 24 },
+                    { "kind": "box", "x": 0.2, "y": 0.55, "z": 0.03, "w": 0.7, "d": 0.08, "h": 0.02, "color": "trim" },
+                    { "kind": "box", "x": 0.25, "y": 0.53, "z": 0.05, "w": 0.02, "d": 0.12, "h": 0.05, "color": "trim" },
                     { "kind": "tree", "x": 0.75, "y": 0.2, "scale": 0.45, "conifer": false },
-                    { "kind": "tree", "x": 0.2, "y": 0.75, "scale": 0.5, "conifer": false },
-                    { "kind": "box", "x": 0.35, "y": 0.55, "z": 0.06, "w": 0.55, "d": 0.1, "h": 0.03, "color": "trim" },
-                    { "kind": "light", "x": 0.6, "y": 0.6, "z": 0.1, "radius": 1, "color": "#b5fff0" }
+                    { "kind": "tree", "x": 0.2, "y": 0.2, "scale": 0.4, "conifer": false },
+                    { "kind": "tree", "x": 0.8, "y": 0.8, "scale": 0.4, "conifer": true },
+                    { "kind": "tree", "x": 0.62, "y": 0.86, "scale": 0.25, "conifer": true },
+                    { "kind": "box", "x": 0.1, "y": 0.42, "z": 0, "w": 0.04, "d": 0.04, "h": 0.12, "color": "#6a8f3a" },
+                    { "kind": "box", "x": 0.15, "y": 0.45, "z": 0, "w": 0.03, "d": 0.03, "h": 0.1, "color": "#6a8f3a" },
+                    { "kind": "pole", "x": 0.5, "y": 0.15, "z": 0, "h": 0.25, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.5, "y": 0.15, "z": 0.25, "radius": 1.2, "color": "#b5fff0" }
                 ]
             }
         },
@@ -211,13 +231,15 @@
             },
             "model": {
                 "parts": [
-                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "#5f9a6a" },
-                    { "kind": "tree", "x": 0.2, "y": 0.2, "scale": 0.6, "conifer": false },
-                    { "kind": "tree", "x": 0.8, "y": 0.8, "scale": 0.6, "conifer": false },
-                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0, "r": 0.2, "h": 0.05, "color": "walls" },
-                    { "kind": "sphere", "x": 0.5, "y": 0.5, "z": 0.5, "r": 0.15, "color": "accent", "material": "glow" },
-                    { "kind": "torus", "x": 0.5, "y": 0.5, "z": 0.5, "r": 0.25, "tube": 0.02, "color": "trim", "spin": 0.5, "material": "glow" },
-                    { "kind": "light", "x": 0.5, "y": 0.5, "z": 0.5, "radius": 1.5, "color": "#c06cff" }
+                    { "kind": "ground", "x": 0.04, "y": 0.04, "w": 0.92, "d": 0.92, "color": "#6f9a4a" },
+                    { "kind": "tree", "x": 0.25, "y": 0.25, "scale": 0.45, "conifer": false },
+                    { "kind": "tree", "x": 0.75, "y": 0.3, "scale": 0.45, "conifer": false },
+                    { "kind": "tree", "x": 0.3, "y": 0.75, "scale": 0.45, "conifer": false },
+                    { "kind": "prism", "x": 0.55, "y": 0.55, "z": 0, "w": 0.3, "d": 0.3, "h": 0.04, "plan": "ellipse", "color": "walls" },
+                    { "kind": "sphere", "x": 0.7, "y": 0.7, "z": 0.3, "r": 0.08, "color": "accent", "material": "glow" },
+                    { "kind": "torus", "x": 0.7, "y": 0.7, "z": 0.3, "r": 0.16, "tube": 0.012, "color": "accent", "spin": 0.2, "material": "glow" },
+                    { "kind": "neon", "x": 0.04, "y": 0.04, "z": 0, "w": 0.92, "d": 0.92, "h": 0.02, "color": "accent", "rings": 1, "corners": false },
+                    { "kind": "light", "x": 0.7, "y": 0.7, "z": 0.3, "radius": 1.2, "color": "#c06cff" }
                 ]
             }
         }

@@ -41,7 +41,9 @@
                     { "kind": "roof", "shape": "shed", "x": 0.1, "y": 1, "z": 0.1, "w": 1.8, "d": 0.35, "h": 0.12, "color": "#1d3f6e", "axis": "x", "material": "glass" },
                     { "kind": "roof", "shape": "shed", "x": 0.1, "y": 1.45, "z": 0.1, "w": 1.2, "d": 0.35, "h": 0.12, "color": "#1d3f6e", "axis": "x", "material": "glass" },
                     { "kind": "box", "x": 1.45, "y": 1.45, "z": 0, "w": 0.45, "d": 0.45, "h": 0.3, "color": "walls" },
-                    { "kind": "pole", "x": 1.8, "y": 1.8, "z": 0.3, "h": 0.3, "color": "metal", "blink": "#2fb5a3" }
+                    { "kind": "pole", "x": 1.8, "y": 1.8, "z": 0.3, "h": 0.3, "color": "metal", "blink": "#2fb5a3" },
+                    { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#b5fff0" }
                 ]
             }
         },
@@ -75,7 +77,10 @@
                     { "kind": "cylinder", "x": 1, "y": 1, "z": 0.6, "r": 0.06, "h": 1.3, "color": "metal" },
                     { "kind": "sphere", "x": 1, "y": 1, "z": 1.95, "r": 0.08, "color": "accent", "material": "glow" },
                     { "kind": "torus", "x": 1, "y": 1, "z": 1.25, "r": 0.86, "tube": 0.03, "color": "trim" },
-                    { "kind": "light", "x": 1, "y": 1, "z": 1.9, "radius": 2, "color": "#9fd2ff" }
+                    { "kind": "light", "x": 1, "y": 1, "z": 1.9, "radius": 2, "color": "#9fd2ff" },
+                    { "kind": "pole", "x": 1, "y": 1, "z": 1.9, "h": 0.04, "color": "metal", "blink": "#ff4d4d" },
+                    { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#cfe0ff" }
                 ]
             }
         }

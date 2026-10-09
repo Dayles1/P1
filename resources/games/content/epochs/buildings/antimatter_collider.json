@@ -46,7 +46,9 @@
                     { "kind": "box", "x": 1.4, "y": 0.15, "z": 0, "w": 0.2, "d": 0.3, "h": 0.5, "color": "metal", "material": "metal" },
                     { "kind": "box", "x": 1.4, "y": 2.55, "z": 0, "w": 0.2, "d": 0.3, "h": 0.5, "color": "metal", "material": "metal" },
                     { "kind": "emitter", "x": 1.5, "y": 1.5, "z": 1.2, "type": "sparks" },
-                    { "kind": "light", "x": 1.5, "y": 1.5, "z": 1, "radius": 4, "color": "#ff7ad9" }
+                    { "kind": "light", "x": 1.5, "y": 1.5, "z": 1, "radius": 4, "color": "#ff7ad9" },
+                    { "kind": "pole", "x": 2.94, "y": 2.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 2.94, "y": 2.94, "z": 0.3, "radius": 1.2, "color": "#7ae0ff" }
                 ]
             }
         }

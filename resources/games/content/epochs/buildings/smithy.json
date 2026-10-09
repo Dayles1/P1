@@ -35,16 +35,21 @@
             },
             "model": {
                 "parts": [
-                    { "kind": "box", "x": 0.15, "y": 0.15, "z": 0, "w": 0.5, "d": 0.5, "h": 0.32, "color": "#8a837a" },
-                    { "kind": "door", "face": "s", "x": 0.15, "y": 0.15, "w": 0.5, "d": 0.5, "width": 0.2, "height": 0.176, "color": "trim" },
-                    { "kind": "roof", "shape": "gable", "x": 0.15, "y": 0.15, "z": 0.32, "w": 0.5, "d": 0.5, "h": 0.22, "color": "roof", "axis": "x", "overhang": 0.04 },
-                    { "kind": "cylinder", "x": 0.55, "y": 0.3, "z": 0.32, "r": 0.05, "h": 0.3, "color": "#6e665e", "segments": 8 },
-                    { "kind": "emitter", "x": 0.55, "y": 0.3, "z": 0.62, "type": "smoke" },
-                    { "kind": "pole", "x": 0.72, "y": 0.7, "z": 0, "h": 0.3, "color": "trim", "blink": null },
-                    { "kind": "pole", "x": 0.92, "y": 0.7, "z": 0, "h": 0.3, "color": "trim", "blink": null },
-                    { "kind": "roof", "shape": "shed", "x": 0.68, "y": 0.62, "z": 0.3, "w": 0.28, "d": 0.32, "h": 0.06, "color": "roof" },
-                    { "kind": "box", "x": 0.75, "y": 0.75, "z": 0, "w": 0.1, "d": 0.06, "h": 0.08, "color": "#3a3a3a" },
-                    { "kind": "light", "x": 0.6, "y": 0.6, "z": 0.15, "radius": 0.8, "color": "#ff8a3a" }
+                    { "kind": "ground", "x": 0.08, "y": 0.08, "w": 0.84, "d": 0.84, "color": "#a49a88" },
+                    { "kind": "floors", "x": 0.12, "y": 0.12, "z": 0, "w": 0.48, "d": 0.44, "floors": 1, "floorHeight": 0.3, "color": "#8a837a", "window": "window", "facade": "stone" },
+                    { "kind": "door", "face": "s", "x": 0.12, "y": 0.12, "w": 0.48, "d": 0.44, "width": 0.18, "height": 0.18, "color": "#3b2a1e" },
+                    { "kind": "roof", "shape": "gable", "x": 0.12, "y": 0.12, "z": 0.3, "w": 0.48, "d": 0.44, "h": 0.22, "color": "roof", "axis": "x", "overhang": 0.05 },
+                    { "kind": "chimney", "x": 0.46, "y": 0.2, "z": 0.36, "w": 0.08, "h": 0.24, "color": "#6e665e", "smoke": true },
+                    { "kind": "pole", "x": 0.64, "y": 0.6, "z": 0, "h": 0.28, "color": "#5a3e26", "blink": null },
+                    { "kind": "pole", "x": 0.64, "y": 0.9, "z": 0, "h": 0.28, "color": "#5a3e26", "blink": null },
+                    { "kind": "pole", "x": 0.9, "y": 0.6, "z": 0, "h": 0.28, "color": "#5a3e26", "blink": null },
+                    { "kind": "pole", "x": 0.9, "y": 0.9, "z": 0, "h": 0.28, "color": "#5a3e26", "blink": null },
+                    { "kind": "roof", "shape": "shed", "x": 0.62, "y": 0.58, "z": 0.28, "w": 0.3, "d": 0.34, "h": 0.06, "color": "roof" },
+                    { "kind": "box", "x": 0.72, "y": 0.72, "z": 0, "w": 0.08, "d": 0.05, "h": 0.06, "color": "#2f2f35" },
+                    { "kind": "box", "x": 0.7, "y": 0.71, "z": 0.06, "w": 0.12, "d": 0.07, "h": 0.02, "color": "#3a3a3a" },
+                    { "kind": "cylinder", "x": 0.82, "y": 0.8, "z": 0, "r": 0.04, "h": 0.06, "color": "#7a5532", "taper": 0.9, "segments": 8 },
+                    { "kind": "box", "x": 0.18, "y": 0.62, "z": 0, "w": 0.3, "d": 0.1, "h": 0.05, "color": "#5b5650" },
+                    { "kind": "light", "x": 0.66, "y": 0.66, "z": 0.12, "radius": 0.9, "color": "#ff8a3a" }
                 ]
             }
         },
@@ -72,51 +77,20 @@
             },
             "model": {
                 "parts": [
-                    { "kind": "box", "x": 0.1, "y": 0.12, "z": 0, "w": 0.8, "d": 0.6, "h": 0.25, "color": "walls" },
-                    {
-                        "kind": "beams",
-                        "faces": ["s", "e", "w", "n"],
-                        "x": 0.1,
-                        "y": 0.12,
-                        "z": 0,
-                        "w": 0.8,
-                        "d": 0.6,
-                        "h": 0.25,
-                        "count": 5,
-                        "color": "trim"
-                    },
-                    {
-                        "kind": "windows",
-                        "faces": ["s", "e"],
-                        "x": 0.1,
-                        "y": 0.12,
-                        "z": 0.06,
-                        "w": 0.8,
-                        "d": 0.6,
-                        "h": 0.14,
-                        "rows": 1,
-                        "cols": 3,
-                        "color": "window"
-                    },
-                    { "kind": "box", "x": 0.1, "y": 0.12, "z": 0.25, "w": 0.8, "d": 0.6, "h": 0.2, "color": "walls" },
-                    {
-                        "kind": "beams",
-                        "faces": ["s", "e", "w", "n"],
-                        "x": 0.1,
-                        "y": 0.12,
-                        "z": 0.25,
-                        "w": 0.8,
-                        "d": 0.6,
-                        "h": 0.2,
-                        "count": 6,
-                        "color": "trim"
-                    },
-                    { "kind": "roof", "shape": "gable", "x": 0.1, "y": 0.12, "z": 0.45, "w": 0.8, "d": 0.6, "h": 0.3, "color": "roof", "axis": "x" },
-                    { "kind": "cylinder", "x": 0.25, "y": 0.3, "z": 0.6, "r": 0.045, "h": 0.2, "color": "#6e625a", "segments": 8 },
-                    { "kind": "emitter", "x": 0.25, "y": 0.3, "z": 0.8, "type": "smoke" },
-                    { "kind": "cylinder", "x": 0.75, "y": 0.3, "z": 0.6, "r": 0.045, "h": 0.2, "color": "#6e625a", "segments": 8 },
-                    { "kind": "emitter", "x": 0.75, "y": 0.3, "z": 0.8, "type": "smoke" },
-                    { "kind": "box", "x": 0.3, "y": 0.75, "z": 0, "w": 0.4, "d": 0.15, "h": 0.04, "color": "#5b5650" }
+                    { "kind": "ground", "x": 0.06, "y": 0.06, "w": 0.88, "d": 0.88, "color": "plaza" },
+                    { "kind": "floors", "x": 0.1, "y": 0.12, "z": 0, "w": 0.8, "d": 0.56, "floors": 1, "floorHeight": 0.26, "color": "walls", "window": "window", "facade": "stone", "plinth": "#8f877a" },
+                    { "kind": "floors", "x": 0.08, "y": 0.1, "z": 0.26, "w": 0.84, "d": 0.6, "floors": 1, "floorHeight": 0.22, "color": "walls", "window": "window", "facade": "timber" },
+                    { "kind": "door", "face": "s", "x": 0.1, "y": 0.12, "w": 0.8, "d": 0.56, "width": 0.2, "height": 0.2, "color": "#5a3e26" },
+                    { "kind": "roof", "shape": "gable", "x": 0.08, "y": 0.1, "z": 0.48, "w": 0.84, "d": 0.6, "h": 0.3, "color": "roof", "axis": "x", "overhang": 0.04 },
+                    { "kind": "dormers", "face": "s", "x": 0.08, "y": 0.1, "z": 0.48, "w": 0.84, "d": 0.6, "count": 2, "h": 0.08, "color": "walls", "roof": "roof" },
+                    { "kind": "chimney", "x": 0.2, "y": 0.22, "z": 0.6, "w": 0.07, "h": 0.2, "color": "#6e625a", "smoke": true },
+                    { "kind": "chimney", "x": 0.74, "y": 0.22, "z": 0.6, "w": 0.07, "h": 0.2, "color": "#6e625a", "smoke": true },
+                    { "kind": "awning", "face": "s", "x": 0.1, "y": 0.12, "w": 0.8, "d": 0.56, "z": 0.24, "depth": 0.12, "color": "accent", "stripe": "trim" },
+                    { "kind": "box", "x": 0.28, "y": 0.78, "z": 0, "w": 0.44, "d": 0.12, "h": 0.04, "color": "#5b5650" },
+                    { "kind": "cylinder", "x": 0.78, "y": 0.8, "z": 0, "r": 0.035, "h": 0.08, "color": "#7a5532", "taper": 0.9, "segments": 10 },
+                    { "kind": "cylinder", "x": 0.86, "y": 0.85, "z": 0, "r": 0.035, "h": 0.08, "color": "#7a5532", "taper": 0.9, "segments": 10 },
+                    { "kind": "pole", "x": 0.08, "y": 0.9, "z": 0, "h": 0.26, "color": "#5a3e26", "blink": null },
+                    { "kind": "light", "x": 0.08, "y": 0.9, "z": 0.26, "radius": 1, "color": "#ffad4a" }
                 ]
             }
         },
@@ -145,27 +119,30 @@
             },
             "model": {
                 "parts": [
-                    { "kind": "box", "x": 0.08, "y": 0.15, "z": 0, "w": 0.84, "d": 0.7, "h": 0.42, "color": "walls" },
+                    { "kind": "ground", "x": 0.04, "y": 0.04, "w": 0.92, "d": 0.92, "color": "#8f8a82" },
+                    { "kind": "floors", "x": 0.08, "y": 0.12, "z": 0, "w": 0.8, "d": 0.66, "floors": 2, "floorHeight": 0.21, "color": "walls", "window": "window", "band": "trim", "facade": "brick", "cornice": "trim", "plinth": "#6d4a3a" },
+                    { "kind": "door", "face": "s", "x": 0.08, "y": 0.12, "w": 0.8, "d": 0.66, "width": 0.22, "height": 0.26, "color": "trim" },
+                    { "kind": "roof", "shape": "sawtooth", "x": 0.08, "y": 0.12, "z": 0.42, "w": 0.8, "d": 0.66, "h": 0.15, "color": "roof", "axis": "x" },
                     {
-                        "kind": "windows",
+                        "kind": "pilasters",
                         "faces": ["s", "e"],
                         "x": 0.08,
-                        "y": 0.15,
-                        "z": 0.08,
-                        "w": 0.84,
-                        "d": 0.7,
-                        "h": 0.252,
-                        "rows": 1,
-                        "cols": 4,
-                        "color": "window"
+                        "y": 0.12,
+                        "z": 0,
+                        "w": 0.8,
+                        "d": 0.66,
+                        "h": 0.42,
+                        "count": 4,
+                        "color": "trim"
                     },
-                    { "kind": "door", "face": "s", "x": 0.08, "y": 0.15, "w": 0.84, "d": 0.7, "width": 0.22, "height": 0.252, "color": "trim" },
-                    { "kind": "roof", "shape": "sawtooth", "x": 0.08, "y": 0.15, "z": 0.42, "w": 0.84, "d": 0.7, "h": 0.15, "color": "roof", "axis": "x" },
-                    { "kind": "cylinder", "x": 0.85, "y": 0.85, "z": 0, "r": 0.06, "h": 1, "color": "#7a3e2e", "taper": 0.75, "segments": 12 },
-                    { "kind": "box", "x": 0.802, "y": 0.84, "z": 0.85, "w": 0.096, "d": 0.02, "h": 0.03, "color": "#c9c2b8" },
-                    { "kind": "emitter", "x": 0.85, "y": 0.85, "z": 1, "type": "smoke" },
-                    { "kind": "pole", "x": 0.05, "y": 0.95, "z": 0, "h": 0.3, "color": "metal", "blink": null },
-                    { "kind": "light", "x": 0.05, "y": 0.95, "z": 0.3, "radius": 1.4, "color": "#f3c86b" }
+                    { "kind": "clock", "face": "s", "x": 0.08, "y": 0.12, "w": 0.8, "d": 0.66, "z": 0.34, "r": 0.04 },
+                    { "kind": "cylinder", "x": 0.88, "y": 0.88, "z": 0, "r": 0.06, "h": 1, "color": "#7a3e2e", "taper": 0.75, "segments": 12 },
+                    { "kind": "box", "x": 0.83, "y": 0.87, "z": 0.85, "w": 0.1, "d": 0.02, "h": 0.03, "color": "#c9c2b8" },
+                    { "kind": "emitter", "x": 0.88, "y": 0.88, "z": 1, "type": "smoke" },
+                    { "kind": "box", "x": 0.12, "y": 0.84, "z": 0, "w": 0.18, "d": 0.1, "h": 0.08, "color": "#5b5650" },
+                    { "kind": "box", "x": 0.34, "y": 0.84, "z": 0, "w": 0.14, "d": 0.1, "h": 0.06, "color": "#4a4a4a" },
+                    { "kind": "pole", "x": 0.04, "y": 0.96, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.04, "y": 0.96, "z": 0.3, "radius": 1.4, "color": "#f3c86b" }
                 ]
             }
         },
@@ -216,7 +193,20 @@
                     { "kind": "box", "x": 0.752, "y": 0.81, "z": 0.935, "w": 0.096, "d": 0.02, "h": 0.03, "color": "#c9c2b8" },
                     { "kind": "emitter", "x": 0.8, "y": 0.82, "z": 1.1, "type": "steam" },
                     { "kind": "pole", "x": 0.95, "y": 0.95, "z": 0, "h": 0.4, "color": "metal", "blink": null },
-                    { "kind": "light", "x": 0.95, "y": 0.95, "z": 0.4, "radius": 1.4, "color": "#ffd98a" }
+                    { "kind": "light", "x": 0.95, "y": 0.95, "z": 0.4, "radius": 1.4, "color": "#ffd98a" },
+                    {
+                        "kind": "pilasters",
+                        "faces": ["s", "e"],
+                        "x": 0.06,
+                        "y": 0.06,
+                        "z": 0,
+                        "w": 0.88,
+                        "d": 0.62,
+                        "h": 0.55,
+                        "count": 3,
+                        "color": "trim"
+                    },
+                    { "kind": "pole", "x": 0.8, "y": 0.82, "z": 1.1, "h": 0.04, "color": "metal", "blink": "#ff4d4d" }
                 ]
             }
         },

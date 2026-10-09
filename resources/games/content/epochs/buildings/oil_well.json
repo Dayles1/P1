@@ -51,7 +51,9 @@
                     },
                     { "kind": "cylinder", "x": 0.82, "y": 0.2, "z": 0, "r": 0.07, "h": 0.14, "color": "#2f2f35" },
                     { "kind": "cylinder", "x": 0.82, "y": 0.38, "z": 0, "r": 0.07, "h": 0.14, "color": "#2f2f35" },
-                    { "kind": "box", "x": 0.1, "y": 0.75, "z": 0, "w": 0.3, "d": 0.2, "h": 0.2, "color": "walls" }
+                    { "kind": "box", "x": 0.1, "y": 0.75, "z": 0, "w": 0.3, "d": 0.2, "h": 0.2, "color": "walls" },
+                    { "kind": "pole", "x": 0.94, "y": 0.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.94, "y": 0.94, "z": 0.3, "radius": 1.2, "color": "#fff1c4" }
                 ]
             }
         },
@@ -123,7 +125,9 @@
                     { "kind": "box", "x": 0.6, "y": 0.55, "z": 0.48, "w": 0.3, "d": 0.3, "h": 0.3, "color": "walls" },
                     { "kind": "pole", "x": 0.85, "y": 0.15, "z": 0.48, "h": 0.45, "color": "metal", "blink": null },
                     { "kind": "emitter", "x": 0.85, "y": 0.15, "z": 0.93, "type": "sparks" },
-                    { "kind": "light", "x": 0.85, "y": 0.15, "z": 0.95, "radius": 1, "color": "#ff9a3a" }
+                    { "kind": "light", "x": 0.85, "y": 0.15, "z": 0.95, "radius": 1, "color": "#ff9a3a" },
+                    { "kind": "pole", "x": 0.94, "y": 0.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.94, "y": 0.94, "z": 0.3, "radius": 1.2, "color": "#b5fff0" }
                 ]
             }
         }
