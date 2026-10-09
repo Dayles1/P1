@@ -9,10 +9,12 @@
  *   start, and a stronger hero, find better ones);
  * - merged: three of the same type and rank make one of the next rank.
  *
- * Saves from before ranks had artifacts as items and "absorbed" them;
+ * Each one looks like a living Gu (see gu.ts). Saves from before ranks
+ * had artifacts as items and "absorbed" them;
  * those become ranked ones in the store (see fromOldSave).
  */
 
+import { guIcon } from './gu';
 import {
     ARTIFACT_TYPES,
     artifactRules,
@@ -22,33 +24,17 @@ import {
     TOP_RANK,
 } from './hero';
 import type { Artifact, ArtifactType, Attributes, Passive } from './hero';
-import { gem } from './items';
 
 type Random = () => number;
-
-/** Colour of each rank (the cell, the badge, the glow): 1–5 mortal, 6–9 immortal. */
-export const RANK_COLORS: Record<number, [string, string]> = {
-    1: ['#9a9a92', '#d8d8d0'],
-    2: ['#5f9e5a', '#bfe3b3'],
-    3: ['#4f86c6', '#bcd6f2'],
-    4: ['#8c5fc8', '#d6c2f2'],
-    5: ['#d08a2e', '#f6d59e'],
-    6: ['#d04a4a', '#f6b5a8'],
-    7: ['#e0457f', '#f8bdd3'],
-    8: ['#21b3c4', '#b5eef4'],
-    9: ['#f0c53a', '#fff3b8'],
-};
 
 /** Whether a rank is of the immortal layer (6 and up). */
 export function immortal(rank: number): boolean {
     return rank > RULES.artifacts.mortal_up_to;
 }
 
-/** The icon of an artifact: a stone in its rank's colours. */
+/** The picture of an artifact: its Gu (see gu.ts), its rank round it. */
 export function artifactIcon(artifact: Artifact): string {
-    const [fill, shine] = RANK_COLORS[artifact.rank] ?? RANK_COLORS[1];
-
-    return gem(fill, shine);
+    return guIcon(artifact);
 }
 
 /**

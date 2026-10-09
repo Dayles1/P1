@@ -1,8 +1,11 @@
 /**
  * A little 3D portrait of the hero: the figure, dressed and built the way
- * it is in the world, standing on a disc of grass and turning slowly. It
- * has its own small renderer and only draws while it is on the page (the
- * hero card, the character tab).
+ * it is in the world, standing on a dark plinth with its own shadow and
+ * turning slowly. A warm key light from the front, a cool one behind to
+ * draw the outline against the dark, and the picture drawn at twice the
+ * pixels and scaled down, so the figure stays crisp. It has its own small
+ * renderer and only draws while it is on the page (the hero card, the
+ * character tab).
  */
 
 import * as THREE from 'three';
@@ -30,6 +33,48 @@ const IDLE: MotionState = {
     ground: null,
 };
 
+/** Pixels drawn per screen pixel: at least two, for a crisp small picture. */
+const SUPERSAMPLE = 2;
+/** The plinth's radius (m) and its colours: the game's flint, a rim of old blood. */
+const PLINTH = 0.9;
+const PLINTH_COLOR = '#1d1f23';
+const RIM_COLOR = 'rgba(168, 38, 31, 0.85)';
+
+/** A disc fading out to its edge, with a thin bright ring near it. */
+function plinthTexture(): THREE.CanvasTexture {
+    const size = 256;
+    const canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+    const context = canvas.getContext('2d')!;
+    const middle = size / 2;
+    const fill = context.createRadialGradient(
+        middle,
+        middle,
+        0,
+        middle,
+        middle,
+        middle,
+    );
+
+    fill.addColorStop(0, PLINTH_COLOR);
+    fill.addColorStop(0.75, PLINTH_COLOR);
+    fill.addColorStop(1, 'rgba(29, 31, 35, 0)');
+    context.fillStyle = fill;
+    context.fillRect(0, 0, size, size);
+    context.strokeStyle = RIM_COLOR;
+    context.lineWidth = 2;
+    context.beginPath();
+    context.arc(middle, middle, middle * 0.82, 0, Math.PI * 2);
+    context.stroke();
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.anisotropy = 8;
+
+    return texture;
+}
+
 export class Portrait {
     readonly element: HTMLElement;
     private renderer: THREE.WebGLRenderer | null = null;
@@ -52,21 +97,54 @@ export class Portrait {
             return;
         }
 
-        this.renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
-        this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        this.renderer.setPixelRatio(
+            Math.max(SUPERSAMPLE, Math.min(3, window.devicePixelRatio)),
+        );
+        this.renderer.toneMapping = THREE.AgXToneMapping;
+        this.renderer.shadowMap.enabled = true;
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         this.element.append(this.renderer.domElement);
 
-        const sun = new THREE.DirectionalLight(0xfff6ea, 2.2);
-        sun.position.set(2, 4, 3);
-        const ground = new THREE.Mesh(
-            new THREE.CircleGeometry(0.9, 32),
-            new THREE.MeshStandardMaterial({ color: 0x9fb087, roughness: 1 }),
+        const key = new THREE.DirectionalLight(0xfff1e0, 2.4);
+        key.position.set(1.6, 3.6, 2.6);
+        key.castShadow = true;
+        key.shadow.mapSize.setScalar(1024);
+        key.shadow.camera.left = -1;
+        key.shadow.camera.right = 1;
+        key.shadow.camera.top = 2.2;
+        key.shadow.camera.bottom = -0.4;
+        key.shadow.camera.near = 0.5;
+        key.shadow.camera.far = 8;
+        key.shadow.bias = -0.0005;
+        key.shadow.normalBias = 0.02;
+
+        const rim = new THREE.DirectionalLight(0xa9c8ff, 1.8);
+        rim.position.set(-2.2, 2.4, -2.8);
+
+        const plinth = new THREE.Mesh(
+            new THREE.CircleGeometry(PLINTH, 64),
+            new THREE.MeshStandardMaterial({
+                map: plinthTexture(),
+                transparent: true,
+                roughness: 0.9,
+                depthWrite: false,
+            }),
         );
-        ground.rotation.x = -Math.PI / 2;
+        const shadow = new THREE.Mesh(
+            new THREE.CircleGeometry(PLINTH * 0.8, 48),
+            new THREE.ShadowMaterial({ opacity: 0.45 }),
+        );
+
+        plinth.rotation.x = -Math.PI / 2;
+        shadow.rotation.x = -Math.PI / 2;
+        shadow.position.y = 0.001;
+        shadow.receiveShadow = true;
         this.scene.add(
-            new THREE.HemisphereLight(0xf1f4f6, 0x8f8a80, 1.8),
-            sun,
-            ground,
+            new THREE.HemisphereLight(0xf1f4f6, 0x5a5650, 1.4),
+            key,
+            rim,
+            plinth,
+            shadow,
             this.figure.root,
         );
         this.camera.position.set(0, 1.15, 4.6);

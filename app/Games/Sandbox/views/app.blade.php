@@ -6,8 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#121518">
-    <title>{{ config('app.name', 'Laravel') }} · Sandbox</title>
+    <meta name="theme-color" content="#0c0d0f">
+    <title>{{ config('app.name', 'Laravel') }} · Gu World</title>
 
     {{-- The «Кремень» type: Unbounded for headings and numbers, Golos for text, JetBrains Mono for keys. --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">

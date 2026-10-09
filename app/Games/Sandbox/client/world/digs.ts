@@ -20,14 +20,9 @@ import { biomeWeights, dominantBiome } from './biomes';
 import type { Biome } from './biomes';
 import type { Chips } from './effects';
 import { createRandom } from './noise';
+import { keptClear } from './qingmao';
 import type { Harvested, Tool, Yield } from './resources';
-import {
-    heightAt,
-    normalAt,
-    SPAWN_RADIUS,
-    WATER_LEVEL,
-    WORLD_HALF,
-} from './terrain';
+import { heightAt, normalAt, WATER_LEVEL, WORLD_HALF } from './terrain';
 
 const MAX_DIGS = 70;
 const REGROW_MS = 30 * 60_000;
@@ -334,7 +329,7 @@ export class Digs {
             const yaw = random() * Math.PI * 2;
             const size = 0.85 + random() * 0.35;
 
-            if (Math.hypot(x, z) < SPAWN_RADIUS + 12) {
+            if (keptClear(x, z, 4)) {
                 continue;
             }
 

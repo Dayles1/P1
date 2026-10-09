@@ -1,19 +1,22 @@
 /* Sandbox — everything is scoped under #sandbox-root or sb- classes. */
 
 :root {
-    /* «Кремень»: basalt, slate, flint; bone for text, ash for the quiet; a spark of orange. */
-    --sb-basalt: #121518;
-    --sb-slate: #1e2328;
-    --sb-flint: #2b3138;
-    --sb-flint-hi: #353c44;
-    --sb-window: #15181b;
-    --sb-well: #1a1e22;
-    --sb-night: #0b0d0f;
-    --sb-bone: #efe6d2;
-    --sb-ash: #a39c8b;
-    --sb-dust: #cfc7b4;
-    --sb-spark: #ff7a2f;
-    --sb-ember: #ffb36b;
+    /* «Кремень» of Gu World: near-black basalt, slate, flint; dim bone for
+       text, ash for the quiet; a spark of old blood. */
+    --sb-basalt: #0c0d0f;
+    --sb-slate: #17191c;
+    --sb-flint: #23262b;
+    --sb-flint-hi: #2d3036;
+    --sb-window: #101114;
+    --sb-well: #141619;
+    --sb-night: #060708;
+    --sb-bone: #e2d8c4;
+    --sb-ash: #8e8778;
+    --sb-dust: #bdb4a1;
+    --sb-spark: #a8261f;
+    --sb-ember: #cc4634;
+    /* Text on the spark. */
+    --sb-on-accent: #f3e7d3;
     --sb-health: #e5484d;
     --sb-mana: #3e9bff;
     --sb-stamina: #b6e05a;
@@ -21,8 +24,8 @@
     --sb-common: #c9c1ae;
     --sb-rare: #5fd4c4;
     --sb-legend: #c084fc;
-    /* Over the 3D world plates are basalt at 82%, with a lit top edge. */
-    --sb-plate: rgb(18 21 24 / 0.82);
+    /* Over the 3D world plates are basalt at 86%, with a lit top edge. */
+    --sb-plate: rgb(12 13 15 / 0.86);
     --sb-edge:
         inset 0 1px 0 rgb(239 230 210 / 0.12),
         inset 0 0 0 1px rgb(239 230 210 / 0.07);
@@ -50,7 +53,7 @@
     --sb-line: rgb(239 230 210 / 0.12);
     --sb-dark-glass: var(--sb-plate);
     --sb-accent: var(--sb-spark);
-    --sb-accent-soft: rgb(255 122 47 / 0.12);
+    --sb-accent-soft: rgb(168 38 31 / 0.16);
     --sb-danger: var(--sb-health);
     --sb-gold: var(--sb-xp);
     --sb-good: var(--sb-stamina);
@@ -171,7 +174,7 @@ body {
 .sb-button--primary {
     background: var(--sb-spark);
     box-shadow: none;
-    color: var(--sb-basalt);
+    color: var(--sb-on-accent);
     font-weight: 700;
 }
 
@@ -294,7 +297,7 @@ body {
 .sb-create__class--active .sb-key {
     background: rgb(0 0 0 / 0.2);
     box-shadow: none;
-    color: var(--sb-basalt);
+    color: var(--sb-on-accent);
 }
 
 /* A plate over the 3D world: basalt at 82%, a lit top edge. */
@@ -567,6 +570,15 @@ body {
 
 .sb-compass__mark--start .sb-diamond {
     background: var(--sb-bone);
+}
+
+/* A clan village of Qing Mao. */
+.sb-compass__mark--village {
+    color: var(--sb-dust);
+}
+
+.sb-compass__mark--village .sb-diamond {
+    background: var(--sb-spark);
 }
 
 .sb-compass__pointer {
@@ -1183,10 +1195,10 @@ body {
 }
 
 .sb-hotbar__slot--selected {
-    background: rgb(43 32 24 / 0.92);
+    background: rgb(36 18 17 / 0.92);
     box-shadow:
         inset 0 0 0 2px var(--sb-spark),
-        inset 0 -18px 24px -14px rgb(255 122 47 / 0.55);
+        inset 0 -18px 24px -14px rgb(168 38 31 / 0.6);
     transform: translateY(-6px);
 }
 
@@ -1463,7 +1475,17 @@ body {
     display: grid;
     place-items: center;
     padding: 16px;
-    background: rgb(8 10 12 / 0.55);
+    background:
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgb(20 6 6 / 0.35),
+            transparent 70%
+        ),
+        radial-gradient(
+            ellipse at 50% 50%,
+            rgb(4 4 6 / 0.55) 40%,
+            rgb(2 2 3 / 0.9)
+        );
 }
 
 .sb-card {
@@ -1733,7 +1755,7 @@ body {
 .sb-create__preview {
     position: relative;
     min-height: 360px;
-    background: radial-gradient(ellipse at 50% 35%, #2b3138, #121518);
+    background: radial-gradient(ellipse at 50% 30%, #2a1d1e, #0b0c0e 75%);
     overflow: hidden;
 }
 
@@ -1782,7 +1804,7 @@ body {
 .sb-create__class--active {
     background: var(--sb-spark);
     box-shadow: none;
-    color: var(--sb-basalt);
+    color: var(--sb-on-accent);
 }
 
 /* Choices on the hero card: chips that wrap, colour swatches, the two tabs. */
@@ -1824,15 +1846,14 @@ body {
     gap: 10px;
 }
 
-.sb-create__about,
-.sb-create__skill {
+/* A few words on the world, set off by a line of old blood. */
+.sb-create__intro {
     margin: 0;
+    padding-left: 12px;
+    border-left: 2px solid var(--sb-spark);
+    color: var(--sb-dust);
     font-size: 14px;
-}
-
-.sb-create__skill {
-    color: var(--sb-muted);
-    font-size: 13px;
+    line-height: 1.5;
 }
 
 /* Attributes as bars (the card) or with a "+" (the character tab). */
@@ -2239,7 +2260,7 @@ body {
 .sb-chip--active {
     border-color: var(--sb-accent);
     background: var(--sb-accent);
-    color: var(--sb-basalt);
+    color: var(--sb-on-accent);
 }
 
 .sb-craft__body {
@@ -2515,7 +2536,7 @@ body {
 
 .sb-segment--active {
     background: var(--sb-spark);
-    color: var(--sb-basalt);
+    color: var(--sb-on-accent);
 }
 
 .sb-slider {
@@ -2654,7 +2675,7 @@ body {
 
 .sb-tb--down {
     background: var(--sb-spark);
-    color: var(--sb-basalt);
+    color: var(--sb-on-accent);
     transform: scale(0.94);
 }
 
@@ -3069,7 +3090,7 @@ body {
 .sb-profile__portrait {
     position: relative;
     min-height: 260px;
-    background: radial-gradient(ellipse at 50% 35%, #2b3138, #121518);
+    background: radial-gradient(ellipse at 50% 30%, #2a1d1e, #0b0c0e 75%);
     overflow: hidden;
 }
 
@@ -3596,4 +3617,18 @@ body {
 .sb-slot__count,
 .sb-cell__rank {
     font-family: var(--sb-display);
+}
+
+/* The map of Qing Mao: an ink map on dark parchment, as big as fits. */
+.sb-map__card {
+    width: min(760px, 100%);
+    gap: 10px;
+    padding: 18px 18px 14px;
+}
+
+.sb-map__canvas {
+    display: block;
+    width: min(100%, calc(100vh - 170px));
+    height: auto;
+    aspect-ratio: 1;
 }

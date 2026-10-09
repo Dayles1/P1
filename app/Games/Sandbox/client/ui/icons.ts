@@ -20,6 +20,9 @@ export const ICONS = {
     settings: line(
         '<circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M4.2 7.5l2.1 1.2M17.7 15.3l2.1 1.2M4.2 16.5l2.1-1.2M17.7 8.7l2.1-1.2"/><circle cx="12" cy="12" r="7"/>',
     ),
+    map: line(
+        '<path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20z"/><path d="M9 4v13.5M15 6.5V20"/>',
+    ),
     pause: line('<path d="M9 5v14M15 5v14"/>'),
     play: line('<path d="M8 5.5v13l10-6.5z" fill="currentColor"/>'),
     close: line('<path d="M6 6l12 12M18 6 6 18"/>'),

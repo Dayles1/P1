@@ -63,6 +63,8 @@ export interface HudActions {
     pause: () => void;
     respawn: () => void;
     skill: () => void;
+    /** Opens the map of Qing Mao. */
+    map: () => void;
 }
 
 /** A place shown on the compass: which way (radians, clockwise from north) and how far. */
@@ -70,7 +72,7 @@ export interface CompassMark {
     label: string;
     bearing: number;
     distance: number;
-    tone: 'bag' | 'chest' | 'start';
+    tone: 'bag' | 'chest' | 'start' | 'village';
 }
 
 /** Something in effect, as a small square under the hero. */
@@ -319,6 +321,17 @@ export class Hud {
 
             menu.append(open);
         }
+
+        const map = button('sb-ib', '', actions.map, 'map');
+        map.title = this.touch ? t.map.title : `${t.map.title} (N)`;
+        map.setAttribute('aria-label', t.map.title);
+        this.guardTouch(map, actions.map);
+
+        if (!this.touch) {
+            map.append(keyBadge('N'));
+        }
+
+        menu.append(map);
 
         const pause = button('sb-ib', '', actions.pause, 'pause');
         pause.title = `${t.paused} (Esc)`;

@@ -96,8 +96,8 @@ const ru = {
     ],
     titles: {
         sandbox: [
-            'Песочница',
-            'Открытый мир без кубиков: холмы, горы, лес и камни. Пока можно бегать, прыгать и исследовать — дальше будет больше.',
+            'Gu World',
+            'Мрачный мир Мастеров Гу: пробуди апертуру, найди и вырасти своих Гу — живых насекомых силы. Здесь выживают лишь сильные.',
         ],
         epochs: [
             'Летопись города 2',
@@ -194,8 +194,8 @@ const en: Dictionary = {
     ],
     titles: {
         sandbox: [
-            'Sandbox',
-            'An open world without cubes: hills, mountains, woods and rocks. For now you can run, jump and explore — more is coming.',
+            'Gu World',
+            'A grim world of Gu Masters: awaken your aperture, find and raise your Gu — living insects of power. Only the strong survive here.',
         ],
         epochs: [
             'City Chronicle 2',
@@ -294,8 +294,8 @@ const uz: Dictionary = {
     ],
     titles: {
         sandbox: [
-            'Qumdon',
-            'Kubiklarsiz ochiq dunyo: tepaliklar, tog‘lar, o‘rmon va toshlar. Hozircha yugurish, sakrash va kezish mumkin — davomi bor.',
+            'Gu World',
+            'Gu ustalarining qorong‘i dunyosi: aperturangni uyg‘ot, o‘z Gu’laringni — kuch beruvchi tirik hasharotlarni top va o‘stir. Bu yerda faqat kuchlilar omon qoladi.',
         ],
         epochs: [
             'Shahar solnomasi 2',
