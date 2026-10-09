@@ -150,6 +150,63 @@ describe('restoring a save', () => {
     });
 });
 
+describe("the world's changes in a save", () => {
+    it('come back with the save', () => {
+        const game = restoreGame(
+            save({
+                changes: {
+                    'stone:test_grounds:g3_-2': { state: { marked: true } },
+                    'block:test_grounds:crate': { removed: true },
+                },
+            }),
+            config,
+        );
+
+        expect(game.problems).toEqual([]);
+        expect(game.changes.state('stone:test_grounds:g3_-2')).toEqual({
+            marked: true,
+        });
+        expect(game.changes.isRemoved('block:test_grounds:crate')).toBe(true);
+    });
+
+    it('lose only their broken parts, saying why', () => {
+        const game = restoreGame(
+            save({
+                changes: {
+                    'stone:a': { state: { marked: true, nan: null } },
+                    'Not An Id': { removed: true },
+                },
+            }),
+            config,
+        );
+
+        expect(game.changes.state('stone:a')).toEqual({ marked: true });
+        expect(game.problems).toHaveLength(2);
+    });
+
+    it('mean nothing in a location that could not be used', () => {
+        const game = restoreGame(
+            save({
+                location: 'atlantis',
+                changes: { 'stone:a': { removed: true } },
+            }),
+            config,
+        );
+
+        expect(game.changes.size).toBe(0);
+    });
+
+    it('are simply empty in a format-1 save, which is still read', () => {
+        const old: Record<string, unknown> = save({ version: 1 });
+        delete old.changes;
+        const game = restoreGame(old, config);
+
+        expect(game.problems).toEqual([]);
+        expect(game.changes.size).toBe(0);
+        expect(game.player.x).toBe(10);
+    });
+});
+
 describe('making a save', () => {
     it('writes what restoring reads back, unchanged', () => {
         const { clock } = WorldClock.fromSaved(5000);

@@ -14,7 +14,7 @@ import { Game } from './game';
 import type { GameSnapshot } from './game';
 import { t } from './i18n';
 import { restoreGame } from './state/save';
-import { readPageConfig, WorldConfigError } from './world/config';
+import { CHUNK_SIZES, readPageConfig, WorldConfigError } from './world/config';
 import type { WorldConfig } from './world/config';
 import { CONTENT } from './world/locations';
 import './styles.css';
@@ -61,6 +61,30 @@ function message(lines: string[], retry?: () => void): void {
     root.replaceChildren(card);
 }
 
+/**
+ * For measuring (see the stage 3 report): `?chunk_size=32|64|128` loads
+ * the world in chunks of that size instead of the configured one. Any
+ * other value is ignored.
+ */
+function measuringOverride(config: WorldConfig): WorldConfig {
+    const size = Number(
+        new URLSearchParams(window.location.search).get('chunk_size'),
+    );
+
+    if (!CHUNK_SIZES.includes(size)) {
+        return config;
+    }
+
+    return {
+        ...config,
+        chunks: {
+            ...config.chunks,
+            size,
+            margin: Math.min(config.chunks.margin, size),
+        },
+    };
+}
+
 async function boot(config: WorldConfig): Promise<void> {
     message([t.loading]);
 
@@ -94,7 +118,11 @@ if (!hasToken()) {
     goToLogin();
 } else {
     try {
-        void boot(readPageConfig(document.getElementById('gu-world-settings')));
+        void boot(
+            measuringOverride(
+                readPageConfig(document.getElementById('gu-world-settings')),
+            ),
+        );
     } catch (error) {
         console.error('GU World: the world settings are broken', error);
         message([

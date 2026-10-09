@@ -10,8 +10,13 @@
  *   switched off and said so; the rest go on.
  * - Systems talk through the event bus where it pays: saving, repairs,
  *   failures and the time of day reach the HUD and the log as events.
+ * - The location is loaded around the hero chunk by chunk
+ *   (world/chunk-manager.ts), first of all in the frame, within a time
+ *   budget: its things become entities and colliders, its ground and
+ *   their pictures are drawn, and all of it is let go again behind.
  *
- * The game starts paused on the pause card; a click plays (and locks the
+ * The game starts by loading the chunks around the hero (the loading
+ * screen), then waits on the pause card; a click plays (and locks the
  * pointer). Losing the pointer, a hidden tab or a window out of focus
  * pauses it; pausing saves, and so does leaving the page.
  */
@@ -23,7 +28,7 @@ import { EventBus } from './engine/events';
 import { GameLoop, watchPage } from './engine/loop';
 import { SystemRunner } from './engine/systems';
 import type { GameSystem, SystemReport } from './engine/systems';
-import type { GameEntity } from './entities/types';
+import type { ContentEntity, GameEntity } from './entities/types';
 import type { GameEvents } from './game-events';
 import { t } from './i18n';
 import { Input } from './input';
@@ -31,8 +36,8 @@ import type { Action } from './input';
 import type { Stance } from './physics/character';
 import { ThirdPersonCamera } from './render/camera';
 import { viewFactories } from './render/entity-views';
-import { groundMesh } from './render/ground-view';
 import { Stage } from './render/stage';
+import { TerrainChunks } from './render/terrain-chunks';
 import { EntityViews } from './render/views';
 import type { RestoredGame } from './state/save';
 import { Saver } from './state/saver';
@@ -42,8 +47,11 @@ import type { World } from './state/world';
 import { autosaveSystem } from './systems/autosave';
 import { PlayerSystem } from './systems/player';
 import { timeSystem } from './systems/time';
+import { drawChunkMap } from './ui/chunk-map';
 import { Hud } from './ui/hud';
-import type { WorldConfig } from './world/config';
+import { ChunkManager } from './world/chunk-manager';
+import type { ChunkStats } from './world/chunk-manager';
+import type { ChunkSettings, WorldConfig } from './world/config';
 
 export interface GameOptions {
     root: HTMLElement;
@@ -51,6 +59,12 @@ export interface GameOptions {
     restored: RestoredGame;
     transport: SaveTransport;
 }
+
+/** Time the chunks may take in a frame, ms: while loading, and while playing. */
+const LOADING_BUDGET = 12;
+const PLAYING_BUDGET = 4;
+/** How near (m) a thing must be for the debug mark (F6). */
+const MARK_REACH = 3;
 
 /** The eyes' height for the camera, by stance. */
 const EYES: Record<Stance, number> = { stand: 1.55, crouch: 1.05, crawl: 0.5 };
@@ -76,6 +90,9 @@ export interface GameSnapshot {
     entities: number;
     views: number;
     systems: { name: string; enabled: boolean; failures: number }[];
+    loading: boolean;
+    chunks: ChunkStats & { settings: ChunkSettings; terrainVertices: number };
+    renderer: { calls: number; triangles: number; geometries: number };
 }
 
 export class Game {
@@ -91,6 +108,10 @@ export class Game {
     private frame: SystemRunner;
     private player: PlayerSystem;
     private saver: Saver;
+    private terrain: TerrainChunks;
+    private chunks: ChunkManager;
+    /** The chunks around the hero are ready: play can begin. */
+    private loaded = false;
     private stopWatching: () => void = () => {};
     private started = false;
     /** The camera jumps straight into place on the first frame, then follows softly. */
@@ -111,7 +132,12 @@ export class Game {
 
         this.world = world;
         this.stage = new Stage(root);
-        this.stage.scene.add(groundMesh(world.location));
+        this.stage.setReach(config.chunks.visualRadius);
+        this.terrain = new TerrainChunks(
+            this.stage.scene,
+            world.location.ground,
+            () => performance.now(),
+        );
         this.camera = new ThirdPersonCamera(
             this.stage.aspect,
             world.location.ground,
@@ -125,7 +151,23 @@ export class Game {
                 yaw: this.camera.facing,
                 pitch: this.camera.pitch,
             })),
+            false,
         );
+        this.chunks = new ChunkManager({
+            location: world.location.id,
+            bounds: world.location.bounds,
+            content: world.location,
+            settings: config.chunks,
+            registry: world.registry,
+            colliders: world.colliders,
+            changes: world.changes,
+            views: this.views,
+            painter: this.terrain,
+            now: () => performance.now(),
+            alwaysShown: [world.player.id],
+            problem: (message) =>
+                console.error(`GU World: chunk content: ${message}`),
+        });
         this.input = new Input(this.stage.renderer.domElement);
         this.hud = new Hud(root, world.location.id, () => void this.play());
         this.saver = new Saver(transport, config, {
@@ -171,8 +213,10 @@ export class Game {
     }
 
     start(): void {
+        this.loop.pause('loading');
         this.loop.pause('player');
-        this.hud.showPause(true, false);
+        this.hud.showPause(false);
+        this.hud.setLoading({ done: 0, total: 1 });
         this.loop.start();
         this.stopWatching = watchPage(this.loop, { document, window });
         window.addEventListener('pagehide', this.leave);
@@ -180,6 +224,10 @@ export class Game {
 
     /** Plays: from the pause card, a click. */
     async play(): Promise<void> {
+        if (!this.loaded) {
+            return;
+        }
+
         this.started = true;
         this.input.active = true;
         this.hud.showPause(false);
@@ -202,6 +250,7 @@ export class Game {
 
     save(keepalive = false): void {
         this.hud.setStatus(t.saving);
+        this.chunks.capture();
         void this.saver.save(saveWorld(this.world), keepalive);
     }
 
@@ -227,7 +276,23 @@ export class Game {
             systems: [...this.simulation.status(), ...this.frame.status()].map(
                 ({ name, enabled, failures }) => ({ name, enabled, failures }),
             ),
+            loading: !this.loaded,
+            chunks: {
+                ...this.chunks.summary(),
+                settings: this.chunks.settings,
+                terrainVertices: this.terrain.vertices,
+            },
+            renderer: {
+                calls: this.stage.renderer.info.render.calls,
+                triangles: this.stage.renderer.info.render.triangles,
+                geometries: this.stage.renderer.info.memory.geometries,
+            },
         };
+    }
+
+    /** Forgets the slowest chunk update so far (to measure a stretch on its own). */
+    resetChunkPeak(): void {
+        this.chunks.resetPeak();
     }
 
     dispose(): void {
@@ -236,6 +301,8 @@ export class Game {
         window.removeEventListener('pagehide', this.leave);
         this.simulation.dispose();
         this.frame.dispose();
+        this.chunks.dispose();
+        this.terrain.dispose();
         this.views.dispose();
         this.input.dispose();
         this.hud.dispose();
@@ -247,6 +314,31 @@ export class Game {
         const { world } = this;
 
         return [
+            {
+                name: 'chunks',
+                update: () => {
+                    const { x, z } = world.player.position;
+
+                    this.chunks.update(
+                        x,
+                        z,
+                        this.loaded ? PLAYING_BUDGET : LOADING_BUDGET,
+                    );
+
+                    if (this.loaded) {
+                        return;
+                    }
+
+                    if (this.chunks.ready(x, z)) {
+                        this.loaded = true;
+                        this.hud.setLoading(null);
+                        this.hud.showPause(true, false);
+                        this.loop.resume('loading');
+                    } else {
+                        this.hud.setLoading(this.chunks.progress(x, z));
+                    }
+                },
+            },
             {
                 name: 'camera',
                 update: (frame) => {
@@ -369,8 +461,44 @@ export class Game {
 
         if (action === 'jump') {
             this.player.jump();
+        } else if (action === 'mark') {
+            this.markNearest();
         } else {
             this.player.toggleStance(action);
+        }
+    }
+
+    /**
+     * The debug mark (F6): marks or unmarks the nearest thing within reach.
+     * A change to the world like any other, kept through letting its chunk
+     * go and through saving — what it is there to show.
+     */
+    private markNearest(): void {
+        const { registry, player, changes } = this.world;
+        let nearest: ContentEntity | null = null;
+        let best = MARK_REACH;
+
+        for (const entity of registry.all()) {
+            if (entity.kind === 'player') {
+                continue;
+            }
+
+            const distance = Math.hypot(
+                entity.position.x - player.position.x,
+                entity.position.z - player.position.z,
+            );
+
+            if (distance < best) {
+                best = distance;
+                nearest = entity;
+            }
+        }
+
+        if (nearest) {
+            const marked = nearest.state.marked !== true;
+            nearest.state.marked = marked;
+            changes.setState(nearest.id, 'marked', marked);
+            this.hud.notice(`F6: ${nearest.id} ${marked ? '✓' : '✕'}`);
         }
     }
 
@@ -389,8 +517,18 @@ export class Game {
         const snapshot = this.snapshot();
         const { x, y, z, yaw, grounded } = snapshot.player;
 
+        const chunks = snapshot.chunks;
+
+        drawChunkMap(this.hud.chunkMap, this.chunks.chunks(), chunks.settings, {
+            x,
+            z,
+        });
+
         return [
             `${Math.round(this.fps.value)} fps · ${snapshot.ticks} steps`,
+            `chunks ${chunks.settings.size} m: ${chunks.counts.visible} visible · ${chunks.counts.active} active · ${chunks.counts.loading} loading · queue ${chunks.queue}`,
+            `chunk work ${chunks.lastMs.toFixed(1)} ms (max ${chunks.maxMs.toFixed(1)}) · ${chunks.loads} loads, ${chunks.averageLoadMs.toFixed(0)} ms avg · ${chunks.unloads} unloads`,
+            `things ${chunks.things} · ground ${chunks.terrainVertices} vertices · ${snapshot.renderer.calls} draw calls`,
             `${snapshot.location} · day ${snapshot.day} ${snapshot.time} (${snapshot.phase})`,
             `x ${x.toFixed(2)}  y ${y.toFixed(2)}  z ${z.toFixed(2)}  yaw ${yaw.toFixed(2)}${grounded ? '  ground' : ''}`,
             `entities ${snapshot.entities} · views ${snapshot.views}`,

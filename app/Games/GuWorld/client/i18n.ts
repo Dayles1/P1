@@ -8,6 +8,7 @@ interface Texts {
     loading: string;
     load_failed: string;
     retry: string;
+    loading_world: string;
     settings_broken: string;
     play: string;
     resume: string;
@@ -34,6 +35,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         load_failed:
             'Не удалось загрузить сохранение. Игра не начата, чтобы не затереть его.',
         retry: 'Повторить',
+        loading_world: 'Загрузка мира…',
         settings_broken: 'Настройки мира повреждены',
         play: 'Играть',
         resume: 'Продолжить',
@@ -44,7 +46,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             ['Пробел', 'прыжок · залезть на уступ'],
             ['C · Z', 'присесть · ползти'],
             ['Мышь', 'камера · колесо — ближе/дальше'],
-            ['F3', 'отладка'],
+            ['F3 · F6', 'отладка · пометить ближайший предмет'],
         ],
         day: 'День',
         phases: {
@@ -69,6 +71,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         load_failed:
             'Could not load the saved game. The game has not started, so as not to overwrite it.',
         retry: 'Try again',
+        loading_world: 'Loading the world…',
         settings_broken: 'The world’s settings are broken',
         play: 'Play',
         resume: 'Resume',
@@ -79,7 +82,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             ['Space', 'jump · climb a ledge'],
             ['C · Z', 'crouch · crawl'],
             ['Mouse', 'camera · wheel to zoom'],
-            ['F3', 'debug'],
+            ['F3 · F6', 'debug · mark the nearest thing'],
         ],
         day: 'Day',
         phases: {
@@ -104,6 +107,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         load_failed:
             'Saqlangan o‘yinni yuklab bo‘lmadi. Uni o‘chirib yubormaslik uchun o‘yin boshlanmadi.',
         retry: 'Qayta urinish',
+        loading_world: 'Dunyo yuklanmoqda…',
         settings_broken: 'Dunyo sozlamalari buzilgan',
         play: 'O‘ynash',
         resume: 'Davom etish',
@@ -114,7 +118,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             ['Probel', 'sakrash · zinaga chiqish'],
             ['C · Z', 'cho‘kkalash · emaklash'],
             ['Sichqoncha', 'kamera · g‘ildirak — yaqin/uzoq'],
-            ['F3', 'nosozliklar'],
+            ['F3 · F6', 'nosozliklar · eng yaqin narsani belgilash'],
         ],
         day: 'Kun',
         phases: {

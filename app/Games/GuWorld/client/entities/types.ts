@@ -5,6 +5,7 @@
 
 import type { Look } from '../body/mannequin';
 import type { Stance } from '../physics/character';
+import type { EntityState } from '../world/changes';
 import type { Vec3 } from '../world/space';
 import type { Entity } from './registry';
 
@@ -33,15 +34,31 @@ export interface PlayerEntity extends Entity {
     look: Look;
 }
 
-/** A solid box of a location's content. */
-export interface BlockEntity extends Entity {
+/**
+ * A thing of a location's content, loaded with the area it stands in.
+ * `state` is what can change about it (see world/changes.ts).
+ */
+interface PropEntity extends Entity {
+    state: EntityState;
+}
+
+/** A solid box. */
+export interface BlockEntity extends PropEntity {
     kind: 'block';
     width: number;
     depth: number;
     height: number;
 }
 
-export type GameEntity = PlayerEntity | BlockEntity;
+/** A rounded stone. */
+export interface StoneEntity extends PropEntity {
+    kind: 'stone';
+    radius: number;
+}
+
+export type ContentEntity = BlockEntity | StoneEntity;
+
+export type GameEntity = PlayerEntity | ContentEntity;
 
 export const PLAYER_ID = 'player';
 

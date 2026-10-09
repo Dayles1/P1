@@ -50,6 +50,13 @@ export class Stage {
         return this.host.clientWidth / Math.max(1, this.host.clientHeight);
     }
 
+    /** How far the world is drawn (m): the haze thickens to hide where the drawn chunks end. */
+    setReach(reach: number): void {
+        const fog = this.scene.fog as THREE.Fog;
+        fog.near = reach * 0.4;
+        fog.far = reach;
+    }
+
     /** The light of the time of day, around `focus` (where the shadows are needed). */
     light(timeOfDay: number, focus: THREE.Vector3): void {
         const light = dayLight(timeOfDay);

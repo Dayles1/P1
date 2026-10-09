@@ -166,7 +166,10 @@ describe('locations', () => {
         );
 
         expect(location.spawn.z).toBe(12);
-        expect(location.blocks.length).toBeGreaterThan(0);
+        expect(
+            location.objectsIn({ minX: -20, maxX: 20, minZ: -20, maxZ: 20 })
+                .length,
+        ).toBeGreaterThan(0);
         // Flat away from the mounds.
         expect(location.ground.heightAt(0, 40)).toBeCloseTo(0, 3);
     });
@@ -186,11 +189,43 @@ describe('locations', () => {
         );
     });
 
-    it('gives every block of the proving ground its own stable id', () => {
-        const ids = testGrounds.blocks.map((block) => block.id);
+    it('gives every thing of the proving ground its own stable id', () => {
+        const all = { minX: -256, maxX: 256, minZ: -256, maxZ: 256 };
+        const ids = testGrounds.objectsIn(all).map((thing) => thing.id);
 
         expect(new Set(ids).size).toBe(ids.length);
         expect(ids).toContain('block:test_grounds:crate');
+        expect(
+            ids.filter((id) => id.startsWith('stone:')).length,
+        ).toBeGreaterThan(100);
+    });
+
+    it('hands out the same things whatever the areas are cut into', () => {
+        const ids = (size: number) => {
+            const found: string[] = [];
+
+            for (let x = -256; x < 256; x += size) {
+                for (let z = -256; z < 256; z += size) {
+                    found.push(
+                        ...testGrounds
+                            .objectsIn({
+                                minX: x,
+                                maxX: x + size,
+                                minZ: z,
+                                maxZ: z + size,
+                            })
+                            .map((thing) => thing.id),
+                    );
+                }
+            }
+
+            return found.sort();
+        };
+
+        // Each thing once, and the same things, for 32, 64 and 128 m areas.
+        expect(new Set(ids(32)).size).toBe(ids(32).length);
+        expect(ids(32)).toEqual(ids(64));
+        expect(ids(64)).toEqual(ids(128));
     });
 
     it('has a gentle mound one can walk up and a steep one one cannot', () => {

@@ -3,7 +3,7 @@
  * with the host application: the bearer token the user signed in with.
  */
 
-import type { SaveV1 } from './state/save';
+import type { Save } from './state/save';
 
 const TOKEN_KEY = 'auth_token';
 
@@ -78,7 +78,7 @@ export function loadSave(): Promise<SavedGame | null> {
 }
 
 /** Creates or updates the saved game; `keepalive` lets it finish as the page closes. */
-export async function putSave(save: SaveV1, keepalive = false): Promise<void> {
+export async function putSave(save: Save, keepalive = false): Promise<void> {
     await request('save', 'PUT', save, keepalive);
 }
 

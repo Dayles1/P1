@@ -39,11 +39,27 @@ export interface LocationConfig {
     spawn: Pose;
 }
 
+/** How the world is loaded around the hero (see world/chunk-manager.ts), metres. */
+export interface ChunkSettings {
+    /** A chunk's side. */
+    size: number;
+    /** Things within this are simulated. */
+    simulationRadius: number;
+    /** Things within this are drawn. */
+    visualRadius: number;
+    /** How much farther than a radius a chunk is kept before being let go, so its edge does not flicker. */
+    margin: number;
+}
+
 export interface WorldConfig {
     limits: WorldLimits;
+    chunks: ChunkSettings;
     start: LocationId;
     locations: Map<LocationId, LocationConfig>;
 }
+
+/** The chunk sizes the engine was measured with (see the stage 3 report). */
+export const CHUNK_SIZES = [32, 64, 128];
 
 export class WorldConfigError extends Error {
     constructor(readonly problems: string[]) {
@@ -64,6 +80,7 @@ export function parseWorldConfig(raw: unknown): WorldConfig {
     }
 
     const limits = parseLimits(raw.limits, problems);
+    const chunks = parseChunks(raw.chunks, problems);
     const locations = new Map<LocationId, LocationConfig>();
 
     if (!isObject(raw.locations)) {
@@ -84,11 +101,48 @@ export function parseWorldConfig(raw: unknown): WorldConfig {
         problems.push(`the starting location "${start}" is not one of them`);
     }
 
-    if (problems.length || !limits) {
+    if (problems.length || !limits || !chunks) {
         throw new WorldConfigError(problems);
     }
 
-    return { limits, start, locations };
+    return { limits, chunks, start, locations };
+}
+
+function parseChunks(raw: unknown, problems: string[]): ChunkSettings | null {
+    if (!isObject(raw)) {
+        problems.push('the chunk settings are missing');
+
+        return null;
+    }
+
+    const {
+        size,
+        simulation_radius: simulationRadius,
+        visual_radius: visualRadius,
+        margin,
+    } = raw;
+
+    if (
+        !isFiniteNumber(size) ||
+        size < 8 ||
+        size > 1024 ||
+        !isFiniteNumber(simulationRadius) ||
+        !isFiniteNumber(visualRadius) ||
+        !isFiniteNumber(margin) ||
+        simulationRadius <= 0 ||
+        visualRadius <= 0 ||
+        Math.max(simulationRadius, visualRadius) > 4096 ||
+        margin < 0 ||
+        margin > size
+    ) {
+        problems.push(
+            'the chunk settings must be a size of 8–1024 m, radii up to 4096 m and a margin of at most a chunk',
+        );
+
+        return null;
+    }
+
+    return { size, simulationRadius, visualRadius, margin };
 }
 
 function parseLimits(raw: unknown, problems: string[]): WorldLimits | null {

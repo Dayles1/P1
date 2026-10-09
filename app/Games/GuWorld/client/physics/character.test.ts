@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+    BLOCKS,
     GENTLE_MOUND,
     STEEP_MOUND,
     testGrounds,
@@ -8,7 +9,7 @@ import { SIM_STEP } from '../engine/loop';
 import { Character, RADIUS, STANCE_SPEED } from './character';
 import type { CharacterInput } from './character';
 import { ColliderGrid } from './colliders';
-import { blockCollider } from './solids';
+import { colliderFor } from './solids';
 
 const ground = testGrounds.ground;
 const bounds = {
@@ -23,8 +24,8 @@ const bounds = {
 function body(): Character {
     const grid = new ColliderGrid(ground);
 
-    for (const block of testGrounds.blocks) {
-        grid.add(blockCollider(block, ground));
+    for (const block of BLOCKS) {
+        grid.add(colliderFor(block, ground));
     }
 
     return new Character(grid, ground, bounds);
@@ -55,9 +56,7 @@ function run(
 }
 
 const block = (name: string) =>
-    testGrounds.blocks.find(
-        (each) => each.id === `block:test_grounds:${name}`,
-    )!;
+    BLOCKS.find((each) => each.id === `block:test_grounds:${name}`)!;
 
 describe('the body on the proving ground', () => {
     it('falls, lands and stands on flat ground without sinking', () => {

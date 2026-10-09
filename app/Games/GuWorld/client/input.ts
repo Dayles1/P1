@@ -10,7 +10,7 @@
  * touch controls yet).
  */
 
-export type Action = 'jump' | 'crouch' | 'crawl' | 'debug' | 'escape';
+export type Action = 'jump' | 'crouch' | 'crawl' | 'debug' | 'mark' | 'escape';
 
 const BINDINGS: Record<string, Action> = {
     Space: 'jump',
@@ -18,6 +18,7 @@ const BINDINGS: Record<string, Action> = {
     ControlLeft: 'crouch',
     KeyZ: 'crawl',
     F3: 'debug',
+    F6: 'mark',
     Escape: 'escape',
 };
 
@@ -29,7 +30,7 @@ const SPRINT = ['ShiftLeft', 'ShiftRight'];
 const RISE = ['Space'];
 const DIVE = ['KeyC', 'ControlLeft'];
 /** Keys the browser must not act on while playing. */
-const CAPTURED = [...FORWARD, ...BACK, ...LEFT, ...RIGHT, 'Space', 'F3'];
+const CAPTURED = [...FORWARD, ...BACK, ...LEFT, ...RIGHT, 'Space', 'F3', 'F6'];
 
 export class Input {
     /** Pointer locked to the game: the mouse turns the camera. */

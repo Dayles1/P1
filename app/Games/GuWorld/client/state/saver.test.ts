@@ -3,14 +3,14 @@ import { WorldClock } from '../engine/clock';
 import { worldSettings } from '../testing/world-settings';
 import { parseWorldConfig } from '../world/config';
 import { makeSave } from './save';
-import type { SaveV1 } from './save';
+import type { Save } from './save';
 import { Saver } from './saver';
 
 const config = parseWorldConfig(worldSettings());
 const at = (x: number) =>
     makeSave('test_grounds', WorldClock.newGame(), { x, y: 0, z: 0, yaw: 0 });
 
-function setup(put: (save: SaveV1) => Promise<void>) {
+function setup(put: (save: Save) => Promise<void>) {
     const report = { written: vi.fn(), failed: vi.fn(), refused: vi.fn() };
     const transport = { put: vi.fn(put) };
 

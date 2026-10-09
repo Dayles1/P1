@@ -3,10 +3,13 @@
  * entity may have one view (made by its kind's factory) under the same
  * stable id; every frame the views are brought up to date from the data.
  *
- * A view is only a picture: dropping it (out of sight, later out of a
- * loaded area) leaves the entity in the world, and showing it again makes
- * a fresh one. Removing an entity drops its view. Disposing the views
- * frees what they made and stops listening to the registry.
+ * A view is only a picture: dropping it (out of sight, out of a drawn
+ * chunk) leaves the entity in the world, and showing it again makes a
+ * fresh one. Removing an entity drops its view. Disposing the views frees
+ * what they made and stops listening to the registry.
+ *
+ * By default every entity is shown as it is added; with `autoShow` off
+ * something else decides (the chunks: world/chunk-manager.ts).
  */
 
 import type * as THREE from 'three';
@@ -29,13 +32,20 @@ export class EntityViews<E extends Entity> {
         private registry: EntityRegistry<E>,
         private scene: THREE.Object3D,
         private factories: Partial<Record<E['kind'], ViewFactory<E>>>,
+        autoShow = true,
     ) {
-        for (const entity of registry.all()) {
-            this.show(entity.id);
+        if (autoShow) {
+            for (const entity of registry.all()) {
+                this.show(entity.id);
+            }
         }
 
         this.stopObserving = registry.observe({
-            added: (entity) => this.show(entity.id),
+            added: (entity) => {
+                if (autoShow) {
+                    this.show(entity.id);
+                }
+            },
             removed: (entity) => this.drop(entity.id),
         });
     }

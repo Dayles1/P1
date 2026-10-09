@@ -154,7 +154,6 @@ body {
     right: 16px;
     bottom: 16px;
     margin: 0;
-    font: 12px/1.5 var(--gw-mono);
 }
 
 .gw-overlay {
@@ -167,8 +166,55 @@ body {
 }
 
 .gw-overlay[hidden],
-.gw-debug[hidden] {
+.gw-debug[hidden],
+.gw-loading[hidden] {
     display: none;
+}
+
+.gw-debug {
+    display: grid;
+    gap: 8px;
+    justify-items: end;
+}
+
+.gw-debug__text {
+    margin: 0;
+    font: 12px/1.5 var(--gw-mono);
+}
+
+.gw-debug__map {
+    width: 220px;
+    height: 220px;
+}
+
+/* While the chunks around the hero load. */
+.gw-loading {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    gap: 10px;
+    background: rgb(12 13 15 / 0.75);
+    font-size: 14px;
+}
+
+.gw-loading p {
+    margin: 0;
+}
+
+.gw-loading__track {
+    display: block;
+    width: 260px;
+    height: 4px;
+    background: rgb(226 216 196 / 0.15);
+}
+
+.gw-loading__bar {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: var(--gw-blood);
+    transition: width 0.15s;
 }
 
 .gw-controls {

@@ -8,10 +8,10 @@
 
 import type { WorldConfig } from '../world/config';
 import { checkSave } from './save';
-import type { SaveV1 } from './save';
+import type { Save } from './save';
 
 export interface SaveTransport {
-    put(save: SaveV1, keepalive: boolean): Promise<void>;
+    put(save: Save, keepalive: boolean): Promise<void>;
 }
 
 export interface SaveReport {
@@ -24,7 +24,7 @@ export type SaveOutcome = 'saved' | 'queued' | 'refused' | 'failed';
 
 export class Saver {
     private sending = false;
-    private next: { save: SaveV1; keepalive: boolean } | null = null;
+    private next: { save: Save; keepalive: boolean } | null = null;
 
     constructor(
         private transport: SaveTransport,
@@ -36,7 +36,7 @@ export class Saver {
         return this.sending;
     }
 
-    async save(save: SaveV1, keepalive = false): Promise<SaveOutcome> {
+    async save(save: Save, keepalive = false): Promise<SaveOutcome> {
         const problems = checkSave(save, this.config);
 
         if (problems.length) {

@@ -1,39 +1,48 @@
 /**
- * The saved game, format v1, and getting a game back from one.
+ * The saved game and getting a game back from one.
  *
- * A save holds the format's version, the location the hero is in, the
+ * Format v2 holds the format's version, the location the hero is in, the
  * game minutes since the world began (the day and time of day follow),
- * and where the hero stands and faces. The server checks it on the way
- * in (Http/Requests/SaveGameRequest.php); the client checks it again on
- * the way out of the server and before sending.
+ * where the hero stands and faces, and what has changed in the world
+ * (world/changes.ts, by entity id). Format v1 — the same without the
+ * changes — is still read. The server checks a save on the way in
+ * (Http/Requests/SaveGameRequest.php); the client checks it again on the
+ * way out of the server and before sending.
  *
  * Restoring never trusts what comes back: anything that cannot be used
  * is replaced by something safe — a broken time by the first morning, a
  * broken or out-of-bounds position by the location's spawn, an unknown
- * location or format by the starting location — and each reason is kept
- * in `problems`, so it can be shown and logged. Fields it does not know
- * are ignored.
+ * location or format by the starting location, broken changes dropped —
+ * and each reason is kept in `problems`, so it can be shown and logged.
+ * Fields it does not know are ignored.
  */
 
 import { WorldClock } from '../engine/clock';
+import { MAX_CHANGES, WorldChanges } from '../world/changes';
+import type { EntityChange } from '../world/changes';
 import type { LocationConfig, LocationId, WorldConfig } from '../world/config';
 import { LOCATION_ID } from '../world/config';
 import { inside, isPose, wrapAngle } from '../world/space';
 import type { Pose } from '../world/space';
 
-export const SAVE_VERSION = 1;
+export const SAVE_VERSION = 2;
 
-export interface SaveV1 {
+/** The formats a save may come in (older ones are read and saved again as the current). */
+const READABLE = [1, 2];
+
+export interface Save {
     version: typeof SAVE_VERSION;
     location: LocationId;
     world_minutes: number;
     player: Pose;
+    changes: Record<string, EntityChange>;
 }
 
 export interface RestoredGame {
     location: LocationId;
     clock: WorldClock;
     player: Pose;
+    changes: WorldChanges;
     /** No save at all: a new game. */
     fresh: boolean;
     /** Why parts of the save were replaced; empty when it was sound. */
@@ -42,12 +51,13 @@ export interface RestoredGame {
 
 type Raw = Record<string, unknown>;
 
-/** A new game: the starting location's spawn, the first morning. */
+/** A new game: the starting location's spawn, the first morning, an untouched world. */
 export function newGame(config: WorldConfig): RestoredGame {
     return {
         location: config.start,
         clock: WorldClock.newGame(),
         player: { ...config.locations.get(config.start)!.spawn },
+        changes: new WorldChanges(),
         fresh: true,
         problems: [],
     };
@@ -79,7 +89,7 @@ export function restoreGame(
 
     const raw = saved as Raw;
 
-    if (raw.version !== SAVE_VERSION) {
+    if (!READABLE.includes(raw.version as number)) {
         return {
             ...start,
             fresh: false,
@@ -109,9 +119,10 @@ export function restoreGame(
         );
     }
 
-    // The hero: where they were, if that is a real point of this location
-    // (a position in a location that could not be used means nothing here).
+    // The hero and the world's changes belong to the saved location: in
+    // one that could not be used they mean nothing.
     let player: Pose = { ...location.spawn };
+    let changes = new WorldChanges();
 
     if (accepted) {
         if (!isPose(raw.player)) {
@@ -122,9 +133,20 @@ export function restoreGame(
             const { x, y, z, yaw } = raw.player;
             player = { x, y, z, yaw: wrapAngle(yaw) };
         }
+
+        const restored = WorldChanges.restore(raw.changes);
+        changes = restored.changes;
+        problems.push(...restored.problems);
     }
 
-    return { location: location.id, clock, player, fresh: false, problems };
+    return {
+        location: location.id,
+        clock,
+        player,
+        changes,
+        fresh: false,
+        problems,
+    };
 }
 
 /** The save for a game. */
@@ -132,7 +154,8 @@ export function makeSave(
     location: LocationId,
     clock: WorldClock,
     player: Pose,
-): SaveV1 {
+    changes: WorldChanges = new WorldChanges(),
+): Save {
     return {
         version: SAVE_VERSION,
         location,
@@ -143,11 +166,12 @@ export function makeSave(
             z: player.z,
             yaw: wrapAngle(player.yaw),
         },
+        changes: changes.toJSON(),
     };
 }
 
 /** What is wrong with a save before it is sent (empty when it is sound). */
-export function checkSave(save: SaveV1, config: WorldConfig): string[] {
+export function checkSave(save: Save, config: WorldConfig): string[] {
     const problems: string[] = [];
     const location = config.locations.get(save.location);
 
@@ -167,6 +191,15 @@ export function checkSave(save: SaveV1, config: WorldConfig): string[] {
         problems.push('broken position');
     } else if (location && !inside(location.bounds, save.player)) {
         problems.push('position out of the location');
+    }
+
+    const changes = WorldChanges.restore(save.changes);
+
+    if (
+        changes.problems.length ||
+        Object.keys(save.changes ?? {}).length > MAX_CHANGES
+    ) {
+        problems.push('broken world changes');
     }
 
     return problems;

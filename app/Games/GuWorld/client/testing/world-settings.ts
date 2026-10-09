@@ -4,6 +4,12 @@
 export function worldSettings(overrides: Record<string, unknown> = {}) {
     return {
         limits: { half_extent: 16000, min_y: -1000, max_y: 5000 },
+        chunks: {
+            size: 64,
+            simulation_radius: 96,
+            visual_radius: 192,
+            margin: 16,
+        },
         start: 'test_grounds',
         locations: {
             test_grounds: {

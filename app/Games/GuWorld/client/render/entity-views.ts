@@ -2,7 +2,14 @@
 
 import * as THREE from 'three';
 import { Mannequin } from '../body/mannequin';
-import type { BlockEntity, GameEntity, PlayerEntity } from '../entities/types';
+import type {
+    BlockEntity,
+    ContentEntity,
+    GameEntity,
+    PlayerEntity,
+    StoneEntity,
+} from '../entities/types';
+import { STONE_SINK } from '../physics/solids';
 import type { Ground } from '../world/ground';
 import type { EntityView, ViewFactory } from './views';
 
@@ -10,6 +17,23 @@ const BLOCK = new THREE.MeshStandardMaterial({
     color: 0xb9b4aa,
     roughness: 0.85,
 });
+const STONE = new THREE.MeshStandardMaterial({
+    color: 0x8f8c84,
+    roughness: 0.95,
+    flatShading: true,
+});
+/** A thing marked with the debug tool (F6), so its change can be seen to last. */
+const MARKED = new THREE.MeshStandardMaterial({
+    color: 0xa8261f,
+    roughness: 0.7,
+    flatShading: true,
+});
+
+const material = (
+    entity: ContentEntity,
+    plain: THREE.MeshStandardMaterial,
+): THREE.MeshStandardMaterial =>
+    entity.state.marked === true ? MARKED : plain;
 
 /** A block: a box standing on the ground where its entity is. */
 function blockView(entity: BlockEntity): EntityView<GameEntity> {
@@ -25,12 +49,46 @@ function blockView(entity: BlockEntity): EntityView<GameEntity> {
 
     return {
         object: mesh,
-        sync: (data) =>
+        sync: (data) => {
+            const block = data as BlockEntity;
             mesh.position.set(
-                data.position.x,
-                data.position.y + (data as BlockEntity).height / 2,
-                data.position.z,
-            ),
+                block.position.x,
+                block.position.y + block.height / 2,
+                block.position.z,
+            );
+            mesh.material = material(block, BLOCK);
+        },
+        dispose: () => geometry.dispose(),
+    };
+}
+
+/** A stone: a rough rounded rock, partly sunk into the ground. */
+function stoneView(entity: StoneEntity): EntityView<GameEntity> {
+    const geometry = new THREE.IcosahedronGeometry(entity.radius, 1);
+    const mesh = new THREE.Mesh(geometry, STONE);
+    // Each stone turned and squashed its own way, from its id.
+    let seed = 0;
+
+    for (const char of entity.id) {
+        seed = (seed * 31 + char.charCodeAt(0)) | 0;
+    }
+
+    mesh.rotation.set(seed % 7, seed % 5, seed % 3);
+    mesh.scale.set(1, 0.7 + ((seed >>> 3) % 30) / 100, 1);
+    mesh.castShadow = true;
+    mesh.receiveShadow = true;
+
+    return {
+        object: mesh,
+        sync: (data) => {
+            const stone = data as StoneEntity;
+            mesh.position.set(
+                stone.position.x,
+                stone.position.y + stone.radius * (1 - STONE_SINK * 2),
+                stone.position.z,
+            );
+            mesh.material = material(stone, STONE);
+        },
         dispose: () => geometry.dispose(),
     };
 }
@@ -92,6 +150,7 @@ export function viewFactories(
 ): Record<GameEntity['kind'], ViewFactory<GameEntity>> {
     return {
         block: (entity) => blockView(entity as BlockEntity),
+        stone: (entity) => stoneView(entity as StoneEntity),
         player: (entity) => personView(entity as PlayerEntity, ground, look),
     };
 }

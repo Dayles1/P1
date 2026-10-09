@@ -8,6 +8,7 @@ import { newGame, restoreGame } from '../state/save';
 import { buildWorld, saveWorld } from '../state/world';
 import type { World } from '../state/world';
 import { worldSettings } from '../testing/world-settings';
+import { ChunkManager } from '../world/chunk-manager';
 import { parseWorldConfig } from '../world/config';
 import { autosaveSystem } from './autosave';
 import { PlayerSystem } from './player';
@@ -36,6 +37,30 @@ function keys(forward = 0): Controls {
         // The camera looks along -Z.
         axes: () => ({ forwardX: 0, forwardZ: -1, rightX: 1, rightZ: 0 }),
     };
+}
+
+/** The chunks of a world, loaded around the hero (nothing drawn). */
+function chunks(world: World) {
+    let time = 0;
+    const manager = new ChunkManager({
+        location: world.location.id,
+        bounds: world.location.bounds,
+        content: world.location,
+        settings: world.config.chunks,
+        registry: world.registry,
+        colliders: world.colliders,
+        changes: world.changes,
+        views: { show: () => {}, drop: () => {} },
+        painter: { paint: () => ({ step: () => true }), erase: () => {} },
+        now: () => (time += 0.1),
+    });
+    const { x, z } = world.player.position;
+
+    for (let i = 0; i < 500 && !manager.ready(x, z); i++) {
+        manager.update(x, z, 5);
+    }
+
+    return manager;
 }
 
 /** A world run by a real loop and runner, frames driven by hand. */
@@ -72,17 +97,43 @@ describe('the world, played', () => {
         const ids = (world: World) =>
             [...world.registry.all()].map((e) => e.id).sort();
 
+        chunks(a);
+        chunks(b);
+
         expect(ids(a)).toEqual(ids(b));
         expect(ids(a)).toContain('player');
+        expect(ids(a)).toContain('block:test_grounds:crate');
     });
 
-    it('never doubles anything when built twice into one registry', () => {
+    it('never doubles anything when built and loaded twice into one registry', () => {
         const first = buildWorld(config, newGame(config), look);
+
+        chunks(first);
         const size = first.registry.size;
 
-        buildWorld(config, newGame(config), look, first.registry);
+        chunks(buildWorld(config, newGame(config), look, first.registry));
 
         expect(first.registry.size).toBe(size);
+    });
+
+    it('keeps what changed in the world through a save and a reload', () => {
+        const world = buildWorld(config, newGame(config), look);
+        const loaded = chunks(world);
+        const crate = world.registry.get('block:test_grounds:crate');
+
+        if (crate?.kind === 'block') {
+            crate.state.marked = true;
+        }
+
+        loaded.capture();
+        const saved = JSON.parse(JSON.stringify(saveWorld(world)));
+        const again = buildWorld(config, restoreGame(saved, config), look);
+
+        chunks(again);
+
+        expect(again.registry.get('block:test_grounds:crate')).toMatchObject({
+            state: { marked: true },
+        });
     });
 
     it('lets time run only while the loop runs', () => {

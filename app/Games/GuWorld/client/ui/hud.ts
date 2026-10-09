@@ -29,7 +29,13 @@ export class Hud {
     private place = element('div', 'gw-plate gw-place');
     private status = element('div', 'gw-plate gw-status');
     private notices = element('div', 'gw-notices');
-    private debug = element('pre', 'gw-plate gw-debug');
+    private debug = element('div', 'gw-plate gw-debug');
+    private debugText = element('pre', 'gw-debug__text');
+    /** The chunk map (ui/chunk-map.ts), drawn while the debug panel is open. */
+    readonly chunkMap = element('canvas', 'gw-debug__map');
+    private loading = element('div', 'gw-loading');
+    private loadingText = element('p', '', t.loading_world);
+    private loadingBar = element('span', 'gw-loading__bar');
     private overlay = element('div', 'gw-overlay');
     private overlayTitle = element('h1', '', t.title);
     private overlayButton = element('button', 'gw-button', t.play);
@@ -41,6 +47,14 @@ export class Hud {
             element('span', 'gw-place__time'),
         );
         this.debug.hidden = true;
+        this.chunkMap.width = 220;
+        this.chunkMap.height = 220;
+        this.debug.append(this.chunkMap, this.debugText);
+
+        const track = element('span', 'gw-loading__track');
+        track.append(this.loadingBar);
+        this.loading.append(this.loadingText, track);
+        this.loading.hidden = true;
         this.overlayButton.type = 'button';
         this.overlayButton.addEventListener('click', onPlay);
 
@@ -64,6 +78,7 @@ export class Hud {
             this.notices,
             this.debug,
             this.overlay,
+            this.loading,
         );
         host.append(this.root);
     }
@@ -91,6 +106,16 @@ export class Hud {
         this.overlayTitle.textContent = started ? t.paused : t.title;
     }
 
+    /** The world loading around the hero: `done` of `total` chunks; null hides it. */
+    setLoading(progress: { done: number; total: number } | null): void {
+        this.loading.hidden = progress === null;
+
+        if (progress) {
+            this.loadingText.textContent = `${t.loading_world} ${progress.done} / ${progress.total}`;
+            this.loadingBar.style.width = `${(progress.done / Math.max(1, progress.total)) * 100}%`;
+        }
+    }
+
     notice(text: string): void {
         const line = element('p', 'gw-plate gw-notice', text);
         this.notices.append(line);
@@ -107,7 +132,7 @@ export class Hud {
 
     setDebug(lines: string[]): void {
         if (!this.debug.hidden) {
-            this.debug.textContent = lines.join('\n');
+            this.debugText.textContent = lines.join('\n');
         }
     }
 

@@ -58,6 +58,14 @@ return [
         'limits' => ['half_extent' => 16000, 'min_y' => -1000, 'max_y' => 5000],
 
         /*
+         * How the world is loaded around the hero (client/world/chunk-manager.ts):
+         * the chunk's side, how far things are simulated and drawn, and how
+         * much farther a chunk is kept before being let go. Stage 3: the size
+         * is still being measured (32 / 64 / 128 m).
+         */
+        'chunks' => ['size' => 64, 'simulation_radius' => 96, 'visual_radius' => 192, 'margin' => 16],
+
+        /*
          * Where a new game begins.
          */
         'start' => 'test_grounds',
@@ -71,7 +79,7 @@ return [
 
             // The engine's proving ground (stage 2) — not part of the world of Gu.
             'test_grounds' => [
-                'bounds' => ['min_x' => -80, 'max_x' => 80, 'min_y' => -20, 'max_y' => 120, 'min_z' => -80, 'max_z' => 80],
+                'bounds' => ['min_x' => -256, 'max_x' => 256, 'min_y' => -20, 'max_y' => 120, 'min_z' => -256, 'max_z' => 256],
                 'spawn' => ['x' => 0, 'y' => 0, 'z' => 12, 'yaw' => 3.14159],
             ],
 
