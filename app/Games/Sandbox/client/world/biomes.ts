@@ -11,9 +11,13 @@
  * - snow: white plains, fir trees
  * - mountains: a range in the dry west plus lone peaks — rock, iron
  *   ore, snowy tops
+ *
+ * Qing Mao Mountain (qingmao.ts) is wooded up its slopes and bare only
+ * at the top; the wild peaks and ranges give way to it.
  */
 
 import { fbm, smoothstep } from './noise';
+import { mountainShare } from './qingmao';
 
 export type Biome = 'meadow' | 'forest' | 'desert' | 'snow' | 'mountains';
 
@@ -43,13 +47,21 @@ export function biomeWeights(x: number, z: number): BiomeWeights {
     const moisture =
         (x / 200 + fbm(x / 110 + 40, z / 110 - 17, SEED + 5, 3) * 0.8) * away;
 
-    const desert = smoothstep(0.38, 0.62, temperature);
-    const snow = smoothstep(0.38, 0.62, -temperature);
-    const forest =
-        smoothstep(0.2, 0.45, moisture) * (1 - desert) * (1 - snow * 0.6);
-    // A range in the dry west, and lone peaks anywhere.
+    const qingMao = mountainShare(x, z);
+    const slopes = smoothstep(0.05, 0.3, qingMao);
+    const desert = smoothstep(0.38, 0.62, temperature) * (1 - slopes);
+    const snow = smoothstep(0.38, 0.62, -temperature) * (1 - slopes);
+    const forest = Math.max(
+        smoothstep(0.2, 0.45, moisture) * (1 - desert) * (1 - snow * 0.6),
+        slopes * 0.85,
+    );
+    // A range in the dry west, and lone peaks anywhere; Qing Mao's top.
     const highlands = smoothstep(0.3, 0.55, -moisture) * (1 - desert);
-    const mountains = Math.max(highlands, smoothstep(0.08, 0.2, peaksAt(x, z)));
+    const mountains = Math.max(
+        Math.max(highlands, smoothstep(0.08, 0.2, peaksAt(x, z))) *
+            (1 - slopes),
+        smoothstep(0.72, 0.9, qingMao),
+    );
     const meadow = Math.max(0, 1 - desert - snow - forest);
 
     return { meadow, forest, desert, snow, mountains };

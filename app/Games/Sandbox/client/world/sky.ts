@@ -2,7 +2,9 @@
  * Day and night. The time of day comes from the real clock — one day
  * lasts DAY_LENGTH — so it needs no saving and is the same in every tab.
  * The sky colour, fog, sun, moon, stars and the light on the world all
- * follow it: warm dawns and dusks, a dark-blue night lit by the moon.
+ * follow it. The world of Gu is a gloomy one: a leaden overcast day
+ * under a pale, weak sun, dawns and dusks the colour of old blood, and a
+ * near-black night with a cold moon.
  *
  * The sky itself is a dome around the player, pale at the horizon (the
  * fog's colour, so the land fades into it) and deeper overhead, with a
@@ -14,16 +16,20 @@ import { smoothstep } from './noise';
 
 export const DAY_LENGTH = 20 * 60_000;
 
-const DAY = new THREE.Color(0xcfd8de);
-const DUSK = new THREE.Color(0xe2b28f);
-const NIGHT = new THREE.Color(0x121a26);
-const ZENITH_DAY = new THREE.Color(0x7ea6cc);
-const ZENITH_DUSK = new THREE.Color(0x5c6c99);
-const ZENITH_NIGHT = new THREE.Color(0x05080f);
-const SUN_DAY = new THREE.Color(0xfff6ea);
-const SUN_LOW = new THREE.Color(0xffb27a);
-const GROUND_DAY = new THREE.Color(0x8f8a80);
-const GROUND_NIGHT = new THREE.Color(0x1d222b);
+const DAY = new THREE.Color(0x9a9ea0);
+const DUSK = new THREE.Color(0xa0675a);
+const NIGHT = new THREE.Color(0x090b10);
+const ZENITH_DAY = new THREE.Color(0x56606b);
+const ZENITH_DUSK = new THREE.Color(0x3d2a36);
+const ZENITH_NIGHT = new THREE.Color(0x020306);
+const SUN_DAY = new THREE.Color(0xe9e2d6);
+const SUN_LOW = new THREE.Color(0xd8644a);
+const GROUND_DAY = new THREE.Color(0x5f5a52);
+const GROUND_NIGHT = new THREE.Color(0x14171d);
+/** The strongest the sun and the sky's light get: dimmer than a clear day. */
+const SUN_STRENGTH = 1.8;
+const AMBIENT_NIGHT = 0.28;
+const AMBIENT_DAY = 1.2;
 
 const DOME_VERTEX = /* glsl */ `
     varying vec3 vDirection;
@@ -185,7 +191,8 @@ export class Sky {
         dome.sunDirection.value.copy(sunDirection);
         this.dome.position.copy(center);
 
-        this.sun.intensity = 2.4 * smoothstep(-0.02, 0.15, sunDirection.y);
+        this.sun.intensity =
+            SUN_STRENGTH * smoothstep(-0.02, 0.15, sunDirection.y);
         this.sun.color.copy(SUN_DAY).lerp(SUN_LOW, low);
         this.sun.position.copy(center).addScaledVector(sunDirection, 80);
         this.sun.target.position.copy(center);
@@ -194,7 +201,8 @@ export class Sky {
         this.moon.position.copy(center).addScaledVector(sunDirection, -80);
         this.moon.target.position.copy(center);
 
-        this.ambient.intensity = 0.35 + 1.25 * day;
+        this.ambient.intensity =
+            AMBIENT_NIGHT + (AMBIENT_DAY - AMBIENT_NIGHT) * day;
         this.ambient.color.copy(this.color).lerp(DAY, 0.4);
         this.ambient.groundColor.copy(GROUND_NIGHT).lerp(GROUND_DAY, day);
 

@@ -1,33 +1,27 @@
 /**
- * The card to make a hero, shown before the first game (and once to a
- * player from before heroes), with the figure itself turning slowly in a
- * little 3D preview, dressed and built the way it will be in the world.
- * Two tabs:
+ * The awakening: the card to make a hero, shown before the first game
+ * (and once to a player from before heroes), with the figure itself
+ * turning slowly in a little 3D preview, bare-handed, built the way it
+ * will be in the world. There is no class to pick — in the world of Gu
+ * the Gu a hero raises decide the path; till then everyone starts as the
+ * all-rounder (STARTING_CLASS). Two tabs:
  *
- * - the hero: the four classes, man or woman, what that makes of the
- *   attributes and the figures that follow from them, the class skill;
+ * - the hero: a few words on the world, man or woman, what that makes of
+ *   the attributes and the figures that follow from them;
  * - the look: realistic or anime (a setting of the device), hairstyle,
  *   hair colour, a beard (for a man) and the colour of the eyes.
  *
  * The same card changes the look of a hero already made (from the
  * character tab): then it shows only the look, and saves or cancels.
  *
- * On a computer 1–4 pick the class, 5–6 the gender, Enter sets off (or
- * saves) and Escape cancels a change.
+ * On a computer 1–2 pick the gender, Enter sets off (or saves) and
+ * Escape cancels a change.
  */
 
-import {
-    ATTRIBUTES,
-    deriveAll,
-    GENDERS,
-    HERO_CLASSES,
-    RULES,
-    startingAttributes,
-} from '../hero';
+import { ATTRIBUTES, deriveAll, GENDERS, startingAttributes } from '../hero';
 import type { Gender, Hero, HeroClass } from '../hero';
 import { t } from '../i18n';
 import { TOUCH } from '../input';
-import type { ItemId } from '../items';
 import { loadHuman } from '../player/human';
 import {
     BEARDS,
@@ -45,13 +39,8 @@ import { button, element } from './dom';
 import { keyBadge } from './hud';
 import { Portrait } from './portrait';
 
-/** What each class holds in the preview. */
-const WEAPONS: Record<HeroClass, ItemId> = {
-    tank: 'war_hammer',
-    fighter: 'iron_sword',
-    assassin: 'dagger',
-    mage: 'staff',
-};
+/** The class every new hero has until the Gu decide the path: the all-rounder. */
+const STARTING_CLASS: HeroClass = 'fighter';
 
 /** The biggest an attribute bar shows at the start. */
 const BAR_TOP = 20;
@@ -94,7 +83,7 @@ export class CreateHero {
     ) {
         const hero = options.hero;
 
-        this.heroClass = hero?.heroClass ?? 'fighter';
+        this.heroClass = hero?.heroClass ?? STARTING_CLASS;
         this.gender = hero?.gender ?? 'male';
         this.style = options.style;
         this.look = hero ? { ...hero.look } : defaultAppearance(this.gender);
@@ -146,11 +135,8 @@ export class CreateHero {
             this.options.cancel();
         } else if (editing) {
             return;
-        } else if (digit >= 1 && digit <= HERO_CLASSES.length) {
-            this.heroClass = HERO_CLASSES[digit - 1];
-            this.render();
-        } else if (digit >= 5 && digit < 5 + GENDERS.length) {
-            this.pickGender(GENDERS[digit - 5]);
+        } else if (digit >= 1 && digit <= GENDERS.length) {
+            this.pickGender(GENDERS[digit - 1]);
         }
     };
 
@@ -246,31 +232,12 @@ export class CreateHero {
                 style: this.style,
                 appearance: this.look,
             },
-            WEAPONS[this.heroClass],
+            null,
         );
     }
 
-    /** Class, gender, and what they make of the hero. */
+    /** The world in a few words, the gender, and what it makes of the hero. */
     private heroPanel(): HTMLElement[] {
-        const classes = element('div', 'sb-create__classes');
-
-        HERO_CLASSES.forEach((heroClass, index) => {
-            const choice = button(
-                `sb-create__class${heroClass === this.heroClass ? ' sb-create__class--active' : ''}`,
-                t.classes[heroClass][0],
-                () => {
-                    this.heroClass = heroClass;
-                    this.render();
-                },
-            );
-
-            if (!TOUCH) {
-                choice.append(keyBadge(String(index + 1)));
-            }
-
-            classes.append(choice);
-        });
-
         const genders = element('div', 'sb-create__chips');
 
         GENDERS.forEach((gender, index) => {
@@ -281,15 +248,14 @@ export class CreateHero {
             );
 
             if (!TOUCH) {
-                choice.append(keyBadge(String(index + 5)));
+                choice.append(keyBadge(String(index + 1)));
             }
 
             genders.append(choice);
         });
 
         return [
-            element('h3', '', t.hero_pick_class),
-            classes,
+            element('p', 'sb-create__intro', t.hero_intro),
             element('h3', '', t.hero_pick_gender),
             genders,
             element('p', 'sb-hint', t.hero_gender_note),
@@ -374,13 +340,12 @@ export class CreateHero {
         return parts;
     }
 
-    /** The class's description, starting attributes, figures and skill. */
+    /** The starting attributes and the figures that follow from them. */
     private details(): HTMLElement {
         const heroClass = this.heroClass;
         const attributes = startingAttributes(heroClass, this.gender);
         const plain = startingAttributes(heroClass, 'male');
         const derived = deriveAll(attributes);
-        const skill = RULES.skills[heroClass];
         const rows = ATTRIBUTES.map((attribute) => {
             const shift = attributes[attribute] - plain[attribute];
             const [name, about] = t.attributes[attribute];
@@ -394,7 +359,6 @@ export class CreateHero {
         const details = element('div', 'sb-create__details');
 
         details.innerHTML = `
-            <p class="sb-create__about">${t.classes[heroClass][1]}</p>
             <div class="sb-attributes">${rows}</div>
             <dl class="sb-derived">
                 <dt>${t.derived.health}</dt><dd>${derived.health}</dd>
@@ -403,8 +367,7 @@ export class CreateHero {
                 <dt>${t.derived.defense}</dt><dd>${derived.defense}</dd>
                 <dt>${t.derived.speed}</dt><dd>${Math.round(derived.speed * 100)}%</dd>
                 <dt>${t.derived.crit}</dt><dd>${Math.round(derived.crit * 100)}%</dd>
-            </dl>
-            <p class="sb-create__skill"><b>${t.skill_title}: ${t.skills[skill.name][0]}</b> — ${t.skills[skill.name][1]}</p>`;
+            </dl>`;
 
         return details;
     }
