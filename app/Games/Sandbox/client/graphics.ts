@@ -9,12 +9,13 @@
  * - auto (the default): like medium, but following the frame rate — when
  *   the game stutters the resolution goes down first, then the view
  *   distance, then the shadows; they come back when it runs smoothly.
+ *   On a computer it smooths edges too, so the hero's outline stays clean.
  *
  * "Lamps" are the point lights fires and torches use: each costs every
  * pixel on screen, lit or not.
  *
  * Edge smoothing can only be chosen when the drawing surface is made, so
- * switching to or from "high" takes effect after a reload.
+ * switching to or from a mode that smooths takes effect after a reload.
  *
  * It also finds out which graphics card the browser draws with: a
  * software renderer means hardware acceleration is off in the browser,
@@ -35,9 +36,14 @@ const VIEW: Record<Quality, number> = {
 };
 const AUTO_VIEW_MIN = 110;
 
+/** Whether the drawing surface for this mode smooths edges (a computer's auto does too). */
+export function smoothsEdges(quality: Quality): boolean {
+    return quality === 'high' || (quality === 'auto' && !TOUCH);
+}
+
 export function createRenderer(quality: Quality): THREE.WebGLRenderer {
     return new THREE.WebGLRenderer({
-        antialias: quality === 'high',
+        antialias: smoothsEdges(quality),
         powerPreference: 'high-performance',
     });
 }

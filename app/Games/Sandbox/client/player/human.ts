@@ -97,6 +97,9 @@ const KNUCKLES = [0.8, 1, 0.75];
 /** How much richer the skin's colours are drawn, by style. */
 const SATURATION: Record<BodyStyle, number> = { realistic: 1.15, anime: 1.35 };
 
+/** Texture filtering at a slant (the GPU's own limit caps it). */
+const ANISOTROPY = 8;
+
 /** The hairstyle each model comes with. */
 const OWN_HAIR: Record<Gender, HairStyle> = { male: 'parted', female: 'buns' };
 
@@ -130,6 +133,22 @@ const COVER = {
 const EDGE = 0.03;
 
 const clamp = THREE.MathUtils.clamp;
+
+/** Keeps a material's textures sharp when seen at a slant. */
+function sharpen(material: THREE.Material): void {
+    const textured = material as THREE.MeshStandardMaterial;
+
+    for (const texture of [
+        textured.map,
+        textured.normalMap,
+        textured.roughnessMap,
+    ]) {
+        if (texture && texture.anisotropy < ANISOTROPY) {
+            texture.anisotropy = ANISOTROPY;
+            texture.needsUpdate = true;
+        }
+    }
+}
 
 const URLS: Record<Gender, string> = { male: maleUrl, female: femaleUrl };
 const loading = new Map<Gender, Promise<GLTF>>();
@@ -208,6 +227,7 @@ export class Human {
         const tint = (material: THREE.MeshStandardMaterial) => {
             const painted = paint(material);
             painted.color.setHex(HAIR_COLORS[appearance.hair_color]);
+            sharpen(painted);
 
             return painted;
         };
@@ -246,6 +266,7 @@ export class Human {
                     material.map = saturate(material.map, SATURATION[style]);
                 }
 
+                sharpen(material);
                 object.material = material;
 
                 if (object.name.startsWith('Hair')) {

@@ -95,6 +95,10 @@ const ru = {
         'Мегаполис',
     ],
     titles: {
+        'gu-world': [
+            'GU World',
+            'Мир Мастеров Гу по мотивам Reverend Insanity. В разработке: сейчас строится основа мира.',
+        ],
         sandbox: [
             'Песочница',
             'Открытый мир без кубиков: холмы, горы, лес и камни. Пока можно бегать, прыгать и исследовать — дальше будет больше.',
@@ -193,6 +197,10 @@ const en: Dictionary = {
         'Megalopolis',
     ],
     titles: {
+        'gu-world': [
+            'GU World',
+            'A world of Gu Masters inspired by Reverend Insanity. In development: the world’s foundation is being built.',
+        ],
         sandbox: [
             'Sandbox',
             'An open world without cubes: hills, mountains, woods and rocks. For now you can run, jump and explore — more is coming.',
@@ -293,6 +301,10 @@ const uz: Dictionary = {
         'Megapolis',
     ],
     titles: {
+        'gu-world': [
+            'GU World',
+            'Reverend Insanity asosidagi Gu ustalari dunyosi. Ishlab chiqilmoqda: dunyo poydevori qurilmoqda.',
+        ],
         sandbox: [
             'Qumdon',
             'Kubiklarsiz ochiq dunyo: tepaliklar, tog‘lar, o‘rmon va toshlar. Hozircha yugurish, sakrash va kezish mumkin — davomi bor.',
