@@ -60,20 +60,34 @@ export function BuildingPreview({
     bundle,
     building,
     audio,
+    focusLevel,
 }: {
     bundle: ContentBundle;
     building: BuildingDef;
     audio: AudioEngine;
+    /** A level to switch to whenever it changes (the studio's level). */
+    focusLevel?: number;
 }) {
     const content = useMemo(() => new Content(bundle), [bundle]);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const viewerRef = useRef<ModelViewer | null>(null);
-    const [level, setLevel] = useState(1);
+    const [level, setLevel] = useState(focusLevel ?? 1);
     const [epoch, setEpoch] = useState<number | null>(null);
     const [night, setNight] = useState(false);
     const [winter, setWinter] = useState(false);
     const [spin, setSpin] = useState(true);
     const levels = building.levels ?? [];
+
+    const [shownFocus, setShownFocus] = useState(focusLevel);
+
+    if (focusLevel !== shownFocus) {
+        setShownFocus(focusLevel);
+
+        if (focusLevel) {
+            setLevel(focusLevel);
+        }
+    }
+
     const levelDef = levels[Math.min(level, levels.length) - 1];
     const palette = levelDef
         ? epoch === null
