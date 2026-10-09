@@ -4,6 +4,7 @@
  * warning when it draws without one — and starting over from scratch.
  */
 
+import { smoothsEdges } from '../graphics';
 import { t } from '../i18n';
 import { BODY_STYLES, QUALITIES } from '../settings';
 import type { Quality } from '../settings';
@@ -19,10 +20,10 @@ export class SettingsTab implements TabView {
         this.note = element('p', 'sb-hint');
     }
 
-    /** Edge smoothing only follows "high" after a reload: say so. */
+    /** Edge smoothing only follows the mode after a reload: say so. */
     noteQuality(quality: Quality): void {
         this.note.textContent =
-            (quality === 'high') !== this.host.graphics.smoothing
+            smoothsEdges(quality) !== this.host.graphics.smoothing
                 ? `${t.quality_hint} ${t.smoothing_note}`
                 : t.quality_hint;
     }
