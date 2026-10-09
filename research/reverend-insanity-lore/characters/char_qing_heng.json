@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2035,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2035
@@ -32,6 +32,18 @@
     {
       "type": "in_region",
       "target": "reg_western_desert",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -60,6 +72,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_western_desert",
       "count": 1
     },
@@ -70,6 +86,14 @@
     {
       "target": "loc_qing_oasis",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
     }
   ],
   "claims": [
@@ -87,6 +111,8 @@
       "mentions": [
         "loc_qing_oasis",
         "fac_qing_clan",
+        "sys_gu_immortal",
+        "sys_gu_worms",
         "char_qing_hua_lan"
       ]
     }
@@ -126,7 +152,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Qing Clan as of ch. 2035",
@@ -153,7 +179,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Dead",
     "alignment": null,

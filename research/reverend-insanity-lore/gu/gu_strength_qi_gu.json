@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 315,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     315,
@@ -54,6 +54,10 @@
     },
     {
       "target": "char_ju_kai_bei",
+      "count": 2
+    },
+    {
+      "target": "sys_beast_phantom",
       "count": 2
     },
     {
@@ -93,11 +97,31 @@
       "count": 1
     },
     {
+      "target": "path_qi",
+      "count": 1
+    },
+    {
+      "target": "path_strength",
+      "count": 1
+    },
+    {
+      "target": "move_eight_beast_phantoms",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_ju_kai_bei",
+      "count": 1
+    },
+    {
       "target": "char_xue_san_si",
       "count": 1
     },
     {
       "target": "gu_crocodile_strength_gu",
+      "count": 1
+    },
+    {
+      "target": "move_beast_phantom_retract",
       "count": 1
     },
     {
@@ -173,11 +197,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-and-rank",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_beast_phantom",
+          "path_strength",
           "fac_gu_masters"
         ]
       },
@@ -188,7 +214,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-and-rank",
         "text_origin": "source_excerpt",
@@ -203,7 +229,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "early-use",
         "text_origin": "source_excerpt"
@@ -215,7 +241,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "early-use",
         "text_origin": "source_excerpt",
@@ -231,7 +257,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "early-use",
         "text_origin": "source_excerpt",
@@ -265,7 +291,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement",
         "text_origin": "source_excerpt",
@@ -304,7 +330,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -323,7 +349,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "northern-plains-scarcity",
         "text_origin": "source_excerpt"
@@ -335,7 +361,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "northern-plains-scarcity",
         "text_origin": "source_excerpt",

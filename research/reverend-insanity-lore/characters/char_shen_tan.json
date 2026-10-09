@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1889,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1889,
@@ -34,8 +34,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_water",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1889,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_eastern_sea",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -62,6 +86,14 @@
     {
       "target": "fac_shen_clan",
       "count": 3
+    },
+    {
+      "target": "path_water",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_eastern_sea",
@@ -108,7 +140,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_dragon_whale_paradise",
+      "count": 1
+    },
+    {
+      "target": "move_reincarnation_battlefield",
       "count": 1
     },
     {
@@ -129,6 +169,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "fac_shen_clan",
         "char_shen_cong_sheng",
         "char_miao_ming_shen",
@@ -140,7 +181,8 @@
         "char_zeng_luo_zi",
         "loc_dragon_whale_paradise",
         "char_paradise_earth_immortal_venerable",
-        "reg_central_continent"
+        "reg_central_continent",
+        "move_reincarnation_battlefield"
       ]
     },
     {
@@ -229,7 +271,7 @@
     "Paths": {
       "text": "Water path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Eastern Sea",
@@ -239,7 +281,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shen Clan as of ch. 1889",
@@ -255,12 +297,14 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_water"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 937,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     937
@@ -51,6 +51,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
       "target": "loc_snowy_mountain",
       "count": 1
     }
@@ -73,11 +77,12 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_formation",
         "loc_snowy_mountain",
         "char_fang_yuan",
         "char_yellow",

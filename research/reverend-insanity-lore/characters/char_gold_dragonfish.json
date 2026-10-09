@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1484,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1484,
@@ -34,8 +34,25 @@
     1635,
     1657
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_food",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "path_food",
+      "count": 1
+    },
     {
       "target": "char_fang_yuan",
       "count": 1
@@ -183,7 +200,7 @@
     "Paths": {
       "text": "Food path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -194,7 +211,9 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_food"
+    ],
     "aperture": null,
     "talent_grade": null
   },

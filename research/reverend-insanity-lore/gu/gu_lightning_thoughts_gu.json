@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 231,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     231,
@@ -65,7 +65,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "loc_shang_clan_city",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -181,6 +189,7 @@
           "loc_shang_clan_city",
           "char_wei_yang",
           "gu_rainbow_light_gu",
+          "sys_gu_master",
           "gu_flash_of_inspiration_gu"
         ]
       },
@@ -196,7 +205,8 @@
         "section": "thinking-assist-type",
         "text_origin": "source_excerpt",
         "mentions": [
-          "fac_gu_masters"
+          "fac_gu_masters",
+          "sys_gu_worms"
         ]
       }
     ]

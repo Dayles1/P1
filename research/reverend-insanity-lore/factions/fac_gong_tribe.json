@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 749,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     749,
@@ -82,6 +82,18 @@
       "count": 2
     },
     {
+      "target": "house_golden_dawn_hall",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_huang_jin_bloodline",
       "count": 1
     },
@@ -91,6 +103,10 @@
     },
     {
       "target": "fac_spirit_affinity_house",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     },
     {
@@ -118,6 +134,14 @@
       "count": 1
     },
     {
+      "target": "evt_fight_blood_battle_martial_competition",
+      "count": 1
+    },
+    {
+      "target": "house_loud_thunder_hall",
+      "count": 1
+    },
+    {
       "target": "char_south_desolation_immortal",
       "count": 1
     }
@@ -130,10 +154,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house",
+        "house_golden_dawn_hall"
+      ]
     },
     {
       "text": "Prince Feng Xian is a righteous path Gu Immortal and only an external supreme elder of the super force Gong tribe. He does not have the Huang Jin bloodline in him, and that lower status is named when the Northern Plains rank eights gather.",
@@ -142,12 +170,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_prince_feng_xian",
+        "sys_gu_immortal",
         "fac_huang_jin_bloodline",
         "reg_northern_plains"
       ]
@@ -159,7 +188,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "external-elder-grievance",
       "text_origin": "source_excerpt"
@@ -171,12 +200,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hidden-central-continent-role",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_spirit_affinity_house"
+        "fac_spirit_affinity_house",
+        "house_eighty_eight_true_yang_building"
       ]
     },
     {
@@ -186,7 +216,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bid-for-righteous-path-leadership",
       "text_origin": "source_excerpt",

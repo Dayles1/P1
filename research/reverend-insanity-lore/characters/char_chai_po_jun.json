@@ -23,12 +23,24 @@
   "first_appearance": {
     "chapter": 1384,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1384
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_fire",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1384,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "in_region",
       "target": "reg_southern_border",
@@ -52,9 +64,25 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_neutralize_wood_body",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1384,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "move_neutralize_wood_body",
+      "count": 4
+    },
     {
       "target": "fac_chai_clan",
       "count": 3
@@ -62,6 +90,10 @@
     {
       "target": "reg_southern_border",
       "count": 2
+    },
+    {
+      "target": "path_fire",
+      "count": 1
     },
     {
       "target": "char_bai_ning_bing",
@@ -74,6 +106,22 @@
     {
       "target": "char_wu_yong",
       "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_northern_dark_ice_soul_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_omni_directional_travel",
+      "count": 1
+    },
+    {
+      "target": "move_cold_eyes",
+      "count": 1
     }
   ],
   "claims": [
@@ -84,15 +132,18 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_chai_clan",
         "char_chi_qu_you",
+        "sys_gu_formation",
+        "sys_omni_directional_travel",
         "char_bai_ning_bing",
-        "reg_southern_border"
+        "reg_southern_border",
+        "move_neutralize_wood_body"
       ]
     },
     {
@@ -102,11 +153,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_northern_dark_ice_soul_physique",
         "char_wu_yong"
       ]
     }
@@ -141,7 +193,7 @@
     "Paths": {
       "text": "Fire path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Southern Border",
@@ -163,7 +215,9 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_fire"
+    ],
     "aperture": null,
     "talent_grade": null
   },

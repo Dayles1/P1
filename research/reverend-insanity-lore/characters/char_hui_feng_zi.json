@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 779,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     779,
@@ -43,6 +43,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -75,9 +87,25 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_death_wind_flying_blade",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 779,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "move_death_wind_flying_blade",
+      "count": 3
+    },
     {
       "target": "fac_shadow_sect",
       "count": 3
@@ -91,11 +119,19 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_qin_bai_sheng",
       "count": 2
     },
     {
       "target": "loc_luo_po_valley",
+      "count": 2
+    },
+    {
+      "target": "move_wind_escape",
       "count": 2
     },
     {
@@ -127,6 +163,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_lang_ya_blessed_land",
       "count": 1
     },
@@ -139,7 +183,27 @@
       "count": 1
     },
     {
+      "target": "move_star_snake_rope",
+      "count": 1
+    },
+    {
+      "target": "move_position_star_swap",
+      "count": 1
+    },
+    {
+      "target": "move_six_illusion_star_bodies",
+      "count": 1
+    },
+    {
       "target": "char_fairy_jiang_yu",
+      "count": 1
+    },
+    {
+      "target": "move_fragrant_sorcerer_yin_statue_wolf_transformation",
+      "count": 1
+    },
+    {
+      "target": "move_green_jade_song",
       "count": 1
     },
     {
@@ -148,6 +212,10 @@
     },
     {
       "target": "char_bu_fei_yan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -183,7 +251,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -191,7 +259,10 @@
         "loc_luo_po_valley",
         "char_qin_bai_sheng",
         "loc_lang_ya_blessed_land",
+        "move_wind_escape",
+        "sys_gu_formation",
         "fac_lang_ya_sect",
+        "sys_gu_immortal",
         "char_yao_huang"
       ]
     },
@@ -202,7 +273,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -214,7 +285,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "cloud-building-fight",
       "text_origin": "source_excerpt",
@@ -230,7 +301,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "cloud-building-fight",
       "text_origin": "source_excerpt",
@@ -245,7 +316,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "cloud-building-fight",
       "text_origin": "source_excerpt"
@@ -257,7 +328,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lang-ya-escape",
       "text_origin": "source_excerpt",
@@ -272,7 +343,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "return-to-defend",
       "text_origin": "source_excerpt",
@@ -288,14 +359,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hundred-days-battle",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_central_continent",
         "char_chen_zhen_chi",
-        "char_bu_fei_yan"
+        "char_bu_fei_yan",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -305,7 +377,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "luo-po-valley-watch",
       "text_origin": "source_excerpt",
@@ -320,7 +392,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "feng-jiu-ge-ruse",
       "text_origin": "source_excerpt",
@@ -336,7 +408,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "feng-jiu-ge-ruse",
       "text_origin": "source_excerpt"
@@ -348,7 +420,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hidden-defection",
       "text_origin": "source_excerpt",
@@ -365,7 +437,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hidden-defection",
       "text_origin": "source_excerpt",
@@ -426,7 +498,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shadow Sect as of ch. 886 Heavenly Court as of ch. 1108",
@@ -458,7 +530,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": "demonic path as of ch. 876",

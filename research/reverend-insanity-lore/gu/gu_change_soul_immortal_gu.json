@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1016,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1016,
@@ -97,6 +97,10 @@
       "count": 3
     },
     {
+      "target": "move_switch_soul_in_dream",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -109,11 +113,27 @@
       "count": 2
     },
     {
+      "target": "res_pill_azure_incense",
+      "count": 2
+    },
+    {
       "target": "loc_mini_azure_heaven",
       "count": 2
     },
     {
       "target": "fac_shadow_sect",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_pure_dream_reality_seeker_physique",
       "count": 1
     },
     {
@@ -137,6 +157,10 @@
       "count": 1
     },
     {
+      "target": "sys_wisdom_refinement_formation",
+      "count": 1
+    },
+    {
       "target": "gu_wisdom_sword_gu",
       "count": 1
     },
@@ -146,6 +170,10 @@
     },
     {
       "target": "fac_spirit_affinity_house",
+      "count": 1
+    },
+    {
+      "target": "move_ghost_official_garment",
       "count": 1
     }
   ],
@@ -213,11 +241,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-and-rank",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_fang_yuan",
           "char_ying_wu_xie",
           "loc_yi_tian_mountain"
@@ -230,7 +259,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-and-rank",
         "text_origin": "source_excerpt"
@@ -242,7 +271,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-and-rank",
         "text_origin": "source_excerpt",
@@ -257,13 +286,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-and-rank",
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_attitude_gu",
-          "gu_unravel_mystery"
+          "gu_unravel_mystery",
+          "sys_mortal_gu"
         ]
       }
     ]
@@ -280,10 +310,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "gu-food",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "res_pill_azure_incense"
+        ]
       }
     ]
   },
@@ -301,7 +334,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "first-refinement",
         "text_origin": "source_excerpt",
@@ -370,7 +403,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -387,7 +420,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "stock-in-mini-azure-heaven",
         "text_origin": "source_excerpt",

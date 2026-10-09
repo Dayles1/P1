@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 477,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     477,
@@ -102,6 +102,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_ge_tribe",
       "count": 1
     },
@@ -148,6 +152,10 @@
     {
       "target": "char_tang_fang",
       "count": 1
+    },
+    {
+      "target": "move_seven_star_light",
+      "count": 1
     }
   ],
   "claims": [
@@ -158,7 +166,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shock-at-the-lake",
       "text_origin": "source_excerpt",
@@ -167,7 +175,8 @@
         "fac_yan_tribe",
         "fac_ge_tribe",
         "fac_bei_tribe",
-        "char_bei_cao_sheng"
+        "char_bei_cao_sheng",
+        "sys_gu_master"
       ]
     },
     {
@@ -177,7 +186,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hosting-talk",
       "text_origin": "source_excerpt",
@@ -196,7 +205,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battle-report",
       "text_origin": "source_excerpt",

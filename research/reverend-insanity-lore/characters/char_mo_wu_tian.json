@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 339,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     339,
@@ -54,9 +54,25 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "reg_southern_border",
       "count": 1
@@ -106,6 +122,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_nan_mountain",
       "count": 1
     },
@@ -119,6 +139,18 @@
     },
     {
       "target": "char_little_beast_king",
+      "count": 1
+    },
+    {
+      "target": "race_eggmen",
+      "count": 1
+    },
+    {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -154,6 +186,14 @@
       "count": 1
     },
     {
+      "target": "inh_king_xin_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_three_kings_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_bai_ning_bing",
       "count": 1
     },
@@ -170,11 +210,23 @@
       "count": 1
     },
     {
+      "target": "inh_king_quan_inheritance",
+      "count": 1
+    },
+    {
       "target": "fac_yan_clan",
       "count": 1
     },
     {
       "target": "char_chou_jiu",
+      "count": 1
+    },
+    {
+      "target": "inh_king_bao_inheritance",
+      "count": 1
+    },
+    {
+      "target": "sys_soul_foundation",
       "count": 1
     }
   ],
@@ -186,7 +238,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -197,7 +249,8 @@
         "char_tyrant_heng_mei",
         "loc_nan_mountain",
         "char_lin_san_chi",
-        "char_li_xian"
+        "char_li_xian",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -207,7 +260,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -219,7 +272,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reputation-among-peers",
       "text_origin": "source_excerpt",
@@ -250,11 +303,12 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "arrival-at-three-kings",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "loc_yi_tian_mountain",
         "fac_gu_masters"
       ]
@@ -266,10 +320,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "arrival-at-three-kings",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_demonic_path"
+      ]
     },
     {
       "text": "After two failed assaults he concludes a human is manipulating an ever-changing dog formation and claims some understanding of enslavement path. When Fiery Star Bao Tong demands an explanation, Mo Wu Tian’s purple eyes shine and he kills the rank four upper stage fire path Gu Master with a single stare. Narration calls that a sight-based killer move that contests souls, and states Mo Wu Tian is a soul path Gu Master with soul strength far above his peers. He lets others split Bao Tong’s Gu, then refuses Hu Mei Er’s urge to organize every demonic Gu Master at once, knowing old experts like Kong Ri Tian and Li Fei Le would not easily obey a young rank five leading for the first time.",
@@ -278,7 +335,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dog-army-assault",
       "text_origin": "source_excerpt",
@@ -295,7 +352,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dog-army-assault",
       "text_origin": "source_excerpt",
@@ -310,7 +367,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dog-army-assault",
       "text_origin": "source_excerpt",
@@ -326,7 +383,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dog-army-assault",
       "text_origin": "source_excerpt",
@@ -341,7 +398,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dog-army-assault",
       "text_origin": "source_excerpt"
@@ -353,7 +410,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chou-jius-influence",
       "text_origin": "source_excerpt",
@@ -368,7 +425,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chou-jius-influence",
       "text_origin": "source_excerpt"
@@ -392,7 +449,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "combat-record",
       "text_origin": "source_excerpt"
@@ -404,7 +461,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "combat-record",
       "text_origin": "source_excerpt"
@@ -464,7 +521,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 339",
@@ -496,7 +553,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": "demonic path as of ch. 339",

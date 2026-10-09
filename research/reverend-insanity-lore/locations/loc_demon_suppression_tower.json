@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 176,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     176,
@@ -81,6 +81,10 @@
       "count": 1
     },
     {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
       "target": "loc_tie_clan_mountain_fort",
       "count": 1
     },
@@ -125,7 +129,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "inh_seven_illusions_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "house_demon_judgment_board",
       "count": 1
     }
   ],
@@ -157,7 +173,8 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_tie_clan"
+        "fac_tie_clan",
+        "sys_demonic_path"
       ]
     },
     {
@@ -213,7 +230,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "consequences-for-the-demonic-path",
       "text_origin": "source_excerpt",
@@ -228,7 +245,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "consequences-for-the-demonic-path",
       "text_origin": "source_excerpt"
@@ -240,7 +257,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lu-zuan-fengs-infiltrations",
       "text_origin": "source_excerpt",
@@ -257,7 +274,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lu-zuan-fengs-infiltrations",
       "text_origin": "source_excerpt"
@@ -284,7 +301,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "seven-illusions-imprisonment",
       "text_origin": "source_excerpt",
@@ -302,7 +319,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "seven-illusions-imprisonment",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Fairy Miao Yin contrasts Southern Border’s Tie clan Demon Suppression Tower as excelling at imprisonment with Heavenly Court’s Demon Judgment Board methods.",
@@ -317,7 +337,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fairy_miao_yin",
-        "fac_heavenly_court"
+        "fac_heavenly_court",
+        "house_demon_judgment_board"
       ]
     },
     {

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 391,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     391,
@@ -102,7 +102,19 @@
       "count": 1
     },
     {
+      "target": "sys_wild_gu",
+      "count": 1
+    },
+    {
       "target": "gu_divulge_information_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_three_kings_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_king_quan_inheritance",
       "count": 1
     },
     {
@@ -118,7 +130,15 @@
       "count": 1
     },
     {
+      "target": "move_torrential_light_stream",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_beast_emperor",
       "count": 1
     },
     {
@@ -134,7 +154,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -154,13 +174,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_bai_ning_bing",
-        "char_xiao_mang"
+        "char_xiao_mang",
+        "sys_wild_gu"
       ]
     },
     {
@@ -170,7 +191,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "path-to-bronze-hall",
       "text_origin": "source_excerpt",
@@ -185,7 +206,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "second-blockade",
       "text_origin": "source_excerpt"
@@ -225,7 +246,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "beside-ye-fan",
       "text_origin": "source_excerpt",

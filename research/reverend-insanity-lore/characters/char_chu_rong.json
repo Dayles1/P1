@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1017,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1017
@@ -32,6 +32,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -60,6 +72,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -76,6 +92,10 @@
       "count": 1
     },
     {
+      "target": "house_modest_thatched_hut",
+      "count": 1
+    },
+    {
       "target": "char_blazing_glory_lightning_brilliance",
       "count": 1
     }
@@ -88,13 +108,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_blazing_glory_lightning_brilliance",
-        "char_fairy_jiang_yu"
+        "char_fairy_jiang_yu",
+        "house_modest_thatched_hut"
       ]
     },
     {
@@ -104,7 +125,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-at-modest-thatched-hut",
       "text_origin": "source_excerpt",
@@ -149,7 +170,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shadow Sect as of ch. 1017",
@@ -176,7 +197,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

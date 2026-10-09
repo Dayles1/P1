@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 568,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     568,
@@ -35,6 +35,18 @@
     760
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -70,12 +82,24 @@
       "count": 2
     },
     {
+      "target": "path_wisdom",
+      "count": 2
+    },
+    {
+      "target": "house_water_pavilion",
+      "count": 2
+    },
+    {
       "target": "gu_water_harmony_gu",
       "count": 2
     },
     {
       "target": "gu_worldly_wave_trace",
       "count": 2
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     },
     {
       "target": "char_mo_yao",
@@ -87,6 +111,10 @@
     },
     {
       "target": "res_laughter_stones",
+      "count": 1
+    },
+    {
+      "target": "res_water_qi",
       "count": 1
     },
     {
@@ -107,6 +135,14 @@
     },
     {
       "target": "gu_eat_strength_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "res_red_refinement_metal",
+      "count": 1
+    },
+    {
+      "target": "move_vaguely_familiar_face",
       "count": 1
     },
     {
@@ -157,7 +193,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -197,7 +235,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "joyful-will",
         "text_origin": "source_excerpt",
@@ -210,7 +248,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "auction-sale",
         "text_origin": "source_excerpt",
@@ -225,7 +263,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "auction-sale",
         "text_origin": "source_excerpt",
@@ -240,7 +278,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "auction-sale",
         "text_origin": "source_excerpt",
@@ -286,14 +324,17 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_water_pavilion",
           "char_fang_yuan",
+          "sys_immortal_gu",
           "gu_water_harmony_gu",
-          "gu_worldly_wave_trace"
+          "gu_worldly_wave_trace",
+          "path_wisdom"
         ]
       },
       {
@@ -303,7 +344,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "joyful-will",
         "text_origin": "source_excerpt",
@@ -318,7 +359,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "joyful-will",
         "text_origin": "source_excerpt"
@@ -329,7 +370,7 @@
     "Path": {
       "text": "Wisdom Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

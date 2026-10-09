@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1504,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1504,
@@ -36,8 +36,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_western_desert",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -94,12 +118,72 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_flowery_wind_warriors",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1523,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_myriad_life_spring_lightning",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1867,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_peach_blossom_maze",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_gu_house",
+      "target": "house_thought_expelling_pavilion",
+      "role": "controller",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "fac_fang_clan",
       "count": 4
+    },
+    {
+      "target": "move_peach_blossom_maze",
+      "count": 3
+    },
+    {
+      "target": "move_flowery_wind_warriors",
+      "count": 3
+    },
+    {
+      "target": "move_myriad_life_spring_lightning",
+      "count": 3
     },
     {
       "target": "gu_beggar_gu",
@@ -114,12 +198,24 @@
       "count": 3
     },
     {
+      "target": "house_thought_expelling_pavilion",
+      "count": 3
+    },
+    {
       "target": "reg_western_desert",
       "count": 2
     },
     {
       "target": "fac_beggar_sect",
       "count": 2
+    },
+    {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_fang_yun",
@@ -130,7 +226,15 @@
       "count": 2
     },
     {
+      "target": "house_inquiry_dock",
+      "count": 2
+    },
+    {
       "target": "char_fang_hua_sheng",
+      "count": 2
+    },
+    {
+      "target": "house_fallen_flower_hall",
       "count": 2
     },
     {
@@ -154,7 +258,19 @@
       "count": 1
     },
     {
+      "target": "house_chicken_dog_coop",
+      "count": 1
+    },
+    {
       "target": "char_fang_an_lei",
+      "count": 1
+    },
+    {
+      "target": "house_divine_bean_palace",
+      "count": 1
+    },
+    {
+      "target": "move_green_armor_vegetable_garden",
       "count": 1
     },
     {
@@ -162,7 +278,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "move_ignited_thought_flying_rock",
+      "count": 1
+    },
+    {
       "target": "gu_great_thief",
+      "count": 1
+    },
+    {
+      "target": "move_graft_wood",
       "count": 1
     },
     {
@@ -174,7 +302,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_lotus_sect",
+      "count": 1
+    },
+    {
+      "target": "move_great_thief_ghost_hand",
       "count": 1
     },
     {
@@ -194,7 +330,15 @@
       "count": 1
     },
     {
+      "target": "move_steal_dao",
+      "count": 1
+    },
+    {
       "target": "fac_dong_clan",
+      "count": 1
+    },
+    {
+      "target": "move_wisdom_grasp",
       "count": 1
     },
     {
@@ -202,7 +346,27 @@
       "count": 1
     },
     {
+      "target": "path_cloud",
+      "count": 1
+    },
+    {
+      "target": "house_thieves_den",
+      "count": 1
+    },
+    {
+      "target": "res_wood_path_immortal_material",
+      "count": 1
+    },
+    {
+      "target": "move_divine_bean_soldier",
+      "count": 1
+    },
+    {
       "target": "char_xing_ye_wang",
+      "count": 1
+    },
+    {
+      "target": "move_overturning_heaven_and_earth",
       "count": 1
     },
     {
@@ -214,7 +378,15 @@
       "count": 1
     },
     {
+      "target": "move_hope_of_the_people",
+      "count": 1
+    },
+    {
       "target": "res_immortal_beans",
+      "count": 1
+    },
+    {
+      "target": "house_divine_emperor_palace",
       "count": 1
     },
     {
@@ -262,7 +434,19 @@
       "count": 1
     },
     {
+      "target": "res_righteous_qi",
+      "count": 1
+    },
+    {
       "target": "gu_learning_gu",
+      "count": 1
+    },
+    {
+      "target": "move_endless_learning",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
       "count": 1
     },
     {
@@ -270,11 +454,31 @@
       "count": 1
     },
     {
+      "target": "house_winding_light_platform",
+      "count": 1
+    },
+    {
+      "target": "house_myriad_age_building",
+      "count": 1
+    },
+    {
+      "target": "house_red_river_wheel",
+      "count": 1
+    },
+    {
       "target": "char_zuo_qiu_san_sha",
       "count": 1
     },
     {
+      "target": "move_state_of_disunity",
+      "count": 1
+    },
+    {
       "target": "char_fang_dong_xi",
+      "count": 1
+    },
+    {
+      "target": "move_everlasting_sorrow",
       "count": 1
     },
     {
@@ -342,7 +546,10 @@
       "section": "strategy-meeting",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_hua_sheng"
+        "house_inquiry_dock",
+        "char_fang_hua_sheng",
+        "house_divine_bean_palace",
+        "house_fallen_flower_hall"
       ]
     },
     {
@@ -369,7 +576,8 @@
       "section": "maze-attack",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_zhi"
+        "char_fang_zhi",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -387,7 +595,8 @@
         "char_chen_yi",
         "fac_heavenly_lotus_sect",
         "char_genesis_lotus_immortal_venerable",
-        "char_fang_gong"
+        "char_fang_gong",
+        "sys_immortal_gu_house"
       ]
     },
     {
@@ -447,7 +656,7 @@
     "Paths": {
       "text": "Wisdom path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Western Desert",
@@ -457,7 +666,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Fang Clan as of ch. 1504",
@@ -479,12 +688,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Dead",
     "alignment": null,

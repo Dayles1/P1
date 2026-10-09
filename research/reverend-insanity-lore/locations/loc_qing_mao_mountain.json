@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     1,
@@ -59,12 +59,76 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "fights_here",
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_first_battle",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 138,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "fights_here",
+      "target": "evt_fight_gu_yue_qing_shu_and_gu_yue_yao_hong_against_bai_ning_bing",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 140,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "fights_here",
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_second_battle",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 165,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "fights_here",
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_third_battle",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 191,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_southern_border",
       "count": 4
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_first_battle",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_second_battle",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_third_battle",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_gu_yue_qing_shu_and_gu_yue_yao_hong_against_bai_ning_bing",
+      "count": 2
     },
     {
       "target": "char_fang_yuan",
@@ -119,12 +183,24 @@
       "count": 2
     },
     {
+      "target": "inh_blood_sea_true_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_lord_sky_crane",
+      "count": 2
+    },
+    {
+      "target": "sys_northern_dark_ice_soul_physique",
       "count": 2
     },
     {
       "target": "loc_bai_gu_mountain",
       "count": 2
+    },
+    {
+      "target": "evt_arc_gu_yue_village",
+      "count": 1
     },
     {
       "target": "char_fang_zhi",
@@ -139,11 +215,31 @@
       "count": 1
     },
     {
+      "target": "sys_a_grade",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_big_mystical_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_era_current",
+      "count": 1
+    },
+    {
       "target": "fac_bai_clan",
       "count": 1
     },
     {
       "target": "fac_xiong_clan",
+      "count": 1
+    },
+    {
+      "target": "sys_awakening_ceremony",
+      "count": 1
+    },
+    {
+      "target": "sys_c_grade",
       "count": 1
     },
     {
@@ -243,11 +339,35 @@
       "count": 1
     },
     {
+      "target": "sys_aptitude",
+      "count": 1
+    },
+    {
+      "target": "sys_b_grade",
+      "count": 1
+    },
+    {
+      "target": "sys_d_grade",
+      "count": 1
+    },
+    {
+      "target": "sys_primeval_stones",
+      "count": 1
+    },
+    {
       "target": "char_ren_zu",
       "count": 1
     },
     {
       "target": "gu_hope_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -287,6 +407,10 @@
       "count": 1
     },
     {
+      "target": "sys_wolf_tide",
+      "count": 1
+    },
+    {
       "target": "gu_rules_and_regulation_gu",
       "count": 1
     },
@@ -315,11 +439,23 @@
       "count": 1
     },
     {
+      "target": "res_purple_gold_rock",
+      "count": 1
+    },
+    {
+      "target": "sys_monkey_wine",
+      "count": 1
+    },
+    {
       "target": "char_jia_gui",
       "count": 1
     },
     {
       "target": "gu_thousand_li_earthwolf_spider",
+      "count": 1
+    },
+    {
+      "target": "inh_flower_wine_monk_inheritance",
       "count": 1
     },
     {
@@ -332,6 +468,10 @@
     },
     {
       "target": "gu_steel_mane_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_qing_mao_mountain",
       "count": 1
     },
     {
@@ -363,7 +503,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -378,7 +518,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -402,7 +542,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -414,7 +554,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -426,7 +566,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "crisis-and-departure",
       "text_origin": "source_excerpt",
@@ -442,10 +582,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "crisis-and-departure",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_northern_dark_ice_soul_physique"
+      ]
     },
     {
       "text": "Driven into a position he cannot win from, Fang Yuan uses the Spring Autumn Cicada again and lands mid-crisis still on Qing Mao Mountain.",
@@ -469,7 +612,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "crisis-and-departure",
       "text_origin": "source_excerpt",
@@ -484,7 +627,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ice-cover",
       "text_origin": "source_excerpt"
@@ -496,7 +639,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ice-cover",
       "text_origin": "source_excerpt"
@@ -523,13 +666,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "geography-and-villages",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_xiong_village",
-        "loc_bai_village"
+        "loc_bai_village",
+        "sys_gu_master"
       ]
     },
     {
@@ -551,7 +695,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "geography-and-villages",
       "text_origin": "source_excerpt"
@@ -563,7 +707,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "geography-and-villages",
       "text_origin": "source_excerpt"
@@ -575,7 +719,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "geography-and-villages",
       "text_origin": "source_excerpt"
@@ -587,7 +731,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clans-and-rivalry",
       "text_origin": "source_excerpt"
@@ -628,12 +772,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "monk-legend-and-inheritance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_flower_wine_monk",
+        "sys_demonic_path",
         "char_fourth_generation_clan_leader"
       ]
     },
@@ -661,7 +806,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "monk-legend-and-inheritance",
       "text_origin": "source_excerpt"
@@ -673,7 +818,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "prior-life-peak-lore",
       "text_origin": "source_excerpt"
@@ -685,13 +830,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "prior-life-peak-lore",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_zheng",
-        "char_lord_sky_crane"
+        "char_lord_sky_crane",
+        "inh_blood_sea_true_inheritance"
       ]
     }
   ],

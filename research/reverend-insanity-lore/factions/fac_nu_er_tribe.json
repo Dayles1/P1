@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 489,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     489,
@@ -111,6 +111,10 @@
       "count": 3
     },
     {
+      "target": "house_loud_thunder_hall",
+      "count": 2
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -143,6 +147,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "loc_yu_tian",
       "count": 1
     },
@@ -159,11 +167,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_guan_tribe",
       "count": 1
     },
     {
       "target": "fac_huang_jin_bloodline",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_blood_battle_martial_competition",
+      "count": 1
+    },
+    {
+      "target": "house_golden_dawn_hall",
       "count": 1
     }
   ],
@@ -175,7 +195,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "newest-intel-pass",
       "text_origin": "source_excerpt",
@@ -194,12 +214,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "meng-qiu-representative",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_ge_guang",
+        "sys_gu_master",
         "char_nu_er_tu"
       ]
     },
@@ -210,7 +231,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "defeat-by-yang-tribe",
       "text_origin": "source_excerpt",
@@ -228,7 +249,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "iron-crown-eagle-field",
       "text_origin": "source_excerpt",
@@ -236,6 +257,7 @@
         "char_nu_er_gu",
         "fac_huang_jin_bloodline",
         "char_guan_chou",
+        "sys_gu_immortal",
         "fac_guan_tribe"
       ]
     }

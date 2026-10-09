@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 653,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     653,
@@ -338,6 +338,10 @@
       "count": 2
     },
     {
+      "target": "evt_era_medieval",
+      "count": 2
+    },
+    {
       "target": "gu_worldly_wave_trace",
       "count": 2
     },
@@ -347,6 +351,14 @@
     },
     {
       "target": "loc_dark_flow_giant_city",
+      "count": 2
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 2
+    },
+    {
+      "target": "reg_earth_earth_trench",
       "count": 2
     },
     {
@@ -370,7 +382,23 @@
       "count": 2
     },
     {
+      "target": "evt_arc_blessed_land_consolidation",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_zombie",
+      "count": 1
+    },
+    {
+      "target": "path_fire",
       "count": 1
     },
     {
@@ -414,6 +442,22 @@
       "count": 1
     },
     {
+      "target": "move_green_crystal_heros_path",
+      "count": 1
+    },
+    {
+      "target": "move_stone_casket",
+      "count": 1
+    },
+    {
+      "target": "path_dark",
+      "count": 1
+    },
+    {
+      "target": "house_red_fiend_divine_boat",
+      "count": 1
+    },
+    {
       "target": "fac_yao_tribe",
       "count": 1
     },
@@ -422,7 +466,19 @@
       "count": 1
     },
     {
+      "target": "res_ruyi_fungus",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_snowy_mountain",
+      "count": 1
+    },
+    {
+      "target": "move_hundred_li_eye",
       "count": 1
     },
     {
@@ -438,7 +494,35 @@
       "count": 1
     },
     {
+      "target": "path_refinement",
+      "count": 1
+    },
+    {
+      "target": "res_wilted_essence",
+      "count": 1
+    },
+    {
+      "target": "house_profound_ice_house",
+      "count": 1
+    },
+    {
+      "target": "move_raindrop_equity",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "move_star_fire_escape",
+      "count": 1
+    },
+    {
       "target": "gu_melt_ice_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_freezing_rain_frozen_earth",
       "count": 1
     },
     {
@@ -454,6 +538,18 @@
       "count": 1
     },
     {
+      "target": "move_lower_controls_higher",
+      "count": 1
+    },
+    {
+      "target": "res_purple_gold_rock",
+      "count": 1
+    },
+    {
+      "target": "sys_blazing_glory_lightning_brilliance_physique",
+      "count": 1
+    },
+    {
       "target": "char_old_ancestor_xue_hu",
       "count": 1
     },
@@ -466,6 +562,22 @@
       "count": 1
     },
     {
+      "target": "path_information",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_star_thought_immortal_gu",
       "count": 1
     },
@@ -475,6 +587,10 @@
     },
     {
       "target": "char_second_zombie_king",
+      "count": 1
+    },
+    {
+      "target": "inh_second_zombie_king_inheritance",
       "count": 1
     },
     {
@@ -514,11 +630,23 @@
       "count": 1
     },
     {
+      "target": "res_yellow_spring_water",
+      "count": 1
+    },
+    {
+      "target": "sys_super_gu_formation",
+      "count": 1
+    },
+    {
       "target": "loc_hidden_dragon_cave",
       "count": 1
     },
     {
       "target": "fac_wu_clan",
+      "count": 1
+    },
+    {
+      "target": "move_hundred_and_eighty_slaves",
       "count": 1
     }
   ],
@@ -530,7 +658,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -546,12 +674,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "spread-and-membership",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "evt_era_medieval",
+        "sys_gu_immortal",
         "reg_eastern_sea"
       ]
     },
@@ -562,7 +692,7 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "central-continent-branch",
       "text_origin": "source_excerpt",
@@ -579,7 +709,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eastern-sea-headquarters",
       "text_origin": "source_excerpt"
@@ -591,7 +721,7 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eastern-sea-headquarters",
       "text_origin": "source_excerpt",
@@ -607,7 +737,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "northern-plains-city",
       "text_origin": "source_excerpt",
@@ -622,11 +752,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "earth-trench-headquarters",
       "text_origin": "source_excerpt",
       "mentions": [
+        "reg_earth_earth_trench",
         "res_black_oil",
         "loc_snowy_mountain"
       ]
@@ -638,7 +769,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "its-dead-stay-buried",
       "text_origin": "source_excerpt",
@@ -653,10 +784,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rising-status-in-northern-plains",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "path_refinement"
+      ]
     },
     {
       "text": "Eastern Sea Zombie Alliance’s headquarters holds three Immortal Gu Houses, only one of them complete and the other two extremely incomplete.",
@@ -665,10 +799,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eastern-seas-immortal-gu-houses",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "Unlike the other Zombie Alliance branches, Eastern Sea Zombie Alliance recruits living Gu Immortals.",
@@ -677,7 +814,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "only-branch-open-to-the-living",
       "text_origin": "source_excerpt"
@@ -689,7 +826,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "undying-kingdom",
       "text_origin": "source_excerpt",
@@ -704,10 +841,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mandatory-graveyard-formation",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_formation",
+        "sys_immortal_gu",
+        "sys_mortal_gu"
+      ]
     },
     {
       "text": "Southern Border holds a branch of Zombie Alliance as well.",
@@ -716,7 +858,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "branch-in-southern-border",
       "text_origin": "source_excerpt",
@@ -731,7 +873,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "true-allegiance-and-destruction",
       "text_origin": "source_excerpt",
@@ -747,7 +889,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "held-in-reserve",
       "text_origin": "source_excerpt",
@@ -762,7 +904,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "held-in-reserve",
       "text_origin": "source_excerpt"
@@ -774,7 +916,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "empty-shells-after-yi-tian-mountain",
       "text_origin": "source_excerpt",
@@ -789,7 +931,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yellow-spring-sea-area",
       "text_origin": "source_excerpt",
@@ -804,10 +946,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "a-pretext-to-hold-them",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_super_gu_formation"
+      ]
     },
     {
       "text": "Before its Southern Border headquarters is exposed, Zombie Alliance targets Corpse Emperor Yu Ding Tian and offers Wu clan a high price to buy it as a headquarters site, but Wu clan rejects them.",
@@ -816,7 +961,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "corpse-emperor-yu-ding-tian-rejected",
       "text_origin": "source_excerpt",

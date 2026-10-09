@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1415,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1415
@@ -32,6 +32,10 @@
   "co_mentions": [
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -128,6 +132,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_fang_yuan",
           "gu_precaution_immortal_gu"
         ]

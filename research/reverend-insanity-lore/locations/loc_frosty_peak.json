@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1306,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1306,
@@ -80,7 +80,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_wu_clan",
+      "count": 1
+    },
+    {
+      "target": "move_vajra_shell",
       "count": 1
     },
     {
@@ -88,7 +96,35 @@
       "count": 1
     },
     {
+      "target": "sys_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "move_soaring_essence_strike",
+      "count": 1
+    },
+    {
+      "target": "move_saw_light_wheel",
+      "count": 1
+    },
+    {
+      "target": "move_thirty_three_heavenly_lights",
+      "count": 1
+    },
+    {
       "target": "char_wu_fa",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
       "count": 1
     },
     {
@@ -97,6 +133,10 @@
     },
     {
       "target": "gu_pulling_mountain",
+      "count": 1
+    },
+    {
+      "target": "res_thousand_year_frost_jade_essence",
       "count": 1
     },
     {
@@ -110,6 +150,14 @@
     {
       "target": "char_chai_you_yan",
       "count": 1
+    },
+    {
+      "target": "evt_arc_dao_veins_famous_mountains",
+      "count": 1
+    },
+    {
+      "target": "move_heaven_and_earth_travel",
+      "count": 1
     }
   ],
   "claims": [
@@ -120,12 +168,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wu-clans-claim",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_wu_clan",
+        "sys_gu_immortal",
         "fac_xia_clan"
       ]
     },
@@ -136,12 +185,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "reg_southern_border"
+        "reg_southern_border",
+        "sys_mortal_gu_house"
       ]
     },
     {
@@ -151,14 +201,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
         "char_wu_yi_hai",
-        "char_xia_fei_kuai"
+        "sys_gu_house",
+        "char_xia_fei_kuai",
+        "sys_gu_master"
       ]
     },
     {
@@ -168,7 +220,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "the-spars-stake",
       "text_origin": "source_excerpt"
@@ -195,11 +247,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "frost-jades-and-the-plunder-after-the-spar",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_wild_gu",
         "res_frost_jade"
       ]
     }

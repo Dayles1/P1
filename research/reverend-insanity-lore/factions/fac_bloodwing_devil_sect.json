@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 26,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     26,
@@ -56,6 +56,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_hu_immortal_blessed_land",
       "count": 1
     }
@@ -68,7 +72,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -83,7 +87,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "influence-and-system",
       "text_origin": "source_excerpt"
@@ -95,7 +99,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "influence-and-system",
       "text_origin": "source_excerpt",
@@ -169,6 +173,7 @@
       "section": "central-continent-war",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_feng_jin_huang",
         "loc_hu_immortal_blessed_land"
       ]

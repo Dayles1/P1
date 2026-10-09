@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1336,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1336
@@ -62,6 +62,10 @@
     {
       "target": "char_zuo_ye_hui",
       "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     }
   ],
   "claims": [
@@ -95,7 +99,8 @@
         "char_purple_mountain_true_monarch",
         "char_bai_ning_bing",
         "char_ying_wu_xie",
-        "char_zuo_ye_hui"
+        "char_zuo_ye_hui",
+        "sys_gu_immortal"
       ]
     }
   ],

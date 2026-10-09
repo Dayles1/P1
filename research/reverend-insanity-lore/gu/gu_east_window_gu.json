@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 490,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     490,
@@ -36,7 +36,19 @@
       "count": 1
     },
     {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
       "target": "loc_lang_ya_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
+      "target": "move_three_head_six_arms",
       "count": 1
     },
     {
@@ -111,7 +123,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -189,6 +201,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_lang_ya_blessed_land",
+          "house_eighty_eight_true_yang_building",
           "char_fang_yuan"
         ]
       },
@@ -199,11 +212,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "supply-camp-information",
         "text_origin": "source_excerpt",
         "mentions": [
+          "evt_arc_imperial_court_contest",
           "fac_lang_ya_sect"
         ]
       }

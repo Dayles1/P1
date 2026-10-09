@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 335,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     335,
@@ -46,9 +46,25 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "reg_southern_border",
       "count": 1
@@ -82,6 +98,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_shang_clan",
       "count": 1
     },
@@ -98,6 +118,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_meng_tribe_meng_tu",
       "count": 1
     }
@@ -110,7 +134,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -121,7 +145,8 @@
         "char_fang_yuan",
         "char_bai_ning_bing",
         "char_xiao_fu_lu",
-        "fac_xiao_clan"
+        "fac_xiao_clan",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -131,7 +156,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -143,7 +168,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -155,7 +180,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "new-assassination-plan",
       "text_origin": "source_excerpt"
@@ -167,7 +192,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "waiting-at-san-cha-mountain",
       "text_origin": "source_excerpt",
@@ -183,7 +208,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dog-beast-charge",
       "text_origin": "source_excerpt",
@@ -198,10 +223,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-gu-shock",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     }
   ],
   "conflicts": [],
@@ -248,7 +276,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 335",
@@ -275,7 +303,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": "demonic path as of ch. 335",

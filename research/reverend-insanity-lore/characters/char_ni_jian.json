@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1034,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1034,
@@ -38,6 +38,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -82,6 +94,10 @@
       "count": 4
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
       "count": 1
     },
@@ -92,6 +108,10 @@
     {
       "target": "char_feng_tian_yu",
       "count": 2
+    },
+    {
+      "target": "sys_movement_gu",
+      "count": 1
     },
     {
       "target": "loc_ni_clan_village",
@@ -108,6 +128,22 @@
     {
       "target": "char_fang_yuan",
       "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "move_divine_flick",
+      "count": 1
+    },
+    {
+      "target": "sys_poison_path_dao_marks",
+      "count": 1
     }
   ],
   "claims": [
@@ -118,12 +154,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_rotten_mud_mountain",
+        "sys_movement_gu",
         "gu_sword_qi_gu",
         "char_ni_kun",
         "fac_ni_clan"
@@ -136,7 +173,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -148,7 +185,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "young-clan-leader",
       "text_origin": "source_excerpt",
@@ -163,7 +200,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "young-clan-leader",
       "text_origin": "source_excerpt"
@@ -175,11 +212,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mudman-form",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
+        "sys_gu_immortal",
         "char_fang_yuan"
       ]
     },
@@ -257,7 +296,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Ni Clan",
@@ -284,7 +323,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1218,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1218,
@@ -37,6 +37,10 @@
   "co_mentions": [
     {
       "target": "res_dry_clear_qi",
+      "count": 3
+    },
+    {
+      "target": "res_rank_nine_wind_path_immortal_material",
       "count": 3
     },
     {
@@ -56,6 +60,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_ba_clan",
       "count": 1
     },
@@ -65,6 +73,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "res_wind_path_immortal_material",
       "count": 1
     },
     {
@@ -152,6 +164,7 @@
         "mentions": [
           "fac_wu_clan",
           "char_wu_yong",
+          "sys_immortal_gu",
           "fac_ba_clan",
           "char_chi_bang"
         ]
@@ -224,7 +237,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

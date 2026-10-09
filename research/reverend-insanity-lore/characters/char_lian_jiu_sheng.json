@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 845,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     845,
@@ -37,6 +37,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -69,6 +81,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "loc_hairy_foot_mountain",
       "count": 2
     },
@@ -78,6 +94,10 @@
     },
     {
       "target": "char_bi_chen_tian",
+      "count": 2
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
       "count": 2
     },
     {
@@ -101,7 +121,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_path_convention",
+      "count": 1
+    },
+    {
       "target": "gu_fate_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_infallible_inheritance",
+      "count": 1
+    },
+    {
+      "target": "house_refinement_cauldron",
+      "count": 1
+    },
+    {
+      "target": "sys_winds_of_assimilation",
       "count": 1
     },
     {
@@ -110,6 +150,18 @@
     },
     {
       "target": "fac_combat_immortal_sect",
+      "count": 1
+    },
+    {
+      "target": "house_illusion_garden",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -125,12 +177,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_heaven_overseeing_tower_lord",
+        "sys_refinement_path_convention",
+        "sys_gu_immortal",
         "loc_hairy_foot_mountain",
         "reg_central_continent",
         "loc_infallible_blessed_land",
@@ -144,7 +198,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -156,7 +210,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "white-clothing",
       "text_origin": "source_excerpt"
@@ -168,10 +222,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refinement-path",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "Heaven Overseeing Tower Lord summons him and Bi Chen Tian to reinforce Heavenly Lotus Sect against immortal zombie Bo Qing’s attack, and the three use Heavenly Court’s teleportation Gu formation to arrive at the sect’s base, where a battle of rank eights erupts.",
@@ -180,7 +237,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "heavenly-lotus-sect-reinforcement",
       "text_origin": "source_excerpt",
@@ -188,7 +245,8 @@
         "char_bi_chen_tian",
         "fac_heavenly_lotus_sect",
         "char_bo_qing",
-        "fac_heavenly_court"
+        "fac_heavenly_court",
+        "sys_gu_formation"
       ]
     },
     {
@@ -198,10 +256,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "exposed-as-traitor",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_heaven_overseeing_tower"
+      ]
     },
     {
       "text": "Shadow Sect researched for tens of thousands of years, found an opportunity, and paid a heavy price to send the traitor Lian Jiu Sheng into Heavenly Court. After joining he could not get much intel. He is named among rank eight Gu Immortals who joined Heavenly Court in the last thousands of years.",
@@ -210,7 +271,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-insertion",
       "text_origin": "source_excerpt",
@@ -264,7 +325,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 845",
@@ -291,7 +352,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": null,

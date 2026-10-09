@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 532,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     532
@@ -69,6 +69,10 @@
     },
     {
       "target": "char_chang_shan_yin",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -139,6 +143,7 @@
         "section": "cost",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "char_liu_wen_wu"
         ]
       }

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 437,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     437,
@@ -43,6 +43,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -75,6 +87,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_ge_yao",
       "count": 2
     },
@@ -89,6 +105,10 @@
     {
       "target": "char_chang_ji_you",
       "count": 2
+    },
+    {
+      "target": "evt_arc_northern_plains_imperial_court",
+      "count": 1
     },
     {
       "target": "char_fang_yuan",
@@ -143,6 +163,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_liu_tribe",
       "count": 1
     },
@@ -179,6 +203,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
       "target": "char_hei_lou_lan",
       "count": 1
     }
@@ -191,7 +219,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -210,7 +238,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -222,7 +250,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -234,7 +262,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rescue-and-return-to-camp",
       "text_origin": "source_excerpt"
@@ -246,7 +274,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rescue-and-return-to-camp",
       "text_origin": "source_excerpt"
@@ -258,7 +286,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hints-and-clues-gu-test",
       "text_origin": "source_excerpt"
@@ -270,7 +298,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hints-and-clues-gu-test",
       "text_origin": "source_excerpt"
@@ -282,7 +310,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hints-and-clues-gu-test",
       "text_origin": "source_excerpt"
@@ -294,7 +322,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tribe-leader-succession",
       "text_origin": "source_excerpt"
@@ -306,12 +334,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "alliance-request-under-threat",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_yan_tribe",
+        "sys_gu_master",
         "char_hao_ji_liu"
       ]
     },
@@ -322,7 +351,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "alliance-request-under-threat",
       "text_origin": "source_excerpt",
@@ -337,7 +366,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "alliance-request-under-threat",
       "text_origin": "source_excerpt"
@@ -349,11 +378,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "imperial-court-contest-rank",
       "text_origin": "source_excerpt",
       "mentions": [
+        "evt_arc_imperial_court_contest",
         "char_hei_lou_lan"
       ]
     },
@@ -364,7 +394,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "imperial-court-contest-rank",
       "text_origin": "source_excerpt",
@@ -434,7 +464,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Ge Tribe as of ch. 437",
@@ -461,7 +491,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": null,
     "alignment": null,

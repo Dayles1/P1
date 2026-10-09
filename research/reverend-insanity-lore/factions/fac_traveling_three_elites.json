@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 782,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     781,
@@ -116,6 +116,10 @@
       "count": 2
     },
     {
+      "target": "move_entangled_wind",
+      "count": 2
+    },
+    {
       "target": "char_divine_lord_tian_du",
       "count": 1
     },
@@ -136,7 +140,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_tai_qiu",
+      "count": 1
+    },
+    {
+      "target": "sys_demonic_path",
       "count": 1
     },
     {
@@ -149,6 +165,10 @@
     },
     {
       "target": "fac_hei_tribe",
+      "count": 1
+    },
+    {
+      "target": "move_wind_thunder_roar",
       "count": 1
     },
     {
@@ -168,7 +188,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -200,11 +220,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
+        "sys_gu_formation",
         "char_unfettered_scholar",
         "char_pi_shui_han"
       ]
@@ -216,7 +238,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -232,10 +254,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "phantom-beasts",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_demonic_path"
+      ]
     },
     {
       "text": "After Han Dong is gone, Lu Qing Ming and Su Guang are only at rank six. Besides Unfettered Scholar and Pi Shui Han, Fang Yuan is the other Gu Immortal who has shown rank seven battle strength in that scramble.",
@@ -271,7 +296,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "golden-wheat-field",
       "text_origin": "source_excerpt",
@@ -288,7 +313,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-tribe-scramble",
       "text_origin": "source_excerpt",
@@ -304,10 +329,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "cultivator-standing",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_entangled_wind"
+      ]
     }
   ],
   "conflicts": [],

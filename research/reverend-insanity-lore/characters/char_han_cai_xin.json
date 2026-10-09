@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 700,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     700,
@@ -43,12 +43,28 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_central_continent",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "loc_spirit_butterfly_valley",
@@ -60,6 +76,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -85,6 +105,10 @@
     {
       "target": "char_he_feng_yang",
       "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
     }
   ],
   "claims": [
@@ -95,12 +119,13 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_immortal_crane_sect",
+        "sys_gu_immortal",
         "loc_hu_immortal_blessed_land",
         "loc_spirit_butterfly_valley",
         "char_fang_yuan",
@@ -135,6 +160,7 @@
         "reg_central_continent",
         "char_fairy_bai_qing",
         "fac_heaven_and_earth_great_love_alliance",
+        "sys_gu_worms",
         "char_he_feng_yang"
       ]
     }
@@ -170,7 +196,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Spirit Butterfly Valley as of ch. 700",
@@ -191,7 +217,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

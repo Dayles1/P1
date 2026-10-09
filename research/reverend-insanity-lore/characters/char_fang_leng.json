@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1504,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1504,
@@ -35,6 +35,18 @@
     {
       "type": "in_region",
       "target": "reg_western_desert",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -67,7 +79,15 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_old_ghost_bai_jun",
+      "count": 2
+    },
+    {
+      "target": "house_fallen_flower_hall",
       "count": 2
     },
     {
@@ -92,6 +112,18 @@
     },
     {
       "target": "char_zheng_jing_shen",
+      "count": 1
+    },
+    {
+      "target": "move_purple_thought_perception_starlight",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "move_directional_confusion_fog",
       "count": 1
     },
     {
@@ -148,7 +180,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_fallen_flower_hall"
+      ]
     },
     {
       "text": "He leaves Fallen Flower Hall with Fang An Lei and Fang Yun to thank Suan Bu Jin and open cooperation talks.",
@@ -175,7 +210,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "clan-alliance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "After reinforcements arrive he remains among Fang clan’s rank six elites in green ghost desert.",
@@ -233,7 +271,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Fang Clan as of ch. 1504",
@@ -260,7 +298,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": null,

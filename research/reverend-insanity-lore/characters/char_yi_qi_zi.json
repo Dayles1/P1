@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2297,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2297,
@@ -51,6 +51,10 @@
     },
     {
       "target": "char_yao_huang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -110,6 +114,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_di_zang_sheng",
+        "sys_gu_master",
         "fac_gu_masters",
         "char_star_constellation_immortal_venerable",
         "fac_heavenly_court"

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1306,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1305,
@@ -34,6 +34,18 @@
     1461
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_information",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "fac_wu_clan",
@@ -93,7 +105,15 @@
       "count": 3
     },
     {
+      "target": "path_information",
+      "count": 1
+    },
+    {
       "target": "char_wu_yong",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -102,6 +122,10 @@
     },
     {
       "target": "char_wu_yi_hai",
+      "count": 1
+    },
+    {
+      "target": "sys_super_gu_formation",
       "count": 1
     },
     {
@@ -151,7 +175,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_information"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -245,6 +271,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_immortal_gu",
           "fac_wu_clan",
           "char_wu_yong",
           "gu_vajra_thought_immortal_gu"
@@ -257,7 +284,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt"
@@ -274,6 +301,7 @@
         "section": "super-gu-formation-plan",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_super_gu_formation",
           "char_wu_yi_hai"
         ]
       },
@@ -322,7 +350,7 @@
     "Path": {
       "text": "Information Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

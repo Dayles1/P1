@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 799,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     799,
@@ -66,6 +66,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_poison_heart_gu",
       "count": 1
     },
@@ -79,6 +87,10 @@
     },
     {
       "target": "char_dong_fang_chang_fan",
+      "count": 1
+    },
+    {
+      "target": "race_minimen",
       "count": 1
     }
   ],
@@ -112,6 +124,8 @@
         "char_hei_lou_lan",
         "loc_jade_pool_blessed_land",
         "gu_groundmat_grass_gu",
+        "sys_gu_immortal",
+        "sys_gu_formation",
         "loc_miniscule_mountain"
       ]
     },
@@ -139,7 +153,8 @@
       "section": "aftermath-in-the-sea",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_dong_fang_chang_fan"
+        "char_dong_fang_chang_fan",
+        "race_minimen"
       ]
     }
   ],

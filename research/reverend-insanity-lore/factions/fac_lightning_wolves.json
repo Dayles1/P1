@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 95,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     95,
@@ -51,6 +51,10 @@
   "co_mentions": [
     {
       "target": "reg_southern_border",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -85,7 +89,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "Bold lightning wolves, hundred beast kings, are as large as a calf and strong like bulls, and a bold lightning wolf can send a thin long blue lightning current that punches a hole through a village wall. Frenzy lightning wolves, thousand beast kings, are each as large as an elephant.",

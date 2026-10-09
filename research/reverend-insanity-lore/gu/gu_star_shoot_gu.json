@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 667,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     667,
@@ -33,6 +33,10 @@
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "move_spring_star_rain",
+      "count": 3
+    },
     {
       "target": "char_eight_arm_immortal",
       "count": 2
@@ -58,11 +62,31 @@
       "count": 1
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_treasure_yellow_heaven",
       "count": 1
     },
     {
+      "target": "move_dazzling_star_armor",
+      "count": 1
+    },
+    {
+      "target": "path_star",
+      "count": 1
+    },
+    {
       "target": "char_lang_ya_land_spirit",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -131,10 +155,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-move-role",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       },
       {
         "text": "Fang Yuan judges that each activation uses about five hundred at most.",
@@ -143,7 +170,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-move-role",
         "text_origin": "source_excerpt"
@@ -155,7 +182,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-move-role",
         "text_origin": "source_excerpt",
@@ -185,7 +212,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "reverse-refine-attempts",
         "text_origin": "source_excerpt",
@@ -200,12 +227,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "reverse-refine-attempts",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_wisdom_gu"
+          "gu_wisdom_gu",
+          "sys_gu_worms"
         ]
       },
       {
@@ -218,7 +246,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "reverse-refine-attempts",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       }
     ]
   },
@@ -243,7 +274,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -261,7 +292,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "purchase",
         "text_origin": "source_excerpt",

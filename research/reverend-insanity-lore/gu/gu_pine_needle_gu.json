@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 104,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     104,
@@ -67,6 +67,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "char_bai_ning_bing",
       "count": 1
     },
@@ -87,6 +95,10 @@
       "count": 1
     },
     {
+      "target": "evt_fight_gu_yue_qing_shu_and_gu_yue_yao_hong_against_bai_ning_bing",
+      "count": 1
+    },
+    {
       "target": "gu_water_shield_gu",
       "count": 1
     },
@@ -95,11 +107,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "res_earth_hole_traveling_flame",
       "count": 1
     },
     {
       "target": "res_jade_scales",
+      "count": 1
+    },
+    {
+      "target": "res_spring_thunder_condensed_dewdrops",
       "count": 1
     },
     {
@@ -181,12 +201,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "immortal-gu-refinement",
         "text_origin": "source_excerpt",
         "mentions": [
           "reg_southern_border",
+          "sys_gu_immortal",
           "char_genesis_lotus_immortal_venerable"
         ]
       }
@@ -223,7 +244,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -238,12 +259,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wood-charm-tree-spirit",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "gu_wood_charm_gu",
+          "sys_gu_worms",
           "gu_green_vine_gu"
         ]
       },
@@ -254,7 +277,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "pin-needle-gu",
         "text_origin": "source_excerpt",
@@ -270,7 +293,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "pin-needle-gu",
         "text_origin": "source_excerpt",

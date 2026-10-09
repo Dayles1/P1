@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1513,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1513,
@@ -45,12 +45,48 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_fang_clan",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
       "recorded_chapter": 1513,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_mirror_flower",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1517,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_empty_valley_orchid",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
       "count": null,
       "confidence": "B",
       "source_id": "src_sagaofgu",
@@ -63,6 +99,18 @@
       "count": 3
     },
     {
+      "target": "move_mirror_flower",
+      "count": 3
+    },
+    {
+      "target": "move_empty_valley_orchid",
+      "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_western_desert",
       "count": 1
     },
@@ -71,11 +119,19 @@
       "count": 2
     },
     {
+      "target": "house_fallen_flower_hall",
+      "count": 2
+    },
+    {
       "target": "char_fang_hua_sheng",
       "count": 2
     },
     {
       "target": "res_impermanence_rock",
+      "count": 1
+    },
+    {
+      "target": "move_fleeting_bloom",
       "count": 1
     },
     {
@@ -92,6 +148,18 @@
     },
     {
       "target": "char_fang_yun",
+      "count": 1
+    },
+    {
+      "target": "house_chicken_dog_coop",
+      "count": 1
+    },
+    {
+      "target": "house_divine_bean_palace",
+      "count": 1
+    },
+    {
+      "target": "house_earth_shuttle",
       "count": 1
     },
     {
@@ -112,6 +180,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_fallen_flower_hall",
         "fac_fang_clan"
       ]
     },
@@ -142,7 +211,8 @@
         "char_fang_yun",
         "char_fang_leng",
         "char_fang_yuan",
-        "char_fang_hua_sheng"
+        "char_fang_hua_sheng",
+        "house_chicken_dog_coop"
       ]
     },
     {
@@ -157,7 +227,8 @@
       "section": "purple-tongue-wound",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_di_chang"
+        "char_fang_di_chang",
+        "house_divine_bean_palace"
       ]
     }
   ],
@@ -204,7 +275,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Fang Clan as of ch. 1513",
@@ -231,7 +302,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": null,

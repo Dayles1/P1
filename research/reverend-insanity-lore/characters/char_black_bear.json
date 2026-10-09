@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 151,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     151,
@@ -52,6 +52,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_man_beast_burial_gu",
       "count": 1
     },
@@ -72,7 +76,15 @@
       "count": 1
     },
     {
+      "target": "sys_enslavement_gu",
+      "count": 1
+    },
+    {
       "target": "char_meng_qiu_zhen",
+      "count": 1
+    },
+    {
+      "target": "sys_poison_gu",
       "count": 1
     },
     {
@@ -111,7 +123,9 @@
       "section": "man-beast-life-burial-gu-refinement",
       "text_origin": "source_excerpt",
       "mentions": [
-        "gu_man_beast_burial_gu"
+        "gu_man_beast_burial_gu",
+        "sys_enslavement_gu",
+        "sys_gu_worms"
       ]
     },
     {
@@ -173,7 +187,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_meng_qiu_zhen",
-        "gu_dream_butterfly_gu"
+        "gu_dream_butterfly_gu",
+        "sys_poison_gu"
       ]
     }
   ],

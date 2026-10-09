@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 308,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     308,
@@ -109,6 +109,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_shang_clan",
       "count": 1
     }
@@ -144,6 +148,7 @@
       "section": "delivered-as-a-private-gift",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_worms",
         "fac_shang_clan"
       ]
     }

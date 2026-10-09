@@ -1,6 +1,9 @@
 # Research progress
 
-## 2026-10-09 — session 1 (stopped early, time limit)
+## 2026-10-09 — session 1
+
+Update: the crawl finished (6615/6615, 0 failures) and all sections are built: 6581 records, validator 0 errors. Steps 1–2 below are done. DATA_CONTRACT.md 0.2 has been agreed with the game agent and awaits user confirmation. README.md and glossary.md are in Russian.
+
 
 Done
 - Source survey: sagaofgu.com chosen as the primary source (chapter-cited, crawl allowed). Fandom blocked (Cloudflare), Webnovel blocked (403), ChatGPT share empty, novelwiki C-level only. See `sources/sources.json`.

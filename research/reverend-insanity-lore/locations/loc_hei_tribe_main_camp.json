@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 500,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     500,
@@ -67,6 +67,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -76,6 +80,10 @@
     },
     {
       "target": "char_chang_shan_yin",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -114,7 +122,8 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_cao_fu_region"
+        "loc_cao_fu_region",
+        "sys_gu_house"
       ]
     },
     {
@@ -156,6 +165,7 @@
       "section": "battle-charge",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "fac_ma_tribe",
         "char_chang_shan_yin"
       ]

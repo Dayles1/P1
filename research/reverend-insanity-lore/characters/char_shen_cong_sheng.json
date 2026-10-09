@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1700,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1700,
@@ -35,6 +35,18 @@
     {
       "type": "in_region",
       "target": "reg_eastern_sea",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -55,6 +67,18 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_grand_collision",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1905,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -63,8 +87,16 @@
       "count": 5
     },
     {
+      "target": "move_grand_collision",
+      "count": 3
+    },
+    {
       "target": "reg_eastern_sea",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_granny_rong",
@@ -83,6 +115,10 @@
       "count": 2
     },
     {
+      "target": "house_pine_crane_pavilion",
+      "count": 2
+    },
+    {
       "target": "char_duke_long",
       "count": 1
     },
@@ -96,6 +132,18 @@
     },
     {
       "target": "char_zhou_xiong_xin",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_path_convention",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
       "count": 1
     },
     {
@@ -155,6 +203,10 @@
       "count": 1
     },
     {
+      "target": "move_aerial_sound_blades",
+      "count": 1
+    },
+    {
       "target": "res_clear_wind_grass_stem",
       "count": 1
     },
@@ -179,6 +231,10 @@
       "count": 1
     },
     {
+      "target": "res_sound_path_immortal_material",
+      "count": 1
+    },
+    {
       "target": "gu_response_gu",
       "count": 1
     },
@@ -191,6 +247,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_fate_destruction",
+      "count": 1
+    },
+    {
       "target": "fac_hua_clan",
       "count": 1
     },
@@ -199,11 +259,47 @@
       "count": 1
     },
     {
+      "target": "sys_black_fire",
+      "count": 1
+    },
+    {
       "target": "gu_injury_mark_immortal_gu",
       "count": 1
     },
     {
+      "target": "move_countless_injury_marks",
+      "count": 1
+    },
+    {
+      "target": "move_heavy_injuries",
+      "count": 1
+    },
+    {
+      "target": "move_light_injuries",
+      "count": 1
+    },
+    {
+      "target": "move_mutual_injuries",
+      "count": 1
+    },
+    {
+      "target": "move_sensory_injury",
+      "count": 1
+    },
+    {
+      "target": "move_falling_star_rod_transformation",
+      "count": 1
+    },
+    {
       "target": "char_xiao_he_jian",
+      "count": 1
+    },
+    {
+      "target": "move_lingering_poisonous_ant_plague",
+      "count": 1
+    },
+    {
+      "target": "move_dang_hun_luo_po_seal",
       "count": 1
     }
   ],
@@ -224,6 +320,7 @@
         "char_fang_yuan",
         "char_zhou_xiong_xin",
         "reg_eastern_sea",
+        "house_dragon_palace",
         "char_song_qi_yuan",
         "char_great_scholar_shen"
       ]
@@ -244,7 +341,9 @@
         "char_zhang_yin",
         "char_granny_rong",
         "char_shi_miao",
-        "char_duke_long"
+        "char_duke_long",
+        "sys_immortal_gu_house",
+        "sys_refinement_path_convention"
       ]
     },
     {
@@ -259,6 +358,7 @@
       "section": "search-and-interception",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_pine_crane_pavilion",
         "fac_immortal_crane_sect",
         "fac_shen_clan",
         "fac_song_clan",
@@ -323,7 +423,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shen Clan as of ch. 1700",
@@ -350,7 +450,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 182,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     182,
@@ -33,6 +33,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -61,6 +73,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
       "count": 1
     },
@@ -78,6 +94,10 @@
     },
     {
       "target": "char_tie_xue_leng",
+      "count": 1
+    },
+    {
+      "target": "sys_demonic_path",
       "count": 1
     },
     {
@@ -136,6 +156,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_tie_xue_leng",
+        "sys_demonic_path",
         "loc_demon_suppression_tower"
       ]
     }
@@ -176,7 +197,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Tie Clan as of ch. 182",
@@ -192,7 +213,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": null,
     "alignment": null,

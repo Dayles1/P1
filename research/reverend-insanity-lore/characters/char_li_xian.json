@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 339,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     339,
@@ -34,6 +34,18 @@
     {
       "type": "in_region",
       "target": "reg_eastern_sea",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -130,6 +142,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_hu_mei_er",
       "count": 2
     },
@@ -186,6 +202,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_yi_clan",
       "count": 1
     },
@@ -203,6 +223,10 @@
     },
     {
       "target": "gu_sky_well_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_king_quan_inheritance",
       "count": 1
     },
     {
@@ -254,7 +278,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -277,7 +301,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -289,7 +313,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "alone-after-the-visit",
       "text_origin": "source_excerpt",
@@ -304,12 +328,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "cave-tea-and-the-list",
       "text_origin": "source_excerpt",
       "mentions": [
-        "gu_blue_sky_gu"
+        "gu_blue_sky_gu",
+        "inh_king_quan_inheritance",
+        "sys_gu_worms"
       ]
     }
   ],
@@ -355,7 +381,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 339",
@@ -382,7 +408,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": "demonic path as of ch. 339",

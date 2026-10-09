@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2012,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2012,
@@ -78,6 +78,10 @@
     },
     {
       "target": "char_zhao_shu_ye",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_house",
       "count": 1
     },
     {
@@ -224,7 +228,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_zhao_shu_ye",
-          "char_fairy_bi_xia"
+          "char_fairy_bi_xia",
+          "sys_gu_house"
         ]
       }
     ]

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 168,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     168,
@@ -45,6 +45,10 @@
     },
     {
       "target": "char_lightning_lycan",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
       "count": 1
     },
     {
@@ -152,7 +156,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "battlefield-healing",
         "text_origin": "source_excerpt"
@@ -164,7 +168,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "battlefield-healing",
         "text_origin": "source_excerpt"
@@ -176,7 +180,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "battlefield-healing",
         "text_origin": "source_excerpt",
@@ -192,7 +196,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "battlefield-healing",
         "text_origin": "source_excerpt",
@@ -219,7 +223,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "battlefield-healing",
         "text_origin": "source_excerpt",
@@ -264,7 +268,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt"
@@ -281,6 +285,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_healing_gu",
           "gu_pig_iron_gu",
           "gu_chainsaw_golden_centipede"
         ]
@@ -292,7 +297,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "healing-wolves",
         "text_origin": "source_excerpt",
@@ -307,7 +312,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "multiple-wounds",
         "text_origin": "source_excerpt"

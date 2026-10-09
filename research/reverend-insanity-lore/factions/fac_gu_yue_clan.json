@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     1,
@@ -587,6 +587,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_gu_yue_village",
+      "count": 2
+    },
+    {
       "target": "gu_spring_autumn_cicada",
       "count": 2
     },
@@ -596,6 +600,10 @@
     },
     {
       "target": "loc_qing_mao_mountain",
+      "count": 2
+    },
+    {
+      "target": "sys_awakening_ceremony",
       "count": 2
     },
     {
@@ -611,11 +619,31 @@
       "count": 2
     },
     {
+      "target": "inh_flower_wine_monk_inheritance",
+      "count": 2
+    },
+    {
+      "target": "evt_arc_qing_mao_mountain",
+      "count": 2
+    },
+    {
+      "target": "evt_arc_gu_yue_clan_conflict",
+      "count": 2
+    },
+    {
       "target": "gu_blood_curtain_skyflower_gu",
       "count": 2
     },
     {
       "target": "char_bai_ning_bing",
+      "count": 1
+    },
+    {
+      "target": "sys_a_grade",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -632,6 +660,26 @@
     },
     {
       "target": "loc_xiong_village",
+      "count": 1
+    },
+    {
+      "target": "path_time",
+      "count": 1
+    },
+    {
+      "target": "sys_aperture_and_primeval_essence",
+      "count": 1
+    },
+    {
+      "target": "sys_c_grade",
+      "count": 1
+    },
+    {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
+      "target": "sys_primeval_sea",
       "count": 1
     },
     {
@@ -659,6 +707,34 @@
       "count": 1
     },
     {
+      "target": "sys_aperture",
+      "count": 1
+    },
+    {
+      "target": "sys_aptitude",
+      "count": 1
+    },
+    {
+      "target": "sys_d_grade",
+      "count": 1
+    },
+    {
+      "target": "sys_primeval_stones",
+      "count": 1
+    },
+    {
+      "target": "sys_rank_four",
+      "count": 1
+    },
+    {
+      "target": "sys_rank_one_through_rank_five",
+      "count": 1
+    },
+    {
+      "target": "sys_ranks_and_realms",
+      "count": 1
+    },
+    {
       "target": "fac_chi_family",
       "count": 1
     },
@@ -683,7 +759,35 @@
       "count": 1
     },
     {
+      "target": "sys_initial_stage",
+      "count": 1
+    },
+    {
+      "target": "sys_middle_stage",
+      "count": 1
+    },
+    {
+      "target": "sys_peak_stage",
+      "count": 1
+    },
+    {
+      "target": "sys_upper_stage",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
       "target": "gu_moonshadow_gu",
+      "count": 1
+    },
+    {
+      "target": "res_moon_orchid",
+      "count": 1
+    },
+    {
+      "target": "sys_moonblade",
       "count": 1
     },
     {
@@ -751,7 +855,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -766,7 +870,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -778,7 +882,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -793,7 +897,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "settlement-and-neighbours",
       "text_origin": "source_excerpt",
@@ -820,12 +924,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "settlement-and-neighbours",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_qing_mao_mountain"
+        "loc_qing_mao_mountain",
+        "inh_flower_wine_monk_inheritance"
       ]
     },
     {
@@ -859,7 +964,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "settlement-and-neighbours",
       "text_origin": "source_excerpt"
@@ -872,7 +977,12 @@
       "verification": "no_citation",
       "source_id": "src_sagaofgu",
       "section": "settlement-and-neighbours",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "evt_arc_gu_yue_village",
+        "evt_arc_qing_mao_mountain",
+        "evt_arc_gu_yue_clan_conflict"
+      ]
     },
     {
       "text": "The clan holds its Awakening Ceremony for fifteen-year-olds, and the distance a child walks during it reveals a talent grade from A to D.",
@@ -881,10 +991,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "awakening-ceremony-and-clan-logic",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_awakening_ceremony"
+      ]
     },
     {
       "text": "Seven days later the academy treats those who opened their apertures as rank one Gu Masters. The grade follows a person afterwards: the protagonist is graded C beside an A grade twin on that basis.",
@@ -893,7 +1006,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "awakening-ceremony-and-clan-logic",
       "text_origin": "source_excerpt"
@@ -920,7 +1033,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "awakening-ceremony-and-clan-logic",
       "text_origin": "source_excerpt",
@@ -978,7 +1091,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "who-the-clan-produces",
       "text_origin": "source_excerpt"
@@ -1002,7 +1115,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "who-the-clan-produces",
       "text_origin": "source_excerpt",
@@ -1017,7 +1130,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clan-conflict-and-exit",
       "text_origin": "source_excerpt",
@@ -1056,7 +1169,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clan-conflict-and-exit",
       "text_origin": "source_excerpt",
@@ -1072,7 +1185,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clan-conflict-and-exit",
       "text_origin": "source_excerpt",
@@ -1088,12 +1201,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clan-conflict-and-exit",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_bai_gu_mountain"
+        "loc_bai_gu_mountain",
+        "evt_arc_bai_gu_mountain"
       ]
     },
     {
@@ -1103,7 +1217,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clan-conflict-and-exit",
       "text_origin": "source_excerpt"

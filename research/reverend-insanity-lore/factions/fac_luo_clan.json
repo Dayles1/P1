@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 966,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     966,
@@ -109,11 +109,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_yi_tian_mountain",
       "count": 1
     },
     {
       "target": "char_ba_quan_feng",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_opportunity_business",
       "count": 1
     },
     {
@@ -137,7 +153,19 @@
       "count": 1
     },
     {
+      "target": "house_flying_sand_pavilion",
+      "count": 1
+    },
+    {
+      "target": "sys_year_essence_pool",
+      "count": 1
+    },
+    {
       "target": "fac_southern_alliance",
+      "count": 1
+    },
+    {
+      "target": "house_beacon_tower",
       "count": 1
     },
     {
@@ -150,6 +178,14 @@
     },
     {
       "target": "char_xiao_he_jian",
+      "count": 1
+    },
+    {
+      "target": "sys_qi_harvest_fruit",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
       "count": 1
     },
     {
@@ -185,10 +221,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "super-force-standing",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal",
+        "sys_gu_formation",
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "The righteous path lost many members exploring the giant dream realm, including rank seven experts holding great authority. Luo clan lost their third supreme elder. At the formation, Ba Quan Feng contrasts Luo clan’s two Gu Immortals, who bring people with good reputations and clean records, with Qiao clan’s greedier traffic.",
@@ -197,7 +238,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realm-exploration",
       "text_origin": "source_excerpt",
@@ -213,7 +254,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "praise-for-chi-shangs-talent",
       "text_origin": "source_excerpt",
@@ -228,7 +269,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "letter-and-movement",
       "text_origin": "source_excerpt",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1889,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1889,
@@ -35,6 +35,18 @@
     {
       "type": "in_region",
       "target": "reg_eastern_sea",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -61,6 +73,10 @@
     {
       "target": "fac_shen_clan",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_eastern_sea",
@@ -95,7 +111,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_dragon_whale_paradise",
+      "count": 1
+    },
+    {
+      "target": "house_merit_obelisk",
       "count": 1
     },
     {
@@ -116,6 +140,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "fac_shen_clan",
         "char_zeng_luo_zi",
         "char_shen_cong_sheng",
@@ -136,7 +161,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "anger-at-chu-yings-arrogance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_merit_obelisk"
+      ]
     },
     {
       "text": "Inside Dragon Whale Paradise, Shen Qi is named in the first of two groups, with Shen Cong Sheng, Shen Tan, Shen Xiao, Shen Nai He, Ren Xiu Ping, and Tong Hua, set apart from Miao Ming Shen’s group.",
@@ -207,7 +235,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shen Clan as of ch. 1889",
@@ -228,7 +256,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

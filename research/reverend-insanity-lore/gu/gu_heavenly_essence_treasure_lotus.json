@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 162,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     162,
@@ -160,12 +160,20 @@
       "count": 3
     },
     {
+      "target": "res_rank_nine_wood_path_immortal_material",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 3
     },
     {
       "target": "rcp_heavenly_essence_treasure_monarch_lotus_recipe",
       "count": 3
+    },
+    {
+      "target": "inh_flower_wine_monk_inheritance",
+      "count": 2
     },
     {
       "target": "loc_lang_ya_blessed_land",
@@ -185,6 +193,18 @@
     },
     {
       "target": "loc_golden_centipedes_cave",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement",
       "count": 1
     },
     {
@@ -244,6 +264,10 @@
       "count": 1
     },
     {
+      "target": "path_refinement",
+      "count": 1
+    },
+    {
       "target": "gu_paper_crane_gu",
       "count": 1
     },
@@ -252,7 +276,39 @@
       "count": 1
     },
     {
+      "target": "sys_white_litchi_immortal_essence",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
       "target": "fac_shadow_sect",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_refinement_cauldron",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_lang_ya_land_spirit_against_qin_bai_sheng",
+      "count": 1
+    },
+    {
+      "target": "move_immortal_tribulation_tempering_aperture",
       "count": 1
     },
     {
@@ -264,11 +320,31 @@
       "count": 1
     },
     {
+      "target": "evt_arc_era_of_three_venerables",
+      "count": 1
+    },
+    {
       "target": "char_he_chun_qiu",
       "count": 1
     },
     {
+      "target": "move_obscured_heavenly_secret",
+      "count": 1
+    },
+    {
+      "target": "house_four_elements_square_regret_blood_refinement_pool",
+      "count": 1
+    },
+    {
+      "target": "res_ten_thousand_year_profound_ice",
+      "count": 1
+    },
+    {
       "target": "gu_advance_refinement_gu",
+      "count": 1
+    },
+    {
+      "target": "res_rule_path_immortal_material",
       "count": 1
     }
   ],
@@ -360,7 +436,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-path-and-effect",
         "text_origin": "source_excerpt"
@@ -372,7 +448,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-path-and-effect",
         "text_origin": "source_excerpt"
@@ -387,7 +463,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "rank-path-and-effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       },
       {
         "text": "Shang clan city’s auction presents a recipe for rank four Heavenly Essence Treasure Monarch Lotus. The crowd lists the series as rank three Heavenly Essence Treasure Lotus, rank four Heavenly Essence Treasure Monarch Lotus, and rank five Heavenly Essence Treasure King Lotus, and ties the line to Immortal Venerable Genesis Lotus, including talk of rank six Heavenly Essence Treasure Imperial Lotus. The recipe needs Heavenly Essence Treasure Lotus as the main ingredient. Wei Yang places the last bid and obtains the recipe in public.",
@@ -438,7 +517,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "series-and-advancement",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "house_eighty_eight_true_yang_building"
+        ]
       }
     ]
   },
@@ -451,7 +533,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -463,7 +545,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -501,7 +583,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuan-obtains-the-lotus",
         "text_origin": "source_excerpt",
@@ -527,11 +609,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "gu-yue-foundation-stakes",
         "text_origin": "source_excerpt",
         "mentions": [
+          "inh_flower_wine_monk_inheritance",
           "fac_gu_yue_clan"
         ]
       },
@@ -542,13 +625,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "gu-yue-foundation-stakes",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "gu_white_form_immortal_snake",
-          "gu_spring_autumn_cicada"
+          "gu_spring_autumn_cicada",
+          "sys_refinement"
         ]
       },
       {
@@ -558,7 +643,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "gu-yue-foundation-stakes",
         "text_origin": "source_excerpt"
@@ -639,7 +724,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -655,7 +740,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "physical-descriptions",
         "text_origin": "source_excerpt"
@@ -667,7 +752,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "physical-descriptions",
         "text_origin": "source_excerpt"
@@ -679,7 +764,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "physical-descriptions",
         "text_origin": "source_excerpt"
@@ -691,7 +776,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "physical-descriptions",
         "text_origin": "source_excerpt"
@@ -727,7 +812,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuan-obtains-the-lotus",
         "text_origin": "source_excerpt",
@@ -742,7 +827,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuan-obtains-the-lotus",
         "text_origin": "source_excerpt",
@@ -757,7 +842,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuan-obtains-the-lotus",
         "text_origin": "source_excerpt"
@@ -785,12 +870,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "lang-yas-imperial-lotus",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_genesis_lotus_immortal_venerable",
+          "sys_gu_immortal",
           "char_thieving_heaven_demon_venerable",
           "char_long_hair_ancestor",
           "loc_lang_ya_blessed_land"
@@ -803,10 +889,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "lang-yas-imperial-lotus",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_recipe"
+        ]
       },
       {
         "text": "With it, Lang Ya blessed land never lacks white litchi immortal essence.",
@@ -827,11 +916,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "lang-yas-imperial-lotus",
         "text_origin": "source_excerpt",
         "mentions": [
+          "move_immortal_tribulation_tempering_aperture",
           "char_lang_ya_land_spirit"
         ]
       },
@@ -842,10 +932,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "lang-yas-imperial-lotus",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu_house",
+          "house_refinement_cauldron"
+        ]
       },
       {
         "text": "Lang Ya blessed land’s Heavenly Essence Treasure Imperial Lotus is not for sale; it had fallen from rank eight to rank seven when Shadow Sect’s invasion damaged it.",
@@ -854,7 +948,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "lang-yas-imperial-lotus",
         "text_origin": "source_excerpt",

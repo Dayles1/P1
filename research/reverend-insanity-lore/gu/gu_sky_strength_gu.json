@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 560,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     560
@@ -52,6 +52,14 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     }
   ],
@@ -134,13 +142,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "gu_borrow_strength_gu"
+          "gu_borrow_strength_gu",
+          "house_eighty_eight_true_yang_building"
         ]
       },
       {
@@ -150,11 +159,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "pairing-with-borrow-strength-gu",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "gu_water_strength_gu"
         ]
       },
@@ -165,7 +175,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "extinction",
         "text_origin": "source_excerpt",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 751,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     751
@@ -40,6 +40,14 @@
     },
     {
       "target": "char_unfettered_scholar",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "path_transformation",
       "count": 1
     }
   ],
@@ -88,7 +96,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "transformation-set",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "path_transformation"
+        ]
       },
       {
         "text": "No cited chapter shows anyone holding or using demon ferret blood itself.",
@@ -141,7 +152,8 @@
         "mentions": [
           "char_qin_bai_sheng",
           "char_unfettered_scholar",
-          "char_he_lang_zi"
+          "char_he_lang_zi",
+          "sys_immortal_gu"
         ],
         "needs_review": true
       }

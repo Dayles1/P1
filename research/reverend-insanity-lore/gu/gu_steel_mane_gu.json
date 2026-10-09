@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 47,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     47,
@@ -54,6 +54,10 @@
     },
     {
       "target": "loc_qing_mao_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -138,11 +142,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "gu_white_boar_gu",
           "gu_heavenly_mugwort_gu"
         ]
@@ -173,7 +178,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-trade-offer",
         "text_origin": "source_excerpt",

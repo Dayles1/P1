@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 407,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     407,
@@ -44,6 +44,10 @@
       "count": 2
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_immortal_crane_sect",
       "count": 1
     },
@@ -60,11 +64,23 @@
       "count": 1
     },
     {
+      "target": "inh_blood_sea_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "path_blood",
+      "count": 1
+    },
+    {
       "target": "char_earth_extremity",
       "count": 1
     },
     {
       "target": "char_giant_sun_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -163,18 +179,20 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_immortal_crane_sect",
           "char_blood_sea_ancestor",
+          "path_blood",
           "gu_demonic_blood_skull_gu",
           "gu_blood_handprint_gu",
           "gu_blood_qi_gu",
           "gu_blood_sweat_gu",
-          "gu_blood_shadow_gu"
+          "gu_blood_shadow_gu",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -190,6 +208,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_blood_sea_ancestor",
+          "sys_gu_immortal",
           "gu_blood_deity",
           "char_giant_sun_immortal_venerable",
           "char_earth_extremity"

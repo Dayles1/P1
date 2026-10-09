@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 495,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     495,
@@ -34,6 +34,18 @@
     2176
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "holds_gu",
       "target": "gu_right_gu",
@@ -101,6 +113,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "loc_qian_kun_crystal_wall",
       "count": 3
     },
@@ -110,6 +126,10 @@
     },
     {
       "target": "loc_book_mountain",
+      "count": 2
+    },
+    {
+      "target": "sys_carefree_wisdom_heart_physique",
       "count": 2
     },
     {
@@ -133,11 +153,23 @@
       "count": 1
     },
     {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
       "target": "char_northern_dark_ice_soul",
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_yi_tian_mountain",
+      "count": 1
+    },
+    {
+      "target": "move_soul_replacement",
       "count": 1
     },
     {
@@ -161,11 +193,19 @@
       "count": 1
     },
     {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
       "target": "gu_humility_gu",
       "count": 1
     },
     {
       "target": "gu_pride_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_thirst_for_knowledge",
       "count": 1
     },
     {
@@ -181,6 +221,10 @@
       "count": 1
     },
     {
+      "target": "evt_legend_finding_wisdom",
+      "count": 1
+    },
+    {
       "target": "gu_learning_gu",
       "count": 1
     },
@@ -190,6 +234,10 @@
     },
     {
       "target": "gu_lie_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_betraying_ones_self",
       "count": 1
     },
     {
@@ -205,6 +253,10 @@
       "count": 1
     },
     {
+      "target": "evt_legend_finding_self",
+      "count": 1
+    },
+    {
       "target": "loc_mental_domain",
       "count": 1
     }
@@ -217,7 +269,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -238,7 +290,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -270,13 +322,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "physique-naming",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_southern_border",
+        "sys_gu_immortal",
         "loc_yi_tian_mountain",
+        "sys_carefree_wisdom_heart_physique",
         "char_blazing_glory_lightning_brilliance",
         "char_northern_dark_ice_soul"
       ]
@@ -312,7 +366,8 @@
       "mentions": [
         "loc_yellow_earth_great_world",
         "gu_humility_gu",
-        "gu_pride_gu"
+        "gu_pride_gu",
+        "sys_the_legends_of_ren_zu"
       ]
     },
     {
@@ -398,7 +453,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     }
   },
   "cultivation": {
@@ -409,7 +464,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": null,
     "alignment": null,

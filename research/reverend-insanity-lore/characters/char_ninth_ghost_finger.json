@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 903,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     903,
@@ -46,12 +46,28 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_eastern_sea",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_lu_tan_xin",
@@ -62,11 +78,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
       "target": "char_xie_shu_fang",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -90,7 +114,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -105,10 +129,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Working closest to Fang Yuan, he lowers his head and looks at his hands. His ten fingers are intact, but when he moves them rapidly only nine fingers can be seen in the silhouettes. The missing finger in that inheritance represents the “one in the Great Dao” that fled. His fingers dance like phantom spirits while he chants in an unknown language. Mortal Gu fly out and self-detonate, revealing hidden Gu. On average he is slightly slower than Fang Yuan at destroying those worms, though his wisdom path attainment is higher. Shark Demon’s ranking still places him below Xie Shu Fang. When Shark Demon introduced him, he said this guest cultivated wisdom path on the side, while Xie Shu Fang mainly cultivates wisdom path.",
@@ -117,12 +144,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "unique-inheritance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_mortal_gu",
         "char_xie_shu_fang"
       ]
     },
@@ -133,7 +161,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "unique-inheritance",
       "text_origin": "source_excerpt",
@@ -148,7 +176,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "unique-inheritance",
       "text_origin": "source_excerpt"
@@ -206,7 +234,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 903",
@@ -227,7 +255,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": "demonic path as of ch. 903",

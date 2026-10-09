@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 833,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     833
@@ -56,6 +56,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_five_virtues_sect",
       "count": 1
     }
@@ -78,7 +82,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -86,7 +90,8 @@
         "char_fang_yuan",
         "fac_five_virtues_sect",
         "reg_central_continent",
-        "char_zheng_shan_chuan"
+        "char_zheng_shan_chuan",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -96,7 +101,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"

@@ -23,13 +23,30 @@
   "first_appearance": {
     "chapter": 528,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     528
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "linked_inheritance",
+      "target": "inh_harmony_immortal_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "inh_harmony_immortal_inheritance",
+      "count": 3
+    },
     {
       "target": "char_hei_bai",
       "count": 1
@@ -63,7 +80,8 @@
         "char_hei_bai",
         "char_hei_cheng",
         "fac_liu_tribe",
-        "char_liu_wen_wu"
+        "char_liu_wen_wu",
+        "inh_harmony_immortal_inheritance"
       ]
     }
   ],

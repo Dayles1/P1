@@ -23,13 +23,17 @@
   "first_appearance": {
     "chapter": 1840,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1840
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "house_dragon_court",
+      "count": 2
+    },
     {
       "target": "char_duke_long",
       "count": 1
@@ -39,7 +43,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "house_wind_cloud_manor",
       "count": 1
     },
     {
@@ -52,6 +68,10 @@
     },
     {
       "target": "char_gu_liang",
+      "count": 1
+    },
+    {
+      "target": "move_dragonman_extermination",
       "count": 1
     }
   ],
@@ -79,7 +99,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_duke_long",
-        "char_wu_shuai"
+        "char_wu_shuai",
+        "house_wind_cloud_manor"
       ]
     },
     {
@@ -92,7 +113,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "After a hundred years, with dragonman Gu Immortal help, a rank seven Immortal Gu House is completed there. As creator, Wu Shuai names it Dragon Court. His father warns that human Gu Immortals will read the name as a rebellious sign toward Heavenly Court rather than a complement. Wu Shuai keeps the name.",
@@ -106,6 +130,8 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu_house",
+        "house_dragon_court",
         "fac_heavenly_court"
       ]
     }

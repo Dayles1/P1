@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1092,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1092,
@@ -34,6 +34,18 @@
     1199
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -53,11 +65,23 @@
       "count": 2
     },
     {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
       "target": "char_sixth_hair",
       "count": 1
     },
     {
       "target": "char_twelfth_hair",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -69,11 +93,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_super_gu_formation",
+      "count": 1
+    },
+    {
       "target": "char_chu_du",
       "count": 1
     },
     {
       "target": "loc_hei_fan_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -139,7 +175,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -156,10 +194,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "It is a wisdom path Gu worm that produces a special type of will called self will, and cleansing oneself with it blocks and prevents the influence of heaven’s will. Fang Yuan calls these the best weapon against heaven’s will, and judges the recipe incomplete, suspecting Shadow Sect holds a better version.",
@@ -168,7 +209,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-effect",
         "text_origin": "source_excerpt",
@@ -189,7 +230,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-in-the-immortal-aperture",
         "text_origin": "source_excerpt",
@@ -204,7 +245,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-against-heavens-will",
         "text_origin": "source_excerpt"
@@ -216,10 +257,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-against-heavens-will",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_formation"
+        ]
       }
     ]
   },
@@ -243,12 +287,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "recipe-and-supply",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_sixth_hair"
+          "char_sixth_hair",
+          "sys_gu_immortal"
         ]
       },
       {
@@ -258,7 +303,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "recipe-and-supply",
         "text_origin": "source_excerpt"
@@ -296,7 +341,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -313,7 +358,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "supply-to-an-ally",
         "text_origin": "source_excerpt",
@@ -328,7 +373,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "supply-to-an-ally",
         "text_origin": "source_excerpt",
@@ -343,12 +388,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rarity-and-demand",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_year_gu"
+          "gu_year_gu",
+          "sys_mortal_gu"
         ]
       }
     ]
@@ -357,7 +403,7 @@
     "Path": {
       "text": "Wisdom Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

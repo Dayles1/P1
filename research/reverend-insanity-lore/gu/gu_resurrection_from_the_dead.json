@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 757,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     757,
@@ -47,11 +47,27 @@
       "count": 2
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_zombie",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement",
+      "count": 1
+    },
+    {
       "target": "fac_zombie_alliance",
       "count": 1
     },
     {
       "target": "gu_lifespan_gu",
+      "count": 1
+    },
+    {
+      "target": "path_strength",
       "count": 1
     },
     {
@@ -64,6 +80,10 @@
     },
     {
       "target": "char_old_ancestor_xue_hu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -129,7 +149,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -159,11 +179,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-materials",
         "text_origin": "source_excerpt",
         "mentions": [
+          "path_strength",
           "gu_cauldron_strength_immortal_gu"
         ]
       },
@@ -174,11 +195,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-materials",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_refinement",
+          "sys_immortal_zombie",
           "fac_zombie_alliance"
         ]
       },
@@ -201,7 +224,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-rumors-and-refinement",
         "text_origin": "source_excerpt"
@@ -216,7 +239,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "rank-rumors-and-refinement",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "Yao Huang himself treats finishing the refinement as a way to possess a rank eight Immortal Gu and solve his lifespan problem, and later keeps focusing on that work instead of fighting Old Ancestor Xue Hu.",
@@ -225,7 +251,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-rumors-and-refinement",
         "text_origin": "source_excerpt",
@@ -240,7 +266,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-rumors-and-refinement",
         "text_origin": "source_excerpt",
@@ -255,7 +281,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-rumors-and-refinement",
         "text_origin": "source_excerpt",
@@ -275,12 +301,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "reg_northern_plains",
+          "sys_immortal_gu",
           "char_yao_huang",
           "char_yin_liu_gong"
         ],

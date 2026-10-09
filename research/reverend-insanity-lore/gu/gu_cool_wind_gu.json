@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1492,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1492,
@@ -47,6 +47,14 @@
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "sys_wild_gu",
+      "count": 1
+    },
+    {
+      "target": "move_unravel_dream",
+      "count": 1
     }
   ],
   "claims": [],
@@ -100,7 +108,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -157,7 +165,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -172,10 +180,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "capture",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_wild_gu"
+        ]
       },
       {
         "text": "Those cool wind Gu and other Gu he had gathered are gone afterward.",
@@ -184,7 +195,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "loss",
         "text_origin": "source_excerpt"

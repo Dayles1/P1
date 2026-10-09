@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1156,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1156,
@@ -53,7 +53,27 @@
       "count": 2
     },
     {
+      "target": "path_emotion",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
       "target": "char_shen_shang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     }
   ],
@@ -147,7 +167,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -163,10 +183,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "pair-and-path",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu",
+          "path_emotion",
+          "path_wisdom"
+        ]
       },
       {
         "text": "The grandson activates traveling son Gu when the hidden room oyster space is collapsing, and the Gu’s power sends him away. He reaches Ren Xiu Ping’s blessed land a few minutes later. At that time the sea area’s chaotic dao marks keep Gu Immortals from using space path Immortal Gu easily, so traveling normally is the safest way, while emotion path use is without danger because emotion path had not been created when that sea area formed.",
@@ -175,10 +200,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "return-to-the-mother-gu",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "Shen Shang groups traveling son Gu and doting mother Gu as examples of human emotion and virtue Gu among human path Gu worms. The same stretch states they were once regarded as emotion path Gu worms, but in essence were actually human path.",
@@ -192,7 +220,8 @@
         "section": "human-path-reading",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_shen_shang"
+          "char_shen_shang",
+          "sys_gu_worms"
         ]
       }
     ]

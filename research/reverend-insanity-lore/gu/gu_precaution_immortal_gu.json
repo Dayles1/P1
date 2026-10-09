@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1340,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1340,
@@ -50,7 +50,23 @@
   ],
   "co_mentions": [
     {
+      "target": "move_vajra_shell",
+      "count": 3
+    },
+    {
+      "target": "move_fixed_luck",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 2
+    },
+    {
+      "target": "sys_formation_path_mortal_gu",
+      "count": 2
+    },
+    {
+      "target": "house_myriad_year_flying_warship",
       "count": 2
     },
     {
@@ -58,11 +74,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_wu_clan",
       "count": 1
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_purple_mountain_true_monarch",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -140,7 +172,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -158,10 +190,13 @@
         ],
         "certainty": "inferred",
         "confidence": "C",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       }
     ]
   },
@@ -210,12 +245,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_formation_path_mortal_gu"
         ]
       },
       {
@@ -225,11 +261,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "fac_wu_clan",
           "char_wu_yi_hai"
         ]
@@ -241,7 +278,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "vajra-shell-timing",
         "text_origin": "source_excerpt"
@@ -253,10 +290,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "vajra-shell-timing",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       },
       {
         "text": "He also uses it as the core of a Gu formation modified from Purple Mountain True Monarch’s inheritance.",
@@ -265,11 +305,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "cores",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_formation",
           "char_purple_mountain_true_monarch"
         ]
       },
@@ -280,7 +321,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "cores",
         "text_origin": "source_excerpt"
@@ -295,7 +336,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "cores",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "house_myriad_year_flying_warship"
+        ]
       }
     ]
   },

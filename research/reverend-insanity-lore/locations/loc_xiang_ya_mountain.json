@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 247,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     247,
@@ -54,6 +54,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_bai_gu_mountain",
+      "count": 1
+    },
+    {
       "target": "char_jia_long",
       "count": 1
     },
@@ -68,6 +72,10 @@
     {
       "target": "loc_shuang_jiang_mountain",
       "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
     }
   ],
   "claims": [
@@ -78,7 +86,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -90,7 +98,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "white-feather-elephant-assault",
       "text_origin": "source_excerpt",
@@ -123,6 +131,7 @@
       "section": "leaving-the-region",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "loc_mu_bei_mountain"
       ]
     }

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2238,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_era_of_three_venerables"
   },
   "chapters_cited": [
     2238
@@ -31,7 +31,15 @@
   "relations": [],
   "co_mentions": [
     {
+      "target": "res_sunken_fish_scales",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -122,7 +130,8 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_immortal_gu"
         ]
       }
     ]

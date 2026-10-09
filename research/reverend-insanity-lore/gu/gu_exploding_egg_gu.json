@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 323,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     323,
@@ -59,7 +59,23 @@
       "count": 2
     },
     {
+      "target": "inh_king_bao_inheritance",
+      "count": 2
+    },
+    {
+      "target": "inh_king_xin_inheritance",
+      "count": 2
+    },
+    {
+      "target": "evt_arc_three_kings_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_shang_yi_fan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -68,6 +84,10 @@
     },
     {
       "target": "gu_dog_enslavement_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_three_kings_inheritance",
       "count": 1
     },
     {
@@ -83,11 +103,19 @@
       "count": 1
     },
     {
+      "target": "inh_king_quan_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_bai_ning_bing",
       "count": 1
     },
     {
       "target": "loc_hong_dan_village",
+      "count": 1
+    },
+    {
+      "target": "race_eggmen",
       "count": 1
     }
   ],
@@ -166,7 +194,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-market-rush",
         "text_origin": "source_excerpt"
@@ -178,7 +206,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-market-rush",
         "text_origin": "source_excerpt",
@@ -215,7 +243,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -233,7 +261,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "king-bao-inheritance-key",
         "text_origin": "source_excerpt",
@@ -250,10 +278,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "king-bao-inheritance-key",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master",
+          "inh_king_xin_inheritance",
+          "inh_king_bao_inheritance",
+          "inh_king_quan_inheritance"
+        ]
       },
       {
         "text": "After Fang Yuan and Bai Ning Bing enter King Bao Inheritance together, Fang Yuan can use only one exploding egg Gu. The inheritance’s aim in that round is to make him use exploding egg Gu to exterminate the red eggmen and advance. He lets the eggmen injure him instead, and judges that even using exploding egg Gu at that point could not change the situation.",
@@ -262,7 +296,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "early-rounds-inside-king-bao-inheritance",
         "text_origin": "source_excerpt",

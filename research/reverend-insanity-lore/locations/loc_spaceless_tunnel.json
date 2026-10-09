@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1247,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1247,
@@ -52,6 +52,22 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_canary_pavilion",
+      "count": 1
+    },
+    {
+      "target": "house_edge_link_camp",
+      "count": 1
+    },
+    {
+      "target": "house_wind_sweeping_building",
+      "count": 1
+    },
+    {
       "target": "reg_central_continent",
       "count": 1
     },
@@ -68,6 +84,10 @@
       "count": 1
     },
     {
+      "target": "house_luck_suppression_heavenly_palace",
+      "count": 1
+    },
+    {
       "target": "char_myriad_tidal_dragon",
       "count": 1
     },
@@ -76,11 +96,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_love_gu",
       "count": 1
     },
     {
       "target": "loc_snowy_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -102,6 +130,10 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_central_continent",
+        "sys_immortal_gu_house",
+        "house_canary_pavilion",
+        "house_edge_link_camp",
+        "house_wind_sweeping_building",
         "char_zhao_lian_yun",
         "char_yu_yi_ye_zi",
         "char_bu_zhen_zi"
@@ -119,6 +151,7 @@
       "section": "identified-from-the-heavenly-palace",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_luck_suppression_heavenly_palace",
         "char_immortal_zombie_giant_sun",
         "char_thieving_heaven_demon_venerable",
         "char_south_desolation_immortal",
@@ -138,6 +171,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_myriad_tidal_dragon",
+        "sys_gu_immortal",
         "char_spectral_soul_demon_venerable",
         "gu_love_gu",
         "loc_snowy_mountain"
@@ -165,7 +199,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "a-group-scattered-by-the-collapse",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_formation"
+      ]
     },
     {
       "text": "South Desolation Immortal knows only that the Central Continent Gu Immortals entered the tunnel, not that a mishap befell them inside it, so he expects to find most of their force rather than the small group that reaches Snowy Mountain blessed land.",

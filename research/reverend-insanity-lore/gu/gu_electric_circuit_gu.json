@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2019,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2019
@@ -47,7 +47,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
       "target": "gu_lightning_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_thieving_heaven_true_inheritance",
       "count": 1
     }
   ],
@@ -99,6 +111,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_thieving_heaven_demon_venerable",
+          "sys_the_legends_of_ren_zu",
           "gu_lightning_gu",
           "char_blazing_glory_lightning_brilliance"
         ]
@@ -154,7 +167,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_mo_li",
-          "char_peng_da"
+          "char_peng_da",
+          "sys_gu_worms",
+          "inh_thieving_heaven_true_inheritance"
         ]
       }
     ]

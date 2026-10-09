@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 533,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     533,
@@ -41,6 +41,18 @@
     1680
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_time",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_tai_bai_yun_sheng",
@@ -76,6 +88,10 @@
       "count": 2
     },
     {
+      "target": "path_time",
+      "count": 2
+    },
+    {
       "target": "char_gao_yang",
       "count": 2
     },
@@ -96,7 +112,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
+      "target": "move_three_head_six_arms",
       "count": 1
     },
     {
@@ -105,6 +141,18 @@
     },
     {
       "target": "gu_river_as_before_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_purple_mountain_true_monarch_time_inheritance",
       "count": 1
     },
     {
@@ -129,6 +177,14 @@
     },
     {
       "target": "fac_shadow_sect",
+      "count": 1
+    },
+    {
+      "target": "move_landscape_as_before",
+      "count": 1
+    },
+    {
+      "target": "move_man_as_before",
       "count": 1
     }
   ],
@@ -191,7 +247,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_time"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -229,7 +287,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "path_time",
+          "sys_healing_gu"
+        ]
       },
       {
         "text": "Later in the same battle Tai Bai restores both Zhu Zai and Gao Yang again after the three heads six arms killer move kills them.",
@@ -253,11 +315,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_eighty_eight_true_yang_building",
           "fac_gu_masters"
         ]
       },
@@ -271,7 +334,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "limits",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       },
       {
         "text": "It targets human bodies and has no effect on Gu worms, so revived Gu Masters do not recover lost worms.",
@@ -280,10 +346,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "limits",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ]
   },
@@ -359,10 +428,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "immortal-gu",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_vital_gu",
+          "sys_immortal_gu"
+        ]
       },
       {
         "text": "During his ascension he sends Man as Before into the tri-colored primordial qi as his vital Gu, then pours the theoretical recipe into the qi cocoon around it.",
@@ -371,10 +444,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "immortal-gu",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_man_as_before"
+        ]
       },
       {
         "text": "The cocoon breaks and a colorful butterfly appears; he names the result Immortal Gu Man as Before.",
@@ -383,7 +459,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "immortal-gu",
         "text_origin": "source_excerpt",
@@ -422,7 +498,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "immortal-gu-form",
         "text_origin": "source_excerpt"
@@ -471,6 +547,7 @@
         "section": "ownership-and-rank",
         "text_origin": "source_excerpt",
         "mentions": [
+          "move_landscape_as_before",
           "fac_shadow_sect",
           "char_purple_mountain_true_monarch"
         ]
@@ -493,7 +570,7 @@
     "Path": {
       "text": "Time Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

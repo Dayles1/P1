@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 209,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     209,
@@ -34,6 +34,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -174,6 +186,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
       "count": 1
     },
@@ -190,7 +206,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "loc_bai_gu_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_a_grade",
       "count": 1
     },
     {
@@ -228,11 +252,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "gu_charred_thunder_potato_gu"
       ]
     },
@@ -255,7 +280,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -267,7 +292,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -278,7 +303,8 @@
         "gu_charred_thunder_potato_mother_gu",
         "gu_hairy_leg_gu",
         "gu_jumping_grass_gu",
-        "gu_third_watch_gu"
+        "gu_third_watch_gu",
+        "sys_a_grade"
       ]
     }
   ],
@@ -324,7 +350,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 209",
@@ -351,7 +377,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": "demonic path as of ch. 209",

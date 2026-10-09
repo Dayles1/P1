@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1504,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1504,
@@ -33,6 +33,18 @@
     {
       "type": "in_region",
       "target": "reg_western_desert",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -65,6 +77,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_fang_di_chang",
       "count": 2
     },
@@ -89,11 +105,27 @@
       "count": 1
     },
     {
+      "target": "move_purple_thought_perception_starlight",
+      "count": 1
+    },
+    {
+      "target": "house_fallen_flower_hall",
+      "count": 1
+    },
+    {
       "target": "char_fang_an_lei",
       "count": 1
     },
     {
       "target": "char_fang_hua_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "path_cloud",
       "count": 1
     }
   ],
@@ -139,7 +171,8 @@
       "section": "fang-clan-headquarters",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_di_chang"
+        "char_fang_di_chang",
+        "sys_gu_immortal"
       ]
     }
   ],
@@ -184,7 +217,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Fang Clan as of ch. 1504",
@@ -211,7 +244,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": null,

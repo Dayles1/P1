@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1025,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1025,
@@ -69,6 +69,14 @@
     {
       "target": "gu_flying_smoke_gu",
       "count": 3
+    },
+    {
+      "target": "sys_fire_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
     },
     {
       "target": "gu_connecting_heaven_gu",
@@ -136,7 +144,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -212,13 +220,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_huo_kong_dong",
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_mortal_gu"
         ]
       },
       {
@@ -228,7 +237,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "borrow-and-discard",
         "text_origin": "source_excerpt",
@@ -243,7 +252,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "borrow-and-discard",
         "text_origin": "source_excerpt"

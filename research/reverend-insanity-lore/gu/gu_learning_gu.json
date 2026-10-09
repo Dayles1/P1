@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2163,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2163,
@@ -33,6 +33,18 @@
     2293
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_human",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fairy_yu_xiu",
@@ -50,6 +62,14 @@
     {
       "target": "char_fairy_yu_xiu",
       "count": 4
+    },
+    {
+      "target": "move_endless_learning",
+      "count": 4
+    },
+    {
+      "target": "path_human",
+      "count": 1
     },
     {
       "target": "gu_memory_gu",
@@ -80,6 +100,18 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "house_divine_emperor_city",
+      "count": 1
+    },
+    {
       "target": "loc_book_mountain",
       "count": 1
     },
@@ -96,11 +128,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
     {
       "target": "loc_primordial_domain",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_finding_wisdom",
       "count": 1
     },
     {
@@ -157,7 +197,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_human"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -186,7 +228,8 @@
         "mentions": [
           "loc_book_mountain",
           "loc_green_lotus_great_world",
-          "char_fairy_yu_xiu"
+          "char_fairy_yu_xiu",
+          "move_endless_learning"
         ]
       },
       {
@@ -259,7 +302,10 @@
         "mentions": [
           "char_shen_shang",
           "char_fang_di_chang",
-          "char_genesis_lotus_immortal_venerable"
+          "sys_immortal_gu",
+          "sys_the_legends_of_ren_zu",
+          "char_genesis_lotus_immortal_venerable",
+          "house_divine_emperor_city"
         ]
       },
       {
@@ -274,6 +320,7 @@
         "section": "fang-yuan-names-it",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_immortal",
           "char_fang_yuan",
           "fac_heavenly_court",
           "char_lu_wei_yin",
@@ -317,7 +364,7 @@
     "Path": {
       "text": "Human Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

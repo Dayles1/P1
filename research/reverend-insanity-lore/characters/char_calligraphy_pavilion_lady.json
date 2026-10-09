@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1833,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1833,
@@ -45,12 +45,44 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_gu_house",
+      "target": "house_calligraphy_pavilion",
+      "role": "owner",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
+      "target": "house_calligraphy_pavilion",
+      "count": 4
+    },
+    {
       "target": "reg_central_continent",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_shu_jiu_ling",
@@ -77,11 +109,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_song_tao_zi",
       "count": 1
     },
     {
+      "target": "house_dragon_court",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "inh_wu_shuai_inheritance",
       "count": 1
     },
     {
@@ -105,7 +153,8 @@
         "reg_central_continent",
         "char_shu_jiu_ling",
         "char_fan_ji",
-        "loc_black_heaven_temple"
+        "loc_black_heaven_temple",
+        "house_calligraphy_pavilion"
       ]
     },
     {
@@ -120,7 +169,8 @@
       "section": "immortal-ascension-aid",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_wu_shuai"
+        "char_wu_shuai",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -181,6 +231,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_immortal_gu_house",
         "loc_qian_kun_crystal_wall"
       ]
     }
@@ -225,7 +276,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -247,7 +298,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

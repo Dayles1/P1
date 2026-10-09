@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1024,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1024,
@@ -151,7 +151,19 @@
       "count": 1
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_yi_tian_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 1
     },
     {
@@ -167,7 +179,15 @@
       "count": 1
     },
     {
+      "target": "sys_year_essence_pool",
+      "count": 1
+    },
+    {
       "target": "fac_southern_alliance",
+      "count": 1
+    },
+    {
+      "target": "house_beacon_tower",
       "count": 1
     },
     {
@@ -195,7 +215,23 @@
       "count": 1
     },
     {
+      "target": "move_congregated_human_talent",
+      "count": 1
+    },
+    {
+      "target": "inh_fire_path_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "res_rank_nine_wind_path_immortal_material",
+      "count": 1
+    },
+    {
       "target": "char_ke_xin_hong",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_dao_veins_famous_mountains",
       "count": 1
     }
   ],
@@ -207,13 +243,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-yi-tian-mountain",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_huo_kong_dong",
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_mortal_gu"
       ]
     },
     {
@@ -223,7 +260,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "prior-life-memory",
       "text_origin": "source_excerpt",
@@ -238,14 +275,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "founding-and-population-strategy",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_human_smoke_mountain",
         "reg_southern_border",
-        "char_chai_fu"
+        "char_chai_fu",
+        "sys_gu_immortal",
+        "sys_the_legends_of_ren_zu"
       ]
     },
     {
@@ -255,7 +294,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "founding-and-population-strategy",
       "text_origin": "source_excerpt",
@@ -270,7 +309,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "founding-and-population-strategy",
       "text_origin": "source_excerpt",

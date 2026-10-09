@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 335,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     335,
@@ -72,6 +72,10 @@
       "count": 2
     },
     {
+      "target": "inh_hu_immortal_inheritance",
+      "count": 2
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 2
     },
@@ -82,6 +86,10 @@
     {
       "target": "char_fairy_cang_yu",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     },
     {
       "target": "fac_heavenly_lotus_sect",
@@ -121,6 +129,10 @@
     },
     {
       "target": "gu_injury_wind_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_hu_immortal_blessed_land",
       "count": 1
     },
     {
@@ -164,6 +176,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_flying_sword_letter_gu",
       "count": 1
     },
@@ -180,11 +196,27 @@
       "count": 1
     },
     {
+      "target": "sys_earth_qi",
+      "count": 1
+    },
+    {
+      "target": "move_micro_sense",
+      "count": 1
+    },
+    {
       "target": "gu_expand_space_immortal_gu",
       "count": 1
     },
     {
+      "target": "move_force_intrusion",
+      "count": 1
+    },
+    {
       "target": "char_vicious_lightning_fiend",
+      "count": 1
+    },
+    {
+      "target": "move_force_closure",
       "count": 1
     },
     {
@@ -208,12 +240,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fairy_bai_hu"
+        "char_fairy_bai_hu",
+        "inh_hu_immortal_inheritance",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -223,7 +257,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "where-it-sits",
       "text_origin": "source_excerpt",
@@ -238,7 +272,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "where-it-sits",
       "text_origin": "source_excerpt"
@@ -250,7 +284,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "where-it-sits",
       "text_origin": "source_excerpt"
@@ -262,7 +296,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -274,7 +308,7 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -286,7 +320,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "land-of-inheritances",
       "text_origin": "source_excerpt",
@@ -301,7 +335,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "land-of-inheritances",
       "text_origin": "source_excerpt"
@@ -313,7 +347,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "land-of-inheritances",
       "text_origin": "source_excerpt",
@@ -328,7 +362,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "land-of-inheritances",
       "text_origin": "source_excerpt"
@@ -340,7 +374,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "land-of-inheritances",
       "text_origin": "source_excerpt",
@@ -367,7 +401,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "stairs-and-the-heavenly-court",
       "text_origin": "source_excerpt"
@@ -379,7 +413,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "stairs-and-the-heavenly-court",
       "text_origin": "source_excerpt"
@@ -391,7 +425,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "stairs-and-the-heavenly-court",
       "text_origin": "source_excerpt",
@@ -407,12 +441,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "jian-yi-sheng-on-the-mountain",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_jian_yi_sheng"
+        "char_jian_yi_sheng",
+        "sys_gu_master"
       ]
     },
     {
@@ -422,7 +457,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sect-visits-and-exits",
       "text_origin": "source_excerpt",
@@ -438,7 +473,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sect-visits-and-exits",
       "text_origin": "source_excerpt"
@@ -450,7 +485,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sect-visits-and-exits",
       "text_origin": "source_excerpt",
@@ -465,7 +500,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sect-visits-and-exits",
       "text_origin": "source_excerpt"

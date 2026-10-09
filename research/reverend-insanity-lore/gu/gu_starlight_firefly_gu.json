@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 462,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     462,
@@ -58,6 +58,10 @@
     },
     {
       "target": "loc_treasure_yellow_heaven",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -166,6 +170,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_hu_immortal_blessed_land",
+          "sys_immortal_gu",
           "gu_connecting_heaven_gu"
         ]
       }

@@ -23,13 +23,25 @@
   "first_appearance": {
     "chapter": 2284,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2284,
     2293
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_human",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_gu_ting",
@@ -49,6 +61,10 @@
       "count": 3
     },
     {
+      "target": "path_human",
+      "count": 1
+    },
+    {
       "target": "gu_shadow_puppet_gu",
       "count": 2
     },
@@ -61,7 +77,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -94,7 +126,9 @@
     "ranks": [],
     "rank_type": "unknown",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_human"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -145,7 +179,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "immortal-refinement",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       }
     ]
   },
@@ -188,6 +225,9 @@
           "char_gu_ting",
           "char_star_constellation_immortal_venerable",
           "fac_heavenly_court",
+          "sys_gu_recipe",
+          "sys_vital_gu",
+          "sys_gu_worms",
           "char_sun_yuan_hua",
           "gu_shadow_puppet_gu"
         ]
@@ -198,7 +238,7 @@
     "Path": {
       "text": "Human Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

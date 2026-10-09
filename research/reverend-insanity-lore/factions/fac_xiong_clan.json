@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     1,
@@ -170,6 +170,10 @@
       "count": 1
     },
     {
+      "target": "sys_a_grade",
+      "count": 1
+    },
+    {
       "target": "fac_bai_clan",
       "count": 1
     },
@@ -242,11 +246,23 @@
       "count": 1
     },
     {
+      "target": "sys_battle_merits",
+      "count": 1
+    },
+    {
       "target": "gu_plunder_gu",
       "count": 1
     },
     {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_first_battle",
+      "count": 1
+    },
+    {
       "target": "char_lightning_lycan",
+      "count": 1
+    },
+    {
+      "target": "sys_wolf_tide",
       "count": 1
     },
     {
@@ -255,6 +271,10 @@
     },
     {
       "target": "char_bai_zhong_shui",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_third_battle",
       "count": 1
     },
     {
@@ -278,7 +298,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -293,7 +313,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "where-it-sits",
       "text_origin": "source_excerpt",
@@ -323,7 +343,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "where-it-sits",
       "text_origin": "source_excerpt"
@@ -335,7 +355,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "where-it-sits",
       "text_origin": "source_excerpt"
@@ -347,7 +367,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "where-it-sits",
       "text_origin": "source_excerpt",
@@ -365,7 +385,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "where-it-sits",
       "text_origin": "source_excerpt"
@@ -389,12 +409,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "place-among-the-three-clans",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_bai_clan"
+        "fac_bai_clan",
+        "sys_a_grade"
       ]
     },
     {
@@ -431,7 +452,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "place-among-the-three-clans",
       "text_origin": "source_excerpt",
@@ -448,7 +469,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-clansmen-around-the-wolf-tide",
       "text_origin": "source_excerpt",
@@ -494,7 +515,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-clansmen-around-the-wolf-tide",
       "text_origin": "source_excerpt",
@@ -509,7 +530,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-clansmen-around-the-wolf-tide",
       "text_origin": "source_excerpt",
@@ -525,7 +546,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-clansmen-around-the-wolf-tide",
       "text_origin": "source_excerpt"
@@ -537,7 +558,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-clansmen-around-the-wolf-tide",
       "text_origin": "source_excerpt"
@@ -549,7 +570,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-clansmen-around-the-wolf-tide",
       "text_origin": "source_excerpt"
@@ -573,7 +594,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wolf-tide-and-tournament",
       "text_origin": "source_excerpt"
@@ -609,7 +630,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "end-of-the-qing-mao-stretch",
       "text_origin": "source_excerpt",

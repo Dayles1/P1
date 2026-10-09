@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 192,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     192,
@@ -73,6 +73,10 @@
     },
     {
       "target": "char_bai_ning_bing",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -152,7 +156,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "name-form-and-limit",
         "text_origin": "source_excerpt",
@@ -181,7 +185,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_bai_ning_bing",
-          "char_green"
+          "char_green",
+          "sys_gu_master"
         ]
       }
     ]

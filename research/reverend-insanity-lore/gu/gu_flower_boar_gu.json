@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 62,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     62,
@@ -60,6 +60,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_black_and_white_boar_gu",
       "count": 1
     },
@@ -69,6 +73,10 @@
     },
     {
       "target": "loc_qing_mao_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_defensive_gu",
       "count": 1
     },
     {
@@ -85,6 +93,14 @@
     },
     {
       "target": "res_grand_white_moon_gold",
+      "count": 1
+    },
+    {
+      "target": "res_skull_stones",
+      "count": 1
+    },
+    {
+      "target": "res_young_autumn_grass",
       "count": 1
     }
   ],
@@ -161,10 +177,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "Flower Boar Gu sits in the Boar Gu series with Pink Boar Gu, Black Boar Gu, and White Boar Gu. The storage room stock is all rank one.",
@@ -173,7 +192,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt",
@@ -189,7 +208,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -207,7 +226,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -250,7 +269,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-material",
         "text_origin": "source_excerpt"
@@ -267,7 +286,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -306,7 +325,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "habitat-and-early-use",
         "text_origin": "source_excerpt",
@@ -326,7 +345,8 @@
         "section": "habitat-and-early-use",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_zheng"
+          "char_fang_zheng",
+          "sys_defensive_gu"
         ]
       }
     ]
@@ -341,7 +361,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

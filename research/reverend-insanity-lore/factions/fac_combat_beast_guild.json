@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1824,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1824,
@@ -117,6 +117,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "loc_beast_calamity_grotto_heaven",
       "count": 1
     },
@@ -136,7 +144,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "Inside Beast Calamity grotto-heaven, the Combat Beast Guild is the largest and sole super force. The lowest ranking membership is Combat Beast Disciple. Above that are Combat Beast Envoys, the guild’s main forces. Above Envoy is Combat Beast Warrior, which needs Gu Immortal cultivation and is mostly held by city lords. Above Warrior is the one and only Combat Beast King. The structure is simple and crude. Zhan Bu Du plans to join it to receive missions and raise strength rapidly.",
@@ -151,6 +162,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_beast_calamity_grotto_heaven",
+        "sys_gu_immortal",
         "char_combat_beast_king",
         "char_zhan_bu_du"
       ]

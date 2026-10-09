@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1152,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1152,
@@ -60,11 +60,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_hei_fan_grotto_heaven",
       "count": 1
     },
     {
       "target": "res_lightning_water",
+      "count": 1
+    },
+    {
+      "target": "path_lightning",
       "count": 1
     },
     {
@@ -80,12 +92,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_gu_immortal",
+        "sys_mortal_gu",
         "char_liu_qing_yu"
       ]
     },
@@ -96,7 +110,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -116,7 +130,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tallest-among-named-mountains",
       "text_origin": "source_excerpt"

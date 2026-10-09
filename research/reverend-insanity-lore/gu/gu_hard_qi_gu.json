@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 315,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     315,
@@ -65,6 +65,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -73,7 +77,15 @@
       "count": 1
     },
     {
+      "target": "path_qi",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "move_djinn_transformation",
       "count": 1
     }
   ],
@@ -133,6 +145,8 @@
           "char_bai_ning_bing",
           "gu_vitality_gu",
           "gu_atmosphere_gu",
+          "sys_gu_worms",
+          "path_qi",
           "fac_gu_masters"
         ]
       }

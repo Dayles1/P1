@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 897,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     897,
@@ -62,6 +62,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_fixed_immortal_travel",
       "count": 1
     },
@@ -86,7 +94,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -104,7 +112,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -116,12 +124,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tree-land-spirit-and-ownership-condition",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_genesis_lotus_immortal_venerable"
+        "sys_gu_immortal",
+        "char_genesis_lotus_immortal_venerable",
+        "sys_mortal_gu"
       ]
     },
     {
@@ -131,7 +141,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "claiming-among-plans",
       "text_origin": "source_excerpt",
@@ -146,7 +156,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "placement-and-entry",
       "text_origin": "source_excerpt",

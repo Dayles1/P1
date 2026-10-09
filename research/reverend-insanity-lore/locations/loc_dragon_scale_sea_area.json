@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1313,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1313,
@@ -33,6 +33,18 @@
   "co_mentions": [
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "inh_hei_fan_true_inheritance",
       "count": 1
     },
     {
@@ -78,7 +90,10 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
-        "reg_eastern_sea"
+        "reg_eastern_sea",
+        "sys_gu_immortal",
+        "sys_gu_formation",
+        "inh_hei_fan_true_inheritance"
       ]
     },
     {

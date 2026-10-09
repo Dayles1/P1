@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1333,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1333,
@@ -69,6 +69,18 @@
       "count": 1
     },
     {
+      "target": "sys_dark_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "reg_eastern_sea",
       "count": 1
     },
@@ -101,7 +113,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -117,7 +129,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -134,14 +146,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sects-temporary-headquarters",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
         "reg_northern_plains",
-        "reg_eastern_sea"
+        "reg_eastern_sea",
+        "sys_gu_formation",
+        "sys_mortal_gu"
       ]
     }
   ],

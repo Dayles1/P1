@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 193,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     193,
@@ -98,6 +98,10 @@
     {
       "target": "gu_yin_yang_rotation_gu",
       "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
     }
   ],
   "claims": [],
@@ -155,12 +159,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_pitch_black_gu"
+          "gu_pitch_black_gu",
+          "sys_gu_master"
         ]
       },
       {
@@ -184,7 +189,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -208,7 +213,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "death-on-qing-mao-mountain",
         "text_origin": "source_excerpt"
@@ -220,7 +225,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "death-on-qing-mao-mountain",
         "text_origin": "source_excerpt",
@@ -235,7 +240,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "death-on-qing-mao-mountain",
         "text_origin": "source_excerpt",
@@ -284,7 +289,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -302,7 +307,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "on-qing-mao-mountain",
         "text_origin": "source_excerpt",
@@ -318,7 +323,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "on-qing-mao-mountain",
         "text_origin": "source_excerpt",
@@ -333,7 +338,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "on-qing-mao-mountain",
         "text_origin": "source_excerpt",
@@ -348,7 +353,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "on-qing-mao-mountain",
         "text_origin": "source_excerpt"

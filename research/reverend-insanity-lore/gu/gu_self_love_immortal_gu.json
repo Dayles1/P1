@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1403,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1403,
@@ -31,6 +31,18 @@
     1407
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_sixth_hair",
@@ -66,8 +78,16 @@
       "count": 3
     },
     {
+      "target": "move_self_cleansing",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "path_wisdom",
+      "count": 1
     },
     {
       "target": "char_lang_ya_land_spirit",
@@ -75,6 +95,10 @@
     },
     {
       "target": "char_purple_mountain_true_monarch",
+      "count": 1
+    },
+    {
+      "target": "sys_super_gu_formation",
       "count": 1
     },
     {
@@ -86,6 +110,22 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_self_cleansing_immortal_formation",
+      "count": 1
+    },
+    {
       "target": "gu_formation_flag_immortal_gu",
       "count": 1
     },
@@ -94,11 +134,27 @@
       "count": 1
     },
     {
+      "target": "move_myriad_self",
+      "count": 1
+    },
+    {
+      "target": "move_collective_thinking",
+      "count": 1
+    },
+    {
+      "target": "move_ghost_official_garment",
+      "count": 1
+    },
+    {
       "target": "gu_snack_immortal_gu",
       "count": 1
     },
     {
       "target": "gu_wood_sprout_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_light_fungus_radiance",
       "count": 1
     },
     {
@@ -145,7 +201,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -162,7 +220,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -194,10 +252,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-result",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       }
     ]
   },
@@ -241,13 +302,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_lang_ya_blessed_land",
           "char_lang_ya_land_spirit",
+          "sys_super_gu_formation",
           "char_sixth_hair",
           "char_fang_yuan",
           "res_fan_door_wind",
@@ -261,10 +323,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-core",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu",
+          "sys_gu_worms"
+        ]
       }
     ]
   },
@@ -272,7 +338,7 @@
     "Path": {
       "text": "Wisdom Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

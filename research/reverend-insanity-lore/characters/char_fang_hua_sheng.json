@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1519,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1519,
@@ -47,12 +47,36 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_fang_clan",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
       "recorded_chapter": 1519,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_mirror_flower",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2258,
       "count": null,
       "confidence": "B",
       "source_id": "src_sagaofgu",
@@ -65,8 +89,16 @@
       "count": 3
     },
     {
+      "target": "move_mirror_flower",
+      "count": 3
+    },
+    {
       "target": "reg_western_desert",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_fang_an_lei",
@@ -74,6 +106,10 @@
     },
     {
       "target": "char_fang_chen",
+      "count": 2
+    },
+    {
+      "target": "house_chicken_dog_coop",
       "count": 2
     },
     {
@@ -99,6 +135,30 @@
     {
       "target": "char_chen_yi",
       "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "house_divine_bean_palace",
+      "count": 1
+    },
+    {
+      "target": "house_fallen_flower_hall",
+      "count": 1
+    },
+    {
+      "target": "house_inquiry_dock",
+      "count": 1
+    },
+    {
+      "target": "move_fleeting_bloom",
+      "count": 1
+    },
+    {
+      "target": "move_everlasting_sorrow",
+      "count": 1
     }
   ],
   "claims": [
@@ -115,6 +175,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_an_lei",
+        "house_chicken_dog_coop",
         "char_fang_yun",
         "char_fang_leng",
         "char_fang_yuan",
@@ -145,7 +206,9 @@
       "section": "negotiation-and-command",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_di_chang"
+        "house_fallen_flower_hall",
+        "char_fang_di_chang",
+        "house_inquiry_dock"
       ]
     },
     {
@@ -174,7 +237,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "negotiation-and-command",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal",
+        "house_divine_bean_palace"
+      ]
     },
     {
       "text": "He later feels envy at Fang Yuan’s gains and leads Fang clan attacks again after Chen Yi shows rank eight strength.",
@@ -237,7 +304,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Fang Clan as of ch. 1519",
@@ -264,7 +331,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": null,

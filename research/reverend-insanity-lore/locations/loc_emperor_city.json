@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1707,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1707,
@@ -49,11 +49,23 @@
       "count": 4
     },
     {
+      "target": "evt_arc_central_continent_chaos",
+      "count": 1
+    },
+    {
       "target": "char_bai_ning_bing",
       "count": 1
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_path_convention",
       "count": 1
     },
     {
@@ -69,7 +81,19 @@
       "count": 1
     },
     {
+      "target": "house_frost_dragon_manor",
+      "count": 1
+    },
+    {
+      "target": "house_thirty_three_heavenly_halls",
+      "count": 1
+    },
+    {
       "target": "gu_fate_gu",
+      "count": 1
+    },
+    {
+      "target": "move_peoples_accusation",
       "count": 1
     },
     {
@@ -77,7 +101,31 @@
       "count": 1
     },
     {
+      "target": "house_canary_pavilion",
+      "count": 1
+    },
+    {
+      "target": "house_yue_yang_palace",
+      "count": 1
+    },
+    {
+      "target": "move_broken_homes_and_dead_family",
+      "count": 1
+    },
+    {
+      "target": "move_heroes_among_people",
+      "count": 1
+    },
+    {
+      "target": "move_hope_of_the_people",
+      "count": 1
+    },
+    {
       "target": "char_ye_fan",
+      "count": 1
+    },
+    {
+      "target": "house_wind_sweeping_building",
       "count": 1
     },
     {
@@ -89,6 +137,26 @@
       "count": 1
     },
     {
+      "target": "evt_arc_fate_destruction",
+      "count": 1
+    },
+    {
+      "target": "house_edge_link_camp",
+      "count": 1
+    },
+    {
+      "target": "house_sun_and_moon_temple",
+      "count": 1
+    },
+    {
+      "target": "move_contented_lifestyle",
+      "count": 1
+    },
+    {
+      "target": "house_divine_emperor_palace",
+      "count": 1
+    },
+    {
       "target": "gu_hero_gu",
       "count": 1
     },
@@ -97,7 +165,19 @@
       "count": 1
     },
     {
+      "target": "inh_genesis_lotus_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_chen_da_jiang",
+      "count": 1
+    },
+    {
+      "target": "sys_heavenly_dao",
+      "count": 1
+    },
+    {
+      "target": "house_divine_emperor_city",
       "count": 1
     }
   ],
@@ -115,6 +195,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_central_continent",
+        "sys_refinement_path_convention",
+        "sys_immortal_gu_house",
         "fac_gu_masters",
         "reg_western_desert"
       ]

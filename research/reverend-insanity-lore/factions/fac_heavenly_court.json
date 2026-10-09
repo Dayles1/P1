@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 407,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     407,
@@ -813,6 +813,10 @@
       "count": 3
     },
     {
+      "target": "house_heaven_overseeing_tower",
+      "count": 3
+    },
+    {
       "target": "char_bai_cang_shui",
       "count": 3
     },
@@ -1009,7 +1013,47 @@
       "count": 3
     },
     {
+      "target": "house_eternal_yacht",
+      "count": 3
+    },
+    {
+      "target": "house_star_constellation_chessboard",
+      "count": 2
+    },
+    {
+      "target": "house_soul_suppression_hall",
+      "count": 2
+    },
+    {
+      "target": "house_present_and_past_pavilion",
+      "count": 2
+    },
+    {
+      "target": "house_shark_flow_lever",
+      "count": 2
+    },
+    {
+      "target": "house_three_autumn_yellow_crane_platform",
+      "count": 2
+    },
+    {
+      "target": "house_central_heaven_gate",
+      "count": 2
+    },
+    {
+      "target": "house_moment_stage",
+      "count": 2
+    },
+    {
+      "target": "house_demon_judgment_board",
+      "count": 2
+    },
+    {
       "target": "gu_blood_relation_gu",
+      "count": 2
+    },
+    {
+      "target": "evt_fight_fate_war",
       "count": 2
     },
     {
@@ -1049,12 +1093,36 @@
       "count": 2
     },
     {
+      "target": "evt_arc_heavenly_court_pursuit",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 2
+    },
+    {
+      "target": "sys_heavenly_dao",
       "count": 2
     },
     {
       "target": "char_giant_sun_immortal_venerable",
       "count": 2
+    },
+    {
+      "target": "evt_arc_heavenly_court_final_war",
+      "count": 2
+    },
+    {
+      "target": "move_triple_qi_retraction",
+      "count": 2
+    },
+    {
+      "target": "house_divine_emperor_city",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     },
     {
       "target": "gu_spring_autumn_cicada",
@@ -1070,6 +1138,10 @@
     },
     {
       "target": "char_chu_du",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_essence_stone",
       "count": 1
     },
     {
@@ -1124,6 +1196,7 @@
       "section": "early-weight",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "reg_southern_border",
         "loc_lang_ya_blessed_land"
       ]
@@ -1135,7 +1208,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "early-weight",
       "text_origin": "source_excerpt",
@@ -1150,10 +1223,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pursuit-titles-and-leadership",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "evt_arc_heavenly_court_pursuit"
+      ]
     },
     {
       "text": "Seventeen chapters later a title consists of nothing but the Court’s own name and an exclamation mark.",
@@ -1162,7 +1238,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pursuit-titles-and-leadership",
       "text_origin": "source_excerpt"
@@ -1174,7 +1250,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pursuit-titles-and-leadership",
       "text_origin": "source_excerpt"
@@ -1213,7 +1289,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "legacy-after-her-death",
       "text_origin": "source_excerpt"
@@ -1225,7 +1301,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "restoring-fate-gu",
       "text_origin": "source_excerpt",
@@ -1241,7 +1317,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reach-across-the-regions",
       "text_origin": "source_excerpt"
@@ -1253,7 +1329,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "a-merchants-true-master",
       "text_origin": "source_excerpt",
@@ -1268,7 +1344,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "entry-and-creed",
       "text_origin": "source_excerpt"
@@ -1280,11 +1356,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "traitor-exposed",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_heaven_overseeing_tower",
         "char_heaven_overseeing_tower_lord",
         "char_bi_chen_tian",
         "char_lian_jiu_sheng",
@@ -1299,7 +1376,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sleeping-rank-eights",
       "text_origin": "source_excerpt"
@@ -1311,7 +1388,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-eight-leadership",
       "text_origin": "source_excerpt",
@@ -1326,7 +1403,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-eight-leadership",
       "text_origin": "source_excerpt",
@@ -1341,7 +1418,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "defeat-in-northern-plains",
       "text_origin": "source_excerpt",
@@ -1359,7 +1436,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "court-as-actor",
       "text_origin": "source_excerpt"
@@ -1371,7 +1448,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "court-as-actor",
       "text_origin": "source_excerpt"
@@ -1383,7 +1460,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "court-as-actor",
       "text_origin": "source_excerpt"
@@ -1419,7 +1496,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "star-constellation-heavens-wills-guidance",
       "text_origin": "source_excerpt",
@@ -1475,7 +1552,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "founding-and-later-arrangements",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_heavenly_dao"
+      ]
     },
     {
       "text": "The Court is also under pressure by this point. Chapter 1707 is titled “Heavenly Court’s Crisis”.",
@@ -1545,7 +1625,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "the-final-war",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "evt_arc_heavenly_court_final_war"
+      ]
     },
     {
       "text": "Its resolve also carries a chapter title.",

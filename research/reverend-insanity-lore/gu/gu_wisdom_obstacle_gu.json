@@ -23,13 +23,25 @@
   "first_appearance": {
     "chapter": 1801,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1801,
     1802
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_wan_liang_han",
@@ -65,11 +77,23 @@
       "count": 2
     },
     {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
       "target": "char_wan_xiao",
       "count": 1
     },
     {
       "target": "fac_wan_clan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -111,7 +135,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -202,7 +228,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-spoils",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       },
       {
         "text": "Activating it can instantly form obstacles in a large range around the Gu Immortal, at a cost of immortal essence and a large amount of will. Many killer moves use it as the core. One such move sends the obstacles into the enemy’s mind so thoughts have trouble colliding and thinking becomes difficult. Fang Yuan treats Immortal Gu like Wisdom Obstacle as only appetizers beside his larger plan after the battle.",
@@ -214,7 +243,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-spoils",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       }
     ]
   },
@@ -222,7 +254,7 @@
     "Path": {
       "text": "Wisdom Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

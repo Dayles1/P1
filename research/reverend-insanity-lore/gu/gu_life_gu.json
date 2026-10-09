@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 384,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     384,
@@ -58,6 +58,10 @@
     },
     {
       "target": "gu_wisdom_gu",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
       "count": 1
     },
     {
@@ -122,7 +126,8 @@
         "section": "appearance",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_deer_shaped_life_gu"
+          "gu_deer_shaped_life_gu",
+          "race_humans"
         ]
       }
     ],

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 225,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     228
@@ -68,6 +68,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_flesh_bone_gu",
       "count": 1
     },
@@ -81,6 +85,10 @@
     },
     {
       "target": "gu_earth_communication_ear_grass",
+      "count": 1
+    },
+    {
+      "target": "inh_white_bone_inheritance",
       "count": 1
     }
   ],
@@ -126,7 +134,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "path-and-rank",
         "text_origin": "source_excerpt"
@@ -158,10 +166,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "healing-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Ear cartilage damage is outside its reach. Fang Yuan’s shattered right ear after the loss of earth hearing ear grass is an injury meat bone Gu cannot heal.",
@@ -170,7 +181,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "healing-use",
         "text_origin": "source_excerpt"
@@ -231,7 +242,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

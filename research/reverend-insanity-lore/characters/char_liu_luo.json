@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1209,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_new_blessed_land_crazed_demon"
   },
   "chapters_cited": [
     1209,
@@ -32,8 +32,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_wood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -62,6 +86,14 @@
       "count": 3
     },
     {
+      "target": "path_wood",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -79,6 +111,14 @@
     },
     {
       "target": "char_liu_yong",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -118,6 +158,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "move_dark_capital_strength_tiger",
+      "count": 1
+    },
+    {
       "target": "fac_huang_jin_bloodline",
       "count": 1
     }
@@ -130,12 +178,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_formation",
         "char_fang_yuan",
+        "sys_gu_worms",
         "char_liu_chang"
       ]
     },
@@ -146,7 +196,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -163,6 +213,7 @@
       "section": "rank-and-temperament",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_yin_wu_que",
         "fac_liu_tribe",
         "char_hei_lou_lan"
@@ -221,7 +272,7 @@
     "Paths": {
       "text": "Wood path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Northern Plains",
@@ -231,7 +282,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Liu Tribe as of ch. 1209",
@@ -258,12 +309,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_wood"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

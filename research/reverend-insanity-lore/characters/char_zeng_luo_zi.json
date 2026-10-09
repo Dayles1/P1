@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1649,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1649,
@@ -48,9 +48,25 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "reg_eastern_sea",
       "count": 1
@@ -68,6 +84,14 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_merit_obelisk",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -80,7 +104,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_dragon_whale_paradise",
+      "count": 1
+    },
+    {
+      "target": "move_aerial_sound_blades",
       "count": 1
     },
     {
@@ -141,7 +173,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "merit-obelisk-missions",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_merit_obelisk"
+      ]
     },
     {
       "text": "His information path methods cannot read the rank eight Immortal Gu House, so mission choice is left to judgment.",
@@ -153,7 +188,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "merit-obelisk-missions",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "During Shen Cong Sheng’s pursuit he moves like a white ghost in the sea and races Shen Qi in speed. An aerial sound blade slits his throat in the ensuing fight, and his head falls, but that death is later shown to be inside an illusion: he wakes on a beach with head attached.",
@@ -183,7 +221,8 @@
       "section": "illusion-trial-survival",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_dragon_whale_paradise"
+        "loc_dragon_whale_paradise",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -248,7 +287,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -270,7 +309,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

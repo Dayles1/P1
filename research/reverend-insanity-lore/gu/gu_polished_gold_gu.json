@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1155,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1155,
@@ -47,6 +47,10 @@
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
     },
     {
       "target": "fac_gu_masters",
@@ -173,7 +177,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_turbulent_flow",
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_gu_worms"
         ]
       },
       {

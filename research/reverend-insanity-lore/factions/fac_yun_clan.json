@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 375,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     375,
@@ -77,6 +77,10 @@
     {
       "target": "char_fang_yuan",
       "count": 1
+    },
+    {
+      "target": "sys_righteous_path",
+      "count": 1
     }
   ],
   "claims": [
@@ -97,7 +101,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-entrance-and-standing",
       "text_origin": "source_excerpt",
@@ -112,14 +116,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-entrance-and-standing",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_san_cha_mountain",
         "char_fang_yuan",
-        "char_bai_ning_bing"
+        "char_bai_ning_bing",
+        "sys_righteous_path"
       ]
     },
     {
@@ -149,7 +154,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inside-the-inheritance",
       "text_origin": "source_excerpt"
@@ -161,7 +166,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inside-the-inheritance",
       "text_origin": "source_excerpt"

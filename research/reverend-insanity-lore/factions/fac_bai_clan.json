@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     1,
@@ -149,6 +149,10 @@
       "count": 2
     },
     {
+      "target": "sys_a_grade",
+      "count": 1
+    },
+    {
       "target": "fac_gu_yue_clan",
       "count": 1
     },
@@ -181,6 +185,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_qing_mao_mountain",
+      "count": 1
+    },
+    {
       "target": "gu_red_steel_relic_gu",
       "count": 1
     },
@@ -201,11 +209,27 @@
       "count": 1
     },
     {
+      "target": "sys_battle_merits",
+      "count": 1
+    },
+    {
+      "target": "sys_northern_dark_ice_soul_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
       "target": "gu_blue_bird_ice_coffin_gu",
       "count": 1
     },
     {
       "target": "gu_pine_needle_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_gu_yue_qing_shu_and_gu_yue_yao_hong_against_bai_ning_bing",
       "count": 1
     },
     {
@@ -217,6 +241,26 @@
       "count": 1
     },
     {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_second_battle",
+      "count": 1
+    },
+    {
+      "target": "res_thunder_crown_wolf_blood",
+      "count": 1
+    },
+    {
+      "target": "res_thunder_crown_wolf_bones",
+      "count": 1
+    },
+    {
+      "target": "res_thunder_crown_wolf_eyes",
+      "count": 1
+    },
+    {
+      "target": "res_thunder_crown_wolf_fur",
+      "count": 1
+    },
+    {
       "target": "char_chainsaw_mad_demon",
       "count": 1
     },
@@ -225,11 +269,19 @@
       "count": 1
     },
     {
+      "target": "sys_wolf_tide",
+      "count": 1
+    },
+    {
       "target": "gu_white_form_immortal_snake",
       "count": 1
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -249,7 +301,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -264,7 +316,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "where-it-sits",
       "text_origin": "source_excerpt",
@@ -282,7 +334,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "where-it-sits",
       "text_origin": "source_excerpt"
@@ -294,7 +346,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "where-it-sits",
       "text_origin": "source_excerpt"
@@ -306,7 +358,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "where-it-sits",
       "text_origin": "source_excerpt",
@@ -324,7 +376,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rise-and-rivalry",
       "text_origin": "source_excerpt"
@@ -336,10 +388,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rise-and-rivalry",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_a_grade"
+      ]
     },
     {
       "text": "Later talk on Qing Mao Mountain treats Bai Ning Bing as the only successful A grade talent nurtured among the three clans in those years, and treats Bai clan village as gradually rising while Gu Yue still holds dominance under pressure.",
@@ -348,7 +403,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rise-and-rivalry",
       "text_origin": "source_excerpt"
@@ -360,7 +415,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rise-and-rivalry",
       "text_origin": "source_excerpt",
@@ -376,7 +431,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rise-and-rivalry",
       "text_origin": "source_excerpt",
@@ -391,7 +446,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rise-and-rivalry",
       "text_origin": "source_excerpt"
@@ -424,6 +479,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_tie_clan",
+        "sys_gu_master",
         "loc_bai_gu_mountain"
       ]
     },

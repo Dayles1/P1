@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 488,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     488
@@ -46,6 +46,10 @@
     {
       "target": "char_fei_qing",
       "count": 3
+    },
+    {
+      "target": "sys_movement_gu",
+      "count": 1
     },
     {
       "target": "fac_fei_tribe",
@@ -111,7 +115,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "use-and-abandonment",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_movement_gu"
+        ]
       },
       {
         "text": "Cited chapters do not state its rank, form, or food.",

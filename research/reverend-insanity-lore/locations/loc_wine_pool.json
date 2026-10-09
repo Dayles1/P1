@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 553,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     553,
@@ -51,6 +51,10 @@
       "count": 3
     },
     {
+      "target": "house_regret_pool",
+      "count": 2
+    },
+    {
       "target": "loc_heavenly_pool",
       "count": 2
     },
@@ -60,6 +64,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -102,6 +110,7 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "char_fang_yuan",
         "loc_wang_ting_blessed_land"
       ]
@@ -127,13 +136,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "three-great-pools",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_tai_bai_yun_sheng",
-        "loc_heavenly_pool"
+        "loc_heavenly_pool",
+        "house_regret_pool"
       ]
     },
     {

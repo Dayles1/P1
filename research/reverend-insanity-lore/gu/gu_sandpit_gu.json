@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1494,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1494,
@@ -45,6 +45,10 @@
     }
   ],
   "co_mentions": [
+    {
+      "target": "move_blurred_grey_eyes",
+      "count": 3
+    },
     {
       "target": "char_fang_yuan",
       "count": 2
@@ -168,12 +172,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "clan-competition-duel",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_sha_xiao"
+          "char_sha_xiao",
+          "move_blurred_grey_eyes"
         ]
       }
     ]
@@ -198,7 +203,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1250,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1250,
@@ -42,9 +42,25 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "reg_northern_plains",
       "count": 1
@@ -74,6 +90,10 @@
       "count": 2
     },
     {
+      "target": "sys_super_gu_formation",
+      "count": 2
+    },
+    {
       "target": "loc_snowy_mountain",
       "count": 2
     },
@@ -88,6 +108,14 @@
     {
       "target": "char_yu_yi_ye_zi",
       "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     }
   ],
   "claims": [
@@ -98,7 +126,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -109,6 +137,7 @@
         "char_lady_wan_shou",
         "char_old_ancestor_xue_hu",
         "loc_snowy_mountain",
+        "sys_super_gu_formation",
         "char_sun_ming_lu",
         "char_mu_ling_lan",
         "char_shi_zheng_yi",
@@ -122,7 +151,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -134,10 +163,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ninth-peak-battle",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu",
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "They say that when they killed her, her body and immortal aperture turned into ashes and disappeared. They guess that although her soul escaped, it must have already dispersed because of the formation.",
@@ -146,7 +179,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "aftermath",
       "text_origin": "source_excerpt"
@@ -194,7 +227,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Snowy Mountain as of ch. 1250",
@@ -221,7 +254,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Unknown",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 441,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     441
@@ -72,6 +72,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "loc_poison_grassland",
       "count": 1
     }
@@ -84,7 +88,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tribe-rules",
       "text_origin": "source_excerpt",
@@ -92,6 +96,7 @@
         "char_fang_yuan",
         "char_ma_hong_yun",
         "char_sheng_ling_er",
+        "sys_gu_worms",
         "loc_poison_grassland"
       ]
     }

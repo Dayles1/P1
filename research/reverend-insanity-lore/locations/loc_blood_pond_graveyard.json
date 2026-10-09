@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 181,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     181,
@@ -39,6 +39,14 @@
     },
     {
       "target": "char_gu_yue_bo",
+      "count": 1
+    },
+    {
+      "target": "sys_desolate_ancient_moon_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -67,7 +75,9 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_gu_yue_bo"
+        "char_gu_yue_bo",
+        "sys_gu_master",
+        "sys_desolate_ancient_moon_physique"
       ]
     },
     {

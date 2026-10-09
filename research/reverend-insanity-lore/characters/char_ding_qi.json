@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1154,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1154,
@@ -34,8 +34,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_blood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_eastern_sea",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -80,6 +104,14 @@
       "count": 4
     },
     {
+      "target": "path_blood",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_eastern_sea",
       "count": 1
     },
@@ -114,6 +146,10 @@
     {
       "target": "loc_city_well",
       "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
     }
   ],
   "claims": [
@@ -124,7 +160,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -141,7 +177,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -156,7 +192,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blood-trace-confrontation",
       "text_origin": "source_excerpt",
@@ -174,7 +210,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "self-detonation",
       "text_origin": "source_excerpt",
@@ -189,11 +225,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blessed-land-remnant",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_recipe",
         "gu_blood_revenge_immortal_gu"
       ]
     },
@@ -244,7 +281,7 @@
     "Paths": {
       "text": "Blood path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Eastern Sea",
@@ -254,7 +291,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -265,12 +302,14 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_blood"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Dead",
     "alignment": null,

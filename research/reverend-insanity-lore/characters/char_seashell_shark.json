@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1655,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1655,
@@ -33,6 +33,10 @@
   "co_mentions": [
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_trench",
       "count": 1
     },
     {
@@ -61,6 +65,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "reg_earth_earth_trench",
         "fac_gu_masters",
         "char_fang_yuan"
       ]

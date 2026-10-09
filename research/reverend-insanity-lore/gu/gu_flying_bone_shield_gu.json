@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 222,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     222,
@@ -119,7 +119,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_carapace_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_white_bone_inheritance",
       "count": 1
     },
     {
@@ -140,6 +148,10 @@
     },
     {
       "target": "char_hei_lou_lan",
+      "count": 1
+    },
+    {
+      "target": "move_thirty_eight_sealing_arts",
       "count": 1
     }
   ],
@@ -225,7 +237,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "The floating shields block attacks. When Wei Yang strikes with a light broadsword during a Shang clan city spar, the blade first splits a white bone shield into half while Fang Yuan has Flying bone shield Gu active with canopy Gu.",
@@ -333,7 +348,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -380,7 +395,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "seal-and-reversion",
         "text_origin": "source_excerpt"

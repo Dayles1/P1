@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 442,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     442,
@@ -50,8 +50,20 @@
   ],
   "co_mentions": [
     {
+      "target": "res_myriad_wolf_king_soul",
+      "count": 3
+    },
+    {
+      "target": "res_wolf_emperor_soul",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
     },
     {
       "target": "gu_body_spirit_gu",
@@ -63,6 +75,14 @@
     },
     {
       "target": "reg_northern_plains",
+      "count": 1
+    },
+    {
+      "target": "sys_man_soul",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
       "count": 1
     },
     {
@@ -140,7 +160,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -152,7 +172,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -164,7 +184,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -182,7 +202,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -194,10 +214,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       }
     ]
   },
@@ -221,7 +244,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "early-refinement",
         "text_origin": "source_excerpt"
@@ -259,7 +282,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -275,7 +298,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "final-merge-into-wolfman-soul",
         "text_origin": "source_excerpt"
@@ -287,10 +310,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "higher-ranks",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_recipe"
+        ]
       },
       {
         "text": "He later has no rank five Wolf Soul Gu and can only use rank four. Refining rank four needs an intact soul of a myriad wolf king; refining rank five needs the soul of a wolf emperor, with about fifty percent success even for a refinement master. Wolf Soul Gu at rank four works clearly on hundred man soul but weakens badly on thousand man soul.",
@@ -299,7 +325,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "higher-ranks",
         "text_origin": "source_excerpt"
@@ -311,7 +337,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "higher-ranks",
         "text_origin": "source_excerpt"

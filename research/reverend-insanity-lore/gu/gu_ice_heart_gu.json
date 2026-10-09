@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 874,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     874,
@@ -73,11 +73,19 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_wooden_chicken_gu",
       "count": 1
     },
     {
       "target": "loc_lang_ya_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "path_snow",
       "count": 1
     },
     {
@@ -89,11 +97,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_shadow_sect",
       "count": 1
     },
     {
       "target": "gu_ice_soul_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "res_twin_ice_heart",
       "count": 1
     }
   ],
@@ -152,7 +172,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -170,11 +190,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "suitability",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_immortal",
+          "path_snow",
           "gu_wooden_chicken_gu"
         ]
       },
@@ -185,7 +207,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-moves",
         "text_origin": "source_excerpt",
@@ -200,7 +222,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-moves",
         "text_origin": "source_excerpt"
@@ -261,7 +283,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -277,15 +299,17 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "jade-pot-mountain-breeding",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_ying_wu_xie",
           "fac_shadow_sect",
+          "sys_gu_formation",
           "loc_jade_pot_mountain",
           "char_bai_ning_bing",
+          "sys_wild_immortal_gu",
           "gu_ice_soul_immortal_gu"
         ]
       }

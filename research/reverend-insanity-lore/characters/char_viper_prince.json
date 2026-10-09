@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 497,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     497,
@@ -33,6 +33,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -65,6 +77,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_mo_shi_kuang",
       "count": 2
     },
@@ -74,6 +90,10 @@
     },
     {
       "target": "char_liu_wen_wu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -93,7 +113,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -102,7 +122,8 @@
         "char_liu_wen_wu",
         "fac_liu_tribe",
         "reg_northern_plains",
-        "char_hei_lou_lan"
+        "char_hei_lou_lan",
+        "sys_gu_master"
       ]
     },
     {
@@ -112,7 +133,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -124,7 +145,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fight-with-mo-shi-kuang",
       "text_origin": "source_excerpt"
@@ -178,7 +199,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Hei Tribe as of ch. 497",
@@ -199,7 +220,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

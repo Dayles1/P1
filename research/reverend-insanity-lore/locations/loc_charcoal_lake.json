@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 826,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     826,
@@ -35,6 +35,10 @@
   "co_mentions": [
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -73,6 +77,7 @@
       "mentions": [
         "loc_hu_immortal_blessed_land",
         "char_fang_yuan",
+        "sys_gu_formation",
         "fac_dong_fang_tribe",
         "loc_jade_pool_blessed_land"
       ]

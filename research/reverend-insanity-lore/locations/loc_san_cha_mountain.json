@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 323,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     275,
@@ -58,11 +58,43 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "fights_here",
+      "target": "evt_fight_one_vs_seven",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 363,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "fights_here",
+      "target": "evt_fight_tie_mu_bai_against_wu_gui_and_ku_mo",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 372,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_southern_border",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_one_vs_seven",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_tie_mu_bai_against_wu_gui_and_ku_mo",
       "count": 3
     },
     {
@@ -99,6 +131,18 @@
     },
     {
       "target": "char_king_xin",
+      "count": 2
+    },
+    {
+      "target": "inh_king_bao_inheritance",
+      "count": 2
+    },
+    {
+      "target": "inh_king_quan_inheritance",
+      "count": 2
+    },
+    {
+      "target": "inh_king_xin_inheritance",
       "count": 2
     },
     {
@@ -182,6 +226,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -218,7 +270,15 @@
       "count": 1
     },
     {
+      "target": "path_qi",
+      "count": 1
+    },
+    {
       "target": "gu_bitter_strength_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_three_kings_inheritance",
       "count": 1
     },
     {
@@ -231,6 +291,10 @@
     },
     {
       "target": "fac_three_kings",
+      "count": 1
+    },
+    {
+      "target": "inh_three_kings_inheritance",
       "count": 1
     },
     {
@@ -251,6 +315,14 @@
     },
     {
       "target": "gu_nine_eyes_liquor_worm",
+      "count": 1
+    },
+    {
+      "target": "path_poison",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_shang_clan_city",
       "count": 1
     },
     {
@@ -282,6 +354,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_demonic_path_rise",
+      "count": 1
+    },
+    {
       "target": "char_little_beast_king",
       "count": 1
     },
@@ -299,6 +375,10 @@
     },
     {
       "target": "char_hu_mei_er",
+      "count": 1
+    },
+    {
+      "target": "path_enchantment",
       "count": 1
     },
     {
@@ -380,6 +460,14 @@
     {
       "target": "gu_dog_guts_gu",
       "count": 1
+    },
+    {
+      "target": "path_enslavement",
+      "count": 1
+    },
+    {
+      "target": "sys_king_quan_travel_token",
+      "count": 1
     }
   ],
   "claims": [
@@ -390,7 +478,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -402,7 +490,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -439,7 +527,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -451,7 +539,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -466,7 +554,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inheritance-opening-event",
       "text_origin": "source_excerpt"
@@ -478,10 +566,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "origin-and-the-crowds-it-draws",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "Tie Mu Bai later names the same origin: a mysterious Gu Immortal’s blessed land that the three kings inherited and remodelled into an inheritance site.",
@@ -490,12 +581,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "origin-and-the-crowds-it-draws",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_tie_mu_bai"
+        "char_tie_mu_bai",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -520,7 +612,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "origin-and-the-crowds-it-draws",
       "text_origin": "source_excerpt"
@@ -532,7 +624,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "origin-and-the-crowds-it-draws",
       "text_origin": "source_excerpt",
@@ -548,7 +640,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "origin-and-the-crowds-it-draws",
       "text_origin": "source_excerpt"
@@ -560,10 +652,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "origin-and-the-crowds-it-draws",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_king_xin_inheritance",
+        "inh_king_quan_inheritance",
+        "inh_king_bao_inheritance"
+      ]
     },
     {
       "text": "Fang Yuan plans for the three kings inheritance while still in Shang Clan City, including choosing the strength path as part of that plan.",
@@ -588,7 +685,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fang-yuan-on-the-mountain",
       "text_origin": "source_excerpt",
@@ -604,7 +701,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fang-yuan-on-the-mountain",
       "text_origin": "source_excerpt"
@@ -616,7 +713,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fang-yuan-on-the-mountain",
       "text_origin": "source_excerpt"
@@ -628,7 +725,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "experts-on-the-mountain",
       "text_origin": "source_excerpt",
@@ -659,7 +756,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "experts-on-the-mountain",
       "text_origin": "source_excerpt",
@@ -679,7 +776,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "experts-on-the-mountain",
       "text_origin": "source_excerpt",
@@ -719,7 +816,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "collapse-and-aftermath",
       "text_origin": "source_excerpt",
@@ -734,7 +831,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "collapse-and-aftermath",
       "text_origin": "source_excerpt"
@@ -746,7 +843,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "collapse-and-aftermath",
       "text_origin": "source_excerpt"

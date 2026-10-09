@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 527,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     527,
@@ -35,6 +35,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -79,6 +91,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -105,6 +121,14 @@
     {
       "target": "char_hei_lou_lan",
       "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     }
   ],
   "claims": [
@@ -115,7 +139,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -134,7 +158,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sacred-palace-fights",
       "text_origin": "source_excerpt",
@@ -149,12 +173,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sacred-palace-fights",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_hei_lou_lan"
+        "char_hei_lou_lan",
+        "sys_gu_master"
       ]
     },
     {
@@ -164,12 +189,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "nie-tribe-leader",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_tai_bai_yun_sheng",
+        "sys_gu_immortal",
         "fac_nie_tribe"
       ]
     },
@@ -222,7 +248,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Liu Tribe as of ch. 527 Nie Tribe as of ch. 606",
@@ -244,7 +270,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": null,
     "alignment": null,

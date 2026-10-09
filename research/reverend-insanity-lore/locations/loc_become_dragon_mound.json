@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1166,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1166,
@@ -69,6 +69,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_transformation_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "fac_bai_zu_tribe",
       "count": 1
     },
@@ -78,6 +86,10 @@
     },
     {
       "target": "char_heavenly_lord_bai_zu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -109,7 +121,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -117,6 +129,7 @@
         "gu_water_dragon_gu",
         "gu_dragon_breath_gu",
         "fac_hei_tribe",
+        "sys_gu_immortal",
         "fac_bai_zu_tribe"
       ]
     },
@@ -127,7 +140,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -142,12 +155,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chu-sect-raid",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_chu_sect",
+        "sys_gu_formation",
         "gu_landscape_as_before_gu",
         "gu_pulling_mountain",
         "char_heavenly_lord_bai_zu",

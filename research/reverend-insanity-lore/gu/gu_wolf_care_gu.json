@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 453,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     453,
@@ -54,6 +54,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_investigative_gu",
+      "count": 1
+    },
+    {
       "target": "fac_ge_tribe",
       "count": 1
     },
@@ -63,6 +71,10 @@
     },
     {
       "target": "char_hei_lou_lan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     }
   ],
@@ -126,7 +138,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       }
     ]
   },
@@ -182,7 +197,8 @@
         "mentions": [
           "fac_ge_tribe",
           "char_fang_yuan",
-          "char_chang_shan_yin"
+          "char_chang_shan_yin",
+          "sys_investigative_gu"
         ]
       },
       {
@@ -204,11 +220,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "hidden-command",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "char_hei_lou_lan"
         ]
       }

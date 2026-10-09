@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 425,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     425,
@@ -40,11 +40,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_gruel_mud",
       "count": 1
     },
     {
       "target": "loc_dang_hun_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     }
   ],
@@ -137,12 +145,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_immortal_gu",
           "loc_dang_hun_mountain",
           "gu_gruel_mud"
         ]
@@ -154,12 +163,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "acquisition-weighing",
         "text_origin": "source_excerpt",
         "mentions": [
-          "loc_hai_shi_blessed_land"
+          "loc_hai_shi_blessed_land",
+          "sys_gu_immortal"
         ]
       }
     ]

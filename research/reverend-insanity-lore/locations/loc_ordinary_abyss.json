@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 287,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     287,
@@ -33,6 +33,10 @@
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 2
+    },
     {
       "target": "char_ren_zu",
       "count": 2
@@ -50,7 +54,19 @@
       "count": 1
     },
     {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
       "target": "gu_reputation_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_reputation_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_not_knowing_ones_limits",
       "count": 1
     },
     {
@@ -62,7 +78,39 @@
       "count": 1
     },
     {
+      "target": "evt_legend_learning_through_failure",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_freedom_in_death",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_miniman_in_a_well",
+      "count": 1
+    },
+    {
+      "target": "race_minimen",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_fear_is_scarier_than_death",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_opening_ones_horizon",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_love_must_be_selfless",
+      "count": 1
+    },
+    {
       "target": "gu_strength_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_perseverance_bears_a_ladder",
       "count": 1
     },
     {
@@ -75,6 +123,10 @@
     },
     {
       "target": "gu_edge_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_hope_triumphs_again",
       "count": 1
     }
   ],
@@ -91,6 +143,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_the_legends_of_ren_zu",
         "char_verdant_great_sun"
       ]
     },
@@ -156,7 +209,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wisdom-gus-rule-on-leaving",
       "text_origin": "source_excerpt",

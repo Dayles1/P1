@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2081,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2081
@@ -44,6 +44,10 @@
     },
     {
       "target": "char_zhao_shu_ye",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_house",
       "count": 1
     },
     {
@@ -141,7 +145,8 @@
         "mentions": [
           "char_zhao_shu_ye",
           "gu_craftsman_gu",
-          "gu_thief_gu"
+          "gu_thief_gu",
+          "sys_gu_house"
         ]
       }
     ]

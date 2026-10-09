@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2239,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_era_of_three_venerables"
   },
   "chapters_cited": [
     2239
@@ -62,6 +62,10 @@
     {
       "target": "char_song_qi_yuan",
       "count": 2
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     }
   ],
   "claims": [],
@@ -167,7 +171,8 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_song_yi_shi"
+          "char_song_yi_shi",
+          "sys_immortal_gu"
         ]
       }
     ]

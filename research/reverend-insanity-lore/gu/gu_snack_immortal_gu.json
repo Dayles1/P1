@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1457,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1457,
@@ -51,6 +51,10 @@
   ],
   "co_mentions": [
     {
+      "target": "move_eat_strength",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -67,6 +71,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_lang_ya_sect",
       "count": 1
     },
@@ -79,6 +91,14 @@
       "count": 1
     },
     {
+      "target": "inh_food_path_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
       "target": "gu_perseverance_gu",
       "count": 1
     },
@@ -87,11 +107,23 @@
       "count": 1
     },
     {
+      "target": "move_light_fungus_radiance",
+      "count": 1
+    },
+    {
+      "target": "res_strength_path_immortal_material",
+      "count": 1
+    },
+    {
       "target": "gu_dragon_scales_immortal_gu",
       "count": 1
     },
     {
       "target": "char_qin_bai_he",
+      "count": 1
+    },
+    {
+      "target": "house_bai_he_palace",
       "count": 1
     },
     {
@@ -176,7 +208,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "other-uses",
         "text_origin": "source_excerpt",
@@ -193,7 +225,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "other-uses",
         "text_origin": "source_excerpt"
@@ -205,7 +237,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "other-uses",
         "text_origin": "source_excerpt",
@@ -220,10 +252,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "other-uses",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_formation"
+        ]
       }
     ]
   },
@@ -257,7 +292,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_eat_fragrance_immortal_gu",
-          "char_qin_bai_he"
+          "char_qin_bai_he",
+          "house_bai_he_palace"
         ]
       }
     ]
@@ -308,8 +344,10 @@
         "mentions": [
           "fac_lang_ya_sect",
           "char_fang_yuan",
+          "sys_immortal_gu",
           "fac_shadow_sect",
-          "char_spectral_soul_demon_venerable"
+          "char_spectral_soul_demon_venerable",
+          "sys_gu_immortal"
         ]
       }
     ]

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 299,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     299
@@ -48,12 +48,24 @@
       "count": 3
     },
     {
+      "target": "sys_killer_moves",
+      "count": 2
+    },
+    {
       "target": "gu_ice_blade_gu",
       "count": 2
     },
     {
       "target": "gu_whirlwind_gu",
       "count": 2
+    },
+    {
+      "target": "move_ice_blade_storm",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_set",
+      "count": 1
     },
     {
       "target": "gu_fierce_wind_gu",
@@ -114,7 +126,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -126,7 +138,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -181,14 +193,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_bai_ning_bing",
+          "move_ice_blade_storm",
           "gu_whirlwind_gu",
-          "gu_ice_blade_gu"
+          "gu_ice_blade_gu",
+          "sys_killer_moves"
         ]
       }
     ]

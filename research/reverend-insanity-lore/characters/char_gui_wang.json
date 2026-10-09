@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 446,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     446,
@@ -37,6 +37,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -63,6 +75,10 @@
     {
       "target": "gu_hundred_ghost_night_travel_gu",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_northern_plains",
@@ -93,6 +109,18 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_flying_sword_letter_gu",
       "count": 1
     },
@@ -109,6 +137,10 @@
       "count": 1
     },
     {
+      "target": "move_nether_ghost_claw",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -118,6 +150,14 @@
     },
     {
       "target": "gu_iron_cabinet_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_righteous_path",
       "count": 1
     },
     {
@@ -161,7 +201,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -169,7 +209,9 @@
         "char_loner_hong_yu",
         "loc_lang_ya_blessed_land",
         "fac_hua_hai_three_immortals",
-        "gu_no_gu"
+        "sys_gu_immortal",
+        "gu_no_gu",
+        "sys_gu_worms"
       ]
     },
     {
@@ -179,7 +221,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -191,10 +233,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-gu-trail",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "At a snow spirea the aura ends with no Immortal Gu found. He prefers to blame Lady Poison Scorpion rather than accept that the Gu died, then leaves rather than face her rank seven Zi Du blessed land, never guessing Fang Yuan sealed and buried Fixed Immortal Travel along the path.",
@@ -203,7 +248,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "snow-spirea-dead-end",
       "text_origin": "source_excerpt",
@@ -221,7 +266,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lang-ya-raid",
       "text_origin": "source_excerpt",
@@ -236,10 +281,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lang-ya-raid",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_righteous_path",
+        "sys_gu_recipe"
+      ]
     },
     {
       "text": "The land spirit had shown weakness to capture the five, who hold no Immortal Gu; they submit after confinement of their rank five Gu and later appear as captives when Fang Yuan requests stargate Gu refinement.",
@@ -248,7 +297,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lang-ya-raid",
       "text_origin": "source_excerpt"
@@ -260,7 +309,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wing-flight",
       "text_origin": "source_excerpt"
@@ -323,7 +372,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 460",
@@ -350,7 +399,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": "demonic path as of ch. 460",

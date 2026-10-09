@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1046,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1046,
@@ -103,6 +103,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_song_clan",
       "count": 1
     },
@@ -135,11 +139,19 @@
       "count": 1
     },
     {
+      "target": "inh_big_belly_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_imperial_court",
       "count": 1
     },
     {
       "target": "loc_profound_literature_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -153,6 +165,10 @@
     {
       "target": "loc_icy_sea_area",
       "count": 1
+    },
+    {
+      "target": "res_thousand_year_profound_ice",
+      "count": 1
     }
   ],
   "claims": [
@@ -163,12 +179,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eastern-sea-standing",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_eastern_sea",
+        "sys_gu_immortal",
         "char_fang_yuan",
         "char_tang_song",
         "fac_tang_clan",
@@ -276,7 +293,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_eastern_sea_righteous_path",
-        "fac_heaven_and_earth_great_love_alliance"
+        "fac_heaven_and_earth_great_love_alliance",
+        "sys_immortal_gu_house"
       ]
     },
     {

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 511,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     511
@@ -93,6 +93,10 @@
     },
     {
       "target": "gu_soul_combination_gu",
+      "count": 1
+    },
+    {
+      "target": "move_three_hearts_combination_soul",
       "count": 1
     }
   ],
@@ -198,7 +202,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

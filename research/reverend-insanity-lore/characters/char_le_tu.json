@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2144,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_dao_veins_famous_mountains"
   },
   "chapters_cited": [
     2144,
@@ -35,8 +35,25 @@
     2149,
     2150
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "char_huang_xiao_mi",
       "count": 2
@@ -59,6 +76,10 @@
     },
     {
       "target": "char_paradise_earth_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "move_cracked_soil_shattering_life",
       "count": 1
     }
   ],
@@ -238,7 +259,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -260,7 +281,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

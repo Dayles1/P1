@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1947,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1947,
@@ -32,6 +32,18 @@
     2111
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_human",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_hong_yi",
@@ -51,6 +63,10 @@
       "count": 4
     },
     {
+      "target": "path_human",
+      "count": 1
+    },
+    {
       "target": "gu_craftsman_gu",
       "count": 2
     },
@@ -61,6 +77,22 @@
     {
       "target": "gu_beast_tamer_gu",
       "count": 2
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
     },
     {
       "target": "loc_emperor_city",
@@ -76,6 +108,10 @@
     },
     {
       "target": "char_qin_ding_ling",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
       "count": 1
     },
     {
@@ -122,7 +158,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_human"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -143,7 +181,8 @@
         "mentions": [
           "char_qin_ding_ling",
           "gu_hero_gu",
-          "gu_craftsman_gu"
+          "gu_craftsman_gu",
+          "sys_gu_recipe"
         ]
       },
       {
@@ -231,7 +270,11 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_emperor_city",
-          "char_hong_yi"
+          "char_hong_yi",
+          "sys_gu_worms",
+          "sys_gu_master",
+          "sys_mortal_gu",
+          "sys_information_path_mortal_gu"
         ],
         "needs_review": true
       }
@@ -262,7 +305,7 @@
     "Path": {
       "text": "Human Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

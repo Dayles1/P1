@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 235,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     235,
@@ -114,6 +114,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_chen_clan",
       "count": 1
     },
@@ -150,7 +154,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "seed-surname-and-caravan",
       "text_origin": "source_excerpt",
@@ -179,7 +183,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "seed-surname-and-caravan",
       "text_origin": "source_excerpt"
@@ -191,7 +195,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "seed-surname-and-caravan",
       "text_origin": "source_excerpt",
@@ -206,11 +210,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "seed-surname-and-caravan",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "char_zhang_zhu",
         "fac_gu_masters"
       ]
@@ -222,7 +227,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "standing-and-enmity-with-shang",
       "text_origin": "source_excerpt",
@@ -237,7 +242,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "standing-and-enmity-with-shang",
       "text_origin": "source_excerpt"
@@ -292,7 +297,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "political-weakness-with-wu",
       "text_origin": "source_excerpt"

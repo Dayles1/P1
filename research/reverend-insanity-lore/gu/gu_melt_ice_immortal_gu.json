@@ -23,12 +23,24 @@
   "first_appearance": {
     "chapter": 897,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     897
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_ice",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_shark_demon",
@@ -48,7 +60,15 @@
       "count": 3
     },
     {
+      "target": "path_ice",
+      "count": 1
+    },
+    {
       "target": "fac_zombie_alliance",
+      "count": 1
+    },
+    {
+      "target": "move_freezing_rain_frozen_earth",
       "count": 1
     }
   ],
@@ -85,7 +105,9 @@
     "ranks": [],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_ice"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -146,7 +168,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -161,7 +183,7 @@
     "Path": {
       "text": "Ice Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

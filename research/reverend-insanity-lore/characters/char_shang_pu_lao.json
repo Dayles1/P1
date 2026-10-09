@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 269,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     265,
@@ -57,6 +57,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_shang_clan",
       "role": null,
@@ -73,6 +85,10 @@
     {
       "target": "fac_shang_clan",
       "count": 4
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -115,6 +131,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_shang_clan_city",
+      "count": 1
+    },
+    {
       "target": "char_bai_ning_bing",
       "count": 1
     },
@@ -140,6 +160,10 @@
     },
     {
       "target": "char_wei_yang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -175,7 +199,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -209,7 +233,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -224,7 +248,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -236,7 +260,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eighth-son-and-second-faction",
       "text_origin": "source_excerpt",
@@ -266,7 +290,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eighth-son-and-second-faction",
       "text_origin": "source_excerpt",
@@ -283,7 +307,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eighth-son-and-second-faction",
       "text_origin": "source_excerpt"
@@ -295,7 +319,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eighth-son-and-second-faction",
       "text_origin": "source_excerpt",
@@ -312,7 +336,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "banquets-during-the-young-master-contest",
       "text_origin": "source_excerpt",
@@ -327,7 +351,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "banquets-during-the-young-master-contest",
       "text_origin": "source_excerpt"
@@ -351,7 +375,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "banquets-during-the-young-master-contest",
       "text_origin": "source_excerpt",
@@ -378,12 +402,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "banquets-during-the-young-master-contest",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_wei_clan",
+        "sys_gu_master",
         "char_wei_de_xin"
       ]
     },
@@ -394,7 +419,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "banquets-during-the-young-master-contest",
       "text_origin": "source_excerpt"
@@ -406,7 +431,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "prior-life-rivalry",
       "text_origin": "source_excerpt",
@@ -423,7 +448,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "succession-report",
       "text_origin": "source_excerpt"
@@ -447,7 +472,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pu-lao-drawing",
       "text_origin": "source_excerpt"
@@ -501,7 +526,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shang Clan as of ch. 269",
@@ -522,7 +547,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 470,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     470,
@@ -66,6 +66,14 @@
     },
     {
       "target": "char_yan_cui_er",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_storage_gu",
       "count": 1
     },
     {
@@ -127,7 +135,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "rank-and-effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ]
   },
@@ -202,7 +213,8 @@
           "char_hao_ji_liu",
           "fac_yan_tribe",
           "char_yan_tian_ji",
-          "char_yan_cui_er"
+          "char_yan_cui_er",
+          "sys_storage_gu"
         ]
       },
       {

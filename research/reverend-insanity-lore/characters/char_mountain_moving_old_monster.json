@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1314,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1314,
@@ -35,8 +35,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_earth",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -69,6 +93,14 @@
       "count": 2
     },
     {
+      "target": "path_earth",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_ba_de",
       "count": 2
     },
@@ -93,6 +125,22 @@
       "count": 1
     },
     {
+      "target": "sys_enslavement_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immemorial_desolate_beast",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_lifespan_gu",
       "count": 1
     },
@@ -110,6 +158,10 @@
     },
     {
       "target": "char_chai_you_yan",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_dao_veins_famous_mountains",
       "count": 1
     },
     {
@@ -133,7 +185,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -150,11 +202,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mount-snail",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "reg_southern_border",
         "fac_wu_clan",
         "char_wu_du_xiu"
@@ -167,14 +220,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "meeting-and-deal",
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_lifespan_gu",
         "char_ba_de",
-        "char_wu_yu_bo"
+        "char_wu_yu_bo",
+        "sys_information_path_mortal_gu"
       ]
     },
     {
@@ -184,7 +238,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "settlement",
       "text_origin": "source_excerpt"
@@ -291,7 +345,7 @@
     "Paths": {
       "text": "Earth path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Southern Border",
@@ -301,7 +355,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Wu Clan as of ch. 2132",
@@ -323,12 +377,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_earth"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

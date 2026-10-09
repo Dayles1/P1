@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 307,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     307,
@@ -65,6 +65,14 @@
       "count": 3
     },
     {
+      "target": "move_jade_flow_pearl",
+      "count": 3
+    },
+    {
+      "target": "move_human_come_human_go",
+      "count": 2
+    },
+    {
       "target": "gu_divine_travel",
       "count": 3
     },
@@ -97,6 +105,10 @@
       "count": 2
     },
     {
+      "target": "sys_movement_gu",
+      "count": 1
+    },
+    {
       "target": "gu_carefree_travel",
       "count": 1
     },
@@ -110,6 +122,10 @@
     },
     {
       "target": "gu_liquor_god_travel",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_not_knowing_ones_limits",
       "count": 1
     },
     {
@@ -133,7 +149,19 @@
       "count": 1
     },
     {
+      "target": "evt_arc_three_kings_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_feng_jin_huang",
+      "count": 1
+    },
+    {
+      "target": "move_torrential_light_stream",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_hu_immortal_blessed_land",
       "count": 1
     },
     {
@@ -149,7 +177,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_undefeated_hundred_battles_gu",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_blue_heaven",
+      "count": 1
+    },
+    {
+      "target": "inh_hu_immortal_inheritance",
       "count": 1
     },
     {
@@ -165,6 +205,14 @@
       "count": 1
     },
     {
+      "target": "sys_green_grape_immortal_essence",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_road_of_life_and_death",
+      "count": 1
+    },
+    {
       "target": "loc_dang_hun_palace",
       "count": 1
     },
@@ -173,11 +221,19 @@
       "count": 1
     },
     {
+      "target": "sys_mortal_aperture",
+      "count": 1
+    },
+    {
       "target": "gu_bright_pearl_gu",
       "count": 1
     },
     {
       "target": "gu_dark_toss_gu",
+      "count": 1
+    },
+    {
+      "target": "move_tossing_pearls_in_the_dark",
       "count": 1
     },
     {
@@ -205,6 +261,10 @@
       "count": 1
     },
     {
+      "target": "reg_heaven_azure_heaven",
+      "count": 1
+    },
+    {
       "target": "char_old_man_yan_shi",
       "count": 1
     },
@@ -217,7 +277,19 @@
       "count": 1
     },
     {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_blessed_land_consolidation",
+      "count": 1
+    },
+    {
       "target": "fac_snowy_mountain_alliance",
+      "count": 1
+    },
+    {
+      "target": "sys_regional_walls",
       "count": 1
     },
     {
@@ -226,6 +298,18 @@
     },
     {
       "target": "char_hong_yi",
+      "count": 1
+    },
+    {
+      "target": "move_icy_wind_blade_wheel",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_hei_cheng_first_battle",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_hei_cheng_second_battle",
       "count": 1
     },
     {
@@ -241,7 +325,15 @@
       "count": 1
     },
     {
+      "target": "move_nine_cloud_ring",
+      "count": 1
+    },
+    {
       "target": "loc_impassable_dunes",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_lang_ya_land_spirit_against_qin_bai_sheng",
       "count": 1
     },
     {
@@ -254,6 +346,18 @@
     },
     {
       "target": "loc_green_heaven_fragment_world",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_immortal_zombie_lifeless_formation",
+      "count": 1
+    },
+    {
+      "target": "house_sacred_feather_city",
+      "count": 1
+    },
+    {
+      "target": "move_star_fog_concealment",
       "count": 1
     },
     {
@@ -301,6 +405,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_heavenly_court_pursuit",
+      "count": 1
+    },
+    {
       "target": "loc_pot_river",
       "count": 1
     },
@@ -310,6 +418,10 @@
     },
     {
       "target": "gu_change_form_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_human_isolation_style",
       "count": 1
     },
     {
@@ -382,7 +494,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -414,12 +526,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refined-at-san-cha-mountain",
         "text_origin": "source_excerpt",
         "mentions": [
-          "loc_san_cha_mountain"
+          "loc_san_cha_mountain",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -429,7 +542,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "no-recipe-avoids-the-light",
         "text_origin": "source_excerpt",
@@ -469,7 +582,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ying-wu-xie-buys-the-light",
         "text_origin": "source_excerpt",
@@ -507,7 +620,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "destination-rules",
         "text_origin": "source_excerpt",
@@ -523,7 +636,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "yi-tian-mountain",
         "text_origin": "source_excerpt",

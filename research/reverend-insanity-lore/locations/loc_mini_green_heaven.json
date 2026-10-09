@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1461,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1461,
@@ -42,7 +42,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
+      "count": 1
+    },
+    {
+      "target": "sys_pure_dream_reality_seeker_physique",
       "count": 1
     }
   ],
@@ -54,7 +66,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -87,7 +99,9 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_southern_border",
-        "char_xia_cha"
+        "sys_gu_immortal",
+        "char_xia_cha",
+        "sys_gu_worms"
       ]
     },
     {
@@ -100,7 +114,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "xia-cha-extraction",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_pure_dream_reality_seeker_physique"
+      ]
     }
   ],
   "conflicts": [],

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 262,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     262,
@@ -44,6 +44,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -112,6 +124,18 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_fang_yuan_and_bai_ning_bing_against_wei_yang",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 265,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -132,6 +156,10 @@
       "count": 3
     },
     {
+      "target": "evt_fight_fang_yuan_and_bai_ning_bing_against_wei_yang",
+      "count": 3
+    },
+    {
       "target": "gu_light_source_gu",
       "count": 3
     },
@@ -146,6 +174,10 @@
     {
       "target": "rcp_heavenly_essence_treasure_monarch_lotus_recipe",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_shang_yan_fei",
@@ -192,6 +224,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_shang_clan_city",
+      "count": 1
+    },
+    {
       "target": "char_fang_zheng",
       "count": 1
     },
@@ -201,6 +237,10 @@
     },
     {
       "target": "char_shang_ya_zi",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -217,6 +257,10 @@
     },
     {
       "target": "gu_spiral_bone_spear_gu",
+      "count": 1
+    },
+    {
+      "target": "path_strength",
       "count": 1
     },
     {
@@ -292,6 +336,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_set",
+      "count": 1
+    },
+    {
       "target": "gu_fire_source_gu",
       "count": 1
     },
@@ -305,6 +353,10 @@
     },
     {
       "target": "gu_snow_fairy_gu",
+      "count": 1
+    },
+    {
+      "target": "path_ice",
       "count": 1
     },
     {
@@ -325,6 +377,18 @@
     },
     {
       "target": "char_tang_xiong",
+      "count": 1
+    },
+    {
+      "target": "sys_beast_phantom",
+      "count": 1
+    },
+    {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
+      "target": "sys_righteous_path",
       "count": 1
     },
     {
@@ -352,11 +416,23 @@
       "count": 1
     },
     {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_wu_clan_ancient_strength_path_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_li_ran",
       "count": 1
     },
     {
       "target": "char_li_hao",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_li_hao",
       "count": 1
     },
     {
@@ -369,6 +445,10 @@
     },
     {
       "target": "gu_icicle_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_killer_moves",
       "count": 1
     },
     {
@@ -396,6 +476,10 @@
       "count": 1
     },
     {
+      "target": "evt_fight_bai_ning_bing_against_yan_tu",
+      "count": 1
+    },
+    {
       "target": "loc_three_kings_blessed_land",
       "count": 1
     },
@@ -405,6 +489,10 @@
     },
     {
       "target": "loc_yi_tian_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_carefree_wisdom_heart_physique",
       "count": 1
     },
     {
@@ -420,7 +508,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -437,7 +525,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -449,7 +537,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -471,7 +559,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battle-stage-bout",
       "text_origin": "source_excerpt",
@@ -487,7 +575,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battle-stage-bout",
       "text_origin": "source_excerpt",
@@ -503,7 +591,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battle-stage-bout",
       "text_origin": "source_excerpt"
@@ -515,10 +603,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battle-stage-bout",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "As one of Shang clan’s five great generals he controls the intelligence agency Feng Yu Manor, which lets him learn auction sequences and guest identities that are supposed to stay secret.",
@@ -527,7 +618,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "feng-yu-manor",
       "text_origin": "source_excerpt",
@@ -543,7 +634,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "feng-yu-manor",
       "text_origin": "source_excerpt"
@@ -555,7 +646,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-four",
       "text_origin": "source_excerpt",
@@ -571,7 +662,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yi-tian-mountain",
       "text_origin": "source_excerpt",
@@ -589,7 +680,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yi-tian-mountain-encounter",
       "text_origin": "source_excerpt",
@@ -650,7 +741,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shang Clan as of ch. 262",
@@ -687,7 +778,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": "demonic path as of ch. 265",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 514,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     514,
@@ -154,6 +154,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_hei_tribe",
       "count": 1
     },
@@ -186,7 +190,19 @@
       "count": 1
     },
     {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
+      "target": "sys_super_force",
+      "count": 1
+    },
+    {
       "target": "fac_chanyu_tribe",
+      "count": 1
+    },
+    {
+      "target": "move_winged_blade",
       "count": 1
     },
     {
@@ -199,6 +215,14 @@
     },
     {
       "target": "fac_yuan_tribe",
+      "count": 1
+    },
+    {
+      "target": "move_seven_extreme_desolation",
+      "count": 1
+    },
+    {
+      "target": "move_immortal_binding_rope",
       "count": 1
     }
   ],
@@ -219,6 +243,7 @@
         "char_tan_bi_ya",
         "char_dong_fang_chang_fan",
         "char_ye_lui_lai",
+        "sys_immortal_gu",
         "char_ye_lui_sang",
         "fac_huang_jin_bloodline",
         "reg_northern_plains",
@@ -234,7 +259,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ma-tribe-pursuit",
       "text_origin": "source_excerpt",
@@ -250,10 +275,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-tribe-leader",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_eighty_eight_true_yang_building"
+      ]
     }
   ],
   "conflicts": [],

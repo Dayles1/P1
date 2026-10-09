@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 650,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     650
@@ -46,6 +46,14 @@
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
+      "count": 1
     },
     {
       "target": "gu_all_out_effort_gu",
@@ -106,12 +114,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "role-in-myriad-self",
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_all_out_effort_gu",
+          "sys_vital_gu",
           "gu_battle_bone_wheel_gu"
         ]
       }
@@ -162,12 +171,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_mortal_gu"
         ]
       }
     ]

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 307,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     307,
@@ -63,11 +63,19 @@
       "count": 2
     },
     {
+      "target": "move_infinite_search_and_lock",
+      "count": 2
+    },
+    {
       "target": "gu_jade_sky_gu",
       "count": 2
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_dao_marks",
       "count": 1
     },
     {
@@ -116,6 +124,10 @@
     },
     {
       "target": "gu_divine_travel",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_blue_heaven",
       "count": 1
     },
     {
@@ -180,7 +192,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -212,7 +224,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-consumption",
         "text_origin": "source_excerpt",
@@ -228,7 +240,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-consumption",
         "text_origin": "source_excerpt"
@@ -253,6 +265,7 @@
           "loc_shang_clan_city",
           "char_fang_yuan",
           "gu_chasing_wind_gu",
+          "sys_dao_marks",
           "gu_fairy_wind_gu",
           "gu_fixed_immortal_travel"
         ],
@@ -287,7 +300,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "locator-planting",
         "text_origin": "source_excerpt",
@@ -305,10 +318,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "locator-planting",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_infinite_search_and_lock"
+        ]
       },
       {
         "text": "After a Spring Autumn Cicada redo, Fang Yuan already knows the Gu sits on that forearm and that the same capture move can reach him wherever he runs.",
@@ -317,7 +333,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "locator-planting",
         "text_origin": "source_excerpt",
@@ -332,7 +348,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "locator-planting",
         "text_origin": "source_excerpt",
@@ -347,7 +363,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "locator-planting",
         "text_origin": "source_excerpt"

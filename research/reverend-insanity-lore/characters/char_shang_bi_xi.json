@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 269,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     265,
@@ -40,8 +40,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -84,6 +108,14 @@
     {
       "target": "gu_turtle_tire_gu",
       "count": 4
+    },
+    {
+      "target": "path_strength",
+      "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -134,6 +166,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_shang_clan_city",
+      "count": 1
+    },
+    {
       "target": "char_empress_wu_ji",
       "count": 1
     },
@@ -155,6 +191,14 @@
     },
     {
       "target": "char_wei_yang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
       "count": 1
     },
     {
@@ -186,7 +230,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -207,7 +251,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -219,7 +263,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -231,7 +275,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pu-lao-bloc-alliance",
       "text_origin": "source_excerpt",
@@ -246,13 +290,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pu-lao-bloc-alliance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_shang_suan_ni",
         "char_shang_fu_xi",
+        "path_strength",
+        "sys_gu_master",
         "gu_turtle_tire_gu"
       ]
     },
@@ -263,7 +309,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pu-lao-bloc-alliance",
       "text_origin": "source_excerpt"
@@ -281,6 +327,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_gu_masters",
+        "sys_wild_gu",
         "char_empress_wu_ji",
         "gu_dragon_strength_gu"
       ]
@@ -292,7 +339,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bitter-strength-gu-auction",
       "text_origin": "source_excerpt",
@@ -309,7 +356,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bitter-strength-gu-auction",
       "text_origin": "source_excerpt",
@@ -325,7 +372,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "attack-on-shang-xin-ci",
       "text_origin": "source_excerpt",
@@ -355,7 +402,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bi-xi-drawing",
       "text_origin": "source_excerpt"
@@ -399,7 +446,7 @@
     "Paths": {
       "text": "Strength path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Southern Border",
@@ -409,7 +456,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shang Clan as of ch. 269",
@@ -425,12 +472,14 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Unknown",
     "alignment": null,

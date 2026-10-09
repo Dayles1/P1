@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 750,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     750,
@@ -35,6 +35,18 @@
     817
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_time",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -66,6 +78,10 @@
       "count": 3
     },
     {
+      "target": "path_time",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -75,6 +91,30 @@
     },
     {
       "target": "char_qin_bai_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_era_medieval",
       "count": 1
     },
     {
@@ -91,6 +131,10 @@
     },
     {
       "target": "loc_lang_ya_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "move_time_assist_luck",
       "count": 1
     }
   ],
@@ -140,7 +184,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_time"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -157,7 +203,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -175,10 +221,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Inch of time and Time Luck can work together, but inch of time is expended too intensively. He wants an immortal killer move that lowers that expenditure, yet fails: he lacks enough thoughts, and his time path attainment is too low. Fairy Li Shan yields the immortal killer move time assist luck.",
@@ -187,7 +236,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-move-acquisition",
         "text_origin": "source_excerpt"
@@ -231,8 +280,11 @@
         "section": "recipe-and-time-luck-plan",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_mortal_gu",
           "gu_time_luck",
-          "char_fairy_li_shan"
+          "char_fairy_li_shan",
+          "sys_immortal_gu",
+          "sys_gu_immortal"
         ]
       }
     ]
@@ -247,13 +299,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_qin_bai_sheng",
           "reg_northern_plains",
+          "evt_era_medieval",
+          "sys_gu_recipe",
           "char_fang_yuan",
           "char_tai_bai_yun_sheng"
         ],
@@ -297,7 +351,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bulk-refining-and-substitute-tests",
         "text_origin": "source_excerpt",
@@ -313,7 +367,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bulk-refining-and-substitute-tests",
         "text_origin": "source_excerpt"
@@ -324,7 +378,7 @@
     "Path": {
       "text": "Time Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

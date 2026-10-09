@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1128,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1128,
@@ -51,6 +51,14 @@
     {
       "target": "gu_after_immortal_gu",
       "count": 2
+    },
+    {
+      "target": "inh_hei_fan_true_inheritance",
+      "count": 2
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
     }
   ],
   "claims": [],
@@ -128,7 +136,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "feeding-after-immortal-gu",
         "text_origin": "source_excerpt"
@@ -179,7 +187,9 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "inh_hei_fan_true_inheritance",
           "char_fang_yuan",
+          "sys_mortal_gu",
           "gu_after_immortal_gu"
         ]
       }

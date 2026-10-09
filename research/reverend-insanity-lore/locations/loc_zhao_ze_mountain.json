@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 254,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     254
@@ -56,6 +56,10 @@
       "count": 2
     },
     {
+      "target": "inh_second_zombie_king_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_mu_bei_mountain",
       "count": 1
     }
@@ -78,7 +82,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ding-haos-destination",
       "text_origin": "source_excerpt",

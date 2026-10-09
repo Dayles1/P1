@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1675,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1675,
@@ -36,6 +36,18 @@
     2271
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -55,7 +67,19 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_duke_tong",
+      "count": 2
+    },
+    {
+      "target": "house_dragon_soul_dark_castle",
+      "count": 2
+    },
+    {
+      "target": "house_red_heavenly_altar",
       "count": 2
     },
     {
@@ -75,6 +99,14 @@
       "count": 1
     },
     {
+      "target": "sys_dao_guardian",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_fate_gu",
       "count": 1
     },
@@ -87,7 +119,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_crazed_demon_formation",
+      "count": 1
+    },
+    {
+      "target": "move_incomplete_freedom_transformation",
       "count": 1
     },
     {
@@ -120,8 +164,10 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "gu_fate_gu",
-        "char_duke_long"
+        "char_duke_long",
+        "sys_dao_guardian"
       ]
     },
     {
@@ -191,6 +237,9 @@
       "section": "vine-restraint",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_dragon_soul_dark_castle",
+        "house_red_heavenly_altar",
+        "sys_immortal_gu_house",
         "char_qin_ding_ling"
       ]
     },
@@ -220,7 +269,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "deaths-and-delays",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_crazed_demon_formation"
+      ]
     },
     {
       "text": "He stands center among three rank eight Gu Immortals with Seven Fiendish Primeval Monarch and Golden Hooped Great Immortal, sent on Star Constellation Immortal Venerable’s orders to capture Fairy Zi Wei.",
@@ -294,7 +346,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1675",
@@ -321,7 +373,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

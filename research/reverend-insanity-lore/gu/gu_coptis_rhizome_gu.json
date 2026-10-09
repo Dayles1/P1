@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 506,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     506
@@ -46,6 +46,18 @@
     {
       "target": "char_dong_fang_yu_liang",
       "count": 3
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_man_soul",
+      "count": 1
+    },
+    {
+      "target": "path_soul",
+      "count": 1
     }
   ],
   "claims": [],
@@ -98,10 +110,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       }
     ]
   },
@@ -150,12 +165,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_dong_fang_yu_liang"
+          "char_dong_fang_yu_liang",
+          "path_soul"
         ]
       }
     ]

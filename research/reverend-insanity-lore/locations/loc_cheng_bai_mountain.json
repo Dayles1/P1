@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 435,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     435,
@@ -87,6 +87,34 @@
       "count": 1
     },
     {
+      "target": "evt_legend_love_is_cruel",
+      "count": 1
+    },
+    {
+      "target": "race_rockmen",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_troubles_of_love",
+      "count": 1
+    },
+    {
+      "target": "sys_desolate_ancient_moon_physique",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_northern_dark_ice_soul",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_understanding_ones_purpose",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
       "target": "loc_reverse_flow_river",
       "count": 1
     }
@@ -115,7 +143,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -161,7 +189,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mound-collapse",
       "text_origin": "source_excerpt"
@@ -193,6 +221,7 @@
       "section": "secluded-domain-ranking",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_the_legends_of_ren_zu",
         "loc_reverse_flow_river",
         "loc_miniscule_mountain"
       ]

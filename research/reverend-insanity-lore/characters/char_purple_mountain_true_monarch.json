@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 615,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     615,
@@ -65,6 +65,30 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1282,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_minimen",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1269,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_shadow_sect",
       "role": null,
@@ -99,6 +123,138 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_purple_light_illusion_army",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1361,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_brilliant_will_dissolution",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_directional_confusion_fog",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_ignited_thought_flying_rock",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_purple_thought_light_shield",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_purple_thought_perception_starlight",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_single_thought_endless_clones",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_single_thought_flower_blossom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_single_thought_myriad_flow_elimination",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_thought_body_defense",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_black_tigress_true_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -107,12 +263,64 @@
       "count": 4
     },
     {
+      "target": "race_minimen",
+      "count": 4
+    },
+    {
+      "target": "move_purple_light_illusion_army",
+      "count": 3
+    },
+    {
+      "target": "move_purple_thought_perception_starlight",
+      "count": 3
+    },
+    {
+      "target": "move_brilliant_will_dissolution",
+      "count": 3
+    },
+    {
+      "target": "inh_black_tigress_true_inheritance",
+      "count": 3
+    },
+    {
       "target": "gu_soul_language_gu",
       "count": 3
     },
     {
       "target": "gu_big_rule_path_immortal_gu",
       "count": 3
+    },
+    {
+      "target": "move_directional_confusion_fog",
+      "count": 3
+    },
+    {
+      "target": "move_ignited_thought_flying_rock",
+      "count": 3
+    },
+    {
+      "target": "move_purple_thought_light_shield",
+      "count": 3
+    },
+    {
+      "target": "move_single_thought_flower_blossom",
+      "count": 3
+    },
+    {
+      "target": "move_single_thought_myriad_flow_elimination",
+      "count": 3
+    },
+    {
+      "target": "move_thought_body_defense",
+      "count": 3
+    },
+    {
+      "target": "move_single_thought_endless_clones",
+      "count": 3
+    },
+    {
+      "target": "path_wisdom",
+      "count": 2
     },
     {
       "target": "char_tai_bai_yun_sheng",
@@ -147,7 +355,15 @@
       "count": 2
     },
     {
+      "target": "inh_seven_illusions_true_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_wu_yong",
+      "count": 2
+    },
+    {
+      "target": "sys_pure_dream_reality_seeker_physique",
       "count": 2
     },
     {
@@ -159,7 +375,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
+      "count": 1
+    },
+    {
+      "target": "inh_dong_fang_wisdom_path_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_purple_mountain_true_monarch_time_inheritance",
       "count": 1
     },
     {
@@ -191,6 +419,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_reverse_flow_river",
       "count": 1
     },
@@ -207,11 +439,23 @@
       "count": 1
     },
     {
+      "target": "sys_wisdom_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "char_shi_nu",
       "count": 1
     },
     {
+      "target": "res_purple_gold_rock",
+      "count": 1
+    },
+    {
       "target": "reg_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "evt_era_great",
       "count": 1
     },
     {
@@ -227,6 +471,10 @@
       "count": 1
     },
     {
+      "target": "sys_super_gu_formation",
+      "count": 1
+    },
+    {
       "target": "fac_wu_clan",
       "count": 1
     },
@@ -236,6 +484,10 @@
     },
     {
       "target": "char_star_constellation_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "inh_star_constellation_true_inheritance",
       "count": 1
     },
     {
@@ -259,6 +511,10 @@
       "count": 1
     },
     {
+      "target": "race_mushroommen",
+      "count": 1
+    },
+    {
       "target": "char_qiao_zhi_cai",
       "count": 1
     },
@@ -275,6 +531,10 @@
       "count": 1
     },
     {
+      "target": "sys_purple_blood_river_formation",
+      "count": 1
+    },
+    {
       "target": "gu_gentle_wind_gu",
       "count": 1
     },
@@ -283,7 +543,39 @@
       "count": 1
     },
     {
+      "target": "move_reverse_flow_protection_seal",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "move_cloud_light",
+      "count": 1
+    },
+    {
+      "target": "move_chaotic_dragon_fist",
+      "count": 1
+    },
+    {
+      "target": "move_spiraling_dragon_fang",
+      "count": 1
+    },
+    {
+      "target": "move_wood_armor",
+      "count": 1
+    },
+    {
       "target": "char_upper_extreme_heavenly_eagle",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
       "count": 1
     },
     {
@@ -291,7 +583,15 @@
       "count": 1
     },
     {
+      "target": "move_triple_qi_retraction",
+      "count": 1
+    },
+    {
       "target": "gu_bloodline_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_dragon_gate",
       "count": 1
     },
     {
@@ -303,7 +603,35 @@
       "count": 1
     },
     {
+      "target": "inh_limitless_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "inh_fire_path_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "move_hundred_and_eighty_slaves",
+      "count": 1
+    },
+    {
+      "target": "house_star_constellation_chessboard",
+      "count": 1
+    },
+    {
+      "target": "inh_profound_sound_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "move_crimson_ray",
+      "count": 1
+    },
+    {
+      "target": "move_wondrous_hand_profound_sound",
       "count": 1
     },
     {
@@ -323,12 +651,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_tai_bai_yun_sheng",
+        "sys_gu_immortal",
         "reg_northern_plains",
         "char_fang_yuan"
       ]
@@ -340,7 +669,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -352,7 +681,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -364,7 +693,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "greatest-trump-card",
       "text_origin": "source_excerpt",
@@ -379,7 +708,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "attitude-gu-confrontation",
       "text_origin": "source_excerpt",
@@ -395,7 +724,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "deepening-apprehension",
       "text_origin": "source_excerpt",
@@ -426,7 +755,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "identity-revealed",
       "text_origin": "source_excerpt",
@@ -445,7 +774,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "miniman-form",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "race_minimen"
+      ]
     },
     {
       "text": "He uses an immortal killer move and his body rapidly expands like a balloon to normal human size. The wings on his back vanish, and on the outside he looks like a normal human. He is an unimpressive old man, even looking a little dishevelled. His only special feature is his purple hair, so messy that he resembles a beggar. He smiles and exposes uneven yellow teeth. He tells Old Ancestor Xue Hu to call him Purple Mountain True Monarch.",
@@ -454,7 +786,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "miniman-form",
       "text_origin": "source_excerpt",
@@ -469,7 +801,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "miniman-form",
       "text_origin": "source_excerpt",
@@ -484,10 +816,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "miniman-form",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "Purple Mountain True Monarch is tasked with defending Snowy Mountain blessed land, the foundation on which the fate reversing sacrificial refinement formation stands.",
@@ -496,7 +831,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "defending-snowy-mountain-blessed-land",
       "text_origin": "source_excerpt",
@@ -511,7 +846,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "heavens-wills-old-attack",
       "text_origin": "source_excerpt",
@@ -528,7 +863,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wisdom-path",
       "text_origin": "source_excerpt"
@@ -540,10 +875,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wisdom-path",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "path_wisdom"
+      ]
     },
     {
       "text": "On the Snowy Mountain trip Ying Wu Xie saves him, though Shi Nu and Tai Bai Yun Sheng die in battle. Once awake he leads Shadow Sect again, and Ying Wu Xie steps down.",
@@ -552,7 +890,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-command",
       "text_origin": "source_excerpt",
@@ -567,7 +905,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "waking-from-the-rock-in-eastern-sea",
       "text_origin": "source_excerpt",
@@ -582,14 +920,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "renewed-alias",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_plunder_shadow_earth_trench",
         "fac_wu_clan",
-        "reg_southern_border"
+        "reg_southern_border",
+        "sys_super_gu_formation"
       ]
     },
     {
@@ -599,7 +938,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "infiltrating-heavens-will",
       "text_origin": "source_excerpt",
@@ -614,7 +953,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "recruiting-zuo-ye-hui",
       "text_origin": "source_excerpt",
@@ -629,11 +968,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ordering-two-killings",
       "text_origin": "source_excerpt",
       "mentions": [
+        "inh_seven_illusions_true_inheritance",
         "char_yao_geng"
       ]
     },
@@ -644,7 +984,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "framing-qiao-zhi-cai",
       "text_origin": "source_excerpt",
@@ -659,7 +999,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "trapping-wu-yong-in-the-purple-blood-river",
       "text_origin": "source_excerpt",
@@ -674,7 +1014,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sneak-attacks-from-concealment",
       "text_origin": "source_excerpt"
@@ -686,7 +1026,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "recruiting-mercenaries",
       "text_origin": "source_excerpt"
@@ -698,7 +1038,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "faking-wu-yongs-death",
       "text_origin": "source_excerpt"
@@ -710,10 +1050,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "creating-pure-dream-reality-seeker-physique-bodies",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_pure_dream_reality_seeker_physique",
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "Purple Mountain True Monarch is a first generation split soul of Spectral Soul Demon Venerable who has cultivated for a hundred thousand years.",
@@ -722,7 +1066,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-generation-split-soul",
       "text_origin": "source_excerpt"
@@ -734,7 +1078,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "a-move-that-steals-secrets",
       "text_origin": "source_excerpt"
@@ -746,7 +1090,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "thanking-fang-yuan-for-the-title",
       "text_origin": "source_excerpt"
@@ -758,7 +1102,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "discarding-his-own-aperture",
       "text_origin": "source_excerpt"
@@ -770,7 +1114,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battle-strength-gutted",
       "text_origin": "source_excerpt"
@@ -782,7 +1126,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -809,10 +1153,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "a-method-from-his-inheritance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_collective_thinking"
+      ]
     },
     {
       "text": "Purple Mountain True Monarch’s legacy, though abundant, amounts to less than one hundredth of Shadow Sect’s total inheritance and does not include Limitless Demon Venerable’s rule path true inheritance or Paradise Earth Immortal Venerable’s formation path true inheritance.",
@@ -821,7 +1168,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "assessing-his-legacy",
       "text_origin": "source_excerpt",
@@ -901,12 +1248,12 @@
     "Paths": {
       "text": "Wisdom path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Minimen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shadow Sect as of ch. 1020",
@@ -928,12 +1275,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_minimen",
     "region": null,
     "status": "Dead",
     "alignment": null,

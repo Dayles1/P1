@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2155,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2155,
@@ -72,6 +72,14 @@
       "count": 1
     },
     {
+      "target": "sys_dao_field",
+      "count": 1
+    },
+    {
+      "target": "sys_unification_of_three_worlds",
+      "count": 1
+    },
+    {
       "target": "loc_black_and_white_sacred_mountain",
       "count": 1
     },
@@ -80,11 +88,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
     {
       "target": "fac_longevity_heaven",
+      "count": 1
+    },
+    {
+      "target": "move_green_life_taker",
+      "count": 1
+    },
+    {
+      "target": "move_spring_upon_withered_tree",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -100,11 +124,35 @@
       "count": 1
     },
     {
+      "target": "sys_carefree_wisdom_heart_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_learning_gu",
       "count": 1
     },
     {
+      "target": "move_endless_learning",
+      "count": 1
+    },
+    {
       "target": "char_golden_fur_immortal_monarch",
+      "count": 1
+    },
+    {
+      "target": "move_lingering_poisonous_ant_plague",
+      "count": 1
+    },
+    {
+      "target": "move_heaven_envies_heroic_geniuses",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_battle_of_crazed_demon_cave",
       "count": 1
     },
     {
@@ -159,6 +207,7 @@
         "loc_savage_wilderness_great_world",
         "loc_yellow_earth_great_world",
         "char_paradise_earth_immortal_venerable",
+        "sys_gu_immortal",
         "char_qing_hao_zi",
         "char_mu_cha_lang"
       ]
@@ -173,7 +222,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "invasion-target",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "Heaven Extremity Gai Mei states that Green Lotus Great World was created by Heavenly Court’s Genesis Lotus Immortal Venerable, just as Yellow Earth Great World was Paradise Earth Immortal Venerable’s arrangement. Fang Yuan’s subordinates break defense lines and push to the world’s center.",
@@ -200,7 +252,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "absorbs-fallen-apertures",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "After Green Lotus Great World’s sage gives a Dao lesson, many Gu Immortals improve their impression of the world and choose to join it. Some from Savage Wilderness Great World defect there, even more than to Yellow Earth Great World. Longevity Heaven and Fang Yuan later send troops to attack it again.",

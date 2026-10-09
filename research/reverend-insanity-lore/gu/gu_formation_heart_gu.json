@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1323,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1323,
@@ -51,6 +51,22 @@
     {
       "target": "char_tu_shi_cheng",
       "count": 2
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "inh_formation_path_dream_realm",
+      "count": 1
     }
   ],
   "claims": [],
@@ -108,7 +124,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -165,13 +181,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_tu_shi_cheng",
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_gu_master",
+          "sys_gu_worms",
+          "sys_gu_formation"
         ]
       },
       {
@@ -181,7 +200,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "destroyed-in-fang-yuans-first-formation-attempt",
         "text_origin": "source_excerpt"

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 427,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     427,
@@ -33,6 +33,18 @@
     437
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_water",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_ge_yao",
@@ -52,11 +64,23 @@
       "count": 3
     },
     {
+      "target": "path_water",
+      "count": 1
+    },
+    {
       "target": "gu_water_dragon_gu",
       "count": 2
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_attack_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -105,7 +129,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_water"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -119,13 +145,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "place-in-her-set",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "gu_water_dragon_gu"
+          "sys_gu_master",
+          "gu_water_dragon_gu",
+          "sys_attack_gu"
         ]
       }
     ]
@@ -233,7 +261,7 @@
     "Path": {
       "text": "Water Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

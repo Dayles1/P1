@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 324,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     324
@@ -84,6 +84,18 @@
       "count": 2
     },
     {
+      "target": "inh_three_kings_inheritance",
+      "count": 2
+    },
+    {
+      "target": "evt_arc_three_kings_inheritance",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_three_kings",
       "count": 1
     },
@@ -100,11 +112,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "inh_three_kings_inheritance",
         "reg_southern_border",
         "fac_wu_clan",
         "char_king_quan",
@@ -119,10 +132,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "After their revenge, the three kings choose not to rebuild Wang clan, reasoning that a clan, however strong, could not defend against true experts, and instead live in seclusion until their inheritance ground reopens generations later.",
@@ -131,7 +147,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"

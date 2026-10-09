@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 289,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     289,
@@ -61,6 +61,10 @@
     },
     {
       "target": "loc_shang_clan_city",
+      "count": 1
+    },
+    {
+      "target": "path_strength",
       "count": 1
     },
     {
@@ -290,7 +294,8 @@
         "section": "position-swap-gu-combination",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_position_swap_gu"
+          "gu_position_swap_gu",
+          "path_strength"
         ],
         "needs_review": true
       }

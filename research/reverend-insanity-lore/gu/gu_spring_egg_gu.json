@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 421,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     421
@@ -53,6 +53,14 @@
     },
     {
       "target": "char_he_feng_yang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -139,7 +147,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "activation",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "With little Hu Immortal’s help, Fang Yuan buries the three Gu near the rockmen tribes in Hu Immortal Blessed Land. Each drills underground until spring water spurts and the air’s primeval energy thickens.",
@@ -187,6 +198,9 @@
         "source_id": "src_sagaofgu",
         "section": "source-and-cost",
         "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ],
         "needs_review": true
       }
     ],

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 764,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     764,
@@ -33,6 +33,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -61,6 +73,10 @@
       "count": 4
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -85,7 +101,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_hei_tribe",
+      "count": 1
+    },
+    {
+      "target": "move_immemorial_flame_axe",
       "count": 1
     },
     {
@@ -93,7 +117,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_soul_suction_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "res_sandalwood_sacred_elephant_egg",
       "count": 1
     }
   ],
@@ -105,7 +137,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "auction-stake",
       "text_origin": "source_excerpt",
@@ -116,6 +148,7 @@
         "char_fairy_jiang_yu",
         "char_xue_song_zi",
         "fac_hei_tribe",
+        "sys_gu_immortal",
         "fac_huang_jin_bloodline"
       ]
     },
@@ -126,11 +159,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "outside-the-auction",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "char_qin_bai_sheng"
       ]
     }
@@ -166,7 +200,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Chanyu Tribe as of ch. 764",
@@ -187,7 +221,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Unknown",
     "alignment": null,

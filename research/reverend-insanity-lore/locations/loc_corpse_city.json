@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1393,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1393,
@@ -37,6 +37,14 @@
       "count": 2
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_shadow_sect",
       "count": 1
     },
@@ -46,6 +54,10 @@
     },
     {
       "target": "gu_sovereign_immortal_fetus_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_western_desert_zombie_alliance_inheritance",
       "count": 1
     },
     {
@@ -77,11 +89,27 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_fight_immortal_gu",
       "count": 1
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "res_cold_moon_divine_bravery",
+      "count": 1
+    },
+    {
+      "target": "res_phosphorescent_wood",
+      "count": 1
+    },
+    {
+      "target": "move_soaring_fighting_spirit",
       "count": 1
     }
   ],
@@ -93,11 +121,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_mortal_gu_house",
         "loc_dark_flow_giant_city",
         "reg_northern_plains",
         "fac_zombie_alliance"
@@ -110,7 +139,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -122,14 +151,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_western_desert",
         "fac_shadow_sect",
-        "gu_sovereign_immortal_fetus_gu"
+        "gu_sovereign_immortal_fetus_gu",
+        "sys_gu_formation"
       ]
     },
     {
@@ -139,12 +169,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "retrieval",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -154,12 +185,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "formation-cores",
       "text_origin": "source_excerpt",
       "mentions": [
-        "gu_yellow_sand_immortal_gu"
+        "gu_yellow_sand_immortal_gu",
+        "sys_mortal_gu"
       ]
     },
     {

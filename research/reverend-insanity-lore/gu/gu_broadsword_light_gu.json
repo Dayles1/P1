@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 265,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     265,
@@ -71,6 +71,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_and_bai_ning_bing_against_wei_yang",
+      "count": 1
+    },
+    {
       "target": "gu_flying_bone_shield_gu",
       "count": 1
     },
@@ -80,6 +88,10 @@
     },
     {
       "target": "loc_shang_clan_city",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_set",
       "count": 1
     }
   ],
@@ -142,7 +154,8 @@
         "section": "rank-and-reputation",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_sword_shadow_gu"
+          "gu_sword_shadow_gu",
+          "sys_gu_worms"
         ]
       },
       {
@@ -152,7 +165,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wei-yang-gu-set",
         "text_origin": "source_excerpt",
@@ -251,7 +264,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "sword-shadow-comparison",
         "text_origin": "source_excerpt"

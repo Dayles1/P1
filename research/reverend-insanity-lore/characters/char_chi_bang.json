@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1331,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1331,
@@ -35,6 +35,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -61,6 +73,10 @@
     {
       "target": "fac_chi_clan",
       "count": 4
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -99,6 +115,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_wu_clan",
       "count": 1
     },
@@ -123,7 +143,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -177,6 +197,7 @@
         "fac_yang_clan",
         "char_chi_gui",
         "char_wu_yong",
+        "sys_immortal_gu_house",
         "fac_wu_clan"
       ]
     },
@@ -240,7 +261,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Chi Clan as of ch. 1331",
@@ -267,7 +288,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

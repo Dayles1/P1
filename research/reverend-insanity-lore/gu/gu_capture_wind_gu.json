@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2222,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_era_of_three_venerables"
   },
   "chapters_cited": [
     2222
@@ -66,6 +66,18 @@
     {
       "target": "char_shi_zhong",
       "count": 2
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -182,6 +194,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_immortal_gu",
           "reg_southern_border",
           "char_wu_yong"
         ]
@@ -198,6 +211,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_immortal",
           "char_shi_zhong"
         ]
       }

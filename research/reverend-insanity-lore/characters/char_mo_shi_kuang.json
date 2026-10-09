@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 497,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     497,
@@ -50,6 +50,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_inkmen",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_liu_tribe",
       "role": null,
@@ -60,11 +72,47 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_three_head_six_arms",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_world_devouring_qi",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
+      "target": "move_world_devouring_qi",
+      "count": 4
+    },
+    {
+      "target": "move_three_head_six_arms",
+      "count": 4
+    },
+    {
       "target": "fac_liu_tribe",
+      "count": 3
+    },
+    {
+      "target": "race_inkmen",
       "count": 3
     },
     {
@@ -92,6 +140,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
       "target": "char_chang_shan_yin",
       "count": 1
     },
@@ -108,6 +160,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "loc_book_mountain",
       "count": 1
     },
@@ -120,11 +176,23 @@
       "count": 1
     },
     {
+      "target": "path_qi",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_northern_plains_imperial_court",
+      "count": 1
+    },
+    {
       "target": "char_luo_bo_jun",
       "count": 1
     },
     {
       "target": "fac_luo_tribe",
+      "count": 1
+    },
+    {
+      "target": "move_asura_transformation",
       "count": 1
     },
     {
@@ -156,7 +224,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -175,7 +243,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -190,7 +258,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -206,7 +274,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -223,12 +291,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_ouyang_bi_sang"
+        "char_ouyang_bi_sang",
+        "sys_gu_master"
       ]
     },
     {
@@ -238,7 +307,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -250,7 +319,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -262,7 +331,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -274,7 +343,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battle-strength-of-rank-five",
       "text_origin": "source_excerpt",
@@ -290,12 +359,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battle-strength-of-rank-five",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_zhu_zai"
+        "char_zhu_zai",
+        "move_world_devouring_qi"
       ]
     },
     {
@@ -305,10 +375,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battle-strength-of-rank-five",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_three_head_six_arms"
+      ]
     },
     {
       "text": "Tai Bai Yun Sheng later recalls that among the few qi path cultivators he has seen in northern plains, the strongest and most recent was Liu Wen Wu’s sworn brother, the variant human Mo Shi Kuang.",
@@ -317,7 +390,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battle-strength-of-rank-five",
       "text_origin": "source_excerpt",
@@ -332,7 +405,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "contest-battlefield",
       "text_origin": "source_excerpt"
@@ -386,7 +459,7 @@
     "Race": {
       "text": "Inkmen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Liu Tribe as of ch. 497",
@@ -408,7 +481,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_inkmen",
     "region": "reg_northern_plains",
     "status": null,
     "alignment": null,

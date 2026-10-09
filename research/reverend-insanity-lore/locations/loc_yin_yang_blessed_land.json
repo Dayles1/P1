@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 657,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     657,
@@ -61,7 +61,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_dong_fang_tribe",
+      "count": 1
+    },
+    {
+      "target": "house_modest_thatched_hut",
       "count": 1
     },
     {
@@ -103,13 +111,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_modest_thatched_hut",
         "loc_jade_pool_blessed_land",
         "char_dong_fang_chang_fan",
+        "sys_gu_immortal",
         "fac_dong_fang_tribe",
         "char_dong_fang_yi_kong",
         "char_murong_qing_si",

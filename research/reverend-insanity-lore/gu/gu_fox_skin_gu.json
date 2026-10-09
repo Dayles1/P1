@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 409,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     409
@@ -53,6 +53,14 @@
     },
     {
       "target": "char_fairy_bai_hu",
+      "count": 1
+    },
+    {
+      "target": "sys_defensive_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     }
   ],
@@ -139,10 +147,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_defensive_gu"
+        ]
       }
     ]
   },
@@ -191,14 +202,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fairy_bai_hu",
           "loc_hu_immortal_blessed_land",
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_gu_worms"
         ]
       },
       {
@@ -208,7 +220,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ownership",
         "text_origin": "source_excerpt"

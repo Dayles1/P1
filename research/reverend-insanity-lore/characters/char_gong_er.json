@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1105,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1105,
@@ -36,6 +36,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -64,6 +76,10 @@
       "count": 4
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -72,11 +88,23 @@
       "count": 2
     },
     {
+      "target": "house_golden_dawn_hall",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_hei_tribe",
       "count": 1
     },
     {
       "target": "loc_iron_eagle_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -96,11 +124,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_golden_dawn_hall",
+        "sys_gu_immortal",
         "fac_hei_tribe",
         "fac_bai_zu_tribe"
       ]
@@ -112,7 +142,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -124,7 +154,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blessed-land-watch",
       "text_origin": "source_excerpt",
@@ -139,11 +169,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "recording-and-descent",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_worms",
         "fac_gong_tribe"
       ]
     },
@@ -154,7 +185,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bai-zu-humiliation",
       "text_origin": "source_excerpt",
@@ -170,7 +201,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "punished-after-iron-eagle",
       "text_origin": "source_excerpt"
@@ -220,7 +251,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Gong tribe as of ch. 1105",
@@ -247,7 +278,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

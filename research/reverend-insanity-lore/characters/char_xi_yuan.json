@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1432,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1432,
@@ -41,9 +41,41 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_sword_burial_abyss",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "move_sword_burial_abyss",
+      "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "reg_western_desert",
       "count": 1
@@ -57,7 +89,19 @@
       "count": 2
     },
     {
+      "target": "evt_era_late",
+      "count": 1
+    },
+    {
       "target": "loc_river_of_time",
+      "count": 1
+    },
+    {
+      "target": "path_blade",
+      "count": 1
+    },
+    {
+      "target": "move_nine_nine_reincarnation_blades",
       "count": 1
     }
   ],
@@ -69,13 +113,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_huang_shi",
         "loc_river_of_time",
+        "evt_era_late",
         "char_dao_jiu_lang"
       ]
     },
@@ -86,7 +131,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "signature-move",
       "text_origin": "source_excerpt"
@@ -128,7 +173,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": null,
@@ -150,7 +195,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Unknown",
     "alignment": null,

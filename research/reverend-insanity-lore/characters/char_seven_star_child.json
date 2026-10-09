@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 713,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     713,
@@ -40,6 +40,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -72,6 +84,30 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_star_billow_pillar",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 725,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_one_star_finger",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 726,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -84,8 +120,20 @@
       "count": 3
     },
     {
+      "target": "move_star_billow_pillar",
+      "count": 3
+    },
+    {
+      "target": "move_one_star_finger",
+      "count": 3
+    },
+    {
       "target": "reg_central_continent",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "fac_combat_immortal_sect",
@@ -112,7 +160,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_starry_sky_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "sys_desolate_plant",
+      "count": 1
+    },
+    {
+      "target": "res_walking_meat_tree",
       "count": 1
     },
     {
@@ -128,11 +188,47 @@
       "count": 1
     },
     {
+      "target": "sys_star_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "move_rock_mountain_immortal_monkey_king_transformation",
+      "count": 1
+    },
+    {
+      "target": "move_shocking_rock_break",
+      "count": 1
+    },
+    {
       "target": "char_shi_lei",
       "count": 1
     },
     {
+      "target": "move_earth_disintegration",
+      "count": 1
+    },
+    {
+      "target": "move_filthy_mud_robe",
+      "count": 1
+    },
+    {
+      "target": "sys_dead_aperture",
+      "count": 1
+    },
+    {
+      "target": "sys_nine_heavens_fragment",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_blue_heaven",
+      "count": 1
+    },
+    {
       "target": "loc_immemorial_nine_heavens",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_blessed_land_consolidation",
       "count": 1
     },
     {
@@ -160,11 +256,31 @@
       "count": 1
     },
     {
+      "target": "sys_heavens_will",
+      "count": 1
+    },
+    {
+      "target": "house_yue_yang_palace",
+      "count": 1
+    },
+    {
+      "target": "house_sacred_feather_city",
+      "count": 1
+    },
+    {
+      "target": "move_lead_soul_into_dream",
+      "count": 1
+    },
+    {
       "target": "fac_zombie_alliance",
       "count": 1
     },
     {
       "target": "char_ying_wu_xie",
+      "count": 1
+    },
+    {
+      "target": "sys_omni_directional_travel",
       "count": 1
     }
   ],
@@ -176,7 +292,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -193,10 +309,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "His body is an immortal zombie resembling a mortal person. Two blue eyes shine brightly. Fang Yuan realizes Seven Star Child had not died but transformed into an immortal zombie, which explains why no heavenly spirit appeared. The immortal zombie first moves on Star Lord Wan Xiang, then turns on Hei Lou Lan with a huge starlight pillar before she escapes the eighth star hall. Fang Yuan judges that long trapping in the dream realm left few thoughts in his mind and slowed his cognition.",
@@ -205,7 +324,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-zombie-identity",
       "text_origin": "source_excerpt",
@@ -221,7 +340,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "control-of-the-grotto-heaven",
       "text_origin": "source_excerpt",
@@ -236,7 +355,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "control-of-the-grotto-heaven",
       "text_origin": "source_excerpt",
@@ -251,7 +370,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-envoy",
       "text_origin": "source_excerpt",
@@ -270,7 +389,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-envoy",
       "text_origin": "source_excerpt"
@@ -282,7 +401,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-envoy",
       "text_origin": "source_excerpt",
@@ -297,11 +416,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-envoy",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_heavens_will",
         "char_star_constellation_immortal_venerable"
       ]
     }
@@ -354,7 +474,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shadow Sect as of ch. 997",
@@ -381,7 +501,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": null,

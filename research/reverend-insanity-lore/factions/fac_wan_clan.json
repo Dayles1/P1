@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 393,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     393
@@ -140,11 +140,27 @@
       "count": 3
     },
     {
+      "target": "house_winding_light_platform",
+      "count": 2
+    },
+    {
+      "target": "house_myriad_age_building",
+      "count": 2
+    },
+    {
       "target": "reg_southern_border",
       "count": 1
     },
     {
       "target": "char_xiao_mang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_righteous_path",
       "count": 1
     },
     {
@@ -157,6 +173,14 @@
     },
     {
       "target": "gu_wisdom_obstacle_gu",
+      "count": 1
+    },
+    {
+      "target": "move_distracting_thoughts_generation",
+      "count": 1
+    },
+    {
+      "target": "move_wisdom_grasp",
       "count": 1
     },
     {
@@ -184,6 +208,10 @@
       "count": 1
     },
     {
+      "target": "move_roof_tile_breaker",
+      "count": 1
+    },
+    {
       "target": "fac_sun_clan",
       "count": 1
     },
@@ -208,11 +236,35 @@
       "count": 1
     },
     {
+      "target": "house_chamber_pot",
+      "count": 1
+    },
+    {
       "target": "fac_anti_fang_alliance",
       "count": 1
     },
     {
+      "target": "evt_arc_era_of_three_venerables",
+      "count": 1
+    },
+    {
+      "target": "house_earth_shuttle",
+      "count": 1
+    },
+    {
+      "target": "house_red_river_wheel",
+      "count": 1
+    },
+    {
       "target": "char_wan_gu_chou",
+      "count": 1
+    },
+    {
+      "target": "house_thought_expelling_pavilion",
+      "count": 1
+    },
+    {
+      "target": "move_everlasting_sorrow",
       "count": 1
     }
   ],
@@ -234,13 +286,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "among-the-righteous-path-at-san-cha",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_righteous_path",
         "fac_gu_masters",
-        "char_xiao_mang"
+        "char_xiao_mang",
+        "sys_gu_master"
       ]
     }
   ],

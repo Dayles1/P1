@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 4,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     4,
@@ -49,6 +49,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -109,6 +121,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
       "count": 1
     },
@@ -149,11 +165,23 @@
       "count": 1
     },
     {
+      "target": "sys_awakening_ceremony",
+      "count": 1
+    },
+    {
+      "target": "sys_c_grade",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
     {
       "target": "loc_qing_mao_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     },
     {
@@ -197,11 +225,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_awakening_ceremony",
         "loc_qing_mao_mountain",
         "char_gu_yue_mo_chen"
       ]
@@ -213,7 +242,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -225,7 +254,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -237,7 +266,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chi-faction-head",
       "text_origin": "source_excerpt",
@@ -254,7 +283,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chi-faction-head",
       "text_origin": "source_excerpt"
@@ -266,7 +295,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chi-faction-head",
       "text_origin": "source_excerpt",
@@ -282,7 +311,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chi-faction-head",
       "text_origin": "source_excerpt"
@@ -309,7 +338,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chi-faction-head",
       "text_origin": "source_excerpt",
@@ -325,7 +354,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "grandson-and-the-false-aptitude",
       "text_origin": "source_excerpt"
@@ -337,10 +366,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "grandson-and-the-false-aptitude",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_c_grade"
+      ]
     },
     {
       "text": "He then sustains that cover by transferring his own primeval essence into Chi Cheng’s aperture every few days, knowing the method is dangerous and leaves foreign aura that will limit the boy’s future unless a Cleansing Water Gu can flush it out. He also uses his relationships to search for a Liquor worm for Chi Cheng as a safer nurturing path.",
@@ -349,7 +381,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "grandson-and-the-false-aptitude",
       "text_origin": "source_excerpt",
@@ -365,7 +397,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "grandson-and-the-false-aptitude",
       "text_origin": "source_excerpt"
@@ -377,7 +409,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "grandson-and-the-false-aptitude",
       "text_origin": "source_excerpt",
@@ -405,7 +437,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fang-yuans-leverage",
       "text_origin": "source_excerpt"
@@ -417,7 +449,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fang-yuans-leverage",
       "text_origin": "source_excerpt"
@@ -429,7 +461,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fang-yuans-leverage",
       "text_origin": "source_excerpt"
@@ -441,7 +473,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt"
@@ -453,7 +485,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -539,7 +571,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Gu Yue Clan as of ch. 4 Chi Family as of ch. 83",
@@ -566,7 +598,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": null,

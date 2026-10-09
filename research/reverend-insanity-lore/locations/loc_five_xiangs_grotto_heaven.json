@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1643,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1643,
@@ -57,7 +57,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_heaven_surveying_five_xiangs",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_thought_sword_waterfall",
+      "count": 1
+    },
+    {
+      "target": "move_swordsman",
       "count": 1
     }
   ],
@@ -121,6 +137,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_heaven_surveying_five_xiangs",
+        "sys_gu_immortal",
         "char_bai_ning_bing"
       ]
     },
@@ -134,7 +151,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "heaven-form-hall",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "Narration places the scene in immemorial white heaven, Five Xiangs grotto-heaven.",

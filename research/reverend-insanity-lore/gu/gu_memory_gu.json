@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2161,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2161,
@@ -44,6 +44,10 @@
       "count": 1
     },
     {
+      "target": "evt_legend_thirst_for_knowledge",
+      "count": 1
+    },
+    {
       "target": "loc_book_mountain",
       "count": 1
     },
@@ -53,6 +57,10 @@
     },
     {
       "target": "char_carefree_wisdom_heart",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 1
     }
   ],
@@ -159,6 +167,7 @@
         "section": "storage-versus-learning",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_the_legends_of_ren_zu",
           "gu_learning_gu",
           "char_carefree_wisdom_heart"
         ]

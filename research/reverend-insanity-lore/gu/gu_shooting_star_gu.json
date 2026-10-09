@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 276,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     276,
@@ -44,11 +44,19 @@
       "count": 1
     },
     {
+      "target": "sys_stellar_stone",
+      "count": 1
+    },
+    {
       "target": "gu_star_arrow_gu",
       "count": 1
     },
     {
       "target": "loc_shang_clan_city",
+      "count": 1
+    },
+    {
+      "target": "move_spiral_drill_star_spear",
       "count": 1
     }
   ],
@@ -98,7 +106,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form",
         "text_origin": "source_excerpt"
@@ -162,7 +170,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

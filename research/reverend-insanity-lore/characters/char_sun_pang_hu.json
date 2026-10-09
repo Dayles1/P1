@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 963,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     963,
@@ -45,12 +45,28 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_southern_border",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_xiao_shan",
@@ -89,6 +105,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     }
@@ -101,7 +121,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -120,7 +140,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yi-tian-village-ranks",
       "text_origin": "source_excerpt",
@@ -135,7 +155,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yi-tian-village-ranks",
       "text_origin": "source_excerpt"
@@ -163,10 +183,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-five-trio",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "When Xiao Shan, Lu Zuan Feng, and another rank five Gu Master break into a medical ward hunting spies, Sun Pang Hu walks toward Fang Yuan with a ruthless expression. He shouts that he does not care whether Fang Yuan is a righteous path spy, pounces, and kicks Fang Yuan’s chest so the chest caves and the heart is crushed. His punch then sends Fang Yuan flying into a wall in an appearance of death. Fang Yuan is not dead; the death is a familiar face disguise.",
@@ -175,7 +198,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "medical-ward-kill",
       "text_origin": "source_excerpt",
@@ -224,7 +247,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Yi Tian Village as of ch. 964",
@@ -256,7 +279,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": "demonic path as of ch. 963",

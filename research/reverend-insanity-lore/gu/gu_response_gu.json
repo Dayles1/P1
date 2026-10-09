@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1903,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1903,
@@ -33,6 +33,10 @@
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "sys_ten_big_mystical_gu",
+      "count": 2
+    },
     {
       "target": "fac_shen_clan",
       "count": 2
@@ -54,7 +58,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "house_merit_obelisk",
       "count": 1
     },
     {
@@ -180,7 +196,8 @@
           "char_shen_cong_sheng",
           "fac_heavenly_court",
           "char_fang_zheng",
-          "fac_shen_clan"
+          "fac_shen_clan",
+          "house_merit_obelisk"
         ]
       },
       {
@@ -196,6 +213,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_gu_worms",
+          "sys_ten_big_mystical_gu",
+          "sys_gu_immortal",
           "char_paradise_earth_immortal_venerable"
         ]
       }

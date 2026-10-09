@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 446,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     446
@@ -46,6 +46,10 @@
     {
       "target": "char_gui_wang",
       "count": 3
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     },
     {
       "target": "loc_poison_grassland",
@@ -164,6 +168,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_gui_wang",
+          "sys_immortal_gu",
           "loc_poison_grassland"
         ]
       }

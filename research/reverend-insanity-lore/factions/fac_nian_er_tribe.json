@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1105,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1105,
@@ -115,7 +115,19 @@
       "count": 2
     },
     {
+      "target": "sys_sword_child",
+      "count": 2
+    },
+    {
+      "target": "inh_sword_saint_true_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_qing_xuan_zi",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -132,6 +144,10 @@
     },
     {
       "target": "char_hei_fan",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
       "count": 1
     },
     {
@@ -152,6 +168,10 @@
     },
     {
       "target": "fac_yuan_tribe",
+      "count": 1
+    },
+    {
+      "target": "path_wood",
       "count": 1
     },
     {
@@ -181,12 +201,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_iron_eagle_blessed_land",
+        "sys_gu_immortal",
         "char_nian_er_ping_zhi",
         "char_qing_xuan_zi"
       ]
@@ -198,12 +219,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sword-saint-inheritance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "inh_sword_saint_true_inheritance",
         "char_hei_fan",
         "char_sword_saint_nian_er"
       ]
@@ -215,13 +237,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "huang-jin-gathering",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_huang_jin_bloodline",
         "reg_northern_plains",
+        "path_wood",
         "char_nian_er_yi_fang",
         "char_nian_er_fu"
       ]
@@ -233,11 +256,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "duel-with-granny-yin",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_sword_child",
         "char_granny_yin"
       ]
     }

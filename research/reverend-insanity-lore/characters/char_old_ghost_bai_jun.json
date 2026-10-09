@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1504,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1504,
@@ -43,6 +43,18 @@
     {
       "type": "in_region",
       "target": "reg_western_desert",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -75,6 +87,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_fang_di_chang",
       "count": 2
     },
@@ -91,6 +107,10 @@
       "count": 2
     },
     {
+      "target": "house_divine_bean_palace",
+      "count": 2
+    },
+    {
       "target": "char_eagle_concubine",
       "count": 2
     },
@@ -103,6 +123,14 @@
       "count": 1
     },
     {
+      "target": "res_soul_core",
+      "count": 1
+    },
+    {
+      "target": "move_ignited_thought_flying_rock",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -111,7 +139,39 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "move_purple_thought_perception_starlight",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "move_directional_confusion_fog",
+      "count": 1
+    },
+    {
+      "target": "move_single_thought_endless_clones",
+      "count": 1
+    },
+    {
+      "target": "move_hundred_and_eighty_slaves",
+      "count": 1
+    },
+    {
       "target": "char_chen_yi",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_killer_move",
+      "count": 1
+    },
+    {
+      "target": "move_graft_wood",
       "count": 1
     },
     {
@@ -165,6 +225,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_gu_immortal",
         "char_ying_wu_xie"
       ]
     },
@@ -193,7 +254,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "immemorial-soul-beasts",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "He and Eagle Concubine had ventured into Divine Bean Palace and been suppressed into Qing Chou’s slaves. Qing Chou refined Soul Beast Token and gave it to him to use a soul beast army against the palace. The moment he moved, he met Fang clan’s immortals and Suan Bu Jin, failed, and exposed the matter.",
@@ -207,6 +271,7 @@
       "section": "slave-origin",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_divine_bean_palace",
         "char_qing_chou"
       ]
     },
@@ -326,7 +391,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Fang Clan as of ch. 1616",
@@ -358,7 +423,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": "demonic path as of ch. 1525",

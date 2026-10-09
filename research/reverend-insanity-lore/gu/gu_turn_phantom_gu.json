@@ -23,19 +23,40 @@
   "first_appearance": {
     "chapter": 586,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     586
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_phantom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "path_phantom",
+      "count": 2
+    },
     {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
       "target": "char_mo_yao",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -76,7 +97,9 @@
     "ranks": [],
     "rank_type": "unknown",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_phantom"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -127,13 +150,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_mo_yao",
           "char_fang_yuan",
+          "sys_gu_worms",
           "gu_flying_bear_phantom_immortal_gu"
         ]
       }
@@ -143,7 +167,7 @@
     "Path": {
       "text": "Phantom Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

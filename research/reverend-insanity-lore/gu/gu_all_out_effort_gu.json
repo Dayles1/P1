@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 285,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     285,
@@ -46,6 +46,18 @@
     1570
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "fac_wu_clan",
@@ -89,11 +101,27 @@
       "count": 4
     },
     {
+      "target": "path_strength",
+      "count": 3
+    },
+    {
+      "target": "move_myriad_self",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
     {
       "target": "fac_wu_clan",
+      "count": 2
+    },
+    {
+      "target": "sys_support_gu",
+      "count": 2
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 2
     },
     {
@@ -129,6 +157,22 @@
       "count": 1
     },
     {
+      "target": "sys_attack_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_beast_phantom",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_stellar_stone",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -145,6 +189,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_set",
+      "count": 1
+    },
+    {
       "target": "fac_three_kings",
       "count": 1
     },
@@ -154,6 +202,14 @@
     },
     {
       "target": "gu_undefeated_hundred_battles_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_bu_bai_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_wu_clan_ancient_strength_path_inheritance",
       "count": 1
     },
     {
@@ -173,6 +229,10 @@
       "count": 1
     },
     {
+      "target": "evt_fight_fang_yuan_against_li_hao",
+      "count": 1
+    },
+    {
       "target": "char_li_hao",
       "count": 1
     },
@@ -189,6 +249,10 @@
       "count": 1
     },
     {
+      "target": "evt_fight_fang_yuan_against_zhu_ba",
+      "count": 1
+    },
+    {
       "target": "char_bai_yun",
       "count": 1
     },
@@ -201,6 +265,14 @@
       "count": 1
     },
     {
+      "target": "move_eight_beast_phantoms",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_ju_kai_bei",
+      "count": 1
+    },
+    {
       "target": "gu_violent_strength_gu",
       "count": 1
     },
@@ -210,6 +282,34 @@
     },
     {
       "target": "gu_crocodile_strength_gu",
+      "count": 1
+    },
+    {
+      "target": "move_beast_phantom_retract",
+      "count": 1
+    },
+    {
+      "target": "evt_era_olden",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -257,7 +357,19 @@
       "count": 1
     },
     {
+      "target": "res_poisonous_flower_petals",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_blessed_land_consolidation",
+      "count": 1
+    },
+    {
       "target": "char_lang_ya_land_spirit",
+      "count": 1
+    },
+    {
+      "target": "move_blood_refinement_snake",
       "count": 1
     },
     {
@@ -329,7 +441,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [
       "support"
@@ -345,10 +459,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "path",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "path_strength"
+        ]
       },
       {
         "text": "Fang Yuan later restates that it is his core while he still lacks bitter strength Gu.",
@@ -369,7 +486,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ranks-and-immortal-gu-attempts",
         "text_origin": "source_excerpt",
@@ -384,7 +501,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ranks-and-immortal-gu-attempts",
         "text_origin": "source_excerpt"
@@ -396,7 +513,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ranks-and-immortal-gu-attempts",
         "text_origin": "source_excerpt",
@@ -411,10 +528,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ranks-and-immortal-gu-attempts",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "Later narration gives a deeper account of the true effect: complete resonance of strength path dao marks carved on the body, with full on-demand use of mismatched beast strengths such as iron crown eagle strength needing All-out Effort Immortal Gu. At that point his copy is still only rank four, and the Immortal Gu recipe is described as lost over the river of time.",
@@ -423,10 +543,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ranks-and-immortal-gu-attempts",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu",
+          "sys_gu_recipe"
+        ]
       },
       {
         "text": "Using strength path grandmaster attainment he later deduces the rank five recipe, fails once, then raises the Gu to rank five; he still cannot raise it to rank six himself.",
@@ -435,7 +559,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ranks-and-immortal-gu-attempts",
         "text_origin": "source_excerpt"
@@ -447,12 +571,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ranks-and-immortal-gu-attempts",
         "text_origin": "source_excerpt",
         "mentions": [
-          "loc_star_form_blessed_land"
+          "loc_star_form_blessed_land",
+          "sys_gu_worms"
         ]
       },
       {
@@ -481,7 +606,8 @@
         "mentions": [
           "gu_myriad_self_immortal_gu",
           "fac_lang_ya_sect",
-          "char_third_hair"
+          "char_third_hair",
+          "sys_mortal_gu"
         ]
       }
     ]
@@ -495,7 +621,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -507,7 +633,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt",
@@ -522,10 +648,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "evt_era_olden"
+        ]
       },
       {
         "text": "The English chapter text used here does not print Chinese characters or a glyph for the name.",
@@ -544,7 +673,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-four-appearance",
         "text_origin": "source_excerpt"
@@ -562,10 +691,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "It is a support Gu, not an attack Gu, yet using it can still produce a devastating blow by bringing out the user’s stored beast strength as a phantom behind the strike. At rank three it can activate only one beast phantom at a time.",
@@ -574,10 +706,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_support_gu",
+          "sys_attack_gu"
+        ]
       },
       {
         "text": "The activation can be started or stopped at will, so phantoms appear when the Gu is on and vanish when it is revoked.",
@@ -586,7 +722,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -598,7 +734,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -610,7 +746,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -626,11 +762,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-early-use",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_vital_gu",
           "gu_self_reliance_gu",
           "gu_bitter_strength_gu"
         ]
@@ -642,7 +779,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-early-use",
         "text_origin": "source_excerpt",
@@ -657,7 +794,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-early-use",
         "text_origin": "source_excerpt"
@@ -727,7 +864,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -744,7 +881,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

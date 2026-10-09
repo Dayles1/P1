@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 214,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     214,
@@ -261,6 +261,10 @@
       "count": 2
     },
     {
+      "target": "inh_white_bone_inheritance",
+      "count": 2
+    },
+    {
       "target": "loc_bai_gu_mountain",
       "count": 2
     },
@@ -282,6 +286,10 @@
     },
     {
       "target": "char_fang_zheng",
+      "count": 1
+    },
+    {
+      "target": "sys_righteous_path",
       "count": 1
     },
     {
@@ -325,6 +333,10 @@
       "count": 1
     },
     {
+      "target": "sys_smoke_image",
+      "count": 1
+    },
+    {
       "target": "gu_clearing_heat_gu",
       "count": 1
     },
@@ -338,6 +350,14 @@
     },
     {
       "target": "char_tie_ao_tian",
+      "count": 1
+    },
+    {
+      "target": "sys_tie_clan_token",
+      "count": 1
+    },
+    {
+      "target": "sys_grey_bone_huge_book",
       "count": 1
     },
     {
@@ -378,6 +398,10 @@
     },
     {
       "target": "gu_frost_fish_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_bai_gu_mountain",
       "count": 1
     },
     {
@@ -451,6 +475,10 @@
     {
       "target": "gu_little_wind_drill_gu",
       "count": 1
+    },
+    {
+      "target": "evt_fight_bai_ning_bing_against_tie_dao_ku",
+      "count": 1
     }
   ],
   "claims": [
@@ -461,7 +489,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "memory-of-the-move",
       "text_origin": "source_excerpt",
@@ -477,13 +505,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "memory-of-the-move",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_bai_sheng",
         "char_bai_hua",
+        "sys_righteous_path",
         "char_grey_bone_scholar"
       ]
     },
@@ -494,7 +523,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hunting-cover-and-the-dying-spring",
       "text_origin": "source_excerpt",
@@ -510,7 +539,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hunting-cover-and-the-dying-spring",
       "text_origin": "source_excerpt",
@@ -527,7 +556,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hunting-cover-and-the-dying-spring",
       "text_origin": "source_excerpt"
@@ -539,7 +568,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "leader-and-neighbours",
       "text_origin": "source_excerpt",
@@ -555,7 +584,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "leader-and-neighbours",
       "text_origin": "source_excerpt"
@@ -567,7 +596,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "leader-and-neighbours",
       "text_origin": "source_excerpt"
@@ -579,7 +608,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "youths-and-the-twins",
       "text_origin": "source_excerpt",
@@ -597,7 +626,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "youths-and-the-twins",
       "text_origin": "source_excerpt"
@@ -609,7 +638,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pursuit-through-the-inheritance-ground",
       "text_origin": "source_excerpt",
@@ -624,7 +653,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pursuit-through-the-inheritance-ground",
       "text_origin": "source_excerpt",
@@ -639,7 +668,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pursuit-through-the-inheritance-ground",
       "text_origin": "source_excerpt"
@@ -651,7 +680,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pursuit-through-the-inheritance-ground",
       "text_origin": "source_excerpt"
@@ -663,7 +692,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pursuit-through-the-inheritance-ground",
       "text_origin": "source_excerpt",
@@ -679,7 +708,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pursuit-through-the-inheritance-ground",
       "text_origin": "source_excerpt"
@@ -691,7 +720,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "arrest-warrant",
       "text_origin": "source_excerpt"
@@ -703,7 +732,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shang-clan-city-encounter",
       "text_origin": "source_excerpt",
@@ -718,7 +747,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shang-clan-city-encounter",
       "text_origin": "source_excerpt",
@@ -735,10 +764,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shang-clan-city-encounter",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_white_bone_inheritance"
+      ]
     },
     {
       "text": "Fang Yuan adds that the falling output of primeval stones will leave traces, and that if he spread the secret the neighbouring forces, who covet the inheritance, would move against the clan. He demands three million primeval stones, Bai Feng calls it too much, and Fang Yuan lowers the immediate payment to five hundred thousand within a day, with no clansman left in the city.",
@@ -747,7 +779,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shang-clan-city-encounter",
       "text_origin": "source_excerpt"
@@ -759,7 +791,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shang-clan-city-encounter",
       "text_origin": "source_excerpt",
@@ -776,7 +808,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shang-clan-city-encounter",
       "text_origin": "source_excerpt"
@@ -788,7 +820,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shang-clan-city-encounter",
       "text_origin": "source_excerpt"
@@ -800,7 +832,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shang-clan-city-encounter",
       "text_origin": "source_excerpt"
@@ -812,7 +844,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shang-clan-city-encounter",
       "text_origin": "source_excerpt"

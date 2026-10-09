@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 357,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     357,
@@ -33,6 +33,10 @@
   "relations": [],
   "co_mentions": [
     {
+      "target": "race_hairy_men",
+      "count": 2
+    },
+    {
       "target": "char_ren_zu",
       "count": 1
     },
@@ -41,11 +45,31 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_vanity_gu",
       "count": 1
     },
     {
+      "target": "evt_legend_vanity",
+      "count": 1
+    },
+    {
+      "target": "sys_verdant_great_sun_physique",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 1
     },
     {
@@ -103,7 +127,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "gu_destiny_gu"
+          "sys_immortal_gu",
+          "gu_destiny_gu",
+          "sys_the_legends_of_ren_zu"
         ]
       }
     ]
@@ -128,7 +154,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "repeated-legend-account",
         "text_origin": "source_excerpt"
@@ -149,12 +175,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-attempt",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_ren_zu"
+          "char_ren_zu",
+          "race_hairy_men",
+          "sys_gu_worms"
         ]
       },
       {
@@ -164,7 +192,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-attempt",
         "text_origin": "source_excerpt",
@@ -195,7 +223,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

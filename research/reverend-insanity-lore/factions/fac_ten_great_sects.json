@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 334,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     334,
@@ -74,6 +74,10 @@
     },
     {
       "target": "char_sun_yuan_hua",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -133,11 +137,19 @@
       "count": 1
     },
     {
+      "target": "inh_hu_immortal_inheritance",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
       "count": 1
     },
     {
       "target": "fac_spirit_affinity_house",
+      "count": 1
+    },
+    {
+      "target": "move_reincarnation_battlefield",
       "count": 1
     },
     {
@@ -149,6 +161,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "move_defending_day_and_night",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -157,11 +177,19 @@
       "count": 1
     },
     {
+      "target": "inh_infallible_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_falling_heavenly_river",
       "count": 1
     },
     {
       "target": "fac_defy",
+      "count": 1
+    },
+    {
+      "target": "house_wind_cloud_manor",
       "count": 1
     }
   ],
@@ -197,6 +225,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_tian_ti",
+        "sys_gu_immortal",
         "char_fairy_bai_hu",
         "fac_heavenly_lotus_sect",
         "loc_spirit_butterfly_valley",
@@ -251,7 +280,8 @@
         "char_gu_ting",
         "char_wei_wu_shang",
         "char_feng_jin_huang",
-        "fac_spirit_affinity_house"
+        "fac_spirit_affinity_house",
+        "inh_hu_immortal_inheritance"
       ]
     },
     {
@@ -282,7 +312,9 @@
       "section": "named-member-sects",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_hong_chi_ming"
+        "house_wind_cloud_manor",
+        "char_hong_chi_ming",
+        "sys_gu_formation"
       ]
     },
     {

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1719,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1719,
@@ -38,8 +38,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_wood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -72,6 +96,14 @@
       "count": 2
     },
     {
+      "target": "path_wood",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_vortex_space_boy",
       "count": 2
     },
@@ -82,6 +114,10 @@
     {
       "target": "char_wan_zi_hong",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     },
     {
       "target": "char_yu_zhu_zi",
@@ -108,6 +144,18 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_calamity_luck_altar",
+      "count": 1
+    },
+    {
+      "target": "house_red_river_wheel",
+      "count": 1
+    },
+    {
       "target": "loc_river_of_time",
       "count": 1
     },
@@ -117,6 +165,10 @@
     },
     {
       "target": "char_zhou_xiong_xin",
+      "count": 1
+    },
+    {
+      "target": "house_clear_jade_dripping_wind_tiny_bamboo_building",
       "count": 1
     },
     {
@@ -137,7 +189,8 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_heavenly_court"
+        "fac_heavenly_court",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -183,7 +236,8 @@
       "section": "fighting-beside-wan-zi-hong",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_wan_zi_hong"
+        "char_wan_zi_hong",
+        "house_red_river_wheel"
       ]
     },
     {
@@ -198,8 +252,10 @@
       "section": "fighting-beside-wan-zi-hong",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_calamity_luck_altar",
         "loc_river_of_time",
-        "char_duke_long"
+        "char_duke_long",
+        "sys_immortal_gu_house"
       ]
     },
     {
@@ -243,6 +299,7 @@
       "section": "renewed-offensives",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_clear_jade_dripping_wind_tiny_bamboo_building",
         "char_prince_feng_xian",
         "char_zhou_xiong_xin"
       ]
@@ -313,7 +370,7 @@
     "Paths": {
       "text": "Wood path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Central Continent",
@@ -323,7 +380,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court",
@@ -339,12 +396,14 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_wood"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": null,

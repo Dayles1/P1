@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2136,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_dao_veins_famous_mountains"
   },
   "chapters_cited": [
     2136,
@@ -43,6 +43,18 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -51,7 +63,19 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_dao_veins_famous_mountains",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -60,6 +84,10 @@
     },
     {
       "target": "fac_tang_clan",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_mortal_gu",
       "count": 1
     }
   ],
@@ -76,7 +104,8 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "reg_eastern_sea"
+        "reg_eastern_sea",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -106,7 +135,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "tang-clan-plea",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_information_path_mortal_gu"
+      ]
     }
   ],
   "conflicts": [],
@@ -140,7 +172,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -156,7 +188,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

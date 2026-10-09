@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1921,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1921,
@@ -34,8 +34,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_transformation",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -64,12 +88,28 @@
       "count": 2
     },
     {
+      "target": "path_transformation",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_central_continent",
       "count": 1
     },
     {
       "target": "char_frost_butterfly_warrior",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "res_southern_thorns",
+      "count": 1
     },
     {
       "target": "char_fairy_zi_wei",
@@ -106,6 +146,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_frost_butterfly_warrior",
+        "sys_gu_immortal",
         "loc_beast_calamity_grotto_heaven"
       ]
     },
@@ -201,7 +242,7 @@
     "Paths": {
       "text": "Transformation path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Central Continent",
@@ -211,7 +252,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Seat": {
       "text": "Beast Calamity Grotto-Heaven as of ch. 1921",
@@ -238,12 +279,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_transformation"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

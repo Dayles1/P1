@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1904,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1904,
@@ -53,6 +53,18 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -62,6 +74,14 @@
     },
     {
       "target": "reg_southern_border",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "move_refinement_formation_rain",
       "count": 1
     }
   ],
@@ -183,7 +203,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "char_paradise_earth_immortal_venerable"
+          "char_paradise_earth_immortal_venerable",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -199,6 +220,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "reg_southern_border",
+          "sys_gu_master",
+          "sys_gu_worms",
           "fac_gu_masters",
           "loc_dragon_whale_paradise"
         ]
@@ -213,7 +236,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "formation-obstacle",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       }
     ]
   },

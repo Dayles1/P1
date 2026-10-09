@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 393,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     393,
@@ -47,6 +47,10 @@
     {
       "target": "char_xiao_mang",
       "count": 3
+    },
+    {
+      "target": "move_my_glorious_spear",
+      "count": 2
     },
     {
       "target": "gu_extreme_light_gu",
@@ -129,7 +133,8 @@
         "section": "reuse-of-the-killer-move",
         "text_origin": "source_excerpt",
         "mentions": [
-          "loc_san_cha_mountain"
+          "loc_san_cha_mountain",
+          "move_my_glorious_spear"
         ]
       }
     ]

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2222,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_era_of_three_venerables"
   },
   "chapters_cited": [
     2222
@@ -42,12 +42,28 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_western_desert",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_shi_kang",
@@ -58,7 +74,19 @@
       "count": 2
     },
     {
+      "target": "evt_arc_era_of_three_venerables",
+      "count": 1
+    },
+    {
       "target": "char_shi_zhong",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -92,6 +120,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_western_desert",
+        "sys_gu_immortal",
         "char_shi_kang",
         "char_zuo_qiu_yan_ming"
       ]
@@ -110,6 +139,7 @@
       "mentions": [
         "fac_wan_clan",
         "fac_fang_clan",
+        "sys_immortal_gu_house",
         "fac_shi_clan"
       ]
     }
@@ -149,7 +179,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -171,7 +201,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": null,

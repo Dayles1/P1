@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2134,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_dao_veins_famous_mountains"
   },
   "chapters_cited": [
     2134,
@@ -69,7 +69,19 @@
       "count": 2
     },
     {
+      "target": "house_four_elements_square_regret_blood_refinement_pool",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -140,6 +152,7 @@
         "section": "rank-eight-commission",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_immortal",
           "char_fang_yuan"
         ]
       }
@@ -179,7 +192,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_he_chun_qiu",
-          "fac_wu_clan"
+          "fac_wu_clan",
+          "sys_immortal_gu",
+          "house_four_elements_square_regret_blood_refinement_pool"
         ]
       }
     ]

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2137,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_dao_veins_famous_mountains"
   },
   "chapters_cited": [
     2137,
@@ -34,6 +34,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -60,6 +72,10 @@
     {
       "target": "fac_chai_clan",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -91,6 +107,18 @@
     },
     {
       "target": "char_chai_fu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -139,6 +167,9 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_bing_yuan",
+        "sys_immortal_gu",
+        "sys_immortal_gu_house",
+        "sys_gu_immortal",
         "char_chai_fu"
       ]
     },
@@ -198,7 +229,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Chai Clan as of ch. 2137",
@@ -225,7 +256,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

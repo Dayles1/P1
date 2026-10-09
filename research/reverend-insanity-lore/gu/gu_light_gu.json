@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2278,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2277,
@@ -99,11 +99,23 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_secret_hall",
       "count": 1
     },
     {
       "target": "loc_flickering_light_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
       "count": 1
     },
     {
@@ -123,11 +135,19 @@
       "count": 1
     },
     {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
       "target": "char_zuo_ye_hui",
       "count": 1
     },
     {
       "target": "fac_eight_extremities",
+      "count": 1
+    },
+    {
+      "target": "house_calamity_luck_altar",
       "count": 1
     }
   ],
@@ -229,7 +249,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "wild-gu-in-you-tian-guang",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_wild_gu"
+        ]
       },
       {
         "text": "Fang Yuan, secretly refining heavenly secret Gu while he chases You Tian Guang, thinks the timing is wrong, since had this come after that refinement he could have used his full strength to capture the wild light Gu, and he does not feel much attraction to the Gu. Star Constellation Immortal Venerable uses an incomplete battlefield killer move of star fog to trap You Tian Guang and the wild rank nine light Gu. Fang Yuan’s immortal killer move seven kills rainbow, aimed at You Tian Guang, would destroy it alongside the rank nine light Gu in its body, but Star Constellation Immortal Venerable blocks it with a veil of stardust. Unable in his condition to obtain the Gu even if he tried, Fang Yuan has made up his mind to destroy the wild light Gu, to let Star Constellation Immortal Venerable have it if that fails, and to accept Giant Sun Immortal Venerable getting it only as the worst case, since Giant Sun’s own luck would grow explosively if he got it. When You Tian Guang escapes in the direction of Light Emperor, Light Emperor understands that his fortuitous encounter is rank nine light Gu, and he feels nothing but hatred toward it.",
@@ -290,7 +313,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       },
       {
         "text": "Star Constellation Immortal Venerable deduces from the blood and scales left in the air that the beast is You Tian Guang. As she and Fang Yuan pursue it, You Tian Guang escapes time and again, and Fang Yuan sees that it has brought away rank nine light Gu, which has not been refined yet and is still a wild Immortal Gu. Fang Yuan does not want to go after it, because if he obtained it the two other venerables would attack him in a frenzy to snatch it, and a rank nine Immortal Gu can break the balance between the three venerables.",
@@ -306,7 +332,8 @@
         "mentions": [
           "char_star_constellation_immortal_venerable",
           "char_you_tian_guang",
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_wild_immortal_gu"
         ]
       },
       {
@@ -373,7 +400,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "healing-the-gu",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_vital_gu"
+        ]
       },
       {
         "text": "Giant Sun Immortal Venerable thinks that even if rank nine light Gu were repaired it would not suit him, and he recalls that the revival of Light Emperor caused him to gain it.",
@@ -411,6 +441,7 @@
         "section": "claim-to-the-gu",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_calamity_luck_altar",
           "fac_eight_extremities"
         ]
       },

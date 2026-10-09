@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 343,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     343,
@@ -75,6 +75,10 @@
     },
     {
       "target": "gu_brave_fight_gu",
+      "count": 1
+    },
+    {
+      "target": "move_dragon_head_drill",
       "count": 1
     }
   ],
@@ -139,7 +143,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "night-wolf-defense",
         "text_origin": "source_excerpt",
@@ -170,7 +174,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "upgrade-plan",
         "text_origin": "source_excerpt"

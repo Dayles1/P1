@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 701,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     701,
@@ -54,6 +54,10 @@
       "count": 2
     },
     {
+      "target": "sys_storage_gu",
+      "count": 2
+    },
+    {
       "target": "gu_guts_gu",
       "count": 2
     },
@@ -66,7 +70,15 @@
       "count": 2
     },
     {
+      "target": "sys_stone_nest",
+      "count": 2
+    },
+    {
       "target": "char_he_feng_yang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -170,7 +182,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -188,11 +200,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_storage_gu",
+          "sys_gu_worms",
           "gu_earth_treasury_flower_gu",
           "gu_guts_gu",
           "loc_dang_hun_mountain"
@@ -224,7 +238,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-and-trade",
         "text_origin": "source_excerpt",
@@ -240,7 +254,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-and-trade",
         "text_origin": "source_excerpt"
@@ -252,7 +266,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-and-trade",
         "text_origin": "source_excerpt",
@@ -267,10 +281,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-and-trade",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_stone_nest"
+        ]
       },
       {
         "text": "Airsac Gu is a one time consumable Gu paired with guts Gu and sold with it.",
@@ -279,7 +296,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-and-trade",
         "text_origin": "source_excerpt"
@@ -291,7 +308,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-and-trade",
         "text_origin": "source_excerpt"
@@ -325,7 +342,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

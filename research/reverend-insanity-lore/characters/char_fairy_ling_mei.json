@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 710,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     710,
@@ -39,6 +39,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -71,6 +83,18 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_peerless_crescent_moon_slash",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -83,8 +107,16 @@
       "count": 4
     },
     {
+      "target": "move_peerless_crescent_moon_slash",
+      "count": 3
+    },
+    {
       "target": "reg_central_continent",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_qin_bai_sheng",
@@ -119,6 +151,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_he_lang_zi",
       "count": 1
     },
@@ -135,11 +175,31 @@
       "count": 1
     },
     {
+      "target": "move_defending_day_and_night",
+      "count": 1
+    },
+    {
       "target": "fac_wind_cloud_manor",
       "count": 1
     },
     {
+      "target": "move_death_wind_flying_blade",
+      "count": 1
+    },
+    {
+      "target": "move_fragrant_sorcerer_yin_statue_wolf_transformation",
+      "count": 1
+    },
+    {
       "target": "char_thieving_heaven_demon_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -159,14 +219,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_feng_jiu_ge",
         "reg_central_continent",
-        "char_fairy_ao_xue"
+        "char_fairy_ao_xue",
+        "sys_immortal_gu",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -176,7 +238,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -188,7 +250,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -200,7 +262,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "central-continent-search-party",
       "text_origin": "source_excerpt",
@@ -215,7 +277,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "central-continent-search-party",
       "text_origin": "source_excerpt",
@@ -232,7 +294,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "central-continent-search-party",
       "text_origin": "source_excerpt",
@@ -249,7 +311,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "luo-po-valley-trap",
       "text_origin": "source_excerpt",
@@ -257,6 +319,7 @@
         "fac_heavens_envy_sect",
         "gu_crescent_moon_gu",
         "fac_shadow_sect",
+        "sys_gu_formation",
         "char_hong_chi_ming",
         "char_thieving_heaven_demon_venerable"
       ]
@@ -268,12 +331,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "luo-po-valley-trap",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_qin_bai_sheng"
+        "char_qin_bai_sheng",
+        "sys_gu_worms"
       ]
     },
     {
@@ -283,7 +347,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "luo-po-valley-trap",
       "text_origin": "source_excerpt"
@@ -295,7 +359,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-notice",
       "text_origin": "source_excerpt",
@@ -347,7 +411,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heaven's Envy Sect as of ch. 710",
@@ -368,7 +432,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": null,

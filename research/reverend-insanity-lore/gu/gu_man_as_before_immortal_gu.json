@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 604,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     604,
@@ -42,6 +42,18 @@
     1680
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_time",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_tai_bai_yun_sheng",
@@ -73,6 +85,10 @@
       "count": 4
     },
     {
+      "target": "path_time",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -81,7 +97,35 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_purple_mountain_true_monarch_time_inheritance",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
       "target": "char_immortal_jiu_hui",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_hei_cheng_second_battle",
       "count": 1
     },
     {
@@ -118,6 +162,26 @@
     },
     {
       "target": "fac_shadow_sect",
+      "count": 1
+    },
+    {
+      "target": "move_flesh_blood_fire",
+      "count": 1
+    },
+    {
+      "target": "move_hundred_and_eighty_slaves",
+      "count": 1
+    },
+    {
+      "target": "move_landscape_as_before",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement",
+      "count": 1
+    },
+    {
+      "target": "move_man_as_before",
       "count": 1
     }
   ],
@@ -176,7 +240,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_time"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -206,7 +272,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -224,7 +290,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-and-cost",
         "text_origin": "source_excerpt"
@@ -236,7 +302,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-and-cost",
         "text_origin": "source_excerpt",
@@ -251,7 +317,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-and-cost",
         "text_origin": "source_excerpt"
@@ -275,7 +341,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-and-cost",
         "text_origin": "source_excerpt"
@@ -317,7 +383,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "refinement",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_vital_gu",
+          "sys_gu_recipe"
+        ]
       },
       {
         "text": "The cocoon breaks into a colorful butterfly trailing rainbow light, and he names the result Immortal Gu Man as Before.",
@@ -326,7 +396,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement",
         "text_origin": "source_excerpt"
@@ -373,13 +443,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_tai_bai_yun_sheng",
-          "gu_man_as_before_gu"
+          "sys_gu_immortal",
+          "gu_man_as_before_gu",
+          "sys_immortal_gu",
+          "sys_mortal_gu"
         ]
       },
       {
@@ -389,7 +462,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "immortal-zombies-courtesy",
         "text_origin": "source_excerpt",
@@ -410,7 +483,8 @@
         "section": "ownership-and-rank",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_sixth_hair"
+          "char_sixth_hair",
+          "move_man_as_before"
         ]
       },
       {
@@ -425,6 +499,7 @@
         "section": "ownership-and-rank",
         "text_origin": "source_excerpt",
         "mentions": [
+          "move_landscape_as_before",
           "fac_shadow_sect",
           "char_purple_mountain_true_monarch"
         ]
@@ -436,10 +511,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ownership-and-rank",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "path_time"
+        ]
       },
       {
         "text": "Fang Yuan’s main body later advances it from rank six to rank seven, and his time path clone oversees the refinement.",
@@ -471,7 +549,7 @@
     "Path": {
       "text": "Time Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

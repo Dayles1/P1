@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 357,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     357
@@ -36,6 +36,10 @@
     },
     {
       "target": "gu_flower_boar_gu",
+      "count": 1
+    },
+    {
+      "target": "race_hairy_men",
       "count": 1
     }
   ],
@@ -94,6 +98,7 @@
         "section": "trial-use",
         "text_origin": "source_excerpt",
         "mentions": [
+          "race_hairy_men",
           "char_fang_yuan"
         ]
       }

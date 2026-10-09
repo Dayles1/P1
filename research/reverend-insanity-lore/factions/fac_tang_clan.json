@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 775,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     775,
@@ -131,12 +131,24 @@
       "count": 2
     },
     {
+      "target": "move_steal_dream",
+      "count": 2
+    },
+    {
       "target": "gu_guts_gu",
       "count": 2
     },
     {
       "target": "char_thieving_heaven_demon_venerable",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
     },
     {
       "target": "fac_ten_great_ancient_sects",
@@ -151,7 +163,15 @@
       "count": 1
     },
     {
+      "target": "path_emotion",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "move_unravel_dream",
       "count": 1
     },
     {
@@ -164,6 +184,22 @@
     },
     {
       "target": "fac_su_clan",
+      "count": 1
+    },
+    {
+      "target": "sys_sound_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "evt_era_great",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_river_of_time",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -183,6 +219,10 @@
       "count": 1
     },
     {
+      "target": "inh_paradise_earth_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "fac_hua_clan",
       "count": 1
     },
@@ -196,6 +236,22 @@
     },
     {
       "target": "char_lady_poison_scorpion",
+      "count": 1
+    },
+    {
+      "target": "inh_molten_casting_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_myriad_fusion_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_tian_nan_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_dao_veins_famous_mountains",
       "count": 1
     },
     {
@@ -223,14 +279,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "western-desert-standing",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_western_desert",
         "char_tang_yang",
+        "sys_gu_immortal",
         "char_thieving_heaven_demon_venerable",
+        "sys_mortal_gu",
         "fac_ten_great_ancient_sects"
       ]
     },
@@ -241,12 +299,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "previous-life-standing",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "move_steal_dream",
+        "evt_era_great"
       ]
     },
     {
@@ -256,11 +316,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "present-day-standing-and-the-river-of-time",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu_house",
         "loc_tributary_of_the_river_of_time",
         "fac_shadow_sect",
         "gu_guts_gu"
@@ -273,7 +334,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tang-fang-mings-near-fatal-exploration",
       "text_origin": "source_excerpt",

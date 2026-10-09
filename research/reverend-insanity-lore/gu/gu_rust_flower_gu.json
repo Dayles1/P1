@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 352,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     352
@@ -53,6 +53,14 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "inh_king_quan_inheritance",
       "count": 1
     },
     {
@@ -149,14 +157,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_san_cha_mountain",
           "char_bai_ning_bing",
-          "fac_tie_clan"
+          "fac_tie_clan",
+          "sys_gu_master",
+          "inh_king_quan_inheritance"
         ]
       },
       {
@@ -166,7 +176,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "how-the-mark-works",
         "text_origin": "source_excerpt",

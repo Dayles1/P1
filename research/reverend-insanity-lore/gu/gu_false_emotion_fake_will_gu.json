@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 599,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     599,
@@ -31,6 +31,18 @@
     616
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_hei_lou_lan",
@@ -50,11 +62,19 @@
       "count": 3
     },
     {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
       "target": "char_giant_sun_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -113,7 +133,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -174,12 +196,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_immortal_gu",
           "char_giant_sun_immortal_venerable",
           "gu_emotion_gu"
         ]
@@ -191,7 +214,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "land-spirit-plan",
         "text_origin": "source_excerpt",
@@ -206,7 +229,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "shoulder-fight",
         "text_origin": "source_excerpt",
@@ -220,7 +243,7 @@
     "Path": {
       "text": "Wisdom Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

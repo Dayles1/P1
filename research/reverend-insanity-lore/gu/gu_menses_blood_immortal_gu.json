@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 789,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     789,
@@ -32,6 +32,18 @@
     2246
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_blood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_dong_fang_chang_fan",
@@ -51,8 +63,24 @@
       "count": 3
     },
     {
+      "target": "path_blood",
+      "count": 1
+    },
+    {
       "target": "char_blood_sea_ancestor",
       "count": 2
+    },
+    {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     },
     {
       "target": "reg_northern_plains",
@@ -95,7 +123,9 @@
     "ranks": [],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_blood"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -142,7 +172,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "origin-cores-and-the-blood-veil",
         "text_origin": "source_excerpt"
@@ -174,8 +204,11 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_demonic_path",
+          "sys_gu_immortal",
           "char_dong_fang_chang_fan",
-          "char_blood_sea_ancestor"
+          "char_blood_sea_ancestor",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -211,7 +244,7 @@
     "Path": {
       "text": "Blood Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

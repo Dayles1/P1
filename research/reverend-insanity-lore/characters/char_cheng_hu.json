@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 523,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     523,
@@ -37,6 +37,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -97,6 +109,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -125,6 +141,10 @@
       "count": 2
     },
     {
+      "target": "move_four_arm_earth_king",
+      "count": 2
+    },
+    {
       "target": "fac_fei_tribe",
       "count": 1
     },
@@ -133,7 +153,15 @@
       "count": 1
     },
     {
+      "target": "path_transformation",
+      "count": 1
+    },
+    {
       "target": "char_hao_ji_liu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -149,6 +177,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     }
@@ -161,7 +193,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -183,7 +215,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -195,7 +227,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -207,12 +239,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "human-look",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_hao_ji_liu"
+        "char_hao_ji_liu",
+        "sys_gu_master"
       ]
     },
     {
@@ -222,7 +255,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "slant-eye-tiger",
       "text_origin": "source_excerpt"
@@ -234,7 +267,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "deadlock-and-escape",
       "text_origin": "source_excerpt"
@@ -246,7 +279,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "elder-brother",
       "text_origin": "source_excerpt",
@@ -261,12 +294,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "field-death",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "move_four_arm_earth_king"
       ]
     },
     {
@@ -276,11 +310,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "one-transformation",
       "text_origin": "source_excerpt",
       "mentions": [
+        "evt_arc_imperial_court_contest",
         "fac_gu_masters"
       ]
     }
@@ -330,7 +365,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Cheng Tribe as of ch. 523 Ma Tribe as of ch. 523",
@@ -357,7 +392,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

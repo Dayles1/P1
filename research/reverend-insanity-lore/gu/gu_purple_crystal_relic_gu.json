@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 378,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     378,
@@ -71,6 +71,10 @@
       "count": 2
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 2
+    },
+    {
       "target": "gu_white_silver_relic_gu",
       "count": 2
     },
@@ -87,6 +91,18 @@
       "count": 1
     },
     {
+      "target": "sys_contribution_points",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_green_copper_relic_gu",
       "count": 1
     },
@@ -95,11 +111,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "char_chang_ji_you",
       "count": 1
     },
     {
       "target": "char_green",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     }
   ],
@@ -174,7 +198,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "appearance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       },
       {
         "text": "Chapter 378 does not describe purple crystal Relic Gu’s finished shape or color beyond the name.",
@@ -199,7 +226,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -224,10 +251,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       }
     ]
   },
@@ -255,13 +285,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "series-limits-and-market",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_green",
-          "gu_white_silver_relic_gu"
+          "gu_white_silver_relic_gu",
+          "sys_gu_immortal"
         ]
       }
     ],
@@ -302,7 +334,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -323,7 +355,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "relic-gu-form-and-human-path",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ]
   },

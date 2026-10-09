@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1885,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1885,
@@ -32,6 +32,18 @@
     2260
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_blood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fairy_zi_wei",
@@ -49,6 +61,10 @@
     {
       "target": "char_fairy_zi_wei",
       "count": 3
+    },
+    {
+      "target": "path_blood",
+      "count": 1
     },
     {
       "target": "char_red_heart_traveler",
@@ -71,11 +87,31 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_heart_blood_premonition",
+      "count": 1
+    },
+    {
       "target": "char_jun_shen_guang",
       "count": 1
     },
     {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "house_demon_judgment_board",
+      "count": 1
+    },
+    {
+      "target": "move_blood_kin_heart_revenge",
       "count": 1
     },
     {
@@ -123,7 +159,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_blood"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -168,6 +206,8 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
+          "sys_gu_immortal",
           "char_fang_yuan",
           "char_song_zi_xing",
           "char_zhang_yin"
@@ -190,7 +230,8 @@
           "char_jun_shen_guang",
           "fac_heavenly_court",
           "char_yang_jun",
-          "char_red_heart_traveler"
+          "char_red_heart_traveler",
+          "house_demon_judgment_board"
         ]
       }
     ],
@@ -248,7 +289,7 @@
     "Path": {
       "text": "Blood Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

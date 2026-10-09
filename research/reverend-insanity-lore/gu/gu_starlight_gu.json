@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 667,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     667,
@@ -32,6 +32,10 @@
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "move_dazzling_star_armor",
+      "count": 3
+    },
     {
       "target": "gu_bane_star_gu",
       "count": 2
@@ -53,11 +57,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_treasure_yellow_heaven",
       "count": 1
     },
     {
       "target": "gu_star_thought_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_dong_fang_wisdom_path_inheritance",
       "count": 1
     }
   ],
@@ -142,7 +154,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-material",
         "text_origin": "source_excerpt",
@@ -167,6 +179,7 @@
         "section": "killer-move-role",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_immortal",
           "char_fang_yuan"
         ],
         "needs_review": true

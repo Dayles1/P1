@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 446,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     446,
@@ -116,6 +116,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
       "target": "loc_crescent_lake",
       "count": 1
     },
@@ -144,7 +152,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -156,7 +164,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "recruited-against-lang-ya",
       "text_origin": "source_excerpt",
@@ -189,15 +197,17 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-at-crescent-lake",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_crescent_lake",
+        "sys_gu_immortal",
         "char_fairy_qing_suo",
         "char_fairy_huang_sha",
         "char_fairy_fen_meng",
+        "sys_gu_recipe",
         "loc_hua_hai_blessed_land"
       ]
     },
@@ -208,7 +218,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "captives-in-lang-ya",
       "text_origin": "source_excerpt",
@@ -223,7 +233,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wood-path-trade",
       "text_origin": "source_excerpt",

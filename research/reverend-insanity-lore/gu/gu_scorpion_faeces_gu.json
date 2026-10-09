@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 330,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     330
@@ -36,6 +36,10 @@
     },
     {
       "target": "char_shang_xin_ci",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -200,6 +204,7 @@
         "section": "with-shang-xin-ci",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "loc_nan_qiu_garden"
         ]
       }

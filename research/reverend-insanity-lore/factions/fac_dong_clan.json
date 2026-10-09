@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 837,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     837,
@@ -72,6 +72,10 @@
   ],
   "co_mentions": [
     {
+      "target": "house_red_river_wheel",
+      "count": 3
+    },
+    {
       "target": "char_dong_lu_chen",
       "count": 3
     },
@@ -84,8 +88,16 @@
       "count": 2
     },
     {
+      "target": "house_ten_thousand_li_silk_corridor",
+      "count": 2
+    },
+    {
       "target": "char_wan_zi_hong",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     },
     {
       "target": "fac_xiao_clan",
@@ -100,6 +112,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "loc_treasure_moon_oasis",
       "count": 1
     },
@@ -109,6 +125,10 @@
     },
     {
       "target": "char_flesh_whip_immortal",
+      "count": 1
+    },
+    {
+      "target": "house_jade_toad_castle",
       "count": 1
     },
     {
@@ -131,7 +151,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal",
+        "house_red_river_wheel"
+      ]
     },
     {
       "text": "Xiao clan’s first supreme elder names a contest with Dong clan over the market on the northwest side while planning to spread Ten Thousand Li Silk Corridor.",
@@ -140,12 +164,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_xiao_clan"
+        "fac_xiao_clan",
+        "house_ten_thousand_li_silk_corridor"
       ]
     },
     {
@@ -175,7 +200,8 @@
       "section": "house-origin-and-upgrade",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_immortal_gu_house"
       ]
     },
     {

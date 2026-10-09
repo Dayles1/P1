@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1238,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1238,
@@ -36,6 +36,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -68,6 +80,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_east_desolation_immortal",
       "count": 2
     },
@@ -94,6 +110,10 @@
     {
       "target": "char_flower_lady",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     },
     {
       "target": "fac_eight_extremities",
@@ -128,7 +148,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -138,7 +158,8 @@
         "fac_four_desolations",
         "char_east_desolation_immortal",
         "char_south_desolation_immortal",
-        "char_north_desolation_immortal"
+        "char_north_desolation_immortal",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -228,7 +249,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Longevity Heaven as of ch. 1238",
@@ -255,7 +276,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

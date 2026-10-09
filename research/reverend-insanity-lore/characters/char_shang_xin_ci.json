@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 235,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     235,
@@ -54,6 +54,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -100,6 +112,10 @@
     {
       "target": "reg_southern_border",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_xiao_lan",
@@ -170,11 +186,27 @@
       "count": 2
     },
     {
+      "target": "evt_arc_shang_clan_city",
+      "count": 2
+    },
+    {
+      "target": "inh_fur_true_inheritance",
+      "count": 2
+    },
+    {
+      "target": "evt_arc_bai_gu_mountain",
+      "count": 1
+    },
+    {
       "target": "char_fang_zheng",
       "count": 1
     },
     {
       "target": "char_hei_tu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -266,6 +298,10 @@
       "count": 1
     },
     {
+      "target": "sys_purple_thorn_token",
+      "count": 1
+    },
+    {
       "target": "gu_blood_handprint_gu",
       "count": 1
     },
@@ -283,6 +319,10 @@
     },
     {
       "target": "char_yi_bu_hui",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_three_kings_inheritance",
       "count": 1
     },
     {
@@ -314,6 +354,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_demonic_path_rise",
+      "count": 1
+    },
+    {
       "target": "loc_yi_tian_mountain",
       "count": 1
     },
@@ -334,6 +378,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_hou_clan",
       "count": 1
     },
@@ -346,11 +398,27 @@
       "count": 1
     },
     {
+      "target": "move_mud_piled_into_a_wall",
+      "count": 1
+    },
+    {
+      "target": "move_fetus_earth_maze",
+      "count": 1
+    },
+    {
       "target": "char_yi_chong",
       "count": 1
     },
     {
       "target": "char_kong_sheng_tian",
+      "count": 1
+    },
+    {
+      "target": "inh_sheng_tian_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_dao_veins_famous_mountains",
       "count": 1
     },
     {
@@ -364,6 +432,10 @@
     {
       "target": "char_chai_ke_qing",
       "count": 1
+    },
+    {
+      "target": "res_tap_fire",
+      "count": 1
     }
   ],
   "claims": [
@@ -374,7 +446,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -386,7 +458,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -401,7 +473,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -418,7 +490,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -430,11 +502,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lady-zhang-and-fairy-zhang",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "fac_zhang_clan"
       ]
     },
@@ -445,7 +518,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lady-zhang-and-fairy-zhang",
       "text_origin": "source_excerpt"
@@ -457,7 +530,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lady-zhang-and-fairy-zhang",
       "text_origin": "source_excerpt"
@@ -469,7 +542,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lady-zhang-and-fairy-zhang",
       "text_origin": "source_excerpt"
@@ -481,7 +554,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reunion-and-young-master-seat",
       "text_origin": "source_excerpt",
@@ -512,7 +585,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reunion-and-young-master-seat",
       "text_origin": "source_excerpt",
@@ -528,7 +601,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reunion-and-young-master-seat",
       "text_origin": "source_excerpt"
@@ -540,7 +613,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reunion-and-young-master-seat",
       "text_origin": "source_excerpt"
@@ -552,7 +625,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reunion-and-young-master-seat",
       "text_origin": "source_excerpt"
@@ -564,7 +637,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reunion-and-young-master-seat",
       "text_origin": "source_excerpt",
@@ -581,7 +654,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shang-bi-xis-assassination-attempt",
       "text_origin": "source_excerpt",
@@ -600,7 +673,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shang-clan-leader",
       "text_origin": "source_excerpt"
@@ -612,7 +685,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shang-clan-leader",
       "text_origin": "source_excerpt",
@@ -635,6 +708,7 @@
       "mentions": [
         "fac_hou_clan",
         "fac_tie_clan",
+        "sys_gu_immortal",
         "char_wei_de_xin",
         "char_xiao_yan"
       ]
@@ -676,7 +750,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "rank-five-and-southern-border-contests",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_information_path_mortal_gu"
+      ]
     }
   ],
   "conflicts": [],
@@ -739,7 +816,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shang Clan as of ch. 235",
@@ -771,7 +848,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

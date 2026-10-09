@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 634,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     634,
@@ -57,11 +57,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_imperial_court_blessed_land",
       "count": 1
     },
     {
       "target": "fac_chanyu_tribe",
+      "count": 1
+    },
+    {
+      "target": "move_winged_blade",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     }
   ],
@@ -103,7 +115,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
-        "loc_imperial_court_blessed_land"
+        "loc_imperial_court_blessed_land",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -118,7 +131,8 @@
       "section": "named-veil-and-thickness",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_chanyu_tribe"
+        "fac_chanyu_tribe",
+        "move_winged_blade"
       ]
     },
     {
@@ -167,7 +181,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "isolation-and-shrink",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_worms"
+      ]
     }
   ],
   "conflicts": [],

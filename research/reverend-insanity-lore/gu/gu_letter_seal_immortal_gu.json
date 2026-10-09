@@ -23,12 +23,24 @@
   "first_appearance": {
     "chapter": 1862,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1862
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_information",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_wu_shuai",
@@ -48,7 +60,15 @@
       "count": 3
     },
     {
+      "target": "path_information",
+      "count": 1
+    },
+    {
       "target": "gu_ant_nest_gu",
+      "count": 2
+    },
+    {
+      "target": "inh_wu_shuai_inheritance",
       "count": 2
     },
     {
@@ -57,6 +77,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -101,7 +125,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_information"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -149,7 +175,9 @@
           "fac_gu_tribe",
           "char_fang_yuan",
           "char_wu_shuai",
-          "gu_ant_nest_gu"
+          "sys_immortal_gu",
+          "gu_ant_nest_gu",
+          "inh_wu_shuai_inheritance"
         ],
         "needs_review": true
       }
@@ -180,7 +208,7 @@
     "Path": {
       "text": "Information Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

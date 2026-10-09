@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 431,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     431,
@@ -75,8 +75,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_luck",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 617,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -121,6 +145,66 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_fixed_luck",
+      "role": "source",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_luck_path_supreme_true_inheritance",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 620,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_giant_sun_immortal_venerable_inheritance",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 622,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_giant_sun_luck_path_true_inheritance",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 622,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_all_living_beings_luck_true_inheritance",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1304,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -137,8 +221,36 @@
       "count": 3
     },
     {
+      "target": "path_luck",
+      "count": 3
+    },
+    {
+      "target": "inh_luck_path_supreme_true_inheritance",
+      "count": 3
+    },
+    {
+      "target": "inh_giant_sun_immortal_venerable_inheritance",
+      "count": 3
+    },
+    {
+      "target": "inh_giant_sun_luck_path_true_inheritance",
+      "count": 3
+    },
+    {
+      "target": "inh_all_living_beings_luck_true_inheritance",
+      "count": 3
+    },
+    {
+      "target": "move_fixed_luck",
+      "count": 3
+    },
+    {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_old_ancestor_xue_hu",
@@ -169,6 +281,10 @@
       "count": 2
     },
     {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 2
+    },
+    {
       "target": "char_fei_cai",
       "count": 2
     },
@@ -189,6 +305,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 2
+    },
+    {
       "target": "gu_fortune_rivalling_heaven_immortal_gu",
       "count": 2
     },
@@ -198,6 +318,10 @@
     },
     {
       "target": "char_lady_wan_shou",
+      "count": 2
+    },
+    {
+      "target": "inh_thieving_heaven_true_inheritance",
       "count": 2
     },
     {
@@ -225,7 +349,19 @@
       "count": 2
     },
     {
+      "target": "evt_arc_northern_plains_imperial_court",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -265,7 +401,23 @@
       "count": 1
     },
     {
+      "target": "move_three_hearts_combination_soul",
+      "count": 1
+    },
+    {
+      "target": "sys_historical_inertia",
+      "count": 1
+    },
+    {
       "target": "char_chang_biao",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
       "count": 1
     },
     {
@@ -281,11 +433,19 @@
       "count": 1
     },
     {
+      "target": "sys_otherworldly_demon",
+      "count": 1
+    },
+    {
       "target": "char_giant_sun_immortal_venerable",
       "count": 1
     },
     {
       "target": "char_mo_yao",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -373,6 +533,14 @@
       "count": 1
     },
     {
+      "target": "res_smelly_fly_flowers",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
+    },
+    {
       "target": "char_spirit_affinity_first_supreme_elder",
       "count": 1
     },
@@ -386,6 +554,14 @@
     },
     {
       "target": "loc_reverse_flow_river",
+      "count": 1
+    },
+    {
+      "target": "sys_fate_reversing_sacrificial_refinement_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_lightning_path_dao_marks",
       "count": 1
     },
     {
@@ -411,6 +587,10 @@
     {
       "target": "char_purple_mountain_true_monarch",
       "count": 1
+    },
+    {
+      "target": "sys_mental_energy",
+      "count": 1
     }
   ],
   "claims": [
@@ -421,13 +601,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
         "char_chang_shan_yin",
+        "sys_gu_master",
         "loc_imperial_court"
       ]
     },
@@ -438,7 +619,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -474,7 +655,8 @@
         "char_fei_cai",
         "char_fei_qing",
         "fac_fei_tribe",
-        "fac_huang_jin_bloodline"
+        "fac_huang_jin_bloodline",
+        "house_eighty_eight_true_yang_building"
       ]
     },
     {
@@ -484,7 +666,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fei-cai-and-ma-tribe",
       "text_origin": "source_excerpt",
@@ -501,7 +683,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fei-cai-and-ma-tribe",
       "text_origin": "source_excerpt",
@@ -517,10 +699,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fei-cai-and-ma-tribe",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Inside Imperial Court blessed land he is a rank one Gu Master who cannot usefully enter Eighty-Eight True Yang Building, mixing with hunting groups for primeval stones. The text restates that he saved Ma Ying Jie by coincidence, that Hei tribe’s takeover and later events gave him the Ma surname and the chance to cultivate, and that Zhao Lian Yun coaches what he says in public.",
@@ -529,7 +714,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-one-and-two-years",
       "text_origin": "source_excerpt",
@@ -545,7 +730,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-one-and-two-years",
       "text_origin": "source_excerpt",
@@ -560,10 +745,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-one-and-two-years",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_wild_gu"
+      ]
     },
     {
       "text": "Chang Biao then records that Ma Hong Yun contributes his battle gains, that Ma Ying Jie rewards him with three green copper relic Gu for his loyalty and returns the contributed Gu worms to him, and that Ma Hong Yun reaches rank two realm in one night with the Gu he needed most.",
@@ -572,13 +760,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-one-and-two-years",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_chang_biao",
-        "gu_green_copper_relic_gu"
+        "gu_green_copper_relic_gu",
+        "sys_gu_worms"
       ]
     },
     {
@@ -588,7 +777,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-one-and-two-years",
       "text_origin": "source_excerpt",
@@ -605,7 +794,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-one-and-two-years",
       "text_origin": "source_excerpt"
@@ -617,7 +806,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "imperial-court-and-fortune-rivalling-heaven",
       "text_origin": "source_excerpt"
@@ -629,12 +818,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "imperial-court-and-fortune-rivalling-heaven",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_mo_yao",
+        "sys_immortal_gu",
         "char_giant_sun_immortal_venerable"
       ]
     },
@@ -645,7 +835,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "imperial-court-and-fortune-rivalling-heaven",
       "text_origin": "source_excerpt"
@@ -657,7 +847,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "imperial-court-and-fortune-rivalling-heaven",
       "text_origin": "source_excerpt"
@@ -669,7 +859,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "imperial-court-and-fortune-rivalling-heaven",
       "text_origin": "source_excerpt"
@@ -681,7 +871,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "imperial-court-and-fortune-rivalling-heaven",
       "text_origin": "source_excerpt",
@@ -697,7 +887,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-snowy-mountain",
       "text_origin": "source_excerpt"
@@ -709,7 +899,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-snowy-mountain",
       "text_origin": "source_excerpt",
@@ -724,7 +914,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-snowy-mountain",
       "text_origin": "source_excerpt",
@@ -741,7 +931,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-snowy-mountain",
       "text_origin": "source_excerpt",
@@ -756,10 +946,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-snowy-mountain",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "path_luck"
+      ]
     },
     {
       "text": "Shadow Sect later learns that Zhao Lian Yun has already been secretly sent to Central Continent, and that Spirit Affinity House, holding a Thieving Heaven true inheritance, would naturally send her there.",
@@ -774,7 +967,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_shadow_sect",
-        "fac_spirit_affinity_house"
+        "fac_spirit_affinity_house",
+        "inh_thieving_heaven_true_inheritance"
       ]
     },
     {
@@ -784,7 +978,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-snowy-mountain",
       "text_origin": "source_excerpt",
@@ -799,7 +993,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-snowy-mountain",
       "text_origin": "source_excerpt"
@@ -811,7 +1005,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-snowy-mountain",
       "text_origin": "source_excerpt"
@@ -823,7 +1017,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-snowy-mountain",
       "text_origin": "source_excerpt"
@@ -835,7 +1029,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-snowy-mountain",
       "text_origin": "source_excerpt"
@@ -847,7 +1041,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-snowy-mountain",
       "text_origin": "source_excerpt"
@@ -859,7 +1053,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-snowy-mountain",
       "text_origin": "source_excerpt",
@@ -874,7 +1068,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "previous-life-prince-feng-xians-betrayal",
       "text_origin": "source_excerpt",
@@ -889,11 +1083,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "previous-life-captured-by-dong-fang-tribe",
       "text_origin": "source_excerpt",
       "mentions": [
+        "evt_arc_imperial_court_contest",
         "fac_dong_fang_tribe",
         "char_dong_fang_yu_liang",
         "char_dong_fang_qing_yu"
@@ -906,7 +1101,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-at-reverse-flow-river",
       "text_origin": "source_excerpt",
@@ -922,7 +1117,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-at-reverse-flow-river",
       "text_origin": "source_excerpt"
@@ -934,7 +1129,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-at-reverse-flow-river",
       "text_origin": "source_excerpt",
@@ -950,7 +1145,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-at-reverse-flow-river",
       "text_origin": "source_excerpt",
@@ -966,7 +1161,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-at-reverse-flow-river",
       "text_origin": "source_excerpt",
@@ -981,7 +1176,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-at-reverse-flow-river",
       "text_origin": "source_excerpt"
@@ -993,7 +1188,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-at-reverse-flow-river",
       "text_origin": "source_excerpt"
@@ -1005,7 +1200,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-at-reverse-flow-river",
       "text_origin": "source_excerpt"
@@ -1104,7 +1299,7 @@
     "Paths": {
       "text": "Luck path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Northern Plains",
@@ -1114,7 +1309,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Ma Tribe as of ch. 545",
@@ -1151,12 +1346,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_luck"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

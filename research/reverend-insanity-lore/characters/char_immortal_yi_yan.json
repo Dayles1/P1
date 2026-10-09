@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 461,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     461,
@@ -37,8 +37,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -51,8 +75,20 @@
   ],
   "co_mentions": [
     {
+      "target": "path_wisdom",
+      "count": 2
+    },
+    {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_inkmen",
+      "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_great_dream_immortal_venerable",
@@ -60,6 +96,10 @@
     },
     {
       "target": "char_long_hair_ancestor",
+      "count": 2
+    },
+    {
+      "target": "sys_prophecy_of_three_venerables",
       "count": 2
     },
     {
@@ -79,6 +119,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "evt_era_current",
+      "count": 1
+    },
+    {
       "target": "char_lang_ya_land_spirit",
       "count": 1
     },
@@ -88,6 +136,10 @@
     },
     {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "move_immortal_aperture_transplantation",
       "count": 1
     },
     {
@@ -115,7 +167,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -123,9 +175,12 @@
         "char_long_hair_ancestor",
         "gu_space_escape_gu",
         "char_thieving_heaven_demon_venerable",
+        "sys_prophecy_of_three_venerables",
         "char_spectral_soul_demon_venerable",
         "char_paradise_earth_immortal_venerable",
-        "char_great_dream_immortal_venerable"
+        "char_great_dream_immortal_venerable",
+        "path_wisdom",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -135,7 +190,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -147,7 +202,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wisdom-path-attainment",
       "text_origin": "source_excerpt",
@@ -192,7 +247,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "founding-through-a-costly-pact",
       "text_origin": "source_excerpt",
@@ -209,7 +264,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "founding-through-a-costly-pact",
       "text_origin": "source_excerpt",
@@ -270,7 +325,7 @@
     "Paths": {
       "text": "Wisdom path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Northern Plains",
@@ -280,7 +335,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     }
   },
   "cultivation": {
@@ -292,12 +347,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": null,
     "alignment": null,

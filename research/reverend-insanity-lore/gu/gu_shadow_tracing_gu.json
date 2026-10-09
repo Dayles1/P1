@@ -23,13 +23,17 @@
   "first_appearance": {
     "chapter": 720,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     720
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "res_vanishing_shadow_leopard_bones",
+      "count": 4
+    },
     {
       "target": "gu_dark_fog_gu",
       "count": 2
@@ -48,6 +52,18 @@
     },
     {
       "target": "char_hei_lou_lan",
+      "count": 1
+    },
+    {
+      "target": "sys_defensive_gu",
+      "count": 1
+    },
+    {
+      "target": "res_vanishing_shadow_leopard_eyes",
+      "count": 1
+    },
+    {
+      "target": "res_vanishing_shadow_leopard_fur",
       "count": 1
     }
   ],
@@ -117,12 +133,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "materials",
         "text_origin": "source_excerpt",
         "mentions": [
+          "res_vanishing_shadow_leopard_bones",
           "gu_shadow_attachment_gu",
+          "res_vanishing_shadow_leopard_fur",
+          "sys_defensive_gu",
+          "res_vanishing_shadow_leopard_eyes",
           "gu_dark_vision_gu",
           "gu_dark_fog_gu"
         ]
@@ -150,7 +170,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

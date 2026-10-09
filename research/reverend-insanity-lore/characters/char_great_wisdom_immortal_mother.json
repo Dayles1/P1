@@ -23,14 +23,31 @@
   "first_appearance": {
     "chapter": 1981,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1981,
     1982
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_inkmen",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "race_inkmen",
+      "count": 3
+    },
     {
       "target": "char_golden_fur_immortal_monarch",
       "count": 2
@@ -41,6 +58,10 @@
     },
     {
       "target": "char_ice_crystal_immortal_monarch",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -67,7 +88,8 @@
       "mentions": [
         "char_ice_crystal_immortal_monarch",
         "char_golden_fur_immortal_monarch",
-        "char_green_forest_great_sage"
+        "char_green_forest_great_sage",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -126,7 +148,7 @@
     "Race": {
       "text": "Inkmen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -148,7 +170,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_inkmen",
     "region": null,
     "status": "Alive",
     "alignment": null,

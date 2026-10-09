@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 96,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     96,
@@ -83,6 +83,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_liquor_worm",
       "count": 1
     },
@@ -135,7 +139,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
-        "char_gu_yue_yao_ji"
+        "char_gu_yue_yao_ji",
+        "sys_gu_master"
       ]
     },
     {

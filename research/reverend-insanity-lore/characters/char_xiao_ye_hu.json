@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2253,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_era_of_three_venerables"
   },
   "chapters_cited": [
     2253,
@@ -39,6 +39,18 @@
     {
       "type": "in_region",
       "target": "reg_western_desert",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -67,8 +79,16 @@
       "count": 4
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_western_desert",
       "count": 1
+    },
+    {
+      "target": "house_chamber_pot",
+      "count": 2
     },
     {
       "target": "char_wan_gu_chou",
@@ -84,6 +104,26 @@
     },
     {
       "target": "fac_wan_clan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
+      "count": 1
+    },
+    {
+      "target": "house_earth_shuttle",
+      "count": 1
+    },
+    {
+      "target": "move_fleeting_bloom",
       "count": 1
     },
     {
@@ -124,7 +164,12 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "chamber-pot-and-alliance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal",
+        "sys_immortal_gu_house",
+        "house_chamber_pot"
+      ]
     },
     {
       "text": "He visits Wan clan to renegotiate as the situation changes, leaves contentedly once Xiao clan ‘s benefits are preserved, and returns again when muddy beach and perfume flying island are gone, pressing to change the contract rather than risk an immediate attack on Fang clan.",
@@ -209,7 +254,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Xiao Clan (Western Desert) as of ch. 2253",
@@ -230,7 +275,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": null,

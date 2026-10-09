@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1540,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1540,
@@ -41,12 +41,28 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_central_continent",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_liang_liang",
@@ -57,11 +73,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_lang_ya_blessed_land",
       "count": 1
     },
     {
+      "target": "move_seven_immortal_doors",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
+      "count": 1
+    },
+    {
+      "target": "sys_heavenly_giant_solor",
       "count": 1
     }
   ],
@@ -81,6 +109,7 @@
         "char_feng_jiu_ge",
         "char_liang_liang",
         "reg_central_continent",
+        "sys_gu_immortal",
         "reg_northern_plains",
         "loc_lang_ya_blessed_land"
       ]
@@ -107,7 +136,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "silver-giant-beam",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_heavenly_giant_solor"
+      ]
     }
   ],
   "conflicts": [],
@@ -151,7 +183,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -173,7 +205,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1048,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1048,
@@ -38,6 +38,10 @@
     },
     {
       "target": "char_lang_ya_land_spirit",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -84,6 +88,7 @@
       "mentions": [
         "char_lang_ya_land_spirit",
         "char_fang_yuan",
+        "sys_gu_formation",
         "fac_zombie_alliance",
         "loc_lang_ya_blessed_land"
       ]
@@ -110,7 +115,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "second-formation-named",
       "text_origin": "source_excerpt",

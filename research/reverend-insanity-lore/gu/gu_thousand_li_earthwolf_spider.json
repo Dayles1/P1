@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 46,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     46,
@@ -88,7 +88,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "loc_qing_mao_mountain",
+      "count": 1
+    },
+    {
+      "target": "inh_flower_wine_monk_inheritance",
       "count": 1
     },
     {
@@ -116,6 +124,10 @@
       "count": 1
     },
     {
+      "target": "sys_movement_gu",
+      "count": 1
+    },
+    {
       "target": "gu_earth_treasury_flower_gu",
       "count": 1
     },
@@ -125,6 +137,10 @@
     },
     {
       "target": "loc_blood_lake",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_third_battle",
       "count": 1
     }
   ],
@@ -217,7 +233,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -250,7 +266,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       }
     ]
   },
@@ -350,7 +369,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bond-with-its-first-owner",
         "text_origin": "source_excerpt"
@@ -362,7 +381,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bond-with-its-first-owner",
         "text_origin": "source_excerpt"
@@ -374,7 +393,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "tunnel-toward-the-spirit-spring",
         "text_origin": "source_excerpt",
@@ -390,12 +409,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-mount",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_thunderwings_gu"
+          "gu_thunderwings_gu",
+          "sys_movement_gu"
         ]
       },
       {
@@ -405,7 +425,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-mount",
         "text_origin": "source_excerpt",
@@ -421,7 +441,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-mount",
         "text_origin": "source_excerpt",
@@ -436,7 +456,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-mount",
         "text_origin": "source_excerpt"
@@ -448,7 +468,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-mount",
         "text_origin": "source_excerpt"

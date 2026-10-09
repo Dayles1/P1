@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 528,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     528,
@@ -45,6 +45,18 @@
     1554
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_dark",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fairy_jiang_yu",
@@ -92,7 +104,19 @@
       "count": 3
     },
     {
+      "target": "move_dark_assassination",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 2
+    },
+    {
+      "target": "path_dark",
+      "count": 1
+    },
+    {
+      "target": "sys_great_strength_true_martial_physique",
       "count": 2
     },
     {
@@ -112,7 +136,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
+      "count": 1
+    },
+    {
+      "target": "move_star_fog_concealment",
       "count": 1
     },
     {
@@ -144,7 +180,15 @@
       "count": 1
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_perseverance_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_super_gu_formation",
       "count": 1
     },
     {
@@ -205,7 +249,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_dark"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -227,7 +273,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -242,7 +288,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -308,7 +354,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "new-concealment-killer-move",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       }
     ]
   },
@@ -418,7 +467,8 @@
           "char_hei_bai",
           "char_hei_cheng",
           "char_hei_lou_lan",
-          "char_fairy_jiang_yu"
+          "char_fairy_jiang_yu",
+          "sys_great_strength_true_martial_physique"
         ]
       },
       {
@@ -431,7 +481,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "seal-on-hei-lou-lan",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu",
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "Northern plains Gu Immortals know Fairy Jiang Yu as a dark path Gu Immortal who holds dark limit Immortal Gu, which can conceal inspirations and make deductions difficult. Fairy Jiang Yu used it to seal the aura of one of the ten extreme physiques on Hei Lou Lan so heaven and earth would not induce that physique.",
@@ -474,7 +528,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "given-to-the-super-gu-formation",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_super_gu_formation"
+        ]
       },
       {
         "text": "As Fairy Zi Wei contests control of that super Gu formation, he judges that he can no longer take dark limit Immortal Gu back.",
@@ -536,7 +593,7 @@
     "Path": {
       "text": "Dark Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

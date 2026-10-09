@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 537,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     537,
@@ -37,6 +37,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -69,6 +81,126 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_icy_wind_blade_wheel",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 677,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_cold_condensed_snow",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 874,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_ice_trace",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 874,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_dragon_horse_spirit",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_drifting_snow",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_ice_mountain_awl",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_penetrating_ice_blade",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_snow_sparrow_crisis",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_fang_yuan_against_hei_cheng_first_battle",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 677,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_fang_yuan_against_hei_cheng_second_battle",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 688,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -77,8 +209,52 @@
       "count": 4
     },
     {
+      "target": "move_dragon_horse_spirit",
+      "count": 3
+    },
+    {
       "target": "gu_hundred_year_lifespan_gu",
       "count": 3
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_hei_cheng_first_battle",
+      "count": 3
+    },
+    {
+      "target": "move_icy_wind_blade_wheel",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_hei_cheng_second_battle",
+      "count": 3
+    },
+    {
+      "target": "move_drifting_snow",
+      "count": 3
+    },
+    {
+      "target": "move_ice_mountain_awl",
+      "count": 3
+    },
+    {
+      "target": "move_snow_sparrow_crisis",
+      "count": 3
+    },
+    {
+      "target": "move_cold_condensed_snow",
+      "count": 3
+    },
+    {
+      "target": "move_ice_trace",
+      "count": 2
+    },
+    {
+      "target": "move_penetrating_ice_blade",
+      "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_northern_plains",
@@ -105,6 +281,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -121,6 +301,10 @@
       "count": 1
     },
     {
+      "target": "race_snowmen",
+      "count": 1
+    },
+    {
       "target": "gu_wooden_chicken_gu",
       "count": 1
     },
@@ -133,7 +317,15 @@
       "count": 1
     },
     {
+      "target": "move_grey_meltdown",
+      "count": 1
+    },
+    {
       "target": "loc_icy_plain",
+      "count": 1
+    },
+    {
+      "target": "sys_battlefield_killer_move",
       "count": 1
     },
     {
@@ -161,7 +353,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_shadow_sect",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_self_giant_hand",
+      "count": 1
+    },
+    {
+      "target": "path_ice",
+      "count": 1
+    },
+    {
+      "target": "path_snow",
       "count": 1
     },
     {
@@ -170,6 +378,10 @@
     },
     {
       "target": "char_old_ancestor_xue_hu",
+      "count": 1
+    },
+    {
+      "target": "move_qi_lockdown",
       "count": 1
     },
     {
@@ -185,7 +397,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -193,6 +405,7 @@
         "gu_no_gu",
         "fac_ma_tribe",
         "loc_imperial_court",
+        "sys_gu_worms",
         "fac_gu_masters",
         "char_xue_wa"
       ]
@@ -204,7 +417,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -216,7 +429,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "seventh-peak",
       "text_origin": "source_excerpt",
@@ -231,11 +444,12 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lang-ya-invasion",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "loc_lang_ya_blessed_land",
         "char_fang_yuan",
         "char_qin_bai_sheng",
@@ -249,7 +463,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lang-ya-invasion",
       "text_origin": "source_excerpt",
@@ -264,7 +478,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lang-ya-invasion",
       "text_origin": "source_excerpt",
@@ -279,7 +493,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "seventh-peak-succession",
       "text_origin": "source_excerpt"
@@ -330,7 +544,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 537",
@@ -357,7 +571,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": "demonic path as of ch. 537",

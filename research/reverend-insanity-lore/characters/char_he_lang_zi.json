@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 747,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     747,
@@ -41,6 +41,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -85,6 +97,18 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_fragrant_sorcerer_yin_statue_wolf_transformation",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 886,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -101,8 +125,16 @@
       "count": 3
     },
     {
+      "target": "move_fragrant_sorcerer_yin_statue_wolf_transformation",
+      "count": 3
+    },
+    {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_old_ancestor_xue_hu",
@@ -137,7 +169,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_xiong_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_heavenly_wind_qi_wall",
       "count": 1
     },
     {
@@ -157,11 +201,23 @@
       "count": 1
     },
     {
+      "target": "move_heart_demon_ferret_transformation",
+      "count": 1
+    },
+    {
       "target": "fac_murong_tribe",
       "count": 1
     },
     {
       "target": "fac_chanyu_tribe",
+      "count": 1
+    },
+    {
+      "target": "res_sandalwood_sacred_elephant_egg",
+      "count": 1
+    },
+    {
+      "target": "move_immemorial_flame_axe",
       "count": 1
     },
     {
@@ -173,7 +229,51 @@
       "count": 1
     },
     {
+      "target": "sys_movement_killer_move",
+      "count": 1
+    },
+    {
       "target": "char_qin_bai_sheng",
+      "count": 1
+    },
+    {
+      "target": "move_soul_suppression",
+      "count": 1
+    },
+    {
+      "target": "move_star_cloud_grindstone",
+      "count": 1
+    },
+    {
+      "target": "move_star_snake_rope",
+      "count": 1
+    },
+    {
+      "target": "sys_lightning_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "move_position_star_swap",
+      "count": 1
+    },
+    {
+      "target": "move_six_illusion_star_bodies",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_lang_ya_land_spirit_against_qin_bai_sheng",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_self_giant_hand",
+      "count": 1
+    },
+    {
+      "target": "move_death_wind_flying_blade",
+      "count": 1
+    },
+    {
+      "target": "move_green_jade_song",
       "count": 1
     },
     {
@@ -201,12 +301,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_heavenly_gong",
+        "sys_immortal_gu",
         "loc_crimson_reed_marsh"
       ]
     },
@@ -217,11 +318,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "reg_northern_plains",
         "char_old_ancestor_xue_hu"
       ]
@@ -233,7 +335,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -248,7 +350,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -264,7 +366,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -276,7 +378,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -288,7 +390,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -300,7 +402,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -312,7 +414,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "qin-bai-sheng-and-soul-suppression",
       "text_origin": "source_excerpt",
@@ -327,7 +429,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-defense",
       "text_origin": "source_excerpt",
@@ -344,7 +446,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -360,7 +462,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-to-lang-ya",
       "text_origin": "source_excerpt",
@@ -376,7 +478,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dao-mark-switching",
       "text_origin": "source_excerpt"
@@ -431,7 +533,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shadow Sect as of ch. 886",
@@ -463,7 +565,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": "demonic path as of ch. 751",

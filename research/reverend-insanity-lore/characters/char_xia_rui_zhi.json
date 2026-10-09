@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1982,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1982,
@@ -34,6 +34,18 @@
     {
       "type": "in_region",
       "target": "reg_eastern_sea",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -66,7 +78,27 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
+      "target": "house_whale_fishing_boat",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "house_golden_star_tower",
       "count": 1
     },
     {
@@ -75,6 +107,14 @@
     },
     {
       "target": "char_ice_crystal_immortal_monarch",
+      "count": 1
+    },
+    {
+      "target": "race_snowmen",
+      "count": 1
+    },
+    {
+      "target": "move_sword_feather_bladewing",
       "count": 1
     }
   ],
@@ -92,6 +132,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_xia_clan",
+        "sys_gu_immortal",
+        "sys_immortal_gu_house",
         "fac_heavenly_court"
       ]
     },
@@ -108,6 +150,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_eastern_sea",
+        "race_snowmen",
         "char_ice_crystal_immortal_monarch"
       ]
     },
@@ -121,7 +164,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "death",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_whale_fishing_boat"
+      ]
     }
   ],
   "conflicts": [],
@@ -161,7 +207,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Xia Clan as of ch. 1982",
@@ -188,7 +234,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Dead",
     "alignment": null,

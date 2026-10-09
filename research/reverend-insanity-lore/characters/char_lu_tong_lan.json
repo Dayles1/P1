@@ -25,15 +25,39 @@
   "first_appearance": {
     "chapter": 2112,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2112
   ],
   "relations": [
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_longevity_heaven",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2112,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_blue_phoenix_totem",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -50,8 +74,16 @@
       "count": 3
     },
     {
+      "target": "move_blue_phoenix_totem",
+      "count": 3
+    },
+    {
       "target": "fac_blue_phoenix_tribe",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_hei_lou_lan",
@@ -86,11 +118,27 @@
       "count": 1
     },
     {
+      "target": "sys_myriad_tribes_ceremony",
+      "count": 1
+    },
+    {
+      "target": "sys_totem_killer_moves",
+      "count": 1
+    },
+    {
       "target": "char_jiao_huo",
       "count": 1
     },
     {
+      "target": "sys_great_strength_true_martial_physique",
+      "count": 1
+    },
+    {
       "target": "fac_fire_blend_tribe",
+      "count": 1
+    },
+    {
+      "target": "move_dark_capital_strength_tiger",
       "count": 1
     },
     {
@@ -111,6 +159,10 @@
     },
     {
       "target": "loc_upslope_road",
+      "count": 1
+    },
+    {
+      "target": "move_heaven_envies_heroic_geniuses",
       "count": 1
     }
   ],
@@ -179,7 +231,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Longevity Heaven as of ch. 2112",
@@ -200,7 +252,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

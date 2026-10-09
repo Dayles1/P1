@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 393,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     393,
@@ -47,6 +47,10 @@
     {
       "target": "char_xiao_mang",
       "count": 3
+    },
+    {
+      "target": "move_my_glorious_spear",
+      "count": 2
     },
     {
       "target": "gu_bright_spear_gu",
@@ -115,7 +119,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "first-activation",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_my_glorious_spear"
+        ]
       },
       {
         "text": "While the righteous path remains blocked at San Cha Mountain, Xiao Mang activates Extreme light Gu, My Will Gu, and Bright spear Gu again for My Glorious Spear. A spear of the same size lands on the mound and clears the fog over the dog beasts.",

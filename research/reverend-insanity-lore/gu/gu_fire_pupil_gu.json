@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 548,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     548
@@ -68,7 +68,23 @@
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
+      "count": 1
+    },
+    {
       "target": "gu_sight_blow_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_huo_zheng_jun_inheritance",
       "count": 1
     }
   ],
@@ -131,10 +147,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master",
+          "sys_healing_gu"
+        ]
       }
     ]
   },
@@ -158,7 +178,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement",
         "text_origin": "source_excerpt",
@@ -208,13 +228,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "char_huo_zheng_jun"
+          "char_huo_zheng_jun",
+          "sys_gu_worms"
         ]
       }
     ]

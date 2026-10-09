@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 4,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     4,
@@ -45,8 +45,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_blood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 707,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -207,6 +231,14 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
+      "target": "path_blood",
+      "count": 1
+    },
+    {
       "target": "loc_qing_mao_mountain",
       "count": 2
     },
@@ -243,6 +275,30 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_desolate_ancient_moon_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
+      "target": "inh_blood_sea_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_blood_sea_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_gu_yue_clan_conflict",
+      "count": 1
+    },
+    {
       "target": "gu_heavenly_essence_treasure_lotus",
       "count": 1
     },
@@ -260,6 +316,18 @@
     },
     {
       "target": "gu_thousand_li_earthwolf_spider",
+      "count": 1
+    },
+    {
+      "target": "inh_flower_wine_monk_inheritance",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_third_battle",
+      "count": 1
+    },
+    {
+      "target": "sys_ironbeak_flying_crane",
       "count": 1
     },
     {
@@ -346,7 +414,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -361,7 +429,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "clan-founding",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "First Gen Gu Yue obtained a blood path true inheritance and betrayed Immortal Crane Sect before going to Southern Border and hiding his name and identity.",
@@ -386,7 +457,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blood-pond-challenge",
       "text_origin": "source_excerpt",
@@ -433,7 +504,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "revival-and-battle",
       "text_origin": "source_excerpt",
@@ -448,7 +519,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "revival-and-battle",
       "text_origin": "source_excerpt",
@@ -475,7 +546,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-crane-sect-past",
       "text_origin": "source_excerpt",
@@ -492,7 +563,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-crane-sect-past",
       "text_origin": "source_excerpt",
@@ -507,7 +578,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-crane-sect-past",
       "text_origin": "source_excerpt"
@@ -519,7 +590,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt"
@@ -531,7 +602,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt"
@@ -585,7 +656,7 @@
     "Paths": {
       "text": "Blood path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Southern Border",
@@ -595,7 +666,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Gu Yue Clan as of ch. 4 Immortal Crane Sect as of ch. 192",
@@ -617,12 +688,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_blood"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": null,

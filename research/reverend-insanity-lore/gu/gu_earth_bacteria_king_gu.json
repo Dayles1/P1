@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 505,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     505
@@ -46,6 +46,10 @@
     {
       "target": "char_dong_fang_yu_liang",
       "count": 3
+    },
+    {
+      "target": "sys_gu_house",
+      "count": 1
     }
   ],
   "claims": [],
@@ -101,7 +105,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "appearance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_house"
+        ]
       }
     ],
     "visual_confidence": "text_described"

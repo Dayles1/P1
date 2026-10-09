@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 229,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     229,
@@ -58,12 +58,108 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "fights_here",
+      "target": "evt_fight_fang_yuan_and_bai_ning_bing_against_wei_yang",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 265,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "fights_here",
+      "target": "evt_fight_fang_yuan_against_li_hao",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 289,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "fights_here",
+      "target": "evt_fight_bai_ning_bing_against_tie_dao_ku",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 298,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "fights_here",
+      "target": "evt_fight_fang_yuan_against_zhu_ba",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 299,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "fights_here",
+      "target": "evt_fight_bai_ning_bing_against_yan_tu",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 312,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "fights_here",
+      "target": "evt_fight_fang_yuan_against_ju_kai_bei",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 317,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_southern_border",
       "count": 3
+    },
+    {
+      "target": "evt_fight_fang_yuan_and_bai_ning_bing_against_wei_yang",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_li_hao",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_bai_ning_bing_against_tie_dao_ku",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_bai_ning_bing_against_yan_tu",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_zhu_ba",
+      "count": 2
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_ju_kai_bei",
+      "count": 2
     },
     {
       "target": "char_fang_yuan",
@@ -178,6 +274,14 @@
       "count": 1
     },
     {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
+      "target": "sys_righteous_path",
+      "count": 1
+    },
+    {
       "target": "fac_fei_clan",
       "count": 1
     },
@@ -242,6 +346,14 @@
       "count": 1
     },
     {
+      "target": "path_earth",
+      "count": 1
+    },
+    {
+      "target": "path_strength",
+      "count": 1
+    },
+    {
       "target": "char_bai_clan_female_leader",
       "count": 1
     },
@@ -271,6 +383,10 @@
     },
     {
       "target": "gu_tactful_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_bai_gu_mountain",
       "count": 1
     },
     {
@@ -310,6 +426,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_shang_clan_city",
+      "count": 1
+    },
+    {
       "target": "gu_moonlight_crawling_mountain_tiger_gu",
       "count": 1
     },
@@ -319,6 +439,10 @@
     },
     {
       "target": "res_charcoal_stones",
+      "count": 1
+    },
+    {
+      "target": "res_star_stones",
       "count": 1
     },
     {
@@ -343,6 +467,10 @@
     },
     {
       "target": "char_xiao_yan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -398,7 +526,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -413,14 +541,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
         "fac_shang_clan",
-        "fac_wu_clan"
+        "fac_wu_clan",
+        "sys_demonic_path"
       ]
     },
     {
@@ -454,7 +583,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "scale-and-history",
       "text_origin": "source_excerpt"
@@ -466,7 +595,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "scale-and-history",
       "text_origin": "source_excerpt"
@@ -478,7 +607,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "outer-city-and-inner-city",
       "text_origin": "source_excerpt"
@@ -490,7 +619,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "outer-city-and-inner-city",
       "text_origin": "source_excerpt",
@@ -505,7 +634,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "outer-city-and-inner-city",
       "text_origin": "source_excerpt"
@@ -517,7 +646,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "outer-city-and-inner-city",
       "text_origin": "source_excerpt"
@@ -529,7 +658,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "outer-city-and-inner-city",
       "text_origin": "source_excerpt"
@@ -541,7 +670,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "size-zones-and-trade",
       "text_origin": "source_excerpt",
@@ -568,11 +697,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battle-stage-and-external-elders",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "char_shang_yan_fei"
       ]
     },
@@ -670,7 +800,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "five-elders-and-generals",
       "text_origin": "source_excerpt"
@@ -697,7 +827,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "five-elders-and-generals",
       "text_origin": "source_excerpt",
@@ -727,7 +857,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "city-uproar-festival-and-departure",
       "text_origin": "source_excerpt",
@@ -744,7 +874,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "city-uproar-festival-and-departure",
       "text_origin": "source_excerpt"
@@ -756,7 +886,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "city-uproar-festival-and-departure",
       "text_origin": "source_excerpt"
@@ -768,7 +898,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "city-uproar-festival-and-departure",
       "text_origin": "source_excerpt"

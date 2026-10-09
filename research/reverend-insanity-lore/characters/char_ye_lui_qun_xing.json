@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1201,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_new_blessed_land_crazed_demon"
   },
   "chapters_cited": [
     1201,
@@ -45,6 +45,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_ye_lui_tribe",
       "role": null,
@@ -55,12 +67,32 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_leading_countless_stars",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1938,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
+      "target": "move_leading_countless_stars",
+      "count": 3
+    },
+    {
       "target": "fac_ye_lui_tribe",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_northern_plains",
@@ -72,6 +104,10 @@
     },
     {
       "target": "char_immortal_wang",
+      "count": 2
+    },
+    {
+      "target": "house_golden_dawn_hall",
       "count": 2
     },
     {
@@ -91,7 +127,19 @@
       "count": 1
     },
     {
+      "target": "sys_mental_energy",
+      "count": 1
+    },
+    {
       "target": "loc_blood_plain",
+      "count": 1
+    },
+    {
+      "target": "move_heaven_swallowing_hound_transformation",
+      "count": 1
+    },
+    {
+      "target": "move_sword_dragon_transformation",
       "count": 1
     },
     {
@@ -119,11 +167,19 @@
       "count": 1
     },
     {
+      "target": "sys_red_date_immortal_essence",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
       "target": "char_ye_lui_hui_hong",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
       "count": 1
     },
     {
@@ -147,6 +203,14 @@
       "count": 1
     },
     {
+      "target": "move_myriad_self_second_style",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_star_fireflies",
+      "count": 1
+    },
+    {
       "target": "gu_cleanse_soul",
       "count": 1
     }
@@ -159,7 +223,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -176,7 +240,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -188,11 +252,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "duel-with-fang-yuan",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_golden_dawn_hall",
         "char_fang_yuan",
         "gu_sword_escape_immortal_gu",
         "char_dong_fang_chang_fan"
@@ -205,7 +270,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soul-spent-on-the-soul-path-trap",
       "text_origin": "source_excerpt"
@@ -217,7 +282,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soul-spent-on-the-soul-path-trap",
       "text_origin": "source_excerpt",
@@ -269,7 +334,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Ye Lui Tribe as of ch. 1201",
@@ -301,7 +366,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": "righteous path as of ch. 1201",

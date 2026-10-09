@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 389,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     389,
@@ -51,11 +51,19 @@
       "count": 3
     },
     {
+      "target": "move_torrential_light_stream",
+      "count": 3
+    },
+    {
       "target": "gu_empty_fist_gu",
       "count": 2
     },
     {
       "target": "gu_heavens_will_gu",
+      "count": 2
+    },
+    {
+      "target": "move_immemorial_light_fist",
       "count": 2
     },
     {
@@ -83,11 +91,19 @@
       "count": 1
     },
     {
+      "target": "path_light",
+      "count": 1
+    },
+    {
       "target": "gu_bright_spear_gu",
       "count": 1
     },
     {
       "target": "gu_my_will_gu",
+      "count": 1
+    },
+    {
+      "target": "move_my_glorious_spear",
       "count": 1
     },
     {
@@ -183,7 +199,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_heavens_will_gu",
-          "gu_empty_fist_gu"
+          "gu_empty_fist_gu",
+          "move_immemorial_light_fist"
         ]
       }
     ]
@@ -288,7 +305,8 @@
           "loc_san_cha_mountain",
           "char_ying_ming",
           "gu_gather_light_gu",
-          "gu_river_under_the_sun_gu"
+          "gu_river_under_the_sun_gu",
+          "move_torrential_light_stream"
         ]
       }
     ]

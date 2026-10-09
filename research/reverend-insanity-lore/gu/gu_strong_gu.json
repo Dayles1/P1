@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2036,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2036,
@@ -84,6 +84,26 @@
       "count": 1
     },
     {
+      "target": "sys_great_strength_true_martial_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_facing_a_strong_predicament",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_hope_triumphs_again",
+      "count": 1
+    },
+    {
       "target": "char_great_strength_true_martial",
       "count": 1
     },
@@ -97,6 +117,10 @@
     },
     {
       "target": "gu_self_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_effort_begets_results",
       "count": 1
     },
     {
@@ -173,7 +197,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_bing_sai_chuan",
-          "char_hei_lou_lan"
+          "char_hei_lou_lan",
+          "sys_immortal_gu",
+          "sys_great_strength_true_martial_physique"
         ]
       }
     ]
@@ -258,6 +284,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_the_legends_of_ren_zu",
           "char_ren_zu",
           "gu_weak_gu"
         ]

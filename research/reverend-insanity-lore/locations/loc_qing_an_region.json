@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 529,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     529
@@ -46,6 +46,10 @@
     {
       "target": "reg_northern_plains",
       "count": 3
+    },
+    {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
     },
     {
       "target": "char_ma_ying_jie",
@@ -78,7 +82,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -97,7 +101,8 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "reg_northern_plains"
+        "reg_northern_plains",
+        "evt_arc_imperial_court_contest"
       ]
     }
   ],

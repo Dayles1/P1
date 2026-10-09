@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1241,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1241,
@@ -35,8 +35,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_refinement",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1263,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -65,11 +89,23 @@
       "count": 4
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_central_continent",
       "count": 1
     },
     {
+      "target": "path_refinement",
+      "count": 1
+    },
+    {
       "target": "char_zhao_pu",
+      "count": 2
+    },
+    {
+      "target": "move_eight_refinement_gates",
       "count": 2
     },
     {
@@ -78,6 +114,14 @@
     },
     {
       "target": "char_zhao_lian_yun",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -109,11 +153,19 @@
       "count": 1
     },
     {
+      "target": "move_blood_drain",
+      "count": 1
+    },
+    {
       "target": "char_bi_chen_tian",
       "count": 1
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -133,7 +185,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -141,7 +193,9 @@
         "char_bu_zhen_zi",
         "fac_spirit_affinity_house",
         "char_zhao_lian_yun",
-        "fac_ancient_soul_sect"
+        "fac_ancient_soul_sect",
+        "sys_gu_immortal",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -151,7 +205,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -163,7 +217,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "snowy-peak-fight",
       "text_origin": "source_excerpt",
@@ -178,10 +232,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "deduction-under-blood-drain",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_eight_refinement_gates"
+      ]
     },
     {
       "text": "He is the first of the two to weaken in the fight: struck by Zhao Pu much earlier than Zhao Lian Yun and suffering far greater injuries, he falls unconscious from the blood loss.",
@@ -190,7 +247,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "unconscious-from-blood-loss",
       "text_origin": "source_excerpt"
@@ -202,7 +259,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "follows-her-down-the-peak",
       "text_origin": "source_excerpt"
@@ -214,13 +271,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-to-guess-fang-yuan-is-refining-gu",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
-        "loc_reverse_flow_river"
+        "loc_reverse_flow_river",
+        "sys_gu_worms"
       ]
     }
   ],
@@ -264,7 +322,7 @@
     "Paths": {
       "text": "Refinement path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Central Continent",
@@ -274,7 +332,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Ancient Soul Sect as of ch. 1241",
@@ -296,12 +354,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_refinement"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

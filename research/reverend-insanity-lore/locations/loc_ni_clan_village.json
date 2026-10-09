@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1034,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1034,
@@ -72,6 +72,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -89,6 +93,14 @@
     },
     {
       "target": "char_qi_he",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -123,6 +135,7 @@
       "mentions": [
         "char_ni_jian",
         "char_ni_kun",
+        "sys_gu_formation",
         "char_fang_yuan",
         "fac_ni_clan",
         "fac_gu_masters"
@@ -143,6 +156,8 @@
         "char_qi_zai",
         "char_qi_he",
         "loc_rotten_mud_mountain",
+        "sys_gu_immortal",
+        "sys_gu_master",
         "char_ni_xiang"
       ]
     },
@@ -153,7 +168,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "how-the-village-fell",
       "text_origin": "source_excerpt",
@@ -170,7 +185,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "how-the-village-fell",
       "text_origin": "source_excerpt"

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 501,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     501,
@@ -42,8 +42,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -184,11 +208,39 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_cloud_whirlpool",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_seven_star_light",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "fac_dong_fang_tribe",
+      "count": 4
+    },
+    {
+      "target": "move_seven_star_light",
       "count": 4
     },
     {
@@ -216,6 +268,10 @@
       "count": 3
     },
     {
+      "target": "move_cloud_whirlpool",
+      "count": 3
+    },
+    {
       "target": "gu_detection_gu",
       "count": 3
     },
@@ -234,6 +290,14 @@
     {
       "target": "fac_dong_fang_alliance",
       "count": 2
+    },
+    {
+      "target": "path_wisdom",
+      "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_northern_plains",
@@ -264,6 +328,10 @@
       "count": 2
     },
     {
+      "target": "sys_man_soul",
+      "count": 1
+    },
+    {
       "target": "loc_cao_fu_region",
       "count": 1
     },
@@ -272,7 +340,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_hei_tribe",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     },
     {
@@ -281,6 +357,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_house",
       "count": 1
     },
     {
@@ -308,6 +388,10 @@
       "count": 1
     },
     {
+      "target": "move_three_hearts_combination_soul",
+      "count": 1
+    },
+    {
       "target": "char_tang_miao_ming",
       "count": 1
     },
@@ -317,6 +401,10 @@
     },
     {
       "target": "char_dong_fang_she",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -340,6 +428,10 @@
       "count": 1
     },
     {
+      "target": "move_dark_vortex",
+      "count": 1
+    },
+    {
       "target": "fac_ye_tribe",
       "count": 1
     },
@@ -357,6 +449,10 @@
     },
     {
       "target": "loc_ni_yu_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "inh_dong_fang_wisdom_path_inheritance",
       "count": 1
     },
     {
@@ -380,7 +476,15 @@
       "count": 1
     },
     {
+      "target": "res_ruin_bat_corpse",
+      "count": 1
+    },
+    {
       "target": "loc_tai_qiu",
+      "count": 1
+    },
+    {
+      "target": "move_final_afterglow",
       "count": 1
     },
     {
@@ -388,7 +492,15 @@
       "count": 1
     },
     {
+      "target": "move_myriad_star_fireflies",
+      "count": 1
+    },
+    {
       "target": "char_dong_fang_yi_kong",
+      "count": 1
+    },
+    {
+      "target": "move_thousand_disintegrations",
       "count": 1
     },
     {
@@ -400,7 +512,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_will",
+      "count": 1
+    },
+    {
       "target": "gu_self_gu",
+      "count": 1
+    },
+    {
+      "target": "move_entangled_wind",
       "count": 1
     }
   ],
@@ -412,7 +532,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -430,7 +550,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -442,7 +562,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -454,7 +574,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -466,15 +586,18 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "background-and-family",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_hei_tribe",
+        "path_wisdom",
         "char_dong_fang_qing_yu",
+        "sys_gu_immortal",
         "char_chang_shan_yin",
-        "loc_imperial_court"
+        "loc_imperial_court",
+        "house_eighty_eight_true_yang_building"
       ]
     },
     {
@@ -484,13 +607,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "trap-for-wolf-king",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_bian_si_xuan",
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_gu_house"
       ]
     },
     {
@@ -500,7 +624,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-tribe-war",
       "text_origin": "source_excerpt",
@@ -515,7 +639,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-tribe-war",
       "text_origin": "source_excerpt",
@@ -530,10 +654,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-tribe-war",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master",
+        "move_seven_star_light"
+      ]
     },
     {
       "text": "After night wolves break the final line he surrenders, bids Hei Lou Lan farewell, and leads his tribesmen into the light door that takes Dong Fang tribe away.",
@@ -542,7 +670,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-tribe-war",
       "text_origin": "source_excerpt"
@@ -554,7 +682,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "possession-and-death",
       "text_origin": "source_excerpt",
@@ -569,7 +697,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "possession-and-death",
       "text_origin": "source_excerpt"
@@ -581,7 +709,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "possession-and-death",
       "text_origin": "source_excerpt"
@@ -593,7 +721,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "controlled-body",
       "text_origin": "source_excerpt"
@@ -646,7 +774,7 @@
     "Paths": {
       "text": "Wisdom path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Northern Plains",
@@ -656,7 +784,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Dong Fang Tribe as of ch. 501",
@@ -678,12 +806,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

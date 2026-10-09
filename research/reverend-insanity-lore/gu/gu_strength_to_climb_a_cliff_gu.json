@@ -23,15 +23,40 @@
   "first_appearance": {
     "chapter": 559,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     559
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
     {
+      "target": "path_strength",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     }
   ],
@@ -67,7 +92,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -84,7 +111,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "rank-and-path",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "path_strength",
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "Chapter 559 does not state its effect, form, or price, and it does not show Fang Yuan taking it from the wall.",
@@ -146,7 +177,8 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "house_eighty_eight_true_yang_building"
         ]
       }
     ]
@@ -155,7 +187,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

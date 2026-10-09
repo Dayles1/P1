@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 308,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     306,
@@ -71,7 +71,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_ice_blade_gu",
+      "count": 1
+    },
+    {
+      "target": "move_ice_blade_storm",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -136,7 +148,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank",
         "text_origin": "source_excerpt"
@@ -157,7 +169,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-in-use",
         "text_origin": "source_excerpt",
@@ -176,7 +188,10 @@
         "verification": "no_citation",
         "source_id": "src_sagaofgu",
         "section": "effect-in-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "During a later clash, Yan tribe Gu Masters activate Tornado Gu among other worms, and a tornado causes havoc in that assault.",
@@ -202,7 +217,10 @@
         "verification": "no_citation",
         "source_id": "src_sagaofgu",
         "section": "group-fight-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       }
     ]
   },
@@ -246,7 +264,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

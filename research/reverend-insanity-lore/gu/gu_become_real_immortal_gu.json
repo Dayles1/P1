@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 984,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     984,
@@ -70,11 +70,23 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_door_of_life_and_death",
       "count": 1
     },
     {
       "target": "reg_central_continent",
+      "count": 1
+    },
+    {
+      "target": "sys_pure_dream_reality_seeker_physique",
       "count": 1
     },
     {
@@ -129,7 +141,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "physique-naming",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_pure_dream_reality_seeker_physique"
+        ]
       }
     ]
   },
@@ -150,7 +165,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       }
     ]
   },
@@ -209,7 +227,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_yu_mu_chun",
-          "reg_central_continent"
+          "reg_central_continent",
+          "sys_immortal_gu"
         ]
       }
     ]

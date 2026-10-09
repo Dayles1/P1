@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1338,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1338
@@ -40,6 +40,14 @@
     },
     {
       "target": "char_purple_mountain_true_monarch",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_super_gu_formation",
       "count": 1
     }
   ],
@@ -131,13 +139,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_purple_mountain_true_monarch",
-          "gu_ripe_immortal_gu"
+          "sys_super_gu_formation",
+          "gu_ripe_immortal_gu",
+          "sys_immortal_gu"
         ]
       }
     ]

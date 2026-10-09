@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 194,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     194,
@@ -101,6 +101,10 @@
       "count": 2
     },
     {
+      "target": "sys_northern_dark_ice_soul_physique",
+      "count": 2
+    },
+    {
       "target": "gu_yang_gu",
       "count": 2
     },
@@ -111,6 +115,10 @@
     {
       "target": "char_doctor_su_shou",
       "count": 2
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
     },
     {
       "target": "fac_gu_masters",
@@ -129,7 +137,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
+      "count": 1
+    },
+    {
       "target": "char_travelling_doctor_jiu_zhi",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     },
     {
@@ -154,6 +174,10 @@
     },
     {
       "target": "loc_hu_immortal_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "move_six_arm_heavenly_zombie_king",
       "count": 1
     },
     {
@@ -228,10 +252,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "After Yin Gu is used, the remaining Yang Gu is white armored.",
@@ -256,7 +283,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -268,7 +295,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -280,7 +307,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -304,7 +331,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -338,10 +365,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_healing_gu",
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Destroying the pair would leave Bai Ning Bing unable to return to a male body.",
@@ -365,7 +396,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -389,10 +420,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-on-qing-mao-mountain",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_northern_dark_ice_soul_physique"
+        ]
       },
       {
         "text": "When Fang Yuan cannot use several Gu in northern plains, he leaves yin yang rotation Gu in Hu Immortal blessed land with Blood Skull Gu, Bone Flesh Unity Gu, and other Gu not useful at that moment.",
@@ -401,7 +435,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "storage-and-use-limits",
         "text_origin": "source_excerpt",
@@ -416,7 +450,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "storage-and-use-limits",
         "text_origin": "source_excerpt"
@@ -428,7 +462,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "storage-and-use-limits",
         "text_origin": "source_excerpt"
@@ -498,7 +532,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -513,7 +547,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -530,7 +564,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bai-ning-bings-reversal-effort",
         "text_origin": "source_excerpt",
@@ -546,10 +580,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bai-ning-bings-reversal-effort",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_vital_gu"
+        ]
       },
       {
         "text": "She later allies with Fang Yuan toward refining immortal level yin yang rotation Gu, including a plan to use Lang Ya Sect contribution points for a refinement mission.",
@@ -558,7 +595,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bai-ning-bings-reversal-effort",
         "text_origin": "source_excerpt",

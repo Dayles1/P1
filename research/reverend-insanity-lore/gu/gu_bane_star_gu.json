@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 667,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     667
@@ -51,7 +51,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_treasure_yellow_heaven",
+      "count": 1
+    },
+    {
+      "target": "move_dazzling_star_armor",
       "count": 1
     }
   ],
@@ -129,7 +137,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_starlight_gu",
-          "gu_star_shield_gu"
+          "gu_star_shield_gu",
+          "sys_gu_immortal"
         ],
         "needs_review": true
       }

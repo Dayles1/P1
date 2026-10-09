@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 722,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     722,
@@ -63,6 +63,26 @@
       "count": 2
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_walking_meat_tree",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_living_in_a_dream",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
       "target": "char_giant_sun_immortal_venerable",
       "count": 1
     },
@@ -76,6 +96,18 @@
     },
     {
       "target": "char_feng_jiu_ge",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "move_destiny_song",
+      "count": 1
+    },
+    {
+      "target": "sys_heaven_path_dream_realm",
       "count": 1
     },
     {
@@ -161,7 +193,8 @@
         "section": "reappearance",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_spectral_soul_demon_venerable"
+          "char_spectral_soul_demon_venerable",
+          "sys_immortal_gu"
         ]
       }
     ],
@@ -230,12 +263,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_northern_dark_ice_soul"
+          "char_northern_dark_ice_soul",
+          "sys_gu_worms"
         ]
       },
       {
@@ -245,7 +279,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "dream-realms",
         "text_origin": "source_excerpt"
@@ -260,7 +294,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "record-in-the-legends",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_the_legends_of_ren_zu"
+        ]
       },
       {
         "text": "Healing in Longevity Heaven, Giant Sun Immortal Venerable thinks that devouring the wild rank nine fire Gu was an extremely stupid move. He reasons that the insane Spectral Soul Demon Venerable has no way to refine fire Gu, and that fire Gu will fight desperately inside his body, expending his soul path dao marks.",
@@ -302,7 +339,9 @@
         "section": "feng-jiu-ges-intervention",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_feng_jiu_ge"
+          "char_feng_jiu_ge",
+          "sys_gu_immortal",
+          "move_destiny_song"
         ]
       },
       {

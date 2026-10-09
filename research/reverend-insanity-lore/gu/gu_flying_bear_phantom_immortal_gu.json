@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 581,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     581,
@@ -77,11 +77,19 @@
       "count": 1
     },
     {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
       "target": "gu_five_element_bear_skin_gu",
       "count": 1
     },
     {
       "target": "gu_grand_chaotic_dance_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -102,6 +110,14 @@
     },
     {
       "target": "loc_treasure_yellow_heaven",
+      "count": 1
+    },
+    {
+      "target": "move_six_arm_heavenly_zombie_king",
+      "count": 1
+    },
+    {
+      "target": "path_phantom",
       "count": 1
     },
     {
@@ -173,7 +189,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "transfer-and-use",
         "text_origin": "source_excerpt",
@@ -191,7 +207,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "activation-without-immortal-essence",
         "text_origin": "source_excerpt"
@@ -257,6 +273,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_eighty_eight_true_yang_building",
           "fac_gu_masters",
           "char_hei_lou_lan"
         ]
@@ -268,12 +285,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "immortal-gu-reward",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -283,7 +301,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "pairing-with-flying-bear-strength-gu",
         "text_origin": "source_excerpt",
@@ -298,7 +316,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "pairing-with-flying-bear-strength-gu",
         "text_origin": "source_excerpt"

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 127,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     127,
@@ -42,6 +42,22 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_battle_merits",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_support_gu",
       "count": 1
     },
     {
@@ -137,7 +153,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master",
+          "sys_support_gu"
+        ]
       },
       {
         "text": "Days later, a giant resource flag in the square also has words formed by Swimword Gu. That flag lists goods the three clans supply against merit costs, from supply food to Gu worms and primeval stones. Fang Yuan reads Three Step Fragrant Grass Gu among those listings.",
@@ -146,11 +166,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "char_fang_yuan",
           "gu_three_step_fragrant_grass_gu"
         ]
@@ -162,7 +183,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "battlefield-merit-lists",
         "text_origin": "source_excerpt"

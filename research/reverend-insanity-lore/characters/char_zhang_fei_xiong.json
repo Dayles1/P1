@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1715,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1715,
@@ -36,6 +36,30 @@
     2027
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_transformation",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -55,11 +79,27 @@
       "count": 3
     },
     {
+      "target": "path_transformation",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_nu_er_bao_xiong",
       "count": 2
     },
     {
       "target": "char_flesh_whip_immortal",
+      "count": 2
+    },
+    {
+      "target": "house_jade_toad_castle",
+      "count": 2
+    },
+    {
+      "target": "house_red_river_wheel",
       "count": 2
     },
     {
@@ -75,6 +115,18 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_calamity_luck_altar",
+      "count": 1
+    },
+    {
       "target": "loc_immortal_graveyard",
       "count": 1
     },
@@ -84,6 +136,14 @@
     },
     {
       "target": "loc_river_of_time",
+      "count": 1
+    },
+    {
+      "target": "sys_lightning_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "house_divine_bean_palace",
       "count": 1
     },
     {
@@ -128,8 +188,11 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_calamity_luck_altar",
+        "sys_immortal_gu_house",
         "char_fairy_zi_wei",
         "fac_heavenly_court",
+        "sys_gu_immortal",
         "loc_immortal_graveyard"
       ]
     },
@@ -162,7 +225,10 @@
       "section": "bear-giant-at-emperor-city",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_flesh_whip_immortal"
+        "house_red_river_wheel",
+        "house_jade_toad_castle",
+        "char_flesh_whip_immortal",
+        "house_divine_bean_palace"
       ]
     },
     {
@@ -250,12 +316,12 @@
     "Paths": {
       "text": "Transformation path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1715",
@@ -277,12 +343,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_transformation"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Dead",
     "alignment": null,

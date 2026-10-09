@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 335,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     335,
@@ -77,6 +77,10 @@
       "count": 2
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 2
+    },
+    {
       "target": "char_feng_jin_huang",
       "count": 2
     },
@@ -90,6 +94,10 @@
     },
     {
       "target": "gu_fox_skin_gu",
+      "count": 2
+    },
+    {
+      "target": "race_rockmen",
       "count": 2
     },
     {
@@ -109,7 +117,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "inh_hu_immortal_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_ying_sheng_ji",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -153,6 +173,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_hu_immortal_blessed_land",
+      "count": 1
+    },
+    {
       "target": "char_he_feng_yang",
       "count": 1
     },
@@ -173,11 +197,35 @@
       "count": 1
     },
     {
+      "target": "sys_defensive_gu",
+      "count": 1
+    },
+    {
       "target": "gu_fixed_immortal_travel",
       "count": 1
     },
     {
       "target": "loc_three_kings_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "sys_ancient_desolate_beast",
+      "count": 1
+    },
+    {
+      "target": "sys_beast_emperor",
+      "count": 1
+    },
+    {
+      "target": "sys_green_grape_immortal_essence",
+      "count": 1
+    },
+    {
+      "target": "sys_immemorial_desolate_beast",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_essence",
       "count": 1
     },
     {
@@ -206,6 +254,10 @@
     },
     {
       "target": "gu_soul_burial_toad",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_immortal_gu",
       "count": 1
     },
     {
@@ -254,6 +306,10 @@
     },
     {
       "target": "gu_moving_perspective_cup_gu",
+      "count": 1
+    },
+    {
+      "target": "res_yellow_mud",
       "count": 1
     },
     {
@@ -349,6 +405,10 @@
       "count": 1
     },
     {
+      "target": "inh_du_min_jun_inheritance",
+      "count": 1
+    },
+    {
       "target": "gu_flying_bear_phantom_immortal_gu",
       "count": 1
     },
@@ -362,6 +422,18 @@
     },
     {
       "target": "gu_beggar_moth",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_self",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_blessed_land_consolidation",
+      "count": 1
+    },
+    {
+      "target": "sys_dead_aperture",
       "count": 1
     }
   ],
@@ -385,11 +457,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "contest-on-tian-ti-mountain",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "loc_tian_ti",
         "char_fang_zheng",
         "fac_immortal_crane_sect",
@@ -420,6 +493,7 @@
       "section": "opening-of-the-inheritance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_worms",
         "loc_dang_hun_mountain"
       ]
     },
@@ -447,7 +521,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "land-spirit-report",
       "text_origin": "source_excerpt"
@@ -459,10 +533,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "land-spirit-report",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "race_rockmen"
+      ]
     },
     {
       "text": "Gu stock at that report is over eight hundred and sixty thousand rank one Gu across about fifty-two types, over a hundred and thirty thousand rank two Gu across forty-eight types, five thousand rank three Gu across twelve types, over sixty rank four Gu across eight types, and only one rank five Gu: fox skin Gu, a common defensive Gu strong against wind and water path worms but weak in a complex battlefield. The stock is ordinary rather than elite; liquor worm or breath concealment Gu would be worth more than what is raised there.",
@@ -471,12 +548,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "land-spirit-report",
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_fox_skin_gu",
+        "sys_defensive_gu",
         "gu_breath_concealment_gu"
       ]
     },
@@ -514,7 +592,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "swamp-crab-calamity",
       "text_origin": "source_excerpt"
@@ -526,12 +604,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refining-bo-qings-immortal-gu",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_bo_qing"
+        "sys_gu_formation",
+        "char_bo_qing",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -541,7 +621,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "empty-land",
       "text_origin": "source_excerpt",

@@ -25,13 +25,30 @@
   "first_appearance": {
     "chapter": 1767,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1767
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_refinement",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "path_refinement",
+      "count": 1
+    },
     {
       "target": "gu_advance_refinement_gu",
       "count": 2
@@ -45,7 +62,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_shadow_sect",
+      "count": 1
+    },
+    {
+      "target": "house_refinement_cauldron",
       "count": 1
     },
     {
@@ -94,7 +123,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_refinement"
+    ],
     "path_unverified": false,
     "functional_types": [
       "support"
@@ -154,6 +185,7 @@
         "mentions": [
           "char_fang_yuan",
           "loc_lang_ya_blessed_land",
+          "sys_immortal_gu",
           "gu_water_refinement_gu",
           "gu_advance_refinement_gu"
         ]
@@ -170,6 +202,8 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu_house",
+          "house_refinement_cauldron",
           "fac_shadow_sect",
           "gu_heavenly_essence_treasure_lotus"
         ]
@@ -180,7 +214,7 @@
     "Path": {
       "text": "Refinement Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

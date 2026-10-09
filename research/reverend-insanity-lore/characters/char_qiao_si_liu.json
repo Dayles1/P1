@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1218,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1218,
@@ -63,6 +63,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_qiao_clan",
       "role": null,
@@ -83,6 +95,10 @@
     {
       "target": "reg_southern_border",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_wu_yong",
@@ -129,11 +145,31 @@
       "count": 2
     },
     {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
+    },
+    {
       "target": "char_wu_du_xiu",
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_wu_clan",
+      "count": 1
+    },
+    {
+      "target": "path_food",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -161,11 +197,23 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "loc_wu_yi_mountain",
       "count": 1
     },
     {
       "target": "char_wu_qiao",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_super_gu_formation",
       "count": 1
     },
     {
@@ -187,6 +235,18 @@
     {
       "target": "char_hei_lou_lan",
       "count": 1
+    },
+    {
+      "target": "move_curved_moon",
+      "count": 1
+    },
+    {
+      "target": "move_wondrous_hand_profound_sound",
+      "count": 1
+    },
+    {
+      "target": "inh_tao_zhu_true_inheritance",
+      "count": 1
     }
   ],
   "claims": [
@@ -197,13 +257,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_wu_du_xiu",
         "fac_qiao_clan",
+        "sys_gu_immortal",
         "fac_wu_clan",
         "char_wu_yong",
         "char_wu_yi_hai"
@@ -226,7 +287,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clan-standing",
       "text_origin": "source_excerpt",
@@ -243,7 +304,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "moon-festival",
       "text_origin": "source_excerpt"
@@ -255,10 +316,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "festival-customs-and-a-first-name",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master",
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "She privately doubts that Luo Mu Zi wrote the poem he recites, guessing he probably took someone else’s work. Rather than continuing to shield Fang Yuan from her other suitors’ pressure, she meets his eyes and tells him she wants to hear his own poem.",
@@ -267,7 +332,7 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "doubt-and-the-poem-challenge",
       "text_origin": "source_excerpt"
@@ -279,7 +344,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reporting-to-qiao-clan",
       "text_origin": "source_excerpt"
@@ -291,7 +356,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clan-orders-override-her-anger",
       "text_origin": "source_excerpt"
@@ -303,7 +368,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "marriage-calculus",
       "text_origin": "source_excerpt"
@@ -315,7 +380,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chi-shangs-challenge",
       "text_origin": "source_excerpt",
@@ -330,7 +395,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "letters-from-her-two-suitors",
       "text_origin": "source_excerpt",
@@ -347,7 +412,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chi-shangs-one-sided-affection",
       "text_origin": "source_excerpt"
@@ -359,7 +424,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "forgotten-between-the-letters",
       "text_origin": "source_excerpt"
@@ -371,7 +436,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "the-takeover-pitch",
       "text_origin": "source_excerpt",
@@ -387,7 +452,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "qiao-clans-missing-elder",
       "text_origin": "source_excerpt",
@@ -404,12 +469,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "agreeing-to-stall",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_wu_yi_mountain"
+        "loc_wu_yi_mountain",
+        "sys_immortal_gu_house"
       ]
     },
     {
@@ -419,14 +485,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "five-clans-converge",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_ba_clan",
         "fac_xia_clan",
-        "char_wu_qiao"
+        "char_wu_qiao",
+        "sys_super_gu_formation",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -436,7 +504,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-and-fairy-miao-yin",
       "text_origin": "source_excerpt",
@@ -454,7 +522,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-and-fairy-miao-yin",
       "text_origin": "source_excerpt"
@@ -466,7 +534,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "her-regard-turns-after-the-formation-holds",
       "text_origin": "source_excerpt"
@@ -478,7 +546,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "withdrawal-from-the-ruins",
       "text_origin": "source_excerpt"
@@ -538,7 +606,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Qiao Clan as of ch. 1218",
@@ -565,7 +633,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

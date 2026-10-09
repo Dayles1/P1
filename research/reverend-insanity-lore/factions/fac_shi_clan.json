@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1474,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1474,
@@ -87,6 +87,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_wealth_gu",
       "count": 1
     },
@@ -100,6 +104,10 @@
     },
     {
       "target": "res_blue_sea_water",
+      "count": 1
+    },
+    {
+      "target": "res_subterranean_adamantite",
       "count": 1
     },
     {
@@ -143,12 +151,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "myriad-ore-desert",
       "text_origin": "source_excerpt",
       "mentions": [
-        "reg_western_desert"
+        "reg_western_desert",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -158,7 +167,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "myriad-ore-desert",
       "text_origin": "source_excerpt"
@@ -182,7 +191,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shi-zhong-and-first-supreme-elder",
       "text_origin": "source_excerpt",

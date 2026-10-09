@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 447,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     447,
@@ -55,6 +55,14 @@
     },
     {
       "target": "char_ge_yao",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
       "count": 1
     },
     {
@@ -143,7 +151,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "Fang Yuan later treats it as able to scout or track people, and as a means to track Gu worms when capturing wild Gu so they cannot escape.",
@@ -155,7 +166,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_wild_gu"
+        ]
       }
     ]
   },

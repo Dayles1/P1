@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 167,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     167,
@@ -61,7 +61,15 @@
       "count": 2
     },
     {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_second_battle",
+      "count": 1
+    },
+    {
       "target": "gu_revolving_gu",
+      "count": 1
+    },
+    {
+      "target": "move_ice_blade_storm",
       "count": 1
     }
   ],
@@ -134,7 +142,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -171,6 +179,7 @@
         "section": "storm-recipe-naming",
         "text_origin": "source_excerpt",
         "mentions": [
+          "move_ice_blade_storm",
           "gu_revolving_gu",
           "gu_whirlwind_gu"
         ]
@@ -228,7 +237,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -244,7 +253,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "iceblade-storm",
         "text_origin": "source_excerpt",
@@ -259,7 +268,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "iceblade-storm",
         "text_origin": "source_excerpt"
@@ -271,7 +280,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "iceblade-storm",
         "text_origin": "source_excerpt"

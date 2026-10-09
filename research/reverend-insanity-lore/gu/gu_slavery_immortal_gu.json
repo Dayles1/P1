@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 656,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     656,
@@ -76,6 +76,10 @@
       "count": 2
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_slavery_gu",
       "count": 1
     },
@@ -89,6 +93,14 @@
     },
     {
       "target": "loc_imperial_court_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "house_sacred_feather_city",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -174,7 +186,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "rank-and-soul-cost",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       }
     ]
   },
@@ -197,6 +212,7 @@
         "section": "first-activation",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_sacred_feather_city",
           "char_zhou_zhong"
         ]
       }
@@ -294,7 +310,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       },
       {
         "text": "Fang Yuan trades Self Strength Immortal Gu for slavery Immortal Gu and a one year loan of Attitude Gu.",

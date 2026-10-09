@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 906,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     906,
@@ -43,6 +43,14 @@
     },
     {
       "target": "char_shark_demon",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_mortal_gu",
       "count": 1
     },
     {
@@ -70,7 +78,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -82,7 +90,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -91,6 +99,7 @@
         "char_fang_yuan",
         "reg_eastern_sea",
         "fac_zombie_alliance",
+        "sys_gu_immortal",
         "reg_northern_plains",
         "loc_dark_flow_giant_city"
       ]
@@ -102,10 +111,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_information_path_mortal_gu"
+      ]
     },
     {
       "text": "Undying Kingdom remains the named headquarters tied to yellow spring sea area as Fang Yuan’s Eastern Sea Zombie Alliance identity takes hold.",
@@ -114,7 +126,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "alliance-seat",
       "text_origin": "source_excerpt"

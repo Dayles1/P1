@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 691,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     691,
@@ -71,6 +71,14 @@
     },
     {
       "target": "fac_hei_tribe",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -207,6 +215,8 @@
         "section": "peerless-crescent-moon-slash-demonstrated",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
+          "sys_gu_immortal",
           "char_fairy_ao_xue",
           "char_fairy_ling_mei"
         ]
@@ -218,7 +228,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "heavens-envy-manor",
         "text_origin": "source_excerpt",

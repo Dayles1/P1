@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 410,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     410,
@@ -51,7 +51,15 @@
       "count": 1
     },
     {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
       "target": "gu_wisdom_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_road_of_life_and_death",
       "count": 1
     },
     {
@@ -83,6 +91,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_longevity_heaven",
       "count": 1
     },
@@ -96,6 +108,30 @@
     },
     {
       "target": "char_duke_long",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_fate_destruction",
+      "count": 1
+    },
+    {
+      "target": "inh_red_lotus_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "move_destiny_song",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_great_era_spectral_soul",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -246,7 +282,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "fate-as-material",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_recipe"
+        ]
       },
       {
         "text": "During the battle, using human wills as Gu material to refine destiny Gu is called wishful thinking, yet still a possible method. Under destiny song, human wills and flames merge into a formless, colorless mystical Gu material. Fang Yuan later realizes Red Lotus wanted to refine destiny Gu but was not truly trying to refine a Gu.",
@@ -270,7 +309,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-refinement-session",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       }
     ]
   },
@@ -295,11 +337,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_the_legends_of_ren_zu",
           "gu_wisdom_gu",
           "char_ren_zu",
           "loc_door_of_life_and_death",
@@ -325,7 +368,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "early-lore-note",
         "text_origin": "source_excerpt",
@@ -349,6 +392,7 @@
         "mentions": [
           "char_bing_sai_chuan",
           "gu_fate_gu",
+          "sys_immortal_gu",
           "char_giant_sun_immortal_venerable",
           "fac_longevity_heaven"
         ]

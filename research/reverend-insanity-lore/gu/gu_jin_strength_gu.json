@@ -23,15 +23,32 @@
   "first_appearance": {
     "chapter": 442,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     442,
     500,
     754
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "path_strength",
+      "count": 2
+    },
     {
       "target": "gu_jun_strength_gu",
       "count": 3
@@ -39,6 +56,14 @@
     {
       "target": "char_chu_du",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
     },
     {
       "target": "fac_man_tribe",
@@ -104,7 +129,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -131,7 +158,9 @@
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "gu_jun_strength_gu",
+          "path_strength",
           "gu_strength_gu",
           "gu_beast_strength_gu"
         ]
@@ -193,6 +222,7 @@
         "mentions": [
           "fac_man_tribe",
           "char_chu_du",
+          "sys_gu_immortal",
           "gu_jun_strength_gu"
         ]
       },
@@ -219,7 +249,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 199,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     199,
@@ -68,7 +68,19 @@
       "count": 2
     },
     {
+      "target": "sys_righteous_path",
+      "count": 2
+    },
+    {
+      "target": "inh_flower_wine_monk_inheritance",
+      "count": 2
+    },
+    {
       "target": "loc_qing_mao_mountain",
+      "count": 2
+    },
+    {
+      "target": "inh_white_bone_inheritance",
       "count": 2
     },
     {
@@ -128,6 +140,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_gu_yue_clan_conflict",
+      "count": 1
+    },
+    {
       "target": "char_bai_ning_bing",
       "count": 1
     },
@@ -149,6 +165,10 @@
     },
     {
       "target": "gu_green_copper_relic_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_bai_gu_mountain",
       "count": 1
     },
     {
@@ -204,6 +224,10 @@
       "count": 1
     },
     {
+      "target": "sys_wild_gu",
+      "count": 1
+    },
+    {
       "target": "gu_flesh_bone_gu",
       "count": 1
     },
@@ -220,6 +244,10 @@
       "count": 1
     },
     {
+      "target": "sys_smoke_image",
+      "count": 1
+    },
+    {
       "target": "char_bai_sheng_jing",
       "count": 1
     },
@@ -232,11 +260,19 @@
       "count": 1
     },
     {
+      "target": "sys_attack_gu",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
     {
       "target": "loc_spiral_bone_cave",
+      "count": 1
+    },
+    {
+      "target": "sys_grey_bone_huge_book",
       "count": 1
     },
     {
@@ -288,6 +324,10 @@
       "count": 1
     },
     {
+      "target": "evt_fight_bai_ning_bing_against_tie_dao_ku",
+      "count": 1
+    },
+    {
       "target": "loc_three_kings_blessed_land",
       "count": 1
     }
@@ -300,7 +340,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -317,10 +357,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_righteous_path"
+      ]
     },
     {
       "text": "From a slope the mountain shows as a white peak. It stands alone above flat ground rather than among the hill ring around Qing Mao Mountain, and the surrounding color is bone-white rather than snow-white. Every rock on it is bone. People call that material bone rock. Special vegetation, large numbers of bone beasts, and many bone-type wild Gu live there.",
@@ -329,10 +372,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_wild_gu"
+      ]
     },
     {
       "text": "There is no soil, only bones and stones.",
@@ -341,7 +387,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -365,7 +411,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -377,7 +423,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -389,7 +435,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "terrain",
       "text_origin": "source_excerpt"
@@ -401,7 +447,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "terrain",
       "text_origin": "source_excerpt",
@@ -428,7 +474,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "terrain",
       "text_origin": "source_excerpt"
@@ -440,7 +486,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "terrain",
       "text_origin": "source_excerpt"
@@ -467,7 +513,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bai-clan-and-the-spirit-spring",
       "text_origin": "source_excerpt"
@@ -479,7 +525,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bai-clan-and-the-spirit-spring",
       "text_origin": "source_excerpt"
@@ -491,7 +537,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bai-clan-and-the-spirit-spring",
       "text_origin": "source_excerpt"
@@ -503,7 +549,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mountain-inheritance",
       "text_origin": "source_excerpt",
@@ -518,10 +564,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mountain-inheritance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_white_bone_inheritance"
+      ]
     },
     {
       "text": "Fang Yuan and Bai Ning Bing take the spiral bone cave for themselves. Pulling the shortest spiral bone spike clears the bone-spear tunnel and the entrance seals itself; they then walk the inheritance.",
@@ -530,7 +579,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mountain-inheritance",
       "text_origin": "source_excerpt"
@@ -565,6 +614,7 @@
         "res_milk",
         "gu_bone_spear_gu",
         "gu_spiral_bone_spear_gu",
+        "sys_attack_gu",
         "gu_ribcage_shield_gu",
         "gu_flying_bone_shield_gu",
         "gu_arm_bone_wings_gu"
@@ -582,6 +632,7 @@
       "section": "mountain-inheritance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "inh_flower_wine_monk_inheritance",
         "gu_meat_bone_gu"
       ]
     },
@@ -623,7 +674,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mountain-inheritance",
       "text_origin": "source_excerpt"
@@ -689,7 +740,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-the-mountain-shang-stretch",
       "text_origin": "source_excerpt",
@@ -704,7 +755,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-the-mountain-shang-stretch",
       "text_origin": "source_excerpt"

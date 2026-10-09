@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 761,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     761
@@ -40,6 +40,14 @@
     },
     {
       "target": "char_yao_huang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -126,7 +134,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_qin_bai_sheng",
-          "gu_blessing_in_disguise_immortal_gu"
+          "gu_blessing_in_disguise_immortal_gu",
+          "sys_immortal_gu",
+          "sys_gu_immortal"
         ],
         "needs_review": true
       }

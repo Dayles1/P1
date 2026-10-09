@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 373,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     373,
@@ -93,6 +93,10 @@
     },
     {
       "target": "char_wu_gui",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     },
     {
@@ -278,6 +282,7 @@
         "section": "vital-gu-and-form",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_vital_gu",
           "char_ku_mo",
           "char_wu_gui",
           "char_fang_yuan"

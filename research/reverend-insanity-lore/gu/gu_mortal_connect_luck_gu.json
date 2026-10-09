@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1239,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1239
@@ -61,6 +61,14 @@
     },
     {
       "target": "char_ying_wu_xie",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -137,6 +145,7 @@
         "mentions": [
           "loc_treasure_yellow_heaven",
           "gu_connect_luck",
+          "sys_immortal_gu",
           "char_ying_wu_xie"
         ]
       }
@@ -194,7 +203,8 @@
         "mentions": [
           "char_fang_yuan",
           "gu_unravel_mystery",
-          "gu_qi_luck_immortal_gu"
+          "gu_qi_luck_immortal_gu",
+          "sys_mortal_gu"
         ]
       }
     ]

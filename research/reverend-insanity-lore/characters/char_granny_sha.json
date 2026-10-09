@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1069,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1069,
@@ -34,6 +34,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -62,6 +74,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_central_continent",
       "count": 1
     },
@@ -86,7 +102,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
+      "count": 1
+    },
+    {
       "target": "loc_yi_tian_mountain",
+      "count": 1
+    },
+    {
+      "target": "res_success_dao_mark",
       "count": 1
     },
     {
@@ -94,11 +122,35 @@
       "count": 1
     },
     {
+      "target": "res_three_fires_and_three_waters",
+      "count": 1
+    },
+    {
+      "target": "res_true_dragon_heavenly_water",
+      "count": 1
+    },
+    {
       "target": "char_bi_chen_tian",
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_fate_gu",
+      "count": 1
+    },
+    {
+      "target": "res_myriad_being_creation_water",
+      "count": 1
+    },
+    {
+      "target": "res_nine_heavenly_star_sweat",
+      "count": 1
+    },
+    {
+      "target": "res_rising_falling_tide_water",
       "count": 1
     }
   ],
@@ -110,7 +162,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -118,7 +170,9 @@
         "fac_heavenly_court",
         "char_heaven_overseeing_tower_lord",
         "loc_yi_tian_mountain",
-        "char_fairy_zi_wei"
+        "char_fairy_zi_wei",
+        "sys_immortal_gu",
+        "house_heaven_overseeing_tower"
       ]
     },
     {
@@ -128,7 +182,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -140,7 +194,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reviving-a-stranger",
       "text_origin": "source_excerpt",
@@ -156,11 +210,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_bi_chen_tian"
       ]
     }
@@ -207,7 +262,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1069",
@@ -234,7 +289,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": null,

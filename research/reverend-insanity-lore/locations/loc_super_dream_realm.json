@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1069,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1069,
@@ -46,6 +46,18 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_super_gu_formation",
+      "count": 1
+    },
+    {
       "target": "fac_luo_tribe",
       "count": 1
     },
@@ -62,6 +74,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_righteous_path",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     }
@@ -74,7 +94,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -95,8 +115,11 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_chi_qu_you",
+        "sys_super_gu_formation",
         "reg_southern_border",
+        "sys_gu_immortal",
         "fac_wu_clan",
+        "sys_immortal_gu",
         "fac_luo_tribe"
       ]
     },
@@ -112,7 +135,9 @@
       "section": "exploration-losses",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_ying_wu_xie"
+        "sys_righteous_path",
+        "char_ying_wu_xie",
+        "sys_gu_formation"
       ]
     },
     {

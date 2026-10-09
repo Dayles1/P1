@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 204,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     204,
@@ -65,11 +65,31 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_sky_canopy_gu",
       "count": 1
     },
     {
+      "target": "inh_white_bone_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_bai_gu_mountain",
+      "count": 1
+    },
+    {
+      "target": "path_strength",
+      "count": 1
+    },
+    {
+      "target": "sys_defensive_gu",
       "count": 1
     },
     {
@@ -159,7 +179,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -171,12 +191,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_crocodile_strength_gu"
+          "gu_crocodile_strength_gu",
+          "sys_gu_worms"
         ]
       },
       {
@@ -186,7 +207,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -204,7 +225,7 @@
         ],
         "certainty": "inferred",
         "confidence": "C",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -216,7 +237,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -228,7 +249,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-early-use",
         "text_origin": "source_excerpt",
@@ -248,6 +269,7 @@
         "section": "fang-yuans-early-use",
         "text_origin": "source_excerpt",
         "mentions": [
+          "inh_white_bone_inheritance",
           "gu_ribcage_shield_gu",
           "gu_flying_bone_shield_gu"
         ]
@@ -299,7 +321,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -317,7 +339,10 @@
         "verification": "no_citation",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Activation uses primeval essence poured into the Gu at the back. The skin there becomes uneven, slightly bulging, and turns into tough, thick crocodile skin armor. Ordinary frenzy needle bees cannot penetrate that armor.",
@@ -326,7 +351,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "crocodile-skin-armor-and-bee-chase",
         "text_origin": "source_excerpt"
@@ -338,7 +363,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "crocodile-skin-armor-and-bee-chase",
         "text_origin": "source_excerpt"
@@ -350,7 +375,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "destruction-after-the-bai-gu-pursuit",
         "text_origin": "source_excerpt",

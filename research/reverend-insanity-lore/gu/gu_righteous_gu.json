@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 170,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     170,
@@ -58,11 +58,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "loc_qing_mao_mountain",
       "count": 1
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_demonic_path",
       "count": 1
     }
   ],
@@ -118,10 +126,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "To use Righteous Gu, the Gu Master needs a heart of justice.",
@@ -182,7 +193,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -198,10 +209,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "cave-fight",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_demonic_path"
+        ]
       },
       {
         "text": "Fang Yuan is one of those exceptions. The suppression has no effect on him. Tie Xue Leng, who has used the Gu for many years, concludes that only a person with real demonic nature in the deepest part of the heart can commit sins and still treat them as natural. The same aura makes bladewing blood bat Gu frantic and barely able to stay in the air, and it slightly lowers the blood river python’s head, then later triggers that python’s ferocity instead of suppressing it. While the power still surrounds the cave, the bats fly around at random and do not hunt Fang Yuan.",
@@ -210,7 +224,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "cave-fight",
         "text_origin": "source_excerpt",

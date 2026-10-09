@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1193,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_new_blessed_land_crazed_demon"
   },
   "chapters_cited": [
     1193,
@@ -34,6 +34,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -62,6 +74,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -82,6 +98,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
+      "count": 1
+    },
+    {
       "target": "char_heavenly_lord_bai_zu",
       "count": 1
     },
@@ -90,7 +110,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_longevity_heaven",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_blood_battle_martial_competition",
       "count": 1
     },
     {
@@ -110,17 +142,19 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_yao_tribe",
+        "sys_immortal_gu_house",
         "char_gong_wan_ting",
         "char_nu_er_qian",
         "char_yao_huang",
         "char_heavenly_lord_bai_zu",
         "fac_longevity_heaven",
+        "sys_gu_immortal",
         "gu_longevity_edict"
       ]
     },
@@ -131,7 +165,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-among-experts",
       "text_origin": "source_excerpt",
@@ -147,7 +181,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "consecutive-loss-to-chu-du",
       "text_origin": "source_excerpt",
@@ -188,7 +222,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Yao Tribe",
@@ -209,7 +243,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

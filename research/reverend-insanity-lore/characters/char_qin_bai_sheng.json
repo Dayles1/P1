@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 678,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     678,
@@ -68,6 +68,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_shadow_sect",
       "role": null,
@@ -102,6 +114,78 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_city_crushing_hammer",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 880,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_burning_soul_supreme_gold",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 881,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_hundred_million_slaughterfield",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 898,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_five_finger_fist_heart_sword",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_soul_suppression",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_lang_ya_land_spirit_against_qin_bai_sheng",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 880,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -118,8 +202,36 @@
       "count": 4
     },
     {
+      "target": "move_soul_suppression",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_lang_ya_land_spirit_against_qin_bai_sheng",
+      "count": 3
+    },
+    {
+      "target": "move_city_crushing_hammer",
+      "count": 3
+    },
+    {
+      "target": "move_burning_soul_supreme_gold",
+      "count": 3
+    },
+    {
+      "target": "move_five_finger_fist_heart_sword",
+      "count": 3
+    },
+    {
+      "target": "move_hundred_million_slaughterfield",
+      "count": 3
+    },
+    {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_fairy_ao_xue",
@@ -178,6 +290,10 @@
       "count": 2
     },
     {
+      "target": "house_refinement_cauldron",
+      "count": 2
+    },
+    {
       "target": "char_bo_qing",
       "count": 2
     },
@@ -194,11 +310,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_soul_foundation",
+      "count": 1
+    },
+    {
       "target": "fac_huang_jin_bloodline",
       "count": 1
     },
     {
       "target": "gu_connect_luck",
+      "count": 1
+    },
+    {
+      "target": "path_metal",
+      "count": 1
+    },
+    {
+      "target": "path_sound",
       "count": 1
     },
     {
@@ -254,6 +386,18 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_blessed_land_consolidation",
+      "count": 1
+    },
+    {
       "target": "char_hong_xiu",
       "count": 1
     },
@@ -267,6 +411,10 @@
     },
     {
       "target": "char_yuan_rang_zun",
+      "count": 1
+    },
+    {
+      "target": "move_sleeping_cloud_coffin",
       "count": 1
     },
     {
@@ -290,7 +438,23 @@
       "count": 1
     },
     {
+      "target": "res_six_headed_snake_skin",
+      "count": 1
+    },
+    {
+      "target": "res_sky_chief_clouds",
+      "count": 1
+    },
+    {
+      "target": "res_vertical_rainbow_ointment",
+      "count": 1
+    },
+    {
       "target": "char_northern_dark_ice_soul",
+      "count": 1
+    },
+    {
+      "target": "sys_heavenly_wind_qi_wall",
       "count": 1
     },
     {
@@ -350,11 +514,27 @@
       "count": 1
     },
     {
+      "target": "res_rule_eye_blood",
+      "count": 1
+    },
+    {
       "target": "gu_cauldron_strength_immortal_gu",
       "count": 1
     },
     {
       "target": "res_heaven_pillar_wind",
+      "count": 1
+    },
+    {
+      "target": "res_sacred_elephant_blood",
+      "count": 1
+    },
+    {
+      "target": "res_sacred_elephant_tusks",
+      "count": 1
+    },
+    {
+      "target": "res_sandalwood_sacred_elephant_egg",
       "count": 1
     },
     {
@@ -402,7 +582,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -412,6 +592,7 @@
         "loc_crimson_reed_marsh",
         "fac_huang_jin_bloodline",
         "reg_northern_plains",
+        "sys_gu_immortal",
         "char_giant_sun_immortal_venerable"
       ]
     },
@@ -422,7 +603,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -437,7 +618,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "meeting-fang-yuan",
       "text_origin": "source_excerpt",
@@ -454,7 +635,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "meeting-fang-yuan",
       "text_origin": "source_excerpt",
@@ -469,7 +650,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bai-sheng-auction",
       "text_origin": "source_excerpt",
@@ -484,7 +665,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bai-sheng-auction",
       "text_origin": "source_excerpt"
@@ -496,10 +677,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bai-sheng-auction",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_mortal_gu",
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "He holds a rank six luck inspection Immortal Gu of his own that he refuses to sell, facing down a rank six bidder’s objection on the strength of his own rank seven cultivation.",
@@ -508,7 +693,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bai-sheng-auction",
       "text_origin": "source_excerpt",
@@ -535,7 +720,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-vice-envoy",
       "text_origin": "source_excerpt",
@@ -552,7 +737,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-vice-envoy",
       "text_origin": "source_excerpt",
@@ -568,7 +753,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-vice-envoy",
       "text_origin": "source_excerpt"
@@ -580,12 +765,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "retreat-from-lang-ya",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_lang_ya_blessed_land",
+        "house_refinement_cauldron",
         "char_lang_ya_land_spirit"
       ]
     },
@@ -596,12 +782,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "retreat-from-lang-ya",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_central_continent",
+        "house_eighty_eight_true_yang_building",
         "char_xue_song_zi"
       ]
     },
@@ -612,7 +799,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "restricting-feng-jiu-ge",
       "text_origin": "source_excerpt",
@@ -627,7 +814,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "restricting-feng-jiu-ge",
       "text_origin": "source_excerpt",
@@ -642,7 +829,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-at-luo-po-valley",
       "text_origin": "source_excerpt",
@@ -660,7 +847,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-at-luo-po-valley",
       "text_origin": "source_excerpt"
@@ -672,7 +859,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-at-luo-po-valley",
       "text_origin": "source_excerpt",
@@ -687,10 +874,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-at-luo-po-valley",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_thieving_heaven_true_inheritance"
+      ]
     },
     {
       "text": "When immortal zombie Bo Qing later wields five finger fist heart sword against a grand tribulation, its effect is far greater than when Qin Bai Sheng used it, amplified by Bo Qing’s own accumulated sword path dao marks.",
@@ -699,7 +889,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "legacy-of-five-finger-fist-heart-sword",
       "text_origin": "source_excerpt"
@@ -711,12 +901,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "modest-thatched-hut-given-up",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_chu_rong"
+        "house_modest_thatched_hut",
+        "char_chu_rong",
+        "sys_immortal_gu_house"
       ]
     },
     {
@@ -757,7 +949,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ranked-above-chu-du-after-regaining-his-memories",
       "text_origin": "source_excerpt",
@@ -772,7 +964,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-ties-shadow-sect-to-the-inheritance",
       "text_origin": "source_excerpt",
@@ -842,7 +1034,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shadow Sect as of ch. 771",
@@ -874,7 +1066,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": "lone cultivator as of ch. 678",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1042,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1042,
@@ -62,6 +62,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_qi_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "gu_sovereign_immortal_fetus_gu",
       "count": 1
     },
@@ -80,6 +88,18 @@
     {
       "target": "reg_western_desert",
       "count": 1
+    },
+    {
+      "target": "inh_tao_zhu_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "sys_five_regional_limit_formation",
+      "count": 1
+    },
+    {
+      "target": "move_jade_flow_pearl",
+      "count": 1
     }
   ],
   "claims": [
@@ -90,7 +110,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -109,12 +129,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_tao_zhu"
+        "char_tao_zhu",
+        "sys_gu_immortal"
       ]
     },
     {

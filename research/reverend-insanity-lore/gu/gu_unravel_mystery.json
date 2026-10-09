@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 762,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     762,
@@ -39,6 +39,18 @@
     1461
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_heavenly_lord_bai_zu",
@@ -66,11 +78,35 @@
   ],
   "co_mentions": [
     {
+      "target": "move_unravel_dream",
+      "count": 4
+    },
+    {
       "target": "char_heavenly_lord_bai_zu",
       "count": 3
     },
     {
+      "target": "move_star_fog_concealment",
+      "count": 3
+    },
+    {
+      "target": "move_qi_luck_sensation",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 2
+    },
+    {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
+      "target": "house_red_fiend_divine_boat",
+      "count": 2
+    },
+    {
+      "target": "sys_dream_path_mortal_gu",
       "count": 2
     },
     {
@@ -80,6 +116,10 @@
     {
       "target": "gu_womans_heart",
       "count": 2
+    },
+    {
+      "target": "evt_arc_blessed_land_consolidation",
+      "count": 1
     },
     {
       "target": "char_qin_bai_sheng",
@@ -98,7 +138,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_hu_immortal_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -110,11 +162,19 @@
       "count": 1
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_change_soul_immortal_gu",
       "count": 1
     },
     {
       "target": "gu_attitude_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_wisdom_refinement_formation",
       "count": 1
     },
     {
@@ -143,6 +203,10 @@
     },
     {
       "target": "gu_affection_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "path_dream",
       "count": 1
     }
   ],
@@ -193,7 +257,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -207,7 +273,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank",
         "text_origin": "source_excerpt",
@@ -231,12 +297,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "dream-path-killer-move",
         "text_origin": "source_excerpt",
         "mentions": [
-          "loc_hu_immortal_blessed_land"
+          "sys_dream_path_mortal_gu",
+          "loc_hu_immortal_blessed_land",
+          "move_unravel_dream",
+          "sys_gu_formation"
         ]
       },
       {
@@ -246,7 +315,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "dream-path-killer-move",
         "text_origin": "source_excerpt"
@@ -258,10 +327,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "dream-path-killer-move",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       },
       {
         "text": "Its effect is to help a Gu Immortal think and solve puzzles and mysteries. Against a battlefield killer move treated as a puzzle, the Gu would be helpful in principle, but alone it cannot unravel such moves.",
@@ -270,10 +342,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "puzzles-and-battlefield-moves",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       }
     ]
   },
@@ -297,7 +372,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wisdom-refinement-and-later-use",
         "text_origin": "source_excerpt",
@@ -314,10 +389,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wisdom-refinement-and-later-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       },
       {
         "text": "For a stretch it is Fang Yuan’s only wisdom path Immortal Gu, and without matching wisdom path killer moves it has little use on its own.",
@@ -326,7 +404,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wisdom-refinement-and-later-use",
         "text_origin": "source_excerpt"
@@ -338,7 +416,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wisdom-refinement-and-later-use",
         "text_origin": "source_excerpt"
@@ -355,14 +433,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_qin_bai_sheng",
           "reg_northern_plains",
-          "char_heavenly_lord_bai_zu"
+          "char_heavenly_lord_bai_zu",
+          "house_red_fiend_divine_boat"
         ],
         "needs_review": true
       }
@@ -404,7 +483,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -420,7 +499,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "star-fog-concealment-core",
         "text_origin": "source_excerpt",
@@ -434,7 +513,7 @@
     "Path": {
       "text": "Wisdom Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

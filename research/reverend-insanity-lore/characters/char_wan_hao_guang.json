@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1799,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1799,
@@ -34,6 +34,18 @@
     {
       "type": "in_region",
       "target": "reg_western_desert",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -78,6 +90,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_western_desert",
       "count": 1
     },
@@ -102,11 +118,23 @@
       "count": 1
     },
     {
+      "target": "move_distracting_thoughts_generation",
+      "count": 1
+    },
+    {
+      "target": "house_myriad_age_building",
+      "count": 1
+    },
+    {
       "target": "fac_sun_clan",
       "count": 1
     },
     {
       "target": "fac_anti_fang_alliance",
+      "count": 1
+    },
+    {
+      "target": "move_mirror_flower",
       "count": 1
     },
     {
@@ -230,7 +258,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Wan Clan as of ch. 1799",
@@ -257,7 +285,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": null,

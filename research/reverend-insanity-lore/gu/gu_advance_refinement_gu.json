@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1767,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1767,
@@ -32,6 +32,18 @@
     2252
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_refinement",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -47,6 +59,14 @@
   ],
   "co_mentions": [
     {
+      "target": "house_four_elements_square_regret_blood_refinement_pool",
+      "count": 3
+    },
+    {
+      "target": "path_refinement",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -59,7 +79,15 @@
       "count": 2
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_shadow_sect",
+      "count": 1
+    },
+    {
+      "target": "inh_long_hair_true_inheritance",
       "count": 1
     },
     {
@@ -68,6 +96,10 @@
     },
     {
       "target": "gu_blood_asset_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
       "count": 1
     },
     {
@@ -88,6 +120,18 @@
     },
     {
       "target": "gu_spring_autumn_cicada",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_attitude",
+      "count": 1
+    },
+    {
+      "target": "res_refinement_path_immortal_material",
+      "count": 1
+    },
+    {
+      "target": "res_rule_path_immortal_material",
       "count": 1
     },
     {
@@ -140,7 +184,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_refinement"
+    ],
     "path_unverified": false,
     "functional_types": [
       "support"
@@ -163,8 +209,10 @@
         "mentions": [
           "gu_spring_autumn_cicada",
           "gu_dog_shit_luck",
+          "evt_legend_attitude",
           "gu_dream_token",
           "fac_lang_ya_sect",
+          "house_four_elements_square_regret_blood_refinement_pool",
           "gu_heavenly_essence_treasure_lotus"
         ]
       },
@@ -257,6 +305,8 @@
         "mentions": [
           "char_fang_yuan",
           "loc_lang_ya_blessed_land",
+          "inh_long_hair_true_inheritance",
+          "sys_immortal_gu",
           "gu_water_refinement_gu",
           "gu_forceful_refinement_gu",
           "fac_shadow_sect"
@@ -268,7 +318,7 @@
     "Path": {
       "text": "Refinement Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

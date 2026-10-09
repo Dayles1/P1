@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 719,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     719
@@ -57,6 +57,14 @@
     },
     {
       "target": "char_star_lord_wan_xiang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -120,7 +128,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt",
@@ -135,7 +143,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -153,10 +161,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "Manifested dao marks last only for a period of time and need plenty of experience to read. Activating Immortal Gu also leaves responding dao marks. In an intense battle many methods tangle those marks until inference fails. On this battlefield few methods were used, so Fang Yuan can roughly understand the situation. Shi Lei and Star Lord Wan Xiang had used mainstream investigative and counter-investigative methods on that field; Thread Trace Gu pierces the gap in those methods. Hei Lou Lan treats the invention as valuable and considers asking whether he will sell it.",
@@ -165,11 +176,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "limits",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_shi_lei",
           "char_star_lord_wan_xiang"
         ]
@@ -221,7 +233,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

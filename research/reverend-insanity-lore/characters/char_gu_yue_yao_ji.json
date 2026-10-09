@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 77,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     77,
@@ -55,6 +55,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -103,6 +115,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
       "count": 1
     },
@@ -124,6 +140,10 @@
     },
     {
       "target": "char_gu_yue_yao_le",
+      "count": 2
+    },
+    {
+      "target": "sys_poison_gu",
       "count": 2
     },
     {
@@ -160,6 +180,10 @@
     },
     {
       "target": "char_gu_yue_mo_chen",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -227,7 +251,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -243,7 +267,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -255,7 +279,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -267,13 +291,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "medicine-hall-elder",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_qing_mao_mountain",
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_gu_master"
       ]
     },
     {
@@ -283,7 +308,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "medicine-hall-elder",
       "text_origin": "source_excerpt"
@@ -295,7 +320,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "medicine-hall-elder",
       "text_origin": "source_excerpt",
@@ -312,7 +337,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "medicine-hall-elder",
       "text_origin": "source_excerpt",
@@ -327,7 +352,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "medicine-hall-elder",
       "text_origin": "source_excerpt",
@@ -343,7 +368,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "granddaughter-yao-le",
       "text_origin": "source_excerpt",
@@ -359,7 +384,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "granddaughter-yao-le",
       "text_origin": "source_excerpt",
@@ -374,7 +399,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "granddaughter-yao-le",
       "text_origin": "source_excerpt",
@@ -392,7 +417,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "granddaughter-yao-le",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_poison_gu"
+      ]
     },
     {
       "text": "After three days of failed search she still rages in the medicine hall and refuses to accept that Yao Le is gone.",
@@ -401,7 +429,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "granddaughter-yao-le",
       "text_origin": "source_excerpt"
@@ -413,7 +441,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clash-with-fang-yuan",
       "text_origin": "source_excerpt",
@@ -428,7 +456,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clash-with-fang-yuan",
       "text_origin": "source_excerpt"
@@ -440,7 +468,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clash-with-fang-yuan",
       "text_origin": "source_excerpt"
@@ -452,7 +480,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clash-with-fang-yuan",
       "text_origin": "source_excerpt"
@@ -464,7 +492,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clash-with-fang-yuan",
       "text_origin": "source_excerpt",
@@ -480,7 +508,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-the-medicine-hall",
       "text_origin": "source_excerpt"
@@ -504,7 +532,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-the-medicine-hall",
       "text_origin": "source_excerpt",
@@ -522,7 +550,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-the-medicine-hall",
       "text_origin": "source_excerpt"
@@ -534,7 +562,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "translation-notes",
       "text_origin": "source_excerpt"
@@ -546,7 +574,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "translation-notes",
       "text_origin": "source_excerpt"
@@ -558,7 +586,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "translation-notes",
       "text_origin": "source_excerpt"
@@ -570,7 +598,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "translation-notes",
       "text_origin": "source_excerpt"
@@ -652,7 +680,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Gu Yue Clan as of ch. 77 Medicine faction as of ch. 152",
@@ -679,7 +707,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

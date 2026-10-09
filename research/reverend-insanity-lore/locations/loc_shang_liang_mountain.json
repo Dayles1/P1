@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 229,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     229,
@@ -85,11 +85,19 @@
       "count": 1
     },
     {
+      "target": "evt_arc_shang_clan_city",
+      "count": 1
+    },
+    {
       "target": "char_tian_lan",
       "count": 1
     },
     {
       "target": "fac_feng_yu_manor",
+      "count": 1
+    },
+    {
+      "target": "sys_purple_thorn_token",
       "count": 1
     },
     {
@@ -137,11 +145,19 @@
       "count": 1
     },
     {
+      "target": "move_qi_luck_sensation",
+      "count": 1
+    },
+    {
       "target": "char_zhou_quan",
       "count": 1
     },
     {
       "target": "fac_living_treasure_door",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_dao_veins_famous_mountains",
       "count": 1
     },
     {
@@ -155,6 +171,10 @@
     {
       "target": "char_shang_ya_zi",
       "count": 1
+    },
+    {
+      "target": "inh_fur_true_inheritance",
+      "count": 1
     }
   ],
   "claims": [
@@ -165,7 +185,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -180,7 +200,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -197,7 +217,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -209,7 +229,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -248,7 +268,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "setting-out",
       "text_origin": "source_excerpt",

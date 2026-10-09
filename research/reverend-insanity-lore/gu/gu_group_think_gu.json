@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1239,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1239
@@ -46,6 +46,10 @@
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
     },
     {
       "target": "gu_connect_luck",
@@ -174,6 +178,7 @@
           "gu_unravel_mystery",
           "gu_qi_luck_immortal_gu",
           "gu_connect_luck",
+          "sys_mortal_gu",
           "loc_treasure_yellow_heaven"
         ]
       }

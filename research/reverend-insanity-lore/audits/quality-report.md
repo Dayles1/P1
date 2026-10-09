@@ -1,22 +1,34 @@
-# Quality report (2026-10-09, first pass)
+# Quality report (2026-10-09, full first pass)
 
-Validator: `python tools/validate.py` — schema, ids, file names, indexes and sources all pass.
-Remaining errors: 515 dangling references to `res_*` (materials), because the resources section was not built yet. They resolve once the crawl finishes and `resources/` is built.
+Validator (`python tools/validate.py`): **0 errors** on 6581 files. Checked: schema, unique ids, ids match file names, every reference resolves, indexes complete, sources declared.
 
-## Gu (1035 records)
-- rank recorded: 613 / missing: 422
-- rank_type: {'immortal': 304, 'unknown': 342, 'mortal': 389}
-- path linked: 0 (paths section not crawled yet, links filtered); food known: 102; appearance described: 376
-- with ownership history: 726; with unreviewed price mentions: 154
-- with source conflicts: 25; stubs: 1
-- organism_type: all `unknown` (not classified yet)
-- zh names: 0 (source has none); ru names: 0
-- canonical_prices: 0 — price mentions not reviewed yet
+| Section | Records |
+|---|---|
+| gu | 1035 |
+| characters | 913 |
+| factions | 182 |
+| locations | 366 |
+| regions (regions + earths + heavens) | 24 |
+| recipes | 11 |
+| resources (materials) | 445 |
+| moves (killer moves) | 634 |
+| systems (cultivation concepts) | 297 |
+| inheritances | 83 |
+| gu_houses | 104 |
+| paths | 47 |
+| creatures (races) | 13 |
+| events (arcs, fights, legends, eras) | 93 |
+| chapters (summary index, subjects only) | 2334 |
 
-## Characters (913 records)
-- Chinese name present: 2; Palladius ru: 640; rank timeline present: 575
-- Rank timelines come from the source infobox and can stop early (Fang Yuan's ends at rank 6, ch. 630).
+Claims in Gu + character records, by verification:
+- cross_checked_chapter_summary: 8114 (the cited chapter's summary page names the entity)
+- citation_unchecked: 4816
+- no_citation: 436
+- text_checked: 0. **No A-level records**: the novel text was not reachable.
 
-## Verification
-- No claim checked against the novel text (A = 0).
-- Cross-check against chapter summary pages not run yet: the chapter pages were not downloaded yet. Every claim is `citation_unchecked` or `no_citation`.
+Known gaps
+- Gu: 422 without recorded rank; only 183 linked to a path; organism_type not classified; no zh names; no ru names; 154 Gu with unreviewed price mentions, canonical_prices empty.
+- Character rank timelines can stop early (source infobox), e.g. Fang Yuan ends at rank 6 (ch. 630).
+- Typed schemas exist only for gu and character; the other types keep raw infobox fields in `attributes`.
+- Relation types derived from infobox labels are sometimes noisy (e.g. fight sides become types such as `gu_yue_clan`). Normalise before the export relies on them.
+- volume: not filled (no volume ↔ chapter table yet).

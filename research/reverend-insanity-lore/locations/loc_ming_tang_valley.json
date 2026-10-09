@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1030,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1030,
@@ -58,6 +58,22 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_light_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "fac_defy",
       "count": 1
     },
@@ -72,6 +88,10 @@
     {
       "target": "fac_heavenly_court",
       "count": 1
+    },
+    {
+      "target": "house_wind_cloud_manor",
+      "count": 1
     }
   ],
   "claims": [
@@ -82,7 +102,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -94,13 +114,17 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_wind_cloud_manor",
         "fac_heavenly_lotus_sect",
         "reg_central_continent",
+        "sys_gu_worms",
+        "sys_immortal_gu",
+        "sys_gu_immortal",
         "char_gong_sun_liang"
       ]
     },
@@ -111,7 +135,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "heavenly-court-target",
       "text_origin": "source_excerpt",
@@ -127,7 +151,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-of-gong-sun-liang",
       "text_origin": "source_excerpt"

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1100,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1100,
@@ -65,6 +65,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_dong_fang_tribe",
       "count": 1
     },
@@ -85,7 +93,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -97,7 +105,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -108,7 +116,9 @@
         "char_tian_xia_xin",
         "char_dong_fang_chang_fan",
         "fac_dong_fang_tribe",
-        "char_fang_yuan"
+        "sys_gu_immortal",
+        "char_fang_yuan",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -118,7 +128,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "deduction-seat",
       "text_origin": "source_excerpt"

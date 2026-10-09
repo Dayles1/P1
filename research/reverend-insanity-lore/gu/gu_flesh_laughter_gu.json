@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 224,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     224,
@@ -50,7 +50,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_bai_clan_bai_gu_mountain",
+      "count": 1
+    },
+    {
+      "target": "inh_white_bone_inheritance",
       "count": 1
     }
   ],
@@ -140,7 +148,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "Before anyone knocks, one mouth drops its teeth on its own and extends a scarlet tongue that presents a pocket-sized bone book. That book tells the successor to knock teeth in the chamber to open mouths and take hibernating Gu inside. Bai Ning Bing then knocks, stops a mouth’s laughter, and receives a hibernating Gu on the tongue.",

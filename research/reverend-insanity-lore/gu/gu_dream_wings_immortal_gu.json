@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 398,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     398,
@@ -51,8 +51,20 @@
   ],
   "co_mentions": [
     {
+      "target": "move_pure_dream_reality_seeker_transformation",
+      "count": 4
+    },
+    {
       "target": "char_feng_jin_huang",
       "count": 3
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_hu_immortal_inheritance",
+      "count": 1
     },
     {
       "target": "char_fairy_bai_qing",
@@ -60,6 +72,10 @@
     },
     {
       "target": "fac_spirit_affinity_house",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -186,7 +202,8 @@
         "section": "activation-without-immortal-essence",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_dream_travel"
+          "gu_dream_travel",
+          "sys_gu_immortal"
         ]
       }
     ]
@@ -241,7 +258,8 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_feng_jin_huang"
+          "char_feng_jin_huang",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -254,7 +272,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "inh_hu_immortal_inheritance"
+        ]
       },
       {
         "text": "After a long coma tied to the Gu, Feng Jin Huang wakes and states that it can bring her into dream realms.",
@@ -278,7 +299,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "pure-dream-reality-seeker-core",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_pure_dream_reality_seeker_transformation"
+        ]
       }
     ]
   },

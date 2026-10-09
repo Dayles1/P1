@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 845,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     845,
@@ -49,8 +49,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_wood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1274,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -99,6 +123,14 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
+      "target": "path_wood",
+      "count": 1
+    },
+    {
       "target": "gu_failure_gu",
       "count": 2
     },
@@ -139,6 +171,10 @@
       "count": 2
     },
     {
+      "target": "house_edge_link_camp",
+      "count": 2
+    },
+    {
       "target": "char_old_ancestor_xue_hu",
       "count": 2
     },
@@ -155,6 +191,14 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_path_convention",
+      "count": 1
+    },
+    {
       "target": "loc_infallible_blessed_land",
       "count": 1
     },
@@ -163,7 +207,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
+      "count": 1
+    },
+    {
       "target": "fac_combat_immortal_sect",
+      "count": 1
+    },
+    {
+      "target": "house_illusion_garden",
       "count": 1
     },
     {
@@ -207,6 +267,22 @@
       "count": 1
     },
     {
+      "target": "sys_star_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "house_wind_sweeping_building",
+      "count": 1
+    },
+    {
+      "target": "move_spaceless_tunnel",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "char_ma_hong_yun",
       "count": 1
     },
@@ -219,7 +295,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "loc_reverse_flow_river",
+      "count": 1
+    },
+    {
+      "target": "move_wood_armor",
       "count": 1
     },
     {
@@ -243,11 +327,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "loc_hairy_foot_mountain",
         "reg_central_continent",
         "loc_infallible_blessed_land",
@@ -261,7 +346,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -280,7 +365,10 @@
       "mentions": [
         "char_heaven_overseeing_tower_lord",
         "char_bai_cang_shui",
-        "char_lian_jiu_sheng"
+        "char_lian_jiu_sheng",
+        "house_heaven_overseeing_tower",
+        "sys_gu_formation",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -290,7 +378,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "return-to-the-mortal-world",
       "text_origin": "source_excerpt",
@@ -305,7 +393,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "cleanup-after-bo-qings-fall",
       "text_origin": "source_excerpt",
@@ -323,7 +411,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "warning-signs-at-heavenly-court",
       "text_origin": "source_excerpt",
@@ -338,7 +426,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reinforcing-heavenly-lotus-sect",
       "text_origin": "source_excerpt",
@@ -355,7 +443,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "accused-as-the-traitor",
       "text_origin": "source_excerpt",
@@ -382,7 +470,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "naming-spectral-souls-weakness",
       "text_origin": "source_excerpt",
@@ -397,13 +485,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "holding-edge-link-camp",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_old_ancestor_xue_hu",
-        "char_wei_ling_yang"
+        "house_edge_link_camp",
+        "char_wei_ling_yang",
+        "sys_immortal_gu_house"
       ]
     },
     {
@@ -413,7 +503,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "snowy-mountain-expedition",
       "text_origin": "source_excerpt",
@@ -430,11 +520,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "adrift-in-reverse-flow-river",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_worms",
         "loc_reverse_flow_river",
         "char_fang_yuan"
       ]
@@ -446,7 +537,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bargaining-over-affection-gu",
       "text_origin": "source_excerpt",
@@ -461,7 +552,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fighting-fang-yuan-in-the-river",
       "text_origin": "source_excerpt"
@@ -473,7 +564,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "driven-off",
       "text_origin": "source_excerpt"
@@ -485,7 +576,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rallying-nine-against-a-strong-foe",
       "text_origin": "source_excerpt"
@@ -497,7 +588,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "a-second-offer-over-the-gu",
       "text_origin": "source_excerpt"
@@ -509,7 +600,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "coaching-a-slow-pace",
       "text_origin": "source_excerpt"
@@ -521,7 +612,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "confirming-perseverance-immortal-gu",
       "text_origin": "source_excerpt",
@@ -538,7 +629,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -601,7 +692,7 @@
     "Paths": {
       "text": "Wood path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Central Continent",
@@ -611,7 +702,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 845",
@@ -633,12 +724,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_wood"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": null,

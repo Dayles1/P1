@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 337,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     337,
@@ -66,6 +66,10 @@
       "count": 1
     },
     {
+      "target": "sys_righteous_path",
+      "count": 1
+    },
+    {
       "target": "loc_san_cha_mountain",
       "count": 1
     },
@@ -90,7 +94,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-with-the-ten-tyrants",
       "text_origin": "source_excerpt",
@@ -98,7 +102,8 @@
         "char_fang_yuan",
         "char_bai_ning_bing",
         "loc_san_cha_mountain",
-        "fac_ten_tyrants"
+        "fac_ten_tyrants",
+        "sys_righteous_path"
       ]
     },
     {
@@ -121,7 +126,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "boss-contrast",
       "text_origin": "source_excerpt",
@@ -136,7 +141,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "heng-meis-hold",
       "text_origin": "source_excerpt"

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 660,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     660,
@@ -75,6 +75,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_blessed_land_consolidation",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -84,6 +88,18 @@
     },
     {
       "target": "char_tai_bai_yun_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_alliance_agreement",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -119,7 +135,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "oath-on-snowy-mountain",
       "text_origin": "source_excerpt",
@@ -129,8 +145,10 @@
         "char_hei_lou_lan",
         "char_fang_yuan",
         "gu_mountain_pledge_gu",
+        "sys_immortal_gu",
         "gu_sea_oath_gu",
         "reg_northern_plains",
+        "sys_gu_immortal",
         "loc_snowy_mountain"
       ]
     },
@@ -141,7 +159,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "alliance-terms",
       "text_origin": "source_excerpt",
@@ -156,7 +174,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "alliance-terms",
       "text_origin": "source_excerpt"
@@ -168,7 +186,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "alliance-terms",
       "text_origin": "source_excerpt"
@@ -192,7 +210,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "alliance-terms",
       "text_origin": "source_excerpt"
@@ -204,7 +222,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "signatory-outcomes",
       "text_origin": "source_excerpt",
@@ -219,7 +237,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "signatory-outcomes",
       "text_origin": "source_excerpt"

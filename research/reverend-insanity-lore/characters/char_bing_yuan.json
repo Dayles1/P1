@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1459,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1459,
@@ -41,6 +41,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_snowmen",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -67,6 +79,10 @@
     {
       "target": "fac_lang_ya_sect",
       "count": 3
+    },
+    {
+      "target": "race_snowmen",
+      "count": 2
     },
     {
       "target": "reg_northern_plains",
@@ -101,11 +117,19 @@
       "count": 1
     },
     {
+      "target": "res_snow_lotus_essence",
+      "count": 1
+    },
+    {
       "target": "fac_rockman_tribe",
       "count": 1
     },
     {
       "target": "loc_green_ghost_desert",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -118,6 +142,10 @@
     },
     {
       "target": "fac_chai_clan",
+      "count": 1
+    },
+    {
+      "target": "move_congregated_human_talent",
       "count": 1
     },
     {
@@ -137,7 +165,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -157,7 +185,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "engagement-banquet",
       "text_origin": "source_excerpt"
@@ -172,7 +200,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "first-to-agree",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "She leads the snowman Gu Immortals and sends a wave of frost energy that freezes the enemies.",
@@ -196,7 +227,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "ice-and-snow",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "race_snowmen"
+      ]
     },
     {
       "text": "She, Golden Fur Immortal Monarch, and Shi Zong go to Human Smoke Mountain as snowman, hairy man, and rockman, all at rank eight. As the leader of the trip she speaks for the trade with Chai clan.",
@@ -290,7 +324,7 @@
     "Race": {
       "text": "Snowmen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Snowman Tribe as of ch. 1459 Lang Ya Sect as of ch. 1765",
@@ -322,7 +356,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_snowmen",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

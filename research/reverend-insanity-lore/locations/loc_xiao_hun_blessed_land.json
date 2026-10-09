@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 528,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     528,
@@ -71,7 +71,23 @@
       "count": 1
     },
     {
+      "target": "sys_great_strength_true_martial_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
       "target": "fac_hei_tribe",
+      "count": 1
+    },
+    {
+      "target": "res_vermillion_fruit",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -101,6 +117,10 @@
     {
       "target": "loc_luo_po_valley",
       "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
     }
   ],
   "claims": [
@@ -111,7 +131,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -126,7 +146,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -138,7 +158,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -156,13 +176,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-bai-and-hei-cheng",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_ma_tribe",
-        "loc_snowy_mountain"
+        "loc_snowy_mountain",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -172,7 +193,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "entry-and-ownership",
       "text_origin": "source_excerpt",
@@ -191,10 +212,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soul-cultivation-inside",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_formation"
+      ]
     }
   ],
   "conflicts": [],

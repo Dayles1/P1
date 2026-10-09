@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1905,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1905,
@@ -34,6 +34,18 @@
     1915
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_shen_clan",
@@ -81,6 +93,30 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_mutual_injuries",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1907,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_heaven_always_leaves_a_way_out_for_people",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2198,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -97,8 +133,20 @@
       "count": 4
     },
     {
+      "target": "move_mutual_injuries",
+      "count": 3
+    },
+    {
       "target": "gu_beggar_gu",
       "count": 3
+    },
+    {
+      "target": "move_heaven_always_leaves_a_way_out_for_people",
+      "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_shen_cong_sheng",
@@ -106,6 +154,10 @@
     },
     {
       "target": "gu_regret_gu",
+      "count": 1
+    },
+    {
+      "target": "move_grand_collision",
       "count": 1
     },
     {
@@ -121,7 +173,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_eastern_sea_righteous_path",
+      "count": 1
+    },
+    {
+      "target": "house_merit_obelisk",
       "count": 1
     },
     {
@@ -133,7 +193,63 @@
       "count": 1
     },
     {
+      "target": "sys_human_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "move_light_injuries",
+      "count": 1
+    },
+    {
+      "target": "move_night_song",
+      "count": 1
+    },
+    {
+      "target": "move_sensory_injury",
+      "count": 1
+    },
+    {
+      "target": "sys_black_fire",
+      "count": 1
+    },
+    {
+      "target": "move_heavy_injuries",
+      "count": 1
+    },
+    {
+      "target": "move_self_cleansing",
+      "count": 1
+    },
+    {
       "target": "res_advancing_and_retreating_tidal_water",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
+      "target": "move_countless_injury_marks",
+      "count": 1
+    },
+    {
+      "target": "move_heroes_among_people",
+      "count": 1
+    },
+    {
+      "target": "move_hope_of_the_people",
+      "count": 1
+    },
+    {
+      "target": "house_divine_emperor_palace",
       "count": 1
     },
     {
@@ -150,6 +266,10 @@
     },
     {
       "target": "char_xiao_bai_hong",
+      "count": 1
+    },
+    {
+      "target": "sys_foundational_pillar_of_human_path",
       "count": 1
     },
     {
@@ -205,11 +325,27 @@
       "count": 1
     },
     {
+      "target": "move_endless_learning",
+      "count": 1
+    },
+    {
+      "target": "move_emotionless_heaven_and_earth",
+      "count": 1
+    },
+    {
       "target": "char_seven_fiendish_primeval_monarch",
       "count": 1
     },
     {
       "target": "char_shabi_ninety_five",
+      "count": 1
+    },
+    {
+      "target": "move_luck_changing_golden_light_path",
+      "count": 1
+    },
+    {
+      "target": "move_xi_xi",
       "count": 1
     },
     {
@@ -222,6 +358,10 @@
     },
     {
       "target": "res_heavenly_veil",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
       "count": 1
     },
     {
@@ -244,6 +384,7 @@
       "mentions": [
         "char_shen_cong_sheng",
         "gu_regret_gu",
+        "move_grand_collision",
         "fac_shen_clan"
       ]
     },
@@ -271,6 +412,7 @@
       "section": "clan-standing",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "reg_eastern_sea",
         "char_paradise_earth_immortal_venerable"
       ]
@@ -300,7 +442,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "clan-standing",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_merit_obelisk"
+      ]
     },
     {
       "text": "His hair is messy, his eyes are bloodshot, and his face is distorted. Black fire burns on his body while he drools and waves his limbs.",
@@ -326,6 +471,8 @@
       "section": "heavenly-spine-talk",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
+        "sys_gu_recipe",
         "gu_heal_injury_immortal_gu"
       ]
     },
@@ -341,7 +488,8 @@
       "section": "heavenly-spine-talk",
       "text_origin": "source_excerpt",
       "mentions": [
-        "gu_injury_mark_immortal_gu"
+        "gu_injury_mark_immortal_gu",
+        "sys_vital_gu"
       ]
     }
   ],
@@ -383,7 +531,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shen Clan as of ch. 1905",
@@ -410,7 +558,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

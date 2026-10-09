@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 336,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     336,
@@ -53,6 +53,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_heavenly_lotus_sect",
       "role": null,
@@ -69,6 +81,10 @@
     {
       "target": "fac_heavenly_lotus_sect",
       "count": 4
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_central_continent",
@@ -111,6 +127,18 @@
       "count": 1
     },
     {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_four_great_obscenities",
       "count": 1
     },
@@ -124,6 +152,10 @@
     },
     {
       "target": "char_lord_sky_crane",
+      "count": 1
+    },
+    {
+      "target": "inh_hu_immortal_inheritance",
       "count": 1
     },
     {
@@ -155,6 +187,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_ten_great_ancient_sects",
       "count": 1
     },
@@ -179,15 +215,18 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_demonic_path",
         "fac_gu_masters",
         "fac_immortal_crane_sect",
         "fac_heavenly_lotus_sect",
-        "char_fang_zheng"
+        "char_fang_zheng",
+        "sys_gu_master",
+        "sys_gu_worms"
       ]
     },
     {
@@ -197,7 +236,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -209,7 +248,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -221,10 +260,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hu-immortal-road-and-admirers",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_hu_immortal_inheritance"
+      ]
     },
     {
       "text": "Wei Wu Shang finds her safe beside Fang Zheng and hears her credit the rescue, while Lord Sky Crane warns Fang Zheng that saving Bi Xia has brought enemies because she likes him.",
@@ -233,7 +275,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hu-immortal-road-and-admirers",
       "text_origin": "source_excerpt",
@@ -249,7 +291,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hu-immortal-road-and-admirers",
       "text_origin": "source_excerpt",
@@ -268,7 +310,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "central-continent-elite-tier",
       "text_origin": "source_excerpt"
@@ -280,7 +322,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "central-continent-elite-tier",
       "text_origin": "source_excerpt"
@@ -292,7 +334,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "central-continent-elite-tier",
       "text_origin": "source_excerpt"
@@ -304,7 +346,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wei-wu-shang-retrospect",
       "text_origin": "source_excerpt"
@@ -348,6 +390,7 @@
         "char_shen_shang",
         "char_xiao_qi_xing",
         "char_sun_yuan_hua",
+        "sys_gu_immortal",
         "fac_ten_great_ancient_sects"
       ]
     },
@@ -414,7 +457,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Lotus Sect as of ch. 336",
@@ -435,7 +478,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

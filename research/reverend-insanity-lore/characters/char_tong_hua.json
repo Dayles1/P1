@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1296,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1296,
@@ -46,12 +46,28 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_eastern_sea",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_ren_xiu_ping",
@@ -62,7 +78,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_light_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "res_light_shine_fungi",
+      "count": 1
+    },
+    {
+      "target": "move_light_fungus_radiance",
       "count": 1
     },
     {
@@ -78,6 +106,10 @@
       "count": 1
     },
     {
+      "target": "move_aerial_sound_blades",
+      "count": 1
+    },
+    {
       "target": "char_shen_xiao",
       "count": 1
     }
@@ -90,13 +122,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_miao_ming_shen",
-        "reg_eastern_sea"
+        "reg_eastern_sea",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -106,7 +139,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -118,7 +151,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fungus-discovery-and-offer",
       "text_origin": "source_excerpt"
@@ -130,7 +163,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rainbow-aurora-sea",
       "text_origin": "source_excerpt"
@@ -142,7 +175,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "debt-to-ren-xiu-ping",
       "text_origin": "source_excerpt",
@@ -207,7 +240,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -229,7 +262,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

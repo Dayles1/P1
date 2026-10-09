@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 430,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     430,
@@ -78,7 +78,15 @@
       "count": 2
     },
     {
+      "target": "house_white_bone_chariot",
+      "count": 2
+    },
+    {
       "target": "char_ge_yao",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
       "count": 1
     },
     {
@@ -90,7 +98,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_ghost_fire_gu",
+      "count": 1
+    },
+    {
+      "target": "move_white_bone_battlefield",
       "count": 1
     },
     {
@@ -98,7 +114,19 @@
       "count": 1
     },
     {
+      "target": "res_six_headed_snake_bones",
+      "count": 1
+    },
+    {
       "target": "res_desolate_beast_corpse",
+      "count": 1
+    },
+    {
+      "target": "path_bone",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -164,7 +192,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -187,7 +215,9 @@
         "section": "killer-move",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_immortal",
           "char_shen_jie_ao",
+          "house_white_bone_chariot",
           "gu_ghost_fire_gu"
         ]
       }
@@ -247,7 +277,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -265,11 +295,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_wild_gu",
           "char_ge_yao"
         ]
       },
@@ -304,11 +335,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "remaining-holdings",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_mortal_gu",
           "reg_northern_plains"
         ]
       }

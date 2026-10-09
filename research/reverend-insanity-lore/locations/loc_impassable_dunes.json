@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 836,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     836,
@@ -57,7 +57,19 @@
       "count": 2
     },
     {
+      "target": "house_ten_thousand_li_silk_corridor",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -124,7 +136,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "the-moving-dunes",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Fang Yuan reaches the impassable dunes in the Western Desert by Fixed Immortal Travel.",
@@ -156,7 +171,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_xiao_hu_chi",
-        "char_xiao_shi_rang"
+        "char_xiao_shi_rang",
+        "house_ten_thousand_li_silk_corridor"
       ]
     },
     {
@@ -169,7 +185,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "arrival-and-trade",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house"
+      ]
     }
   ],
   "conflicts": [],

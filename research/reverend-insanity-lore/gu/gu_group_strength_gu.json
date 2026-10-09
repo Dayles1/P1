@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 678,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     678,
@@ -33,6 +33,18 @@
     783
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -48,6 +60,18 @@
   ],
   "co_mentions": [
     {
+      "target": "path_strength",
+      "count": 3
+    },
+    {
+      "target": "res_stone_monkey_fur",
+      "count": 3
+    },
+    {
+      "target": "move_myriad_self_giant_hand",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -60,11 +84,31 @@
       "count": 1
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement",
+      "count": 1
+    },
+    {
+      "target": "move_kong_sheng_tian",
+      "count": 1
+    },
+    {
       "target": "char_shi_lei",
       "count": 1
     },
     {
+      "target": "move_poison_breath",
+      "count": 1
+    },
+    {
       "target": "gu_small_family_qi_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -108,7 +152,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -144,10 +190,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "recipe-and-materials",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       },
       {
         "text": "Its ability is to converge the strength of a group into one. Matched with the killer move myriad self, it greatly raises Fang Yuan’s strength. He buys five hundred stone monkey fur, divides the recipe with old hairy men, and after three days and nights obtains forty-five rank five group strength Gu, then merges them into myriad self.",
@@ -156,7 +205,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-and-refinement",
         "text_origin": "source_excerpt"
@@ -168,7 +217,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-and-refinement",
         "text_origin": "source_excerpt"
@@ -206,13 +255,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fairy_li_shan",
           "char_fang_yuan",
+          "path_strength",
           "char_hei_lou_lan"
         ]
       },
@@ -223,10 +273,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "giant-hand",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ]
   },
@@ -234,7 +287,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

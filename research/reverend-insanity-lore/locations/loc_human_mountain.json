@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1983,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1983,
@@ -51,11 +51,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_chai_clan",
       "count": 1
     },
     {
       "target": "fac_xia_clan",
+      "count": 1
+    },
+    {
+      "target": "path_wisdom",
       "count": 1
     },
     {
@@ -81,7 +89,9 @@
         "loc_human_sea",
         "char_fang_yuan",
         "reg_southern_border",
-        "fac_chai_clan"
+        "fac_chai_clan",
+        "path_wisdom",
+        "sys_gu_immortal"
       ]
     },
     {

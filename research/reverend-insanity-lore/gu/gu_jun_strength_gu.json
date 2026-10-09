@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 442,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     442,
@@ -32,6 +32,18 @@
     754
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -46,6 +58,10 @@
     }
   ],
   "co_mentions": [
+    {
+      "target": "path_strength",
+      "count": 3
+    },
     {
       "target": "char_fang_yuan",
       "count": 2
@@ -72,6 +88,10 @@
     },
     {
       "target": "gu_strength_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -123,7 +143,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -162,7 +184,8 @@
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_strength_gu"
+          "gu_strength_gu",
+          "path_strength"
         ]
       },
       {
@@ -175,7 +198,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "line-choice-and-limits",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       }
     ]
   },
@@ -259,7 +285,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

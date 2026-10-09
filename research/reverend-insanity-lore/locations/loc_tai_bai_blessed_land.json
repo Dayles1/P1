@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 821,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     821,
@@ -38,7 +38,27 @@
       "count": 1
     },
     {
+      "target": "sys_earth_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_space_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_time_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "res_sky_chief_clouds",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_cloud_path_dao_marks",
       "count": 1
     },
     {
@@ -46,7 +66,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_landscape_as_before_gu",
+      "count": 1
+    },
+    {
+      "target": "move_heavenly_wish",
       "count": 1
     }
   ],
@@ -73,7 +101,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "placed-in-northern-plains",
       "text_origin": "source_excerpt",
@@ -89,7 +117,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "featherman-earthly-calamity",
       "text_origin": "source_excerpt"
@@ -101,10 +129,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "featherman-earthly-calamity",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "The featherman Gu Immortals’ tribulation fight plays out inside Tai Bai blessed land, and Tai Bai Yun Sheng receives their dao marks after the calamity passes.",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1779,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1779,
@@ -63,11 +63,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_dong_clan",
       "count": 1
     },
     {
       "target": "fac_fang_clan",
+      "count": 1
+    },
+    {
+      "target": "house_red_river_wheel",
       "count": 1
     }
   ],
@@ -85,10 +97,12 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_fang_clan",
+        "sys_gu_immortal",
         "char_fang_gong",
         "char_dong_lu_chen",
         "char_fang_di_chang",
-        "fac_dong_clan"
+        "fac_dong_clan",
+        "sys_immortal_gu_house"
       ]
     },
     {
@@ -125,7 +139,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "oasis-grievance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_red_river_wheel"
+      ]
     }
   ],
   "conflicts": [],

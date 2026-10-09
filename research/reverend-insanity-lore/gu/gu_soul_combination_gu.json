@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 511,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     511
@@ -80,8 +80,16 @@
       "count": 3
     },
     {
+      "target": "move_three_hearts_combination_soul",
+      "count": 3
+    },
+    {
       "target": "gu_soul_chain_gu",
       "count": 2
+    },
+    {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
     },
     {
       "target": "fac_dong_fang_tribe",
@@ -154,7 +162,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-effect",
         "text_origin": "source_excerpt",
@@ -236,11 +244,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "evt_arc_imperial_court_contest",
           "fac_dong_fang_tribe",
           "fac_gu_masters",
           "char_wan_xin",

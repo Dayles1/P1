@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 269,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     265,
@@ -56,6 +56,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_shang_clan",
       "role": null,
@@ -72,6 +84,10 @@
     {
       "target": "fac_shang_clan",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -100,6 +116,10 @@
     {
       "target": "char_shang_chi_wen",
       "count": 2
+    },
+    {
+      "target": "evt_arc_shang_clan_city",
+      "count": 1
     },
     {
       "target": "char_bai_ning_bing",
@@ -148,6 +168,10 @@
     {
       "target": "char_feng_tian_yu",
       "count": 1
+    },
+    {
+      "target": "evt_arc_dao_veins_famous_mountains",
+      "count": 1
     }
   ],
   "claims": [
@@ -158,7 +182,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -190,7 +214,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -202,7 +226,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -214,7 +238,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eldest-son-and-first-faction",
       "text_origin": "source_excerpt",
@@ -245,7 +269,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eldest-son-and-first-faction",
       "text_origin": "source_excerpt"
@@ -257,7 +281,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eldest-son-and-first-faction",
       "text_origin": "source_excerpt"
@@ -284,7 +308,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "banquets-during-the-young-master-contest",
       "text_origin": "source_excerpt",
@@ -299,7 +323,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "banquets-during-the-young-master-contest",
       "text_origin": "source_excerpt",
@@ -331,7 +355,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "prior-life-rivalry",
       "text_origin": "source_excerpt",
@@ -439,7 +463,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shang Clan as of ch. 269",
@@ -460,7 +484,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

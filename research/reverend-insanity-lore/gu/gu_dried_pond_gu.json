@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 465,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     465
@@ -62,6 +62,10 @@
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
     },
     {
       "target": "gu_moving_perspective_cup_gu",
@@ -138,7 +142,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "form-rank-and-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ]
   },

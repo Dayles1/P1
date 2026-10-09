@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1774,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1774,
@@ -67,6 +67,10 @@
       "count": 3
     },
     {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 2
+    },
+    {
       "target": "gu_guts_gu",
       "count": 2
     },
@@ -95,11 +99,31 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "path_human",
+      "count": 1
+    },
+    {
       "target": "char_carefree_wisdom_heart",
       "count": 1
     },
     {
       "target": "char_lu_wei_yin",
+      "count": 1
+    },
+    {
+      "target": "sys_carefree_wisdom_heart_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_thirst_for_knowledge",
       "count": 1
     },
     {
@@ -234,12 +258,14 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_the_legends_of_ren_zu",
           "char_fang_yuan",
           "gu_hope_gu",
           "gu_vanity_gu",
           "gu_guts_gu",
           "gu_self_gu",
-          "gu_suffering_gu"
+          "gu_suffering_gu",
+          "sys_gu_worms"
         ]
       },
       {
@@ -255,6 +281,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_lu_wei_yin",
+          "sys_immortal_gu",
           "char_fairy_ming_hao",
           "gu_humility_gu"
         ]

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1531,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1531,
@@ -59,6 +59,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_trench",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -87,6 +95,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
       "target": "fac_yi_clan",
       "count": 1
     }
@@ -104,6 +116,7 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "reg_earth_earth_trench",
         "fac_gu_masters"
       ]
     },
@@ -123,7 +136,8 @@
         "char_shang_xin_ci",
         "fac_shang_clan",
         "fac_hou_clan",
-        "fac_tie_clan"
+        "fac_tie_clan",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -154,7 +168,8 @@
       "section": "water-monster-sabotage",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_yi_clan"
+        "fac_yi_clan",
+        "sys_gu_formation"
       ]
     },
     {

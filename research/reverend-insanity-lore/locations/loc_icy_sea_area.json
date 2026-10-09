@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2230,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_era_of_three_venerables"
   },
   "chapters_cited": [
     2230,
@@ -62,6 +62,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_su_clan",
       "count": 1
     },
@@ -88,7 +96,9 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_su_clan",
+        "sys_gu_immortal",
         "reg_eastern_sea",
+        "sys_immortal_gu_house",
         "char_fang_yuan"
       ]
     },

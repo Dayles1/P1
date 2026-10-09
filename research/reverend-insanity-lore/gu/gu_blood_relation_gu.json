@@ -23,13 +23,25 @@
   "first_appearance": {
     "chapter": 1886,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1886,
     2203
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_blood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "fac_heavenly_court",
@@ -49,7 +61,15 @@
       "count": 2
     },
     {
+      "target": "path_blood",
+      "count": 1
+    },
+    {
       "target": "char_blood_sea_ancestor",
+      "count": 2
+    },
+    {
+      "target": "house_demon_judgment_board",
       "count": 2
     },
     {
@@ -115,7 +135,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_blood"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -196,7 +218,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "demon-judgment-board",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "house_demon_judgment_board"
+        ]
       },
       {
         "text": "In Immortal Zombie Giant Sun’s aperture, imitation Gu has already transformed into blood relation Gu as the second core of a killer move that draws blood path divine power from Longevity Heaven, with familial emotion Gu as the first core. Spectral Soul Demon Venerable recalls that refinement path great grandmaster Lian Shen Ke refined blood relation Immortal Gu which almost destroyed his plan, and that he had backup methods.",
@@ -223,7 +248,7 @@
     "Path": {
       "text": "Blood Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

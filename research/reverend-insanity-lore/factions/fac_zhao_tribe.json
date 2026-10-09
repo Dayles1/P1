@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 489,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     489,
@@ -140,6 +140,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_zheng_tribe",
       "count": 1
     },
@@ -164,7 +168,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "newest-intel-pass",
       "text_origin": "source_excerpt",
@@ -182,7 +186,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fang-yuans-recall",
       "text_origin": "source_excerpt",
@@ -198,7 +202,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "alliance-pressure",
       "text_origin": "source_excerpt",
@@ -214,11 +218,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "study-talk",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "fac_zheng_tribe"
       ]
     },
@@ -229,7 +234,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "camp-talk",
       "text_origin": "source_excerpt",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 602,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     602,
@@ -80,6 +80,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_imperial_court_blessed_land",
       "count": 1
     },
@@ -102,6 +110,10 @@
     {
       "target": "char_green",
       "count": 1
+    },
+    {
+      "target": "reg_earth_earth_prison",
+      "count": 1
     }
   ],
   "claims": [
@@ -112,7 +124,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -120,6 +132,7 @@
         "char_mo_yao",
         "char_fang_yuan",
         "char_giant_sun_immortal_venerable",
+        "sys_immortal_gu",
         "gu_earth_prison",
         "gu_earth_net",
         "gu_gruel_mud"
@@ -132,7 +145,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -147,10 +160,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ownership-condition",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "Giant Sun Immortal Venerable once met that demand and became owner of Imperial Court blessed land.",
@@ -159,7 +175,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ownership-condition",
       "text_origin": "source_excerpt",
@@ -174,7 +190,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ownership-condition",
       "text_origin": "source_excerpt"
@@ -186,7 +202,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "contest-with-giant-suns-will",
       "text_origin": "source_excerpt",
@@ -201,7 +217,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "master-recognition",
       "text_origin": "source_excerpt",
@@ -217,7 +233,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt"

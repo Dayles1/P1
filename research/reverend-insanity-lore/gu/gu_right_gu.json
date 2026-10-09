@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2176,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2176
@@ -53,6 +53,10 @@
     },
     {
       "target": "char_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 1
     },
     {
@@ -170,6 +174,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_the_legends_of_ren_zu",
           "char_ren_zu",
           "gu_wisdom_gu",
           "loc_qian_kun_crystal_wall",

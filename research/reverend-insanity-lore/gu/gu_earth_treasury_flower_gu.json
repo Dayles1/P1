@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 63,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     63,
@@ -66,6 +66,14 @@
       "count": 4
     },
     {
+      "target": "res_upstream_grass",
+      "count": 3
+    },
+    {
+      "target": "res_zen_lion_mane",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -78,8 +86,20 @@
       "count": 2
     },
     {
+      "target": "inh_flower_wine_monk_inheritance",
+      "count": 2
+    },
+    {
+      "target": "sys_storage_gu",
+      "count": 2
+    },
+    {
       "target": "gu_earth_treasury_flower_king_gu",
       "count": 2
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
     },
     {
       "target": "loc_qing_mao_mountain",
@@ -99,6 +119,14 @@
     },
     {
       "target": "gu_thousand_li_earthwolf_spider",
+      "count": 1
+    },
+    {
+      "target": "sys_desolate_beast",
+      "count": 1
+    },
+    {
+      "target": "sys_immemorial_desolate_beast",
       "count": 1
     },
     {
@@ -123,6 +151,10 @@
     },
     {
       "target": "gu_airsac_gu",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_treasury",
       "count": 1
     }
   ],
@@ -203,10 +235,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ],
     "visual_confidence": "text_described"
@@ -221,7 +256,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "storage-effect",
         "text_origin": "source_excerpt",
@@ -266,7 +301,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "refinement-cost-note",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "reg_earth_earth_treasury"
+        ]
       }
     ]
   },
@@ -310,11 +348,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "inh_flower_wine_monk_inheritance",
           "loc_qing_mao_mountain",
           "char_fang_yuan",
           "char_flower_wine_monk"
@@ -342,7 +381,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "comparison",
         "text_origin": "source_excerpt",
@@ -362,6 +401,7 @@
         "section": "planting",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_storage_gu",
           "fac_three_kings"
         ]
       }

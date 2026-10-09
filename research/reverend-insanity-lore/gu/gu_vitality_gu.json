@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 297,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     297,
@@ -65,11 +65,27 @@
       "count": 2
     },
     {
+      "target": "sys_healing_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
       "target": "gu_nine_leaf_vitality_grass",
       "count": 1
     },
     {
       "target": "gu_self_reliance_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_bai_ning_bing_against_yan_tu",
+      "count": 1
+    },
+    {
+      "target": "move_ice_blade_storm",
       "count": 1
     },
     {
@@ -85,11 +101,19 @@
       "count": 1
     },
     {
+      "target": "path_qi",
+      "count": 1
+    },
+    {
       "target": "gu_chaotic_mind_gu",
       "count": 1
     },
     {
       "target": "char_long_hair_ancestor",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     },
     {
@@ -148,7 +172,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "path-note",
         "text_origin": "source_excerpt",
@@ -174,7 +198,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-with-ice-crystal-gu",
         "text_origin": "source_excerpt"
@@ -186,7 +210,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-with-ice-crystal-gu",
         "text_origin": "source_excerpt"
@@ -238,13 +262,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_bai_ning_bing",
-          "gu_ice_crystal_gu"
+          "gu_ice_crystal_gu",
+          "sys_vital_gu"
         ]
       },
       {
@@ -254,7 +279,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "other-pairings",
         "text_origin": "source_excerpt",
@@ -269,12 +294,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "other-pairings",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_long_hair_ancestor"
+          "char_long_hair_ancestor",
+          "house_eighty_eight_true_yang_building"
         ]
       }
     ]

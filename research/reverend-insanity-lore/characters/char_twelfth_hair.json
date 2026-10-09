@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 885,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     885,
@@ -34,8 +34,44 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_enslavement",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1080,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "path",
+      "target": "path_refinement",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1080,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_hairy_men",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -96,7 +132,19 @@
       "count": 4
     },
     {
+      "target": "race_hairy_men",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
+      "count": 1
+    },
+    {
+      "target": "path_enslavement",
+      "count": 1
+    },
+    {
+      "target": "path_refinement",
       "count": 1
     },
     {
@@ -124,6 +172,18 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_shadow_sect",
       "count": 1
     },
@@ -133,6 +193,14 @@
     },
     {
       "target": "loc_tai_qiu",
+      "count": 1
+    },
+    {
+      "target": "sys_enslavement_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "move_flying_bear_transformation",
       "count": 1
     },
     {
@@ -152,6 +220,14 @@
       "count": 1
     },
     {
+      "target": "res_refinement_path_seashell",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
+      "count": 1
+    },
+    {
       "target": "loc_mini_western_desert",
       "count": 1
     },
@@ -164,7 +240,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
+      "count": 1
+    },
+    {
+      "target": "house_liver_life",
       "count": 1
     },
     {
@@ -200,14 +284,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "fac_lang_ya_sect",
         "gu_immortal_slave_gu",
         "char_lang_ya_land_spirit",
+        "sys_immortal_gu",
         "gu_beast_enslavement_immortal_gu"
       ]
     },
@@ -218,7 +304,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -233,11 +319,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_formation",
         "loc_tai_qiu"
       ]
     },
@@ -263,7 +350,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -290,7 +377,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "exposed-as-traitors",
       "text_origin": "source_excerpt",
@@ -315,6 +402,7 @@
       "mentions": [
         "char_yu_zi",
         "loc_yellow_hair_continent",
+        "sys_gu_master",
         "char_gu_yue_fang_xiang",
         "char_fang_zheng",
         "fac_gu_masters"
@@ -360,7 +448,7 @@
     "Paths": {
       "text": "Enslavement path Refinement path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Northern Plains",
@@ -370,7 +458,7 @@
     "Race": {
       "text": "Hairy Men",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Lang Ya Sect as of ch. 1080",
@@ -392,12 +480,15 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_enslavement",
+      "path_refinement"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_hairy_men",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1870,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1870,
@@ -34,8 +34,25 @@
     2023,
     2120
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "char_imperial_minister_su",
       "count": 2
@@ -45,7 +62,15 @@
       "count": 2
     },
     {
+      "target": "house_book_house",
+      "count": 2
+    },
+    {
       "target": "char_teacher_jiang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -54,6 +79,10 @@
     },
     {
       "target": "loc_imperial_court",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     },
     {
@@ -75,6 +104,10 @@
     {
       "target": "gu_strength_gu",
       "count": 1
+    },
+    {
+      "target": "move_myriad_army_ant_nest",
+      "count": 1
     }
   ],
   "claims": [
@@ -91,6 +124,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_imperial_minister_su",
+        "sys_gu_immortal",
         "loc_imperial_court"
       ]
     },
@@ -175,6 +209,8 @@
       "section": "capital-book-house",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_book_house",
+        "sys_vital_gu",
         "gu_poetry_gu"
       ]
     },
@@ -230,7 +266,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -252,7 +288,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1035,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1035,
@@ -45,12 +45,28 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_southern_border",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_ni_ren",
@@ -97,6 +113,10 @@
       "count": 1
     },
     {
+      "target": "sys_qi_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "gu_lifespan_gu",
       "count": 1
     },
@@ -109,7 +129,19 @@
       "count": 1
     },
     {
+      "target": "move_familiar_face",
+      "count": 1
+    },
+    {
       "target": "char_ni_jian",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -118,6 +150,22 @@
     },
     {
       "target": "char_ni_kun",
+      "count": 1
+    },
+    {
+      "target": "move_divine_flick",
+      "count": 1
+    },
+    {
+      "target": "move_lion_fur_armor",
+      "count": 1
+    },
+    {
+      "target": "move_nine_cloud_ring",
+      "count": 1
+    },
+    {
+      "target": "move_qi_lockdown",
       "count": 1
     },
     {
@@ -141,6 +189,18 @@
       "count": 1
     },
     {
+      "target": "move_dark_assassination",
+      "count": 1
+    },
+    {
+      "target": "sys_snow_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_transformation_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "fac_xue_clan",
       "count": 1
     }
@@ -153,7 +213,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -170,7 +230,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -182,7 +242,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "qi-clan-and-five-xiangs",
       "text_origin": "source_excerpt",
@@ -200,12 +260,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ni-ren-bloodline-gu",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_ni_ren",
+        "sys_immortal_gu",
         "fac_ni_clan",
         "loc_rotten_mud_mountain"
       ]
@@ -217,12 +278,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rotten-mud-mountain-slaughter",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_ni_clan_village"
+        "loc_ni_clan_village",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -232,7 +294,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "probing-fang-yuan",
       "text_origin": "source_excerpt"
@@ -244,7 +306,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-in-the-five-regional-mountain-range",
       "text_origin": "source_excerpt",
@@ -262,7 +324,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "the-disguise-and-the-killing-move",
       "text_origin": "source_excerpt"
@@ -313,7 +375,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -335,7 +397,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": null,

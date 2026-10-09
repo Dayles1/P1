@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 3,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     3,
@@ -38,6 +38,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -70,6 +82,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_shen_cui",
       "count": 2
     },
@@ -79,6 +95,10 @@
     },
     {
       "target": "char_fang_zheng",
+      "count": 1
+    },
+    {
+      "target": "sys_awakening_ceremony",
       "count": 1
     },
     {
@@ -145,10 +165,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "housekeeper-under-aunt-and-uncle",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_awakening_ceremony"
+      ]
     },
     {
       "text": "When Fang Yuan leaves the academy hostel, she finds him at once, invites him home to a banquet aunt and uncle have prepared, and urges that staying at home is better than renting outside. Fang Yuan reads the timing as their design and judges that someone notified her.",
@@ -157,7 +180,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inheritance-invitation",
       "text_origin": "source_excerpt"
@@ -169,7 +192,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inheritance-invitation",
       "text_origin": "source_excerpt"
@@ -181,7 +204,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "return-as-rank-two",
       "text_origin": "source_excerpt",
@@ -196,7 +219,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "elder-visit-talk",
       "text_origin": "source_excerpt",
@@ -241,7 +264,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Gu Yue Clan as of ch. 3",
@@ -262,7 +285,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

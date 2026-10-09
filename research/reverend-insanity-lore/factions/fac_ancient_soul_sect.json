@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 335,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     335,
@@ -103,6 +103,10 @@
       "count": 4
     },
     {
+      "target": "house_frost_dragon_manor",
+      "count": 3
+    },
+    {
       "target": "fac_heavenly_lotus_sect",
       "count": 2
     },
@@ -123,6 +127,10 @@
       "count": 2
     },
     {
+      "target": "reg_earth_earth_abyss",
+      "count": 2
+    },
+    {
       "target": "char_feng_jiu_ge",
       "count": 2
     },
@@ -131,11 +139,19 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_immortal_crane_sect",
       "count": 1
     },
     {
       "target": "fac_ten_great_sects",
+      "count": 1
+    },
+    {
+      "target": "inh_hu_immortal_inheritance",
       "count": 1
     },
     {
@@ -167,7 +183,15 @@
       "count": 1
     },
     {
+      "target": "res_underground_moss",
+      "count": 1
+    },
+    {
       "target": "gu_bamboo_gentleman_gu",
+      "count": 1
+    },
+    {
+      "target": "move_gentlemans_bamboo",
       "count": 1
     },
     {
@@ -179,11 +203,27 @@
       "count": 1
     },
     {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
     {
+      "target": "move_heart_blood_premonition",
+      "count": 1
+    },
+    {
       "target": "char_shi_lei",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "evt_era_medieval",
       "count": 1
     },
     {
@@ -205,6 +245,14 @@
     {
       "target": "char_bu_zhen_zi",
       "count": 1
+    },
+    {
+      "target": "evt_arc_central_continent_chaos",
+      "count": 1
+    },
+    {
+      "target": "house_divine_emperor_city",
+      "count": 1
     }
   ],
   "claims": [
@@ -215,10 +263,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house",
+        "house_frost_dragon_manor"
+      ]
     },
     {
       "text": "Immortal Crane Sect elites bound for Fairy Bai Hu’s inheritance are told the lord Gu Immortals of the sects have agreed not to strike and will send elite disciples to compete fairly instead. The same briefing names Heavenly Lotus Sect, Spirit Butterfly Valley, Ancient Soul Sect, Heaven’s Envy Sect, and the rest of Central Continent’s peer forces as co-competitors, and says Immortal Crane Sect must stay united on the trip.",
@@ -227,12 +279,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "place-in-the-ten-sect-contest",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_immortal_crane_sect",
+        "inh_hu_immortal_inheritance",
+        "sys_gu_immortal",
         "fac_heavenly_lotus_sect",
         "loc_spirit_butterfly_valley",
         "fac_heavens_envy_sect"
@@ -245,7 +299,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "gu-ting-at-tian-ti",
       "text_origin": "source_excerpt",
@@ -265,11 +319,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "earth-abyss-headquarters",
       "text_origin": "source_excerpt",
       "mentions": [
+        "reg_earth_earth_abyss",
         "reg_central_continent",
         "char_fang_yuan",
         "char_hei_lou_lan",
@@ -283,7 +338,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-immortals-beyond-gu-ting",
       "text_origin": "source_excerpt",
@@ -291,6 +346,7 @@
         "char_old_oracle",
         "fac_ten_great_ancient_sects",
         "reg_northern_plains",
+        "house_eighty_eight_true_yang_building",
         "char_feng_jiu_ge"
       ]
     },
@@ -301,7 +357,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-immortals-beyond-gu-ting",
       "text_origin": "source_excerpt",
@@ -318,7 +374,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-immortals-beyond-gu-ting",
       "text_origin": "source_excerpt"
@@ -342,13 +398,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "longest-history-and-frost-dragon-manor",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_combat_immortal_sect",
         "char_shi_lei",
+        "evt_era_medieval",
         "reg_eastern_sea",
         "char_wine_emperor",
         "loc_star_form_blessed_land",

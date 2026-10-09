@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 339,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     339
@@ -53,6 +53,10 @@
     },
     {
       "target": "char_lord_sky_crane",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -172,7 +176,8 @@
         "mentions": [
           "loc_tian_ti",
           "char_fang_zheng",
-          "char_wei_wu_shang"
+          "char_wei_wu_shang",
+          "sys_gu_worms"
         ]
       }
     ]

@@ -23,15 +23,36 @@
   "first_appearance": {
     "chapter": 1415,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1415
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_rule",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
     {
+      "target": "path_rule",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -72,7 +93,9 @@
     "ranks": [],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_rule"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -128,6 +151,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_fang_yuan",
           "gu_precaution_immortal_gu"
         ]
@@ -138,7 +162,7 @@
     "Path": {
       "text": "Rule Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

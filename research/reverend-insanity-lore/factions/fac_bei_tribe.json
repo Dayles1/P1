@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 477,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     477,
@@ -128,6 +128,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_do_or_die_gu",
       "count": 1
     },
@@ -144,7 +148,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "three-tribe-alliance",
       "text_origin": "source_excerpt",
@@ -162,7 +166,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "three-tribe-alliance",
       "text_origin": "source_excerpt"
@@ -174,7 +178,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "three-tribe-alliance",
       "text_origin": "source_excerpt",
@@ -191,7 +195,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "three-tribe-alliance",
       "text_origin": "source_excerpt",
@@ -216,7 +220,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "camp-assault",
       "text_origin": "source_excerpt",
@@ -232,7 +236,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "camp-assault",
       "text_origin": "source_excerpt"
@@ -244,12 +248,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "remaining-leadership",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_bei_cao_chuan"
+        "char_bei_cao_chuan",
+        "sys_gu_master"
       ]
     }
   ],

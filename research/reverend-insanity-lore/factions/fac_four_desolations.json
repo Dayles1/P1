@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1180,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1180,
@@ -82,7 +82,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_longevity_heaven",
+      "count": 1
+    },
+    {
+      "target": "house_calamity_luck_altar",
       "count": 1
     },
     {
@@ -96,6 +104,14 @@
     {
       "target": "char_time_extremity",
       "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     }
   ],
   "claims": [
@@ -106,7 +122,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -121,13 +137,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_giant_sun_immortal_venerable",
         "fac_eight_extremities",
+        "sys_immortal_gu_house",
+        "house_calamity_luck_altar",
         "char_heaven_extremity",
         "char_five_elements_grandmaster"
       ]
@@ -139,7 +157,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-roster",
       "text_origin": "source_excerpt",
@@ -148,7 +166,9 @@
         "char_south_desolation_immortal",
         "char_west_desolation",
         "char_north_desolation_immortal",
-        "char_earth_extremity"
+        "sys_gu_immortal",
+        "char_earth_extremity",
+        "sys_immortal_gu"
       ]
     },
     {

@@ -25,13 +25,25 @@
   "first_appearance": {
     "chapter": 1606,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1606,
     1794
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_time",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_xia_cha",
@@ -63,8 +75,16 @@
       "count": 3
     },
     {
+      "target": "move_spring_sprout",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "path_time",
+      "count": 1
     },
     {
       "target": "gu_autumn_gu",
@@ -79,11 +99,19 @@
       "count": 2
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_spring_autumn_cicada",
       "count": 1
     },
     {
       "target": "gu_winter_gu",
+      "count": 1
+    },
+    {
+      "target": "move_summer_days",
       "count": 1
     }
   ],
@@ -125,7 +153,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_time"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -231,6 +261,7 @@
         "mentions": [
           "char_fang_yuan",
           "char_xia_cha",
+          "sys_immortal_gu",
           "gu_summer_gu",
           "gu_autumn_gu",
           "gu_winter_gu"
@@ -242,7 +273,7 @@
     "Path": {
       "text": "Time Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

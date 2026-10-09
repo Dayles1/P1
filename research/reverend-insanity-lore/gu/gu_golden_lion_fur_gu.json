@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 712,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     712
@@ -44,8 +44,24 @@
   ],
   "co_mentions": [
     {
+      "target": "move_lion_fur_armor",
+      "count": 4
+    },
+    {
+      "target": "move_hair_armor",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
     },
     {
       "target": "fac_gu_masters",
@@ -115,11 +131,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "defense-effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_mortal_gu",
           "fac_gu_masters"
         ]
       }
@@ -170,10 +187,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "activated-form",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Fang Yuan perfectly merges large numbers of Golden Lion Fur Gu into the original foundation of hair armor after days of experimentation in Hu Immortal blessed land. The improved armor sheds the malevolent spikes, turns from black iron luster to bronze, roughly doubles in thickness, and takes a roaring lion-head helmet that leaves his face open. Defense rises by about one hundred and fifty percent, or two hundred percent against metal path attacks. He names that finished killer move lion fur armor.",
@@ -182,7 +202,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "hair-armor-merge",
         "text_origin": "source_excerpt",
@@ -199,7 +219,10 @@
         "verification": "no_citation",
         "source_id": "src_sagaofgu",
         "section": "hair-armor-merge",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_lion_fur_armor"
+        ]
       }
     ]
   },

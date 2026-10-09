@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1212,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1212,
@@ -163,6 +163,14 @@
       "count": 2
     },
     {
+      "target": "house_great_space_temple",
+      "count": 2
+    },
+    {
+      "target": "sys_super_gu_formation",
+      "count": 2
+    },
+    {
       "target": "fac_yang_clan",
       "count": 2
     },
@@ -175,7 +183,19 @@
       "count": 2
     },
     {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
+    },
+    {
       "target": "char_chi_shan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_three_tune_nine_pool_formation",
       "count": 1
     },
     {
@@ -191,6 +211,10 @@
       "count": 1
     },
     {
+      "target": "inh_formation_path_dream_realm",
+      "count": 1
+    },
+    {
       "target": "char_wu_an",
       "count": 1
     },
@@ -199,11 +223,27 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_qiao_si_liu",
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_qiao_clan",
+      "count": 1
+    },
+    {
+      "target": "house_beacon_tower",
       "count": 1
     },
     {
@@ -251,14 +291,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-naming",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_super_gu_formation",
         "char_fang_yuan",
         "char_chi_qu_you",
-        "reg_southern_border"
+        "reg_southern_border",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -268,7 +310,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-naming",
       "text_origin": "source_excerpt",
@@ -284,7 +326,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "formation-path-standing",
       "text_origin": "source_excerpt",
@@ -299,7 +341,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "formation-path-versus-wu-clan",
       "text_origin": "source_excerpt",
@@ -314,7 +356,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realm-business",
       "text_origin": "source_excerpt"
@@ -326,12 +368,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "seat-and-four-elements-inheritance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_chi_gui"
+        "char_chi_gui",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -341,7 +384,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "succession-politics",
       "text_origin": "source_excerpt",
@@ -356,10 +399,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "base-at-myriad-snake-mountain",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_formation",
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "Wu Yong’s death throws Southern Border into chaos, and Fang Yuan asks Chi clan to work with him against Yang clan, a chance Chi Qu You judges rare even in his lifetime. Chi clan’s Gu Immortals invade Yang clan’s territory, Chi clan’s great expert attacks in person with an Immortal Gu House, and Yang clan, which has no rank eight Gu Immortal, is left in a passive state.",
@@ -368,7 +415,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "war-with-yang-clan",
       "text_origin": "source_excerpt",

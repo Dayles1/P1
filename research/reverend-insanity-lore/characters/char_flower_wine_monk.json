@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 7,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     7,
@@ -46,6 +46,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -114,6 +126,18 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_flower_wine_monk_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -136,6 +160,14 @@
     {
       "target": "gu_heavenly_essence_treasure_lotus",
       "count": 4
+    },
+    {
+      "target": "inh_flower_wine_monk_inheritance",
+      "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -182,6 +214,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_gu_yue_village",
+      "count": 1
+    },
+    {
       "target": "char_fourth_generation_clan_leader",
       "count": 1
     },
@@ -190,7 +226,19 @@
       "count": 1
     },
     {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
+      "target": "sys_ranks_and_realms",
+      "count": 1
+    },
+    {
       "target": "fac_gu_yue_clan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -199,6 +247,18 @@
     },
     {
       "target": "loc_secret_cave",
+      "count": 1
+    },
+    {
+      "target": "res_moon_orchid",
+      "count": 1
+    },
+    {
+      "target": "sys_poison_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -234,6 +294,14 @@
       "count": 1
     },
     {
+      "target": "sys_rank_one_through_rank_five",
+      "count": 1
+    },
+    {
+      "target": "sys_storage_gu",
+      "count": 1
+    },
+    {
       "target": "gu_earth_treasury_flower_king_gu",
       "count": 1
     }
@@ -246,11 +314,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "loc_qing_mao_mountain",
         "fac_gu_yue_clan",
         "char_fang_yuan",
@@ -264,7 +333,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -276,7 +345,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "remains-and-liquor-worm",
       "text_origin": "source_excerpt"
@@ -288,7 +357,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "the-photo-audio-truth",
       "text_origin": "source_excerpt",
@@ -304,7 +373,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "strength-inheritance",
       "text_origin": "source_excerpt",
@@ -331,7 +400,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "strength-inheritance",
       "text_origin": "source_excerpt",
@@ -346,7 +415,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "strength-inheritance",
       "text_origin": "source_excerpt",
@@ -362,7 +431,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "strength-inheritance",
       "text_origin": "source_excerpt",
@@ -370,6 +439,7 @@
         "gu_earth_communication_ear_grass",
         "gu_chainsaw_golden_centipede",
         "gu_white_jade_gu",
+        "sys_gu_worms",
         "gu_earth_treasury_flower_gu"
       ]
     },
@@ -404,7 +474,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inheritance-purpose",
       "text_origin": "source_excerpt"
@@ -416,7 +486,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inheritance-purpose",
       "text_origin": "source_excerpt",
@@ -431,7 +501,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inheritance-purpose",
       "text_origin": "source_excerpt",
@@ -458,7 +528,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inheritance-purpose",
       "text_origin": "source_excerpt"
@@ -470,7 +540,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "living-look",
       "text_origin": "source_excerpt"
@@ -530,7 +600,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 7",
@@ -557,7 +627,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": "demonic path as of ch. 7",

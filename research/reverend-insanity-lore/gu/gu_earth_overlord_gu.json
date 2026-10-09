@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 359,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     359,
@@ -66,6 +66,10 @@
       "count": 4
     },
     {
+      "target": "move_four_arm_earth_king",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -78,6 +82,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "loc_qing_mao_mountain",
       "count": 1
     },
@@ -86,7 +94,19 @@
       "count": 1
     },
     {
+      "target": "evt_fight_one_vs_seven",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_asura_zombie_gu",
+      "count": 1
+    },
+    {
+      "target": "move_four_arm_wind_king",
       "count": 1
     }
   ],
@@ -161,10 +181,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "move-creation",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "He later sees that the killer move was based on ground fighting, so flying exposes heavy repercussions tied to rank five earth overlord Gu.",
@@ -173,7 +196,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "move-creation",
         "text_origin": "source_excerpt"
@@ -185,7 +208,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "move-creation",
         "text_origin": "source_excerpt",
@@ -243,13 +266,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_san_cha_mountain",
-          "char_tie_ba_xiu"
+          "char_tie_ba_xiu",
+          "sys_gu_master"
         ]
       },
       {
@@ -259,7 +283,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "with-tyrant-strength-gu",
         "text_origin": "source_excerpt",
@@ -289,7 +313,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "with-tyrant-strength-gu",
         "text_origin": "source_excerpt",

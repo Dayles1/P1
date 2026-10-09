@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 241,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     241,
@@ -92,6 +92,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     }
@@ -104,7 +108,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -116,7 +120,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "gold-mines-and-two-villages",
       "text_origin": "source_excerpt",
@@ -132,7 +136,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "gold-mines-and-two-villages",
       "text_origin": "source_excerpt",
@@ -149,7 +153,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "gold-mines-and-two-villages",
       "text_origin": "source_excerpt",
@@ -164,11 +168,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "goods-pricing",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "gu_golden_silkworm_gu"
       ]
     },
@@ -195,7 +200,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "golden-lamp-oil",
       "text_origin": "source_excerpt",

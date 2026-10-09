@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1715,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1715,
@@ -36,6 +36,30 @@
     2274
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_wood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -55,6 +79,14 @@
       "count": 3
     },
     {
+      "target": "path_wood",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_ye_qiao_zi",
       "count": 2
     },
@@ -64,6 +96,10 @@
     },
     {
       "target": "fac_dong_clan",
+      "count": 2
+    },
+    {
+      "target": "house_red_river_wheel",
       "count": 2
     },
     {
@@ -95,7 +131,31 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_lightning_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "char_zhao_shan_he",
+      "count": 1
+    },
+    {
+      "target": "sys_myriad_li_adaptation_formation",
+      "count": 1
+    },
+    {
+      "target": "move_overturning_heaven_and_earth",
+      "count": 1
+    },
+    {
+      "target": "move_blood_petals",
+      "count": 1
+    },
+    {
+      "target": "move_yellow_flowers_thinning_life",
       "count": 1
     },
     {
@@ -107,11 +167,23 @@
       "count": 1
     },
     {
+      "target": "house_fallen_flower_hall",
+      "count": 1
+    },
+    {
       "target": "char_qin_song",
       "count": 1
     },
     {
       "target": "char_chi_qu_you",
+      "count": 1
+    },
+    {
+      "target": "move_finger_wind_dragon",
+      "count": 1
+    },
+    {
+      "target": "move_chaotic_shooting_blades",
       "count": 1
     },
     {
@@ -127,11 +199,19 @@
       "count": 1
     },
     {
+      "target": "house_myriad_age_building",
+      "count": 1
+    },
+    {
       "target": "char_fang_leng",
       "count": 1
     },
     {
       "target": "fac_wan_clan",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
       "count": 1
     },
     {
@@ -189,6 +269,7 @@
       "section": "wood-path-healing",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_nu_er_bao_xiong"
       ]
     },
@@ -205,9 +286,11 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_dong_clan",
+        "house_red_river_wheel",
         "char_yu_zhu_zi",
         "char_ye_qiao_zi",
-        "fac_fang_clan"
+        "fac_fang_clan",
+        "house_fallen_flower_hall"
       ]
     },
     {
@@ -298,12 +381,12 @@
     "Paths": {
       "text": "Wood path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1715",
@@ -325,12 +408,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_wood"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

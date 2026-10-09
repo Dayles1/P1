@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 836,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     836,
@@ -102,6 +102,14 @@
       "count": 3
     },
     {
+      "target": "house_ten_thousand_li_silk_corridor",
+      "count": 3
+    },
+    {
+      "target": "house_chamber_pot",
+      "count": 3
+    },
+    {
       "target": "loc_impassable_dunes",
       "count": 2
     },
@@ -114,7 +122,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_dong_clan",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_mortal_gu",
       "count": 1
     },
     {
@@ -165,8 +185,11 @@
       "section": "doing-business-in-western-desert",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_xiao_hu_chi",
         "char_xiao_shi_rang",
+        "sys_immortal_gu_house",
+        "house_ten_thousand_li_silk_corridor",
         "fac_dong_clan"
       ]
     },
@@ -180,7 +203,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "brains-and-brawn-at-the-corridor",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_information_path_mortal_gu"
+      ]
     },
     {
       "text": "Fang Yuan weighs that Western Desert’s Xiao clan can take in all the regretful spiders even at much higher supply, and that he already has a collaborative relationship with Xiao clan.",
@@ -234,7 +260,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "anti-fang-alliance-and-standing",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_chamber_pot"
+      ]
     }
   ],
   "conflicts": [],

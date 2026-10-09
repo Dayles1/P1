@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 373,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     373,
@@ -70,7 +70,19 @@
       "count": 2
     },
     {
+      "target": "evt_fight_tie_mu_bai_against_wu_gui_and_ku_mo",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_essence_iron_bone_gu",
+      "count": 1
+    },
+    {
+      "target": "path_bone",
       "count": 1
     },
     {
@@ -241,7 +253,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt"
@@ -253,12 +265,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "loot-and-bodily-collapse",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_ku_mo",
+          "sys_gu_worms",
           "char_fang_yuan"
         ]
       },

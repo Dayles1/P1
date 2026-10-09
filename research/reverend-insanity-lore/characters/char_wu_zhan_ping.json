@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2096,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2096,
@@ -33,6 +33,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -65,6 +77,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_kong_ri_tian",
       "count": 2
     },
@@ -77,6 +93,10 @@
       "count": 2
     },
     {
+      "target": "inh_sheng_tian_true_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_empress_wu_ji",
       "count": 1
     },
@@ -86,6 +106,26 @@
     },
     {
       "target": "char_wu_yong",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "inh_corpse_emperor_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_seven_seven_profound_soul_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "path_wind",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -106,8 +146,10 @@
         "char_empress_wu_ji",
         "fac_wu_clan",
         "reg_southern_border",
+        "sys_gu_immortal",
         "char_wu_yong",
         "char_spectral_soul_demon_venerable",
+        "inh_sheng_tian_true_inheritance",
         "char_kong_sheng_tian"
       ]
     },
@@ -123,7 +165,8 @@
       "section": "after-refusal",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_kong_ri_tian"
+        "char_kong_ri_tian",
+        "sys_immortal_gu"
       ]
     }
   ],
@@ -158,7 +201,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Wu Clan as of ch. 2096",
@@ -179,7 +222,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

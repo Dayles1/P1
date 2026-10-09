@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2065,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2065
@@ -50,6 +50,14 @@
     {
       "target": "gu_hero_gu",
       "count": 2
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_path_convention",
+      "count": 1
     }
   ],
   "claims": [],
@@ -164,6 +172,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_ye_fan",
+          "sys_gu_worms",
+          "sys_refinement_path_convention",
           "gu_hero_gu"
         ]
       }

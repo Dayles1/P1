@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 420,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     420,
@@ -44,6 +44,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_immortal_crane_sect",
       "count": 1
     },
@@ -53,6 +57,14 @@
     },
     {
       "target": "char_lang_ya_land_spirit",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -69,6 +81,18 @@
     },
     {
       "target": "gu_starlight_firefly_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_zombie",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_green_crystal_heros_path",
       "count": 1
     },
     {
@@ -137,7 +161,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "appearance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "Connecting Heaven Gu and divine sense Gu are both rank five Gu with an extremely huge demand for primeval essence. A rank five peak stage Gu Master might last only several breaths, so Gu Immortals or land spirits usually spend immortal essence to use them.",
@@ -149,7 +176,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master",
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "When activated, Connecting Heaven Gu turns into a round mirror that floats above the user. Lang Ya land spirit uses that mirror with divine sense Gu to browse and buy materials in treasure yellow heaven. Fang Yuan later sends his copy into Hu Immortal blessed land by Moving Perspective Cup Gu.",
@@ -180,10 +211,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "heavenly-power-and-setup",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       },
       {
         "text": "Cited chapters do not state what Connecting Heaven Gu eats.",

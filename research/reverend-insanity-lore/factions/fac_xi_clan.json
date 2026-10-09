@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 673,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     673,
@@ -55,6 +55,14 @@
     {
       "target": "loc_thousand_wish_tree",
       "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
     }
   ],
   "claims": [
@@ -65,7 +73,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "seized-after-the-battle",
       "text_origin": "source_excerpt",
@@ -85,7 +93,9 @@
       "section": "western-desert-deployment",
       "text_origin": "source_excerpt",
       "mentions": [
-        "reg_western_desert"
+        "reg_western_desert",
+        "sys_gu_immortal",
+        "sys_immortal_gu_house"
       ]
     }
   ],

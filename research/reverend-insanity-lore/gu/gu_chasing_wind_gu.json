@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 307,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     307
@@ -54,6 +54,10 @@
       "count": 2
     },
     {
+      "target": "sys_movement_gu",
+      "count": 2
+    },
+    {
       "target": "fac_fei_clan",
       "count": 2
     },
@@ -63,6 +67,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -213,7 +221,9 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "loc_shang_clan_city"
+          "loc_shang_clan_city",
+          "sys_movement_gu",
+          "sys_gu_master"
         ],
         "needs_review": true
       },

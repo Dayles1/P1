@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2166,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2166,
@@ -86,7 +86,27 @@
       "count": 1
     },
     {
+      "target": "house_divine_emperor_city",
+      "count": 1
+    },
+    {
       "target": "loc_book_mountain",
+      "count": 1
+    },
+    {
+      "target": "move_heaven_envies_heroic_geniuses",
+      "count": 1
+    },
+    {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_finding_wisdom",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 1
     },
     {
@@ -231,6 +251,8 @@
           "char_fairy_yu_xiu",
           "char_fairy_feng_ya",
           "char_limitless_demon_venerable",
+          "path_wisdom",
+          "house_divine_emperor_city",
           "char_fang_yuan"
         ]
       },
@@ -246,6 +268,7 @@
         "section": "legend-birth",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_the_legends_of_ren_zu",
           "gu_serious_gu",
           "gu_learning_gu",
           "char_carefree_wisdom_heart",

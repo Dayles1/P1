@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1979,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1979,
@@ -45,6 +45,18 @@
     {
       "type": "in_region",
       "target": "reg_eastern_sea",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_mermen",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -93,6 +105,10 @@
       "count": 2
     },
     {
+      "target": "race_mermen",
+      "count": 1
+    },
+    {
       "target": "char_twelfth_hair",
       "count": 2
     },
@@ -113,6 +129,10 @@
       "count": 2
     },
     {
+      "target": "house_liver_life",
+      "count": 2
+    },
+    {
       "target": "loc_floating_refinement_hive",
       "count": 2
     },
@@ -122,6 +142,10 @@
     },
     {
       "target": "char_paradise_earth_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -141,6 +165,10 @@
       "count": 1
     },
     {
+      "target": "house_dragon_palace",
+      "count": 1
+    },
+    {
       "target": "char_fairy_miao_yin",
       "count": 1
     },
@@ -154,6 +182,10 @@
     },
     {
       "target": "loc_star_collection_city",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
       "count": 1
     },
     {
@@ -181,7 +213,23 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "char_fang_zheng",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_mortal_gu",
       "count": 1
     },
     {
@@ -193,11 +241,19 @@
       "count": 1
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_steel_thread_city_lord",
       "count": 1
     },
     {
       "target": "loc_spectral_valley_forbidden_ground",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_sea",
       "count": 1
     }
   ],
@@ -217,6 +273,7 @@
         "char_yu_zi",
         "char_ice_crystal_immortal_monarch",
         "fac_gu_masters",
+        "sys_gu_immortal",
         "reg_eastern_sea",
         "char_paradise_earth_immortal_venerable",
         "fac_gu_tribe"
@@ -235,6 +292,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_wu_shuai",
+        "house_dragon_palace",
         "char_di_zang_sheng"
       ]
     },
@@ -290,6 +348,8 @@
         "char_xue_er",
         "char_shi_shi_cheng",
         "char_lang_ya_land_spirit",
+        "sys_immortal_gu",
+        "sys_immortal_gu_house",
         "char_twelfth_hair"
       ]
     },
@@ -306,7 +366,9 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_mini_eastern_sea",
+        "sys_information_path_mortal_gu",
         "loc_yellow_hair_continent",
+        "sys_gu_master",
         "char_gu_yue_fang_xiang",
         "char_fang_zheng"
       ]
@@ -323,7 +385,8 @@
       "section": "white-jade",
       "text_origin": "source_excerpt",
       "mentions": [
-        "gu_earth_refinement_gu"
+        "gu_earth_refinement_gu",
+        "sys_mortal_gu"
       ]
     },
     {
@@ -348,7 +411,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "liver-life-hall",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_liver_life"
+      ]
     },
     {
       "text": "The mermaid immortal Lian Ke Xin floats in the air beside Gu Yue Fang Xiang. Her eyes do not move. She stares at him fixedly. Balancing the three qi cannot be interrupted; otherwise she would rather do it for him. She took a mission board task to “accidentally” meet him and coax him to a place suitable for immortal ascension. Fang Yuan secretly opened the sovereign immortal aperture’s door to bring Gu Yue Fang Xiang to the five regions.",
@@ -386,7 +452,8 @@
       "section": "arranging-an-immortal-formation",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_floating_refinement_hive"
+        "loc_floating_refinement_hive",
+        "sys_refinement_sea"
       ]
     }
   ],
@@ -436,7 +503,7 @@
     "Race": {
       "text": "Mermen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Merman Imperial Court as of ch. 1979 Two Heavens Alliance as of ch. 1991",
@@ -463,7 +530,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_mermen",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

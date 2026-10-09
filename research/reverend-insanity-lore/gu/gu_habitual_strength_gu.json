@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 316,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     316,
@@ -31,6 +31,18 @@
     318
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_ju_kai_bei",
@@ -50,11 +62,19 @@
       "count": 4
     },
     {
+      "target": "path_strength",
+      "count": 2
+    },
+    {
       "target": "gu_all_out_effort_gu",
       "count": 2
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -66,7 +86,15 @@
       "count": 1
     },
     {
+      "target": "evt_fight_fang_yuan_against_ju_kai_bei",
+      "count": 1
+    },
+    {
       "target": "gu_dragon_elephant_huge_strength_gu",
+      "count": 1
+    },
+    {
+      "target": "move_eight_beast_phantoms",
       "count": 1
     }
   ],
@@ -109,7 +137,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -131,7 +161,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "battle-stage-use",
         "text_origin": "source_excerpt"
@@ -143,7 +173,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "battle-stage-use",
         "text_origin": "source_excerpt"
@@ -155,7 +185,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "limits-against-all-out-effort-gu",
         "text_origin": "source_excerpt"
@@ -195,14 +225,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "origin-and-rank",
         "text_origin": "source_excerpt",
         "mentions": [
+          "path_strength",
           "fac_gu_masters",
           "gu_all_out_effort_gu",
-          "gu_strength_gu"
+          "gu_strength_gu",
+          "sys_gu_master"
         ]
       }
     ]
@@ -227,7 +259,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -242,7 +274,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

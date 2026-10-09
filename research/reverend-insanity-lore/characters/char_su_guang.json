@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 781,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     781,
@@ -35,6 +35,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -63,6 +75,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -79,6 +95,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -91,7 +115,15 @@
       "count": 1
     },
     {
+      "target": "move_entangled_wind",
+      "count": 1
+    },
+    {
       "target": "char_guan_shen_zhao",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
       "count": 1
     },
     {
@@ -107,7 +139,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -116,7 +148,8 @@
         "char_han_dong",
         "loc_tai_qiu",
         "char_dong_fang_yu_liang",
-        "fac_gu_masters"
+        "fac_gu_masters",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -126,10 +159,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "joint-charge",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_formation"
+      ]
     },
     {
       "text": "After a desolate level phantom beast swallows Han Dong, Su Guang and Lu Qing Ming chase. He shouts for the beast to turn phantom again while they attack from outside and Han Dong attacks from within. Seeing Lu Qing Ming’s immortal killer move entangled wind, his expression lightens because he knows that move’s power. When the beast still carries Han Dong toward its home and Su Guang cannot catch up, he shows despair at Dong Fang Chang Fan’s enslavement methods.",
@@ -138,7 +174,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "saving-han-dong",
       "text_origin": "source_excerpt",
@@ -197,7 +233,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Traveling Three Elites as of ch. 782",
@@ -224,7 +260,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

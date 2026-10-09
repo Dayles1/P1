@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 937,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     937,
@@ -58,6 +58,10 @@
   ],
   "co_mentions": [
     {
+      "target": "move_devour_soul",
+      "count": 3
+    },
+    {
       "target": "fac_shadow_sect",
       "count": 2
     },
@@ -70,7 +74,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
+      "count": 1
+    },
+    {
+      "target": "move_soul_search",
       "count": 1
     }
   ],
@@ -159,7 +179,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "reg_southern_border"
+          "move_soul_search",
+          "reg_southern_border",
+          "sys_gu_immortal"
         ]
       }
     ]
@@ -193,13 +215,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_shadow_sect",
-          "char_green"
+          "char_green",
+          "sys_gu_recipe",
+          "sys_immortal_gu"
         ]
       },
       {

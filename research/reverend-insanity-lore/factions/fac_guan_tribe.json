@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 657,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     657,
@@ -112,6 +112,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_jade_pool_blessed_land",
       "count": 1
     },
@@ -156,6 +160,10 @@
       "count": 1
     },
     {
+      "target": "reg_heaven_red_heaven",
+      "count": 1
+    },
+    {
       "target": "char_nu_er_gu",
       "count": 1
     },
@@ -174,6 +182,10 @@
     {
       "target": "fac_ye_lui_tribe",
       "count": 1
+    },
+    {
+      "target": "evt_fight_blood_battle_martial_competition",
+      "count": 1
     }
   ],
   "claims": [
@@ -184,13 +196,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-at-jade-pool",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_jade_pool_blessed_land",
         "char_dong_fang_yi_kong",
+        "sys_gu_immortal",
         "char_guan_shen_zhao"
       ]
     },
@@ -219,7 +232,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fierce-area-to-the-southeast",
       "text_origin": "source_excerpt",
@@ -237,7 +250,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "super-force-standing",
       "text_origin": "source_excerpt",

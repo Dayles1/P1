@@ -25,12 +25,24 @@
   "first_appearance": {
     "chapter": 1767,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1767
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_refinement",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -46,7 +58,23 @@
   ],
   "co_mentions": [
     {
+      "target": "move_refinement_formation_rain",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 2
+    },
+    {
+      "target": "house_four_elements_square_regret_blood_refinement_pool",
+      "count": 2
+    },
+    {
+      "target": "path_refinement",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_sea",
       "count": 2
     },
     {
@@ -62,7 +90,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_shadow_sect",
+      "count": 1
+    },
+    {
+      "target": "inh_long_hair_true_inheritance",
       "count": 1
     },
     {
@@ -71,6 +111,10 @@
     },
     {
       "target": "loc_plunder_shadow_earth_trench",
+      "count": 1
+    },
+    {
+      "target": "res_refinement_water",
       "count": 1
     },
     {
@@ -119,7 +163,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_refinement"
+    ],
     "path_unverified": false,
     "functional_types": [
       "support"
@@ -206,6 +252,8 @@
         "mentions": [
           "char_fang_yuan",
           "loc_lang_ya_blessed_land",
+          "inh_long_hair_true_inheritance",
+          "sys_immortal_gu",
           "gu_forceful_refinement_gu",
           "gu_advance_refinement_gu",
           "fac_shadow_sect"
@@ -223,7 +271,9 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_lang_ya_land_spirit"
+          "char_lang_ya_land_spirit",
+          "sys_gu_worms",
+          "sys_refinement_sea"
         ]
       }
     ]
@@ -232,7 +282,7 @@
     "Path": {
       "text": "Refinement Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

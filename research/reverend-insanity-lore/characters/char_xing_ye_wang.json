@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1694,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1694,
@@ -33,6 +33,30 @@
     1883
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_star",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -52,7 +76,27 @@
       "count": 3
     },
     {
+      "target": "path_star",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_qing_ye",
+      "count": 2
+    },
+    {
+      "target": "house_shark_flow_lever",
+      "count": 2
+    },
+    {
+      "target": "house_three_autumn_yellow_crane_platform",
+      "count": 2
+    },
+    {
+      "target": "house_year_end_gatehouse",
       "count": 2
     },
     {
@@ -64,6 +108,22 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_eternal_yacht",
+      "count": 1
+    },
+    {
+      "target": "house_present_and_past_pavilion",
+      "count": 1
+    },
+    {
       "target": "loc_immortal_graveyard",
       "count": 1
     },
@@ -72,11 +132,23 @@
       "count": 1
     },
     {
+      "target": "sys_river_suppression_lotus_sealing_formation",
+      "count": 1
+    },
+    {
       "target": "char_feng_jiu_ge",
       "count": 1
     },
     {
       "target": "loc_river_of_time",
+      "count": 1
+    },
+    {
+      "target": "move_blood_petals",
+      "count": 1
+    },
+    {
+      "target": "move_yellow_flowers_thinning_life",
       "count": 1
     },
     {
@@ -94,6 +166,18 @@
     {
       "target": "char_gu_liu_ru",
       "count": 1
+    },
+    {
+      "target": "house_moment_stage",
+      "count": 1
+    },
+    {
+      "target": "house_myriad_year_flying_warship",
+      "count": 1
+    },
+    {
+      "target": "house_sun_and_moon_temple",
+      "count": 1
     }
   ],
   "claims": [
@@ -109,9 +193,14 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_shark_flow_lever",
         "char_fang_yuan",
         "loc_immortal_graveyard",
-        "char_qing_ye"
+        "sys_gu_immortal",
+        "char_qing_ye",
+        "house_eternal_yacht",
+        "house_present_and_past_pavilion",
+        "sys_immortal_gu_house"
       ]
     },
     {
@@ -138,6 +227,7 @@
       "section": "chase-to-the-stone-lotus",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_year_end_gatehouse",
         "char_bing_sai_chuan"
       ]
     },
@@ -187,8 +277,12 @@
       "section": "six-houses-encirclement",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_moment_stage",
+        "house_three_autumn_yellow_crane_platform",
+        "house_sun_and_moon_temple",
         "char_gu_liu_ru",
-        "char_nine_spiritual_fairy"
+        "char_nine_spiritual_fairy",
+        "house_myriad_year_flying_warship"
       ]
     }
   ],
@@ -231,12 +325,12 @@
     "Paths": {
       "text": "Star path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1694",
@@ -258,12 +352,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_star"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1398,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1398,
@@ -65,6 +65,30 @@
     {
       "target": "char_thousand_transformations_ancestor",
       "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_era_olden",
+      "count": 1
+    },
+    {
+      "target": "house_myriad_statue_palace",
+      "count": 1
+    },
+    {
+      "target": "inh_reckless_savage_true_inheritance",
+      "count": 1
     }
   ],
   "claims": [
@@ -80,7 +104,8 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "reg_western_desert"
+        "reg_western_desert",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -95,7 +120,10 @@
       "section": "origin-and-resources",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_reckless_savage_demon_venerable"
+        "evt_era_olden",
+        "char_reckless_savage_demon_venerable",
+        "sys_wild_gu",
+        "sys_wild_immortal_gu"
       ]
     },
     {
@@ -110,7 +138,8 @@
       "section": "territorial-ruler",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_thousand_transformations_ancestor"
+        "char_thousand_transformations_ancestor",
+        "house_myriad_statue_palace"
       ]
     },
     {
@@ -123,7 +152,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "territorial-ruler",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_reckless_savage_true_inheritance"
+      ]
     },
     {
       "text": "His will later directs that after saving Cui Bo and returning to myriad statue desert, the true inheritance go to his main body.",

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 865,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     865,
@@ -42,11 +42,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "evt_era_late",
+      "count": 1
+    },
+    {
+      "target": "house_sacred_feather_city",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
       "target": "char_white_sea_shatuo",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -81,7 +97,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_sacred_feather_city"
+      ]
     },
     {
       "text": "Zheng Ling compares another small world as inferior to the green heaven fragment world yet enough for his tribe to live.",
@@ -108,7 +127,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal",
+        "evt_era_late"
+      ]
     },
     {
       "text": "From Zheng Ling’s soul Fang Yuan gains precious information regarding Immortal Gu House Sacred Feather City and the green heaven fragment world the feathermen lived in. The world is huge and rich in resources. He knows the scenery well enough to use Fixed Immortal Travel, but White Sea Shatuo and other Gu Immortals occupy it, so he will not risk entering lightly.",
@@ -123,6 +146,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_immortal_gu_house",
         "gu_fixed_immortal_travel",
         "char_white_sea_shatuo"
       ]

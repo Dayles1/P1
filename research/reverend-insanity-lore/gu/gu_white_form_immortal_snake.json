@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 173,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     173,
@@ -64,11 +64,31 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_bai_clan",
       "count": 1
     },
     {
       "target": "gu_heavenly_essence_treasure_lotus",
+      "count": 1
+    },
+    {
+      "target": "sys_defensive_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_northern_dark_ice_soul_physique",
       "count": 1
     },
     {
@@ -80,11 +100,19 @@
       "count": 1
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_heaven_surveying_five_xiangs",
       "count": 1
     },
     {
       "target": "char_northern_dark_ice_soul",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -147,7 +175,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -165,6 +193,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_ying_wu_xie",
+          "sys_mortal_gu",
           "fac_heaven_surveying_five_xiangs"
         ]
       }
@@ -181,10 +210,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "inheritance-role",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "On Bai Ning Bing’s first meeting it enters the aperture instead of killing him, and it occupies the central area of the primeval essence, forcing surrounding Gu aside. That entry does not match the records’ flight to the sky inheritance, which leaves the clan leader puzzled.",
@@ -193,7 +225,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "inheritance-role",
         "text_origin": "source_excerpt"
@@ -208,7 +240,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "smoke-and-early-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_northern_dark_ice_soul_physique",
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "Its named ability is a lump of white smoke shot from its mouth. After being enshrouded, a target cannot tell directions, and vision is dyed white; the smoke follows like a shadow. Against a frenzy lightning wolf, that smoke blinds the beast, but a thunderbolt still hits Bai Ning Bing because the snake cannot react in time. The text states it is not a defensive Gu. While it stays unmoved toward the inheritance, Bai Ning Bing treats that as a sign of not being fated to receive the first generation ancestor’s inheritance.",
@@ -220,7 +256,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "smoke-and-early-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_defensive_gu"
+        ]
       },
       {
         "text": "Later instruction from Shadow Sect states that after a bloodline descendant of Bai Xiang becomes a Gu Immortal, this white form immortal snake can guide them to Bai Xiang grotto-heaven. The Gu is again a rank five mortal Gu, slender with snow white scales, jade-like eyes, and long whiskers, and it is very attached to Bai Ning Bing, likely from Northern Dark Ice Soul attraction. When Bai Ning Bing releases Gu Immortal aura, the snake hisses, flies underfoot of its own accord, and carries the rider into the sky toward that secret. Bai Ning Bing then reads the old clan record’s “secret place in the sky” as Bai Xiang’s grotto-heaven, with Gu Immortal status as the approval condition.",
@@ -235,6 +274,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_shadow_sect",
+          "sys_gu_immortal",
           "char_northern_dark_ice_soul"
         ]
       }
@@ -299,7 +339,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "three-clan-battle-and-escape",
         "text_origin": "source_excerpt"
@@ -326,7 +366,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

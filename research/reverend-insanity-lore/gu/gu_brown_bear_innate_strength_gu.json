@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 121,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     121,
@@ -97,7 +97,15 @@
       "count": 1
     },
     {
+      "target": "path_strength",
+      "count": 1
+    },
+    {
       "target": "char_gu_yue_man_shi",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -106,6 +114,10 @@
     },
     {
       "target": "char_wei_yang",
+      "count": 1
+    },
+    {
+      "target": "sys_beast_phantom",
       "count": 1
     }
   ],
@@ -165,7 +177,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-purchase",
         "text_origin": "source_excerpt",
@@ -200,7 +212,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -215,13 +227,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "battlefield-aftermath",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_gu_yue_man_shi",
           "char_fang_yuan",
+          "sys_gu_worms",
           "char_xiong_lin"
         ]
       }
@@ -281,7 +294,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -298,7 +311,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "strength-path-talk",
         "text_origin": "source_excerpt",
@@ -315,7 +328,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "mastery",
         "text_origin": "source_excerpt"

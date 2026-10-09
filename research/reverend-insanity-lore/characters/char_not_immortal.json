@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1174,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1174,
@@ -37,6 +37,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -65,6 +77,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -85,6 +101,10 @@
       "count": 2
     },
     {
+      "target": "sys_crazed_demon_agreement",
+      "count": 2
+    },
+    {
       "target": "char_secret_schemer",
       "count": 2
     },
@@ -101,11 +121,31 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_fog_city",
       "count": 1
     },
     {
+      "target": "move_three_breaths_future_vision",
+      "count": 1
+    },
+    {
       "target": "gu_derivation_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
+      "count": 1
+    },
+    {
+      "target": "sys_rule_path_dao_marks",
       "count": 1
     },
     {
@@ -114,6 +154,10 @@
     },
     {
       "target": "loc_pacifying_soul_lake",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_battle_of_crazed_demon_cave",
       "count": 1
     },
     {
@@ -129,16 +173,18 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_gu_immortal",
         "fac_three_crazed_demon_eccentrics",
         "char_chu_du",
         "char_pang_shan",
-        "loc_crazed_demon_cave"
+        "loc_crazed_demon_cave",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -148,7 +194,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -163,7 +209,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -175,10 +221,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "guide-and-rule-path-footing",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_crazed_demon_agreement"
+      ]
     },
     {
       "text": "On a third visit, he waits at the cave with Secret Schemer, still addressed as Brother Liu from the Crazed Demon Agreement, and guides the path while they probe Fang Yuan’s strength on the seventh layer.",
@@ -271,7 +320,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -293,7 +342,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

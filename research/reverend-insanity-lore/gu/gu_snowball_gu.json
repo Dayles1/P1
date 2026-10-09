@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 297,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     297,
@@ -64,6 +64,10 @@
       "count": 1
     },
     {
+      "target": "evt_fight_bai_ning_bing_against_tie_dao_ku",
+      "count": 1
+    },
+    {
       "target": "gu_frost_breath_gu",
       "count": 1
     },
@@ -73,6 +77,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -139,7 +147,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-cost",
         "text_origin": "source_excerpt"
@@ -174,7 +182,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-material",
         "text_origin": "source_excerpt"
@@ -212,7 +220,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -229,7 +237,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -244,12 +252,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "other-holders",
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_tie_clan",
+          "sys_gu_master",
           "char_fang_yuan"
         ]
       }

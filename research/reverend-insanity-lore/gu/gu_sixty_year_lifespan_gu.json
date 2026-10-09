@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 947,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     947,
@@ -66,11 +66,19 @@
       "count": 2
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_lifespan_gu",
       "count": 1
     },
     {
       "target": "gu_star_thought_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -189,6 +197,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_blazing_heaven_demoness",
+          "sys_mortal_gu",
           "char_fang_yuan",
           "gu_lifespan_gu"
         ]
@@ -200,12 +209,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "revival-plans",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_strength_gu"
+          "gu_strength_gu",
+          "sys_gu_immortal"
         ]
       },
       {

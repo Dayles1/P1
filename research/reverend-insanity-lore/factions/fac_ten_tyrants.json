@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 337,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     337,
@@ -118,6 +118,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "char_long_qing_tian",
       "count": 1
     },
@@ -144,7 +148,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -161,11 +165,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hu-mei-er-ambush",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "char_hu_mei_er"
       ]
     },
@@ -176,7 +181,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "heng-mei-visit-plan",
       "text_origin": "source_excerpt",
@@ -200,7 +205,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-of-tyrant-heng-mei",
       "text_origin": "source_excerpt"
@@ -212,7 +217,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-of-tyrant-heng-mei",
       "text_origin": "source_excerpt"

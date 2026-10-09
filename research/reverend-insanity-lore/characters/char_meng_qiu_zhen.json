@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2090,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2090,
@@ -34,6 +34,18 @@
     2257
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "holds_gu",
       "target": "gu_dreaming_gu",
@@ -81,6 +93,42 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_create_dream",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2103,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_dream_within_dream",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2103,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_butterfly_explores_heavenly_secret",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2311,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -97,8 +145,24 @@
       "count": 4
     },
     {
+      "target": "move_create_dream",
+      "count": 3
+    },
+    {
+      "target": "move_dream_within_dream",
+      "count": 3
+    },
+    {
+      "target": "move_butterfly_explores_heavenly_secret",
+      "count": 3
+    },
+    {
       "target": "gu_dreaming_gu",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_yu_zi",
@@ -106,6 +170,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_pure_dream_reality_seeker_physique",
       "count": 1
     },
     {
@@ -121,6 +189,10 @@
       "count": 1
     },
     {
+      "target": "res_nine_tune_dream_flowers",
+      "count": 1
+    },
+    {
       "target": "char_sly_heart_old_man",
       "count": 1
     },
@@ -129,7 +201,15 @@
       "count": 1
     },
     {
+      "target": "inh_reckless_savage_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_myriad_beast_fusion_color_heaven",
+      "count": 1
+    },
+    {
+      "target": "path_dream",
       "count": 1
     },
     {
@@ -142,6 +222,18 @@
     },
     {
       "target": "res_dream_sand",
+      "count": 1
+    },
+    {
+      "target": "move_eight_times_eight_is_eighty_eight",
+      "count": 1
+    },
+    {
+      "target": "move_raging_emotion",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_dao_veins_famous_mountains",
       "count": 1
     },
     {
@@ -165,7 +257,23 @@
       "count": 1
     },
     {
+      "target": "reg_earth_earth_tunnel",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_tomb_earth",
+      "count": 1
+    },
+    {
       "target": "char_wu_xiao",
+      "count": 1
+    },
+    {
+      "target": "sys_heaven_path_dream_realm",
+      "count": 1
+    },
+    {
+      "target": "move_chaotic_intent_dispels_dream",
       "count": 1
     }
   ],
@@ -183,6 +291,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_pure_dream_reality_seeker_physique",
         "gu_dream_butterfly_gu"
       ]
     },
@@ -226,7 +335,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_dream_armor_gu",
-        "gu_dream_creation_gu"
+        "gu_dream_creation_gu",
+        "path_dream"
       ]
     },
     {
@@ -280,7 +390,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -302,7 +412,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

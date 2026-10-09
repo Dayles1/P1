@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 207,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     207,
@@ -39,6 +39,14 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
       "count": 1
     },
     {
@@ -155,7 +163,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_healing_gu",
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Chapters 207 and 208 never show that activation on a poisoned Gu Master; the healing claim stays in Fang Yuan’s judgment at the swamp.",

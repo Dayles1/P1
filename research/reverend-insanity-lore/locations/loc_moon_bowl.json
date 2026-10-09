@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1303,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1303,
@@ -52,7 +52,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_wu_clan",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_dao_veins_famous_mountains",
+      "count": 1
+    },
+    {
+      "target": "sys_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_moon_path_dao_marks",
       "count": 1
     }
   ],
@@ -64,16 +84,18 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_wu_yong",
+        "sys_gu_immortal",
         "char_yan_huang",
         "char_wu_yu_bo",
         "fac_xia_clan",
         "fac_wu_clan",
+        "sys_gu_worms",
         "char_fang_yuan"
       ]
     },
@@ -84,7 +106,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "aftermath",
       "text_origin": "source_excerpt"

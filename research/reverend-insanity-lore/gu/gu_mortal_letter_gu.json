@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1129,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1129,
@@ -51,6 +51,18 @@
     },
     {
       "target": "char_hei_fan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_hei_fan_true_inheritance",
       "count": 1
     },
     {
@@ -119,7 +131,8 @@
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_hei_fan"
+          "char_hei_fan",
+          "sys_gu_worms"
         ]
       }
     ]
@@ -174,7 +187,9 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "inh_hei_fan_true_inheritance",
+          "sys_information_path_mortal_gu"
         ]
       },
       {

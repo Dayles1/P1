@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 341,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     341,
@@ -40,6 +40,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -66,6 +78,10 @@
     {
       "target": "fac_wind_cloud_manor",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_central_continent",
@@ -120,6 +136,18 @@
       "count": 1
     },
     {
+      "target": "sys_foundational_pillar_of_human_path",
+      "count": 1
+    },
+    {
+      "target": "house_divine_emperor_city",
+      "count": 1
+    },
+    {
+      "target": "house_wind_cloud_manor",
+      "count": 1
+    },
+    {
       "target": "loc_emperor_city",
       "count": 1
     },
@@ -128,11 +156,19 @@
       "count": 1
     },
     {
+      "target": "move_contented_lifestyle",
+      "count": 1
+    },
+    {
       "target": "char_fang_di_chang",
       "count": 1
     },
     {
       "target": "reg_western_desert",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -148,7 +184,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -184,7 +220,9 @@
       "section": "painting-world",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_divine_emperor_city",
         "char_sun_yao",
+        "house_wind_cloud_manor",
         "loc_emperor_city",
         "char_xiao_qi_xing",
         "loc_spirit_butterfly_valley",
@@ -245,7 +283,8 @@
       "mentions": [
         "char_fairy_bi_xia",
         "char_sun_yuan_hua",
-        "char_ying_sheng_ji"
+        "char_ying_sheng_ji",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -302,7 +341,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Wind Cloud Manor as of ch. 1992",
@@ -323,7 +362,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

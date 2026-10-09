@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 367,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     367
@@ -68,6 +68,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_middle_sized_clan",
+      "count": 1
+    },
+    {
       "target": "loc_jade_pot_mountain",
       "count": 1
     }
@@ -96,6 +104,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_yu_cang",
+        "sys_gu_master",
         "char_little_beast_king"
       ]
     }

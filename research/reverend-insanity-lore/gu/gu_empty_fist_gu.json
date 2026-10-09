@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 389,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     389,
@@ -58,6 +58,10 @@
     },
     {
       "target": "loc_san_cha_mountain",
+      "count": 1
+    },
+    {
+      "target": "move_immemorial_light_fist",
       "count": 1
     }
   ],
@@ -151,7 +155,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -159,7 +163,8 @@
           "loc_san_cha_mountain",
           "char_xiao_mang",
           "gu_extreme_light_gu",
-          "gu_heavens_will_gu"
+          "gu_heavens_will_gu",
+          "move_immemorial_light_fist"
         ]
       },
       {

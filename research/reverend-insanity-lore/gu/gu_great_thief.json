@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1524,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1524,
@@ -47,6 +47,10 @@
   ],
   "co_mentions": [
     {
+      "target": "move_great_thief_ghost_hand",
+      "count": 4
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -55,7 +59,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_fang_clan",
+      "count": 1
+    },
+    {
+      "target": "house_inquiry_dock",
       "count": 1
     },
     {
@@ -63,7 +83,15 @@
       "count": 1
     },
     {
+      "target": "evt_arc_river_of_time",
+      "count": 1
+    },
+    {
       "target": "gu_soul_beast_token",
+      "count": 1
+    },
+    {
+      "target": "move_directional_confusion_fog",
       "count": 1
     }
   ],
@@ -152,6 +180,7 @@
         "section": "killer-move-use",
         "text_origin": "source_excerpt",
         "mentions": [
+          "move_great_thief_ghost_hand",
           "gu_soul_beast_token"
         ]
       }
@@ -223,9 +252,13 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_inquiry_dock",
           "char_fang_di_chang",
           "fac_fang_clan",
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_immortal_gu",
+          "sys_gu_immortal",
+          "sys_mortal_gu"
         ]
       },
       {

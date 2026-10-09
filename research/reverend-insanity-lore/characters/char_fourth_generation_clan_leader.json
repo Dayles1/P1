@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 4,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     4,
@@ -37,6 +37,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -65,6 +77,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
       "count": 1
     },
@@ -78,6 +94,10 @@
     },
     {
       "target": "char_gu_yue_bo",
+      "count": 1
+    },
+    {
+      "target": "sys_awakening_ceremony",
       "count": 1
     },
     {
@@ -110,6 +130,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_awakening_ceremony",
         "char_flower_wine_monk"
       ]
     },
@@ -245,7 +266,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Gu Yue Clan as of ch. 4",
@@ -272,7 +293,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": null,

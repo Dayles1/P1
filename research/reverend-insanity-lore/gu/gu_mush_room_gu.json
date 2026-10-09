@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 439,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     439,
@@ -32,7 +32,15 @@
   "relations": [],
   "co_mentions": [
     {
+      "target": "house_mushroom_forest",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_house",
       "count": 1
     },
     {
@@ -45,6 +53,10 @@
     },
     {
       "target": "reg_northern_plains",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     }
   ],
@@ -147,7 +159,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "as-a-gu-house",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "house_mushroom_forest",
+          "sys_gu_worms"
+        ]
       }
     ]
   },
@@ -193,6 +209,7 @@
         "mentions": [
           "fac_ge_tribe",
           "reg_northern_plains",
+          "sys_gu_house",
           "char_fang_yuan"
         ]
       }

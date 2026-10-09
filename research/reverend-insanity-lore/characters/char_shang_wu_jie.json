@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1386,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1386,
@@ -36,6 +36,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -68,6 +80,14 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
+      "target": "house_flying_sand_pavilion",
+      "count": 2
+    },
+    {
       "target": "gu_weak_chicken_gu",
       "count": 2
     },
@@ -77,6 +97,18 @@
     },
     {
       "target": "char_wu_yong",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_omni_directional_travel",
       "count": 1
     },
     {
@@ -100,14 +132,18 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_hou_clan",
+        "sys_immortal_gu_house",
+        "house_flying_sand_pavilion",
+        "sys_gu_immortal",
         "fac_shang_clan",
         "char_fang_yuan",
+        "sys_omni_directional_travel",
         "reg_southern_border",
         "char_wu_yong"
       ]
@@ -214,7 +250,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shang Clan as of ch. 1386",
@@ -241,7 +277,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1080,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1080
@@ -49,6 +49,18 @@
     },
     {
       "target": "char_lang_ya_land_spirit",
+      "count": 1
+    },
+    {
+      "target": "sys_enslavement_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -154,14 +166,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_twelfth_hair",
+          "sys_gu_immortal",
           "fac_lang_ya_sect",
-          "char_lang_ya_land_spirit"
+          "char_lang_ya_land_spirit",
+          "sys_immortal_gu"
         ]
       }
     ]

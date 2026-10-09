@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1142,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1142,
@@ -40,6 +40,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_rockmen",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -68,6 +80,10 @@
       "count": 2
     },
     {
+      "target": "race_rockmen",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -76,7 +92,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_northern_icy_plain",
+      "count": 1
+    },
+    {
+      "target": "move_grey_cloud_battle_puppet",
       "count": 1
     },
     {
@@ -116,6 +140,10 @@
       "count": 1
     },
     {
+      "target": "sys_soul_expending_myriad_guts_formation",
+      "count": 1
+    },
+    {
       "target": "gu_guts_gu",
       "count": 1
     },
@@ -125,6 +153,10 @@
     },
     {
       "target": "loc_mini_southern_border",
+      "count": 1
+    },
+    {
+      "target": "res_white_steel",
       "count": 1
     },
     {
@@ -145,6 +177,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_fang_yuan"
       ]
     },
@@ -155,7 +188,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -167,7 +200,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "earth-mother-altar-guide",
       "text_origin": "source_excerpt",
@@ -184,7 +217,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "earth-mother-altar-guide",
       "text_origin": "source_excerpt",
@@ -292,7 +325,7 @@
     "Race": {
       "text": "Rockmen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Four races alliance as of ch. 1146",
@@ -319,7 +352,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_rockmen",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 667,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     667,
@@ -37,6 +37,10 @@
     },
     {
       "target": "gu_star_shoot_gu",
+      "count": 2
+    },
+    {
+      "target": "move_spring_star_rain",
       "count": 2
     },
     {
@@ -127,6 +131,7 @@
         "section": "plant-nourishing-uses",
         "text_origin": "source_excerpt",
         "mentions": [
+          "move_spring_star_rain",
           "gu_star_fragment_grass"
         ]
       }

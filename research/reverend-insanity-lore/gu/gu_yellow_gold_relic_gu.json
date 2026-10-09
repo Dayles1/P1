@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 111,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     111,
@@ -129,7 +129,19 @@
       "count": 1
     },
     {
+      "target": "inh_king_xin_inheritance",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_spring_autumn_cicada",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -145,7 +157,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_green",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -220,6 +244,7 @@
         "section": "series-limits",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_green"
         ]
       }
@@ -249,7 +274,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "appearance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       },
       {
         "text": "In Fang Yuan’s hand it is a thumb-sized round pearl, golden all over, giving off a faint golden luster in a dusky cave.",
@@ -282,7 +310,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt",
@@ -330,6 +358,7 @@
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "gu_spring_autumn_cicada"
         ]
       }
@@ -464,7 +493,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -486,6 +515,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "inh_king_xin_inheritance",
           "loc_san_cha_mountain"
         ]
       },
@@ -533,8 +563,10 @@
         "section": "human-path-form",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_immortal",
           "loc_lang_ya_blessed_land",
-          "fac_heavenly_court"
+          "fac_heavenly_court",
+          "sys_gu_worms"
         ]
       }
     ]

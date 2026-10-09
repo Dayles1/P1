@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2035,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2035,
@@ -58,11 +58,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_qing_clan",
       "count": 1
     },
     {
       "target": "char_qing_chou",
+      "count": 1
+    },
+    {
+      "target": "house_divine_bean_palace",
       "count": 1
     }
   ],
@@ -81,6 +89,7 @@
       "mentions": [
         "reg_western_desert",
         "fac_qing_clan",
+        "sys_gu_immortal",
         "char_qing_heng"
       ]
     },
@@ -109,7 +118,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "headquarters-digested",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_divine_bean_palace"
+      ]
     }
   ],
   "conflicts": [],

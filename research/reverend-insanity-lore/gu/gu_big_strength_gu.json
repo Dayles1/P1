@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 278,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     278
@@ -50,6 +50,10 @@
     {
       "target": "gu_defecate_gu",
       "count": 2
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
     },
     {
       "target": "gu_eating_ones_words_gu",
@@ -124,7 +128,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fusion-into-big-strength-defecate-gu",
         "text_origin": "source_excerpt"
@@ -162,14 +166,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_shang_clan_city",
           "char_fang_yuan",
-          "gu_defecate_gu"
+          "gu_defecate_gu",
+          "sys_gu_master"
         ]
       }
     ]

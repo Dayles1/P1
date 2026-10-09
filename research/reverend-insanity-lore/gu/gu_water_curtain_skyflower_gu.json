@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 186,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     186,
@@ -38,6 +38,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     },
     {
@@ -158,12 +162,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_spring_autumn_cicada",
+          "sys_vital_gu",
           "char_fang_yuan"
         ]
       },
@@ -186,7 +191,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "blood-curtain-contrast",
         "text_origin": "source_excerpt",

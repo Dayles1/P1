@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 38,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     38,
@@ -68,6 +68,10 @@
       "count": 2
     },
     {
+      "target": "evt_legend_attitude",
+      "count": 2
+    },
+    {
       "target": "gu_betrayal_gu",
       "count": 2
     },
@@ -80,7 +84,15 @@
       "count": 1
     },
     {
+      "target": "evt_legend_wisdom_against_restrictions",
+      "count": 1
+    },
+    {
       "target": "char_jia_fu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_understanding_ones_purpose",
       "count": 1
     },
     {
@@ -174,7 +186,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -186,7 +198,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -198,7 +210,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -216,7 +228,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "capture-ability",
         "text_origin": "source_excerpt"
@@ -228,7 +240,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "capture-ability",
         "text_origin": "source_excerpt",
@@ -243,7 +255,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "capture-ability",
         "text_origin": "source_excerpt"
@@ -285,7 +297,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -302,7 +314,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-names",
         "text_origin": "source_excerpt"
@@ -314,7 +326,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-names",
         "text_origin": "source_excerpt"
@@ -326,7 +338,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-names",
         "text_origin": "source_excerpt"
@@ -338,7 +350,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wisdom-gus-escape",
         "text_origin": "source_excerpt",
@@ -384,10 +396,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "three-gu-left-in-the-net",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "evt_legend_attitude"
+        ]
       },
       {
         "text": "A further Attitude stretch still lists Rules and Regulation Gu among the Gu Ren Zu already holds.",
@@ -396,7 +411,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "three-gu-left-in-the-net",
         "text_origin": "source_excerpt"

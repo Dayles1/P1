@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 574,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     574
@@ -40,6 +40,10 @@
     },
     {
       "target": "char_mo_yao",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -114,7 +118,8 @@
         "section": "role-in-the-killer-move",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_mo_yao"
+          "char_mo_yao",
+          "sys_gu_worms"
         ]
       },
       {

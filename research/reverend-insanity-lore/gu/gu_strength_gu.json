@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 5,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     5,
@@ -59,6 +59,10 @@
       "count": 2
     },
     {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 2
+    },
+    {
       "target": "gu_fate_gu",
       "count": 2
     },
@@ -83,7 +87,23 @@
       "count": 1
     },
     {
+      "target": "sys_awakening_ceremony",
+      "count": 1
+    },
+    {
       "target": "fac_gu_yue_clan",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_strength_wisdom_and_hope",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_rules_and_regulations",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_wisdom_against_restrictions",
       "count": 1
     },
     {
@@ -91,7 +111,23 @@
       "count": 1
     },
     {
+      "target": "evt_arc_qing_mao_mountain",
+      "count": 1
+    },
+    {
+      "target": "path_strength",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_rainbow_light_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_dao_marks",
       "count": 1
     },
     {
@@ -111,11 +147,23 @@
       "count": 1
     },
     {
+      "target": "move_eight_beast_phantoms",
+      "count": 1
+    },
+    {
       "target": "gu_self_reliance_gu",
       "count": 1
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_chu_du",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_set",
       "count": 1
     },
     {
@@ -175,6 +223,18 @@
       "count": 1
     },
     {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_self",
+      "count": 1
+    },
+    {
       "target": "gu_fire_strength_gu",
       "count": 1
     },
@@ -191,7 +251,19 @@
       "count": 1
     },
     {
+      "target": "evt_legend_learning_through_failure",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_freedom_in_death",
+      "count": 1
+    },
+    {
       "target": "gu_sixty_year_lifespan_gu",
+      "count": 1
+    },
+    {
+      "target": "res_poisonous_flower_petals",
       "count": 1
     },
     {
@@ -207,7 +279,19 @@
       "count": 1
     },
     {
+      "target": "evt_legend_perseverance_bears_a_ladder",
+      "count": 1
+    },
+    {
       "target": "loc_ordinary_abyss",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_webs_of_fate",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_strong_eat_the_weak",
       "count": 1
     },
     {
@@ -216,6 +300,10 @@
     },
     {
       "target": "char_su_qi_han",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     }
   ],
@@ -282,6 +370,8 @@
         "section": "rank-nine-immortal-gu",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_eighty_eight_true_yang_building",
+          "sys_immortal_gu_house",
           "gu_fate_gu"
         ]
       },
@@ -298,6 +388,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_su_qi_han",
+          "sys_gu_worms",
           "char_imperial_minister_su"
         ]
       }
@@ -348,7 +439,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "self-gu-takes-a-bite",
         "text_origin": "source_excerpt",
@@ -379,6 +470,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_gu_yue_clan",
+          "sys_awakening_ceremony",
           "char_ren_zu",
           "gu_hope_gu"
         ]
@@ -405,7 +497,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "second-deal-after-rules-and-regulation",
         "text_origin": "source_excerpt",
@@ -435,7 +527,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "second-deal-after-rules-and-regulation",
         "text_origin": "source_excerpt",
@@ -472,10 +564,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-classification-in-the-legends",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_the_legends_of_ren_zu",
+          "sys_immortal_gu",
+          "sys_mortal_gu"
+        ]
       },
       {
         "text": "That line keeps the legendary Strength Gu in the Immortal Gu set named in the book, rather than among the obscure mortal recipes readers must decode.",
@@ -494,7 +591,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "self-gu-takes-a-bite",
         "text_origin": "source_excerpt",
@@ -510,7 +607,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "self-gu-takes-a-bite",
         "text_origin": "source_excerpt"
@@ -522,7 +619,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ordinary-abyss-telling",
         "text_origin": "source_excerpt",

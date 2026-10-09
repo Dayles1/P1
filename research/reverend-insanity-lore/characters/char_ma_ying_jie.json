@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 488,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     488,
@@ -52,6 +52,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_ma_tribe",
       "role": null,
@@ -62,12 +74,32 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_dragon_horse_spirit",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 542,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
+      "target": "move_dragon_horse_spirit",
+      "count": 4
+    },
+    {
       "target": "fac_ma_tribe",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_northern_plains",
@@ -87,6 +119,10 @@
     },
     {
       "target": "fac_fei_tribe",
+      "count": 2
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 2
     },
     {
@@ -166,6 +202,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_hei_tribe",
       "count": 1
     },
@@ -179,6 +219,10 @@
     },
     {
       "target": "gu_river_as_before_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_historical_inertia",
       "count": 1
     },
     {
@@ -206,7 +250,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -223,7 +267,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -235,12 +279,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "warm-pond-valley-speech",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_imperial_court_blessed_land",
+        "house_eighty_eight_true_yang_building",
         "char_ma_zun"
       ]
     },
@@ -251,7 +296,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "warm-pond-valley-speech",
       "text_origin": "source_excerpt",
@@ -266,7 +311,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clean-freak-habits",
       "text_origin": "source_excerpt"
@@ -278,7 +323,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rise-to-tribe-leader",
       "text_origin": "source_excerpt",
@@ -293,7 +338,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rise-to-tribe-leader",
       "text_origin": "source_excerpt",
@@ -309,12 +354,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rise-to-tribe-leader",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_snowy_mountain"
+        "move_dragon_horse_spirit",
+        "loc_snowy_mountain",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -324,7 +371,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rise-to-tribe-leader",
       "text_origin": "source_excerpt",
@@ -391,7 +438,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Ma Tribe as of ch. 488",
@@ -413,7 +460,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": null,
     "alignment": null,

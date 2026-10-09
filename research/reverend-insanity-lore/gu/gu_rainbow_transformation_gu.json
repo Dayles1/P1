@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 482,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     482,
@@ -45,6 +45,10 @@
     }
   ],
   "co_mentions": [
+    {
+      "target": "move_golden_rainbow_strike",
+      "count": 4
+    },
     {
       "target": "char_pei_yan_fei",
       "count": 3
@@ -146,6 +150,7 @@
         "section": "imperial-court-battles",
         "text_origin": "source_excerpt",
         "mentions": [
+          "move_golden_rainbow_strike",
           "char_hao_ji_liu"
         ]
       },

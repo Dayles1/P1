@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 273,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     273,
@@ -61,6 +61,14 @@
     },
     {
       "target": "char_shang_yan_fei",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -144,6 +152,8 @@
       "section": "walkway-and-red-door",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
+        "sys_gu_immortal",
         "gu_man_triumphing_heaven_gu",
         "gu_blood_handprint_gu"
       ]

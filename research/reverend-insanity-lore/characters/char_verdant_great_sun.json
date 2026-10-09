@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 131,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     131,
@@ -34,6 +34,18 @@
     1020
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "holds_gu",
       "target": "gu_reputation_gu",
@@ -53,11 +65,19 @@
       "count": 4
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_desolate_ancient_moon",
       "count": 2
     },
     {
       "target": "char_ren_zu",
+      "count": 2
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 2
     },
     {
@@ -89,7 +109,27 @@
       "count": 1
     },
     {
+      "target": "evt_legend_attitude",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_monkey_wine",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_the_origin_of_wine",
+      "count": 1
+    },
+    {
       "target": "res_bitter_wine",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_reputation_gu",
       "count": 1
     },
     {
@@ -98,6 +138,10 @@
     },
     {
       "target": "loc_xi_yu_forest",
+      "count": 1
+    },
+    {
+      "target": "race_hairy_men",
       "count": 1
     },
     {
@@ -113,11 +157,31 @@
       "count": 1
     },
     {
+      "target": "evt_legend_vanity",
+      "count": 1
+    },
+    {
       "target": "char_tie_mu_bai",
       "count": 1
     },
     {
+      "target": "evt_era_immemorial",
+      "count": 1
+    },
+    {
       "target": "gu_cognition_gu",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_azure_heaven",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_blue_heaven",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_not_knowing_ones_limits",
       "count": 1
     },
     {
@@ -133,6 +197,10 @@
       "count": 1
     },
     {
+      "target": "sys_movement_gu",
+      "count": 1
+    },
+    {
       "target": "rcp_second_aperture_gu_recipe",
       "count": 1
     },
@@ -141,7 +209,27 @@
       "count": 1
     },
     {
+      "target": "evt_legend_road_of_life_and_death",
+      "count": 1
+    },
+    {
       "target": "loc_bewitching_lake",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_love_is_cruel",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_northern_dark_ice_soul",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_taking_the_first_step",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_walking_meat_tree",
       "count": 1
     },
     {
@@ -149,11 +237,39 @@
       "count": 1
     },
     {
+      "target": "evt_legend_learning_through_failure",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_fear_is_scarier_than_death",
+      "count": 1
+    },
+    {
       "target": "loc_yi_tian_mountain",
       "count": 1
     },
     {
+      "target": "sys_verdant_great_sun_physique",
+      "count": 1
+    },
+    {
       "target": "loc_pacifying_soul_lake",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_webs_of_fate",
+      "count": 1
+    },
+    {
+      "target": "move_verdant_sun_flame_cloak",
+      "count": 1
+    },
+    {
+      "target": "move_emotionless_heaven_and_earth",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_battle_of_crazed_demon_cave",
       "count": 1
     }
   ],
@@ -165,7 +281,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -196,7 +312,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -208,7 +324,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -223,7 +339,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "attempted-revival",
       "text_origin": "source_excerpt",
@@ -238,11 +354,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ghosts-account-of-his-death",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_the_legends_of_ren_zu",
         "gu_reputation_gu",
         "gu_fixed_immortal_travel",
         "gu_fairness_gu",
@@ -256,7 +373,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "golden-soul",
       "text_origin": "source_excerpt",
@@ -300,7 +417,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -316,7 +433,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Dead",
     "alignment": null,

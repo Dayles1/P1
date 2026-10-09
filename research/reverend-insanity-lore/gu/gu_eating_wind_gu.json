@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 308,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     308
@@ -37,6 +37,10 @@
     {
       "target": "loc_ju_feng_mountain",
       "count": 2
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
     },
     {
       "target": "gu_atmosphere_gu",
@@ -119,7 +123,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -148,11 +152,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-and-origin",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "fac_ju_clan",
           "loc_ju_feng_mountain"
         ]

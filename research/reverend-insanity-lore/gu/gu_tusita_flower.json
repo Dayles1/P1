@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 160,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     160,
@@ -51,6 +51,10 @@
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "sys_storage_gu",
+      "count": 1
     },
     {
       "target": "gu_nine_leaf_vitality_grass",
@@ -176,7 +180,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_storage_gu"
+        ]
       },
       {
         "text": "Among rank three storage Gu he ranks it as one of the better ones. It can store a maximum of thirty thousand primeval stones. If he also stores other goods, he estimates about fifteen thousand primeval stones as a practical ceiling.",
@@ -296,7 +303,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "northern-plains-copies",
         "text_origin": "source_excerpt",

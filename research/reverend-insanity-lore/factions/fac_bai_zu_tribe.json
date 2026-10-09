@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1105,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1105,
@@ -95,11 +95,19 @@
       "count": 2
     },
     {
+      "target": "evt_fight_blood_battle_martial_competition",
+      "count": 2
+    },
+    {
       "target": "char_gong_er",
       "count": 2
     },
     {
       "target": "char_yao_huang",
+      "count": 2
+    },
+    {
+      "target": "house_golden_dawn_hall",
       "count": 2
     },
     {
@@ -111,11 +119,23 @@
       "count": 2
     },
     {
+      "target": "evt_arc_blessed_land_consolidation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_huang_jin_bloodline",
       "count": 1
     },
     {
       "target": "fac_yao_tribe",
+      "count": 1
+    },
+    {
+      "target": "house_red_fiend_divine_boat",
       "count": 1
     },
     {
@@ -132,6 +152,10 @@
     },
     {
       "target": "char_chu_du",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_heavenly_court_pursuit",
       "count": 1
     },
     {
@@ -155,7 +179,19 @@
       "count": 1
     },
     {
+      "target": "res_soft_jade",
+      "count": 1
+    },
+    {
       "target": "char_chou_lao_wu",
+      "count": 1
+    },
+    {
+      "target": "move_green_city_rampage",
+      "count": 1
+    },
+    {
+      "target": "move_wind_thunder_roar",
       "count": 1
     },
     {
@@ -175,11 +211,19 @@
       "count": 1
     },
     {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
+      "count": 1
+    },
+    {
       "target": "char_nu_er_qian",
       "count": 1
     },
     {
       "target": "char_immortal_zombie_giant_sun",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
       "count": 1
     }
   ],
@@ -191,12 +235,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_gong_er"
+        "sys_gu_immortal",
+        "char_gong_er",
+        "house_golden_dawn_hall"
       ]
     },
     {
@@ -206,7 +252,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -225,7 +271,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "iron-eagle-contest",
       "text_origin": "source_excerpt",
@@ -242,7 +288,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-hei-tribe-falls",
       "text_origin": "source_excerpt",
@@ -257,10 +303,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "formation-gained-from-hei-elders",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_green_city_rampage"
+      ]
     }
   ],
   "conflicts": [],

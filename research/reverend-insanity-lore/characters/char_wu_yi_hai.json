@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1215,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1215,
@@ -50,12 +50,28 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_eastern_sea",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_ba_de",
@@ -90,6 +106,10 @@
       "count": 2
     },
     {
+      "target": "sys_super_gu_formation",
+      "count": 2
+    },
+    {
       "target": "char_wu_fa",
       "count": 2
     },
@@ -110,11 +130,27 @@
       "count": 2
     },
     {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
+    },
+    {
       "target": "char_lady_white_rabbit",
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "res_silent_coral",
+      "count": 1
+    },
+    {
+      "target": "move_blood_light_spirit_suppression",
       "count": 1
     },
     {
@@ -150,6 +186,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_opportunity_business",
+      "count": 1
+    },
+    {
       "target": "gu_dragon_scales_immortal_gu",
       "count": 1
     },
@@ -159,6 +199,10 @@
     },
     {
       "target": "loc_mini_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "sys_transformation_path_dao_marks",
       "count": 1
     },
     {
@@ -230,6 +274,10 @@
       "count": 1
     },
     {
+      "target": "move_reverse_flow_protection_seal",
+      "count": 1
+    },
+    {
       "target": "char_chi_qu_you",
       "count": 1
     },
@@ -239,6 +287,10 @@
     },
     {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "move_soul_search",
       "count": 1
     }
   ],
@@ -250,13 +302,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_wu_du_xiu",
         "reg_eastern_sea",
+        "sys_gu_immortal",
         "fac_wu_clan"
       ]
     },
@@ -267,7 +320,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -279,7 +332,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -291,7 +344,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "regional-wall-attack",
       "text_origin": "source_excerpt"
@@ -303,7 +356,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -319,7 +372,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "annexed-sea",
       "text_origin": "source_excerpt",
@@ -334,7 +387,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "transformation-killer-moves",
       "text_origin": "source_excerpt"
@@ -346,7 +399,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "frosty-peaks-reward",
       "text_origin": "source_excerpt",
@@ -364,7 +417,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "choosing-red-dragon-river",
       "text_origin": "source_excerpt",
@@ -380,7 +433,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sects-assessment",
       "text_origin": "source_excerpt",
@@ -388,6 +441,7 @@
         "char_ying_wu_xie",
         "char_purple_mountain_true_monarch",
         "char_chi_shang",
+        "sys_super_gu_formation",
         "char_qiao_si_liu",
         "fac_shadow_sect"
       ]
@@ -399,7 +453,7 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reported-missing",
       "text_origin": "source_excerpt",
@@ -415,7 +469,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "identity-revealed-to-wu-yong",
       "text_origin": "source_excerpt",
@@ -475,7 +529,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -497,7 +551,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Dead",
     "alignment": null,

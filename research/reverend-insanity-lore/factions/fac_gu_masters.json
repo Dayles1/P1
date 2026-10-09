@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 4,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     4,
@@ -34,11 +34,27 @@
   "relations": [],
   "co_mentions": [
     {
+      "target": "sys_aperture",
+      "count": 2
+    },
+    {
+      "target": "sys_awakening_ceremony",
+      "count": 2
+    },
+    {
+      "target": "sys_primeval_sea",
+      "count": 2
+    },
+    {
       "target": "fac_gu_yue_clan",
       "count": 2
     },
     {
       "target": "loc_gu_yue_village",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_master",
       "count": 2
     },
     {
@@ -94,6 +110,30 @@
       "count": 1
     },
     {
+      "target": "sys_aptitude",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_rank_four",
+      "count": 1
+    },
+    {
+      "target": "sys_rank_one_through_rank_five",
+      "count": 1
+    },
+    {
+      "target": "sys_rank_three",
+      "count": 1
+    },
+    {
+      "target": "sys_rank_two",
+      "count": 1
+    },
+    {
       "target": "fac_bai_clan",
       "count": 1
     },
@@ -102,7 +142,15 @@
       "count": 1
     },
     {
+      "target": "path_earth",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_beast",
       "count": 1
     },
     {
@@ -110,7 +158,27 @@
       "count": 1
     },
     {
+      "target": "sys_green_copper_primeval_essence",
+      "count": 1
+    },
+    {
       "target": "fac_mo_family",
+      "count": 1
+    },
+    {
+      "target": "sys_initial_stage",
+      "count": 1
+    },
+    {
+      "target": "sys_rank_five",
+      "count": 1
+    },
+    {
+      "target": "sys_rank_one",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     },
     {
@@ -118,7 +186,19 @@
       "count": 1
     },
     {
+      "target": "sys_refinement",
+      "count": 1
+    },
+    {
       "target": "fac_caravan",
+      "count": 1
+    },
+    {
+      "target": "sys_red_steel_primeval_essence",
+      "count": 1
+    },
+    {
+      "target": "sys_white_silver_primeval_essence",
       "count": 1
     },
     {
@@ -166,6 +246,14 @@
       "count": 1
     },
     {
+      "target": "path_strength",
+      "count": 1
+    },
+    {
+      "target": "sys_lone_cultivator",
+      "count": 1
+    },
+    {
       "target": "gu_love_life_separation",
       "count": 1
     },
@@ -186,11 +274,19 @@
       "count": 1
     },
     {
+      "target": "res_snowy_tusk",
+      "count": 1
+    },
+    {
       "target": "fac_lightning_wolves",
       "count": 1
     },
     {
       "target": "gu_moonlight_treasure_king_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_rank_six",
       "count": 1
     },
     {
@@ -266,6 +362,14 @@
       "count": 1
     },
     {
+      "target": "sys_battle_merits",
+      "count": 1
+    },
+    {
+      "target": "sys_hundred_beast_king",
+      "count": 1
+    },
+    {
       "target": "gu_ice_blade_gu",
       "count": 1
     },
@@ -278,7 +382,19 @@
       "count": 1
     },
     {
+      "target": "evt_arc_gu_yue_clan_conflict",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_first_battle",
+      "count": 1
+    },
+    {
       "target": "char_gu_yue_yao_hong",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_gu_yue_qing_shu_and_gu_yue_yao_hong_against_bai_ning_bing",
       "count": 1
     },
     {
@@ -310,7 +426,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -330,7 +446,9 @@
       "section": "talent-and-awakening",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_gu_yue_clan"
+        "sys_gu_master",
+        "fac_gu_yue_clan",
+        "sys_aptitude"
       ]
     },
     {
@@ -343,7 +461,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "talent-and-awakening",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_awakening_ceremony"
+      ]
     },
     {
       "text": "Those who succeed enter as rank one Gu Masters once the aperture holds a working primeval sea.",
@@ -355,7 +476,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "talent-and-awakening",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_aperture",
+        "sys_primeval_sea"
+      ]
     },
     {
       "text": "Academy teaching places humans above all creatures and Gu as the essence of heaven and earth. Gu Masters have nine ranks from rank one to rank nine. Each rank divides into four small realms: initial stage, middle stage, upper stage, and peak stage. Fresh graduates of that ceremony sit at rank one initial stage.",

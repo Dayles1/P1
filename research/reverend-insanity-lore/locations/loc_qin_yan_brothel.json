@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 282,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     282,
@@ -66,6 +66,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "char_fang_zheng",
       "count": 1
     },
@@ -82,7 +86,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -94,7 +98,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "view-into-an-yus-room",
       "text_origin": "source_excerpt",
@@ -112,10 +116,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "view-into-an-yus-room",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "At the auction house someone claims Shang Ya Zi and Fang Zheng went to Qin Yan brothel, competed for the number one lady, and that Fang Zheng got her. Lady An Yu is pointed out in the crowd; after her pimp winks she blushes without answering, and most doubters take that as proof.",
@@ -124,7 +131,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "auction-house-rumor",
       "text_origin": "source_excerpt",
@@ -140,7 +147,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "city-rumor-to-shang-ya-zi",
       "text_origin": "source_excerpt"

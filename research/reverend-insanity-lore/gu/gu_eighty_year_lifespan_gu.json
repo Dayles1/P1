@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1013,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1013
@@ -32,6 +32,10 @@
   "co_mentions": [
     {
       "target": "char_spectral_soul_demon_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     }
   ],
@@ -119,12 +123,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "memory-scene",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_spectral_soul_demon_venerable"
+          "char_spectral_soul_demon_venerable",
+          "sys_gu_master"
         ]
       }
     ]

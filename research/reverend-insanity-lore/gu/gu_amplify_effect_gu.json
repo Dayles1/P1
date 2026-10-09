@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 522,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     522,
@@ -51,6 +51,10 @@
   ],
   "co_mentions": [
     {
+      "target": "move_four_arm_earth_king",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -67,6 +71,14 @@
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_hei_tribe",
       "count": 1
     },
@@ -75,7 +87,23 @@
       "count": 1
     },
     {
+      "target": "path_rule",
+      "count": 1
+    },
+    {
+      "target": "sys_killer_moves",
+      "count": 1
+    },
+    {
       "target": "gu_all_out_effort_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "inh_du_min_jun_inheritance",
       "count": 1
     }
   ],
@@ -137,7 +165,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-five-pairings",
         "text_origin": "source_excerpt",
@@ -152,7 +180,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-five-pairings",
         "text_origin": "source_excerpt",
@@ -168,7 +196,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-five-pairings",
         "text_origin": "source_excerpt"
@@ -180,7 +208,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-five-pairings",
         "text_origin": "source_excerpt"
@@ -192,10 +220,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-five-pairings",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_killer_moves"
+        ]
       }
     ]
   },
@@ -213,10 +244,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-and-path",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms",
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Among Hei tribe’s resources there is one rank five, one rank four, three rank three, and the rest rank two.",
@@ -225,7 +260,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-and-path",
         "text_origin": "source_excerpt"
@@ -277,7 +312,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -294,12 +329,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "star-path-comparison",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_du_min_jun"
+          "char_du_min_jun",
+          "sys_gu_recipe"
         ]
       },
       {
@@ -309,7 +345,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "star-path-comparison",
         "text_origin": "source_excerpt"

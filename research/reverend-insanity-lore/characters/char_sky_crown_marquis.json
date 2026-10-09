@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 239,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     239,
@@ -33,6 +33,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -65,8 +77,16 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "loc_fei_hou_mountain",
       "count": 2
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
     }
   ],
   "claims": [
@@ -77,12 +97,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_fei_hou_mountain",
+        "sys_gu_master",
         "gu_monkey_language_gu",
         "reg_southern_border"
       ]
@@ -94,7 +115,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "arm-wrestling-custom",
       "text_origin": "source_excerpt"
@@ -136,7 +157,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "righteous path as of ch. 239",
@@ -163,7 +184,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Unknown",
     "alignment": "righteous path as of ch. 239",

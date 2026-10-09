@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 899,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     899,
@@ -62,6 +62,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_eastern_sea",
+      "count": 1
+    },
+    {
       "target": "char_song_jia_dan",
       "count": 1
     },
@@ -71,6 +75,10 @@
     },
     {
       "target": "char_song_yi_shi",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -117,6 +125,7 @@
       "section": "song-jia-dans-post",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "fac_song_clan",
         "reg_eastern_sea"
       ]
@@ -128,7 +137,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "deduction-request",
       "text_origin": "source_excerpt",

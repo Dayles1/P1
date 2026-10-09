@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 426,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     426,
@@ -168,6 +168,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_chang_shan_yin_against_ha_tu_gu",
+      "count": 1
+    },
+    {
       "target": "gu_snow_wash_gu",
       "count": 1
     },
@@ -229,12 +237,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wolf-king-of-chang-tribe",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_chang_shan_yin",
+        "sys_gu_master",
         "gu_snow_wash_gu",
         "char_ha_tu_gu"
       ]
@@ -246,7 +255,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ge-tribe-ties",
       "text_origin": "source_excerpt",
@@ -276,7 +285,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "letter-and-past-life",
       "text_origin": "source_excerpt",

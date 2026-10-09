@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1321,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1321,
@@ -77,6 +77,22 @@
       "count": 1
     },
     {
+      "target": "sys_super_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "gu_soul_lantern_gu",
       "count": 1
     },
@@ -86,6 +102,14 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -109,7 +133,8 @@
         "char_wu_fa",
         "fac_wu_clan",
         "char_wu_yong",
-        "char_wu_yi_hai"
+        "char_wu_yi_hai",
+        "sys_super_gu_formation"
       ]
     },
     {
@@ -119,11 +144,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ancestral-hall",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_mortal_gu_house",
+        "sys_mortal_gu",
+        "sys_immortal_gu_house",
         "gu_soul_lantern_gu"
       ]
     },
@@ -134,12 +162,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "earth-vein-quake",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_formation",
         "char_fang_yuan",
+        "sys_gu_immortal",
         "reg_southern_border"
       ]
     },

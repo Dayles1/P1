@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 460,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     460,
@@ -42,12 +42,36 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_refinement",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 460,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_northern_plains",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
       "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_hairy_men",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 879,
       "count": null,
       "confidence": "B",
       "source_id": "src_sagaofgu",
@@ -112,6 +136,42 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_omnipresent_four_seas",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_long_hair_true_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_gu_house",
+      "target": "house_refinement_cauldron",
+      "role": "refiner",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 878,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -136,6 +196,26 @@
       "count": 3
     },
     {
+      "target": "house_refinement_cauldron",
+      "count": 3
+    },
+    {
+      "target": "inh_long_hair_true_inheritance",
+      "count": 3
+    },
+    {
+      "target": "move_omnipresent_four_seas",
+      "count": 3
+    },
+    {
+      "target": "path_refinement",
+      "count": 2
+    },
+    {
+      "target": "race_hairy_men",
+      "count": 2
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -152,6 +232,10 @@
       "count": 2
     },
     {
+      "target": "sys_refinement",
+      "count": 2
+    },
+    {
       "target": "loc_lang_ya_blessed_land",
       "count": 2
     },
@@ -161,6 +245,10 @@
     },
     {
       "target": "fac_lang_ya_sect",
+      "count": 2
+    },
+    {
+      "target": "house_four_elements_square_regret_blood_refinement_pool",
       "count": 2
     },
     {
@@ -176,11 +264,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_white_litchi_immortal_essence",
+      "count": 1
+    },
+    {
       "target": "gu_vitality_gu",
       "count": 1
     },
     {
       "target": "loc_crescent_lake",
+      "count": 1
+    },
+    {
+      "target": "path_food",
       "count": 1
     },
     {
@@ -192,7 +296,43 @@
       "count": 1
     },
     {
+      "target": "sys_attainment",
+      "count": 1
+    },
+    {
+      "target": "sys_prophecy_of_three_venerables",
+      "count": 1
+    },
+    {
+      "target": "sys_space_door",
+      "count": 1
+    },
+    {
+      "target": "evt_era_current",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
+      "target": "inh_giant_sun_immortal_venerable_inheritance",
+      "count": 1
+    },
+    {
+      "target": "sys_supreme_grandmaster",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_blessed_land_consolidation",
+      "count": 1
+    },
+    {
       "target": "char_heaven_overseeing_tower_lord",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -200,7 +340,27 @@
       "count": 1
     },
     {
+      "target": "evt_fight_lang_ya_land_spirit_against_qin_bai_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_ancient_battle_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_heavenly_giant_solor",
+      "count": 1
+    },
+    {
+      "target": "move_golden_heavenly_saint",
+      "count": 1
+    },
+    {
       "target": "char_old_eccentric_tian_nan",
+      "count": 1
+    },
+    {
+      "target": "inh_tian_nan_true_inheritance",
       "count": 1
     },
     {
@@ -208,7 +368,19 @@
       "count": 1
     },
     {
+      "target": "move_immortal_aperture_transplantation",
+      "count": 1
+    },
+    {
+      "target": "sys_hairy_man_heaven_and_earth_style",
+      "count": 1
+    },
+    {
       "target": "gu_dog_shit_luck",
+      "count": 1
+    },
+    {
+      "target": "sys_nine_heavens_fragment",
       "count": 1
     },
     {
@@ -217,6 +389,14 @@
     },
     {
       "target": "loc_inkman_city",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_river_of_time",
+      "count": 1
+    },
+    {
+      "target": "sys_quasi_supreme",
       "count": 1
     },
     {
@@ -236,11 +416,39 @@
       "count": 1
     },
     {
+      "target": "sys_refinement_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "gu_steal_life_gu",
       "count": 1
     },
     {
+      "target": "res_refinement_water",
+      "count": 1
+    },
+    {
+      "target": "move_one_step_back_sea_and_sky_expands",
+      "count": 1
+    },
+    {
+      "target": "evt_era_medieval",
+      "count": 1
+    },
+    {
+      "target": "sys_true_meaning",
+      "count": 1
+    },
+    {
       "target": "gu_nature_gu_refinement_technique",
+      "count": 1
+    },
+    {
+      "target": "move_lingering_poisonous_ant_plague",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_sea",
       "count": 1
     }
   ],
@@ -252,15 +460,18 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_crescent_lake",
+        "sys_gu_recipe",
         "loc_lang_ya_blessed_land",
         "char_thieving_heaven_demon_venerable",
         "char_giant_sun_immortal_venerable",
+        "sys_refinement",
+        "sys_immortal_gu",
         "char_gui_wang",
         "fac_lang_ya_sect"
       ]
@@ -272,7 +483,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "recipe-collector-and-land-spirit",
       "text_origin": "source_excerpt",
@@ -289,7 +500,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "recipe-collector-and-land-spirit",
       "text_origin": "source_excerpt"
@@ -301,7 +512,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "recipe-collector-and-land-spirit",
       "text_origin": "source_excerpt",
@@ -342,7 +553,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-of-raiders",
       "text_origin": "source_excerpt"
@@ -354,10 +565,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "one-of-only-three",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "path_refinement"
+      ]
     },
     {
       "text": "Heaven Overseeing Tower Lord states that Long Hair Ancestor was not a human but a hairy man, and that this barred entry to Heavenly Court no matter his refinement path attainment. Hearing that, other Gu Immortals treat the fact as a secret they had not known, and the narration links the name long hair to that hairy man identity. After death he held two obsessions: the refinement path obsession tied to space escape Immortal Gu and Great Dream Immortal Venerable, and a species obsession formed because hairy men were suppressed by humans.",
@@ -366,13 +580,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "species-and-obsessions",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_heaven_overseeing_tower_lord",
-        "fac_heavenly_court"
+        "fac_heavenly_court",
+        "sys_gu_immortal",
+        "race_hairy_men"
       ]
     },
     {
@@ -382,7 +598,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "borrowing-rank-nine-strength",
       "text_origin": "source_excerpt"
@@ -394,7 +610,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "vouching-for-the-inkmen",
       "text_origin": "source_excerpt",
@@ -458,7 +674,7 @@
     "Paths": {
       "text": "Refinement path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Northern Plains",
@@ -468,7 +684,7 @@
     "Race": {
       "text": "Hairy Men",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -485,12 +701,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_refinement"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_hairy_men",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2012,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2012
@@ -46,6 +46,10 @@
     {
       "target": "char_xiao_qi_xing",
       "count": 4
+    },
+    {
+      "target": "house_divine_emperor_city",
+      "count": 1
     },
     {
       "target": "gu_captain_gu",
@@ -158,6 +162,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_divine_emperor_city",
           "char_xiao_qi_xing"
         ]
       }

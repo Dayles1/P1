@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1194,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_new_blessed_land_crazed_demon"
   },
   "chapters_cited": [
     1194,
@@ -35,6 +35,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -63,6 +75,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -79,7 +95,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_liu_hui",
+      "count": 1
+    },
+    {
+      "target": "house_golden_dawn_hall",
       "count": 1
     },
     {
@@ -95,14 +119,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_gong_wan_ting",
         "char_xue_wu_hen",
-        "fac_ye_lui_tribe"
+        "fac_ye_lui_tribe",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -112,7 +137,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "consoling-xiao-jin",
       "text_origin": "source_excerpt",
@@ -128,10 +153,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dismissing-liu-guan-yi",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_golden_dawn_hall"
+      ]
     },
     {
       "text": "He stands stably during Ye Lui Qun Xing’s fight, understands Qun Xing’s trump cards better than Xiao Jin, and begins to smile while sipping wine when Liu Guan Yi hesitates. He strokes his beard as the smile brightens, yet still reminds Ye Lui Qun Xing to be careful of dragon breath, naming the ancient sword dragon’s strongest weapon and noting it has not been used yet.",
@@ -140,7 +168,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "warning-about-dragon-breath",
       "text_origin": "source_excerpt",
@@ -182,7 +210,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Ye Lui Tribe",
@@ -203,7 +231,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

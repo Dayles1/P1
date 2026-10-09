@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 329,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     329,
@@ -94,6 +94,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -130,12 +134,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "slave-market-and-shang-puppet",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_shang_clan_city",
+        "sys_gu_master",
         "char_shang_xin_ci",
         "fac_shang_clan",
         "char_shang_yan_fei"
@@ -148,7 +153,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "slave-market-and-shang-puppet",
       "text_origin": "source_excerpt",
@@ -163,7 +168,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "slave-market-and-shang-puppet",
       "text_origin": "source_excerpt",
@@ -180,7 +185,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "guard-duty-assignment",
       "text_origin": "source_excerpt",
@@ -223,7 +228,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wei-de-xin-continuity",
       "text_origin": "source_excerpt"

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1710,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1710,
@@ -34,6 +34,18 @@
     2271
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -53,6 +65,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_duke_tong",
       "count": 2
     },
@@ -66,6 +82,10 @@
     },
     {
       "target": "char_reckless_savage_demon_venerable",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
       "count": 1
     },
     {
@@ -89,7 +109,15 @@
       "count": 1
     },
     {
+      "target": "sys_crazed_demon_formation",
+      "count": 1
+    },
+    {
       "target": "char_immortal_zombie_giant_sun",
+      "count": 1
+    },
+    {
+      "target": "move_luck_gamble",
       "count": 1
     },
     {
@@ -106,6 +134,10 @@
     },
     {
       "target": "char_star_constellation_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -128,7 +160,8 @@
       "mentions": [
         "fac_heavenly_court",
         "char_reckless_savage_demon_venerable",
-        "gu_fate_gu"
+        "gu_fate_gu",
+        "house_heaven_overseeing_tower"
       ]
     },
     {
@@ -174,7 +207,8 @@
       "mentions": [
         "char_duke_mei",
         "char_duke_tong",
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_crazed_demon_formation"
       ]
     },
     {
@@ -204,6 +238,7 @@
       "section": "capture-order",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_star_constellation_immortal_venerable",
         "char_seven_fiendish_primeval_monarch",
         "char_fairy_zi_wei",
@@ -267,7 +302,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1710",
@@ -294,7 +329,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

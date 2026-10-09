@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 161,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     161,
@@ -71,6 +71,10 @@
       "count": 2
     },
     {
+      "target": "sys_healing_gu",
+      "count": 2
+    },
+    {
       "target": "gu_nine_leaf_vitality_grass",
       "count": 2
     },
@@ -115,7 +119,15 @@
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_bone_flesh_unity_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_set",
       "count": 1
     },
     {
@@ -136,6 +148,10 @@
     },
     {
       "target": "gu_dragon_travel_tiger_steps_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_ju_kai_bei",
       "count": 1
     },
     {
@@ -163,6 +179,30 @@
       "count": 1
     },
     {
+      "target": "sys_battle_merits",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_self",
+      "count": 1
+    },
+    {
       "target": "gu_cleanse_soul",
       "count": 1
     },
@@ -176,6 +216,10 @@
     },
     {
       "target": "gu_pulling_water",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_self_giant_hand",
       "count": 1
     },
     {
@@ -259,7 +303,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "strength-path-set",
         "text_origin": "source_excerpt",
@@ -287,7 +331,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "strength-path-set",
         "text_origin": "source_excerpt",
@@ -304,7 +348,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "strength-path-set",
         "text_origin": "source_excerpt"
@@ -340,10 +384,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "early-effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Against Zhu Ba he heals internal shock damage between assaults, then uses the Gu for potent sustainability after blade-aura wounds, stopping blood loss and growing flesh while tendons heal more slowly.",
@@ -352,7 +399,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "combat-healing",
         "text_origin": "source_excerpt",
@@ -367,7 +414,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "combat-healing",
         "text_origin": "source_excerpt"
@@ -379,7 +426,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "combat-healing",
         "text_origin": "source_excerpt"
@@ -403,7 +450,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "healing-power-over-time",
         "text_origin": "source_excerpt",
@@ -418,7 +465,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "healing-power-over-time",
         "text_origin": "source_excerpt",
@@ -433,7 +480,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "healing-power-over-time",
         "text_origin": "source_excerpt",
@@ -449,7 +496,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "healing-power-over-time",
         "text_origin": "source_excerpt"
@@ -480,7 +527,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-price",
         "text_origin": "source_excerpt"
@@ -504,7 +551,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-price",
         "text_origin": "source_excerpt",
@@ -519,7 +566,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-price",
         "text_origin": "source_excerpt",
@@ -535,7 +582,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-price",
         "text_origin": "source_excerpt",
@@ -550,7 +597,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "healing-power-over-time",
         "text_origin": "source_excerpt",
@@ -588,13 +635,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_nine_leaf_vitality_grass",
           "char_fang_yuan",
+          "sys_healing_gu",
           "gu_vitality_gu"
         ]
       },
@@ -605,10 +653,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "myriad-self-component",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal",
+          "sys_mortal_gu",
+          "move_myriad_self"
+        ]
       },
       {
         "text": "When he uses immortal killer move Myriad Self, First Style, Giant Hand, the aperture again lists it among the circling mortal Gu around Self Strength Immortal Gu.",
@@ -622,6 +675,7 @@
         "section": "myriad-self-component",
         "text_origin": "source_excerpt",
         "mentions": [
+          "move_myriad_self_giant_hand",
           "gu_self_strength"
         ]
       },
@@ -637,6 +691,7 @@
         "section": "myriad-self-component",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "gu_pulling_mountain",
           "gu_pulling_water",
           "gu_cleanse_soul"
@@ -656,7 +711,8 @@
         "mentions": [
           "gu_myriad_self_immortal_gu",
           "char_third_hair",
-          "char_sixth_hair"
+          "char_sixth_hair",
+          "sys_gu_worms"
         ]
       },
       {

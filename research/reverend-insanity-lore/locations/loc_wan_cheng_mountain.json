@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 211,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     211,
@@ -67,11 +67,23 @@
       "count": 2
     },
     {
+      "target": "inh_iron_mask_true_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_tie_clan_leader",
       "count": 1
     },
     {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
       "target": "char_tie_mian_shen",
+      "count": 1
+    },
+    {
+      "target": "inh_seven_illusions_true_inheritance",
       "count": 1
     }
   ],
@@ -83,7 +95,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -99,7 +111,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "seat-of-tie-clan-city",
       "text_origin": "source_excerpt",
@@ -115,10 +127,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "demon-suppression-tower-at-the-peak",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_demonic_path"
+      ]
     },
     {
       "text": "A later scene returns to Southern Border, Tie clan, Wan Cheng Mountain, where Tie Ruo Nan passes a final killer-move test in an unassuming valley under a supreme elder’s guidance and is taken as a disciple toward immortal cultivation under the Iron Mask true inheritance. The same elder’s words place her father among that inheritance’s earlier chosen seeds. Tie Mian Shen later states that Tie clan’s Demon Suppression Tower once contained a Seven Illusions Demon Immortal, and that the clan learned many secrets of the Seven Illusions true inheritance without obtaining its contents.",
@@ -133,7 +148,9 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_southern_border",
-        "char_tie_mian_shen"
+        "inh_iron_mask_true_inheritance",
+        "char_tie_mian_shen",
+        "inh_seven_illusions_true_inheritance"
       ]
     },
     {

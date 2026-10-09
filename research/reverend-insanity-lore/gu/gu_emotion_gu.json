@@ -23,13 +23,25 @@
   "first_appearance": {
     "chapter": 599,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     599,
     775
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_emotion",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_giant_sun_immortal_venerable",
@@ -49,6 +61,10 @@
       "count": 3
     },
     {
+      "target": "path_emotion",
+      "count": 2
+    },
+    {
       "target": "char_tang_yang",
       "count": 2
     },
@@ -61,6 +77,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
       "target": "gu_false_emotion_fake_will_gu",
       "count": 1
     },
@@ -70,6 +94,10 @@
     },
     {
       "target": "char_tang_lan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -115,7 +143,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_emotion"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -181,8 +211,10 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_eighty_eight_true_yang_building",
           "char_fang_yuan",
-          "char_giant_sun_immortal_venerable"
+          "char_giant_sun_immortal_venerable",
+          "sys_gu_recipe"
         ]
       },
       {
@@ -192,14 +224,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "dream-realm-borrowing",
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_tang_clan",
           "char_tang_yang",
-          "fac_xiao_tribe"
+          "fac_xiao_tribe",
+          "sys_immortal_gu"
         ]
       }
     ]
@@ -208,7 +241,7 @@
     "Path": {
       "text": "Emotion Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

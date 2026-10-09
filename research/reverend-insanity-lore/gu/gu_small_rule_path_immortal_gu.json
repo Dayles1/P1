@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 801,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     801,
@@ -48,11 +48,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_disintegrate_rule_path_immortal_gu",
       "count": 1
     },
     {
       "target": "loc_miniscule_mountain",
+      "count": 1
+    },
+    {
+      "target": "race_minimen",
       "count": 1
     }
   ],
@@ -113,8 +121,10 @@
         "section": "rank",
         "text_origin": "source_excerpt",
         "mentions": [
+          "race_minimen",
           "loc_miniscule_mountain",
-          "char_unfettered_scholar"
+          "char_unfettered_scholar",
+          "sys_immortal_gu"
         ]
       }
     ]

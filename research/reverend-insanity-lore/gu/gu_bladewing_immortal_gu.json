@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1565,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1564,
@@ -54,6 +54,18 @@
       "count": 2
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
       "target": "gu_soul_beast_token",
       "count": 1
     },
@@ -63,6 +75,18 @@
     },
     {
       "target": "res_drinking_blade_wine",
+      "count": 1
+    },
+    {
+      "target": "move_emperor_yama",
+      "count": 1
+    },
+    {
+      "target": "move_heaven_and_earth_blade",
+      "count": 1
+    },
+    {
+      "target": "path_blade",
       "count": 1
     }
   ],
@@ -185,6 +209,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_immortal_gu",
           "char_meng_tribe_meng_tu"
         ]
       },
@@ -212,6 +237,8 @@
         "section": "theft-and-sealing",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_mortal_gu",
+          "sys_vital_gu",
           "loc_heaven_sealing_mountain"
         ]
       },

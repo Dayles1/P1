@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 389,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     389,
@@ -62,6 +62,14 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_land_spirit",
+      "count": 1
+    },
+    {
       "target": "gu_divine_travel",
       "count": 1
     },
@@ -75,6 +83,10 @@
     },
     {
       "target": "loc_san_cha_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_second_aperture",
       "count": 1
     }
   ],
@@ -171,7 +183,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "final-refinement-feed",
         "text_origin": "source_excerpt",
@@ -200,7 +212,9 @@
         "section": "place-in-the-recipe",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_land_spirit",
           "char_ba_gui",
+          "sys_immortal_gu",
           "gu_divine_travel"
         ]
       }
@@ -268,7 +282,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "restart-of-the-same-step",
         "text_origin": "source_excerpt"

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 15,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     15,
@@ -47,6 +47,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_yue_clan",
       "count": 1
     },
@@ -59,6 +63,10 @@
       "count": 1
     },
     {
+      "target": "sys_c_grade",
+      "count": 1
+    },
+    {
       "target": "gu_photo_audio_gu",
       "count": 1
     },
@@ -68,6 +76,10 @@
     },
     {
       "target": "gu_heavenly_essence_treasure_lotus",
+      "count": 1
+    },
+    {
+      "target": "inh_flower_wine_monk_inheritance",
       "count": 1
     },
     {
@@ -149,7 +161,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt",
@@ -184,7 +196,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "The fourth generation clan leader uses it as a hidden finishing move after pretending to beg for mercy. The Flower Wine Monk kills him anyway and then fights the elders while under the Gu.",
@@ -205,7 +220,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-against-the-flower-wine-monk",
         "text_origin": "source_excerpt"
@@ -232,11 +247,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "suppression-detail-and-fusion-line",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_c_grade",
           "gu_spring_autumn_cicada"
         ]
       },
@@ -247,7 +263,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "suppression-detail-and-fusion-line",
         "text_origin": "source_excerpt"
@@ -259,7 +275,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "suppression-detail-and-fusion-line",
         "text_origin": "source_excerpt",

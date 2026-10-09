@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 486,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     486
@@ -46,6 +46,10 @@
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     },
     {
       "target": "gu_clear_mind_gu",
@@ -187,7 +191,8 @@
         "mentions": [
           "loc_lang_ya_blessed_land",
           "char_fang_yuan",
-          "gu_clear_mind_gu"
+          "gu_clear_mind_gu",
+          "sys_immortal_gu"
         ]
       }
     ]

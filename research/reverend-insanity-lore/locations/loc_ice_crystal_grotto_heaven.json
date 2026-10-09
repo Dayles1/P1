@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1969,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1969,
@@ -42,6 +42,10 @@
       "count": 2
     },
     {
+      "target": "race_snowmen",
+      "count": 2
+    },
+    {
       "target": "char_an_xun",
       "count": 1
     },
@@ -54,11 +58,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_granny_skeleton",
       "count": 1
     },
     {
       "target": "char_green_forest_great_sage",
+      "count": 1
+    },
+    {
+      "target": "house_black_emperor_building",
+      "count": 1
+    },
+    {
+      "target": "house_demon_judgment_board",
       "count": 1
     },
     {
@@ -71,6 +87,14 @@
     },
     {
       "target": "loc_strange_hair_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "move_extreme_ice_crystal_light_immortal_suppression_coffin",
+      "count": 1
+    },
+    {
+      "target": "sys_qi_harvest_fruit",
       "count": 1
     },
     {
@@ -104,7 +128,9 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_ice_crystal_immortal_monarch",
-        "char_lady_cold_ash"
+        "race_snowmen",
+        "char_lady_cold_ash",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -144,7 +170,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "blizzard-icy-plain",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_demon_judgment_board"
+      ]
     }
   ],
   "conflicts": [],

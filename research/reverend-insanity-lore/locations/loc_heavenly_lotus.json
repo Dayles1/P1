@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 335,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     335,
@@ -68,6 +68,10 @@
       "count": 1
     },
     {
+      "target": "inh_hu_immortal_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_spirit_butterfly_valley",
       "count": 1
     },
@@ -84,11 +88,27 @@
       "count": 1
     },
     {
+      "target": "house_illusion_garden",
+      "count": 1
+    },
+    {
       "target": "loc_falling_heavenly_river",
       "count": 1
     },
     {
       "target": "char_genesis_lotus_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_canary_pavilion",
+      "count": 1
+    },
+    {
+      "target": "house_yue_yang_palace",
       "count": 1
     },
     {
@@ -114,6 +134,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_immortal_crane_sect",
+        "inh_hu_immortal_inheritance",
         "fac_heavenly_lotus_sect",
         "loc_spirit_butterfly_valley",
         "fac_ancient_soul_sect",
@@ -133,6 +154,7 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu_house",
         "loc_heavenly_pool"
       ]
     },
@@ -164,7 +186,8 @@
       "section": "heavenly-pool-seat",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_yu_mu_chun"
+        "char_yu_mu_chun",
+        "house_illusion_garden"
       ]
     },
     {
@@ -179,6 +202,8 @@
       "section": "sect-seat-battlefield",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_canary_pavilion",
+        "house_yue_yang_palace",
         "char_genesis_lotus_immortal_venerable"
       ]
     },

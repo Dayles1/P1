@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 273,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     273,
@@ -73,6 +73,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "loc_shang_clan_city",
       "count": 1
     },
@@ -105,6 +109,10 @@
       "count": 1
     },
     {
+      "target": "inh_three_kings_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_san_cha_mountain",
       "count": 1
     },
@@ -121,11 +129,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_wang_clan",
       "count": 1
     },
     {
       "target": "fac_wu_clan",
+      "count": 1
+    },
+    {
+      "target": "inh_king_quan_inheritance",
       "count": 1
     },
     {
@@ -182,7 +198,9 @@
       "mentions": [
         "loc_shang_clan_city",
         "char_fang_yuan",
-        "loc_yi_tian_mountain"
+        "inh_three_kings_inheritance",
+        "loc_yi_tian_mountain",
+        "sys_gu_master"
       ]
     },
     {
@@ -249,7 +267,8 @@
         "char_king_quan",
         "char_king_xin",
         "char_king_bao",
-        "char_yellow"
+        "char_yellow",
+        "inh_king_quan_inheritance"
       ]
     },
     {
@@ -265,7 +284,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_wang_clan",
-        "fac_wu_clan"
+        "fac_wu_clan",
+        "sys_gu_immortal"
       ]
     }
   ],

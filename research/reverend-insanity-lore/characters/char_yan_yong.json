@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 412,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     412,
@@ -38,6 +38,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_rockmen",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -64,6 +76,10 @@
     {
       "target": "fac_hui_shi_tribe",
       "count": 5
+    },
+    {
+      "target": "race_rockmen",
+      "count": 3
     },
     {
       "target": "reg_central_continent",
@@ -114,7 +130,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -131,7 +147,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -143,7 +159,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "false-report-and-leadership",
       "text_origin": "source_excerpt",
@@ -159,7 +175,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hero-worship-and-river",
       "text_origin": "source_excerpt"
@@ -171,7 +187,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "river-dig-and-survivors",
       "text_origin": "source_excerpt"
@@ -183,7 +199,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "gutstone-cheers",
       "text_origin": "source_excerpt"
@@ -195,7 +211,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "slavery-gu-control",
       "text_origin": "source_excerpt",
@@ -210,7 +226,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mother-earth-ruse",
       "text_origin": "source_excerpt",
@@ -263,7 +279,7 @@
     "Race": {
       "text": "Rockmen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Hui Shi Tribe as of ch. 412",
@@ -284,7 +300,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_rockmen",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

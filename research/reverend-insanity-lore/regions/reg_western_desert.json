@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 157,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     157,
@@ -139,6 +139,10 @@
     },
     {
       "target": "fac_dong_clan",
+      "count": 2
+    },
+    {
+      "target": "race_feathermen",
       "count": 2
     },
     {
@@ -350,7 +354,19 @@
       "count": 2
     },
     {
+      "target": "house_ten_thousand_li_silk_corridor",
+      "count": 2
+    },
+    {
+      "target": "house_red_river_wheel",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -366,6 +382,10 @@
       "count": 1
     },
     {
+      "target": "inh_blood_sea_inheritance",
+      "count": 1
+    },
+    {
       "target": "gu_eating_ones_words_gu",
       "count": 1
     },
@@ -374,7 +394,19 @@
       "count": 1
     },
     {
+      "target": "evt_arc_demonic_path_rise",
+      "count": 1
+    },
+    {
+      "target": "inh_blood_sea_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_giant_sun_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -398,7 +430,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -425,11 +457,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "impassable-dunes",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "loc_impassable_dunes",
         "char_fang_yuan"
       ]
@@ -441,7 +474,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "trade-and-xiao-clan",
       "text_origin": "source_excerpt"
@@ -453,12 +486,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "trade-and-xiao-clan",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_xiao_clan_western_desert"
+        "fac_xiao_clan_western_desert",
+        "sys_immortal_gu_house",
+        "house_ten_thousand_li_silk_corridor"
       ]
     },
     {
@@ -468,7 +503,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "super-forces",
       "text_origin": "source_excerpt",
@@ -483,7 +518,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "distance-from-the-eastern-sea",
       "text_origin": "source_excerpt",
@@ -498,7 +533,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "a-featherman-clan-in-a-fragment-world",
       "text_origin": "source_excerpt"
@@ -510,7 +545,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "regional-wall",
       "text_origin": "source_excerpt"

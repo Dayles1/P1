@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 391,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     394,
@@ -66,6 +66,10 @@
       "count": 1
     },
     {
+      "target": "inh_three_kings_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_san_cha_mountain",
       "count": 1
     },
@@ -78,7 +82,19 @@
       "count": 1
     },
     {
+      "target": "sys_wild_gu",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
+      "count": 1
+    },
+    {
+      "target": "inh_king_quan_inheritance",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
       "count": 1
     },
     {
@@ -87,6 +103,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_beast_emperor",
       "count": 1
     }
   ],
@@ -98,13 +118,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_bai_ning_bing",
         "char_mo_wu_tian",
+        "sys_wild_gu",
         "fac_gu_masters"
       ]
     },
@@ -115,10 +136,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "healing",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_healing_gu"
+      ]
     },
     {
       "text": "When Xiao Mang and Mo Wu Tian press toward the bronze hall, Ba Huang and Ying Ming appear and block their advancement as before.",
@@ -127,7 +151,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "second-blockade",
       "text_origin": "source_excerpt",

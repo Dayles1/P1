@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 335,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     335,
@@ -107,6 +107,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_huo_tan_mountain",
       "count": 1
     },
@@ -119,7 +123,23 @@
       "count": 1
     },
     {
+      "target": "path_light",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_self_giant_hand",
+      "count": 1
+    },
+    {
       "target": "fac_dong_clan",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -147,6 +167,10 @@
       "count": 1
     },
     {
+      "target": "house_beacon_tower",
+      "count": 1
+    },
+    {
       "target": "char_meng_tribe_meng_tu",
       "count": 1
     },
@@ -165,6 +189,10 @@
     {
       "target": "fac_anti_fang_alliance",
       "count": 1
+    },
+    {
+      "target": "house_winding_light_platform",
+      "count": 1
     }
   ],
   "claims": [
@@ -175,7 +203,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance-and-first-naming",
       "text_origin": "source_excerpt"
@@ -187,7 +215,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance-and-first-naming",
       "text_origin": "source_excerpt",
@@ -196,7 +224,8 @@
         "loc_san_cha_mountain",
         "char_jiao_huang",
         "char_meng_tribe_meng_tu",
-        "char_xiao_fu_lu"
+        "char_xiao_fu_lu",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -206,7 +235,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "xiao-mang",
       "text_origin": "source_excerpt",
@@ -222,7 +251,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "xiao-mang",
       "text_origin": "source_excerpt"
@@ -234,12 +263,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "western-desert-origin-rumor",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_southern_border",
+        "sys_gu_worms",
         "reg_western_desert",
         "fac_xiao_clan_western_desert",
         "char_xiao_shan",

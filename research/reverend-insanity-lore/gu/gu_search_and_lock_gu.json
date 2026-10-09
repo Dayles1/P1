@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 353,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     353,
@@ -33,6 +33,10 @@
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "move_infinite_search_and_lock",
+      "count": 2
+    },
     {
       "target": "char_bai_ning_bing",
       "count": 1
@@ -46,6 +50,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "loc_san_cha_mountain",
       "count": 1
     },
@@ -54,7 +62,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_fixed_star_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -126,7 +142,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -160,7 +176,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "sealing-limit",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       }
     ]
   },
@@ -199,13 +218,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "char_kong_ri_tian"
+          "char_kong_ri_tian",
+          "sys_gu_master"
         ]
       },
       {
@@ -220,7 +240,9 @@
         "section": "capture-at-the-bronze-hall",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_fixed_star_gu"
+          "move_infinite_search_and_lock",
+          "gu_fixed_star_gu",
+          "sys_gu_worms"
         ]
       }
     ]

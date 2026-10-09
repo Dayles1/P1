@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 293,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     293,
@@ -37,6 +37,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -85,6 +97,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_bai_lian",
       "count": 2
     },
@@ -102,6 +118,10 @@
     },
     {
       "target": "char_bai_zhan_wen",
+      "count": 1
+    },
+    {
+      "target": "sys_demonic_path",
       "count": 1
     },
     {
@@ -137,13 +157,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_shang_clan_city",
-        "reg_southern_border"
+        "reg_southern_border",
+        "sys_demonic_path"
       ]
     },
     {
@@ -153,7 +174,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "confrontation-and-blackmail",
       "text_origin": "source_excerpt",
@@ -172,7 +193,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "confrontation-and-blackmail",
       "text_origin": "source_excerpt"
@@ -184,7 +205,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "paying-the-fee-and-withdrawing",
       "text_origin": "source_excerpt"
@@ -228,7 +249,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Bai Clan of Bai Gu Mountain as of ch. 293",
@@ -255,7 +276,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Unknown",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 457,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     457,
@@ -49,11 +49,27 @@
       "count": 3
     },
     {
+      "target": "sys_attack_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_storage_gu",
+      "count": 1
+    },
+    {
       "target": "fac_ge_tribe",
       "count": 1
     },
     {
       "target": "char_tang_fang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -117,7 +133,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "rank-and-type",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_attack_gu",
+          "sys_storage_gu"
+        ]
       }
     ]
   },
@@ -161,7 +181,9 @@
           "char_wang_jiang",
           "char_tang_fang",
           "gu_fire_pellet_gu",
-          "fac_tang_tribe"
+          "sys_gu_master",
+          "fac_tang_tribe",
+          "sys_gu_worms"
         ],
         "needs_review": true
       }

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1018,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1018,
@@ -82,7 +82,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_yi_tian_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -95,6 +103,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
       "count": 1
     }
   ],
@@ -112,6 +124,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_yi_tian_mountain",
+        "sys_immortal_gu",
         "gu_sovereign_immortal_fetus_gu"
       ]
     },
@@ -128,6 +141,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_southern_border",
+        "sys_gu_immortal",
         "fac_zombie_alliance"
       ]
     },
@@ -144,6 +158,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_shadow_sect",
+        "sys_gu_recipe",
         "char_fang_yuan"
       ]
     }

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1541,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1541,
@@ -34,6 +34,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_hairy_men",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -60,6 +72,10 @@
     {
       "target": "fac_lang_ya_sect",
       "count": 2
+    },
+    {
+      "target": "race_hairy_men",
+      "count": 1
     },
     {
       "target": "reg_northern_plains",
@@ -94,6 +110,14 @@
       "count": 1
     },
     {
+      "target": "sys_heavenly_giant_solor",
+      "count": 1
+    },
+    {
+      "target": "move_triple_extreme_sound",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -103,6 +127,14 @@
     },
     {
       "target": "char_sixth_hair",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -124,7 +156,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_lang_ya_land_spirit",
-        "char_feng_jiu_ge"
+        "char_feng_jiu_ge",
+        "sys_heavenly_giant_solor"
       ]
     },
     {
@@ -142,9 +175,11 @@
         "char_sixth_hair",
         "char_fourth_hair",
         "char_seventh_hair",
+        "sys_gu_immortal",
         "char_long_hair_ancestor",
         "gu_myriad_self_immortal_gu",
         "char_fang_yuan",
+        "sys_gu_worms",
         "gu_self_reliance_gu",
         "gu_all_out_effort_gu"
       ]
@@ -194,7 +229,7 @@
     "Race": {
       "text": "Hairy Men",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Lang Ya Sect as of ch. 1541",
@@ -215,7 +250,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_hairy_men",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

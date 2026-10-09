@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1791,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1791
@@ -64,6 +64,14 @@
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     },
     {
       "target": "gu_addition_gu",
@@ -178,6 +186,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_ba_shi_ba",
+          "sys_immortal_gu",
           "char_fang_yuan"
         ]
       },
@@ -191,7 +200,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ]
   },

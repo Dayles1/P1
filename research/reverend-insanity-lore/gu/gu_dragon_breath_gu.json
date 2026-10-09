@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1166,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1166,
@@ -46,6 +46,14 @@
   ],
   "co_mentions": [
     {
+      "target": "move_sword_dragon_transformation",
+      "count": 3
+    },
+    {
+      "target": "move_ancient_sword_dragon_transformation",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -60,6 +68,26 @@
     {
       "target": "gu_dragon_scales_immortal_gu",
       "count": 3
+    },
+    {
+      "target": "sys_transformation_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "res_sword_dragon_corpse",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     },
     {
       "target": "loc_lang_ya_blessed_land",
@@ -127,11 +155,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-seven-immortal-gu",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "loc_lang_ya_blessed_land"
         ]
       }
@@ -146,7 +175,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -175,6 +204,7 @@
         "section": "breath-material-refinement",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_mortal_gu",
           "char_fang_yuan"
         ]
       }
@@ -219,7 +249,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

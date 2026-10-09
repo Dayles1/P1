@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 710,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     710,
@@ -47,12 +47,36 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_myriad_dragon_dock",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
       "recorded_chapter": 756,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_approaching_body",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
       "count": null,
       "confidence": "B",
       "source_id": "src_sagaofgu",
@@ -65,8 +89,16 @@
       "count": 4
     },
     {
+      "target": "move_approaching_body",
+      "count": 3
+    },
+    {
       "target": "reg_central_continent",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_fairy_ao_xue",
@@ -97,6 +129,14 @@
       "count": 1
     },
     {
+      "target": "move_peerless_crescent_moon_slash",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_old_lord_can_yang",
       "count": 1
     },
@@ -115,6 +155,10 @@
     {
       "target": "fac_shadow_sect",
       "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
     }
   ],
   "claims": [
@@ -125,7 +169,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -143,11 +187,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "incomplete-wisdom-inheritance-sold",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "fac_myriad_dragon_dock"
       ]
     },
@@ -158,7 +203,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "zhen-chi-of-the-nine-heavens",
       "text_origin": "source_excerpt",
@@ -176,7 +221,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soul-suppression-at-luo-po-valley",
       "text_origin": "source_excerpt",
@@ -192,7 +237,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-breakout",
       "text_origin": "source_excerpt",
@@ -208,11 +253,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chase-after-hui-feng-zi",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_formation",
         "char_hui_feng_zi"
       ]
     }
@@ -252,7 +298,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Myriad Dragon Dock as of ch. 756",
@@ -273,7 +319,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

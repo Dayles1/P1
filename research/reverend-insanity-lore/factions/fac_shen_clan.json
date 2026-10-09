@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1046,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1046,
@@ -171,11 +171,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_tang_clan",
       "count": 1
     },
     {
       "target": "fac_ten_great_ancient_sects",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_fate_destruction",
+      "count": 1
+    },
+    {
+      "target": "house_pine_crane_pavilion",
       "count": 1
     },
     {
@@ -207,6 +219,10 @@
       "count": 1
     },
     {
+      "target": "res_sound_path_immortal_material",
+      "count": 1
+    },
+    {
       "target": "fac_hua_clan",
       "count": 1
     },
@@ -216,6 +232,10 @@
     },
     {
       "target": "fac_xia_clan",
+      "count": 1
+    },
+    {
+      "target": "house_whale_fishing_boat",
       "count": 1
     },
     {
@@ -243,7 +263,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-against-tang-clan",
       "text_origin": "source_excerpt",
@@ -251,6 +271,7 @@
         "char_fang_yuan",
         "char_tang_song",
         "reg_eastern_sea",
+        "sys_gu_immortal",
         "fac_tang_clan",
         "fac_su_clan",
         "fac_ten_great_ancient_sects"

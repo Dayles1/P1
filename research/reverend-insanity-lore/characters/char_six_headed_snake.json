@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 672,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     672,
@@ -37,11 +37,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_calamity_beckoning_gu",
       "count": 1
     },
     {
       "target": "char_little_hu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     }
   ],
@@ -59,7 +67,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_calamity_beckoning_gu",
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -74,7 +83,8 @@
       "section": "treasure-yellow-heaven-corpse",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_little_hu_immortal"
+        "char_little_hu_immortal",
+        "sys_gu_formation"
       ]
     },
     {

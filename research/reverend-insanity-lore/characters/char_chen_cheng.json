@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2161,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2161,
@@ -38,8 +38,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_rule",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -56,6 +80,14 @@
       "count": 2
     },
     {
+      "target": "path_rule",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_wu_guang",
       "count": 2
     },
@@ -68,11 +100,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "move_dark_capital_strength_tiger",
+      "count": 1
+    },
+    {
+      "target": "move_moon_rise",
+      "count": 1
+    },
+    {
       "target": "char_liu_chang",
       "count": 1
     },
     {
       "target": "char_liu_luo",
+      "count": 1
+    },
+    {
+      "target": "move_gleaming_light",
       "count": 1
     },
     {
@@ -94,6 +142,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_hei_lou_lan",
+        "sys_gu_master",
         "reg_northern_plains"
       ]
     },
@@ -229,7 +278,7 @@
     "Paths": {
       "text": "Rule path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Northern Plains",
@@ -239,7 +288,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -250,12 +299,14 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_rule"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

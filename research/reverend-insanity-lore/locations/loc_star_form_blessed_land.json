@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 728,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     728,
@@ -80,11 +80,27 @@
       "count": 1
     },
     {
+      "target": "sys_desolate_plant",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_abyss",
+      "count": 1
+    },
+    {
       "target": "gu_all_out_effort_gu",
       "count": 1
     },
     {
       "target": "res_cloud_soil",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_blessed_land_consolidation",
       "count": 1
     },
     {
@@ -116,11 +132,47 @@
       "count": 1
     },
     {
+      "target": "move_spring_star_rain",
+      "count": 1
+    },
+    {
+      "target": "res_success_dao_mark",
+      "count": 1
+    },
+    {
       "target": "res_bitter_shell",
       "count": 1
     },
     {
+      "target": "move_blood_trace_travel",
+      "count": 1
+    },
+    {
+      "target": "move_muffled_thunder_stone_drum",
+      "count": 1
+    },
+    {
+      "target": "move_reflect_snow",
+      "count": 1
+    },
+    {
+      "target": "move_slumbering_lightning_python",
+      "count": 1
+    },
+    {
+      "target": "move_wind_grind",
+      "count": 1
+    },
+    {
+      "target": "race_mermen",
+      "count": 1
+    },
+    {
       "target": "char_spinefin_star_dragonfish",
+      "count": 1
+    },
+    {
+      "target": "move_immortal_aperture_transplantation",
       "count": 1
     },
     {
@@ -129,6 +181,14 @@
     },
     {
       "target": "char_zhou_zhong",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "move_blood_refinement_snake",
       "count": 1
     },
     {
@@ -145,6 +205,14 @@
     },
     {
       "target": "gu_strength_qi_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_enslavement_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_star_path_dao_marks",
       "count": 1
     },
     {
@@ -180,7 +248,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -192,7 +260,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -209,7 +277,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ownership-condition",
       "text_origin": "source_excerpt",
@@ -225,7 +293,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ownership-condition",
       "text_origin": "source_excerpt",
@@ -240,10 +308,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ownership-condition",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Fang Yuan places Luo Po valley in Star Form blessed land after obtaining it. Putting Luo Po valley inside Hu Immortal blessed land is not wise, since Hei Lou Lan often goes there to refine airsac Gu with the hairy men using strength qi Immortal Gu.",
@@ -252,7 +323,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "luo-po-valley",
       "text_origin": "source_excerpt",
@@ -269,7 +340,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "luo-po-valley",
       "text_origin": "source_excerpt",

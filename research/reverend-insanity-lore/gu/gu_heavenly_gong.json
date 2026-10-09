@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 747,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     747,
@@ -82,11 +82,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_spring_autumn_cicada",
       "count": 1
     },
     {
       "target": "loc_ascending_heaven_plain",
+      "count": 1
+    },
+    {
+      "target": "move_heart_demon_ferret_transformation",
       "count": 1
     },
     {
@@ -156,6 +168,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_qin_bai_sheng",
+          "sys_immortal_gu",
           "gu_spring_autumn_cicada"
         ]
       },
@@ -172,6 +185,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_xiong_yuan",
+          "sys_gu_immortal",
           "loc_ascending_heaven_plain",
           "char_swordmaster_you_lan",
           "char_feng_jiu_ge"
@@ -208,7 +222,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

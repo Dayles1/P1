@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 837,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     837,
@@ -35,6 +35,18 @@
     {
       "type": "in_region",
       "target": "reg_western_desert",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -67,6 +79,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_xiao_hu_chi",
       "count": 2
     },
@@ -87,6 +103,18 @@
       "count": 1
     },
     {
+      "target": "house_ten_thousand_li_silk_corridor",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "reg_central_continent",
       "count": 1
     },
@@ -103,7 +131,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -112,6 +140,7 @@
         "reg_western_desert",
         "char_xiao_hu_chi",
         "fac_xiao_clan_western_desert",
+        "house_ten_thousand_li_silk_corridor",
         "fac_gu_masters",
         "char_fang_yuan"
       ]
@@ -123,10 +152,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "transaction-token",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal",
+        "sys_information_path_mortal_gu"
+      ]
     },
     {
       "text": "He tells Fang Yuan the token makes him a Xiao clan trading partner with preferential policies, and that he may refuse it. After Fang Yuan accepts, Xiao Shi Rang shows more goodwill; Xiao clan ‘s investigations had not found Fang Yuan’s identity.",
@@ -135,7 +168,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "transaction-token",
       "text_origin": "source_excerpt"
@@ -215,7 +248,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Xiao Clan (Western Desert) as of ch. 837",
@@ -242,7 +275,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": null,

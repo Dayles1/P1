@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 747,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     747
@@ -58,6 +58,14 @@
     {
       "target": "char_yuan_rang_zun",
       "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     }
   ],
   "claims": [
@@ -68,7 +76,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -80,13 +88,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_yuan_tribe",
-        "gu_human_language"
+        "sys_gu_immortal",
+        "gu_human_language",
+        "sys_immortal_gu"
       ]
     }
   ],

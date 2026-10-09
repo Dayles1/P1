@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 721,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     721
@@ -49,6 +49,10 @@
     },
     {
       "target": "char_shi_lei",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -167,7 +171,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_starry_sky_grotto_heaven",
-          "char_star_lord_wan_xiang"
+          "char_star_lord_wan_xiang",
+          "sys_gu_worms"
         ]
       }
     ]

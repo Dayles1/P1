@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 109,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     109,
@@ -58,11 +58,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
     {
       "target": "loc_qing_mao_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -237,6 +249,8 @@
         "mentions": [
           "char_jia_fu",
           "loc_qing_mao_mountain",
+          "sys_gu_house",
+          "sys_gu_master",
           "fac_gu_masters"
         ]
       },
@@ -252,6 +266,7 @@
         "section": "seed-form",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "reg_northern_plains"
         ]
       },

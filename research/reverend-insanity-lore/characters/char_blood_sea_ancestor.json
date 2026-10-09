@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 183,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     183,
@@ -52,6 +52,30 @@
     2274
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_blood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 183,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "holds_gu",
       "target": "gu_bladewing_blood_bat_gu",
@@ -103,6 +127,14 @@
       "count": 4
     },
     {
+      "target": "path_blood",
+      "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "gu_demonic_blood_skull_gu",
       "count": 3
     },
@@ -116,6 +148,14 @@
     },
     {
       "target": "gu_blood_deity",
+      "count": 2
+    },
+    {
+      "target": "inh_blood_sea_inheritance",
+      "count": 2
+    },
+    {
+      "target": "inh_blood_sea_true_inheritance",
       "count": 2
     },
     {
@@ -139,6 +179,10 @@
       "count": 2
     },
     {
+      "target": "house_demon_judgment_board",
+      "count": 2
+    },
+    {
       "target": "gu_blood_relation_gu",
       "count": 2
     },
@@ -152,6 +196,30 @@
     },
     {
       "target": "char_tie_ruo_nan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_fusion",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_righteous_path",
+      "count": 1
+    },
+    {
+      "target": "sys_true_inheritance",
       "count": 1
     },
     {
@@ -215,6 +283,10 @@
       "count": 1
     },
     {
+      "target": "sys_ancient_desolate_beast",
+      "count": 1
+    },
+    {
       "target": "gu_blood_qi_gu",
       "count": 1
     },
@@ -239,7 +311,15 @@
       "count": 1
     },
     {
+      "target": "sys_super_force",
+      "count": 1
+    },
+    {
       "target": "fac_demon_judgment_board",
+      "count": 1
+    },
+    {
+      "target": "inh_dong_fang_wisdom_path_inheritance",
       "count": 1
     },
     {
@@ -283,14 +363,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
         "gu_bladewing_blood_bat_gu",
-        "loc_qing_mao_mountain"
+        "loc_qing_mao_mountain",
+        "inh_blood_sea_inheritance",
+        "sys_gu_master"
       ]
     },
     {
@@ -300,7 +382,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -312,10 +394,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rise-and-gu-research",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_fusion"
+      ]
     },
     {
       "text": "He poured effort into Gu that could still absorb natural primeval essence after a Gu Master refined them. Righteous Gu Masters feared that research succeeding, set countless traps, and moved in for the kill. He did not fully succeed, but he did produce fusion recipes for bladewing blood bat, Blood Frenzy Gu, and Blood Guillotine Gu. His first accomplishment was the rank three bladewing blood bat: easy to feed, still needing the Master’s primeval essence, with control of a male bat letting the Master command the female colony. Blood Frenzy Gu was his second, a rank four formless ball of blood essence that briefly let affected Gu absorb natural primeval essence before they left control and turned to blood. Blood Guillotine was his last, a rank five Gu that fused use and feeding, multiplied by swallowing Gu Master blood in war, and needed no primeval essence from its Master.",
@@ -324,11 +409,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rise-and-gu-research",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_righteous_path",
         "gu_blood_frenzy_gu",
         "gu_blood_guillotine_gu"
       ]
@@ -340,7 +426,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "defeat-and-the-inheritance-campaign",
       "text_origin": "source_excerpt",
@@ -355,12 +441,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "defeat-and-the-inheritance-campaign",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_immortal_crane_sect"
+        "fac_immortal_crane_sect",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -370,7 +457,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "defeat-and-the-inheritance-campaign",
       "text_origin": "source_excerpt",
@@ -388,7 +475,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ordinary-inheritances-and-the-blood-calamity",
       "text_origin": "source_excerpt",
@@ -403,7 +490,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ordinary-inheritances-and-the-blood-calamity",
       "text_origin": "source_excerpt"
@@ -415,7 +502,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ordinary-inheritances-and-the-blood-calamity",
       "text_origin": "source_excerpt"
@@ -427,10 +514,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ordinary-inheritances-and-the-blood-calamity",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_super_force"
+      ]
     },
     {
       "text": "Fang Yuan’s prior life found one ordinary inheritance after four hundred years and used bladewing blood bat colonies to become a regional overlord.",
@@ -439,7 +529,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ordinary-inheritances-and-the-blood-calamity",
       "text_origin": "source_excerpt"
@@ -451,7 +541,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ordinary-inheritances-and-the-blood-calamity",
       "text_origin": "source_excerpt",
@@ -468,7 +558,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ordinary-inheritances-and-the-blood-calamity",
       "text_origin": "source_excerpt",
@@ -498,7 +588,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "how-many-true-inheritances",
       "text_origin": "source_excerpt"
@@ -552,10 +642,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "how-many-true-inheritances",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_blood_sea_true_inheritance"
+      ]
     },
     {
       "text": "and Wu clan talk says he left seven and names the blood tide pit as one.",
@@ -564,7 +657,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "how-many-true-inheritances",
       "text_origin": "source_excerpt",
@@ -579,7 +672,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "how-many-true-inheritances",
       "text_origin": "source_excerpt"
@@ -591,7 +684,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "how-many-true-inheritances",
       "text_origin": "source_excerpt"
@@ -615,7 +708,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "how-many-true-inheritances",
       "text_origin": "source_excerpt",
@@ -627,7 +720,8 @@
         "gu_blood_qi_gu",
         "gu_blood_sweat_gu",
         "gu_blood_shadow_gu",
-        "gu_blood_battle_gu"
+        "gu_blood_battle_gu",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -637,7 +731,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "how-many-true-inheritances",
       "text_origin": "source_excerpt",
@@ -672,7 +766,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "how-many-true-inheritances",
       "text_origin": "source_excerpt"
@@ -684,10 +778,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "how-many-true-inheritances",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "path_blood"
+      ]
     },
     {
       "text": "Later narration states that blood path was created by Blood Sea Ancestor and suppressed by the five regions’ righteous path.",
@@ -739,7 +836,8 @@
       "mentions": [
         "fac_heavenly_court",
         "gu_fate_gu",
-        "gu_blood_relation_gu"
+        "gu_blood_relation_gu",
+        "house_demon_judgment_board"
       ]
     },
     {
@@ -891,12 +989,12 @@
     "Paths": {
       "text": "Blood path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 183",
@@ -918,12 +1016,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_blood"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Dead",
     "alignment": "demonic path as of ch. 183",

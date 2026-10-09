@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 544,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     425,
@@ -45,6 +45,18 @@
     2136
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_time",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_tai_bai_yun_sheng",
@@ -72,12 +84,36 @@
   ],
   "co_mentions": [
     {
+      "target": "move_landscape_as_before",
+      "count": 4
+    },
+    {
       "target": "char_tai_bai_yun_sheng",
       "count": 3
     },
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "path_time",
+      "count": 2
+    },
+    {
+      "target": "sys_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     },
     {
       "target": "loc_dang_hun_mountain",
@@ -166,6 +202,10 @@
     {
       "target": "loc_reverse_flow_river",
       "count": 1
+    },
+    {
+      "target": "move_man_as_before",
+      "count": 1
     }
   ],
   "claims": [],
@@ -229,7 +269,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_time"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -246,7 +288,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-effect",
         "text_origin": "source_excerpt"
@@ -321,7 +363,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "recipe-search",
         "text_origin": "source_excerpt",
@@ -357,8 +399,11 @@
         "section": "origin",
         "text_origin": "source_excerpt",
         "mentions": [
+          "move_landscape_as_before",
+          "sys_gu_immortal",
           "gu_river_as_before_gu",
-          "gu_mountain_as_before_gu"
+          "gu_mountain_as_before_gu",
+          "sys_dao_marks"
         ]
       },
       {
@@ -368,7 +413,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "origin",
         "text_origin": "source_excerpt"
@@ -426,9 +471,12 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "loc_dang_hun_mountain",
           "char_fang_yuan",
-          "char_tai_bai_yun_sheng"
+          "path_time",
+          "char_tai_bai_yun_sheng",
+          "sys_gu_master"
         ]
       },
       {
@@ -494,6 +542,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_self_strength",
+          "move_man_as_before",
           "char_sixth_hair"
         ]
       },
@@ -527,7 +576,7 @@
     "Path": {
       "text": "Time Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 425,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     425,
@@ -154,6 +154,22 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_stargate_gu",
       "count": 1
     },
@@ -199,7 +215,9 @@
       "section": "thieving-heavens-discovery",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_thieving_heaven_demon_venerable"
+        "char_thieving_heaven_demon_venerable",
+        "sys_wild_gu",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -215,8 +233,10 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_lang_ya_land_spirit",
+        "sys_immortal_gu",
         "gu_stargate_gu",
         "reg_southern_border",
+        "sys_gu_worms",
         "loc_lang_ya_blessed_land"
       ]
     }

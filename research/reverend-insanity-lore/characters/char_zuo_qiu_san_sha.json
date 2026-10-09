@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2258,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_era_of_three_venerables"
   },
   "chapters_cited": [
     2258,
@@ -42,15 +42,51 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "reg_western_desert",
       "count": 1
     },
     {
+      "target": "house_smoke_wave_building",
+      "count": 2
+    },
+    {
+      "target": "house_thought_expelling_pavilion",
+      "count": 2
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_fang_clan",
+      "count": 1
+    },
+    {
+      "target": "move_state_of_disunity",
       "count": 1
     },
     {
@@ -63,6 +99,14 @@
     },
     {
       "target": "char_fang_zhi",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "move_vortex_sweep",
       "count": 1
     }
   ],
@@ -79,7 +123,8 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_fang_clan"
+        "fac_fang_clan",
+        "sys_immortal_gu_house"
       ]
     },
     {
@@ -96,7 +141,10 @@
       "mentions": [
         "char_fang_di_chang",
         "char_fang_zhi",
-        "char_fang_dong_xi"
+        "char_fang_dong_xi",
+        "house_smoke_wave_building",
+        "house_thought_expelling_pavilion",
+        "sys_gu_worms"
       ]
     },
     {
@@ -144,7 +192,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -160,7 +208,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": null,

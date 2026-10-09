@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1432,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1432,
@@ -31,8 +31,44 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_blade",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_western_desert",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_nine_nine_reincarnation_blades",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -45,8 +81,20 @@
   ],
   "co_mentions": [
     {
+      "target": "move_nine_nine_reincarnation_blades",
+      "count": 3
+    },
+    {
+      "target": "path_blade",
+      "count": 2
+    },
+    {
       "target": "reg_western_desert",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_huang_shi",
@@ -58,6 +106,10 @@
     },
     {
       "target": "loc_river_of_time",
+      "count": 1
+    },
+    {
+      "target": "move_sword_burial_abyss",
       "count": 1
     },
     {
@@ -77,7 +129,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -95,7 +147,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "peak-offense",
       "text_origin": "source_excerpt",
@@ -136,7 +188,7 @@
     "Paths": {
       "text": "Blade path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Western Desert",
@@ -146,7 +198,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": null,
@@ -163,12 +215,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_blade"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Unknown",
     "alignment": null,

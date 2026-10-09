@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 306,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     306,
@@ -41,6 +41,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -71,6 +83,10 @@
     {
       "target": "reg_southern_border",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_doctor_su_shou",
@@ -121,6 +137,10 @@
       "count": 2
     },
     {
+      "target": "inh_king_bao_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_tie_ba_xiu",
       "count": 2
     },
@@ -150,6 +170,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -205,7 +229,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -226,7 +250,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -238,7 +262,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dispatch-and-recruitment-pitch",
       "text_origin": "source_excerpt",
@@ -254,12 +278,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dispatch-and-recruitment-pitch",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_gu_master",
         "reg_southern_border",
         "char_wei_yang",
         "char_bai_ning_bing",
@@ -274,7 +299,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dispatch-and-recruitment-pitch",
       "text_origin": "source_excerpt",
@@ -293,11 +318,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rise-among-shang-clans-generals",
       "text_origin": "source_excerpt",
       "mentions": [
+        "inh_king_bao_inheritance",
         "char_king_bao"
       ]
     },
@@ -308,7 +334,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rise-among-shang-clans-generals",
       "text_origin": "source_excerpt",
@@ -323,7 +349,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "san-cha-mountain-rivalry",
       "text_origin": "source_excerpt",
@@ -338,7 +364,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "san-cha-mountain-rivalry",
       "text_origin": "source_excerpt",
@@ -353,7 +379,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fire-god-in-battle",
       "text_origin": "source_excerpt"
@@ -365,7 +391,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fire-god-in-battle",
       "text_origin": "source_excerpt"
@@ -377,7 +403,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fire-god-in-battle",
       "text_origin": "source_excerpt"
@@ -432,7 +458,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shang Clan as of ch. 306",
@@ -459,7 +485,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Unknown",
     "alignment": null,

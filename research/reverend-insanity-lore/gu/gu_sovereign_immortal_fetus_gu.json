@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1017,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1017,
@@ -105,7 +105,19 @@
       "count": 1
     },
     {
+      "target": "sys_fire_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_trench",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -113,7 +125,31 @@
       "count": 1
     },
     {
+      "target": "evt_arc_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
+      "count": 1
+    },
+    {
+      "target": "sys_strength_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_wisdom_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_verdant_great_sun_physique",
       "count": 1
     },
     {
@@ -121,7 +157,15 @@
       "count": 1
     },
     {
+      "target": "path_heaven",
+      "count": 1
+    },
+    {
       "target": "loc_five_regional_mountain_range",
+      "count": 1
+    },
+    {
+      "target": "move_immortal_tribulation_tempering_aperture",
       "count": 1
     },
     {
@@ -130,6 +174,10 @@
     },
     {
       "target": "char_sixth_hair",
+      "count": 1
+    },
+    {
+      "target": "sys_sovereign_immortal_body",
       "count": 1
     },
     {
@@ -150,6 +198,42 @@
     },
     {
       "target": "loc_corpse_city",
+      "count": 1
+    },
+    {
+      "target": "inh_western_desert_zombie_alliance_inheritance",
+      "count": 1
+    },
+    {
+      "target": "sys_myriad_gold_wondrous_essence_physique",
+      "count": 1
+    },
+    {
+      "target": "move_orderly_well",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "path_human",
+      "count": 1
+    },
+    {
+      "target": "sys_wisdom_refinement_formation",
+      "count": 1
+    },
+    {
+      "target": "move_blood_kin_heart_revenge",
+      "count": 1
+    },
+    {
+      "target": "move_heroes_among_people",
+      "count": 1
+    },
+    {
+      "target": "sys_unifying_human_and_gu",
       "count": 1
     }
   ],
@@ -224,7 +308,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "path-and-body-traits",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "It is a human path rank nine Immortal Gu.",
@@ -273,7 +360,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -285,7 +372,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form",
         "text_origin": "source_excerpt",
@@ -307,7 +394,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "every-paths-healing-at-full-effect",
         "text_origin": "source_excerpt"
@@ -319,7 +406,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "alternating-blood-and-sword-path-moves",
         "text_origin": "source_excerpt"
@@ -354,6 +441,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "reg_northern_plains",
+          "reg_earth_earth_trench",
           "char_green",
           "char_yellow"
         ]
@@ -365,7 +453,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "immortal-material-from-zombie-alliance",
         "text_origin": "source_excerpt"
@@ -382,7 +470,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "cost-of-the-refinement",
         "text_origin": "source_excerpt",
@@ -428,13 +516,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "entry-at-yi-tian-mountain",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_ying_wu_xie",
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -444,7 +533,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "revival-body",
         "text_origin": "source_excerpt"
@@ -456,13 +545,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "revival-body",
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_five_regional_mountain_range",
-          "reg_southern_border"
+          "reg_southern_border",
+          "sys_gu_immortal"
         ]
       },
       {
@@ -472,7 +562,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "revival-body",
         "text_origin": "source_excerpt",
@@ -487,7 +577,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "design-intent-behind-the-five-regional-walls",
         "text_origin": "source_excerpt",
@@ -517,7 +607,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "why-shadow-sect-will-not-let-him-go",
         "text_origin": "source_excerpt",
@@ -547,7 +637,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "a-second-one-is-basically-impossible",
         "text_origin": "source_excerpt"

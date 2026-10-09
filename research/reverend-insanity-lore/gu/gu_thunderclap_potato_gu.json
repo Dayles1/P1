@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 515,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     515
@@ -50,6 +50,10 @@
     {
       "target": "gu_charred_thunder_potato_gu",
       "count": 2
+    },
+    {
+      "target": "sys_defensive_gu",
+      "count": 1
     },
     {
       "target": "fac_gu_masters",
@@ -123,12 +127,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-in-that-field",
         "text_origin": "source_excerpt",
         "mentions": [
-          "fac_gu_masters"
+          "fac_gu_masters",
+          "sys_defensive_gu"
         ]
       }
     ]
@@ -178,7 +183,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

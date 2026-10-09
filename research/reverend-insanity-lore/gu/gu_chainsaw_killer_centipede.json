@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 166,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     166,
@@ -56,6 +56,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -204,7 +208,8 @@
         "section": "two-advancement-routes",
         "text_origin": "source_excerpt",
         "mentions": [
-          "fac_gu_masters"
+          "fac_gu_masters",
+          "sys_gu_worms"
         ]
       }
     ]

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 307,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     307,
@@ -31,6 +31,10 @@
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "sys_movement_gu",
+      "count": 2
+    },
     {
       "target": "gu_dream_travel",
       "count": 2
@@ -45,6 +49,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -65,6 +73,10 @@
     },
     {
       "target": "loc_shang_clan_city",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -142,7 +154,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_fixed_immortal_travel",
-          "gu_liquor_god_travel"
+          "gu_liquor_god_travel",
+          "sys_movement_gu"
         ]
       },
       {
@@ -179,6 +192,7 @@
         "section": "four-great-movement-immortal-gu",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_lady_poison_scorpion"
         ]
       }
@@ -240,7 +254,8 @@
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_dream_travel"
+          "gu_dream_travel",
+          "sys_gu_master"
         ],
         "needs_review": true
       }

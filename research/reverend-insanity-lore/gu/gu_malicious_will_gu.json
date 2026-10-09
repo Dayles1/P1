@@ -23,16 +23,37 @@
   "first_appearance": {
     "chapter": 735,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     735,
     736
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
     {
+      "target": "path_wisdom",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -45,6 +66,10 @@
     },
     {
       "target": "loc_treasure_yellow_heaven",
+      "count": 1
+    },
+    {
+      "target": "move_harboring_malicious_heart",
       "count": 1
     }
   ],
@@ -77,7 +102,9 @@
     "ranks": [],
     "rank_type": "unknown",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -128,13 +155,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "loc_treasure_yellow_heaven"
+          "loc_treasure_yellow_heaven",
+          "path_wisdom"
         ]
       },
       {
@@ -144,11 +172,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "early-plan",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_mortal_gu",
           "gu_delight_in_water_and_mountain"
         ]
       },
@@ -170,7 +199,7 @@
     "Path": {
       "text": "Wisdom Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

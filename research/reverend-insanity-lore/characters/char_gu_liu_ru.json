@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1715,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1715,
@@ -33,8 +33,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_time",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -63,6 +87,14 @@
       "count": 3
     },
     {
+      "target": "path_time",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_central_continent",
       "count": 1
     },
@@ -75,6 +107,14 @@
       "count": 2
     },
     {
+      "target": "house_present_and_past_pavilion",
+      "count": 2
+    },
+    {
+      "target": "house_myriad_year_flying_warship",
+      "count": 2
+    },
+    {
       "target": "char_fairy_zi_wei",
       "count": 1
     },
@@ -84,6 +124,14 @@
     },
     {
       "target": "char_wan_zi_hong",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "house_calamity_luck_altar",
       "count": 1
     },
     {
@@ -103,7 +151,35 @@
       "count": 1
     },
     {
+      "target": "house_eternal_yacht",
+      "count": 1
+    },
+    {
       "target": "gu_fate_gu",
+      "count": 1
+    },
+    {
+      "target": "house_three_autumn_yellow_crane_platform",
+      "count": 1
+    },
+    {
+      "target": "move_daybreak_sword",
+      "count": 1
+    },
+    {
+      "target": "move_torrential_charge",
+      "count": 1
+    },
+    {
+      "target": "move_year_beast_army",
+      "count": 1
+    },
+    {
+      "target": "house_moment_stage",
+      "count": 1
+    },
+    {
+      "target": "house_shark_flow_lever",
       "count": 1
     },
     {
@@ -112,6 +188,10 @@
     },
     {
       "target": "char_xing_ye_wang",
+      "count": 1
+    },
+    {
+      "target": "move_twelve_zodiac_battle_formation",
       "count": 1
     }
   ],
@@ -129,9 +209,11 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_heavenly_court",
+        "sys_gu_immortal",
         "char_fairy_zi_wei",
         "loc_river_of_time",
-        "char_li_huang"
+        "char_li_huang",
+        "house_calamity_luck_altar"
       ]
     },
     {
@@ -171,6 +253,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "house_eternal_yacht",
+        "house_present_and_past_pavilion",
         "char_qing_ye",
         "gu_fate_gu"
       ]
@@ -202,7 +286,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "river-of-time-watch",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_myriad_year_flying_warship"
+      ]
     },
     {
       "text": "Fang Yuan enters with Myriad Year Flying Warship and Gu Liu Ru intercepts him. Sitting in the wooden wheelchair with a sickly pale face and ice cold eyes, he names himself Heavenly Court’s Gu Liu Ru and says he came to take Fang Yuan’s life. Fang Yuan recognizes him quickly from previous-life knowledge of his methods and fights him with the warship.",
@@ -250,7 +337,7 @@
     "Paths": {
       "text": "Time path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Central Continent",
@@ -260,7 +347,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1715",
@@ -276,12 +363,14 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_time"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

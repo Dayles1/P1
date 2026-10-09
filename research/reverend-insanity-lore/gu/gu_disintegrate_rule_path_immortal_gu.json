@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 801,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     790,
@@ -61,6 +61,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_chen_clan",
       "count": 1
     },
@@ -70,6 +78,10 @@
     },
     {
       "target": "loc_miniscule_mountain",
+      "count": 1
+    },
+    {
+      "target": "race_minimen",
       "count": 1
     }
   ],
@@ -130,8 +142,10 @@
         "section": "rank",
         "text_origin": "source_excerpt",
         "mentions": [
+          "race_minimen",
           "loc_miniscule_mountain",
-          "char_unfettered_scholar"
+          "char_unfettered_scholar",
+          "sys_immortal_gu"
         ]
       }
     ]
@@ -211,7 +225,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_old_lord_can_yang",
-          "fac_chen_clan"
+          "fac_chen_clan",
+          "sys_gu_immortal"
         ]
       }
     ]

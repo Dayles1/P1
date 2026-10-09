@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 335,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     335,
@@ -91,7 +91,15 @@
       "count": 1
     },
     {
+      "target": "evt_arc_demonic_path_rise",
+      "count": 1
+    },
+    {
       "target": "char_tie_mu_bai",
+      "count": 1
+    },
+    {
+      "target": "sys_demonic_path",
       "count": 1
     },
     {
@@ -107,7 +115,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -122,7 +130,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mountain-ambush",
       "text_origin": "source_excerpt",
@@ -142,7 +150,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mountain-ambush",
       "text_origin": "source_excerpt"
@@ -154,7 +162,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mountain-ambush",
       "text_origin": "source_excerpt"
@@ -166,12 +174,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "san-cha-watch",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_tie_mu_bai"
+        "char_tie_mu_bai",
+        "sys_demonic_path"
       ]
     }
   ],

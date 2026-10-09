@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 807,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     807,
@@ -31,10 +31,31 @@
     886,
     1276
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_ren_zu",
+      "count": 2
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 2
     },
     {
@@ -46,6 +67,10 @@
       "count": 2
     },
     {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
       "target": "gu_cognition_gu",
       "count": 1
     },
@@ -54,11 +79,35 @@
       "count": 1
     },
     {
+      "target": "evt_legend_becoming_extraordinary",
+      "count": 1
+    },
+    {
       "target": "char_verdant_great_sun",
       "count": 1
     },
     {
+      "target": "evt_legend_learning_through_failure",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_miniman_in_a_well",
+      "count": 1
+    },
+    {
+      "target": "race_minimen",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_fear_is_scarier_than_death",
+      "count": 1
+    },
+    {
       "target": "loc_city_well",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_opening_ones_horizon",
       "count": 1
     },
     {
@@ -67,6 +116,14 @@
     },
     {
       "target": "gu_wisdom_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_perseverance_bears_a_ladder",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_webs_of_fate",
       "count": 1
     }
   ],
@@ -78,7 +135,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -95,7 +152,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "left-in-the-abyss",
       "text_origin": "source_excerpt",
@@ -110,7 +167,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "miniman-encounter",
       "text_origin": "source_excerpt"
@@ -122,11 +179,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "city-well-and-the-ladder",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_the_legends_of_ren_zu",
         "loc_ordinary_abyss",
         "gu_strength_gu",
         "gu_perseverance_gu"
@@ -139,7 +197,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -173,7 +231,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -189,7 +247,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

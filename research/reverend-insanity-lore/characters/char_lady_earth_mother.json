@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1141,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     948,
@@ -40,6 +40,18 @@
       "from_chapter": null,
       "to_chapter": null,
       "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1144,
       "count": null,
       "confidence": "B",
       "source_id": "src_sagaofgu",
@@ -84,6 +96,10 @@
       "count": 1
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_hei_fan",
       "count": 2
     },
@@ -104,6 +120,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_spring_autumn_cicada",
       "count": 1
     },
@@ -112,11 +132,19 @@
       "count": 1
     },
     {
+      "target": "move_grey_cloud_battle_puppet",
+      "count": 1
+    },
+    {
       "target": "char_shi_shi_cheng",
       "count": 1
     },
     {
       "target": "char_shi_zong",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_dao_marks",
       "count": 1
     },
     {
@@ -136,12 +164,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -151,7 +180,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -163,7 +192,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-and-land",
       "text_origin": "source_excerpt",
@@ -178,7 +207,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-feng-yue",
       "text_origin": "source_excerpt",
@@ -196,7 +225,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-feng-yue",
       "text_origin": "source_excerpt"
@@ -234,7 +263,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Hei Tribe as of ch. 1144",
@@ -255,7 +284,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 683,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     683,
@@ -71,6 +71,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_qi_sea_grotto_heaven",
       "count": 1
     },
@@ -88,6 +92,10 @@
     },
     {
       "target": "res_metal_qi",
+      "count": 1
+    },
+    {
+      "target": "res_water_qi",
       "count": 1
     }
   ],
@@ -159,6 +167,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_qi_sea_grotto_heaven",
+          "sys_immortal_gu",
           "gu_big_qi_immortal_gu"
         ]
       },
@@ -260,7 +269,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

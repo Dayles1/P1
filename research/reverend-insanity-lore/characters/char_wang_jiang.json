@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 509,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     509,
@@ -33,6 +33,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -77,6 +89,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -97,6 +113,22 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_attack_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_storage_gu",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     }
@@ -109,7 +141,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -117,6 +149,7 @@
         "char_tang_fang",
         "char_tang_miao_ming",
         "fac_tang_tribe",
+        "sys_gu_master",
         "char_luo_yu_feng"
       ]
     },
@@ -127,7 +160,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -139,10 +172,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "weaponizing-a-storage-gu",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_storage_gu",
+        "sys_attack_gu",
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "Two rank three Gu Masters rush in to help him, and the Tang side turns pale at the numbers plus the swallow fire Gu. Tang Fang escapes while the Tang tribe elder stays behind with the rank three rare Gu slow steps, which slows Wang Jiang and the two helpers enough that they abandon the chase and attack the elder instead. Wang Jiang’s punch is the first blow that lands on that elder before a wind blade severs an arm and a snowball finishes the kill as an ice sculpture.",
@@ -151,7 +189,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fight-on-the-field",
       "text_origin": "source_excerpt",
@@ -196,7 +234,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Wang Tribe as of ch. 509",
@@ -223,7 +261,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

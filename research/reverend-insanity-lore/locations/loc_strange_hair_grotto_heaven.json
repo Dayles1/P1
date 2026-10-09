@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1994,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1994,
@@ -33,6 +33,10 @@
   "co_mentions": [
     {
       "target": "char_ice_crystal_immortal_monarch",
+      "count": 2
+    },
+    {
+      "target": "house_black_emperor_building",
       "count": 2
     },
     {
@@ -48,11 +52,23 @@
       "count": 2
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
     {
+      "target": "house_demon_judgment_board",
+      "count": 1
+    },
+    {
       "target": "loc_ice_crystal_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "move_rotting_smell_vicious_cloud",
       "count": 1
     },
     {
@@ -61,6 +77,10 @@
     },
     {
       "target": "char_golden_fur_immortal_monarch",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -83,6 +103,8 @@
       "mentions": [
         "char_ice_crystal_immortal_monarch",
         "fac_heavenly_court",
+        "sys_immortal_gu_house",
+        "house_black_emperor_building",
         "loc_chaotic_rock_grotto_heaven",
         "loc_rotten_egg_grotto_heaven"
       ]
@@ -99,7 +121,8 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_ice_crystal_grotto_heaven"
+        "loc_ice_crystal_grotto_heaven",
+        "house_demon_judgment_board"
       ]
     },
     {
@@ -116,6 +139,7 @@
       "mentions": [
         "char_fang_yuan",
         "loc_fire_plain_grotto_heaven",
+        "sys_gu_immortal",
         "loc_golden_hair_grotto_heaven"
       ]
     }

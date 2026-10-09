@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2303,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2303
@@ -46,6 +46,14 @@
     {
       "target": "reg_western_desert",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
     },
     {
       "target": "fac_anti_fang_alliance",
@@ -73,6 +81,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "fac_lin_clan"
       ]
     },
@@ -101,6 +110,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_fang_clan",
+        "sys_immortal_gu_house",
         "fac_anti_fang_alliance"
       ]
     }

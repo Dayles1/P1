@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 39,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     39,
@@ -116,6 +116,14 @@
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_caravan",
       "count": 1
     },
@@ -182,14 +190,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "caravan-arrival",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_gu_yue_village",
+        "sys_gu_master",
         "gu_treasure_brass_toad",
         "reg_southern_border",
+        "sys_gu_worms",
         "fac_gu_masters"
       ]
     },
@@ -200,7 +210,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "family-head-and-scale",
       "text_origin": "source_excerpt",
@@ -217,7 +227,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "asset-contest",
       "text_origin": "source_excerpt",

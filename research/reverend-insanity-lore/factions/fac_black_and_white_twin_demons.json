@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 337,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     337,
@@ -55,6 +55,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_shang_clan_city",
+      "count": 1
+    },
+    {
       "target": "char_bai_ning_bing",
       "count": 1
     },
@@ -68,6 +72,14 @@
     },
     {
       "target": "char_little_beast_king",
+      "count": 1
+    },
+    {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -124,6 +136,7 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_demonic_path",
         "char_fang_yuan",
         "char_bai_ning_bing",
         "gu_breath_concealment_gu",
@@ -144,6 +157,7 @@
       "mentions": [
         "loc_san_cha_mountain",
         "fac_gu_masters",
+        "sys_gu_master",
         "fac_ten_tyrants"
       ]
     },

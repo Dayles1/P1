@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1458,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1458,
@@ -59,6 +59,10 @@
   ],
   "co_mentions": [
     {
+      "target": "move_spring_sprout",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -80,6 +84,18 @@
     },
     {
       "target": "gu_self_love_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_light_fungus_radiance",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -208,7 +224,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -232,7 +248,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_lang_ya_blessed_land",
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_immortal_gu",
+          "sys_gu_immortal"
         ]
       },
       {

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 579,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     579,
@@ -41,6 +41,18 @@
     },
     {
       "target": "char_pan_ping",
+      "count": 1
+    },
+    {
+      "target": "sys_support_gu",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
+      "target": "move_six_arm_heavenly_zombie_king",
       "count": 1
     },
     {
@@ -113,7 +125,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "mo-yao-refinement-note",
         "text_origin": "source_excerpt",
@@ -144,12 +156,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "house_eighty_eight_true_yang_building",
+          "sys_support_gu",
           "char_chang_biao",
           "char_pan_ping"
         ]

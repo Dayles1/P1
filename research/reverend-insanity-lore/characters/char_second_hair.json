@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 882,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     882
@@ -32,6 +32,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_hairy_men",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -60,6 +72,10 @@
       "count": 1
     },
     {
+      "target": "race_hairy_men",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -78,6 +94,10 @@
     {
       "target": "char_qin_bai_sheng",
       "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     }
   ],
   "claims": [
@@ -88,13 +108,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_first_hair",
         "char_lang_ya_land_spirit",
+        "sys_gu_immortal",
         "char_qin_bai_sheng",
         "char_fang_yuan"
       ]
@@ -130,7 +151,7 @@
     "Race": {
       "text": "Hairy Men",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Seat": {
       "text": "Lang Ya Blessed Land as of ch. 882",
@@ -151,7 +172,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_hairy_men",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1706,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1706,
@@ -38,6 +38,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -102,6 +114,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_yi_hao_fang",
       "count": 2
     },
@@ -126,6 +142,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_central_continent_chaos",
+      "count": 1
+    },
+    {
       "target": "char_li_huang",
       "count": 1
     },
@@ -134,7 +154,35 @@
       "count": 1
     },
     {
+      "target": "house_demonic_ape_hall",
+      "count": 1
+    },
+    {
+      "target": "house_fingerprint_bridge",
+      "count": 1
+    },
+    {
+      "target": "house_frost_dragon_manor",
+      "count": 1
+    },
+    {
+      "target": "house_minor_sun_building",
+      "count": 1
+    },
+    {
+      "target": "house_unfixed_manor",
+      "count": 1
+    },
+    {
+      "target": "move_expanding_night_sky",
+      "count": 1
+    },
+    {
       "target": "gu_consecutive_gu",
+      "count": 1
+    },
+    {
+      "target": "res_pearl_thread_water",
       "count": 1
     },
     {
@@ -261,7 +309,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Ba Clan as of ch. 1706",
@@ -288,7 +336,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

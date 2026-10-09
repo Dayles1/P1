@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1718,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1718,
@@ -36,8 +36,44 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_fire",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "path",
+      "target": "path_transformation",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -66,6 +102,18 @@
       "count": 3
     },
     {
+      "target": "path_fire",
+      "count": 1
+    },
+    {
+      "target": "path_transformation",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_central_continent",
       "count": 1
     },
@@ -86,7 +134,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_yang_zi_he",
+      "count": 1
+    },
+    {
+      "target": "house_calamity_luck_altar",
       "count": 1
     },
     {
@@ -112,6 +168,10 @@
     {
       "target": "char_zhao_shan_he",
       "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
     }
   ],
   "claims": [
@@ -128,7 +188,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fairy_zi_wei",
-        "char_nu_er_bao_xiong"
+        "char_nu_er_bao_xiong",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -155,6 +216,7 @@
       "section": "calamity-luck-altar-assault",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_calamity_luck_altar",
         "loc_river_of_time"
       ]
     },
@@ -191,7 +253,8 @@
         "char_bai_cang_shui",
         "char_zhao_shan_he",
         "fac_heavenly_court",
-        "char_prince_feng_xian"
+        "char_prince_feng_xian",
+        "sys_immortal_gu_house"
       ]
     }
   ],
@@ -224,7 +287,7 @@
     "Paths": {
       "text": "Fire path Transformation path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Central Continent",
@@ -234,7 +297,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court",
@@ -250,12 +313,15 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_fire",
+      "path_transformation"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": null,

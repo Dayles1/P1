@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 317,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     317,
@@ -63,6 +63,10 @@
       "count": 1
     },
     {
+      "target": "sys_dao_marks",
+      "count": 1
+    },
+    {
       "target": "gu_self_reliance_gu",
       "count": 1
     },
@@ -72,6 +76,14 @@
     },
     {
       "target": "loc_shang_clan_city",
+      "count": 1
+    },
+    {
+      "target": "move_eight_beast_phantoms",
+      "count": 1
+    },
+    {
+      "target": "move_djinn_transformation",
       "count": 1
     },
     {
@@ -131,7 +143,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -149,7 +161,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -165,13 +177,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_guts_gu",
-          "gu_dragon_elephant_huge_strength_gu"
+          "gu_dragon_elephant_huge_strength_gu",
+          "sys_dao_marks"
         ]
       },
       {
@@ -181,7 +194,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-against-fang-yuan",
         "text_origin": "source_excerpt"
@@ -193,7 +206,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-against-fang-yuan",
         "text_origin": "source_excerpt",
@@ -208,7 +221,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-against-fang-yuan",
         "text_origin": "source_excerpt"
@@ -272,7 +285,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

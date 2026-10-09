@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 595,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     595
@@ -60,6 +60,10 @@
       "count": 1
     },
     {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
       "target": "char_green",
       "count": 1
     }
@@ -92,6 +96,7 @@
       "section": "round-ground",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_eighty_eight_true_yang_building",
         "char_hei_lou_lan",
         "fac_gu_masters"
       ]

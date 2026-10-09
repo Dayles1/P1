@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 963,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     963,
@@ -64,6 +64,18 @@
       "count": 2
     },
     {
+      "target": "house_canary_pavilion",
+      "count": 2
+    },
+    {
+      "target": "house_yue_yang_palace",
+      "count": 2
+    },
+    {
+      "target": "house_regret_pool",
+      "count": 2
+    },
+    {
       "target": "loc_wine_pool",
       "count": 2
     },
@@ -81,6 +93,10 @@
     },
     {
       "target": "char_song_zi_xing",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -108,7 +124,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -137,10 +153,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "At the location of Heavenly Lotus Sect, after rank eight fighting turns an enormous area into desolate land, three Immortal Gu Houses hover: Canary Pavilion, Yue Yang Palace, and the central rank eight Heavenly Pool. It is called the base of Heavenly Lotus Sect, created by Genesis Lotus Immortal Venerable, and its greatest use is to store immortal apertures.",
@@ -149,11 +168,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-gu-house",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_canary_pavilion",
+        "house_yue_yang_palace",
         "char_genesis_lotus_immortal_venerable"
       ]
     },
@@ -164,7 +185,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-gu-house",
       "text_origin": "source_excerpt",
@@ -182,12 +203,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "three-great-pools",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_tai_bai_yun_sheng",
+        "house_regret_pool",
         "loc_wine_pool"
       ]
     },
@@ -198,7 +220,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "house-count",
       "text_origin": "source_excerpt",

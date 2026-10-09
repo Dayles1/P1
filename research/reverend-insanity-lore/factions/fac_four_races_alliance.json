@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1146,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1146
@@ -104,11 +104,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "fac_rockman_tribe",
       "count": 1
     },
     {
       "target": "res_ice_tears",
+      "count": 1
+    },
+    {
+      "target": "move_do_not_care",
       "count": 1
     }
   ],
@@ -120,7 +132,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -132,12 +144,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_shi_zong",
+        "sys_gu_immortal",
         "char_fang_yuan"
       ]
     }

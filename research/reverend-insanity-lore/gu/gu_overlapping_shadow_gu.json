@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 505,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     505,
@@ -83,6 +83,10 @@
     },
     {
       "target": "char_hei_xiu_yi",
+      "count": 1
+    },
+    {
+      "target": "sys_attack_gu",
       "count": 1
     },
     {
@@ -182,7 +186,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-in-battle",
         "text_origin": "source_excerpt",
@@ -260,7 +264,8 @@
         "section": "hei-tribe-supply",
         "text_origin": "source_excerpt",
         "mentions": [
-          "fac_hei_tribe"
+          "fac_hei_tribe",
+          "sys_attack_gu"
         ]
       }
     ]

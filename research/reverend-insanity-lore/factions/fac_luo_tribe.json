@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 523,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     523
@@ -76,6 +76,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
       "target": "char_liu_wen_wu",
       "count": 1
     },
@@ -89,6 +93,10 @@
     },
     {
       "target": "fac_liu_tribe",
+      "count": 1
+    },
+    {
+      "target": "sys_super_gu_formation",
       "count": 1
     },
     {
@@ -108,7 +116,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -126,12 +134,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_liu_tribe"
+        "fac_liu_tribe",
+        "evt_arc_imperial_court_contest"
       ]
     }
   ],

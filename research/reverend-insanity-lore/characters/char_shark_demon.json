@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 683,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     683,
@@ -43,6 +43,18 @@
     {
       "type": "in_region",
       "target": "reg_eastern_sea",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -87,11 +99,27 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_lower_controls_higher",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 920,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "gu_death_sentence_awaits_immortal_gu",
+      "count": 4
+    },
+    {
+      "target": "move_lower_controls_higher",
       "count": 4
     },
     {
@@ -105,6 +133,10 @@
     {
       "target": "reg_eastern_sea",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_tai_bai_yun_sheng",
@@ -127,6 +159,10 @@
       "count": 2
     },
     {
+      "target": "house_profound_ice_house",
+      "count": 2
+    },
+    {
       "target": "loc_shark_sea",
       "count": 2
     },
@@ -143,6 +179,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "res_deepsea_lightning_eels",
       "count": 1
     },
@@ -152,6 +192,18 @@
     },
     {
       "target": "gu_man_as_before_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_vanishing_immortal_essence_dissipation_rain",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "move_freezing_rain_frozen_earth",
       "count": 1
     },
     {
@@ -167,11 +219,19 @@
       "count": 1
     },
     {
+      "target": "race_mermen",
+      "count": 1
+    },
+    {
       "target": "gu_landscape_as_before_gu",
       "count": 1
     },
     {
       "target": "res_medicine_ice",
+      "count": 1
+    },
+    {
+      "target": "move_fighting_soul_battlefield",
       "count": 1
     },
     {
@@ -187,6 +247,14 @@
       "count": 1
     },
     {
+      "target": "move_distinct_map",
+      "count": 1
+    },
+    {
+      "target": "move_eight_doors_labyrinth",
+      "count": 1
+    },
+    {
       "target": "loc_undying_kingdom",
       "count": 1
     },
@@ -199,7 +267,23 @@
       "count": 1
     },
     {
+      "target": "move_unmoving_troops",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "move_angry_bird",
       "count": 1
     },
     {
@@ -211,11 +295,27 @@
       "count": 1
     },
     {
+      "target": "move_star_soul_battlefield",
+      "count": 1
+    },
+    {
       "target": "fac_shadow_sect",
       "count": 1
     },
     {
       "target": "gu_sovereign_immortal_fetus_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_hundred_and_eighty_slaves_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "move_hundred_and_eighty_slaves",
+      "count": 1
+    },
+    {
+      "target": "move_man_as_before",
       "count": 1
     }
   ],
@@ -227,7 +327,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -235,7 +335,8 @@
         "char_tai_bai_yun_sheng",
         "fac_zombie_alliance",
         "loc_hai_shi_blessed_land",
-        "gu_death_sentence_awaits_immortal_gu"
+        "gu_death_sentence_awaits_immortal_gu",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -245,7 +346,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -260,12 +361,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wife-and-eastern-sea-zombie-alliance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_su_bai_man",
+        "move_man_as_before",
         "reg_eastern_sea"
       ]
     },
@@ -276,10 +378,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yu-lu-invasion-lead",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_profound_ice_house"
+      ]
     },
     {
       "text": "When Su Bai Man urges that they trail Tai Bai Yun Sheng to learn his route through the earth tide, Shark Demon firmly refuses, since routes are not fixed and lose their value once a few earth tides have changed the formless tidal forces. Their main goal, he says, is to cooperate with him and use Man as Before for their revival, a long-term plan they will not harm for short-term profit.",
@@ -288,7 +393,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "man-as-before-over-short-term-profit",
       "text_origin": "source_excerpt"
@@ -300,7 +405,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "returning-the-bow-then-calling-the-retreat",
       "text_origin": "source_excerpt"
@@ -312,7 +417,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hosting-the-shark-fishing-banquet",
       "text_origin": "source_excerpt",
@@ -327,7 +432,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "private-view-of-xing-xiang-zi",
       "text_origin": "source_excerpt",
@@ -342,7 +447,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hoped-for-rewards-from-yu-lu-blessed-land",
       "text_origin": "source_excerpt"
@@ -354,12 +459,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "funding-fang-yuan-without-oath-or-probe",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_gu_worms",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -369,12 +476,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "plan-to-subdue-the-one-finger-flow-shark",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_blazing_heaven_demoness"
+        "char_blazing_heaven_demoness",
+        "move_lower_controls_higher",
+        "move_hundred_and_eighty_slaves"
       ]
     },
     {
@@ -384,7 +493,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ousted-from-eastern-sea-zombie-alliance",
       "text_origin": "source_excerpt"
@@ -396,7 +505,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "turned-into-gu-materials",
       "text_origin": "source_excerpt",
@@ -452,7 +561,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Zombie Alliance as of ch. 683",
@@ -479,7 +588,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Dead",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 323,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     323,
@@ -57,9 +57,41 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_sheng_tian_true_inheritance",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2095,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "inh_sheng_tian_true_inheritance",
+      "count": 4
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "reg_southern_border",
       "count": 1
@@ -78,6 +110,10 @@
     },
     {
       "target": "char_zuo_wu_sheng",
+      "count": 2
+    },
+    {
+      "target": "inh_king_bao_inheritance",
       "count": 2
     },
     {
@@ -125,6 +161,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_three_kings_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -157,11 +197,23 @@
       "count": 1
     },
     {
+      "target": "inh_king_xin_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_san_cha_mountain",
       "count": 1
     },
     {
+      "target": "move_infinite_search_and_lock",
+      "count": 1
+    },
+    {
       "target": "char_tie_ba_xiu",
+      "count": 1
+    },
+    {
+      "target": "sys_demonic_path",
       "count": 1
     },
     {
@@ -193,6 +245,18 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_wu_clan",
       "count": 1
     },
@@ -211,6 +275,10 @@
     {
       "target": "char_wei_shen_jing",
       "count": 1
+    },
+    {
+      "target": "res_tap_fire",
+      "count": 1
     }
   ],
   "claims": [
@@ -221,7 +289,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -237,7 +305,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -249,7 +317,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -261,7 +329,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reputation-and-standing",
       "text_origin": "source_excerpt",
@@ -293,7 +361,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reputation-and-standing",
       "text_origin": "source_excerpt",
@@ -311,7 +379,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reputation-and-standing",
       "text_origin": "source_excerpt",
@@ -326,10 +394,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reputation-and-standing",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_king_bao_inheritance"
+      ]
     },
     {
       "text": "In Fang Yuan’s previous life, Tie clan’s four old-timers used their combination killer move to capture demonic path Kong Ri Tian.",
@@ -338,7 +409,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "previous-life-memories",
       "text_origin": "source_excerpt",
@@ -353,7 +424,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "previous-life-memories",
       "text_origin": "source_excerpt",
@@ -369,10 +440,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "previous-life-memories",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_king_xin_inheritance"
+      ]
     },
     {
       "text": "Tie Ba Xiu’s roster still lists him among five rank four peak stage Gu Masters on the mountain.",
@@ -381,7 +455,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "previous-life-memories",
       "text_origin": "source_excerpt",
@@ -396,7 +470,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "previous-life-memories",
       "text_origin": "source_excerpt"
@@ -408,7 +482,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "transformation-forms",
       "text_origin": "source_excerpt"
@@ -420,7 +494,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "transformation-forms",
       "text_origin": "source_excerpt"
@@ -432,12 +506,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "campaign-movements",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_tie_mu_bai"
+        "char_tie_mu_bai",
+        "sys_demonic_path"
       ]
     },
     {
@@ -447,7 +522,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "campaign-movements",
       "text_origin": "source_excerpt",
@@ -462,7 +537,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "campaign-movements",
       "text_origin": "source_excerpt"
@@ -474,7 +549,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "campaign-movements",
       "text_origin": "source_excerpt"
@@ -493,7 +568,10 @@
       "mentions": [
         "loc_sun_moon_sinkhole",
         "char_empress_wu_ji",
-        "fac_wu_clan"
+        "fac_wu_clan",
+        "sys_gu_worms",
+        "inh_sheng_tian_true_inheritance",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -509,7 +587,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_kong_sheng_tian",
-        "char_wu_zhan_ping"
+        "char_wu_zhan_ping",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -603,7 +682,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 323",
@@ -630,7 +709,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Unknown",
     "alignment": "demonic path as of ch. 323",

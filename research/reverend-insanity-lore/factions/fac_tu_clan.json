@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1322,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1322,
@@ -84,7 +84,23 @@
       "count": 2
     },
     {
+      "target": "reg_earth_earth_tunnel",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_dao_veins_famous_mountains",
+      "count": 1
+    },
+    {
       "target": "char_meng_qiu_zhen",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -93,6 +109,14 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_tomb_earth",
+      "count": 1
+    },
+    {
+      "target": "move_cracked_soil_shattering_life",
       "count": 1
     },
     {
@@ -108,11 +132,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "formation-path-dream",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_tu_shi_cheng"
       ]
     },
@@ -129,7 +154,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_meng_qiu_zhen",
-        "char_huang_xiao_mi"
+        "char_huang_xiao_mi",
+        "sys_gu_worms"
       ]
     },
     {
@@ -142,7 +168,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "mortal-village",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "reg_earth_earth_tunnel"
+      ]
     },
     {
       "text": "Village Gu Masters hunt nearby mushroommen, and elders treat capturing a mushroomman spy as a major contribution.",

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1823,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1823,
@@ -49,6 +49,22 @@
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "house_cooking_luck_pot",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -148,7 +164,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "house-formation",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu_house"
+        ]
       }
     ]
   },
@@ -202,8 +221,11 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_cooking_luck_pot",
           "char_fang_yuan",
-          "reg_southern_border"
+          "sys_immortal_gu",
+          "reg_southern_border",
+          "sys_gu_immortal"
         ]
       }
     ]

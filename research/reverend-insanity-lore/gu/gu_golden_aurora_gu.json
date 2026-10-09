@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 373,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     373,
@@ -82,6 +82,14 @@
     },
     {
       "target": "loc_san_cha_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_movement_gu",
       "count": 1
     },
     {
@@ -206,7 +214,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_movement_gu"
+        ]
       },
       {
         "text": "A rank five killer move greatly damages Golden Aurora Gu along with other Gu.",
@@ -232,7 +243,8 @@
         "section": "fang-yuans-use",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_golden_dragon_gu"
+          "gu_golden_dragon_gu",
+          "sys_gu_master"
         ]
       }
     ]

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 365,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     365,
@@ -105,7 +105,15 @@
       "count": 1
     },
     {
+      "target": "inh_hu_immortal_inheritance",
+      "count": 1
+    },
+    {
       "target": "gu_golden_coat_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_hu_immortal_blessed_land",
       "count": 1
     },
     {
@@ -157,11 +165,23 @@
       "count": 1
     },
     {
+      "target": "res_wolf_emperor_soul",
+      "count": 1
+    },
+    {
       "target": "char_di_yuan",
       "count": 1
     },
     {
       "target": "char_six_headed_snake",
+      "count": 1
+    },
+    {
+      "target": "move_hundred_li_eye",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -211,6 +231,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_lord_sky_crane",
+        "inh_hu_immortal_inheritance",
         "char_fairy_bai_hu"
       ]
     },
@@ -250,7 +271,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-report-in-the-blessed-land",
       "text_origin": "source_excerpt"
@@ -262,12 +283,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rebirth-reconnection",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_lang_ya_land_spirit",
+        "sys_gu_immortal",
         "gu_wisdom_gu"
       ]
     }

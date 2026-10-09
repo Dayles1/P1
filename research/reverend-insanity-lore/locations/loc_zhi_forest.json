@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 680,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     680
@@ -32,6 +32,10 @@
   "co_mentions": [
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -51,10 +55,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "Under a valley near Universal Life Academy, Fang Yuan enters an ordinary zhi forest about ten li in size. At its center the lingzhi king is six meters tall, reaching the cave ceiling, with flesh like a huge umbrella spreading in a circle. Beside that king live three earth horses as a family, metal-consuming ant groups with wild metal path Gu, and wild wood path Gu on the lingzhi king.",
@@ -63,7 +70,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -79,7 +86,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "resource-and-trade",
       "text_origin": "source_excerpt"
@@ -91,7 +98,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "resource-and-trade",
       "text_origin": "source_excerpt",

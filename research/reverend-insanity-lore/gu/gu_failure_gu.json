@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 435,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     435,
@@ -54,6 +54,10 @@
       "count": 2
     },
     {
+      "target": "sys_refinement_path_convention",
+      "count": 2
+    },
+    {
       "target": "gu_courage_gu",
       "count": 2
     },
@@ -70,7 +74,27 @@
       "count": 2
     },
     {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_love_is_cruel",
+      "count": 1
+    },
+    {
       "target": "char_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_troubles_of_love",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -86,7 +110,19 @@
       "count": 1
     },
     {
+      "target": "inh_infallible_inheritance",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_learning_through_failure",
+      "count": 1
+    },
+    {
       "target": "loc_hairy_foot_mountain",
+      "count": 1
+    },
+    {
+      "target": "res_success_dao_mark",
       "count": 1
     }
   ],
@@ -143,7 +179,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -155,7 +191,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt",
@@ -210,6 +246,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_the_legends_of_ren_zu",
           "loc_cheng_bai_mountain",
           "gu_success_gu"
         ]
@@ -221,7 +258,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "desolate-ancient-moons-search",
         "text_origin": "source_excerpt",
@@ -237,7 +274,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "hairy-man-and-infallible-blessed-land",
         "text_origin": "source_excerpt",
@@ -247,9 +284,12 @@
           "gu_faith_gu",
           "gu_strength_gu",
           "fac_heavenly_court",
+          "sys_gu_immortal",
           "loc_infallible_blessed_land",
+          "sys_mortal_gu",
           "gu_fate_gu",
-          "char_bi_chen_tian"
+          "char_bi_chen_tian",
+          "sys_refinement_path_convention"
         ]
       },
       {

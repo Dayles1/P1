@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1657,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1657,
@@ -76,6 +76,14 @@
     },
     {
       "target": "char_gold_dragonfish",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -148,7 +156,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master",
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "It has no offensive might, yet it is a top tier rank five Gu for collecting black oil.",

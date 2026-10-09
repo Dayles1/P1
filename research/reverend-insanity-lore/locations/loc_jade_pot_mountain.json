@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1182,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1182,
@@ -66,6 +66,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_heaven_surveying_five_xiangs",
       "count": 1
     },
@@ -74,7 +78,15 @@
       "count": 1
     },
     {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
+      "count": 1
+    },
+    {
       "target": "char_hei_lou_lan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -83,6 +95,10 @@
     },
     {
       "target": "char_tai_bai_yun_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -96,6 +112,10 @@
     {
       "target": "res_ice_heart",
       "count": 1
+    },
+    {
+      "target": "res_twin_ice_heart",
+      "count": 1
     }
   ],
   "claims": [
@@ -106,7 +126,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -115,6 +135,7 @@
         "reg_southern_border",
         "char_ying_wu_xie",
         "fac_shadow_sect",
+        "sys_immortal_gu",
         "fac_heaven_surveying_five_xiangs"
       ]
     },
@@ -125,11 +146,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "icy-interior",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_hei_lou_lan"
       ]
     },
@@ -140,7 +162,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ice-hearts-and-ice-soul",
       "text_origin": "source_excerpt",
@@ -156,7 +178,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ice-hearts-and-ice-soul",
       "text_origin": "source_excerpt",
@@ -172,11 +194,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ice-hearts-and-ice-soul",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_formation",
         "gu_ice_heart_gu",
         "gu_ice_soul_immortal_gu"
       ]

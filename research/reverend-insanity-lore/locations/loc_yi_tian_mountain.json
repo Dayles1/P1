@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 255,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     255,
@@ -99,11 +99,19 @@
       "count": 2
     },
     {
+      "target": "house_graceful_chaotic_duel_stage",
+      "count": 2
+    },
+    {
       "target": "loc_yi_tian_village",
       "count": 2
     },
     {
       "target": "char_shang_yan_fei",
+      "count": 2
+    },
+    {
+      "target": "sys_pure_dream_reality_seeker_physique",
       "count": 2
     },
     {
@@ -123,11 +131,47 @@
       "count": 2
     },
     {
+      "target": "house_heaven_overseeing_tower",
+      "count": 2
+    },
+    {
+      "target": "house_sacred_feather_city",
+      "count": 2
+    },
+    {
       "target": "loc_door_of_life_and_death",
       "count": 2
     },
     {
       "target": "loc_life_and_death_blessed_land",
+      "count": 2
+    },
+    {
+      "target": "house_blood_river_chariot",
+      "count": 2
+    },
+    {
+      "target": "house_golden_altar",
+      "count": 2
+    },
+    {
+      "target": "house_green_wave_pavilion",
+      "count": 2
+    },
+    {
+      "target": "house_nightmare_castle",
+      "count": 2
+    },
+    {
+      "target": "house_unbreakable_iron_fortress",
+      "count": 2
+    },
+    {
+      "target": "house_weaving_cocoon_manor",
+      "count": 2
+    },
+    {
+      "target": "house_embroidered_tower",
       "count": 2
     },
     {
@@ -139,7 +183,15 @@
       "count": 1
     },
     {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
       "target": "fac_bai_clan_bai_gu_mountain",
+      "count": 1
+    },
+    {
+      "target": "inh_second_zombie_king_inheritance",
       "count": 1
     },
     {
@@ -152,6 +204,10 @@
     },
     {
       "target": "fac_three_kings",
+      "count": 1
+    },
+    {
+      "target": "inh_three_kings_inheritance",
       "count": 1
     },
     {
@@ -211,6 +267,22 @@
       "count": 1
     },
     {
+      "target": "move_familiar_face",
+      "count": 1
+    },
+    {
+      "target": "sys_great_strength_true_martial_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -251,7 +323,23 @@
       "count": 1
     },
     {
+      "target": "sys_blazing_glory_lightning_brilliance_physique",
+      "count": 1
+    },
+    {
       "target": "char_carefree_wisdom_heart",
+      "count": 1
+    },
+    {
+      "target": "sys_carefree_wisdom_heart_physique",
+      "count": 1
+    },
+    {
+      "target": "move_lead_soul_into_dream",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -264,6 +352,10 @@
     },
     {
       "target": "char_bo_qing",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_immortal_zombie_lifeless_formation",
       "count": 1
     },
     {
@@ -288,6 +380,10 @@
     },
     {
       "target": "gu_spring_autumn_cicada",
+      "count": 1
+    },
+    {
+      "target": "sys_grey_memory",
       "count": 1
     },
     {
@@ -319,11 +415,19 @@
       "count": 1
     },
     {
+      "target": "sys_super_gu_formation",
+      "count": 1
+    },
+    {
       "target": "loc_giant_dream_realm",
       "count": 1
     },
     {
       "target": "char_huo_kong_dong",
+      "count": 1
+    },
+    {
+      "target": "sys_special_will",
       "count": 1
     },
     {
@@ -355,7 +459,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -370,7 +474,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "The name first surfaces in Fang Yuan’s earlier-life memory: Ding Hao dies in the righteous and demonic battle on Yi Tian mountain after taking Second Zombie King’s place.",
@@ -379,7 +486,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-in-an-earlier-lifes-memory",
       "text_origin": "source_excerpt",
@@ -408,10 +515,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "southern-border-stage",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_three_kings_inheritance"
+      ]
     },
     {
       "text": "He treats it as a hard deadline for raising battle strength after years in Shang Clan City.",
@@ -420,7 +530,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "southern-border-stage",
       "text_origin": "source_excerpt",
@@ -435,10 +545,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "demonic-alliance-and-fang-yuans-aim",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_demonic_path"
+      ]
     },
     {
       "text": "Fang Yuan refuses Shang Yan Fei’s offer to clear the Bai clan arrest warrant on him, because Shang clan settling it would brand him as their man and block his plan to get close to the demonic Gu Masters and join Yi Tian mountain. Demonic path footing on that battlefield is the route he wants, not a righteous label that would cost him later gains.",
@@ -447,7 +560,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "demonic-alliance-and-fang-yuans-aim",
       "text_origin": "source_excerpt",
@@ -463,7 +576,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "demonic-alliance-and-fang-yuans-aim",
       "text_origin": "source_excerpt"
@@ -475,13 +588,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "naming-and-the-mortal-battle",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_xiao_shan",
         "loc_yi_tian_village",
+        "sys_immortal_gu_house",
+        "house_graceful_chaotic_duel_stage",
         "char_great_strength_true_martial"
       ]
     },
@@ -492,7 +607,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "naming-and-the-mortal-battle",
       "text_origin": "source_excerpt",
@@ -508,7 +623,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "naming-and-the-mortal-battle",
       "text_origin": "source_excerpt",
@@ -523,10 +638,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "naming-and-the-mortal-battle",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "The mountain’s forbidden zone targets only immortal apertures, not Immortal Gu.",
@@ -535,7 +653,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "naming-and-the-mortal-battle",
       "text_origin": "source_excerpt"
@@ -547,7 +665,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "naming-and-the-mortal-battle",
       "text_origin": "source_excerpt"
@@ -559,7 +677,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "gu-immortal-battle",
       "text_origin": "source_excerpt",
@@ -574,7 +692,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "gu-immortal-battle",
       "text_origin": "source_excerpt"
@@ -586,10 +704,19 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "gu-immortal-battle",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_sacred_feather_city",
+        "house_unbreakable_iron_fortress",
+        "house_blood_river_chariot",
+        "house_nightmare_castle",
+        "house_green_wave_pavilion",
+        "house_weaving_cocoon_manor",
+        "house_golden_altar"
+      ]
     },
     {
       "text": "Heavenly Court answers with Heaven Overseeing Tower, then Embroidered Tower when dream path methods stall the tower lord.",
@@ -598,12 +725,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "gu-immortal-battle",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_heavenly_court"
+        "fac_heavenly_court",
+        "house_heaven_overseeing_tower",
+        "house_embroidered_tower"
       ]
     },
     {
@@ -613,12 +742,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "gu-immortal-battle",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_ying_wu_xie",
+        "sys_pure_dream_reality_seeker_physique",
         "char_heaven_overseeing_tower_lord"
       ]
     },
@@ -629,7 +759,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "gu-immortal-battle",
       "text_origin": "source_excerpt",
@@ -645,7 +775,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "southern-border-investigators-arrive",
       "text_origin": "source_excerpt",
@@ -661,7 +791,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realm-aftermath",
       "text_origin": "source_excerpt"
@@ -673,7 +803,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realm-aftermath",
       "text_origin": "source_excerpt"
@@ -685,7 +815,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realm-aftermath",
       "text_origin": "source_excerpt",
@@ -701,10 +831,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realm-aftermath",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_super_gu_formation"
+      ]
     },
     {
       "text": "Fang Yuan returns near the defensive Gu formation around the dream realm, overhears a Luo clan deal that smuggles a lone cultivator inside for an “immortal opportunity,” and follows the trade into Lady White Rabbit’s dream realm business outside the seal. He notes that the righteous path encircled the gigantic dream realm after the battle destroyed the immortals involved, while Shadow Sect, Heavenly Court, and he himself keep quiet about what happened.",
@@ -713,11 +846,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sealed-site-visit",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_formation",
         "fac_luo_clan",
         "char_lady_white_rabbit"
       ]
@@ -729,7 +863,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sent-to-command-the-sealing-formation",
       "text_origin": "source_excerpt",

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1924,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1924,
@@ -35,6 +35,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -67,11 +79,19 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_qin_song",
       "count": 2
     },
     {
       "target": "char_zhang_fei_xiong",
+      "count": 2
+    },
+    {
+      "target": "house_red_river_wheel",
       "count": 2
     },
     {
@@ -84,6 +104,14 @@
     },
     {
       "target": "char_qing_yue_an",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -100,6 +128,10 @@
     },
     {
       "target": "fac_dong_clan",
+      "count": 1
+    },
+    {
+      "target": "house_jade_toad_castle",
       "count": 1
     },
     {
@@ -122,10 +154,12 @@
       "mentions": [
         "fac_heavenly_court",
         "reg_eastern_sea",
+        "sys_gu_immortal",
         "char_qing_yue_an",
         "char_qin_song",
         "reg_central_continent",
         "reg_western_desert",
+        "sys_immortal_gu_house",
         "loc_emperor_city",
         "char_fang_di_chang"
       ]
@@ -156,6 +190,7 @@
       "mentions": [
         "loc_immortal_graveyard",
         "fac_dong_clan",
+        "house_red_river_wheel",
         "char_zhang_fei_xiong"
       ]
     }
@@ -201,7 +236,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1924",
@@ -223,7 +258,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": null,
     "alignment": null,

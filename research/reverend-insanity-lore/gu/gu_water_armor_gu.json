@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 240,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     240,
@@ -32,6 +32,18 @@
     1346
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_water",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_ge_yao",
@@ -49,6 +61,14 @@
     {
       "target": "char_ge_yao",
       "count": 4
+    },
+    {
+      "target": "path_water",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
     },
     {
       "target": "char_fang_yuan",
@@ -95,7 +115,9 @@
     "ranks": [],
     "rank_type": "unknown",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_water"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -156,10 +178,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "When poison beard wolves charge Ge Yao, she shouts for water armor and water vapor condenses into a layer of light blue armor over her whole body.",
@@ -183,7 +208,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "light-blue-armor",
         "text_origin": "source_excerpt",
@@ -209,7 +234,7 @@
     "Path": {
       "text": "Water Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

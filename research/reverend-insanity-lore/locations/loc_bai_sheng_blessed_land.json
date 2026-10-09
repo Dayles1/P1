@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 744,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     744,
@@ -58,7 +58,15 @@
       "count": 1
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_crimson_reed_marsh",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_blessed_land_consolidation",
       "count": 1
     },
     {
@@ -70,11 +78,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_hole_earth_gu",
       "count": 1
     },
     {
       "target": "gu_mountain_pledge_gu",
+      "count": 1
+    },
+    {
+      "target": "move_sleeping_cloud_coffin",
       "count": 1
     },
     {
@@ -98,7 +114,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -114,7 +130,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -129,7 +145,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_mortal_gu"
+      ]
     },
     {
       "text": "Fang Yuan and Tai Bai Yun Sheng reach the land from Fairy Li Shan’s blessed land through a pair of hole earth Gu set under mountain pledge Gu, rather than traveling the outside Northern Plains. Qin Bai Sheng has altered the blessed land into a huge auction hall for the many Northern Plains forces and experts invited. He offers a main hall for free interaction, single rooms for those who prefer solitude, and secret rooms that hide a Gu Immortal’s identity, with free swapping during the auction unless a secret room’s occupant refuses entry. Fang Yuan and Tai Bai Yun Sheng take the tenth and eleventh secret rooms. After they enter, the blessed land opens its entrance and invites many Gu Immortals in.",
@@ -138,7 +157,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "auction-hall",
       "text_origin": "source_excerpt",
@@ -147,7 +166,8 @@
         "char_tai_bai_yun_sheng",
         "gu_hole_earth_gu",
         "gu_mountain_pledge_gu",
-        "reg_northern_plains"
+        "reg_northern_plains",
+        "sys_gu_immortal"
       ]
     },
     {

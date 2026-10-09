@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 899,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     899,
@@ -35,8 +35,41 @@
     2102,
     2105
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_tian_nan_true_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "inh_tian_nan_true_inheritance",
+      "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 2
+    },
     {
       "target": "char_old_immortal_kong_jue",
       "count": 2
@@ -58,6 +91,18 @@
       "count": 1
     },
     {
+      "target": "sys_attainment",
+      "count": 1
+    },
+    {
+      "target": "sys_supreme_grandmaster",
+      "count": 1
+    },
+    {
+      "target": "evt_era_remote",
+      "count": 1
+    },
+    {
       "target": "fac_song_clan",
       "count": 1
     },
@@ -74,11 +119,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_as_before_formation",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
       "target": "char_reckless_savage_demon_venerable",
+      "count": 1
+    },
+    {
+      "target": "move_unrestrained_heavenly_mark",
       "count": 1
     }
   ],
@@ -90,7 +143,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -98,6 +151,7 @@
         "char_song_qi_yuan",
         "loc_ascending_heaven_plain",
         "fac_song_clan",
+        "evt_era_remote",
         "char_old_immortal_kong_jue",
         "char_long_hair_ancestor"
       ]
@@ -112,7 +166,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "three-peak-refiners",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "race_humans"
+      ]
     },
     {
       "text": "Further recounting places him in the Remote Antiquity Era among those three supreme grandmasters, notes he was human, and says Heavenly Court collected most of his and Old Immortal Kong Jue’s true inheritances.",
@@ -191,7 +248,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -207,7 +264,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Dead",
     "alignment": null,

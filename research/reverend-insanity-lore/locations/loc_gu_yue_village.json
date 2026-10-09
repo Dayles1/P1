@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     1,
@@ -82,12 +82,24 @@
       "count": 2
     },
     {
+      "target": "sys_awakening_ceremony",
+      "count": 2
+    },
+    {
       "target": "loc_bamboo_building",
       "count": 2
     },
     {
       "target": "fac_gu_masters",
       "count": 2
+    },
+    {
+      "target": "evt_arc_gu_yue_village",
+      "count": 1
+    },
+    {
+      "target": "evt_era_current",
+      "count": 1
     },
     {
       "target": "fac_bai_clan",
@@ -126,6 +138,14 @@
       "count": 1
     },
     {
+      "target": "sys_ranks_and_realms",
+      "count": 1
+    },
+    {
+      "target": "res_moon_orchid",
+      "count": 1
+    },
+    {
       "target": "gu_moonlight_gu",
       "count": 1
     },
@@ -139,6 +159,10 @@
     },
     {
       "target": "res_green_bamboo_wine",
+      "count": 1
+    },
+    {
+      "target": "res_rice_wine",
       "count": 1
     },
     {
@@ -178,6 +202,18 @@
       "count": 1
     },
     {
+      "target": "evt_arc_qing_mao_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_middle_sized_clan",
+      "count": 1
+    },
+    {
+      "target": "sys_beast_tide",
+      "count": 1
+    },
+    {
       "target": "char_chi_shan",
       "count": 1
     },
@@ -202,11 +238,27 @@
       "count": 1
     },
     {
+      "target": "sys_myriad_beast_king",
+      "count": 1
+    },
+    {
       "target": "gu_berserk_gu",
       "count": 1
     },
     {
       "target": "char_bai_clan_leader",
+      "count": 1
+    },
+    {
+      "target": "sys_top_ten_great_demonic_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_second_battle",
+      "count": 1
+    },
+    {
+      "target": "sys_wolf_tide",
       "count": 1
     },
     {
@@ -242,7 +294,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -258,7 +310,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -282,7 +334,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -357,7 +409,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "seat-and-foundation",
       "text_origin": "source_excerpt",
@@ -376,7 +428,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "pavilion-academy-and-streets",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_awakening_ceremony"
+      ]
     },
     {
       "text": "Footprint Gu tracking later runs from the family head pavilion into the academy hostel, then to the academy and around, and also reaches the mountain village’s inn.",
@@ -397,7 +452,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pavilion-academy-and-streets",
       "text_origin": "source_excerpt",

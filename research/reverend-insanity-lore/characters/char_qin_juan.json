@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 854,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     854,
@@ -35,6 +35,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -67,6 +79,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_sun_yao",
       "count": 2
     },
@@ -79,11 +95,19 @@
       "count": 2
     },
     {
+      "target": "move_small_wishful_hand",
+      "count": 1
+    },
+    {
       "target": "char_feng_jin_huang",
       "count": 1
     },
     {
       "target": "char_zhao_lian_yun",
+      "count": 1
+    },
+    {
+      "target": "sys_heaven_path_dao_marks",
       "count": 1
     }
   ],
@@ -95,7 +119,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -110,7 +134,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "zhao-lian-yun-visit",
       "text_origin": "source_excerpt",
@@ -126,7 +150,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "on-the-road-to-lake-heart-mountain",
       "text_origin": "source_excerpt"
@@ -187,7 +211,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Spirit Affinity House as of ch. 854",
@@ -208,7 +232,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

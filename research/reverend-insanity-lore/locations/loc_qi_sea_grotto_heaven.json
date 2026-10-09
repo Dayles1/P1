@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1035,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1035,
@@ -49,6 +49,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_bai_ning_bing",
       "count": 1
     },
@@ -61,6 +65,14 @@
       "count": 1
     },
     {
+      "target": "res_sword_qi",
+      "count": 1
+    },
+    {
+      "target": "move_unlimited_qi_sea",
+      "count": 1
+    },
+    {
       "target": "gu_big_family_qi_immortal_gu",
       "count": 1
     },
@@ -69,11 +81,23 @@
       "count": 1
     },
     {
+      "target": "sys_qi_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "char_qi_sea_ancestor",
       "count": 1
     },
     {
+      "target": "move_jade_flow_pearl",
+      "count": 1
+    },
+    {
       "target": "res_frost_qi",
+      "count": 1
+    },
+    {
+      "target": "res_qi_currents",
       "count": 1
     },
     {
@@ -89,13 +113,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_qi_zai",
-        "fac_qi_clan"
+        "fac_qi_clan",
+        "sys_gu_immortal"
       ]
     },
     {

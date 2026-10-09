@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 426,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     426,
@@ -116,6 +116,10 @@
       "count": 3
     },
     {
+      "target": "sys_gu_house",
+      "count": 2
+    },
+    {
       "target": "char_man_duo",
       "count": 2
     },
@@ -126,6 +130,10 @@
     {
       "target": "fac_yan_tribe",
       "count": 2
+    },
+    {
+      "target": "evt_arc_northern_plains_imperial_court",
+      "count": 1
     },
     {
       "target": "char_fang_yuan",
@@ -165,6 +173,10 @@
     },
     {
       "target": "fac_chang_tribe",
+      "count": 1
+    },
+    {
+      "target": "house_mushroom_forest",
       "count": 1
     },
     {
@@ -253,6 +265,10 @@
     },
     {
       "target": "gu_swallow_fire_gu",
+      "count": 1
+    },
+    {
+      "target": "move_dragon_head_drill",
       "count": 1
     },
     {
@@ -364,11 +380,19 @@
       "count": 1
     },
     {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
       "target": "fac_dong_fang_alliance",
       "count": 1
     },
     {
       "target": "gu_detection_gu",
+      "count": 1
+    },
+    {
+      "target": "move_seven_star_light",
       "count": 1
     },
     {
@@ -384,7 +408,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -396,12 +420,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_gu_masters"
+        "fac_gu_masters",
+        "sys_gu_house"
       ]
     },
     {
@@ -411,7 +436,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-naming",
       "text_origin": "source_excerpt",
@@ -428,7 +453,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "migration-and-pressure",
       "text_origin": "source_excerpt",
@@ -444,7 +469,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "external-elder-offer",
       "text_origin": "source_excerpt"
@@ -456,7 +481,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "camp-welcome",
       "text_origin": "source_excerpt",
@@ -472,7 +497,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "former-scale-named",
       "text_origin": "source_excerpt",

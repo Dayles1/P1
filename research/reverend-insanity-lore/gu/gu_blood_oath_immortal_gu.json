@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1045,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1045,
@@ -32,6 +32,18 @@
     2252
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_blood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_ding_yan",
@@ -83,6 +95,10 @@
       "count": 2
     },
     {
+      "target": "path_blood",
+      "count": 2
+    },
+    {
       "target": "gu_blood_trace_immortal_gu",
       "count": 2
     },
@@ -91,7 +107,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "reg_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
       "count": 1
     }
   ],
@@ -131,7 +159,9 @@
     "ranks": [],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_blood"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -193,7 +223,8 @@
         "section": "creators",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_blood_trace_immortal_gu"
+          "gu_blood_trace_immortal_gu",
+          "sys_immortal_gu"
         ]
       }
     ]
@@ -255,13 +286,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
           "reg_eastern_sea",
+          "path_blood",
+          "sys_gu_immortal",
           "char_liu_qing_yu"
         ]
       },
@@ -275,7 +308,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-copy",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_recipe"
+        ]
       }
     ]
   },
@@ -283,7 +319,7 @@
     "Path": {
       "text": "Blood Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 42,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     39,
@@ -43,6 +43,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -91,6 +103,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_jia_fu",
       "count": 2
     },
@@ -107,11 +123,23 @@
       "count": 2
     },
     {
+      "target": "inh_flower_wine_monk_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_tie_ruo_nan",
       "count": 2
     },
     {
+      "target": "evt_arc_gu_yue_village",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_d_grade",
       "count": 1
     },
     {
@@ -159,7 +187,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -191,7 +219,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -203,7 +231,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -215,7 +243,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "merchant-on-the-jia-caravan",
       "text_origin": "source_excerpt",
@@ -230,7 +258,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "merchant-on-the-jia-caravan",
       "text_origin": "source_excerpt",
@@ -246,7 +274,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "merchant-on-the-jia-caravan",
       "text_origin": "source_excerpt",
@@ -261,7 +289,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "merchant-on-the-jia-caravan",
       "text_origin": "source_excerpt"
@@ -273,7 +301,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "merchant-on-the-jia-caravan",
       "text_origin": "source_excerpt"
@@ -285,10 +313,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "merchant-on-the-jia-caravan",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_d_grade"
+      ]
     },
     {
       "text": "After that public apology humiliation, Fang Yuan finds him drinking at a wine shop and offers a secret deal tied to Qing Mao Mountain’s shifting power among Gu Yue, Bai, and Xiong. Jia Jin Sheng is wary of another Jia Fu trap, but he still follows to see the merchandise and agrees to a high price once Fang Yuan leads him out.",
@@ -297,7 +328,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "deal-with-fang-yuan",
       "text_origin": "source_excerpt"
@@ -309,7 +340,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "deal-with-fang-yuan",
       "text_origin": "source_excerpt"
@@ -321,10 +352,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "deal-with-fang-yuan",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_flower_wine_monk_inheritance"
+      ]
     },
     {
       "text": "Fang Yuan reads the family head’s caravan pairing as deliberate: put the weak, less cunning Jia Jin Sheng beside Jia Fu so the younger man learns his place, and so the head can watch whether Jia Fu is too overbearing to inherit clan leadership. Jia Jin Sheng never grasps that intent. He has merchant surface wit but little depth, which is why Fang Yuan calls him a wasted pawn once the killing is done.",
@@ -333,7 +367,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "family-succession-test",
       "text_origin": "source_excerpt"
@@ -345,7 +379,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "family-succession-test",
       "text_origin": "source_excerpt",
@@ -361,7 +395,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "family-succession-test",
       "text_origin": "source_excerpt",
@@ -376,7 +410,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "family-succession-test",
       "text_origin": "source_excerpt"
@@ -388,7 +422,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -403,7 +437,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt"
@@ -415,7 +449,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt"
@@ -472,7 +506,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Jia Family as of ch. 42",
@@ -499,7 +533,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": null,

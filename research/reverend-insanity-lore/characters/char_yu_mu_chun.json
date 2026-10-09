@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 838,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     838,
@@ -58,6 +58,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_shadow_sect",
       "role": null,
@@ -80,6 +92,18 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_wind_grind",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -88,8 +112,16 @@
       "count": 4
     },
     {
+      "target": "move_wind_grind",
+      "count": 3
+    },
+    {
       "target": "gu_become_real_immortal_gu",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 2
     },
     {
       "target": "reg_central_continent",
@@ -105,6 +137,10 @@
     },
     {
       "target": "char_song_zi_xing",
+      "count": 2
+    },
+    {
+      "target": "inh_infallible_inheritance",
       "count": 2
     },
     {
@@ -128,6 +164,10 @@
       "count": 2
     },
     {
+      "target": "house_illusion_garden",
+      "count": 2
+    },
+    {
       "target": "loc_falling_heavenly_river",
       "count": 2
     },
@@ -136,11 +176,55 @@
       "count": 2
     },
     {
+      "target": "sys_omni_directional_travel",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
+      "target": "res_success_dao_mark",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_earth_vein",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "res_twin_ice_heart",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_rule_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "res_earthly_limit_astral_qi",
+      "count": 1
+    },
+    {
+      "target": "move_blood_demon_body_separation",
       "count": 1
     },
     {
@@ -156,11 +240,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
     {
       "target": "loc_heavenly_lotus",
+      "count": 1
+    },
+    {
+      "target": "path_illusion",
       "count": 1
     },
     {
@@ -172,11 +264,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
       "target": "gu_fixed_immortal_travel",
       "count": 1
     },
     {
       "target": "char_fairy_zi_wei",
+      "count": 1
+    },
+    {
+      "target": "sys_human_isolation_style",
       "count": 1
     }
   ],
@@ -188,7 +288,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -203,7 +303,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "convention-finals",
       "text_origin": "source_excerpt"
@@ -215,12 +315,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "farewell-lesson-and-refusal",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_true_yang_mountain_range"
+        "loc_true_yang_mountain_range",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -230,7 +331,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tornado-forest",
       "text_origin": "source_excerpt"
@@ -242,10 +343,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tornado-forest",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "race_humans",
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "He uses the refinement path immortal killer move wind grind to process an earthly limit astral qi pearl, then slumbering lightning python with a gigantic tornado wind pillar. He collects the refined Immortal Gu and leaves his refinement path inheritance with Ben Duo Yi. The method can be studied, but a Gu Master who is not yet a Gu Immortal cannot use it to refine Gu, because it attracts heavenly tribulations and earthly calamities.",
@@ -254,10 +359,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refinement-inheritance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master",
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Ben Duo Yi is later taught the nature Gu refinement technique by Gu Immortal Yu Mu Chun.",
@@ -278,12 +387,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wounded-ally-visit",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_song_zi_xing",
+        "inh_infallible_inheritance",
         "gu_nature_gu_refinement_technique"
       ]
     },
@@ -294,7 +404,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wounded-ally-visit",
       "text_origin": "source_excerpt",
@@ -309,7 +419,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fate-and-inheritance",
       "text_origin": "source_excerpt"
@@ -321,7 +431,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "trapped-by-an-immortal-zombie",
       "text_origin": "source_excerpt",
@@ -337,7 +447,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "trapped-by-an-immortal-zombie",
       "text_origin": "source_excerpt",
@@ -354,11 +464,13 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "trapped-by-an-immortal-zombie",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_illusion_garden",
+        "sys_immortal_gu_house",
         "char_heaven_overseeing_tower_lord",
         "char_bi_chen_tian",
         "char_lian_jiu_sheng"
@@ -371,7 +483,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "trapped-by-an-immortal-zombie",
       "text_origin": "source_excerpt",
@@ -386,7 +498,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "activating-a-teleporting-attack",
       "text_origin": "source_excerpt",
@@ -401,12 +513,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "activating-a-teleporting-attack",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fairy_zi_wei",
+        "sys_omni_directional_travel",
         "loc_falling_heavenly_river"
       ]
     },
@@ -417,13 +530,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "covering-the-retreat",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_heavenly_pool",
-        "char_genesis_lotus_immortal_venerable"
+        "char_genesis_lotus_immortal_venerable",
+        "sys_gu_formation"
       ]
     },
     {
@@ -433,7 +547,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "covering-the-retreat",
       "text_origin": "source_excerpt",
@@ -494,7 +608,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shadow Sect as of ch. 997",
@@ -515,7 +629,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": null,

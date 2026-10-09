@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2065,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2065,
@@ -42,6 +42,10 @@
       "count": 1
     },
     {
+      "target": "house_divine_emperor_city",
+      "count": 1
+    },
+    {
       "target": "char_fang_di_chang",
       "count": 1
     },
@@ -51,6 +55,10 @@
     },
     {
       "target": "fac_beggar_sect",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -71,6 +79,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_divine_emperor_city",
         "char_ye_fan",
         "char_hong_yi"
       ]
@@ -104,7 +113,8 @@
       "section": "depth-and-limits",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_heavenly_court"
+        "fac_heavenly_court",
+        "sys_immortal_gu"
       ]
     },
     {

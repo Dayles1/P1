@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1710,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1710,
@@ -33,6 +33,10 @@
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "house_central_heaven_gate",
+      "count": 2
+    },
     {
       "target": "loc_five_deity_hall",
       "count": 2
@@ -70,7 +74,19 @@
       "count": 1
     },
     {
+      "target": "house_heaven_overseeing_tower",
+      "count": 1
+    },
+    {
       "target": "loc_central_great_hall",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -79,6 +95,14 @@
     },
     {
       "target": "fac_longevity_heaven",
+      "count": 1
+    },
+    {
+      "target": "house_calamity_luck_altar",
+      "count": 1
+    },
+    {
+      "target": "evt_era_olden",
       "count": 1
     }
   ],
@@ -109,9 +133,11 @@
       "mentions": [
         "char_fairy_zi_wei",
         "char_limitless_demon_venerable",
+        "house_central_heaven_gate",
         "loc_name_plaque_palace",
         "loc_five_deity_hall",
         "loc_central_great_hall",
+        "house_heaven_overseeing_tower",
         "loc_forgotten_dao_lake",
         "loc_imperfection_regret_pavilion",
         "loc_star_zone_mountain"
@@ -129,8 +155,11 @@
       "section": "left-path-obstacle",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_calamity_luck_altar",
         "fac_longevity_heaven",
-        "fac_heavenly_court"
+        "sys_mortal_gu",
+        "fac_heavenly_court",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -171,7 +200,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "limitless-breakthrough",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "evt_era_olden"
+      ]
     }
   ],
   "conflicts": [],

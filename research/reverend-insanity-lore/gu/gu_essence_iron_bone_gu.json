@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 355,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     355,
@@ -77,6 +77,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_golden_shield_gu",
       "count": 1
     },
@@ -86,6 +90,10 @@
     },
     {
       "target": "gu_universe_path_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_king_quan_inheritance",
       "count": 1
     },
     {
@@ -169,13 +177,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "defense-set",
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_golden_steel_tendon_gu",
-          "gu_golden_shield_gu"
+          "gu_golden_shield_gu",
+          "sys_gu_master"
         ]
       }
     ]
@@ -189,7 +198,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -201,7 +210,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt",
@@ -222,7 +231,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -234,10 +243,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "inh_king_quan_inheritance"
+        ]
       },
       {
         "text": "During that tempering, when he activates Bone Wings Gu, his skeleton already surpasses ordinary from Iron Bone Gu and his recent rank four essence iron bone use, so the grown wings are pitch black with a metallic steel luster and far sturdier than ordinary bone wings.",
@@ -322,7 +334,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

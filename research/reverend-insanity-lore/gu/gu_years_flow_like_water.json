@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1129,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1129,
@@ -37,6 +37,18 @@
     1795
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_time",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_hei_fan",
@@ -68,8 +80,52 @@
       "count": 4
     },
     {
+      "target": "path_time",
+      "count": 3
+    },
+    {
+      "target": "move_year_beast_army",
+      "count": 3
+    },
+    {
+      "target": "move_year_beast_summoning",
+      "count": 3
+    },
+    {
+      "target": "house_myriad_year_flying_warship",
+      "count": 3
+    },
+    {
+      "target": "move_myriad_year_hunting",
+      "count": 3
+    },
+    {
+      "target": "move_unlucky_year",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "sys_year_beast",
+      "count": 2
+    },
+    {
+      "target": "inh_hei_fan_true_inheritance",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mental_energy",
+      "count": 1
     },
     {
       "target": "gu_attitude_gu",
@@ -96,11 +152,35 @@
       "count": 1
     },
     {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
       "target": "fac_hei_tribe",
       "count": 1
     },
     {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "move_hundred_and_eighty_slaves",
+      "count": 1
+    },
+    {
+      "target": "move_yama_battlefield",
+      "count": 1
+    },
+    {
+      "target": "sys_years_flow_execution_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_shark_flow_lever",
       "count": 1
     }
   ],
@@ -172,7 +252,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_time"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -189,7 +271,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -207,10 +289,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "With his rank six cultivation, Fang Yuan’s green grape immortal essence cannot activate Years Flow Like Water, unlike attitude Gu, which needs only mental energy.",
@@ -219,7 +304,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -257,7 +342,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "immortal-gu-house-core",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "house_myriad_year_flying_warship",
+          "sys_immortal_gu_house"
+        ]
       }
     ]
   },
@@ -273,13 +362,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "feeding-and-flaw",
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_river_of_time",
-          "gu_spring_autumn_cicada"
+          "gu_spring_autumn_cicada",
+          "sys_year_beast"
         ]
       }
     ]
@@ -298,11 +388,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "hei-fans-refinement",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_recipe",
           "fac_hei_tribe"
         ]
       },
@@ -330,7 +421,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "year-gu-trade-and-battle-warning",
         "text_origin": "source_excerpt"
@@ -373,13 +464,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "inh_hei_fan_true_inheritance",
           "gu_year_gu",
+          "path_time",
+          "sys_immortal_gu",
           "char_hei_fan"
         ]
       },
@@ -390,7 +484,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "still-sealed",
         "text_origin": "source_excerpt"
@@ -402,7 +496,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "year-beast-summoning",
         "text_origin": "source_excerpt"
@@ -428,7 +522,7 @@
     "Path": {
       "text": "Time Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

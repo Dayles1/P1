@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 728,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     728,
@@ -72,6 +72,14 @@
     {
       "target": "char_shi_lei",
       "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_abyss",
+      "count": 1
     }
   ],
   "claims": [
@@ -101,7 +109,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -125,12 +133,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ownership-condition",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_shi_lei"
+        "char_shi_lei",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -143,7 +152,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "new-master-accepted",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "reg_earth_earth_abyss"
+      ]
     }
   ],
   "conflicts": [],

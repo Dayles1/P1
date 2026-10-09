@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 838,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     838,
@@ -47,6 +47,18 @@
     {
       "target": "reg_central_continent",
       "count": 3
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_path_convention",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_trench",
+      "count": 1
     }
   ],
   "claims": [
@@ -72,10 +84,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal",
+        "sys_refinement_path_convention"
+      ]
     },
     {
       "text": "Among the five regions, Earth Trenches are giant ravines that only super forces usually hold as resource points. In Central Continent, Demon Expelling Sect controls the trench known as An Zu Earth Trench, and the place is famous in that region.",

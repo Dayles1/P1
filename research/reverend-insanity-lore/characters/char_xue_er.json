@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1141,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1141,
@@ -59,6 +59,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_snowmen",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1143,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_four_races_alliance",
       "role": null,
@@ -75,6 +87,10 @@
     {
       "target": "fac_four_races_alliance",
       "count": 3
+    },
+    {
+      "target": "race_snowmen",
+      "count": 2
     },
     {
       "target": "reg_northern_plains",
@@ -109,6 +125,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_spring_autumn_cicada",
       "count": 1
     },
@@ -125,7 +145,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "res_snow_lotus_essence",
+      "count": 1
+    },
+    {
       "target": "res_dancing_snow",
+      "count": 1
+    },
+    {
+      "target": "move_soaring_fighting_spirit",
+      "count": 1
+    },
+    {
+      "target": "sys_immemorial_desolate_beast",
       "count": 1
     },
     {
@@ -134,6 +170,14 @@
     },
     {
       "target": "fac_rockman_tribe",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_yama_child",
       "count": 1
     },
     {
@@ -146,6 +190,10 @@
     },
     {
       "target": "loc_mini_yellow_heaven",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -181,12 +229,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -196,7 +245,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -208,7 +257,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -223,7 +272,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -239,10 +288,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "race_snowmen"
+      ]
     },
     {
       "text": "When Fang Yuan joins the four races alliance, the smile on Xue Er becomes even more lovely. She asks him to stay another day or two. Seeing he is intent on leaving, she lowers her head, then raises it and hands him an item in her hand as a farewell gift: an ice tear drop.",
@@ -251,7 +303,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "farewell-gift",
       "text_origin": "source_excerpt",
@@ -266,10 +318,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ice-tear-meaning",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "Bing Yuan calls Xue Er her granddaughter, a Gu Immortal of incredible looks, and plans to marry her to Fang Yuan so the snowman tribe is no longer bullied by the rockmen.",
@@ -278,7 +333,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "grandmother",
       "text_origin": "source_excerpt",
@@ -293,7 +348,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "testing-xue-er",
       "text_origin": "source_excerpt"
@@ -305,7 +360,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "engagement",
       "text_origin": "source_excerpt"
@@ -320,7 +375,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "death-and-soul-imprisonment",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu",
+        "move_yama_child"
+      ]
     },
     {
       "text": "Xue Er is at Lang Ya blessed land. Fang Yuan gives her a nod and leaves, which excites the snowman Gu Immortals.",
@@ -374,7 +433,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "tribe-growth",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "At Inkman City, a snowman female immortal is tall and vibrant, has blue eyes and hair, and looks pure and noble: Xue Er. On the surface her identity is Fang Yuan’s fiancée. He has never acknowledged it and has not denied it. Bing Yuan trumpets the relationship. Xue Er and Bing Yuan will activate ice and snow killer moves to freeze and slow the growth of vegetation.",
@@ -464,7 +526,7 @@
     "Race": {
       "text": "Snowmen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Snowman Tribe as of ch. 1143 Four races alliance as of ch. 1146",
@@ -491,7 +553,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_snowmen",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

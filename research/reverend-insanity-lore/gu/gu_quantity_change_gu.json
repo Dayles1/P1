@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2116,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2116
@@ -33,6 +33,14 @@
     {
       "target": "fac_yellow_bell_tribe",
       "count": 2
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_myriad_tribes_ceremony",
+      "count": 1
     },
     {
       "target": "gu_fortitude_gu",
@@ -165,6 +173,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_upslope_road",
+          "sys_myriad_tribes_ceremony",
+          "sys_immortal_gu",
           "fac_yellow_bell_tribe"
         ]
       }

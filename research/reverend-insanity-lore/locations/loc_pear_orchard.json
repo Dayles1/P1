@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 688,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     688,
@@ -57,11 +57,27 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "gu_dark_arrow",
       "count": 1
     },
     {
       "target": "gu_mountain_pledge_gu",
+      "count": 1
+    },
+    {
+      "target": "move_dark_vortex",
+      "count": 1
+    },
+    {
+      "target": "house_dark_prison",
+      "count": 1
+    },
+    {
+      "target": "move_fading_heavenly_flower",
       "count": 1
     }
   ],
@@ -73,7 +89,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -85,13 +101,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_hei_cheng",
-        "gu_dark_arrow"
+        "gu_dark_arrow",
+        "move_dark_vortex"
       ]
     },
     {
@@ -101,7 +118,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fight-inside-the-orchard",
       "text_origin": "source_excerpt",
@@ -116,12 +133,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fight-inside-the-orchard",
       "text_origin": "source_excerpt",
       "mentions": [
-        "gu_mountain_pledge_gu"
+        "gu_mountain_pledge_gu",
+        "house_dark_prison",
+        "sys_immortal_gu_house"
       ]
     }
   ],

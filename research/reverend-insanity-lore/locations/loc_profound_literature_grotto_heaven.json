@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1684,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1684,
@@ -34,6 +34,10 @@
   "relations": [],
   "co_mentions": [
     {
+      "target": "path_information",
+      "count": 2
+    },
+    {
       "target": "char_granny_skeleton",
       "count": 2
     },
@@ -43,6 +47,18 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_dao_marks",
       "count": 1
     },
     {
@@ -62,11 +78,19 @@
       "count": 1
     },
     {
+      "target": "move_heaven_form",
+      "count": 1
+    },
+    {
       "target": "loc_beast_calamity_grotto_heaven",
       "count": 1
     },
     {
       "target": "char_li_xiao_bai",
+      "count": 1
+    },
+    {
+      "target": "move_soul_replacement",
       "count": 1
     },
     {
@@ -95,6 +119,10 @@
     },
     {
       "target": "char_teacher_jiang",
+      "count": 1
+    },
+    {
+      "target": "move_cold_words",
       "count": 1
     },
     {
@@ -130,6 +158,14 @@
       "count": 1
     },
     {
+      "target": "evt_arc_dao_veins_famous_mountains",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
+      "count": 1
+    },
+    {
       "target": "res_heavenly_veil",
       "count": 1
     },
@@ -139,6 +175,10 @@
     },
     {
       "target": "loc_flickering_light_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_army_ant_nest",
       "count": 1
     }
   ],
@@ -156,8 +196,10 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_lang_ya_blessed_land",
+        "sys_gu_immortal",
         "fac_gu_masters",
         "gu_hope_gu",
+        "sys_gu_worms",
         "char_fang_yuan"
       ]
     },
@@ -173,6 +215,7 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "path_information",
         "gu_fixed_immortal_travel"
       ]
     },

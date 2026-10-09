@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 440,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     440,
@@ -74,6 +74,14 @@
     {
       "target": "char_liu_liu_liu",
       "count": 3
+    },
+    {
+      "target": "evt_fight_blood_battle_martial_competition",
+      "count": 2
+    },
+    {
+      "target": "house_year_end_gatehouse",
+      "count": 2
     },
     {
       "target": "loc_hong_yan_valley",
@@ -144,7 +152,27 @@
       "count": 1
     },
     {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_northern_plains_imperial_court",
+      "count": 1
+    },
+    {
       "target": "char_ye_lui_lai",
+      "count": 1
+    },
+    {
+      "target": "sys_super_force",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -164,11 +192,19 @@
       "count": 1
     },
     {
+      "target": "sys_guest_token",
+      "count": 1
+    },
+    {
       "target": "char_hei_pei",
       "count": 1
     },
     {
       "target": "char_song_qie_xing",
+      "count": 1
+    },
+    {
+      "target": "sys_owner_token",
       "count": 1
     },
     {
@@ -189,6 +225,10 @@
     },
     {
       "target": "char_mo_tan_sang",
+      "count": 1
+    },
+    {
+      "target": "race_inkmen",
       "count": 1
     },
     {
@@ -244,6 +284,10 @@
       "count": 1
     },
     {
+      "target": "house_golden_dawn_hall",
+      "count": 1
+    },
+    {
       "target": "char_heaven_extremity",
       "count": 1
     },
@@ -257,6 +301,10 @@
     },
     {
       "target": "fac_chu_sect",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
       "count": 1
     },
     {
@@ -296,6 +344,14 @@
       "count": 1
     },
     {
+      "target": "move_seven_extreme_desolation",
+      "count": 1
+    },
+    {
+      "target": "move_winged_blade",
+      "count": 1
+    },
+    {
       "target": "loc_inkman_city",
       "count": 1
     },
@@ -304,11 +360,23 @@
       "count": 1
     },
     {
+      "target": "move_decaying_wooden_death",
+      "count": 1
+    },
+    {
       "target": "char_yin_wu_que",
       "count": 1
     },
     {
       "target": "char_liu_luo",
+      "count": 1
+    },
+    {
+      "target": "inh_reckless_savage_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
       "count": 1
     },
     {
@@ -332,7 +400,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refuge-and-imperial-court",
       "text_origin": "source_excerpt",
@@ -351,7 +419,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bloodline-naming",
       "text_origin": "source_excerpt",
@@ -367,7 +435,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "family-name-and-authority",
       "text_origin": "source_excerpt",
@@ -382,13 +450,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "multi-tribe-rule",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_imperial_court",
-        "fac_gu_masters"
+        "fac_gu_masters",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -398,7 +467,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "multi-tribe-rule",
       "text_origin": "source_excerpt",
@@ -415,7 +484,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "multi-tribe-rule",
       "text_origin": "source_excerpt"
@@ -427,7 +496,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "super-forces",
       "text_origin": "source_excerpt",
@@ -444,7 +513,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "righteous-path-pressure",
       "text_origin": "source_excerpt",
@@ -459,7 +528,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-tribes-and-unity",
       "text_origin": "source_excerpt"

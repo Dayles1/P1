@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 674,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     674,
@@ -57,6 +57,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_investigative_gu",
+      "count": 1
+    },
+    {
       "target": "fac_huang_clan_western_desert",
       "count": 1
     },
@@ -85,7 +93,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -100,7 +108,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dagger-grass-work",
       "text_origin": "source_excerpt"
@@ -115,7 +123,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "dagger-grass-work",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "From a graveyard several li away, Fang Yuan watches Han village at night with up to a thousand investigative Gu and puts the whole village under his supervision. Luck inspection Gu shows a thin grey-white luck cloud above the village from the villagers’ collective belonging.",
@@ -124,12 +135,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "watch-from-the-graveyard",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_investigative_gu",
         "gu_luck_inspection_gu"
       ]
     }

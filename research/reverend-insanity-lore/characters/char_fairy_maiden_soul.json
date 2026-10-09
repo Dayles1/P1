@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2181,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2181,
@@ -31,6 +31,30 @@
     2198
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_soul",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -50,11 +74,31 @@
       "count": 3
     },
     {
+      "target": "path_soul",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_seven_fiendish_primeval_monarch",
       "count": 2
     },
     {
+      "target": "house_dragon_soul_dark_castle",
+      "count": 2
+    },
+    {
+      "target": "house_red_heavenly_altar",
+      "count": 2
+    },
+    {
       "target": "char_thunder_ghost_true_monarch",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -108,8 +152,11 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_immortal_graveyard",
+        "sys_gu_immortal",
+        "house_dragon_soul_dark_castle",
         "fac_heavenly_court",
         "char_thunder_ghost_true_monarch",
+        "house_red_heavenly_altar",
         "char_seven_fiendish_primeval_monarch"
       ]
     },
@@ -177,12 +224,12 @@
     "Paths": {
       "text": "Soul path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 2181",
@@ -198,12 +245,14 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_soul"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Dead",
     "alignment": null,

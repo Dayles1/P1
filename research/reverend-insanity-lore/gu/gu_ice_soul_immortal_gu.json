@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1186,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_new_blessed_land_crazed_demon"
   },
   "chapters_cited": [
     1186,
@@ -54,11 +54,31 @@
       "count": 2
     },
     {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
+      "count": 1
+    },
+    {
       "target": "char_ying_wu_xie",
       "count": 1
     },
     {
+      "target": "sys_northern_dark_ice_soul_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_ice_heart_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -115,7 +135,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-form",
         "text_origin": "source_excerpt"
@@ -127,7 +147,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-form",
         "text_origin": "source_excerpt",
@@ -146,7 +166,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -164,10 +184,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-before-bai-xiang-grotto-heaven",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       }
     ]
   },
@@ -216,13 +239,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_ying_wu_xie",
-          "char_bai_ning_bing"
+          "char_bai_ning_bing",
+          "sys_wild_immortal_gu"
         ]
       },
       {
@@ -232,10 +256,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "drawn-in-by-the-physique",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_northern_dark_ice_soul_physique",
+          "sys_wild_gu"
+        ]
       }
     ]
   },

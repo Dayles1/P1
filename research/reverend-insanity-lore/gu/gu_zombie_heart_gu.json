@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 256,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     256,
@@ -66,6 +66,10 @@
     },
     {
       "target": "gu_running_corpse_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -128,7 +132,7 @@
         ],
         "certainty": "inferred",
         "confidence": "C",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -146,7 +150,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -169,7 +173,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "feeding",
         "text_origin": "source_excerpt"
@@ -215,7 +219,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -236,6 +240,7 @@
         "section": "carrying-risk",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "char_second_zombie_king",
           "fac_shang_clan"
         ]

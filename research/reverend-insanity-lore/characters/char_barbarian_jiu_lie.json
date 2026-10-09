@@ -23,13 +23,35 @@
   "first_appearance": {
     "chapter": 1014,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1014
   ],
-  "relations": [],
-  "co_mentions": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
+  "co_mentions": [
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
+      "target": "inh_food_path_true_inheritance",
+      "count": 1
+    }
+  ],
   "claims": [
     {
       "text": "Inside a food path inheritance, the trapped inheritor tells Spectral Soul the inheritance is real. He says that when he cultivated to rank eight, Barbarian Jiu Lie tried to trap him instead of killing him, after his food path. He could not beat Barbarian Jiu Lie, and Barbarian Jiu Lie could not take what he wanted easily either, so they made an agreement: the food path inheritance would pass to future humans, not to Barbarian Jiu Lie, and the inheritor must endure an eating test. After that agreement he remained trapped, and many humans came for the test, but even Barbarian Jiu Lie could not understand his true ability.",
@@ -38,7 +60,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -74,7 +96,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": null,
@@ -96,7 +118,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Unknown",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2025,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2025,
@@ -31,6 +31,18 @@
     2151
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_qi",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "fac_heavenly_court",
@@ -46,8 +58,16 @@
   ],
   "co_mentions": [
     {
+      "target": "move_triple_qi_retraction",
+      "count": 3
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 2
+    },
+    {
+      "target": "path_qi",
+      "count": 1
     },
     {
       "target": "gu_heaven_qi_immortal_gu",
@@ -66,7 +86,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_earth_qi_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_primordial_origin_true_inheritance",
       "count": 1
     },
     {
@@ -113,7 +141,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_qi"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -196,6 +226,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_immortal_gu",
           "gu_heaven_qi_immortal_gu",
           "fac_heavenly_court"
         ]
@@ -233,7 +264,7 @@
     "Path": {
       "text": "Qi Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

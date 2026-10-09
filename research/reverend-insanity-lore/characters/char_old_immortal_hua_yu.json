@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1975,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1975,
@@ -37,6 +37,30 @@
     2275
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_information",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heaven_and_earth_great_love_alliance",
@@ -72,6 +96,14 @@
       "count": 3
     },
     {
+      "target": "path_information",
+      "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_an_chong",
       "count": 2
     },
@@ -81,6 +113,18 @@
     },
     {
       "target": "loc_profound_literature_grotto_heaven",
+      "count": 2
+    },
+    {
+      "target": "move_cold_words",
+      "count": 2
+    },
+    {
+      "target": "move_quick_words",
+      "count": 2
+    },
+    {
+      "target": "move_vicious_words",
       "count": 2
     },
     {
@@ -100,6 +144,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "reg_eastern_sea",
       "count": 1
     },
@@ -108,7 +156,27 @@
       "count": 1
     },
     {
+      "target": "house_dragon_palace",
+      "count": 1
+    },
+    {
       "target": "loc_fire_plain_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "move_lingering_poisonous_ant_plague",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
+      "count": 1
+    },
+    {
+      "target": "move_shattered_words",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_heavenly_court_final_war",
       "count": 1
     },
     {
@@ -146,6 +214,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_granny_skeleton",
+        "sys_gu_immortal",
         "loc_profound_literature_grotto_heaven",
         "reg_eastern_sea",
         "char_an_chong"
@@ -178,7 +247,11 @@
       "section": "wu-shuai-raid",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_wu_shuai"
+        "char_wu_shuai",
+        "house_dragon_palace",
+        "move_cold_words",
+        "move_quick_words",
+        "move_vicious_words"
       ]
     },
     {
@@ -297,12 +370,12 @@
     "Paths": {
       "text": "Information path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heaven and Earth Great Love Alliance as of ch. 2265 Heavenly Court as of ch. 2273",
@@ -324,12 +397,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_information"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

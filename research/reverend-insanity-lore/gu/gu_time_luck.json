@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 767,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     767,
@@ -36,6 +36,18 @@
     1824
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_luck",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fairy_li_shan",
@@ -67,8 +79,20 @@
       "count": 3
     },
     {
+      "target": "move_time_assist_luck",
+      "count": 3
+    },
+    {
+      "target": "path_luck",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "house_cooking_luck_pot",
+      "count": 3
     },
     {
       "target": "gu_qi_luck_immortal_gu",
@@ -79,7 +103,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_inch_of_time_gu",
+      "count": 1
+    },
+    {
+      "target": "path_time",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -144,7 +188,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_luck"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -161,7 +207,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -179,7 +225,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-activation",
         "text_origin": "source_excerpt"
@@ -191,7 +237,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "lifespan-stealing-killer-move",
         "text_origin": "source_excerpt"
@@ -203,10 +249,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "lifespan-stealing-killer-move",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       },
       {
         "text": "When he assembles the Immortal Gu House Cooking Luck Pot, he adds Time Luck with his other luck path Immortal Gu into the construction.",
@@ -218,7 +267,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "immortal-gu-house",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu_house",
+          "house_cooking_luck_pot"
+        ]
       },
       {
         "text": "Cooking Luck Pot then carries Time Luck, Luck Inspection, Dog Shit Luck, Qi Luck, Connect Luck, and other Immortal Gu as basic functions of the House.",
@@ -264,7 +317,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-listing-and-advancement",
         "text_origin": "source_excerpt"
@@ -319,14 +372,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fairy_li_shan",
+          "sys_immortal_gu",
           "char_fang_yuan",
-          "char_qin_bai_sheng"
+          "char_qin_bai_sheng",
+          "sys_gu_immortal"
         ]
       }
     ]
@@ -335,7 +390,7 @@
     "Path": {
       "text": "Luck Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

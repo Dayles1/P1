@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1829,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1829,
@@ -45,9 +45,25 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_dragonmen",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "race_dragonmen",
+      "count": 1
+    },
     {
       "target": "reg_central_continent",
       "count": 1
@@ -66,6 +82,10 @@
     },
     {
       "target": "char_wu_shuai",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -125,7 +145,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "He once competed with Wu Shuai to become Green Ant Ascetic’s disciple and failed. The dragonman race nurtured him intensely. Wu Shuai befriended him, saved his life by coincidence, and they became sworn brothers.",
@@ -239,7 +262,7 @@
     "Race": {
       "text": "Dragonmen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -255,7 +278,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_dragonmen",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": null,

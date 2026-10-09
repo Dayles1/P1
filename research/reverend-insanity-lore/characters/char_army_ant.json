@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1827,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1827,
@@ -47,7 +47,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
+      "count": 1
+    },
+    {
+      "target": "path_enslavement",
       "count": 1
     },
     {
@@ -63,7 +71,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_gu_tribe",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
       "count": 1
     },
     {
@@ -87,7 +103,19 @@
       "count": 1
     },
     {
+      "target": "house_divine_emperor_city",
+      "count": 1
+    },
+    {
+      "target": "house_star_constellation_chessboard",
+      "count": 1
+    },
+    {
       "target": "loc_profound_literature_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_army_ant_nest",
       "count": 1
     }
   ],
@@ -105,6 +133,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_gu_immortal",
+        "path_enslavement",
         "fac_gu_masters"
       ]
     },
@@ -120,7 +150,8 @@
       "section": "green-ant-ascetics-inheritance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_green_ant_ascetic"
+        "char_green_ant_ascetic",
+        "house_dragon_palace"
       ]
     },
     {
@@ -136,6 +167,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_ant_nest_gu",
+        "sys_immortal_gu",
         "char_wu_shuai",
         "fac_gu_tribe",
         "gu_letter_seal_immortal_gu",
@@ -236,7 +268,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "army-ants-in-battle",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_divine_emperor_city"
+      ]
     },
     {
       "text": "A large group of army ants forms the shape of a giant eagle and attacks Profound Literature grotto-heaven, tearing and gnawing at everything in it. Qi Sea Ancestor recognises Wu Shuai’s battlefield killer move myriad army ant nest, whose core is the rank eight Ant Nest Immortal Gu: countless army ants are first sent to corrode a blessed land or grotto-heaven, and once the corrosion reaches a certain point the battlefield activates. Inside it Wu Shuai sends army ants against the Heavenly Court Gu Immortals and sends many more to devour resources and breed rapidly. When Seven Fiendish Primeval Monarch, most of his body already melted, raises his injured fist at Qi Sea Ancestor, densely packed army ants climb up his body and he breaks apart the next moment. Then the star array calculation formation collapses, and the power of its self-detonating stars, under the control of Star Constellation Chessboard, breaks the ant nest battlefield.",
@@ -253,7 +288,8 @@
         "loc_profound_literature_grotto_heaven",
         "char_qi_sea_ancestor",
         "fac_heavenly_court",
-        "char_seven_fiendish_primeval_monarch"
+        "char_seven_fiendish_primeval_monarch",
+        "house_star_constellation_chessboard"
       ]
     },
     {

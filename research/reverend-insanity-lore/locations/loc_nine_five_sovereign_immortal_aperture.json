@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1027,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1027,
@@ -78,11 +78,35 @@
       "count": 1
     },
     {
+      "target": "sys_great_strength_true_martial_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_mini_eastern_sea",
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_mini_northern_plains",
+      "count": 1
+    },
+    {
+      "target": "house_four_elements_square_regret_blood_refinement_pool",
       "count": 1
     }
   ],
@@ -157,7 +181,8 @@
       "section": "space-time-and-immortal-essence",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_hei_lou_lan"
+        "char_hei_lou_lan",
+        "sys_great_strength_true_martial_physique"
       ]
     },
     {
@@ -170,7 +195,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "space-time-and-immortal-essence",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_mortal_gu",
+        "sys_vital_gu"
+      ]
     },
     {
       "text": "That daily production is not enough for some of Fang Yuan’s sword path activations that burn over a hundred beads each.",
@@ -194,7 +223,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "path-practice",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "He later names the layers with a “Mini” prefix, such as Mini Northern Plains and Mini Eastern Sea, and finds their environments close to the outer world, including different dao mark leanings by area.",
@@ -222,7 +254,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "yearly-essence-count",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     }
   ],
   "conflicts": [],

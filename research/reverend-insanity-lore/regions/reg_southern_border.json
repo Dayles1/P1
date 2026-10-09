@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     4,
@@ -432,7 +432,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -452,7 +452,8 @@
       "section": "mountains-and-clans",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_qing_mao_mountain"
+        "loc_qing_mao_mountain",
+        "sys_gu_worms"
       ]
     },
     {
@@ -462,10 +463,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mountains-and-clans",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_wild_beast"
+      ]
     },
     {
       "text": "Trade between peaks runs through large merchant caravans that gather Gu Masters to conquer the travel routes.",
@@ -489,7 +493,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mountains-and-clans",
       "text_origin": "source_excerpt"
@@ -506,7 +510,8 @@
       "section": "gu-yue-awakening-ceremony",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_gu_yue_village"
+        "loc_gu_yue_village",
+        "sys_awakening_ceremony"
       ]
     },
     {
@@ -516,7 +521,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "barriers-between-regions",
       "text_origin": "source_excerpt",
@@ -545,7 +550,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "three-great-rivers",
       "text_origin": "source_excerpt"
@@ -569,7 +574,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "regional-walls",
       "text_origin": "source_excerpt"

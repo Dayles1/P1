@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2317,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2317,
@@ -73,6 +73,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_huang_jin_bloodline",
       "count": 1
     },
@@ -86,6 +90,10 @@
     },
     {
       "target": "char_bing_sai_chuan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     }
   ],
@@ -132,6 +140,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_zuo_ye_hui",
+        "sys_gu_immortal",
         "fac_longevity_heaven",
         "char_you_tian_guang",
         "char_lu_qing_ming",
@@ -152,7 +161,8 @@
       "section": "longevity-heaven-response",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_bing_sai_chuan"
+        "char_bing_sai_chuan",
+        "sys_immortal_gu_house"
       ]
     }
   ],

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1320,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1320,
@@ -42,6 +42,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -84,6 +96,10 @@
     {
       "target": "gu_sweat_immortal_gu",
       "count": 4
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -138,7 +154,39 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_mental_energy",
+      "count": 1
+    },
+    {
+      "target": "inh_formation_path_dream_realm",
+      "count": 1
+    },
+    {
       "target": "char_wu_liao",
+      "count": 1
+    },
+    {
+      "target": "sys_super_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_quasi_grandmaster_attainment",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "res_regret_water_rock",
       "count": 1
     },
     {
@@ -168,6 +216,10 @@
     {
       "target": "char_ying_wu_xie",
       "count": 1
+    },
+    {
+      "target": "sys_formation_path_dao_marks",
+      "count": 1
     }
   ],
   "claims": [
@@ -178,7 +230,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -188,7 +240,8 @@
         "char_wu_yi_hai",
         "char_luo_mu_zi",
         "char_lun_fei",
-        "fac_chi_clan"
+        "fac_chi_clan",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -198,7 +251,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -210,12 +263,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inspection-duty",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_wu_an"
+        "char_wu_an",
+        "sys_super_gu_formation"
       ]
     },
     {
@@ -225,7 +279,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "formation-path-contests",
       "text_origin": "source_excerpt",
@@ -243,11 +297,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wisdom-sweat-formation",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_formation",
+        "sys_immortal_gu",
         "gu_sweat_immortal_gu"
       ]
     },
@@ -258,7 +314,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "standing-among-chi-clan-rank-sevens",
       "text_origin": "source_excerpt"
@@ -270,7 +326,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tu-yuans-inheritance",
       "text_origin": "source_excerpt"
@@ -282,7 +338,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wu-clan-intelligence",
       "text_origin": "source_excerpt",
@@ -299,7 +355,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "friendship-with-fang-yuan",
       "text_origin": "source_excerpt"
@@ -311,7 +367,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "benchmark-for-fang-yuan",
       "text_origin": "source_excerpt"
@@ -323,7 +379,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "praise-recalled",
       "text_origin": "source_excerpt"
@@ -377,7 +433,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Chi Clan as of ch. 1320",
@@ -404,7 +460,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

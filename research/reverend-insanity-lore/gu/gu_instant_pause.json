@@ -23,13 +23,25 @@
   "first_appearance": {
     "chapter": 688,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     688,
     689
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_time",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_hei_cheng",
@@ -49,6 +61,10 @@
       "count": 3
     },
     {
+      "target": "path_time",
+      "count": 3
+    },
+    {
       "target": "char_fairy_li_shan",
       "count": 1
     },
@@ -62,6 +78,14 @@
     },
     {
       "target": "char_tai_bai_yun_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_hei_cheng_second_battle",
       "count": 1
     },
     {
@@ -115,7 +139,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_time"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -137,7 +163,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -193,13 +219,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_hei_lou_lan",
           "char_hei_cheng",
+          "sys_immortal_gu",
+          "path_time",
           "char_tai_bai_yun_sheng",
           "char_fairy_li_shan"
         ]
@@ -211,7 +239,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "after-the-escape",
         "text_origin": "source_excerpt",
@@ -226,7 +254,7 @@
     "Path": {
       "text": "Time Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

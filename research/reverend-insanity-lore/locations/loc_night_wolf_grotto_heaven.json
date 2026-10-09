@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1969,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1969,
@@ -64,6 +64,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
@@ -73,6 +77,10 @@
     },
     {
       "target": "char_wu_shuai",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
       "count": 1
     },
     {
@@ -115,6 +123,7 @@
       "section": "human-force-and-heavenly-court",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_lady_cold_ash",
         "reg_central_continent",
         "fac_heavenly_court",
@@ -158,6 +167,7 @@
       "section": "betrayal-exposed",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_dragon_palace",
         "char_wu_shuai"
       ]
     },

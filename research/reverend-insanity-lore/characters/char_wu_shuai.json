@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1827,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1803,
@@ -36,6 +36,18 @@
     {
       "type": "in_region",
       "target": "reg_eastern_sea",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_dragonmen",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -80,11 +92,127 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_myriad_army_ant_nest",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2322,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_dream_within_dream",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_lingering_poisonous_ant_plague",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_wu_shuai_inheritance",
+      "role": "holder",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1862,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_gu_house",
+      "target": "house_dragon_palace",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1831,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_gu_house",
+      "target": "house_dragon_court",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1840,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_gu_house",
+      "target": "house_central_heaven_gate",
+      "role": "builder",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1843,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_gu_house",
+      "target": "house_calligraphy_pavilion",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1848,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
+      "target": "house_dragon_palace",
+      "count": 4
+    },
+    {
+      "target": "house_dragon_court",
+      "count": 3
+    },
+    {
+      "target": "house_central_heaven_gate",
+      "count": 3
+    },
+    {
       "target": "gu_dream_token",
+      "count": 3
+    },
+    {
+      "target": "house_calligraphy_pavilion",
+      "count": 3
+    },
+    {
+      "target": "move_dream_within_dream",
       "count": 3
     },
     {
@@ -94,6 +222,22 @@
     {
       "target": "gu_letter_seal_immortal_gu",
       "count": 3
+    },
+    {
+      "target": "inh_wu_shuai_inheritance",
+      "count": 3
+    },
+    {
+      "target": "move_lingering_poisonous_ant_plague",
+      "count": 3
+    },
+    {
+      "target": "move_myriad_army_ant_nest",
+      "count": 3
+    },
+    {
+      "target": "race_dragonmen",
+      "count": 2
     },
     {
       "target": "fac_two_heavens_alliance",
@@ -108,6 +252,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_central_continent_chaos",
+      "count": 1
+    },
+    {
       "target": "char_bai_ning_bing",
       "count": 1
     },
@@ -117,6 +265,22 @@
     },
     {
       "target": "char_granny_rong",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
       "count": 1
     },
     {
@@ -133,6 +297,10 @@
     },
     {
       "target": "res_dragonman_soul",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_fate_destruction",
       "count": 1
     },
     {
@@ -156,6 +324,10 @@
       "count": 1
     },
     {
+      "target": "move_green_heaven_pine_wave",
+      "count": 1
+    },
+    {
       "target": "res_dream_path_immortal_material",
       "count": 1
     },
@@ -168,11 +340,23 @@
       "count": 1
     },
     {
+      "target": "move_dragonman_extermination",
+      "count": 1
+    },
+    {
       "target": "char_army_ant",
       "count": 1
     },
     {
+      "target": "inh_green_ant_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "fac_merman_imperial_court",
+      "count": 1
+    },
+    {
+      "target": "move_chicken_dinner",
       "count": 1
     },
     {
@@ -181,6 +365,22 @@
     },
     {
       "target": "res_corpse_emperor_bird_feathers",
+      "count": 1
+    },
+    {
+      "target": "move_accumulated_soil_mountain",
+      "count": 1
+    },
+    {
+      "target": "move_heavy_soil_comeback",
+      "count": 1
+    },
+    {
+      "target": "move_peaceful_burial",
+      "count": 1
+    },
+    {
+      "target": "house_peaceful_soil_heavy_mountain_fortress",
       "count": 1
     },
     {
@@ -193,6 +393,10 @@
     },
     {
       "target": "char_lian_ke_xin",
+      "count": 1
+    },
+    {
+      "target": "sys_heaven_vein",
       "count": 1
     },
     {
@@ -216,6 +420,22 @@
       "count": 1
     },
     {
+      "target": "house_divine_emperor_city",
+      "count": 1
+    },
+    {
+      "target": "house_divine_emperor_palace",
+      "count": 1
+    },
+    {
+      "target": "house_golden_star_tower",
+      "count": 1
+    },
+    {
+      "target": "house_whale_fishing_boat",
+      "count": 1
+    },
+    {
       "target": "loc_human_sea",
       "count": 1
     },
@@ -225,6 +445,10 @@
     },
     {
       "target": "char_night_heavenly_wolf_lord",
+      "count": 1
+    },
+    {
+      "target": "sys_humans_alike_dragons",
       "count": 1
     },
     {
@@ -248,6 +472,14 @@
       "count": 1
     },
     {
+      "target": "res_qi_pillar",
+      "count": 1
+    },
+    {
+      "target": "sys_qi_harvest_fruit",
+      "count": 1
+    },
+    {
       "target": "loc_xi_land",
       "count": 1
     },
@@ -257,6 +489,18 @@
     },
     {
       "target": "char_old_immortal_hua_yu",
+      "count": 1
+    },
+    {
+      "target": "move_cold_words",
+      "count": 1
+    },
+    {
+      "target": "move_vicious_words",
+      "count": 1
+    },
+    {
+      "target": "path_information",
       "count": 1
     },
     {
@@ -292,6 +536,22 @@
       "count": 1
     },
     {
+      "target": "move_soul_taker_battlefield",
+      "count": 1
+    },
+    {
+      "target": "house_myriad_year_flying_warship",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_flying_earth",
+      "count": 1
+    },
+    {
+      "target": "sys_contribution_board",
+      "count": 1
+    },
+    {
       "target": "gu_forest_gu",
       "count": 1
     },
@@ -301,6 +561,10 @@
     },
     {
       "target": "gu_wine_drinker_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_golden_bottle_drunken_wine",
       "count": 1
     },
     {
@@ -326,7 +590,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
-        "char_bai_ning_bing"
+        "char_bai_ning_bing",
+        "sys_gu_master"
       ]
     },
     {
@@ -339,7 +604,12 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house",
+        "house_dragon_palace",
+        "race_dragonmen"
+      ]
     },
     {
       "text": "The clone advances to rank six as a dragonman Gu Immortal and possesses a high grade blessed land.",
@@ -351,7 +621,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Fang Yuan’s main body notes that the dragonman clone is already a rank seven after immense nurturing. Four rank eight Gu Immortals who arrive before the clone say he has rank seven cultivation and is qualified to participate in the test.",
@@ -390,6 +663,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_granny_rong",
+        "race_humans",
         "gu_commanding_leader_gu"
       ]
     }
@@ -438,7 +712,7 @@
     "Race": {
       "text": "Dragonmen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -470,7 +744,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_dragonmen",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

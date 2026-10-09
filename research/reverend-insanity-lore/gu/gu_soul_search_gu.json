@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 488,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     488,
@@ -63,7 +63,23 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_soul_search",
+      "count": 1
+    },
+    {
       "target": "char_demon_immortal_qi_jue",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     }
   ],
@@ -203,7 +219,8 @@
         "section": "soul-search-immortal-gu",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -216,7 +233,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "soul-search-immortal-gu",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_soul_search"
+        ]
       },
       {
         "text": "After taking Qing Hui Zi’s Gu worms, Demon Immortal Qi Jue pays special attention to exceptional mortal Gu, and Soul Search Gu is named among the kinds that interest him.",
@@ -230,7 +250,9 @@
         "section": "immortal-inspection-of-mortals",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_demon_immortal_qi_jue"
+          "sys_gu_worms",
+          "char_demon_immortal_qi_jue",
+          "sys_mortal_gu"
         ]
       }
     ]

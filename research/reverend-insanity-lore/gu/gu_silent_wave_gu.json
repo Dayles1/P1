@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1547,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1547
@@ -50,6 +50,14 @@
     {
       "target": "gu_peaceful_wind_gu",
       "count": 2
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_immortal_gu",
+      "count": 1
     },
     {
       "target": "reg_eastern_sea",
@@ -154,6 +162,8 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_wild_immortal_gu",
+          "sys_immortal_gu",
           "gu_peaceful_wind_gu",
           "char_genesis_lotus_immortal_venerable",
           "reg_eastern_sea"

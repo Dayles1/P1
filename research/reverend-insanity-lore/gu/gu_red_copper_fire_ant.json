@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2108,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2108,
@@ -51,6 +51,14 @@
     {
       "target": "gu_white_noodle_queen_ant",
       "count": 2
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     },
     {
       "target": "loc_fire_plain_grotto_heaven",
@@ -136,6 +144,7 @@
         "section": "recipe-and-cost",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_recipe",
           "loc_fire_plain_grotto_heaven"
         ]
       }
@@ -177,7 +186,8 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_immortal_gu"
         ]
       },
       {

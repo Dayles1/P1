@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 426,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     426,
@@ -37,6 +37,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -81,6 +93,18 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_chang_shan_yin_against_ha_tu_gu",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 430,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -89,12 +113,20 @@
       "count": 4
     },
     {
+      "target": "evt_fight_chang_shan_yin_against_ha_tu_gu",
+      "count": 3
+    },
+    {
       "target": "gu_wolf_sprint_gu",
       "count": 3
     },
     {
       "target": "gu_wolf_strength_gu",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_northern_plains",
@@ -121,6 +153,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_northern_plains_imperial_court",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -133,7 +169,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "house_white_bone_chariot",
+      "count": 1
+    },
+    {
       "target": "reg_central_continent",
+      "count": 1
+    },
+    {
+      "target": "sys_soul_seizure",
       "count": 1
     },
     {
@@ -190,6 +242,10 @@
     },
     {
       "target": "char_man_hao",
+      "count": 1
+    },
+    {
+      "target": "sys_man_soul",
       "count": 1
     },
     {
@@ -309,6 +365,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
       "target": "char_mo_shi_kuang",
       "count": 1
     },
@@ -377,6 +437,14 @@
       "count": 1
     },
     {
+      "target": "move_seven_star_light",
+      "count": 1
+    },
+    {
+      "target": "sys_battle_merits",
+      "count": 1
+    },
+    {
       "target": "char_ma_shang_feng",
       "count": 1
     },
@@ -393,7 +461,15 @@
       "count": 1
     },
     {
+      "target": "inh_harmony_immortal_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_ni_xue_tong",
+      "count": 1
+    },
+    {
+      "target": "path_enslavement",
       "count": 1
     },
     {
@@ -407,6 +483,14 @@
     {
       "target": "char_ouyang_bi_sang",
       "count": 1
+    },
+    {
+      "target": "move_asura_transformation",
+      "count": 1
+    },
+    {
+      "target": "move_three_head_six_arms",
+      "count": 1
     }
   ],
   "claims": [
@@ -417,7 +501,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -434,7 +518,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -446,7 +530,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -470,11 +554,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wolf-king-legend",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "gu_snow_wash_gu",
         "char_ha_tu_gu"
       ]
@@ -486,7 +571,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wolf-king-legend",
       "text_origin": "source_excerpt",
@@ -501,7 +586,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "buried-wolf-gu",
       "text_origin": "source_excerpt"
@@ -513,12 +598,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "buried-wolf-gu",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_ma_hong_yun",
+        "sys_gu_immortal",
         "reg_central_continent"
       ]
     }
@@ -568,7 +654,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Chang Tribe as of ch. 430",
@@ -595,7 +681,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1969,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1969,
@@ -32,6 +32,18 @@
     2022
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "seat",
       "target": "loc_night_wolf_grotto_heaven",
@@ -51,6 +63,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_lady_cold_ash",
       "count": 2
     },
@@ -60,6 +76,10 @@
     },
     {
       "target": "char_night_heavenly_wolf",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -125,7 +145,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_lady_cold_ash",
-        "loc_ice_crystal_grotto_heaven"
+        "loc_ice_crystal_grotto_heaven",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -209,7 +230,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Seat": {
       "text": "Night Wolf grotto-heaven as of ch. 1970",
@@ -236,7 +257,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

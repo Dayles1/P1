@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 629,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     629,
@@ -50,6 +50,18 @@
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "res_mirror_willow_leaves",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
     },
     {
       "target": "fac_gu_masters",
@@ -170,6 +182,7 @@
         "section": "food",
         "text_origin": "source_excerpt",
         "mentions": [
+          "res_mirror_willow_leaves",
           "fac_immortal_crane_sect"
         ]
       },
@@ -260,6 +273,7 @@
         "section": "storage-and-ranks",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "loc_hu_immortal_blessed_land"
         ]
       },
@@ -273,7 +287,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "storage-and-ranks",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       }
     ]
   },

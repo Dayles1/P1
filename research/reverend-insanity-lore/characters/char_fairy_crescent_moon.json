@@ -23,13 +23,30 @@
   "first_appearance": {
     "chapter": 2018,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2018
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "loc_crescent_moon_grotto_heaven",
       "count": 2
@@ -44,6 +61,10 @@
     },
     {
       "target": "char_xiao_he_jian",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     }
   ],
@@ -62,6 +83,7 @@
       "mentions": [
         "char_xiao_he_jian",
         "char_lady_cold_ash",
+        "sys_gu_immortal",
         "loc_crescent_moon_grotto_heaven"
       ]
     },
@@ -111,7 +133,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -133,7 +155,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Dead",
     "alignment": null,

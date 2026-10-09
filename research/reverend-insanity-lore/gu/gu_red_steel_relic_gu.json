@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 111,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     111,
@@ -127,6 +127,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_bai_clan",
       "count": 1
     },
@@ -151,7 +155,15 @@
       "count": 1
     },
     {
+      "target": "sys_aperture_wall",
+      "count": 1
+    },
+    {
       "target": "gu_water_shield_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -164,6 +176,18 @@
     },
     {
       "target": "char_green",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     }
   ],
@@ -235,6 +259,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_purple_crystal_relic_gu",
+          "sys_immortal_gu",
           "char_green"
         ]
       }
@@ -252,7 +277,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "appearance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       },
       {
         "text": "When Fang Yuan activates his first copy, it flies up in his aperture and gives off bursts of red light that pour into the aperture wall until the Gu turns transparent and vanishes. Before that activation, the Gu already sits in his aperture while Black Boar Gu hovers around it; the chapter does not name an idle color or resting shape for the red steel copy itself.",
@@ -261,7 +289,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt",
@@ -276,7 +304,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt",
@@ -300,10 +328,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Fang Yuan’s first activation replaces light red primeval essence with red light driven into the aperture wall, advances him from rank two initial stage to middle stage, and leaves a thicker water membrane plus scarlet middle stage primeval essence; the Gu exhausts itself and disappears. A red steel Relic Gu directly strengthens the aperture’s foundation, which for a Gu Master means advancing by a small realm.",
@@ -312,7 +343,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -324,7 +355,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -336,7 +367,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-use",
         "text_origin": "source_excerpt",
@@ -351,7 +382,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-use",
         "text_origin": "source_excerpt"
@@ -363,7 +394,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-use",
         "text_origin": "source_excerpt",
@@ -380,7 +411,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-use",
         "text_origin": "source_excerpt"
@@ -404,7 +435,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-use",
         "text_origin": "source_excerpt"
@@ -435,7 +466,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "price",
         "text_origin": "source_excerpt"
@@ -459,7 +490,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-use",
         "text_origin": "source_excerpt",
@@ -521,7 +552,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -538,7 +569,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -556,7 +587,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "relic-gu-form-and-human-path",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms",
+          "sys_gu_immortal"
+        ]
       }
     ]
   },

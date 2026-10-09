@@ -23,15 +23,36 @@
   "first_appearance": {
     "chapter": 752,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     752
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
     {
+      "target": "path_strength",
+      "count": 1
+    },
+    {
       "target": "char_qin_bai_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -71,7 +92,9 @@
     "ranks": [],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -117,7 +140,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_qin_bai_sheng",
-          "gu_rising_azure_cloud"
+          "gu_rising_azure_cloud",
+          "sys_immortal_gu"
         ],
         "needs_review": true
       },
@@ -154,7 +178,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

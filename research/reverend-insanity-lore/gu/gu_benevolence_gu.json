@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1693,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1693,
@@ -60,6 +60,10 @@
   ],
   "co_mentions": [
     {
+      "target": "move_benevolent_equality",
+      "count": 4
+    },
+    {
       "target": "char_fairy_zi_wei",
       "count": 3
     },
@@ -81,6 +85,10 @@
     },
     {
       "target": "char_duke_long",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -155,6 +163,8 @@
         "section": "borrowed-for-battle",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu_house",
+          "move_benevolent_equality",
           "char_duke_long",
           "fac_heavenly_court"
         ]

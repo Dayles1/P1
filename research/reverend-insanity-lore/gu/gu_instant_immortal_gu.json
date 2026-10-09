@@ -23,12 +23,24 @@
   "first_appearance": {
     "chapter": 1905,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1905
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_time",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -44,15 +56,35 @@
   ],
   "co_mentions": [
     {
+      "target": "house_moment_stage",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "path_time",
+      "count": 1
     },
     {
       "target": "gu_that_time_immortal_gu",
       "count": 2
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "house_three_autumn_yellow_crane_platform",
       "count": 1
     },
     {
@@ -88,7 +120,9 @@
     "ranks": [],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_time"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -154,10 +188,13 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
+          "house_moment_stage",
           "gu_that_time_immortal_gu",
           "char_fang_yuan",
           "fac_heavenly_court",
-          "loc_river_of_time"
+          "loc_river_of_time",
+          "sys_immortal_gu_house"
         ]
       }
     ]
@@ -166,7 +203,7 @@
     "Path": {
       "text": "Time Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

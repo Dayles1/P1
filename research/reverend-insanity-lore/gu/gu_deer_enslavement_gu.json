@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 152,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     152
@@ -48,6 +48,10 @@
     },
     {
       "target": "gu_tiger_enslavement_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_enslavement_gu",
       "count": 1
     },
     {
@@ -108,7 +112,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "use-with-herbivores",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_enslavement_gu"
+        ]
       }
     ]
   },

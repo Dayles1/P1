@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1710,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1710,
@@ -32,6 +32,10 @@
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "house_central_heaven_gate",
+      "count": 2
+    },
     {
       "target": "loc_five_deity_hall",
       "count": 2
@@ -65,11 +69,23 @@
       "count": 1
     },
     {
+      "target": "house_heaven_overseeing_tower",
+      "count": 1
+    },
+    {
       "target": "loc_central_great_hall",
       "count": 1
     },
     {
       "target": "char_star_constellation_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_nine_nine_consecutive_unceasing_formation",
+      "count": 1
+    },
+    {
+      "target": "evt_era_olden",
       "count": 1
     }
   ],
@@ -102,10 +118,12 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fairy_zi_wei",
+        "house_central_heaven_gate",
         "loc_name_plaque_palace",
         "loc_sun_palace",
         "loc_five_deity_hall",
         "loc_central_great_hall",
+        "house_heaven_overseeing_tower",
         "loc_imperfection_regret_pavilion",
         "loc_star_zone_mountain"
       ]
@@ -137,6 +155,7 @@
       "section": "limitless-visit",
       "text_origin": "source_excerpt",
       "mentions": [
+        "evt_era_olden",
         "char_star_constellation_immortal_venerable"
       ]
     }

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 657,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     657,
@@ -53,6 +53,10 @@
       "count": 2
     },
     {
+      "target": "house_modest_thatched_hut",
+      "count": 2
+    },
+    {
       "target": "loc_miniscule_mountain",
       "count": 2
     },
@@ -62,6 +66,18 @@
     },
     {
       "target": "char_guan_shen_zhao",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_super_force",
       "count": 1
     },
     {
@@ -117,6 +133,10 @@
       "count": 1
     },
     {
+      "target": "path_moon",
+      "count": 1
+    },
+    {
       "target": "gu_groundmat_grass_gu",
       "count": 1
     },
@@ -137,7 +157,23 @@
       "count": 1
     },
     {
+      "target": "res_oil_water",
+      "count": 1
+    },
+    {
       "target": "char_he_ruo",
+      "count": 1
+    },
+    {
+      "target": "move_big_to_small",
+      "count": 1
+    },
+    {
+      "target": "move_final_afterglow",
+      "count": 1
+    },
+    {
+      "target": "move_ice_dragon_lock",
       "count": 1
     },
     {
@@ -161,11 +197,35 @@
       "count": 1
     },
     {
+      "target": "res_moon_fangs",
+      "count": 1
+    },
+    {
+      "target": "res_profound_grey_salt",
+      "count": 1
+    },
+    {
+      "target": "res_wind_whistling_bronze",
+      "count": 1
+    },
+    {
       "target": "char_old_man_tian_long",
       "count": 1
     },
     {
       "target": "fac_wind_cloud_manor",
+      "count": 1
+    },
+    {
+      "target": "move_approaching_body",
+      "count": 1
+    },
+    {
+      "target": "move_defending_day_and_night",
+      "count": 1
+    },
+    {
+      "target": "sys_public_blessed_land",
       "count": 1
     },
     {
@@ -185,7 +245,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -197,15 +257,18 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "fac_dong_fang_tribe",
         "loc_treasure_yellow_heaven",
         "char_dong_fang_yi_kong",
         "fac_huang_jin_bloodline",
+        "sys_immortal_gu_house",
+        "house_modest_thatched_hut",
         "char_dong_fang_chang_fan"
       ]
     },
@@ -216,7 +279,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "miniscule-mountain-storage",
       "text_origin": "source_excerpt",

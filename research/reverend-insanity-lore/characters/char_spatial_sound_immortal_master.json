@@ -23,15 +23,36 @@
   "first_appearance": {
     "chapter": 1965,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1965
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_sound",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
     {
+      "target": "path_sound",
+      "count": 2
+    },
+    {
       "target": "char_feng_jiu_ge",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     }
   ],
@@ -48,7 +69,8 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_feng_jiu_ge"
+        "char_feng_jiu_ge",
+        "sys_gu_immortal"
       ]
     }
   ],
@@ -77,7 +99,7 @@
     "Paths": {
       "text": "Sound path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": null,
@@ -88,7 +110,9 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_sound"
+    ],
     "aperture": null,
     "talent_grade": null
   },

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1230,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1230,
@@ -74,6 +74,14 @@
       "count": 1
     },
     {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
       "target": "char_blazing_glory_lightning_brilliance",
       "count": 1
     },
@@ -90,7 +98,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_qing_clan",
+      "count": 1
+    },
+    {
+      "target": "house_divine_bean_palace",
       "count": 1
     },
     {
@@ -185,7 +205,8 @@
         "section": "growth-and-battle-power",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_nine_spiritual_fairy"
+          "char_nine_spiritual_fairy",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -256,7 +277,9 @@
         "section": "qing-chous-origin-and-rank-nine",
         "text_origin": "source_excerpt",
         "mentions": [
-          "fac_qing_clan"
+          "fac_qing_clan",
+          "house_divine_bean_palace",
+          "sys_immortal_gu_house"
         ]
       }
     ]
@@ -303,7 +326,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_red_heart_traveler",
-          "char_qing_chou"
+          "char_qing_chou",
+          "sys_vital_gu",
+          "sys_the_legends_of_ren_zu"
         ]
       },
       {

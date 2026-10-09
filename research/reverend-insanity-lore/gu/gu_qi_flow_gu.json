@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 353,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     353,
@@ -67,6 +67,10 @@
       "count": 1
     },
     {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
       "target": "gu_gold_eating_flying_ant_gu",
       "count": 1
     },
@@ -79,7 +83,23 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "res_black_iron_qi",
+      "count": 1
+    },
+    {
+      "target": "res_moving_dragon_qi",
+      "count": 1
+    },
+    {
+      "target": "res_orchid_vitality_qi",
+      "count": 1
+    },
+    {
+      "target": "move_orchid_breath",
       "count": 1
     }
   ],
@@ -184,7 +204,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -204,7 +224,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "with-iron-cabinet-gu",
         "text_origin": "source_excerpt"
@@ -216,10 +236,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "with-iron-cabinet-gu",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_demonic_path"
+        ]
       },
       {
         "text": "Tie Ruo Nan says Tie clan had used iron cabinet Gu and qi flow Gu around an area when planning a staged self-destruction scene. The days Tie clan’s four old-timers spent trapping Bai Ning Bing looked like Tie clan’s reprisal, but in truth they were a scheme against Fang Yuan. Tie Ruo Nan later warns Fang Yuan that Tie clan’s four old-timers are outside the main hall, sealing the space off with iron cabinet Gu and qi flow Gu so that nobody can get in.",
@@ -228,7 +251,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "san-cha-confinement",
         "text_origin": "source_excerpt",
@@ -246,7 +269,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "immortal-gu-identification",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       }
     ]
   },

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 298,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     298,
@@ -68,6 +68,14 @@
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_bai_ning_bing_against_tie_dao_ku",
+      "count": 1
+    },
+    {
       "target": "gu_hand_blade_gu",
       "count": 1
     },
@@ -84,6 +92,10 @@
       "count": 1
     },
     {
+      "target": "path_ice",
+      "count": 1
+    },
+    {
       "target": "char_yan_tu",
       "count": 1
     },
@@ -97,6 +109,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_northern_dark_ice_soul_physique",
       "count": 1
     }
   ],
@@ -155,7 +171,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank",
         "text_origin": "source_excerpt"
@@ -176,7 +192,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -191,7 +207,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -219,7 +235,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "battle-stage-dominance",
         "text_origin": "source_excerpt"
@@ -231,7 +247,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "battle-stage-dominance",
         "text_origin": "source_excerpt"
@@ -243,12 +259,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "battle-stage-dominance",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_ice_edge_gu"
+          "gu_ice_edge_gu",
+          "sys_gu_master"
         ]
       },
       {
@@ -274,7 +291,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "battle-stage-dominance",
         "text_origin": "source_excerpt"
@@ -326,7 +343,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -343,11 +360,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fake-self-destruction-explained",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_northern_dark_ice_soul_physique",
           "char_fang_yuan"
         ]
       }

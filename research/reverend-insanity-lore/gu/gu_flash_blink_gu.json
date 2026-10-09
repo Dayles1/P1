@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 76,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     76
@@ -33,6 +33,18 @@
     {
       "target": "gu_shadow_follower_gu",
       "count": 2
+    },
+    {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
     },
     {
       "target": "fac_gu_yue_clan",
@@ -109,7 +121,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -124,12 +136,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
-          "fac_gu_yue_clan"
+          "fac_gu_yue_clan",
+          "sys_gu_master"
         ]
       }
     ]
@@ -169,10 +182,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_demonic_path",
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "On use it explodes into blinding white light that turns the dark forest bright.",
@@ -181,7 +198,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "blinding-light-burst",
         "text_origin": "source_excerpt"

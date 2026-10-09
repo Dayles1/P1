@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1244,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1244,
@@ -41,11 +41,27 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "reg_central_continent",
       "count": 1
     },
     {
+      "target": "house_wind_sweeping_building",
+      "count": 1
+    },
+    {
       "target": "char_zhao_lian_yun",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "house_canary_pavilion",
       "count": 1
     }
   ],
@@ -63,6 +79,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_central_continent",
+        "sys_immortal_gu_house",
         "char_wei_ling_yang"
       ]
     },
@@ -91,7 +108,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "passage-through",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_wind_sweeping_building"
+      ]
     },
     {
       "text": "After a long time with no stars crashing, Wind Sweeping Building finds the storm moving away through calm dark night. Star path dao marks fill the storm, and those conflicting dao marks make Bi Chen Tian’s methods very ineffective. He follows an aura from Zhao Lian Yun’s love Immortal Gu to escape. Wei Ling Yang leads Canary Pavilion through with difficulty and leaves after Bi Chen Tian, then is ambushed by a sky chief beast group.",
@@ -105,7 +125,9 @@
       "section": "escape-from-inside",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_zhao_lian_yun"
+        "char_zhao_lian_yun",
+        "sys_immortal_gu",
+        "house_canary_pavilion"
       ]
     }
   ],

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 426,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     426,
@@ -47,12 +47,32 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "fights_here",
+      "target": "evt_fight_chang_shan_yin_against_ha_tu_gu",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 430,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "evt_fight_chang_shan_yin_against_ha_tu_gu",
+      "count": 2
+    },
+    {
+      "target": "evt_arc_northern_plains_imperial_court",
+      "count": 1
     },
     {
       "target": "char_fang_yuan",
@@ -95,7 +115,15 @@
       "count": 1
     },
     {
+      "target": "sys_soul_seizure",
+      "count": 1
+    },
+    {
       "target": "char_lady_poison_scorpion",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -116,6 +144,10 @@
     },
     {
       "target": "loc_hong_yu_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "move_nether_ghost_claw",
       "count": 1
     }
   ],
@@ -209,6 +241,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_zi_du_blessed_land",
+        "sys_gu_immortal",
         "char_lady_poison_scorpion"
       ]
     },

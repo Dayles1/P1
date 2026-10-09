@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1209,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_new_blessed_land_crazed_demon"
   },
   "chapters_cited": [
     1209
@@ -44,6 +44,14 @@
     },
     {
       "target": "char_liu_yong",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -175,7 +183,9 @@
         "section": "at-the-jade-light-pit",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_formation",
           "gu_no_gu",
+          "sys_gu_worms",
           "char_liu_luo",
           "char_liu_chang"
         ]

@@ -23,12 +23,24 @@
   "first_appearance": {
     "chapter": 757,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     757
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_yao_huang",
@@ -48,8 +60,16 @@
       "count": 3
     },
     {
+      "target": "path_wisdom",
+      "count": 2
+    },
+    {
       "target": "gu_cauldron_strength_immortal_gu",
       "count": 2
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     },
     {
       "target": "reg_northern_plains",
@@ -84,7 +104,9 @@
     "ranks": [],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -130,7 +152,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "reg_northern_plains",
+          "sys_immortal_gu",
           "char_yao_huang",
+          "path_wisdom",
           "gu_cauldron_strength_immortal_gu"
         ],
         "needs_review": true
@@ -162,7 +186,7 @@
     "Path": {
       "text": "Wisdom Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

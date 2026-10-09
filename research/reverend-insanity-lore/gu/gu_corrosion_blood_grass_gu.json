@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 94,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     94
@@ -36,6 +36,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_red_steel_primeval_essence",
       "count": 1
     }
   ],
@@ -123,7 +127,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -138,10 +142,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "planting-mechanism",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_red_steel_primeval_essence"
+        ]
       },
       {
         "text": "Hua Xing walks up and begins that planting. Fang Yuan lets go of the boar’s tusks, the boar swings free, and the tusks bisect her before the Gu finishes its work.",
@@ -150,7 +157,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "planting-attempt",
         "text_origin": "source_excerpt",

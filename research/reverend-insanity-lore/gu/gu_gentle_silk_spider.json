@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 82,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     82
@@ -40,6 +40,10 @@
     },
     {
       "target": "char_gu_yue_qing_shu",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     }
   ],
@@ -150,7 +154,8 @@
         "mentions": [
           "char_gu_yue_qing_shu",
           "char_chi_shan",
-          "char_gu_yue_mo_yan"
+          "char_gu_yue_mo_yan",
+          "sys_vital_gu"
         ]
       }
     ]

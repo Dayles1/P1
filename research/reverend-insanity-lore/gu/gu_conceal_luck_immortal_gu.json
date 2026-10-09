@@ -23,16 +23,45 @@
   "first_appearance": {
     "chapter": 751,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     751,
     758
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_luck",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
     {
+      "target": "path_luck",
+      "count": 2
+    },
+    {
       "target": "char_qin_bai_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -82,7 +111,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_luck"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -122,6 +153,7 @@
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "path_luck",
           "gu_luck_inspection_gu",
           "gu_luck_inspection_immortal_gu"
         ]
@@ -157,7 +189,9 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_qin_bai_sheng"
+          "char_qin_bai_sheng",
+          "sys_immortal_gu",
+          "sys_mortal_gu"
         ],
         "needs_review": true
       },
@@ -171,7 +205,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "auction-result",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "Conceal luck Immortal Gu was among the Immortal Gu that went unsold at the start of the auction.",
@@ -202,7 +239,7 @@
     "Path": {
       "text": "Luck Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

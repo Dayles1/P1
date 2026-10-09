@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 566,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     566
@@ -48,11 +48,23 @@
       "count": 2
     },
     {
+      "target": "house_water_pavilion",
+      "count": 2
+    },
+    {
       "target": "char_fairy_bai_hu",
       "count": 1
     },
     {
       "target": "loc_treasure_yellow_heaven",
+      "count": 1
+    },
+    {
+      "target": "move_water_spirit_transformation",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     }
   ],
@@ -115,7 +127,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -167,7 +179,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -184,10 +196,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "water-pavilion-entry",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu_house",
+          "house_water_pavilion"
+        ]
       }
     ]
   },

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1845,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1746,
@@ -46,15 +46,35 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_dragonmen",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1845,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "race_dragonmen",
+      "count": 2
+    },
     {
       "target": "reg_eastern_sea",
       "count": 1
     },
     {
       "target": "char_tai_qin",
+      "count": 2
+    },
+    {
+      "target": "house_dragon_court",
       "count": 2
     },
     {
@@ -78,7 +98,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
+      "count": 1
+    },
+    {
+      "target": "move_dragonman_extermination",
+      "count": 1
+    },
+    {
+      "target": "move_invincible_phantom_tower",
       "count": 1
     },
     {
@@ -131,7 +167,10 @@
       "section": "palace-spirit-form",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_dragon_palace",
         "char_bai_ning_bing",
+        "house_dragon_court",
+        "sys_gu_immortal",
         "char_duke_long",
         "fac_heavenly_court",
         "char_di_zang_sheng"
@@ -243,7 +282,7 @@
     "Race": {
       "text": "Dragonmen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -259,7 +298,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_dragonmen",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

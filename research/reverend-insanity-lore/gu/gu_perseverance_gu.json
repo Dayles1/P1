@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1276,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1276,
@@ -72,11 +72,39 @@
       "count": 4
     },
     {
+      "target": "move_vajra_shell",
+      "count": 4
+    },
+    {
+      "target": "move_myriad_self_second_style",
+      "count": 3
+    },
+    {
+      "target": "move_reverse_flow_protection_seal",
+      "count": 3
+    },
+    {
+      "target": "move_bountiful_year",
+      "count": 3
+    },
+    {
+      "target": "move_self_cleansing",
+      "count": 3
+    },
+    {
+      "target": "move_light_fungus_radiance",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
     {
       "target": "char_sun_ming_lu",
+      "count": 2
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 2
     },
     {
@@ -96,6 +124,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
+    },
+    {
       "target": "char_boundless_forest_samsara",
       "count": 1
     },
@@ -105,6 +137,10 @@
     },
     {
       "target": "gu_strength_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_perseverance_bears_a_ladder",
       "count": 1
     },
     {
@@ -124,7 +160,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "char_bai_ning_bing",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -136,7 +184,23 @@
       "count": 1
     },
     {
+      "target": "sys_formation_path_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_dark_limit_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_ancient_sword_dragon_transformation",
+      "count": 1
+    },
+    {
+      "target": "move_inextinguishable_star_target",
+      "count": 1
+    },
+    {
+      "target": "sys_self_cleansing_immortal_formation",
       "count": 1
     },
     {
@@ -148,7 +212,15 @@
       "count": 1
     },
     {
+      "target": "evt_legend_wealth",
+      "count": 1
+    },
+    {
       "target": "gu_myriad_self_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "path_human",
       "count": 1
     }
   ],
@@ -218,12 +290,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_immortal_gu"
         ]
       }
     ],
@@ -239,7 +312,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "duration-effect",
         "text_origin": "source_excerpt"
@@ -251,7 +324,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "duration-effect",
         "text_origin": "source_excerpt"
@@ -278,11 +351,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-refinement",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "char_mao_li_qiu",
           "char_bi_chen_tian",
           "char_wei_ling_yang"
@@ -295,7 +369,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-refinement",
         "text_origin": "source_excerpt"
@@ -307,7 +381,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-refinement",
         "text_origin": "source_excerpt",
@@ -322,7 +396,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-refinement",
         "text_origin": "source_excerpt"
@@ -334,7 +408,7 @@
         ],
         "certainty": "inferred",
         "confidence": "C",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-refinement",
         "text_origin": "source_excerpt"
@@ -381,10 +455,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_the_legends_of_ren_zu"
+        ]
       },
       {
         "text": "Flood Extremity first treats perseverance Gu as only a Gu from that book, but Black Extremity states that Perseverance Immortal Gu has existed, and that Genesis Lotus Immortal Venerable refined it, entered the Door of Life and Death, brought Reverse Flow River into the world, and was the river’s first owner.",
@@ -393,7 +470,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "genesis-lotus",
         "text_origin": "source_excerpt",
@@ -412,12 +489,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "vajra-shell-component",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_vajra_thought_immortal_gu"
+          "move_vajra_shell",
+          "gu_vajra_thought_immortal_gu",
+          "sys_mortal_gu"
         ]
       },
       {

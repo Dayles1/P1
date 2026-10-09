@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 679,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     679,
@@ -50,12 +50,96 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_combat_immortal_sect",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
       "recorded_chapter": 712,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_earths_root",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 716,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_fallen_grey_cloak",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 717,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_shocking_rock_break",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 722,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_rock_mountain_immortal_monkey_king_transformation",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 726,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_earth_disintegration",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_filthy_mud_robe",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
       "count": null,
       "confidence": "B",
       "source_id": "src_sagaofgu",
@@ -68,8 +152,36 @@
       "count": 4
     },
     {
+      "target": "move_earths_root",
+      "count": 3
+    },
+    {
+      "target": "move_fallen_grey_cloak",
+      "count": 3
+    },
+    {
+      "target": "move_rock_mountain_immortal_monkey_king_transformation",
+      "count": 3
+    },
+    {
+      "target": "move_earth_disintegration",
+      "count": 3
+    },
+    {
+      "target": "move_filthy_mud_robe",
+      "count": 3
+    },
+    {
+      "target": "move_shocking_rock_break",
+      "count": 2
+    },
+    {
       "target": "reg_central_continent",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_star_lord_wan_xiang",
@@ -88,6 +200,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_group_strength_gu",
       "count": 1
     },
@@ -100,11 +216,19 @@
       "count": 1
     },
     {
+      "target": "res_stone_monkey_fur",
+      "count": 1
+    },
+    {
       "target": "char_lord_tiger_demon",
       "count": 1
     },
     {
       "target": "char_vicious_lightning_fiend",
+      "count": 1
+    },
+    {
+      "target": "move_lightning_deity",
       "count": 1
     },
     {
@@ -128,11 +252,23 @@
       "count": 1
     },
     {
+      "target": "sys_metal_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "gu_star_arrow_gu",
       "count": 1
     },
     {
       "target": "gu_thread_trace_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_desolate_plant",
+      "count": 1
+    },
+    {
+      "target": "sys_fire_path_dao_marks",
       "count": 1
     },
     {
@@ -144,7 +280,23 @@
       "count": 1
     },
     {
+      "target": "res_walking_meat_tree",
+      "count": 1
+    },
+    {
       "target": "loc_rolling_rock_battlefield",
+      "count": 1
+    },
+    {
+      "target": "sys_star_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "move_one_star_finger",
+      "count": 1
+    },
+    {
+      "target": "move_star_billow_pillar",
       "count": 1
     },
     {
@@ -180,6 +332,10 @@
       "count": 1
     },
     {
+      "target": "reg_earth_earth_abyss",
+      "count": 1
+    },
+    {
       "target": "fac_ancient_soul_sect",
       "count": 1
     },
@@ -196,7 +352,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -204,6 +360,7 @@
         "char_hei_lou_lan",
         "char_fang_yuan",
         "gu_group_strength_gu",
+        "sys_gu_immortal",
         "loc_treasure_yellow_heaven"
       ]
     },
@@ -214,7 +371,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -226,7 +383,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -238,7 +395,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -250,7 +407,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "combat-immortal-sect",
       "text_origin": "source_excerpt",
@@ -267,7 +424,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "combat-immortal-sect",
       "text_origin": "source_excerpt"
@@ -279,7 +436,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "praised-for-a-swift-kill",
       "text_origin": "source_excerpt",
@@ -295,7 +452,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "standing-among-rank-seven",
       "text_origin": "source_excerpt",
@@ -311,10 +468,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "armor-and-attire",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "reg_earth_earth_abyss"
+      ]
     },
     {
       "text": "At a later meeting he is at the peak of rank seven, cultivating earth path primarily and transformation path secondarily, and known across Central Continent as the Immortal Monkey King. He is a supreme elder of Combat Immortal Sect, and Fairy Zi Wei assigns him to ambush Fang Yuan at Star Form blessed land, then to destroy that land when Fang Yuan does not return.",
@@ -323,7 +483,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "heavenly-court-task",
       "text_origin": "source_excerpt",
@@ -379,7 +539,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Combat Immortal Sect as of ch. 712",
@@ -406,7 +566,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

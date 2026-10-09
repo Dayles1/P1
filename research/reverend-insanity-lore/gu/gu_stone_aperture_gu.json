@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 143,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     143,
@@ -69,12 +69,20 @@
       "count": 2
     },
     {
+      "target": "sys_northern_dark_ice_soul_physique",
+      "count": 2
+    },
+    {
       "target": "gu_water_shield_gu",
       "count": 2
     },
     {
       "target": "gu_demonic_blood_skull_gu",
       "count": 2
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
     },
     {
       "target": "fac_gu_masters",
@@ -168,7 +176,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -180,7 +188,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -198,7 +206,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-use",
         "text_origin": "source_excerpt",
@@ -232,11 +240,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "fac_gu_masters"
         ],
         "needs_review": true
@@ -248,7 +257,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "blood-skull-clash",
         "text_origin": "source_excerpt",
@@ -311,11 +320,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bai-ning-bings-intent",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_northern_dark_ice_soul_physique",
           "gu_relic_gu",
           "gu_water_shield_gu"
         ]
@@ -327,7 +337,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "blood-skull-clash",
         "text_origin": "source_excerpt",

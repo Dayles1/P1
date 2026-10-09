@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 740,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     740,
@@ -66,6 +66,14 @@
       "count": 2
     },
     {
+      "target": "reg_earth_earth_trench",
+      "count": 2
+    },
+    {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -75,6 +83,10 @@
     },
     {
       "target": "char_sha_huang",
+      "count": 1
+    },
+    {
+      "target": "house_red_fiend_divine_boat",
       "count": 1
     },
     {
@@ -94,6 +106,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_zombie",
+      "count": 1
+    },
+    {
       "target": "char_doctor_yin_xuan",
       "count": 1
     },
@@ -110,14 +126,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
         "char_yin_liu_gong",
-        "loc_dark_flow_giant_city"
+        "loc_dark_flow_giant_city",
+        "evt_arc_imperial_court_contest"
       ]
     },
     {
@@ -127,7 +144,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "authority-in-dark-flow-giant-city",
       "text_origin": "source_excerpt"
@@ -139,12 +156,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "guard-duty-and-standing",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_huang_quan_weng",
+        "reg_earth_earth_trench",
         "fac_zombie_alliance"
       ]
     },
@@ -155,7 +173,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "guard-duty-and-standing",
       "text_origin": "source_excerpt"
@@ -167,7 +185,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "leadership-under-pressure",
       "text_origin": "source_excerpt",
@@ -183,10 +201,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yaksha-octopus-cultivation",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_zombie"
+      ]
     },
     {
       "text": "While exploring Earth Trench, he demonstrates patience and experience, commanding scouting personally, arranging defensive formations, and allocating tasks to subordinates as they move deeper into desolate beast territories.",
@@ -195,7 +216,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yaksha-octopus-cultivation",
       "text_origin": "source_excerpt"

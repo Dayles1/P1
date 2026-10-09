@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 743,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     743,
@@ -65,6 +65,14 @@
     },
     {
       "target": "char_qin_bai_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -116,7 +124,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -125,7 +133,9 @@
         "char_fairy_li_shan",
         "char_qin_bai_sheng",
         "char_prince_feng_xian",
-        "char_swordmaster_you_lan"
+        "sys_immortal_gu",
+        "char_swordmaster_you_lan",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -135,7 +145,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -181,7 +191,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-task",
       "text_origin": "source_excerpt",
@@ -198,7 +208,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fire-path-deduction",
       "text_origin": "source_excerpt",

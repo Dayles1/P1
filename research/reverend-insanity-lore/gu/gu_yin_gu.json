@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 199,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     194,
@@ -77,6 +77,22 @@
     },
     {
       "target": "char_bai_ning_bing",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_northern_dark_ice_soul_physique",
       "count": 1
     },
     {
@@ -142,7 +158,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -160,10 +176,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_healing_gu",
+          "sys_gu_master"
+        ]
       },
       {
         "text": "The Gu that saves Bai Ning Bing does not resurrect the Gu worms lost when those worms froze to death.",
@@ -175,7 +195,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ]
   },
@@ -191,7 +214,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "pair-and-feeding",
         "text_origin": "source_excerpt"
@@ -274,14 +297,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
           "gu_yin_yang_rotation_gu",
-          "char_bai_ning_bing"
+          "char_bai_ning_bing",
+          "sys_northern_dark_ice_soul_physique"
         ]
       },
       {

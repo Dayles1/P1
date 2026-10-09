@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2226,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_era_of_three_venerables"
   },
   "chapters_cited": [
     2226
@@ -46,6 +46,14 @@
     {
       "target": "char_xiao_yan",
       "count": 4
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
     },
     {
       "target": "fac_shang_clan",
@@ -152,7 +160,9 @@
         "mentions": [
           "reg_southern_border",
           "fac_shang_clan",
-          "char_xiao_yan"
+          "sys_gu_master",
+          "char_xiao_yan",
+          "sys_gu_worms"
         ]
       }
     ]

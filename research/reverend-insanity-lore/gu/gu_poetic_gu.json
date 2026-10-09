@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2023,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2023
@@ -66,6 +66,10 @@
     {
       "target": "gu_poetry_gu",
       "count": 2
+    },
+    {
+      "target": "sys_vital_gu",
+      "count": 1
     }
   ],
   "claims": [],
@@ -163,6 +167,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_poetry_gu",
+          "sys_vital_gu",
           "char_li_xiao_bai",
           "gu_emotion_poetry_gu",
           "gu_gather_poem_gu",

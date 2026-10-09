@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1143,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1143,
@@ -97,6 +97,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_lady_earth_mother",
       "count": 1
     },
@@ -125,11 +129,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
       "count": 1
     },
     {
       "target": "loc_fire_plain_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -175,6 +187,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_northern_plains",
+        "sys_gu_immortal",
         "char_fang_yuan",
         "char_shi_zong"
       ]
@@ -264,6 +277,7 @@
       "section": "plunder-for-profit",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "reg_southern_border"
       ]
     },
@@ -292,7 +306,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "fire-bird-mountain",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_formation"
+      ]
     },
     {
       "text": "Shi Zong, first supreme elder of Northern Plains’ rockman tribe at rank seven, faces his third grand tribulation and finds nothing on Fang Yuan’s exchange list to delay it, so he accepts the first task on Fang Yuan’s mission board and lets his immortal aperture be loaded with earth path materials in preparation. When the resulting yellow sky dust cloud tribulation proves too strong for his own killer moves, Fang Yuan intervenes with more than twenty rank eight totem killer moves to shred it apart.",

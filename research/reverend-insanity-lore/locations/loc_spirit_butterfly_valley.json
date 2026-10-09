@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 335,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     335,
@@ -100,11 +100,23 @@
       "count": 2
     },
     {
+      "target": "house_present_and_past_pavilion",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_immortal_crane_sect",
       "count": 1
     },
     {
       "target": "fac_ten_great_sects",
+      "count": 1
+    },
+    {
+      "target": "inh_hu_immortal_inheritance",
       "count": 1
     },
     {
@@ -148,6 +160,10 @@
       "count": 1
     },
     {
+      "target": "move_heart_blood_premonition",
+      "count": 1
+    },
+    {
       "target": "char_shi_zheng_yi",
       "count": 1
     },
@@ -164,6 +180,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
@@ -173,6 +193,10 @@
     },
     {
       "target": "char_ninth_ghost_finger",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_path_convention",
       "count": 1
     },
     {
@@ -200,12 +224,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "place-in-the-ten-sect-contest",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_immortal_crane_sect",
+        "inh_hu_immortal_inheritance",
+        "sys_gu_immortal",
         "fac_heavenly_lotus_sect",
         "fac_ancient_soul_sect",
         "fac_heavens_envy_sect",
@@ -239,7 +265,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ranked-beyond-immortal-crane-sect",
       "text_origin": "source_excerpt",
@@ -256,7 +282,7 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "investigation-and-suspicion",
       "text_origin": "source_excerpt",
@@ -275,7 +301,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mu-ling-lan-water-path-immortal-of-the-valley",
       "text_origin": "source_excerpt",
@@ -298,7 +324,8 @@
       "mentions": [
         "char_shang_xunzi",
         "fac_heavenly_court",
-        "loc_river_of_time"
+        "loc_river_of_time",
+        "house_present_and_past_pavilion"
       ]
     },
     {
@@ -311,7 +338,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "sects-hidden-guardians",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "Mountain Tortoise Valley is named as the largest mountain tortoise breeding ground in Central Continent and as a resource point governed by Spirit Butterfly Valley of the ten great ancient sects. When its guarding Gu Immortal is drawn away to protect a Refinement Path Convention area, a demonic path Gu Immortal moves to plunder the tortoises left behind warning methods.",
@@ -323,7 +353,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "mountain-tortoise-valley-resource-point",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_refinement_path_convention"
+      ]
     },
     {
       "text": "A later list of sect recommendations names Spirit Butterfly Valley’s choice as Xiao Qi Xing among other Central Continent ten-sect nominees.",

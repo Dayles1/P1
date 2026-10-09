@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 422,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     422,
@@ -33,6 +33,14 @@
   "co_mentions": [
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_man_soul",
       "count": 1
     },
     {
@@ -146,13 +154,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
           "loc_luo_po_valley",
+          "sys_gu_worms",
           "fac_immortal_crane_sect"
         ]
       }

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 602,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     602
@@ -51,7 +51,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_imperial_court_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_prison",
       "count": 1
     }
   ],
@@ -114,7 +122,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "remaining-power",
         "text_origin": "source_excerpt",
@@ -160,7 +168,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -168,6 +176,7 @@
           "loc_imperial_court_blessed_land",
           "char_mo_yao",
           "char_frost_jade_peacock",
+          "sys_immortal_gu",
           "gu_earth_prison"
         ]
       }

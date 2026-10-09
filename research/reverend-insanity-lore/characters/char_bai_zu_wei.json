@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1170,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1170,
@@ -36,6 +36,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -64,6 +76,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -77,6 +93,10 @@
     },
     {
       "target": "char_heavenly_lord_bai_zu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -100,6 +120,10 @@
       "count": 1
     },
     {
+      "target": "move_green_city_rampage",
+      "count": 1
+    },
+    {
       "target": "fac_chu_sect",
       "count": 1
     },
@@ -120,7 +144,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -129,6 +153,7 @@
         "loc_iron_eagle_blessed_land",
         "char_fang_yuan",
         "fac_hei_tribe",
+        "sys_gu_immortal",
         "char_heavenly_lord_bai_zu"
       ]
     },
@@ -139,7 +164,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -151,11 +176,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-in-green-city-rampage",
       "text_origin": "source_excerpt",
       "mentions": [
+        "move_green_city_rampage",
         "fac_bai_zu_tribe"
       ]
     },
@@ -166,7 +192,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-in-green-city-rampage",
       "text_origin": "source_excerpt"
@@ -209,7 +235,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Bai Zu tribe as of ch. 1170",
@@ -236,7 +262,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

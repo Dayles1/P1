@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2013,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2013,
@@ -79,7 +79,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_human_will_gu",
+      "count": 1
+    },
+    {
+      "target": "path_human",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
       "count": 1
     },
     {
@@ -148,7 +160,10 @@
         "verification": "no_citation",
         "source_id": "src_sagaofgu",
         "section": "appearance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ],
     "visual_confidence": "text_described"
@@ -193,7 +208,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "incomplete-recipe",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_recipe"
+        ]
       }
     ]
   },

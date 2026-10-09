@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 214,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     214,
@@ -40,6 +40,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -96,9 +108,25 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_white_bone_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "inh_white_bone_inheritance",
+      "count": 3
+    },
     {
       "target": "gu_bone_spike_gu",
       "count": 3
@@ -114,6 +142,10 @@
     {
       "target": "gu_ribcage_shield_gu",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -148,11 +180,27 @@
       "count": 1
     },
     {
+      "target": "sys_righteous_path",
+      "count": 1
+    },
+    {
+      "target": "inh_flower_wine_monk_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_bai_gu_mountain",
       "count": 1
     },
     {
+      "target": "evt_arc_bai_gu_mountain",
+      "count": 1
+    },
+    {
       "target": "char_bai_ning_bing",
+      "count": 1
+    },
+    {
+      "target": "sys_grey_bone_huge_book",
       "count": 1
     },
     {
@@ -164,11 +212,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_footless_bird_gu",
       "count": 1
     },
     {
       "target": "fac_gu_masters",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -184,12 +240,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_righteous_path"
       ]
     },
     {
@@ -199,7 +256,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -211,7 +268,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "corpse-and-name",
       "text_origin": "source_excerpt",
@@ -246,7 +303,8 @@
       "section": "secret-chamber",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_flesh_sac_secret_chamber"
+        "loc_flesh_sac_secret_chamber",
+        "sys_gu_worms"
       ]
     },
     {
@@ -256,7 +314,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bone-flesh-unity-gu",
       "text_origin": "source_excerpt",
@@ -272,7 +330,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inheritance-comparison",
       "text_origin": "source_excerpt"
@@ -284,10 +342,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "genius-praise",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     }
   ],
   "conflicts": [],
@@ -336,7 +397,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -358,7 +419,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1900,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1900
@@ -36,6 +36,10 @@
     },
     {
       "target": "char_paradise_earth_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     }
   ],
@@ -77,6 +81,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_feng_jiang",
+        "sys_gu_immortal",
         "char_paradise_earth_immortal_venerable"
       ]
     }

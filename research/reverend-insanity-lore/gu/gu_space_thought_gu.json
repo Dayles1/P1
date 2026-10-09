@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 507,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     507,
@@ -59,6 +59,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_brain_explosion_gu",
       "count": 1
     },
@@ -84,6 +92,10 @@
     },
     {
       "target": "char_mo_yao",
+      "count": 1
+    },
+    {
+      "target": "sys_thought_will_emotion",
       "count": 1
     },
     {
@@ -157,7 +169,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -169,12 +181,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_dong_fang_yu_liang"
+          "sys_gu_worms",
+          "char_dong_fang_yu_liang",
+          "sys_gu_immortal"
         ]
       }
     ]
@@ -199,7 +213,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "reverse-refinement-of-brain-explosion-gu",
         "text_origin": "source_excerpt",
@@ -242,7 +256,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -260,7 +274,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "concealing-thoughts",
         "text_origin": "source_excerpt",
@@ -275,7 +289,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "concealing-thoughts",
         "text_origin": "source_excerpt"

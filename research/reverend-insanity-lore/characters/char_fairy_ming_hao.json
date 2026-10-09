@@ -25,13 +25,25 @@
   "first_appearance": {
     "chapter": 2155,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2155,
     2159
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "holds_gu",
       "target": "gu_humility_gu",
@@ -55,6 +67,18 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_humble_reciprocation",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2159,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -63,8 +87,16 @@
       "count": 4
     },
     {
+      "target": "move_humble_reciprocation",
+      "count": 3
+    },
+    {
       "target": "gu_pride_gu",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_mu_cha_lang",
@@ -91,6 +123,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
@@ -111,7 +147,15 @@
       "count": 1
     },
     {
+      "target": "sys_carefree_wisdom_heart_physique",
+      "count": 1
+    },
+    {
       "target": "loc_book_mountain",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_battle_of_crazed_demon_cave",
       "count": 1
     },
     {
@@ -123,7 +167,19 @@
       "count": 1
     },
     {
+      "target": "house_demon_judgment_board",
+      "count": 1
+    },
+    {
+      "target": "move_incomplete_freedom_transformation",
+      "count": 1
+    },
+    {
       "target": "char_zhan_bu_du",
+      "count": 1
+    },
+    {
+      "target": "move_great_qi_cloud_explosion",
       "count": 1
     },
     {
@@ -147,6 +203,7 @@
         "char_qin_ding_ling",
         "fac_heavenly_court",
         "char_fang_yuan",
+        "sys_gu_worms",
         "char_mu_cha_lang",
         "char_qing_hao_zi"
       ]
@@ -221,7 +278,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -243,7 +300,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

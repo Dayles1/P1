@@ -23,13 +23,17 @@
   "first_appearance": {
     "chapter": 164,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     164
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "sys_healing_gu",
+      "count": 2
+    },
     {
       "target": "char_gu_yue_bo",
       "count": 1
@@ -106,7 +110,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-in-the-wolf-tide-battle",
         "text_origin": "source_excerpt"
@@ -148,7 +152,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -156,6 +160,7 @@
           "char_thunder_crown_wolf",
           "fac_gu_yue_clan",
           "char_gu_yue_bo",
+          "sys_healing_gu",
           "fac_gu_masters"
         ]
       }

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2274,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2274,
@@ -33,6 +33,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -77,8 +89,16 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
+    },
+    {
+      "target": "move_destined_birth_through_luck",
+      "count": 2
     },
     {
       "target": "char_giant_sun_immortal_venerable",
@@ -89,7 +109,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_blood_sea",
+      "count": 1
+    },
+    {
+      "target": "move_poor_luck_silver_hook",
+      "count": 1
+    },
+    {
+      "target": "move_luck_changing_golden_light_path",
       "count": 1
     }
   ],
@@ -107,9 +143,12 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_giant_sun_immortal_venerable",
+        "move_destined_birth_through_luck",
         "loc_blood_sea",
         "fac_longevity_heaven",
-        "char_yao_huang"
+        "sys_gu_immortal",
+        "char_yao_huang",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -173,7 +212,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Longevity Heaven as of ch. 2274",
@@ -194,7 +233,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

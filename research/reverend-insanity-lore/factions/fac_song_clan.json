@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 892,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     892,
@@ -129,6 +129,10 @@
       "count": 2
     },
     {
+      "target": "inh_tian_nan_true_inheritance",
+      "count": 2
+    },
+    {
       "target": "loc_ascending_heaven_plain",
       "count": 2
     },
@@ -157,11 +161,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_poetic_emotion_sea_area",
       "count": 1
     },
     {
       "target": "char_su_bai_man",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_eastern_sea",
       "count": 1
     },
     {
@@ -193,11 +205,43 @@
       "count": 1
     },
     {
+      "target": "house_pine_crane_pavilion",
+      "count": 1
+    },
+    {
       "target": "fac_hua_clan",
       "count": 1
     },
     {
       "target": "fac_xie_clan",
+      "count": 1
+    },
+    {
+      "target": "move_lingering_poisonous_ant_plague",
+      "count": 1
+    },
+    {
+      "target": "sys_contribution_board",
+      "count": 1
+    },
+    {
+      "target": "inh_molten_casting_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_myriad_fusion_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "move_emotionless_flowing_water",
+      "count": 1
+    },
+    {
+      "target": "move_noncorroding_flowing_water",
+      "count": 1
+    },
+    {
+      "target": "path_water",
       "count": 1
     }
   ],
@@ -219,13 +263,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_shark_demon",
         "char_song_yi_shi",
+        "sys_gu_immortal",
         "char_fang_yuan",
         "char_tai_bai_yun_sheng"
       ]
@@ -237,7 +282,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eastern-sea-standing",
       "text_origin": "source_excerpt",
@@ -266,7 +311,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reputation-pressure",
       "text_origin": "source_excerpt"
@@ -278,12 +323,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clan-headquarters",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_heavy_water_blessed_land",
+        "inh_tian_nan_true_inheritance",
         "loc_ascending_heaven_plain",
         "loc_twin_polar_sea_strait",
         "char_song_jia_dan"
@@ -296,7 +342,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "xing-xiang-zi-settlement",
       "text_origin": "source_excerpt",
@@ -311,7 +357,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inheritance-rivalry",
       "text_origin": "source_excerpt",

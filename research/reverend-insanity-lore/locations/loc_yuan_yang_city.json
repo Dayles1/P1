@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 850,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     850
@@ -60,6 +60,14 @@
       "count": 1
     },
     {
+      "target": "sys_desolate_beast",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     }
@@ -72,7 +80,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -87,12 +95,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_desolate_beast",
         "fac_gu_masters"
       ]
     },
@@ -103,12 +112,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "prior-life-blood-mist",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_song_zi_xing",
+        "sys_gu_immortal",
         "reg_central_continent"
       ]
     }

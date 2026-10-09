@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1712,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1712,
@@ -35,6 +35,30 @@
     2271
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_qi",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -54,11 +78,23 @@
       "count": 3
     },
     {
+      "target": "path_qi",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_shabi_ninety_five",
       "count": 2
     },
     {
       "target": "char_fairy_maiden_soul",
+      "count": 2
+    },
+    {
+      "target": "move_xi_xi",
       "count": 2
     },
     {
@@ -82,7 +118,23 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_soul_dark_castle",
+      "count": 1
+    },
+    {
+      "target": "house_red_heavenly_altar",
+      "count": 1
+    },
+    {
       "target": "loc_immortal_graveyard",
+      "count": 1
+    },
+    {
+      "target": "move_hu_elevation",
       "count": 1
     },
     {
@@ -106,7 +158,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_shadow_sect",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_army_ant_nest",
       "count": 1
     }
   ],
@@ -153,6 +213,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_immortal_graveyard",
+        "sys_immortal_gu_house",
         "char_fairy_maiden_soul",
         "char_demon_immortal_qi_jue"
       ]
@@ -169,7 +230,8 @@
       "section": "crazed-demon-cave-death",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_shen_shang"
+        "char_shen_shang",
+        "move_xi_xi"
       ]
     },
     {
@@ -186,6 +248,7 @@
       "mentions": [
         "char_golden_hooped_great_immortal",
         "char_duke_mei",
+        "sys_gu_immortal",
         "char_star_constellation_immortal_venerable",
         "char_fairy_zi_wei",
         "char_feng_jiu_ge"
@@ -247,12 +310,12 @@
     "Paths": {
       "text": "Qi path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1712",
@@ -274,12 +337,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_qi"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1397,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1397
@@ -65,6 +65,10 @@
     },
     {
       "target": "char_fairy_cui_bo",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     }
   ],
@@ -166,13 +170,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fairy_cui_bo",
           "char_fang_yuan",
+          "sys_mortal_gu",
           "char_purple_mountain_true_monarch"
         ]
       }

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1987,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1987,
@@ -193,6 +193,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "reg_eastern_sea",
       "count": 1
     },
@@ -202,6 +206,10 @@
     },
     {
       "target": "fac_xia_clan",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
       "count": 1
     }
   ],
@@ -236,7 +244,8 @@
       "section": "leadership-and-invasion",
       "text_origin": "source_excerpt",
       "mentions": [
-        "reg_eastern_sea"
+        "reg_eastern_sea",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -268,6 +277,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_xia_clan",
+        "house_dragon_palace",
         "char_ice_crystal_immortal_monarch",
         "char_xiao_he_jian"
       ]

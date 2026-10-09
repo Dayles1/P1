@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 781,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     781,
@@ -73,6 +73,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_blessed_land_consolidation",
+      "count": 1
+    },
+    {
       "target": "char_dong_fang_chang_fan",
       "count": 1
     },
@@ -97,6 +101,18 @@
       "count": 1
     },
     {
+      "target": "sys_desolate_beast",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "move_seven_star_light",
+      "count": 1
+    },
+    {
       "target": "char_divine_lord_tian_du",
       "count": 1
     },
@@ -117,7 +133,31 @@
       "count": 1
     },
     {
+      "target": "res_ruin_bat_corpse",
+      "count": 1
+    },
+    {
       "target": "char_dong_fang_yu_liang",
+      "count": 1
+    },
+    {
+      "target": "move_flood_glacier",
+      "count": 1
+    },
+    {
+      "target": "move_life_chasing_fire",
+      "count": 1
+    },
+    {
+      "target": "move_thousand_disintegrations",
+      "count": 1
+    },
+    {
+      "target": "move_final_afterglow",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_star_fireflies",
       "count": 1
     },
     {
@@ -126,6 +166,14 @@
     },
     {
       "target": "char_qie_shi_min",
+      "count": 1
+    },
+    {
+      "target": "house_modest_thatched_hut",
+      "count": 1
+    },
+    {
+      "target": "inh_dong_fang_wisdom_path_inheritance",
       "count": 1
     },
     {
@@ -142,6 +190,14 @@
     },
     {
       "target": "char_lang_ya_land_spirit",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_super_force",
       "count": 1
     },
     {
@@ -181,6 +237,26 @@
       "count": 1
     },
     {
+      "target": "move_myriad_self_giant_hand",
+      "count": 1
+    },
+    {
+      "target": "move_sword_marks_targeting_death",
+      "count": 1
+    },
+    {
+      "target": "move_three_breaths_future_vision",
+      "count": 1
+    },
+    {
+      "target": "move_luck_whirlwind",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
+      "count": 1
+    },
+    {
       "target": "res_ancient_desolate_plant",
       "count": 1
     },
@@ -197,11 +273,27 @@
       "count": 1
     },
     {
+      "target": "res_plant_soul",
+      "count": 1
+    },
+    {
       "target": "gu_guts_gu",
       "count": 1
     },
     {
       "target": "char_lady_white_rabbit",
+      "count": 1
+    },
+    {
+      "target": "move_soaring_fighting_spirit",
+      "count": 1
+    },
+    {
+      "target": "move_ignited_thought_flying_rock",
+      "count": 1
+    },
+    {
+      "target": "move_single_thought_flower_blossom",
       "count": 1
     },
     {
@@ -221,7 +313,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -233,7 +325,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -245,7 +337,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -260,10 +352,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fierce-area",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_desolate_beast",
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "To those beasts the ten great fierce areas are sanctuaries humans cannot take over.",
@@ -272,7 +368,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fierce-area",
       "text_origin": "source_excerpt"
@@ -300,7 +396,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dong-fang-chang-fans-false-stage",
       "text_origin": "source_excerpt",
@@ -327,7 +423,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "giant-grass-and-later-returns",
       "text_origin": "source_excerpt"
@@ -339,7 +435,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "giant-grass-and-later-returns",
       "text_origin": "source_excerpt"
@@ -351,7 +447,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "giant-grass-and-later-returns",
       "text_origin": "source_excerpt"
@@ -363,13 +459,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "giant-grass-and-later-returns",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
-        "char_lang_ya_land_spirit"
+        "char_lang_ya_land_spirit",
+        "sys_gu_formation",
+        "sys_super_force"
       ]
     },
     {
@@ -379,7 +477,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "giant-grass-and-later-returns",
       "text_origin": "source_excerpt"
@@ -391,7 +489,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "giant-grass-and-later-returns",
       "text_origin": "source_excerpt"
@@ -403,7 +501,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "giant-grass-and-later-returns",
       "text_origin": "source_excerpt"
@@ -415,7 +513,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "giant-grass-and-later-returns",
       "text_origin": "source_excerpt",
@@ -432,7 +530,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lang-ya-and-shadow-sect-excavation",
       "text_origin": "source_excerpt",
@@ -447,7 +545,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lang-ya-and-shadow-sect-excavation",
       "text_origin": "source_excerpt"
@@ -459,7 +557,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lang-ya-and-shadow-sect-excavation",
       "text_origin": "source_excerpt"
@@ -471,7 +569,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lang-ya-and-shadow-sect-excavation",
       "text_origin": "source_excerpt",
@@ -487,7 +585,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lang-ya-and-shadow-sect-excavation",
       "text_origin": "source_excerpt"

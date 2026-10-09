@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1329,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1329
@@ -46,6 +46,22 @@
     {
       "target": "char_chi_shang",
       "count": 4
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
     }
   ],
   "claims": [],
@@ -137,12 +153,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_chi_shang"
+          "char_chi_shang",
+          "sys_gu_formation",
+          "sys_gu_worms",
+          "sys_immortal_gu",
+          "sys_mortal_gu"
         ]
       }
     ]

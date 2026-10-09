@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2151,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_dao_veins_famous_mountains"
   },
   "chapters_cited": [
     2151,
@@ -84,11 +84,23 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_big_mystical_gu",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
     {
       "target": "fac_longevity_heaven",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     },
     {
@@ -100,7 +112,15 @@
       "count": 1
     },
     {
+      "target": "inh_thieving_heaven_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -215,7 +235,8 @@
         "mentions": [
           "char_giant_sun_immortal_venerable",
           "fac_heavenly_court",
-          "gu_human_qi_immortal_gu"
+          "gu_human_qi_immortal_gu",
+          "house_eighty_eight_true_yang_building"
         ]
       }
     ]
@@ -281,7 +302,8 @@
         "mentions": [
           "char_earth_extremity",
           "fac_longevity_heaven",
-          "char_immortal_zombie_giant_sun"
+          "char_immortal_zombie_giant_sun",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -294,7 +316,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "thieving-heaven-inheritance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "inh_thieving_heaven_true_inheritance"
+        ]
       },
       {
         "text": "That Thieving Heaven true inheritance contained imitation Gu and the killer move perfect pair originally, but Fang Yuan only obtained the rest. The remaining portion concerns refinement path, including how Thieving Heaven Demon Venerable created fake Immortal Gu.",
@@ -325,6 +350,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_crazed_demon_cave",
+          "sys_gu_worms",
           "gu_familial_emotion_gu",
           "gu_blood_relation_gu"
         ]

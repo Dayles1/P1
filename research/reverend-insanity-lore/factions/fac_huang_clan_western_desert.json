@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 673,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     673,
@@ -54,6 +54,10 @@
     },
     {
       "target": "char_han_li",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -100,7 +104,8 @@
       "mentions": [
         "reg_western_desert",
         "loc_sha_jing_oasis",
-        "loc_han_village"
+        "loc_han_village",
+        "sys_gu_master"
       ]
     }
   ],

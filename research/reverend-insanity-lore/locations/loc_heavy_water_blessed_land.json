@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 899,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     899
@@ -60,7 +60,19 @@
       "count": 2
     },
     {
+      "target": "evt_arc_eastern_sea",
+      "count": 1
+    },
+    {
       "target": "char_song_jia_dan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "inh_tian_nan_true_inheritance",
       "count": 1
     },
     {
@@ -80,14 +92,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_song_yi_shi",
+        "sys_gu_immortal",
         "char_song_qi_yuan",
         "fac_song_clan",
+        "inh_tian_nan_true_inheritance",
         "loc_ascending_heaven_plain",
         "loc_twin_polar_sea_strait",
         "char_song_jia_dan"

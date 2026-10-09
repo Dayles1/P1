@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 570,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     570,
@@ -33,8 +33,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 571,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -47,8 +71,16 @@
   ],
   "co_mentions": [
     {
+      "target": "path_strength",
+      "count": 2
+    },
+    {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_ma_hong_yun",
@@ -60,6 +92,18 @@
     },
     {
       "target": "char_zhao_lian_yun",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_movement_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
       "count": 1
     },
     {
@@ -75,6 +119,10 @@
       "count": 1
     },
     {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
       "target": "loc_imperial_court_blessed_land",
       "count": 1
     }
@@ -87,13 +135,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_ma_hong_yun",
         "fac_huang_jin_bloodline",
+        "house_eighty_eight_true_yang_building",
         "char_zhao_lian_yun"
       ]
     },
@@ -104,13 +153,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "earth-chief-hunt",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_wild_gu",
         "reg_northern_plains",
-        "fac_gu_masters"
+        "fac_gu_masters",
+        "path_strength"
       ]
     },
     {
@@ -120,12 +171,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "earth-chief-hunt",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_imperial_court_blessed_land",
+        "sys_movement_gu",
+        "sys_gu_master",
         "char_fang_yuan"
       ]
     },
@@ -136,7 +189,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "aftermath",
       "text_origin": "source_excerpt"
@@ -148,7 +201,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "aftermath",
       "text_origin": "source_excerpt",
@@ -185,7 +238,7 @@
     "Paths": {
       "text": "Strength path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Northern Plains",
@@ -195,7 +248,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -206,12 +259,14 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

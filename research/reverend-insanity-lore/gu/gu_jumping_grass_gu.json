@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 211,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     211,
@@ -100,6 +100,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "loc_shang_clan_city",
       "count": 1
     },
@@ -117,6 +121,14 @@
     },
     {
       "target": "char_tang_xiong",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_movement_gu",
       "count": 1
     },
     {
@@ -199,7 +211,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "movement-in-combat",
         "text_origin": "source_excerpt",
@@ -272,7 +284,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "movement-in-combat",
         "text_origin": "source_excerpt",
@@ -302,7 +314,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "limits-and-plans",
         "text_origin": "source_excerpt"
@@ -339,7 +351,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_horizontal_charge_gu",
-          "gu_vertical_crash_gu"
+          "gu_vertical_crash_gu",
+          "sys_movement_gu",
+          "sys_gu_worms"
         ]
       }
     ],
@@ -380,7 +394,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -404,6 +418,7 @@
         "section": "early-context",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "gu_rice_bag_grass_gu"
         ]
       },

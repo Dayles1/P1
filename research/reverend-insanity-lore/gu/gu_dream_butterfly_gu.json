@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2090,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2090,
@@ -67,6 +67,10 @@
       "count": 4
     },
     {
+      "target": "move_butterfly_explores_heavenly_secret",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -79,7 +83,23 @@
       "count": 2
     },
     {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
       "target": "char_sly_heart_old_man",
+      "count": 1
+    },
+    {
+      "target": "sys_investigative_gu",
       "count": 1
     },
     {
@@ -88,6 +108,14 @@
     },
     {
       "target": "char_paradise_earth_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_poison_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_heaven_path_dream_realm",
       "count": 1
     }
   ],
@@ -264,7 +292,10 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_yuan"
+          "sys_vital_gu",
+          "sys_gu_recipe",
+          "char_fang_yuan",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -280,6 +311,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_meng_qiu_zhen",
+          "sys_investigative_gu",
           "gu_dream_armor_gu",
           "gu_dream_creation_gu"
         ]
@@ -308,7 +340,8 @@
         "section": "paradise-earth-dream-stage",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_paradise_earth_immortal_venerable"
+          "char_paradise_earth_immortal_venerable",
+          "sys_poison_gu"
         ]
       }
     ]

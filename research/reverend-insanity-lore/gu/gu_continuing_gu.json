@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 554,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     554,
@@ -42,6 +42,10 @@
     {
       "target": "gu_lasting_gu",
       "count": 2
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
     },
     {
       "target": "fac_man_tribe",
@@ -99,7 +103,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -141,7 +145,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -149,6 +153,7 @@
           "fac_man_tribe",
           "char_man_duo",
           "char_shi_wu",
+          "sys_gu_master",
           "gu_lasting_gu"
         ]
       }

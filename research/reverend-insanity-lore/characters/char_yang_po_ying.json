@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 438,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     438,
@@ -42,6 +42,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -90,6 +102,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_jiang_bao_ya",
       "count": 2
     },
@@ -122,6 +138,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_man_soul",
+      "count": 1
+    },
+    {
       "target": "fac_ge_tribe",
       "count": 1
     },
@@ -148,6 +172,14 @@
     {
       "target": "char_cheng_hu",
       "count": 1
+    },
+    {
+      "target": "move_four_arm_earth_king",
+      "count": 1
+    },
+    {
+      "target": "sys_master_attainment",
+      "count": 1
     }
   ],
   "claims": [
@@ -158,7 +190,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -191,7 +223,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "thunder-eagle-group",
       "text_origin": "source_excerpt",
@@ -206,7 +238,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yang-tribe-then-ma-tribe",
       "text_origin": "source_excerpt",
@@ -224,7 +256,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yang-tribe-then-ma-tribe",
       "text_origin": "source_excerpt",
@@ -241,7 +273,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "challenge-on-the-battlefield",
       "text_origin": "source_excerpt"
@@ -253,11 +285,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "challenge-on-the-battlefield",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "char_wu_ye"
       ]
     },
@@ -268,7 +301,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -327,7 +360,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Yang Tribe as of ch. 529 Ma Tribe as of ch. 539",
@@ -348,7 +381,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

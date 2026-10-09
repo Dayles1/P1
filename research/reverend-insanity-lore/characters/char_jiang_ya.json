@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 12,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     4,
@@ -47,6 +47,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -79,6 +91,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_gu_yue_man_shi",
       "count": 2
     },
@@ -103,6 +119,10 @@
       "count": 1
     },
     {
+      "target": "sys_d_grade",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -115,11 +135,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_liquor_worm",
       "count": 1
     },
     {
       "target": "gu_mudskin_toad",
+      "count": 1
+    },
+    {
+      "target": "res_moon_orchid",
       "count": 1
     },
     {
@@ -141,6 +169,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_gu_yue_village",
+        "sys_gu_master",
         "char_fang_yuan"
       ]
     },
@@ -154,7 +183,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_d_grade"
+      ]
     },
     {
       "text": "The same evening’s outburst over the hunters’ wine spending shows how tightly primeval stones squeeze a low-rank Gu Master of his means.",
@@ -163,7 +195,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -207,7 +239,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -219,7 +251,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shop-by-the-academy",
       "text_origin": "source_excerpt",
@@ -234,7 +266,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shop-by-the-academy",
       "text_origin": "source_excerpt"
@@ -246,7 +278,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "kinship-with-jiang-he",
       "text_origin": "source_excerpt",
@@ -261,7 +293,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "kinship-with-jiang-he",
       "text_origin": "source_excerpt",
@@ -296,7 +328,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "vitality-leaf-middleman",
       "text_origin": "source_excerpt"
@@ -308,7 +340,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "vitality-leaf-middleman",
       "text_origin": "source_excerpt",
@@ -323,7 +355,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "vitality-leaf-middleman",
       "text_origin": "source_excerpt"
@@ -335,7 +367,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "vitality-leaf-middleman",
       "text_origin": "source_excerpt",
@@ -350,7 +382,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "vitality-leaf-middleman",
       "text_origin": "source_excerpt"
@@ -362,7 +394,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "vitality-leaf-middleman",
       "text_origin": "source_excerpt",
@@ -466,7 +498,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Gu Yue Clan as of ch. 12",
@@ -493,7 +525,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

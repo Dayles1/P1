@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 988,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     988,
@@ -55,7 +55,15 @@
       "count": 2
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_yu_lu_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -154,7 +162,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       }
     ]
   },
@@ -262,7 +273,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "transaction-batch",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "Star Constellation Immortal Venerable asks Fang Yuan for star eyes Immortal Gu among other Immortal Gu.",

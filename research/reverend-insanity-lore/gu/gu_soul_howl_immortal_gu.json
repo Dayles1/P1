@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1039,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1039,
@@ -65,6 +65,10 @@
       "count": 3
     },
     {
+      "target": "move_burning_soul_bursting_luck",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -77,7 +81,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_abyss",
+      "count": 1
+    },
+    {
       "target": "reg_central_continent",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -149,7 +173,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "first-successful-use",
         "text_origin": "source_excerpt"
@@ -216,6 +240,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "reg_central_continent",
+          "reg_earth_earth_abyss",
           "char_ying_wu_xie",
           "char_hei_lou_lan",
           "char_tai_bai_yun_sheng"
@@ -245,7 +270,9 @@
         "section": "earth-abyss-outcome",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_hei_lou_lan"
+          "char_hei_lou_lan",
+          "sys_gu_formation",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -258,7 +285,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "ying-wu-xie-obtains-the-gu",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       },
       {
         "text": "Against Fang Yuan, Ying Wu Xie uses an immortal killer move named Soul Howl. Its power covers the sky without hitting the other Gu Immortals beside him. Fang Yuan lacks a method to protect his soul against soul path Immortal Gu and is hit, but his soul foundation and guts Gu let him endure.",
@@ -273,6 +303,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_gu_immortal",
           "gu_guts_gu"
         ]
       },

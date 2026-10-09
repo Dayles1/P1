@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2043,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2043,
@@ -39,8 +39,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_luck",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2194,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -73,6 +97,14 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
+      "target": "path_luck",
+      "count": 1
+    },
+    {
       "target": "char_bing_sai_chuan",
       "count": 2
     },
@@ -97,6 +129,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
       "target": "char_fei_qing",
       "count": 1
     },
@@ -113,6 +149,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_mental_energy",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
@@ -125,11 +169,23 @@
       "count": 1
     },
     {
+      "target": "move_ringing_alarm_bell",
+      "count": 1
+    },
+    {
+      "target": "move_spaceless_tunnel",
+      "count": 1
+    },
+    {
       "target": "fac_bai_zu_tribe",
       "count": 1
     },
     {
       "target": "fac_hei_tribe",
+      "count": 1
+    },
+    {
+      "target": "house_luck_suppression_heavenly_palace",
       "count": 1
     },
     {
@@ -142,6 +198,10 @@
     },
     {
       "target": "char_lu_tong_lan",
+      "count": 1
+    },
+    {
+      "target": "sys_great_strength_true_martial_physique",
       "count": 1
     },
     {
@@ -161,11 +221,27 @@
       "count": 1
     },
     {
+      "target": "move_heaven_envies_heroic_geniuses",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_battle_of_crazed_demon_cave",
+      "count": 1
+    },
+    {
       "target": "loc_savage_wilderness_great_world",
       "count": 1
     },
     {
       "target": "char_star_constellation_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "house_calamity_luck_altar",
+      "count": 1
+    },
+    {
+      "target": "house_divine_emperor_city",
       "count": 1
     },
     {
@@ -177,7 +253,27 @@
       "count": 1
     },
     {
+      "target": "house_rising_cloud_city",
+      "count": 1
+    },
+    {
+      "target": "move_luck_changing_golden_light_path",
+      "count": 1
+    },
+    {
+      "target": "move_sword_tongue_dragon_soul",
+      "count": 1
+    },
+    {
       "target": "char_zhan_bu_du",
+      "count": 1
+    },
+    {
+      "target": "move_humble_reciprocation",
+      "count": 1
+    },
+    {
+      "target": "move_transient_white_cloud_city_suppression",
       "count": 1
     },
     {
@@ -185,7 +281,39 @@
       "count": 1
     },
     {
+      "target": "sys_dao_lord",
+      "count": 1
+    },
+    {
+      "target": "sys_luck_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "loc_door_of_life_and_death",
+      "count": 1
+    },
+    {
+      "target": "move_golden_top_ox_hair",
+      "count": 1
+    },
+    {
+      "target": "move_ten_li_time_wind",
+      "count": 1
+    },
+    {
+      "target": "sys_crazed_demon_formation",
+      "count": 1
+    },
+    {
+      "target": "move_unforeseen_disaster",
+      "count": 1
+    },
+    {
+      "target": "move_dang_hun_luo_po_seal",
+      "count": 1
+    },
+    {
+      "target": "move_emotionless_heaven_and_earth",
       "count": 1
     },
     {
@@ -198,6 +326,14 @@
     },
     {
       "target": "gu_gamble_gu",
+      "count": 1
+    },
+    {
+      "target": "move_luck_gamble",
+      "count": 1
+    },
+    {
+      "target": "sys_theft_path_dao_marks",
       "count": 1
     }
   ],
@@ -215,6 +351,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_heavenly_court",
+        "sys_gu_immortal",
         "char_qin_ding_ling",
         "fac_longevity_heaven"
       ]
@@ -233,6 +370,7 @@
       "mentions": [
         "char_bing_sai_chuan",
         "char_hei_lou_lan",
+        "house_luck_suppression_heavenly_palace",
         "fac_hei_tribe",
         "fac_bai_zu_tribe",
         "reg_northern_plains"
@@ -264,7 +402,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "crazed-demon-cave-stretch",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_calamity_luck_altar",
+        "house_divine_emperor_city"
+      ]
     },
     {
       "text": "In the ninth layer he still fights in an immortal zombie body and treats Heavenly Court as the main enemy while allying with Fang Yuan against Star Constellation Immortal Venerable.",
@@ -294,7 +436,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_door_of_life_and_death",
-        "char_spectral_soul_demon_venerable"
+        "char_spectral_soul_demon_venerable",
+        "sys_dao_lord"
       ]
     },
     {
@@ -360,7 +503,7 @@
     "Paths": {
       "text": "Luck path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Northern Plains",
@@ -370,7 +513,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Longevity Heaven as of ch. 2075",
@@ -386,12 +529,14 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_luck"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

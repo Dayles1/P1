@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1214,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1214,
@@ -115,6 +115,10 @@
       "count": 2
     },
     {
+      "target": "sys_super_gu_formation",
+      "count": 2
+    },
+    {
       "target": "char_wu_fa",
       "count": 2
     },
@@ -131,11 +135,31 @@
       "count": 2
     },
     {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
+    },
+    {
       "target": "char_air_bubble_fish",
       "count": 1
     },
     {
       "target": "char_fairy_miao_yin",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_opportunity_business",
       "count": 1
     },
     {
@@ -175,7 +199,19 @@
       "count": 1
     },
     {
+      "target": "sys_year_essence_pool",
+      "count": 1
+    },
+    {
+      "target": "res_seven_treasures_water",
+      "count": 1
+    },
+    {
       "target": "fac_southern_alliance",
+      "count": 1
+    },
+    {
+      "target": "house_beacon_tower",
       "count": 1
     },
     {
@@ -201,6 +237,10 @@
     {
       "target": "char_fire_thunder_divine_lord",
       "count": 1
+    },
+    {
+      "target": "inh_fire_thunder_true_inheritance",
+      "count": 1
     }
   ],
   "claims": [
@@ -211,12 +251,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realm-station",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_ba_quan_feng",
+        "sys_gu_immortal",
+        "sys_gu_formation",
         "char_ba_de",
         "reg_southern_border"
       ]
@@ -228,12 +270,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realm-station",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_wu_clan"
+        "fac_wu_clan",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -243,11 +286,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "formation-share",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_super_gu_formation",
         "fac_tie_clan",
         "fac_shang_clan",
         "char_wu_du_xiu"
@@ -260,7 +304,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pressure-at-the-dream-realm-formation",
       "text_origin": "source_excerpt",
@@ -275,7 +319,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "trouble-at-the-super-gu-formation",
       "text_origin": "source_excerpt",
@@ -291,7 +335,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ba-des-scheme-against-wu-bei",
       "text_origin": "source_excerpt",
@@ -306,7 +350,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wedding-dress-lake-annexation",
       "text_origin": "source_excerpt",
@@ -322,7 +366,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "river-junction",
       "text_origin": "source_excerpt",

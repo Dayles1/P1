@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 111,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     111,
@@ -101,6 +101,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -133,6 +137,14 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_purple_crystal_relic_gu",
       "count": 1
     },
@@ -146,6 +158,18 @@
     },
     {
       "target": "char_green",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_pure_dream_reality_seeker_physique",
       "count": 1
     }
   ],
@@ -215,6 +239,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_purple_crystal_relic_gu",
+          "sys_mortal_gu",
+          "sys_immortal_gu",
           "char_green"
         ]
       }
@@ -229,7 +255,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt",
@@ -244,7 +270,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -278,7 +304,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-early-use",
         "text_origin": "source_excerpt",
@@ -293,12 +319,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-early-use",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_stone_aperture_gu"
+          "gu_stone_aperture_gu",
+          "sys_gu_master"
         ]
       },
       {
@@ -412,7 +439,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -440,7 +467,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "northern-plains-gift",
         "text_origin": "source_excerpt",
@@ -460,7 +487,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "human-path-classification",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal",
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "Fang Yuan’s pure dream clone uses green copper Relic Gu one after another. After the first, the rank one initial light membrane thickens into a water membrane; after the second it becomes stone membrane; after the third it becomes crystal membrane. Relic Gu are consumed in that sequence as cultivation rises. Relic Gu work on that clone because they are human path Gu.",
@@ -484,7 +515,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "human-path-classification",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_pure_dream_reality_seeker_physique"
+        ]
       }
     ]
   },

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1052,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1052,
@@ -58,6 +58,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_heavenly_court_pursuit",
+      "count": 1
+    },
+    {
       "target": "char_ying_wu_xie",
       "count": 1
     },
@@ -76,6 +80,10 @@
     {
       "target": "char_fairy_zi_wei",
       "count": 1
+    },
+    {
+      "target": "house_wind_cloud_manor",
+      "count": 1
     }
   ],
   "claims": [
@@ -86,7 +94,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -98,13 +106,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_ying_wu_xie",
         "reg_central_continent",
+        "house_wind_cloud_manor",
         "fac_heavenly_court",
         "gu_fixed_immortal_travel",
         "char_feng_chan_zi"
@@ -117,7 +126,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "flood-season-festival",
       "text_origin": "source_excerpt"

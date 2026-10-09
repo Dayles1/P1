@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2164,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2164,
@@ -56,11 +56,27 @@
       "count": 3
     },
     {
+      "target": "race_eggmen",
+      "count": 2
+    },
+    {
       "target": "loc_rotten_egg_grotto_heaven",
       "count": 2
     },
     {
+      "target": "move_rotting_smell_vicious_cloud",
+      "count": 2
+    },
+    {
       "target": "char_ice_crystal_immortal_monarch",
+      "count": 2
+    },
+    {
+      "target": "move_extreme_ice_crystal_light_immortal_suppression_coffin",
+      "count": 2
+    },
+    {
+      "target": "move_wind_suction_life_twister",
       "count": 2
     },
     {
@@ -76,7 +92,15 @@
       "count": 2
     },
     {
+      "target": "move_cut_grass",
+      "count": 2
+    },
+    {
       "target": "char_fairy_yu_xiu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -96,7 +120,19 @@
       "count": 1
     },
     {
+      "target": "move_heaven_envies_heroic_geniuses",
+      "count": 1
+    },
+    {
       "target": "loc_giant_locust_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "move_endless_learning",
+      "count": 1
+    },
+    {
+      "target": "move_spiraling_green_leaf_blade",
       "count": 1
     }
   ],
@@ -114,6 +150,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fairy_yu_xiu",
+        "sys_gu_immortal",
         "loc_savage_wilderness_great_world"
       ]
     },
@@ -129,6 +166,8 @@
       "section": "luck-child",
       "text_origin": "source_excerpt",
       "mentions": [
+        "move_rotting_smell_vicious_cloud",
+        "race_eggmen",
         "loc_rotten_egg_grotto_heaven",
         "char_fang_yuan",
         "loc_crazed_demon_cave"
@@ -147,6 +186,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_ice_crystal_immortal_monarch",
+        "move_wind_suction_life_twister",
         "loc_yellow_earth_great_world"
       ]
     },
@@ -190,7 +230,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "death",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_extreme_ice_crystal_light_immortal_suppression_coffin",
+        "move_cut_grass"
+      ]
     },
     {
       "text": "Later recounting of Crazed Demon Cave losses names Nie Kuang Feng among countless lifeforms that died there, together with Bu Tian Kong and Duan Hu.",

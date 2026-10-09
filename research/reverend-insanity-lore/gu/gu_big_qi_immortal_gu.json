@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1644,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1644,
@@ -53,6 +53,10 @@
       "count": 2
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "res_divine_qi",
       "count": 1
     },
@@ -66,6 +70,14 @@
     },
     {
       "target": "res_metal_qi",
+      "count": 1
+    },
+    {
+      "target": "res_water_qi",
+      "count": 1
+    },
+    {
+      "target": "move_unlimited_qi_sea",
       "count": 1
     }
   ],
@@ -182,6 +194,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_immortal_gu",
           "gu_big_family_qi_immortal_gu"
         ]
       }

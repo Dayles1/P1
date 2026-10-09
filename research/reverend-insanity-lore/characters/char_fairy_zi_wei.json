@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1052,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1052,
@@ -45,8 +45,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -115,11 +139,63 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_dead_inside_from_sorrow",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1582,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_purple_will_production",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2270,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_benevolent_equality",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_gu_house",
+      "target": "house_star_constellation_chessboard",
+      "role": "wielder",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "fac_heavenly_court",
+      "count": 4
+    },
+    {
+      "target": "house_star_constellation_chessboard",
       "count": 4
     },
     {
@@ -131,7 +207,15 @@
       "count": 3
     },
     {
+      "target": "move_dead_inside_from_sorrow",
+      "count": 3
+    },
+    {
       "target": "gu_benevolence_gu",
+      "count": 3
+    },
+    {
+      "target": "move_benevolent_equality",
       "count": 3
     },
     {
@@ -139,8 +223,20 @@
       "count": 3
     },
     {
+      "target": "move_purple_will_production",
+      "count": 3
+    },
+    {
       "target": "reg_central_continent",
       "count": 2
+    },
+    {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_fang_yuan",
@@ -175,11 +271,27 @@
       "count": 2
     },
     {
+      "target": "sys_omni_directional_travel",
+      "count": 2
+    },
+    {
       "target": "char_duke_long",
       "count": 2
     },
     {
+      "target": "house_heaven_overseeing_tower",
+      "count": 2
+    },
+    {
+      "target": "move_fate_vanquish",
+      "count": 2
+    },
+    {
       "target": "char_star_constellation_immortal_venerable",
+      "count": 2
+    },
+    {
+      "target": "house_bay_pavilion",
       "count": 2
     },
     {
@@ -203,6 +315,14 @@
       "count": 2
     },
     {
+      "target": "house_demon_judgment_board",
+      "count": 2
+    },
+    {
+      "target": "evt_arc_heavenly_court_pursuit",
+      "count": 1
+    },
+    {
       "target": "char_fairy_bai_hu",
       "count": 1
     },
@@ -212,6 +332,10 @@
     },
     {
       "target": "char_yu_mu_chun",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -255,7 +379,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_abyss",
+      "count": 1
+    },
+    {
       "target": "char_shi_lei",
+      "count": 1
+    },
+    {
+      "target": "sys_humans_alike_dragons",
       "count": 1
     },
     {
@@ -263,7 +399,19 @@
       "count": 1
     },
     {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
+    },
+    {
+      "target": "move_spaceless_tunnel",
+      "count": 1
+    },
+    {
       "target": "char_zuo_ye_hui",
+      "count": 1
+    },
+    {
+      "target": "sys_super_gu_formation",
       "count": 1
     },
     {
@@ -279,11 +427,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_yi_clan",
       "count": 1
     },
     {
       "target": "char_wu_yong",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_mortal_gu",
       "count": 1
     },
     {
@@ -295,6 +451,18 @@
       "count": 1
     },
     {
+      "target": "move_inextinguishable_star_target",
+      "count": 1
+    },
+    {
+      "target": "move_self_cleansing",
+      "count": 1
+    },
+    {
+      "target": "sys_dao_guardian",
+      "count": 1
+    },
+    {
       "target": "char_thousand_transformations_ancestor",
       "count": 1
     },
@@ -303,7 +471,27 @@
       "count": 1
     },
     {
+      "target": "move_chaotic_heart_drumming_sound",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_river_of_time",
+      "count": 1
+    },
+    {
       "target": "fac_gong_clan",
+      "count": 1
+    },
+    {
+      "target": "move_bow_shadow_cup",
+      "count": 1
+    },
+    {
+      "target": "house_soul_suppression_hall",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -315,6 +503,10 @@
       "count": 1
     },
     {
+      "target": "house_divine_bean_palace",
+      "count": 1
+    },
+    {
       "target": "char_chen_yi",
       "count": 1
     },
@@ -323,11 +515,43 @@
       "count": 1
     },
     {
+      "target": "move_seven_immortal_doors",
+      "count": 1
+    },
+    {
+      "target": "move_orderly_well",
+      "count": 1
+    },
+    {
       "target": "char_thunder_ghost_true_monarch",
       "count": 1
     },
     {
       "target": "gu_wisdom_gu",
+      "count": 1
+    },
+    {
+      "target": "move_emperor_yama",
+      "count": 1
+    },
+    {
+      "target": "res_soul_core",
+      "count": 1
+    },
+    {
+      "target": "move_star_cast",
+      "count": 1
+    },
+    {
+      "target": "move_ancient_tree_prison_cage",
+      "count": 1
+    },
+    {
+      "target": "move_yama_battlefield",
+      "count": 1
+    },
+    {
+      "target": "inh_star_constellation_true_inheritance",
       "count": 1
     },
     {
@@ -359,7 +583,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -375,7 +599,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -384,7 +608,8 @@
         "fac_heavenly_court",
         "char_fairy_bai_hu",
         "loc_dang_hun_mountain",
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "house_demon_judgment_board"
       ]
     },
     {
@@ -394,11 +619,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "char_myriad_tidal_dragon",
         "char_heaven_overseeing_tower_lord",
         "loc_ming_tang_valley",
@@ -412,7 +638,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -424,12 +650,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "deducing-omni-directional-travel",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_ying_wu_xie"
+        "sys_gu_immortal",
+        "char_ying_wu_xie",
+        "reg_earth_earth_abyss",
+        "sys_omni_directional_travel"
       ]
     },
     {
@@ -439,12 +668,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "locating-fang-yuan-and-the-others",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_granny_sha",
+        "house_heaven_overseeing_tower",
         "char_duke_long"
       ]
     },
@@ -455,12 +685,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "zuo-ye-huis-threat",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_zuo_ye_hui"
+        "char_zuo_ye_hui",
+        "move_fate_vanquish"
       ]
     },
     {
@@ -470,10 +701,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "contesting-the-super-gu-formation",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_star_constellation_chessboard",
+        "sys_super_gu_formation"
+      ]
     },
     {
       "text": "Star Constellation Chessboard had always sat in Heavenly Court’s treasury, and once Duke Long woke he held the authority to take it out and let Fairy Zi Wei use it; with it she feels her deduction ability rise by many times, though she still lacks the clues to find Fang Yuan. Star Constellation Chessboard’s heaven’s will then appears before her in the form of Star Constellation Immortal Venerable, and Duke Long explains that Star Constellation Immortal Venerable sacrificed herself long ago to assimilate with heaven’s will, leaving Fairy Zi Wei shocked. The heaven’s will orders that only she and Duke Long go to Southern Border to eliminate Shadow Sect, keeping Heavenly Court’s hibernating Gu Immortals in reserve for a purpose it does not explain to her.",
@@ -482,7 +717,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "star-constellation-heavens-will",
       "text_origin": "source_excerpt",
@@ -499,12 +734,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "the-investigative-killer-move-holds",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_yi_clan"
+        "fac_yi_clan",
+        "sys_immortal_gu_house",
+        "house_bay_pavilion"
       ]
     },
     {
@@ -514,12 +751,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "using-wu-yong-as-a-tool",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_wu_yong",
+        "sys_information_path_mortal_gu",
         "char_wu_yi_hai"
       ]
     },
@@ -530,7 +768,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "among-the-eras-top-wisdom-path-experts",
       "text_origin": "source_excerpt",
@@ -545,7 +783,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "watching-a-planned-encounter",
       "text_origin": "source_excerpt",
@@ -560,7 +798,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "her-main-objective",
       "text_origin": "source_excerpt",
@@ -575,7 +813,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "probing-thousand-transformations-ancestor",
       "text_origin": "source_excerpt",
@@ -591,7 +829,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shielding-lord-huang-shi",
       "text_origin": "source_excerpt",
@@ -612,7 +850,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_tributary_of_the_river_of_time",
-        "reg_central_continent"
+        "reg_central_continent",
+        "sys_gu_formation"
       ]
     }
   ],
@@ -664,7 +903,7 @@
     "Paths": {
       "text": "Wisdom path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Central Continent",
@@ -674,7 +913,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Spirit Affinity House as of ch. 1052 Heavenly Court as of ch. 1052",
@@ -696,12 +935,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

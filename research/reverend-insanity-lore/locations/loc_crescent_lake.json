@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 459,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     459,
@@ -73,6 +73,10 @@
     },
     {
       "target": "char_tai_bai_yun_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -200,6 +204,14 @@
       "count": 1
     },
     {
+      "target": "sys_water_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "move_immortal_tribulation_tempering_aperture",
+      "count": 1
+    },
+    {
       "target": "loc_loose_tail_ridge",
       "count": 1
     }
@@ -306,7 +318,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "lang-ya-near-the-lake",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "East along the lakeside from Ge tribe’s camp, away from the tribe’s sight, a stone forest stands beside crescent lake as the passage Ma Hong Yun used to enter Lang Ya blessed land.",
@@ -347,7 +362,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blessed-land-relocation",
       "text_origin": "source_excerpt",
@@ -377,7 +392,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blessed-land-relocation",
       "text_origin": "source_excerpt",

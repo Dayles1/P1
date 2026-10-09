@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1220,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1220,
@@ -32,8 +32,25 @@
     1378,
     1427
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_blood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "path_blood",
+      "count": 1
+    },
     {
       "target": "char_wu_qiao",
       "count": 2
@@ -41,6 +58,10 @@
     {
       "target": "char_wu_yong",
       "count": 2
+    },
+    {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
     },
     {
       "target": "char_fang_yuan",
@@ -52,6 +73,14 @@
     },
     {
       "target": "char_wu_yi_hai",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -68,6 +97,14 @@
     },
     {
       "target": "char_purple_mountain_true_monarch",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_essence",
+      "count": 1
+    },
+    {
+      "target": "sys_super_gu_formation",
       "count": 1
     }
   ],
@@ -112,7 +149,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_blood"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -170,7 +209,9 @@
         "mentions": [
           "char_wu_du_xiu",
           "char_wu_qiao",
+          "sys_immortal_gu",
           "char_wu_yi_hai",
+          "sys_gu_immortal",
           "fac_wu_clan"
         ]
       },
@@ -198,10 +239,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "loan-request",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_super_gu_formation"
+        ]
       },
       {
         "text": "Wu Yong decides to lend it, and Fang Yuan borrows six Immortal Gu from Wu clan in all.",
@@ -210,7 +254,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "loan-request",
         "text_origin": "source_excerpt",
@@ -225,7 +269,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "loan-request",
         "text_origin": "source_excerpt"
@@ -237,12 +281,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "loan-request",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_purple_mountain_true_monarch"
+          "char_purple_mountain_true_monarch",
+          "sys_immortal_essence"
         ]
       }
     ]
@@ -251,7 +296,7 @@
     "Path": {
       "text": "Blood Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

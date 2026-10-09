@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1892,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1892,
@@ -37,6 +37,18 @@
     {
       "type": "in_region",
       "target": "reg_eastern_sea",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -63,6 +75,10 @@
     {
       "target": "fac_shen_clan",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_eastern_sea",
@@ -97,7 +113,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "res_constant_wave_sound",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -106,6 +130,10 @@
     },
     {
       "target": "char_shen_shang",
+      "count": 1
+    },
+    {
+      "target": "house_myriad_year_flying_warship",
       "count": 1
     }
   ],
@@ -155,7 +183,8 @@
       "section": "trading-a-clan-secret-for-a-false-lead",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_shen_clan"
+        "fac_shen_clan",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -168,7 +197,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "finding-the-good-person-title",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "When Chu Ying laughs off Shen Shang’s offer to join Shen clan, Shen Xiao and Shen Qi warn him not to be too arrogant and fly out to stand beside Shen Cong Sheng and Shen Shang. When Chu Ying goads Shen Shang into striking at him with a rank eight blast, Shen Xiao, mocking Chu Ying for courting death, stammers to a halt as Chu Ying appears unharmed on Myriad Year Flying Warship; tongue-tied, Shen Xiao asks who Chu Ying really is, and Chu Ying drops his disguise to show he is Fang Yuan.",
@@ -183,6 +215,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_shen_shang",
+        "house_myriad_year_flying_warship",
         "char_fang_yuan"
       ]
     },
@@ -239,7 +272,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shen Clan as of ch. 1892",
@@ -260,7 +293,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

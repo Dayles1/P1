@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 420,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     420,
@@ -51,11 +51,27 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "fights_here",
+      "target": "evt_fight_lang_ya_land_spirit_against_qin_bai_sheng",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 880,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_northern_plains",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_lang_ya_land_spirit_against_qin_bai_sheng",
       "count": 3
     },
     {
@@ -199,6 +215,22 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_white_litchi_immortal_essence",
+      "count": 1
+    },
+    {
       "target": "fac_immortal_crane_sect",
       "count": 1
     },
@@ -207,7 +239,15 @@
       "count": 1
     },
     {
+      "target": "race_feathermen",
+      "count": 1
+    },
+    {
       "target": "char_chang_shan_yin",
+      "count": 1
+    },
+    {
+      "target": "sys_prophecy_of_three_venerables",
       "count": 1
     },
     {
@@ -244,6 +284,14 @@
     },
     {
       "target": "loc_treasure_yellow_heaven",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -327,6 +375,10 @@
       "count": 1
     },
     {
+      "target": "race_inkmen",
+      "count": 1
+    },
+    {
       "target": "gu_break_luck",
       "count": 1
     },
@@ -351,7 +403,15 @@
       "count": 1
     },
     {
+      "target": "move_unfamiliar_face",
+      "count": 1
+    },
+    {
       "target": "char_wu_hao",
+      "count": 1
+    },
+    {
+      "target": "move_sleeping_cloud_coffin",
       "count": 1
     },
     {
@@ -367,11 +427,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
       "target": "gu_inch_of_time_gu",
       "count": 1
     },
     {
       "target": "char_hui_feng_zi",
+      "count": 1
+    },
+    {
+      "target": "move_wind_escape",
       "count": 1
     },
     {
@@ -391,7 +459,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -403,7 +471,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -432,7 +500,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "recipe-lure-and-land-spirit",
       "text_origin": "source_excerpt",
@@ -449,12 +517,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "long-hair-ancestor-calamity",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_long_hair_ancestor",
+        "sys_gu_worms",
+        "sys_gu_recipe",
         "loc_crescent_lake",
         "fac_lang_ya_sect"
       ]
@@ -466,7 +537,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "land-spirit-obsession",
       "text_origin": "source_excerpt",
@@ -499,12 +570,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "exchange-limits-and-attacks",
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_heavenly_essence_treasure_lotus",
+        "sys_immortal_gu",
+        "sys_mortal_gu",
         "fac_heavenly_court",
         "char_feng_jiu_ge"
       ]
@@ -516,7 +589,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "exchange-limits-and-attacks",
       "text_origin": "source_excerpt"
@@ -528,7 +601,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-refinement-chance",
       "text_origin": "source_excerpt"
@@ -540,7 +613,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "warning-about-prior-attacks",
       "text_origin": "source_excerpt",
@@ -555,12 +628,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "force-assessment-before-an-attack",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fairy_jiang_yu",
+        "sys_gu_formation",
         "char_qin_bai_sheng",
         "char_hei_cheng",
         "char_xue_song_zi",
@@ -574,7 +648,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "still-intact-worth-any-price",
       "text_origin": "source_excerpt"
@@ -586,7 +660,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "return-under-supervision",
       "text_origin": "source_excerpt",

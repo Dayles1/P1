@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2100,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2100,
@@ -39,6 +39,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_mushroommen",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -71,6 +83,14 @@
       "count": 2
     },
     {
+      "target": "race_mushroommen",
+      "count": 1
+    },
+    {
+      "target": "inh_sheng_tian_true_inheritance",
+      "count": 2
+    },
+    {
       "target": "loc_wu_yi_mountain",
       "count": 2
     },
@@ -87,6 +107,10 @@
       "count": 2
     },
     {
+      "target": "move_heaven_and_earth_travel",
+      "count": 2
+    },
+    {
       "target": "char_fairy_ming_hao",
       "count": 2
     },
@@ -99,11 +123,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_lu_wei_yin",
       "count": 1
     },
     {
+      "target": "res_rank_nine_wind_path_immortal_material",
+      "count": 1
+    },
+    {
       "target": "char_shi_zong",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -152,9 +188,11 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_wu_yong",
         "loc_mushroomman_paradise",
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "inh_sheng_tian_true_inheritance"
       ]
     },
     {
@@ -234,6 +272,7 @@
       "mentions": [
         "reg_southern_border",
         "fac_wu_clan",
+        "sys_immortal_gu",
         "char_shi_zong",
         "loc_wu_yi_mountain",
         "char_wu_ba_chong",
@@ -268,6 +307,7 @@
       "section": "diplomatic-mission",
       "text_origin": "source_excerpt",
       "mentions": [
+        "move_heaven_and_earth_travel",
         "reg_eastern_sea"
       ]
     },
@@ -386,7 +426,7 @@
     "Race": {
       "text": "Mushroommen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Seat": {
       "text": "Mushroomman Paradise as of ch. 2100",
@@ -407,7 +447,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_mushroommen",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 843,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     843,
@@ -57,6 +57,10 @@
   ],
   "co_mentions": [
     {
+      "target": "res_success_dao_mark",
+      "count": 3
+    },
+    {
       "target": "res_bitter_shell",
       "count": 3
     },
@@ -69,6 +73,22 @@
       "count": 3
     },
     {
+      "target": "move_flying_bear_transformation",
+      "count": 3
+    },
+    {
+      "target": "move_sword_dragon_transformation",
+      "count": 3
+    },
+    {
+      "target": "move_divination_tortoise_transformation",
+      "count": 3
+    },
+    {
+      "target": "move_ancient_sword_dragon_transformation",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -77,8 +97,24 @@
       "count": 2
     },
     {
+      "target": "inh_infallible_inheritance",
+      "count": 2
+    },
+    {
       "target": "gu_attitude_gu",
       "count": 2
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_path_convention",
+      "count": 1
+    },
+    {
+      "target": "move_familiar_face",
+      "count": 1
     },
     {
       "target": "loc_star_form_blessed_land",
@@ -86,6 +122,10 @@
     },
     {
       "target": "loc_hu_immortal_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -113,7 +153,15 @@
       "count": 1
     },
     {
+      "target": "move_silent_world",
+      "count": 1
+    },
+    {
       "target": "gu_everlasting_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "res_sword_dragon_corpse",
       "count": 1
     },
     {
@@ -211,7 +259,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-process",
         "text_origin": "source_excerpt"
@@ -223,7 +271,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-process",
         "text_origin": "source_excerpt"
@@ -235,7 +283,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-process",
         "text_origin": "source_excerpt",
@@ -250,7 +298,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-process",
         "text_origin": "source_excerpt"
@@ -262,7 +310,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-process",
         "text_origin": "source_excerpt"
@@ -274,7 +322,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-move-fusion",
         "text_origin": "source_excerpt",
@@ -289,7 +337,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-move-fusion",
         "text_origin": "source_excerpt"
@@ -301,7 +349,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-move-fusion",
         "text_origin": "source_excerpt",
@@ -316,7 +364,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-move-fusion",
         "text_origin": "source_excerpt"
@@ -360,6 +408,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_refinement_path_convention",
+          "inh_infallible_inheritance",
+          "sys_immortal_gu",
           "char_lang_ya_land_spirit"
         ]
       },
@@ -370,13 +421,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "shrinking-to-enter-a-hidden-cave",
         "text_origin": "source_excerpt",
         "mentions": [
           "reg_eastern_sea",
-          "char_li_xiao_yao"
+          "char_li_xiao_yao",
+          "sys_gu_immortal"
         ]
       },
       {
@@ -386,7 +438,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "transformation-path-standing",
         "text_origin": "source_excerpt",
@@ -402,7 +454,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "transformation-path-standing",
         "text_origin": "source_excerpt"
@@ -414,7 +466,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "divination-tortoise-transformation-core",
         "text_origin": "source_excerpt"

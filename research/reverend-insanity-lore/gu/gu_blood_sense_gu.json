@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 669,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     669,
@@ -31,6 +31,18 @@
     699
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_blood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_zheng",
@@ -50,6 +62,10 @@
       "count": 3
     },
     {
+      "target": "path_blood",
+      "count": 2
+    },
+    {
       "target": "gu_blood_demon_flower_gu",
       "count": 2
     },
@@ -59,6 +75,14 @@
     },
     {
       "target": "char_lord_sky_crane",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_investigative_gu",
       "count": 1
     },
     {
@@ -75,6 +99,10 @@
     },
     {
       "target": "char_he_feng_yang",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -117,7 +145,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_blood"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -139,10 +169,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_investigative_gu"
+        ]
       },
       {
         "text": "It is a rank five blood path investigative Gu. It lets the user sense others with the same bloodline; closer range and thicker shared bloodline make the connection clearer.",
@@ -151,7 +184,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -203,7 +236,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -211,7 +244,9 @@
           "char_fang_zheng",
           "char_lord_sky_crane",
           "gu_cold_blood_gu",
-          "gu_blood_demon_flower_gu"
+          "gu_blood_demon_flower_gu",
+          "path_blood",
+          "sys_gu_worms"
         ]
       },
       {
@@ -221,7 +256,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "locating-fang-yuan",
         "text_origin": "source_excerpt",
@@ -236,7 +271,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "locating-fang-yuan",
         "text_origin": "source_excerpt",
@@ -251,7 +286,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "locating-fang-yuan",
         "text_origin": "source_excerpt"
@@ -263,12 +298,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "locating-fang-yuan",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_mutual_sense_immortal_gu"
+          "gu_mutual_sense_immortal_gu",
+          "sys_immortal_gu"
         ]
       }
     ]
@@ -277,7 +313,7 @@
     "Path": {
       "text": "Blood Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 81,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     81,
@@ -52,6 +52,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -94,6 +106,10 @@
     {
       "target": "fac_gu_yue_clan",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -145,6 +161,14 @@
     },
     {
       "target": "char_xiong_jiang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -208,6 +232,10 @@
       "count": 1
     },
     {
+      "target": "sys_b_grade",
+      "count": 1
+    },
+    {
       "target": "loc_gu_yue_village",
       "count": 1
     },
@@ -221,6 +249,10 @@
     },
     {
       "target": "gu_signal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -240,11 +272,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "loc_qing_mao_mountain",
         "fac_chi_family"
       ]
@@ -256,7 +289,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -268,7 +301,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -280,7 +313,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -292,7 +325,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -304,7 +337,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chi-faction-group-leader",
       "text_origin": "source_excerpt",
@@ -322,7 +355,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chi-faction-group-leader",
       "text_origin": "source_excerpt",
@@ -337,7 +370,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chi-faction-group-leader",
       "text_origin": "source_excerpt"
@@ -349,7 +382,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chi-faction-group-leader",
       "text_origin": "source_excerpt",
@@ -364,7 +397,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "strength-standing-among-rank-two",
       "text_origin": "source_excerpt",
@@ -379,7 +412,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "strength-standing-among-rank-two",
       "text_origin": "source_excerpt"
@@ -391,7 +424,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "strength-standing-among-rank-two",
       "text_origin": "source_excerpt",
@@ -406,7 +439,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "strength-standing-among-rank-two",
       "text_origin": "source_excerpt",
@@ -422,7 +455,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "strength-standing-among-rank-two",
       "text_origin": "source_excerpt"
@@ -437,7 +470,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "strength-standing-among-rank-two",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "but the English chapters used here still name only Double Orifice Stove Gu for him, leaving the golden-luster fist effect without a Gu title.",
@@ -446,7 +482,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "strength-standing-among-rank-two",
       "text_origin": "source_excerpt"
@@ -458,7 +494,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "river-swallowing-toad-and-xiong-li",
       "text_origin": "source_excerpt",
@@ -473,7 +509,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "river-swallowing-toad-and-xiong-li",
       "text_origin": "source_excerpt",
@@ -488,7 +524,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "river-swallowing-toad-and-xiong-li",
       "text_origin": "source_excerpt",
@@ -504,7 +540,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "river-swallowing-toad-and-xiong-li",
       "text_origin": "source_excerpt",
@@ -520,7 +556,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "river-swallowing-toad-and-xiong-li",
       "text_origin": "source_excerpt"
@@ -532,7 +568,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "river-swallowing-toad-and-xiong-li",
       "text_origin": "source_excerpt"
@@ -544,7 +580,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wolf-tide-rank-two-peak",
       "text_origin": "source_excerpt",
@@ -559,7 +595,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wolf-tide-rank-two-peak",
       "text_origin": "source_excerpt"
@@ -571,7 +607,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wolf-tide-rank-two-peak",
       "text_origin": "source_excerpt"
@@ -583,7 +619,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wolf-tide-rank-two-peak",
       "text_origin": "source_excerpt",
@@ -603,7 +639,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "wolf-tide-rank-two-peak",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_b_grade"
+      ]
     },
     {
       "text": "The fan translation writes the full name as Gu Yue Chi Shan and the short form Chi Shan,",
@@ -612,7 +651,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "translation-notes",
       "text_origin": "source_excerpt"
@@ -624,7 +663,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "translation-notes",
       "text_origin": "source_excerpt"
@@ -640,6 +679,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_chi_clan",
+        "sys_gu_immortal",
         "char_chi_shang"
       ]
     }
@@ -702,7 +742,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Gu Yue Clan as of ch. 81 Chi Family as of ch. 81",
@@ -729,7 +769,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

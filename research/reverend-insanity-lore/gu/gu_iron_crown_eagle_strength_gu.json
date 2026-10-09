@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 752,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     752,
@@ -35,6 +35,18 @@
     1082
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -54,6 +66,10 @@
       "count": 2
     },
     {
+      "target": "path_strength",
+      "count": 2
+    },
+    {
       "target": "char_lang_ya_land_spirit",
       "count": 1
     },
@@ -62,7 +78,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_all_out_effort_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_beast_phantom",
       "count": 1
     },
     {
@@ -120,7 +144,9 @@
     "ranks": [],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -145,7 +171,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "path_strength"
+        ]
       },
       {
         "text": "It can carve a portion of the iron crown eagle’s strength path dao marks onto the user’s body. When those dao marks resonate, the user can unleash iron crown eagle strength and summon an iron crown eagle strength path phantom. Beast strength Immortal Gu of this kind do not suit a human body well, and the dao marks they leave are sparse.",
@@ -157,7 +186,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       },
       {
         "text": "Activation is not fully at will. Without all-out effort Gu raised to Immortal Gu level, Fang Yuan cannot control when the strength appears.",
@@ -262,7 +294,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "sale-and-permanent-loss",
         "text_origin": "source_excerpt"
@@ -294,7 +326,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

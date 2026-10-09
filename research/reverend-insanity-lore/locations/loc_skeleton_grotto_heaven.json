@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1975,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1975,
@@ -76,6 +76,14 @@
     },
     {
       "target": "char_wu_shuai",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "move_hu_elevation",
       "count": 1
     }
   ],
@@ -140,7 +148,8 @@
       "mentions": [
         "char_qi_sea_ancestor",
         "loc_crescent_moon_grotto_heaven",
-        "char_wu_shuai"
+        "char_wu_shuai",
+        "sys_gu_immortal"
       ]
     }
   ],

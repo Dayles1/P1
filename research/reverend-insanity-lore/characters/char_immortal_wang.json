@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1168,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1168,
@@ -48,12 +48,36 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_chu_sect",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
       "recorded_chapter": 1202,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_heaven_swallowing_hound_transformation",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
       "count": null,
       "confidence": "B",
       "source_id": "src_sagaofgu",
@@ -66,8 +90,16 @@
       "count": 3
     },
     {
+      "target": "move_heaven_swallowing_hound_transformation",
+      "count": 3
+    },
+    {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_hao_zhen",
@@ -94,6 +126,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_iron_eagle_blessed_land",
       "count": 1
     },
@@ -102,7 +138,19 @@
       "count": 1
     },
     {
+      "target": "move_green_city_rampage",
+      "count": 1
+    },
+    {
+      "target": "move_wind_thunder_roar",
+      "count": 1
+    },
+    {
       "target": "char_liu_zhuan_shen",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -118,12 +166,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_chu_sect",
+        "sys_gu_immortal",
         "char_chu_du",
         "char_fang_yuan",
         "loc_iron_eagle_blessed_land"
@@ -136,7 +185,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -160,7 +209,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -172,7 +221,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -184,7 +233,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "heaven-swallowing-hound",
       "text_origin": "source_excerpt",
@@ -199,12 +248,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "iron-eagle-fallout",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_bai_zu_wei",
+        "move_green_city_rampage",
         "char_hao_zhen",
         "char_chou_lao_wu"
       ]
@@ -216,7 +266,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rock-bottom-impression",
       "text_origin": "source_excerpt"
@@ -228,13 +278,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battle-defeat",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_northern_plains",
-        "char_ye_lui_qun_xing"
+        "char_ye_lui_qun_xing",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -244,7 +295,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battle-defeat",
       "text_origin": "source_excerpt"
@@ -311,7 +362,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Chu Sect as of ch. 1202",
@@ -338,7 +389,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

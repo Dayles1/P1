@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 754,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     754,
@@ -31,6 +31,18 @@
     1144
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_yao_huang",
@@ -50,6 +62,10 @@
       "count": 4
     },
     {
+      "target": "path_strength",
+      "count": 2
+    },
+    {
       "target": "gu_kindness_thought_gu",
       "count": 2
     },
@@ -59,6 +75,10 @@
     },
     {
       "target": "char_qin_bai_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -105,7 +125,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -164,6 +186,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_qin_bai_sheng",
+          "path_strength",
+          "sys_immortal_gu",
           "reg_northern_plains"
         ],
         "needs_review": true
@@ -212,7 +236,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1930,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1930,
@@ -33,8 +33,41 @@
     1940,
     1948
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_luck",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1940,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
+      "target": "path_luck",
+      "count": 1
+    },
     {
       "target": "char_bing_sai_chuan",
       "count": 1
@@ -56,7 +89,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_longevity_heaven",
+      "count": 1
+    },
+    {
+      "target": "house_calamity_luck_altar",
       "count": 1
     },
     {
@@ -69,6 +110,10 @@
     },
     {
       "target": "char_limitless_demon_venerable",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
       "count": 1
     },
     {
@@ -94,10 +139,12 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_duke_long",
+        "house_calamity_luck_altar",
         "char_bull_demon",
         "char_flower_lady",
         "char_five_elements_grandmaster",
         "loc_river_of_time",
+        "sys_gu_immortal",
         "fac_longevity_heaven",
         "char_bing_sai_chuan"
       ]
@@ -141,6 +188,7 @@
       "section": "charge-into-heaven-overseeing-tower",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_heaven_overseeing_tower",
         "char_limitless_demon_venerable",
         "gu_fate_gu"
       ]
@@ -194,12 +242,12 @@
     "Paths": {
       "text": "Luck path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -210,12 +258,14 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_luck"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Dead",
     "alignment": null,

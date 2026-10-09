@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 430,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     430,
@@ -48,9 +48,33 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "holds_gu",
       "target": "gu_battle_bone_wheel_gu",
       "role": "owner",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 430,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_chang_shan_yin_against_ha_tu_gu",
+      "role": null,
       "from_chapter": null,
       "to_chapter": null,
       "recorded_chapter": 430,
@@ -66,8 +90,16 @@
       "count": 4
     },
     {
+      "target": "evt_fight_chang_shan_yin_against_ha_tu_gu",
+      "count": 3
+    },
+    {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_chang_shan_yin",
@@ -106,6 +138,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
+      "count": 1
+    },
+    {
       "target": "gu_snow_wash_gu",
       "count": 1
     },
@@ -119,6 +159,10 @@
     },
     {
       "target": "gu_dark_toss_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_man_soul",
       "count": 1
     },
     {
@@ -138,7 +182,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -156,7 +200,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "duel-with-chang-shan-yin",
       "text_origin": "source_excerpt",
@@ -172,10 +216,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "duel-with-chang-shan-yin",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_wild_gu"
+      ]
     },
     {
       "text": "Later, while it is already his, he repairs its deepest crack with bone bamboo Gu.",
@@ -184,7 +231,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "duel-with-chang-shan-yin",
       "text_origin": "source_excerpt"
@@ -196,10 +243,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "duel-with-chang-shan-yin",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "Ge tribe elders later call Ha Tu Gu’s bandits savage looters who wiped out weaker tribes and livestock, and treat killing them as clearing a threat for Northern Plains righteous path.",
@@ -208,7 +258,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ge-tribe-elders-on-the-bandits",
       "text_origin": "source_excerpt",
@@ -224,7 +274,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chang-tribe-plot",
       "text_origin": "source_excerpt",
@@ -240,7 +290,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chang-tribe-plot",
       "text_origin": "source_excerpt",
@@ -297,7 +347,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -319,7 +369,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

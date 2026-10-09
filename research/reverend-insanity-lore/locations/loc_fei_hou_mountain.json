@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 239,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     239,
@@ -76,6 +76,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -92,7 +100,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -104,7 +112,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "caravan-entry-and-monkey-rule",
       "text_origin": "source_excerpt",
@@ -122,11 +130,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "caravan-entry-and-monkey-rule",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "char_sky_crown_marquis",
         "gu_monkey_language_gu",
         "reg_southern_border"
@@ -142,7 +151,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "bandit-monkeys-and-arm-wrestling-tolls",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "From the Sky Crown Marquis agreement onward, caravans passing through Fei Hou mountain arm wrestle with the bandit monkeys: a win earns free passage, a loss costs a portion of goods. Sky Crown Marquis had used that same arm wrestling custom to reach the peak of bandit monkey mountain and win the monkey emperor’s approval when he could not slaughter the mountain by force alone. The caravan stretch names that tall range bandit monkey mountain while the surrounding region stays Fei Hou mountain.",
@@ -175,7 +187,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "checkpoints-along-the-trade-route",
       "text_origin": "source_excerpt"

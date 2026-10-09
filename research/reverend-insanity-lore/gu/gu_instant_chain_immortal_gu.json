@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1732,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1732
@@ -53,6 +53,10 @@
     },
     {
       "target": "char_sun_ming_lu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -165,7 +169,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       },
       {
         "text": "On the Infallible blessed land battlefield, Fang Yuan announces that it has been placed properly while he, Chi Qu You, and Black Extremity set up the five regional formation inside Heavenly Court’s formation.",

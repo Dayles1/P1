@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 937,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     937,
@@ -108,6 +108,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
@@ -172,6 +176,18 @@
       "count": 1
     },
     {
+      "target": "move_beast_phantom_retract",
+      "count": 1
+    },
+    {
+      "target": "move_green_crystal_heros_path",
+      "count": 1
+    },
+    {
+      "target": "move_three_head_six_arms",
+      "count": 1
+    },
+    {
       "target": "char_spectral_soul_demon_venerable",
       "count": 1
     },
@@ -180,7 +196,19 @@
       "count": 1
     },
     {
+      "target": "reg_earth_earth_trench",
+      "count": 1
+    },
+    {
+      "target": "sys_super_gu_formation",
+      "count": 1
+    },
+    {
       "target": "char_mo_yao",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -189,6 +217,26 @@
     },
     {
       "target": "char_chen_yi",
+      "count": 1
+    },
+    {
+      "target": "move_karma_divine_tree",
+      "count": 1
+    },
+    {
+      "target": "move_divine_bean_soldier",
+      "count": 1
+    },
+    {
+      "target": "move_contented_lifestyle",
+      "count": 1
+    },
+    {
+      "target": "move_willow_wind",
+      "count": 1
+    },
+    {
+      "target": "move_green_life_taker",
       "count": 1
     }
   ],
@@ -200,10 +248,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_formation"
+      ]
     },
     {
       "text": "Seven mortals escape the Door of Life and Death carrying Spectral Soul Demon Venerable’s cultivation experience as split souls of his main body, and once safely apart they found Shadow Sect and take the codenames Red, Orange, Yellow, Green, Azure, Blue, and Purple. Years later, among the surviving members, Green blames himself for asking Azure to punish a merchant in treasure yellow heaven, a lesson that let Azure fall into a love trap and exposed their main body; Purple consoles him that the trap is heaven’s will’s doing, not his fault. After Azure survives a first failed tribulation, Green warns the group not to look down on heaven’s will, asking whether the lessons of past years were not enough.",
@@ -212,7 +263,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sects-seven-codenames",
       "text_origin": "source_excerpt",
@@ -230,12 +281,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "earth-trench-explosion",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_northern_plains",
+        "reg_earth_earth_trench",
         "gu_sovereign_immortal_fetus_gu"
       ]
     },
@@ -246,7 +298,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "earth-trench-explosion",
       "text_origin": "source_excerpt",
@@ -261,12 +313,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "change-soul-immortal-gu",
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_change_soul_immortal_gu",
+        "sys_immortal_gu",
         "fac_spirit_affinity_house",
         "char_mo_yao"
       ]

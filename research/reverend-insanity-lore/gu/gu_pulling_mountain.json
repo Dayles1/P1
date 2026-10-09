@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 752,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     752,
@@ -43,6 +43,18 @@
     1683
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_feng_jiu_ge",
@@ -74,6 +86,18 @@
       "count": 3
     },
     {
+      "target": "move_myriad_self",
+      "count": 3
+    },
+    {
+      "target": "move_myriad_self_giant_hand",
+      "count": 3
+    },
+    {
+      "target": "path_strength",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -92,6 +116,10 @@
     {
       "target": "loc_city_well",
       "count": 2
+    },
+    {
+      "target": "evt_arc_blessed_land_consolidation",
+      "count": 1
     },
     {
       "target": "char_qin_bai_sheng",
@@ -114,6 +142,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_dang_hun_mountain",
       "count": 1
     },
@@ -123,6 +155,10 @@
     },
     {
       "target": "gu_malicious_thought_gu",
+      "count": 1
+    },
+    {
+      "target": "res_ruin_bat_corpse",
       "count": 1
     },
     {
@@ -246,7 +282,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -260,7 +298,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-status",
         "text_origin": "source_excerpt"
@@ -307,7 +345,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-move-fusion",
         "text_origin": "source_excerpt"
@@ -319,7 +357,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-move-fusion",
         "text_origin": "source_excerpt",
@@ -334,7 +372,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-move-fusion",
         "text_origin": "source_excerpt"
@@ -351,7 +389,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -370,13 +408,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "trade-and-path-branch",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "gu_pulling_water"
+          "sys_immortal_gu",
+          "gu_pulling_water",
+          "path_strength"
         ]
       },
       {
@@ -386,7 +426,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "dao-mark-resonance",
         "text_origin": "source_excerpt",
@@ -430,7 +470,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "dao-mark-resonance",
         "text_origin": "source_excerpt"
@@ -442,7 +482,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "dao-mark-resonance",
         "text_origin": "source_excerpt",
@@ -458,7 +498,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "dao-mark-resonance",
         "text_origin": "source_excerpt"
@@ -470,7 +510,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "dao-mark-resonance",
         "text_origin": "source_excerpt"
@@ -497,7 +537,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "target-scope",
         "text_origin": "source_excerpt"
@@ -509,7 +549,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "target-scope",
         "text_origin": "source_excerpt",
@@ -525,7 +565,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "target-scope",
         "text_origin": "source_excerpt",
@@ -540,7 +580,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "moving-five-light-mountain",
         "text_origin": "source_excerpt",
@@ -558,7 +598,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "frosty-peak-declined",
         "text_origin": "source_excerpt",
@@ -574,7 +614,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

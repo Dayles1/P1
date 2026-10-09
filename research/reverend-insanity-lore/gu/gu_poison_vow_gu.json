@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 233,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     233,
@@ -128,6 +128,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -137,6 +141,10 @@
     },
     {
       "target": "loc_nan_qiu_garden",
+      "count": 1
+    },
+    {
+      "target": "sys_dao_marks",
       "count": 1
     },
     {
@@ -156,6 +164,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_shadow_sect_blessed_land",
       "count": 1
     },
@@ -165,6 +177,10 @@
     },
     {
       "target": "fac_hei_tribe",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     }
   ],
@@ -231,7 +247,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "path",
         "text_origin": "source_excerpt"
@@ -247,7 +263,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -259,7 +275,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -271,7 +287,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -299,7 +315,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -319,6 +335,7 @@
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "gu_eating_ones_words_gu"
         ]
       }
@@ -336,7 +353,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "feeding",
         "text_origin": "source_excerpt"
@@ -357,7 +374,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "shang-ya-zis-recipe-vow",
         "text_origin": "source_excerpt"
@@ -369,7 +386,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "shang-ya-zis-recipe-vow",
         "text_origin": "source_excerpt"
@@ -425,7 +442,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -443,7 +460,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt"
@@ -455,7 +472,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -470,7 +487,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bai-ning-bings-alliance-vow",
         "text_origin": "source_excerpt",
@@ -485,7 +502,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bai-ning-bings-alliance-vow",
         "text_origin": "source_excerpt"
@@ -497,7 +514,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bai-ning-bings-alliance-vow",
         "text_origin": "source_excerpt",
@@ -512,13 +529,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "mountain-pledge-and-sea-oath",
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_mountain_pledge_gu",
-          "gu_sea_oath_gu"
+          "gu_sea_oath_gu",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -528,7 +546,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "mountain-pledge-and-sea-oath",
         "text_origin": "source_excerpt",
@@ -544,7 +562,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "mountain-pledge-and-sea-oath",
         "text_origin": "source_excerpt"
@@ -556,7 +574,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "mountain-pledge-and-sea-oath",
         "text_origin": "source_excerpt",
@@ -571,11 +589,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "mountain-pledge-and-sea-oath",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_eighty_eight_true_yang_building",
           "char_hei_pei",
           "fac_hei_tribe"
         ]

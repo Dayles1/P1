@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1471,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1471,
@@ -48,12 +48,28 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_eastern_sea",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "fac_nan_gong_clan",
@@ -64,7 +80,19 @@
       "count": 2
     },
     {
+      "target": "house_hua_qiao_pavilion",
+      "count": 2
+    },
+    {
       "target": "char_qin_bai_he",
+      "count": 2
+    },
+    {
+      "target": "move_whale_form_rain",
+      "count": 2
+    },
+    {
+      "target": "move_blood_light_spirit_suppression",
       "count": 2
     },
     {
@@ -76,7 +104,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_hua_clan",
+      "count": 1
+    },
+    {
+      "target": "sys_myriad_gold_wondrous_essence_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
       "count": 1
     },
     {
@@ -92,6 +132,14 @@
       "count": 1
     },
     {
+      "target": "sys_food_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "path_food",
+      "count": 1
+    },
+    {
       "target": "char_iron_dragonfish",
       "count": 1
     },
@@ -100,11 +148,31 @@
       "count": 1
     },
     {
+      "target": "house_bai_he_palace",
+      "count": 1
+    },
+    {
       "target": "loc_white_crane_sea_area",
       "count": 1
     },
     {
       "target": "char_gold_dragonfish",
+      "count": 1
+    },
+    {
+      "target": "move_fragrant_flowery_words",
+      "count": 1
+    },
+    {
+      "target": "move_purple_star_broken_life",
+      "count": 1
+    },
+    {
+      "target": "move_soul_beast_summoning",
+      "count": 1
+    },
+    {
+      "target": "move_ancient_sword_dragon_transformation",
       "count": 1
     },
     {
@@ -132,7 +200,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -147,7 +215,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -159,7 +227,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -171,7 +239,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -186,14 +254,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "nan-gong-visit",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_eastern_sea",
         "fac_nan_gong_clan",
-        "char_hua_an"
+        "sys_gu_immortal",
+        "char_hua_an",
+        "house_hua_qiao_pavilion"
       ]
     },
     {
@@ -203,7 +273,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "prior-counterattack-and-a-trump-card-aimed-at-her",
       "text_origin": "source_excerpt"
@@ -215,7 +285,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "racing-to-match-copper-dragonfish",
       "text_origin": "source_excerpt"
@@ -227,10 +297,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "purple-star-battlefield",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_whale_form_rain"
+      ]
     },
     {
       "text": "The two refuse Fang Yuan’s terms and choose to fight to the death. When half of Qin Bai He’s body is torn, You Chan moves to help and is bit by the ancient sword dragon, unguarded. Fang Yuan chews and swallows. She turns into mushy flesh and blood and dies. Qin Bai He calls her Chan Er.",
@@ -239,7 +312,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt"
@@ -251,10 +324,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "aperture-annexed-after-death",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_blood_light_spirit_suppression"
+      ]
     }
   ],
   "conflicts": [],
@@ -298,7 +374,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "lone cultivator as of ch. 1472",
@@ -325,7 +401,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Dead",
     "alignment": "lone cultivator as of ch. 1472",

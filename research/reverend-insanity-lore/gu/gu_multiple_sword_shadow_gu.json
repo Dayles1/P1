@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 504,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     504,
@@ -54,6 +54,10 @@
     },
     {
       "target": "gu_turtle_jade_wolf_skin_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_attack_gu",
       "count": 1
     }
   ],
@@ -191,7 +195,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "merged-offense",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_attack_gu"
+        ]
       }
     ]
   },

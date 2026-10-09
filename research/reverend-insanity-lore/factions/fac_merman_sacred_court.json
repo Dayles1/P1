@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1661,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1661,
@@ -78,6 +78,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "loc_merman_sacred_city",
       "count": 1
     },
@@ -109,7 +113,8 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_gu_master"
       ]
     },
     {

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1972,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1972
@@ -54,6 +54,10 @@
     {
       "target": "char_peng_da",
       "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
     }
   ],
   "claims": [
@@ -71,7 +75,8 @@
       "mentions": [
         "char_mo_li",
         "char_peng_da",
-        "reg_western_desert"
+        "reg_western_desert",
+        "sys_mortal_gu"
       ]
     }
   ],

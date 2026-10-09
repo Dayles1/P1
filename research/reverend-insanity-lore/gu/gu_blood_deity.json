@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 165,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     165,
@@ -37,11 +37,32 @@
     1564,
     2246
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_blood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
     {
       "target": "rcp_blood_deity_immortal_gu_recipe",
       "count": 3
+    },
+    {
+      "target": "path_blood",
+      "count": 1
+    },
+    {
+      "target": "sys_top_ten_great_demonic_gu",
+      "count": 2
     },
     {
       "target": "gu_blood_guillotine_gu",
@@ -60,7 +81,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_immortal_crane_sect",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
       "count": 1
     },
     {
@@ -77,6 +110,14 @@
     },
     {
       "target": "char_song_zi_xing",
+      "count": 1
+    },
+    {
+      "target": "move_blood_demon_body_separation",
+      "count": 1
+    },
+    {
+      "target": "move_emperor_yama",
       "count": 1
     },
     {
@@ -146,7 +187,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_blood"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -212,10 +255,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "remnant-recipe",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal",
+          "sys_gu_recipe"
+        ]
       },
       {
         "text": "Fang Yuan obtains Vicious Lightning Fiend’s seventy percent Blood Deity remnant recipe and judges that, with his previous life’s accumulations and wisdom Gu’s power, he can likely complete the recipe. In his previous life he had schemed for this same remnant recipe and failed, fleeing heavily injured.",
@@ -224,7 +271,7 @@
         ],
         "certainty": "inferred",
         "confidence": "C",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "recipe-acquisition",
         "text_origin": "source_excerpt",
@@ -257,12 +304,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_blood_guillotine_gu"
+          "gu_blood_guillotine_gu",
+          "sys_top_ten_great_demonic_gu"
         ]
       },
       {
@@ -272,7 +320,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "blood-wing-preference",
         "text_origin": "source_excerpt",
@@ -294,7 +342,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_immortal_crane_sect",
-          "loc_blood_sea"
+          "loc_blood_sea",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -304,7 +353,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-zheng-plan",
         "text_origin": "source_excerpt"
@@ -316,7 +365,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "long-term-goal",
         "text_origin": "source_excerpt"
@@ -357,7 +406,7 @@
     "Path": {
       "text": "Blood Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

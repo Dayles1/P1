@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 144,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     144,
@@ -56,7 +56,19 @@
       "count": 1
     },
     {
+      "target": "evt_legend_light_of_faith",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
       "target": "gu_wisdom_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_road_of_life_and_death",
       "count": 1
     },
     {
@@ -65,6 +77,14 @@
     },
     {
       "target": "char_desolate_ancient_moon",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_love_is_cruel",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_learning_through_failure",
       "count": 1
     }
   ],
@@ -152,7 +172,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -168,7 +188,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "pledge-warning-and-valley-rescue",
         "text_origin": "source_excerpt",
@@ -184,7 +204,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "pledge-warning-and-valley-rescue",
         "text_origin": "source_excerpt"
@@ -212,7 +232,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "leaving-ren-zu",
         "text_origin": "source_excerpt",

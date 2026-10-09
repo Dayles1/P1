@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 823,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     823
@@ -46,6 +46,10 @@
     {
       "target": "char_ye_fan",
       "count": 3
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -101,7 +105,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -158,13 +162,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "reg_southern_border",
-          "char_ye_fan"
+          "char_ye_fan",
+          "sys_gu_master"
         ]
       },
       {
@@ -174,7 +179,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "capture",
         "text_origin": "source_excerpt"

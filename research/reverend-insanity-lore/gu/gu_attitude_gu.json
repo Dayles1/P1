@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 59,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     59,
@@ -99,11 +99,19 @@
       "count": 3
     },
     {
+      "target": "move_thunder_rush_yellow_bird_transformation",
+      "count": 3
+    },
+    {
       "target": "char_ren_zu",
       "count": 2
     },
     {
       "target": "gu_rules_and_regulation_gu",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 2
     },
     {
@@ -135,6 +143,10 @@
       "count": 2
     },
     {
+      "target": "house_embroidered_tower",
+      "count": 2
+    },
+    {
       "target": "gu_return_light_gu",
       "count": 2
     },
@@ -155,11 +167,23 @@
       "count": 1
     },
     {
+      "target": "evt_legend_wisdom_against_restrictions",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_attitude",
+      "count": 1
+    },
+    {
       "target": "gu_heart_of_loneliness",
       "count": 1
     },
     {
       "target": "gu_faith_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_light_of_faith",
       "count": 1
     },
     {
@@ -171,7 +195,19 @@
       "count": 1
     },
     {
+      "target": "move_familiar_face",
+      "count": 1
+    },
+    {
+      "target": "move_unfamiliar_face",
+      "count": 1
+    },
+    {
       "target": "gu_self_strength",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_freedom_in_death",
       "count": 1
     },
     {
@@ -179,7 +215,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_purple_mountain_true_monarch",
+      "count": 1
+    },
+    {
+      "target": "sys_mental_energy",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 1
     },
     {
@@ -204,6 +256,10 @@
     },
     {
       "target": "char_ying_wu_xie",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -240,6 +296,10 @@
     },
     {
       "target": "gu_years_flow_like_water",
+      "count": 1
+    },
+    {
+      "target": "inh_hei_fan_true_inheritance",
       "count": 1
     },
     {
@@ -291,11 +351,31 @@
       "count": 1
     },
     {
+      "target": "move_ancient_year_beast_transformation",
+      "count": 1
+    },
+    {
+      "target": "inh_reckless_savage_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "gu_cognition_gu",
       "count": 1
     },
     {
       "target": "gu_fate_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_joy_and_weight_of_freedom",
+      "count": 1
+    },
+    {
+      "target": "move_devouring_blue_leopard_transformation",
+      "count": 1
+    },
+    {
+      "target": "move_incomplete_freedom_transformation",
       "count": 1
     },
     {
@@ -319,7 +399,19 @@
       "count": 1
     },
     {
+      "target": "evt_legend_facing_a_strong_predicament",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_hope_triumphs_again",
+      "count": 1
+    },
+    {
       "target": "gu_self_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_betraying_ones_self",
       "count": 1
     }
   ],
@@ -393,10 +485,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-wear",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms",
+          "sys_the_legends_of_ren_zu"
+        ]
       }
     ]
   },
@@ -409,7 +505,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form",
         "text_origin": "source_excerpt"
@@ -427,7 +523,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "sole-core-among-the-move",
         "text_origin": "source_excerpt",
@@ -442,7 +538,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "first-use-disguised-as-huang-sha",
         "text_origin": "source_excerpt",
@@ -458,7 +554,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "used-against-lang-ya-land-spirit",
         "text_origin": "source_excerpt"
@@ -492,7 +588,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "feigned-warmth-for-the-feathermen",
         "text_origin": "source_excerpt",
@@ -507,7 +603,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "feeding-plan-and-the-refinement-set-aside",
         "text_origin": "source_excerpt",
@@ -589,7 +685,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -606,7 +702,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "familiar-face-core",
         "text_origin": "source_excerpt",
@@ -622,7 +718,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "icy-plain",
         "text_origin": "source_excerpt",
@@ -630,6 +726,8 @@
           "char_blazing_heaven_demoness",
           "char_hei_fan",
           "char_lady_earth_mother",
+          "sys_immortal_gu",
+          "sys_gu_immortal",
           "char_hei_lou_lan"
         ]
       },
@@ -640,12 +738,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "disguise-inside-borrowed-gu-worms",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_ying_wu_xie",
+          "sys_mortal_gu",
           "char_bo_qing",
           "char_mo_yao"
         ]
@@ -657,7 +756,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "highest-ranking-gu-after-the-swap",
         "text_origin": "source_excerpt",
@@ -673,7 +772,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "low-usage-requirement-despite-high-rank",
         "text_origin": "source_excerpt",
@@ -703,7 +802,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "no-flaw-in-his-feigned-joy",
         "text_origin": "source_excerpt",
@@ -718,7 +817,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-edge-over-chi-shang",
         "text_origin": "source_excerpt"
@@ -753,6 +852,7 @@
         "mentions": [
           "char_feng_jiu_ge",
           "fac_heavenly_court",
+          "house_embroidered_tower",
           "char_reckless_savage_demon_venerable",
           "gu_mutation_gu",
           "gu_adaptation_gu"

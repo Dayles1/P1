@@ -23,15 +23,32 @@
   "first_appearance": {
     "chapter": 1050,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1050,
     2244,
     2245
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_hairy_men",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "race_hairy_men",
+      "count": 1
+    },
     {
       "target": "char_fang_zheng",
       "count": 2
@@ -63,6 +80,10 @@
     {
       "target": "char_twelfth_hair",
       "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     }
   ],
   "claims": [
@@ -73,7 +94,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -113,7 +134,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_twelfth_hair",
-        "char_lian_ke_xin"
+        "char_lian_ke_xin",
+        "sys_gu_immortal"
       ]
     }
   ],
@@ -144,7 +166,7 @@
     "Race": {
       "text": "Hairy Men",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -160,7 +182,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_hairy_men",
     "region": null,
     "status": "Alive",
     "alignment": null,

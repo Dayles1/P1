@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2025,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2025,
@@ -31,6 +31,18 @@
     2327
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_qi",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_qin_ding_ling",
@@ -66,6 +78,14 @@
       "count": 2
     },
     {
+      "target": "path_qi",
+      "count": 1
+    },
+    {
+      "target": "sys_heaven_qi",
+      "count": 2
+    },
+    {
       "target": "gu_earth_qi_immortal_gu",
       "count": 2
     },
@@ -74,11 +94,35 @@
       "count": 2
     },
     {
+      "target": "move_triple_qi_retraction",
+      "count": 2
+    },
+    {
       "target": "char_qi_sea_ancestor",
       "count": 1
     },
     {
+      "target": "sys_earth_qi",
+      "count": 1
+    },
+    {
+      "target": "sys_human_qi",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "inh_qi_path_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
       "count": 1
     },
     {
@@ -129,7 +173,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_qi"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -219,8 +265,12 @@
         "mentions": [
           "char_qin_ding_ling",
           "char_fang_yuan",
+          "sys_immortal_gu",
+          "sys_human_qi",
           "gu_earth_qi_immortal_gu",
-          "fac_heavenly_court"
+          "move_triple_qi_retraction",
+          "fac_heavenly_court",
+          "inh_qi_path_true_inheritance"
         ]
       },
       {
@@ -231,7 +281,10 @@
         "verification": "no_citation",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_heaven_qi"
+        ]
       },
       {
         "text": "Qin Ding Ling temporarily lends all three qi Immortal Gu so Fang Yuan, disguised as Qi Sea Ancestor, can familiarize himself with them while setting up the qi path formation against Heavenly Court’s qi harvest fruit. Heaven Qi, Earth Qi, and Human Qi sit as that formation’s core Immortal Gu; Heavenly Court keeps the option to take them back at once and strip him of control.",
@@ -245,7 +298,8 @@
         "section": "formation-and-lending",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_qi_sea_ancestor"
+          "char_qi_sea_ancestor",
+          "sys_earth_qi"
         ]
       },
       {
@@ -260,6 +314,7 @@
         "section": "permanent-transfer",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_dragon_palace",
           "gu_human_qi_immortal_gu"
         ]
       },
@@ -285,7 +340,7 @@
     "Path": {
       "text": "Qi Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

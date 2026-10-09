@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 411,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     411,
@@ -76,6 +76,10 @@
     },
     {
       "target": "char_lang_ya_land_spirit",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 1
     },
     {
@@ -197,10 +201,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "obsession-death-domain-water",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_the_legends_of_ren_zu"
+      ]
     },
     {
       "text": "Fang Yuan ranks guts Gu from Dang Hun Mountain as best for strengthening the soul, Luo Po wind and bewilderment fog as best for refining it, and pacifying soul soup in Bewitching Lake as the most effective way to pacify the soul. He states that Bewitching Lake is inside the Door of Life and Death, and that in the legends Verdant Great Sun remained drunk by the riverside after death. He also places that door inside Shadow Sect Blessed Land at Yi Tian Mountain, then engulfed by a giant dream realm, as the reason he cannot gather all three soul cultivation seats.",
@@ -209,7 +216,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soul-cultivation-ranking",
       "text_origin": "source_excerpt",

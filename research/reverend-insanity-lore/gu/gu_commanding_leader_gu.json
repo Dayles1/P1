@@ -23,19 +23,44 @@
   "first_appearance": {
     "chapter": 1827,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1827
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_human",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "path_human",
+      "count": 1
+    },
     {
       "target": "char_wu_shuai",
       "count": 2
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
       "count": 1
     }
   ],
@@ -76,7 +101,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_human"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -132,7 +159,9 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "char_fang_yuan",
+          "house_dragon_palace",
           "char_wu_shuai"
         ]
       }
@@ -142,7 +171,7 @@
     "Path": {
       "text": "Human Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

@@ -23,15 +23,39 @@
   "first_appearance": {
     "chapter": 1858,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1858
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_refinement",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1858,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_hairy_men",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -60,6 +84,14 @@
       "count": 2
     },
     {
+      "target": "path_refinement",
+      "count": 1
+    },
+    {
+      "target": "race_hairy_men",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -69,6 +101,10 @@
     },
     {
       "target": "char_sixth_hair",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -91,7 +127,8 @@
       "mentions": [
         "loc_lang_ya_blessed_land",
         "char_lang_ya_land_spirit",
-        "char_sixth_hair"
+        "char_sixth_hair",
+        "sys_immortal_gu"
       ]
     }
   ],
@@ -120,7 +157,7 @@
     "Paths": {
       "text": "Refinement path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Northern Plains",
@@ -130,7 +167,7 @@
     "Race": {
       "text": "Hairy Men",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Lang Ya Sect as of ch. 1858",
@@ -146,12 +183,14 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_refinement"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_hairy_men",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 557,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     557
@@ -53,6 +53,14 @@
     },
     {
       "target": "char_hei_qi_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_enslavement_gu",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     }
   ],
@@ -180,7 +188,9 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_eighty_eight_true_yang_building",
           "char_hei_lou_lan",
+          "sys_enslavement_gu",
           "char_fang_yuan"
         ]
       }

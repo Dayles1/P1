@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1473,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1473,
@@ -40,11 +40,27 @@
       "count": 1
     },
     {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_wealth",
+      "count": 1
+    },
+    {
       "target": "loc_door_of_life_and_death",
       "count": 1
     },
     {
       "target": "char_shi_zhong",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -138,7 +154,9 @@
           "gu_wisdom_gu",
           "char_shi_zhong",
           "reg_western_desert",
-          "fac_shi_clan"
+          "fac_shi_clan",
+          "sys_mortal_gu",
+          "sys_gu_recipe"
         ]
       }
     ]
@@ -164,11 +182,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_the_legends_of_ren_zu",
           "char_ren_zu",
           "loc_door_of_life_and_death"
         ]

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1082,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1082,
@@ -35,6 +35,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_hairy_men",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -63,6 +75,10 @@
       "count": 3
     },
     {
+      "target": "race_hairy_men",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -79,7 +95,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_feng_jiu_ge",
+      "count": 1
+    },
+    {
+      "target": "sys_heavenly_giant_solor",
       "count": 1
     },
     {
@@ -99,7 +123,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -107,7 +131,8 @@
         "char_lang_ya_land_spirit",
         "fac_lang_ya_sect",
         "char_sixth_hair",
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -124,6 +149,7 @@
       "mentions": [
         "reg_central_continent",
         "loc_lang_ya_blessed_land",
+        "sys_heavenly_giant_solor",
         "char_feng_jiu_ge"
       ]
     }
@@ -159,7 +185,7 @@
     "Race": {
       "text": "Hairy Men",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Lang Ya Sect as of ch. 1082",
@@ -180,7 +206,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_hairy_men",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

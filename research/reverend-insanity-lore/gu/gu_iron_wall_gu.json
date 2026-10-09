@@ -23,12 +23,24 @@
   "first_appearance": {
     "chapter": 1823,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1823
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_metal",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "fac_lang_ya_sect",
@@ -62,6 +74,26 @@
     {
       "target": "fac_lang_ya_sect",
       "count": 2
+    },
+    {
+      "target": "path_metal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "house_cooking_luck_pot",
+      "count": 1
     }
   ],
   "claims": [],
@@ -101,7 +133,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_metal"
+    ],
     "path_unverified": false,
     "functional_types": [
       "defense"
@@ -191,8 +225,11 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "char_fang_yuan",
-          "fac_lang_ya_sect"
+          "fac_lang_ya_sect",
+          "sys_mortal_gu",
+          "sys_immortal_gu"
         ]
       }
     ]
@@ -201,7 +238,7 @@
     "Path": {
       "text": "Metal Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

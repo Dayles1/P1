@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 247,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     247,
@@ -73,6 +73,14 @@
       "count": 1
     },
     {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
+      "target": "sys_large_clan",
+      "count": 1
+    },
+    {
       "target": "char_ding_hao",
       "count": 1
     },
@@ -86,6 +94,10 @@
     },
     {
       "target": "char_second_zombie_king",
+      "count": 1
+    },
+    {
+      "target": "inh_second_zombie_king_inheritance",
       "count": 1
     }
   ],
@@ -114,10 +126,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_demonic_path"
+      ]
     },
     {
       "text": "Several days after leaving Xiang Ya mountain region, the caravan begins its journey to Mu Bei mountain, then later enters Mu Bei mountain region as zombies appear. The caravan camps at the base for the night, and Fang Yuan looks at the dark Mo Bei mountain with a thoughtful look.",
@@ -126,7 +141,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "caravan-entry-and-camp",
       "text_origin": "source_excerpt",
@@ -141,7 +156,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "naming-and-zombies",
       "text_origin": "source_excerpt",
@@ -156,7 +171,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "naming-and-zombies",
       "text_origin": "source_excerpt"
@@ -168,7 +183,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "trade-route",
       "text_origin": "source_excerpt"

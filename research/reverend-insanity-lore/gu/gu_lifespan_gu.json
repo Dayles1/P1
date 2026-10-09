@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 126,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     126,
@@ -119,7 +119,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_possession_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_possession_true_inheritance",
       "count": 1
     },
     {
@@ -128,6 +140,10 @@
     },
     {
       "target": "gu_fifteen_year_lifespan_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_ranks_and_realms",
       "count": 1
     },
     {
@@ -164,6 +180,14 @@
     },
     {
       "target": "char_paradise_earth_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
+      "target": "path_time",
       "count": 1
     },
     {
@@ -211,7 +235,19 @@
       "count": 1
     },
     {
+      "target": "move_strength_reversing_life_and_death",
+      "count": 1
+    },
+    {
       "target": "gu_steal_life_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_steal_life_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "move_steal_life",
       "count": 1
     },
     {
@@ -219,7 +255,23 @@
       "count": 1
     },
     {
+      "target": "sys_four_conditions_to_become_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "char_chai_fu",
+      "count": 1
+    },
+    {
+      "target": "move_lying_in_bed",
       "count": 1
     }
   ],
@@ -287,7 +339,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -299,7 +351,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -335,7 +387,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "trade-and-limits",
         "text_origin": "source_excerpt"
@@ -347,7 +399,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "trade-and-limits",
         "text_origin": "source_excerpt"
@@ -359,11 +411,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "trade-and-limits",
         "text_origin": "source_excerpt",
         "mentions": [
+          "path_time",
           "gu_day_gu",
           "gu_month_gu",
           "gu_year_gu"
@@ -376,7 +429,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "trade-and-limits",
         "text_origin": "source_excerpt"
@@ -400,7 +453,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -416,7 +469,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt"
@@ -428,7 +481,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "natural-production",
         "text_origin": "source_excerpt"
@@ -440,10 +493,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "natural-production",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu",
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "Musing over Giant Sun’s true inheritance, Spectral Soul Demon Venerable reflects that heaven’s will is vicious and governs lifespan Gu’s output, so fewer and fewer are being produced.",
@@ -452,7 +509,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "natural-production",
         "text_origin": "source_excerpt",
@@ -470,7 +527,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "heaven-path",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "A Gu cultivator’s lifespan is in fact heaven path dao marks.",

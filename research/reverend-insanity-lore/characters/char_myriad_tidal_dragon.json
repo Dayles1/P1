@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1052,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1052,
@@ -36,6 +36,18 @@
     1334
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -55,6 +67,10 @@
       "count": 4
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_fairy_zi_wei",
       "count": 2
     },
@@ -67,11 +83,27 @@
       "count": 2
     },
     {
+      "target": "house_wind_sweeping_building",
+      "count": 2
+    },
+    {
+      "target": "house_canary_pavilion",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_spring_autumn_cicada",
+      "count": 1
+    },
+    {
+      "target": "move_ghostly_concealment",
       "count": 1
     },
     {
@@ -80,6 +112,18 @@
     },
     {
       "target": "char_dark_venomous_snake",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "move_dragon_flow_escape",
+      "count": 1
+    },
+    {
+      "target": "move_spaceless_tunnel",
       "count": 1
     },
     {
@@ -107,7 +151,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -125,10 +169,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "He travels with Wei Ling Yang and Bi Chen Tian as one of three Heavenly Court rank eights. He has higher seniority than Bi Chen Tian, and Duke Long recently gave him pointers that raised his strength again.",
@@ -137,7 +184,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rescue-mission",
       "text_origin": "source_excerpt",
@@ -154,10 +201,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "killer-move-evacuates-group-from-army",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "After a long dragon flow escape chase he turns pale, his vigorous eyes fill with blood traces, he falls into deep sleep, and his snore sounds like the roaring of dragons. As he sleeps, thick fog forms a cocoon that turns into a pale white dragon egg within two hours.",
@@ -166,7 +216,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "exhaustion-form",
       "text_origin": "source_excerpt"
@@ -178,10 +228,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sleep-through-the-crisis",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_wind_sweeping_building"
+      ]
     },
     {
       "text": "Inside the spaceless tunnel he wakes, and Wei Ling Yang says that since he is awake they will not stay any longer. The Central Continent Gu Immortals could have left the tunnel long ago, but they purposely stayed inside to wait for him to wake up. With him awake, Central Continent’s side has its full strength back with three rank eight Gu Immortals. A giant ghost face then blocks the tunnel and collapses it, and within a few breaths the hole that opens devours Canary Pavilion, which he is controlling.",
@@ -190,12 +243,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wakes-and-loses-canary-pavilion",
       "text_origin": "source_excerpt",
       "mentions": [
-        "reg_central_continent"
+        "reg_central_continent",
+        "house_canary_pavilion"
       ]
     },
     {
@@ -205,7 +259,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "news-from-the-northern-plains-mission",
       "text_origin": "source_excerpt",
@@ -250,7 +304,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1052",
@@ -277,7 +331,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

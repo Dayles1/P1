@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 377,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     377,
@@ -63,6 +63,14 @@
     },
     {
       "target": "fac_gu_masters",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -111,6 +119,10 @@
     },
     {
       "target": "char_xiao_mang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     }
   ],
@@ -180,9 +192,11 @@
       "section": "stored-materials",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_worms",
         "gu_second_aperture_gu",
         "gu_yellow_gold_relic_gu",
         "gu_purple_crystal_relic_gu",
+        "sys_immortal_gu",
         "gu_divine_travel"
       ]
     },
@@ -272,7 +286,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "ruined-hall-view",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     }
   ],
   "conflicts": [],

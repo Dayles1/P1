@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 339,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     339,
@@ -54,6 +54,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_yi_clan",
       "role": null,
@@ -70,6 +82,10 @@
     {
       "target": "fac_yi_clan",
       "count": 4
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -96,6 +112,10 @@
       "count": 2
     },
     {
+      "target": "inh_king_bao_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_yi_huo",
       "count": 2
     },
@@ -108,6 +128,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_three_kings_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_san_cha_mountain",
       "count": 1
     },
@@ -117,6 +141,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "inh_king_quan_inheritance",
       "count": 1
     },
     {
@@ -148,6 +176,10 @@
       "count": 1
     },
     {
+      "target": "inh_sheng_tian_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_sun_moon_sinkhole",
       "count": 1
     }
@@ -160,7 +192,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -180,7 +212,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -192,7 +224,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -204,13 +236,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "three-kings-opening",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_yi_clan",
-        "fac_gu_masters"
+        "fac_gu_masters",
+        "inh_king_bao_inheritance"
       ]
     },
     {
@@ -220,7 +253,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "peak-contest-with-yi-huo",
       "text_origin": "source_excerpt",
@@ -236,10 +269,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "peak-contest-with-yi-huo",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_king_quan_inheritance"
+      ]
     },
     {
       "text": "Tie Ba Xiu’s private roster still lists him among five rank four peak stage Gu Masters on the mountain.",
@@ -248,7 +284,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "peak-contest-with-yi-huo",
       "text_origin": "source_excerpt",
@@ -263,7 +299,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tie-mu-bais-arrival",
       "text_origin": "source_excerpt",
@@ -278,7 +314,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tie-mu-bais-arrival",
       "text_origin": "source_excerpt"
@@ -290,7 +326,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blessed-land-assaults",
       "text_origin": "source_excerpt"
@@ -302,7 +338,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blessed-land-assaults",
       "text_origin": "source_excerpt"
@@ -314,7 +350,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blessed-land-assaults",
       "text_origin": "source_excerpt"
@@ -345,6 +381,7 @@
       "mentions": [
         "loc_sun_moon_sinkhole",
         "char_empress_wu_ji",
+        "inh_sheng_tian_true_inheritance",
         "char_shang_xin_ci",
         "char_xiao_yan",
         "char_wei_shen_jing",
@@ -404,7 +441,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Yi Clan as of ch. 345",
@@ -431,7 +468,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

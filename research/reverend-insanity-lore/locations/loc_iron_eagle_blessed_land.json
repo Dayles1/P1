@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 691,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     691,
@@ -56,6 +56,10 @@
       "count": 2
     },
     {
+      "target": "house_dark_prison",
+      "count": 2
+    },
+    {
       "target": "fac_bai_zu_tribe",
       "count": 2
     },
@@ -73,6 +77,10 @@
     },
     {
       "target": "fac_hei_tribe",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -120,11 +128,19 @@
       "count": 1
     },
     {
+      "target": "sys_public_blessed_land",
+      "count": 1
+    },
+    {
       "target": "fac_meng_tribe",
       "count": 1
     },
     {
       "target": "fac_nian_er_tribe",
+      "count": 1
+    },
+    {
+      "target": "house_golden_dawn_hall",
       "count": 1
     },
     {
@@ -148,6 +164,14 @@
       "count": 1
     },
     {
+      "target": "sys_sword_child",
+      "count": 1
+    },
+    {
+      "target": "inh_sword_saint_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "res_affinity_wood",
       "count": 1
     },
@@ -165,6 +189,14 @@
     },
     {
       "target": "loc_thirteenth_eagle_nest",
+      "count": 1
+    },
+    {
+      "target": "res_twelve_eagle_nests",
+      "count": 1
+    },
+    {
+      "target": "move_flood_glacier",
       "count": 1
     },
     {
@@ -192,7 +224,15 @@
       "count": 1
     },
     {
+      "target": "move_wind_thunder_roar",
+      "count": 1
+    },
+    {
       "target": "char_gong_wan_ting",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_blood_battle_martial_competition",
       "count": 1
     },
     {
@@ -216,7 +256,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -228,13 +268,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eagle-nests-and-sky-space",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_hei_tribe",
         "char_hei_cheng",
+        "house_dark_prison",
         "fac_qiao_tribe"
       ]
     },
@@ -252,7 +293,8 @@
       "mentions": [
         "fac_dong_fang_tribe",
         "fac_murong_tribe",
-        "fac_guan_tribe"
+        "fac_guan_tribe",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -262,7 +304,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ownership-change",
       "text_origin": "source_excerpt",
@@ -278,7 +320,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ownership-change",
       "text_origin": "source_excerpt"
@@ -290,7 +332,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "looted-by-fang-yuan",
       "text_origin": "source_excerpt",

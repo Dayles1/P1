@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 62,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     62,
@@ -77,6 +77,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_yue_clan",
       "count": 1
     },
@@ -97,6 +101,10 @@
       "count": 1
     },
     {
+      "target": "res_pork",
+      "count": 1
+    },
+    {
       "target": "gu_nine_leaf_vitality_grass",
       "count": 1
     },
@@ -114,6 +122,10 @@
     },
     {
       "target": "gu_bookworm",
+      "count": 1
+    },
+    {
+      "target": "sys_beast_phantom",
       "count": 1
     },
     {
@@ -284,7 +296,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "permanent-strength",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Black and White Boar Gu also give strength without needing primeval essence to keep that worth in play, and after one person has used them they can still be given to another.",
@@ -335,7 +350,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "comparisons",
         "text_origin": "source_excerpt",

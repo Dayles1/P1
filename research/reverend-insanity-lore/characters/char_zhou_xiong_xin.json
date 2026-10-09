@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1699,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1699,
@@ -46,6 +46,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_heavenly_court",
       "role": null,
@@ -56,12 +68,64 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_malicious_rumors",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_rumor_cage",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_rumors_become_tigers",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "fac_heavenly_court",
       "count": 3
+    },
+    {
+      "target": "move_rumor_cage",
+      "count": 3
+    },
+    {
+      "target": "move_malicious_rumors",
+      "count": 3
+    },
+    {
+      "target": "move_rumors_become_tigers",
+      "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_central_continent",
@@ -104,6 +168,10 @@
       "count": 1
     },
     {
+      "target": "move_peerless",
+      "count": 1
+    },
+    {
       "target": "char_ye_qiao_zi",
       "count": 1
     },
@@ -132,11 +200,23 @@
       "count": 1
     },
     {
+      "target": "house_myriad_age_building",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
+      "count": 1
+    },
+    {
       "target": "char_wan_zi_hong",
       "count": 1
     },
     {
       "target": "char_lin_jian_xing",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_army_ant_nest",
       "count": 1
     }
   ],
@@ -239,7 +319,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1700",
@@ -266,7 +346,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": null,

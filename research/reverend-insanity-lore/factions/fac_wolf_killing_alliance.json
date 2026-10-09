@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 576,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     576,
@@ -74,6 +74,10 @@
       "count": 1
     },
     {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
       "target": "loc_xing_jiu_peak",
       "count": 1
     }
@@ -86,7 +90,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "secret-organisation",
       "text_origin": "source_excerpt",
@@ -96,6 +100,7 @@
         "char_ma_ying_jie",
         "char_fang_yuan",
         "loc_xing_jiu_peak",
+        "house_eighty_eight_true_yang_building",
         "char_chang_shan_yin"
       ]
     },
@@ -106,7 +111,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "secret-organisation",
       "text_origin": "source_excerpt",
@@ -131,7 +136,7 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "more-recruits",
       "text_origin": "source_excerpt"
@@ -143,7 +148,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "founders-deaths",
       "text_origin": "source_excerpt"

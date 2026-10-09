@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 496,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     496,
@@ -31,14 +31,35 @@
     552,
     570
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "path_wisdom",
+      "count": 2
+    },
     {
       "target": "gu_emotion_poetry_gu",
       "count": 2
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "inh_di_qiu_inheritance",
       "count": 1
     },
     {
@@ -90,7 +111,9 @@
     "ranks": [],
     "rank_type": "unknown",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -162,7 +185,8 @@
         "section": "wisdom-path-pairing",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_emotion_poetry_gu"
+          "gu_emotion_poetry_gu",
+          "path_wisdom"
         ]
       },
       {
@@ -199,7 +223,7 @@
     "Path": {
       "text": "Wisdom Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

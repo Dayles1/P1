@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 228,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     228,
@@ -600,7 +600,19 @@
       "count": 1
     },
     {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
       "target": "gu_blood_moon_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_righteous_path",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_bai_gu_mountain",
       "count": 1
     },
     {
@@ -624,6 +636,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_shang_clan_city",
+      "count": 1
+    },
+    {
       "target": "char_bai_yun",
       "count": 1
     },
@@ -636,11 +652,23 @@
       "count": 1
     },
     {
+      "target": "evt_fight_fang_yuan_and_bai_ning_bing_against_wei_yang",
+      "count": 1
+    },
+    {
+      "target": "sys_large_clan",
+      "count": 1
+    },
+    {
       "target": "gu_gourmet_food_box_gu",
       "count": 1
     },
     {
       "target": "fac_zhang_clan",
+      "count": 1
+    },
+    {
+      "target": "sys_purple_thorn_token",
       "count": 1
     },
     {
@@ -664,6 +692,10 @@
       "count": 1
     },
     {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
       "target": "fac_bai_clan_bai_gu_mountain",
       "count": 1
     },
@@ -680,11 +712,23 @@
       "count": 1
     },
     {
+      "target": "evt_arc_three_kings_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_long_qing_tian",
       "count": 1
     },
     {
       "target": "char_wu_tong_shen",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "path_poison",
       "count": 1
     },
     {
@@ -701,6 +745,10 @@
     },
     {
       "target": "fac_wei_clan",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_demonic_path_rise",
       "count": 1
     },
     {
@@ -740,6 +788,10 @@
       "count": 1
     },
     {
+      "target": "inh_blood_sea_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_hong_fei_yu",
       "count": 1
     },
@@ -749,6 +801,14 @@
     },
     {
       "target": "char_gua_lao",
+      "count": 1
+    },
+    {
+      "target": "sys_carefree_wisdom_heart_physique",
+      "count": 1
+    },
+    {
+      "target": "move_soul_replacement",
       "count": 1
     },
     {
@@ -776,7 +836,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -788,7 +848,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -818,7 +878,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "southern-border-standing",
       "text_origin": "source_excerpt",
@@ -833,10 +893,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "southern-border-standing",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_demonic_path"
+      ]
     },
     {
       "text": "The mountain city itself is covered in its own article: Shang Clan City.",
@@ -845,7 +908,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "southern-border-standing",
       "text_origin": "source_excerpt",
@@ -860,7 +923,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "seat-and-wealth",
       "text_origin": "source_excerpt"
@@ -884,7 +947,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "seat-and-wealth",
       "text_origin": "source_excerpt"
@@ -896,7 +959,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "leadership-and-young-masters",
       "text_origin": "source_excerpt",
@@ -927,7 +990,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "leadership-and-young-masters",
       "text_origin": "source_excerpt",
@@ -950,7 +1013,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "leadership-and-young-masters",
       "text_origin": "source_excerpt"
@@ -962,7 +1025,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "leadership-and-young-masters",
       "text_origin": "source_excerpt"
@@ -974,7 +1037,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "leadership-and-young-masters",
       "text_origin": "source_excerpt",
@@ -989,7 +1052,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "elders-and-battle-stage-names",
       "text_origin": "source_excerpt",
@@ -1005,7 +1068,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "elders-and-battle-stage-names",
       "text_origin": "source_excerpt"
@@ -1017,7 +1080,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "elders-and-battle-stage-names",
       "text_origin": "source_excerpt",
@@ -1032,10 +1095,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "founding-story",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "On Shang Liang Mountain, Shang Bu Li opens Shang clan leader’s succession ceremony before Southern Border super forces, demonic experts, and lone cultivators. Shang Xin Ci walks the clear rainbow road and becomes Shang clan’s new clan leader after the battle of Yi Tian Mountain shifts Southern Border power. Shang Qing Qing, a senior female immortal of Shang clan, is the one who singlehandedly supported that choice and watches from the background to control the situation.",
@@ -1044,7 +1110,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "succession-ceremony",
       "text_origin": "source_excerpt",
@@ -1061,7 +1127,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "neutrality-holds-under-pressure",
       "text_origin": "source_excerpt",
@@ -1076,11 +1142,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-eight-strength",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_shang_wu_jie"
       ]
     }

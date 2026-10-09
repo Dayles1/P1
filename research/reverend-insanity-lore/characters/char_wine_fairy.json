@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1829,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1829,
@@ -41,6 +41,18 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -49,12 +61,24 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_green_ant_ascetic",
       "count": 2
     },
     {
       "target": "char_calligraphy_pavilion_lady",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "race_dragonmen",
+      "count": 1
     },
     {
       "target": "char_wu_shuai",
@@ -66,6 +90,18 @@
     },
     {
       "target": "gu_wine_drinker_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_food_path_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_green_ant_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_wine_fairy_true_inheritance",
       "count": 1
     }
   ],
@@ -83,7 +119,9 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_green_ant_ascetic",
-        "reg_central_continent"
+        "reg_central_continent",
+        "sys_gu_immortal",
+        "race_dragonmen"
       ]
     },
     {
@@ -139,7 +177,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": null,
@@ -161,7 +199,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Unknown",
     "alignment": null,

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1166,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1166,
@@ -141,11 +141,27 @@
       "count": 2
     },
     {
+      "target": "evt_fight_blood_battle_martial_competition",
+      "count": 2
+    },
+    {
       "target": "loc_become_dragon_mound",
       "count": 2
     },
     {
+      "target": "sys_crazed_demon_agreement",
+      "count": 2
+    },
+    {
+      "target": "move_dark_capital_strength_biao",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -177,6 +193,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
+      "count": 1
+    },
+    {
       "target": "char_nu_er_qian",
       "count": 1
     },
@@ -198,6 +218,10 @@
     },
     {
       "target": "gu_fate_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
       "count": 1
     },
     {
@@ -227,12 +251,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_chu_du",
+        "sys_gu_immortal",
         "char_fang_yuan"
       ]
     },
@@ -243,7 +268,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "become-dragon-mound-raid",
       "text_origin": "source_excerpt",
@@ -261,7 +286,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "formal-founding-day",
       "text_origin": "source_excerpt",
@@ -278,7 +303,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "alliance-with-bai-zu-tribe",
       "text_origin": "source_excerpt"
@@ -290,11 +315,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pressure-from-huang-jin-tribes",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_crazed_demon_agreement",
         "char_not_immortal",
         "fac_huang_jin_bloodline"
       ]
@@ -306,7 +332,7 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pressure-from-huang-jin-tribes",
       "text_origin": "source_excerpt",
@@ -354,7 +380,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "contest-with-fairy-black-moon",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_dark_capital_strength_biao"
+      ]
     },
     {
       "text": "Chu tribe Gu Immortals watch in grim worry when Dark Capital Strength Biao suppresses Chu Du, then cheer as he endures her fused totem form, saves her from backlash, and reveals rank eight cultivation. Once that rank is shown, both he and Chu tribe soar in reputation. He had sealed his cultivation to fight as rank seven and risked his life to save her, which wins good feelings from neutral Gu Immortals. After returning to Chu tribe he rejects a celebratory banquet meant to elevate the tribe’s status.",

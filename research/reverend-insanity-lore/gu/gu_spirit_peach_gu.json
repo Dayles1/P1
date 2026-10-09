@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 375,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     375
@@ -46,6 +46,14 @@
     {
       "target": "char_tao_zi",
       "count": 4
+    },
+    {
+      "target": "sys_healing_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_righteous_path",
+      "count": 1
     },
     {
       "target": "loc_san_cha_mountain",
@@ -154,11 +162,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_healing_gu",
           "reg_southern_border"
         ]
       },
@@ -169,11 +178,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "holder",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_righteous_path",
           "char_tao_zi"
         ]
       }

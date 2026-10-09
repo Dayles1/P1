@@ -23,13 +23,30 @@
   "first_appearance": {
     "chapter": 2286,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2286
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_weapon",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "path_weapon",
+      "count": 1
+    },
     {
       "target": "gu_iron_rod_gu",
       "count": 2
@@ -72,7 +89,9 @@
     "ranks": [],
     "rank_type": "unknown",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_weapon"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -138,7 +157,7 @@
     "Path": {
       "text": "Weapon Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

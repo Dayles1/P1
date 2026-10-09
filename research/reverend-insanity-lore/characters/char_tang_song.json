@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1046,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1046,
@@ -33,6 +33,18 @@
     {
       "type": "in_region",
       "target": "reg_eastern_sea",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -65,6 +77,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_liu_qing_yu",
       "count": 2
     },
@@ -74,6 +90,18 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -89,6 +117,10 @@
       "count": 1
     },
     {
+      "target": "move_dark_assassination",
+      "count": 1
+    },
+    {
       "target": "char_ding_yan",
       "count": 1
     },
@@ -98,6 +130,10 @@
     },
     {
       "target": "gu_blood_trace_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_sound_path_dao_marks",
       "count": 1
     }
   ],
@@ -109,12 +145,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_zhou_li",
+        "sys_gu_immortal",
         "reg_eastern_sea",
         "fac_tang_clan",
         "char_fang_yuan",
@@ -128,7 +165,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "cold-demeanor",
       "text_origin": "source_excerpt"
@@ -140,10 +177,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fight-and-chase",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu",
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "When Fang Yuan flees toward ancient cloud beasts, Tang Song is first to chase and urges the Eastern Sea immortals not to let him escape with the inheritance imprint. Distraction interrupts his killer move and he must start again. He later rides Zhou Li’s phantom waves with Liu Qing Yu to keep pressure on Fang Yuan, then hesitates when Fang Yuan threatens clan reprisal near the regional wall.",
@@ -152,7 +193,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fight-and-chase",
       "text_origin": "source_excerpt",
@@ -197,7 +238,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Tang Clan as of ch. 1046",
@@ -224,7 +265,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

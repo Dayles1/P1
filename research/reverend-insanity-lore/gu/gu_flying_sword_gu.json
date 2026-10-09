@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 995,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     995,
@@ -65,12 +65,40 @@
       "count": 3
     },
     {
+      "target": "move_cloud_flying_sword",
+      "count": 3
+    },
+    {
+      "target": "move_formless_flying_sword",
+      "count": 3
+    },
+    {
+      "target": "move_ten_thousand_li_flying_sword",
+      "count": 3
+    },
+    {
+      "target": "move_sword_marks_targeting_death",
+      "count": 3
+    },
+    {
+      "target": "move_pursuing_flying_sword",
+      "count": 2
+    },
+    {
+      "target": "move_dark_assassination",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
     {
       "target": "gu_sword_escape_immortal_gu",
       "count": 2
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     },
     {
       "target": "gu_sword_eyebrows_gu",
@@ -81,7 +109,15 @@
       "count": 1
     },
     {
+      "target": "sys_defensive_gu",
+      "count": 1
+    },
+    {
       "target": "loc_yi_tian_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     }
   ],
@@ -177,7 +213,12 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "flying-sword-killer-moves",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_formless_flying_sword",
+          "move_cloud_flying_sword",
+          "move_ten_thousand_li_flying_sword"
+        ]
       }
     ]
   },
@@ -196,7 +237,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "attack-and-retreat",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       }
     ]
   },
@@ -220,7 +264,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_yi_tian_mountain",
-          "gu_sword_escape_immortal_gu"
+          "gu_sword_escape_immortal_gu",
+          "sys_defensive_gu"
         ]
       },
       {
@@ -285,6 +330,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_bo_qing",
           "char_fang_yuan"
         ]

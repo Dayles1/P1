@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 736,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     736,
@@ -39,6 +39,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -71,6 +83,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_huang_quan_weng",
       "count": 2
     },
@@ -95,6 +111,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_hei_lou_lan",
       "count": 1
     },
@@ -108,6 +128,10 @@
     },
     {
       "target": "char_zhao_lian_yun",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     },
     {
@@ -147,7 +171,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -155,7 +179,8 @@
         "char_fang_yuan",
         "char_fairy_li_shan",
         "char_heavenly_lord_bai_zu",
-        "char_qin_bai_sheng"
+        "char_qin_bai_sheng",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -171,6 +196,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_northern_plains",
+        "house_eighty_eight_true_yang_building",
         "char_ma_hong_yun",
         "char_zhao_lian_yun",
         "char_hei_lou_lan",
@@ -184,7 +210,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "zombie-alliance-membership",
       "text_origin": "source_excerpt",
@@ -203,7 +229,7 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "auction-reputation",
       "text_origin": "source_excerpt"
@@ -215,7 +241,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "exposure",
       "text_origin": "source_excerpt",
@@ -230,7 +256,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "exposure",
       "text_origin": "source_excerpt"
@@ -276,7 +302,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Zombie Alliance as of ch. 740",
@@ -303,7 +329,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

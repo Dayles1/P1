@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 678,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     678,
@@ -34,8 +34,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_qi",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2096,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -80,8 +104,20 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
       "count": 1
+    },
+    {
+      "target": "path_qi",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_big_mystical_gu",
+      "count": 2
     },
     {
       "target": "char_kong_ri_tian",
@@ -92,7 +128,31 @@
       "count": 2
     },
     {
+      "target": "inh_sheng_tian_true_inheritance",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_movement_killer_move",
+      "count": 1
+    },
+    {
       "target": "gu_reputation_gu",
+      "count": 1
+    },
+    {
+      "target": "move_hair_armor",
+      "count": 1
+    },
+    {
+      "target": "move_kong_sheng_tian",
+      "count": 1
+    },
+    {
+      "target": "sys_defensive_killer_move",
       "count": 1
     },
     {
@@ -108,6 +168,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_wu_clan",
       "count": 1
     },
@@ -117,6 +185,10 @@
     },
     {
       "target": "char_shang_xin_ci",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 1
     },
     {
@@ -138,6 +210,10 @@
     {
       "target": "char_xiao_yan",
       "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
+      "count": 1
     }
   ],
   "claims": [
@@ -148,11 +224,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "gu_qi_escape_immortal_gu"
       ]
     },
@@ -171,8 +248,12 @@
         "fac_wu_clan",
         "char_wu_zhan_ping",
         "char_empress_wu_ji",
+        "sys_gu_master",
+        "sys_ten_big_mystical_gu",
         "char_fang_yuan",
         "gu_spring_autumn_cicada",
+        "inh_sheng_tian_true_inheritance",
+        "sys_immortal_gu",
         "char_kong_ri_tian"
       ]
     },
@@ -222,7 +303,8 @@
       "section": "guiding-kong-ri-tians-ascension",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_xiao_yan"
+        "char_xiao_yan",
+        "sys_vital_gu"
       ]
     }
   ],
@@ -255,7 +337,7 @@
     "Paths": {
       "text": "Qi path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Southern Border",
@@ -265,7 +347,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 2098",
@@ -286,12 +368,14 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_qi"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": "demonic path as of ch. 2098",

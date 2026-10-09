@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 5,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     5,
@@ -56,6 +56,18 @@
   ],
   "relations": [
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "holds_gu",
       "target": "gu_humility_gu",
       "role": "legend holder",
@@ -72,6 +84,10 @@
     {
       "target": "gu_humility_gu",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 2
     },
     {
       "target": "gu_hope_gu",
@@ -118,6 +134,14 @@
       "count": 2
     },
     {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 2
+    },
+    {
+      "target": "evt_era_immemorial",
+      "count": 2
+    },
+    {
       "target": "loc_luo_po_valley",
       "count": 2
     },
@@ -150,6 +174,10 @@
       "count": 2
     },
     {
+      "target": "sys_myriad_gold_wondrous_essence_physique",
+      "count": 2
+    },
+    {
       "target": "gu_wealth_gu",
       "count": 2
     },
@@ -166,7 +194,19 @@
       "count": 1
     },
     {
+      "target": "sys_awakening_ceremony",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_beast",
+      "count": 1
+    },
+    {
       "target": "fac_gu_yue_clan",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_strength_wisdom_and_hope",
       "count": 1
     },
     {
@@ -182,6 +222,18 @@
       "count": 1
     },
     {
+      "target": "evt_legend_rules_and_regulations",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_wisdom_against_restrictions",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_attitude",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -190,7 +242,15 @@
       "count": 1
     },
     {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
       "target": "gu_faith_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_light_of_faith",
       "count": 1
     },
     {
@@ -202,11 +262,43 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_monkey_wine",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_the_origin_of_wine",
+      "count": 1
+    },
+    {
       "target": "loc_xi_yu_forest",
       "count": 1
     },
     {
       "target": "gu_eternal_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_not_knowing_ones_limits",
+      "count": 1
+    },
+    {
+      "target": "sys_variant_human",
+      "count": 1
+    },
+    {
+      "target": "path_time",
       "count": 1
     },
     {
@@ -238,6 +330,10 @@
       "count": 1
     },
     {
+      "target": "evt_legend_road_of_life_and_death",
+      "count": 1
+    },
+    {
       "target": "res_gutstones",
       "count": 1
     },
@@ -254,7 +350,19 @@
       "count": 1
     },
     {
+      "target": "race_rockmen",
+      "count": 1
+    },
+    {
+      "target": "race_variant_humans",
+      "count": 1
+    },
+    {
       "target": "char_ge_yao",
+      "count": 1
+    },
+    {
+      "target": "sys_space_door",
       "count": 1
     },
     {
@@ -263,6 +371,10 @@
     },
     {
       "target": "gu_success_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_love_is_cruel",
       "count": 1
     },
     {
@@ -278,6 +390,34 @@
       "count": 1
     },
     {
+      "target": "reg_heaven_azure_heaven",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_blue_heaven",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_green_heaven",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_orange_heaven",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_purple_heaven",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_red_heaven",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_yellow_heaven",
+      "count": 1
+    },
+    {
       "target": "loc_immemorial_nine_heavens",
       "count": 1
     },
@@ -290,6 +430,10 @@
       "count": 1
     },
     {
+      "target": "race_inkmen",
+      "count": 1
+    },
+    {
       "target": "gu_failure_gu",
       "count": 1
     },
@@ -298,7 +442,27 @@
       "count": 1
     },
     {
+      "target": "evt_legend_northern_dark_ice_soul",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_understanding_ones_purpose",
+      "count": 1
+    },
+    {
       "target": "gu_self_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_taking_the_first_step",
+      "count": 1
+    },
+    {
+      "target": "res_walking_meat_tree",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_walking_meat_tree",
       "count": 1
     }
   ],
@@ -310,12 +474,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_gu_yue_clan",
+        "sys_awakening_ceremony",
         "loc_qing_mao_mountain"
       ]
     },
@@ -336,7 +501,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -348,7 +513,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "aged-body",
       "text_origin": "source_excerpt"
@@ -360,7 +525,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "twenty-year-body",
       "text_origin": "source_excerpt"
@@ -372,7 +537,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "empty-sockets",
       "text_origin": "source_excerpt"
@@ -384,7 +549,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hope-strength-and-wisdom",
       "text_origin": "source_excerpt",
@@ -401,7 +566,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "longevity-rules-and-attitude",
       "text_origin": "source_excerpt"
@@ -413,7 +578,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "longevity-rules-and-attitude",
       "text_origin": "source_excerpt",
@@ -429,7 +594,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "longevity-rules-and-attitude",
       "text_origin": "source_excerpt"
@@ -441,7 +606,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "longevity-rules-and-attitude",
       "text_origin": "source_excerpt",
@@ -459,7 +624,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "loneliness-and-the-first-children",
       "text_origin": "source_excerpt",
@@ -475,7 +640,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "loneliness-and-the-first-children",
       "text_origin": "source_excerpt",
@@ -491,11 +656,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "loneliness-and-the-first-children",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_the_legends_of_ren_zu",
         "loc_luo_po_valley"
       ]
     },
@@ -516,7 +682,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-children-roster",
       "text_origin": "source_excerpt"
@@ -548,7 +714,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ten-children-and-the-myth-ending",
       "text_origin": "source_excerpt",
@@ -564,7 +730,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ten-children-and-the-myth-ending",
       "text_origin": "source_excerpt"
@@ -588,7 +754,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ten-children-and-the-myth-ending",
       "text_origin": "source_excerpt"
@@ -600,10 +766,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ten-children-and-the-myth-ending",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "evt_era_immemorial",
+        "sys_gu_master",
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "Lang Ya land spirit places that era as the time when Ren Zu was alive, and says that then the only humans in the world were Ren Zu and his ten children.",
@@ -612,7 +783,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ten-children-and-the-myth-ending",
       "text_origin": "source_excerpt",
@@ -630,7 +801,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "ten-children-and-the-myth-ending",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Fang Yuan, facing a wisdom Gu that does not match the clever scammer of the book, asks whether that is because The Legends of Ren Zu is a story or for some other reason.",
@@ -639,7 +813,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ten-children-and-the-myth-ending",
       "text_origin": "source_excerpt"
@@ -651,7 +825,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hollow-body",
       "text_origin": "source_excerpt"
@@ -663,13 +837,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "meeting-perseverance-gu",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_ordinary_abyss",
         "gu_perseverance_gu",
+        "sys_immortal_gu",
         "loc_reverse_flow_river"
       ]
     },
@@ -778,7 +953,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -794,7 +969,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Dead",
     "alignment": null,

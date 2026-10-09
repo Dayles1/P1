@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2143,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_dao_veins_famous_mountains"
   },
   "chapters_cited": [
     2143,
@@ -36,8 +36,25 @@
     2148,
     2150
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_mushroommen",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "race_mushroommen",
+      "count": 1
+    },
     {
       "target": "char_huang_wan",
       "count": 2
@@ -51,11 +68,27 @@
       "count": 2
     },
     {
+      "target": "evt_arc_dao_veins_famous_mountains",
+      "count": 1
+    },
+    {
       "target": "char_meng_qiu_zhen",
       "count": 1
     },
     {
       "target": "char_paradise_earth_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_poison_gu",
+      "count": 1
+    },
+    {
+      "target": "move_cracked_soil_shattering_life",
       "count": 1
     },
     {
@@ -92,7 +125,9 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_huang_wan"
+        "char_huang_wan",
+        "sys_gu_worms",
+        "sys_poison_gu"
       ]
     },
     {
@@ -264,7 +299,7 @@
     "Race": {
       "text": "Mushroommen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Mushroomman Tribe as of ch. 2143",
@@ -296,7 +331,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_mushroommen",
     "region": null,
     "status": "Alive",
     "alignment": null,

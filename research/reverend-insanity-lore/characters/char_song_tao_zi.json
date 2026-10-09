@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1841,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1841,
@@ -33,6 +33,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -65,7 +77,19 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_gu_liang",
+      "count": 2
+    },
+    {
+      "target": "house_dragon_court",
+      "count": 2
+    },
+    {
+      "target": "move_green_heaven_pine_wave",
       "count": 2
     },
     {
@@ -78,6 +102,14 @@
     },
     {
       "target": "char_wu_shuai",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "house_wind_cloud_manor",
       "count": 1
     },
     {
@@ -104,6 +136,8 @@
       "mentions": [
         "reg_eastern_sea",
         "char_wu_shuai",
+        "sys_gu_immortal",
+        "house_wind_cloud_manor",
         "reg_central_continent",
         "loc_south_flower_island"
       ]
@@ -118,7 +152,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_green_heaven_pine_wave",
+        "house_dragon_court"
+      ]
     },
     {
       "text": "Wu Shuai tells him to kneel and beg for mercy, and he will spare his life. Song Tao Zi has a pale expression and refuses in a rage, saying a mere dragonman dares to humiliate him. He will not back down. Surrounding Wind Cloud Manor Gu Immortals shout for mercy. Wu Shuai uses Dragon Court to charge over. Song Tao Zi cannot dodge in time and is crushed to death. The battle had been announced to the world as a life-and-death fight. Wind Cloud Manor loses South Flower Island and still sends an ordinary rank six envoy to the celebratory banquet, for righteous reputation and to show magnanimity. Wu Shuai calls Song Tao Zi a good opponent who deserves the glory of dying in heroic combat.",
@@ -196,7 +234,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Wind Cloud Manor as of ch. 1841",
@@ -223,7 +261,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": null,

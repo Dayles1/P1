@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1240,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1240,
@@ -34,6 +34,18 @@
     1471
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_transformation",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -49,8 +61,16 @@
   ],
   "co_mentions": [
     {
+      "target": "move_ancient_sword_dragon_transformation",
+      "count": 4
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "path_transformation",
+      "count": 1
     },
     {
       "target": "gu_dragon_strength_gu",
@@ -61,6 +81,10 @@
       "count": 3
     },
     {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
+    },
+    {
       "target": "char_wu_yi_hai",
       "count": 1
     },
@@ -69,7 +93,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_wu_clan",
+      "count": 1
+    },
+    {
+      "target": "path_strength",
       "count": 1
     },
     {
@@ -78,6 +110,14 @@
     },
     {
       "target": "gu_change_form_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -156,7 +196,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_transformation"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -170,11 +212,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "path",
         "text_origin": "source_excerpt",
         "mentions": [
+          "path_strength",
           "gu_dragon_strength_gu"
         ]
       },
@@ -185,7 +228,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-seven-inventory",
         "text_origin": "source_excerpt"
@@ -212,7 +255,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_change_form_immortal_gu",
-          "gu_dragon_breath_gu"
+          "gu_dragon_breath_gu",
+          "move_ancient_sword_dragon_transformation"
         ]
       },
       {
@@ -234,7 +278,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-in-the-dragon-move",
         "text_origin": "source_excerpt"
@@ -286,12 +330,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_wu_yong",
+          "sys_immortal_gu",
           "fac_wu_clan",
           "char_fang_yuan",
           "char_wu_yi_hai",
@@ -305,12 +350,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "dragon-scale-sea-formation",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_snack_immortal_gu"
+          "sys_gu_formation",
+          "gu_snack_immortal_gu",
+          "sys_mortal_gu"
         ]
       },
       {
@@ -339,7 +386,7 @@
     "Path": {
       "text": "Transformation Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

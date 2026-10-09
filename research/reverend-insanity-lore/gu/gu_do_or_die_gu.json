@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 482,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     482,
@@ -70,6 +70,10 @@
     },
     {
       "target": "fac_zheng_tribe",
+      "count": 1
+    },
+    {
+      "target": "move_golden_rainbow_strike",
       "count": 1
     },
     {
@@ -132,7 +136,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "battlefield-activation",
         "text_origin": "source_excerpt"
@@ -184,7 +188,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -194,6 +198,7 @@
           "fac_pei_tribe",
           "reg_northern_plains",
           "char_ge_guang",
+          "move_golden_rainbow_strike",
           "fac_ge_tribe",
           "fac_zheng_tribe",
           "fac_bei_tribe"

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 433,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     433,
@@ -39,6 +39,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -69,6 +81,10 @@
     {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "loc_zi_du_blessed_land",
@@ -103,6 +119,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_hua_hai_three_immortals",
       "count": 1
     },
@@ -119,6 +139,14 @@
       "count": 1
     },
     {
+      "target": "path_dream",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_no_gu",
       "count": 1
     },
@@ -128,6 +156,10 @@
     },
     {
       "target": "gu_fixed_immortal_travel",
+      "count": 1
+    },
+    {
+      "target": "sys_pure_dream_reality_seeker_physique",
       "count": 1
     },
     {
@@ -151,7 +183,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -166,7 +198,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "gui-wangs-reading",
       "text_origin": "source_excerpt",
@@ -174,6 +206,7 @@
         "char_gui_wang",
         "gu_snow_wash_gu",
         "gu_no_gu",
+        "sys_gu_immortal",
         "loc_zi_du_blessed_land",
         "fac_hua_hai_three_immortals",
         "char_loner_hong_yu",
@@ -187,7 +220,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realm-standing",
       "text_origin": "source_excerpt",
@@ -204,11 +237,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "known-dream-gu",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "char_feng_jin_huang"
       ]
     },
@@ -242,6 +276,7 @@
       "section": "physique-comparison",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_pure_dream_reality_seeker_physique",
         "reg_western_desert",
         "fac_tang_clan",
         "reg_central_continent"
@@ -288,7 +323,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -310,7 +345,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

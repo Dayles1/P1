@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 746,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     746,
@@ -32,6 +32,18 @@
     1810
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_time",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_su_bai_man",
@@ -67,11 +79,27 @@
       "count": 2
     },
     {
+      "target": "path_time",
+      "count": 2
+    },
+    {
       "target": "char_shark_demon",
       "count": 1
     },
     {
       "target": "char_tai_bai_yun_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -100,6 +128,14 @@
     },
     {
       "target": "loc_yi_tian_mountain",
+      "count": 1
+    },
+    {
+      "target": "move_spring_autumn_success",
+      "count": 1
+    },
+    {
+      "target": "move_man_as_before",
       "count": 1
     }
   ],
@@ -143,7 +179,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_time"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -265,7 +303,8 @@
           "char_tai_bai_yun_sheng",
           "reg_eastern_sea",
           "char_shark_demon",
-          "char_su_bai_man"
+          "char_su_bai_man",
+          "path_time"
         ]
       },
       {
@@ -281,7 +320,10 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_landscape_as_before_gu",
-          "gu_man_as_before_immortal_gu"
+          "gu_man_as_before_immortal_gu",
+          "move_man_as_before",
+          "sys_mortal_gu",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -335,7 +377,8 @@
         "section": "pairings",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_spring_autumn_cicada"
+          "gu_spring_autumn_cicada",
+          "sys_gu_immortal"
         ]
       }
     ]
@@ -344,7 +387,7 @@
     "Path": {
       "text": "Time Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

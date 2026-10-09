@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 466,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     466,
@@ -51,6 +51,22 @@
     {
       "target": "loc_treasure_yellow_heaven",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     },
     {
       "target": "loc_shang_clan_city",
@@ -117,7 +133,9 @@
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
-          "loc_shang_clan_city"
+          "loc_shang_clan_city",
+          "sys_gu_worms",
+          "sys_gu_master"
         ]
       }
     ]
@@ -172,6 +190,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "loc_treasure_yellow_heaven"
         ]
       },
@@ -200,7 +219,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "owner",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       }
     ]
   },

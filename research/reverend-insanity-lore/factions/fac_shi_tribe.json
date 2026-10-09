@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 442,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     442
@@ -70,6 +70,10 @@
     {
       "target": "char_fang_yuan",
       "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
     }
   ],
   "claims": [
@@ -80,7 +84,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "absorbed-by-man-tribe",
       "text_origin": "source_excerpt",
@@ -88,7 +92,8 @@
         "reg_northern_plains",
         "char_fang_yuan",
         "fac_man_tribe",
-        "char_shi_wu"
+        "char_shi_wu",
+        "sys_gu_master"
       ]
     }
   ],

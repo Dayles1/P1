@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2053,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2053,
@@ -31,6 +31,18 @@
     2176
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "holds_gu",
       "target": "gu_authority_gu",
@@ -98,6 +110,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_ren_zu",
       "count": 2
     },
@@ -142,6 +158,30 @@
       "count": 1
     },
     {
+      "target": "sys_great_strength_true_martial_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "house_graceful_chaotic_duel_stage",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
+      "count": 1
+    },
+    {
+      "target": "house_unbreakable_iron_fortress",
+      "count": 1
+    },
+    {
       "target": "gu_heart_of_loneliness",
       "count": 1
     },
@@ -150,11 +190,23 @@
       "count": 1
     },
     {
+      "target": "evt_legend_hope_triumphs_again",
+      "count": 1
+    },
+    {
       "target": "loc_yi_tian_mountain",
       "count": 1
     },
     {
+      "target": "path_strength",
+      "count": 1
+    },
+    {
       "target": "gu_wisdom_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_effort_begets_results",
       "count": 1
     },
     {
@@ -166,11 +218,19 @@
       "count": 1
     },
     {
+      "target": "evt_legend_thirst_for_knowledge",
+      "count": 1
+    },
+    {
       "target": "gu_right_gu",
       "count": 1
     },
     {
       "target": "gu_wrong_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_finding_wisdom",
       "count": 1
     },
     {
@@ -194,7 +254,15 @@
       "count": 1
     },
     {
+      "target": "evt_legend_betraying_ones_self",
+      "count": 1
+    },
+    {
       "target": "gu_time_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_finding_self",
       "count": 1
     },
     {
@@ -215,6 +283,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_the_legends_of_ren_zu",
         "char_ren_zu"
       ]
     },
@@ -314,7 +383,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     }
   },
   "cultivation": {
@@ -325,7 +394,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": null,
     "alignment": null,

@@ -23,12 +23,24 @@
   "first_appearance": {
     "chapter": 2309,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2309
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -48,6 +60,10 @@
       "count": 2
     },
     {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
       "target": "gu_departure_gu",
       "count": 2
     },
@@ -62,6 +78,14 @@
     {
       "target": "gu_ringing_sound_gu",
       "count": 2
+    },
+    {
+      "target": "move_shocking_departure_of_year_dream_wave",
+      "count": 2
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     },
     {
       "target": "gu_year_gu",
@@ -104,7 +128,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -131,7 +157,8 @@
         "section": "compound-move",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_immortal_gu"
         ]
       }
     ]
@@ -186,6 +213,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "move_shocking_departure_of_year_dream_wave",
           "gu_departure_gu",
           "gu_year_gu",
           "gu_dream_armor_gu",
@@ -200,7 +228,7 @@
     "Path": {
       "text": "Wisdom Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

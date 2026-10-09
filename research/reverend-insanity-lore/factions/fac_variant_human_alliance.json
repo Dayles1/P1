@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1146,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1146,
@@ -97,6 +97,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_lang_ya_sect",
       "count": 1
     },
@@ -133,6 +137,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_lady_earth_mother",
+        "sys_gu_immortal",
         "char_shi_zong",
         "fac_lang_ya_sect",
         "loc_inkman_city",
@@ -174,7 +179,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "engagement-standing",
       "text_origin": "source_excerpt"

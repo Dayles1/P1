@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1423,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1423
@@ -59,6 +59,18 @@
     },
     {
       "target": "char_feng_jiu_ge",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_obtain_treasure_song",
       "count": 1
     },
     {
@@ -122,7 +134,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -179,7 +191,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -187,6 +199,7 @@
           "char_night_temptress",
           "char_immortal_concubine_qing_lan",
           "reg_western_desert",
+          "sys_immortal_gu",
           "char_feng_jiu_ge",
           "char_thousand_transformations_ancestor"
         ]
@@ -198,10 +211,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "yang-pass-tune-and-formation",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       }
     ]
   },

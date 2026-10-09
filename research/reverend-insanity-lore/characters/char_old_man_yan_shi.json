@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 467,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     467,
@@ -39,8 +39,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -97,6 +121,54 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_lead_soul_into_dream",
+      "role": "teacher",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 969,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_pure_dream_reality_seeker_transformation",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1775,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_exposing_heavenly_secret",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_heavens_will_dissipation",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -113,12 +185,36 @@
       "count": 3
     },
     {
+      "target": "move_lead_soul_into_dream",
+      "count": 3
+    },
+    {
       "target": "gu_become_real_immortal_gu",
+      "count": 3
+    },
+    {
+      "target": "move_exposing_heavenly_secret",
+      "count": 3
+    },
+    {
+      "target": "move_heavens_will_dissipation",
+      "count": 3
+    },
+    {
+      "target": "move_pure_dream_reality_seeker_transformation",
       "count": 3
     },
     {
       "target": "reg_southern_border",
       "count": 2
+    },
+    {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_bai_ning_bing",
@@ -149,6 +245,10 @@
       "count": 2
     },
     {
+      "target": "sys_pure_dream_reality_seeker_physique",
+      "count": 2
+    },
+    {
       "target": "gu_spring_autumn_cicada",
       "count": 2
     },
@@ -162,6 +262,14 @@
     },
     {
       "target": "char_lang_ya_land_spirit",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_northern_dark_ice_soul_physique",
       "count": 1
     },
     {
@@ -197,6 +305,14 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
       "target": "gu_fixed_immortal_travel",
       "count": 1
     },
@@ -206,6 +322,14 @@
     },
     {
       "target": "loc_hu_immortal_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_immortal_zombie_lifeless_formation",
       "count": 1
     },
     {
@@ -233,11 +357,27 @@
       "count": 1
     },
     {
+      "target": "sys_dream_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "path_dream",
+      "count": 1
+    },
+    {
+      "target": "path_human",
+      "count": 1
+    },
+    {
       "target": "fac_zombie_alliance",
       "count": 1
     },
     {
       "target": "char_sixth_hair",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
       "count": 1
     }
   ],
@@ -249,7 +389,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -258,6 +398,7 @@
         "rcp_second_aperture_gu_recipe",
         "char_fang_yuan",
         "loc_sheng_si_blessed_land",
+        "sys_gu_immortal",
         "char_chou_jiu",
         "fac_shadow_sect",
         "gu_slavery_gu",
@@ -271,7 +412,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -283,7 +424,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -295,13 +436,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-and-bai-ning-bing",
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_everlasting_immortal_gu",
         "char_bai_ning_bing",
+        "sys_northern_dark_ice_soul_physique",
         "gu_sea_oath_gu",
         "loc_lang_ya_blessed_land",
         "char_lang_ya_land_spirit"
@@ -314,12 +456,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "heavenly-secret",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_shadow_sect_blessed_land",
+        "sys_vital_gu",
+        "sys_immortal_gu",
         "gu_fixed_immortal_travel",
         "loc_hu_immortal_blessed_land",
         "gu_wolf_enslavement_gu"
@@ -332,7 +476,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "heavenly-secret",
       "text_origin": "source_excerpt",
@@ -347,12 +491,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yi-tian-mountain-trap",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_southern_border",
+        "sys_gu_formation",
         "char_ying_wu_xie"
       ]
     },
@@ -363,7 +508,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yi-tian-mountain-trap",
       "text_origin": "source_excerpt"
@@ -378,7 +523,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "greatest-dream-path-accomplishment",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_pure_dream_reality_seeker_physique"
+      ]
     },
     {
       "text": "A later scene shows him completing that body with rule path become real Immortal Gu after Spectral Soul Demon Venerable’s dream realm dissipates in life and death blessed land, finding that any soul inside falls asleep and loses memories, waking the soul at the cost of nearly all memories, and treating the flawed body as consumable rank nine battle strength for their plan.",
@@ -387,7 +535,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "greatest-dream-path-accomplishment",
       "text_origin": "source_excerpt",
@@ -402,7 +550,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "greatest-dream-path-accomplishment",
       "text_origin": "source_excerpt",
@@ -419,7 +567,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "greatest-dream-path-accomplishment",
       "text_origin": "source_excerpt",
@@ -476,7 +624,7 @@
     "Paths": {
       "text": "Wisdom path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Southern Border",
@@ -486,7 +634,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shadow Sect as of ch. 467",
@@ -508,12 +656,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": null,

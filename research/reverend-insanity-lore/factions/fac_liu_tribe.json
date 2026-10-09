@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 470,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     470,
@@ -364,6 +364,14 @@
       "count": 1
     },
     {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_northern_plains_imperial_court",
+      "count": 1
+    },
+    {
       "target": "char_viper_prince",
       "count": 1
     },
@@ -420,6 +428,14 @@
       "count": 1
     },
     {
+      "target": "move_three_head_six_arms",
+      "count": 1
+    },
+    {
+      "target": "move_four_arm_earth_king",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -436,11 +452,23 @@
       "count": 1
     },
     {
+      "target": "res_ruyi_fungus",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_lang_ya_land_spirit",
       "count": 1
     },
     {
       "target": "char_guan_shen_zhao",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_red_heaven",
       "count": 1
     },
     {
@@ -457,6 +485,10 @@
     },
     {
       "target": "char_heavenly_lord_bai_zu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -484,7 +516,19 @@
       "count": 1
     },
     {
+      "target": "evt_fight_blood_battle_martial_competition",
+      "count": 1
+    },
+    {
       "target": "char_nian_er_ping_zhi",
+      "count": 1
+    },
+    {
+      "target": "move_one_sword_life",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
       "count": 1
     },
     {
@@ -520,6 +564,10 @@
       "count": 1
     },
     {
+      "target": "sys_bone_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "loc_mini_central_continent",
       "count": 1
     },
@@ -529,6 +577,14 @@
     },
     {
       "target": "char_yin_wu_que",
+      "count": 1
+    },
+    {
+      "target": "move_bedazzlement",
+      "count": 1
+    },
+    {
+      "target": "move_dark_capital_strength_biao",
       "count": 1
     }
   ],
@@ -540,7 +596,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -556,7 +612,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "super-tribe",
       "text_origin": "source_excerpt",
@@ -571,7 +627,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "super-tribe",
       "text_origin": "source_excerpt",
@@ -590,7 +646,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "in-laws-named-again",
       "text_origin": "source_excerpt",
@@ -605,7 +661,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inkman-protection-in-the-first-life",
       "text_origin": "source_excerpt",
@@ -622,12 +678,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battle-with-chu-du",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_chu_du"
+        "char_chu_du",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -649,7 +706,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fierce-area-to-the-northwest",
       "text_origin": "source_excerpt",
@@ -665,7 +722,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "the-longevity-edict-at-xuan-bai-blessed-land",
       "text_origin": "source_excerpt",
@@ -674,6 +731,7 @@
         "char_giant_sun_immortal_venerable",
         "fac_longevity_heaven",
         "gu_longevity_edict",
+        "sys_immortal_gu",
         "fac_bai_zu_tribe",
         "char_heavenly_lord_bai_zu"
       ]
@@ -685,7 +743,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bone-burial-fields-rebuild-cost",
       "text_origin": "source_excerpt",

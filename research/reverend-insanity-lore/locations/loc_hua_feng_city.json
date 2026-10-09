@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1050,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1050
@@ -51,6 +51,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     }
@@ -63,7 +67,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -81,12 +85,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "contest-with-steel-thread-city",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_mao_shi_ba",
+        "sys_gu_master",
         "char_fang_zheng"
       ]
     }

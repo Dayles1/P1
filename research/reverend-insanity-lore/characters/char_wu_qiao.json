@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1219,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1219,
@@ -37,6 +37,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -81,6 +93,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
       "count": 1
     },
@@ -109,6 +125,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_life_tablet_gu",
       "count": 1
     },
@@ -122,6 +142,10 @@
     },
     {
       "target": "char_qiao_si_liu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -141,13 +165,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_wu_du_xiu",
         "fac_wu_clan",
+        "sys_gu_immortal",
         "char_wu_yi_hai",
         "char_fang_yuan",
         "fac_qiao_clan"
@@ -160,7 +185,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "heritage-ceremony",
       "text_origin": "source_excerpt",
@@ -176,7 +201,7 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hall-politics",
       "text_origin": "source_excerpt",
@@ -193,7 +218,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "corpse-emperor-post",
       "text_origin": "source_excerpt"
@@ -205,10 +230,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-gu-house-escort",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "Wu Yong sits with Mountain Moving Old Monster on one side and Wu clan’s rank seven Gu Immortal Wu Qiao on the other. After Wu Qiao supported Fang Yuan as Wu Yi Hai and then lost Corpse Emperor Yu Ding Tian, Wu Yong suppressed him, stripped the third elder post, and left his status declining day by day. Under Wu Yong’s gaze he sweats, bows, and pledges full support for Wu Yong’s Gu Immortal seed plan, then leaves with deep respect.",
@@ -266,7 +294,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Wu Clan as of ch. 1219 Qiao Clan as of ch. 1219",
@@ -293,7 +321,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

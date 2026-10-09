@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2039,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2039,
@@ -57,7 +57,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "evt_era_olden",
+      "count": 1
+    },
+    {
       "target": "fac_ten_great_ancient_sects",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
       "count": 1
     }
   ],
@@ -74,6 +86,7 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "evt_era_olden",
         "fac_ten_great_ancient_sects",
         "loc_black_heaven_temple"
       ]
@@ -90,7 +103,9 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_qin_ding_ling"
+        "char_qin_ding_ling",
+        "house_dragon_palace",
+        "sys_immortal_gu_house"
       ]
     },
     {

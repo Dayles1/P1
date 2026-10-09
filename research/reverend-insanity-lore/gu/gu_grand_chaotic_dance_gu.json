@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 583,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     583,
@@ -45,7 +45,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     },
     {
@@ -54,6 +62,10 @@
     },
     {
       "target": "char_mo_yao",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -113,10 +125,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       }
     ]
   },
@@ -163,11 +178,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_eighty_eight_true_yang_building",
           "char_sun_shi_han",
           "fac_gu_masters"
         ]
@@ -179,7 +195,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "same-fight-and-later-note",
         "text_origin": "source_excerpt",
@@ -195,7 +211,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "same-fight-and-later-note",
         "text_origin": "source_excerpt",
@@ -203,7 +219,8 @@
           "char_mo_yao",
           "gu_battle_space_gu",
           "gu_five_element_bear_skin_gu",
-          "gu_flying_bear_phantom_immortal_gu"
+          "gu_flying_bear_phantom_immortal_gu",
+          "sys_immortal_gu"
         ]
       }
     ]

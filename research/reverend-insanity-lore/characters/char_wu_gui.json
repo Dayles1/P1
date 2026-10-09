@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 372,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     372,
@@ -46,6 +46,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "holds_gu",
       "target": "gu_pitch_black_gu",
       "role": "owner",
@@ -56,12 +68,32 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_tie_mu_bai_against_wu_gui_and_ku_mo",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 372,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "gu_pitch_black_gu",
       "count": 4
+    },
+    {
+      "target": "evt_fight_tie_mu_bai_against_wu_gui_and_ku_mo",
+      "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -82,6 +114,14 @@
     {
       "target": "char_wu_shen_tong",
       "count": 2
+    },
+    {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
     },
     {
       "target": "fac_gu_masters",
@@ -124,11 +164,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_set",
+      "count": 1
+    },
+    {
       "target": "gu_beast_strength_placenta_gu",
       "count": 1
     },
     {
       "target": "char_zhang_san_san",
+      "count": 1
+    },
+    {
+      "target": "inh_king_quan_inheritance",
       "count": 1
     }
   ],
@@ -140,11 +192,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_demonic_path",
         "loc_san_cha_mountain",
         "char_tie_mu_bai"
       ]
@@ -156,14 +209,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_ku_mo",
         "fac_gu_masters",
-        "gu_pitch_black_gu"
+        "gu_pitch_black_gu",
+        "sys_gu_worms"
       ]
     },
     {
@@ -173,7 +227,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -185,11 +239,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inside-the-blessed-land",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "char_fang_yuan",
         "gu_beast_strength_placenta_gu"
       ]
@@ -201,7 +256,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-five-peak-grouping",
       "text_origin": "source_excerpt"
@@ -213,7 +268,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "former-enslavement-path",
       "text_origin": "source_excerpt",
@@ -266,7 +321,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 372",
@@ -293,7 +348,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": "demonic path as of ch. 372",

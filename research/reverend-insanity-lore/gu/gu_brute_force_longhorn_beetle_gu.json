@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 39,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     39,
@@ -50,6 +50,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -67,6 +71,10 @@
     },
     {
       "target": "gu_yellow_camel_longhorn_beetle_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_defensive_gu",
       "count": 1
     },
     {
@@ -128,7 +136,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank",
         "text_origin": "source_excerpt"
@@ -154,7 +162,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -172,7 +180,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -206,7 +214,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -223,7 +231,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "comparison-and-demand",
         "text_origin": "source_excerpt",
@@ -257,7 +265,8 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "loc_qing_mao_mountain"
+          "loc_qing_mao_mountain",
+          "sys_gu_master"
         ]
       },
       {
@@ -267,7 +276,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -282,7 +291,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "comparison-and-demand",
         "text_origin": "source_excerpt",
@@ -302,7 +311,8 @@
         "section": "comparison-and-demand",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_zheng"
+          "char_fang_zheng",
+          "sys_defensive_gu"
         ]
       }
     ]

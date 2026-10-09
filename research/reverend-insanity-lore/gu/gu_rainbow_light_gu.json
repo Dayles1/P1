@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 266,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     266,
@@ -87,6 +87,18 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_movement_gu",
+      "count": 1
+    },
+    {
       "target": "gu_jumping_grass_gu",
       "count": 1
     },
@@ -96,6 +108,18 @@
     },
     {
       "target": "loc_shang_clan_city",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_set",
+      "count": 1
+    },
+    {
+      "target": "sys_beast_phantom",
+      "count": 1
+    },
+    {
+      "target": "sys_dao_marks",
       "count": 1
     },
     {
@@ -162,7 +186,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -180,11 +204,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "gu_lightning_thoughts_gu",
           "gu_flash_of_inspiration_gu",
           "gu_strength_gu",
@@ -238,7 +263,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -257,10 +282,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "owner",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "As the core of that set, rainbow light Gu is paired with broadsword light Gu and light source Gu as supports.",
@@ -269,7 +297,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "owner",
         "text_origin": "source_excerpt",
@@ -290,7 +318,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_position_swap_gu",
-          "fac_gu_masters"
+          "fac_gu_masters",
+          "sys_dao_marks"
         ]
       }
     ]

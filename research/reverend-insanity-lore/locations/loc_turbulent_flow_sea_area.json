@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1045,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1045,
@@ -61,6 +61,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "reg_central_continent",
       "count": 1
     },
@@ -81,7 +85,19 @@
       "count": 1
     },
     {
+      "target": "house_regret_pool",
+      "count": 1
+    },
+    {
       "target": "loc_tributary_of_the_river_of_time",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "path_space",
       "count": 1
     },
     {
@@ -116,6 +132,7 @@
       "mentions": [
         "char_fang_yuan",
         "reg_northern_plains",
+        "sys_gu_immortal",
         "reg_eastern_sea",
         "reg_central_continent",
         "reg_southern_border"
@@ -171,7 +188,8 @@
       "mentions": [
         "char_ying_wu_xie",
         "loc_tributary_of_the_river_of_time",
-        "fac_shadow_sect"
+        "fac_shadow_sect",
+        "house_regret_pool"
       ]
     },
     {
@@ -184,7 +202,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "center-and-space-path",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "path_space",
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "One central bubble holds the secluded domain of heaven and earth City Well on its island.",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 598,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     598,
@@ -48,6 +48,10 @@
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
     },
     {
       "target": "gu_special_will_gu",
@@ -189,6 +193,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_eighty_eight_true_yang_building",
           "char_fang_yuan"
         ]
       },

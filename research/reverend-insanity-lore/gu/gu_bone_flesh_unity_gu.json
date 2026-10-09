@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 214,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     214,
@@ -101,7 +101,15 @@
       "count": 1
     },
     {
+      "target": "evt_arc_bai_gu_mountain",
+      "count": 1
+    },
+    {
       "target": "fac_bai_clan_bai_gu_mountain",
+      "count": 1
+    },
+    {
+      "target": "inh_white_bone_inheritance",
       "count": 1
     },
     {
@@ -114,6 +122,10 @@
     },
     {
       "target": "gu_iron_bone_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -153,6 +165,10 @@
       "count": 1
     },
     {
+      "target": "sys_rank_three",
+      "count": 1
+    },
+    {
       "target": "gu_pitch_black_gu",
       "count": 1
     },
@@ -170,6 +186,10 @@
     },
     {
       "target": "reg_northern_plains",
+      "count": 1
+    },
+    {
+      "target": "house_pregnancy_temple",
       "count": 1
     },
     {
@@ -266,7 +286,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "path",
         "text_origin": "source_excerpt"
@@ -282,7 +302,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -294,7 +314,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -312,7 +332,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-effect-and-use",
         "text_origin": "source_excerpt"
@@ -324,10 +344,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-effect-and-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "The Gu is a series, not a single fixed worm. Quality depends on how deep the relation is between the refiners, from low to high: fratricidal, friendly relation, indissoluble relation, familial relation, and blood kin relation. Conversion efficiency rises with that quality: fratricidal keeps one-fifth of a ten-percent transfer, friendly two-fifth, indissoluble three-fifth, familial four-fifth, and blood kin the full amount.",
@@ -336,7 +359,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-effect-and-use",
         "text_origin": "source_excerpt"
@@ -348,7 +371,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-effect-and-use",
         "text_origin": "source_excerpt"
@@ -360,7 +383,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-effect-and-use",
         "text_origin": "source_excerpt"
@@ -372,7 +395,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-effect-and-use",
         "text_origin": "source_excerpt"
@@ -384,7 +407,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-effect-and-use",
         "text_origin": "source_excerpt",
@@ -436,7 +459,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bai-gu-mountain-refinement",
         "text_origin": "source_excerpt",
@@ -455,7 +478,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bai-gu-mountain-refinement",
         "text_origin": "source_excerpt"
@@ -502,7 +525,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -519,7 +542,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wrist-marks",
         "text_origin": "source_excerpt"
@@ -531,7 +554,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wrist-marks",
         "text_origin": "source_excerpt",
@@ -558,7 +581,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "paired-cultivation-years",
         "text_origin": "source_excerpt"
@@ -570,7 +593,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "paired-cultivation-years",
         "text_origin": "source_excerpt"
@@ -582,7 +605,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "paired-cultivation-years",
         "text_origin": "source_excerpt"
@@ -594,7 +617,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "paired-cultivation-years",
         "text_origin": "source_excerpt",
@@ -609,7 +632,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "paired-cultivation-years",
         "text_origin": "source_excerpt"
@@ -621,7 +644,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "paired-cultivation-years",
         "text_origin": "source_excerpt",
@@ -636,7 +659,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "blessed-land-storage",
         "text_origin": "source_excerpt",
@@ -653,10 +676,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "blessed-land-storage",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_rank_three"
+        ]
       },
       {
         "text": "No cited later chapter describes the pair’s fate after that inventory line.",

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2304,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2304,
@@ -36,6 +36,18 @@
     {
       "type": "in_region",
       "target": "reg_western_desert",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -84,11 +96,23 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_star_constellation_immortal_venerable",
       "count": 1
     },
     {
       "target": "char_wan_zi_hong",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -126,6 +150,10 @@
     {
       "target": "res_heavy_sand",
       "count": 1
+    },
+    {
+      "target": "res_white_scale_snake_tongues",
+      "count": 1
     }
   ],
   "claims": [
@@ -142,6 +170,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_heavenly_court",
+        "sys_gu_immortal",
         "char_star_constellation_immortal_venerable",
         "char_wan_zi_hong"
       ]
@@ -158,6 +187,7 @@
       "section": "sword-qi-takes-form",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "fac_lin_clan"
       ]
     },
@@ -229,7 +259,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Lin Clan as of ch. 2304",
@@ -250,7 +280,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": null,

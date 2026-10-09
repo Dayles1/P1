@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2267,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_era_of_three_venerables"
   },
   "chapters_cited": [
     2267
@@ -36,6 +36,14 @@
     },
     {
       "target": "char_shen_shang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -96,7 +104,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect-if-complete",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       }
     ]
   },
@@ -123,7 +134,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "why-he-leaves-the-recipe-incomplete",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_recipe"
+        ]
       }
     ]
   },

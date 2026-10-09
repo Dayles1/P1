@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1483,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1483,
@@ -42,15 +42,51 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_gu_house",
+      "target": "house_bai_he_palace",
+      "role": "owner",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "house_bai_he_palace",
+      "count": 4
+    },
     {
       "target": "reg_eastern_sea",
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_you_chan",
+      "count": 2
+    },
+    {
+      "target": "house_dark_prison",
       "count": 2
     },
     {
@@ -70,7 +106,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "loc_white_crane_sea_area",
+      "count": 1
+    },
+    {
+      "target": "move_familiar_face",
       "count": 1
     },
     {
@@ -86,11 +130,43 @@
       "count": 1
     },
     {
+      "target": "move_fragrant_flowery_words",
+      "count": 1
+    },
+    {
+      "target": "move_purple_star_broken_life",
+      "count": 1
+    },
+    {
+      "target": "move_soul_beast_summoning",
+      "count": 1
+    },
+    {
+      "target": "move_whale_form_rain",
+      "count": 1
+    },
+    {
+      "target": "move_ancient_sword_dragon_transformation",
+      "count": 1
+    },
+    {
+      "target": "move_purple_thought_perception_starlight",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_hei_tribe",
       "count": 1
     },
     {
       "target": "gu_snack_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_blood_light_spirit_suppression",
       "count": 1
     },
     {
@@ -114,13 +190,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_you_chan",
-        "reg_eastern_sea"
+        "reg_eastern_sea",
+        "sys_immortal_gu_house",
+        "house_bai_he_palace"
       ]
     },
     {
@@ -130,7 +208,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -142,7 +220,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "silver-dragonfish-work",
       "text_origin": "source_excerpt",
@@ -158,13 +236,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bai-he-palace-and-her-blessed-land",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "gu_eat_fragrance_immortal_gu",
-        "fac_hei_tribe"
+        "fac_hei_tribe",
+        "house_dark_prison"
       ]
     }
   ],
@@ -205,7 +285,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -221,7 +301,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Dead",
     "alignment": null,

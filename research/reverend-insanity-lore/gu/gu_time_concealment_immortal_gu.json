@@ -23,13 +23,25 @@
   "first_appearance": {
     "chapter": 1751,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1751,
     1753
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_time",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -49,11 +61,27 @@
       "count": 2
     },
     {
+      "target": "path_time",
+      "count": 1
+    },
+    {
       "target": "char_lang_ya_land_spirit",
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_lang_ya_sect",
+      "count": 1
+    },
+    {
+      "target": "house_present_and_past_pavilion",
       "count": 1
     },
     {
@@ -99,7 +127,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_time"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -126,6 +156,7 @@
         "section": "use-in-the-river-of-time",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_present_and_past_pavilion",
           "loc_river_of_time"
         ]
       }
@@ -181,9 +212,11 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "fac_lang_ya_sect",
           "char_lang_ya_land_spirit",
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_gu_immortal"
         ]
       }
     ]
@@ -192,7 +225,7 @@
     "Path": {
       "text": "Time Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

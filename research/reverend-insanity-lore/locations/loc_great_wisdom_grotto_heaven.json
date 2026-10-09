@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1989,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1989,
@@ -34,6 +34,10 @@
   "relations": [],
   "co_mentions": [
     {
+      "target": "house_demon_judgment_board",
+      "count": 2
+    },
+    {
       "target": "char_great_wisdom_immortal_mother",
       "count": 1
     },
@@ -42,7 +46,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "race_inkmen",
       "count": 1
     },
     {
@@ -71,7 +83,9 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_demon_judgment_board",
         "fac_heavenly_court",
+        "sys_gu_immortal",
         "char_great_wisdom_immortal_mother",
         "char_wu_shuai"
       ]

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 317,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     317,
@@ -31,6 +31,18 @@
     378
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -50,6 +62,10 @@
       "count": 2
     },
     {
+      "target": "path_strength",
+      "count": 1
+    },
+    {
       "target": "gu_stone_turtle_strength_gu",
       "count": 2
     },
@@ -67,6 +83,10 @@
     },
     {
       "target": "loc_shang_clan_city",
+      "count": 1
+    },
+    {
+      "target": "move_eight_beast_phantoms",
       "count": 1
     },
     {
@@ -104,7 +124,9 @@
     "ranks": [],
     "rank_type": "unknown",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -227,7 +249,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

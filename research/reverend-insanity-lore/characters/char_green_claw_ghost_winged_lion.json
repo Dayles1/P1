@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1411,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1411,
@@ -42,6 +42,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "char_dancer_hong_yun",
       "count": 1
     },
@@ -51,6 +59,10 @@
     },
     {
       "target": "char_thousand_transformations_ancestor",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -72,6 +84,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_zhen_yuan_zi",
+        "sys_gu_immortal",
+        "sys_gu_master",
         "char_han_li"
       ]
     },
@@ -143,7 +157,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "zhen-yuan-zi-specimen",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_worms"
+      ]
     }
   ],
   "conflicts": [],

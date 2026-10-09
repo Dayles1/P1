@@ -23,12 +23,24 @@
   "first_appearance": {
     "chapter": 415,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     415
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_enslavement",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fairy_bai_hu",
@@ -62,6 +74,14 @@
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "path_enslavement",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
     },
     {
       "target": "gu_estrus_gu",
@@ -109,7 +129,9 @@
     "ranks": [],
     "rank_type": "unknown",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_enslavement"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -186,6 +208,7 @@
         "mentions": [
           "char_fairy_bai_hu",
           "gu_no_gu",
+          "sys_gu_worms",
           "char_fang_yuan",
           "loc_dang_hun_mountain"
         ]
@@ -196,7 +219,7 @@
     "Path": {
       "text": "Enslavement Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

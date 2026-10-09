@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1034,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1034
@@ -32,6 +32,10 @@
   "co_mentions": [
     {
       "target": "char_ni_kun",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -122,7 +126,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "clan-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_formation"
+        ]
       }
     ]
   },

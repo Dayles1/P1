@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 365,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     365,
@@ -181,7 +181,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_ten_great_sects",
+      "count": 1
+    },
+    {
+      "target": "inh_hu_immortal_inheritance",
       "count": 1
     },
     {
@@ -194,6 +202,10 @@
     },
     {
       "target": "char_fairy_bai_qing",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -214,6 +226,10 @@
     },
     {
       "target": "loc_hu_immortal_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "move_lightning_deity",
       "count": 1
     },
     {
@@ -248,9 +264,11 @@
       "mentions": [
         "loc_tian_ti",
         "reg_central_continent",
+        "sys_gu_immortal",
         "char_long_nu",
         "char_ying_sheng_ji",
         "char_feng_jin_huang",
+        "inh_hu_immortal_inheritance",
         "char_fang_zheng"
       ]
     },
@@ -261,7 +279,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "secret-chess-piece-talk",
       "text_origin": "source_excerpt",
@@ -280,7 +298,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "song-zi-xing-betrayal",
       "text_origin": "source_excerpt",
@@ -295,7 +313,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "song-zi-xing-betrayal",
       "text_origin": "source_excerpt",
@@ -310,7 +328,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "territory-beside-immortal-crane",
       "text_origin": "source_excerpt",
@@ -326,13 +344,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "territory-beside-immortal-crane",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fairy_bai_qing",
         "loc_falling_heavenly_river",
+        "sys_gu_formation",
         "fac_combat_immortal_sect"
       ]
     },
@@ -343,7 +362,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "vicious-lightning-fiend-exposure",
       "text_origin": "source_excerpt",
@@ -361,7 +380,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "vicious-lightning-fiend-exposure",
       "text_origin": "source_excerpt"

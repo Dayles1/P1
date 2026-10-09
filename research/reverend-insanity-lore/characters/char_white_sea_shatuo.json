@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 775,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     775,
@@ -34,6 +34,18 @@
     1490
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_shadow_sect",
@@ -53,6 +65,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_paradise_earth_immortal_venerable",
       "count": 2
     },
@@ -65,11 +81,31 @@
       "count": 2
     },
     {
+      "target": "house_sacred_feather_city",
+      "count": 2
+    },
+    {
+      "target": "move_heavenly_wish",
+      "count": 2
+    },
+    {
       "target": "char_tang_yang",
       "count": 1
     },
     {
       "target": "char_thieving_heaven_demon_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "race_feathermen",
       "count": 1
     },
     {
@@ -101,6 +137,10 @@
       "count": 1
     },
     {
+      "target": "inh_paradise_earth_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_yi_tian_mountain",
       "count": 1
     }
@@ -113,7 +153,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -132,7 +172,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -144,10 +184,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sacred-feather-siege",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal",
+        "house_sacred_feather_city",
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "Tang Yang Ran asks whether to interrupt the feathermen’s coming move. He says he had predicted the situation, that he wants the Immortal Gu House, and that they should keep attacking without interrupting the escape. The feathermen activate heavenly wish and leave. An empty Sacred Feather City remains, and he obtains the house.",
@@ -156,10 +201,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-gu-house-acquired",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_heavenly_wish"
+      ]
     },
     {
       "text": "Fang Yuan later knows the green heaven fragment’s scenery well enough to reach it with Fixed Immortal Travel, but treats the place as a lion’s den while White Sea Shatuo and other Gu Immortals occupy it.",
@@ -168,7 +216,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reputation-as-a-deterrent",
       "text_origin": "source_excerpt",
@@ -184,7 +232,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "western-desert-battle",
       "text_origin": "source_excerpt",
@@ -200,11 +248,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "identity-and-death",
       "text_origin": "source_excerpt",
       "mentions": [
+        "inh_paradise_earth_true_inheritance",
         "char_spectral_soul_demon_venerable",
         "loc_yi_tian_mountain",
         "fac_shadow_sect"
@@ -251,7 +300,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shadow Sect as of ch. 1490",
@@ -283,7 +332,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Dead",
     "alignment": "lone cultivator as of ch. 775",

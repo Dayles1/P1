@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2155,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2155,
@@ -57,7 +57,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "loc_green_lotus_great_world",
+      "count": 1
+    },
+    {
+      "target": "move_green_life_taker",
       "count": 1
     },
     {
@@ -73,11 +85,23 @@
       "count": 1
     },
     {
+      "target": "sys_carefree_wisdom_heart_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
       "target": "gu_humility_gu",
       "count": 1
     },
     {
       "target": "loc_book_mountain",
+      "count": 1
+    },
+    {
+      "target": "move_humble_reciprocation",
       "count": 1
     }
   ],
@@ -111,8 +135,10 @@
       "section": "middle-mountain-gu-immortals",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_worms",
         "char_mu_cha_lang",
-        "char_qing_hao_zi"
+        "char_qing_hao_zi",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -171,6 +197,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_book_mountain",
+        "sys_the_legends_of_ren_zu",
         "gu_humility_gu"
       ]
     },

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 563,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     563
@@ -58,6 +58,14 @@
     {
       "target": "gu_shine_back_spike_gu",
       "count": 2
+    },
+    {
+      "target": "sys_attack_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_di_qiu_inheritance",
+      "count": 1
     },
     {
       "target": "loc_di_qiu",
@@ -118,7 +126,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-at-di-qiu",
         "text_origin": "source_excerpt",
@@ -176,12 +184,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "inh_di_qiu_inheritance",
           "loc_wang_ting_blessed_land"
         ]
       },
@@ -192,10 +201,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "type",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_attack_gu"
+        ]
       },
       {
         "text": "Chapter 563 does not state a rank for it.",

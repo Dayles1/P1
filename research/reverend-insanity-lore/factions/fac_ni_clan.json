@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1034,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1034,
@@ -142,7 +142,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_muddy_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -158,11 +170,23 @@
       "count": 1
     },
     {
+      "target": "evt_arc_dao_veins_famous_mountains",
+      "count": 1
+    },
+    {
       "target": "loc_mini_yellow_heaven",
       "count": 1
     },
     {
       "target": "loc_mini_red_heaven",
+      "count": 1
+    },
+    {
+      "target": "sys_unifying_human_and_gu",
+      "count": 1
+    },
+    {
+      "target": "path_refinement",
       "count": 1
     }
   ],
@@ -174,14 +198,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "earth-path-specialty",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_ni_clan_village",
         "char_ni_jian",
-        "char_ni_kun"
+        "char_ni_kun",
+        "sys_gu_master"
       ]
     },
     {
@@ -191,7 +216,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-status",
       "text_origin": "source_excerpt",
@@ -199,7 +224,9 @@
         "char_qi_zai",
         "char_ni_xiang",
         "reg_southern_border",
-        "char_ni_ren"
+        "sys_gu_immortal",
+        "char_ni_ren",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -209,7 +236,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bloodline-awakening",
       "text_origin": "source_excerpt",

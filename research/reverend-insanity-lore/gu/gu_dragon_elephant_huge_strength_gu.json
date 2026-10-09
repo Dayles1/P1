@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 317,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     317,
@@ -58,6 +58,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_galloping_horse_strength_gu",
       "count": 1
     },
@@ -75,6 +79,10 @@
     },
     {
       "target": "gu_strength_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_dao_marks",
       "count": 1
     },
     {
@@ -153,13 +161,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "resonance-on-the-battle-stage",
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_guts_gu",
-          "gu_dragon_travel_tiger_steps_gu"
+          "gu_dragon_travel_tiger_steps_gu",
+          "sys_dao_marks"
         ]
       }
     ]
@@ -214,7 +223,8 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_ju_kai_bei"
+          "char_ju_kai_bei",
+          "sys_gu_master"
         ]
       },
       {

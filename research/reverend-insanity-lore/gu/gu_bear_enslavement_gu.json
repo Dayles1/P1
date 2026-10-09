@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 146,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     146,
@@ -88,6 +88,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "char_black_bear",
       "count": 1
     },
@@ -101,6 +105,10 @@
     },
     {
       "target": "gu_tiger_enslavement_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_wolf_tide",
       "count": 1
     }
   ],
@@ -164,7 +172,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-three-rise",
         "text_origin": "source_excerpt"
@@ -202,7 +210,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "forced-feeding",
         "text_origin": "source_excerpt",
@@ -270,12 +278,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_xiong_jiao_man"
+          "char_xiong_jiao_man",
+          "sys_gu_worms"
         ]
       },
       {
@@ -285,7 +294,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -300,7 +309,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-bear",
         "text_origin": "source_excerpt",

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1600,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1600,
@@ -39,6 +39,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -103,6 +115,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_jun_shen_guang",
       "count": 2
     },
@@ -123,7 +139,23 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_yuan_qiong_du",
+      "count": 1
+    },
+    {
+      "target": "move_soul_search",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_as_before_formation",
       "count": 1
     }
   ],
@@ -185,7 +217,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "captivity-and-self-detonation",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu",
+        "sys_mortal_gu"
+      ]
     },
     {
       "text": "Fairy Zi Wei later notes that fixed space Immortal Gu has self-detonated, and treats Liu Hao’s capture as a signal that other Southern Border immortals may also be captive. Narration places him as a mere rank seven whose sacrifice Heavenly Court weighs lightly against the wider scheme.",
@@ -255,7 +291,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1600 Wu Clan as of ch. 1604",
@@ -282,7 +318,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Unknown",
     "alignment": null,

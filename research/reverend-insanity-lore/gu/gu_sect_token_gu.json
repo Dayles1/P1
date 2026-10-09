@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2065,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2065,
@@ -62,6 +62,10 @@
     },
     {
       "target": "char_shen_shang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     }
   ],
@@ -178,7 +182,8 @@
         "section": "organization-gu",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_organization_gu"
+          "gu_organization_gu",
+          "sys_gu_worms"
         ]
       }
     ]

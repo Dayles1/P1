@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2156,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2156,
@@ -40,6 +40,10 @@
     {
       "target": "char_xue_li_du",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     },
     {
       "target": "loc_yellow_earth_great_world",
@@ -72,7 +76,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_savage_wilderness_great_world",
-        "loc_yellow_earth_great_world"
+        "loc_yellow_earth_great_world",
+        "sys_gu_immortal"
       ]
     },
     {

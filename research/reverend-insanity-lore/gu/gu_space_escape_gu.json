@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 461,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     461,
@@ -75,6 +75,10 @@
       "count": 2
     },
     {
+      "target": "sys_space_door",
+      "count": 2
+    },
+    {
       "target": "char_giant_sun_immortal_venerable",
       "count": 1
     },
@@ -87,6 +91,10 @@
       "count": 1
     },
     {
+      "target": "sys_prophecy_of_three_venerables",
+      "count": 1
+    },
+    {
       "target": "loc_lang_ya_blessed_land",
       "count": 1
     },
@@ -96,6 +104,14 @@
     },
     {
       "target": "char_lang_ya_land_spirit",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     }
   ],
@@ -273,13 +289,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_thieving_heaven_demon_venerable",
-          "char_long_hair_ancestor"
+          "char_long_hair_ancestor",
+          "sys_space_door"
         ]
       },
       {
@@ -289,7 +306,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "failure-and-prophecy",
         "text_origin": "source_excerpt",
@@ -308,7 +325,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "failure-and-prophecy",
         "text_origin": "source_excerpt",
@@ -326,7 +343,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "theft-path-and-luck-path",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu",
+          "house_eighty_eight_true_yang_building"
+        ]
       }
     ]
   },

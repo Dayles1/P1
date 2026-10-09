@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 599,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     599
@@ -48,11 +48,27 @@
       "count": 3
     },
     {
+      "target": "inh_possession_true_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
       "target": "char_spectral_soul_demon_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     },
     {
@@ -128,7 +144,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -140,7 +156,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt",
@@ -201,13 +217,17 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_eighty_eight_true_yang_building",
           "char_fang_yuan",
-          "char_giant_sun_immortal_venerable"
+          "char_giant_sun_immortal_venerable",
+          "sys_gu_immortal",
+          "inh_possession_true_inheritance",
+          "sys_mortal_gu"
         ]
       }
     ]

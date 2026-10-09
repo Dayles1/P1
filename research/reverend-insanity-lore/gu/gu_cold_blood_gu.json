@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 669,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     669,
@@ -64,6 +64,14 @@
     },
     {
       "target": "gu_blood_sense_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     },
     {
@@ -128,7 +136,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -143,7 +151,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "hu-immortal-attack-drills",
         "text_origin": "source_excerpt",
@@ -198,7 +206,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -217,7 +225,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "cold-blood-immortal-gu",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_vital_gu",
+          "sys_immortal_gu"
+        ]
       },
       {
         "text": "Fang Zheng holds rank six blood path Immortal Gu Cold Blood beside Blood Revenge; both need mortal blood path Gu to form immortal killer moves.",

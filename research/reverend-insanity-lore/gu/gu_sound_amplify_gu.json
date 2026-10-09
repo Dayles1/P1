@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 296,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     296,
@@ -31,6 +31,14 @@
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
     {
       "target": "loc_shang_clan_city",
       "count": 1
@@ -121,7 +129,8 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "loc_shang_clan_city"
+          "loc_shang_clan_city",
+          "sys_gu_master"
         ],
         "needs_review": true
       },
@@ -136,6 +145,9 @@
         "source_id": "src_sagaofgu",
         "section": "use",
         "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ],
         "needs_review": true
       },
       {

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2095,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2095
@@ -54,6 +54,10 @@
     {
       "target": "gu_dream_butterfly_gu",
       "count": 2
+    },
+    {
+      "target": "sys_investigative_gu",
+      "count": 1
     },
     {
       "target": "loc_myriad_beast_fusion_color_heaven",
@@ -170,7 +174,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "compared-to-other-dream-gu",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_investigative_gu"
+        ]
       }
     ]
   },

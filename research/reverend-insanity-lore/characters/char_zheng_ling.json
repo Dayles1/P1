@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 865,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     865,
@@ -39,10 +39,31 @@
     978,
     1199
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_feathermen",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
     {
+      "target": "race_feathermen",
+      "count": 2
+    },
+    {
       "target": "char_zhou_zhong",
+      "count": 2
+    },
+    {
+      "target": "house_sacred_feather_city",
       "count": 2
     },
     {
@@ -58,11 +79,39 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "loc_green_heaven_fragment_world",
       "count": 1
     },
     {
+      "target": "move_heavenly_wish",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_mountain_pledge_gu",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_self_giant_hand",
+      "count": 1
+    },
+    {
+      "target": "move_poison_spit",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
       "count": 1
     },
     {
@@ -98,12 +147,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_zhou_zhong"
+        "char_zhou_zhong",
+        "house_sacred_feather_city",
+        "sys_immortal_gu_house"
       ]
     },
     {
@@ -113,13 +164,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_tai_bai_yun_sheng",
         "char_fang_yuan",
+        "sys_gu_immortal",
         "char_white_sea_shatuo"
       ]
     },
@@ -130,7 +182,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "compensation-talks",
       "text_origin": "source_excerpt"
@@ -142,7 +194,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -157,7 +209,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt"
@@ -169,10 +221,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "Zhou Zhong cannot exact revenge. If Zheng Ling were still alive and collaborated with Zhou Zhong, they would suppress Fang Yuan and Tai Bai Yun Sheng. The two have deep foundations, few Immortal Gu, and many deduced immortal killer moves covering attack, defense, movement, healing, and investigation.",
@@ -181,7 +236,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt"
@@ -193,12 +248,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soul",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_dang_hun_palace",
+        "sys_gu_recipe",
         "reg_western_desert"
       ]
     },
@@ -209,7 +265,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wind-path",
       "text_origin": "source_excerpt"
@@ -221,7 +277,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "complete-inheritance",
       "text_origin": "source_excerpt"
@@ -233,7 +289,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "house-control",
       "text_origin": "source_excerpt"
@@ -245,7 +301,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blessed-land-landing",
       "text_origin": "source_excerpt",
@@ -261,7 +317,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soul-sale",
       "text_origin": "source_excerpt",
@@ -315,7 +371,7 @@
     "Race": {
       "text": "Feathermen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Sacred Feather City as of ch. 865",
@@ -342,7 +398,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_feathermen",
     "region": null,
     "status": "Dead",
     "alignment": null,

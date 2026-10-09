@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1508,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1508,
@@ -36,6 +36,18 @@
     {
       "type": "in_region",
       "target": "reg_western_desert",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -64,6 +76,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_western_desert",
       "count": 1
     },
@@ -72,15 +88,55 @@
       "count": 2
     },
     {
+      "target": "house_divine_bean_palace",
+      "count": 2
+    },
+    {
       "target": "char_qing_chou",
       "count": 2
+    },
+    {
+      "target": "house_fallen_flower_hall",
+      "count": 1
+    },
+    {
+      "target": "move_directional_confusion_fog",
+      "count": 1
+    },
+    {
+      "target": "move_single_thought_endless_clones",
+      "count": 1
     },
     {
       "target": "gu_soul_beast_token",
       "count": 1
     },
     {
+      "target": "move_fleeting_bloom",
+      "count": 1
+    },
+    {
+      "target": "move_mirror_flower",
+      "count": 1
+    },
+    {
+      "target": "move_empty_valley_orchid",
+      "count": 1
+    },
+    {
       "target": "char_chen_yi",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_killer_move",
+      "count": 1
+    },
+    {
+      "target": "move_graft_wood",
       "count": 1
     }
   ],
@@ -97,7 +153,8 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_old_ghost_bai_jun"
+        "char_old_ghost_bai_jun",
+        "house_divine_bean_palace"
       ]
     },
     {
@@ -153,7 +210,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "defection-and-later-service",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Fang clan later forcibly subdues both as slaves after the fight over Divine Bean Palace.",
@@ -215,7 +275,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Fang Clan as of ch. 1616",
@@ -242,7 +302,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2293,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2293,
@@ -36,6 +36,10 @@
   "co_mentions": [
     {
       "target": "char_star_constellation_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 1
     },
     {
@@ -75,6 +79,10 @@
       "count": 1
     },
     {
+      "target": "evt_legend_finding_self",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -83,7 +91,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_sea",
+      "count": 1
+    },
+    {
       "target": "loc_blood_sea",
+      "count": 1
+    },
+    {
+      "target": "move_calm_and_steady",
       "count": 1
     },
     {
@@ -135,6 +155,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_the_legends_of_ren_zu",
         "gu_calm_gu",
         "gu_fortitude_gu"
       ]
@@ -181,7 +202,9 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_giant_sun_immortal_venerable",
+        "sys_immortal_gu",
         "char_fang_yuan",
+        "sys_refinement_sea",
         "loc_blood_sea"
       ]
     },

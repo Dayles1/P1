@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1239,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1239
@@ -54,6 +54,10 @@
     {
       "target": "gu_pair_gu",
       "count": 2
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
     },
     {
       "target": "gu_connect_luck",
@@ -131,6 +135,7 @@
         "section": "use",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_mortal_gu",
           "loc_treasure_yellow_heaven"
         ]
       }

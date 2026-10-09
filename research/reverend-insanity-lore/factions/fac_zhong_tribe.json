@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 494,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     494,
@@ -87,6 +87,14 @@
     {
       "target": "loc_crescent_lake",
       "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
     }
   ],
   "claims": [
@@ -97,7 +105,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "boundary-at-the-lake",
       "text_origin": "source_excerpt",
@@ -114,7 +122,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wolf-king-at-the-lake",
       "text_origin": "source_excerpt",
@@ -131,10 +139,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "leaving-crescent-lake",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master",
+        "evt_arc_imperial_court_contest"
+      ]
     }
   ],
   "conflicts": [],

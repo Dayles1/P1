@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 959,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     959,
@@ -35,8 +35,44 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 959,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1020,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -65,12 +101,40 @@
       "count": 3
     },
     {
+      "target": "path_strength",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
+      "count": 1
+    },
+    {
+      "target": "path_wisdom",
       "count": 1
     },
     {
       "target": "char_da_li",
       "count": 2
+    },
+    {
+      "target": "sys_great_strength_true_martial_physique",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_graceful_chaotic_duel_stage",
+      "count": 1
     },
     {
       "target": "char_fang_yuan",
@@ -81,7 +145,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "house_regret_pool",
+      "count": 1
+    },
+    {
       "target": "char_purple_mountain_true_monarch",
+      "count": 1
+    },
+    {
+      "target": "move_enslavement_after_victorious_fight",
       "count": 1
     },
     {
@@ -97,10 +173,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal",
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "The house absorbs and seals his attacks, then lets the rank seven strike back with them, so he bears most of his own might. The rank seven wins but cannot take his life, abandons the house, and uses it to suppress him deep under the earth before flying away. Grass and trees grow. The plain rises from a mound into a mountain.",
@@ -109,7 +189,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "nameless-mountain",
       "text_origin": "source_excerpt"
@@ -144,7 +224,10 @@
       "section": "dual-cultivation",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_ying_wu_xie"
+        "char_ying_wu_xie",
+        "sys_great_strength_true_martial_physique",
+        "sys_immortal_gu",
+        "house_regret_pool"
       ]
     },
     {
@@ -154,7 +237,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "killer-move-source",
       "text_origin": "source_excerpt",
@@ -201,7 +284,7 @@
     "Paths": {
       "text": "Strength path Wisdom path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Southern Border",
@@ -211,7 +294,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shadow Sect as of ch. 1020",
@@ -233,12 +316,15 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_strength",
+      "path_wisdom"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

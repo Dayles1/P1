@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 437,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     437,
@@ -84,11 +84,23 @@
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "loc_lang_ya_blessed_land",
       "count": 1
     },
     {
       "target": "char_little_hu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     }
   ],
@@ -133,7 +145,8 @@
       "section": "the-lang-ya-stack",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_lang_ya_blessed_land"
+        "loc_lang_ya_blessed_land",
+        "sys_gu_master"
       ]
     },
     {
@@ -148,7 +161,8 @@
       "section": "the-lang-ya-stack",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_lang_ya_land_spirit"
+        "char_lang_ya_land_spirit",
+        "sys_gu_worms"
       ]
     },
     {
@@ -173,10 +187,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refining-in-bulk",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     }
   ],
   "conflicts": [],

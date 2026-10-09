@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2155,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2155,
@@ -45,6 +45,18 @@
       "count": 2
     },
     {
+      "target": "move_spring_upon_withered_tree",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "loc_black_and_white_sacred_mountain",
       "count": 1
     },
@@ -53,7 +65,23 @@
       "count": 1
     },
     {
+      "target": "move_green_life_taker",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "move_crashing_rock_slide",
+      "count": 1
+    },
+    {
+      "target": "move_refine_life",
+      "count": 1
+    },
+    {
+      "target": "move_snow_avalanche",
       "count": 1
     }
   ],
@@ -70,7 +98,9 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fairy_ming_hao"
+        "char_fairy_ming_hao",
+        "sys_gu_worms",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -101,7 +131,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_yellow_earth_great_world",
-        "loc_green_lotus_great_world"
+        "loc_green_lotus_great_world",
+        "move_spring_upon_withered_tree"
       ]
     },
     {

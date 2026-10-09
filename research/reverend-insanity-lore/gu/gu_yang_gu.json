@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 199,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     199,
@@ -63,6 +63,10 @@
       "count": 1
     },
     {
+      "target": "sys_northern_dark_ice_soul_physique",
+      "count": 1
+    },
+    {
       "target": "gu_plunder_gu",
       "count": 1
     },
@@ -80,6 +84,10 @@
     },
     {
       "target": "char_doctor_su_shou",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -148,7 +156,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance-and-feeding",
         "text_origin": "source_excerpt"
@@ -166,7 +174,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -178,7 +186,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -230,7 +238,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -258,13 +266,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "male-body-return",
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_shang_clan_city",
-          "char_doctor_su_shou"
+          "char_doctor_su_shou",
+          "sys_gu_immortal"
         ]
       }
     ]

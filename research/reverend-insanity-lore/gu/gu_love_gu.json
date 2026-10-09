@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 435,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     435,
@@ -83,7 +83,19 @@
       "count": 1
     },
     {
+      "target": "evt_legend_love_is_cruel",
+      "count": 1
+    },
+    {
+      "target": "race_rockmen",
+      "count": 1
+    },
+    {
       "target": "gu_wisdom_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_troubles_of_love",
       "count": 1
     },
     {
@@ -91,7 +103,19 @@
       "count": 1
     },
     {
+      "target": "evt_legend_northern_dark_ice_soul",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "sys_thought_will_emotion",
       "count": 1
     },
     {
@@ -103,6 +127,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_shadow_sect",
       "count": 1
     },
@@ -111,11 +139,27 @@
       "count": 1
     },
     {
+      "target": "evt_legend_betrayal_and_loyalty_to_oneself",
+      "count": 1
+    },
+    {
       "target": "char_xu_hao",
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
+    },
+    {
       "target": "char_blazing_glory_lightning_brilliance",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_love_must_be_selfless",
       "count": 1
     },
     {
@@ -128,6 +172,14 @@
     },
     {
       "target": "char_south_desolation_immortal",
+      "count": 1
+    },
+    {
+      "target": "move_ringing_alarm_bell",
+      "count": 1
+    },
+    {
+      "target": "sys_phantom_aperture",
       "count": 1
     },
     {
@@ -155,6 +207,10 @@
       "count": 1
     },
     {
+      "target": "house_edge_link_camp",
+      "count": 1
+    },
+    {
       "target": "gu_affection_immortal_gu",
       "count": 1
     },
@@ -168,6 +224,10 @@
     },
     {
       "target": "gu_hope_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_lightning_and_hatred",
       "count": 1
     }
   ],
@@ -244,7 +304,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "food-of-hope-and-fear",
         "text_origin": "source_excerpt",
@@ -283,13 +343,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "named-the-sects-signature-gu-by-purple",
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_shadow_sect",
-          "fac_spirit_affinity_house"
+          "fac_spirit_affinity_house",
+          "sys_immortal_gu"
         ]
       }
     ]
@@ -304,7 +365,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -322,7 +383,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rockmans-courtship",
         "text_origin": "source_excerpt"
@@ -334,7 +395,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "collapse-of-the-mountain",
         "text_origin": "source_excerpt",
@@ -350,7 +411,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "mischief-with-northern-dark-ice-soul",
         "text_origin": "source_excerpt",
@@ -366,13 +427,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "emotion-path",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "gu_estrus_gu"
+          "gu_estrus_gu",
+          "sys_the_legends_of_ren_zu"
         ]
       },
       {
@@ -382,12 +444,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "acknowledges-zhao-lian-yun",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_zhao_lian_yun"
+          "char_zhao_lian_yun",
+          "sys_gu_immortal"
         ]
       },
       {
@@ -397,7 +460,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "acknowledged-the-new-fairy",
         "text_origin": "source_excerpt",
@@ -412,7 +475,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "shields-and-carries-zhao-lian-yuns-group-into-snowy-mountain",
         "text_origin": "source_excerpt",

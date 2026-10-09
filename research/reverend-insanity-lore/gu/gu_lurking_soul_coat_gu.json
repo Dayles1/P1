@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 517,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     517,
@@ -60,6 +60,10 @@
     },
     {
       "target": "char_sun_shi_han",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement",
       "count": 1
     },
     {
@@ -131,10 +135,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-early-stock",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_refinement"
+        ]
       },
       {
         "text": "He later holds three rank four lurking soul coat Gu. With that concealment, as long as he does not use over eighty percent of his strength, his soul fluctuations stay covered.",
@@ -143,7 +150,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-four-limit",
         "text_origin": "source_excerpt"
@@ -155,7 +162,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-four-limit",
         "text_origin": "source_excerpt"
@@ -167,7 +174,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-five-on-the-battlefield",
         "text_origin": "source_excerpt"
@@ -188,7 +195,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -240,7 +247,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 467,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     467
@@ -64,6 +64,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_shadow_sect",
       "count": 1
     },
@@ -98,7 +102,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -106,6 +110,7 @@
         "char_fang_yuan",
         "gu_divine_travel",
         "char_chou_jiu",
+        "sys_gu_immortal",
         "char_old_man_yan_shi",
         "fac_shadow_sect",
         "gu_slavery_gu",

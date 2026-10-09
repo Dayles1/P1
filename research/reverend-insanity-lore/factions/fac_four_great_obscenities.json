@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 336,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     336,
@@ -75,6 +75,10 @@
       "count": 1
     },
     {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -84,6 +88,18 @@
     },
     {
       "target": "fac_immortal_crane_sect",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -104,6 +120,7 @@
       "section": "named-on-the-crane-route",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_demonic_path",
         "fac_gu_masters",
         "fac_immortal_crane_sect",
         "char_chen_yin_dao",
@@ -137,7 +154,12 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "sorrowful-wind-search",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master",
+        "sys_gu_house",
+        "sys_gu_immortal"
+      ]
     }
   ],
   "conflicts": [],

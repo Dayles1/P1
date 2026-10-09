@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1507,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1507,
@@ -69,6 +69,10 @@
   ],
   "co_mentions": [
     {
+      "target": "house_divine_bean_palace",
+      "count": 3
+    },
+    {
       "target": "char_qing_heng",
       "count": 3
     },
@@ -85,7 +89,15 @@
       "count": 1
     },
     {
+      "target": "sys_dao_marks",
+      "count": 1
+    },
+    {
       "target": "fac_fang_clan",
+      "count": 1
+    },
+    {
+      "target": "inh_qing_clan_inheritance",
       "count": 1
     },
     {
@@ -106,6 +118,10 @@
     },
     {
       "target": "loc_qing_oasis",
+      "count": 1
+    },
+    {
+      "target": "move_qing_mouth",
       "count": 1
     },
     {
@@ -139,6 +155,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_spectral_soul_demon_venerable",
+        "sys_dao_marks",
         "res_gu_immortal_corpse"
       ]
     },
@@ -154,6 +171,7 @@
       "section": "cause-of-the-slaughter",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_divine_bean_palace",
         "char_genesis_lotus_immortal_venerable"
       ]
     }

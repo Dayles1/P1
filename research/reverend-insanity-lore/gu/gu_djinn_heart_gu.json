@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 319,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     319,
@@ -91,6 +91,14 @@
     },
     {
       "target": "loc_shang_clan_city",
+      "count": 1
+    },
+    {
+      "target": "move_djinn_transformation",
+      "count": 1
+    },
+    {
+      "target": "move_three_hearts_combination_soul",
       "count": 1
     },
     {
@@ -175,7 +183,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "imperial-court-use",
         "text_origin": "source_excerpt",
@@ -256,7 +264,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

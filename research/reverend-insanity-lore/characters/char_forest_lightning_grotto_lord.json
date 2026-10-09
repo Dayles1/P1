@@ -23,14 +23,31 @@
   "first_appearance": {
     "chapter": 2020,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2020,
     2022
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "gu_lightning_gu",
       "count": 2
@@ -60,6 +77,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_qin_ding_ling",
       "count": 1
     }
@@ -79,6 +100,7 @@
       "mentions": [
         "char_xiao_he_jian",
         "char_qi_sea_ancestor",
+        "sys_gu_immortal",
         "char_wu_shuai",
         "char_fang_yuan",
         "char_lady_cold_ash"
@@ -133,7 +155,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -155,7 +177,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Dead",
     "alignment": null,

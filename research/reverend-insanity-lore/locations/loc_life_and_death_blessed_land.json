@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 984,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     984,
@@ -44,6 +44,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_shadow_sect",
       "count": 1
     },
@@ -57,6 +61,14 @@
     },
     {
       "target": "char_ying_wu_xie",
+      "count": 1
+    },
+    {
+      "target": "sys_pure_dream_reality_seeker_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -87,7 +99,8 @@
       "mentions": [
         "fac_shadow_sect",
         "loc_door_of_life_and_death",
-        "char_old_man_yan_shi"
+        "char_old_man_yan_shi",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -97,12 +110,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yan-shi-cocoon",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_spectral_soul_demon_venerable",
+        "sys_pure_dream_reality_seeker_physique",
         "char_ying_wu_xie"
       ]
     },
@@ -131,7 +145,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "intentionally-preserved",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Even after the battlefield is covered by dream realm, Fang Yuan notes that life and death blessed land is still around among possible remaining apertures.",

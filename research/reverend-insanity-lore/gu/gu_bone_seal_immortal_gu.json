@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1905,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1905
@@ -46,6 +46,14 @@
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
     },
     {
       "target": "fac_heavenly_court",
@@ -157,7 +165,9 @@
         "mentions": [
           "char_fang_yuan",
           "fac_heavenly_court",
-          "loc_river_of_time"
+          "loc_river_of_time",
+          "sys_immortal_gu_house",
+          "sys_immortal_gu"
         ]
       }
     ]

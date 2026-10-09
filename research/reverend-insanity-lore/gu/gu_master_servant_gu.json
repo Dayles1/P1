@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2245,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_era_of_three_venerables"
   },
   "chapters_cited": [
     2245
@@ -65,6 +65,14 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -141,7 +149,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "appearance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ],
     "visual_confidence": "text_described"
@@ -210,6 +221,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_sixth_hair",
+          "sys_immortal_gu",
           "char_fang_yuan",
           "char_he_feng_yang",
           "reg_central_continent",

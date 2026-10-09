@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 678,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     678,
@@ -57,6 +57,10 @@
       "count": 3
     },
     {
+      "target": "sys_ten_big_mystical_gu",
+      "count": 2
+    },
+    {
       "target": "gu_reputation_gu",
       "count": 2
     },
@@ -69,7 +73,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_movement_killer_move",
+      "count": 1
+    },
+    {
       "target": "gu_spring_autumn_cicada",
+      "count": 1
+    },
+    {
+      "target": "move_kong_sheng_tian",
       "count": 1
     },
     {
@@ -207,7 +223,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "origin",
         "text_origin": "source_excerpt",
@@ -237,7 +253,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -245,7 +261,9 @@
           "char_fairy_li_shan",
           "char_fang_yuan",
           "char_kong_sheng_tian",
-          "gu_spring_autumn_cicada"
+          "sys_gu_immortal",
+          "gu_spring_autumn_cicada",
+          "sys_ten_big_mystical_gu"
         ]
       },
       {
@@ -271,7 +289,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "linear-speed-compare",
         "text_origin": "source_excerpt"
@@ -283,7 +301,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "mystical-gu-list-place",
         "text_origin": "source_excerpt",

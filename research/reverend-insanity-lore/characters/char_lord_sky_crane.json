@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 190,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     190,
@@ -37,6 +37,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -213,11 +225,19 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_blood_sea_ancestor",
       "count": 2
     },
     {
       "target": "loc_qing_mao_mountain",
+      "count": 2
+    },
+    {
+      "target": "sys_ironbeak_flying_crane",
       "count": 2
     },
     {
@@ -237,7 +257,19 @@
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_blood_curtain_skyflower_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_blood_sea_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_blood_sea_true_inheritance",
       "count": 1
     },
     {
@@ -281,6 +313,18 @@
       "count": 1
     },
     {
+      "target": "evt_arc_gu_yue_clan_conflict",
+      "count": 1
+    },
+    {
+      "target": "sys_northern_dark_ice_soul_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_bloodkin_worm_gu",
       "count": 1
     },
@@ -321,6 +365,10 @@
       "count": 1
     },
     {
+      "target": "inh_hu_immortal_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_little_hu_immortal",
       "count": 1
     },
@@ -354,6 +402,10 @@
     },
     {
       "target": "char_lord_tiger_demon",
+      "count": 1
+    },
+    {
+      "target": "race_rockmen",
       "count": 1
     },
     {
@@ -399,6 +451,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_qing_mao_mountain",
+        "sys_gu_master",
         "gu_kinship_bloodworm",
         "loc_gu_yue_village"
       ]
@@ -440,6 +493,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_ironbeak_flying_crane",
         "char_gu_yue_bo",
         "fac_gu_masters"
       ]
@@ -451,7 +505,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "name-and-past",
       "text_origin": "source_excerpt",
@@ -471,13 +525,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "report-and-pupil",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_he_feng_yang",
         "char_fang_zheng",
+        "sys_gu_worms",
         "gu_demonic_blood_skull_gu"
       ]
     },
@@ -488,7 +543,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soul-in-the-flea",
       "text_origin": "source_excerpt",
@@ -503,7 +558,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hu-immortal-climb",
       "text_origin": "source_excerpt",
@@ -558,7 +613,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Immortal Crane Sect as of ch. 192",
@@ -585,7 +640,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": null,

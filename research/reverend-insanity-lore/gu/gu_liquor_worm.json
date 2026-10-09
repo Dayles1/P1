@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 7,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     7,
@@ -92,6 +92,10 @@
       "count": 2
     },
     {
+      "target": "sys_monkey_wine",
+      "count": 2
+    },
+    {
       "target": "gu_four_flavors_liquor_worm",
       "count": 2
     },
@@ -104,11 +108,35 @@
       "count": 2
     },
     {
+      "target": "evt_arc_gu_yue_village",
+      "count": 1
+    },
+    {
       "target": "char_gu_yue_chi_lian",
       "count": 1
     },
     {
       "target": "char_jiang_ya",
+      "count": 1
+    },
+    {
+      "target": "sys_aperture",
+      "count": 1
+    },
+    {
+      "target": "sys_green_copper_primeval_essence",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_primeval_sea",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     },
     {
@@ -124,7 +152,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "res_rice_wine",
+      "count": 1
+    },
+    {
+      "target": "sys_initial_stage",
+      "count": 1
+    },
+    {
+      "target": "sys_middle_stage",
+      "count": 1
+    },
+    {
       "target": "gu_black_boar_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_aperture_wall",
       "count": 1
     },
     {
@@ -156,11 +204,27 @@
       "count": 1
     },
     {
+      "target": "sys_upper_stage",
+      "count": 1
+    },
+    {
+      "target": "sys_support_gu",
+      "count": 1
+    },
+    {
       "target": "fac_medicine_hall",
       "count": 1
     },
     {
+      "target": "sys_gu_fusion",
+      "count": 1
+    },
+    {
       "target": "res_honey_wine",
+      "count": 1
+    },
+    {
+      "target": "sys_red_steel_primeval_essence",
       "count": 1
     },
     {
@@ -173,6 +237,10 @@
     },
     {
       "target": "gu_cleansing_water_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_flower_wine_monk_inheritance",
       "count": 1
     },
     {
@@ -205,6 +273,10 @@
     },
     {
       "target": "char_wine_emperor",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -291,7 +363,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank",
         "text_origin": "source_excerpt"
@@ -303,7 +375,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank",
         "text_origin": "source_excerpt"
@@ -315,7 +387,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank",
         "text_origin": "source_excerpt",
@@ -344,7 +416,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -356,7 +428,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -368,7 +440,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -386,10 +458,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Fang Yuan feeds a tenth of his initial stage essence into the worm; the worm returns liquor mist; a second tenth of essence passes through that mist and comes out halved in volume but middle stage in quality.",
@@ -398,7 +473,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -410,7 +485,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -422,7 +497,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -434,7 +509,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -446,7 +521,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -458,7 +533,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -470,7 +545,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -482,7 +557,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -494,7 +569,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -506,7 +581,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -518,12 +593,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
           "res_green_bamboo_wine",
+          "sys_monkey_wine",
           "res_honey_wine"
         ]
       }
@@ -549,7 +625,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fusion",
         "text_origin": "source_excerpt",
@@ -599,13 +675,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_flower_wine_monk",
           "char_fang_yuan",
+          "sys_vital_gu",
           "gu_moonlight_gu"
         ]
       },
@@ -631,7 +708,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "capture-and-early-ownership",
         "text_origin": "source_excerpt"
@@ -643,7 +720,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "capture-and-early-ownership",
         "text_origin": "source_excerpt"
@@ -655,7 +732,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "capture-and-early-ownership",
         "text_origin": "source_excerpt",
@@ -680,7 +757,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "four-flavours-liquor-worm",
         "text_origin": "source_excerpt",
@@ -695,7 +772,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "four-flavours-liquor-worm",
         "text_origin": "source_excerpt"
@@ -739,7 +816,8 @@
         "section": "immortal-form",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_wine_emperor"
+          "char_wine_emperor",
+          "sys_immortal_gu"
         ]
       },
       {

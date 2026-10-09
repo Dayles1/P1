@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 743,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     743,
@@ -68,6 +68,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_zombie_alliance",
       "role": null,
@@ -90,11 +102,111 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_angry_bird",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_fire_prison",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_five_fingers_blazing_chains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_nirvana_fire",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_phoenix_feather_triple_wing_blade",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_fang_yuan_against_hei_cheng_third_battle",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 941,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_blazing_heaven_true_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
+      "target": "move_angry_bird",
+      "count": 4
+    },
+    {
       "target": "fac_zombie_alliance",
+      "count": 3
+    },
+    {
+      "target": "move_five_fingers_blazing_chains",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_hei_cheng_third_battle",
+      "count": 3
+    },
+    {
+      "target": "move_phoenix_feather_triple_wing_blade",
       "count": 3
     },
     {
@@ -102,8 +214,24 @@
       "count": 3
     },
     {
+      "target": "move_nirvana_fire",
+      "count": 3
+    },
+    {
+      "target": "inh_blazing_heaven_true_inheritance",
+      "count": 3
+    },
+    {
+      "target": "move_fire_prison",
+      "count": 2
+    },
+    {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_gu_ye",
@@ -138,6 +266,10 @@
       "count": 2
     },
     {
+      "target": "reg_earth_earth_trench",
+      "count": 2
+    },
+    {
       "target": "char_old_immortal_kong_jue",
       "count": 2
     },
@@ -166,7 +298,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_dark_flow_giant_city",
+      "count": 1
+    },
+    {
+      "target": "path_fire",
       "count": 1
     },
     {
@@ -191,6 +331,10 @@
     },
     {
       "target": "char_one_finger_flow_shark",
+      "count": 1
+    },
+    {
+      "target": "move_lower_controls_higher",
       "count": 1
     },
     {
@@ -230,7 +374,27 @@
       "count": 1
     },
     {
+      "target": "sys_fire_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "move_green_city_rampage",
+      "count": 1
+    },
+    {
+      "target": "move_orchard_garden_in_mountain",
+      "count": 1
+    },
+    {
       "target": "char_hei_cheng",
+      "count": 1
+    },
+    {
+      "target": "sys_great_grandmaster",
+      "count": 1
+    },
+    {
+      "target": "sys_blazing_glory_lightning_brilliance_physique",
       "count": 1
     },
     {
@@ -258,11 +422,27 @@
       "count": 1
     },
     {
+      "target": "path_information",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
       "count": 1
     },
     {
+      "target": "evt_arc_eastern_sea",
+      "count": 1
+    },
+    {
       "target": "loc_ascending_heaven_plain",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "move_star_fog_concealment",
       "count": 1
     },
     {
@@ -282,6 +462,10 @@
       "count": 1
     },
     {
+      "target": "inh_hei_fan_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_sixth_hair",
       "count": 1
     },
@@ -298,7 +482,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -315,13 +499,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_eastern_sea",
         "fac_yuan_tribe",
+        "sys_immortal_gu",
         "fac_zombie_alliance"
       ]
     },
@@ -332,7 +517,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -368,7 +553,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -380,7 +565,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -392,7 +577,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bo-dans-seized-sea-area",
       "text_origin": "source_excerpt",
@@ -407,13 +592,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "confrontation-at-shark-demons-palace",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_shark_demon",
-        "char_su_bai_man"
+        "char_su_bai_man",
+        "move_angry_bird"
       ]
     },
     {
@@ -423,7 +609,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "confrontation-at-shark-demons-palace",
       "text_origin": "source_excerpt"
@@ -435,7 +621,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "confrontation-at-shark-demons-palace",
       "text_origin": "source_excerpt"
@@ -447,7 +633,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eastern-sea-work-and-recall",
       "text_origin": "source_excerpt",
@@ -463,7 +649,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eastern-sea-work-and-recall",
       "text_origin": "source_excerpt",
@@ -478,10 +664,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "escort-into-earth-trench",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "reg_earth_earth_trench"
+      ]
     },
     {
       "text": "After Hei Lou Lan kills Hei Cheng, Blazing Heaven Demoness uses a fire path immortal killer move: a small flame hand pulls Hei Cheng’s immortal aperture out as a pearl that can last seven days and seven nights before fusing into a blessed land. She says the retrieval method comes from Immortal Kong Jue’s Eastern Sea inheritance, adapted into her own fire path move, and she is an extremely rare great grandmaster.",
@@ -490,7 +679,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fire-path-methods",
       "text_origin": "source_excerpt",
@@ -507,7 +696,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sabotaged-gu-refinement-and-past-defiance",
       "text_origin": "source_excerpt"
@@ -519,7 +708,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "family-and-time-path-injury",
       "text_origin": "source_excerpt",
@@ -536,7 +725,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "family-and-time-path-injury",
       "text_origin": "source_excerpt"
@@ -548,7 +737,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "body-and-hair",
       "text_origin": "source_excerpt"
@@ -560,7 +749,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "southern-border-tip-off",
       "text_origin": "source_excerpt",
@@ -576,7 +765,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "marked-for-her-attention",
       "text_origin": "source_excerpt",
@@ -591,7 +780,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "her-biggest-weakness",
       "text_origin": "source_excerpt"
@@ -603,11 +792,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fight-with-the-three-clans",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "fac_song_clan"
       ]
     },
@@ -618,7 +808,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "demanding-personality",
       "text_origin": "source_excerpt",
@@ -633,7 +823,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "left-out-of-the-new-alliance",
       "text_origin": "source_excerpt"
@@ -660,7 +850,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -675,7 +865,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -690,7 +880,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt"
@@ -702,7 +892,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fire-path-inheritance-for-hei-lou-lan",
       "text_origin": "source_excerpt"
@@ -714,7 +904,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "template-for-a-later-killer-move",
       "text_origin": "source_excerpt"
@@ -821,7 +1011,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Zombie Alliance as of ch. 743",
@@ -848,7 +1038,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

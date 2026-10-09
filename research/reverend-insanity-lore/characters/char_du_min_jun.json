@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 550,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     550,
@@ -44,12 +44,44 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_du_min_jun_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
+      "target": "inh_du_min_jun_inheritance",
+      "count": 4
+    },
+    {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "gu_amplify_effect_gu",
@@ -61,6 +93,18 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -80,11 +124,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "loc_xing_jiu_peak"
       ]
     },
@@ -95,7 +140,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "courtyard-inheritance",
       "text_origin": "source_excerpt",
@@ -110,10 +155,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "courtyard-inheritance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_worms",
+        "sys_gu_recipe"
+      ]
     },
     {
       "text": "Among the gains are emotion poetry Gu, used to store emotions and classed with painting idea Gu as a rare wisdom path Gu, plus large numbers of star path Gu worms of many types that basically cover the star path Gu of Northern Plains. He also left a set of recipes he founded: rank one a bit of star Gu, rank two brilliance of two stars Gu, rank three three stars in the sky Gu, rank four four stars cube Gu, and rank five five stars aligned Gu. That set targets star path Gu and raises their effects much like a non-mainstream amplify effect Gu, with higher success rates and common refinement materials.",
@@ -122,7 +171,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "star-gu-and-recipes",
       "text_origin": "source_excerpt",
@@ -139,7 +188,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "star-gu-and-recipes",
       "text_origin": "source_excerpt"
@@ -154,7 +203,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "inheritance-merger",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_du_min_jun_inheritance"
+      ]
     }
   ],
   "conflicts": [],
@@ -194,7 +246,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "righteous path as of ch. 551",
@@ -221,7 +273,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": "righteous path as of ch. 551",

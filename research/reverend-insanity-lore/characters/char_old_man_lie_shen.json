@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1799,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1799,
@@ -31,8 +31,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_western_desert",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -65,8 +89,20 @@
       "count": 2
     },
     {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_zheng_jing_shen",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     },
     {
       "target": "fac_fang_clan",
@@ -108,7 +144,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "madness-and-disappearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "After Wan Liang Han’s death, Wan clan’s first supreme elder says they can be certain Suan Bu Jin is Old Man Lie Shen’s inheritor and that the bloody debt Old Man Lie Shen owes will be paid by him. Placing that crime on Fang Yuan gives Western Desert righteous path forces an excuse to move against Fang clan. Fang clan answers by declaring they will protect Fang Yuan and prove his origin relates to Zheng Jing Shen instead.",
@@ -160,7 +199,7 @@
     "Paths": {
       "text": "Wisdom path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Western Desert",
@@ -170,7 +209,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Wan Clan as of ch. 1799",
@@ -192,12 +231,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Unknown",
     "alignment": null,

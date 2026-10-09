@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 765,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     765
@@ -44,6 +44,14 @@
     },
     {
       "target": "char_xue_song_zi",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -136,7 +144,9 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_immortal",
           "char_chanyu_zhong_er",
+          "sys_immortal_gu",
           "char_hei_cheng",
           "char_xue_song_zi",
           "char_fairy_jiang_yu"

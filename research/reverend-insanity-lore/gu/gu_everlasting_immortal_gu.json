@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 468,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     468,
@@ -55,11 +55,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
       "target": "char_feng_jin_huang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -176,11 +184,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_bai_ning_bing",
           "char_old_man_yan_shi"
         ]
@@ -192,13 +201,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "transformation-path-method",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "char_feng_jin_huang"
+          "char_feng_jin_huang",
+          "sys_gu_immortal"
         ]
       },
       {
@@ -208,7 +218,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "revival-method",
         "text_origin": "source_excerpt",
@@ -223,7 +233,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "complete-transformation",
         "text_origin": "source_excerpt",

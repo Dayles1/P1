@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 937,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     937,
@@ -49,8 +49,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_formation",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -99,6 +123,14 @@
       "count": 2
     },
     {
+      "target": "path_formation",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_lady_wan_shou",
       "count": 2
     },
@@ -116,6 +148,10 @@
     },
     {
       "target": "char_ma_hong_yun",
+      "count": 2
+    },
+    {
+      "target": "sys_super_gu_formation",
       "count": 2
     },
     {
@@ -155,6 +191,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_snowy_mountain",
       "count": 1
     },
@@ -163,11 +207,23 @@
       "count": 1
     },
     {
+      "target": "house_regret_pool",
+      "count": 1
+    },
+    {
       "target": "char_space_extremity",
       "count": 1
     },
     {
       "target": "char_time_extremity",
+      "count": 1
+    },
+    {
+      "target": "sys_fate_reversing_sacrificial_refinement_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -187,7 +243,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "house_calamity_luck_altar",
+      "count": 1
+    },
+    {
       "target": "loc_door_of_life_and_death",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 1
     },
     {
@@ -200,6 +268,10 @@
     },
     {
       "target": "reg_southern_border",
+      "count": 1
+    },
+    {
+      "target": "sys_five_regional_limit_formation",
       "count": 1
     },
     {
@@ -223,13 +295,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_formation",
         "loc_snowy_mountain",
         "char_old_ancestor_xue_hu",
+        "sys_gu_immortal",
         "reg_northern_plains",
         "char_lady_wan_shou"
       ]
@@ -241,7 +315,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -257,7 +331,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "prior-life-death",
       "text_origin": "source_excerpt",
@@ -273,10 +347,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "regret-pool-mimic",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_regret_pool"
+      ]
     },
     {
       "text": "Hair Mistress tells Central Continent Gu Immortals that Old Ancestor Xue Hu invited Sun Ming Lu to arrange a super Gu formation in Snowy Mountain blessed land. With the snowy peak lords as formation cores, it links to Reverse Flow River. Invaders must charge peak by peak. Peak lords receive amplification so rank six can display rank seven strength, while charging Gu Immortals are suppressed. The formation isolates inside from outside, blocks connection to treasure yellow heaven, lets only Old Ancestor Xue Hu contact the peak lords, and keeps peak lords from talking to each other. Hair Mistress also guesses peak lords can only defend from their main halls and cannot leave their peaks.",
@@ -285,12 +362,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "snowy-mountain-defense",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_hair_mistress",
+        "sys_super_gu_formation",
         "loc_reverse_flow_river"
       ]
     },
@@ -301,12 +379,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fate-reversing-formation",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_zhao_lian_yun",
+        "sys_immortal_gu",
         "char_ma_hong_yun"
       ]
     },
@@ -317,7 +396,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "longevity-heaven-black-extremity",
       "text_origin": "source_excerpt",
@@ -325,6 +404,7 @@
         "char_south_desolation_immortal",
         "fac_longevity_heaven",
         "fac_eight_extremities",
+        "house_calamity_luck_altar",
         "char_five_elements_grandmaster",
         "char_flood_extremity"
       ]
@@ -336,7 +416,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "longevity-heaven-black-extremity",
       "text_origin": "source_excerpt"
@@ -348,7 +428,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "longevity-heaven-black-extremity",
       "text_origin": "source_excerpt"
@@ -360,7 +440,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "longevity-heaven-black-extremity",
       "text_origin": "source_excerpt"
@@ -411,10 +491,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reverse-flow-river-channel",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "He later tells Flood Extremity this is not true control: he dug a river channel and lets Reverse Flow River move in it, so they can influence its direction. When they collect the river, the sub formation will be destroyed.",
@@ -423,7 +506,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reverse-flow-river-channel",
       "text_origin": "source_excerpt"
@@ -435,7 +518,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reverse-flow-river-channel",
       "text_origin": "source_excerpt",
@@ -452,7 +535,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reverse-flow-river-channel",
       "text_origin": "source_excerpt"
@@ -546,7 +629,7 @@
     "Paths": {
       "text": "Formation path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Northern Plains",
@@ -556,7 +639,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Longevity Heaven as of ch. 1270 Eight Extremities as of ch. 1280",
@@ -578,12 +661,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_formation"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

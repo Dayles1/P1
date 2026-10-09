@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 365,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     365,
@@ -85,6 +85,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_spirit_affinity_house",
       "role": null,
@@ -131,6 +143,54 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_small_wishful_hand",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 853,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_ink_transformation",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 856,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_shatter_dream",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1684,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_pure_dream_reality_seeker_transformation",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1775,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -147,12 +207,32 @@
       "count": 3
     },
     {
+      "target": "move_small_wishful_hand",
+      "count": 3
+    },
+    {
+      "target": "move_ink_transformation",
+      "count": 3
+    },
+    {
       "target": "fac_heavenly_court",
+      "count": 3
+    },
+    {
+      "target": "move_shatter_dream",
+      "count": 3
+    },
+    {
+      "target": "move_pure_dream_reality_seeker_transformation",
       "count": 3
     },
     {
       "target": "reg_central_continent",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_fairy_bai_qing",
@@ -164,6 +244,10 @@
     },
     {
       "target": "char_ying_sheng_ji",
+      "count": 2
+    },
+    {
+      "target": "inh_hu_immortal_inheritance",
       "count": 2
     },
     {
@@ -180,6 +264,10 @@
     },
     {
       "target": "char_old_immortal_kong_jue",
+      "count": 2
+    },
+    {
+      "target": "sys_refinement_path_convention",
       "count": 2
     },
     {
@@ -203,6 +291,22 @@
       "count": 2
     },
     {
+      "target": "sys_dao_guardian",
+      "count": 2
+    },
+    {
+      "target": "sys_pure_dream_reality_seeker_physique",
+      "count": 2
+    },
+    {
+      "target": "house_dragon_palace",
+      "count": 2
+    },
+    {
+      "target": "evt_arc_hu_immortal_blessed_land",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -220,6 +324,10 @@
     },
     {
       "target": "char_xiao_bai_hong",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -255,6 +363,10 @@
       "count": 1
     },
     {
+      "target": "sys_mental_energy",
+      "count": 1
+    },
+    {
       "target": "gu_spring_autumn_cicada",
       "count": 1
     },
@@ -267,7 +379,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_fixed_immortal_travel",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
       "count": 1
     },
     {
@@ -279,7 +403,27 @@
       "count": 1
     },
     {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
       "target": "gu_guts_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_dream_realm",
+      "count": 1
+    },
+    {
+      "target": "sys_quasi_master_attainment",
+      "count": 1
+    },
+    {
+      "target": "sys_regional_walls",
+      "count": 1
+    },
+    {
+      "target": "sys_true_meaning",
       "count": 1
     },
     {
@@ -288,6 +432,18 @@
     },
     {
       "target": "char_song_zhong",
+      "count": 1
+    },
+    {
+      "target": "sys_dream_path_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "path_dream",
+      "count": 1
+    },
+    {
+      "target": "sys_quasi_grandmaster_attainment",
       "count": 1
     },
     {
@@ -300,6 +456,10 @@
     },
     {
       "target": "char_sun_yao",
+      "count": 1
+    },
+    {
+      "target": "sys_desolate_ancient_moon_physique",
       "count": 1
     },
     {
@@ -343,11 +503,23 @@
       "count": 1
     },
     {
+      "target": "evt_era_current",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
     {
+      "target": "house_sun_and_moon_temple",
+      "count": 1
+    },
+    {
       "target": "char_li_huang",
+      "count": 1
+    },
+    {
+      "target": "move_qi_engulfing_mountains_and_rivers",
       "count": 1
     },
     {
@@ -359,11 +531,47 @@
       "count": 1
     },
     {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_central_heaven_gate",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
+      "count": 1
+    },
+    {
+      "target": "house_star_constellation_chessboard",
+      "count": 1
+    },
+    {
       "target": "gu_fate_gu",
       "count": 1
     },
     {
+      "target": "sys_heaven_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fate_war",
+      "count": 1
+    },
+    {
+      "target": "path_shadow",
+      "count": 1
+    },
+    {
       "target": "char_diao_gui_men",
+      "count": 1
+    },
+    {
+      "target": "sys_heaven_path_dream_realm",
       "count": 1
     },
     {
@@ -379,13 +587,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_tian_ti",
+        "inh_hu_immortal_inheritance",
         "fac_ten_great_ancient_sects",
+        "sys_gu_immortal",
         "fac_spirit_affinity_house",
         "char_fang_zheng"
       ]
@@ -397,7 +607,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -409,7 +619,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reputation-among-elite-disciples",
       "text_origin": "source_excerpt",
@@ -427,7 +637,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reputation-among-elite-disciples",
       "text_origin": "source_excerpt",
@@ -442,7 +652,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reputation-among-elite-disciples",
       "text_origin": "source_excerpt",
@@ -457,7 +667,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reputation-among-elite-disciples",
       "text_origin": "source_excerpt",
@@ -472,7 +682,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "second-great-opportunity",
       "text_origin": "source_excerpt",
@@ -488,11 +698,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "second-great-opportunity",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "gu_fixed_immortal_travel"
       ]
     },
@@ -513,7 +724,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "parents-and-the-challenge",
       "text_origin": "source_excerpt",
@@ -529,7 +740,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "parents-and-the-challenge",
       "text_origin": "source_excerpt"
@@ -541,7 +752,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "parents-and-the-challenge",
       "text_origin": "source_excerpt"
@@ -553,7 +764,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "parents-and-the-challenge",
       "text_origin": "source_excerpt"
@@ -565,7 +776,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "parents-and-the-challenge",
       "text_origin": "source_excerpt",
@@ -580,7 +791,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "parents-and-the-challenge",
       "text_origin": "source_excerpt"
@@ -597,7 +808,8 @@
       "section": "parents-and-the-challenge",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_zhou_xiong_xin"
+        "char_zhou_xiong_xin",
+        "sys_gu_master"
       ]
     },
     {
@@ -607,7 +819,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "phoenix-eyes",
       "text_origin": "source_excerpt"
@@ -619,7 +831,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realms-and-refinement-path",
       "text_origin": "source_excerpt"
@@ -631,7 +843,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realms-and-refinement-path",
       "text_origin": "source_excerpt",
@@ -646,10 +858,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realms-and-refinement-path",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_the_legends_of_ren_zu"
+      ]
     },
     {
       "text": "When Fang Yuan later agrees to meet her challenge through the Refinement Path Convention, narration says her defeat made her learn dream wings’ true use early, and that dream realm exploration has already pushed her refinement path attainment to quasi-grandmaster level with Fairy Bai Qing’s care.",
@@ -658,10 +873,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realms-and-refinement-path",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_refinement_path_convention"
+      ]
     },
     {
       "text": "At the convention duel she wagers an immortal zombie revival method against a long-term guts Gu supply deal for Spirit Affinity House, because dream realm travel weakens her soul and guts Gu is among the best soul recovery methods.",
@@ -670,7 +888,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realms-and-refinement-path",
       "text_origin": "source_excerpt",
@@ -685,7 +903,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realms-and-refinement-path",
       "text_origin": "source_excerpt"
@@ -697,7 +915,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realms-and-refinement-path",
       "text_origin": "source_excerpt"
@@ -709,12 +927,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realms-and-refinement-path",
       "text_origin": "source_excerpt",
       "mentions": [
-        "reg_central_continent"
+        "reg_central_continent",
+        "sys_dream_path_mortal_gu"
       ]
     },
     {
@@ -724,7 +943,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "duke-long-and-great-dream",
       "text_origin": "source_excerpt",
@@ -754,12 +973,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "duke-long-and-great-dream",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_red_lotus_demon_venerable"
+        "char_red_lotus_demon_venerable",
+        "sys_dao_guardian"
       ]
     },
     {
@@ -788,7 +1008,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "duke-long-and-great-dream",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_pure_dream_reality_seeker_physique"
+      ]
     },
     {
       "text": "Before the open battlefield stretch she sits opposite Fairy Zi Wei under Star Constellation Chessboard, pushing deduction until she passes out. Fairy Zi Wei notes that she is only a Gu Master, not a rank eight expert, and Duke Long then praises her for improving Pure Dream Reality Seeker Physique by using results from the killer move shatter dream.",
@@ -802,7 +1025,8 @@
       "section": "fate-war-and-after",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fairy_zi_wei"
+        "char_fairy_zi_wei",
+        "house_star_constellation_chessboard"
       ]
     },
     {
@@ -827,7 +1051,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "fate-war-and-after",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_central_heaven_gate",
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "From that hidden Immortal Gu House she watches dreamy light smoke and cannot answer it with her own methods, while Spectral Soul and a controlled Fairy Zi Wei later mark her location and still refuse a quick seizure because her luck and Feng Jiu Ge’s protection make the attempt costly.",
@@ -851,7 +1079,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "fate-war-and-after",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_heaven_overseeing_tower"
+      ]
     },
     {
       "text": "After fate Gu falls she weeps in a secret underground Immortal Gu House over the wasted sacrifice.",
@@ -962,7 +1193,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fate-war-and-after",
       "text_origin": "source_excerpt"
@@ -979,6 +1210,7 @@
       "section": "fate-war-and-after",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_recipe",
         "char_lady_poison_scorpion"
       ]
     },
@@ -1076,7 +1308,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Spirit Affinity House as of ch. 365 Heavenly Court as of ch. 1440",
@@ -1103,7 +1335,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

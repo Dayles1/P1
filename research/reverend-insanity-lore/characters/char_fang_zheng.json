@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     2,
@@ -82,8 +82,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_blood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1642,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -284,6 +308,54 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_blood_kin_heart_revenge",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1939,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_blood_extraction_light",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2191,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_blood_turns_cold",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_gu_house",
+      "target": "house_demon_judgment_board",
+      "role": "board lord",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1886,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -313,6 +385,10 @@
     },
     {
       "target": "gu_blood_revenge_immortal_gu",
+      "count": 4
+    },
+    {
+      "target": "house_demon_judgment_board",
       "count": 4
     },
     {
@@ -352,8 +428,28 @@
       "count": 3
     },
     {
+      "target": "move_blood_turns_cold",
+      "count": 3
+    },
+    {
+      "target": "move_blood_kin_heart_revenge",
+      "count": 3
+    },
+    {
+      "target": "move_blood_extraction_light",
+      "count": 3
+    },
+    {
       "target": "reg_southern_border",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
+      "target": "path_blood",
+      "count": 1
     },
     {
       "target": "char_fang_yuan",
@@ -361,6 +457,14 @@
     },
     {
       "target": "char_gu_yue_bo",
+      "count": 2
+    },
+    {
+      "target": "sys_a_grade",
+      "count": 2
+    },
+    {
+      "target": "sys_awakening_ceremony",
       "count": 2
     },
     {
@@ -440,6 +544,18 @@
       "count": 2
     },
     {
+      "target": "evt_arc_gu_yue_village",
+      "count": 2
+    },
+    {
+      "target": "sys_aperture_and_primeval_essence",
+      "count": 1
+    },
+    {
+      "target": "sys_c_grade",
+      "count": 1
+    },
+    {
       "target": "loc_gu_yue_village",
       "count": 1
     },
@@ -476,6 +592,10 @@
       "count": 1
     },
     {
+      "target": "sys_ranks_and_realms",
+      "count": 1
+    },
+    {
       "target": "fac_chi_family",
       "count": 1
     },
@@ -484,11 +604,19 @@
       "count": 1
     },
     {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
     {
       "target": "fac_mo_family",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     },
     {
@@ -501,6 +629,10 @@
     },
     {
       "target": "char_gu_yue_mo_bei",
+      "count": 1
+    },
+    {
+      "target": "sys_moonblade",
       "count": 1
     },
     {
@@ -536,6 +668,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_fusion",
+      "count": 1
+    },
+    {
       "target": "gu_moonlight_treasure_king_gu",
       "count": 1
     },
@@ -553,6 +689,10 @@
     },
     {
       "target": "gu_signal_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_gu_yue_qing_shu_and_gu_yue_yao_hong_against_bai_ning_bing",
       "count": 1
     },
     {
@@ -577,6 +717,10 @@
     },
     {
       "target": "char_xiong_jiao_man",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_third_battle",
       "count": 1
     },
     {
@@ -608,7 +752,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -639,12 +783,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "sys_awakening_ceremony",
+        "char_fang_yuan",
+        "sys_a_grade"
       ]
     },
     {
@@ -654,7 +800,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -666,7 +812,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -678,7 +824,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -690,7 +836,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -702,7 +848,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -714,7 +860,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -726,7 +872,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -738,7 +884,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -762,7 +908,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "origins",
       "text_origin": "source_excerpt"
@@ -774,7 +920,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "academy-and-gu-yue-years",
       "text_origin": "source_excerpt"
@@ -786,7 +932,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "academy-and-gu-yue-years",
       "text_origin": "source_excerpt",
@@ -801,7 +947,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "academy-and-gu-yue-years",
       "text_origin": "source_excerpt",
@@ -816,7 +962,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "academy-and-gu-yue-years",
       "text_origin": "source_excerpt"
@@ -828,11 +974,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "academy-and-gu-yue-years",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_vital_gu",
         "char_gu_yue_bo"
       ]
     },
@@ -843,7 +990,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "academy-and-gu-yue-years",
       "text_origin": "source_excerpt",
@@ -859,7 +1006,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "academy-and-gu-yue-years",
       "text_origin": "source_excerpt"
@@ -871,7 +1018,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "academy-and-gu-yue-years",
       "text_origin": "source_excerpt"
@@ -883,7 +1030,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "academy-and-gu-yue-years",
       "text_origin": "source_excerpt"
@@ -895,7 +1042,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "academy-and-gu-yue-years",
       "text_origin": "source_excerpt"
@@ -907,7 +1054,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "academy-and-gu-yue-years",
       "text_origin": "source_excerpt"
@@ -919,12 +1066,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "academy-and-gu-yue-years",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_tie_ruo_nan"
+        "char_tie_ruo_nan",
+        "sys_demonic_path"
       ]
     },
     {
@@ -934,7 +1082,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "academy-and-gu-yue-years",
       "text_origin": "source_excerpt"
@@ -946,7 +1094,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-qing-mao-mountain",
       "text_origin": "source_excerpt"
@@ -958,7 +1106,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-qing-mao-mountain",
       "text_origin": "source_excerpt",
@@ -975,7 +1123,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-qing-mao-mountain",
       "text_origin": "source_excerpt",
@@ -990,7 +1138,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-qing-mao-mountain",
       "text_origin": "source_excerpt",
@@ -1008,7 +1156,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-qing-mao-mountain",
       "text_origin": "source_excerpt",
@@ -1023,7 +1171,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-qing-mao-mountain",
       "text_origin": "source_excerpt"
@@ -1035,7 +1183,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-qing-mao-mountain",
       "text_origin": "source_excerpt",
@@ -1060,7 +1208,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "middle-examination",
       "text_origin": "source_excerpt",
@@ -1075,7 +1223,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "middle-examination",
       "text_origin": "source_excerpt"
@@ -1087,7 +1235,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "middle-examination",
       "text_origin": "source_excerpt",
@@ -1102,12 +1250,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "crane-work-on-fei-he",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fairy_bai_hu",
+        "sys_gu_master",
         "loc_fei_he_mountain",
         "gu_five_hole_jade_flute_gu"
       ]
@@ -1119,11 +1268,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-hu-immortal-attempt",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
+        "sys_gu_worms",
         "char_he_feng_yang"
       ]
     },
@@ -1134,7 +1285,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-hu-immortal-attempt",
       "text_origin": "source_excerpt"
@@ -1146,7 +1297,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-captivity",
       "text_origin": "source_excerpt",
@@ -1161,7 +1312,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-captivity",
       "text_origin": "source_excerpt"
@@ -1173,7 +1324,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-captivity",
       "text_origin": "source_excerpt",
@@ -1188,7 +1339,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-captivity",
       "text_origin": "source_excerpt",
@@ -1204,7 +1355,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-captivity",
       "text_origin": "source_excerpt",
@@ -1220,7 +1371,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-captivity",
       "text_origin": "source_excerpt",
@@ -1235,7 +1386,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-and-captivity",
       "text_origin": "source_excerpt",
@@ -1250,7 +1401,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "black-hair-kingdom-martial-contest",
       "text_origin": "source_excerpt",
@@ -1267,7 +1418,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "black-hair-kingdom-martial-contest",
       "text_origin": "source_excerpt"
@@ -1285,7 +1436,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_feng_jiu_ge",
-        "reg_central_continent"
+        "reg_central_continent",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -1325,7 +1477,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "central-continent-return",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_heavens_will"
+      ]
     },
     {
       "text": "Qin Ding Ling later backs him as the next Demon Judgment Board Lord. He becomes the disciple of Red Heart Traveler inside Demon Judgment Board, and when that master leaves, Fang Zheng is told to take over as Demon Judgment Board Lord.",
@@ -1340,7 +1495,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_qin_ding_ling",
-        "char_red_heart_traveler"
+        "char_red_heart_traveler",
+        "house_demon_judgment_board"
       ]
     },
     {
@@ -1377,7 +1533,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "leadership-succession",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_crazed_demon_formation"
+      ]
     },
     {
       "text": "Steel Thread City Lord later tells her son that Gu Yue Fang Zheng was once a human slave she owned, then escaped and became a renowned demonic path Gu Master expert.",
@@ -1480,7 +1639,7 @@
     "Paths": {
       "text": "Blood path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Southern Border",
@@ -1490,7 +1649,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Gu Yue Clan as of ch. 2 Immortal Crane Sect as of ch. 211",
@@ -1542,12 +1701,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_blood"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

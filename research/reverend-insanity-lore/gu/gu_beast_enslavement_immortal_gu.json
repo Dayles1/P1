@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 463,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     463,
@@ -102,6 +102,18 @@
       "count": 3
     },
     {
+      "target": "sys_beast_emperor",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_lang_ya_blessed_land",
       "count": 1
     },
@@ -115,6 +127,18 @@
     },
     {
       "target": "loc_hu_immortal_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "sys_ancient_desolate_beast",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_trench",
       "count": 1
     },
     {
@@ -220,7 +244,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-naming",
         "text_origin": "source_excerpt",
@@ -264,11 +288,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_long_hair_ancestor"
         ]
       }
@@ -298,7 +323,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "only-one-immortal-gu",
         "text_origin": "source_excerpt",
@@ -360,13 +385,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "loc_lang_ya_blessed_land"
+          "loc_lang_ya_blessed_land",
+          "sys_gu_recipe"
         ]
       },
       {
@@ -376,7 +402,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "borrowed-beasts-at-hu-immortal",
         "text_origin": "source_excerpt",
@@ -391,7 +417,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "borrowed-beasts-at-hu-immortal",
         "text_origin": "source_excerpt",
@@ -419,7 +445,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "only-one-immortal-gu",
         "text_origin": "source_excerpt"
@@ -431,7 +457,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "only-one-immortal-gu",
         "text_origin": "source_excerpt",
@@ -446,7 +472,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "only-one-immortal-gu",
         "text_origin": "source_excerpt"
@@ -461,7 +487,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "only-one-immortal-gu",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "reg_earth_earth_trench",
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "Fang Yuan then borrows the rank six beast enslavement Immortal Gu from Twelfth Hair and injects green grape immortal essence to try enslaving a desolate beast snow monster.",
@@ -470,7 +500,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "only-one-immortal-gu",
         "text_origin": "source_excerpt"

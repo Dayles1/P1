@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 57,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     57,
@@ -41,6 +41,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -217,6 +229,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_gu_yue_bo",
       "count": 2
     },
@@ -233,6 +249,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_gu_yue_village",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -241,11 +261,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_bamboo_gentleman_gu",
       "count": 1
     },
     {
       "target": "loc_gu_yue_village",
+      "count": 1
+    },
+    {
+      "target": "path_time",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_gu_yue_clan_conflict",
       "count": 1
     },
     {
@@ -309,6 +341,10 @@
       "count": 1
     },
     {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_third_battle",
+      "count": 1
+    },
+    {
       "target": "char_tie_clan_leader",
       "count": 1
     },
@@ -341,12 +377,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "reg_southern_border"
+        "reg_southern_border",
+        "sys_gu_master"
       ]
     },
     {
@@ -356,7 +393,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -371,7 +408,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "unmasked-face",
       "text_origin": "source_excerpt"
@@ -383,7 +420,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hired-after-jia-jin-sheng",
       "text_origin": "source_excerpt",
@@ -400,7 +437,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "arrival-on-qing-mao-mountain",
       "text_origin": "source_excerpt",
@@ -419,7 +456,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "arrival-on-qing-mao-mountain",
       "text_origin": "source_excerpt"
@@ -431,7 +468,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "arrival-on-qing-mao-mountain",
       "text_origin": "source_excerpt"
@@ -443,7 +480,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "arrival-on-qing-mao-mountain",
       "text_origin": "source_excerpt"
@@ -455,7 +492,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "arrival-on-qing-mao-mountain",
       "text_origin": "source_excerpt",
@@ -470,7 +507,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "end-of-the-investigation",
       "text_origin": "source_excerpt",
@@ -527,7 +564,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Tie Clan as of ch. 182",
@@ -554,7 +591,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": null,

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 865,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     865,
@@ -38,14 +38,35 @@
     990,
     1291
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_feathermen",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "race_feathermen",
+      "count": 2
+    },
     {
       "target": "char_tai_bai_yun_sheng",
       "count": 2
     },
     {
       "target": "char_zheng_ling",
+      "count": 2
+    },
+    {
+      "target": "house_sacred_feather_city",
       "count": 2
     },
     {
@@ -61,11 +82,27 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "move_heavenly_wish",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
       "target": "char_white_sea_shatuo",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -93,11 +130,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_sacred_feather_city",
+        "sys_gu_immortal",
         "char_zheng_ling",
         "char_tai_bai_yun_sheng"
       ]
@@ -109,7 +148,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -121,7 +160,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "flying-speed",
       "text_origin": "source_excerpt"
@@ -133,7 +172,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "binding-agreement",
       "text_origin": "source_excerpt",
@@ -148,7 +187,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt"
@@ -160,7 +199,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -175,7 +214,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt"
@@ -187,7 +226,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "enslavement",
       "text_origin": "source_excerpt"
@@ -199,10 +238,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "enslavement",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu",
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "Slavery Immortal Gu at rank six can only enslave a rank six Gu Immortal. He takes control of Sacred Feather City. After heavenly wish he stands vigilantly in Tai Bai Yun Sheng’s blessed land. In this life he is a hidden traitor. Under his lead the feathermen move to Star Form blessed land.",
@@ -211,7 +254,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "this-life",
       "text_origin": "source_excerpt",
@@ -227,7 +270,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tailing-hei-cheng",
       "text_origin": "source_excerpt",
@@ -244,7 +287,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sent-to-western-desert",
       "text_origin": "source_excerpt",
@@ -296,7 +339,7 @@
     "Race": {
       "text": "Feathermen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Sacred Feather City as of ch. 865",
@@ -323,7 +366,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_feathermen",
     "region": null,
     "status": "Alive",
     "alignment": null,

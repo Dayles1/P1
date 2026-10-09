@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1111,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1111,
@@ -46,6 +46,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -94,6 +106,14 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
+      "target": "sys_super_gu_formation",
+      "count": 2
+    },
+    {
       "target": "loc_yi_tian_mountain",
       "count": 2
     },
@@ -126,7 +146,23 @@
       "count": 1
     },
     {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_three_tune_nine_pool_formation",
       "count": 1
     },
     {
@@ -154,11 +190,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "gu_soul_lantern_gu",
       "count": 1
     },
     {
       "target": "fac_shadow_sect",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -170,7 +214,19 @@
       "count": 1
     },
     {
+      "target": "move_yama_battlefield",
+      "count": 1
+    },
+    {
+      "target": "move_soul_search",
+      "count": 1
+    },
+    {
       "target": "fac_southern_alliance",
+      "count": 1
+    },
+    {
+      "target": "house_beacon_tower",
       "count": 1
     },
     {
@@ -182,7 +238,27 @@
       "count": 1
     },
     {
+      "target": "move_unlimited_wind",
+      "count": 1
+    },
+    {
+      "target": "move_destiny_song",
+      "count": 1
+    },
+    {
+      "target": "sys_nine_nine_consecutive_unceasing_formation",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "sys_five_regional_limit_formation",
+      "count": 1
+    },
+    {
+      "target": "inh_tao_zhu_true_inheritance",
       "count": 1
     },
     {
@@ -191,6 +267,22 @@
     },
     {
       "target": "char_chen_yi",
+      "count": 1
+    },
+    {
+      "target": "house_great_space_temple",
+      "count": 1
+    },
+    {
+      "target": "move_pure_dream_reality_seeker_transformation",
+      "count": 1
+    },
+    {
+      "target": "sys_earth_vein",
+      "count": 1
+    },
+    {
+      "target": "move_refinement_formation_rain",
       "count": 1
     },
     {
@@ -212,6 +304,22 @@
     {
       "target": "char_zhou_xiong_xin",
       "count": 1
+    },
+    {
+      "target": "move_peerless",
+      "count": 1
+    },
+    {
+      "target": "move_rumor_cage",
+      "count": 1
+    },
+    {
+      "target": "move_rumors_become_tigers",
+      "count": 1
+    },
+    {
+      "target": "path_information",
+      "count": 1
     }
   ],
   "claims": [
@@ -222,12 +330,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_southern_border",
+        "sys_super_gu_formation",
         "loc_yi_tian_mountain",
         "fac_chi_clan"
       ]
@@ -239,7 +348,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -263,12 +372,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "formation-standing",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_gu_formation",
+        "sys_gu_immortal",
         "reg_central_continent"
       ]
     },
@@ -279,7 +390,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chi-shangs-near-death-regret",
       "text_origin": "source_excerpt",
@@ -310,7 +421,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "cultivation-rank",
       "text_origin": "source_excerpt"
@@ -322,7 +433,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "one-controller-for-two-layers",
       "text_origin": "source_excerpt",
@@ -338,12 +449,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-gu-house-backup",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_wu_yong"
+        "char_wu_yong",
+        "sys_immortal_gu_house"
       ]
     },
     {
@@ -353,7 +465,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-layer-reserved-for-chi-clan",
       "text_origin": "source_excerpt",
@@ -368,7 +480,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "joins-wu-yongs-chase",
       "text_origin": "source_excerpt",
@@ -383,12 +495,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "offers-to-break-the-formation",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_plunder_shadow_earth_trench"
+        "loc_plunder_shadow_earth_trench",
+        "sys_mortal_gu"
       ]
     },
     {
@@ -421,6 +534,7 @@
       "mentions": [
         "char_wan_zi_hong",
         "char_zhou_xiong_xin",
+        "path_information",
         "char_yi_hao_fang",
         "char_ba_de"
       ]
@@ -480,7 +594,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Chi Clan as of ch. 1111",
@@ -507,7 +621,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": null,

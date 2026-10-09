@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1870,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1870,
@@ -34,6 +34,30 @@
     2121
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_information",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_su_clan",
@@ -51,6 +75,14 @@
     {
       "target": "fac_su_clan",
       "count": 4
+    },
+    {
+      "target": "path_information",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_su_qi_han",
@@ -73,6 +105,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_imperial_court",
       "count": 1
     },
@@ -82,6 +118,14 @@
     },
     {
       "target": "loc_profound_literature_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_dao_veins_famous_mountains",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -114,6 +158,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_su_qi_han",
         "loc_imperial_court"
       ]
@@ -164,7 +209,8 @@
       "section": "heavens-envy-appraisal",
       "text_origin": "source_excerpt",
       "mentions": [
-        "gu_heavens_envy_gu"
+        "gu_heavens_envy_gu",
+        "sys_immortal_gu"
       ]
     }
   ],
@@ -206,12 +252,12 @@
     "Paths": {
       "text": "Information path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Su Clan as of ch. 1870",
@@ -238,12 +284,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_information"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

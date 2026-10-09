@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 811,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     811,
@@ -81,6 +81,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "move_defending_day_and_night",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -93,11 +101,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_thunder_ghost_true_monarch",
       "count": 1
     },
     {
       "target": "rcp_myriad_self_immortal_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_central_continent_chaos",
       "count": 1
     },
     {
@@ -117,7 +133,15 @@
       "count": 1
     },
     {
+      "target": "house_calligraphy_pavilion",
+      "count": 1
+    },
+    {
       "target": "char_green_ant_ascetic",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -151,13 +175,14 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_northern_plains",
         "reg_central_continent",
+        "sys_gu_immortal",
         "char_qie_shi_min",
         "char_dong_fang_chang_fan",
         "char_old_man_tian_long",
@@ -172,7 +197,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "northern-plains-agents",
       "text_origin": "source_excerpt",
@@ -188,10 +213,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-and-rivalry-among-the-ten",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "Immortal Crane Sect and Black Heaven Temple are both named as part of Central Continent’s ten great ancient sects when Zhang Ji of Black Heaven Temple loses a competition to Old Lord Can Yang and floating life fire goes to Immortal Crane Sect. In overall strength Immortal Crane Sect is weaker than Black Heaven Temple, though Old Lord Can Yang outmatches Zhang Ji in Gu Immortal battle strength.",
@@ -222,7 +250,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_intestinal_gorge",
-        "fac_heavenly_court"
+        "fac_heavenly_court",
+        "sys_immortal_gu_house"
       ]
     },
     {

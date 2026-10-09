@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 693,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     693,
@@ -39,6 +39,18 @@
     2017
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_hei_lou_lan",
@@ -74,6 +86,10 @@
       "count": 2
     },
     {
+      "target": "path_strength",
+      "count": 2
+    },
+    {
       "target": "gu_self_strength",
       "count": 2
     },
@@ -83,6 +99,10 @@
     },
     {
       "target": "char_tai_bai_yun_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -159,7 +179,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -173,7 +195,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-path",
         "text_origin": "source_excerpt"
@@ -188,7 +210,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "rank-and-path",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "path_strength"
+        ]
       }
     ]
   },
@@ -206,7 +231,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "combat-use",
         "text_origin": "source_excerpt"
@@ -250,7 +275,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-and-trade",
         "text_origin": "source_excerpt",
@@ -266,7 +291,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-and-trade",
         "text_origin": "source_excerpt",
@@ -281,7 +306,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-and-trade",
         "text_origin": "source_excerpt"
@@ -324,7 +349,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -334,7 +359,8 @@
           "gu_flying_bear_strength_immortal_gu",
           "gu_self_strength",
           "char_fang_yuan",
-          "gu_strength_qi_gu"
+          "gu_strength_qi_gu",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -367,7 +393,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

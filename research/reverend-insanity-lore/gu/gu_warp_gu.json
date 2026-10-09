@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 385,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     385,
@@ -66,11 +66,35 @@
       "count": 2
     },
     {
+      "target": "move_infinite_search_and_lock",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_movement_gu",
+      "count": 1
+    },
+    {
       "target": "char_tie_ruo_nan",
       "count": 1
     },
     {
       "target": "char_xiao_mang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "move_torrential_light_stream",
       "count": 1
     }
   ],
@@ -150,11 +174,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "activation-and-backlash",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "char_xiao_mang",
           "char_tie_ruo_nan"
         ]
@@ -221,6 +246,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_chou_jiu",
+          "sys_gu_worms",
+          "sys_healing_gu",
+          "sys_movement_gu",
           "char_fang_yuan"
         ]
       },
@@ -234,7 +262,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "seal-under-infinite-search-and-lock",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_infinite_search_and_lock"
+        ]
       }
     ]
   },

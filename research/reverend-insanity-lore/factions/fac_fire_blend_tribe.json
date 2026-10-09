@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2113,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2113,
@@ -63,6 +63,14 @@
     },
     {
       "target": "char_lu_tong_lan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_myriad_tribes_ceremony",
       "count": 1
     }
   ],
@@ -106,7 +114,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_hei_lou_lan",
-        "char_jiao_huo"
+        "char_jiao_huo",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -121,6 +130,7 @@
       "section": "yellow-bell-subsidiary",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_myriad_tribes_ceremony",
         "fac_yellow_bell_tribe"
       ]
     },

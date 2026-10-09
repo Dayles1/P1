@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 345,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     342,
@@ -31,6 +31,18 @@
     442
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_xue_san_si",
@@ -50,6 +62,10 @@
       "count": 4
     },
     {
+      "target": "path_strength",
+      "count": 2
+    },
+    {
       "target": "gu_beast_strength_gu",
       "count": 2
     },
@@ -59,6 +75,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -100,7 +120,9 @@
     "ranks": [],
     "rank_type": "unknown",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -161,14 +183,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
           "char_xue_san_si",
-          "loc_san_cha_mountain"
+          "loc_san_cha_mountain",
+          "sys_gu_worms"
         ]
       },
       {
@@ -190,7 +213,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "phantom",
         "text_origin": "source_excerpt"
@@ -207,6 +230,7 @@
         "section": "ancient-strength-path",
         "text_origin": "source_excerpt",
         "mentions": [
+          "path_strength",
           "gu_beast_strength_gu",
           "gu_strength_gu",
           "gu_dragon_strength_gu"
@@ -218,7 +242,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

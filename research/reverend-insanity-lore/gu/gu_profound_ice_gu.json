@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 558,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     558
@@ -56,7 +56,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     },
     {
@@ -162,7 +170,8 @@
           "fac_gu_masters",
           "gu_vitality_gu",
           "char_fang_yuan",
-          "char_lang_ya_land_spirit"
+          "char_lang_ya_land_spirit",
+          "house_eighty_eight_true_yang_building"
         ]
       },
       {
@@ -175,7 +184,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "crystal-wall",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ]
   },

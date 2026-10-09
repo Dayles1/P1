@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     1,
@@ -73,6 +73,18 @@
       "from_chapter": null,
       "to_chapter": null,
       "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_dragonmen",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1227,
       "count": null,
       "confidence": "B",
       "source_id": "src_sagaofgu",
@@ -617,6 +629,162 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_future_self",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1680,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_breath_concealment_ice_pearl",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2141,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_cold_eyes",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_ice_blade_storm",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_first_battle",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 133,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_gu_yue_qing_shu_and_gu_yue_yao_hong_against_bai_ning_bing",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 140,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_second_battle",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 165,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_third_battle",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 189,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_fang_yuan_and_bai_ning_bing_against_wei_yang",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 265,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_bai_ning_bing_against_tie_dao_ku",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 298,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_bai_ning_bing_against_yan_tu",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 312,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_white_bone_inheritance",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 222,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_king_quan_inheritance",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 389,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -657,7 +825,15 @@
       "count": 3
     },
     {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_first_battle",
+      "count": 3
+    },
+    {
       "target": "gu_water_shield_gu",
+      "count": 3
+    },
+    {
+      "target": "move_ice_blade_storm",
       "count": 3
     },
     {
@@ -669,11 +845,19 @@
       "count": 3
     },
     {
+      "target": "evt_fight_gu_yue_qing_shu_and_gu_yue_yao_hong_against_bai_ning_bing",
+      "count": 3
+    },
+    {
       "target": "gu_stone_aperture_gu",
       "count": 3
     },
     {
       "target": "gu_blood_moon_gu",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_second_battle",
       "count": 3
     },
     {
@@ -686,6 +870,10 @@
     },
     {
       "target": "gu_white_form_immortal_snake",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_third_battle",
       "count": 3
     },
     {
@@ -721,6 +909,10 @@
       "count": 3
     },
     {
+      "target": "inh_white_bone_inheritance",
+      "count": 3
+    },
+    {
       "target": "gu_jade_bone_gu",
       "count": 3
     },
@@ -741,6 +933,10 @@
       "count": 3
     },
     {
+      "target": "evt_fight_fang_yuan_and_bai_ning_bing_against_wei_yang",
+      "count": 3
+    },
+    {
       "target": "gu_primeval_elder_gu",
       "count": 3
     },
@@ -754,6 +950,10 @@
     },
     {
       "target": "gu_vitality_gu",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_bai_ning_bing_against_tie_dao_ku",
       "count": 3
     },
     {
@@ -785,7 +985,15 @@
       "count": 3
     },
     {
+      "target": "evt_fight_bai_ning_bing_against_yan_tu",
+      "count": 3
+    },
+    {
       "target": "gu_dog_enslavement_gu",
+      "count": 3
+    },
+    {
+      "target": "inh_king_quan_inheritance",
       "count": 3
     },
     {
@@ -797,11 +1005,31 @@
       "count": 3
     },
     {
+      "target": "race_dragonmen",
+      "count": 3
+    },
+    {
+      "target": "move_future_self",
+      "count": 3
+    },
+    {
+      "target": "move_breath_concealment_ice_pearl",
+      "count": 3
+    },
+    {
+      "target": "move_cold_eyes",
+      "count": 2
+    },
+    {
       "target": "reg_southern_border",
       "count": 2
     },
     {
       "target": "loc_qing_mao_mountain",
+      "count": 2
+    },
+    {
+      "target": "sys_northern_dark_ice_soul_physique",
       "count": 2
     },
     {
@@ -813,7 +1041,15 @@
       "count": 2
     },
     {
+      "target": "sys_vital_gu",
+      "count": 2
+    },
+    {
       "target": "char_old_man_yan_shi",
+      "count": 2
+    },
+    {
+      "target": "house_graceful_chaotic_duel_stage",
       "count": 2
     },
     {
@@ -845,6 +1081,18 @@
       "count": 2
     },
     {
+      "target": "inh_western_desert_zombie_alliance_inheritance",
+      "count": 2
+    },
+    {
+      "target": "evt_arc_qing_mao_mountain",
+      "count": 2
+    },
+    {
+      "target": "evt_arc_bai_gu_mountain",
+      "count": 2
+    },
+    {
       "target": "char_gu_yue_bo",
       "count": 1
     },
@@ -873,6 +1121,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_black_and_white_boar_gu",
       "count": 1
     },
@@ -894,6 +1146,10 @@
     },
     {
       "target": "gu_grand_bear_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_movement_gu",
       "count": 1
     },
     {
@@ -925,10 +1181,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "He is a white haired young man in a white shirt.",
@@ -937,7 +1196,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -949,7 +1208,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -961,7 +1220,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -973,7 +1232,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -985,12 +1244,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ten-extreme-physique",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_northern_dark_ice_soul_physique"
       ]
     },
     {
@@ -1000,10 +1260,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yang-gu",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_aptitude"
+      ]
     },
     {
       "text": "Wei Yang sets frost demon Gu, snow fairy Gu, and ice crystal Gu as ice path transformation Gu. Bai Ning Bing chooses ice crystal Gu.",
@@ -1012,7 +1275,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shang-clan-city",
       "text_origin": "source_excerpt",
@@ -1030,12 +1293,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "gu-immortal",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_old_man_yan_shi"
+        "char_old_man_yan_shi",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -1060,11 +1324,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "old-man-yan-shis-pawn",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "reg_southern_border",
         "fac_shadow_sect"
       ]
@@ -1076,11 +1341,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "nameless-mountain-investigation",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu_house",
+        "house_graceful_chaotic_duel_stage",
         "loc_shadow_sect_blessed_land"
       ]
     },
@@ -1103,7 +1370,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-in-old-man-yan-shis-last-visions",
       "text_origin": "source_excerpt",
@@ -1119,7 +1386,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "cause-of-the-immortal-gu-houses-appearance",
       "text_origin": "source_excerpt"
@@ -1131,7 +1398,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bai-xiang-grotto-heaven",
       "text_origin": "source_excerpt"
@@ -1143,7 +1410,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "snow-white-form",
       "text_origin": "source_excerpt"
@@ -1155,10 +1422,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "formation-broken-at-eastern-sea",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_formation",
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "When Fang Yuan’s ancient sword dragon form corners Ying Wu Xie’s group inside a regional wall, Bai Ning Bing freezes his scales with her gaze, judging that his speed must be restricted first. A layer of her ice had already sealed his dragon mouth at the crucial moment, costing him the dragon breath that is the sword dragon transformation’s most powerful weapon and leaving Tai Bai Yun Sheng barely alive under his claws instead.",
@@ -1167,7 +1438,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "freezing-fang-yuans-dragon-scales",
       "text_origin": "source_excerpt",
@@ -1183,7 +1454,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "switching-tactics",
       "text_origin": "source_excerpt",
@@ -1198,7 +1469,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "marked-as-a-threat",
       "text_origin": "source_excerpt"
@@ -1210,10 +1481,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refusing-to-bow",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "race_minimen"
+      ]
     },
     {
       "text": "Racing through Reverse Flow River, Bai Ning Bing laughs with excitement, telling herself the river is the very route Ren Zu once traveled, that failing would still leave the trip worth it, and that dying would still leave her life worth it. Her energy runs out and the river washes her away, and she comes to no harm with Old Ancestor Xue Hu already waiting outside.",
@@ -1222,7 +1496,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reverse-flow-rivers-thrill",
       "text_origin": "source_excerpt",
@@ -1239,7 +1513,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reacting-to-perseverance-immortal-gu",
       "text_origin": "source_excerpt",
@@ -1254,12 +1528,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "doubting-the-plan",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_purple_mountain_true_monarch"
+        "char_purple_mountain_true_monarch",
+        "sys_super_gu_formation"
       ]
     },
     {
@@ -1269,7 +1544,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "black-demon-pit",
       "text_origin": "source_excerpt"
@@ -1281,7 +1556,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "training-in-the-melon-cave",
       "text_origin": "source_excerpt",
@@ -1299,7 +1574,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "killing-qiao-bo",
       "text_origin": "source_excerpt",
@@ -1314,7 +1589,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "duel-with-chai-huo-xiong",
       "text_origin": "source_excerpt",
@@ -1329,7 +1604,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ice-shatter-death",
       "text_origin": "source_excerpt"
@@ -1341,12 +1616,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reversing-her-female-body",
       "text_origin": "source_excerpt",
       "mentions": [
-        "gu_yin_yang_rotation_gu"
+        "gu_yin_yang_rotation_gu",
+        "sys_vital_gu"
       ]
     },
     {
@@ -1356,7 +1632,7 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "one-against-three",
       "text_origin": "source_excerpt"
@@ -1368,7 +1644,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "facing-wu-yong",
       "text_origin": "source_excerpt",
@@ -1383,13 +1659,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capturing-fairy-cui-bo",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fairy_cui_bo",
-        "reg_western_desert"
+        "reg_western_desert",
+        "inh_western_desert_zombie_alliance_inheritance"
       ]
     },
     {
@@ -1399,7 +1676,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soul-search-on-fairy-cui-bo",
       "text_origin": "source_excerpt",
@@ -1414,7 +1691,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "alliance-not-control",
       "text_origin": "source_excerpt"
@@ -1495,7 +1772,7 @@
     "Race": {
       "text": "Dragonmen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Bai Clan of Qing Mao Mountain as of ch. 1",
@@ -1527,7 +1804,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_dragonmen",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

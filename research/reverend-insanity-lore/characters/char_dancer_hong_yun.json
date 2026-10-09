@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1412,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1412
@@ -40,12 +40,44 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_formation_path_true_inheritance",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1414,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
+      "target": "inh_formation_path_true_inheritance",
+      "count": 3
+    },
+    {
       "target": "reg_western_desert",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_thousand_transformations_ancestor",
@@ -68,6 +100,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_life_tablet_gu",
       "count": 1
     },
@@ -80,6 +120,10 @@
       "count": 1
     },
     {
+      "target": "move_dancing_red_cloud",
+      "count": 1
+    },
+    {
       "target": "res_immemorial_desolate_beast_corpse",
       "count": 1
     },
@@ -88,11 +132,23 @@
       "count": 1
     },
     {
+      "target": "inh_western_desert_zombie_alliance_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_immortal_concubine_qing_lan",
       "count": 1
     },
     {
       "target": "char_night_temptress",
+      "count": 1
+    },
+    {
+      "target": "sys_self_cleansing_immortal_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_myriad_li_adaptation_formation",
       "count": 1
     }
   ],
@@ -104,11 +160,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "reg_western_desert",
         "char_thousand_transformations_ancestor",
         "char_fairy_cui_bo"
@@ -121,7 +178,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -133,10 +190,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "desert-beast-encounter",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_dancing_red_cloud",
+        "sys_immortal_gu"
+      ]
     }
   ],
   "conflicts": [],
@@ -179,7 +240,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -201,7 +262,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": null,

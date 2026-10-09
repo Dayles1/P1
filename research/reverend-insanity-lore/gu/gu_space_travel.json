@@ -23,12 +23,24 @@
   "first_appearance": {
     "chapter": 1608,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1608
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_space",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -46,6 +58,14 @@
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "path_space",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     },
     {
       "target": "fac_shadow_sect",
@@ -89,7 +109,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_space"
+    ],
     "path_unverified": false,
     "functional_types": [
       "movement"
@@ -170,6 +192,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_fang_yuan",
           "fac_shadow_sect"
         ]
@@ -180,7 +203,7 @@
     "Path": {
       "text": "Space Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

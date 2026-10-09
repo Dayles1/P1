@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 663,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     663,
@@ -52,6 +52,22 @@
   ],
   "co_mentions": [
     {
+      "target": "move_myriad_self",
+      "count": 3
+    },
+    {
+      "target": "move_star_soul_battlefield",
+      "count": 3
+    },
+    {
+      "target": "res_thousand_li_soul_thread",
+      "count": 3
+    },
+    {
+      "target": "res_snow_lotus_essence",
+      "count": 3
+    },
+    {
       "target": "res_flowing_fire_core",
       "count": 2
     },
@@ -72,6 +88,18 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
       "target": "gu_connect_luck",
       "count": 1
     },
@@ -81,6 +109,18 @@
     },
     {
       "target": "gu_wolf_soul_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_killer_moves",
+      "count": 1
+    },
+    {
+      "target": "sys_offensive_killer_move",
+      "count": 1
+    },
+    {
+      "target": "sys_soul_path_dao_marks",
       "count": 1
     },
     {
@@ -129,6 +169,14 @@
     },
     {
       "target": "res_gu_immortal_soul",
+      "count": 1
+    },
+    {
+      "target": "move_ghost_official_garment",
+      "count": 1
+    },
+    {
+      "target": "move_split_soul",
       "count": 1
     },
     {
@@ -200,7 +248,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -218,10 +266,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "Its refining effect is far greater than Wolf Soul Gu.",
@@ -230,7 +281,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -245,7 +296,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -257,7 +308,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -276,7 +327,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "food",
         "text_origin": "source_excerpt",
@@ -302,7 +353,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "loss-and-later-refinement",
         "text_origin": "source_excerpt",
@@ -319,7 +370,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "loss-and-later-refinement",
         "text_origin": "source_excerpt"
@@ -331,7 +382,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "loss-and-later-refinement",
         "text_origin": "source_excerpt"
@@ -343,7 +394,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "loss-and-later-refinement",
         "text_origin": "source_excerpt",
@@ -384,13 +435,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_lang_ya_land_spirit",
-          "char_fang_yuan"
+          "sys_immortal_gu",
+          "char_fang_yuan",
+          "house_eighty_eight_true_yang_building",
+          "move_split_soul"
         ]
       }
     ]

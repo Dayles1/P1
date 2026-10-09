@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 207,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     207,
@@ -49,6 +49,26 @@
     },
     {
       "target": "char_lava_crocodile",
+      "count": 1
+    },
+    {
+      "target": "sys_attack_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
       "count": 1
     },
     {
@@ -117,13 +137,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_flame_stomach_gu",
-          "gu_accumulating_ash_gu"
+          "gu_accumulating_ash_gu",
+          "sys_gu_worms"
         ]
       },
       {
@@ -149,11 +170,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_healing_gu",
+          "sys_attack_gu",
           "gu_flame_stomach_gu",
           "gu_accumulating_ash_gu"
         ]
@@ -195,7 +218,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -213,7 +236,10 @@
         "verification": "no_citation",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "The host is a lava crocodile king sunning in a valley. Fang Yuan and Bai Ning Bing judge a direct fight too hard, partly because this Gu covers the king’s attack, and they look for a way to use other beast kings against it instead.",
@@ -222,7 +248,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "lava-crocodile-king-and-lost-chance",
         "text_origin": "source_excerpt"
@@ -234,7 +260,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "lava-crocodile-king-and-lost-chance",
         "text_origin": "source_excerpt"
@@ -246,10 +272,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "lava-crocodile-king-and-lost-chance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_wild_gu"
+        ]
       },
       {
         "text": "No cited chapter after 208 names a later owner or capture of this Gu.",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 663,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     663,
@@ -33,8 +33,25 @@
     1051,
     1153
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_luck",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "path_luck",
+      "count": 1
+    },
     {
       "target": "gu_connect_luck",
       "count": 2
@@ -56,6 +73,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_lang_ya_blessed_land",
       "count": 1
     },
@@ -65,6 +90,10 @@
     },
     {
       "target": "gu_seal_luck_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_all_living_beings_luck_true_inheritance",
       "count": 1
     },
     {
@@ -109,7 +138,9 @@
     "ranks": [],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_luck"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -131,7 +162,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -155,7 +186,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -186,7 +217,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "auction-miss",
         "text_origin": "source_excerpt"
@@ -210,7 +241,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -218,7 +249,9 @@
           "loc_lang_ya_blessed_land",
           "char_lang_ya_land_spirit",
           "gu_connect_luck",
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_gu_master",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -244,7 +277,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ying-wu-xie-cannot-break-the-connection",
         "text_origin": "source_excerpt",
@@ -258,7 +291,7 @@
     "Path": {
       "text": "Luck Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

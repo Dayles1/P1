@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1542,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1542,
@@ -50,7 +50,23 @@
       "count": 2
     },
     {
+      "target": "sys_righteous_virtue_physique",
+      "count": 2
+    },
+    {
+      "target": "inh_virtue_true_inheritance",
+      "count": 2
+    },
+    {
+      "target": "move_virtuous_submission",
+      "count": 2
+    },
+    {
       "target": "char_lu_wei_yin",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
       "count": 1
     },
     {
@@ -59,6 +75,14 @@
     },
     {
       "target": "char_qing_chou",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_paradise_earth_true_inheritance",
       "count": 1
     },
     {
@@ -180,7 +204,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_lu_wei_yin",
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "inh_virtue_true_inheritance",
+          "sys_righteous_virtue_physique"
         ]
       },
       {
@@ -193,7 +219,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "full-gu-expenditure",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_virtuous_submission"
+        ]
       },
       {
         "text": "In a later year-long defensive battle in the same dream life, he saves countless mortals and Gu Masters, refines countless accumulate virtue Gu, and his reputation soars.",
@@ -222,7 +251,9 @@
         "section": "paradise-earth-portion",
         "text_origin": "source_excerpt",
         "mentions": [
-          "reg_southern_border"
+          "reg_southern_border",
+          "inh_paradise_earth_true_inheritance",
+          "sys_immortal_gu"
         ]
       },
       {

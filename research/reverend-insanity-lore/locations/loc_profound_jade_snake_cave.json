@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2325,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2325
@@ -49,6 +49,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -83,7 +87,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "profound-jade-snakes",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Fang Yuan uses a killer move to lift the whole cave from the ground and shrink it into his sovereign immortal aperture, the eleventh super resource point he has taken.",

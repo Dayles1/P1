@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1026,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1026,
@@ -52,6 +52,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_rockmen",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_shadow_sect",
       "role": null,
@@ -68,6 +80,10 @@
     {
       "target": "fac_shadow_sect",
       "count": 3
+    },
+    {
+      "target": "race_rockmen",
+      "count": 2
     },
     {
       "target": "reg_central_continent",
@@ -90,11 +106,39 @@
       "count": 2
     },
     {
+      "target": "move_spike_forest",
+      "count": 2
+    },
+    {
+      "target": "move_land_boundary",
+      "count": 2
+    },
+    {
       "target": "char_bo_qing",
       "count": 1
     },
     {
       "target": "char_qin_bai_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_abyss",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_immortal_gu",
       "count": 1
     },
     {
@@ -106,7 +150,27 @@
       "count": 1
     },
     {
+      "target": "sys_earth_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_omni_directional_travel",
+      "count": 1
+    },
+    {
+      "target": "house_regret_pool",
+      "count": 1
+    },
+    {
       "target": "loc_jade_pot_mountain",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_self",
       "count": 1
     },
     {
@@ -134,12 +198,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_ying_wu_xie"
+        "char_ying_wu_xie",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -149,15 +214,17 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_formation",
         "char_bo_qing",
         "fac_shadow_sect",
         "char_tai_bai_yun_sheng",
-        "reg_central_continent"
+        "reg_central_continent",
+        "reg_earth_earth_abyss"
       ]
     },
     {
@@ -167,12 +234,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "in-earth-abyss",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_hei_lou_lan"
+        "char_hei_lou_lan",
+        "sys_wild_immortal_gu"
       ]
     },
     {
@@ -182,7 +250,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "in-earth-abyss",
       "text_origin": "source_excerpt"
@@ -194,7 +262,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "in-earth-abyss",
       "text_origin": "source_excerpt",
@@ -209,10 +277,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "left-as-decoy",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "In the licorice regional wall he steps in front of the group, raises his right hand, and a tall and thick rock wall rises.",
@@ -221,7 +292,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rock-wall",
       "text_origin": "source_excerpt"
@@ -233,7 +304,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rock-wall",
       "text_origin": "source_excerpt",
@@ -248,10 +319,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "holds-off-year-beast",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_spike_forest"
+      ]
     },
     {
       "text": "When the group still cannot leave the regional wall, he tells the others to go ahead and says he will hold Fang Yuan back. He activates Land Boundary. His whole body emits frightening cracking sounds, as cracks start appearing everywhere on his body, and the surrounding space is cut off from the space further out.",
@@ -260,12 +334,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "holds-back-fang-yuan",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "move_land_boundary"
       ]
     },
     {
@@ -275,7 +350,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -290,7 +365,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soul",
       "text_origin": "source_excerpt"
@@ -346,7 +421,7 @@
     "Race": {
       "text": "Rockmen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shadow Sect as of ch. 1026",
@@ -373,7 +448,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_rockmen",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": null,

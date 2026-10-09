@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1690,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1690,
@@ -34,6 +34,18 @@
     {
       "type": "in_region",
       "target": "reg_eastern_sea",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -66,6 +78,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_qing_yue_an",
       "count": 2
     },
@@ -86,11 +102,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_eastern_sea_righteous_path",
       "count": 1
     },
     {
       "target": "fac_qing_yue_clan",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
       "count": 1
     },
     {
@@ -107,6 +131,10 @@
     },
     {
       "target": "char_zhang_yin",
+      "count": 1
+    },
+    {
+      "target": "sys_heaven_qi",
       "count": 1
     }
   ],
@@ -125,7 +153,9 @@
       "mentions": [
         "char_duke_long",
         "reg_eastern_sea",
+        "house_dragon_palace",
         "char_song_qi_yuan",
+        "sys_gu_immortal",
         "char_qing_yue_an",
         "fac_qing_yue_clan",
         "char_fang_yuan"
@@ -217,7 +247,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Hua Clan as of ch. 1690",
@@ -244,7 +274,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 583,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     583,
@@ -37,11 +37,23 @@
       "count": 2
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
       "target": "char_mo_yao",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -110,10 +122,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ]
   },
@@ -160,10 +175,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "house_eighty_eight_true_yang_building"
+        ]
       },
       {
         "text": "Gu Masters trapped inside battle space name Five Element Bear Skin Gu among the Gu that make fighting the flying bear alone hopeless.",
@@ -172,7 +190,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "same-fight-and-later-note",
         "text_origin": "source_excerpt",
@@ -187,7 +205,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "same-fight-and-later-note",
         "text_origin": "source_excerpt",
@@ -196,7 +214,8 @@
           "char_fang_yuan",
           "gu_battle_space_gu",
           "gu_grand_chaotic_dance_gu",
-          "gu_flying_bear_phantom_immortal_gu"
+          "gu_flying_bear_phantom_immortal_gu",
+          "sys_immortal_gu"
         ]
       }
     ]

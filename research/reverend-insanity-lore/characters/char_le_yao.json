@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1546,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1546
@@ -32,6 +32,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -64,6 +76,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_swordmaster_you_lan",
       "count": 2
     },
@@ -80,6 +96,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_longevity_heaven",
       "count": 1
     },
@@ -89,6 +109,10 @@
     },
     {
       "target": "loc_lang_ya_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "move_assimilation_wind_song",
       "count": 1
     }
   ],
@@ -137,7 +161,8 @@
       "section": "worry-over-the-raid",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_feng_jiu_ge"
+        "char_feng_jiu_ge",
+        "sys_gu_immortal"
       ]
     }
   ],
@@ -181,7 +206,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Spirit Affinity House as of ch. 1546",
@@ -208,7 +233,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1969,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1969,
@@ -31,6 +31,18 @@
     1975
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "seat",
       "target": "loc_soul_pacifying_grotto_heaven",
@@ -50,6 +62,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_lady_cold_ash",
       "count": 2
     },
@@ -58,11 +74,23 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_ice_crystal_grotto_heaven",
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "reg_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "move_extreme_ice_crystal_light_immortal_suppression_coffin",
       "count": 1
     }
   ],
@@ -105,7 +133,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "After resting in the grotto-heaven, he receives orders to hunt soul beasts again. Lady Cold Ash lets him command three thousand soul beasts with one immemorial soul beast as guardian, and her killer move lets him command that group with ease for twenty days. He is her nephew and the Gu Immortal with the best prospects to go beyond rank seven in Soul Pacifying grotto-heaven. She helps him secretly against An Chong so he can become the rank seven who receives the most support.",
@@ -147,6 +178,7 @@
       "section": "missions-under-spectral-soul",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "reg_eastern_sea"
       ]
     }
@@ -188,7 +220,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Seat": {
       "text": "Soul Pacifying grotto-heaven as of ch. 1969",
@@ -215,7 +247,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

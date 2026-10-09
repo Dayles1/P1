@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 469,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     469,
@@ -90,7 +90,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_tai_bai_yun_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
       "count": 1
     },
     {
@@ -111,8 +123,10 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_little_hu_immortal",
         "gu_gruel_mud",
+        "sys_immortal_gu",
         "char_fang_yuan"
       ]
     },
@@ -123,7 +137,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "recipes-offered-and-refused",
       "text_origin": "source_excerpt"
@@ -135,7 +149,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-mudfeets-copy",
       "text_origin": "source_excerpt",
@@ -168,6 +182,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_delight_in_water_and_mountain",
+        "sys_gu_recipe",
         "char_tai_bai_yun_sheng"
       ]
     }

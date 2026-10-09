@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2287,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2287,
@@ -46,7 +46,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_soul_beast",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_white_heaven",
       "count": 1
     },
     {
@@ -78,7 +90,15 @@
       "count": 1
     },
     {
+      "target": "reg_heaven_black_heaven",
+      "count": 1
+    },
+    {
       "target": "char_giant_sun_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -103,6 +123,7 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "reg_heaven_white_heaven",
         "char_spectral_soul_demon_venerable"
       ]
     },
@@ -168,7 +189,9 @@
       "mentions": [
         "char_fang_yuan",
         "fac_gu_masters",
-        "reg_eastern_sea"
+        "sys_soul_beast",
+        "reg_eastern_sea",
+        "sys_gu_master"
       ]
     },
     {
@@ -214,6 +237,7 @@
       "section": "remaining-territory",
       "text_origin": "source_excerpt",
       "mentions": [
+        "reg_heaven_black_heaven",
         "char_feng_jin_huang"
       ]
     },
@@ -230,6 +254,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_longevity_heaven",
+        "sys_gu_immortal",
         "char_giant_sun_immortal_venerable"
       ]
     },

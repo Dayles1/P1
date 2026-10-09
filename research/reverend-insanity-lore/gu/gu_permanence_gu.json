@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1795,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1795,
@@ -58,6 +58,10 @@
   ],
   "co_mentions": [
     {
+      "target": "house_eternal_yacht",
+      "count": 3
+    },
+    {
       "target": "char_star_constellation_immortal_venerable",
       "count": 3
     },
@@ -70,11 +74,31 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
     {
       "target": "loc_eternal_sand_cave",
+      "count": 1
+    },
+    {
+      "target": "house_three_autumn_yellow_crane_platform",
       "count": 1
     },
     {
@@ -241,7 +265,10 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_heavenly_court",
+          "sys_gu_immortal",
           "char_cong_yan",
+          "house_eternal_yacht",
+          "sys_immortal_gu",
           "loc_eternal_sand_cave"
         ]
       },
@@ -255,7 +282,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu_house",
+          "sys_mortal_gu"
+        ]
       }
     ]
   },

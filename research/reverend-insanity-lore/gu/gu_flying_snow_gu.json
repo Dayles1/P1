@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 539,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     539,
@@ -47,6 +47,10 @@
     {
       "target": "char_xi_xue",
       "count": 4
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
     },
     {
       "target": "fac_hei_tribe",
@@ -121,7 +125,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -173,14 +177,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_hei_tribe",
           "fac_ma_tribe",
-          "char_xi_xue"
+          "char_xi_xue",
+          "sys_gu_master"
         ]
       },
       {
@@ -190,7 +195,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "white-fairy-xi-xue",
         "text_origin": "source_excerpt",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 900,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     900,
@@ -36,11 +36,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
       "target": "loc_star_form_blessed_land",
       "count": 1
     },
     {
       "target": "char_old_immortal_kong_jue",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_abyss",
       "count": 1
     }
   ],
@@ -58,7 +70,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_star_form_blessed_land",
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_gu_formation"
       ]
     },
     {
@@ -85,7 +98,9 @@
       "section": "blessed-land-host",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_old_immortal_kong_jue"
+        "sys_immortal_gu",
+        "char_old_immortal_kong_jue",
+        "reg_earth_earth_abyss"
       ]
     }
   ],

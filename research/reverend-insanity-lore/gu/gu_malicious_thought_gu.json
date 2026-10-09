@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 735,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     735,
@@ -34,6 +34,18 @@
     817
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -53,11 +65,19 @@
       "count": 2
     },
     {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
       "target": "gu_delight_in_water_and_mountain",
       "count": 1
     },
     {
       "target": "gu_malicious_will_gu",
+      "count": 1
+    },
+    {
+      "target": "move_harboring_malicious_heart",
       "count": 1
     },
     {
@@ -131,7 +151,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -322,7 +344,7 @@
     "Path": {
       "text": "Wisdom Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

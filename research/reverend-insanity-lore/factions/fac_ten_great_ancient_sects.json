@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 654,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     654,
@@ -122,6 +122,10 @@
       "count": 1
     },
     {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
       "target": "loc_hu_immortal_blessed_land",
       "count": 1
     },
@@ -150,11 +154,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_lotus_sect",
       "count": 1
     },
     {
       "target": "loc_heavenly_lotus",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_path_convention",
       "count": 1
     },
     {
@@ -178,11 +194,27 @@
       "count": 1
     },
     {
+      "target": "move_reincarnation_battlefield",
+      "count": 1
+    },
+    {
       "target": "char_zhou_xiong_xin",
       "count": 1
     },
     {
+      "target": "res_round_kun_stone",
+      "count": 1
+    },
+    {
+      "target": "house_wind_cloud_manor",
+      "count": 1
+    },
+    {
       "target": "char_wan_zi_hong",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_central_continent_chaos",
       "count": 1
     },
     {
@@ -215,6 +247,10 @@
     },
     {
       "target": "reg_southern_border",
+      "count": 1
+    },
+    {
+      "target": "sys_star_array_calculation_formation",
       "count": 1
     },
     {
@@ -269,6 +305,7 @@
       "section": "plot-on-true-yang-building",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_eighty_eight_true_yang_building",
         "loc_imperial_court_blessed_land",
         "char_feng_jiu_ge",
         "loc_hu_immortal_blessed_land"
@@ -281,7 +318,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "feng-jiu-ges-standing",
       "text_origin": "source_excerpt",
@@ -302,6 +339,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_black_heaven_temple",
+        "sys_gu_immortal",
         "char_bu_fei_yan",
         "fac_heavenly_lotus_sect"
       ]
@@ -318,7 +356,9 @@
       "section": "named-member-sects",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_hong_chi_ming"
+        "house_wind_cloud_manor",
+        "char_hong_chi_ming",
+        "sys_gu_formation"
       ]
     },
     {
@@ -348,6 +388,7 @@
       "section": "refinement-path-convention",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_refinement_path_convention",
         "fac_heavenly_court",
         "fac_gu_masters"
       ]

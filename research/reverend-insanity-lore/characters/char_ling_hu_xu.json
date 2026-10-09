@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 675,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     675,
@@ -43,12 +43,28 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_western_desert",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_fang_dong_xi",
@@ -63,11 +79,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_investigative_gu",
+      "count": 1
+    },
+    {
       "target": "fac_mo_clan",
       "count": 1
     },
     {
       "target": "loc_sha_jing_oasis",
+      "count": 1
+    },
+    {
+      "target": "move_light_sand_escape",
+      "count": 1
+    },
+    {
+      "target": "path_theft",
       "count": 1
     },
     {
@@ -91,7 +123,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -109,10 +141,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hiding-from-fang-yuan",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_investigative_gu",
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "During a chaotic Gu Immortal fight at a sand heap, he sneak attacks a Fang clan immortal, laughs that the nearest carrier held many soul cores, and reads those cores as proof of Fang clan success in green ghost desert before vanishing.",
@@ -196,7 +232,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 2130",
@@ -223,7 +259,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": "demonic path as of ch. 2130",

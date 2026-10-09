@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1386,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1386
@@ -40,6 +40,10 @@
     },
     {
       "target": "char_wu_yong",
+      "count": 1
+    },
+    {
+      "target": "house_clear_jade_dripping_wind_tiny_bamboo_building",
       "count": 1
     },
     {
@@ -131,7 +135,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -139,7 +143,8 @@
           "char_wu_yong",
           "char_fairy_miao_yin",
           "char_fang_yuan",
-          "reg_southern_border"
+          "reg_southern_border",
+          "house_clear_jade_dripping_wind_tiny_bamboo_building"
         ]
       }
     ]

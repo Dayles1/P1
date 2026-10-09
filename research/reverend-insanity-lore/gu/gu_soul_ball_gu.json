@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 831,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     831
@@ -46,6 +46,14 @@
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_path_convention",
+      "count": 1
     },
     {
       "target": "fac_gu_masters",
@@ -154,13 +162,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_refinement_path_convention",
           "char_fang_yuan",
           "gu_fire_pellet_gu",
+          "sys_gu_worms",
           "gu_ghost_fire_gu",
           "fac_gu_masters"
         ]

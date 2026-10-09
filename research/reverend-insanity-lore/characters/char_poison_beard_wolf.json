@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 426,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     426,
@@ -75,6 +75,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_wolf_enslavement_gu",
       "count": 1
     },
@@ -88,6 +92,10 @@
     },
     {
       "target": "char_ge_guang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -129,6 +137,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_ge_yao",
+        "sys_gu_worms",
         "char_fang_yuan"
       ]
     },
@@ -226,6 +235,7 @@
         "fac_ge_tribe",
         "fac_gu_masters",
         "char_ge_guang",
+        "sys_gu_master",
         "gu_wolf_howl_gu"
       ]
     },

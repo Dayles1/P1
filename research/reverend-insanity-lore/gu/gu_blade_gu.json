@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 807,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     807
@@ -32,6 +32,18 @@
   "co_mentions": [
     {
       "target": "char_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_becoming_extraordinary",
+      "count": 1
+    },
+    {
+      "target": "move_thirty_eight_sealing_arts",
       "count": 1
     }
   ],
@@ -85,7 +97,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-on-ren-zu",
         "text_origin": "source_excerpt"
@@ -127,11 +139,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_the_legends_of_ren_zu",
           "char_ren_zu"
         ]
       }

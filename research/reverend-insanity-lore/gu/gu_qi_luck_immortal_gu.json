@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1126,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1126,
@@ -35,6 +35,18 @@
     1824
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_luck",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_feng_jun",
@@ -66,19 +78,51 @@
       "count": 3
     },
     {
+      "target": "move_luck_whirlwind",
+      "count": 3
+    },
+    {
+      "target": "move_qi_luck_sensation",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "path_luck",
+      "count": 2
+    },
+    {
+      "target": "house_cooking_luck_pot",
+      "count": 3
     },
     {
       "target": "gu_time_luck",
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_hei_tribe",
       "count": 1
     },
     {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
       "target": "loc_immortal_succession_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -99,6 +143,10 @@
     },
     {
       "target": "gu_unravel_mystery",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -161,7 +209,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_luck"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -175,10 +225,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-six-inventory",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "path_luck"
+        ]
       }
     ]
   },
@@ -199,7 +252,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "absorbed-into-an-immortal-gu-house",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu_house",
+          "house_cooking_luck_pot"
+        ]
       },
       {
         "text": "Cooking Luck Pot then carries Time Luck, Luck Inspection, Dog Shit Luck, Qi Luck, Connect Luck, and other Immortal Gu as basic functions of the House.",
@@ -275,12 +332,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_hei_tribe",
+          "sys_gu_master",
+          "house_eighty_eight_true_yang_building",
           "loc_immortal_succession_mountain",
           "char_feng_jun"
         ]
@@ -297,7 +356,8 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -310,7 +370,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "qi-luck-sensation",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_qi_luck_sensation",
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "Fang Yuan rebuilds Qi Luck Sensation with Unravel Mystery as a second core beside this Gu.",
@@ -319,7 +383,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "unravel-mystery-rebuild",
         "text_origin": "source_excerpt",
@@ -333,7 +397,7 @@
     "Path": {
       "text": "Luck Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

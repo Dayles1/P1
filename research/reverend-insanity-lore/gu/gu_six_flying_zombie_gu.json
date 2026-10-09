@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 569,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     185,
@@ -55,11 +55,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "char_mo_yao",
       "count": 1
     },
     {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
       "target": "gu_old_earth_chief_zombie_gu",
+      "count": 1
+    },
+    {
+      "target": "move_six_arm_heavenly_zombie_king",
       "count": 1
     },
     {
@@ -131,7 +143,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-move-structure",
         "text_origin": "source_excerpt",
@@ -207,7 +219,8 @@
         "mentions": [
           "char_fang_yuan",
           "char_mo_yao",
-          "gu_borrow_strength_gu"
+          "gu_borrow_strength_gu",
+          "sys_gu_worms"
         ]
       },
       {
@@ -232,11 +245,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "reward-version",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_eighty_eight_true_yang_building",
           "gu_old_earth_chief_zombie_gu"
         ]
       },

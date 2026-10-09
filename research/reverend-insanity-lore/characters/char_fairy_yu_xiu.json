@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2159,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2159,
@@ -34,6 +34,42 @@
     2177
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2162,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "path",
+      "target": "path_star",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2162,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -69,11 +105,27 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_endless_learning",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2163,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "gu_learning_gu",
+      "count": 4
+    },
+    {
+      "target": "move_endless_learning",
       "count": 4
     },
     {
@@ -83,6 +135,18 @@
     {
       "target": "gu_serious_gu",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
+      "target": "path_star",
+      "count": 1
+    },
+    {
+      "target": "path_wisdom",
+      "count": 1
     },
     {
       "target": "char_fairy_feng_ya",
@@ -97,11 +161,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_longevity_heaven",
       "count": 1
     },
     {
       "target": "loc_green_lotus_great_world",
+      "count": 1
+    },
+    {
+      "target": "path_weapon",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_battle_of_crazed_demon_cave",
       "count": 1
     },
     {
@@ -137,6 +213,18 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_true_meaning",
+      "count": 1
+    },
+    {
+      "target": "house_divine_emperor_city",
+      "count": 1
+    },
+    {
       "target": "char_nie_kuang_feng",
       "count": 1
     },
@@ -145,11 +233,35 @@
       "count": 1
     },
     {
+      "target": "move_lingering_poisonous_ant_plague",
+      "count": 1
+    },
+    {
       "target": "gu_talent_gu",
       "count": 1
     },
     {
+      "target": "move_heaven_envies_heroic_geniuses",
+      "count": 1
+    },
+    {
+      "target": "move_incomplete_freedom_transformation",
+      "count": 1
+    },
+    {
       "target": "char_zhan_bu_du",
+      "count": 1
+    },
+    {
+      "target": "move_heavenly_astral_cloth_robe",
+      "count": 1
+    },
+    {
+      "target": "move_yin_yang_great_killer_hands",
+      "count": 1
+    },
+    {
+      "target": "move_hu_elevation",
       "count": 1
     }
   ],
@@ -169,6 +281,7 @@
         "loc_green_lotus_great_world",
         "char_qin_ding_ling",
         "char_fang_yuan",
+        "sys_gu_immortal",
         "fac_longevity_heaven"
       ]
     },
@@ -217,7 +330,10 @@
       "section": "endurance-contest",
       "text_origin": "source_excerpt",
       "mentions": [
-        "gu_learning_gu"
+        "house_divine_emperor_city",
+        "gu_learning_gu",
+        "sys_immortal_gu",
+        "move_endless_learning"
       ]
     },
     {
@@ -280,12 +396,12 @@
     "Paths": {
       "text": "Wisdom path Star path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 2159",
@@ -301,12 +417,15 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_wisdom",
+      "path_star"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 334,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     334,
@@ -152,6 +152,10 @@
     },
     {
       "target": "fac_song_clan",
+      "count": 2
+    },
+    {
+      "target": "race_mermen",
       "count": 2
     },
     {
@@ -427,7 +431,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -439,7 +443,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -451,7 +455,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-places",
       "text_origin": "source_excerpt",
@@ -469,12 +473,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-places",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_turbulent_flow"
+        "loc_turbulent_flow",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -484,7 +489,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-places",
       "text_origin": "source_excerpt",
@@ -499,10 +504,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "resources-and-cultivation",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "Most Eastern Sea Gu Immortals cultivate water path.",
@@ -511,7 +519,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "resources-and-cultivation",
       "text_origin": "source_excerpt"
@@ -523,7 +531,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "resources-and-cultivation",
       "text_origin": "source_excerpt"
@@ -547,7 +555,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sea-areas-and-peoples",
       "text_origin": "source_excerpt",

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1208,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_new_blessed_land_crazed_demon"
   },
   "chapters_cited": [
     1208,
@@ -43,6 +43,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -74,6 +78,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_blue_light_gu",
       "count": 1
     },
@@ -100,6 +112,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_gu_formation",
         "gu_no_gu",
         "char_liu_luo"
       ]
@@ -111,7 +124,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "liu-tribe-holding",
       "text_origin": "source_excerpt",
@@ -151,7 +164,9 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_liu_yong",
-        "char_liu_chang"
+        "char_liu_chang",
+        "sys_gu_worms",
+        "sys_gu_immortal"
       ]
     }
   ],

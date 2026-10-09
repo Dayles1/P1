@@ -25,13 +25,25 @@
   "first_appearance": {
     "chapter": 1739,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1739,
     1925
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -43,12 +55,32 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_sitting_and_eating_the_mountain_empty",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1925,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
+      "target": "move_sitting_and_eating_the_mountain_empty",
+      "count": 4
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_liu_liu_liu",
@@ -63,7 +95,23 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_ye_qiao_zi",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -85,7 +133,9 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_liu_liu_liu",
-        "fac_heavenly_court"
+        "fac_heavenly_court",
+        "sys_gu_immortal",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -102,7 +152,10 @@
       "mentions": [
         "char_wan_zi_hong",
         "char_zhao_shan_he",
-        "reg_western_desert"
+        "move_sitting_and_eating_the_mountain_empty",
+        "reg_western_desert",
+        "sys_immortal_gu_house",
+        "sys_gu_worms"
       ]
     }
   ],
@@ -137,7 +190,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1739",
@@ -159,7 +212,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": null,
     "alignment": null,

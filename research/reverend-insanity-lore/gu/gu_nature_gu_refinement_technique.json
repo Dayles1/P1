@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 860,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     860,
@@ -45,6 +45,26 @@
       "count": 2
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "inh_infallible_inheritance",
+      "count": 1
+    },
+    {
+      "target": "res_success_dao_mark",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -57,7 +77,19 @@
       "count": 1
     },
     {
+      "target": "house_four_elements_square_regret_blood_refinement_pool",
+      "count": 1
+    },
+    {
       "target": "char_long_hair_ancestor",
+      "count": 1
+    },
+    {
+      "target": "move_lingering_poisonous_ant_plague",
+      "count": 1
+    },
+    {
+      "target": "path_refinement",
       "count": 1
     }
   ],
@@ -179,7 +211,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "method",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       },
       {
         "text": "Yu Mu Chun warns Ben Duo Yi that the inheritance can be studied, but a Gu Master who is not yet a Gu Immortal cannot use the method to refine Gu, because it attracts heavenly tribulations and earthly calamities. Yu Mu Chun leaves the refinement path inheritance to Ben Duo Yi for that study.",
@@ -191,7 +226,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "inheritance-and-application",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master",
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "He later combines the method with a success dao mark from the Infallible inheritance when refining a rule path Immortal Gu, and treats that pairing as enough to make success certain.",
@@ -203,7 +242,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "inheritance-and-application",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "inh_infallible_inheritance"
+        ]
       },
       {
         "text": "Lang Ya land spirit states that it inherited its main body’s special hairy man nature Gu refinement technique, which uses dao marks of heaven and earth to assist refinement. Calamities and tribulations occur, but the advantages surpass the disadvantages. It teaches Fang Yuan secrets of that technique, including Gu refinement methods and mortal killer moves for refinement work. Fang Yuan judges that if the method works, it would be far superior to the human isolation style.",
@@ -212,7 +254,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "lang-ya-teaching",
         "text_origin": "source_excerpt",
@@ -228,7 +270,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "heavens-will-route",
         "text_origin": "source_excerpt"
@@ -258,7 +300,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "four-elements-pool",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "house_four_elements_square_regret_blood_refinement_pool"
+        ]
       },
       {
         "text": "The killer move lingering poisonous ant plague contains refinement path profundity and stands at the apex of the current world’s hairy man nature Gu refinement technique. That technique uses natural dao marks of the outside world to refine Gu and raise success rate. When Fang Yuan creates the move, his attainment in the nature Gu refinement technique already surpasses Long Hair Ancestor in every aspect.",

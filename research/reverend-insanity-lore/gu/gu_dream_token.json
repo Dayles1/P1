@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1730,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1730,
@@ -78,6 +78,10 @@
       "count": 3
     },
     {
+      "target": "house_dragon_palace",
+      "count": 3
+    },
+    {
       "target": "char_wu_shuai",
       "count": 3
     },
@@ -98,6 +102,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
@@ -106,7 +114,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "res_dream_path_immortal_material",
+      "count": 1
+    },
+    {
+      "target": "move_dragonman_extermination",
       "count": 1
     },
     {
@@ -114,7 +134,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_soul_beast_token",
+      "count": 1
+    },
+    {
+      "target": "move_dream_within_dream",
+      "count": 1
+    },
+    {
+      "target": "move_dreamy_light_smoke",
+      "count": 1
+    },
+    {
+      "target": "path_dream",
+      "count": 1
+    },
+    {
+      "target": "house_myriad_year_flying_warship",
       "count": 1
     },
     {
@@ -207,6 +247,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_long_ling",
+          "sys_gu_worms",
           "gu_soul_beast_token"
         ]
       }
@@ -298,6 +339,8 @@
         "mentions": [
           "char_fairy_zi_wei",
           "char_duke_long",
+          "house_dragon_palace",
+          "sys_gu_immortal",
           "char_zhang_yin",
           "fac_heavenly_court",
           "reg_eastern_sea"
@@ -315,7 +358,9 @@
         "section": "core-immortal-gu",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_wu_shuai"
+          "char_wu_shuai",
+          "sys_immortal_gu_house",
+          "sys_immortal_gu"
         ]
       },
       {

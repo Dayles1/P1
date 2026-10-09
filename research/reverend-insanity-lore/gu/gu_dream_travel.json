@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 307,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     307,
@@ -50,6 +50,10 @@
     {
       "target": "char_lady_poison_scorpion",
       "count": 4
+    },
+    {
+      "target": "sys_movement_gu",
+      "count": 2
     },
     {
       "target": "gu_carefree_travel",
@@ -92,7 +96,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "path_dream",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -176,7 +192,8 @@
         "mentions": [
           "gu_carefree_travel",
           "gu_fixed_immortal_travel",
-          "gu_liquor_god_travel"
+          "gu_liquor_god_travel",
+          "sys_movement_gu"
         ]
       }
     ],
@@ -279,12 +296,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "holder",
         "text_origin": "source_excerpt",
         "mentions": [
           "reg_northern_plains",
+          "sys_gu_immortal",
           "char_lady_poison_scorpion",
           "loc_zi_du_blessed_land"
         ]
@@ -296,10 +314,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "dream-travel-immortal-gu-comparison",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       },
       {
         "text": "Dream Wings and Dream Travel alone are not enough to make dream path a mature path.",
@@ -308,7 +329,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "dream-path-maturity-talk",
         "text_origin": "source_excerpt"

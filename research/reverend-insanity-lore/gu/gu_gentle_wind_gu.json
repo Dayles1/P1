@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1341,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1341
@@ -55,6 +55,14 @@
     },
     {
       "target": "char_wu_du_xiu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_purple_blood_river_formation",
       "count": 1
     }
   ],
@@ -104,7 +112,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-use",
         "text_origin": "source_excerpt",
@@ -167,13 +175,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_purple_mountain_true_monarch",
-          "char_wu_yong"
+          "char_wu_yong",
+          "sys_immortal_gu"
         ]
       }
     ]

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 943,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     943,
@@ -46,8 +46,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_time",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 943,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -128,11 +152,39 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_endless_trouble",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1130,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_hei_fan_true_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "gu_attitude_gu",
+      "count": 4
+    },
+    {
+      "target": "inh_hei_fan_true_inheritance",
       "count": 4
     },
     {
@@ -156,8 +208,20 @@
       "count": 3
     },
     {
+      "target": "move_endless_trouble",
+      "count": 3
+    },
+    {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "path_time",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_blazing_heaven_demoness",
@@ -169,6 +233,10 @@
     },
     {
       "target": "char_pill_immortal",
+      "count": 2
+    },
+    {
+      "target": "move_years_grant_strength",
       "count": 2
     },
     {
@@ -196,7 +264,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_mental_energy",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_hei_cheng_third_battle",
+      "count": 1
+    },
+    {
       "target": "char_su_xian",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -224,6 +308,10 @@
       "count": 1
     },
     {
+      "target": "sys_heavenly_spirit",
+      "count": 1
+    },
+    {
       "target": "loc_immortal_succession_mountain",
       "count": 1
     },
@@ -236,7 +324,15 @@
       "count": 1
     },
     {
+      "target": "path_light",
+      "count": 1
+    },
+    {
       "target": "gu_lifespan_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_year_beast",
       "count": 1
     },
     {
@@ -256,7 +352,15 @@
       "count": 1
     },
     {
+      "target": "sys_time_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
       "count": 1
     },
     {
@@ -265,6 +369,18 @@
     },
     {
       "target": "gu_month_gu",
+      "count": 1
+    },
+    {
+      "target": "move_bountiful_year",
+      "count": 1
+    },
+    {
+      "target": "move_days_pass_like_years",
+      "count": 1
+    },
+    {
+      "target": "move_unlucky_year",
       "count": 1
     },
     {
@@ -280,11 +396,31 @@
       "count": 1
     },
     {
+      "target": "inh_sword_saint_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "res_ancient_desolate_plant",
       "count": 1
     },
     {
       "target": "loc_mini_black_heaven",
+      "count": 1
+    },
+    {
+      "target": "res_walking_meat_tree",
+      "count": 1
+    },
+    {
+      "target": "move_year_beast_summoning",
+      "count": 1
+    },
+    {
+      "target": "sys_regional_walls",
+      "count": 1
+    },
+    {
+      "target": "sys_crazed_demon_agreement",
       "count": 1
     },
     {
@@ -296,7 +432,19 @@
       "count": 1
     },
     {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
+      "count": 1
+    },
+    {
+      "target": "move_soul_beast_summoning",
+      "count": 1
+    },
+    {
       "target": "loc_qi_jue_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "move_hundred_years_harmony",
       "count": 1
     },
     {
@@ -312,7 +460,15 @@
       "count": 1
     },
     {
+      "target": "house_calamity_luck_altar",
+      "count": 1
+    },
+    {
       "target": "loc_river_of_time",
+      "count": 1
+    },
+    {
+      "target": "move_call_of_the_ancient",
       "count": 1
     }
   ],
@@ -324,7 +480,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tribes-decline",
       "text_origin": "source_excerpt",
@@ -333,6 +489,7 @@
         "char_blazing_heaven_demoness",
         "char_fairy_li_shan",
         "fac_hei_tribe",
+        "sys_gu_immortal",
         "reg_northern_plains"
       ]
     },
@@ -343,13 +500,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "granddaughter",
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_attitude_gu",
-        "char_lady_earth_mother"
+        "char_lady_earth_mother",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -359,12 +517,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-apertures",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "inh_hei_fan_true_inheritance"
       ]
     },
     {
@@ -374,7 +533,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "musical-tree-trade",
       "text_origin": "source_excerpt"
@@ -386,7 +545,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "becoming-a-heavenly-spirit",
       "text_origin": "source_excerpt"
@@ -398,7 +557,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "becoming-a-heavenly-spirit",
       "text_origin": "source_excerpt",
@@ -413,7 +572,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lifespan-gu-bequest",
       "text_origin": "source_excerpt",
@@ -429,14 +588,17 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reputation-among-rank-eight-experts",
       "text_origin": "source_excerpt",
       "mentions": [
+        "move_unlucky_year",
+        "move_years_grant_strength",
         "char_pill_immortal",
         "char_heaven_overseeing_tower_lord",
-        "fac_heavenly_court"
+        "fac_heavenly_court",
+        "house_heaven_overseeing_tower"
       ]
     },
     {
@@ -446,7 +608,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refining-years-flow-like-water",
       "text_origin": "source_excerpt"
@@ -458,7 +620,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refining-years-flow-like-water",
       "text_origin": "source_excerpt",
@@ -473,7 +635,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "year-gu-trade",
       "text_origin": "source_excerpt",
@@ -488,7 +650,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "year-gu-trade",
       "text_origin": "source_excerpt"
@@ -500,7 +662,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "year-gu-trade",
       "text_origin": "source_excerpt"
@@ -512,7 +674,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "year-gu-defenses",
       "text_origin": "source_excerpt",
@@ -528,7 +690,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ranked-below-demon-immortal-qi-jue",
       "text_origin": "source_excerpt",
@@ -562,6 +724,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_river_of_time",
+        "house_calamity_luck_altar",
         "char_gu_liu_ru"
       ]
     },
@@ -622,7 +785,7 @@
     "Paths": {
       "text": "Time path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Northern Plains",
@@ -632,7 +795,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Hei Tribe as of ch. 943",
@@ -659,12 +822,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_time"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

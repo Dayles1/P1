@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1152,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1152,
@@ -58,6 +58,22 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_red_date_immortal_essence",
+      "count": 1
+    },
+    {
       "target": "fac_shadow_sect",
       "count": 1
     },
@@ -67,6 +83,10 @@
     },
     {
       "target": "loc_treasure_yellow_heaven",
+      "count": 1
+    },
+    {
+      "target": "move_qi_luck_sensation",
       "count": 1
     }
   ],
@@ -82,9 +102,11 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_immortal_gu",
         "char_liu_qing_yu",
         "fac_shadow_sect",
         "char_ying_wu_xie",
+        "sys_gu_worms",
         "loc_hei_fan_grotto_heaven"
       ]
     },
@@ -101,7 +123,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_five_light_mountain",
-        "gu_pulling_mountain"
+        "gu_pulling_mountain",
+        "sys_mortal_gu"
       ]
     },
     {
@@ -111,7 +134,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "exit-timing",
       "text_origin": "source_excerpt"

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 192,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     192,
@@ -247,6 +247,14 @@
       "count": 3
     },
     {
+      "target": "house_white_crane_information_tower",
+      "count": 2
+    },
+    {
+      "target": "house_pine_crane_pavilion",
+      "count": 2
+    },
+    {
       "target": "loc_fei_he_mountain",
       "count": 3
     },
@@ -291,6 +299,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_blood_guillotine_gu",
       "count": 1
     },
@@ -307,7 +319,15 @@
       "count": 1
     },
     {
+      "target": "inh_blood_sea_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_qing_mao_mountain",
+      "count": 1
+    },
+    {
+      "target": "path_blood",
       "count": 1
     },
     {
@@ -319,7 +339,15 @@
       "count": 1
     },
     {
+      "target": "evt_arc_demonic_path_rise",
+      "count": 1
+    },
+    {
       "target": "char_gu_yue_dong_tu",
+      "count": 1
+    },
+    {
+      "target": "sys_ironbeak_flying_crane",
       "count": 1
     },
     {
@@ -391,6 +419,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_hu_immortal_blessed_land",
+      "count": 1
+    },
+    {
       "target": "char_fairy_bai_qing",
       "count": 1
     },
@@ -412,6 +444,10 @@
     },
     {
       "target": "char_xue_tu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -439,6 +475,14 @@
       "count": 1
     },
     {
+      "target": "inh_blood_sea_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_hu_immortal_inheritance",
+      "count": 1
+    },
+    {
       "target": "gu_flying_sword_letter_gu",
       "count": 1
     },
@@ -452,6 +496,14 @@
     },
     {
       "target": "gu_connecting_heaven_gu",
+      "count": 1
+    },
+    {
+      "target": "res_swamp_crab_corpse",
+      "count": 1
+    },
+    {
+      "target": "sys_contribution_points",
       "count": 1
     },
     {
@@ -487,11 +539,19 @@
       "count": 1
     },
     {
+      "target": "race_rockmen",
+      "count": 1
+    },
+    {
       "target": "loc_lang_ya_blessed_land",
       "count": 1
     },
     {
       "target": "gu_divine_sense_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_lone_cultivator",
       "count": 1
     },
     {
@@ -504,6 +564,10 @@
     },
     {
       "target": "gu_beggar_moth",
+      "count": 1
+    },
+    {
+      "target": "res_mirror_willow_leaves",
       "count": 1
     },
     {
@@ -523,7 +587,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -535,7 +599,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -547,7 +611,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -559,7 +623,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-naming-and-seat",
       "text_origin": "source_excerpt",
@@ -576,13 +640,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-naming-and-seat",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_qing_mao_mountain",
-        "char_he_feng_yang"
+        "char_he_feng_yang",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -592,7 +657,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-naming-and-seat",
       "text_origin": "source_excerpt",
@@ -608,7 +673,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sect-system-and-ranks",
       "text_origin": "source_excerpt",
@@ -623,7 +688,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sect-system-and-ranks",
       "text_origin": "source_excerpt",
@@ -638,7 +703,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sect-system-and-ranks",
       "text_origin": "source_excerpt"
@@ -650,7 +715,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "people-and-contests",
       "text_origin": "source_excerpt",
@@ -665,7 +730,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "people-and-contests",
       "text_origin": "source_excerpt",
@@ -680,7 +745,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "people-and-contests",
       "text_origin": "source_excerpt",
@@ -695,7 +760,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "against-southern-border-clans",
       "text_origin": "source_excerpt",
@@ -707,7 +772,8 @@
         "fac_ten_great_sects",
         "char_lei_tan",
         "char_fairy_bai_hu",
-        "char_feng_jiu_ge"
+        "char_feng_jiu_ge",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -717,7 +783,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fei-he-council",
       "text_origin": "source_excerpt",

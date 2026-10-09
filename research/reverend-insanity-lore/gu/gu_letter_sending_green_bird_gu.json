@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 406,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     406,
@@ -84,6 +84,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_immortal_crane_sect",
       "count": 1
     },
@@ -101,6 +109,14 @@
     },
     {
       "target": "char_fairy_bai_qing",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -170,7 +186,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance-and-rank",
         "text_origin": "source_excerpt"
@@ -182,7 +198,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance-and-rank",
         "text_origin": "source_excerpt"
@@ -194,11 +210,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance-and-rank",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "loc_hu_immortal_blessed_land"
         ]
       },
@@ -225,7 +242,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -237,7 +254,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -249,7 +266,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "spirit-affinity-house-reply",
         "text_origin": "source_excerpt"
@@ -322,7 +339,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -339,12 +356,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "challenge-letter-to-fang-yuan",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_gu_immortal",
           "char_feng_jin_huang"
         ]
       },
@@ -355,7 +373,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "challenge-letter-to-fang-yuan",
         "text_origin": "source_excerpt",
@@ -371,7 +389,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "held-reply-route",
         "text_origin": "source_excerpt",
@@ -398,7 +416,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "acceptance-and-sect-message",
         "text_origin": "source_excerpt"
@@ -416,7 +434,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fairy_bai_qing",
-          "reg_northern_plains"
+          "reg_northern_plains",
+          "sys_immortal_gu",
+          "sys_mortal_gu"
         ]
       }
     ]

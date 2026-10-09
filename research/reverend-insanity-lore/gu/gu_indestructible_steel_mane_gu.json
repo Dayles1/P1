@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 675,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     675,
@@ -45,11 +45,27 @@
   ],
   "co_mentions": [
     {
+      "target": "move_hair_armor",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
     {
       "target": "char_plump_lady",
+      "count": 1
+    },
+    {
+      "target": "sys_defensive_killer_move",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -125,10 +141,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-value-and-limits",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "Plump Lady cannot recognize the move four hundred years early, but she rates it stronger than her martial sand armor and worth about two and a half immortal essence stones in treasure yellow heaven.",
@@ -137,7 +156,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-value-and-limits",
         "text_origin": "source_excerpt",
@@ -207,14 +226,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
           "char_plump_lady",
-          "reg_western_desert"
+          "reg_western_desert",
+          "sys_gu_worms"
         ]
       }
     ]

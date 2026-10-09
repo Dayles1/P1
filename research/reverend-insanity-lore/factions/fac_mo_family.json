@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 21,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     6,
@@ -156,11 +156,23 @@
       "count": 1
     },
     {
+      "target": "sys_a_grade",
+      "count": 1
+    },
+    {
+      "target": "sys_awakening_ceremony",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
     {
       "target": "fac_gu_yue_clan",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     },
     {
@@ -216,6 +228,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_zheng",
+        "sys_a_grade",
+        "sys_awakening_ceremony",
         "char_gu_yue_mo_chen",
         "char_gu_yue_chi_lian",
         "char_gu_yue_bo"
@@ -234,6 +248,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_vital_gu",
         "char_gu_yue_mo_bei",
         "fac_chi_family"
       ]
@@ -245,7 +260,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "branch-inside-gu-yue",
       "text_origin": "source_excerpt",
@@ -306,7 +321,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wolf-tide-losses",
       "text_origin": "source_excerpt"

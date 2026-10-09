@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1477,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1477,
@@ -34,8 +34,25 @@
     1600,
     1615
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_food",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "path_food",
+      "count": 1
+    },
     {
       "target": "char_fang_yuan",
       "count": 1
@@ -45,11 +62,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
       "target": "char_fairy_zi_wei",
       "count": 1
     },
     {
       "target": "char_you_chan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -75,6 +100,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_gu_formation",
         "char_red_dragonfish"
       ]
     },
@@ -90,6 +116,7 @@
       "section": "market-reaction",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_you_chan"
       ]
     },
@@ -192,7 +219,7 @@
     "Paths": {
       "text": "Food path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -203,7 +230,9 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_food"
+    ],
     "aperture": null,
     "talent_grade": null
   },

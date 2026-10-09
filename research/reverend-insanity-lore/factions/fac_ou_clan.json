@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 251,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     251,
@@ -79,6 +79,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_zhang_clan",
       "count": 1
     }
@@ -128,7 +132,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "caravan-standing",
       "text_origin": "source_excerpt",
@@ -160,10 +164,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "survivors",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "Jia Long and others recast Fang Yuan and Bai Ning Bing as righteous and the Ou Clan father and son as evildoers. Fang Yuan and Bai Ning Bing’s appearance makes Zhang Clan an influential force in the caravan, while Ou Clan is thrown into the weakest position. The remaining two to three small fry are treated as nothing to worry about, and the goods held by Ou Clan seem quite substantial. Jia Long cites Ou Clan when backing a plan to offer goods to Fang Yuan and Bai Ning Bing. Chen Shuang Jin later tells his nephew that everyone saw the pair kill the Ou Clan father and son, and that witness talk is useless without strength, because the clans have different motives.",
@@ -172,7 +179,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "survivors",
       "text_origin": "source_excerpt",
@@ -188,7 +195,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "camp-talk",
       "text_origin": "source_excerpt"

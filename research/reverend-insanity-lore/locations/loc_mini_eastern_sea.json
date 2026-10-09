@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1066,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1066,
@@ -39,6 +39,10 @@
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "sys_refinement_sea",
+      "count": 2
+    },
     {
       "target": "char_fang_yuan",
       "count": 1
@@ -76,7 +80,15 @@
       "count": 1
     },
     {
+      "target": "res_oil_water",
+      "count": 1
+    },
+    {
       "target": "loc_dragon_scale_sea_area",
+      "count": 1
+    },
+    {
+      "target": "move_bountiful_year",
       "count": 1
     },
     {
@@ -85,6 +97,18 @@
     },
     {
       "target": "loc_mini_central_continent",
+      "count": 1
+    },
+    {
+      "target": "res_silent_coral",
+      "count": 1
+    },
+    {
+      "target": "res_refinement_water",
+      "count": 1
+    },
+    {
+      "target": "res_profound_eerie_wind",
       "count": 1
     },
     {
@@ -112,7 +136,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -127,7 +151,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -142,7 +166,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -154,7 +178,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "river-placement",
       "text_origin": "source_excerpt",
@@ -169,7 +193,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "boundless-aquatic-expanse",
       "text_origin": "source_excerpt"
@@ -181,7 +205,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fungi-placement-plan",
       "text_origin": "source_excerpt"
@@ -198,6 +222,7 @@
       "section": "fungi-placement-plan",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_refinement_sea",
         "loc_mini_central_continent"
       ]
     },

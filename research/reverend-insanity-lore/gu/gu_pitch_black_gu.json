@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 373,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     373,
@@ -80,7 +80,15 @@
       "count": 2
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_tie_mu_bai_against_wu_gui_and_ku_mo",
       "count": 1
     },
     {
@@ -109,6 +117,10 @@
     },
     {
       "target": "loc_hu_immortal_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     }
   ],
@@ -170,7 +182,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -236,14 +248,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_gu_masters",
           "loc_san_cha_mountain",
-          "char_wu_gui"
+          "char_wu_gui",
+          "sys_gu_worms"
         ]
       },
       {
@@ -253,7 +266,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-capture",
         "text_origin": "source_excerpt",
@@ -284,7 +297,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "left-in-hu-immortal-blessed-land",
         "text_origin": "source_excerpt",
@@ -302,12 +315,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "sealing-comparison",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_problem_nipped_in_the_bud_gu"
+          "gu_problem_nipped_in_the_bud_gu",
+          "sys_gu_master"
         ]
       }
     ]

@@ -23,15 +23,32 @@
   "first_appearance": {
     "chapter": 408,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     408,
     734,
     2084
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "char_song_zi_xing",
       "count": 2
@@ -41,11 +58,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_hu_immortal_blessed_land",
       "count": 1
     },
     {
       "target": "char_feng_jin_huang",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -61,13 +86,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_hu_immortal_blessed_land",
         "char_fang_yuan",
+        "sys_gu_immortal",
         "char_song_zi_xing"
       ]
     },
@@ -78,11 +104,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hu-immortal-blessed-land-assault",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "char_feng_jin_huang"
       ]
     },
@@ -129,7 +156,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 408",
@@ -150,7 +177,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Unknown",
     "alignment": "demonic path as of ch. 408",

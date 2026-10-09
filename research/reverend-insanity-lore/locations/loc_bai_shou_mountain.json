@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 321,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     321,
@@ -53,11 +53,23 @@
       "count": 1
     },
     {
+      "target": "sys_beast_king",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "loc_shang_clan_city",
       "count": 1
     },
     {
       "target": "char_yellow",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_trench",
       "count": 1
     }
   ],
@@ -69,10 +81,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_beast_king",
+        "sys_gu_master"
+      ]
     },
     {
       "text": "Deviation (recorded): this page uses the Southern Border region field only because the schema requires a region chip. Bai Shou mountain is named in Shang Clan City talk without a five-region seat. The chapter 1531 Southern Border pin stays in the gated section below.",
@@ -100,7 +116,8 @@
       "section": "southern-border-map-pin",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_yellow"
+        "char_yellow",
+        "reg_earth_earth_trench"
       ]
     }
   ],

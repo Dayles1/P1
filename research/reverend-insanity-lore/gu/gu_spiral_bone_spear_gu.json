@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 222,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     222,
@@ -94,11 +94,23 @@
       "count": 2
     },
     {
+      "target": "sys_attack_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_defensive_gu",
+      "count": 1
+    },
+    {
       "target": "fac_bai_clan_bai_gu_mountain",
       "count": 1
     },
     {
       "target": "gu_charred_thunder_potato_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_white_bone_inheritance",
       "count": 1
     },
     {
@@ -134,7 +146,15 @@
       "count": 1
     },
     {
+      "target": "evt_fight_fang_yuan_and_bai_ning_bing_against_wei_yang",
+      "count": 1
+    },
+    {
       "target": "char_star_lord_wan_xiang",
+      "count": 1
+    },
+    {
+      "target": "move_spiral_drill_star_spear",
       "count": 1
     }
   ],
@@ -202,7 +222,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt",
@@ -217,7 +237,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt",
@@ -232,7 +252,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -250,7 +270,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -262,11 +282,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_attack_gu",
           "gu_charred_thunder_potato_gu"
         ]
       },
@@ -295,7 +316,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "combat-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_defensive_gu"
+        ]
       },
       {
         "text": "Fang Yuan later kills Ding Hao with a thick spiral bone spear through the skull, leaving a spiral hole as the spear sits in the wound.",
@@ -319,7 +343,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "combat-use",
         "text_origin": "source_excerpt",
@@ -354,7 +378,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "feeding",
         "text_origin": "source_excerpt"
@@ -427,7 +451,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -460,7 +484,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuan-and-bai-ning-bing",
         "text_origin": "source_excerpt"
@@ -472,7 +496,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuan-and-bai-ning-bing",
         "text_origin": "source_excerpt"
@@ -484,7 +508,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuan-and-bai-ning-bing",
         "text_origin": "source_excerpt",

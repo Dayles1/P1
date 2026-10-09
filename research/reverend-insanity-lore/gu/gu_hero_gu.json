@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1947,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1947,
@@ -32,6 +32,18 @@
     2111
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_human",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_ye_fan",
@@ -49,6 +61,10 @@
     {
       "target": "char_ye_fan",
       "count": 4
+    },
+    {
+      "target": "path_human",
+      "count": 1
     },
     {
       "target": "gu_vagrant_warrior_gu",
@@ -83,7 +99,15 @@
       "count": 1
     },
     {
+      "target": "sys_refinement_path_convention",
+      "count": 1
+    },
+    {
       "target": "char_qin_ding_ling",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
       "count": 1
     },
     {
@@ -92,6 +116,10 @@
     },
     {
       "target": "char_shen_shang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     }
   ],
@@ -130,7 +158,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_human"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -151,7 +181,8 @@
         "mentions": [
           "char_qin_ding_ling",
           "gu_scholar_gu",
-          "gu_craftsman_gu"
+          "gu_craftsman_gu",
+          "sys_gu_recipe"
         ]
       },
       {
@@ -167,7 +198,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_beast_tamer_gu",
-          "char_shen_shang"
+          "char_shen_shang",
+          "sys_gu_worms"
         ]
       }
     ]
@@ -191,6 +223,7 @@
         "section": "human-transform-use",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_refinement_path_convention",
           "gu_vagrant_warrior_gu",
           "char_fang_di_chang"
         ]
@@ -258,7 +291,7 @@
     "Path": {
       "text": "Human Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

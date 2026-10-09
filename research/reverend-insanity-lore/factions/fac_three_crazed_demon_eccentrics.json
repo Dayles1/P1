@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1174,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1174,
@@ -64,6 +64,10 @@
       "count": 2
     },
     {
+      "target": "sys_crazed_demon_agreement",
+      "count": 2
+    },
+    {
       "target": "gu_derivation_gu",
       "count": 2
     },
@@ -84,11 +88,39 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_hei_fan",
       "count": 1
     },
     {
+      "target": "sys_super_gu_formation",
+      "count": 1
+    },
+    {
       "target": "gu_no_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
+      "count": 1
+    },
+    {
+      "target": "inh_limitless_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "move_do_not_care",
       "count": 1
     },
     {
@@ -104,12 +136,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_not_immortal",
+        "sys_gu_immortal",
         "char_pang_shan"
       ]
     },
@@ -120,14 +153,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
         "loc_crazed_demon_cave",
-        "char_chu_du"
+        "sys_gu_worms",
+        "char_chu_du",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -144,7 +179,9 @@
       "mentions": [
         "char_limitless_demon_venerable",
         "gu_derivation_gu",
+        "sys_super_gu_formation",
         "char_hei_fan",
+        "sys_crazed_demon_agreement",
         "gu_no_gu"
       ]
     },
@@ -155,7 +192,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "outside-world-ignored",
       "text_origin": "source_excerpt"
@@ -167,7 +204,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rock-transformation",
       "text_origin": "source_excerpt",

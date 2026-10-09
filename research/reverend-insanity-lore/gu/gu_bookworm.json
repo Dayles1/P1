@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 50,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     50,
@@ -71,6 +71,10 @@
     },
     {
       "target": "char_bai_ning_bing",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -279,7 +283,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -295,7 +299,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "prior-life-copy",
         "text_origin": "source_excerpt",
@@ -311,7 +315,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "prior-life-copy",
         "text_origin": "source_excerpt"
@@ -328,6 +332,7 @@
         "section": "inheritance-copy",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "char_chen_cui_hua",
           "char_bai_ning_bing",
           "fac_gu_masters"

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1030,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1030,
@@ -107,6 +107,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
@@ -169,7 +177,9 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_ming_tang_valley",
+        "sys_gu_immortal",
         "char_gong_sun_liang",
+        "sys_immortal_gu",
         "reg_central_continent",
         "fac_ten_great_sects"
       ]

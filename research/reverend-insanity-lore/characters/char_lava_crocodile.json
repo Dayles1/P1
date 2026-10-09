@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 207,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     207,
@@ -47,6 +47,14 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
       "count": 1
     },
     {
@@ -108,8 +116,10 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_bai_ning_bing",
+        "sys_wild_gu",
         "fac_gu_masters",
         "char_fang_yuan",
+        "sys_gu_worms",
         "gu_lava_explosion_gu",
         "gu_flame_stomach_gu",
         "gu_accumulating_ash_gu"

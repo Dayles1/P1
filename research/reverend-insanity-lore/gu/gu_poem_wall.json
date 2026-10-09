@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2023,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2023,
@@ -94,11 +94,23 @@
       "count": 2
     },
     {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
       "target": "loc_profound_literature_grotto_heaven",
       "count": 1
     },
     {
+      "target": "house_book_house",
+      "count": 1
+    },
+    {
       "target": "char_imperial_minister_su",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -158,6 +170,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_heavens_envy_gu",
+          "sys_immortal_gu",
           "char_imperial_minister_su"
         ]
       }
@@ -232,6 +245,7 @@
         "mentions": [
           "loc_profound_literature_grotto_heaven",
           "char_li_xiao_bai",
+          "sys_vital_gu",
           "gu_poetry_gu",
           "gu_poetic_gu",
           "gu_emotion_poetry_gu",
@@ -251,7 +265,8 @@
         "section": "poem-wall-luck",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "house_book_house"
         ]
       },
       {

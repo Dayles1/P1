@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1675,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1675,
@@ -35,6 +35,18 @@
     2198
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -54,7 +66,19 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_duke_mei",
+      "count": 2
+    },
+    {
+      "target": "house_dragon_soul_dark_castle",
+      "count": 2
+    },
+    {
+      "target": "house_red_heavenly_altar",
       "count": 2
     },
     {
@@ -70,6 +94,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_lady_white_rabbit",
       "count": 1
     },
@@ -78,7 +106,27 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_calamity_luck_altar",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_crazed_demon_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_heaven_path_dream_realm",
       "count": 1
     },
     {
@@ -99,6 +147,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "fac_heavenly_court",
         "char_duke_mei",
         "char_duke_long"
@@ -126,7 +175,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "awakening-and-bronze-rings",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_calamity_luck_altar"
+      ]
     },
     {
       "text": "Against Dragon Soul Dark Castle and Red Heavenly Altar he prepares a killer move: two different sized bronze rings attach to the Immortal Gu Houses, spin rapidly, and immobilize them. Lady White Rabbit gets around Duke Mei and forces him to cancel the bronze ring move to fight her. He and Duke Mei have rank eight cultivation and battle strength on par with Qin Ding Ling, without Duke Long’s pseudo venerable battle strength.",
@@ -140,6 +192,9 @@
       "section": "awakening-and-bronze-rings",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_dragon_soul_dark_castle",
+        "house_red_heavenly_altar",
+        "sys_immortal_gu_house",
         "char_lady_white_rabbit",
         "char_qin_ding_ling"
       ]
@@ -156,7 +211,8 @@
       "section": "deaths-at-book-mountain",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_zhan_bu_du"
+        "char_zhan_bu_du",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -186,7 +242,8 @@
       "section": "deaths-at-book-mountain",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_golden_hooped_great_immortal"
+        "char_golden_hooped_great_immortal",
+        "sys_crazed_demon_formation"
       ]
     }
   ],
@@ -226,7 +283,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1675",
@@ -253,7 +310,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

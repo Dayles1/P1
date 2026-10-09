@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 920,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     920,
@@ -55,11 +55,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_zombie_alliance",
       "count": 1
     },
     {
+      "target": "move_lower_controls_higher",
+      "count": 1
+    },
+    {
       "target": "reg_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "move_hundred_and_eighty_slaves",
       "count": 1
     }
   ],
@@ -77,9 +93,13 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_shark_demon",
+        "sys_gu_immortal",
         "char_su_bai_man",
         "fac_zombie_alliance",
-        "char_blazing_heaven_demoness"
+        "char_blazing_heaven_demoness",
+        "move_lower_controls_higher",
+        "move_hundred_and_eighty_slaves",
+        "sys_immortal_gu"
       ]
     },
     {

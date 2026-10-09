@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 266,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     266,
@@ -45,6 +45,10 @@
     {
       "target": "char_li_ran",
       "count": 2
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
     },
     {
       "target": "char_fang_yuan",
@@ -115,7 +119,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -133,7 +137,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "purchase-and-use",
         "text_origin": "source_excerpt",
@@ -186,6 +190,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_rainbow_light_gu",
+          "sys_gu_master",
           "gu_lightning_thoughts_gu"
         ]
       },
@@ -196,7 +201,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "tip",
         "text_origin": "source_excerpt",

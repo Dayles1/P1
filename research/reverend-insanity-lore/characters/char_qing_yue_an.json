@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1488,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1488,
@@ -44,6 +44,18 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -54,6 +66,10 @@
     {
       "target": "reg_eastern_sea",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_qing_yue_zhi_cheng",
@@ -76,6 +92,10 @@
       "count": 2
     },
     {
+      "target": "move_myriad_mountain_ranges",
+      "count": 2
+    },
+    {
       "target": "char_granny_rong",
       "count": 2
     },
@@ -92,7 +112,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_hua_clan",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
+      "count": 1
+    },
+    {
+      "target": "move_mountain_suppression",
       "count": 1
     },
     {
@@ -101,6 +133,10 @@
     },
     {
       "target": "char_flesh_whip_immortal",
+      "count": 1
+    },
+    {
+      "target": "move_broken_mirror_shard_light",
       "count": 1
     }
   ],
@@ -112,7 +148,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -149,7 +185,9 @@
         "char_hua_cai_yun",
         "fac_eastern_sea_righteous_path",
         "char_duke_long",
-        "reg_eastern_sea"
+        "house_dragon_palace",
+        "reg_eastern_sea",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -164,6 +202,7 @@
       "section": "obstructs-dragon-palace",
       "text_origin": "source_excerpt",
       "mentions": [
+        "move_myriad_mountain_ranges",
         "char_shi_miao"
       ]
     },
@@ -241,7 +280,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -263,7 +302,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

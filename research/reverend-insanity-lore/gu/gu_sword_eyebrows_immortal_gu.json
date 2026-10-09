@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 995,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     995,
@@ -76,6 +76,14 @@
     },
     {
       "target": "char_feng_jin_huang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -159,7 +167,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "form-and-effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal",
+          "sys_immortal_gu"
+        ]
       }
     ],
     "visual_confidence": "text_described"

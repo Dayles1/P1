@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1412,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1412,
@@ -92,6 +92,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_omni_directional_travel",
+      "count": 1
+    },
+    {
       "target": "char_lang_ya_land_spirit",
       "count": 1
     },
@@ -113,6 +121,10 @@
     },
     {
       "target": "char_old_ghost_bai_jun",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -141,6 +153,18 @@
     },
     {
       "target": "char_fang_di_chang",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_divine_bean_palace",
+      "count": 1
+    },
+    {
+      "target": "inh_qing_clan_inheritance",
       "count": 1
     },
     {
@@ -185,6 +209,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_omni_directional_travel",
         "char_thousand_transformations_ancestor",
         "char_ying_wu_xie"
       ]
@@ -202,6 +227,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_spectral_soul_demon_venerable",
+        "sys_gu_immortal",
         "reg_western_desert"
       ]
     },
@@ -235,6 +261,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_old_ghost_bai_jun",
+        "sys_immortal_gu",
         "gu_soul_beast_token",
         "char_fang_yun",
         "fac_fang_clan",
@@ -353,7 +380,12 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "divine-bean-palace",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_divine_bean_palace",
+        "sys_immortal_gu_house",
+        "inh_qing_clan_inheritance"
+      ]
     },
     {
       "text": "Qing clan’s first supreme elder sent the clan’s inheritance into Divine Bean Palace at the brink of destruction, concealing it, and the countless fragment souls of Qing clan’s Gu Immortals were drawn and stored into the palace. As time passed the desert slowly formed, and in that environment the soul fragments could not revive but gathered and fused into a legendary immemorial soul beast that kept the Qing surname and called itself Qing Chou.",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 357,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     357,
@@ -45,7 +45,15 @@
       "count": 2
     },
     {
+      "target": "sys_movement_gu",
+      "count": 2
+    },
+    {
       "target": "char_verdant_great_sun",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 1
     },
     {
@@ -57,7 +65,15 @@
       "count": 1
     },
     {
+      "target": "evt_legend_vanity",
+      "count": 1
+    },
+    {
       "target": "gu_cognition_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_not_knowing_ones_limits",
       "count": 1
     },
     {
@@ -74,6 +90,14 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -101,11 +125,23 @@
       "count": 1
     },
     {
+      "target": "evt_arc_three_kings_inheritance",
+      "count": 1
+    },
+    {
       "target": "gu_fixed_star_gu",
       "count": 1
     },
     {
       "target": "gu_jade_sky_gu",
+      "count": 1
+    },
+    {
+      "target": "move_infinite_search_and_lock",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_blue_heaven",
       "count": 1
     },
     {
@@ -205,7 +241,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -217,12 +253,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_ba_gui",
+          "sys_immortal_gu",
           "char_fang_yuan"
         ]
       }
@@ -239,7 +276,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -266,11 +303,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-plans",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
+          "sys_movement_gu",
           "gu_fixed_immortal_travel",
           "gu_second_aperture_gu"
         ]
@@ -298,11 +337,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_the_legends_of_ren_zu",
           "char_verdant_great_sun"
         ]
       },
@@ -313,7 +353,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "destination-flaw",
         "text_origin": "source_excerpt",

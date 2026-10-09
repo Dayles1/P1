@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1156,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1156,
@@ -53,7 +53,27 @@
       "count": 2
     },
     {
+      "target": "path_emotion",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
       "target": "char_shen_shang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     }
   ],
@@ -108,7 +128,7 @@
         ],
         "certainty": "inferred",
         "confidence": "C",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -160,7 +180,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -176,10 +196,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "pair-and-path",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "path_emotion",
+          "path_wisdom",
+          "sys_gu_immortal",
+          "sys_immortal_gu"
+        ]
       },
       {
         "text": "Shen Shang names traveling son Gu and doting mother Gu as examples of human emotion and virtue Gu among human path Gu worms. The same stretch states they were once regarded as emotion path Gu worms, but in essence were actually human path.",
@@ -193,7 +219,8 @@
         "section": "human-path-reading",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_shen_shang"
+          "char_shen_shang",
+          "sys_gu_worms"
         ]
       }
     ]

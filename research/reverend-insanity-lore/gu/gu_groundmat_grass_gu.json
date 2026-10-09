@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 799,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     799
@@ -44,6 +44,10 @@
     },
     {
       "target": "char_hei_lou_lan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -158,6 +162,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_captivating_sea",
+          "sys_gu_immortal",
           "loc_miniscule_mountain"
         ]
       }

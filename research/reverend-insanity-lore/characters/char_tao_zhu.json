@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1042,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1042,
@@ -43,15 +43,51 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_tao_zhu_true_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "inh_tao_zhu_true_inheritance",
+      "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "reg_southern_border",
       "count": 1
     },
     {
       "target": "loc_five_regional_mountain_range",
+      "count": 2
+    },
+    {
+      "target": "path_restriction",
       "count": 2
     },
     {
@@ -63,7 +99,15 @@
       "count": 1
     },
     {
+      "target": "sys_five_regional_limit_formation",
+      "count": 1
+    },
+    {
       "target": "fac_yao_clan",
+      "count": 1
+    },
+    {
+      "target": "move_five_restriction_profound_light_qi",
       "count": 1
     }
   ],
@@ -75,12 +119,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_five_regional_mountain_range"
+        "loc_five_regional_mountain_range",
+        "path_restriction"
       ]
     },
     {
@@ -90,7 +135,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "escape-and-free-passage",
       "text_origin": "source_excerpt",
@@ -148,7 +193,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": null,
@@ -170,7 +215,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Unknown",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 297,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     297,
@@ -60,6 +60,14 @@
     {
       "target": "gu_green_bull_labor_gu",
       "count": 2
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
     },
     {
       "target": "gu_instant_success_gu",
@@ -130,10 +138,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Cited chapters do not describe the Gu worm’s resting look or food.",
@@ -143,7 +154,10 @@
         "verification": "no_citation",
         "source_id": "src_sagaofgu",
         "section": "rank-and-effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "Against Ju Kai Bei, the text contrasts rank four Dragon-elephant Huge Strength Gu with the Galloping Horse Strength Gu, green bull labor Gu, and other Gu Fang Yuan had used, which were only rank three.",
@@ -191,7 +205,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "loss-in-fusion",
         "text_origin": "source_excerpt",
@@ -235,7 +249,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

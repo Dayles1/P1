@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 222,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     222,
@@ -99,11 +99,31 @@
       "count": 1
     },
     {
+      "target": "sys_grey_bone_huge_book",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
+      "count": 1
+    },
+    {
       "target": "fac_bai_clan_bai_gu_mountain",
       "count": 1
     },
     {
       "target": "gu_ice_muscles_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_white_bone_inheritance",
       "count": 1
     },
     {
@@ -116,6 +136,18 @@
     },
     {
       "target": "rcp_white_bone_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_attack_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -197,7 +229,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -215,10 +247,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master",
+          "sys_healing_gu"
+        ]
       },
       {
         "text": "Bai Ning Bing loses interest once she hears that cost, because using bone spikes Gu would first remove her ice muscle, a loss rather than a gain for her. Fang Yuan is also not too interested, but still refines the rank three Gu into his aperture for the moment.",
@@ -227,7 +263,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -258,7 +294,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "sale-in-shang-clan-city",
         "text_origin": "source_excerpt",
@@ -275,10 +311,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "sale-in-shang-clan-city",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "After buying the recipe, Shang Ya Zi buys the bone spear Gu, spiral bone spear Gu and bone spike Gu from Fang Yuan for the forty thousand six hundred and twenty primeval stones of their original agreement.",
@@ -287,7 +326,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "sale-in-shang-clan-city",
         "text_origin": "source_excerpt",
@@ -342,7 +381,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -360,7 +399,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -381,7 +420,10 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_hei_fan_grotto_heaven",
-          "loc_immortal_succession_mountain"
+          "sys_gu_immortal",
+          "loc_immortal_succession_mountain",
+          "sys_immortal_gu",
+          "sys_attack_gu"
         ]
       },
       {

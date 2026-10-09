@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 499,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     499,
@@ -58,6 +58,10 @@
     },
     {
       "target": "char_hei_lou_lan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -147,7 +151,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_bronze_skin_gu",
-          "gu_iron_bone_gu"
+          "gu_iron_bone_gu",
+          "sys_gu_master"
         ]
       },
       {

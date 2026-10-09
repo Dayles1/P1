@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 384,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     384,
@@ -72,6 +72,10 @@
       "count": 2
     },
     {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 2
+    },
+    {
       "target": "gu_fate_gu",
       "count": 2
     },
@@ -93,6 +97,14 @@
     },
     {
       "target": "char_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "evt_era_immemorial",
       "count": 1
     },
     {
@@ -136,6 +148,10 @@
       "count": 1
     },
     {
+      "target": "evt_legend_road_of_life_and_death",
+      "count": 1
+    },
+    {
       "target": "loc_reverse_flow_river",
       "count": 1
     },
@@ -152,6 +168,10 @@
       "count": 1
     },
     {
+      "target": "evt_legend_love_is_cruel",
+      "count": 1
+    },
+    {
       "target": "loc_space_cave",
       "count": 1
     },
@@ -160,11 +180,35 @@
       "count": 1
     },
     {
+      "target": "sys_desolate_ancient_moon_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_secluded_domain_of_heaven_and_earth",
+      "count": 1
+    },
+    {
       "target": "char_red_lotus_demon_venerable",
       "count": 1
     },
     {
+      "target": "evt_legend_walking_meat_tree",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_stepping_into_ordinary_abyss",
+      "count": 1
+    },
+    {
       "target": "gu_fear_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_fear_is_scarier_than_death",
+      "count": 1
+    },
+    {
+      "target": "race_beastmen",
       "count": 1
     },
     {
@@ -196,6 +240,10 @@
       "count": 1
     },
     {
+      "target": "move_soul_beast_summoning",
+      "count": 1
+    },
+    {
       "target": "char_sun_ming_lu",
       "count": 1
     },
@@ -216,11 +264,59 @@
       "count": 1
     },
     {
+      "target": "evt_legend_wealth",
+      "count": 1
+    },
+    {
+      "target": "move_life_and_death_retrieval",
+      "count": 1
+    },
+    {
+      "target": "move_yama_child",
+      "count": 1
+    },
+    {
+      "target": "sys_verdant_great_sun_physique",
+      "count": 1
+    },
+    {
       "target": "char_immortal_zombie_giant_sun",
       "count": 1
     },
     {
+      "target": "sys_luck_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "move_golden_top_ox_hair",
+      "count": 1
+    },
+    {
+      "target": "move_heaven_and_earth_travel",
+      "count": 1
+    },
+    {
+      "target": "move_ten_li_time_wind",
+      "count": 1
+    },
+    {
+      "target": "move_luck_changing_golden_light_path",
+      "count": 1
+    },
+    {
+      "target": "move_dang_hun_luo_po_seal",
+      "count": 1
+    },
+    {
       "target": "char_fairy_maiden_soul",
+      "count": 1
+    },
+    {
+      "target": "move_heaven_always_leaves_a_way_out_for_people",
+      "count": 1
+    },
+    {
+      "target": "move_unforeseen_disaster",
       "count": 1
     },
     {
@@ -240,7 +336,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -259,12 +355,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_shadow_sect"
+        "fac_shadow_sect",
+        "sys_gu_immortal",
+        "evt_era_immemorial"
       ]
     },
     {
@@ -274,7 +372,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -312,7 +410,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chou-jius-entry",
       "text_origin": "source_excerpt"
@@ -324,11 +422,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "roads-of-life-and-death",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_the_legends_of_ren_zu",
         "gu_suffering_gu",
         "char_red_lotus_demon_venerable",
         "gu_fate_gu"
@@ -341,7 +440,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "life-and-death-blessed-land",
       "text_origin": "source_excerpt"
@@ -353,7 +452,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yi-tian-mountain-seat",
       "text_origin": "source_excerpt",
@@ -368,7 +467,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soul-beasts-within",
       "text_origin": "source_excerpt",
@@ -383,7 +482,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-split-souls-emerge",
       "text_origin": "source_excerpt",
@@ -399,7 +498,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ancient-domain-of-the-dead",
       "text_origin": "source_excerpt"

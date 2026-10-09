@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1068,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1068,
@@ -55,6 +55,18 @@
     2245
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_hairy_men",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_shadow_sect",
@@ -90,6 +102,18 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_refinement_snake_lifespan_flower",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -102,12 +126,20 @@
       "count": 3
     },
     {
+      "target": "move_refinement_snake_lifespan_flower",
+      "count": 3
+    },
+    {
       "target": "gu_master_servant_gu",
       "count": 3
     },
     {
       "target": "rcp_cleanse_soul_immortal_gu_recipe",
       "count": 2
+    },
+    {
+      "target": "race_hairy_men",
+      "count": 1
     },
     {
       "target": "char_bo_qing",
@@ -150,6 +182,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_change_form_immortal_gu",
       "count": 1
     },
@@ -182,7 +218,19 @@
       "count": 1
     },
     {
+      "target": "move_lead_soul_into_dream",
+      "count": 1
+    },
+    {
       "target": "char_spectral_soul_demon_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_great_strength_true_martial_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_phantom_aperture",
       "count": 1
     },
     {
@@ -226,6 +274,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_bing_zhuo",
       "count": 1
     },
@@ -246,11 +298,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
       "target": "char_upper_extreme_heavenly_eagle",
       "count": 1
     },
     {
       "target": "char_blazing_heaven_demoness",
+      "count": 1
+    },
+    {
+      "target": "inh_blazing_heaven_true_inheritance",
       "count": 1
     },
     {
@@ -262,7 +322,15 @@
       "count": 1
     },
     {
+      "target": "move_soul_replacement",
+      "count": 1
+    },
+    {
       "target": "res_fan_door_wind",
+      "count": 1
+    },
+    {
+      "target": "res_thousand_li_soul_thread",
       "count": 1
     },
     {
@@ -274,11 +342,27 @@
       "count": 1
     },
     {
+      "target": "res_snow_lotus_essence",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
       "target": "char_bing_yuan",
       "count": 1
     },
     {
+      "target": "move_heavenly_light_ring",
+      "count": 1
+    },
+    {
       "target": "gu_heavenly_secret_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_river_of_time",
       "count": 1
     },
     {
@@ -294,6 +378,14 @@
       "count": 1
     },
     {
+      "target": "res_smelly_fly_flowers",
+      "count": 1
+    },
+    {
+      "target": "res_purple_star_urchin",
+      "count": 1
+    },
+    {
       "target": "char_fourth_hair",
       "count": 1
     },
@@ -306,7 +398,19 @@
       "count": 1
     },
     {
+      "target": "move_immortal_binding_vine",
+      "count": 1
+    },
+    {
+      "target": "move_dead_inside_from_sorrow",
+      "count": 1
+    },
+    {
       "target": "char_eighth_hair",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
       "count": 1
     },
     {
@@ -326,7 +430,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -335,6 +439,7 @@
         "loc_lang_ya_blessed_land",
         "char_ying_wu_xie",
         "char_fang_yuan",
+        "sys_gu_immortal",
         "gu_change_form_immortal_gu",
         "char_lang_ya_land_spirit"
       ]
@@ -346,7 +451,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "a-letter-of-apology-to-ying-wu-xie",
       "text_origin": "source_excerpt",
@@ -362,7 +467,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sixth-city-lord-and-the-deal-offer",
       "text_origin": "source_excerpt",
@@ -377,7 +482,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "split-soul-and-combat-proficiency",
       "text_origin": "source_excerpt"
@@ -389,7 +494,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "saving-a-hairy-man-in-the-grass",
       "text_origin": "source_excerpt",
@@ -404,11 +509,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "recognizing-bo-qings-immortal-gu",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "char_bo_qing"
       ]
     },
@@ -419,7 +525,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wine-etiquette-and-a-shock-at-the-feast",
       "text_origin": "source_excerpt",
@@ -434,7 +540,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "selling-intel-for-trust-and-status",
       "text_origin": "source_excerpt"
@@ -458,7 +564,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "likely-the-last-survivor-in-northern-plains",
       "text_origin": "source_excerpt",
@@ -474,11 +580,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blessed-land-news",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_formation",
         "char_ye_lui_qun_xing"
       ]
     },
@@ -489,7 +596,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "taking-blazing-heaven-demoness-immortal-gu",
       "text_origin": "source_excerpt",
@@ -507,7 +614,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "joining-the-fight-at-dark-flow-giant-city",
       "text_origin": "source_excerpt"
@@ -519,7 +626,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "left-to-hold-the-rear-and-spared",
       "text_origin": "source_excerpt",
@@ -534,7 +641,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "acting-as-fang-yuans-middleman",
       "text_origin": "source_excerpt"
@@ -546,7 +653,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "free-of-shadow-sects-own-agreement",
       "text_origin": "source_excerpt"
@@ -558,7 +665,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "only-two-split-souls-left",
       "text_origin": "source_excerpt"
@@ -570,7 +677,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "trying-to-accept-a-new-leader",
       "text_origin": "source_excerpt"
@@ -582,7 +689,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refinement-hall",
       "text_origin": "source_excerpt"
@@ -594,7 +701,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "firelight-and-soot",
       "text_origin": "source_excerpt"
@@ -606,7 +713,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "miserable-state",
       "text_origin": "source_excerpt"
@@ -618,10 +725,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "trusted-with-the-recipes-modification",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_recipe"
+      ]
     },
     {
       "text": "He was thin and haggard. In order to refine Gu he had gone all out, exhausted both mentally and physically.",
@@ -630,7 +740,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "physical-strain",
       "text_origin": "source_excerpt"
@@ -642,7 +752,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "assisting-the-parallel-refinement",
       "text_origin": "source_excerpt",
@@ -657,7 +767,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refinement-save",
       "text_origin": "source_excerpt"
@@ -669,7 +779,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "a-killer-move-that-costs-his-life",
       "text_origin": "source_excerpt"
@@ -743,7 +853,7 @@
     "Race": {
       "text": "Hairy Men",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shadow Sect as of ch. 1068",
@@ -764,7 +874,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_hairy_men",
     "region": null,
     "status": "Alive",
     "alignment": null,

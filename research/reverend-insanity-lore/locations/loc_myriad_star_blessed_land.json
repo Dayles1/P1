@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 667,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     667
@@ -66,6 +66,10 @@
     {
       "target": "loc_treasure_yellow_heaven",
       "count": 1
+    },
+    {
+      "target": "move_spring_star_rain",
+      "count": 1
     }
   ],
   "claims": [
@@ -96,7 +100,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",

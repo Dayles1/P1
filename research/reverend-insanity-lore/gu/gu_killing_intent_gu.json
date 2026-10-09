@@ -23,13 +23,17 @@
   "first_appearance": {
     "chapter": 570,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     570
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "sys_thought_will_emotion",
+      "count": 1
+    },
     {
       "target": "gu_heavens_will_gu",
       "count": 1
@@ -88,7 +92,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "path-context",
         "text_origin": "source_excerpt"
@@ -148,7 +152,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

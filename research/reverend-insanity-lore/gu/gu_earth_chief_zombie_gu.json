@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 570,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     526,
@@ -63,6 +63,18 @@
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement",
+      "count": 1
+    },
+    {
       "target": "gu_blood_wight_gu",
       "count": 1
     },
@@ -72,6 +84,10 @@
     },
     {
       "target": "gu_borrow_strength_gu",
+      "count": 1
+    },
+    {
+      "target": "move_six_arm_heavenly_zombie_king",
       "count": 1
     },
     {
@@ -140,7 +156,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -190,10 +206,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ordinary-recipe",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "Mo Yao’s will transmits a modified recipe that adds several new materials, with original magnetic essence as the main addition. Under that form, a Gu Master who becomes an earth chief zombie can soar on the natural magnetic field even without wings. Fang Yuan judges the recipe usable from five hundred years of experience.",
@@ -202,10 +221,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "modified-recipe",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "He later counts that improved recipe among the gains from Mo Yao’s will, along with six arm heavenly zombie king and ink transformation.",
@@ -214,7 +236,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "modified-recipe",
         "text_origin": "source_excerpt"
@@ -226,10 +248,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-refinement",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_refinement"
+        ]
       },
       {
         "text": "The finished Gu looks like a bright yellow earthworm the size of an infant’s forearm and twines around his fingers like a snake. He does not use it on himself at once, because a modified recipe still carries risk.",
@@ -238,7 +263,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-refinement",
         "text_origin": "source_excerpt"
@@ -307,7 +332,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "immortal-zombie-arms",
         "text_origin": "source_excerpt",

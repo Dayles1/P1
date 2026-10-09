@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1483,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1483,
@@ -58,7 +58,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_bai_he_palace",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -109,7 +121,9 @@
       "mentions": [
         "char_qin_bai_he",
         "reg_eastern_sea",
-        "char_you_chan"
+        "char_you_chan",
+        "sys_immortal_gu_house",
+        "house_bai_he_palace"
       ]
     },
     {
@@ -125,7 +139,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
-        "fac_shadow_sect"
+        "fac_shadow_sect",
+        "sys_gu_immortal"
       ]
     },
     {

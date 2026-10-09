@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1879,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1879,
@@ -37,6 +37,18 @@
     {
       "type": "in_region",
       "target": "reg_eastern_sea",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_mermen",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -69,6 +81,10 @@
       "count": 2
     },
     {
+      "target": "race_mermen",
+      "count": 1
+    },
+    {
       "target": "char_lian_ke_xin",
       "count": 2
     },
@@ -85,7 +101,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
       "count": 1
     },
     {
@@ -111,6 +135,10 @@
     {
       "target": "loc_star_collection_city",
       "count": 1
+    },
+    {
+      "target": "res_refinement_path_seashell",
+      "count": 1
     }
   ],
   "claims": [
@@ -127,6 +155,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_eastern_sea",
+        "sys_gu_immortal",
+        "house_dragon_palace",
         "char_wu_shuai",
         "fac_merman_imperial_court"
       ]
@@ -258,7 +288,7 @@
     "Race": {
       "text": "Mermen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Merman Imperial Court as of ch. 1879",
@@ -279,7 +309,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_mermen",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

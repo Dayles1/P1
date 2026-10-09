@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1717,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1717,
@@ -32,6 +32,18 @@
     2206
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_weapon",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2154,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -49,6 +61,10 @@
     {
       "target": "fac_heavenly_court",
       "count": 3
+    },
+    {
+      "target": "path_weapon",
+      "count": 2
     },
     {
       "target": "char_five_elements_grandmaster",
@@ -79,6 +95,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_fairy_yu_xiu",
       "count": 1
     },
@@ -104,6 +124,10 @@
     },
     {
       "target": "char_lu_wei_yin",
+      "count": 1
+    },
+    {
+      "target": "house_star_constellation_chessboard",
       "count": 1
     },
     {
@@ -149,7 +173,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
-        "char_genesis_lotus_immortal_venerable"
+        "char_genesis_lotus_immortal_venerable",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -182,7 +207,8 @@
       "section": "endless-spears",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_lu_wei_yin"
+        "char_lu_wei_yin",
+        "house_star_constellation_chessboard"
       ]
     }
   ],
@@ -219,7 +245,7 @@
     "Paths": {
       "text": "Weapon path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1717",
@@ -241,7 +267,9 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_weapon"
+    ],
     "aperture": null,
     "talent_grade": null
   },

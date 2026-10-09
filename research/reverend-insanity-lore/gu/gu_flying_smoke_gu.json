@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1025,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1025,
@@ -71,6 +71,10 @@
     },
     {
       "target": "char_lang_ya_land_spirit",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     }
   ],
@@ -198,7 +202,8 @@
         "mentions": [
           "char_fang_yuan",
           "char_huo_kong_dong",
-          "gu_fire_cape_gu"
+          "gu_fire_cape_gu",
+          "sys_mortal_gu"
         ]
       },
       {

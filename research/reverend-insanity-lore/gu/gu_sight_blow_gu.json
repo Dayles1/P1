@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 471,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     471,
@@ -54,6 +54,10 @@
     },
     {
       "target": "char_chang_shan_yin",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -148,7 +152,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "It can attack anyone the user can see. The further the distance, the weaker the attack. Three hundred steps is the limit, and past that distance it has zero threat. Sight based attacks compete the souls of both Gu Masters, so Hao Ji Liu judges that an enslavement path Gu Master such as Chang Shan Yin would be a poor target.",

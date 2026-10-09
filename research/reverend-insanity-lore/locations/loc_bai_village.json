@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     1,
@@ -87,11 +87,19 @@
       "count": 1
     },
     {
+      "target": "evt_arc_qing_mao_mountain",
+      "count": 1
+    },
+    {
       "target": "res_bitter_shell_wine",
       "count": 1
     },
     {
       "target": "res_green_bamboo_wine",
+      "count": 1
+    },
+    {
+      "target": "res_white_grains_liquid",
       "count": 1
     },
     {
@@ -179,7 +187,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "seat-on-the-mountain",
       "text_origin": "source_excerpt",
@@ -194,7 +202,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mountain-balance",
       "text_origin": "source_excerpt"

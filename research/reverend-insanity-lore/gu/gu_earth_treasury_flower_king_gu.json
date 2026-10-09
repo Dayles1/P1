@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 425,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     425,
@@ -78,6 +78,14 @@
     },
     {
       "target": "char_flower_wine_monk",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -152,7 +160,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -209,7 +217,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -230,7 +238,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-burial-storage",
         "text_origin": "source_excerpt",
@@ -247,7 +255,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-burial-storage",
         "text_origin": "source_excerpt"
@@ -259,13 +267,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-burial-storage",
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_iron_cabinet_gu",
-          "gu_fixed_immortal_travel"
+          "gu_fixed_immortal_travel",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -275,12 +284,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-burial-storage",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_flower_wine_monk"
+          "char_flower_wine_monk",
+          "sys_gu_worms"
         ]
       }
     ]

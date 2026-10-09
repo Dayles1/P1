@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 804,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     804,
@@ -56,6 +56,14 @@
     },
     {
       "target": "char_pi_shui_han",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     }
   ],
@@ -188,7 +196,8 @@
         "mentions": [
           "char_fang_yuan",
           "char_pi_shui_han",
-          "char_dong_fang_chang_fan"
+          "char_dong_fang_chang_fan",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -201,7 +210,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "gu-lump",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "A later review of Dong Fang Chang Fan at his peak lists eight Immortal Gu in his possession, including split shadow Immortal Gu, and states that this Gu was not of wisdom path.",

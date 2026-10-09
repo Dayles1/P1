@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 135,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     135,
@@ -33,8 +33,25 @@
     724,
     751
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "char_ren_zu",
       "count": 2
@@ -68,11 +85,31 @@
       "count": 1
     },
     {
+      "target": "sys_northern_dark_ice_soul_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
       "target": "gu_wood_charm_gu",
       "count": 1
     },
     {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_first_battle",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
       "target": "char_tie_ruo_nan",
+      "count": 1
+    },
+    {
+      "target": "sys_desolate_ancient_moon_physique",
       "count": 1
     },
     {
@@ -88,6 +125,10 @@
       "count": 1
     },
     {
+      "target": "evt_legend_northern_dark_ice_soul",
+      "count": 1
+    },
+    {
       "target": "loc_door_of_life_and_death",
       "count": 1
     },
@@ -100,11 +141,35 @@
       "count": 1
     },
     {
+      "target": "evt_legend_understanding_ones_purpose",
+      "count": 1
+    },
+    {
+      "target": "sys_dream_realm",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_black_heaven",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_walking_meat_tree",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_living_in_a_dream",
+      "count": 1
+    },
+    {
       "target": "char_qin_bai_sheng",
       "count": 1
     },
     {
       "target": "char_carefree_wisdom_heart",
+      "count": 1
+    },
+    {
+      "target": "sys_carefree_wisdom_heart_physique",
       "count": 1
     },
     {
@@ -120,7 +185,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -137,7 +202,11 @@
       "verification": "no_citation",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_northern_dark_ice_soul_physique",
+        "sys_the_legends_of_ren_zu"
+      ]
     },
     {
       "text": "Soul fragments cut from Ren Zu by Luo Po wind converge into a youth, and Ren Zu’s third son is born as Northern Dark Ice Soul. The telling gives him a cold appearance and a warm-hearted, quiet manner. Born in Luo Po Valley, he is unhurt by Luo Po wind and can see through bewilderment fog. Unexpected Gu forcibly takes him out through the Door of Life and Death into the human world and gives him a flesh body. Cognition Gu then points him to Cheng Bai mountain and to Desolate Ancient Moon, and he seeks his elder sister first.",
@@ -146,7 +215,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "luo-po-valley-birth",
       "text_origin": "source_excerpt",
@@ -165,7 +234,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "life-gem-journey",
       "text_origin": "source_excerpt",
@@ -180,7 +249,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "black-heaven-and-fire-gu",
       "text_origin": "source_excerpt",
@@ -195,7 +264,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realm-prey",
       "text_origin": "source_excerpt",
@@ -210,7 +279,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "legend-citation",
       "text_origin": "source_excerpt",
@@ -250,7 +319,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     }
   },
   "cultivation": {
@@ -261,7 +330,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": null,
     "alignment": null,

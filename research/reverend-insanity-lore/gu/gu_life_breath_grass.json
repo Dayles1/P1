@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 75,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     75,
@@ -38,6 +38,14 @@
     },
     {
       "target": "gu_love_life_separation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     },
     {
@@ -172,7 +180,9 @@
         "section": "vital-gu",
         "text_origin": "source_excerpt",
         "mentions": [
-          "fac_gu_yue_clan"
+          "fac_gu_yue_clan",
+          "sys_vital_gu",
+          "sys_gu_master"
         ]
       }
     ]

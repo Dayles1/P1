@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 378,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     378,
@@ -79,6 +79,18 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_mental_energy",
+      "count": 1
+    },
+    {
       "target": "gu_black_python_coiling_strength_gu",
       "count": 1
     },
@@ -88,6 +100,14 @@
     },
     {
       "target": "loc_san_cha_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "path_strength",
       "count": 1
     },
     {
@@ -168,7 +188,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -180,7 +200,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt",
@@ -207,7 +227,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "surface-changes-with-feeding",
         "text_origin": "source_excerpt"
@@ -219,7 +239,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "surface-changes-with-feeding",
         "text_origin": "source_excerpt"
@@ -252,10 +272,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-at-san-cha-mountain",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "After more refinement days past that eighty-nine percent stage, Fang Yuan holds a grey stone-like false Gu shaped like a beetle with a large belly and pointed ends. Ba Gui says he has succeeded in refining this false Gu and needs one more step to turn false into real Second Aperture Gu.",
@@ -302,7 +325,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -310,7 +333,8 @@
           "loc_san_cha_mountain",
           "char_fang_yuan",
           "char_ba_gui",
-          "gu_second_aperture_gu"
+          "gu_second_aperture_gu",
+          "sys_gu_worms"
         ]
       },
       {
@@ -320,10 +344,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "after-tie-mu-bai",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Better and more numerous absorbed apertures raise the aptitude of the Second Aperture Gu that will be refined later. After Tie Mu Bai’s aperture alone, Fang Yuan judges that aptitude already at forty percent.",
@@ -332,7 +359,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "after-tie-mu-bai",
         "text_origin": "source_excerpt",
@@ -347,10 +374,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "after-tie-mu-bai",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "path_strength"
+        ]
       },
       {
         "text": "Fang Yuan defeats Long Qing Tian but does not kill him. Knowing he cannot survive, Long Qing Tian suicides with jade sky Gu poison. Fang Yuan has spent his last immortal essence portion on that fight and cannot safely take the poisoned aperture, so he judges that the beast strength placenta Gu’s aptitude can only reach eighty-nine percent.",
@@ -359,7 +389,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "poisoned-aperture-loss",
         "text_origin": "source_excerpt",
@@ -375,7 +405,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "after-rebirth",
         "text_origin": "source_excerpt",

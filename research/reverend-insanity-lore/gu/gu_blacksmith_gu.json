@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2284,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2284
@@ -36,6 +36,14 @@
     },
     {
       "target": "char_zhao_shu_ye",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     },
     {
@@ -151,7 +159,9 @@
           "char_zhao_shu_ye",
           "fac_heavenly_court",
           "char_chen_da_jiang",
-          "gu_craftsman_gu"
+          "sys_vital_gu",
+          "gu_craftsman_gu",
+          "sys_gu_recipe"
         ]
       }
     ]

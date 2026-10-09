@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 427,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     427,
@@ -568,6 +568,14 @@
       "count": 2
     },
     {
+      "target": "house_dark_prison",
+      "count": 2
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_hei_cheng_third_battle",
+      "count": 2
+    },
+    {
       "target": "char_liu_wen_wu",
       "count": 2
     },
@@ -604,6 +612,14 @@
       "count": 2
     },
     {
+      "target": "evt_arc_northern_plains_imperial_court",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
       "target": "gu_horizontal_charge_gu",
       "count": 1
     },
@@ -617,6 +633,10 @@
     },
     {
       "target": "loc_imperial_court",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_imperial_court_contest",
       "count": 1
     },
     {
@@ -692,6 +712,14 @@
       "count": 1
     },
     {
+      "target": "move_dark_vortex",
+      "count": 1
+    },
+    {
+      "target": "path_dark",
+      "count": 1
+    },
+    {
       "target": "char_dong_fang_chang_fan",
       "count": 1
     },
@@ -724,6 +752,10 @@
       "count": 1
     },
     {
+      "target": "sys_battle_merits",
+      "count": 1
+    },
+    {
       "target": "gu_tusita_flower",
       "count": 1
     },
@@ -733,6 +765,10 @@
     },
     {
       "target": "gu_vertical_crash_gu",
+      "count": 1
+    },
+    {
+      "target": "move_seven_star_light",
       "count": 1
     },
     {
@@ -749,6 +785,10 @@
     },
     {
       "target": "gu_amplify_effect_gu",
+      "count": 1
+    },
+    {
+      "target": "path_rule",
       "count": 1
     },
     {
@@ -788,7 +828,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -800,7 +840,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -837,7 +877,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-naming",
       "text_origin": "source_excerpt",
@@ -852,7 +892,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yu-tian-contest",
       "text_origin": "source_excerpt",
@@ -869,7 +909,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "black-banner-commander",
       "text_origin": "source_excerpt",
@@ -884,7 +924,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wolf-king-joins",
       "text_origin": "source_excerpt",
@@ -914,7 +954,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-fan-grotto-heavens-people",
       "text_origin": "source_excerpt",
@@ -932,12 +972,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "annexed-by-bai-zu-tribe",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_huang_jin_bloodline",
+        "sys_gu_immortal",
         "fac_bai_zu_tribe"
       ]
     }

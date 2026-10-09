@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 140,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     132,
@@ -66,6 +66,10 @@
     },
     {
       "target": "gu_whirlwind_gu",
+      "count": 2
+    },
+    {
+      "target": "sys_northern_dark_ice_soul_physique",
       "count": 2
     },
     {
@@ -137,7 +141,27 @@
       "count": 1
     },
     {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_second_battle",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "loc_shang_clan_city",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_set",
+      "count": 1
+    },
+    {
+      "target": "sys_killer_moves",
+      "count": 1
+    },
+    {
+      "target": "move_ice_blade_storm",
       "count": 1
     },
     {
@@ -351,7 +375,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "storm-recipe",
         "text_origin": "source_excerpt",
@@ -413,7 +437,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -433,10 +457,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_northern_dark_ice_soul_physique"
+        ]
       },
       {
         "text": "He then holds the ice blade horizontally and rotates until a five meter white ice blade storm forms. Two rank two Gu Masters are minced inside it. Gu Yue Yao Hong is cut into frozen pieces while Qing Shu tries to pull her out with Green Vine Gu. The clan elder charges the storm with Steel Shirt Gu. When the storm ends, Bai Ning Bing’s left-hand ice blade is already broken in two, and that broken blade still pierces the elder’s heart.",
@@ -445,7 +472,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -473,7 +500,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "valley-chase-storm",
         "text_origin": "source_excerpt",
@@ -492,7 +519,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "physique-loss",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "Ice Edge Gu is the advancement of the rank two Iceblade Gu. The advanced Gu has a tougher body and a sharper edge.",

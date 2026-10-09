@@ -25,13 +25,25 @@
   "first_appearance": {
     "chapter": 752,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     752
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
     {
       "target": "gu_worldly_wave_trace",
       "count": 1
@@ -120,7 +132,10 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_worldly_wave_trace",
-          "reg_eastern_sea"
+          "reg_eastern_sea",
+          "sys_gu_immortal",
+          "sys_gu_recipe",
+          "sys_immortal_gu"
         ],
         "needs_review": true
       }

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 482,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     482,
@@ -47,6 +47,10 @@
   "co_mentions": [
     {
       "target": "char_pei_yan_fei",
+      "count": 4
+    },
+    {
+      "target": "move_golden_rainbow_strike",
       "count": 4
     },
     {
@@ -150,7 +154,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_golden_coat_gu",
-          "gu_rainbow_transformation_gu"
+          "gu_rainbow_transformation_gu",
+          "move_golden_rainbow_strike"
         ]
       }
     ]

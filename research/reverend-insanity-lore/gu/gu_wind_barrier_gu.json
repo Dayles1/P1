@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 472,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     472
@@ -32,6 +32,10 @@
   "co_mentions": [
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
       "count": 1
     },
     {
@@ -153,7 +157,8 @@
           "fac_yan_tribe",
           "fac_gu_masters",
           "char_fang_yuan",
-          "char_green"
+          "char_green",
+          "sys_wild_gu"
         ]
       }
     ]

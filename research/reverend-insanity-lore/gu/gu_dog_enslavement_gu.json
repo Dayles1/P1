@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 323,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     323,
@@ -75,8 +75,16 @@
       "count": 2
     },
     {
+      "target": "inh_king_quan_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_han_bu_liu",
       "count": 2
+    },
+    {
+      "target": "evt_arc_three_kings_inheritance",
+      "count": 1
     },
     {
       "target": "fac_three_kings",
@@ -91,7 +99,19 @@
       "count": 1
     },
     {
+      "target": "inh_three_kings_inheritance",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "loc_shang_clan_city",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -99,7 +119,19 @@
       "count": 1
     },
     {
+      "target": "inh_king_xin_inheritance",
+      "count": 1
+    },
+    {
+      "target": "sys_blessed_lands_and_grotto_heavens",
+      "count": 1
+    },
+    {
       "target": "char_big_lightning_symbol_dog",
+      "count": 1
+    },
+    {
+      "target": "sys_mental_energy",
       "count": 1
     },
     {
@@ -107,7 +139,15 @@
       "count": 1
     },
     {
+      "target": "path_enslavement",
+      "count": 1
+    },
+    {
       "target": "char_ku_mo",
+      "count": 1
+    },
+    {
+      "target": "sys_enslavement_gu",
       "count": 1
     }
   ],
@@ -177,11 +217,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "gu_spring_autumn_cicada"
         ]
       }
@@ -216,11 +257,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "entry-method",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
+          "inh_king_quan_inheritance",
           "loc_shang_clan_city",
           "char_king_quan"
         ],
@@ -264,7 +307,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -279,7 +322,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fog-and-control",
         "text_origin": "source_excerpt",
@@ -294,10 +337,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "chrysanthemum-akita-path",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_blessed_lands_and_grotto_heavens"
+        ]
       },
       {
         "text": "After the fog disperses, a rank two copy falls from the sky into Fang Yuan’s palm. Using a rank one copy on ordinary dogs is easy to do half-heartedly. Subduing a hundred beast king with a rank two copy can fail, and if that copy is destroyed he is finished. Under his supervision it flies into the big lightning symbol dog and plants itself into its soul. A formless mental impact assaults him through the Gu.",
@@ -306,7 +352,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "lightning-symbol-round",
         "text_origin": "source_excerpt"
@@ -318,7 +364,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "winning-round-prize",
         "text_origin": "source_excerpt"
@@ -330,7 +376,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "partner-copy",
         "text_origin": "source_excerpt",

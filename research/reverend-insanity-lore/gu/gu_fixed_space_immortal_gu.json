@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1600,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1600,
@@ -96,7 +96,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_suppress_space_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_jade_flow_pearl",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_as_before_formation",
       "count": 1
     }
   ],
@@ -315,7 +327,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "counter-to-fixed-immortal-travel",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "Sources conflict:",

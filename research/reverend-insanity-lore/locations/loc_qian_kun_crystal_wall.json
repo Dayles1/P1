@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 495,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     495,
@@ -77,6 +77,18 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_venerable",
+      "count": 1
+    },
+    {
       "target": "fac_chai_tribe",
       "count": 1
     },
@@ -89,7 +101,19 @@
       "count": 1
     },
     {
+      "target": "race_inkmen",
+      "count": 1
+    },
+    {
       "target": "char_calligraphy_pavilion_lady",
+      "count": 1
+    },
+    {
+      "target": "house_calligraphy_pavilion",
+      "count": 1
+    },
+    {
+      "target": "inh_wu_shuai_inheritance",
       "count": 1
     },
     {
@@ -105,6 +129,10 @@
       "count": 1
     },
     {
+      "target": "evt_legend_effort_begets_results",
+      "count": 1
+    },
+    {
       "target": "loc_human_sea",
       "count": 1
     },
@@ -113,7 +141,19 @@
       "count": 1
     },
     {
+      "target": "evt_legend_thirst_for_knowledge",
+      "count": 1
+    },
+    {
       "target": "gu_memory_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_truthful_floating_ice",
+      "count": 1
+    },
+    {
+      "target": "evt_era_current",
       "count": 1
     },
     {
@@ -122,6 +162,14 @@
     },
     {
       "target": "gu_wrong_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_finding_wisdom",
+      "count": 1
+    },
+    {
+      "target": "sys_secluded_domain_of_heaven_and_earth",
       "count": 1
     }
   ],
@@ -133,7 +181,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -145,7 +193,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "grey-white-stone-slabs",
       "text_origin": "source_excerpt",
@@ -156,9 +204,12 @@
         "char_carefree_wisdom_heart",
         "gu_wisdom_gu",
         "loc_book_mountain",
+        "sys_gu_master",
         "fac_gu_masters",
+        "sys_gu_immortal",
         "char_daoist_countless_treasures",
-        "char_thieving_heaven_demon_venerable"
+        "char_thieving_heaven_demon_venerable",
+        "sys_gu_venerable"
       ]
     },
     {
@@ -182,7 +233,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "recreation-interest",
       "text_origin": "source_excerpt"

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 183,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     183,
@@ -40,6 +40,18 @@
     511
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_blood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_blood_sea_ancestor",
@@ -123,6 +135,10 @@
       "count": 2
     },
     {
+      "target": "path_blood",
+      "count": 2
+    },
+    {
       "target": "gu_blood_frenzy_gu",
       "count": 2
     },
@@ -140,6 +156,10 @@
     },
     {
       "target": "char_flower_wine_monk",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -191,11 +211,19 @@
       "count": 1
     },
     {
+      "target": "inh_blood_sea_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_san_cha_mountain",
       "count": 1
     },
     {
       "target": "char_dong_fang_yu_liang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -251,7 +279,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_blood"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -265,10 +295,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "path",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "path_blood"
+        ]
       }
     ]
   },
@@ -281,7 +314,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -305,7 +338,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -335,10 +368,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "In a blood bat group there is only one male; without that male the whole group falls into chaos.",
@@ -483,7 +519,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "feeding",
         "text_origin": "source_excerpt",
@@ -521,7 +557,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "origin-under-blood-sea-ancestor",
         "text_origin": "source_excerpt",
@@ -536,7 +572,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "origin-under-blood-sea-ancestor",
         "text_origin": "source_excerpt",
@@ -620,7 +656,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -641,7 +677,8 @@
         "section": "prior-life-command-skill",
         "text_origin": "source_excerpt",
         "mentions": [
-          "loc_san_cha_mountain"
+          "loc_san_cha_mountain",
+          "inh_blood_sea_inheritance"
         ]
       },
       {
@@ -657,7 +694,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_jiang_wan_shan",
-          "char_dong_fang_yu_liang"
+          "char_dong_fang_yu_liang",
+          "sys_gu_worms"
         ]
       },
       {
@@ -691,7 +729,7 @@
     "Path": {
       "text": "Blood Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

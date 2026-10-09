@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2270,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2270,
@@ -31,6 +31,30 @@
     2272
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_light",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2272,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -66,6 +90,14 @@
       "count": 3
     },
     {
+      "target": "path_light",
+      "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_old_immortal_hua_yu",
       "count": 2
     },
@@ -75,6 +107,10 @@
     },
     {
       "target": "char_qin_ding_ling",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -106,6 +142,7 @@
         "char_jun_shen_guang",
         "loc_flickering_light_grotto_heaven",
         "char_qin_ding_ling",
+        "sys_gu_immortal",
         "char_old_immortal_hua_yu"
       ]
     },
@@ -136,7 +173,8 @@
       "section": "escape-and-defection",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_spectral_soul_demon_venerable"
+        "char_spectral_soul_demon_venerable",
+        "path_light"
       ]
     },
     {
@@ -188,12 +226,12 @@
     "Paths": {
       "text": "Light path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 2272",
@@ -220,12 +258,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_light"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

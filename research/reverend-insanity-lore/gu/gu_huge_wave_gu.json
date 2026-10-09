@@ -23,12 +23,24 @@
   "first_appearance": {
     "chapter": 2309,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2309
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_water",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -48,6 +60,10 @@
       "count": 1
     },
     {
+      "target": "path_water",
+      "count": 1
+    },
+    {
       "target": "gu_departure_gu",
       "count": 2
     },
@@ -61,6 +77,10 @@
     },
     {
       "target": "gu_ringing_sound_gu",
+      "count": 2
+    },
+    {
+      "target": "move_shocking_departure_of_year_dream_wave",
       "count": 2
     },
     {
@@ -109,7 +129,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_water"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -175,6 +197,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "move_shocking_departure_of_year_dream_wave",
           "gu_departure_gu",
           "gu_great_shock_gu",
           "gu_year_gu",
@@ -189,7 +212,7 @@
     "Path": {
       "text": "Water Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

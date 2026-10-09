@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 53,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     53,
@@ -62,11 +62,31 @@
       "count": 2
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
       "target": "char_uncle_and_aunt",
+      "count": 1
+    },
+    {
+      "target": "sys_aperture_wall",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_middle_stage",
       "count": 1
     },
     {
@@ -110,7 +130,15 @@
       "count": 1
     },
     {
+      "target": "sys_king_quan_travel_token",
+      "count": 1
+    },
+    {
       "target": "gu_multitask_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_king_xin_inheritance",
       "count": 1
     },
     {
@@ -122,7 +150,23 @@
       "count": 1
     },
     {
+      "target": "sys_contribution_points",
+      "count": 1
+    },
+    {
       "target": "char_ma_hong_yun",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_purple_crystal_primeval_essence",
+      "count": 1
+    },
+    {
+      "target": "sys_historical_inertia",
       "count": 1
     },
     {
@@ -131,6 +175,10 @@
     },
     {
       "target": "char_green",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -190,11 +238,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "series-members",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "gu_green_copper_relic_gu",
           "gu_red_steel_relic_gu",
           "gu_white_silver_relic_gu",
@@ -209,12 +258,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-five-and-mortal-limit",
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_purple_crystal_relic_gu",
+          "sys_immortal_gu",
           "char_green"
         ]
       }
@@ -232,7 +282,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "appearance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       }
     ],
     "visual_confidence": "text_described"
@@ -247,10 +300,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Fang Yuan’s red steel activation shows one use: red light pours into the aperture wall, the Gu exhausts itself and disappears, and cultivation advances by a small realm because the aperture foundation is strengthened.",
@@ -259,7 +315,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -290,7 +346,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "price-and-origin",
         "text_origin": "source_excerpt"
@@ -314,7 +370,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -333,7 +389,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "form-and-human-path",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       }
     ]
   },

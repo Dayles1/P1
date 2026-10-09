@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2085,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2085,
@@ -37,6 +37,10 @@
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "move_endless_learning",
+      "count": 2
+    },
     {
       "target": "char_fairy_feng_ya",
       "count": 2
@@ -58,7 +62,23 @@
       "count": 1
     },
     {
+      "target": "sys_dao_lord",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
       "target": "loc_qian_kun_crystal_wall",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_dao_veins_famous_mountains",
       "count": 1
     },
     {
@@ -78,6 +98,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_battle_of_crazed_demon_cave",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -94,11 +118,19 @@
       "count": 1
     },
     {
+      "target": "evt_era_current",
+      "count": 1
+    },
+    {
       "target": "gu_right_gu",
       "count": 1
     },
     {
       "target": "gu_wrong_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_finding_wisdom",
       "count": 1
     },
     {
@@ -118,7 +150,23 @@
       "count": 1
     },
     {
+      "target": "move_humble_reciprocation",
+      "count": 1
+    },
+    {
       "target": "char_zhan_bu_du",
+      "count": 1
+    },
+    {
+      "target": "house_calamity_luck_altar",
+      "count": 1
+    },
+    {
+      "target": "house_luck_suppression_heavenly_palace",
+      "count": 1
+    },
+    {
+      "target": "house_rising_cloud_city",
       "count": 1
     },
     {
@@ -127,6 +175,14 @@
     },
     {
       "target": "gu_serious_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_betraying_ones_self",
+      "count": 1
+    },
+    {
+      "target": "move_luck_changing_golden_light_path",
       "count": 1
     },
     {
@@ -143,6 +199,18 @@
     },
     {
       "target": "loc_xi_land",
+      "count": 1
+    },
+    {
+      "target": "move_seven_kills_rainbow",
+      "count": 1
+    },
+    {
+      "target": "move_sword_tongue_dragon_soul",
+      "count": 1
+    },
+    {
+      "target": "sys_crazed_demon_formation",
       "count": 1
     }
   ],
@@ -192,7 +260,9 @@
       "section": "cave-placement",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_limitless_demon_venerable"
+        "sys_the_legends_of_ren_zu",
+        "char_limitless_demon_venerable",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -207,7 +277,8 @@
       "section": "cave-placement",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_star_constellation_immortal_venerable"
+        "char_star_constellation_immortal_venerable",
+        "sys_dao_lord"
       ]
     },
     {
@@ -239,6 +310,7 @@
       "mentions": [
         "char_ren_zu",
         "fac_heavenly_court",
+        "move_endless_learning",
         "char_fairy_yu_xiu"
       ]
     },
@@ -285,7 +357,9 @@
       "section": "venerable-entry",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_zhan_bu_du"
+        "char_zhan_bu_du",
+        "house_calamity_luck_altar",
+        "house_luck_suppression_heavenly_palace"
       ]
     },
     {
@@ -328,7 +402,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "destruction",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_crazed_demon_formation"
+      ]
     }
   ],
   "conflicts": [],

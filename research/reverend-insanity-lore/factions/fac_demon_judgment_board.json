@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 700,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     700,
@@ -39,6 +39,10 @@
     },
     {
       "target": "char_he_feng_yang",
+      "count": 1
+    },
+    {
+      "target": "path_blood",
       "count": 1
     },
     {
@@ -62,7 +66,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_lang_ya_land_spirit",
+      "count": 1
+    },
+    {
+      "target": "house_demon_judgment_board",
       "count": 1
     }
   ],
@@ -80,7 +92,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_he_feng_yang",
-        "char_blood_sea_ancestor"
+        "char_blood_sea_ancestor",
+        "path_blood"
       ]
     },
     {
@@ -98,6 +111,7 @@
         "char_fairy_zi_wei",
         "char_feng_jin_huang",
         "char_fang_yuan",
+        "house_demon_judgment_board",
         "fac_heavenly_court",
         "loc_hu_immortal_blessed_land"
       ]
@@ -112,7 +126,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "blood-path-detection",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "He tells Lang Ya land spirit that even slightly high blood path cultivation adds a name to Heavenly Court’s Demon Judgment Board and would expose them, so blood path will not do for raising hairy man battle strength.",

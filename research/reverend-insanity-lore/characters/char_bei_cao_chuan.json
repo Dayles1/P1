@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 481,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     481,
@@ -37,6 +37,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -81,6 +93,10 @@
       "count": 4
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -105,6 +121,14 @@
       "count": 1
     },
     {
+      "target": "sys_healing_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
+      "count": 1
+    },
+    {
       "target": "fac_ge_tribe",
       "count": 1
     },
@@ -121,6 +145,10 @@
       "count": 1
     },
     {
+      "target": "move_golden_rainbow_strike",
+      "count": 1
+    },
+    {
       "target": "char_chang_biao",
       "count": 1
     },
@@ -130,6 +158,10 @@
     },
     {
       "target": "char_hei_lou_lan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     }
   ],
@@ -141,7 +173,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -160,7 +192,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -172,7 +204,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -184,10 +216,14 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rise-inside-bei-tribe",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_healing_gu",
+        "sys_wild_gu"
+      ]
     },
     {
       "text": "He brings Bei tribe elders to Wang tribe when Ge tribe’s strike has already made him a vagabond leader, and Pei Yan Fei’s side is named among the same crescent-lake fallout.",
@@ -196,7 +232,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-the-camp-loss",
       "text_origin": "source_excerpt",
@@ -212,10 +248,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-the-camp-loss",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_golden_rainbow_strike"
+      ]
     },
     {
       "text": "Fang Yuan later classes Liu tribe’s strongest enslavement expert as Bei Cao Chuan and treats his grass soldier troops as unimportant beside higher ranked Gu Masters.",
@@ -224,7 +263,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "after-the-camp-loss",
       "text_origin": "source_excerpt",
@@ -240,14 +279,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "grass-soldiers-and-death",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_hei_lou_lan",
         "char_bei_cao_sheng",
-        "gu_liu_wen_wus_gu_worm"
+        "gu_liu_wen_wus_gu_worm",
+        "sys_gu_master"
       ]
     },
     {
@@ -257,7 +297,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "grass-soldiers-and-death",
       "text_origin": "source_excerpt"
@@ -318,7 +358,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Bei Tribe as of ch. 481",
@@ -345,7 +385,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

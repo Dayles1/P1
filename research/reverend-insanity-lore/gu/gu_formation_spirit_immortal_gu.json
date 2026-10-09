@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1411,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1411,
@@ -55,6 +55,26 @@
     },
     {
       "target": "char_han_li",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "inh_formation_path_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -154,13 +174,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_zhen_yuan_zi",
-          "char_han_li"
+          "char_han_li",
+          "sys_gu_formation"
         ]
       },
       {
@@ -170,7 +191,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "voice-from-the-lamp",
         "text_origin": "source_excerpt"
@@ -185,7 +206,12 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "consumable-spirit-birth",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal",
+          "sys_gu_worms",
+          "sys_immortal_gu"
+        ]
       },
       {
         "text": "Because Zhen Yuan Zi understood the Gu’s limitations when he created it, he also created formation flag Gu to supplement it, so a formation can be kept in the flag and placed into an immortal aperture.",

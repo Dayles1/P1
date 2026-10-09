@@ -23,17 +23,46 @@
   "first_appearance": {
     "chapter": 548,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     548,
     826,
     1291
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_fire",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
     {
+      "target": "path_fire",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
       "count": 1
     },
     {
@@ -46,6 +75,10 @@
     },
     {
       "target": "loc_jade_pool_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "sys_fire_path_dao_marks",
       "count": 1
     },
     {
@@ -80,7 +113,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "Its body carries many fire path wild Gu worms. Loot includes python blood useful for feeding blood path Gu worms, and the eerie fire snake gall, which is valuable enough to sell in treasure yellow heaven. They live in caves as a family. Fang Yuan finds six eggs about a hundred meters underground. Hatching needs daily bathing in eerie fire and python blood, and after hatching the young need teaching from an eerie fire dragon python on how to hunt.",
@@ -92,7 +128,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_wild_gu",
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "It is a bright red giant python at least a hundred meters long and as thick as a tower, with a sharp horn on its head, a pair of blood eyes, a creepy purple tongue, and eerie blue flames on the tongue.",
@@ -170,7 +210,7 @@
     "Paths": {
       "text": "Fire path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -181,7 +221,9 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_fire"
+    ],
     "aperture": null,
     "talent_grade": null
   },

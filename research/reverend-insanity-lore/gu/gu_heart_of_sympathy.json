@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2036,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2036,
@@ -33,6 +33,10 @@
   "co_mentions": [
     {
       "target": "char_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -126,7 +130,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_wisdom_gu",
-          "char_ren_zu"
+          "char_ren_zu",
+          "sys_gu_worms"
         ]
       },
       {

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1175,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1175
@@ -46,6 +46,10 @@
     {
       "target": "char_paradise_earth_immortal_venerable",
       "count": 3
+    },
+    {
+      "target": "sys_ten_big_mystical_gu",
+      "count": 2
     },
     {
       "target": "gu_connect_mind_gu",
@@ -161,12 +165,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_care_gu",
+          "sys_ten_big_mystical_gu",
           "char_fang_yuan",
           "char_paradise_earth_immortal_venerable"
         ]
@@ -178,7 +183,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "list-ranking",
         "text_origin": "source_excerpt",

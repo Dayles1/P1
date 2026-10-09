@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 828,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     828,
@@ -72,6 +72,10 @@
       "count": 1
     },
     {
+      "target": "sys_refinement_path_convention",
+      "count": 1
+    },
+    {
       "target": "char_zheng_shan_chuan",
       "count": 1
     },
@@ -81,6 +85,10 @@
     },
     {
       "target": "fac_shan_chuan_hall",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     }
   ],
@@ -92,7 +100,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -108,7 +116,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -120,7 +128,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "size-and-backing",
       "text_origin": "source_excerpt",
@@ -136,11 +144,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "convention-sign-up",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_refinement_path_convention",
         "char_fang_yuan"
       ]
     },
@@ -151,7 +160,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sect-leader-greeting",
       "text_origin": "source_excerpt"
@@ -163,7 +172,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "east-coast-contests",
       "text_origin": "source_excerpt",
@@ -178,10 +187,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "local-standing",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     }
   ],
   "conflicts": [],

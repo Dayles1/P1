@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2012,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2012
@@ -46,6 +46,14 @@
     {
       "target": "char_ying_sheng_ji",
       "count": 4
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
     },
     {
       "target": "reg_central_continent",
@@ -110,7 +118,10 @@
         "verification": "no_citation",
         "source_id": "src_sagaofgu",
         "section": "appearance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ],
     "visual_confidence": "text_described"
@@ -170,6 +181,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "reg_central_continent",
+          "sys_gu_master",
           "char_ying_sheng_ji"
         ]
       }

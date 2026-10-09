@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1717,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1717,
@@ -34,6 +34,30 @@
     1952
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_rule",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -53,6 +77,14 @@
       "count": 3
     },
     {
+      "target": "path_rule",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_bull_demon",
       "count": 2
     },
@@ -65,8 +97,16 @@
       "count": 2
     },
     {
+      "target": "house_eternal_yacht",
+      "count": 2
+    },
+    {
       "target": "gu_permanence_gu",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     },
     {
       "target": "fac_longevity_heaven",
@@ -78,6 +118,10 @@
     },
     {
       "target": "char_five_elements_grandmaster",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
       "count": 1
     },
     {
@@ -97,7 +141,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "loc_eternal_sand_cave",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -124,6 +180,7 @@
       "mentions": [
         "char_bull_demon",
         "fac_heavenly_court",
+        "sys_gu_immortal",
         "char_yuan_qiong_du",
         "fac_longevity_heaven"
       ]
@@ -153,6 +210,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_flower_lady",
+        "house_heaven_overseeing_tower",
         "char_che_wei",
         "char_five_elements_grandmaster"
       ]
@@ -187,6 +245,9 @@
       "section": "permanence-and-eternal-yacht",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
+        "house_eternal_yacht",
+        "sys_immortal_gu_house",
         "gu_permanence_gu"
       ]
     },
@@ -202,6 +263,7 @@
       "section": "fate-gu-formation-defense",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_formation",
         "gu_fate_gu",
         "reg_northern_plains"
       ]
@@ -259,12 +321,12 @@
     "Paths": {
       "text": "Rule path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1717",
@@ -286,12 +348,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_rule"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Dead",
     "alignment": null,

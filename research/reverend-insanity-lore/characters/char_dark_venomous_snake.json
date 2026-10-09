@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1241,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1241,
@@ -38,6 +38,22 @@
     },
     {
       "target": "char_wei_ling_yang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_poison_path_dao_marks",
       "count": 1
     },
     {
@@ -70,6 +86,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu_house",
         "char_wei_ling_yang"
       ]
     },
@@ -85,7 +102,8 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_myriad_tidal_dragon"
+        "char_myriad_tidal_dragon",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -98,7 +116,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "The Central Continent group’s trip through black heaven is relatively smooth yet still runs into trouble from the dark venomous snake group among others, while South Desolation Immortal and Yao Huang, crossing the same heaven, meet no trouble at all.",

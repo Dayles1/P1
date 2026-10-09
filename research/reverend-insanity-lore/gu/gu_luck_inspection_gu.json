@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 604,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     604,
@@ -31,6 +31,18 @@
     823
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_luck",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -45,6 +57,10 @@
     }
   ],
   "co_mentions": [
+    {
+      "target": "path_luck",
+      "count": 3
+    },
     {
       "target": "char_fang_yuan",
       "count": 2
@@ -66,7 +82,15 @@
       "count": 1
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_hei_tribe",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     },
     {
@@ -103,6 +127,14 @@
     },
     {
       "target": "char_ye_fan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_investigative_gu",
       "count": 1
     },
     {
@@ -149,7 +181,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_luck"
+    ],
     "path_unverified": false,
     "functional_types": [
       "investigation"
@@ -173,13 +207,14 @@
         ],
         "certainty": "inferred",
         "confidence": "C",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_hei_lou_lan",
-          "char_tai_bai_yun_sheng"
+          "char_tai_bai_yun_sheng",
+          "path_luck"
         ]
       },
       {
@@ -226,12 +261,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "limits-against-immortals",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_qin_bai_sheng"
+          "char_qin_bai_sheng",
+          "sys_investigative_gu",
+          "sys_gu_recipe"
         ],
         "needs_review": true
       }
@@ -264,13 +301,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "fac_hei_tribe"
+          "fac_hei_tribe",
+          "house_eighty_eight_true_yang_building",
+          "sys_mortal_gu"
         ]
       }
     ]
@@ -279,7 +318,7 @@
     "Path": {
       "text": "Luck Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

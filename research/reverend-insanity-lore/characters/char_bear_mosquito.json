@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1241,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1241,
@@ -33,6 +33,14 @@
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
     {
       "target": "reg_central_continent",
       "count": 1
@@ -49,7 +57,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "The bear mosquito group is very large, and on one occasion it surrounds the three Immortal Gu Houses, which have to fight. Tens of thousands of bear mosquitoes attack at once. After that battle, the Gu Immortals who wanted to fight all fall silent, realizing how dangerous black heaven is. Only the three Immortal Gu Houses and the protection of the rank eight Gu Immortals keep them from all dying under the attacks of the bear mosquitoes.",
@@ -61,7 +72,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "On a later stretch of the journey, within two hours the Central Continent Gu Immortals meet several ghost spirit fox groups and bear mosquito groups, and either retreat or fight, using the might of the Immortal Gu Houses to move forward.",

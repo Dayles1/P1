@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 683,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     683,
@@ -45,12 +45,28 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "fights_here",
+      "target": "evt_fight_fang_yuan_against_hei_cheng_second_battle",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 688,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_northern_plains",
       "count": 3
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_hei_cheng_second_battle",
+      "count": 2
     },
     {
       "target": "char_fairy_li_shan",
@@ -86,6 +102,18 @@
     },
     {
       "target": "char_xue_song_zi",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "path_strength",
       "count": 1
     }
   ],
@@ -147,7 +175,12 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "true-meaning-remnant",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "path_strength",
+        "sys_gu_master",
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "The rumor is reported to come from Chu Du, Domination Immortal, who became a strength path Gu Immortal on this icy plain about three hundred years earlier.",

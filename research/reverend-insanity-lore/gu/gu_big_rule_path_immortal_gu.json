@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1415,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1415,
@@ -31,6 +31,18 @@
     1461
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_rule",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -62,11 +74,31 @@
       "count": 3
     },
     {
+      "target": "move_fixed_luck",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
     {
+      "target": "path_rule",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_precaution_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "race_minimen",
       "count": 1
     },
     {
@@ -113,7 +145,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_rule"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -218,7 +252,10 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_immortal_gu",
           "char_purple_mountain_true_monarch",
+          "race_minimen",
+          "sys_gu_immortal",
           "gu_precaution_immortal_gu"
         ]
       }
@@ -228,7 +265,7 @@
     "Path": {
       "text": "Rule Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

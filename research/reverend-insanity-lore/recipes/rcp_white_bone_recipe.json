@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 262,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     262,
@@ -83,6 +83,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_bone_spike_gu",
       "count": 1
     },
@@ -132,6 +136,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "char_fang_yuan",
         "gu_bone_spear_gu",
         "gu_spiral_bone_spear_gu",

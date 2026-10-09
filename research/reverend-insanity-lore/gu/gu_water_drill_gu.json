@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 125,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     125,
@@ -58,6 +58,10 @@
     },
     {
       "target": "char_xiong_jiang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -124,7 +128,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -142,10 +146,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "Xiong Jiang offers three attacking chances while he defends. Bai Bing Yi warns that Xiong Jiang cannot block Water Drill Gu. The first blow hits Xiong Jiang’s raised arms under Roaming Zombie Gu; water splatters, the drill’s rotation intensifies, and Xiong Jiang is driven back with both arms torn to the bone. Shadow Bond Gu then returns a share of that injury, and Bai Bing Yi vomits blood and admits defeat.",
@@ -154,7 +161,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "alliance-slope-use",
         "text_origin": "source_excerpt",
@@ -170,7 +177,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "spar-limits",
         "text_origin": "source_excerpt"
@@ -222,7 +229,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

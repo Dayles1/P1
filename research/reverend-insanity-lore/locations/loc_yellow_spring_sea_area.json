@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 906,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     906,
@@ -53,11 +53,19 @@
       "count": 2
     },
     {
+      "target": "evt_arc_eastern_sea",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
       "target": "char_shark_demon",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -74,6 +82,10 @@
     },
     {
       "target": "loc_turbulent_flow",
+      "count": 1
+    },
+    {
+      "target": "res_yellow_spring_water",
       "count": 1
     }
   ],
@@ -148,6 +160,7 @@
       "mentions": [
         "reg_northern_plains",
         "loc_dark_flow_giant_city",
+        "sys_gu_immortal",
         "loc_undying_kingdom"
       ]
     },
@@ -163,6 +176,7 @@
       "section": "blocks-passage-in-turbulent-flow",
       "text_origin": "source_excerpt",
       "mentions": [
+        "res_yellow_spring_water",
         "loc_turbulent_flow"
       ]
     }

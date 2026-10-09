@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 486,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     486
@@ -60,6 +60,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
       "target": "gu_divine_travel",
       "count": 1
     },
@@ -90,7 +94,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -102,7 +106,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hall-and-refinement",
       "text_origin": "source_excerpt",
@@ -119,11 +123,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hall-and-refinement",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_recipe",
         "gu_second_aperture_gu",
         "gu_divine_travel"
       ]

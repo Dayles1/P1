@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 683,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     683,
@@ -33,8 +33,57 @@
     888,
     917
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_vanishing_immortal_essence_dissipation_rain",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 818,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_freezing_rain_frozen_earth",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "move_vanishing_immortal_essence_dissipation_rain",
+      "count": 4
+    },
+    {
+      "target": "move_freezing_rain_frozen_earth",
+      "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "char_paradise_earth_immortal_venerable",
       "count": 2
@@ -60,7 +109,19 @@
       "count": 1
     },
     {
+      "target": "sys_battlefield_killer_move",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "reg_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "move_landscape_as_before",
       "count": 1
     }
   ],
@@ -72,13 +133,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_tai_bai_yun_sheng",
-        "char_shark_demon"
+        "char_shark_demon",
+        "move_landscape_as_before"
       ]
     },
     {
@@ -104,13 +166,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-and-battlefield-work",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_eastern_sea",
-        "loc_yu_lu_blessed_land"
+        "loc_yu_lu_blessed_land",
+        "move_vanishing_immortal_essence_dissipation_rain"
       ]
     },
     {
@@ -120,10 +183,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-and-battlefield-work",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "When Fang Yuan faces freezing rain frozen earth, he judges her a great expert in battlefield killer moves.",
@@ -132,7 +198,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-and-battlefield-work",
       "text_origin": "source_excerpt"
@@ -144,7 +210,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-and-battlefield-work",
       "text_origin": "source_excerpt",
@@ -198,7 +264,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     }
   },
   "cultivation": {
@@ -215,7 +281,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": null,
     "alignment": null,

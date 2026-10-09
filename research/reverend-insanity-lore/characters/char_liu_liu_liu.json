@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1717,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1717,
@@ -71,9 +71,25 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_despicable_penetrating_blade",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1930,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "move_despicable_penetrating_blade",
+      "count": 4
+    },
     {
       "target": "fac_huang_jin_bloodline",
       "count": 3
@@ -120,6 +136,18 @@
     },
     {
       "target": "fac_longevity_heaven",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "house_calamity_luck_altar",
+      "count": 1
+    },
+    {
+      "target": "move_call_of_the_ancient",
       "count": 1
     },
     {
@@ -192,6 +220,7 @@
       "section": "liu-tribe-succession-passed-over",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "fac_liu_tribe"
       ]
     },
@@ -232,7 +261,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_calamity_luck_altar"
+      ]
     },
     {
       "text": "Liu Liu Liu appears behind Duke Long and thrusts his signature killer move, Despicable Penetrating Blade, into his back; the grey light dagger pierces even Duke Long’s purple-gold dragon scales, the first wound Duke Long has taken since the war began. The blade sticks fast without moving further, and Duke Long turns and grips Liu Liu Liu’s head, revealing that he let the strike land on purpose to use his own body as bait. Duke Long crushes his skull, and Liu Liu Liu’s headless corpse falls as the grey dagger dissipates.",
@@ -246,7 +278,8 @@
       "section": "death-against-duke-long",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_duke_long"
+        "char_duke_long",
+        "move_despicable_penetrating_blade"
       ]
     }
   ],

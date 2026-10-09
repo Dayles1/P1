@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 676,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     676,
@@ -64,6 +64,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -94,6 +98,10 @@
     {
       "target": "loc_zhi_forest",
       "count": 1
+    },
+    {
+      "target": "sys_refinement_path_convention",
+      "count": 1
     }
   ],
   "claims": [
@@ -104,7 +112,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -119,7 +127,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -135,11 +143,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_worms",
         "gu_connect_luck"
       ]
     },
@@ -165,12 +174,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refinement-path-convention",
       "text_origin": "source_excerpt",
       "mentions": [
-        "reg_central_continent"
+        "reg_central_continent",
+        "sys_refinement_path_convention"
       ]
     },
     {

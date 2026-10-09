@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 418,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     418,
@@ -46,6 +46,10 @@
     },
     {
       "target": "char_lord_sky_crane",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -154,7 +158,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "speed-and-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "Cited chapters do not state what Lightning Symbol Paper Crane Gu eats.",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 663,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     663,
@@ -60,11 +60,31 @@
       "count": 2
     },
     {
+      "target": "res_wind_scythe_bird_eyeballs",
+      "count": 2
+    },
+    {
       "target": "char_lang_ya_land_spirit",
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
       "target": "loc_lang_ya_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "path_cloud",
       "count": 1
     },
     {
@@ -77,6 +97,14 @@
     },
     {
       "target": "res_laughter_stones",
+      "count": 1
+    },
+    {
+      "target": "res_six_headed_snake_blood",
+      "count": 1
+    },
+    {
+      "target": "res_underworld_jellyfish",
       "count": 1
     },
     {
@@ -169,10 +197,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       }
     ]
   },
@@ -188,14 +219,17 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "hunger-and-food",
         "text_origin": "source_excerpt",
         "mentions": [
           "res_cloud_dragon_scales",
+          "res_wind_scythe_bird_eyeballs",
           "gu_calamity_beckoning_gu",
-          "res_deepsea_lightning_eels"
+          "res_underworld_jellyfish",
+          "res_deepsea_lightning_eels",
+          "res_six_headed_snake_blood"
         ]
       }
     ]
@@ -218,7 +252,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "auction-listing",
         "text_origin": "source_excerpt",
@@ -272,13 +306,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_lang_ya_blessed_land",
           "char_fang_yuan",
+          "sys_immortal_gu",
+          "house_eighty_eight_true_yang_building",
           "char_lang_ya_land_spirit"
         ]
       },
@@ -289,7 +325,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "collateral-and-comparison",
         "text_origin": "source_excerpt",

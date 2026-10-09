@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 471,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     471
@@ -53,6 +53,18 @@
     },
     {
       "target": "char_yan_tian_ji",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_movement_gu",
       "count": 1
     },
     {
@@ -134,6 +146,8 @@
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_movement_gu",
+          "sys_gu_worms",
           "char_yan_tian_ji"
         ]
       }
@@ -207,7 +221,8 @@
         "section": "sight-blow-pairing",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_sight_blow_gu"
+          "gu_sight_blow_gu",
+          "sys_gu_master"
         ]
       }
     ]

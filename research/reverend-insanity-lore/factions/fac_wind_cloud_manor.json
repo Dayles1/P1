@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 811,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     811,
@@ -141,6 +141,14 @@
       "count": 2
     },
     {
+      "target": "house_wind_sweeping_building",
+      "count": 2
+    },
+    {
+      "target": "house_cloud_passing_building",
+      "count": 2
+    },
+    {
       "target": "char_song_tao_zi",
       "count": 2
     },
@@ -153,11 +161,23 @@
       "count": 2
     },
     {
+      "target": "house_wind_cloud_manor",
+      "count": 2
+    },
+    {
       "target": "fac_heavenly_lotus_sect",
       "count": 2
     },
     {
       "target": "fac_dong_fang_tribe",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
+      "target": "house_modest_thatched_hut",
       "count": 1
     },
     {
@@ -173,11 +193,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_ten_great_sects",
       "count": 1
     },
     {
       "target": "loc_luo_po_valley",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -221,7 +257,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_combat_immortal_sect",
+      "count": 1
+    },
+    {
+      "target": "house_canary_pavilion",
+      "count": 1
+    },
+    {
+      "target": "house_edge_link_camp",
       "count": 1
     },
     {
@@ -240,7 +288,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_wind_cloud_manor",
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "It is one of the manor’s two signature Immortal Gu Houses, paired with Cloud Passing Building.",
@@ -252,7 +304,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_cloud_passing_building"
+      ]
     },
     {
       "text": "Hong Chi Ming speaks during the investigation in Northern Plains after Eighty-Eight True Yang Building collapses. He prefers the original name Thatched Hut for Modest Thatched Hut, and he recounts how Dong Fang Yu of Dong Fang tribe inherited that house and renamed it. Before becoming an immortal he had explored Northern Plains as a mortal and lived there for some time, so he knew those details clearly. He raises the history while hinting that they should go to Jade Pool blessed land to plunder for resources.",
@@ -268,6 +323,8 @@
       "mentions": [
         "char_hong_chi_ming",
         "reg_northern_plains",
+        "house_eighty_eight_true_yang_building",
+        "house_modest_thatched_hut",
         "fac_dong_fang_tribe",
         "loc_jade_pool_blessed_land"
       ]
@@ -284,7 +341,8 @@
       "section": "sect-standing-and-disciples",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_mi_lan_guang"
+        "char_mi_lan_guang",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -301,6 +359,7 @@
       "mentions": [
         "fac_ten_great_sects",
         "reg_central_continent",
+        "sys_gu_formation",
         "char_fairy_ling_mei",
         "loc_luo_po_valley"
       ]
@@ -318,7 +377,9 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_ming_tang_valley",
-        "fac_heavenly_lotus_sect"
+        "fac_heavenly_lotus_sect",
+        "sys_gu_worms",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -383,8 +444,11 @@
       "section": "wind-sweeping-building-deployments",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_wind_sweeping_building",
         "fac_heavenly_lotus_sect",
+        "house_canary_pavilion",
         "fac_combat_immortal_sect",
+        "house_edge_link_camp",
         "char_zhao_lian_yun"
       ]
     },

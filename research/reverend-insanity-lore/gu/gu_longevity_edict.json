@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1181,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1181,
@@ -35,6 +35,18 @@
     1235
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_information",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_yao_huang",
@@ -70,6 +82,10 @@
       "count": 3
     },
     {
+      "target": "path_information",
+      "count": 1
+    },
+    {
       "target": "fac_liu_tribe",
       "count": 2
     },
@@ -82,11 +98,23 @@
       "count": 2
     },
     {
+      "target": "house_golden_dawn_hall",
+      "count": 2
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_bai_zu_tribe",
       "count": 1
     },
     {
       "target": "fac_huang_jin_bloodline",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
       "count": 1
     },
     {
@@ -123,6 +151,10 @@
     },
     {
       "target": "fac_chu_sect",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     }
   ],
@@ -163,7 +195,9 @@
     "ranks": [],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_information"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -177,10 +211,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-eight-limit",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       }
     ]
   },
@@ -193,10 +230,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       }
     ],
     "visual_confidence": "text_described"
@@ -211,7 +251,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "limits-of-the-token",
         "text_origin": "source_excerpt",
@@ -276,7 +316,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -294,7 +334,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "passed-to-yao-huang",
         "text_origin": "source_excerpt",
@@ -314,14 +354,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "transferred-to-gong-wan-ting",
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_yao_tribe",
           "char_yao_yuan_ying",
-          "char_gong_wan_ting"
+          "char_gong_wan_ting",
+          "house_golden_dawn_hall"
         ]
       }
     ]
@@ -330,7 +371,7 @@
     "Path": {
       "text": "Information Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

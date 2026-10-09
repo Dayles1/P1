@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1862,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1862,
@@ -99,6 +99,10 @@
       "count": 4
     },
     {
+      "target": "house_floating_reputation_boat",
+      "count": 3
+    },
+    {
       "target": "reg_eastern_sea",
       "count": 2
     },
@@ -119,7 +123,19 @@
       "count": 1
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_qi_sea_ancestor",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
       "count": 1
     },
     {
@@ -128,6 +144,14 @@
     },
     {
       "target": "char_ice_crystal_immortal_monarch",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fate_war",
       "count": 1
     },
     {
@@ -147,6 +171,10 @@
       "count": 1
     },
     {
+      "target": "house_whale_fishing_boat",
+      "count": 1
+    },
+    {
       "target": "fac_two_heavens_alliance",
       "count": 1
     },
@@ -156,6 +184,10 @@
     },
     {
       "target": "reg_southern_border",
+      "count": 1
+    },
+    {
+      "target": "res_refinement_path_seashell",
       "count": 1
     }
   ],
@@ -184,6 +216,7 @@
       "mentions": [
         "fac_gu_tribe",
         "char_wu_shuai",
+        "race_humans",
         "char_paradise_earth_immortal_venerable"
       ]
     },
@@ -213,7 +246,9 @@
       "mentions": [
         "char_tang_qiong",
         "loc_imperial_court",
-        "char_qi_sea_ancestor"
+        "char_qi_sea_ancestor",
+        "sys_immortal_gu_house",
+        "house_dragon_palace"
       ]
     },
     {
@@ -231,7 +266,9 @@
         "reg_eastern_sea",
         "char_lian_ke_xin",
         "char_yu_zi",
-        "char_ice_crystal_immortal_monarch"
+        "char_ice_crystal_immortal_monarch",
+        "sys_gu_immortal",
+        "house_floating_reputation_boat"
       ]
     },
     {

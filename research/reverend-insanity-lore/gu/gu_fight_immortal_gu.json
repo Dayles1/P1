@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1395,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1394,
@@ -47,8 +47,28 @@
   ],
   "co_mentions": [
     {
+      "target": "move_soaring_fighting_spirit",
+      "count": 3
+    },
+    {
+      "target": "move_enslavement_after_victorious_fight",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
     },
     {
       "target": "fac_zombie_alliance",
@@ -67,11 +87,23 @@
       "count": 1
     },
     {
+      "target": "inh_western_desert_zombie_alliance_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_purple_mountain_true_monarch",
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_big_rule_path_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "house_myriad_year_flying_warship",
       "count": 1
     }
   ],
@@ -132,7 +164,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -150,7 +182,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "first-activation-fails",
         "text_origin": "source_excerpt",
@@ -172,10 +204,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "defeated-beasts-become-slaves",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms",
+          "move_enslavement_after_victorious_fight"
+        ]
       }
     ]
   },
@@ -224,7 +260,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_corpse_city",
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_gu_formation",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -241,7 +279,8 @@
         "mentions": [
           "reg_western_desert",
           "fac_zombie_alliance",
-          "gu_yellow_sand_immortal_gu"
+          "gu_yellow_sand_immortal_gu",
+          "sys_mortal_gu"
         ]
       }
     ]

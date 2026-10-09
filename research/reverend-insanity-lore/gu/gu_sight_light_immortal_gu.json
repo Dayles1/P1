@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1126,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1126
@@ -48,11 +48,19 @@
       "count": 4
     },
     {
+      "target": "move_farsight_weapon_light",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
       "target": "char_feng_jun",
+      "count": 1
+    },
+    {
+      "target": "path_light",
       "count": 1
     }
   ],
@@ -145,14 +153,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
           "char_feng_jun",
-          "char_zhou_min"
+          "char_zhou_min",
+          "move_farsight_weapon_light"
         ]
       }
     ]

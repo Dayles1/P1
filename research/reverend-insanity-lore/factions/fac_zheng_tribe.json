@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 477,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     477,
@@ -64,6 +64,10 @@
       "count": 2
     },
     {
+      "target": "sys_battle_formation",
+      "count": 1
+    },
+    {
       "target": "fac_ge_tribe",
       "count": 1
     },
@@ -100,7 +104,23 @@
       "count": 1
     },
     {
+      "target": "move_gold_and_silver_lightning_dragon",
+      "count": 1
+    },
+    {
+      "target": "move_thunder_bird",
+      "count": 1
+    },
+    {
       "target": "char_bei_cao_chuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -153,7 +173,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "alliance-talk",
       "text_origin": "source_excerpt",
@@ -168,7 +188,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "field-judgment",
       "text_origin": "source_excerpt",
@@ -184,7 +204,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "camp-clash",
       "text_origin": "source_excerpt",
@@ -199,10 +219,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "night-aftermath",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     }
   ],
   "conflicts": [],

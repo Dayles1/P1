@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 358,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     358,
@@ -66,7 +66,19 @@
       "count": 1
     },
     {
+      "target": "inh_king_xin_inheritance",
+      "count": 1
+    },
+    {
+      "target": "move_infinite_search_and_lock",
+      "count": 1
+    },
+    {
       "target": "char_tie_xian_hua",
+      "count": 1
+    },
+    {
+      "target": "sys_movement_gu",
       "count": 1
     },
     {
@@ -142,7 +154,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -154,7 +166,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -172,7 +184,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
@@ -221,7 +233,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_tie_clan",
-          "char_tie_xian_hua"
+          "char_tie_xian_hua",
+          "sys_movement_gu"
         ]
       }
     ]
@@ -246,11 +259,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "inh_king_xin_inheritance",
           "char_fang_yuan",
           "gu_footless_bird_gu",
           "char_li_xian"
@@ -263,7 +277,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "northern-plains-suppression",
         "text_origin": "source_excerpt"

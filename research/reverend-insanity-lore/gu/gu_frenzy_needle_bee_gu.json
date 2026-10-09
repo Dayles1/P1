@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 207,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     207,
@@ -42,6 +42,18 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_rank_three",
       "count": 1
     },
     {
@@ -191,7 +203,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_rank_three"
+        ]
       },
       {
         "text": "Ordinary frenzy needle bees are weaker. Fang Yuan’s Carapace Gu crocodile skin armor stops ordinary bees, while the few bee Gu go after Bai Ning Bing.",
@@ -316,7 +331,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "chase-near-bai-gu-mountain",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_demonic_path"
+        ]
       },
       {
         "text": "No cited chapter shows a Gu Master refining or owning Frenzy Needle Bee Gu. The swarm on the Bai Gu Mountain road is a wild insect group.",
@@ -326,7 +344,10 @@
         "verification": "no_citation",
         "source_id": "src_sagaofgu",
         "section": "chase-near-bai-gu-mountain",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       }
     ]
   },

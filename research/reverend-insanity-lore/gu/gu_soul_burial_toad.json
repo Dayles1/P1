@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 413,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     413,
@@ -91,6 +91,14 @@
       "count": 2
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_storage_gu",
+      "count": 1
+    },
+    {
       "target": "gu_guts_gu",
       "count": 1
     },
@@ -112,6 +120,10 @@
     },
     {
       "target": "fac_yan_tribe",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_imperial_court_contest",
       "count": 1
     }
   ],
@@ -173,7 +185,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "naming-variation",
         "text_origin": "source_excerpt",
@@ -242,6 +254,7 @@
         "section": "form-and-rank",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "char_fairy_bai_hu"
         ]
       },
@@ -285,7 +298,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_storage_gu"
+        ]
       },
       {
         "text": "Fang Yuan uses it to collect souls from the rockmen who died fighting the fox groups, then places those souls on Dang Hun Mountain to breed new gutstones.",
@@ -340,7 +356,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "evt_arc_imperial_court_contest"
+        ]
       },
       {
         "text": "The toad again holds human and beast souls mostly gathered from battlefields, and those souls become large numbers of guts Gu through Dang Hun Mountain.",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 323,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     323,
@@ -81,6 +81,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -109,6 +113,7 @@
         "char_che_you_yin",
         "char_che_qiao_xiang",
         "char_zuo_wu_sheng",
+        "sys_gu_master",
         "char_kong_ri_tian",
         "char_zuo_chan_yu"
       ]

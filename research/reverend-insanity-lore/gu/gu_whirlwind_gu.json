@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 106,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     106,
@@ -75,11 +75,19 @@
       "count": 2
     },
     {
+      "target": "move_ice_blade_storm",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
       "target": "char_jia_fu",
+      "count": 1
+    },
+    {
+      "target": "sys_moonblade",
       "count": 1
     },
     {
@@ -92,6 +100,14 @@
     },
     {
       "target": "gu_swirl_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_set",
+      "count": 1
+    },
+    {
+      "target": "sys_killer_moves",
       "count": 1
     }
   ],
@@ -168,12 +184,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ice-blade-storm-naming",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_bai_ning_bing",
+          "move_ice_blade_storm",
           "gu_revolving_gu"
         ]
       },

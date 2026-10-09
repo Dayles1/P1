@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 948,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     948,
@@ -61,6 +61,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -81,7 +85,23 @@
       "count": 1
     },
     {
+      "target": "move_immortal_tribulation_tempering_aperture",
+      "count": 1
+    },
+    {
+      "target": "path_strength",
+      "count": 1
+    },
+    {
       "target": "char_chu_du",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "race_snowmen",
       "count": 1
     },
     {
@@ -107,7 +127,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_blazing_heaven_demoness",
-        "char_lady_earth_mother"
+        "char_lady_earth_mother",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -166,6 +187,7 @@
       "section": "appearance-and-origin",
       "text_origin": "source_excerpt",
       "mentions": [
+        "path_strength",
         "fac_gu_masters"
       ]
     },
@@ -208,7 +230,8 @@
       "section": "ascension-rule",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_chu_du"
+        "char_chu_du",
+        "sys_gu_master"
       ]
     },
     {
@@ -271,6 +294,7 @@
       "section": "hidden-tribes",
       "text_origin": "source_excerpt",
       "mentions": [
+        "race_snowmen",
         "char_shi_shi_cheng"
       ]
     },

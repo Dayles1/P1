@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 852,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     852,
@@ -63,12 +63,44 @@
       "count": 3
     },
     {
+      "target": "move_six_illusion_star_bodies",
+      "count": 3
+    },
+    {
+      "target": "move_position_star_swap",
+      "count": 3
+    },
+    {
+      "target": "move_star_fire_escape",
+      "count": 3
+    },
+    {
+      "target": "move_star_cloud_grindstone",
+      "count": 2
+    },
+    {
+      "target": "move_star_snake_rope",
+      "count": 2
+    },
+    {
+      "target": "move_star_soul_battlefield",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
     {
       "target": "gu_starlight_gu",
       "count": 2
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_stone_nest",
+      "count": 1
     },
     {
       "target": "gu_airsac_gu",
@@ -96,6 +128,10 @@
     },
     {
       "target": "res_dark_star_kelp",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     }
   ],
@@ -152,7 +188,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -164,7 +200,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form",
         "text_origin": "source_excerpt"
@@ -182,10 +218,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "escape-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       }
     ]
   },
@@ -201,7 +240,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "food",
         "text_origin": "source_excerpt"
@@ -222,7 +261,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "star-thought-refinement",
         "text_origin": "source_excerpt",
@@ -240,10 +279,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "star-thought-refinement",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_stone_nest"
+        ]
       },
       {
         "text": "Fang Yuan later credits the successful recipe change to the presence of starlight Immortal Gu, not because of his own abilities.",
@@ -252,7 +294,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "recipe-credit",
         "text_origin": "source_excerpt"
@@ -299,13 +341,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
           "loc_star_form_blessed_land",
+          "sys_immortal_gu",
           "char_star_lord_wan_xiang"
         ]
       }

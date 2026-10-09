@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1033,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1033,
@@ -39,6 +39,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -69,6 +81,10 @@
     {
       "target": "reg_southern_border",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_chi_xiang",
@@ -103,6 +119,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_fixed_immortal_travel",
       "count": 1
     },
@@ -125,6 +149,10 @@
     {
       "target": "fac_xue_clan",
       "count": 1
+    },
+    {
+      "target": "inh_qi_xiang_true_inheritance",
+      "count": 1
     }
   ],
   "claims": [
@@ -135,7 +163,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -152,7 +180,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "heaven-surveying-five-xiangs",
       "text_origin": "source_excerpt",
@@ -162,7 +190,8 @@
         "char_xue_xiang",
         "char_chi_xiang",
         "fac_heaven_surveying_five_xiangs",
-        "fac_ni_clan"
+        "fac_ni_clan",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -172,11 +201,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "current-generation-title",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "gu_yes_or_no_immortal_gu"
       ]
     },
@@ -187,7 +217,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "current-generation-title",
       "text_origin": "source_excerpt",
@@ -202,7 +232,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "current-generation-title",
       "text_origin": "source_excerpt",
@@ -258,7 +288,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Ni Clan",
@@ -279,7 +309,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Unknown",
     "alignment": null,

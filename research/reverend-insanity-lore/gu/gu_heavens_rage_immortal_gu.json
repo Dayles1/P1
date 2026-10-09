@@ -23,19 +23,40 @@
   "first_appearance": {
     "chapter": 2121,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_dao_veins_famous_mountains"
   },
   "chapters_cited": [
     2121
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_heaven",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "path_heaven",
+      "count": 1
+    },
     {
       "target": "char_imperial_minister_su",
       "count": 1
     },
     {
       "target": "char_su_qi_han",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -76,7 +97,9 @@
     "ranks": [],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_heaven"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -122,6 +145,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_imperial_minister_su",
+          "sys_immortal_gu",
           "gu_heavens_envy_gu",
           "char_su_qi_han"
         ],
@@ -144,7 +168,7 @@
     "Path": {
       "text": "Heaven Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

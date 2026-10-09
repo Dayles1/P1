@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 266,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     266,
@@ -67,11 +67,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_and_bai_ning_bing_against_wei_yang",
+      "count": 1
+    },
+    {
       "target": "loc_shang_clan_city",
       "count": 1
     },
     {
       "target": "char_fang_zheng",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_set",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     }
   ],
@@ -135,7 +151,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -147,12 +163,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wei-yang-set-role",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_broadsword_light_gu"
+          "gu_broadsword_light_gu",
+          "sys_gu_worms"
         ]
       }
     ]
@@ -202,7 +219,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -210,7 +227,8 @@
           "loc_shang_clan_city",
           "char_fang_yuan",
           "char_bai_ning_bing",
-          "char_wei_yang"
+          "char_wei_yang",
+          "sys_gu_master"
         ]
       },
       {
@@ -220,7 +238,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "spar-report",
         "text_origin": "source_excerpt",
@@ -235,7 +253,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "set-example",
         "text_origin": "source_excerpt",

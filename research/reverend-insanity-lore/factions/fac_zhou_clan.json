@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 325,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     325,
@@ -62,6 +62,10 @@
       "count": 1
     },
     {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
       "target": "fac_shang_clan",
       "count": 1
     }
@@ -74,7 +78,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "zhou-quan-in-shang-clan-city",
       "text_origin": "source_excerpt",
@@ -82,7 +86,8 @@
         "char_fang_yuan",
         "char_zhou_quan",
         "char_shang_ya_zi",
-        "char_shang_xin_ci"
+        "char_shang_xin_ci",
+        "sys_demonic_path"
       ]
     },
     {
@@ -92,7 +97,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "zhou-quan-in-shang-clan-city",
       "text_origin": "source_excerpt"
@@ -104,7 +109,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "zhou-quan-under-shang-xin-ci",
       "text_origin": "source_excerpt",

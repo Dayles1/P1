@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 635,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     635,
@@ -71,6 +71,10 @@
       "count": 2
     },
     {
+      "target": "move_winged_blade",
+      "count": 2
+    },
+    {
       "target": "fac_murong_tribe",
       "count": 2
     },
@@ -89,6 +93,14 @@
     {
       "target": "fac_meng_tribe",
       "count": 2
+    },
+    {
+      "target": "move_seven_extreme_desolation",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     },
     {
       "target": "fac_dong_fang_tribe",
@@ -139,6 +151,10 @@
       "count": 1
     },
     {
+      "target": "res_sandalwood_sacred_elephant_egg",
+      "count": 1
+    },
+    {
       "target": "fac_liu_tribe",
       "count": 1
     },
@@ -155,12 +171,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "winged-blade-at-the-wind-veil",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "loc_imperial_court_blessed_land",
+        "move_winged_blade",
         "fac_hei_tribe",
         "fac_ye_lui_tribe",
         "fac_dong_fang_tribe",
@@ -174,7 +192,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "winged-blade-at-the-wind-veil",
       "text_origin": "source_excerpt"
@@ -186,7 +204,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "winged-blade-at-the-wind-veil",
       "text_origin": "source_excerpt"
@@ -198,7 +216,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dong-fang-transaction",
       "text_origin": "source_excerpt",
@@ -215,7 +233,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "auction-competition",
       "text_origin": "source_excerpt",
@@ -231,7 +249,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "auction-competition",
       "text_origin": "source_excerpt",
@@ -270,7 +288,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "blood-battle-assembly",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_seven_extreme_desolation"
+      ]
     }
   ],
   "conflicts": [],

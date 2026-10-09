@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1273,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1272,
@@ -37,6 +37,18 @@
     1529
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -56,7 +68,15 @@
       "count": 2
     },
     {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
       "target": "char_bi_chen_tian",
+      "count": 2
+    },
+    {
+      "target": "house_edge_link_camp",
       "count": 2
     },
     {
@@ -74,6 +94,22 @@
     {
       "target": "gu_vajra_thought_immortal_gu",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
     },
     {
       "target": "gu_love_gu",
@@ -105,6 +141,18 @@
     },
     {
       "target": "gu_self_love_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_self",
+      "count": 1
+    },
+    {
+      "target": "move_collective_thinking",
+      "count": 1
+    },
+    {
+      "target": "move_ghost_official_garment",
       "count": 1
     },
     {
@@ -161,7 +209,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -190,7 +240,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -208,13 +258,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "edge-link-camp-use",
         "text_origin": "source_excerpt",
         "mentions": [
           "reg_central_continent",
+          "sys_mortal_gu",
+          "sys_immortal_gu_house",
           "gu_love_gu",
+          "sys_immortal_gu",
           "loc_snowy_mountain"
         ]
       },
@@ -225,7 +278,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wisdom-path-immortal-uses",
         "text_origin": "source_excerpt",
@@ -242,7 +295,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wisdom-path-immortal-uses",
         "text_origin": "source_excerpt",
@@ -257,7 +310,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wisdom-path-immortal-uses",
         "text_origin": "source_excerpt"
@@ -269,7 +322,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wisdom-path-immortal-uses",
         "text_origin": "source_excerpt",
@@ -307,7 +360,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "feed",
         "text_origin": "source_excerpt",
@@ -358,13 +411,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
           "loc_reverse_flow_river",
+          "house_edge_link_camp",
           "char_bi_chen_tian"
         ]
       },
@@ -375,7 +429,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-path",
         "text_origin": "source_excerpt"
@@ -387,10 +441,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "why-fang-yuan-keeps-it",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "Fang Yuan considers trading it for Immortal Gu that suit him better, but Reverse Flow River blocks transactions. Bi Chen Tian then fights him for it. When punches threaten him underwater, Fang Yuan holds the Gu in front of Bi Chen Tian’s fist so Bi Chen Tian pulls back rather than risk destroying it, and Fang Yuan uses those openings.",
@@ -399,7 +456,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fight-over-the-gu",
         "text_origin": "source_excerpt"
@@ -410,7 +467,7 @@
     "Path": {
       "text": "Wisdom Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

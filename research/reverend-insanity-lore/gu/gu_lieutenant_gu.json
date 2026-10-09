@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1992,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1992,
@@ -67,11 +67,23 @@
       "count": 2
     },
     {
+      "target": "sys_foundational_pillar_of_human_path",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_soldier_gu",
       "count": 1
     },
     {
       "target": "gu_arrow_formation_gu",
+      "count": 1
+    },
+    {
+      "target": "move_commander_of_justice",
       "count": 1
     }
   ],
@@ -233,7 +245,8 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_xiao_qi_xing"
+          "char_xiao_qi_xing",
+          "sys_gu_worms"
         ]
       }
     ]

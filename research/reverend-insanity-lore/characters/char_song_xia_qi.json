@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 899,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     899,
@@ -34,6 +34,18 @@
     {
       "type": "in_region",
       "target": "reg_eastern_sea",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -62,11 +74,19 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_eastern_sea",
       "count": 1
     },
     {
       "target": "char_song_qi_yuan",
+      "count": 2
+    },
+    {
+      "target": "inh_tian_nan_true_inheritance",
       "count": 2
     },
     {
@@ -106,6 +126,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_qi_sea_ancestor",
       "count": 1
     },
@@ -122,13 +146,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_song_yi_shi",
         "char_song_qi_yuan",
+        "inh_tian_nan_true_inheritance",
         "char_song_jia_dan",
         "reg_northern_plains"
       ]
@@ -140,13 +165,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "seeking-a-deduction-on-wisdom-star",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_old_eccentric_tian_nan",
         "loc_ascending_heaven_plain",
+        "sys_gu_immortal",
         "char_tai_bai_yun_sheng",
         "fac_song_clan"
       ]
@@ -210,7 +236,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Song Clan as of ch. 899",
@@ -237,7 +263,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

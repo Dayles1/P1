@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 131,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     131,
@@ -35,8 +35,25 @@
     722,
     1619
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "char_ren_zu",
       "count": 2
@@ -86,11 +103,31 @@
       "count": 1
     },
     {
+      "target": "evt_legend_attitude",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_the_origin_of_wine",
+      "count": 1
+    },
+    {
       "target": "char_tie_ruo_nan",
       "count": 1
     },
     {
+      "target": "sys_space_door",
+      "count": 1
+    },
+    {
       "target": "gu_faith_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_love_is_cruel",
       "count": 1
     },
     {
@@ -106,7 +143,23 @@
       "count": 1
     },
     {
+      "target": "race_rockmen",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_troubles_of_love",
+      "count": 1
+    },
+    {
+      "target": "sys_desolate_ancient_moon_physique",
+      "count": 1
+    },
+    {
       "target": "gu_bewilderment_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_northern_dark_ice_soul",
       "count": 1
     },
     {
@@ -118,7 +171,23 @@
       "count": 1
     },
     {
+      "target": "evt_legend_understanding_ones_purpose",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_walking_meat_tree",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_living_in_a_dream",
+      "count": 1
+    },
+    {
       "target": "gu_fate_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_webs_of_fate",
       "count": 1
     }
   ],
@@ -130,7 +199,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -181,7 +250,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -193,7 +262,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "search-for-success-gu",
       "text_origin": "source_excerpt",
@@ -215,7 +284,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "failure-gu-search",
       "text_origin": "source_excerpt",
@@ -230,7 +299,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "life-gem-sacrifice",
       "text_origin": "source_excerpt",
@@ -246,7 +315,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "life-gem-sacrifice",
       "text_origin": "source_excerpt"
@@ -324,7 +393,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -340,7 +409,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Dead",
     "alignment": null,

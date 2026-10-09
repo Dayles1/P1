@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 459,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     459,
@@ -52,6 +52,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_hole_earth_gu",
       "count": 1
     },
@@ -61,6 +65,10 @@
     },
     {
       "target": "gu_starlight_firefly_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -77,6 +85,14 @@
     },
     {
       "target": "char_ying_wu_xie",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -154,7 +170,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "appearance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ],
     "visual_confidence": "text_described"
@@ -175,7 +194,9 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_ying_wu_xie",
-          "char_hei_lou_lan"
+          "char_hei_lou_lan",
+          "sys_gu_immortal",
+          "sys_immortal_gu"
         ]
       }
     ]
@@ -242,7 +263,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "first-refinement-form-and-cost",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       }
     ]
   },

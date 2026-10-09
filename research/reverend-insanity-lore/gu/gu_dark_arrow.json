@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 677,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     677,
@@ -63,7 +63,27 @@
       "count": 1
     },
     {
+      "target": "sys_defensive_killer_move",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_killer_move",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_hei_cheng_first_battle",
+      "count": 1
+    },
+    {
       "target": "gu_indestructible_steel_mane_gu",
+      "count": 1
+    },
+    {
+      "target": "move_hair_armor",
+      "count": 1
+    },
+    {
+      "target": "move_light_illusion_bat_wings",
       "count": 1
     },
     {
@@ -71,7 +91,35 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_investigative_killer_move",
+      "count": 1
+    },
+    {
       "target": "fac_shadow_sect",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_hei_cheng_second_battle",
+      "count": 1
+    },
+    {
+      "target": "house_dark_prison",
+      "count": 1
+    },
+    {
+      "target": "move_fading_heavenly_flower",
+      "count": 1
+    },
+    {
+      "target": "move_star_soul_battlefield",
       "count": 1
     }
   ],
@@ -137,7 +185,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -149,10 +197,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "northern-plains-battles",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       },
       {
         "text": "He later still holds Dark Arrow after losing Immortal Gu House Dark Prison. During the hundred days battle, Shadow Sect designs immortal killer moves that use dark arrow Immortal Gu as the core.",
@@ -161,11 +212,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "northern-plains-battles",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu_house",
+          "house_dark_prison",
           "fac_shadow_sect"
         ]
       }
@@ -216,7 +269,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -233,7 +286,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ownership",
         "text_origin": "source_excerpt",

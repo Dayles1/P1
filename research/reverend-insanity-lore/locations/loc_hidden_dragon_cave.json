@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1069,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1069,
@@ -63,6 +63,14 @@
       "count": 1
     },
     {
+      "target": "sys_super_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_trench",
+      "count": 1
+    },
+    {
       "target": "fac_zombie_alliance",
       "count": 1
     },
@@ -75,7 +83,27 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
+      "count": 1
+    },
+    {
       "target": "reg_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "move_mountain_suppression",
+      "count": 1
+    },
+    {
+      "target": "move_perfect_round_light",
+      "count": 1
+    },
+    {
+      "target": "move_broken_mirror_shard_light",
       "count": 1
     },
     {
@@ -83,7 +111,19 @@
       "count": 1
     },
     {
+      "target": "evt_arc_fate_destruction",
+      "count": 1
+    },
+    {
       "target": "char_wu_shuai",
+      "count": 1
+    },
+    {
+      "target": "sys_dream_realm",
+      "count": 1
+    },
+    {
+      "target": "move_destiny_song",
       "count": 1
     }
   ],
@@ -95,7 +135,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -114,7 +154,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "duke-long-visit",
       "text_origin": "source_excerpt",
@@ -129,13 +169,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "earth-trench-seal",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_northern_plains",
         "fac_zombie_alliance",
+        "reg_earth_earth_trench",
+        "sys_super_gu_formation",
         "reg_central_continent"
       ]
     },
@@ -151,7 +193,9 @@
       "section": "exposed-cavern",
       "text_origin": "source_excerpt",
       "mentions": [
-        "reg_eastern_sea"
+        "reg_eastern_sea",
+        "house_dragon_palace",
+        "sys_immortal_gu_house"
       ]
     },
     {
@@ -166,6 +210,7 @@
       "section": "dragon-freed",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_dream_realm",
         "char_wu_shuai"
       ]
     }

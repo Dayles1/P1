@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2300,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2300
@@ -48,6 +48,10 @@
       "count": 1
     },
     {
+      "target": "house_pregnancy_temple",
+      "count": 2
+    },
+    {
       "target": "gu_become_pregnant_gu",
       "count": 2
     },
@@ -62,6 +66,14 @@
     {
       "target": "gu_safe_pregnancy_gu",
       "count": 2
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
     },
     {
       "target": "gu_abortion_gu",
@@ -162,6 +174,9 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_pregnancy_temple",
+          "sys_immortal_gu_house",
+          "sys_gu_worms",
           "gu_become_pregnant_gu",
           "gu_dead_fetus_gu",
           "gu_multiple_pregnancy_gu",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1488,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1488,
@@ -79,6 +79,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_su_clan",
       "count": 1
     },
@@ -105,6 +109,14 @@
     {
       "target": "fac_zombie_alliance",
       "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_mountain_ranges",
+      "count": 1
     }
   ],
   "claims": [
@@ -125,12 +137,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_qing_yue_zhi_cheng",
+        "sys_gu_immortal",
         "reg_eastern_sea",
         "char_qing_yue_an",
         "char_qin_bai_he",
@@ -144,7 +157,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "seeking-wisdom-help",
       "text_origin": "source_excerpt",
@@ -164,7 +177,8 @@
       "section": "rank-eight-presence",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_eastern_sea_righteous_path"
+        "fac_eastern_sea_righteous_path",
+        "house_dragon_palace"
       ]
     },
     {

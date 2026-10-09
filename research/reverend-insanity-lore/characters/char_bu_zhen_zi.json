@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1237,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1237,
@@ -35,8 +35,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_phantom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -65,11 +89,23 @@
       "count": 3
     },
     {
+      "target": "path_phantom",
+      "count": 2
+    },
+    {
       "target": "reg_central_continent",
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_spirit_affinity_first_supreme_elder",
+      "count": 2
+    },
+    {
+      "target": "house_wind_sweeping_building",
       "count": 2
     },
     {
@@ -81,11 +117,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_ancient_soul_sect",
       "count": 1
     },
     {
       "target": "reg_northern_plains",
+      "count": 1
+    },
+    {
+      "target": "sys_heavenly_wind_qi_wall",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_regional_walls",
       "count": 1
     },
     {
@@ -98,6 +150,10 @@
     },
     {
       "target": "loc_spaceless_tunnel",
+      "count": 1
+    },
+    {
+      "target": "move_spaceless_tunnel",
       "count": 1
     },
     {
@@ -137,7 +193,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -145,6 +201,7 @@
         "char_spirit_affinity_first_supreme_elder",
         "reg_northern_plains",
         "fac_spirit_affinity_house",
+        "sys_gu_immortal",
         "char_zhao_lian_yun"
       ]
     },
@@ -155,10 +212,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "heavenly-wind-crossing",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house",
+        "house_wind_sweeping_building"
+      ]
     },
     {
       "text": "Trapped in Hair Mistress’s blue hair cocoons on Snowy Mountain blessed land’s ninth peak, he turns phantom to pass through his own cocoon, then does the same for Zhao Lian Yun and the other three, an ability to turn others into phantom that is unusual even for a phantom path cultivator. Phantom path Gu Immortals are very few in number, and he is no doubt an exceptional talent even among them.",
@@ -167,13 +228,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "turning-others-phantom",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_hair_mistress",
-        "loc_snowy_mountain"
+        "loc_snowy_mountain",
+        "path_phantom"
       ]
     },
     {
@@ -183,7 +245,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "phantom-specialty",
       "text_origin": "source_excerpt",
@@ -198,7 +260,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-king-clash",
       "text_origin": "source_excerpt",
@@ -213,7 +275,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pairing-with-feng-jiu-ge",
       "text_origin": "source_excerpt",
@@ -265,7 +327,7 @@
     "Paths": {
       "text": "Phantom path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Central Continent",
@@ -275,7 +337,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Spirit Affinity House as of ch. 1237",
@@ -297,12 +359,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_phantom"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 723,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     723
@@ -49,6 +49,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -169,6 +173,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_immortal_gu",
           "char_seven_star_child",
           "loc_starry_sky_grotto_heaven"
         ]

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 550,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     550,
@@ -33,6 +33,18 @@
     2023
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -52,7 +64,15 @@
       "count": 2
     },
     {
+      "target": "path_wisdom",
+      "count": 2
+    },
+    {
       "target": "gu_painting_idea_gu",
+      "count": 2
+    },
+    {
+      "target": "inh_du_min_jun_inheritance",
       "count": 2
     },
     {
@@ -84,11 +104,23 @@
       "count": 1
     },
     {
+      "target": "sys_thought_will_emotion",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
     {
       "target": "char_li_xiao_bai",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     },
     {
@@ -141,7 +173,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -155,7 +189,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wisdom-path-emotion-line",
         "text_origin": "source_excerpt",
@@ -197,10 +231,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-sale",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ],
     "game_proposals": []
@@ -231,14 +268,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "inh_du_min_jun_inheritance",
           "loc_xing_jiu_peak",
-          "gu_painting_idea_gu"
+          "gu_painting_idea_gu",
+          "path_wisdom"
         ]
       },
       {
@@ -248,7 +287,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "production-site",
         "text_origin": "source_excerpt",
@@ -269,6 +308,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_profound_literature_grotto_heaven",
+          "sys_vital_gu",
           "gu_poetry_gu",
           "char_li_xiao_bai",
           "gu_poetic_gu",
@@ -282,7 +322,7 @@
     "Path": {
       "text": "Wisdom Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

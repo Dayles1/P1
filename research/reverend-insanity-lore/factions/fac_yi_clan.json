@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 260,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     260,
@@ -110,6 +110,10 @@
     {
       "target": "char_yi_nan_men",
       "count": 4
+    },
+    {
+      "target": "house_bay_pavilion",
+      "count": 3
     },
     {
       "target": "char_yi_yu",
@@ -200,6 +204,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_luo_clan",
       "count": 1
     },
@@ -220,7 +228,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_wu_yi_hai",
+      "count": 1
+    },
+    {
+      "target": "move_boundless_sea_and_sky",
+      "count": 1
+    },
+    {
+      "target": "move_water_life_resurrection",
       "count": 1
     },
     {
@@ -233,6 +253,10 @@
     },
     {
       "target": "char_lu_wei_yin",
+      "count": 1
+    },
+    {
+      "target": "path_space",
       "count": 1
     },
     {
@@ -256,7 +280,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -268,11 +292,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu_house",
+        "house_bay_pavilion",
         "reg_eastern_sea"
       ]
     },
@@ -283,7 +309,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eastern-sea-ties",
       "text_origin": "source_excerpt",
@@ -301,7 +327,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "elders-at-shang-auctions",
       "text_origin": "source_excerpt",
@@ -333,7 +359,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "elders-at-shang-auctions",
       "text_origin": "source_excerpt",
@@ -349,7 +375,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "trade-reach-and-eastern-sea-goods",
       "text_origin": "source_excerpt",
@@ -381,10 +407,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "headquarters-and-long-range-travel",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Bay Pavilion is one of Yi clan’s Immortal Gu Houses, ocean-blue in style, and its strongest ability is long-range travel that can shoot through over seventy thousand li.",
@@ -393,7 +422,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "headquarters-and-long-range-travel",
       "text_origin": "source_excerpt"
@@ -405,7 +434,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "headquarters-and-long-range-travel",
       "text_origin": "source_excerpt"

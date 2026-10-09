@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 330,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     387,
@@ -102,11 +102,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "char_wang_xiao",
       "count": 1
     },
     {
       "target": "char_he_feng_yang",
+      "count": 1
+    },
+    {
+      "target": "race_rockmen",
       "count": 1
     },
     {
@@ -119,6 +127,10 @@
     },
     {
       "target": "fac_hui_shi_tribe",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -278,11 +290,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "implant-and-ranks",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "char_zhang_san_san",
           "char_fang_yuan"
         ]
@@ -294,7 +307,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "planting-on-chou-jiu",
         "text_origin": "source_excerpt",
@@ -309,7 +322,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "lower-ranks-on-rockmen",
         "text_origin": "source_excerpt",
@@ -336,11 +349,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "soul-and-people",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "fac_gu_masters"
         ]
       }

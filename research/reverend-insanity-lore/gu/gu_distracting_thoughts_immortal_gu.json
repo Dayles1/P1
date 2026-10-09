@@ -23,13 +23,25 @@
   "first_appearance": {
     "chapter": 1800,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1800,
     1861
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -45,8 +57,16 @@
   ],
   "co_mentions": [
     {
+      "target": "move_distracting_thoughts_generation",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "path_wisdom",
+      "count": 1
     },
     {
       "target": "char_wan_hao_guang",
@@ -58,6 +78,10 @@
     },
     {
       "target": "char_wan_xiao",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -103,7 +127,9 @@
     "ranks": [],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -185,6 +211,7 @@
         "section": "suan-bu-jin-kit",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_wan_hao_guang",
           "char_wan_xiao",
           "char_wan_liang_han"
@@ -211,7 +238,7 @@
     "Path": {
       "text": "Wisdom Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

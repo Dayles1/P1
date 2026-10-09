@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1175,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1175,
@@ -92,6 +92,18 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_killer_moves",
+      "count": 1
+    },
+    {
+      "target": "sys_year_beast",
+      "count": 1
+    },
+    {
       "target": "gu_fox_enslavement_gu",
       "count": 1
     },
@@ -108,7 +120,15 @@
       "count": 1
     },
     {
+      "target": "res_yellow_mud",
+      "count": 1
+    },
+    {
       "target": "fac_three_crazed_demon_eccentrics",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -144,11 +164,23 @@
       "count": 1
     },
     {
+      "target": "move_do_not_care",
+      "count": 1
+    },
+    {
       "target": "rcp_myriad_self_immortal_gu_recipe",
       "count": 1
     },
     {
+      "target": "inh_beast_calamity_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_li_xiao_bai",
+      "count": 1
+    },
+    {
+      "target": "sys_true_meaning",
       "count": 1
     }
   ],
@@ -231,6 +263,7 @@
         "section": "rule-path-use-with-care",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_formation",
           "loc_hei_fan_grotto_heaven"
         ]
       }
@@ -290,6 +323,7 @@
           "char_pang_shan",
           "gu_care_gu",
           "char_not_immortal",
+          "sys_immortal_gu",
           "char_fang_yuan",
           "char_chu_du"
         ]
@@ -301,7 +335,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt"

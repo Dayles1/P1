@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 389,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     389,
@@ -42,6 +42,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -146,6 +158,18 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_immemorial_light_fist",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -159,6 +183,10 @@
     },
     {
       "target": "gu_heavens_will_gu",
+      "count": 4
+    },
+    {
+      "target": "move_immemorial_light_fist",
       "count": 4
     },
     {
@@ -182,6 +210,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
       "count": 1
     },
@@ -198,7 +230,27 @@
       "count": 2
     },
     {
+      "target": "inh_king_bao_inheritance",
+      "count": 2
+    },
+    {
+      "target": "move_torrential_light_stream",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_purple_crystal_primeval_essence",
+      "count": 1
+    },
+    {
+      "target": "sys_righteous_path",
       "count": 1
     },
     {
@@ -210,7 +262,15 @@
       "count": 1
     },
     {
+      "target": "path_light",
+      "count": 1
+    },
+    {
       "target": "gu_jade_sky_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -226,7 +286,15 @@
       "count": 1
     },
     {
+      "target": "move_my_glorious_spear",
+      "count": 1
+    },
+    {
       "target": "char_bai_ning_bing",
+      "count": 1
+    },
+    {
+      "target": "inh_king_quan_inheritance",
       "count": 1
     },
     {
@@ -254,7 +322,19 @@
       "count": 1
     },
     {
+      "target": "evt_arc_hu_immortal_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_fixed_immortal_travel",
+      "count": 1
+    },
+    {
+      "target": "sys_beast_emperor",
       "count": 1
     },
     {
@@ -270,15 +350,18 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_gu_master",
         "loc_san_cha_mountain",
+        "move_immemorial_light_fist",
         "gu_heavens_will_gu",
         "gu_empty_fist_gu",
+        "sys_righteous_path",
         "fac_gu_masters"
       ]
     },
@@ -299,7 +382,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "light-bath",
       "text_origin": "source_excerpt"
@@ -311,10 +394,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "king-bao-door-and-title",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_king_bao_inheritance",
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Facing the dog fog he stores force through purple crystal primeval essence, then fires a light spear into the fog that vaporizes dogs where it lands. Once the fog is gone, the iron bucket defense becomes visible. He then privately agrees with Mo Wu Tian that both sides will attack from front and back in fifteen minutes, and tells the righteous side he rejected demonic cooperation and will strike when the demonic faction draws pressure.",
@@ -323,7 +410,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "front-and-fog",
       "text_origin": "source_excerpt",
@@ -338,12 +425,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dog-emperor-fight",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_bai_ning_bing",
+        "sys_beast_emperor",
         "char_ying_ming"
       ]
     },
@@ -354,12 +442,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "torrential-light-stream",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_tie_clan"
+        "fac_tie_clan",
+        "move_torrential_light_stream"
       ]
     },
     {
@@ -369,11 +458,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refinement-interruption",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "gu_fixed_immortal_travel"
       ]
     },
@@ -384,7 +474,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "supreme-elder-pawns",
       "text_origin": "source_excerpt",
@@ -400,7 +490,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "righteous-path-pawn",
       "text_origin": "source_excerpt"
@@ -412,7 +502,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt"
@@ -466,7 +556,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Xiao Clan as of ch. 389",
@@ -498,7 +588,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": "righteous path as of ch. 389",

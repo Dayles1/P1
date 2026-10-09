@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 381,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     381
@@ -53,6 +53,14 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -154,14 +162,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "retrieval",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_wu_lan_shan",
+          "sys_gu_worms",
           "char_fang_yuan",
-          "fac_wu_clan"
+          "fac_wu_clan",
+          "sys_immortal_gu"
         ]
       }
     ]

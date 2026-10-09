@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 425,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     425,
@@ -74,7 +74,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_fixed_immortal_travel",
+      "count": 1
+    },
+    {
+      "target": "move_tossing_pearls_in_the_dark",
       "count": 1
     },
     {
@@ -238,7 +246,8 @@
         "section": "form-and-aura-seal",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_fixed_immortal_travel"
+          "gu_fixed_immortal_travel",
+          "sys_immortal_gu"
         ]
       },
       {

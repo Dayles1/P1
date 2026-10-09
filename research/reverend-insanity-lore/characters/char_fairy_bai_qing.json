@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 406,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     406,
@@ -40,6 +40,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -68,6 +80,10 @@
       "count": 4
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_central_continent",
       "count": 1
     },
@@ -92,6 +108,10 @@
       "count": 1
     },
     {
+      "target": "inh_hu_immortal_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_spirit_affinity_first_supreme_elder",
       "count": 1
     },
@@ -104,11 +124,31 @@
       "count": 1
     },
     {
+      "target": "move_reincarnation_battlefield",
+      "count": 1
+    },
+    {
       "target": "fac_myriad_dragon_dock",
       "count": 1
     },
     {
+      "target": "sys_dream_realm",
+      "count": 1
+    },
+    {
       "target": "char_old_immortal_kong_jue",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_path_convention",
+      "count": 1
+    },
+    {
+      "target": "sys_regional_walls",
+      "count": 1
+    },
+    {
+      "target": "sys_true_meaning",
       "count": 1
     },
     {
@@ -132,11 +172,31 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_combat_immortal_sect",
       "count": 1
     },
     {
       "target": "loc_falling_heavenly_river",
+      "count": 1
+    },
+    {
+      "target": "res_myriad_eyes_clear_bull_eyes",
+      "count": 1
+    },
+    {
+      "target": "res_myriad_eyes_clear_bull_horns",
+      "count": 1
+    },
+    {
+      "target": "res_myriad_eyes_clear_bull_skin",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -160,6 +220,10 @@
       "count": 1
     },
     {
+      "target": "inh_thieving_heaven_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_duke_long",
       "count": 1
     },
@@ -169,6 +233,22 @@
     },
     {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "house_sun_and_moon_temple",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fate_war",
+      "count": 1
+    },
+    {
+      "target": "res_quiet_rain",
+      "count": 1
+    },
+    {
+      "target": "path_shadow",
       "count": 1
     },
     {
@@ -188,12 +268,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_feng_jin_huang",
+        "inh_hu_immortal_inheritance",
         "char_feng_jiu_ge"
       ]
     },
@@ -204,7 +285,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -219,7 +300,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -234,7 +315,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -249,7 +330,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "husbands-final-clue",
       "text_origin": "source_excerpt",
@@ -265,12 +346,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "searching-falling-heavenly-river-by-night",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_falling_heavenly_river"
+        "loc_falling_heavenly_river",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -280,12 +362,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "xu-hao-reveals-the-concealment",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_xu_hao"
+        "char_xu_hao",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -295,12 +378,13 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "zhao-lian-yuns-kneeling",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_zhao_lian_yun",
+        "inh_thieving_heaven_true_inheritance",
         "char_fang_yuan",
         "gu_spring_autumn_cicada"
       ]
@@ -312,7 +396,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bringing-feng-jiu-ge-into-the-sect",
       "text_origin": "source_excerpt"
@@ -324,7 +408,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "guarding-a-taboo-name",
       "text_origin": "source_excerpt",
@@ -380,7 +464,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Spirit Affinity House as of ch. 406",
@@ -412,7 +496,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

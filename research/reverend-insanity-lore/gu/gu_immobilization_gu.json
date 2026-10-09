@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 470,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     470
@@ -53,6 +53,10 @@
     },
     {
       "target": "char_hao_ji_liu",
+      "count": 1
+    },
+    {
+      "target": "sys_storage_gu",
       "count": 1
     },
     {
@@ -170,6 +174,7 @@
           "loc_crescent_lake",
           "fac_yan_tribe",
           "char_hao_ji_liu",
+          "sys_storage_gu",
           "char_yan_tian_ji",
           "char_fang_yuan"
         ]

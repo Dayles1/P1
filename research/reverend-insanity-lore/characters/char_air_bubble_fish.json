@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 476,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     476,
@@ -72,7 +72,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "loc_hu_immortal_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -109,7 +121,9 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_worms",
         "char_fang_yuan",
+        "sys_gu_immortal",
         "char_little_hu_immortal"
       ]
     },
@@ -174,7 +188,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "sold-off-for-funds",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_mortal_gu"
+      ]
     },
     {
       "text": "Gu Immortals normally breed their own mortal Gu rather than pay this price, but in wartime their expenditure of mortal Gu is huge; having sold off nearly all his stock too soon, Fang Yuan takes a loss instead of a profit, and means to buy a huge group cheaply once the sea is repaired, and wonders whether to breed them in large numbers for a large profit in the five regions war.",

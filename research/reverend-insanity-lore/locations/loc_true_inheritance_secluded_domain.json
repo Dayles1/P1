@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 597,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     597,
@@ -57,6 +57,38 @@
     {
       "target": "char_mo_yao",
       "count": 1
+    },
+    {
+      "target": "sys_secluded_domain_of_heaven_and_earth",
+      "count": 1
+    },
+    {
+      "target": "sys_true_inheritance_grades",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
+      "target": "inh_di_qiu_inheritance",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_giant_sun_immortal_venerable_inheritance",
+      "count": 1
     }
   ],
   "claims": [
@@ -85,7 +117,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
-        "char_mo_yao"
+        "char_mo_yao",
+        "house_eighty_eight_true_yang_building"
       ]
     },
     {
@@ -98,7 +131,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "who-reaches-it",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "evt_arc_imperial_court_contest"
+      ]
     },
     {
       "text": "Contact with true inheritances, or long stays, makes the lights move faster until they fly like meteors and can kill a Gu Master who cannot dodge. Above ordinary and unparalleled grades sit three supreme true inheritances in the whole domain.",
@@ -110,7 +146,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "motion-and-primeval-energy",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "Later, during a scramble over a supreme true inheritance, Fang Yuan notes there is no primeval energy here, so most wild Gu lose their threat.",
@@ -122,7 +161,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "motion-and-primeval-energy",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_wild_gu"
+      ]
     }
   ],
   "conflicts": [],

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 431,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     431,
@@ -71,7 +71,15 @@
       "count": 1
     },
     {
+      "target": "sys_mental_energy",
+      "count": 1
+    },
+    {
       "target": "gu_battle_bone_wheel_gu",
+      "count": 1
+    },
+    {
+      "target": "path_soul",
       "count": 1
     },
     {
@@ -192,7 +200,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -210,7 +218,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "siege-use-against-pei-tribe",
         "text_origin": "source_excerpt",
@@ -241,7 +249,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-traits",
         "text_origin": "source_excerpt"
@@ -258,7 +266,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "market-stock-and-classification",
         "text_origin": "source_excerpt",
@@ -276,7 +284,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "market-stock-and-classification",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "path_soul"
+        ]
       }
     ],
     "game_proposals": []
@@ -307,7 +318,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -361,7 +372,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ghost-flame-advance",
         "text_origin": "source_excerpt"
@@ -373,7 +384,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ghost-flame-advance",
         "text_origin": "source_excerpt"

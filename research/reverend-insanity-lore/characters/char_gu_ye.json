@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 738,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     738,
@@ -49,12 +49,36 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_zombie_alliance",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
       "recorded_chapter": 738,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_green_crystal_heros_path",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 739,
       "count": null,
       "confidence": "B",
       "source_id": "src_sagaofgu",
@@ -67,8 +91,16 @@
       "count": 3
     },
     {
+      "target": "move_green_crystal_heros_path",
+      "count": 3
+    },
+    {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_divine_lord_tian_du",
@@ -99,6 +131,10 @@
       "count": 2
     },
     {
+      "target": "house_red_fiend_divine_boat",
+      "count": 2
+    },
+    {
       "target": "char_blazing_heaven_demoness",
       "count": 2
     },
@@ -111,11 +147,31 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_old_earth_wood",
       "count": 1
     },
     {
+      "target": "res_wilted_essence",
+      "count": 1
+    },
+    {
       "target": "char_qin_bai_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_contribution_points",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_zombie",
+      "count": 1
+    },
+    {
+      "target": "move_stone_casket",
       "count": 1
     },
     {
@@ -124,6 +180,10 @@
     },
     {
       "target": "char_dragon_commander_ye_cha",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -143,13 +203,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_ku_mu_mountain",
         "loc_old_earth_city",
+        "sys_gu_immortal",
         "char_fang_yuan",
         "char_sha_huang",
         "fac_zombie_alliance"
@@ -162,7 +223,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -174,7 +235,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "extortion-at-old-earth",
       "text_origin": "source_excerpt",
@@ -190,7 +251,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "zombie-alliances-decline",
       "text_origin": "source_excerpt",
@@ -206,7 +267,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "introducing-a-new-member",
       "text_origin": "source_excerpt",
@@ -214,7 +275,8 @@
         "loc_dark_flow_giant_city",
         "char_yin_liu_gong",
         "char_dragon_commander_ye_cha",
-        "char_huang_quan_weng"
+        "char_huang_quan_weng",
+        "sys_gu_worms"
       ]
     },
     {
@@ -224,11 +286,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "alliance-meeting",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_red_fiend_divine_boat",
         "reg_northern_plains"
       ]
     },
@@ -239,7 +302,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "guiding-a-newcomer",
       "text_origin": "source_excerpt",
@@ -254,7 +317,7 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "northern-plains-zombie-alliance",
       "text_origin": "source_excerpt",
@@ -308,7 +371,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Zombie Alliance as of ch. 738",
@@ -335,7 +398,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

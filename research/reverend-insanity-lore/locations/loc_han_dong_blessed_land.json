@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1184,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_new_blessed_land_crazed_demon"
   },
   "chapters_cited": [
     1184,
@@ -31,6 +31,10 @@
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
+      "count": 1
+    },
     {
       "target": "char_fang_yuan",
       "count": 1
@@ -44,11 +48,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_traveling_three_elites",
       "count": 1
     },
     {
+      "target": "sys_sovereign_immortal_body",
+      "count": 1
+    },
+    {
       "target": "gu_perceivable_dao_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_days_pass_like_years",
       "count": 1
     }
   ],
@@ -63,7 +83,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_mortal_gu"
+      ]
     },
     {
       "text": "Han Dong is one of the Traveling Three Elites and a transformation path rank six Gu Immortal; the blessed land is rank six. Its land spirit is a pinkish red spirit snake, translucent without scales, pink flesh, no bones, and one red line from head to tail. It hisses in hostility until Fang Yuan tricks it into accepting Lu Qing Ming, then transfers ownership to himself.",
@@ -79,6 +102,7 @@
       "mentions": [
         "char_han_dong",
         "fac_traveling_three_elites",
+        "sys_gu_immortal",
         "char_fang_yuan",
         "char_lu_qing_ming"
       ]
@@ -90,7 +114,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "annexation",
       "text_origin": "source_excerpt",

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1824,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1824,
@@ -36,6 +36,18 @@
     1878
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_combat_beast_guild",
@@ -55,6 +67,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_zhan_bu_du",
       "count": 2
     },
@@ -68,6 +84,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -139,6 +159,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_beast_calamity_grotto_heaven",
+        "sys_gu_immortal",
         "loc_mountain_cliff_city",
         "char_fang_yuan",
         "loc_tributary_of_the_river_of_time"
@@ -207,7 +228,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Combat Beast Guild as of ch. 1854",
@@ -228,7 +249,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

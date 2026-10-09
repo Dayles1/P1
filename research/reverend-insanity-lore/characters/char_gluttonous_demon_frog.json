@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2095,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2095,
@@ -32,14 +32,35 @@
     2118,
     2119
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_food",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "path_food",
+      "count": 1
+    },
     {
       "target": "char_reckless_savage_demon_venerable",
       "count": 1
     },
     {
       "target": "loc_myriad_beast_fusion_color_heaven",
+      "count": 1
+    },
+    {
+      "target": "inh_tian_nan_true_inheritance",
       "count": 1
     },
     {
@@ -74,7 +95,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "reckless-savage-notes",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_tian_nan_true_inheritance"
+      ]
     },
     {
       "text": "Myriad Beast Fusion Color Heaven is Reckless Savage Demon Venerable’s immortal aperture, left within the body of the gluttonous demon frog so the grotto-heaven has a food path environment. The frog is a legendary immemorial beast and holds an unimaginable number of food path dao marks. Under those marks, humans inside the grotto-heaven can eat Gu materials to raise matching dao marks and build totems.",
@@ -145,7 +169,7 @@
     "Paths": {
       "text": "Food path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -156,7 +180,9 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_food"
+    ],
     "aperture": null,
     "talent_grade": null
   },

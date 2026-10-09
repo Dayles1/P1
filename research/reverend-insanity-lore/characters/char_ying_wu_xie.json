@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 967,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     967,
@@ -83,6 +83,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_shadow_sect",
       "role": null,
@@ -117,11 +129,51 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_lead_soul_into_dream",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 969,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_burning_soul_bursting_luck",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1212,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_change_soul_technique",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2270,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "fac_shadow_sect",
+      "count": 4
+    },
+    {
+      "target": "move_lead_soul_into_dream",
       "count": 4
     },
     {
@@ -133,8 +185,20 @@
       "count": 3
     },
     {
+      "target": "move_burning_soul_bursting_luck",
+      "count": 3
+    },
+    {
+      "target": "move_change_soul_technique",
+      "count": 3
+    },
+    {
       "target": "reg_southern_border",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_hei_lou_lan",
@@ -153,11 +217,23 @@
       "count": 2
     },
     {
+      "target": "sys_pure_dream_reality_seeker_physique",
+      "count": 2
+    },
+    {
+      "target": "sys_great_strength_true_martial_physique",
+      "count": 2
+    },
+    {
       "target": "loc_yi_tian_mountain",
       "count": 2
     },
     {
       "target": "char_heaven_overseeing_tower_lord",
+      "count": 2
+    },
+    {
+      "target": "inh_red_lotus_true_inheritance",
       "count": 2
     },
     {
@@ -205,6 +281,10 @@
       "count": 2
     },
     {
+      "target": "sys_omni_directional_travel",
+      "count": 2
+    },
+    {
       "target": "char_liu_qing_yu",
       "count": 2
     },
@@ -229,7 +309,31 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_heavens_will",
+      "count": 1
+    },
+    {
+      "target": "sys_otherworldly_demon",
+      "count": 1
+    },
+    {
       "target": "loc_dang_hun_mountain",
+      "count": 1
+    },
+    {
+      "target": "move_familiar_face",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_immortal_zombie_lifeless_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_mental_energy",
       "count": 1
     },
     {
@@ -237,7 +341,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_life_and_death_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "house_sacred_feather_city",
       "count": 1
     },
     {
@@ -249,7 +361,19 @@
       "count": 1
     },
     {
+      "target": "house_graceful_chaotic_duel_stage",
+      "count": 1
+    },
+    {
+      "target": "move_unravel_dream",
+      "count": 1
+    },
+    {
       "target": "char_seven_star_child",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -257,7 +381,23 @@
       "count": 1
     },
     {
+      "target": "house_embroidered_tower",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
+      "count": 1
+    },
+    {
       "target": "gu_attitude_gu",
+      "count": 1
+    },
+    {
+      "target": "move_ghostly_concealment",
+      "count": 1
+    },
+    {
+      "target": "sys_special_will",
       "count": 1
     },
     {
@@ -309,7 +449,23 @@
       "count": 1
     },
     {
+      "target": "res_soul_beast_corpse",
+      "count": 1
+    },
+    {
+      "target": "res_soul_core",
+      "count": 1
+    },
+    {
       "target": "loc_turbulent_flow",
+      "count": 1
+    },
+    {
+      "target": "sys_alliance_agreement",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_heavenly_court_pursuit",
       "count": 1
     },
     {
@@ -341,6 +497,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_cleanse_soul",
       "count": 1
     },
@@ -361,7 +525,19 @@
       "count": 1
     },
     {
+      "target": "house_regret_pool",
+      "count": 1
+    },
+    {
       "target": "char_martial_duel_heavenly_king",
+      "count": 1
+    },
+    {
+      "target": "move_hundred_years_harmony",
+      "count": 1
+    },
+    {
+      "target": "inh_eastern_sea_information_path_true_inheritance",
       "count": 1
     },
     {
@@ -385,7 +561,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -397,7 +573,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -409,10 +585,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "After Yan Shi and other Shadow Sect Gu Immortals sacrifice their souls into the formation, the young Gu Immortal Ying Wu Xie stands at a formation core among ten, looking around with curiosity. He has begun life fourteen hours ago. Yan Shi had told him he was born from a dream realm, has eighteen hours of lifespan in total, rises one rank every two hours, has just advanced to rank seven with four hours remaining, and will be their strongest after Yan Shi dies. When he wants to help against Ren Hai Yang, a black robed Gu Immortal stops him: stay at the core, do not move recklessly.",
@@ -421,7 +600,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "formation-core",
       "text_origin": "source_excerpt",
@@ -436,12 +615,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "birth-memory",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_southern_border",
+        "sys_pure_dream_reality_seeker_physique",
         "char_bo_qing",
         "char_old_man_yan_shi"
       ]
@@ -453,10 +633,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "the-physiques-flaw",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "Twelve hours after his birth and already rank six, Ying Wu Xie is told by Old Man Yan Shi to remember everything that has been passed on to him, and blinks innocently as he answers that Yan Shi can go ahead and die and need not worry about him, still very ignorant of the world and of life and death. Because the physique erodes his memories faster the more he is given, transferring a large body of information into his mind is useless, and only what he memorises himself takes hold.",
@@ -465,7 +648,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "what-he-has-to-memorise-himself",
       "text_origin": "source_excerpt"
@@ -477,12 +660,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "four-dream-duels-with-fang-yuan",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "move_lead_soul_into_dream",
+        "char_fang_yuan",
+        "house_graceful_chaotic_duel_stage"
       ]
     },
     {
@@ -492,7 +677,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "trapping-heaven-overseeing-tower-lord",
       "text_origin": "source_excerpt",
@@ -508,12 +693,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "trapping-heaven-overseeing-tower-lord",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_heavenly_court"
+        "fac_heavenly_court",
+        "sys_immortal_gu_house"
       ]
     },
     {
@@ -523,7 +709,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sparing-an-otherworldly-demon",
       "text_origin": "source_excerpt",
@@ -538,7 +724,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immune-to-grey-memory",
       "text_origin": "source_excerpt"
@@ -550,7 +736,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "turning-on-the-main-body",
       "text_origin": "source_excerpt",
@@ -565,7 +751,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "origin-revealed",
       "text_origin": "source_excerpt",
@@ -580,10 +766,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "origin-revealed",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_red_lotus_true_inheritance"
+      ]
     },
     {
       "text": "Weighing recruiting Hei Lou Lan against killing her, since breaking her information path alliance agreement might release Fang Yuan from it as well, while her death would leave Fang Yuan bound and leave her immortal aperture and Great Strength True Martial Physique behind, Ying Wu Xie reaches his decision on her life after considering the costs and benefits.",
@@ -592,12 +781,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "deciding-hei-lou-lans-fate",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_hei_lou_lan"
+        "char_hei_lou_lan",
+        "sys_great_strength_true_martial_physique"
       ]
     },
     {
@@ -607,7 +797,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reclaiming-a-body-one-day",
       "text_origin": "source_excerpt",
@@ -624,7 +814,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "treasure-yellow-heaven-closed-against-him",
       "text_origin": "source_excerpt"
@@ -636,7 +826,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eleventh-extreme-physique-named",
       "text_origin": "source_excerpt",
@@ -651,11 +841,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "new-body-and-continued-contact",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_worms",
+        "sys_mortal_gu",
         "reg_central_continent",
         "reg_northern_plains",
         "loc_lang_ya_blessed_land",
@@ -669,7 +861,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "the-burden-scheme",
       "text_origin": "source_excerpt"
@@ -681,13 +873,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fleeing-a-stronger-foe",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_eastern_sea",
         "gu_connect_luck",
+        "sys_omni_directional_travel",
         "char_liu_qing_yu"
       ]
     },
@@ -698,7 +891,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "evading-the-luck-trace",
       "text_origin": "source_excerpt",
@@ -713,7 +906,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "choosing-snowy-mountain",
       "text_origin": "source_excerpt",
@@ -728,7 +921,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soul-howl-in-the-regional-wall",
       "text_origin": "source_excerpt"
@@ -740,7 +933,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "main-split-soul-and-shadow-sects-final-hope",
       "text_origin": "source_excerpt"
@@ -752,7 +945,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "escape-after-shi-nus-sacrifice",
       "text_origin": "source_excerpt",
@@ -767,7 +960,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "escape-after-shi-nus-sacrifice",
       "text_origin": "source_excerpt",
@@ -782,12 +975,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "stalling-at-dark-flow-giant-city",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_dark_flow_giant_city"
+        "loc_dark_flow_giant_city",
+        "reg_earth_earth_trench",
+        "sys_mortal_gu_house"
       ]
     },
     {
@@ -797,7 +992,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reverse-flow-river-crossing",
       "text_origin": "source_excerpt",
@@ -812,7 +1007,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reverse-flow-river-crossing",
       "text_origin": "source_excerpt",
@@ -827,7 +1022,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reverse-flow-river-crossing",
       "text_origin": "source_excerpt"
@@ -839,7 +1034,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reverse-flow-river-crossing",
       "text_origin": "source_excerpt"
@@ -851,7 +1046,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reverse-flow-river-crossing",
       "text_origin": "source_excerpt"
@@ -863,7 +1058,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reporting-on-southern-border",
       "text_origin": "source_excerpt",
@@ -882,10 +1077,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "breaking-the-super-gu-formation",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_super_gu_formation"
+      ]
     },
     {
       "text": "When Zuo Ye Hui’s grey night breaches the righteous path’s super Gu formation, Ying Wu Xie leads the recruited demonic path and lone immortals in the attack, offering several times the reward to whoever kills enemies and widens the hole.",
@@ -894,7 +1092,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "leading-the-breach",
       "text_origin": "source_excerpt",
@@ -909,7 +1107,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "a-new-body-from-fang-yuans-help",
       "text_origin": "source_excerpt",
@@ -924,7 +1122,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soaring-fighting-spirit-and-a-new-body",
       "text_origin": "source_excerpt",
@@ -939,7 +1137,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soaring-fighting-spirit-and-a-new-body",
       "text_origin": "source_excerpt",
@@ -955,7 +1153,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "too-many-share-the-luck",
       "text_origin": "source_excerpt"
@@ -967,7 +1165,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "no-need-to-hide-the-aperture",
       "text_origin": "source_excerpt"
@@ -1070,7 +1268,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shadow Sect as of ch. 967",
@@ -1102,7 +1300,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

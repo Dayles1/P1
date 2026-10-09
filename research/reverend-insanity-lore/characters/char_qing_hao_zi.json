@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2155,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2155,
@@ -45,7 +45,15 @@
       "count": 2
     },
     {
+      "target": "move_green_life_taker",
+      "count": 2
+    },
+    {
       "target": "char_fairy_ming_hao",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -53,7 +61,27 @@
       "count": 1
     },
     {
+      "target": "move_spring_upon_withered_tree",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_crashing_rock_slide",
+      "count": 1
+    },
+    {
+      "target": "move_refine_life",
+      "count": 1
+    },
+    {
+      "target": "move_snow_avalanche",
       "count": 1
     }
   ],
@@ -99,6 +127,8 @@
       "mentions": [
         "loc_green_lotus_great_world",
         "loc_yellow_earth_great_world",
+        "move_green_life_taker",
+        "sys_gu_immortal",
         "loc_black_and_white_sacred_mountain"
       ]
     },
@@ -114,6 +144,7 @@
       "section": "old-friend-on-the-line",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "char_fang_yuan"
       ]
     }

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 845,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     845,
@@ -85,11 +85,23 @@
       "count": 1
     },
     {
+      "target": "path_water",
+      "count": 1
+    },
+    {
       "target": "char_li_jun_ying",
       "count": 1
     },
     {
       "target": "char_fairy_bai_qing",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -102,6 +114,18 @@
     },
     {
       "target": "fac_ten_great_sects",
+      "count": 1
+    },
+    {
+      "target": "res_myriad_eyes_clear_bull_eyes",
+      "count": 1
+    },
+    {
+      "target": "res_myriad_eyes_clear_bull_horns",
+      "count": 1
+    },
+    {
+      "target": "res_myriad_eyes_clear_bull_skin",
       "count": 1
     },
     {
@@ -122,6 +146,14 @@
     },
     {
       "target": "char_bi_chen_tian",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "sys_dream_realm",
       "count": 1
     },
     {
@@ -157,6 +189,14 @@
       "count": 1
     },
     {
+      "target": "res_quasi_rank_nine_immortal_material",
+      "count": 1
+    },
+    {
+      "target": "sys_omni_directional_travel",
+      "count": 1
+    },
+    {
       "target": "res_gu_immortal_corpse",
       "count": 1
     }
@@ -169,7 +209,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -185,7 +225,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -197,7 +237,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -209,7 +249,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -221,10 +261,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "river-and-source",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "The water holds vitality, ferocious beasts, aquatic plants, hidden currents, whirlpools, and other natural traps that can kill a Gu Immortal.",
@@ -233,7 +276,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "river-and-source",
       "text_origin": "source_excerpt"
@@ -245,7 +288,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sword-lights-and-bo-qings-remains",
       "text_origin": "source_excerpt",
@@ -261,7 +304,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sword-lights-and-bo-qings-remains",
       "text_origin": "source_excerpt",
@@ -276,12 +319,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sword-lights-and-bo-qings-remains",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_ten_great_sects"
+        "fac_ten_great_sects",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -291,7 +335,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "awakening-at-the-source",
       "text_origin": "source_excerpt",
@@ -310,7 +354,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "aftermath-and-later-scavengers",
       "text_origin": "source_excerpt",
@@ -325,7 +369,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "aftermath-and-later-scavengers",
       "text_origin": "source_excerpt"
@@ -337,7 +381,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "aftermath-and-later-scavengers",
       "text_origin": "source_excerpt",
@@ -352,7 +396,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sea-calming-lord-and-the-flood",
       "text_origin": "source_excerpt"
@@ -364,7 +408,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "recounting-of-bo-qing",
       "text_origin": "source_excerpt"

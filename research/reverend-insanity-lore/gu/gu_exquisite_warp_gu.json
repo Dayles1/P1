@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 398,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     398
@@ -36,6 +36,10 @@
     },
     {
       "target": "char_he_feng_yang",
+      "count": 1
+    },
+    {
+      "target": "sys_movement_gu",
       "count": 1
     },
     {
@@ -148,7 +152,8 @@
           "loc_hu_immortal_blessed_land",
           "char_he_feng_yang",
           "fac_immortal_crane_sect",
-          "gu_fixed_immortal_travel"
+          "gu_fixed_immortal_travel",
+          "sys_movement_gu"
         ]
       }
     ]

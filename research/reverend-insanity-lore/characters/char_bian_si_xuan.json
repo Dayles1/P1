@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 504,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     504,
@@ -46,6 +46,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -166,6 +178,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -194,7 +210,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_hao_ji_liu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -222,6 +246,10 @@
       "count": 1
     },
     {
+      "target": "sys_attack_gu",
+      "count": 1
+    },
+    {
       "target": "fac_ma_tribe",
       "count": 1
     },
@@ -240,6 +268,10 @@
     {
       "target": "gu_asura_zombie_gu",
       "count": 1
+    },
+    {
+      "target": "move_asura_transformation",
+      "count": 1
     }
   ],
   "claims": [
@@ -250,7 +282,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -266,7 +298,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -278,12 +310,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "prior-life-memory",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_ma_hong_yun",
+        "sys_gu_immortal",
         "char_thieving_heaven_demon_venerable"
       ]
     },
@@ -294,7 +327,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-strike",
       "text_origin": "source_excerpt",
@@ -310,11 +343,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-strike",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "gu_wolf_enslavement_gu",
         "gu_multiple_sword_shadow_gu",
         "gu_brain_explosion_gu"
@@ -327,7 +361,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-strike",
       "text_origin": "source_excerpt",
@@ -342,7 +376,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-strike",
       "text_origin": "source_excerpt",
@@ -357,7 +391,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-strike",
       "text_origin": "source_excerpt",
@@ -372,7 +406,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "second-camp-attack",
       "text_origin": "source_excerpt",
@@ -387,7 +421,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "second-camp-attack",
       "text_origin": "source_excerpt",
@@ -402,7 +436,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "main-tent",
       "text_origin": "source_excerpt"
@@ -414,7 +448,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-tribe-side",
       "text_origin": "source_excerpt",
@@ -429,7 +463,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-tribe-side",
       "text_origin": "source_excerpt",
@@ -444,10 +478,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-tribe-side",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_attack_gu"
+      ]
     },
     {
       "text": "Wu Ming’s reputation as number one assassin is said to surpass hers. During a Ma tribe clash she stands in the tight defense around Fang Yuan.",
@@ -456,7 +493,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-tribe-side",
       "text_origin": "source_excerpt",
@@ -472,7 +509,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-tribe-side",
       "text_origin": "source_excerpt",
@@ -487,7 +524,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance-change",
       "text_origin": "source_excerpt"
@@ -499,7 +536,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "phantom-battle-and-kill-proposal",
       "text_origin": "source_excerpt"
@@ -511,7 +548,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "phantom-battle-and-kill-proposal",
       "text_origin": "source_excerpt"
@@ -523,7 +560,7 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "phantom-battle-and-kill-proposal",
       "text_origin": "source_excerpt"
@@ -581,7 +618,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Hei Tribe as of ch. 522",
@@ -608,7 +645,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

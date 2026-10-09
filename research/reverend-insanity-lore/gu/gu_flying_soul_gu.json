@@ -23,13 +23,17 @@
   "first_appearance": {
     "chapter": 511,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     511
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "move_three_hearts_combination_soul",
+      "count": 3
+    },
     {
       "target": "gu_djinn_heart_gu",
       "count": 2
@@ -125,7 +129,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-in-three-hearts-combination-soul",
         "text_origin": "source_excerpt",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 674,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     674,
@@ -45,8 +45,56 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_mo_clan",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 675,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_martial_sand_armor",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 674,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_burial_dragon_sand_coffin",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 675,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_light_sand_escape",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -63,11 +111,35 @@
       "count": 4
     },
     {
+      "target": "move_burial_dragon_sand_coffin",
+      "count": 3
+    },
+    {
+      "target": "move_light_sand_escape",
+      "count": 3
+    },
+    {
+      "target": "move_martial_sand_armor",
+      "count": 2
+    },
+    {
       "target": "reg_western_desert",
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_killer_move",
       "count": 1
     },
     {
@@ -79,7 +151,23 @@
       "count": 1
     },
     {
+      "target": "sys_defensive_killer_move",
+      "count": 1
+    },
+    {
+      "target": "sys_movement_killer_move",
+      "count": 1
+    },
+    {
       "target": "gu_indestructible_steel_mane_gu",
+      "count": 1
+    },
+    {
+      "target": "move_hair_armor",
+      "count": 1
+    },
+    {
+      "target": "move_light_illusion_bat_wings",
       "count": 1
     },
     {
@@ -95,7 +183,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -110,10 +198,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "She has a corpulent body, her belly is bulging, and her entire body resembles a water vat.",
@@ -134,7 +225,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -146,7 +237,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sand-fight-and-escape",
       "text_origin": "source_excerpt"
@@ -158,7 +249,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sand-fight-and-escape",
       "text_origin": "source_excerpt",
@@ -173,7 +264,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sand-fight-and-escape",
       "text_origin": "source_excerpt"
@@ -237,7 +328,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Mo Clan as of ch. 675",
@@ -264,7 +355,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1975,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1975,
@@ -45,11 +45,31 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_profound_literature_grotto_heaven",
       "count": 1
     },
     {
       "target": "char_li_xiao_bai",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_investigative_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_book_house",
       "count": 1
     }
   ],
@@ -68,7 +88,8 @@
       "mentions": [
         "char_old_immortal_hua_yu",
         "char_an_chong",
-        "loc_profound_literature_grotto_heaven"
+        "loc_profound_literature_grotto_heaven",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -83,6 +104,8 @@
       "section": "explaining-the-poetry-competition",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_investigative_gu",
+        "sys_gu_master",
         "char_li_xiao_bai"
       ]
     },
@@ -98,7 +121,9 @@
       "section": "rewarding-his-grand-disciple-in-secret",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_teacher_jiang"
+        "char_teacher_jiang",
+        "sys_gu_house",
+        "house_book_house"
       ]
     }
   ],

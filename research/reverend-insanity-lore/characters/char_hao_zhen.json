@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1168,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1168,
@@ -46,8 +46,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_lightning",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -80,6 +104,14 @@
       "count": 2
     },
     {
+      "target": "path_lightning",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_chou_lao_wu",
       "count": 2
     },
@@ -92,7 +124,15 @@
       "count": 2
     },
     {
+      "target": "move_wind_thunder_roar",
+      "count": 2
+    },
+    {
       "target": "char_nian_er_yi_fang",
+      "count": 2
+    },
+    {
+      "target": "move_sick_tree_spring_armor",
       "count": 2
     },
     {
@@ -101,6 +141,10 @@
     },
     {
       "target": "char_chu_du",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -124,6 +168,10 @@
       "count": 1
     },
     {
+      "target": "move_green_city_rampage",
+      "count": 1
+    },
+    {
       "target": "fac_meng_tribe",
       "count": 1
     },
@@ -132,11 +180,19 @@
       "count": 1
     },
     {
+      "target": "move_sword_heart_clarity",
+      "count": 1
+    },
+    {
       "target": "char_gong_wan_ting",
       "count": 1
     },
     {
       "target": "char_hei_lou_lan",
+      "count": 1
+    },
+    {
+      "target": "move_dark_capital_strength_biao",
       "count": 1
     }
   ],
@@ -148,12 +204,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_chu_sect",
+        "sys_gu_immortal",
         "char_chu_du",
         "loc_iron_eagle_blessed_land"
       ]
@@ -165,7 +222,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -189,7 +246,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "iron-eagle-blessed-land-raid",
       "text_origin": "source_excerpt",
@@ -208,10 +265,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "thunder-rescue-of-immortal-wang",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_wind_thunder_roar",
+        "move_green_city_rampage"
+      ]
     },
     {
       "text": "They had acted for compensation, not knowing Fang Yuan had steered the formation onto Immortal Wang.",
@@ -220,7 +281,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "thunder-rescue-of-immortal-wang",
       "text_origin": "source_excerpt"
@@ -232,7 +293,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "thunder-rescue-of-immortal-wang",
       "text_origin": "source_excerpt",
@@ -247,7 +308,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "thunder-rescue-of-immortal-wang",
       "text_origin": "source_excerpt",
@@ -262,7 +323,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-fan-contest",
       "text_origin": "source_excerpt"
@@ -274,7 +335,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chu-sect-loyalty",
       "text_origin": "source_excerpt"
@@ -286,7 +347,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chu-sect-loyalty",
       "text_origin": "source_excerpt"
@@ -298,12 +359,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blood-battle-and-injury",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_nian_er_yi_fang"
+        "char_nian_er_yi_fang",
+        "move_sick_tree_spring_armor"
       ]
     },
     {
@@ -313,7 +375,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blood-battle-and-injury",
       "text_origin": "source_excerpt",
@@ -330,7 +392,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blood-battle-and-injury",
       "text_origin": "source_excerpt"
@@ -342,7 +404,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blood-battle-and-injury",
       "text_origin": "source_excerpt",
@@ -357,7 +419,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blood-battle-and-injury",
       "text_origin": "source_excerpt"
@@ -387,7 +449,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "black-moon-duel-watch",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_dark_capital_strength_biao"
+      ]
     }
   ],
   "conflicts": [],
@@ -439,7 +504,7 @@
     "Paths": {
       "text": "Lightning path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Northern Plains",
@@ -449,7 +514,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Chu Sect as of ch. 1181",
@@ -471,12 +536,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_lightning"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

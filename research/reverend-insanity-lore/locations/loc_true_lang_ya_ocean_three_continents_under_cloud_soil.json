@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 882,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     882,
@@ -71,6 +71,14 @@
     {
       "target": "char_qin_bai_sheng",
       "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     }
   ],
   "claims": [
@@ -113,6 +121,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_qin_bai_sheng",
+        "sys_gu_immortal",
         "char_fairy_jiang_yu",
         "char_fang_yuan",
         "loc_lang_ya_blessed_land"
@@ -144,7 +153,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "blessed-land-shock",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     }
   ],
   "conflicts": [],

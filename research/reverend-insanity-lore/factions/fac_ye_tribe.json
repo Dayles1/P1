@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 499,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     499,
@@ -81,6 +81,10 @@
     {
       "target": "char_dong_fang_yu_liang",
       "count": 1
+    },
+    {
+      "target": "move_seven_star_light",
+      "count": 1
     }
   ],
   "claims": [
@@ -91,7 +95,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "camp-split-at-yu-tian",
       "text_origin": "source_excerpt",
@@ -106,7 +110,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "choice-cascade",
       "text_origin": "source_excerpt",
@@ -126,7 +130,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "alliance-seat",
       "text_origin": "source_excerpt"

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1069,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1069,
@@ -76,11 +76,35 @@
       "count": 1
     },
     {
+      "target": "sys_earth_vein",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_trench",
+      "count": 1
+    },
+    {
+      "target": "evt_era_great",
+      "count": 1
+    },
+    {
       "target": "gu_lifespan_gu",
       "count": 1
     },
     {
       "target": "char_you_tian_guang",
+      "count": 1
+    },
+    {
+      "target": "move_mountain_suppression",
+      "count": 1
+    },
+    {
+      "target": "move_perfect_round_light",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_central_continent_chaos",
       "count": 1
     },
     {
@@ -96,11 +120,39 @@
       "count": 1
     },
     {
+      "target": "move_phoenix_chirping_divine_flame",
+      "count": 1
+    },
+    {
       "target": "char_zhang_fei_xiong",
       "count": 1
     },
     {
+      "target": "move_destiny_song",
+      "count": 1
+    },
+    {
+      "target": "move_qi_breath_mountain",
+      "count": 1
+    },
+    {
       "target": "char_lian_ke_xin",
+      "count": 1
+    },
+    {
+      "target": "res_qi_pillar",
+      "count": 1
+    },
+    {
+      "target": "res_qi_currents",
+      "count": 1
+    },
+    {
+      "target": "sys_pseudo_venerable",
+      "count": 1
+    },
+    {
+      "target": "move_great_qi_grasp",
       "count": 1
     },
     {
@@ -116,7 +168,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -148,7 +200,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -160,12 +212,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "origin-and-seal",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_duke_long",
+        "reg_earth_earth_trench",
         "reg_central_continent",
         "gu_lifespan_gu"
       ]

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 254,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     254,
@@ -47,12 +47,36 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "holds_gu",
       "target": "gu_zombie_heart_gu",
       "role": "lineage",
       "from_chapter": null,
       "to_chapter": null,
       "recorded_chapter": 256,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_second_zombie_king_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
       "count": null,
       "confidence": "B",
       "source_id": "src_sagaofgu",
@@ -65,8 +89,16 @@
       "count": 4
     },
     {
+      "target": "inh_second_zombie_king_inheritance",
+      "count": 3
+    },
+    {
       "target": "reg_southern_border",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_ding_hao",
@@ -85,6 +117,10 @@
       "count": 2
     },
     {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -97,11 +133,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_shang_clan",
       "count": 1
     },
     {
       "target": "char_wu_shen_tong",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -121,12 +165,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_ding_hao",
+        "sys_demonic_path",
         "loc_zhao_ze_mountain",
         "reg_southern_border"
       ]
@@ -138,7 +183,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -150,7 +195,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "previous-life-memory",
       "text_origin": "source_excerpt",
@@ -167,7 +212,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "disciples-and-zombie-armies",
       "text_origin": "source_excerpt",
@@ -187,6 +232,7 @@
       "section": "trace-risk-after-ding-hao",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_worms",
         "gu_zombie_heart_gu",
         "fac_shang_clan"
       ]
@@ -198,12 +244,13 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yi-tian-mountain-arrival",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_zombie_alliance"
+        "fac_zombie_alliance",
+        "sys_gu_master"
       ]
     },
     {
@@ -213,7 +260,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -262,7 +309,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 254",
@@ -289,7 +336,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": "demonic path as of ch. 254",

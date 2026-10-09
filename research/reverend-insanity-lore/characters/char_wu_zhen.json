@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1306,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1306,
@@ -37,6 +37,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -65,6 +77,10 @@
       "count": 4
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
       "count": 1
     },
@@ -73,7 +89,15 @@
       "count": 2
     },
     {
+      "target": "inh_corpse_emperor_true_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_wu_yu_bo",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -113,12 +137,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_xia_clan",
+        "sys_gu_immortal",
         "fac_wu_clan",
         "char_wu_yu_bo",
         "loc_frosty_peak",
@@ -132,7 +157,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -144,7 +169,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "corpse-emperor-post",
       "text_origin": "source_excerpt",
@@ -162,7 +187,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "rank-seven-garrison",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_corpse_emperor_true_inheritance"
+      ]
     },
     {
       "text": "He puts away the cardinal directional wind formation in excitement, analyzes Lu Wei Yin’s possible hand behind the seven ghosts, and at first hesitates that attacking Mushroomman Paradise is early while super forces chase qi tide inheritances. The thought of fighting Fang Yuan turns his face pale, yet after Wu Yong’s guidance he agrees to the mushroomman expedition.",
@@ -237,7 +265,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Wu Clan as of ch. 1306",
@@ -264,7 +292,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 176,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     176,
@@ -79,6 +79,10 @@
     },
     {
       "target": "gu_wolf_smoke_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
       "count": 1
     }
   ],
@@ -137,7 +141,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "healing-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_healing_gu"
+        ]
       }
     ]
   },
@@ -165,7 +172,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -215,7 +222,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt"

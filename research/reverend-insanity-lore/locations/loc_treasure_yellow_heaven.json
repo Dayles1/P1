@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 462,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     462,
@@ -78,6 +78,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_starlight_firefly_gu",
       "count": 1
     },
@@ -90,11 +94,27 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_era_medieval",
+      "count": 1
+    },
+    {
       "target": "loc_hu_immortal_blessed_land",
       "count": 1
     },
     {
       "target": "loc_immemorial_nine_heavens",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_essence_stone",
       "count": 1
     },
     {
@@ -159,6 +179,14 @@
     },
     {
       "target": "loc_myriad_star_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "move_dazzling_star_armor",
+      "count": 1
+    },
+    {
+      "target": "move_spiral_drill_star_spear",
       "count": 1
     },
     {
@@ -242,6 +270,10 @@
       "count": 1
     },
     {
+      "target": "path_earth",
+      "count": 1
+    },
+    {
       "target": "char_fairy_zi_wei",
       "count": 1
     },
@@ -254,11 +286,23 @@
       "count": 1
     },
     {
+      "target": "evt_arc_river_of_time",
+      "count": 1
+    },
+    {
       "target": "char_qing_yue_zhi_cheng",
       "count": 1
     },
     {
       "target": "char_you_chan",
+      "count": 1
+    },
+    {
+      "target": "move_star_cast",
+      "count": 1
+    },
+    {
+      "target": "move_time_cutting_edge",
       "count": 1
     },
     {
@@ -293,7 +337,8 @@
       "mentions": [
         "loc_lang_ya_blessed_land",
         "char_star_lord_wan_xiang",
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -335,7 +380,9 @@
       "mentions": [
         "loc_hu_immortal_blessed_land",
         "loc_immemorial_nine_heavens",
+        "evt_era_medieval",
         "char_daoist_countless_treasures",
+        "sys_immortal_gu",
         "gu_treasure_light_gu"
       ]
     },
@@ -361,7 +408,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "trade-practice",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_essence_stone",
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "A blessed land’s owner can keep an ownership-recognition request open in treasure yellow heaven to make outsiders believe the land is unclaimed; Fang Yuan uses this to hide that he owns Star Form blessed land.",
@@ -488,7 +539,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "information-trade",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "path_earth"
+      ]
     },
     {
       "text": "Heavenly Court has the means to watch the place, and because any transaction in an open market is exposed easily, Fairy Zi Wei must know that Fang Yuan borrowed Immortal Gu and immortal essence stones from Wu clan through it.",

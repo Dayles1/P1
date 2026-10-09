@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 225,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     225,
@@ -56,6 +56,10 @@
       "count": 2
     },
     {
+      "target": "inh_king_xin_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_bai_hua",
       "count": 1
     },
@@ -65,6 +69,10 @@
     },
     {
       "target": "char_grey_bone_scholar",
+      "count": 1
+    },
+    {
+      "target": "sys_movement_gu",
       "count": 1
     },
     {
@@ -150,10 +158,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-a-later-copy",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "inh_king_xin_inheritance"
+        ]
       },
       {
         "text": "That feed is refinement stock for Bone Wings Gu, not a feeding rule for keeping a living mount. That King Xin copy is separate from the Bai Gu mountain bird listed as destroyed in chapter 228.",
@@ -182,7 +193,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -194,7 +205,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -230,7 +241,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form",
         "text_origin": "source_excerpt"
@@ -248,10 +259,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_movement_gu"
+        ]
       },
       {
         "text": "Bai clan observers call it able to fly ten thousand miles in a day, and say that under rank five it is the number one flying steed, with few Gu able to match its speed. During the climb from the cliff, Fang Yuan’s primeval essence drops rapidly while Heavenly Essence Treasure Lotus keeps feeding his sea.",
@@ -315,7 +329,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

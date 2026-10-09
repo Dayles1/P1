@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1072,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1072,
@@ -67,6 +67,10 @@
       "count": 2
     },
     {
+      "target": "house_flying_sand_pavilion",
+      "count": 2
+    },
+    {
       "target": "fac_wu_clan",
       "count": 2
     },
@@ -99,6 +103,18 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_shang_wu_jie",
       "count": 1
     },
@@ -115,7 +131,19 @@
       "count": 1
     },
     {
+      "target": "sys_year_essence_pool",
+      "count": 1
+    },
+    {
       "target": "fac_southern_alliance",
+      "count": 1
+    },
+    {
+      "target": "house_beacon_tower",
+      "count": 1
+    },
+    {
+      "target": "sys_five_regional_limit_formation",
       "count": 1
     },
     {
@@ -131,7 +159,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-at-shang-succession",
       "text_origin": "source_excerpt",
@@ -151,10 +179,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "golden-cloud-canyon",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal",
+        "sys_gu_formation",
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "In the same stretch, Yao clan, Yang clan, and Hou clan are three of the super forces that move against Wu clan after news that Wu Yong is dead.",
@@ -163,7 +196,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "golden-cloud-canyon",
       "text_origin": "source_excerpt",

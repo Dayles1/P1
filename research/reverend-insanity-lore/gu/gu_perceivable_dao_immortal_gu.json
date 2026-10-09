@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1156,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1156,
@@ -50,7 +50,35 @@
       "count": 2
     },
     {
+      "target": "sys_bone_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_eastern_sea_information_path_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_ice_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "res_information_path_immortal_material",
+      "count": 1
+    },
+    {
+      "target": "path_ice",
       "count": 1
     },
     {
@@ -59,6 +87,10 @@
     },
     {
       "target": "loc_han_dong_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "sys_poison_path_dao_marks",
       "count": 1
     }
   ],
@@ -120,7 +152,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -193,12 +225,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -208,10 +241,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "first-test",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu",
+          "sys_gu_immortal"
+        ]
       }
     ]
   },

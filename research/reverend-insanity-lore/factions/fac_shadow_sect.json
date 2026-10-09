@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 384,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     384,
@@ -410,6 +410,10 @@
       "count": 2
     },
     {
+      "target": "house_regret_pool",
+      "count": 2
+    },
+    {
       "target": "loc_door_of_life_and_death",
       "count": 2
     },
@@ -427,6 +431,10 @@
     },
     {
       "target": "loc_yi_tian_mountain",
+      "count": 2
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
       "count": 2
     },
     {
@@ -466,7 +474,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "evt_era_immemorial",
+      "count": 1
+    },
+    {
       "target": "gu_sea_oath_gu",
+      "count": 1
+    },
+    {
+      "target": "path_food",
       "count": 1
     },
     {
@@ -494,11 +514,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_venerable",
+      "count": 1
+    },
+    {
       "target": "char_feng_jiu_ge",
       "count": 1
     },
     {
       "target": "char_xue_song_zi",
+      "count": 1
+    },
+    {
+      "target": "move_five_finger_fist_heart_sword",
+      "count": 1
+    },
+    {
+      "target": "house_refinement_cauldron",
       "count": 1
     },
     {
@@ -510,7 +542,15 @@
       "count": 1
     },
     {
+      "target": "move_soul_replacement",
+      "count": 1
+    },
+    {
       "target": "loc_luo_po_valley",
+      "count": 1
+    },
+    {
+      "target": "move_green_jade_song",
       "count": 1
     },
     {
@@ -527,6 +567,10 @@
     },
     {
       "target": "gu_crescent_moon_gu",
+      "count": 1
+    },
+    {
+      "target": "move_peerless_crescent_moon_slash",
       "count": 1
     },
     {
@@ -558,6 +602,30 @@
       "count": 1
     },
     {
+      "target": "sys_heavens_will",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_immortal_zombie_lifeless_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_pure_dream_reality_seeker_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_blazing_glory_lightning_brilliance_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "loc_life_and_death_blessed_land",
       "count": 1
     },
@@ -578,7 +646,19 @@
       "count": 1
     },
     {
+      "target": "house_canary_pavilion",
+      "count": 1
+    },
+    {
+      "target": "house_yue_yang_palace",
+      "count": 1
+    },
+    {
       "target": "loc_heavenly_pool",
+      "count": 1
+    },
+    {
+      "target": "house_sacred_feather_city",
       "count": 1
     },
     {
@@ -587,6 +667,34 @@
     },
     {
       "target": "char_heaven_overseeing_tower_lord",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "house_blood_river_chariot",
+      "count": 1
+    },
+    {
+      "target": "house_golden_altar",
+      "count": 1
+    },
+    {
+      "target": "house_graceful_chaotic_duel_stage",
+      "count": 1
+    },
+    {
+      "target": "house_green_wave_pavilion",
+      "count": 1
+    },
+    {
+      "target": "house_nightmare_castle",
+      "count": 1
+    },
+    {
+      "target": "house_unbreakable_iron_fortress",
       "count": 1
     }
   ],
@@ -613,14 +721,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-naming-on-san-cha-mountain",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
         "char_chou_jiu",
-        "loc_door_of_life_and_death"
+        "loc_door_of_life_and_death",
+        "sys_gu_immortal",
+        "evt_era_immemorial"
       ]
     },
     {
@@ -630,7 +740,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-naming-on-san-cha-mountain",
       "text_origin": "source_excerpt",
@@ -646,7 +756,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chou-jius-account-of-the-disciples",
       "text_origin": "source_excerpt",
@@ -662,7 +772,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chou-jius-account-of-the-disciples",
       "text_origin": "source_excerpt"
@@ -674,13 +784,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "qin-bai-sheng-lord-vice-envoy",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fairy_jiang_yu",
-        "char_qin_bai_sheng"
+        "char_qin_bai_sheng",
+        "sys_gu_venerable"
       ]
     },
     {
@@ -690,7 +801,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "a-hundred-thousand-year-plan-against-heaven",
       "text_origin": "source_excerpt",
@@ -707,7 +818,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortals-around-falling-heavenly-river",
       "text_origin": "source_excerpt",
@@ -725,10 +836,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refinement-path-formation",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_formation"
+      ]
     },
     {
       "text": "At Yi Tian Mountain, Fang Yuan sees that the mastermind of Shadow Sect behind the scenes is Spectral Soul Demon Venerable. Ying Wu Xie activates lead soul into dream against Heaven Overseeing Tower, and Shadow Sect’s effort in creating him shows there.",
@@ -737,14 +851,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "behind-the-sect",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_yi_tian_mountain",
         "char_spectral_soul_demon_venerable",
-        "char_ying_wu_xie"
+        "char_ying_wu_xie",
+        "house_heaven_overseeing_tower"
       ]
     },
     {
@@ -754,7 +869,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "behind-the-sect",
       "text_origin": "source_excerpt"
@@ -766,7 +881,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "founding-and-strategy",
       "text_origin": "source_excerpt",
@@ -783,14 +898,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "founding-and-strategy",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_zombie_alliance",
         "reg_northern_plains",
-        "loc_dark_flow_giant_city"
+        "loc_dark_flow_giant_city",
+        "reg_earth_earth_trench"
       ]
     },
     {
@@ -800,7 +916,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "a-spy-in-lang-ya-blessed-land",
       "text_origin": "source_excerpt",
@@ -816,7 +932,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "a-traitor-inside-lang-ya-blessed-land",
       "text_origin": "source_excerpt"
@@ -828,7 +944,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "a-traitor-inside-lang-ya-blessed-land",
       "text_origin": "source_excerpt",
@@ -843,7 +959,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "emptied-treasuries",
       "text_origin": "source_excerpt",
@@ -858,7 +974,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "guarding-against-heavens-will",
       "text_origin": "source_excerpt"
@@ -870,7 +986,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sixth-hairs-restraint",
       "text_origin": "source_excerpt",
@@ -885,7 +1001,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "leadership-and-southern-border-ground",
       "text_origin": "source_excerpt",
@@ -900,7 +1016,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "complete-inheritance",
       "text_origin": "source_excerpt"

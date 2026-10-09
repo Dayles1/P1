@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 434,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     434,
@@ -60,6 +60,10 @@
       "count": 1
     },
     {
+      "target": "sys_wild_gu",
+      "count": 1
+    },
+    {
       "target": "gu_moving_perspective_cup_gu",
       "count": 1
     },
@@ -81,6 +85,14 @@
     },
     {
       "target": "char_lang_ya_land_spirit",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 1
     }
   ],
@@ -108,7 +120,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_thieving_heaven_demon_venerable",
-        "gu_moving_perspective_cup_gu"
+        "gu_moving_perspective_cup_gu",
+        "sys_wild_gu"
       ]
     },
     {
@@ -167,7 +180,8 @@
       "section": "lang-ya-condition",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_lang_ya_land_spirit"
+        "char_lang_ya_land_spirit",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -180,7 +194,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "secluded-domain-ranking",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_the_legends_of_ren_zu"
+      ]
     }
   ],
   "conflicts": [],

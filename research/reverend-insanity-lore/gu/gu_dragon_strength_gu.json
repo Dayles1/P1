@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 265,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     265,
@@ -67,6 +67,10 @@
       "count": 4
     },
     {
+      "target": "move_ancient_sword_dragon_transformation",
+      "count": 4
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -95,6 +99,10 @@
       "count": 1
     },
     {
+      "target": "sys_wild_gu",
+      "count": 1
+    },
+    {
       "target": "loc_shang_clan_city",
       "count": 1
     },
@@ -103,7 +111,19 @@
       "count": 1
     },
     {
+      "target": "path_strength",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
+    },
+    {
       "target": "char_wu_yi_hai",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -112,6 +132,10 @@
     },
     {
       "target": "char_wu_yong",
+      "count": 1
+    },
+    {
+      "target": "move_reverse_flow_protection_seal",
       "count": 1
     },
     {
@@ -203,7 +227,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-six-transformation-line",
         "text_origin": "source_excerpt"
@@ -215,7 +239,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-seven-inventory",
         "text_origin": "source_excerpt"
@@ -247,7 +271,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "formation-core-line",
         "text_origin": "source_excerpt",
@@ -271,10 +295,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bay-pavilion-activation",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_ancient_sword_dragon_transformation"
+        ]
       }
     ]
   },
@@ -311,12 +338,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wu-clan-immortal-gu",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_wu_yi_hai",
+          "sys_immortal_gu",
           "fac_wu_clan",
           "gu_dragon_scales_immortal_gu"
         ]
@@ -352,7 +380,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -361,6 +389,7 @@
           "char_fang_yuan",
           "char_bai_ning_bing",
           "loc_shang_clan_city",
+          "sys_wild_gu",
           "char_empress_wu_ji"
         ]
       },
@@ -376,6 +405,7 @@
         "section": "ancient-beast-strength-gu",
         "text_origin": "source_excerpt",
         "mentions": [
+          "path_strength",
           "gu_beast_strength_gu",
           "gu_strength_gu",
           "gu_biao_strength_gu"

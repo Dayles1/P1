@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2129,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_dao_veins_famous_mountains"
   },
   "chapters_cited": [
     2129,
@@ -48,6 +48,10 @@
     },
     {
       "target": "char_ling_hu_xu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -108,6 +112,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_mo_li",
+        "sys_gu_immortal",
         "char_ling_hu_xu",
         "fac_fang_clan",
         "char_fang_dong_xi"

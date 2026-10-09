@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1128,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1128,
@@ -35,6 +35,18 @@
     1299
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_time",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_hei_fan",
@@ -70,7 +82,19 @@
       "count": 2
     },
     {
+      "target": "path_time",
+      "count": 1
+    },
+    {
       "target": "gu_black_ants",
+      "count": 2
+    },
+    {
+      "target": "inh_hei_fan_true_inheritance",
+      "count": 2
+    },
+    {
+      "target": "move_endless_trouble",
       "count": 2
     },
     {
@@ -78,7 +102,31 @@
       "count": 2
     },
     {
+      "target": "move_three_breaths_future_vision",
+      "count": 2
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "move_triple_extreme_sound",
+      "count": 1
+    },
+    {
       "target": "char_shang_hu_zhang",
+      "count": 1
+    },
+    {
+      "target": "house_rising_cloud_city",
       "count": 1
     }
   ],
@@ -125,7 +173,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_time"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -160,10 +210,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "hei-fans-single-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_endless_trouble",
+          "sys_gu_immortal"
+        ]
       }
     ]
   },
@@ -191,10 +245,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "three-breaths-future-vision",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_three_breaths_future_vision"
+        ]
       }
     ]
   },
@@ -212,10 +269,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "recipe-and-related-gu",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_recipe"
+        ]
       },
       {
         "text": "Before Immortal Gu and after Immortal Gu are related Immortal Gu. Hei Fan obtained After and then greatly desired Before, but his Before recipe stayed incomplete until his death.",
@@ -224,7 +284,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "recipe-and-related-gu",
         "text_origin": "source_excerpt",
@@ -279,8 +339,10 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "inh_hei_fan_true_inheritance",
           "char_fang_yuan",
           "gu_black_ants",
+          "sys_immortal_gu",
           "char_hei_fan"
         ]
       },
@@ -291,7 +353,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "held-among-time-path-assets",
         "text_origin": "source_excerpt"
@@ -302,7 +364,7 @@
     "Path": {
       "text": "Time Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

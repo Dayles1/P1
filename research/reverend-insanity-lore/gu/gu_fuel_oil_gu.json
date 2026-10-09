@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 314,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     314
@@ -52,7 +52,15 @@
       "count": 1
     },
     {
+      "target": "evt_fight_bai_ning_bing_against_yan_tu",
+      "count": 1
+    },
+    {
       "target": "loc_shang_clan_city",
+      "count": 1
+    },
+    {
+      "target": "move_fire_sea_twin_dragon_kill",
       "count": 1
     }
   ],
@@ -106,7 +114,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -158,7 +166,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -175,7 +183,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "oil-color-and-odor",
         "text_origin": "source_excerpt"

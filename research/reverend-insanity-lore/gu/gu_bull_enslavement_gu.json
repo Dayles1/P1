@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 152,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     152
@@ -40,6 +40,10 @@
     },
     {
       "target": "gu_bear_enslavement_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_enslavement_gu",
       "count": 1
     }
   ],
@@ -133,7 +137,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_man_beast_burial_gu",
-          "gu_deer_enslavement_gu"
+          "gu_deer_enslavement_gu",
+          "sys_enslavement_gu"
         ]
       }
     ]

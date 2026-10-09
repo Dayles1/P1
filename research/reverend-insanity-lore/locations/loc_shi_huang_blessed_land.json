@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 657,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     657,
@@ -65,7 +65,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_dong_fang_tribe",
+      "count": 1
+    },
+    {
+      "target": "house_modest_thatched_hut",
       "count": 1
     },
     {
@@ -103,15 +111,17 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_jade_pool_blessed_land",
         "char_guan_shen_zhao",
+        "sys_gu_immortal",
         "char_dong_fang_chang_fan",
         "loc_snowy_mountain",
+        "house_modest_thatched_hut",
         "fac_dong_fang_tribe"
       ]
     },

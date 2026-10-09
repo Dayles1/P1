@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1109,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1109,
@@ -42,11 +42,27 @@
       "count": 1
     },
     {
+      "target": "house_modest_thatched_hut",
+      "count": 1
+    },
+    {
+      "target": "inh_hei_fan_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_iron_eagle_blessed_land",
       "count": 1
     },
     {
+      "target": "move_green_city_rampage",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -86,7 +102,9 @@
       "section": "chu-du-seizes-the-nest",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_chu_du"
+        "char_chu_du",
+        "move_green_city_rampage",
+        "house_modest_thatched_hut"
       ]
     },
     {
@@ -101,7 +119,8 @@
       "section": "chu-du-seizes-the-nest",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_hei_tribe"
+        "fac_hei_tribe",
+        "inh_hei_fan_true_inheritance"
       ]
     },
     {
@@ -117,6 +136,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_immortal_gu",
         "gu_calamity_beckoning_gu"
       ]
     },

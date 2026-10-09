@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 501,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     501,
@@ -163,6 +163,14 @@
       "count": 1
     },
     {
+      "target": "move_three_hearts_combination_soul",
+      "count": 1
+    },
+    {
+      "target": "sys_defensive_gu",
+      "count": 1
+    },
+    {
       "target": "fac_tang_tribe",
       "count": 1
     },
@@ -172,6 +180,10 @@
     },
     {
       "target": "gu_charred_thunder_potato_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_battle_merits",
       "count": 1
     }
   ],
@@ -235,14 +247,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "enslavement-gu-masters-and-a-killer-move",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_e_xuan_ming",
         "char_jiang_wan_shan",
-        "char_wan_xin"
+        "char_wan_xin",
+        "move_three_hearts_combination_soul"
       ]
     },
     {
@@ -283,10 +296,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wolf-tide-unleashed",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_defensive_gu"
+      ]
     },
     {
       "text": "Three Hearts Combination Soul turns out to be bait of Dong Fang Yu Liang’s own: with Hei Lou Lan drawn into the open, Bian Si Xuan strikes what she believes is the Wolf King and appears to kill him, prompting Dong Fang Yu Liang to call the battle won, but the fallen figure is a water image Gu decoy and the real Wolf King is unharmed.",
@@ -307,7 +323,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "star-thought-cloud-and-retreat",
       "text_origin": "source_excerpt",
@@ -337,7 +353,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battle-merit-tally",
       "text_origin": "source_excerpt"

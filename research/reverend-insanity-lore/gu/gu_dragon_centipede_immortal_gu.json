@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1086,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1086,
@@ -32,7 +32,27 @@
   "relations": [],
   "co_mentions": [
     {
+      "target": "sys_wild_immortal_gu",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_desolate_plant",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_self",
+      "count": 1
+    },
+    {
+      "target": "sys_heavens_will",
       "count": 1
     }
   ],
@@ -125,11 +145,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_fang_yuan"
         ]
       },
@@ -140,10 +161,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_wild_immortal_gu"
+        ]
       },
       {
         "text": "Wild Immortal Gu have little intelligence and are easily swayed by heaven’s will, and the centipede and the pegasus are there to block Fang Yuan’s path. The Dragon Centipede’s gaze falls on Fang Yuan. The sword path aura of his rank seven sword escape Immortal Gu attracts it more. When Fang Yuan stores sword escape Immortal Gu and the aura vanishes, the dragon centipede Immortal Gu is confused but keeps its focus on him, since in its long life of hunting it has met many prey that could hide their aura. Fang Yuan’s immortal killer move Myriad Self fills the air with countless phantoms of himself, the dragon centipede Immortal Gu grows even more confused and its speed falls for a moment, and its seven li long body then strikes like a whip and destroys countless strength path phantoms. Seeing the pegasus escape, the dragon centipede Immortal Gu turns its attention back to the pegasus, and the chase soon carries both out of Fang Yuan’s sight.",
@@ -152,10 +176,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_myriad_self"
+        ]
       },
       {
         "text": "Heaven’s will could not order either the horned six-winged pegasus or the wild Dragon Centipede to attack Fang Yuan. After the two of them, no other unexpected surprises occurred on his flight.",
@@ -167,7 +194,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "heavens-will",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_heavens_will"
+        ]
       }
     ]
   },

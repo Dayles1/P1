@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1012,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1012
@@ -50,6 +50,10 @@
     {
       "target": "char_spectral_soul_demon_venerable",
       "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
     }
   ],
   "claims": [
@@ -60,10 +64,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "A hundred thousand years earlier, night wind and thunder cover Southern Border’s Xuan Ci Mountain while a battle has just ended partway up the slope. More than ten Gu Master corpses lie on the ground, and heavy rain cannot wash away the blood smell.",
@@ -72,7 +79,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -87,7 +94,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -99,7 +106,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",

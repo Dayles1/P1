@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1116,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1116,
@@ -56,7 +56,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_hei_tribe",
+      "count": 1
+    },
+    {
+      "target": "inh_hei_fan_true_inheritance",
       "count": 1
     },
     {
@@ -77,6 +85,10 @@
     },
     {
       "target": "char_sixth_hair",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -168,7 +180,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_hei_tribe",
-        "char_hei_fan"
+        "char_hei_fan",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -193,7 +206,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "death-from-hunger-and-rebirth",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_hei_fan_true_inheritance"
+      ]
     },
     {
       "text": "With the eagle only an egg again, Fang Yuan cannot predict the winner against Ying Wu Xie’s group even with his many Immortal Gu, where had he still had the immemorial desolate beast he would have pursued them immediately.",
@@ -250,6 +266,7 @@
       "section": "sixth-hairs-suspected-knowledge",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_formation",
         "char_sixth_hair",
         "char_lang_ya_land_spirit"
       ]

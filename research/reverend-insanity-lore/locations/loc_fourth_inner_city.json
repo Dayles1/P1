@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 261,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     261,
@@ -39,6 +39,10 @@
     },
     {
       "target": "char_xiao_yan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -86,7 +90,8 @@
       "section": "rank-rise-example",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_xiao_yan"
+        "char_xiao_yan",
+        "sys_gu_worms"
       ]
     },
     {
@@ -96,7 +101,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battle-stage-tier",
       "text_origin": "source_excerpt",
@@ -111,7 +116,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "forced-drop",
       "text_origin": "source_excerpt",

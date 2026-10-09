@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 167,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     167,
@@ -56,6 +56,10 @@
     },
     {
       "target": "char_bai_ning_bing",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
       "count": 1
     },
     {
@@ -135,7 +139,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-and-loss",
         "text_origin": "source_excerpt",
@@ -155,7 +159,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -167,7 +171,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-effect",
         "text_origin": "source_excerpt"
@@ -224,7 +228,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "acquisition",
         "text_origin": "source_excerpt",
@@ -233,6 +237,7 @@
           "fac_bai_clan",
           "loc_qing_mao_mountain",
           "char_fang_yuan",
+          "sys_healing_gu",
           "char_bai_ning_bing",
           "gu_spring_autumn_cicada"
         ]

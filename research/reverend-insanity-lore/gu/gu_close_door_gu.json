@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 517,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     517,
@@ -73,11 +73,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
       "target": "char_feng_jiu_ge",
       "count": 1
     },
     {
       "target": "fac_shadow_sect",
+      "count": 1
+    },
+    {
+      "target": "inh_thieving_heaven_true_inheritance",
       "count": 1
     }
   ],
@@ -184,7 +192,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -201,7 +209,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "purpose",
         "text_origin": "source_excerpt",
@@ -216,7 +224,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-keys",
         "text_origin": "source_excerpt"
@@ -228,7 +236,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "hei-lou-lans-request",
         "text_origin": "source_excerpt",
@@ -243,12 +251,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "at-luo-po-valley",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fairy_li_shan"
+          "char_fairy_li_shan",
+          "sys_gu_formation"
         ]
       },
       {
@@ -258,7 +267,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "closing-the-true-inheritance-entrance",
         "text_origin": "source_excerpt",
@@ -273,11 +282,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "closing-the-true-inheritance-entrance",
         "text_origin": "source_excerpt",
         "mentions": [
+          "inh_thieving_heaven_true_inheritance",
           "char_feng_jiu_ge"
         ]
       },
@@ -288,7 +298,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "closing-the-true-inheritance-entrance",
         "text_origin": "source_excerpt"

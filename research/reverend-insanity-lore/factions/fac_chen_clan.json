@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 234,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     234,
@@ -122,6 +122,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_bai_clan_bai_gu_mountain",
       "count": 1
     },
@@ -154,6 +158,18 @@
       "count": 1
     },
     {
+      "target": "move_hundred_disintegrations",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_disintegrations",
+      "count": 1
+    },
+    {
+      "target": "move_thousand_disintegrations",
+      "count": 1
+    },
+    {
       "target": "gu_disintegrate_rule_path_immortal_gu",
       "count": 1
     },
@@ -176,6 +192,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_zi_you_mountain",
+        "sys_gu_master",
         "char_chen_xin",
         "fac_bai_clan_bai_gu_mountain"
       ]
@@ -203,7 +220,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "prestige-against-zhang",
       "text_origin": "source_excerpt",
@@ -220,7 +237,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "prestige-against-zhang",
       "text_origin": "source_excerpt"
@@ -232,7 +249,7 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "convoy-strength-and-jia-ties",
       "text_origin": "source_excerpt",
@@ -267,7 +284,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "convoy-strength-and-jia-ties",
       "text_origin": "source_excerpt"

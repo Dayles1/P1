@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1992,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1992,
@@ -54,6 +54,10 @@
     },
     {
       "target": "char_zhao_shu_ye",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -94,6 +98,14 @@
     },
     {
       "target": "gu_justice_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     },
     {
@@ -275,6 +287,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_heavenly_court",
+          "sys_gu_recipe",
+          "sys_vital_gu",
           "gu_commander_gu"
         ]
       }
@@ -316,7 +330,8 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_xiao_qi_xing"
+          "char_xiao_qi_xing",
+          "sys_gu_worms"
         ]
       }
     ]

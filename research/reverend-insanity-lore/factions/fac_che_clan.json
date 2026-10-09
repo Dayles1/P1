@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 323,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     323,
@@ -108,6 +108,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -129,6 +133,14 @@
     },
     {
       "target": "char_zhen_yuan_zi",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "inh_formation_path_true_inheritance",
       "count": 1
     }
   ],
@@ -166,6 +178,7 @@
         "char_che_you_yin",
         "char_che_qiao_xiang",
         "char_zuo_wu_sheng",
+        "sys_gu_master",
         "char_kong_ri_tian",
         "char_zuo_chan_yu"
       ]
@@ -177,7 +190,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "san-cha-mountain-battle",
       "text_origin": "source_excerpt"
@@ -205,7 +218,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "troops-into-the-blessed-land",
       "text_origin": "source_excerpt"
@@ -217,13 +230,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "super-force-naming",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_thousand_transformations_ancestor",
-        "char_zhen_yuan_zi"
+        "char_zhen_yuan_zi",
+        "sys_gu_immortal"
       ]
     },
     {

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 335,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     335,
@@ -39,6 +39,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -71,9 +83,25 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_hu_immortal_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "inh_hu_immortal_inheritance",
+      "count": 4
+    },
     {
       "target": "reg_central_continent",
       "count": 3
@@ -85,6 +113,10 @@
     {
       "target": "gu_fox_enslavement_gu",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "fac_immortal_crane_sect",
@@ -111,6 +143,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_ten_great_sects",
       "count": 1
     },
@@ -123,7 +159,27 @@
       "count": 1
     },
     {
+      "target": "evt_arc_hu_immortal_blessed_land",
+      "count": 1
+    },
+    {
       "target": "char_lord_sky_crane",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_land_spirit",
+      "count": 1
+    },
+    {
+      "target": "sys_earthly_calamity",
       "count": 1
     },
     {
@@ -139,6 +195,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_fox_skin_gu",
       "count": 1
     },
@@ -151,7 +211,15 @@
       "count": 1
     },
     {
+      "target": "race_rockmen",
+      "count": 1
+    },
+    {
       "target": "gu_estrus_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_green_grape_immortal_essence",
       "count": 1
     },
     {
@@ -171,7 +239,15 @@
       "count": 1
     },
     {
+      "target": "res_yellow_mud",
+      "count": 1
+    },
+    {
       "target": "gu_current_charge_gu",
+      "count": 1
+    },
+    {
+      "target": "move_water_spirit_transformation",
       "count": 1
     },
     {
@@ -180,6 +256,30 @@
     },
     {
       "target": "char_lord_tiger_demon",
+      "count": 1
+    },
+    {
+      "target": "sys_earth_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_enslavement_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_space_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_wood_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_blessed_land_consolidation",
+      "count": 1
+    },
+    {
+      "target": "sys_sound_path_dao_marks",
       "count": 1
     },
     {
@@ -203,13 +303,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_immortal_crane_sect",
         "loc_tian_ti",
+        "sys_gu_immortal",
         "reg_central_continent"
       ]
     },
@@ -232,7 +333,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -258,7 +359,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "land-spirit",
       "text_origin": "source_excerpt"
@@ -270,13 +371,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "land-spirit-powers",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_lord_sky_crane",
-        "char_fang_zheng"
+        "char_fang_zheng",
+        "sys_gu_worms",
+        "sys_immortal_gu",
+        "inh_hu_immortal_inheritance"
       ]
     },
     {
@@ -286,10 +390,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fifth-earthly-calamity",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "Little Hu Immortal is formed from the obsession of the female Gu Immortal Fairy Bai Hu.",
@@ -298,7 +405,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dang-hun-palace",
       "text_origin": "source_excerpt",
@@ -313,7 +420,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dang-hun-palace",
       "text_origin": "source_excerpt",
@@ -329,7 +436,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "path-restated",
       "text_origin": "source_excerpt"
@@ -377,7 +484,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "righteous path as of ch. 335",
@@ -404,7 +511,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": "righteous path as of ch. 335",

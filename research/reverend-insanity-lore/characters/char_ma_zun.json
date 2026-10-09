@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 438,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     438,
@@ -55,12 +55,36 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_ma_tribe",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
       "recorded_chapter": 489,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_dragon_horse_spirit",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 542,
       "count": null,
       "confidence": "B",
       "source_id": "src_sagaofgu",
@@ -73,8 +97,16 @@
       "count": 3
     },
     {
+      "target": "move_dragon_horse_spirit",
+      "count": 3
+    },
+    {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_jiang_bao_ya",
@@ -121,6 +153,10 @@
       "count": 1
     },
     {
+      "target": "sys_man_soul",
+      "count": 1
+    },
+    {
       "target": "fac_ge_tribe",
       "count": 1
     },
@@ -139,6 +175,10 @@
     {
       "target": "char_wu_ye",
       "count": 1
+    },
+    {
+      "target": "sys_master_attainment",
+      "count": 1
     }
   ],
   "claims": [
@@ -149,7 +189,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -170,7 +210,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ma-tribe-uncle",
       "text_origin": "source_excerpt"
@@ -182,7 +222,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ma-tribe-uncle",
       "text_origin": "source_excerpt"
@@ -194,7 +234,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ma-tribe-uncle",
       "text_origin": "source_excerpt"
@@ -206,7 +246,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ma-tribe-uncle",
       "text_origin": "source_excerpt"
@@ -230,7 +270,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "horse-group-and-pegasus",
       "text_origin": "source_excerpt",
@@ -245,7 +285,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fame-in-the-imperial-court-struggle",
       "text_origin": "source_excerpt",
@@ -263,7 +303,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fame-in-the-imperial-court-struggle",
       "text_origin": "source_excerpt",
@@ -280,7 +320,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battlefield-death",
       "text_origin": "source_excerpt"
@@ -292,7 +332,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battlefield-death",
       "text_origin": "source_excerpt"
@@ -304,7 +344,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "battlefield-death",
       "text_origin": "source_excerpt"
@@ -368,7 +408,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Ma Tribe as of ch. 489",
@@ -389,7 +429,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

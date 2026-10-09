@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 62,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     13,
@@ -67,6 +67,10 @@
     },
     {
       "target": "char_gu_yue_bo",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -156,6 +160,7 @@
         "section": "form-and-rank",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "char_fang_zheng"
         ]
       },
@@ -208,7 +213,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -220,7 +225,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -399,7 +404,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "translation-notes",
         "text_origin": "source_excerpt"

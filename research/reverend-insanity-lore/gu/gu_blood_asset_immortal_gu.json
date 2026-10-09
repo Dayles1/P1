@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1058,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1058,
@@ -38,6 +38,18 @@
     2252
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_blood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_lang_ya_land_spirit",
@@ -69,7 +81,27 @@
       "count": 3
     },
     {
+      "target": "move_blood_torrent",
+      "count": 3
+    },
+    {
+      "target": "move_bloodstained_conquerors_robe",
+      "count": 3
+    },
+    {
+      "target": "move_blood_light_spirit_suppression",
+      "count": 3
+    },
+    {
+      "target": "house_four_elements_square_regret_blood_refinement_pool",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 2
+    },
+    {
+      "target": "path_blood",
       "count": 2
     },
     {
@@ -83,6 +115,22 @@
     {
       "target": "gu_sword_escape_immortal_gu",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_failure",
+      "count": 1
     },
     {
       "target": "loc_luo_po_valley",
@@ -101,7 +149,15 @@
       "count": 1
     },
     {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
+    },
+    {
       "target": "gu_bloodline_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -114,6 +170,10 @@
     },
     {
       "target": "res_blood_path_immortal_material",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
       "count": 1
     }
   ],
@@ -173,7 +233,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_blood"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -203,7 +265,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -221,10 +283,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "After obtaining it, Fang Yuan builds blood path immortal killer moves with Blood Asset as the core, including life staking blood print, blood healing lake, and blood torrent. Blood torrent uses only this rank six Immortal Gu, so its straight line speed stays below Sword Escape Immortal Gu unless Blood Asset is raised to rank seven.",
@@ -233,7 +298,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "early-killer-moves",
         "text_origin": "source_excerpt",
@@ -248,7 +313,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "early-killer-moves",
         "text_origin": "source_excerpt",
@@ -263,7 +328,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "early-killer-moves",
         "text_origin": "source_excerpt"
@@ -275,7 +340,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "early-killer-moves",
         "text_origin": "source_excerpt"
@@ -307,6 +372,7 @@
         "section": "rank-seven-and-the-refinement-pool",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_four_elements_square_regret_blood_refinement_pool",
           "gu_advance_refinement_gu",
           "gu_water_refinement_gu"
         ]
@@ -332,12 +398,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "origin-and-ownership",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_lang_ya_land_spirit"
+          "char_lang_ya_land_spirit",
+          "sys_gu_recipe"
         ]
       },
       {
@@ -347,7 +414,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "origin-and-ownership",
         "text_origin": "source_excerpt",
@@ -388,12 +455,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_immortal_gu",
+          "path_blood"
         ]
       },
       {
@@ -403,10 +472,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "coiling-thread-cave-gu-formation",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_formation"
+        ]
       }
     ]
   },
@@ -414,7 +486,7 @@
     "Path": {
       "text": "Blood Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

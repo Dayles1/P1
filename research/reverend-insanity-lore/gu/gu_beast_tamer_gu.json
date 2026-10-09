@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2111,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2111
@@ -48,6 +48,14 @@
     },
     {
       "target": "char_shen_shang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "house_divine_emperor_city",
       "count": 1
     },
     {
@@ -141,6 +149,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_divine_emperor_city",
           "gu_hero_gu",
           "gu_scholar_gu",
           "gu_craftsman_gu"
@@ -159,7 +168,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_di_chang",
-          "char_shen_shang"
+          "char_shen_shang",
+          "sys_gu_worms"
         ]
       }
     ]

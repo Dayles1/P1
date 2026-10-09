@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 480,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     480
@@ -31,7 +31,15 @@
   "relations": [],
   "co_mentions": [
     {
+      "target": "move_gold_and_silver_lightning_dragon",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_support_gu",
       "count": 1
     },
     {
@@ -134,7 +142,8 @@
           "fac_zheng_tribe",
           "reg_northern_plains",
           "fac_gu_masters",
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_support_gu"
         ]
       }
     ]

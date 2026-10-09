@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2114,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2114,
@@ -35,6 +35,10 @@
   "co_mentions": [
     {
       "target": "char_jiao_huo",
+      "count": 2
+    },
+    {
+      "target": "sys_myriad_tribes_ceremony",
       "count": 2
     },
     {
@@ -58,11 +62,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_fortitude_gu",
       "count": 1
     },
     {
       "target": "gu_effort_gu",
+      "count": 1
+    },
+    {
+      "target": "move_dark_capital_strength_tiger",
       "count": 1
     }
   ],
@@ -79,6 +95,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_myriad_tribes_ceremony",
         "char_lu_tong_lan",
         "char_jiao_huo",
         "char_hei_lou_lan"
@@ -94,7 +111,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "ceremony-tribute",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Fire Blend Tribe loses many elders half a year earlier, grows weaker, and joins Yellow Bell Tribe as a subsidiary force. Yellow Bell Tribe has enemies of its own. As the myriad tribes fight, even a super force like Yellow Bell Tribe shows signs of downfall before Myriad Life Road appears.",
@@ -123,6 +143,7 @@
       "section": "myriad-life-road",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "gu_quantity_change_gu",
         "gu_ability_gu"
       ]

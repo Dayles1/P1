@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 671,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     671,
@@ -60,6 +60,10 @@
     },
     {
       "target": "char_mo_tan_sang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -169,7 +173,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -178,7 +182,8 @@
           "char_fang_yuan",
           "char_mo_tan_sang",
           "gu_pine_island_gu",
-          "char_lang_ya_land_spirit"
+          "char_lang_ya_land_spirit",
+          "sys_gu_worms"
         ]
       },
       {
@@ -188,7 +193,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rarity-and-purchase",
         "text_origin": "source_excerpt",
@@ -203,7 +208,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "final-piece-with-pine-island-gu",
         "text_origin": "source_excerpt",
@@ -219,7 +224,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "final-piece-with-pine-island-gu",
         "text_origin": "source_excerpt"

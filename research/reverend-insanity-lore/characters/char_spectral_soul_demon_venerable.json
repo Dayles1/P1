@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 422,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     383,
@@ -60,6 +60,18 @@
     2197
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "holds_gu",
       "target": "gu_hidden_aura_gu",
@@ -107,15 +119,275 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_hundred_million_slaughterfield",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 898,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_soul_replacement",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1015,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_soul_beast_summoning",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1402,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_life_and_death_retrieval",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1564,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_bitter_taste",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2041,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_swallow_loss",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2041,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_soul_taker_battlefield",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2045,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_eat_heart",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2052,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_ghost_official_garment",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_orderly_well",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_soul_shattering_hand",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_soul_taker_battlefield",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_food_path_true_inheritance",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1020,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_red_lotus_true_inheritance",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1022,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_seven_ghosts_true_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_shadow_sect_true_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_spectral_soul_true_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "move_soul_taker_battlefield",
+      "count": 5
+    },
+    {
+      "target": "inh_food_path_true_inheritance",
+      "count": 4
+    },
     {
       "target": "gu_sovereign_immortal_fetus_gu",
       "count": 4
     },
     {
+      "target": "inh_spectral_soul_true_inheritance",
+      "count": 4
+    },
+    {
+      "target": "move_hundred_million_slaughterfield",
+      "count": 3
+    },
+    {
       "target": "gu_hidden_aura_gu",
+      "count": 3
+    },
+    {
+      "target": "inh_red_lotus_true_inheritance",
+      "count": 3
+    },
+    {
+      "target": "move_soul_replacement",
+      "count": 3
+    },
+    {
+      "target": "move_soul_beast_summoning",
+      "count": 3
+    },
+    {
+      "target": "move_ghost_official_garment",
+      "count": 3
+    },
+    {
+      "target": "inh_shadow_sect_true_inheritance",
+      "count": 3
+    },
+    {
+      "target": "move_orderly_well",
+      "count": 3
+    },
+    {
+      "target": "move_life_and_death_retrieval",
+      "count": 3
+    },
+    {
+      "target": "move_bitter_taste",
+      "count": 3
+    },
+    {
+      "target": "move_swallow_loss",
+      "count": 3
+    },
+    {
+      "target": "inh_seven_ghosts_true_inheritance",
       "count": 3
     },
     {
@@ -127,11 +399,27 @@
       "count": 3
     },
     {
+      "target": "move_soul_shattering_hand",
+      "count": 2
+    },
+    {
+      "target": "move_eat_heart",
+      "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "rcp_sovereign_immortal_fetus_gu_recipe",
       "count": 1
     },
     {
       "target": "char_paradise_earth_immortal_venerable",
+      "count": 2
+    },
+    {
+      "target": "evt_era_late",
       "count": 2
     },
     {
@@ -148,6 +436,14 @@
     },
     {
       "target": "gu_wisdom_gu",
+      "count": 2
+    },
+    {
+      "target": "house_sacred_feather_city",
+      "count": 2
+    },
+    {
+      "target": "path_soul",
       "count": 2
     },
     {
@@ -171,11 +467,39 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_mental_energy",
+      "count": 1
+    },
+    {
+      "target": "sys_righteous_path",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
     {
       "target": "loc_hu_immortal_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_rank_nine",
+      "count": 1
+    },
+    {
+      "target": "sys_man_soul",
       "count": 1
     },
     {
@@ -191,11 +515,23 @@
       "count": 1
     },
     {
+      "target": "sys_prophecy_of_three_venerables",
+      "count": 1
+    },
+    {
+      "target": "evt_era_current",
+      "count": 1
+    },
+    {
       "target": "gu_space_escape_gu",
       "count": 1
     },
     {
       "target": "gu_possession_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_possession_true_inheritance",
       "count": 1
     },
     {
@@ -215,7 +551,19 @@
       "count": 1
     },
     {
+      "target": "race_feathermen",
+      "count": 1
+    },
+    {
+      "target": "move_fighting_soul_battlefield",
+      "count": 1
+    },
+    {
       "target": "gu_become_real_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -243,7 +591,19 @@
       "count": 1
     },
     {
+      "target": "house_embroidered_tower",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
+      "count": 1
+    },
+    {
       "target": "char_song_zi_xing",
+      "count": 1
+    },
+    {
+      "target": "sys_wind_lightning_prison",
       "count": 1
     },
     {
@@ -251,7 +611,15 @@
       "count": 1
     },
     {
+      "target": "sys_grey_memory",
+      "count": 1
+    },
+    {
       "target": "gu_eighty_year_lifespan_gu",
+      "count": 1
+    },
+    {
+      "target": "race_beastmen",
       "count": 1
     },
     {
@@ -275,6 +643,10 @@
       "count": 1
     },
     {
+      "target": "sys_soul_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "gu_spring_autumn_cicada",
       "count": 1
     },
@@ -283,11 +655,19 @@
       "count": 1
     },
     {
+      "target": "move_immortal_tribulation_tempering_aperture",
+      "count": 1
+    },
+    {
       "target": "reg_central_continent",
       "count": 1
     },
     {
       "target": "char_blazing_heaven_demoness",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     },
     {
@@ -307,11 +687,23 @@
       "count": 1
     },
     {
+      "target": "move_year_beast_summoning",
+      "count": 1
+    },
+    {
       "target": "loc_green_ghost_desert",
       "count": 1
     },
     {
       "target": "char_green_claw_ghost_winged_lion",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_river_of_time",
+      "count": 1
+    },
+    {
+      "target": "house_soul_suppression_hall",
       "count": 1
     },
     {
@@ -327,7 +719,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -342,7 +734,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soul-path-foundation",
       "text_origin": "source_excerpt"
@@ -354,7 +746,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yi-tian-mountain",
       "text_origin": "source_excerpt"
@@ -366,7 +758,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "secret-room",
       "text_origin": "source_excerpt"
@@ -414,12 +806,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "where-he-enters-the-story",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_hu_immortal_blessed_land"
+        "loc_hu_immortal_blessed_land",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -429,7 +822,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "path",
       "text_origin": "source_excerpt",
@@ -446,7 +839,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soul-cultivation-record",
       "text_origin": "source_excerpt",
@@ -473,10 +866,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "path-history",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "path_soul",
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "Demon Venerable names a rank nine demonic path Gu Master; Immortal Venerable names a rank nine righteous Gu Master.",
@@ -488,7 +885,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "rank",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master",
+        "sys_righteous_path"
+      ]
     },
     {
       "text": "Guts Gu is among the world’s highest quality soul strengthening methods, and even Spectral Soul Demon Venerable praised it.",
@@ -497,7 +898,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "guts-gu-praise",
       "text_origin": "source_excerpt",
@@ -512,7 +913,7 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "heaven-overseeing-towers-deduction",
       "text_origin": "source_excerpt",
@@ -529,7 +930,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "name-returns",
       "text_origin": "source_excerpt"
@@ -553,11 +954,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wisdom-gu-and-blazing-heaven-demonesss-wealth",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_eighty_eight_true_yang_building",
         "gu_wisdom_gu",
         "gu_lifespan_gu"
       ]
@@ -569,7 +971,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wisdom-gu-and-blazing-heaven-demonesss-wealth",
       "text_origin": "source_excerpt",
@@ -630,7 +1032,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "southern-border-identity",
       "text_origin": "source_excerpt"
@@ -642,7 +1044,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-title",
       "text_origin": "source_excerpt"
@@ -654,7 +1056,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-ten-ambition",
       "text_origin": "source_excerpt",
@@ -669,10 +1071,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "true-inheritance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_spectral_soul_true_inheritance"
+      ]
     },
     {
       "text": "Sacred Feather City’s origins are traced to the Late Antiquity Era, named as the era of Spectral Soul Demon Venerable.",
@@ -681,10 +1086,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "era-placement",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_sacred_feather_city",
+        "evt_era_late"
+      ]
     },
     {
       "text": "A later chapter places him and Paradise Earth in that era, a hundred thousand years before the present.",
@@ -876,7 +1285,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Venerable": {
       "text": "Number 9 of ten",
@@ -898,7 +1307,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": null,
     "alignment": null,

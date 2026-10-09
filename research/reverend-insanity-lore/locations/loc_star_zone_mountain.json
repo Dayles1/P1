@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1710,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1710,
@@ -33,6 +33,10 @@
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "house_central_heaven_gate",
+      "count": 2
+    },
     {
       "target": "loc_five_deity_hall",
       "count": 2
@@ -66,6 +70,10 @@
       "count": 1
     },
     {
+      "target": "house_heaven_overseeing_tower",
+      "count": 1
+    },
+    {
       "target": "loc_central_great_hall",
       "count": 1
     },
@@ -75,6 +83,10 @@
     },
     {
       "target": "char_giant_sun_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "evt_era_olden",
       "count": 1
     },
     {
@@ -109,10 +121,12 @@
       "mentions": [
         "char_fairy_zi_wei",
         "char_limitless_demon_venerable",
+        "house_central_heaven_gate",
         "loc_name_plaque_palace",
         "loc_sun_palace",
         "loc_five_deity_hall",
         "loc_central_great_hall",
+        "house_heaven_overseeing_tower",
         "loc_forgotten_dao_lake",
         "loc_imperfection_regret_pavilion"
       ]
@@ -144,6 +158,7 @@
       "section": "pavilion-site",
       "text_origin": "source_excerpt",
       "mentions": [
+        "evt_era_olden",
         "char_genesis_lotus_immortal_venerable",
         "char_giant_sun_immortal_venerable",
         "fac_heavenly_court"

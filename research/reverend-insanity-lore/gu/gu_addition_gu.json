@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1791,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1791
@@ -68,7 +68,15 @@
       "count": 2
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_number_gu",
+      "count": 1
+    },
+    {
+      "target": "res_pearl_thread_water",
       "count": 1
     }
   ],
@@ -227,6 +235,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_fang_yuan",
           "char_ba_shi_ba"
         ]

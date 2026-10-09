@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1541,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1541,
@@ -34,6 +34,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_hairy_men",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -62,6 +74,10 @@
       "count": 2
     },
     {
+      "target": "race_hairy_men",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -82,6 +98,10 @@
       "count": 1
     },
     {
+      "target": "sys_heavenly_giant_solor",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -91,6 +111,10 @@
     },
     {
       "target": "char_sixth_hair",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -113,7 +137,8 @@
       "mentions": [
         "char_lang_ya_land_spirit",
         "char_feng_jiu_ge",
-        "char_third_hair"
+        "char_third_hair",
+        "sys_heavenly_giant_solor"
       ]
     },
     {
@@ -130,6 +155,7 @@
       "mentions": [
         "char_sixth_hair",
         "char_seventh_hair",
+        "sys_gu_immortal",
         "char_long_hair_ancestor",
         "gu_myriad_self_immortal_gu",
         "char_fang_yuan"
@@ -180,7 +206,7 @@
     "Race": {
       "text": "Hairy Men",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Lang Ya Sect as of ch. 1541",
@@ -201,7 +227,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_hairy_men",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

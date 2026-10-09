@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 738,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     738,
@@ -84,6 +84,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_zombie_alliance",
       "count": 1
     },
@@ -139,6 +143,7 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "reg_northern_plains"
       ]
     },

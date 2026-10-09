@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 495,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     495,
@@ -59,7 +59,19 @@
       "count": 2
     },
     {
+      "target": "house_rising_cloud_city",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_venerable",
       "count": 1
     },
     {
@@ -72,6 +84,22 @@
     },
     {
       "target": "char_mo_shi_kuang",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "race_inkmen",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "path_weapon",
       "count": 1
     },
     {
@@ -88,6 +116,10 @@
     },
     {
       "target": "loc_black_and_white_sacred_mountain",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_thirst_for_knowledge",
       "count": 1
     },
     {
@@ -119,7 +151,23 @@
       "count": 1
     },
     {
+      "target": "move_endless_learning",
+      "count": 1
+    },
+    {
+      "target": "move_lingering_poisonous_ant_plague",
+      "count": 1
+    },
+    {
       "target": "gu_talent_gu",
+      "count": 1
+    },
+    {
+      "target": "move_heaven_envies_heroic_geniuses",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_battle_of_crazed_demon_cave",
       "count": 1
     },
     {
@@ -131,7 +179,51 @@
       "count": 1
     },
     {
+      "target": "house_profound_frost_house",
+      "count": 1
+    },
+    {
+      "target": "house_red_heavenly_altar",
+      "count": 1
+    },
+    {
+      "target": "house_red_river_pavilion",
+      "count": 1
+    },
+    {
+      "target": "house_scarlet_palace",
+      "count": 1
+    },
+    {
+      "target": "house_unbreakable_golden_fortress",
+      "count": 1
+    },
+    {
+      "target": "move_humble_reciprocation",
+      "count": 1
+    },
+    {
       "target": "char_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "house_demon_judgment_board",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_soul_dark_castle",
+      "count": 1
+    },
+    {
+      "target": "move_great_qi_cloud_explosion",
+      "count": 1
+    },
+    {
+      "target": "move_incomplete_freedom_transformation",
+      "count": 1
+    },
+    {
+      "target": "move_life_saving_recovery_pill",
       "count": 1
     },
     {
@@ -163,6 +255,18 @@
       "count": 1
     },
     {
+      "target": "house_star_constellation_chessboard",
+      "count": 1
+    },
+    {
+      "target": "move_hu_elevation",
+      "count": 1
+    },
+    {
+      "target": "move_rumors_become_tigers",
+      "count": 1
+    },
+    {
       "target": "loc_crazed_demon_cave",
       "count": 1
     },
@@ -188,7 +292,9 @@
         "char_fang_yuan",
         "char_carefree_wisdom_heart",
         "loc_qian_kun_crystal_wall",
-        "gu_wisdom_gu"
+        "gu_wisdom_gu",
+        "sys_gu_master",
+        "sys_gu_venerable"
       ]
     },
     {
@@ -210,7 +316,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -222,10 +328,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inkman-homeland",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_the_legends_of_ren_zu"
+      ]
     },
     {
       "text": "Fang Yuan reads inkman characters and recalls the legend that splashes of literature water on Book Mountain in Qian Kun Crystal Wall created the first written characters in this world. Those characters had been lost long ago, and even inkmen barely knew them after being chased out of Book Mountain. He notes that many Gu Immortals are interested in Book Mountain and search for grey-white stone slabs to recreate Qian Kun Crystal Wall.",
@@ -234,10 +343,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "written-characters-legend",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "The mountain is surrounded in the two colors of black and white. When it shakes, black and white rocks fly from it.",

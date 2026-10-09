@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1891,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1891,
@@ -54,6 +54,14 @@
     },
     {
       "target": "char_shen_cong_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     }
   ],
@@ -157,6 +165,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_shen_cong_sheng",
+          "sys_gu_worms",
           "char_paradise_earth_immortal_venerable"
         ]
       },
@@ -172,7 +181,8 @@
         "section": "true-inheritance-vessel",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_shang_xin_ci"
+          "char_shang_xin_ci",
+          "sys_gu_immortal"
         ]
       }
     ]

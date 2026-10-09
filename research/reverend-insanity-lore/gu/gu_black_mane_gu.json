@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 47,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     47,
@@ -46,6 +46,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -174,7 +178,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "That armor effect sits one step past Green Silk Gu’s rank one defense: Green Silk Gu grows head hair into a hair raincoat that covers body and steed, uses about thirty percent of green copper primeval essence, and is not a continuous expenditure type. Black Mane Gu’s armor instead comes from hair on every pore.",
@@ -237,7 +244,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fusion-and-advancement",
         "text_origin": "source_excerpt"
@@ -282,7 +289,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

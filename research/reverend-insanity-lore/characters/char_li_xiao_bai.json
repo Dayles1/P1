@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1822,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1822,
@@ -33,6 +33,18 @@
     2119
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "holds_gu",
       "target": "gu_gather_poem_gu",
@@ -104,9 +116,25 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_gu_house",
+      "target": "house_book_house",
+      "role": "holder",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2008,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "house_book_house",
+      "count": 4
+    },
     {
       "target": "gu_gather_poem_gu",
       "count": 3
@@ -130,6 +158,10 @@
     {
       "target": "gu_heavens_envy_gu",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_great_scholar_shen",
@@ -160,11 +192,27 @@
       "count": 1
     },
     {
+      "target": "move_soul_replacement",
+      "count": 1
+    },
+    {
       "target": "loc_imperial_court",
       "count": 1
     },
     {
       "target": "char_hua_song",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu_house",
       "count": 1
     },
     {
@@ -177,6 +225,14 @@
     },
     {
       "target": "char_du_zhi_xiao",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_dao_veins_famous_mountains",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_army_ant_nest",
       "count": 1
     }
   ],
@@ -255,7 +311,11 @@
       "section": "claiming-a-hidden-inheritance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "gu_no_gu"
+        "house_book_house",
+        "sys_gu_master",
+        "gu_no_gu",
+        "sys_gu_worms",
+        "sys_mortal_gu_house"
       ]
     },
     {
@@ -300,7 +360,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -316,7 +376,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

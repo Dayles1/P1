@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 847,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     847,
@@ -63,6 +63,10 @@
       "count": 2
     },
     {
+      "target": "house_illusion_garden",
+      "count": 2
+    },
+    {
       "target": "loc_yuan_yang_city",
       "count": 2
     },
@@ -79,7 +83,23 @@
       "count": 1
     },
     {
+      "target": "res_stone_heart_liquid",
+      "count": 1
+    },
+    {
+      "target": "move_world_decimating_fire_crows",
+      "count": 1
+    },
+    {
       "target": "char_song_zi_xing",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -97,6 +117,18 @@
     {
       "target": "char_hei_lou_lan",
       "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_path_convention",
+      "count": 1
+    },
+    {
+      "target": "move_wind_grind",
+      "count": 1
     }
   ],
   "claims": [
@@ -107,7 +139,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -124,7 +156,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -136,7 +168,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -152,7 +184,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -171,6 +203,8 @@
       "mentions": [
         "char_song_zi_xing",
         "fac_heavenly_lotus_sect",
+        "sys_immortal_gu_house",
+        "house_illusion_garden",
         "fac_ten_great_ancient_sects"
       ]
     },
@@ -181,10 +215,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "illusion-garden-ambush",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Fang Yuan finds Song Zi Xing’s severed arm at the periphery of True Yang mountain range, near Yuan Yang City.",
@@ -193,7 +230,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "periphery-arm-site",
       "text_origin": "source_excerpt",
@@ -208,7 +245,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "search-for-song-zi-xing",
       "text_origin": "source_excerpt"
@@ -220,7 +257,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "search-for-song-zi-xing",
       "text_origin": "source_excerpt"
@@ -232,7 +269,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "search-for-song-zi-xing",
       "text_origin": "source_excerpt",
@@ -247,11 +284,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yu-mu-chun-in-the-range",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_refinement_path_convention",
         "char_yu_mu_chun"
       ]
     },
@@ -262,10 +300,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yu-mu-chun-in-the-range",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "After refining the Immortal Gu, he travels deep into True Yang mountain range, conceals his tracks, and enters a spatial crack in a small valley that leads to Song Zi Xing’s blood swamp hideout.",
@@ -274,7 +315,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yu-mu-chun-in-the-range",
       "text_origin": "source_excerpt"

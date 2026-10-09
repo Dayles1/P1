@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1981,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1981,
@@ -37,6 +37,18 @@
     2164
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_hairy_men",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_two_heavens_alliance",
@@ -70,6 +82,10 @@
     {
       "target": "fac_two_heavens_alliance",
       "count": 2
+    },
+    {
+      "target": "race_hairy_men",
+      "count": 1
     },
     {
       "target": "char_great_wisdom_immortal_mother",
@@ -109,6 +125,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -152,6 +172,10 @@
       "count": 1
     },
     {
+      "target": "move_congregated_human_talent",
+      "count": 1
+    },
+    {
       "target": "char_xue_er",
       "count": 1
     },
@@ -168,6 +192,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_fang_clan",
       "count": 1
     },
@@ -181,6 +209,10 @@
     },
     {
       "target": "loc_green_lotus_great_world",
+      "count": 1
+    },
+    {
+      "target": "move_lingering_poisonous_ant_plague",
       "count": 1
     }
   ],
@@ -228,6 +260,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_gu_immortal",
         "loc_lang_ya_blessed_land",
         "fac_lang_ya_sect"
       ]
@@ -353,6 +386,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_wu_yong",
+        "sys_immortal_gu",
         "reg_southern_border",
         "fac_wu_clan",
         "fac_fang_clan"
@@ -417,7 +451,7 @@
     "Race": {
       "text": "Hairy Men",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Two Heavens Alliance as of ch. 1981",
@@ -449,7 +483,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_hairy_men",
     "region": null,
     "status": "Alive",
     "alignment": null,

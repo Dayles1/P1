@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1969,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1969,
@@ -32,6 +32,18 @@
     2178
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_snowmen",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_two_heavens_alliance",
@@ -55,11 +67,31 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_extreme_ice_crystal_light_immortal_suppression_coffin",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1995,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
+      "target": "move_extreme_ice_crystal_light_immortal_suppression_coffin",
+      "count": 4
+    },
+    {
       "target": "loc_ice_crystal_grotto_heaven",
+      "count": 3
+    },
+    {
+      "target": "race_snowmen",
       "count": 3
     },
     {
@@ -87,11 +119,23 @@
       "count": 2
     },
     {
+      "target": "move_wind_suction_life_twister",
+      "count": 2
+    },
+    {
+      "target": "move_cut_grass",
+      "count": 2
+    },
+    {
       "target": "char_lady_cold_ash",
       "count": 1
     },
     {
       "target": "char_night_heavenly_wolf_lord",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -104,6 +148,14 @@
     },
     {
       "target": "loc_soul_pacifying_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "race_eggmen",
+      "count": 1
+    },
+    {
+      "target": "race_mermen",
       "count": 1
     },
     {
@@ -120,6 +172,14 @@
     },
     {
       "target": "fac_merman_imperial_court",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fate_war",
+      "count": 1
+    },
+    {
+      "target": "house_floating_reputation_boat",
       "count": 1
     },
     {
@@ -143,6 +203,14 @@
       "count": 1
     },
     {
+      "target": "house_golden_star_tower",
+      "count": 1
+    },
+    {
+      "target": "house_whale_fishing_boat",
+      "count": 1
+    },
+    {
       "target": "loc_great_wisdom_grotto_heaven",
       "count": 1
     },
@@ -155,7 +223,23 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "house_demon_judgment_board",
+      "count": 1
+    },
+    {
+      "target": "move_rotting_smell_vicious_cloud",
+      "count": 1
+    },
+    {
+      "target": "sys_qi_harvest_fruit",
       "count": 1
     },
     {
@@ -164,6 +248,34 @@
     },
     {
       "target": "char_xia_rui_zhi",
+      "count": 1
+    },
+    {
+      "target": "sys_contribution_board",
+      "count": 1
+    },
+    {
+      "target": "path_weapon",
+      "count": 1
+    },
+    {
+      "target": "move_crashing_rock_slide",
+      "count": 1
+    },
+    {
+      "target": "move_great_earth_collapse",
+      "count": 1
+    },
+    {
+      "target": "move_multi_layered_five_poisons",
+      "count": 1
+    },
+    {
+      "target": "move_refine_life",
+      "count": 1
+    },
+    {
+      "target": "move_snow_avalanche",
       "count": 1
     },
     {
@@ -187,11 +299,39 @@
       "count": 1
     },
     {
+      "target": "move_humble_reciprocation",
+      "count": 1
+    },
+    {
       "target": "loc_crazed_demon_cave",
       "count": 1
     },
     {
+      "target": "move_heaven_envies_heroic_geniuses",
+      "count": 1
+    },
+    {
       "target": "char_che_wei",
+      "count": 1
+    },
+    {
+      "target": "house_profound_frost_house",
+      "count": 1
+    },
+    {
+      "target": "house_red_heavenly_altar",
+      "count": 1
+    },
+    {
+      "target": "house_red_river_pavilion",
+      "count": 1
+    },
+    {
+      "target": "house_scarlet_palace",
+      "count": 1
+    },
+    {
+      "target": "house_unbreakable_golden_fortress",
       "count": 1
     },
     {
@@ -214,7 +354,9 @@
       "mentions": [
         "char_lady_cold_ash",
         "char_night_heavenly_wolf_lord",
-        "loc_ice_crystal_grotto_heaven"
+        "race_snowmen",
+        "loc_ice_crystal_grotto_heaven",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -285,7 +427,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "grotto-heaven-defense",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_demon_judgment_board"
+      ]
     },
     {
       "text": "Inside the house, Gu Yue Fang Zheng takes a deep breath. He is rank seven and has confidence in the rank eight Immortal Gu House. He sends Demon Judgment Board charging ahead. Ice Crystal Immortal Monarch is forced to retreat. He is an ice and snow path Gu Immortal, and he does not cultivate transformation path or strength path, so he cannot resist an Immortal Gu House with his body. The two heavens alliance attacks at once. Fang Zheng pulls the house away and answers with blood red killer moves. Ice Crystal Immortal Monarch finds them a disunited bunch and concludes that the only person he can rely on is himself.",
@@ -299,7 +444,8 @@
       "section": "grotto-heaven-defense",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_zheng"
+        "char_fang_zheng",
+        "sys_immortal_gu_house"
       ]
     },
     {
@@ -315,7 +461,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_crazed_demon_cave",
-        "char_nie_kuang_feng"
+        "char_nie_kuang_feng",
+        "move_wind_suction_life_twister"
       ]
     },
     {
@@ -330,7 +477,9 @@
       "section": "joint-kill",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_xiao_he_jian"
+        "char_xiao_he_jian",
+        "move_extreme_ice_crystal_light_immortal_suppression_coffin",
+        "move_cut_grass"
       ]
     }
   ],
@@ -372,7 +521,7 @@
     "Race": {
       "text": "Snowmen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Two Heavens Alliance as of ch. 1994",
@@ -404,7 +553,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_snowmen",
     "region": null,
     "status": "Alive",
     "alignment": null,

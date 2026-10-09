@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 780,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     780,
@@ -41,8 +41,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 996,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -107,6 +131,18 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
+      "count": 2
+    },
+    {
       "target": "char_bo_qing",
       "count": 2
     },
@@ -120,6 +156,10 @@
     },
     {
       "target": "char_ying_wu_xie",
+      "count": 2
+    },
+    {
+      "target": "move_lead_soul_into_dream",
       "count": 2
     },
     {
@@ -139,7 +179,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_path_convention",
+      "count": 1
+    },
+    {
       "target": "char_lian_jiu_sheng",
+      "count": 1
+    },
+    {
+      "target": "inh_infallible_inheritance",
       "count": 1
     },
     {
@@ -151,6 +207,14 @@
       "count": 1
     },
     {
+      "target": "res_will_of_heaven_and_earth",
+      "count": 1
+    },
+    {
+      "target": "sys_winds_of_assimilation",
+      "count": 1
+    },
+    {
       "target": "char_bi_chen_tian",
       "count": 1
     },
@@ -159,7 +223,27 @@
       "count": 1
     },
     {
+      "target": "inh_red_lotus_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "fac_combat_immortal_sect",
+      "count": 1
+    },
+    {
+      "target": "house_illusion_garden",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_great_strength_true_martial_physique",
       "count": 1
     },
     {
@@ -167,7 +251,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_heavenly_pool",
+      "count": 1
+    },
+    {
+      "target": "house_sacred_feather_city",
       "count": 1
     },
     {
@@ -175,7 +267,39 @@
       "count": 1
     },
     {
+      "target": "house_blood_river_chariot",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
+      "target": "house_golden_altar",
+      "count": 1
+    },
+    {
+      "target": "house_green_wave_pavilion",
+      "count": 1
+    },
+    {
+      "target": "house_nightmare_castle",
+      "count": 1
+    },
+    {
+      "target": "house_unbreakable_iron_fortress",
+      "count": 1
+    },
+    {
+      "target": "house_weaving_cocoon_manor",
+      "count": 1
+    },
+    {
       "target": "loc_obsession_death_domain",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_heavenly_court_pursuit",
       "count": 1
     },
     {
@@ -195,13 +319,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_heavenly_court",
         "reg_central_continent",
+        "sys_gu_immortal",
+        "house_heaven_overseeing_tower",
         "char_star_constellation_immortal_venerable"
       ]
     },
@@ -212,7 +338,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -224,12 +350,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tower-peak",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_red_lotus_demon_venerable"
+        "sys_immortal_gu_house",
+        "char_red_lotus_demon_venerable",
+        "sys_refinement_path_convention"
       ]
     },
     {
@@ -239,12 +367,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "deduction-at-heavenly-court",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_bo_qing"
+        "char_bo_qing",
+        "sys_gu_formation"
       ]
     },
     {
@@ -254,10 +383,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "cultivation-path",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "He was formerly a Gu Immortal of Heavenly Lotus Sect, with large numbers of disciples and descendants there. When immortal zombie Bo Qing attacks that sect, he leaves the tower to reinforce it.",
@@ -266,7 +398,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "former-sect",
       "text_origin": "source_excerpt",
@@ -297,12 +429,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-attack",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_ying_wu_xie"
+        "char_ying_wu_xie",
+        "move_lead_soul_into_dream"
       ]
     },
     {
@@ -339,7 +472,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "confidential-method",
       "text_origin": "source_excerpt"
@@ -351,7 +484,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -366,7 +499,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "heavenly-court-succession",
       "text_origin": "source_excerpt",
@@ -437,7 +570,7 @@
     "Paths": {
       "text": "Wisdom path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Central Continent",
@@ -447,7 +580,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 780 Heavenly Lotus Sect as of ch. 997",
@@ -469,12 +602,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": null,

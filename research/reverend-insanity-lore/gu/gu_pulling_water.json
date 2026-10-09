@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 753,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     753,
@@ -39,6 +39,18 @@
     1770
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_feng_jiu_ge",
@@ -70,6 +82,22 @@
       "count": 3
     },
     {
+      "target": "move_myriad_self_giant_hand",
+      "count": 3
+    },
+    {
+      "target": "move_myriad_self_second_style",
+      "count": 3
+    },
+    {
+      "target": "move_reverse_flow_protection_seal",
+      "count": 3
+    },
+    {
+      "target": "path_strength",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -82,7 +110,15 @@
       "count": 2
     },
     {
+      "target": "evt_arc_blessed_land_consolidation",
+      "count": 1
+    },
+    {
       "target": "char_swordmaster_you_lan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -98,11 +134,31 @@
       "count": 1
     },
     {
+      "target": "move_myriad_self",
+      "count": 1
+    },
+    {
       "target": "gu_malicious_thought_gu",
       "count": 1
     },
     {
+      "target": "res_oil_water",
+      "count": 1
+    },
+    {
       "target": "loc_hei_fan_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -166,7 +222,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -188,7 +246,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-in-use",
         "text_origin": "source_excerpt",
@@ -203,7 +261,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-in-use",
         "text_origin": "source_excerpt"
@@ -261,14 +319,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_feng_jiu_ge",
           "char_swordmaster_you_lan",
-          "gu_worldly_wave_trace"
+          "gu_worldly_wave_trace",
+          "sys_immortal_gu"
         ],
         "needs_review": true
       },
@@ -279,13 +338,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "trade-and-classification",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "gu_pulling_mountain"
+          "gu_pulling_mountain",
+          "path_strength"
         ]
       },
       {
@@ -338,10 +398,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "mortal-gu",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master",
+          "sys_mortal_gu",
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "Under Pulling Water, Fang Yuan can move Reverse Flow River like other rivers and streams, but at rank six the movement is slow and cannot serve as an escape by itself. With perseverance Immortal Gu securing the river’s compliance, Pulling Water is one basis of an immortal killer move built around that river.",
@@ -350,7 +415,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "river-applications",
         "text_origin": "source_excerpt",
@@ -389,7 +454,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

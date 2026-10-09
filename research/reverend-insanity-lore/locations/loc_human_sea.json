@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1982,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1982,
@@ -50,6 +50,10 @@
       "count": 2
     },
     {
+      "target": "sys_unifying_human_and_gu",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -62,7 +66,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_xia_clan",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
       "count": 1
     },
     {
@@ -74,11 +90,19 @@
       "count": 1
     },
     {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
       "count": 1
     },
     {
       "target": "loc_xi_land",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_sea",
       "count": 1
     },
     {
@@ -122,7 +146,15 @@
       "count": 1
     },
     {
+      "target": "move_congregated_human_talent",
+      "count": 1
+    },
+    {
       "target": "fac_rockman_tribe",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -134,11 +166,27 @@
       "count": 1
     },
     {
+      "target": "move_human_revival_sea",
+      "count": 1
+    },
+    {
+      "target": "path_refinement",
+      "count": 1
+    },
+    {
+      "target": "move_humanly_flame_smoke",
+      "count": 1
+    },
+    {
       "target": "char_frost_butterfly_warrior",
       "count": 1
     },
     {
       "target": "char_steel_rush_warrior",
+      "count": 1
+    },
+    {
+      "target": "sys_chaotic_disaster",
       "count": 1
     },
     {
@@ -160,6 +208,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_xia_rui_zhi",
+        "sys_immortal_gu_house",
         "fac_xia_clan",
         "reg_eastern_sea"
       ]
@@ -176,7 +225,9 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_wu_shuai"
+        "char_wu_shuai",
+        "house_dragon_palace",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -220,7 +271,8 @@
       "mentions": [
         "reg_southern_border",
         "fac_chai_clan",
-        "loc_human_mountain"
+        "loc_human_mountain",
+        "path_wisdom"
       ]
     },
     {
@@ -255,6 +307,7 @@
         "loc_reverse_flow_river",
         "loc_city_well",
         "loc_hu_land",
+        "sys_refinement_sea",
         "loc_qian_kun_crystal_wall"
       ]
     },
@@ -283,6 +336,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_crazed_demon_cave",
+        "sys_immortal_gu",
         "gu_fate_gu"
       ]
     },
@@ -298,6 +352,7 @@
       "section": "revival-method",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_unifying_human_and_gu",
         "char_shi_zong"
       ]
     }

@@ -23,14 +23,31 @@
   "first_appearance": {
     "chapter": 758,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     758,
     760
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_luck",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "path_luck",
+      "count": 1
+    },
     {
       "target": "gu_transfer_luck_gu",
       "count": 3
@@ -41,6 +58,14 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -81,7 +106,9 @@
     "ranks": [],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_luck"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -139,6 +166,7 @@
         "section": "auction",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_fang_yuan"
         ]
       },
@@ -153,6 +181,9 @@
         "source_id": "src_sagaofgu",
         "section": "luck-inspection",
         "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ],
         "needs_review": true
       }
     ],
@@ -172,7 +203,7 @@
     "Path": {
       "text": "Luck Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

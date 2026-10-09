@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1690,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1690,
@@ -103,11 +103,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_hua_clan",
       "count": 1
     },
     {
       "target": "fac_qing_yue_clan",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -123,11 +135,19 @@
       "count": 1
     },
     {
+      "target": "sys_contribution_board",
+      "count": 1
+    },
+    {
       "target": "fac_righteous_qi_alliance",
       "count": 1
     },
     {
       "target": "char_gu_ming_xu",
+      "count": 1
+    },
+    {
+      "target": "move_lingering_poisonous_ant_plague",
       "count": 1
     },
     {
@@ -145,6 +165,10 @@
     {
       "target": "fac_su_clan",
       "count": 1
+    },
+    {
+      "target": "house_green_cloud_spark_warship",
+      "count": 1
     }
   ],
   "claims": [
@@ -161,11 +185,13 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_duke_long",
+        "house_dragon_palace",
         "char_song_qi_yuan",
         "char_qing_yue_an",
         "char_hua_cai_yun",
         "char_fang_yuan",
-        "reg_eastern_sea"
+        "reg_eastern_sea",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -180,7 +206,8 @@
       "section": "qi-sea-banquet",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_qi_sea_ancestor"
+        "char_qi_sea_ancestor",
+        "sys_immortal_gu"
       ]
     },
     {

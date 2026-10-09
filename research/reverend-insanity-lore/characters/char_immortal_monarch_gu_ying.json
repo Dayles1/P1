@@ -23,12 +23,24 @@
   "first_appearance": {
     "chapter": 2284,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2284
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_shadow",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -48,6 +60,10 @@
       "count": 3
     },
     {
+      "target": "path_shadow",
+      "count": 3
+    },
+    {
       "target": "gu_shadow_puppet_gu",
       "count": 2
     },
@@ -57,6 +73,14 @@
     },
     {
       "target": "char_sun_yuan_hua",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
       "count": 1
     }
   ],
@@ -76,6 +100,8 @@
         "char_star_constellation_immortal_venerable",
         "char_sun_yuan_hua",
         "fac_heavenly_court",
+        "sys_gu_immortal",
+        "sys_gu_recipe",
         "gu_shadow_puppet_gu"
       ]
     },
@@ -89,7 +115,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "inheritance-and-shadow-path",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "path_shadow"
+      ]
     }
   ],
   "conflicts": [],
@@ -117,7 +146,7 @@
     "Paths": {
       "text": "Shadow path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 2284",
@@ -128,7 +157,9 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_shadow"
+    ],
     "aperture": null,
     "talent_grade": null
   },

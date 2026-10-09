@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 602,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     602,
@@ -66,6 +66,10 @@
     },
     {
       "target": "loc_imperial_court_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     },
     {
@@ -117,7 +121,8 @@
       "section": "plan-after-exit",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_imperial_court"
+        "loc_imperial_court",
+        "house_eighty_eight_true_yang_building"
       ]
     }
   ],

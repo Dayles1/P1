@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 753,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     753,
@@ -43,6 +43,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -75,6 +87,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_ma_hong_yun",
       "count": 2
     },
@@ -91,6 +107,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_fortune_rivalling_heaven_immortal_gu",
       "count": 1
     },
@@ -99,7 +119,31 @@
       "count": 1
     },
     {
+      "target": "res_soft_jade_sand",
+      "count": 1
+    },
+    {
       "target": "gu_lifespan_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_quasi_great_grandmaster",
+      "count": 1
+    },
+    {
+      "target": "res_purple_gold_rock",
+      "count": 1
+    },
+    {
+      "target": "path_luck",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -111,7 +155,19 @@
       "count": 1
     },
     {
+      "target": "sys_fate_reversing_sacrificial_refinement_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_lightning_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "char_purple_mountain_true_monarch",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -135,14 +191,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_murong_jin_xiao",
         "reg_northern_plains",
-        "loc_snowy_mountain"
+        "loc_snowy_mountain",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -152,7 +209,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -168,7 +225,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -180,7 +237,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -192,7 +249,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refinement-and-lifespan",
       "text_origin": "source_excerpt"
@@ -204,7 +261,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refinement-and-lifespan",
       "text_origin": "source_excerpt"
@@ -216,7 +273,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refinement-and-lifespan",
       "text_origin": "source_excerpt",
@@ -231,12 +288,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "moving-sun-ming-lu-to-help",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_sun_ming_lu"
+        "char_sun_ming_lu",
+        "sys_gu_formation"
       ]
     },
     {
@@ -246,10 +304,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "the-marriage-bargain",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "A third lightning refinement attempt on Ma Hong Yun fails, and an intense dizziness nearly makes Lady Wan Shou collapse. She forces herself to keep going, disregarding her own injuries to heal Ma Hong Yun instead, because he has to be alive for the lightning refinement to work. While healing him she finds that his cultivation level has risen by one rank. Old Ancestor Xue Hu arrives and asks if she is alright; still pale, she tells him she only needs to rest to recover.",
@@ -258,7 +319,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "third-lightning-refinement-fails",
       "text_origin": "source_excerpt"
@@ -270,11 +331,12 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "an-old-debt-called-in",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_worms",
         "reg_central_continent"
       ]
     },
@@ -285,7 +347,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "an-old-debt-called-in",
       "text_origin": "source_excerpt",
@@ -300,7 +362,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "near-ma-hong-yun-when-swept-away",
       "text_origin": "source_excerpt"
@@ -312,7 +374,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fainting-in-the-battle-at-reverse-flow-river",
       "text_origin": "source_excerpt"
@@ -324,7 +386,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "kept-ma-hong-yun-alive-for-the-refinement",
       "text_origin": "source_excerpt"
@@ -381,7 +443,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Seat": {
       "text": "Snowy Mountain as of ch. 753",
@@ -408,7 +470,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

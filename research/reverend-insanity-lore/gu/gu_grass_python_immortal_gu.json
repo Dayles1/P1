@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1274,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1274
@@ -49,6 +49,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -165,7 +169,8 @@
         "mentions": [
           "char_bi_chen_tian",
           "char_fang_yuan",
-          "loc_reverse_flow_river"
+          "loc_reverse_flow_river",
+          "sys_immortal_gu"
         ]
       }
     ]

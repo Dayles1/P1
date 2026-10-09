@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 287,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     287,
@@ -51,7 +51,15 @@
       "count": 4
     },
     {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 2
+    },
+    {
       "target": "loc_xi_yu_forest",
+      "count": 2
+    },
+    {
+      "target": "sys_ten_big_mystical_gu",
       "count": 2
     },
     {
@@ -75,11 +83,27 @@
       "count": 1
     },
     {
+      "target": "evt_legend_reputation_gu",
+      "count": 1
+    },
+    {
       "target": "loc_ordinary_abyss",
       "count": 1
     },
     {
       "target": "loc_shang_clan_city",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_vanity",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_not_knowing_ones_limits",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_road_of_life_and_death",
       "count": 1
     },
     {
@@ -96,6 +120,14 @@
     },
     {
       "target": "char_kong_sheng_tian",
+      "count": 1
+    },
+    {
+      "target": "move_kong_sheng_tian",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_walking_meat_tree",
       "count": 1
     },
     {
@@ -156,7 +188,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -168,7 +200,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt",
@@ -189,7 +221,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "legend-effect",
         "text_origin": "source_excerpt",
@@ -204,7 +236,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "legend-effect",
         "text_origin": "source_excerpt"
@@ -223,7 +255,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "after-death",
         "text_origin": "source_excerpt",
@@ -249,12 +281,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "qi-escape-reverse-refine",
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_qi_escape_immortal_gu",
+          "sys_ten_big_mystical_gu",
           "char_kong_sheng_tian"
         ]
       }
@@ -291,7 +324,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -300,7 +333,8 @@
           "gu_all_out_effort_gu",
           "loc_shang_clan_city",
           "char_fang_yuan",
-          "char_bai_ning_bing"
+          "char_bai_ning_bing",
+          "sys_the_legends_of_ren_zu"
         ]
       }
     ]

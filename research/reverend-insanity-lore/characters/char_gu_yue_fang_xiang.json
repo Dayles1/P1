@@ -23,13 +23,25 @@
   "first_appearance": {
     "chapter": 2243,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_era_of_three_venerables"
   },
   "chapters_cited": [
     2243,
     2244
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_hairy_men",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "holds_gu",
       "target": "gu_earth_refinement_gu",
@@ -65,6 +77,10 @@
       "count": 3
     },
     {
+      "target": "race_hairy_men",
+      "count": 1
+    },
+    {
       "target": "char_lian_ke_xin",
       "count": 2
     },
@@ -81,11 +97,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
     {
       "target": "char_steel_thread_city_lord",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
       "count": 1
     },
     {
@@ -108,6 +140,8 @@
       "mentions": [
         "char_twelfth_hair",
         "char_lian_ke_xin",
+        "sys_gu_immortal",
+        "sys_gu_master",
         "char_fang_zheng",
         "char_fang_yuan",
         "fac_gu_masters"
@@ -135,7 +169,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "pursuit-wounds",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_healing_gu",
+        "sys_gu_worms"
+      ]
     }
   ],
   "conflicts": [],
@@ -174,7 +212,7 @@
     "Race": {
       "text": "Hairy Men",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -196,7 +234,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_hairy_men",
     "region": null,
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 699,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     699,
@@ -51,11 +51,23 @@
       "count": 3
     },
     {
+      "target": "move_force_intrusion",
+      "count": 3
+    },
+    {
+      "target": "move_force_closure",
+      "count": 3
+    },
+    {
       "target": "char_lord_tiger_demon",
       "count": 2
     },
     {
       "target": "char_fairy_cang_yu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -68,6 +80,14 @@
     },
     {
       "target": "loc_tian_ti",
+      "count": 1
+    },
+    {
+      "target": "move_soul_taker_battlefield",
+      "count": 1
+    },
+    {
+      "target": "sys_space_path_dao_marks",
       "count": 1
     }
   ],
@@ -129,7 +149,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "escape-and-aperture-use",
         "text_origin": "source_excerpt",
@@ -144,7 +164,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "escape-and-aperture-use",
         "text_origin": "source_excerpt"
@@ -196,7 +216,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -215,7 +235,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "force-intrusion-and-force-closure",
         "text_origin": "source_excerpt"
@@ -227,10 +247,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "force-intrusion-and-force-closure",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       }
     ]
   },

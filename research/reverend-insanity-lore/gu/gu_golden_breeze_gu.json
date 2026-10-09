@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 373,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     373,
@@ -76,6 +76,10 @@
     },
     {
       "target": "loc_san_cha_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -216,7 +220,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ]
   },

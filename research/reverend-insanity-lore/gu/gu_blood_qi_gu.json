@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 407,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     407,
@@ -33,6 +33,18 @@
     2252
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_qi",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_demon_immortal_qi_jue",
@@ -68,7 +80,15 @@
       "count": 2
     },
     {
+      "target": "path_qi",
+      "count": 1
+    },
+    {
       "target": "gu_demonic_blood_skull_gu",
+      "count": 2
+    },
+    {
+      "target": "inh_blood_sea_true_inheritance",
       "count": 2
     },
     {
@@ -81,6 +101,10 @@
     },
     {
       "target": "char_he_feng_yang",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -101,6 +125,10 @@
     },
     {
       "target": "reg_western_desert",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
       "count": 1
     },
     {
@@ -149,7 +177,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_qi"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -219,7 +249,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -228,7 +258,8 @@
           "loc_blood_sea",
           "gu_demonic_blood_skull_gu",
           "gu_blood_handprint_gu",
-          "gu_blood_sweat_gu"
+          "gu_blood_sweat_gu",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -259,6 +290,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_demon_immortal_qi_jue",
+          "inh_blood_sea_true_inheritance",
           "reg_western_desert"
         ]
       },
@@ -298,7 +330,8 @@
         "section": "fang-yuans-copy",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_gu_recipe"
         ]
       }
     ]
@@ -307,7 +340,7 @@
     "Path": {
       "text": "Qi Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

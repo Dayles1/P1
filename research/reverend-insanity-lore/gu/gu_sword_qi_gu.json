@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1034,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1034,
@@ -71,6 +71,10 @@
       "count": 1
     },
     {
+      "target": "sys_defensive_gu",
+      "count": 1
+    },
+    {
       "target": "gu_muddy_gu",
       "count": 1
     },
@@ -84,6 +88,14 @@
     },
     {
       "target": "char_prince_feng_xian",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "res_sword_qi",
       "count": 1
     },
     {
@@ -210,13 +222,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_rotten_mud_mountain",
           "char_ni_jian",
+          "sys_defensive_gu",
           "char_ni_kun"
         ]
       },
@@ -227,7 +240,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "stated-rank",
         "text_origin": "source_excerpt",
@@ -248,6 +261,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_lin_jian_xing",
+          "sys_immortal_gu",
+          "res_sword_qi",
           "char_prince_feng_xian"
         ]
       },

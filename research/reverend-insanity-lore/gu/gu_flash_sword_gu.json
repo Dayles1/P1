@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1039,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1039
@@ -40,6 +40,10 @@
     },
     {
       "target": "char_lang_ya_land_spirit",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -135,7 +139,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -144,6 +148,7 @@
           "char_lang_ya_land_spirit",
           "fac_lang_ya_sect",
           "fac_xiao_clan",
+          "sys_immortal_gu",
           "gu_rumbling_thunder_gu"
         ]
       }

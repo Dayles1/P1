@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 372,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     373,
@@ -46,6 +46,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "holds_gu",
       "target": "gu_soft_bones_gu",
       "role": "owner",
@@ -56,12 +68,32 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_tie_mu_bai_against_wu_gui_and_ku_mo",
+      "role": "backup",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 372,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "gu_soft_bones_gu",
       "count": 4
+    },
+    {
+      "target": "evt_fight_tie_mu_bai_against_wu_gui_and_ku_mo",
+      "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -88,7 +120,15 @@
       "count": 2
     },
     {
+      "target": "inh_king_quan_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_demonic_path",
       "count": 1
     },
     {
@@ -116,6 +156,10 @@
       "count": 1
     },
     {
+      "target": "inh_king_xin_inheritance",
+      "count": 1
+    },
+    {
       "target": "gu_turn_gold_gu",
       "count": 1
     },
@@ -124,11 +168,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_set",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_lone_cultivator",
+      "count": 1
+    },
+    {
       "target": "gu_beast_strength_placenta_gu",
       "count": 1
     },
     {
       "target": "gu_dog_enslavement_gu",
+      "count": 1
+    },
+    {
+      "target": "path_bone",
       "count": 1
     },
     {
@@ -152,7 +212,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -164,13 +224,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_soft_bones_gu",
         "char_fang_yuan",
+        "sys_demonic_path",
         "char_wu_gui",
         "char_tie_mu_bai",
         "fac_tie_clan"
@@ -183,7 +244,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "strength-comparison",
       "text_origin": "source_excerpt",
@@ -199,10 +260,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inheritance-choice",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_king_xin_inheritance"
+      ]
     },
     {
       "text": "Inside King Quan Inheritance he commands several hundred steel armor dogs and has already recruited a jade eye dog king with dog enslavement Gu. Space tears open, Fang Yuan appears, and golden dragon Gu almost smashes his entire upper body. He dies without using his token.",
@@ -211,11 +275,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
       "mentions": [
+        "inh_king_quan_inheritance",
         "gu_dog_enslavement_gu"
       ]
     },
@@ -226,11 +291,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_worms",
         "gu_beast_strength_placenta_gu"
       ]
     },
@@ -241,7 +307,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lineup-among-five",
       "text_origin": "source_excerpt",
@@ -297,7 +363,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 373",
@@ -324,7 +390,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": "demonic path as of ch. 373",

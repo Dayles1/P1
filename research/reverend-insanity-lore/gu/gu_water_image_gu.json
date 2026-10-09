@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 497,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     497,
@@ -52,6 +52,10 @@
       "count": 3
     },
     {
+      "target": "move_golden_rainbow_strike",
+      "count": 2
+    },
+    {
       "target": "char_chai_ming",
       "count": 1
     },
@@ -77,6 +81,10 @@
     },
     {
       "target": "char_pei_yan_fei",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     }
   ],
@@ -156,7 +164,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "imperial-court-battles",
         "text_origin": "source_excerpt",
@@ -173,7 +181,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "imperial-court-battles",
         "text_origin": "source_excerpt",
@@ -193,7 +201,8 @@
         "section": "imperial-court-battles",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_pei_yan_fei"
+          "char_pei_yan_fei",
+          "move_golden_rainbow_strike"
         ]
       },
       {
@@ -206,7 +215,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "imperial-court-battles",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       }
     ]
   },

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 375,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     375,
@@ -57,7 +57,19 @@
       "count": 2
     },
     {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
       "count": 1
     },
     {
@@ -81,7 +93,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -93,14 +105,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wang-xiao-at-san-cha-mountain",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_gu_masters",
         "loc_san_cha_mountain",
-        "char_wang_xiao"
+        "char_wang_xiao",
+        "sys_gu_master",
+        "sys_demonic_path"
       ]
     },
     {
@@ -110,13 +124,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mountain-hold",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_southern_border",
-        "loc_qing_mao_mountain"
+        "loc_qing_mao_mountain",
+        "sys_wild_gu"
       ]
     }
   ],

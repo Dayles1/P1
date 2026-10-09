@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 775,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     775
@@ -66,6 +66,10 @@
     {
       "target": "fac_tang_clan",
       "count": 1
+    },
+    {
+      "target": "path_emotion",
+      "count": 1
     }
   ],
   "claims": [
@@ -86,7 +90,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",

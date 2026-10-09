@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 568,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     568,
@@ -51,6 +51,10 @@
       "count": 3
     },
     {
+      "target": "house_water_pavilion",
+      "count": 2
+    },
+    {
       "target": "gu_delight_in_water_and_mountain",
       "count": 2
     },
@@ -63,11 +67,31 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_spirit_affinity_house",
       "count": 1
     },
     {
       "target": "gu_calamity_beckoning_gu",
+      "count": 1
+    },
+    {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
+      "target": "move_formless_hand",
       "count": 1
     },
     {
@@ -155,7 +179,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "auction-search",
         "text_origin": "source_excerpt",
@@ -192,17 +216,22 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_water_pavilion",
           "char_fang_yuan",
+          "sys_gu_worms",
+          "sys_immortal_gu",
           "gu_worldly_wave_trace",
+          "path_wisdom",
           "gu_delight_in_water_and_mountain",
           "fac_spirit_affinity_house",
           "char_mo_yao",
-          "gu_calamity_beckoning_gu"
+          "gu_calamity_beckoning_gu",
+          "sys_mortal_gu"
         ]
       },
       {
@@ -212,10 +241,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "pavilion-seizure",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_formless_hand"
+        ]
       },
       {
         "text": "Mo Yao later says she meant to sacrifice rank seven Calamity Beckoning Gu in Water Pavilion instead.",
@@ -224,7 +256,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "pavilion-seizure",
         "text_origin": "source_excerpt"

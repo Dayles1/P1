@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 657,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     657,
@@ -60,12 +60,20 @@
       "count": 2
     },
     {
+      "target": "race_minimen",
+      "count": 2
+    },
+    {
       "target": "loc_city_well",
       "count": 2
     },
     {
       "target": "loc_cheng_bai_mountain",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     },
     {
       "target": "loc_yin_yang_blessed_land",
@@ -77,6 +85,10 @@
     },
     {
       "target": "char_unfettered_scholar",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 1
     },
     {
@@ -108,6 +120,26 @@
       "count": 1
     },
     {
+      "target": "move_big_to_small",
+      "count": 1
+    },
+    {
+      "target": "move_ice_dragon_lock",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_star_fireflies",
+      "count": 1
+    },
+    {
+      "target": "move_thousand_disintegrations",
+      "count": 1
+    },
+    {
+      "target": "path_rule",
+      "count": 1
+    },
+    {
       "target": "char_dong_fang_chang_fan",
       "count": 1
     },
@@ -128,11 +160,31 @@
       "count": 1
     },
     {
+      "target": "sys_secluded_domain_of_heaven_and_earth",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_hei_cheng_third_battle",
+      "count": 1
+    },
+    {
+      "target": "move_orchard_garden_in_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_battlefield_killer_move",
+      "count": 1
+    },
+    {
       "target": "loc_luo_po_valley",
       "count": 1
     },
     {
       "target": "char_murong_qing_si",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_opening_ones_horizon",
       "count": 1
     },
     {
@@ -146,6 +198,10 @@
     {
       "target": "loc_reverse_flow_river",
       "count": 1
+    },
+    {
+      "target": "move_orderly_well",
+      "count": 1
     }
   ],
   "claims": [
@@ -156,7 +212,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -171,11 +227,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "loc_jade_pool_blessed_land",
         "char_murong_qing_si"
       ]
@@ -187,11 +244,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "miniman-foundation",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_the_legends_of_ren_zu",
         "fac_dong_fang_tribe"
       ]
     },
@@ -202,11 +260,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shielding-dong-fang-yu-liang",
       "text_origin": "source_excerpt",
       "mentions": [
+        "race_minimen",
         "char_dong_fang_yu_liang",
         "char_dong_fang_chang_fan"
       ]
@@ -218,7 +277,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "removed-from-city-well-and-destroyed",
       "text_origin": "source_excerpt",

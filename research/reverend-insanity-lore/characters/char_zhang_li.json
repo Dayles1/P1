@@ -23,19 +23,76 @@
   "first_appearance": {
     "chapter": 1340,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1340
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_emotion",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "path_emotion",
+      "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
+      "target": "sys_emotion_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_wisdom_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "res_gu_immortal_soul",
+      "count": 1
+    },
+    {
+      "target": "move_ghost_summoning",
+      "count": 1
+    },
+    {
+      "target": "move_vajra_shell",
       "count": 1
     }
   ],
@@ -47,12 +104,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -62,7 +120,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -74,11 +132,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "gu-and-ghost-summoning",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "res_gu_immortal_soul"
       ]
     }
@@ -113,12 +172,12 @@
     "Paths": {
       "text": "Emotion path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": null,
@@ -129,12 +188,14 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_emotion"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Unknown",
     "alignment": null,

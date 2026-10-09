@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 228,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     228,
@@ -379,6 +379,10 @@
       "count": 3
     },
     {
+      "target": "house_clear_jade_dripping_wind_tiny_bamboo_building",
+      "count": 3
+    },
+    {
       "target": "char_liu_hao",
       "count": 3
     },
@@ -455,6 +459,10 @@
       "count": 2
     },
     {
+      "target": "sys_super_gu_formation",
+      "count": 2
+    },
+    {
       "target": "fac_ba_clan",
       "count": 2
     },
@@ -515,11 +523,23 @@
       "count": 1
     },
     {
+      "target": "sys_stellar_stone",
+      "count": 1
+    },
+    {
       "target": "gu_paper_crane_gu",
       "count": 1
     },
     {
+      "target": "inh_wu_clan_ancient_strength_path_inheritance",
+      "count": 1
+    },
+    {
       "target": "gu_heart_sound_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_three_kings_inheritance",
       "count": 1
     },
     {
@@ -543,7 +563,15 @@
       "count": 1
     },
     {
+      "target": "inh_three_kings_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_long_qing_tian",
+      "count": 1
+    },
+    {
+      "target": "path_poison",
       "count": 1
     },
     {
@@ -595,7 +623,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -623,7 +659,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_opportunity_business",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
+    },
+    {
       "target": "char_qiao_si_liu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -659,7 +707,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "southern-border-standing",
       "text_origin": "source_excerpt",
@@ -674,7 +722,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "southern-border-standing",
       "text_origin": "source_excerpt",
@@ -689,7 +737,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "southern-border-standing",
       "text_origin": "source_excerpt"
@@ -716,7 +764,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "empress-wu-ji-and-strength-path",
       "text_origin": "source_excerpt",
@@ -732,7 +780,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "empress-wu-ji-and-strength-path",
       "text_origin": "source_excerpt",
@@ -747,7 +795,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "action-around-san-cha-mountain",
       "text_origin": "source_excerpt",
@@ -766,7 +814,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "elders-demand-at-xiao-clan",
       "text_origin": "source_excerpt",
@@ -782,12 +830,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-wave-collapses",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_wu_shen_tong",
+        "sys_gu_master",
         "loc_yi_tian_mountain",
         "fac_gu_masters",
         "loc_yi_tian_village",
@@ -802,10 +851,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wu-dang-zhis-gambit-at-yi-tian-mountain",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Wu Dang Zhi’s pawn Wu Shen Tong is killed, and although she still refines much battle will from the clash, her own loss from it is the greatest of anyone’s. After this first wave, she remains unreconciled to the defeat.",
@@ -814,7 +866,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wu-dang-zhis-loss",
       "text_origin": "source_excerpt"
@@ -826,7 +878,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wei-shen-jings-position",
       "text_origin": "source_excerpt",
@@ -842,13 +894,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-supreme-elder-line",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_wu_du_xiu",
-        "char_wu_yong"
+        "char_wu_yong",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -858,7 +911,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dragonfish-supply-turns-internal",
       "text_origin": "source_excerpt",
@@ -885,7 +938,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "standing-and-support-for-wu-yi-hai",
       "text_origin": "source_excerpt",
@@ -900,13 +953,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wu-yi-mountain-and-named-elders",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_wild_immortal_gu",
         "fac_qiao_clan",
         "fac_yi_clan",
+        "sys_super_gu_formation",
         "fac_ba_clan",
         "char_wu_fa",
         "loc_wu_yi_mountain"
@@ -919,7 +974,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "resource-points-lost",
       "text_origin": "source_excerpt",
@@ -936,7 +991,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "proposal-to-chai-clan-against-xia-and-ba-clan",
       "text_origin": "source_excerpt",
@@ -983,6 +1038,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_wu_zhen",
+        "house_clear_jade_dripping_wind_tiny_bamboo_building",
         "char_wu_ba_chong"
       ]
     }

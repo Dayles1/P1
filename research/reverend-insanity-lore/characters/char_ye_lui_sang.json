@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 514,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     514,
@@ -40,6 +40,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -72,6 +84,30 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_flame_demon",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 604,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_thirty_eight_sealing_arts",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 642,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -84,8 +120,20 @@
       "count": 3
     },
     {
+      "target": "move_flame_demon",
+      "count": 2
+    },
+    {
+      "target": "move_thirty_eight_sealing_arts",
+      "count": 2
+    },
+    {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_ye_lui_lai",
@@ -104,6 +152,10 @@
       "count": 2
     },
     {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
       "target": "char_hei_lou_lan",
       "count": 1
     },
@@ -112,11 +164,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
     {
       "target": "fac_ma_tribe",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     },
     {
@@ -160,15 +228,17 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_tan_bi_ya",
         "loc_ni_yu_blessed_land",
+        "evt_arc_imperial_court_contest",
         "reg_northern_plains",
-        "char_ye_lui_lai"
+        "char_ye_lui_lai",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -178,7 +248,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "contest-and-hei-tribe",
       "text_origin": "source_excerpt",
@@ -193,7 +263,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "contest-and-hei-tribe",
       "text_origin": "source_excerpt",
@@ -211,7 +281,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "contest-and-hei-tribe",
       "text_origin": "source_excerpt",
@@ -226,12 +296,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "contest-and-hei-tribe",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_hei_lou_lan"
+        "char_hei_lou_lan",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -241,12 +312,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fire-path-immortal-gu",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_imperial_court_blessed_land"
+        "loc_imperial_court_blessed_land",
+        "sys_gu_worms"
       ]
     },
     {
@@ -256,10 +328,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fire-path-immortal-gu",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_eighty_eight_true_yang_building"
+      ]
     },
     {
       "text": "Formless hands later seize the Gu worms of his group, including that lent fire path Immortal Gu.",
@@ -268,7 +343,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fire-path-immortal-gu",
       "text_origin": "source_excerpt"
@@ -280,7 +355,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-in-true-yang-building",
       "text_origin": "source_excerpt",
@@ -332,7 +407,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Ye Lui Tribe as of ch. 514 Hei Tribe as of ch. 536",
@@ -359,7 +434,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

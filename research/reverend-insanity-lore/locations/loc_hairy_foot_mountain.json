@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 845,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     845,
@@ -70,6 +70,14 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_path_convention",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
@@ -78,7 +86,51 @@
       "count": 1
     },
     {
+      "target": "inh_infallible_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "move_karma_relocation",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_fusion_ghost_dragon_sword",
+      "count": 1
+    },
+    {
+      "target": "house_unfixed_manor",
+      "count": 1
+    },
+    {
+      "target": "move_peerless",
+      "count": 1
+    },
+    {
+      "target": "move_rumor_cage",
+      "count": 1
+    },
+    {
+      "target": "move_rumors_become_tigers",
+      "count": 1
+    },
+    {
+      "target": "move_unlimited_wind",
+      "count": 1
+    },
+    {
+      "target": "move_phoenix_chirping_divine_flame",
+      "count": 1
+    },
+    {
+      "target": "move_destiny_song",
+      "count": 1
+    },
+    {
+      "target": "move_farewell_friend_wind",
       "count": 1
     }
   ],
@@ -90,12 +142,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_heavenly_court",
+        "sys_gu_immortal",
         "reg_central_continent",
         "char_lian_jiu_sheng",
         "char_bai_cang_shui",
@@ -109,12 +162,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "gu_failure_gu"
+        "gu_failure_gu",
+        "sys_refinement_path_convention"
       ]
     },
     {
@@ -124,7 +178,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",

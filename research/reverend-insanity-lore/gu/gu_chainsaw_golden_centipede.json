@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 129,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     129,
@@ -88,6 +88,10 @@
       "count": 2
     },
     {
+      "target": "sys_wild_gu",
+      "count": 1
+    },
+    {
       "target": "gu_white_jade_gu",
       "count": 1
     },
@@ -108,6 +112,14 @@
       "count": 1
     },
     {
+      "target": "inh_flower_wine_monk_inheritance",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_second_battle",
+      "count": 1
+    },
+    {
       "target": "gu_swirl_gu",
       "count": 1
     },
@@ -116,11 +128,19 @@
       "count": 1
     },
     {
+      "target": "sys_healing_gu",
+      "count": 1
+    },
+    {
       "target": "gu_thunderwings_gu",
       "count": 1
     },
     {
       "target": "gu_bladewing_blood_bat_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_third_battle",
       "count": 1
     },
     {
@@ -198,7 +218,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -210,7 +230,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -222,7 +242,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form",
         "text_origin": "source_excerpt",
@@ -243,7 +263,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "combat-use",
         "text_origin": "source_excerpt",
@@ -259,7 +279,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "borrowed-use",
         "text_origin": "source_excerpt",
@@ -324,7 +344,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -341,7 +361,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "capture",
         "text_origin": "source_excerpt",
@@ -356,10 +376,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "healing-the-razors",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_healing_gu"
+        ]
       }
     ]
   },

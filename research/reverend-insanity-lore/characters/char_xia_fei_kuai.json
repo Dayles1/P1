@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1306,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1306,
@@ -39,6 +39,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -71,6 +83,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_xia_zhuo_mo",
       "count": 2
     },
@@ -83,11 +99,19 @@
       "count": 2
     },
     {
+      "target": "move_thirty_three_heavenly_lights",
+      "count": 2
+    },
+    {
       "target": "char_ba_de",
       "count": 1
     },
     {
       "target": "char_wu_yi_hai",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -100,6 +124,34 @@
     },
     {
       "target": "char_wu_yong",
+      "count": 1
+    },
+    {
+      "target": "sys_super_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "move_divination_tortoise_transformation",
+      "count": 1
+    },
+    {
+      "target": "move_soaring_essence_strike",
+      "count": 1
+    },
+    {
+      "target": "sys_red_date_immortal_essence",
+      "count": 1
+    },
+    {
+      "target": "move_saw_light_wheel",
+      "count": 1
+    },
+    {
+      "target": "move_vajra_shell",
+      "count": 1
+    },
+    {
+      "target": "path_light",
       "count": 1
     },
     {
@@ -123,12 +175,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_frosty_peak",
+        "sys_gu_immortal",
         "fac_xia_clan",
         "fac_wu_clan",
         "char_wu_yi_hai"
@@ -141,7 +194,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "frosty-peak-negotiation",
       "text_origin": "source_excerpt",
@@ -157,7 +210,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "stalled-talks-and-the-spar-challenge",
       "text_origin": "source_excerpt"
@@ -169,7 +222,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "spar-terms",
       "text_origin": "source_excerpt",
@@ -186,10 +239,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "killer-move-fails-against-fang-yuan",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "path_light"
+      ]
     },
     {
       "text": "Xia Fei Kuai activates the immortal killer move Thirty-three Heavenly Lights against Fang Yuan’s proliferating tortoise shell thoughts, but Fang Yuan withdraws them all back into his own mind by the seventh flicker, leaving the killer move’s remaining flickers nothing to destroy. Forced to see the killer move through to its thirty-third flicker, he has spent three of his ten moves, then attacks as a ray of light from all directions. By the end of the tenth move he has raised only slight injury marks on Fang Yuan’s shell, and he tells Fang Yuan “You win this time” before flying away.",
@@ -198,10 +254,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "concedes-after-ten-moves",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_thirty_three_heavenly_lights"
+      ]
     },
     {
       "text": "Fang Yuan defeats Xia Fei Kuai by relying on the immortal killer move vajra shell and on strategy.",
@@ -275,7 +334,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Xia Clan as of ch. 1306",
@@ -302,7 +361,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 398,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     398
@@ -32,6 +32,10 @@
   "co_mentions": [
     {
       "target": "char_fang_zheng",
+      "count": 1
+    },
+    {
+      "target": "sys_movement_gu",
       "count": 1
     },
     {
@@ -134,6 +138,7 @@
         "mentions": [
           "char_fang_zheng",
           "loc_hu_immortal_blessed_land",
+          "sys_movement_gu",
           "gu_fixed_immortal_travel"
         ]
       }

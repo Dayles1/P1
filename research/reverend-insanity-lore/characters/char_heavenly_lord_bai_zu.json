@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 736,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     736,
@@ -43,6 +43,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -87,6 +99,30 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_centipede_scar",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_gu_house",
+      "target": "house_red_fiend_divine_boat",
+      "role": "recipe holder",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 764,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -99,12 +135,24 @@
       "count": 3
     },
     {
+      "target": "house_red_fiend_divine_boat",
+      "count": 3
+    },
+    {
       "target": "gu_unravel_mystery",
+      "count": 3
+    },
+    {
+      "target": "move_centipede_scar",
       "count": 3
     },
     {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_five_elements_grandmaster",
@@ -143,11 +191,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_fairy_huang_sha",
       "count": 1
     },
     {
       "target": "char_fairy_qing_suo",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_blessed_land_consolidation",
       "count": 1
     },
     {
@@ -163,11 +219,23 @@
       "count": 1
     },
     {
+      "target": "house_medicine_cottage",
+      "count": 1
+    },
+    {
       "target": "loc_imperial_court_blessed_land",
       "count": 1
     },
     {
       "target": "loc_miniscule_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_heavenly_wind_qi_wall",
+      "count": 1
+    },
+    {
+      "target": "house_sacred_feather_city",
       "count": 1
     },
     {
@@ -191,11 +259,27 @@
       "count": 1
     },
     {
+      "target": "house_golden_dawn_hall",
+      "count": 1
+    },
+    {
       "target": "char_chu_du",
       "count": 1
     },
     {
+      "target": "evt_arc_heavenly_court_pursuit",
+      "count": 1
+    },
+    {
       "target": "gu_resurrection_from_the_dead",
+      "count": 1
+    },
+    {
+      "target": "move_battle_strength_transpiration",
+      "count": 1
+    },
+    {
+      "target": "move_heaven_and_earth_combined_strength",
       "count": 1
     },
     {
@@ -215,6 +299,22 @@
       "count": 1
     },
     {
+      "target": "sys_enslavement_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_self",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_self_giant_hand",
+      "count": 1
+    },
+    {
+      "target": "sys_snow_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "char_hei_fan",
       "count": 1
     },
@@ -224,6 +324,10 @@
     },
     {
       "target": "res_heavenly_crystal",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
       "count": 1
     },
     {
@@ -239,11 +343,35 @@
       "count": 1
     },
     {
+      "target": "evt_fight_blood_battle_martial_competition",
+      "count": 1
+    },
+    {
+      "target": "move_wind_thunder_roar",
+      "count": 1
+    },
+    {
+      "target": "move_perfect_pair",
+      "count": 1
+    },
+    {
       "target": "char_yuan_rang_zun",
       "count": 1
     },
     {
+      "target": "move_karma_relocation",
+      "count": 1
+    },
+    {
+      "target": "move_qi_current_scissors",
+      "count": 1
+    },
+    {
       "target": "gu_purple_smoke_cicada",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
       "count": 1
     },
     {
@@ -252,6 +380,10 @@
     },
     {
       "target": "char_giant_sun_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -267,7 +399,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -275,6 +407,7 @@
         "fac_bai_zu_tribe",
         "char_qin_bai_sheng",
         "char_fairy_li_shan",
+        "sys_gu_immortal",
         "reg_northern_plains",
         "char_yao_huang",
         "char_five_elements_grandmaster",
@@ -301,7 +434,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-eight-balance",
       "text_origin": "source_excerpt"
@@ -313,7 +446,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-eight-balance",
       "text_origin": "source_excerpt"
@@ -325,7 +458,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "plan-to-establish-a-tribe",
       "text_origin": "source_excerpt",
@@ -340,7 +473,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "plan-to-establish-a-tribe",
       "text_origin": "source_excerpt",
@@ -356,7 +489,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "plan-to-establish-a-tribe",
       "text_origin": "source_excerpt",
@@ -371,7 +504,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "plan-to-establish-a-tribe",
       "text_origin": "source_excerpt"
@@ -386,7 +519,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "plan-to-establish-a-tribe",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_sacred_feather_city"
+      ]
     },
     {
       "text": "Bai Zu tribe appears as a new righteous path super force built from his bloodline descendants nurtured in his grotto-heaven, and Huang Jin righteous immortals treat the tribe as crafty outsiders under his protection.",
@@ -395,7 +531,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bai-zu-tribe",
       "text_origin": "source_excerpt"
@@ -407,7 +543,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bai-zu-tribe",
       "text_origin": "source_excerpt",
@@ -422,7 +558,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bai-zu-tribe",
       "text_origin": "source_excerpt",
@@ -443,6 +579,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_giant_sun_immortal_venerable",
+        "sys_immortal_gu",
         "char_fang_yuan"
       ]
     }
@@ -498,7 +635,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Bai Zu tribe as of ch. 1105",
@@ -530,7 +667,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": "lone cultivator as of ch. 736",

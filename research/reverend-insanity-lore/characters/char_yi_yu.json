@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1533,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1533,
@@ -35,6 +35,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -63,12 +75,20 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_southern_border",
       "count": 1
     },
     {
       "target": "char_yi_nan_men",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     },
     {
       "target": "loc_underground_frost_heart_lake",
@@ -96,7 +116,8 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_yi_nan_men"
+        "char_yi_nan_men",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -197,7 +218,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Yi Clan as of ch. 1533",
@@ -224,7 +245,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

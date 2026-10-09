@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1104,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1104,
@@ -41,6 +41,10 @@
       "count": 3
     },
     {
+      "target": "inh_hei_fan_true_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_chu_du",
       "count": 2
     },
@@ -54,6 +58,10 @@
     },
     {
       "target": "char_hei_cheng",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -93,11 +101,27 @@
       "count": 1
     },
     {
+      "target": "evt_arc_heavenly_court_pursuit",
+      "count": 1
+    },
+    {
       "target": "char_fairy_bai_hu",
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
+      "count": 1
+    },
+    {
+      "target": "sys_heavenly_spirit",
       "count": 1
     },
     {
@@ -109,11 +133,35 @@
       "count": 1
     },
     {
+      "target": "sys_mortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "move_dark_assassination",
+      "count": 1
+    },
+    {
       "target": "char_zheng_tuo",
       "count": 1
     },
     {
+      "target": "move_luck_whirlwind",
+      "count": 1
+    },
+    {
+      "target": "path_light",
+      "count": 1
+    },
+    {
+      "target": "move_green_city_rampage",
+      "count": 1
+    },
+    {
       "target": "res_gu_immortal_corpse",
+      "count": 1
+    },
+    {
+      "target": "move_hundred_years_harmony",
       "count": 1
     },
     {
@@ -141,11 +189,43 @@
       "count": 1
     },
     {
+      "target": "res_walking_meat_tree",
+      "count": 1
+    },
+    {
+      "target": "sys_earth_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "loc_five_light_mountain",
       "count": 1
     },
     {
       "target": "loc_qing_yu_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "res_pill_azure_incense",
+      "count": 1
+    },
+    {
+      "target": "sys_blood_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_rule_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "res_multicolored_guts",
+      "count": 1
+    },
+    {
+      "target": "move_battle_strength_transpiration",
+      "count": 1
+    },
+    {
+      "target": "move_heaven_and_earth_combined_strength",
       "count": 1
     },
     {
@@ -169,11 +249,39 @@
       "count": 1
     },
     {
+      "target": "move_flying_bear_transformation",
+      "count": 1
+    },
+    {
+      "target": "move_wind_thunder_roar",
+      "count": 1
+    },
+    {
+      "target": "path_theft",
+      "count": 1
+    },
+    {
       "target": "char_prince_feng_xian",
       "count": 1
     },
     {
       "target": "gu_no_gu",
+      "count": 1
+    },
+    {
+      "target": "race_minimen",
+      "count": 1
+    },
+    {
+      "target": "move_perfect_pair",
+      "count": 1
+    },
+    {
+      "target": "move_qi_luck_sensation",
+      "count": 1
+    },
+    {
+      "target": "move_spontaneous_auspicious_cloud",
       "count": 1
     },
     {
@@ -193,13 +301,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "true-inheritance-and-access",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
         "char_hei_cheng",
+        "inh_hei_fan_true_inheritance",
+        "sys_immortal_gu",
         "char_hei_fan"
       ]
     },
@@ -210,7 +320,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "no-tribulations",
       "text_origin": "source_excerpt"
@@ -222,7 +332,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "interior",
       "text_origin": "source_excerpt"
@@ -234,7 +344,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "entry",
       "text_origin": "source_excerpt",
@@ -249,7 +359,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "entry",
       "text_origin": "source_excerpt",
@@ -264,12 +374,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "entry",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_immortal_succession_mountain",
+        "sys_gu_immortal",
+        "sys_gu_recipe",
         "char_chu_du"
       ]
     },
@@ -280,7 +392,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "entry",
       "text_origin": "source_excerpt",

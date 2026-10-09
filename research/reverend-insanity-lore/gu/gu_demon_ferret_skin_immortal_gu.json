@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 751,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     751
@@ -48,11 +48,27 @@
       "count": 3
     },
     {
+      "target": "move_heart_demon_ferret_transformation",
+      "count": 2
+    },
+    {
       "target": "char_he_lang_zi",
       "count": 1
     },
     {
       "target": "char_qin_bai_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "path_wisdom",
       "count": 1
     }
   ],
@@ -114,7 +130,11 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "path_wisdom",
+          "sys_gu_worms"
+        ]
       }
     ]
   },
@@ -147,6 +167,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_qin_bai_sheng",
           "char_unfettered_scholar"
         ],

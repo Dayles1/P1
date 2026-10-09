@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1771,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1771,
@@ -58,6 +58,18 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_chi_clan",
       "count": 1
     },
@@ -67,6 +79,14 @@
     },
     {
       "target": "char_genesis_lotus_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_karma_divine_tree",
       "count": 1
     }
   ],
@@ -133,7 +153,8 @@
         "section": "rank-seven-and-mature-bamboo-chest",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_genesis_lotus_immortal_venerable"
+          "char_genesis_lotus_immortal_venerable",
+          "sys_mortal_gu"
         ]
       },
       {
@@ -250,7 +271,10 @@
         "mentions": [
           "char_fang_yuan",
           "char_lang_ya_land_spirit",
-          "fac_chi_clan"
+          "sys_immortal_gu",
+          "fac_chi_clan",
+          "sys_gu_immortal",
+          "sys_wild_immortal_gu"
         ]
       }
     ]

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 193,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     193,
@@ -64,6 +64,14 @@
     },
     {
       "target": "char_lord_sky_crane",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -133,7 +141,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "path",
         "text_origin": "source_excerpt"
@@ -154,10 +162,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master",
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "The text calls both Gu main Gu worms of the Tie family. Tie Xue Leng had captured countless demonic path Gu Masters with them, and he left this set on First gen Gu Yue with his dying strike. After Tie Xue Leng’s death the Gu should not still draw essence from its Master, yet infection by the berserk blood Gu lets it absorb primeval essence from the air, and Tie Xue Leng’s will on the Gu keeps driving the suppression.",
@@ -166,7 +178,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "tie-xue-lengs-use",
         "text_origin": "source_excerpt",
@@ -202,7 +214,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "death-on-qing-mao-mountain",
         "text_origin": "source_excerpt"
@@ -248,7 +260,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -278,7 +290,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "second-loop-after-rebirth",
         "text_origin": "source_excerpt",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1052,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1052,
@@ -36,6 +36,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -62,6 +74,10 @@
     {
       "target": "fac_wind_cloud_manor",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_central_continent",
@@ -100,6 +116,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_grass_puppet_gu",
       "count": 1
     },
@@ -122,6 +142,18 @@
     {
       "target": "reg_eastern_sea",
       "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "house_wind_cloud_manor",
+      "count": 1
+    },
+    {
+      "target": "move_broken_mirror_shard_light",
+      "count": 1
     }
   ],
   "claims": [
@@ -132,13 +164,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_ying_wu_xie",
+        "house_wind_cloud_manor",
         "char_old_man_bei_feng",
+        "sys_immortal_gu",
         "char_hei_lou_lan"
       ]
     },
@@ -154,7 +188,8 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_hidden_dragon_cave"
+        "loc_hidden_dragon_cave",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -164,7 +199,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sale-at-pot-river",
       "text_origin": "source_excerpt",
@@ -181,7 +216,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sentenced-to-guard-duty",
       "text_origin": "source_excerpt",
@@ -197,7 +232,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sentenced-to-guard-duty",
       "text_origin": "source_excerpt"
@@ -209,7 +244,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sentenced-to-guard-duty",
       "text_origin": "source_excerpt",
@@ -272,7 +307,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Wind Cloud Manor as of ch. 1069",
@@ -299,7 +334,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

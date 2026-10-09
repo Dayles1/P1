@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1193,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_new_blessed_land_crazed_demon"
   },
   "chapters_cited": [
     1193,
@@ -36,6 +36,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -68,6 +80,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_gong_wan_ting",
       "count": 2
     },
@@ -77,6 +93,10 @@
     },
     {
       "target": "char_yao_yuan_ying",
+      "count": 2
+    },
+    {
+      "target": "house_loud_thunder_hall",
       "count": 2
     },
     {
@@ -97,6 +117,10 @@
     },
     {
       "target": "fac_yao_tribe",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_blood_battle_martial_competition",
       "count": 1
     },
     {
@@ -128,11 +152,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_loud_thunder_hall",
         "char_nu_er_gu",
         "fac_yao_tribe",
         "fac_guan_tribe",
@@ -151,7 +176,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "expert-chu-du-watches",
       "text_origin": "source_excerpt",
@@ -211,7 +236,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Nu Er Tribe",
@@ -232,7 +257,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

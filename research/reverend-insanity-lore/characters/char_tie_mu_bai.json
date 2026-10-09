@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 369,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     369,
@@ -40,6 +40,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -192,6 +204,18 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_tie_mu_bai_against_wu_gui_and_ku_mo",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 372,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -209,6 +233,10 @@
     },
     {
       "target": "fac_tie_clan",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_tie_mu_bai_against_wu_gui_and_ku_mo",
       "count": 3
     },
     {
@@ -246,6 +274,10 @@
     {
       "target": "reg_southern_border",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_tie_ruo_nan",
@@ -340,6 +372,10 @@
       "count": 1
     },
     {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -357,6 +393,10 @@
     },
     {
       "target": "loc_huo_tan_mountain",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_three_kings_inheritance",
       "count": 1
     },
     {
@@ -380,7 +420,19 @@
       "count": 1
     },
     {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_purple_crystal_primeval_essence",
+      "count": 1
+    },
+    {
       "target": "rcp_second_aperture_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_set",
       "count": 1
     },
     {
@@ -392,7 +444,15 @@
       "count": 1
     },
     {
+      "target": "inh_king_xin_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_tie_bai_qi",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
       "count": 1
     },
     {
@@ -408,7 +468,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -425,7 +485,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -437,7 +497,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "glory-of-tie-clan",
       "text_origin": "source_excerpt",
@@ -457,7 +517,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "glory-of-tie-clan",
       "text_origin": "source_excerpt",
@@ -470,6 +530,7 @@
         "char_wu_shen_tong",
         "char_lu_zuan_feng",
         "char_tie_ba_xiu",
+        "sys_demonic_path",
         "char_fang_yuan",
         "char_fang_zheng"
       ]
@@ -481,7 +542,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "glory-of-tie-clan",
       "text_origin": "source_excerpt",
@@ -496,7 +557,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rival-fight-above-the-mountain",
       "text_origin": "source_excerpt",
@@ -512,7 +573,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rival-fight-above-the-mountain",
       "text_origin": "source_excerpt",
@@ -528,7 +589,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
@@ -543,11 +604,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_vital_gu",
         "gu_liquid_metal_gu",
         "gu_beast_strength_placenta_gu",
         "gu_second_aperture_gu"
@@ -560,7 +622,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt"
@@ -572,12 +634,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reduced-effect-in-northern-plains",
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_golden_breeze_gu",
+        "sys_healing_gu",
         "reg_northern_plains"
       ]
     }
@@ -630,7 +693,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Tie Clan as of ch. 369",
@@ -662,7 +725,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Dead",
     "alignment": "righteous path as of ch. 370",

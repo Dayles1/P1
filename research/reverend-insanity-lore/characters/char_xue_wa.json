@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 537,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     537,
@@ -33,6 +33,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_snowmen",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -61,6 +73,10 @@
       "count": 3
     },
     {
+      "target": "race_snowmen",
+      "count": 3
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -77,6 +93,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     }
@@ -89,13 +109,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_xue_song_pavilion",
         "char_xue_song_zi",
+        "sys_gu_worms",
         "fac_gu_masters",
         "fac_ma_tribe"
       ]
@@ -107,7 +128,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "imperial-court-field",
       "text_origin": "source_excerpt",
@@ -152,7 +173,7 @@
     "Race": {
       "text": "Snowmen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Ma Tribe as of ch. 540",
@@ -179,7 +200,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_snowmen",
     "region": "reg_northern_plains",
     "status": "Unknown",
     "alignment": null,

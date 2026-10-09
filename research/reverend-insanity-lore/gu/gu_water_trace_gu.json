@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 428,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     428,
@@ -54,6 +54,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_movement_gu",
+      "count": 1
+    },
+    {
       "target": "gu_worldly_wave_trace",
       "count": 1
     },
@@ -63,6 +71,10 @@
     },
     {
       "target": "char_feng_jin_huang",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -138,6 +150,7 @@
         "section": "advancement-series",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "gu_worldly_wave_trace"
         ]
       },
@@ -153,7 +166,8 @@
         "section": "contest-series-naming",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_feng_jin_huang"
+          "char_feng_jin_huang",
+          "sys_immortal_gu"
         ]
       }
     ]
@@ -245,6 +259,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_ge_yao",
+          "sys_movement_gu",
           "char_fang_yuan"
         ]
       }

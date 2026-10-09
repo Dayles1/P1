@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 324,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     324,
@@ -45,6 +45,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_wang_clan",
       "role": null,
@@ -55,12 +67,32 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_king_bao_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "fac_wang_clan",
       "count": 4
+    },
+    {
+      "target": "inh_king_bao_inheritance",
+      "count": 4
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -79,7 +111,15 @@
       "count": 2
     },
     {
+      "target": "evt_arc_three_kings_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_king_xin",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -91,11 +131,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "race_eggmen",
+      "count": 1
+    },
+    {
       "target": "char_mo_wu_tian",
       "count": 1
     },
     {
       "target": "gu_divulge_information_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_three_kings_inheritance",
       "count": 1
     }
   ],
@@ -107,7 +159,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -115,6 +167,7 @@
         "loc_san_cha_mountain",
         "fac_wu_clan",
         "fac_wang_clan",
+        "sys_gu_immortal",
         "gu_exploding_egg_gu"
       ]
     },
@@ -135,10 +188,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fire-path",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "When Yi Huo claims the red pillar, Yi Huo is a fire path Gu Master and King Bao is of the same path, so King Bao’s inheritance is the natural choice for him.",
@@ -147,12 +203,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "red-pillar-claim",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_yi_huo"
+        "char_yi_huo",
+        "inh_king_bao_inheritance"
       ]
     },
     {
@@ -162,7 +219,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "naming-and-eggmen",
       "text_origin": "source_excerpt",
@@ -209,7 +266,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Wang Clan as of ch. 324",
@@ -236,7 +293,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Unknown",
     "alignment": null,

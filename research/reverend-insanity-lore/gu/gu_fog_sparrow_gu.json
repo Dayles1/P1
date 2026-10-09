@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 428,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     428,
@@ -50,6 +50,14 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_investigative_gu",
       "count": 1
     },
     {
@@ -115,7 +123,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_investigative_gu"
+        ]
       },
       {
         "text": "Deep in poison grassland, when purple fog becomes so dense that they cannot see their own hands, Ge Yao’s fog sparrow Gu loses its use.",
@@ -183,7 +194,8 @@
         "mentions": [
           "loc_poison_grassland",
           "char_fang_yuan",
-          "char_ge_yao"
+          "char_ge_yao",
+          "sys_healing_gu"
         ]
       }
     ]

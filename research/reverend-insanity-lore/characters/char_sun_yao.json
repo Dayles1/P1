@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 854,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     854,
@@ -51,6 +51,18 @@
       "note": null
     },
     {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "member_of",
       "target": "fac_spirit_affinity_house",
       "role": null,
@@ -61,12 +73,32 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_joy_in_helping_people",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2012,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
+      "target": "move_joy_in_helping_people",
+      "count": 4
+    },
+    {
       "target": "fac_spirit_affinity_house",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_central_continent",
@@ -101,6 +133,10 @@
       "count": 1
     },
     {
+      "target": "move_small_wishful_hand",
+      "count": 1
+    },
+    {
       "target": "char_ma_hong_yun",
       "count": 1
     },
@@ -117,7 +153,15 @@
       "count": 1
     },
     {
+      "target": "sys_heaven_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "res_quiet_rain",
       "count": 1
     },
     {
@@ -130,6 +174,22 @@
     },
     {
       "target": "char_xiao_bai_hong",
+      "count": 1
+    },
+    {
+      "target": "sys_foundational_pillar_of_human_path",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "house_wind_cloud_manor",
       "count": 1
     },
     {
@@ -153,7 +213,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -171,7 +231,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -183,7 +243,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "warning-and-loyalty",
       "text_origin": "source_excerpt",
@@ -199,7 +259,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "warning-and-loyalty",
       "text_origin": "source_excerpt"
@@ -218,7 +278,8 @@
       "mentions": [
         "char_li_jun_ying",
         "char_xu_hao",
-        "fac_heavenly_court"
+        "fac_heavenly_court",
+        "res_quiet_rain"
       ]
     },
     {
@@ -233,8 +294,11 @@
       "section": "painting-world",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
+        "sys_gu_immortal",
         "char_feng_jiu_ge",
         "char_chen_da_jiang",
+        "house_wind_cloud_manor",
         "char_xiao_qi_xing",
         "char_shen_shang"
       ]
@@ -261,7 +325,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "street-fighting",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_joy_in_helping_people"
+      ]
     },
     {
       "text": "With Xiao Qi Xing at the front, she appears with Fairy Bi Xia, Sun Yuan Hua, Ying Sheng Ji, Chen Da Jiang, and the rest. Shen Shang names that group the ten children of human path, Gu Immortal seeds Heavenly Court is cultivating from Central Continent’s ten great ancient sects.",
@@ -324,7 +391,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Spirit Affinity House as of ch. 854",
@@ -345,7 +412,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

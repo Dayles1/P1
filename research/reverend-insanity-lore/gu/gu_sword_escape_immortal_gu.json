@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 995,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     995,
@@ -38,6 +38,18 @@
     1305
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_sword",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_bo_qing",
@@ -73,6 +85,10 @@
       "count": 2
     },
     {
+      "target": "path_sword",
+      "count": 1
+    },
+    {
       "target": "gu_qi_escape_immortal_gu",
       "count": 3
     },
@@ -89,6 +105,14 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_yi_tian_mountain",
       "count": 1
     },
@@ -97,7 +121,19 @@
       "count": 1
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_blood_torrent",
+      "count": 1
+    },
+    {
       "target": "loc_tai_qiu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -151,7 +187,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_sword"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -198,7 +236,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "power-and-essence-cost",
         "text_origin": "source_excerpt"
@@ -309,6 +347,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_bo_qing",
           "char_fang_yuan"
         ]
@@ -325,7 +364,8 @@
         "section": "speed-and-bo-qings-chase",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_qi_escape_immortal_gu"
+          "gu_qi_escape_immortal_gu",
+          "sys_gu_immortal"
         ]
       },
       {
@@ -335,7 +375,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "judged-insufficient-against-chu-du",
         "text_origin": "source_excerpt",
@@ -350,12 +390,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "blood-torrent-deduced-for-its-flaw",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_blood_asset_immortal_gu"
+          "gu_blood_asset_immortal_gu",
+          "sys_mortal_gu"
         ]
       },
       {
@@ -370,7 +411,8 @@
         "section": "boosted-by-ten-thousand-dao-marks",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_ye_lui_qun_xing"
+          "char_ye_lui_qun_xing",
+          "sys_gu_worms"
         ]
       },
       {
@@ -394,7 +436,7 @@
     "Path": {
       "text": "Sword Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 360,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     360,
@@ -67,6 +67,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_scarecrow_gu",
       "count": 1
     },
@@ -104,6 +108,10 @@
     },
     {
       "target": "char_ying_wu_xie",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -194,13 +202,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-ranks",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "loc_qing_mao_mountain"
+          "loc_qing_mao_mountain",
+          "sys_gu_master"
         ]
       }
     ],
@@ -264,7 +273,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -279,7 +288,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "fang-yuans-worm-and-northern-plains",
         "text_origin": "source_excerpt",
@@ -297,7 +306,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bei-tribe-grass-sword-elites",
         "text_origin": "source_excerpt",
@@ -319,7 +328,8 @@
         "mentions": [
           "char_ying_wu_xie",
           "char_feng_chan_zi",
-          "char_old_man_bei_feng"
+          "char_old_man_bei_feng",
+          "sys_immortal_gu"
         ]
       }
     ]

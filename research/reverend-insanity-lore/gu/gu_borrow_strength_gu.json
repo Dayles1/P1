@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 560,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     560,
@@ -33,6 +33,18 @@
     650
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -52,6 +64,10 @@
       "count": 2
     },
     {
+      "target": "path_strength",
+      "count": 2
+    },
+    {
       "target": "gu_six_flying_zombie_gu",
       "count": 2
     },
@@ -66,6 +82,22 @@
     {
       "target": "gu_wind_overlord_gu",
       "count": 2
+    },
+    {
+      "target": "move_four_arm_wind_king",
+      "count": 2
+    },
+    {
+      "target": "move_six_arm_heavenly_zombie_king",
+      "count": 2
+    },
+    {
+      "target": "move_myriad_self",
+      "count": 2
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
     },
     {
       "target": "gu_earth_strength_gu",
@@ -93,6 +125,14 @@
     },
     {
       "target": "gu_earth_chief_zombie_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     },
     {
@@ -144,7 +184,9 @@
     ],
     "rank_type": "mortal",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -166,12 +208,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-move-core",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_mo_yao",
+          "move_six_arm_heavenly_zombie_king",
           "gu_six_flying_zombie_gu"
         ]
       },
@@ -182,10 +225,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-move-core",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "path_strength"
+        ]
       },
       {
         "text": "In later testing, the move uses that core to borrow a steady torrent of natural strength from heaven, earth, fire, water, and similar sources.",
@@ -194,7 +240,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "killer-move-core",
         "text_origin": "source_excerpt"
@@ -246,12 +292,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_eighty_eight_true_yang_building",
           "char_fang_yuan",
+          "move_four_arm_wind_king",
           "gu_wind_overlord_gu",
           "gu_tyrant_strength_gu",
           "gu_sky_strength_gu",
@@ -265,12 +313,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "remaining-mortal-gu",
         "text_origin": "source_excerpt",
         "mentions": [
-          "loc_hu_immortal_blessed_land"
+          "loc_hu_immortal_blessed_land",
+          "sys_mortal_gu"
         ]
       },
       {
@@ -280,13 +329,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "remaining-mortal-gu",
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_all_out_effort_gu",
-          "gu_bitter_strength_gu"
+          "sys_vital_gu",
+          "gu_bitter_strength_gu",
+          "move_myriad_self"
         ]
       }
     ]
@@ -295,7 +346,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

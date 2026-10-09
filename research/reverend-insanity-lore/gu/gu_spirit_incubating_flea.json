@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 211,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     211,
@@ -68,6 +68,10 @@
     {
       "target": "gu_bloodkin_worm_gu",
       "count": 2
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
     },
     {
       "target": "fac_immortal_crane_sect",
@@ -210,6 +214,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_lord_sky_crane",
+          "sys_gu_worms",
           "char_fang_zheng",
           "fac_immortal_crane_sect",
           "gu_bloodkin_worm_gu",

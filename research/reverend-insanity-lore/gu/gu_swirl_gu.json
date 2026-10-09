@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 167,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     167,
@@ -69,6 +69,18 @@
       "count": 2
     },
     {
+      "target": "move_ice_blade_storm",
+      "count": 2
+    },
+    {
+      "target": "sys_movement_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_bai_ning_bing_second_battle",
+      "count": 1
+    },
+    {
       "target": "gu_chainsaw_golden_centipede",
       "count": 1
     },
@@ -78,6 +90,10 @@
     },
     {
       "target": "loc_qing_mao_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -136,10 +152,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_movement_gu"
+        ]
       }
     ],
     "visual_confidence": "text_described"
@@ -179,10 +198,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "shang-clan-battle-stage",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "In that fight she runs Swirl Gu with Tornado Gu, Ice Edge Gu, and Ice Crystal Gu, then adds Frost Breath Gu as she rebuilds ice blade storm.",
@@ -191,7 +213,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "shang-clan-battle-stage",
         "text_origin": "source_excerpt",
@@ -199,7 +221,8 @@
           "gu_tornado_gu",
           "gu_ice_edge_gu",
           "gu_ice_crystal_gu",
-          "gu_frost_breath_gu"
+          "gu_frost_breath_gu",
+          "move_ice_blade_storm"
         ]
       }
     ]
@@ -224,7 +247,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -241,7 +264,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "iceblade-storm",
         "text_origin": "source_excerpt",
@@ -256,7 +279,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "iceblade-storm",
         "text_origin": "source_excerpt",

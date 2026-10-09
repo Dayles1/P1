@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1119,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1119,
@@ -31,8 +31,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_luck",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1119,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -77,6 +101,14 @@
       "count": 2
     },
     {
+      "target": "path_luck",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -97,7 +129,23 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_luck_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "gu_connect_luck",
+      "count": 1
+    },
+    {
+      "target": "inh_hei_fan_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "move_blood_light_spirit_suppression",
       "count": 1
     },
     {
@@ -111,6 +159,18 @@
     {
       "target": "gu_sight_light_immortal_gu",
       "count": 1
+    },
+    {
+      "target": "move_farsight_weapon_light",
+      "count": 1
+    },
+    {
+      "target": "move_luck_whirlwind",
+      "count": 1
+    },
+    {
+      "target": "move_qi_luck_sensation",
+      "count": 1
     }
   ],
   "claims": [
@@ -121,7 +181,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -129,7 +189,8 @@
         "char_zhou_min",
         "char_zheng_tuo",
         "char_chen_chi",
-        "loc_immortal_succession_mountain"
+        "loc_immortal_succession_mountain",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -139,10 +200,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "main-tribe-inheritor",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_hei_fan_true_inheritance"
+      ]
     },
     {
       "text": "He arrives with Zhou Min and Zheng Tuo. Fang Yuan notes Feng Jun and Zhou Min as rank six. Feng Jun greets respectfully but holds animosity and watches with an unkind expression. He asks about Fang Yuan’s eagle and hears it named an upper extreme heavenly eagle.",
@@ -151,7 +215,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "meeting-hei-cheng",
       "text_origin": "source_excerpt",
@@ -191,7 +255,7 @@
     "Paths": {
       "text": "Luck path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Northern Plains",
@@ -201,7 +265,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Hei Tribe as of ch. 1120",
@@ -223,12 +287,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_luck"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

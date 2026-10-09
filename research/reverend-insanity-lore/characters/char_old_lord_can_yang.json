@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 669,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     669,
@@ -37,6 +37,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -69,11 +81,43 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_life_chasing_fire",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 790,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_final_afterglow",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 792,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "fac_immortal_crane_sect",
+      "count": 3
+    },
+    {
+      "target": "move_life_chasing_fire",
+      "count": 3
+    },
+    {
+      "target": "move_final_afterglow",
       "count": 3
     },
     {
@@ -83,6 +127,10 @@
     {
       "target": "reg_central_continent",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_hei_cheng",
@@ -97,7 +145,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
       "target": "char_he_feng_yang",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     },
     {
@@ -133,11 +197,27 @@
       "count": 1
     },
     {
+      "target": "inh_possession_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_pi_shui_han",
       "count": 1
     },
     {
       "target": "char_unfettered_scholar",
+      "count": 1
+    },
+    {
+      "target": "move_hundred_disintegrations",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_disintegrations",
+      "count": 1
+    },
+    {
+      "target": "move_thousand_disintegrations",
       "count": 1
     },
     {
@@ -149,11 +229,23 @@
       "count": 1
     },
     {
+      "target": "move_myriad_star_fireflies",
+      "count": 1
+    },
+    {
       "target": "char_he_ruo",
       "count": 1
     },
     {
       "target": "gu_disintegrate_rule_path_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_big_to_small",
+      "count": 1
+    },
+    {
+      "target": "move_ice_dragon_lock",
       "count": 1
     },
     {
@@ -169,11 +261,19 @@
       "count": 1
     },
     {
+      "target": "move_approaching_body",
+      "count": 1
+    },
+    {
       "target": "char_tai_bai_yun_sheng",
       "count": 1
     },
     {
       "target": "char_fairy_jiang_yu",
+      "count": 1
+    },
+    {
+      "target": "sys_blazing_glory_lightning_brilliance_physique",
       "count": 1
     },
     {
@@ -191,6 +291,10 @@
     {
       "target": "rcp_myriad_self_immortal_gu_recipe",
       "count": 1
+    },
+    {
+      "target": "move_rock_mountain_immortal_monkey_king_transformation",
+      "count": 1
     }
   ],
   "claims": [
@@ -201,12 +305,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fairy_cang_yu"
+        "char_fairy_cang_yu",
+        "sys_gu_immortal",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -216,13 +322,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pulled-to-northern-plains",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_he_feng_yang",
-        "reg_northern_plains"
+        "reg_northern_plains",
+        "house_eighty_eight_true_yang_building"
       ]
     },
     {
@@ -232,7 +339,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "feng-jiu-ges-pairing",
       "text_origin": "source_excerpt",
@@ -250,7 +357,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "saint-regional-wall",
       "text_origin": "source_excerpt",
@@ -265,7 +372,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "killer-move-burns-three-enemies",
       "text_origin": "source_excerpt"
@@ -277,7 +384,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "disguise-for-hei-chengs-trap",
       "text_origin": "source_excerpt",
@@ -332,7 +439,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Immortal Crane Sect as of ch. 669",
@@ -359,7 +466,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 504,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     504,
@@ -76,6 +76,10 @@
     },
     {
       "target": "char_tu_bo",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -205,6 +209,7 @@
           "char_fang_yuan",
           "char_chang_shan_yin",
           "char_tu_bo",
+          "sys_gu_master",
           "char_bian_si_xuan"
         ]
       },

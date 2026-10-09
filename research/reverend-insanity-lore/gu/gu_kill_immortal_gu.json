@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2328,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2328
@@ -57,6 +57,22 @@
     },
     {
       "target": "char_star_constellation_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_heavenly_dao",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_immortal_gu",
       "count": 1
     },
     {
@@ -146,7 +162,10 @@
         "section": "heavenly-dao-refinement",
         "text_origin": "source_excerpt",
         "mentions": [
-          "fac_huang_jin_bloodline"
+          "sys_immortal_gu",
+          "sys_heavenly_dao",
+          "fac_huang_jin_bloodline",
+          "sys_gu_immortal"
         ]
       }
     ]
@@ -189,6 +208,7 @@
         "mentions": [
           "char_spectral_soul_demon_venerable",
           "reg_central_continent",
+          "sys_wild_immortal_gu",
           "char_fang_yuan",
           "char_star_constellation_immortal_venerable",
           "char_giant_sun_immortal_venerable"

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1229,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1229,
@@ -31,10 +31,31 @@
     2019,
     2021
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_ren_zu",
+      "count": 2
+    },
+    {
+      "target": "sys_myriad_gold_wondrous_essence_physique",
       "count": 2
     },
     {
@@ -70,11 +91,43 @@
       "count": 1
     },
     {
+      "target": "sys_blazing_glory_lightning_brilliance_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_carefree_wisdom_heart_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_lightning_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_ten_extreme_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
       "target": "fac_spirit_affinity_house",
       "count": 1
     },
     {
       "target": "gu_love_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_love_must_be_selfless",
+      "count": 1
+    },
+    {
+      "target": "move_star_fog_concealment",
+      "count": 1
+    },
+    {
+      "target": "move_star_soul_battlefield",
       "count": 1
     },
     {
@@ -86,6 +139,10 @@
       "count": 1
     },
     {
+      "target": "evt_legend_webs_of_fate",
+      "count": 1
+    },
+    {
       "target": "gu_electric_circuit_gu",
       "count": 1
     },
@@ -94,7 +151,19 @@
       "count": 1
     },
     {
+      "target": "evt_era_immemorial",
+      "count": 1
+    },
+    {
       "target": "gu_hatred_gu",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_blue_heaven",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_lightning_and_hatred",
       "count": 1
     }
   ],
@@ -106,11 +175,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_the_legends_of_ren_zu",
         "gu_love_gu",
         "char_ren_zu"
       ]
@@ -122,7 +192,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -139,6 +209,7 @@
       "section": "fate-gu-encounter",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_myriad_gold_wondrous_essence_physique",
         "gu_fate_gu",
         "gu_wealth_gu"
       ]
@@ -203,7 +274,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     }
   },
   "cultivation": {
@@ -214,7 +285,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": null,
     "alignment": null,

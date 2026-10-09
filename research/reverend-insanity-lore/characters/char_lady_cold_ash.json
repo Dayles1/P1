@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1969,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1969,
@@ -35,6 +35,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -61,6 +73,10 @@
     {
       "target": "loc_soul_pacifying_grotto_heaven",
       "count": 3
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_central_continent",
@@ -119,6 +135,10 @@
       "count": 1
     },
     {
+      "target": "house_divine_emperor_city",
+      "count": 1
+    },
+    {
       "target": "char_fairy_crescent_moon",
       "count": 1
     },
@@ -132,6 +152,10 @@
     },
     {
       "target": "gu_lightning_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_great_era_spectral_soul",
       "count": 1
     },
     {
@@ -228,7 +252,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Seat": {
       "text": "Soul Pacifying grotto-heaven as of ch. 1969",
@@ -255,7 +279,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": null,

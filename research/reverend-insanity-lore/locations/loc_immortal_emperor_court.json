@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1710,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1710,
@@ -31,6 +31,10 @@
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "house_million_heavenly_king_gallery",
+      "count": 2
+    },
     {
       "target": "loc_eternal_sand_cave",
       "count": 2
@@ -49,6 +53,14 @@
     },
     {
       "target": "char_reckless_savage_demon_venerable",
+      "count": 1
+    },
+    {
+      "target": "house_embroidered_tower",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
       "count": 1
     },
     {
@@ -92,7 +104,10 @@
         "loc_hidden_space_pavilion",
         "loc_sumeru_lake",
         "loc_eternal_sand_cave",
-        "loc_central_great_hall"
+        "house_million_heavenly_king_gallery",
+        "house_embroidered_tower",
+        "loc_central_great_hall",
+        "house_heaven_overseeing_tower"
       ]
     },
     {

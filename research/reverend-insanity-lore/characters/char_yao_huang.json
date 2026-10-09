@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 736,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     736,
@@ -45,6 +45,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -101,6 +113,18 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_gu_house",
+      "target": "house_medicine_cottage",
+      "role": "owner",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -110,6 +134,10 @@
     },
     {
       "target": "gu_cauldron_strength_immortal_gu",
+      "count": 4
+    },
+    {
+      "target": "house_medicine_cottage",
       "count": 4
     },
     {
@@ -123,6 +151,14 @@
     {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
+      "target": "house_luck_suppression_heavenly_palace",
+      "count": 3
     },
     {
       "target": "char_five_elements_grandmaster",
@@ -150,6 +186,10 @@
     },
     {
       "target": "fac_zombie_alliance",
+      "count": 2
+    },
+    {
+      "target": "house_red_fiend_divine_boat",
       "count": 2
     },
     {
@@ -181,6 +221,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_huang_jin_bloodline",
       "count": 1
     },
@@ -190,6 +238,22 @@
     },
     {
       "target": "loc_snowy_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "reg_earth_earth_trench",
+      "count": 1
+    },
+    {
+      "target": "move_stone_casket",
       "count": 1
     },
     {
@@ -209,11 +273,23 @@
       "count": 1
     },
     {
+      "target": "move_wind_escape",
+      "count": 1
+    },
+    {
+      "target": "sys_heavenly_wind_qi_wall",
+      "count": 1
+    },
+    {
       "target": "gu_fortune_rivalling_heaven_immortal_gu",
       "count": 1
     },
     {
       "target": "loc_miniscule_mountain",
+      "count": 1
+    },
+    {
+      "target": "house_sacred_feather_city",
       "count": 1
     },
     {
@@ -225,6 +301,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
+      "count": 1
+    },
+    {
       "target": "loc_blood_plain",
       "count": 1
     },
@@ -233,7 +313,15 @@
       "count": 1
     },
     {
+      "target": "evt_fight_blood_battle_martial_competition",
+      "count": 1
+    },
+    {
       "target": "char_gong_wan_ting",
+      "count": 1
+    },
+    {
+      "target": "move_perfect_pair",
       "count": 1
     },
     {
@@ -242,6 +330,10 @@
     },
     {
       "target": "char_giant_sun_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "inh_heaven_and_earth_luck_true_inheritance",
       "count": 1
     },
     {
@@ -273,6 +365,10 @@
       "count": 1
     },
     {
+      "target": "move_destined_birth_through_luck",
+      "count": 1
+    },
+    {
       "target": "char_yi_qi_zi",
       "count": 1
     }
@@ -285,7 +381,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -303,7 +399,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -315,11 +411,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "auction-and-reputation",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "fac_huang_jin_bloodline",
         "fac_yao_tribe",
         "reg_northern_plains",
@@ -333,12 +430,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "auction-and-reputation",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_zombie_alliance",
+        "sys_immortal_gu",
         "loc_dark_flow_giant_city",
         "char_huang_quan_weng",
         "char_fang_yuan"
@@ -351,7 +449,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "auction-and-reputation",
       "text_origin": "source_excerpt"
@@ -363,7 +461,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refinement-work",
       "text_origin": "source_excerpt",
@@ -378,14 +476,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refinement-work",
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_cauldron_strength_immortal_gu",
         "char_yin_liu_gong",
-        "gu_resurrection_from_the_dead"
+        "gu_resurrection_from_the_dead",
+        "sys_healing_gu"
       ]
     },
     {
@@ -395,10 +494,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refinement-work",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house",
+        "house_medicine_cottage",
+        "house_red_fiend_divine_boat"
+      ]
     },
     {
       "text": "By the time of the grand tribulation at Sacred Feather City, he remains far from the first myriad tribulation.",
@@ -410,7 +514,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "refinement-work",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_sacred_feather_city"
+      ]
     },
     {
       "text": "When Old Ancestor Xue Hu begins refining fortune rivalling heaven Gu, Yao Huang judges that fighting him is not wise, and says he will instead concentrate on refining Resurrection From The Dead Immortal Gu, which he expects will also give him a rank eight Immortal Gu and solve the problem of his lifespan.",
@@ -419,7 +526,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refinement-work",
       "text_origin": "source_excerpt"
@@ -431,7 +538,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "deepening-ties-with-zombie-alliance",
       "text_origin": "source_excerpt"
@@ -443,7 +550,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "defeat-by-old-ancestor-xue-hu",
       "text_origin": "source_excerpt",
@@ -460,12 +567,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "suspecting-an-insider",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_south_desolation_immortal"
+        "char_south_desolation_immortal",
+        "house_luck_suppression_heavenly_palace"
       ]
     },
     {
@@ -475,12 +583,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "called-to-steady-luck-suppression-heavenly-palace",
       "text_origin": "source_excerpt",
       "mentions": [
-        "reg_central_continent"
+        "reg_central_continent",
+        "house_luck_suppression_heavenly_palace"
       ]
     },
     {
@@ -490,7 +599,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "marked-to-capture-fang-yuan",
       "text_origin": "source_excerpt",
@@ -564,7 +673,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Yao Tribe as of ch. 749",
@@ -596,7 +705,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": "righteous path as of ch. 749",

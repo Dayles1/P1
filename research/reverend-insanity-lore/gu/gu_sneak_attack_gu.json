@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1500,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1500,
@@ -53,6 +53,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -66,6 +70,10 @@
     },
     {
       "target": "gu_sandpit_gu",
+      "count": 1
+    },
+    {
+      "target": "move_single_thought_endless_clones",
       "count": 1
     }
   ],
@@ -210,6 +218,7 @@
         "mentions": [
           "char_thieving_heaven_demon_venerable",
           "char_fang_yuan",
+          "sys_gu_worms",
           "char_sha_xiao"
         ]
       }

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 78,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     156
@@ -45,6 +45,10 @@
   "co_mentions": [
     {
       "target": "reg_southern_border",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -74,13 +78,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "village-interior",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_gu_masters",
-        "loc_gu_yue_village"
+        "loc_gu_yue_village",
+        "sys_gu_master"
       ]
     }
   ],

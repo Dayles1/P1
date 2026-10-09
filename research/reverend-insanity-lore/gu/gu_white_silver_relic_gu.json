@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 111,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     111,
@@ -119,6 +119,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -143,11 +147,31 @@
       "count": 1
     },
     {
+      "target": "sys_aperture_wall",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_ma_tribe",
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_green",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -223,6 +247,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_purple_crystal_relic_gu",
+          "sys_immortal_gu",
           "char_green"
         ]
       }
@@ -237,7 +262,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -266,7 +291,8 @@
         "section": "appearance",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_relic_gu"
+          "gu_relic_gu",
+          "sys_mortal_gu"
         ]
       },
       {
@@ -276,7 +302,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -300,7 +326,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt",
@@ -321,10 +347,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Fang Yuan’s activation floods the aperture walls with light, and about four hours later he has moved from rank three upper stage to rank three peak stage. Relic Gu give a stable foundation and do not leave side-effects.",
@@ -406,7 +435,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "price-and-refinement",
         "text_origin": "source_excerpt"
@@ -493,7 +522,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -526,7 +555,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ma-hong-yuns-find",
         "text_origin": "source_excerpt",
@@ -547,8 +576,10 @@
         "section": "human-path-form",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_immortal",
           "loc_lang_ya_blessed_land",
-          "fac_heavenly_court"
+          "fac_heavenly_court",
+          "sys_gu_worms"
         ]
       }
     ]

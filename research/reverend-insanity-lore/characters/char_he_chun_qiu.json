@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2137,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_dao_veins_famous_mountains"
   },
   "chapters_cited": [
     2137,
@@ -35,8 +35,45 @@
     2232,
     2253
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "path",
+      "target": "path_time",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "path_time",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
+      "target": "house_four_elements_square_regret_blood_refinement_pool",
+      "count": 2
+    },
     {
       "target": "gu_fan_wind_gu",
       "count": 2
@@ -58,6 +95,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_wu_clan",
       "count": 1
     },
@@ -70,11 +115,43 @@
       "count": 1
     },
     {
+      "target": "house_dragon_soul_dark_castle",
+      "count": 1
+    },
+    {
+      "target": "house_profound_frost_house",
+      "count": 1
+    },
+    {
+      "target": "house_red_heavenly_altar",
+      "count": 1
+    },
+    {
+      "target": "house_red_river_pavilion",
+      "count": 1
+    },
+    {
+      "target": "house_rising_cloud_city",
+      "count": 1
+    },
+    {
+      "target": "house_scarlet_palace",
+      "count": 1
+    },
+    {
+      "target": "house_unbreakable_golden_fortress",
+      "count": 1
+    },
+    {
       "target": "loc_dang_hun_mountain",
       "count": 1
     },
     {
       "target": "loc_luo_po_valley",
+      "count": 1
+    },
+    {
+      "target": "path_human",
       "count": 1
     },
     {
@@ -137,7 +214,9 @@
       "section": "refinement-and-aperture-work",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_crazed_demon_cave"
+        "loc_crazed_demon_cave",
+        "house_four_elements_square_regret_blood_refinement_pool",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -152,7 +231,8 @@
       "section": "refinement-and-aperture-work",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_mini_eastern_sea"
+        "loc_mini_eastern_sea",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -167,6 +247,7 @@
       "section": "human-path-formation",
       "text_origin": "source_excerpt",
       "mentions": [
+        "path_human",
         "loc_dang_hun_mountain",
         "loc_luo_po_valley"
       ]
@@ -249,12 +330,12 @@
     "Paths": {
       "text": "Time path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -271,12 +352,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_time"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

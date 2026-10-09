@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 88,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     88,
@@ -74,6 +74,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_river_swallowing_toad",
       "count": 1
     }
@@ -117,7 +121,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "mission-turn-in-and-clan-evaluation",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "When a beast-tide urgent mission goes out, Chi Cheng tells Fang Yuan that the Internal Affairs Hall and the external affairs hall have both already given the order to mobilize, that Fang Yuan’s group has already left, and that he must go as well.",

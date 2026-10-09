@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 429,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     429,
@@ -57,6 +57,10 @@
     },
     {
       "target": "char_chang_shan_yin",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -162,7 +166,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "purchase-and-later-use",
         "text_origin": "source_excerpt"
@@ -174,7 +178,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "purchase-and-later-use",
         "text_origin": "source_excerpt"
@@ -201,7 +205,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "purchase-and-later-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "He barely uses it while posing as Wolf King Chang Shan Yin, then takes Gu from Ge tribe’s warehouse and, after failing twice, refines the rank three eagle wings into rank four eagle rise Gu.",

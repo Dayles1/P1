@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 751,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     749,
@@ -50,6 +50,14 @@
     },
     {
       "target": "char_qin_bai_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -135,6 +143,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_immortal",
           "char_qin_bai_sheng",
           "reg_northern_plains"
         ],
@@ -152,6 +161,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "loc_ascending_heaven_plain",
           "char_he_lang_zi"
         ],

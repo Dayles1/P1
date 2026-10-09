@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1841,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1841,
@@ -43,7 +43,15 @@
       "count": 2
     },
     {
+      "target": "house_central_heaven_gate",
+      "count": 2
+    },
+    {
       "target": "char_wu_shuai",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -94,7 +102,8 @@
       "mentions": [
         "char_wu_shuai",
         "char_song_tao_zi",
-        "reg_eastern_sea"
+        "reg_eastern_sea",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -140,7 +149,8 @@
       "section": "variant-human-counsel",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_huang_wei"
+        "char_huang_wei",
+        "house_central_heaven_gate"
       ]
     },
     {

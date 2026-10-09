@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2245,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_era_of_three_venerables"
   },
   "chapters_cited": [
     2245
@@ -44,6 +44,10 @@
     },
     {
       "target": "char_twelfth_hair",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -87,7 +91,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_master_servant_gu",
-        "fac_shadow_sect"
+        "fac_shadow_sect",
+        "sys_immortal_gu"
       ]
     }
   ],

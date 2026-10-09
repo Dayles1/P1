@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2185,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2185
@@ -36,6 +36,14 @@
     },
     {
       "target": "char_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_betraying_ones_self",
       "count": 1
     },
     {
@@ -127,6 +135,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "char_carefree_wisdom_heart",
           "char_ren_zu",
           "loc_river_of_time"

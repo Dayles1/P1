@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1712,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1712,
@@ -33,6 +33,18 @@
     2215
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_pill",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1712,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -68,7 +80,15 @@
       "count": 3
     },
     {
+      "target": "path_pill",
+      "count": 2
+    },
+    {
       "target": "char_shabi_ninety_five",
+      "count": 2
+    },
+    {
+      "target": "move_life_saving_recovery_pill",
       "count": 2
     },
     {
@@ -88,6 +108,26 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "move_perfect_pair",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_soul_dark_castle",
+      "count": 1
+    },
+    {
+      "target": "house_rising_cloud_city",
+      "count": 1
+    },
+    {
+      "target": "move_incomplete_freedom_transformation",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -101,6 +141,10 @@
     },
     {
       "target": "loc_door_of_life_and_death",
+      "count": 1
+    },
+    {
+      "target": "move_transient_white_cloud_city_suppression",
       "count": 1
     }
   ],
@@ -135,7 +179,8 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_mao_li_qiu"
+        "char_mao_li_qiu",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -151,6 +196,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_zhan_bu_du",
+        "move_life_saving_recovery_pill",
         "char_fang_yuan",
         "char_shabi_ninety_five"
       ]
@@ -168,7 +214,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_crazed_demon_cave",
-        "loc_door_of_life_and_death"
+        "loc_door_of_life_and_death",
+        "move_transient_white_cloud_city_suppression"
       ]
     }
   ],
@@ -204,7 +251,7 @@
     "Paths": {
       "text": "Pill path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1712 Immortal Crane Sect as of ch. 1712",
@@ -220,7 +267,9 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_pill"
+    ],
     "aperture": null,
     "talent_grade": null
   },

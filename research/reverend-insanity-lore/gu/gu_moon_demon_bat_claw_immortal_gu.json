@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 751,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     751
@@ -61,6 +61,10 @@
     },
     {
       "target": "char_swordmaster_you_lan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -156,6 +160,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_feng_jiu_ge",
+          "sys_immortal_gu",
           "char_qin_bai_sheng",
           "char_swordmaster_you_lan",
           "char_prince_feng_xian",

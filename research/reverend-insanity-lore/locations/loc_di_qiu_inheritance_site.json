@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 560,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     496,
@@ -51,7 +51,15 @@
       "count": 3
     },
     {
+      "target": "inh_di_qiu_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     },
     {
@@ -71,7 +79,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_mo_yao",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     }
   ],
@@ -83,11 +99,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_eighty_eight_true_yang_building",
         "char_fang_yuan",
         "loc_wang_ting_blessed_land",
         "loc_di_qiu"
@@ -105,7 +122,8 @@
       "mentions": [
         "reg_northern_plains",
         "loc_imperial_court_blessed_land",
-        "loc_imperial_court"
+        "loc_imperial_court",
+        "sys_immortal_gu_house"
       ]
     },
     {
@@ -130,7 +148,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "broken-small-tower",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal",
+        "inh_di_qiu_inheritance"
+      ]
     },
     {
       "text": "When Fang Yuan returns to the central control room, the black liquid and the hole are gone, and the Di Qiu inheritance location on the sand table is fully restored. Mo Yao’s will says that after he took Di Qiu inheritance, Eighty-Eight True Yang Building fixed that flaw, so the cave in the inheritance no longer exists and a small tower should stand there again.",

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 384,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     384,
@@ -78,6 +78,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "evt_era_immemorial",
+      "count": 1
+    },
+    {
       "target": "gu_poison_vow_gu",
       "count": 1
     },
@@ -112,6 +120,10 @@
     {
       "target": "loc_yi_tian_mountain",
       "count": 1
+    },
+    {
+      "target": "move_dragon_gate",
+      "count": 1
     }
   ],
   "claims": [
@@ -122,7 +134,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -144,6 +156,8 @@
         "char_fang_yuan",
         "loc_door_of_life_and_death",
         "fac_shadow_sect",
+        "sys_gu_immortal",
+        "evt_era_immemorial",
         "gu_slavery_gu",
         "gu_poison_vow_gu"
       ]
@@ -169,7 +183,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chou-jius-entry",
       "text_origin": "source_excerpt"
@@ -181,7 +195,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "southern-border-soul-path",
       "text_origin": "source_excerpt",
@@ -209,7 +223,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "near-yi-tian-mountain",
       "text_origin": "source_excerpt",

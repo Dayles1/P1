@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2072,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2072
@@ -52,6 +52,18 @@
     {
       "target": "gu_jade_wind_wheel_gu",
       "count": 2
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_like_fire_wind_wheel",
+      "count": 1
     }
   ],
   "claims": [],
@@ -158,6 +170,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_mortal_gu",
+          "sys_gu_master",
           "gu_jade_wind_wheel_gu"
         ]
       }

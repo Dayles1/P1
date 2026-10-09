@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 470,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     470,
@@ -38,6 +38,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -70,6 +82,30 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_three_head_six_arms",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_harmony_immortal_inheritance",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 528,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -78,12 +114,24 @@
       "count": 4
     },
     {
+      "target": "inh_harmony_immortal_inheritance",
+      "count": 4
+    },
+    {
       "target": "gu_liu_wen_wus_gu_worm",
+      "count": 3
+    },
+    {
+      "target": "move_three_head_six_arms",
       "count": 3
     },
     {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_hao_ji_liu",
@@ -107,6 +155,10 @@
     },
     {
       "target": "loc_yu_tian",
+      "count": 2
+    },
+    {
+      "target": "evt_arc_imperial_court_contest",
       "count": 2
     },
     {
@@ -162,11 +214,19 @@
       "count": 1
     },
     {
+      "target": "evt_arc_northern_plains_imperial_court",
+      "count": 1
+    },
+    {
       "target": "char_chai_ming",
       "count": 1
     },
     {
       "target": "char_viper_prince",
+      "count": 1
+    },
+    {
+      "target": "path_dark",
       "count": 1
     },
     {
@@ -242,11 +302,23 @@
       "count": 1
     },
     {
+      "target": "move_dark_vortex",
+      "count": 1
+    },
+    {
       "target": "char_gao_yang",
       "count": 1
     },
     {
+      "target": "move_world_devouring_qi",
+      "count": 1
+    },
+    {
       "target": "char_tai_bai_yun_sheng",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     }
   ],
@@ -258,7 +330,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -278,7 +350,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -295,7 +367,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -307,7 +379,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refusing-a-hostage-trade",
       "text_origin": "source_excerpt",
@@ -323,7 +395,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refusing-a-hostage-trade",
       "text_origin": "source_excerpt",
@@ -340,12 +412,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "contest-with-hei-tribe",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_hei_bai"
+        "char_hei_bai",
+        "inh_harmony_immortal_inheritance"
       ]
     },
     {
@@ -355,7 +428,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "contest-with-hei-tribe",
       "text_origin": "source_excerpt"
@@ -367,12 +440,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "defeat-and-capture",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_tai_bai_yun_sheng"
+        "char_tai_bai_yun_sheng",
+        "sys_gu_immortal",
+        "evt_arc_imperial_court_contest"
       ]
     }
   ],
@@ -422,7 +497,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Liu Tribe as of ch. 470",
@@ -449,7 +524,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

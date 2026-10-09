@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 656,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     656,
@@ -44,6 +44,14 @@
     }
   ],
   "co_mentions": [
+    {
+      "target": "move_eight_sided_ambush",
+      "count": 4
+    },
+    {
+      "target": "move_formation_like_water",
+      "count": 4
+    },
     {
       "target": "char_he_feng_yang",
       "count": 3
@@ -125,13 +133,15 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use-in-battle",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_he_feng_yang",
-          "gu_five_string_zither_gu"
+          "move_eight_sided_ambush",
+          "gu_five_string_zither_gu",
+          "move_formation_like_water"
         ]
       }
     ]
@@ -181,7 +191,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

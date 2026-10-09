@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 820,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     820,
@@ -42,6 +42,18 @@
     2231
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -69,7 +81,19 @@
   ],
   "co_mentions": [
     {
+      "target": "move_star_fog_concealment",
+      "count": 4
+    },
+    {
       "target": "res_green_beetle_water_lotus",
+      "count": 3
+    },
+    {
+      "target": "res_pale_flame_white_bones",
+      "count": 3
+    },
+    {
+      "target": "res_star_night_mucus",
       "count": 3
     },
     {
@@ -78,6 +102,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 2
+    },
+    {
+      "target": "path_wisdom",
       "count": 2
     },
     {
@@ -93,11 +121,43 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_strength_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_wisdom_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "inh_dong_fang_wisdom_path_inheritance",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_star_fireflies",
+      "count": 1
+    },
+    {
+      "target": "sys_stone_nest",
+      "count": 1
+    },
+    {
       "target": "gu_airsac_gu",
       "count": 1
     },
     {
       "target": "loc_hu_immortal_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "res_success_dao_mark",
+      "count": 1
+    },
+    {
+      "target": "move_eight_doors_labyrinth",
       "count": 1
     },
     {
@@ -109,6 +169,18 @@
       "count": 1
     },
     {
+      "target": "res_water_path_immortal_material",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_material",
+      "count": 1
+    },
+    {
+      "target": "sys_metal_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "res_bee_wings",
       "count": 1
     },
@@ -117,11 +189,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
       "target": "fac_zombie_alliance",
       "count": 1
     },
     {
       "target": "reg_northern_plains",
+      "count": 1
+    },
+    {
+      "target": "move_freezing_rain_frozen_earth",
       "count": 1
     },
     {
@@ -137,7 +217,15 @@
       "count": 1
     },
     {
+      "target": "move_fighting_soul_battlefield",
+      "count": 1
+    },
+    {
       "target": "char_old_eccentric_tian_nan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -150,6 +238,10 @@
     },
     {
       "target": "gu_wisdom_sword_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
       "count": 1
     }
   ],
@@ -203,7 +295,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_wisdom"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -243,13 +337,15 @@
         ],
         "certainty": "inferred",
         "confidence": "C",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wanting-the-recipe",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_stone_nest",
           "loc_hu_immortal_blessed_land",
-          "gu_airsac_gu"
+          "gu_airsac_gu",
+          "move_star_fog_concealment"
         ]
       },
       {
@@ -259,13 +355,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "recipe-funding-and-modification",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_blazing_heaven_demoness",
-          "char_bo_dan"
+          "char_bo_dan",
+          "path_wisdom"
         ]
       },
       {
@@ -275,7 +372,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "independent-materials",
         "text_origin": "source_excerpt"
@@ -287,7 +384,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "sabotaged-materials",
         "text_origin": "source_excerpt"
@@ -299,7 +396,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-shelved",
         "text_origin": "source_excerpt"
@@ -311,7 +408,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "first-successful-refinement",
         "text_origin": "source_excerpt",
@@ -363,12 +460,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_dong_fang_chang_fan",
+          "move_myriad_star_fireflies",
           "char_fang_yuan"
         ]
       },
@@ -379,7 +478,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "a-second-honest-funding-round",
         "text_origin": "source_excerpt",
@@ -394,13 +493,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "failure-luck-and-lost-funding",
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_zombie_alliance",
-          "reg_northern_plains"
+          "reg_northern_plains",
+          "sys_gu_formation"
         ]
       },
       {
@@ -422,13 +522,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "deducing-ascending-heaven-plain",
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_ascending_heaven_plain",
-          "char_old_eccentric_tian_nan"
+          "char_old_eccentric_tian_nan",
+          "sys_immortal_gu_house"
         ]
       },
       {
@@ -438,7 +539,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "deducing-ascending-heaven-plain",
         "text_origin": "source_excerpt",
@@ -483,7 +584,7 @@
     "Path": {
       "text": "Wisdom Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

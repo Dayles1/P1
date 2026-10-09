@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 201,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     200,
@@ -57,6 +57,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -83,6 +87,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_gu_worms",
         "char_bai_ning_bing",
         "fac_gu_masters"
       ]

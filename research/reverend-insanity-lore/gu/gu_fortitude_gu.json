@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2116,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2116,
@@ -31,6 +31,18 @@
     2185
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -48,6 +60,10 @@
     {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "path_strength",
+      "count": 1
     },
     {
       "target": "gu_ability_gu",
@@ -70,6 +86,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_myriad_tribes_ceremony",
+      "count": 1
+    },
+    {
       "target": "fac_yellow_bell_tribe",
       "count": 1
     },
@@ -86,6 +110,14 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
       "target": "gu_effort_gu",
       "count": 1
     },
@@ -94,11 +126,19 @@
       "count": 1
     },
     {
+      "target": "evt_legend_effort_begets_results",
+      "count": 1
+    },
+    {
       "target": "loc_myriad_beast_fusion_color_heaven",
       "count": 1
     },
     {
       "target": "reg_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_betraying_ones_self",
       "count": 1
     },
     {
@@ -119,6 +159,14 @@
     },
     {
       "target": "gu_suppression_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_calm_and_steady",
+      "count": 1
+    },
+    {
+      "target": "move_emotionless_heaven_and_earth",
       "count": 1
     },
     {
@@ -165,7 +213,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -244,7 +294,9 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_myriad_tribes_ceremony",
           "gu_quantity_change_gu",
+          "sys_gu_immortal",
           "fac_yellow_bell_tribe",
           "char_hei_lou_lan"
         ]
@@ -261,12 +313,14 @@
         "section": "legend-and-ownership",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_the_legends_of_ren_zu",
           "char_great_strength_true_martial",
           "loc_upslope_road",
           "gu_authority_gu",
           "reg_eastern_sea",
           "char_fang_yuan",
           "gu_ability_gu",
+          "sys_immortal_gu",
           "char_zhan_bu_du",
           "loc_myriad_beast_fusion_color_heaven",
           "char_ma_hong_yun"
@@ -295,7 +349,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

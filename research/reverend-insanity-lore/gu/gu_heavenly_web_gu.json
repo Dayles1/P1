@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2227,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_era_of_three_venerables"
   },
   "chapters_cited": [
     2203,
@@ -93,7 +93,23 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_crazed_demon_cave",
+      "count": 1
+    },
+    {
+      "target": "path_heaven",
+      "count": 1
+    },
+    {
+      "target": "move_heavenly_summary_earthly_norm",
+      "count": 1
+    },
+    {
+      "target": "move_heavenly_web_protection_veil",
       "count": 1
     },
     {
@@ -101,11 +117,23 @@
       "count": 1
     },
     {
+      "target": "move_obscured_heavenly_secret",
+      "count": 1
+    },
+    {
       "target": "gu_heavens_envy_gu",
       "count": 1
     },
     {
+      "target": "sys_defensive_gu",
+      "count": 1
+    },
+    {
       "target": "char_star_constellation_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "house_cooking_luck_pot",
       "count": 1
     },
     {
@@ -185,7 +213,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "rank-nine-advance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_defensive_gu"
+        ]
       }
     ]
   },
@@ -302,7 +333,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "battle-use-against-the-three-venerables",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "house_cooking_luck_pot"
+        ]
       },
       {
         "text": "Heavenly web protection veil, together with obscured heavenly secret, keeps supporting Fang Yuan secretly, and he gains the upper hand until Star Constellation Immortal Venerable and Giant Sun Immortal Venerable join hands to match him.",
@@ -378,6 +412,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_immortal_gu",
+          "path_heaven",
           "loc_crazed_demon_cave",
           "char_paradise_earth_immortal_venerable"
         ]

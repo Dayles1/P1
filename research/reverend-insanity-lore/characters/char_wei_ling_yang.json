@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1052,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1052,
@@ -46,6 +46,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -78,6 +90,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_myriad_tidal_dragon",
       "count": 2
     },
@@ -90,6 +106,14 @@
       "count": 2
     },
     {
+      "target": "house_canary_pavilion",
+      "count": 2
+    },
+    {
+      "target": "house_edge_link_camp",
+      "count": 2
+    },
+    {
       "target": "char_mu_ling_lan",
       "count": 2
     },
@@ -98,7 +122,15 @@
       "count": 2
     },
     {
+      "target": "evt_arc_heavenly_court_pursuit",
+      "count": 1
+    },
+    {
       "target": "char_fairy_zi_wei",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -123,6 +155,22 @@
     },
     {
       "target": "loc_star_cloud_storm",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_star_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "house_wind_sweeping_building",
+      "count": 1
+    },
+    {
+      "target": "move_spaceless_tunnel",
       "count": 1
     },
     {
@@ -178,11 +226,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_fairy_zi_wei",
         "char_myriad_tidal_dragon",
         "gu_spring_autumn_cicada"
@@ -195,7 +244,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "path-attainment",
       "text_origin": "source_excerpt",
@@ -231,7 +280,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "duke-longs-awakening",
       "text_origin": "source_excerpt",
@@ -247,12 +296,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "charge-and-broken-contact",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_bi_chen_tian"
+        "house_edge_link_camp",
+        "sys_immortal_gu_house",
+        "house_wind_sweeping_building",
+        "char_bi_chen_tian",
+        "house_canary_pavilion"
       ]
     },
     {
@@ -262,7 +315,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ambush-and-tunnel-decision",
       "text_origin": "source_excerpt"
@@ -274,7 +327,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rule-path-advantage",
       "text_origin": "source_excerpt",
@@ -289,7 +342,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "healing-under-xue-hus-assault",
       "text_origin": "source_excerpt",
@@ -304,7 +357,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "avenging-mu-ling-lan",
       "text_origin": "source_excerpt",
@@ -322,7 +375,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fifth-in-the-river",
       "text_origin": "source_excerpt",
@@ -337,7 +390,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "washed-away-unwilling",
       "text_origin": "source_excerpt",
@@ -352,7 +405,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "offer-to-liu-guan-yi",
       "text_origin": "source_excerpt",
@@ -367,7 +420,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "expedition-news",
       "text_origin": "source_excerpt",
@@ -384,7 +437,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt"
@@ -466,7 +519,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 1052",
@@ -493,7 +546,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": null,

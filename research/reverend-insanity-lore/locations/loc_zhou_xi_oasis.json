@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 694,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     694,
@@ -69,6 +69,14 @@
       "count": 1
     },
     {
+      "target": "sys_defensive_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     }
@@ -81,7 +89,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -93,7 +101,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "oasis-approach",
       "text_origin": "source_excerpt",
@@ -110,10 +118,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clan-head-pavilion-and-treasury",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_defensive_gu"
+      ]
     },
     {
       "text": "After the slaughter, the oasis is thick with smoke and fire, and Fang Yuan finishes feeding Woman’s Heart there before searching the ruins. Under the collapsed pavilion he opens an underground treasury of primeval stones, Gu refinement materials, and mortal Gu, then reaches a deep breeding cave where Lan clan raises sand gulls and keeps a house-sized egg on a central stone table.",
@@ -122,12 +133,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "clan-head-pavilion-and-treasury",
       "text_origin": "source_excerpt",
       "mentions": [
-        "gu_womans_heart"
+        "gu_womans_heart",
+        "sys_mortal_gu"
       ]
     }
   ],

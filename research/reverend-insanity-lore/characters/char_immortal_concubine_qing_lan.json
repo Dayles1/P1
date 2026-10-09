@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1422,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1422,
@@ -44,12 +44,28 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_western_desert",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_night_temptress",
@@ -76,6 +92,26 @@
       "count": 1
     },
     {
+      "target": "move_obtain_treasure_song",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_myriad_li_adaptation_formation",
+      "count": 1
+    },
+    {
+      "target": "house_myriad_year_flying_warship",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     }
@@ -88,7 +124,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -106,11 +142,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dream-realm-formation",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_worms",
+        "sys_gu_formation",
         "gu_pass_immortal_gu"
       ]
     },
@@ -139,7 +177,8 @@
       "section": "holding-against-fang-yuan",
       "text_origin": "source_excerpt",
       "mentions": [
-        "reg_western_desert"
+        "reg_western_desert",
+        "house_myriad_year_flying_warship"
       ]
     },
     {
@@ -209,7 +248,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -231,7 +270,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": null,

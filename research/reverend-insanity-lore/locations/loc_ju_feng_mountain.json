@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 304,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     304,
@@ -55,6 +55,10 @@
       "count": 2
     },
     {
+      "target": "res_thousand_year_wind_willow",
+      "count": 2
+    },
+    {
       "target": "gu_eating_wind_gu",
       "count": 2
     },
@@ -79,7 +83,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -103,7 +107,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "news-that-opens-an-auction",
       "text_origin": "source_excerpt",
@@ -151,7 +155,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "wind-willows",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "res_thousand_year_wind_willow"
+      ]
     },
     {
       "text": "Ju clan was situated on top of Ju Feng mountain and specialized in wind type Gu; eating wind Gu was one of their specialties.",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1981,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1981,
@@ -35,6 +35,18 @@
     2173
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_minimen",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_two_heavens_alliance",
@@ -73,6 +85,10 @@
     }
   ],
   "co_mentions": [
+    {
+      "target": "race_minimen",
+      "count": 3
+    },
     {
       "target": "gu_forest_gu",
       "count": 3
@@ -126,7 +142,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_xia_clan",
+      "count": 1
+    },
+    {
+      "target": "res_wood_path_immortal_material",
+      "count": 1
+    },
+    {
+      "target": "sys_contribution_board",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -178,6 +210,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_xia_clan",
+        "sys_gu_immortal",
         "char_xiao_he_jian",
         "char_ice_crystal_immortal_monarch",
         "char_fang_yuan"
@@ -205,7 +238,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "forced-immortal-gu-offering",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "On the contribution board Xiao He Jian stands first, his contribution points in four digits. Green Forest Great Sage is not among the top three, but he is in the top ten. He becomes slightly happier and tells Xiao He Jian that the alliance leader remembered their contribution.",
@@ -245,6 +281,7 @@
       "mentions": [
         "loc_crazed_demon_cave",
         "char_nie_kuang_feng",
+        "race_minimen",
         "char_black_locust",
         "loc_giant_locust_grotto_heaven"
       ]
@@ -303,7 +340,7 @@
     "Race": {
       "text": "Minimen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Two Heavens Alliance as of ch. 2068 Variant Human Alliance as of ch. 2074",
@@ -330,7 +367,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_minimen",
     "region": null,
     "status": "Dead",
     "alignment": null,

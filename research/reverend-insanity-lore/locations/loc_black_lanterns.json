@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1242,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1242,
@@ -35,6 +35,14 @@
   "co_mentions": [
     {
       "target": "char_bi_chen_tian",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -68,7 +76,9 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_central_continent",
-        "char_bi_chen_tian"
+        "sys_immortal_gu_house",
+        "char_bi_chen_tian",
+        "sys_gu_immortal"
       ]
     },
     {

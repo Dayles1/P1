@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 425,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     425,
@@ -74,8 +74,44 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_time",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 524,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "path",
+      "target": "path_cloud",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 748,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -168,6 +204,42 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_nine_cloud_ring",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "took_part_in",
+      "target": "evt_fight_fang_yuan_against_hei_cheng_second_battle",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 688,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_purple_mountain_true_monarch_time_inheritance",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 604,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -196,12 +268,36 @@
       "count": 3
     },
     {
+      "target": "inh_purple_mountain_true_monarch_time_inheritance",
+      "count": 3
+    },
+    {
+      "target": "move_nine_cloud_ring",
+      "count": 3
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_hei_cheng_second_battle",
+      "count": 3
+    },
+    {
       "target": "gu_inch_of_time_gu",
       "count": 3
     },
     {
+      "target": "path_cloud",
+      "count": 2
+    },
+    {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "path_time",
+      "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_fang_yuan",
@@ -252,6 +348,10 @@
       "count": 2
     },
     {
+      "target": "house_regret_pool",
+      "count": 2
+    },
+    {
       "target": "char_bai_ning_bing",
       "count": 2
     },
@@ -264,7 +364,19 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_venerable",
+      "count": 1
+    },
+    {
       "target": "res_desolate_beast_corpse",
+      "count": 1
+    },
+    {
+      "target": "path_qi",
       "count": 1
     },
     {
@@ -284,7 +396,15 @@
       "count": 1
     },
     {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
       "target": "char_chang_shan_yin",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -305,6 +425,10 @@
     },
     {
       "target": "char_zhu_zai",
+      "count": 1
+    },
+    {
+      "target": "move_three_head_six_arms",
       "count": 1
     },
     {
@@ -356,7 +480,51 @@
       "count": 1
     },
     {
+      "target": "sys_earth_qi",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_heaven_and_earth_qi",
+      "count": 1
+    },
+    {
+      "target": "sys_heaven_qi",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
       "target": "loc_tributary_of_the_river_of_time",
+      "count": 1
+    },
+    {
+      "target": "sys_great_strength_true_martial_physique",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_will",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_ascension",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_zombie",
       "count": 1
     },
     {
@@ -380,6 +548,18 @@
       "count": 1
     },
     {
+      "target": "res_ten_thousand_year_profound_ice",
+      "count": 1
+    },
+    {
+      "target": "res_white_spiral_silk",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_blessed_land_consolidation",
+      "count": 1
+    },
+    {
       "target": "fac_snowy_mountain_alliance",
       "count": 1
     },
@@ -389,6 +569,14 @@
     },
     {
       "target": "gu_fate_gu",
+      "count": 1
+    },
+    {
+      "target": "move_icy_drill_stardust",
+      "count": 1
+    },
+    {
+      "target": "move_icy_stardust",
       "count": 1
     },
     {
@@ -416,6 +604,14 @@
       "count": 1
     },
     {
+      "target": "res_six_headed_snake_blood",
+      "count": 1
+    },
+    {
+      "target": "res_underworld_jellyfish",
+      "count": 1
+    },
+    {
       "target": "char_fairy_yu_lu",
       "count": 1
     },
@@ -425,6 +621,10 @@
     },
     {
       "target": "loc_icy_plain",
+      "count": 1
+    },
+    {
+      "target": "sys_human_qi",
       "count": 1
     }
   ],
@@ -436,12 +636,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -451,7 +652,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -463,7 +664,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -475,7 +676,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -487,7 +688,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "with-hei-tribe",
       "text_origin": "source_excerpt",
@@ -502,11 +703,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "with-hei-tribe",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "reg_northern_plains",
         "char_chang_shan_yin",
         "fac_gu_masters"
@@ -519,7 +721,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "with-hei-tribe",
       "text_origin": "source_excerpt"
@@ -531,7 +733,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "with-hei-tribe",
       "text_origin": "source_excerpt"
@@ -543,7 +745,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "a-third-time-path-gu",
       "text_origin": "source_excerpt"
@@ -555,10 +757,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-ascension",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_vital_gu",
+        "sys_gu_recipe"
+      ]
     },
     {
       "text": "The cocoon breaks into a colorful butterfly trailing rainbow light, and he names the result Immortal Gu Man as Before. River as before and mountain as before combine in the resonance of heaven and earth into Immortal Gu Landscape as Before, which he reads as their effect elevated and which was no part of his goal. He survives the tribulation a Gu Immortal, with Eighty-Eight True Yang Building’s divert disaster Gu shielding him from the chaotic lightning balls while calamity and tribulation form inside his own immortal aperture.",
@@ -567,13 +773,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-ascension",
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_man_as_before_immortal_gu",
         "gu_river_as_before_gu",
+        "sys_immortal_gu",
+        "move_landscape_as_before",
+        "house_eighty_eight_true_yang_building",
         "gu_divert_disaster_immortal_gu"
       ]
     },
@@ -596,7 +805,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bidding-through-the-eleventh-secret-room",
       "text_origin": "source_excerpt"
@@ -608,7 +817,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "the-one-lifespan-gu-already-spent",
       "text_origin": "source_excerpt",
@@ -623,7 +832,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "northern-plains-identity-exposed",
       "text_origin": "source_excerpt",
@@ -639,7 +848,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "vouching-for-xing-xiang-zi",
       "text_origin": "source_excerpt",
@@ -655,7 +864,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pulled-into-the-stand-against-blazing-heaven-demoness",
       "text_origin": "source_excerpt",
@@ -670,7 +879,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reading-the-one-finger-flow-shark",
       "text_origin": "source_excerpt"
@@ -682,7 +891,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "healing-skill-compared-to-doctor-yin-xuan",
       "text_origin": "source_excerpt",
@@ -697,7 +906,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "keeping-resources-through-calamity",
       "text_origin": "source_excerpt"
@@ -709,7 +918,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "repairing-luo-po-valley",
       "text_origin": "source_excerpt",
@@ -724,7 +933,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "brought-into-the-new-agreement",
       "text_origin": "source_excerpt",
@@ -739,7 +948,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ending-the-featherman-threat",
       "text_origin": "source_excerpt"
@@ -751,7 +960,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "delaying-the-immortal-zombie",
       "text_origin": "source_excerpt",
@@ -767,10 +976,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "controlling-gu-worms-inside-fang-yuans-formation",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_formation",
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "Tai Bai Yun Sheng and the featherman Gu Immortal Zhou Zhong are stationed not far from Fang Yuan near Luo Po Valley, held in reserve as backup if needed.",
@@ -779,7 +992,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "stationed-as-backup-near-luo-po-valley",
       "text_origin": "source_excerpt",
@@ -794,7 +1007,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "restoring-luo-po-valley",
       "text_origin": "source_excerpt",
@@ -809,10 +1022,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "piloting-the-immortal-gu-house",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house",
+        "house_graceful_chaotic_duel_stage"
+      ]
     },
     {
       "text": "When Bo Qing’s blade takes Fairy Li Shan’s head, Tai Bai Yun Sheng activates man as before Immortal Gu at the crucial moment and restores her, though Bo Qing’s immediate follow-up strike kills her regardless.",
@@ -821,7 +1038,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "restoring-fairy-li-shan-with-man-as-before",
       "text_origin": "source_excerpt",
@@ -836,7 +1053,7 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "suggesting-the-use-of-defy",
       "text_origin": "source_excerpt"
@@ -848,7 +1065,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fang-yuans-assessment",
       "text_origin": "source_excerpt",
@@ -863,10 +1080,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-gu-handed-to-fang-yuan",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_man_as_before"
+      ]
     },
     {
       "text": "Looking over the Immortal Gu that Regret Pool has refined again, Tai Bai Yun Sheng notes that none of them are time path, the path he cultivates.",
@@ -875,10 +1095,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "no-time-path-immortal-gu-at-regret-pool",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_regret_pool"
+      ]
     },
     {
       "text": "He now holds a cloud path Immortal Gu, cloud path having originally been his secondary cultivation.",
@@ -887,7 +1110,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "cloud-path-immortal-gu",
       "text_origin": "source_excerpt"
@@ -899,7 +1122,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "cleared-of-suspicion-as-a-traitor",
       "text_origin": "source_excerpt"
@@ -927,7 +1150,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shielding-allies-with-cloud-rings",
       "text_origin": "source_excerpt"
@@ -939,10 +1162,13 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "struck-down-inside-the-regional-wall",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "path_time"
+      ]
     },
     {
       "text": "When the mysterious rank eight Gu Immortal grows to a normal human size and arrives to turn the battle against the Central Continent Gu Immortals, Tai Bai Yun Sheng kneels with tears running down his face and calls him master. The purple haired old man answers that he remembers giving him a time path true inheritance, and tells Old Ancestor Xue Hu shortly after that he has many names but may be called Purple Mountain True Monarch.",
@@ -951,7 +1177,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "master-who-gave-him-time-path-true-inheritance",
       "text_origin": "source_excerpt",
@@ -968,7 +1194,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "pulled-onto-the-king-lotus-leaf",
       "text_origin": "source_excerpt",
@@ -985,7 +1211,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death",
       "text_origin": "source_excerpt"
@@ -997,7 +1223,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "snowy-mountain-losses",
       "text_origin": "source_excerpt",
@@ -1012,7 +1238,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "landscape-as-before-and-man-as-befores-origin",
       "text_origin": "source_excerpt"
@@ -1024,7 +1250,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-and-heavens-will",
       "text_origin": "source_excerpt"
@@ -1036,7 +1262,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "the-lie-behind-purple-mountain-true-monarchs-title",
       "text_origin": "source_excerpt"
@@ -1048,7 +1274,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "choosing-the-third-true-inheritance-as-a-youth",
       "text_origin": "source_excerpt"
@@ -1133,7 +1359,7 @@
     "Paths": {
       "text": "Time path Cloud path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Northern Plains",
@@ -1143,7 +1369,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "righteous path as of ch. 524",
@@ -1170,12 +1396,15 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_time",
+      "path_cloud"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": "righteous path as of ch. 524",

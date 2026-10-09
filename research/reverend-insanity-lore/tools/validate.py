@@ -123,7 +123,7 @@ def _errs(value, schema, base):
 def collect_refs(node, out):
     if isinstance(node, dict):
         for k, v in node.items():
-            if k in ('id', 'source_id', 'url', 'text', 'en', 'ru', 'zh', 'pinyin'):
+            if k in ('id', 'type', 'entity_type', 'source_id', 'url', 'text', 'en', 'ru', 'zh', 'pinyin', 'role', 'aliases'):
                 continue
             collect_refs(v, out)
     elif isinstance(node, list):

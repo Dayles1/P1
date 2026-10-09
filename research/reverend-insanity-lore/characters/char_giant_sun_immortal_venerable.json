@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 426,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     383,
@@ -55,8 +55,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_luck",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 568,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -233,6 +257,222 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_thirty_eight_sealing_arts",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 642,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_golden_top_ox_hair",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2194,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_unforeseen_disaster",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2196,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_destined_birth_through_luck",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2274,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_poor_luck_silver_hook",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2280,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_soft_gold_crashing_pillar",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2281,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_i_reside_in_all_living_beings",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2314,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_nothing_is_certain_except_success",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2315,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_ringing_alarm_bell",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_all_living_beings_luck_true_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_giant_sun_immortal_venerable_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_giant_sun_luck_path_true_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_heaven_and_earth_luck_true_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_luck_path_supreme_true_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_possession_true_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_self_luck_true_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_gu_house",
+      "target": "house_calamity_luck_altar",
+      "role": "owner",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1180,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_gu_house",
+      "target": "house_luck_suppression_heavenly_palace",
+      "role": "owner",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1242,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -241,11 +481,35 @@
       "count": 4
     },
     {
+      "target": "inh_heaven_and_earth_luck_true_inheritance",
+      "count": 4
+    },
+    {
+      "target": "house_calamity_luck_altar",
+      "count": 4
+    },
+    {
+      "target": "house_luck_suppression_heavenly_palace",
+      "count": 4
+    },
+    {
+      "target": "move_soft_gold_crashing_pillar",
+      "count": 4
+    },
+    {
       "target": "reg_northern_plains",
       "count": 3
     },
     {
+      "target": "inh_giant_sun_immortal_venerable_inheritance",
+      "count": 3
+    },
+    {
       "target": "gu_divert_disaster_immortal_gu",
+      "count": 3
+    },
+    {
+      "target": "path_luck",
       "count": 3
     },
     {
@@ -257,7 +521,15 @@
       "count": 3
     },
     {
+      "target": "inh_possession_true_inheritance",
+      "count": 3
+    },
+    {
       "target": "gu_man_qi_gu",
+      "count": 3
+    },
+    {
+      "target": "inh_luck_path_supreme_true_inheritance",
       "count": 3
     },
     {
@@ -269,7 +541,19 @@
       "count": 3
     },
     {
+      "target": "inh_giant_sun_luck_path_true_inheritance",
+      "count": 3
+    },
+    {
       "target": "gu_dog_shit_luck",
+      "count": 3
+    },
+    {
+      "target": "inh_self_luck_true_inheritance",
+      "count": 3
+    },
+    {
+      "target": "move_ringing_alarm_bell",
       "count": 3
     },
     {
@@ -285,7 +569,15 @@
       "count": 3
     },
     {
+      "target": "move_destined_birth_through_luck",
+      "count": 3
+    },
+    {
       "target": "gu_light_gu",
+      "count": 3
+    },
+    {
+      "target": "move_poor_luck_silver_hook",
       "count": 3
     },
     {
@@ -293,8 +585,36 @@
       "count": 3
     },
     {
+      "target": "move_i_reside_in_all_living_beings",
+      "count": 3
+    },
+    {
+      "target": "move_nothing_is_certain_except_success",
+      "count": 3
+    },
+    {
+      "target": "move_thirty_eight_sealing_arts",
+      "count": 2
+    },
+    {
+      "target": "inh_all_living_beings_luck_true_inheritance",
+      "count": 2
+    },
+    {
       "target": "gu_familial_emotion_gu",
       "count": 2
+    },
+    {
+      "target": "move_golden_top_ox_hair",
+      "count": 2
+    },
+    {
+      "target": "move_unforeseen_disaster",
+      "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "fac_longevity_heaven",
@@ -306,6 +626,14 @@
     },
     {
       "target": "char_long_hair_ancestor",
+      "count": 2
+    },
+    {
+      "target": "evt_era_late",
+      "count": 2
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 2
     },
     {
@@ -321,6 +649,10 @@
       "count": 2
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 2
+    },
+    {
       "target": "gu_special_will_gu",
       "count": 2
     },
@@ -330,6 +662,10 @@
     },
     {
       "target": "char_thieving_heaven_demon_venerable",
+      "count": 2
+    },
+    {
+      "target": "evt_era_medieval",
       "count": 2
     },
     {
@@ -349,7 +685,23 @@
       "count": 2
     },
     {
+      "target": "evt_arc_northern_plains_imperial_court",
+      "count": 2
+    },
+    {
       "target": "char_primordial_origin_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_righteous_path",
+      "count": 1
+    },
+    {
+      "target": "path_food",
       "count": 1
     },
     {
@@ -362,6 +714,10 @@
     },
     {
       "target": "fac_ma_tribe",
+      "count": 1
+    },
+    {
+      "target": "sys_prophecy_of_three_venerables",
       "count": 1
     },
     {
@@ -389,6 +745,10 @@
       "count": 1
     },
     {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -413,11 +773,23 @@
       "count": 1
     },
     {
+      "target": "sys_guest_token",
+      "count": 1
+    },
+    {
       "target": "char_song_qie_xing",
       "count": 1
     },
     {
+      "target": "sys_owner_token",
+      "count": 1
+    },
+    {
       "target": "char_reckless_savage_demon_venerable",
+      "count": 1
+    },
+    {
+      "target": "move_primordial_ash_owl_transformation",
       "count": 1
     },
     {
@@ -433,11 +805,43 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_special_will",
+      "count": 1
+    },
+    {
+      "target": "sys_yellow_apricot_immortal_essence",
+      "count": 1
+    },
+    {
+      "target": "sys_otherworldly_demon",
+      "count": 1
+    },
+    {
       "target": "char_ma_hong_yun",
       "count": 1
     },
     {
+      "target": "move_winged_blade",
+      "count": 1
+    },
+    {
+      "target": "sys_red_date_immortal_essence",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_mo_tan_sang",
+      "count": 1
+    },
+    {
+      "target": "race_inkmen",
       "count": 1
     },
     {
@@ -450,6 +854,10 @@
     },
     {
       "target": "loc_old_earth_wood",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
       "count": 1
     }
   ],
@@ -473,7 +881,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "where-he-enters-the-story",
       "text_origin": "source_excerpt",
@@ -489,7 +897,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "where-he-enters-the-story",
       "text_origin": "source_excerpt",
@@ -510,7 +918,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "where-he-enters-the-story",
       "text_origin": "source_excerpt"
@@ -522,10 +930,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "remnant-will",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_eighty_eight_true_yang_building"
+      ]
     },
     {
       "text": "Giant Sun innovated the luck path and kept that work hidden while he lived.",
@@ -534,10 +945,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "path",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "path_luck"
+      ]
     },
     {
       "text": "Inside Eighty-Eight True Yang Building’s true inheritance secluded domain, true inheritances come in ordinary, unparalleled, and supreme tiers. A bowl-sized light lump is ordinary, a basin-sized lump is unparalleled, and above unparalleled sits supreme; only three supreme true inheritances sit in the whole domain. Receiving a true inheritance here means passing its test, and those tests wipe away another batch of winners even after entry.",
@@ -546,7 +960,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "true-inheritances",
       "text_origin": "source_excerpt"
@@ -589,12 +1003,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ambush-on-the-will",
       "text_origin": "source_excerpt",
       "mentions": [
-        "gu_special_will_gu"
+        "gu_special_will_gu",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -634,7 +1049,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "direct-fight-with-the-will",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "At a later auction, Gu Immortals bid on the essence of that luck path true inheritance, beginning with Gu recipes for luck inspection Gu as one of its main foundations.",
@@ -646,7 +1064,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "luck-path-auction",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_recipe"
+      ]
     },
     {
       "text": "During the hundred days battle at Luo Po valley, Shadow Sect’s Qin Bai Sheng sneers that Giant Sun Immortal Venerable returned empty-handed after encountering a Thieving Heaven true inheritance even after reaching rank nine, that he got nothing, suffered a loss and ended in a pathetic state, and that this is why he hates otherworldly demons so much. Feng Jiu Ge does not refute it, and offers a theory that Thieving Heaven Demon Venerable’s otherworldly origin produced space path dao marks foreign to the five regions and nine heavens, then says Giant Sun wanted the true inheritance but was afraid of the implications, so he failed and suffered a loss, unable to do anything about it.",
@@ -655,7 +1076,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "accounts-of-the-thieving-heaven-loss",
       "text_origin": "source_excerpt",
@@ -663,6 +1084,7 @@
         "loc_luo_po_valley",
         "fac_shadow_sect",
         "char_qin_bai_sheng",
+        "inh_thieving_heaven_true_inheritance",
         "char_feng_jiu_ge",
         "char_thieving_heaven_demon_venerable"
       ]
@@ -677,7 +1099,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "essence-spent-in-the-tribulation-battle",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_graceful_chaotic_duel_stage"
+      ]
     },
     {
       "text": "One of Giant Sun Immortal Venerable’s most important goals in setting up Eighty-Eight True Yang Building was to ransack lifespan Gu across the whole of Northern Plains and extend his own lifespan, with feeding wisdom Gu a secondary aim. In his later years wisdom Gu went hungry for a long period and had to go into deep sleep, unusable.",
@@ -686,7 +1111,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eighty-eight-true-yang-buildings-purpose",
       "text_origin": "source_excerpt",
@@ -705,7 +1130,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "rank",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_righteous_path",
+        "sys_gu_master"
+      ]
     },
     {
       "text": "In the Medieval Antiquity Era, three hundred thousand years before the present, Genesis Lotus, Thieving Heaven, and Giant Sun appear in succession.",
@@ -717,7 +1146,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "era-roster",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "evt_era_medieval"
+      ]
     },
     {
       "text": "A late roster of the Ten Venerables places him in the Medieval Antiquity Era beside Genesis Lotus and Thieving Heaven, with Spectral Soul and Paradise Earth listed under Late Antiquity Era instead.",
@@ -731,7 +1163,8 @@
       "section": "ten-venerables-roster",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_paradise_earth_immortal_venerable"
+        "char_paradise_earth_immortal_venerable",
+        "evt_era_late"
       ]
     },
     {
@@ -741,11 +1174,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "remnant-body",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_luck_suppression_heavenly_palace",
         "char_yao_huang"
       ]
     },
@@ -773,6 +1207,8 @@
       "section": "calamity-luck-altar",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_calamity_luck_altar",
+        "sys_immortal_gu_house",
         "char_duke_long",
         "char_bing_sai_chuan"
       ]
@@ -821,7 +1257,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_heavenly_court",
-        "char_star_constellation_immortal_venerable"
+        "char_star_constellation_immortal_venerable",
+        "move_soft_gold_crashing_pillar"
       ]
     }
   ],
@@ -885,7 +1322,7 @@
     "Paths": {
       "text": "Luck path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Northern Plains",
@@ -895,7 +1332,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Venerable": {
       "text": "Number 8 of ten",
@@ -912,12 +1349,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_luck"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": null,
     "alignment": null,

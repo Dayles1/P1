@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1214,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1214,
@@ -54,11 +54,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_soul_lantern_gu",
       "count": 1
     },
     {
+      "target": "path_blood",
+      "count": 1
+    },
+    {
       "target": "char_giant_sun_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -109,7 +125,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "path",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "path_blood"
+        ]
       }
     ]
   },
@@ -130,7 +149,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ]
   },
@@ -185,6 +207,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_gu_immortal",
           "gu_soul_lantern_gu"
         ]
       },
@@ -213,6 +236,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_earth_extremity",
+          "sys_immortal_gu",
           "char_giant_sun_immortal_venerable"
         ]
       }

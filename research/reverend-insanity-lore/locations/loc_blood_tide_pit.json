@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1339,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1339,
@@ -64,6 +64,18 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_shang_clan",
       "count": 1
     },
@@ -76,6 +88,10 @@
       "count": 1
     },
     {
+      "target": "inh_blood_sea_true_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_shang_yan_fei",
       "count": 1
     },
@@ -85,6 +101,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -103,8 +123,11 @@
       "mentions": [
         "char_blood_sea_ancestor",
         "fac_shang_clan",
+        "sys_gu_master",
+        "inh_blood_sea_true_inheritance",
         "gu_blood_handprint_gu",
         "char_wu_du_xiu",
+        "sys_gu_immortal",
         "fac_wu_clan"
       ]
     },
@@ -120,6 +143,7 @@
       "section": "blood-flood",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_formation",
         "char_purple_mountain_true_monarch"
       ]
     },
@@ -178,6 +202,7 @@
       "section": "shang-yan-fei-inheritance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "reg_southern_border"
       ]
     }

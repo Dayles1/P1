@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 374,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     374
@@ -57,6 +57,10 @@
     },
     {
       "target": "char_tie_ruo_nan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -161,7 +165,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -179,11 +183,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "combination-with-golden-needle-gu",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "reg_southern_border",
           "loc_luchuan_river"
         ]

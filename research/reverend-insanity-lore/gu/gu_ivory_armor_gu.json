@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 316,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     316,
@@ -52,6 +52,18 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_ju_kai_bei",
+      "count": 1
+    },
+    {
+      "target": "sys_defensive_gu",
       "count": 1
     }
   ],
@@ -120,7 +132,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Ju Kai Bei’s whole body is covered in ivory armor with many scars and cracks, yet he stands straight like an iron tower.",
@@ -129,7 +144,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "battle-stage-coverage",
         "text_origin": "source_excerpt"
@@ -144,7 +159,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "killer-move-strain",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_defensive_gu"
+        ]
       }
     ]
   },
@@ -209,7 +227,7 @@
         ],
         "certainty": "inferred",
         "confidence": "C",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "eight-phantom-assault",
         "text_origin": "source_excerpt"

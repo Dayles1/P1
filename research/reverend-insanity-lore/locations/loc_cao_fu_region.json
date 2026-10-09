@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 489,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     489,
@@ -69,6 +69,10 @@
     {
       "target": "loc_hei_tribe_main_camp",
       "count": 2
+    },
+    {
+      "target": "sys_gu_house",
+      "count": 1
     },
     {
       "target": "fac_cheng_tribe",
@@ -139,12 +143,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_hei_tribe_main_camp",
+        "sys_gu_house",
         "fac_gu_masters"
       ]
     },
@@ -155,7 +160,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -174,7 +179,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "war-theater",
       "text_origin": "source_excerpt",
@@ -204,7 +209,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tribes-in-cao-fu",
       "text_origin": "source_excerpt"
@@ -216,7 +221,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-tribes-advance",
       "text_origin": "source_excerpt"
@@ -228,7 +233,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-tribes-advance",
       "text_origin": "source_excerpt"
@@ -240,7 +245,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-tribes-camp",
       "text_origin": "source_excerpt"
@@ -252,7 +257,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hei-tribes-camp",
       "text_origin": "source_excerpt"

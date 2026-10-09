@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 513,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     513
@@ -50,7 +50,15 @@
       "count": 3
     },
     {
+      "target": "evt_arc_imperial_court_contest",
+      "count": 1
+    },
+    {
       "target": "char_dong_fang_yu_liang",
+      "count": 1
+    },
+    {
+      "target": "move_seven_star_light",
       "count": 1
     }
   ],
@@ -173,6 +181,7 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "evt_arc_imperial_court_contest",
           "char_dong_fang_yu_liang",
           "char_hei_lou_lan"
         ]

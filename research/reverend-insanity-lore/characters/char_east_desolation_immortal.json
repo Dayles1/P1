@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1238,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1238,
@@ -81,6 +81,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_eight_extremities",
       "count": 1
     },
@@ -101,7 +105,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -111,7 +115,8 @@
         "fac_four_desolations",
         "char_south_desolation_immortal",
         "char_west_desolation",
-        "char_north_desolation_immortal"
+        "char_north_desolation_immortal",
+        "sys_gu_immortal"
       ]
     },
     {

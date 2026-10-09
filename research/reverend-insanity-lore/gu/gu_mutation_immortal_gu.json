@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1412,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1412,
@@ -70,6 +70,10 @@
       "count": 2
     },
     {
+      "target": "inh_reckless_savage_true_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_dancer_hong_yun",
       "count": 1
     },
@@ -83,6 +87,18 @@
     },
     {
       "target": "char_night_temptress",
+      "count": 1
+    },
+    {
+      "target": "sys_myriad_li_adaptation_formation",
+      "count": 1
+    },
+    {
+      "target": "house_myriad_year_flying_warship",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -168,7 +184,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effects",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       }
     ]
   },
@@ -226,7 +245,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -242,7 +261,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt"
@@ -257,7 +276,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "core-of-reckless-savage-inheritance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "inh_reckless_savage_true_inheritance"
+        ]
       },
       {
         "text": "Fang Yuan snatches mutation Immortal Gu from the dream realm that held it with Dancer Hong Yun, then leaves with Myriad Year Flying Warship while Thousand Transformations Ancestor tries to kill him for the theft.",
@@ -269,7 +291,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "fang-yuan-seizes-it",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "house_myriad_year_flying_warship"
+        ]
       }
     ]
   },

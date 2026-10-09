@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 657,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     657,
@@ -100,6 +100,10 @@
       "count": 2
     },
     {
+      "target": "house_investigation_courtyard",
+      "count": 2
+    },
+    {
       "target": "char_dong_fang_chang_fan",
       "count": 1
     },
@@ -133,6 +137,22 @@
     },
     {
       "target": "reg_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "house_red_fiend_divine_boat",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -188,7 +208,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "named-at-jade-pool",
       "text_origin": "source_excerpt",
@@ -206,7 +226,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "eastern-sea-connections",
       "text_origin": "source_excerpt",
@@ -227,12 +247,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "recipe-bid",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_yuan_tribe"
+        "fac_yuan_tribe",
+        "house_red_fiend_divine_boat",
+        "sys_immortal_gu_house",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -249,7 +272,8 @@
       "mentions": [
         "loc_yin_yang_blessed_land",
         "fac_dong_fang_tribe",
-        "fac_guan_tribe"
+        "fac_guan_tribe",
+        "sys_gu_immortal"
       ]
     },
     {

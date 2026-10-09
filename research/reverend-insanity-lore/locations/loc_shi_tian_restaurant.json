@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 264,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     264
@@ -61,6 +61,10 @@
     },
     {
       "target": "char_wei_yang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -120,7 +124,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_shang_clan_city",
-        "fac_gu_masters"
+        "fac_gu_masters",
+        "sys_gu_worms"
       ]
     },
     {

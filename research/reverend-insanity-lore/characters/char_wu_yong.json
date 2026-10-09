@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1215,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1215,
@@ -56,6 +56,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -112,6 +124,210 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_air_lock",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1386,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_finger_wind_dragon",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1387,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_chaotic_shooting_blades",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1389,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_soft_vajra_wind_chief",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1389,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_clear_jade_dripping_wind",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1390,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_clear_jade_lightning",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1390,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_clear_wind_blades",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1390,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_four_clear_transforming_winds",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1390,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_profound_immortal_sound",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1390,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_yin_wind_ghost_sickle_hand",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1390,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_snowy_wind_of_no_return",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2067,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_willow_wind",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2067,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_farewell_friend_wind",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_unlimited_wind",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_tao_zhu_true_inheritance",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1680,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_sheng_tian_true_inheritance",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2101,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_gu_house",
+      "target": "house_clear_jade_dripping_wind_tiny_bamboo_building",
+      "role": "controller",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1344,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -120,7 +336,67 @@
       "count": 4
     },
     {
+      "target": "house_clear_jade_dripping_wind_tiny_bamboo_building",
+      "count": 4
+    },
+    {
       "target": "gu_gentle_wind_gu",
+      "count": 3
+    },
+    {
+      "target": "move_air_lock",
+      "count": 3
+    },
+    {
+      "target": "move_finger_wind_dragon",
+      "count": 3
+    },
+    {
+      "target": "move_chaotic_shooting_blades",
+      "count": 3
+    },
+    {
+      "target": "move_soft_vajra_wind_chief",
+      "count": 3
+    },
+    {
+      "target": "move_clear_jade_dripping_wind",
+      "count": 3
+    },
+    {
+      "target": "move_clear_wind_blades",
+      "count": 3
+    },
+    {
+      "target": "move_four_clear_transforming_winds",
+      "count": 3
+    },
+    {
+      "target": "move_profound_immortal_sound",
+      "count": 3
+    },
+    {
+      "target": "move_yin_wind_ghost_sickle_hand",
+      "count": 3
+    },
+    {
+      "target": "inh_tao_zhu_true_inheritance",
+      "count": 3
+    },
+    {
+      "target": "move_unlimited_wind",
+      "count": 3
+    },
+    {
+      "target": "move_farewell_friend_wind",
+      "count": 3
+    },
+    {
+      "target": "move_snowy_wind_of_no_return",
+      "count": 3
+    },
+    {
+      "target": "inh_sheng_tian_true_inheritance",
       "count": 3
     },
     {
@@ -132,8 +408,20 @@
       "count": 3
     },
     {
+      "target": "move_clear_jade_lightning",
+      "count": 2
+    },
+    {
+      "target": "move_willow_wind",
+      "count": 2
+    },
+    {
       "target": "reg_southern_border",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_qiao_si_liu",
@@ -157,6 +445,10 @@
     },
     {
       "target": "fac_qiao_clan",
+      "count": 2
+    },
+    {
+      "target": "sys_super_gu_formation",
       "count": 2
     },
     {
@@ -188,6 +480,10 @@
       "count": 2
     },
     {
+      "target": "inh_seven_illusions_true_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_purple_mountain_true_monarch",
       "count": 2
     },
@@ -216,6 +512,18 @@
       "count": 2
     },
     {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
+    },
+    {
+      "target": "sys_white_litchi_immortal_essence",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
@@ -232,6 +540,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_reputation_restriction_immortal_gu",
       "count": 1
     },
@@ -241,6 +557,10 @@
     },
     {
       "target": "char_xia_fei_kuai",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_immortal_gu",
       "count": 1
     },
     {
@@ -276,11 +596,31 @@
       "count": 1
     },
     {
+      "target": "inh_fire_path_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "move_wooden_statue_murder",
+      "count": 1
+    },
+    {
+      "target": "sys_blood_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_purple_blood_river_formation",
+      "count": 1
+    },
+    {
       "target": "loc_blood_tide_pit",
       "count": 1
     },
     {
       "target": "char_wu_qiao",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -300,11 +640,19 @@
       "count": 1
     },
     {
+      "target": "move_reverse_flow_protection_seal",
+      "count": 1
+    },
+    {
       "target": "char_chai_po_jun",
       "count": 1
     },
     {
       "target": "char_shang_wu_jie",
+      "count": 1
+    },
+    {
+      "target": "house_beacon_tower",
       "count": 1
     },
     {
@@ -320,7 +668,27 @@
       "count": 1
     },
     {
+      "target": "move_hundred_and_eighty_slaves",
+      "count": 1
+    },
+    {
+      "target": "sys_red_date_immortal_essence",
+      "count": 1
+    },
+    {
+      "target": "sys_sound_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "move_ancient_sword_dragon_transformation",
+      "count": 1
+    },
+    {
       "target": "gu_dragon_strength_gu",
+      "count": 1
+    },
+    {
+      "target": "move_separation_song",
       "count": 1
     },
     {
@@ -340,6 +708,10 @@
       "count": 1
     },
     {
+      "target": "move_soul_search",
+      "count": 1
+    },
+    {
       "target": "fac_southern_alliance",
       "count": 1
     }
@@ -352,7 +724,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -370,7 +742,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -382,7 +754,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -394,11 +766,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wu-clan-seat",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu",
         "char_qiao_si_liu",
         "char_wu_yi_hai"
       ]
@@ -410,7 +783,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "meeting-wu-yi-hai",
       "text_origin": "source_excerpt",
@@ -425,7 +798,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "bloodline-acknowledgement",
       "text_origin": "source_excerpt"
@@ -437,10 +810,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "taking-full-control",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_super_gu_formation"
+      ]
     },
     {
       "text": "After Fang Yuan breaks the rules of the fight to save Wu Yu Bo, Wu Yong orders him secluded and made to forfeit immortal essence stones, even though the rescue was a merit.",
@@ -449,7 +825,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "punishing-a-rule-breaking-rescue",
       "text_origin": "source_excerpt",
@@ -464,13 +840,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "frosty-peak-assignment",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_information_path_mortal_gu",
         "loc_frosty_peak",
-        "fac_xia_clan"
+        "fac_xia_clan",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -480,7 +858,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mount-snail-task",
       "text_origin": "source_excerpt",
@@ -495,7 +873,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "testing-wu-fa",
       "text_origin": "source_excerpt",
@@ -510,11 +888,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "three-tasks-and-a-private-verdict",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_wild_immortal_gu",
         "fac_yi_clan",
         "fac_qiao_clan"
       ]
@@ -526,7 +905,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "real-intent-behind-the-tasks",
       "text_origin": "source_excerpt"
@@ -538,7 +917,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "a-brother-kept-at-arms-length",
       "text_origin": "source_excerpt"
@@ -550,7 +929,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sent-back-regardless",
       "text_origin": "source_excerpt",
@@ -566,7 +945,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "framing-at-blood-tide-pit",
       "text_origin": "source_excerpt",
@@ -583,10 +962,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tie-mian-shen-clears-qiao-zhi-cai",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "inh_seven_illusions_true_inheritance"
+      ]
     },
     {
       "text": "Investigating the Seven Illusions Demon Immortal that has already killed Wu clan’s Wu Yuan Ju and Rong Hao, Wu Yong is led with Qiao Zhi Cai and Tie Mian Shen back to blood tide pit, where he shatters a swarming ambush of blood beasts and finds the rainbow coloured Gu Immortal hiding in the drained pit, only for the sky to turn purple and a blood river formation to close on all three. A second Gu Immortal then rises out of the blood river as rank eight Purple Mountain True Monarch, names the trap his own purple blood river formation, and states outright that his goal is to kill Wu Yong so that Wu clan falls into chaos and the other clans tear it apart. At Wu clan’s ancestral hall the guarding Gu Immortal cries out that Wu Yong’s life tablet Gu and soul lantern Gu have been destroyed and asks whether he is dead.",
@@ -595,7 +977,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ambush-at-blood-tide-pit",
       "text_origin": "source_excerpt",
@@ -611,7 +993,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wu-clans-succession-crisis",
       "text_origin": "source_excerpt",
@@ -627,10 +1009,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "a-hidden-fourth-immortal-gu-house",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house",
+        "house_clear_jade_dripping_wind_tiny_bamboo_building"
+      ]
     },
     {
       "text": "News that Wu Yong has died reaches Chi clan’s first supreme elder and throws Southern Border into chaos.",
@@ -639,7 +1025,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reported-dead",
       "text_origin": "source_excerpt",
@@ -654,7 +1040,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "escaping-the-purple-blood-river-formation",
       "text_origin": "source_excerpt",
@@ -670,7 +1056,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "reinforcements-a-day-out",
       "text_origin": "source_excerpt"
@@ -682,7 +1068,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "backing-wu-yi-hais-loans",
       "text_origin": "source_excerpt",
@@ -697,7 +1083,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intercepting-alone",
       "text_origin": "source_excerpt"
@@ -709,7 +1095,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intercepting-alone",
       "text_origin": "source_excerpt"
@@ -721,7 +1107,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "backlash-and-retreat",
       "text_origin": "source_excerpt",
@@ -736,7 +1122,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "weighing-feng-jiu-ge-as-a-bargaining-chip",
       "text_origin": "source_excerpt",
@@ -810,7 +1196,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Wu Clan as of ch. 1215",
@@ -837,7 +1223,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

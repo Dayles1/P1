@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1175,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1175,
@@ -69,6 +69,10 @@
       "count": 2
     },
     {
+      "target": "sys_ten_big_mystical_gu",
+      "count": 2
+    },
+    {
       "target": "gu_no_gu",
       "count": 2
     },
@@ -78,6 +82,14 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 1
     },
     {
@@ -98,6 +110,10 @@
     },
     {
       "target": "loc_yi_tian_mountain",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     }
   ],
@@ -166,7 +182,8 @@
         "section": "use-with-immortal-gu-no",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_no_gu"
+          "gu_no_gu",
+          "sys_gu_formation"
         ]
       }
     ]
@@ -225,7 +242,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -233,9 +250,12 @@
           "loc_crazed_demon_cave",
           "char_pang_shan",
           "char_fang_yuan",
+          "sys_immortal_gu",
+          "sys_ten_big_mystical_gu",
           "gu_spring_autumn_cicada",
           "loc_yi_tian_mountain",
           "char_limitless_demon_venerable",
+          "sys_the_legends_of_ren_zu",
           "char_not_immortal",
           "char_chu_du"
         ]

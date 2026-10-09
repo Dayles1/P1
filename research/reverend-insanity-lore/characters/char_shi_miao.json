@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1688,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1688,
@@ -45,12 +45,28 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_eastern_sea",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_granny_rong",
@@ -77,7 +93,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
+      "count": 1
+    },
+    {
       "target": "fac_eastern_sea_righteous_path",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_mountain_ranges",
       "count": 1
     },
     {
@@ -94,6 +122,14 @@
     },
     {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
+      "count": 1
+    },
+    {
+      "target": "move_five_finger_fist_heart_sword",
       "count": 1
     }
   ],
@@ -114,7 +150,8 @@
         "char_granny_rong",
         "char_yang_zi_he",
         "char_zhang_yin",
-        "reg_eastern_sea"
+        "reg_eastern_sea",
+        "house_dragon_palace"
       ]
     },
     {
@@ -127,7 +164,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Narration places him in the four person alliance of Granny Rong, Yang Zi He, Zhang Yin, and Shi Miao opposing Eastern Sea righteous path rank eights and Duke Long. In battle he spatters blood while retreating from an intense explosion.",
@@ -188,6 +228,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_heavenly_court",
+        "house_heaven_overseeing_tower",
         "char_fang_yuan"
       ]
     }
@@ -237,7 +278,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Dead",
@@ -259,7 +300,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Dead",
     "alignment": null,

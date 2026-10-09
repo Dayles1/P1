@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 536,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     536,
@@ -84,6 +84,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -116,7 +120,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hidden-elder-at-du-jiao",
       "text_origin": "source_excerpt",
@@ -125,6 +129,7 @@
         "char_ye_lui_sang",
         "fac_alliance_of_seven_armies",
         "char_wu_ming",
+        "sys_gu_master",
         "fac_gu_masters"
       ]
     },
@@ -135,7 +140,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ma-tribe-allegiance",
       "text_origin": "source_excerpt",
@@ -151,7 +156,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "large-tribe-roster",
       "text_origin": "source_excerpt"
@@ -163,7 +168,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "assassin-reputation",
       "text_origin": "source_excerpt"
@@ -175,7 +180,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "contest-aftermath",
       "text_origin": "source_excerpt",

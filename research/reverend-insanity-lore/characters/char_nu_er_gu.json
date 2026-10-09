@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1107,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1107,
@@ -38,6 +38,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -66,6 +78,10 @@
       "count": 4
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_northern_plains",
       "count": 1
     },
@@ -82,11 +98,19 @@
       "count": 2
     },
     {
+      "target": "house_loud_thunder_hall",
+      "count": 2
+    },
+    {
       "target": "char_pi_shui_han",
       "count": 1
     },
     {
       "target": "char_unfettered_scholar",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -102,6 +126,14 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_blood_battle_martial_competition",
+      "count": 1
+    },
+    {
       "target": "char_chu_du",
       "count": 1
     },
@@ -111,6 +143,10 @@
     },
     {
       "target": "char_ye_lui_qun_xing",
+      "count": 1
+    },
+    {
+      "target": "house_golden_dawn_hall",
       "count": 1
     }
   ],
@@ -122,7 +158,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -130,6 +166,7 @@
         "loc_iron_eagle_blessed_land",
         "char_he_ruo",
         "fac_nu_er_tribe",
+        "sys_gu_immortal",
         "fac_huang_jin_bloodline",
         "char_unfettered_scholar",
         "char_pi_shui_han",
@@ -144,7 +181,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -156,11 +193,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blood-battle-competition-role",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu_house",
+        "house_loud_thunder_hall",
         "char_nu_er_qian"
       ]
     },
@@ -171,7 +210,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-among-experts",
       "text_origin": "source_excerpt",
@@ -186,10 +225,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-among-experts",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_golden_dawn_hall"
+      ]
     },
     {
       "text": "Fang Yuan later ranks him with Ye Lui Qun Xing and Unfettered Scholar among rank seven characters he is wary of.",
@@ -198,7 +240,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-among-experts",
       "text_origin": "source_excerpt",
@@ -252,7 +294,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Nu Er Tribe",
@@ -279,7 +321,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

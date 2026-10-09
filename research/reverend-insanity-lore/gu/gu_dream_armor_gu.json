@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2088,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2088,
@@ -66,6 +66,10 @@
       "count": 4
     },
     {
+      "target": "move_shocking_departure_of_year_dream_wave",
+      "count": 4
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -98,7 +102,31 @@
       "count": 2
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_pure_dream_reality_seeker_physique",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
+      "count": 1
+    },
+    {
       "target": "gu_dream_token",
+      "count": 1
+    },
+    {
+      "target": "path_dream",
+      "count": 1
+    },
+    {
+      "target": "sys_investigative_gu",
       "count": 1
     },
     {
@@ -115,6 +143,10 @@
     },
     {
       "target": "loc_mental_domain",
+      "count": 1
+    },
+    {
+      "target": "sys_heaven_path_dream_realm",
       "count": 1
     }
   ],
@@ -181,7 +213,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "appearance",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       }
     ],
     "visual_confidence": "text_described"
@@ -201,6 +236,7 @@
         "section": "compound-killer-move",
         "text_origin": "source_excerpt",
         "mentions": [
+          "move_shocking_departure_of_year_dream_wave",
           "gu_departure_gu",
           "gu_great_shock_gu",
           "gu_year_gu",
@@ -287,8 +323,11 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_immortal_gu",
           "gu_dream_token",
-          "gu_dreaming_gu"
+          "house_dragon_palace",
+          "gu_dreaming_gu",
+          "sys_pure_dream_reality_seeker_physique"
         ]
       },
       {
@@ -317,7 +356,8 @@
         "mentions": [
           "char_meng_qiu_zhen",
           "gu_dream_creation_gu",
-          "gu_dream_butterfly_gu"
+          "gu_dream_butterfly_gu",
+          "sys_investigative_gu"
         ]
       },
       {

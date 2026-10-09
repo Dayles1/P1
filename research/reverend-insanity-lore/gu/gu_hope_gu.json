@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 5,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     5,
@@ -46,6 +46,10 @@
       "count": 2
     },
     {
+      "target": "sys_awakening_ceremony",
+      "count": 2
+    },
+    {
       "target": "gu_strength_gu",
       "count": 2
     },
@@ -63,6 +67,10 @@
     },
     {
       "target": "gu_fear_gu",
+      "count": 2
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 2
     },
     {
@@ -94,11 +102,47 @@
       "count": 1
     },
     {
+      "target": "sys_a_grade",
+      "count": 1
+    },
+    {
+      "target": "sys_aperture",
+      "count": 1
+    },
+    {
+      "target": "sys_aptitude",
+      "count": 1
+    },
+    {
+      "target": "sys_b_grade",
+      "count": 1
+    },
+    {
+      "target": "sys_c_grade",
+      "count": 1
+    },
+    {
+      "target": "sys_d_grade",
+      "count": 1
+    },
+    {
+      "target": "sys_primeval_sea",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_beast",
+      "count": 1
+    },
+    {
       "target": "fac_gu_yue_clan",
       "count": 1
     },
     {
       "target": "gu_wisdom_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_strength_wisdom_and_hope",
       "count": 1
     },
     {
@@ -114,7 +158,23 @@
       "count": 1
     },
     {
+      "target": "evt_legend_rules_and_regulations",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_attitude",
+      "count": 1
+    },
+    {
       "target": "reg_western_desert",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_road_of_life_and_death",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_becoming_extraordinary",
       "count": 1
     },
     {
@@ -126,7 +186,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_self_gu",
+      "count": 1
+    },
+    {
+      "target": "path_human",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_facing_a_strong_predicament",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_hope_triumphs_again",
       "count": 1
     },
     {
@@ -135,6 +211,10 @@
     },
     {
       "target": "gu_humility_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_finding_wisdom",
       "count": 1
     }
   ],
@@ -199,7 +279,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -279,12 +359,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "fac_gu_yue_clan",
+          "sys_awakening_ceremony",
           "loc_qing_mao_mountain",
           "char_fang_yuan"
         ]
@@ -296,7 +377,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "awakening-the-aperture",
         "text_origin": "source_excerpt"
@@ -308,7 +389,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "awakening-the-aperture",
         "text_origin": "source_excerpt"
@@ -320,7 +401,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "awakening-the-aperture",
         "text_origin": "source_excerpt"
@@ -332,7 +413,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "awakening-the-aperture",
         "text_origin": "source_excerpt"
@@ -368,7 +449,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "awakening-the-aperture",
         "text_origin": "source_excerpt",
@@ -384,7 +465,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "in-the-ren-zu-legend",
         "text_origin": "source_excerpt",
@@ -401,7 +482,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "in-the-ren-zu-legend",
         "text_origin": "source_excerpt",
@@ -416,7 +497,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "in-the-ren-zu-legend",
         "text_origin": "source_excerpt",
@@ -436,11 +517,13 @@
         "section": "human-path-reading",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_the_legends_of_ren_zu",
           "gu_vanity_gu",
           "gu_guts_gu",
           "gu_pride_gu",
           "gu_self_gu",
-          "gu_suffering_gu"
+          "gu_suffering_gu",
+          "sys_gu_worms"
         ]
       },
       {

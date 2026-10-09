@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 852,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     852,
@@ -65,8 +65,36 @@
       "count": 3
     },
     {
+      "target": "move_six_illusion_star_bodies",
+      "count": 3
+    },
+    {
+      "target": "move_position_star_swap",
+      "count": 3
+    },
+    {
+      "target": "move_star_soul_battlefield",
+      "count": 3
+    },
+    {
+      "target": "move_star_cloud_grindstone",
+      "count": 2
+    },
+    {
+      "target": "move_star_snake_rope",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     },
     {
       "target": "gu_starlight_immortal_gu",
@@ -98,6 +126,10 @@
     },
     {
       "target": "gu_fixed_immortal_travel",
+      "count": 1
+    },
+    {
+      "target": "move_eat_strength",
       "count": 1
     }
   ],
@@ -181,7 +213,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "Fang Yuan’s star cloud grindstone, star snake rope, and six illusion star bodies all use Star Mark, Star Shoot, and Starlight as their cores.",
@@ -207,6 +242,7 @@
         "section": "battlefield-killer-move",
         "text_origin": "source_excerpt",
         "mentions": [
+          "move_star_soul_battlefield",
           "gu_cleanse_soul"
         ]
       }
@@ -305,7 +341,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_star_form_blessed_land",
-          "char_fang_yuan"
+          "char_fang_yuan",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -321,6 +358,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_sixth_hair",
+          "move_eat_strength",
           "gu_fixed_immortal_travel",
           "char_ying_wu_xie"
         ]

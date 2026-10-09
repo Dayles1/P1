@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 364,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     364,
@@ -70,11 +70,19 @@
       "count": 1
     },
     {
+      "target": "evt_era_immemorial",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
       "target": "char_mo_wu_tian",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -104,13 +112,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "young-master-and-phantom-path",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_yan_jun",
-        "char_tie_ba_xiu"
+        "char_tie_ba_xiu",
+        "evt_era_immemorial"
       ]
     },
     {
@@ -120,12 +129,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "at-san-cha-mountain",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
+        "sys_gu_master",
         "loc_yi_tian_mountain",
         "char_mo_wu_tian"
       ]
@@ -137,7 +147,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "yi-tian-mountain-war",
       "text_origin": "source_excerpt",

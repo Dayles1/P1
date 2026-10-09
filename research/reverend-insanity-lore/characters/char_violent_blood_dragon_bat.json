@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 407,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     407,
@@ -48,11 +48,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "char_blood_sea_ancestor",
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_lotus_sect",
+      "count": 1
+    },
+    {
+      "target": "house_illusion_garden",
       "count": 1
     },
     {
@@ -98,7 +110,8 @@
       "section": "not-a-gu-worm",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_gu_worms"
       ]
     },
     {
@@ -128,7 +141,9 @@
       "section": "rank-seven-strength",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_heavenly_lotus_sect"
+        "fac_heavenly_lotus_sect",
+        "sys_gu_immortal",
+        "house_illusion_garden"
       ]
     },
     {

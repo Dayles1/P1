@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1923,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1923,
@@ -52,6 +52,10 @@
     },
     {
       "target": "fac_shi_clan",
+      "count": 2
+    },
+    {
+      "target": "house_thought_expelling_pavilion",
       "count": 2
     },
     {
@@ -96,6 +100,10 @@
     },
     {
       "target": "fac_xiao_clan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     }
   ],
@@ -165,7 +173,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "conservative-flight",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal",
+        "house_thought_expelling_pavilion"
+      ]
     }
   ],
   "conflicts": [],

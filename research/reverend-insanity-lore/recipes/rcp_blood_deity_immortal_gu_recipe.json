@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 463,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     463,
@@ -123,6 +123,18 @@
       "count": 2
     },
     {
+      "target": "move_lightning_deity",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
       "target": "char_lang_ya_land_spirit",
       "count": 1
     },
@@ -143,6 +155,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
@@ -151,7 +167,15 @@
       "count": 1
     },
     {
+      "target": "sys_refinement_path_convention",
+      "count": 1
+    },
+    {
       "target": "char_fang_zheng",
+      "count": 1
+    },
+    {
+      "target": "house_demon_judgment_board",
       "count": 1
     },
     {
@@ -167,13 +191,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
-        "gu_blood_deity"
+        "gu_blood_deity",
+        "sys_gu_immortal",
+        "sys_gu_recipe"
       ]
     },
     {
@@ -183,7 +209,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "kept-back-from-a-wager",
       "text_origin": "source_excerpt",
@@ -198,7 +224,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ranked-among-his-most-guarded-recipes",
       "text_origin": "source_excerpt",
@@ -215,7 +241,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "extorted-from-vicious-lightning-fiend",
       "text_origin": "source_excerpt",
@@ -232,13 +258,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "weighing-whether-to-refine-it",
       "text_origin": "source_excerpt",
       "mentions": [
         "gu_wisdom_gu",
-        "fac_heavenly_court"
+        "sys_immortal_gu",
+        "fac_heavenly_court",
+        "house_demon_judgment_board"
       ]
     },
     {
@@ -263,7 +291,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "a-killer-move-drawn-from-the-recipe",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_lightning_deity"
+      ]
     },
     {
       "text": "Among the goals Fang Yuan tracks after the Refinement Path Convention, completing the Immortal Gu recipe of Blood Deity is one he does not reach; he manages only a small attempt at it.",
@@ -275,7 +306,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "a-small-attempt",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_refinement_path_convention"
+      ]
     },
     {
       "text": "Fang Yuan slowly completes the Blood Deity recipe and works out a further detail from it: using the finished Gu requires killing a blood relation, and how that relative dies decides the result. A relative who does not resist and gives up their life willingly produces a blood deity closely connected to the Gu Immortal and easy to manipulate; a relative who dies carrying hatred and anger risks a backlash on the owner instead. This is the reason Fang Yuan works to win over his half-brother Fang Zheng rather than discard him.",
@@ -284,7 +318,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "the-blood-relation-requirement",
       "text_origin": "source_excerpt",

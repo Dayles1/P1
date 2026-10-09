@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2081,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2081,
@@ -86,6 +86,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_house",
+      "count": 1
+    },
+    {
       "target": "gu_soldier_gu",
       "count": 1
     },
@@ -94,11 +98,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_wine_drinker_immortal_gu",
       "count": 1
     },
     {
       "target": "char_shen_shang",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -156,7 +168,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_hero_gu",
-          "gu_scholar_gu"
+          "gu_scholar_gu",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -172,7 +185,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_shen_shang",
-          "gu_beast_tamer_gu"
+          "gu_beast_tamer_gu",
+          "sys_gu_worms"
         ]
       }
     ]
@@ -239,6 +253,7 @@
           "char_zhao_shu_ye",
           "gu_thief_gu",
           "gu_officer_gu",
+          "sys_gu_house",
           "gu_labor_union_token_gu",
           "gu_union_head_gu",
           "gu_supervisor_gu"

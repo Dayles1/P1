@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2130,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_dao_veins_famous_mountains"
   },
   "chapters_cited": [
     2130,
@@ -32,8 +32,32 @@
   ],
   "relations": [
     {
+      "type": "path",
+      "target": "path_earth",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
       "type": "in_region",
       "target": "reg_western_desert",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -66,6 +90,14 @@
       "count": 2
     },
     {
+      "target": "path_earth",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_fang_dong_xi",
       "count": 2
     },
@@ -90,7 +122,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_mo_li",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_era_of_three_venerables",
       "count": 1
     },
     {
@@ -99,6 +139,14 @@
     },
     {
       "target": "loc_myriad_ore_desert",
+      "count": 1
+    },
+    {
+      "target": "house_earth_shuttle",
+      "count": 1
+    },
+    {
+      "target": "house_smoke_wave_building",
       "count": 1
     }
   ],
@@ -117,6 +165,7 @@
       "mentions": [
         "loc_sand_heap_blessed_land",
         "char_fang_dong_xi",
+        "sys_gu_immortal",
         "char_peng_da",
         "reg_western_desert",
         "fac_shi_clan"
@@ -190,7 +239,7 @@
     "Paths": {
       "text": "Earth path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Region": {
       "text": "Western Desert",
@@ -200,7 +249,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Shi Clan as of ch. 2130",
@@ -222,12 +271,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_earth"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": null,

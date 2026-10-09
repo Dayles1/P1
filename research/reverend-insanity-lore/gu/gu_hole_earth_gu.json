@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 423,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     423,
@@ -56,6 +56,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_immortal_crane_sect",
       "count": 1
     },
@@ -80,7 +84,15 @@
       "count": 1
     },
     {
+      "target": "race_rockmen",
+      "count": 1
+    },
+    {
       "target": "char_yan_yong",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -92,7 +104,27 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_zombie",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_green_crystal_heros_path",
+      "count": 1
+    },
+    {
       "target": "loc_bai_sheng_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "move_sleeping_cloud_coffin",
+      "count": 1
+    },
+    {
+      "target": "race_minimen",
       "count": 1
     }
   ],
@@ -154,7 +186,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -172,10 +204,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "The Gu looks like a walnut with a wooden, uneven surface, and is as large as a watermelon. Activation needs at least a rank five peak stage Gu Master using all of that Master’s primeval essence. Once planted and fed, it cannot be moved; the link waits until the matching sub Gu is activated on the other side. Feeding costs two hundred thousand primeval stones each year, and each activation also spends a large amount of primeval stones. Ordinary Gu Masters rarely keep it alone; large sects, clans, and Gu Immortals with huge resources are the usual keepers.",
@@ -184,12 +219,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-activation-and-cost",
         "text_origin": "source_excerpt",
         "mentions": [
-          "fac_gu_masters"
+          "fac_gu_masters",
+          "sys_gu_immortal"
         ]
       },
       {
@@ -199,12 +235,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "heavenly-power-and-setup",
         "text_origin": "source_excerpt",
         "mentions": [
-          "gu_connecting_heaven_gu"
+          "gu_connecting_heaven_gu",
+          "sys_mortal_gu"
         ]
       }
     ]
@@ -254,7 +291,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -271,7 +308,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "regional-range",
         "text_origin": "source_excerpt"
@@ -283,7 +320,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "permanent-planting",
         "text_origin": "source_excerpt"

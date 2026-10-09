@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 668,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     668,
@@ -39,6 +39,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -103,6 +115,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "loc_fei_he_mountain",
       "count": 2
     },
@@ -139,6 +155,14 @@
       "count": 1
     },
     {
+      "target": "path_emotion",
+      "count": 1
+    },
+    {
+      "target": "race_rockmen",
+      "count": 1
+    },
+    {
       "target": "gu_guts_gu",
       "count": 1
     },
@@ -148,6 +172,14 @@
     },
     {
       "target": "char_fairy_bai_hu",
+      "count": 1
+    },
+    {
+      "target": "move_force_intrusion",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -179,7 +211,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -197,7 +229,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sect-pressure",
       "text_origin": "source_excerpt",
@@ -215,7 +247,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "activates-gu-to-track-fang-yuan",
       "text_origin": "source_excerpt",
@@ -232,7 +264,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "anger-will-in-the-ambush",
       "text_origin": "source_excerpt",
@@ -248,10 +280,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "faction-and-report",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "After the ambush He Feng Yang returns injured to Fu Hu blessed land. Lord Tiger Demon stands beside an enormous stone pit watching tens of thousands of rockmen work, tells him to rest and heal, then reads the anger will’s report and sends fresh anger will to the conference hall on Fei He mountain. First and second supreme elder wills are already there with his own monitoring will.",
@@ -260,7 +295,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "faction-and-report",
       "text_origin": "source_excerpt",
@@ -275,7 +310,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-slaughtering-plan",
       "text_origin": "source_excerpt",
@@ -293,7 +328,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "he-feng-yangs-debt",
       "text_origin": "source_excerpt"
@@ -356,7 +391,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Immortal Crane Sect as of ch. 668",
@@ -382,7 +417,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Alive",
     "alignment": "demonic path as of ch. 854",

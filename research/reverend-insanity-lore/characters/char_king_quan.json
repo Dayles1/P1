@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 324,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     324,
@@ -35,6 +35,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -67,6 +79,18 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_king_quan_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -75,8 +99,16 @@
       "count": 4
     },
     {
+      "target": "inh_king_quan_inheritance",
+      "count": 4
+    },
+    {
       "target": "gu_dog_guts_above_heaven_gu",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "reg_southern_border",
@@ -95,7 +127,15 @@
       "count": 2
     },
     {
+      "target": "evt_arc_three_kings_inheritance",
+      "count": 1
+    },
+    {
       "target": "char_king_xin",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -111,11 +151,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_king_quan_travel_token",
+      "count": 1
+    },
+    {
       "target": "char_bai_ning_bing",
       "count": 1
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_mutated_beast",
       "count": 1
     },
     {
@@ -133,6 +185,10 @@
     {
       "target": "gu_divulge_information_gu",
       "count": 1
+    },
+    {
+      "target": "inh_three_kings_inheritance",
+      "count": 1
     }
   ],
   "claims": [
@@ -143,7 +199,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -151,6 +207,7 @@
         "loc_san_cha_mountain",
         "fac_wu_clan",
         "fac_wang_clan",
+        "sys_gu_immortal",
         "gu_dog_enslavement_gu"
       ]
     },
@@ -171,10 +228,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "enslavement-path",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_master"
+      ]
     },
     {
       "text": "Fang Yuan tells Bai Ning Bing that the last few rounds of King Quan Inheritance hold a large group of lion mastiffs, mutated beasts that were King Quan’s trump cards, and two dog emperors that were his left and right arms, each able to match a rank five Gu Master.",
@@ -183,13 +243,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inheritance-trump-cards",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
-        "char_bai_ning_bing"
+        "char_bai_ning_bing",
+        "inh_king_quan_inheritance"
       ]
     },
     {
@@ -199,7 +260,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "birth-name",
       "text_origin": "source_excerpt",
@@ -249,7 +310,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Wang Clan as of ch. 324",
@@ -276,7 +337,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Unknown",
     "alignment": null,

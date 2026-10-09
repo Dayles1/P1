@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 357,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     357,
@@ -31,6 +31,10 @@
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 2
+    },
     {
       "target": "gu_guts_gu",
       "count": 2
@@ -60,11 +64,27 @@
       "count": 1
     },
     {
+      "target": "evt_legend_vanity",
+      "count": 1
+    },
+    {
+      "target": "race_hairy_men",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_self_gu",
+      "count": 1
+    },
+    {
+      "target": "path_human",
       "count": 1
     }
   ],
@@ -119,7 +139,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -131,7 +151,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form",
         "text_origin": "source_excerpt"
@@ -172,12 +192,14 @@
         "section": "human-path-listing",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_the_legends_of_ren_zu",
           "char_fang_yuan",
           "gu_hope_gu",
           "gu_guts_gu",
           "gu_pride_gu",
           "gu_self_gu",
-          "gu_suffering_gu"
+          "gu_suffering_gu",
+          "sys_gu_worms"
         ]
       }
     ],
@@ -199,7 +221,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt"
@@ -211,7 +233,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "in-the-cauldron",
         "text_origin": "source_excerpt",
@@ -226,7 +248,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "poison-of-vanity",
         "text_origin": "source_excerpt",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 182,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     182
@@ -36,6 +36,10 @@
     },
     {
       "target": "char_tie_ruo_nan",
+      "count": 1
+    },
+    {
+      "target": "sys_demonic_path",
       "count": 1
     },
     {
@@ -80,6 +84,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_demon_suppression_tower",
+        "sys_demonic_path",
         "char_gu_yue_bo",
         "char_tie_ruo_nan",
         "fac_gu_yue_clan"

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 584,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     584,
@@ -53,11 +53,31 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
       "target": "gu_five_element_bear_skin_gu",
       "count": 1
     },
     {
       "target": "gu_grand_chaotic_dance_gu",
+      "count": 1
+    },
+    {
+      "target": "path_restriction",
       "count": 1
     }
   ],
@@ -122,12 +142,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_ye_lui_sang"
+          "char_ye_lui_sang",
+          "sys_gu_master"
         ]
       },
       {
@@ -137,11 +158,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_wild_gu",
           "char_fang_yuan"
         ]
       },
@@ -152,7 +174,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "post-battle-possession",
         "text_origin": "source_excerpt"
@@ -190,7 +212,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "wild-host",
         "text_origin": "source_excerpt"
@@ -207,14 +229,16 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "house_eighty_eight_true_yang_building",
           "char_sun_shi_han",
           "char_hao_ji_liu",
-          "char_hei_lou_lan"
+          "char_hei_lou_lan",
+          "sys_gu_worms"
         ]
       }
     ]

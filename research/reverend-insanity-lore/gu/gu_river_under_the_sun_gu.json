@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 397,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     397,
@@ -54,6 +54,10 @@
     },
     {
       "target": "gu_gather_light_gu",
+      "count": 2
+    },
+    {
+      "target": "move_torrential_light_stream",
       "count": 2
     },
     {
@@ -201,7 +205,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "torrential-light-stream-deployment",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_torrential_light_stream"
+        ]
       }
     ]
   },

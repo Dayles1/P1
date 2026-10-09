@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 377,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     377,
@@ -81,6 +81,14 @@
       "count": 2
     },
     {
+      "target": "sys_gu_worms",
+      "count": 2
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 2
+    },
+    {
       "target": "gu_beast_strength_placenta_gu",
       "count": 2
     },
@@ -89,7 +97,35 @@
       "count": 2
     },
     {
+      "target": "evt_arc_three_kings_inheritance",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_land_spirit",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_failure",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
+      "count": 1
+    },
+    {
+      "target": "inh_three_kings_inheritance",
       "count": 1
     },
     {
@@ -98,6 +134,10 @@
     },
     {
       "target": "loc_three_kings_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "sys_mental_energy",
       "count": 1
     },
     {
@@ -114,6 +154,10 @@
     },
     {
       "target": "loc_bronze_main_hall",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_hu_immortal_blessed_land",
       "count": 1
     },
     {
@@ -142,6 +186,18 @@
     },
     {
       "target": "loc_imperial_court_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "sys_aperture",
+      "count": 1
+    },
+    {
+      "target": "sys_second_aperture",
+      "count": 1
+    },
+    {
+      "target": "sys_aperture_and_primeval_essence",
       "count": 1
     },
     {
@@ -214,7 +270,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "path",
         "text_origin": "source_excerpt"
@@ -240,7 +296,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -252,10 +308,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu",
+          "sys_immortal_gu"
+        ]
       },
       {
         "text": "The San Cha revelation chapters do not describe a finished Gu worm body.",
@@ -265,7 +325,10 @@
         "verification": "no_citation",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_worms"
+        ]
       },
       {
         "text": "To refine it at San Cha Mountain, apertures are the main ingredient. Fang Yuan uses beast strength placenta Gu to devour Gu Master apertures and raise the future Second Aperture Gu’s aptitude; after Tie Mu Bai’s rank five peak stage aperture is absorbed, that aptitude reaches forty percent.",
@@ -274,12 +337,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_beast_strength_placenta_gu",
+          "sys_gu_master",
           "char_tie_mu_bai"
         ]
       }
@@ -296,7 +360,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -325,10 +389,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "recipe-at-san-cha-mountain",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       },
       {
         "text": "In Fang Yuan’s previous-life knowledge the legendary Gu became extinct before the first one was created. The first prior attempt fails when the chosen strength path Gu Master is poor at refining and dies after starting the process. Later attempts come too late: immortal essence is severely lacking, the land spirit is weakened, Gu Masters kill the refining strength path Gu Master and then the land spirit, and with immortal essence expended the refinement ends in utter failure.",
@@ -337,7 +404,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "recipe-at-san-cha-mountain",
         "text_origin": "source_excerpt",
@@ -352,7 +419,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "recipe-at-san-cha-mountain",
         "text_origin": "source_excerpt"
@@ -390,11 +457,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_land_spirit",
           "char_ba_gui",
           "char_fang_yuan",
           "loc_san_cha_mountain"
@@ -407,7 +475,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "acquiring-and-activating-a-copy",
         "text_origin": "source_excerpt",
@@ -422,7 +490,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "acquiring-and-activating-a-copy",
         "text_origin": "source_excerpt"
@@ -434,7 +502,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "acquiring-and-activating-a-copy",
         "text_origin": "source_excerpt"

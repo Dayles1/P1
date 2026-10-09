@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1133,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1133,
@@ -42,11 +42,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
       "target": "loc_heavenly_crystal_eagle_nest",
       "count": 1
     },
     {
       "target": "loc_hei_fan_grotto_heaven",
+      "count": 1
+    },
+    {
+      "target": "res_pill_azure_incense",
       "count": 1
     }
   ],
@@ -58,13 +66,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
-        "loc_hei_fan_grotto_heaven"
+        "loc_hei_fan_grotto_heaven",
+        "sys_gu_formation"
       ]
     },
     {
@@ -86,7 +95,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "aperture-survey",
       "text_origin": "source_excerpt",
@@ -101,7 +110,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "central-storage-pool",
       "text_origin": "source_excerpt"

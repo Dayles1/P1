@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 672,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     672,
@@ -43,7 +43,19 @@
       "count": 2
     },
     {
+      "target": "sys_super_gu_formation",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_era_late",
       "count": 1
     },
     {
@@ -75,7 +87,15 @@
       "count": 1
     },
     {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_luo_po_valley",
+      "count": 1
+    },
+    {
+      "target": "sys_soul_path_dao_marks",
       "count": 1
     },
     {
@@ -147,7 +167,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "creation-sources-and-formations",
         "text_origin": "source_excerpt",
@@ -165,13 +185,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "creation-sources-and-formations",
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_luo_po_valley",
-          "char_fairy_jiang_yu"
+          "char_fairy_jiang_yu",
+          "sys_super_gu_formation"
         ]
       },
       {
@@ -181,7 +202,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "creation-sources-and-formations",
         "text_origin": "source_excerpt",
@@ -196,7 +217,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "creation-sources-and-formations",
         "text_origin": "source_excerpt",
@@ -223,7 +244,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "creation-sources-and-formations",
         "text_origin": "source_excerpt"
@@ -235,10 +256,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "creation-sources-and-formations",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_mortal_gu"
+        ]
       }
     ]
   },
@@ -271,11 +295,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_immortal_gu",
           "char_fang_yuan",
           "gu_cleanse_soul",
           "loc_treasure_yellow_heaven"
@@ -288,10 +313,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rarity",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "evt_era_late"
+        ]
       }
     ]
   },

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 900,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     900,
@@ -245,6 +245,10 @@
       "count": 2
     },
     {
+      "target": "inh_thieving_heaven_true_inheritance",
+      "count": 2
+    },
+    {
       "target": "gu_wisdom_gu",
       "count": 2
     },
@@ -255,6 +259,14 @@
     {
       "target": "gu_guts_gu",
       "count": 2
+    },
+    {
+      "target": "evt_arc_blessed_land_consolidation",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_northern_plains_imperial_court",
+      "count": 1
     },
     {
       "target": "char_fairy_fen_meng",
@@ -301,6 +313,18 @@
       "count": 1
     },
     {
+      "target": "sys_beast_emperor",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_hua_hai_three_immortals",
       "count": 1
     },
@@ -321,6 +345,10 @@
       "count": 1
     },
     {
+      "target": "reg_heaven_orange_heaven",
+      "count": 1
+    },
+    {
       "target": "loc_blue_dragon_whale",
       "count": 1
     },
@@ -329,7 +357,55 @@
       "count": 1
     },
     {
+      "target": "move_familiar_face",
+      "count": 1
+    },
+    {
+      "target": "move_soul_suppression",
+      "count": 1
+    },
+    {
+      "target": "move_unfamiliar_face",
+      "count": 1
+    },
+    {
+      "target": "move_wind_escape",
+      "count": 1
+    },
+    {
+      "target": "path_snow",
+      "count": 1
+    },
+    {
+      "target": "res_success_dao_mark",
+      "count": 1
+    },
+    {
+      "target": "sys_blazing_glory_lightning_brilliance_physique",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_dream_path_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_luo_po_valley",
+      "count": 1
+    },
+    {
+      "target": "sys_contribution_points",
       "count": 1
     },
     {
@@ -338,6 +414,10 @@
     },
     {
       "target": "gu_rumbling_thunder_gu",
+      "count": 1
+    },
+    {
+      "target": "move_dark_assassination",
       "count": 1
     },
     {
@@ -365,11 +445,35 @@
       "count": 1
     },
     {
+      "target": "inh_giant_sun_luck_path_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_heaven_and_earth_luck_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_long_hair_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_self_luck_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "move_immortal_tribulation_tempering_aperture",
+      "count": 1
+    },
+    {
       "target": "gu_dog_shit_luck",
       "count": 1
     },
     {
       "target": "res_light_of_the_immemorial_era",
+      "count": 1
+    },
+    {
+      "target": "sys_hairy_man_heaven_and_earth_style",
       "count": 1
     },
     {
@@ -393,7 +497,19 @@
       "count": 1
     },
     {
+      "target": "sys_formation_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_water_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "loc_tai_qiu",
+      "count": 1
+    },
+    {
+      "target": "move_triple_layered_sword_wave",
       "count": 1
     },
     {
@@ -405,7 +521,19 @@
       "count": 1
     },
     {
+      "target": "move_bloodstained_conquerors_robe",
+      "count": 1
+    },
+    {
       "target": "char_sixth_hair",
+      "count": 1
+    },
+    {
+      "target": "move_year_beast_summoning",
+      "count": 1
+    },
+    {
+      "target": "sys_year_beast",
       "count": 1
     },
     {
@@ -421,7 +549,15 @@
       "count": 1
     },
     {
+      "target": "house_calamity_luck_altar",
+      "count": 1
+    },
+    {
       "target": "char_chu_du",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
       "count": 1
     }
   ],
@@ -433,14 +569,16 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "establishment",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_lang_ya_blessed_land",
         "char_lang_ya_land_spirit",
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_gu_immortal",
+        "sys_gu_master"
       ]
     },
     {
@@ -450,11 +588,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "external-supreme-elder",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_recipe",
         "gu_all_out_effort_gu"
       ]
     },
@@ -465,7 +604,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "external-supreme-elder",
       "text_origin": "source_excerpt"
@@ -480,7 +619,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "reward-for-a-thieving-heaven-inheritance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu",
+        "inh_thieving_heaven_true_inheritance"
+      ]
     },
     {
       "text": "Fang Yuan lends the sect Dang Hun Mountain, Luo Po valley and wisdom Gu for its use, with the sect liable for tenfold compensation if anything happens to them plus additional sect contribution points, and the land spirit, who turns out to know how to use wisdom Gu, will part with that method only for contribution points.",
@@ -489,7 +632,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dang-hun-mountain-and-luo-po-valley-on-loan",
       "text_origin": "source_excerpt",
@@ -506,7 +649,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "standby-role-announced",
       "text_origin": "source_excerpt"
@@ -518,7 +661,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "standing-invoked-before-other-variant-humans",
       "text_origin": "source_excerpt",
@@ -533,7 +676,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "standing-among-the-hairy-men",
       "text_origin": "source_excerpt"
@@ -545,7 +688,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "northern-plains-standing",
       "text_origin": "source_excerpt",
@@ -561,13 +704,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "paths-and-contribution",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_ten_great_ancient_sects",
-        "char_twelfth_hair"
+        "char_twelfth_hair",
+        "sys_gu_worms"
       ]
     },
     {
@@ -577,7 +721,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "guts-gu-monopoly",
       "text_origin": "source_excerpt",
@@ -592,7 +736,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "easier-terms-after-yi-tian-mountain",
       "text_origin": "source_excerpt"
@@ -604,7 +748,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "the-whole-sect-refines-for-fang-yuan",
       "text_origin": "source_excerpt",
@@ -620,10 +764,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "refinement-path-gu-and-the-seven-kill-method",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_mortal_gu"
+      ]
     }
   ],
   "conflicts": [],

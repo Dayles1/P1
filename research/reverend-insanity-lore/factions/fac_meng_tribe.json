@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 762,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     762,
@@ -115,7 +115,15 @@
       "count": 4
     },
     {
+      "target": "house_investigation_courtyard",
+      "count": 3
+    },
+    {
       "target": "reg_northern_plains",
+      "count": 2
+    },
+    {
+      "target": "house_red_fiend_divine_boat",
       "count": 2
     },
     {
@@ -135,6 +143,10 @@
       "count": 2
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_dong_fang_chang_fan",
       "count": 1
     },
@@ -144,6 +156,10 @@
     },
     {
       "target": "fac_gong_tribe",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -191,6 +207,14 @@
       "count": 1
     },
     {
+      "target": "move_emperor_yama",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "char_sleeping_lady",
       "count": 1
     },
@@ -211,10 +235,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "wood-path-offer",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu",
+        "house_red_fiend_divine_boat"
+      ]
     },
     {
       "text": "Dong Fang tribe, Meng tribe, and Gong tribe gather as three super forces for a fighting competition in Dong Fang Chang Fan’s recalled past.",
@@ -223,7 +251,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fighting-competition",
       "text_origin": "source_excerpt",
@@ -240,12 +268,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "righteous-path-watch",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_meng_ji",
+        "sys_gu_immortal",
         "loc_iron_eagle_blessed_land",
         "fac_huang_jin_bloodline"
       ]
@@ -329,7 +358,9 @@
       "mentions": [
         "char_meng_tribe_meng_tu",
         "char_meng_zi_zai",
-        "char_meng_zhao"
+        "char_meng_zhao",
+        "sys_immortal_gu_house",
+        "house_investigation_courtyard"
       ]
     }
   ],

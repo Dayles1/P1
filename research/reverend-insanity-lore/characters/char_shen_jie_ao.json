@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 431,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     431,
@@ -33,10 +33,35 @@
     736,
     1041
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
+      "target": "house_white_bone_chariot",
+      "count": 2
+    },
+    {
       "target": "gu_battle_bone_wheel_gu",
+      "count": 2
+    },
+    {
+      "target": "move_white_bone_battlefield",
       "count": 2
     },
     {
@@ -48,7 +73,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_ghost_fire_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_house",
       "count": 1
     },
     {
@@ -64,7 +101,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -72,6 +109,10 @@
         "char_fang_yuan",
         "gu_battle_bone_wheel_gu",
         "gu_ghost_fire_gu",
+        "sys_gu_immortal",
+        "house_white_bone_chariot",
+        "move_white_bone_battlefield",
+        "sys_immortal_gu",
         "char_blood_sea_ancestor"
       ]
     },
@@ -82,10 +123,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "gu-house-form",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_house"
+      ]
     },
     {
       "text": "In the long history of Gu Masters, Fang Yuan knows only one mortal killer move with the offensive power of an Immortal Gu: White Bone Chariot from Proud Bone Demon Lord Shen Jie Ao, called a peerless creation standing high above in both ancient and present times. Fang Yuan ranks his own talent below Shen Jie Ao when weighing whether a mortal substitute can keep his myriad self killer move powerful without its Immortal Gu core.",
@@ -94,7 +138,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mortal-killer-move-standing",
       "text_origin": "source_excerpt",
@@ -109,7 +153,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "public-immortal-gu-match",
       "text_origin": "source_excerpt"
@@ -148,7 +192,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "demonic path as of ch. 431",
@@ -175,7 +219,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": null,
     "alignment": "demonic path as of ch. 431",

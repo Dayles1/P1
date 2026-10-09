@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 546,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     546,
@@ -45,6 +45,10 @@
   ],
   "co_mentions": [
     {
+      "target": "move_four_arm_wind_king",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -61,7 +65,15 @@
       "count": 2
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
+      "count": 1
+    },
+    {
+      "target": "move_four_arm_earth_king",
       "count": 1
     }
   ],
@@ -155,13 +167,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "gu_earth_overlord_gu"
+          "gu_earth_overlord_gu",
+          "sys_gu_worms"
         ]
       },
       {
@@ -171,7 +184,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "in-four-arm-wind-king",
         "text_origin": "source_excerpt",
@@ -186,7 +199,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "with-tyrant-strength-gu",
         "text_origin": "source_excerpt",

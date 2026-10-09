@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 509,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     509
@@ -40,9 +40,25 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "reg_northern_plains",
       "count": 1
@@ -58,6 +74,14 @@
     {
       "target": "fac_tang_tribe",
       "count": 2
+    },
+    {
+      "target": "evt_arc_northern_plains_imperial_court",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
     },
     {
       "target": "fac_wang_tribe",
@@ -77,8 +101,10 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "evt_arc_northern_plains_imperial_court",
         "fac_tang_tribe",
         "fac_wang_tribe",
+        "sys_gu_master",
         "char_tang_fang",
         "char_wang_jiang"
       ]
@@ -114,7 +140,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": null,
@@ -130,7 +156,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Unknown",
     "alignment": null,

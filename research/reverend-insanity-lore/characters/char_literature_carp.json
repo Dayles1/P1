@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 800,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     800,
@@ -43,6 +43,18 @@
     },
     {
       "target": "char_zhou_ping",
+      "count": 1
+    },
+    {
+      "target": "sys_demonic_path",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -95,7 +107,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal",
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "Demonic path Gu Immortal Zhou Ping, rank six, rises and claims the resource point. He cannot defeat Fang Yuan but threatens to destroy the pool unless Fang Yuan trades, relying on flying killer moves. Fang Yuan leaves a threat and goes. Zhou Ping is downcast because he has no method to collect the group and cannot stay forever to guard them.",
@@ -109,6 +125,7 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_demonic_path",
         "char_zhou_ping"
       ]
     },
@@ -146,7 +163,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hidden-pool",
       "text_origin": "source_excerpt"

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 379,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     379,
@@ -74,6 +74,14 @@
     },
     {
       "target": "char_wu_gui",
+      "count": 1
+    },
+    {
+      "target": "sys_attack_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -227,6 +235,8 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
+          "sys_attack_gu",
           "gu_golden_eye_gu"
         ]
       },

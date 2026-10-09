@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 1319,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1319,
@@ -59,11 +59,23 @@
       "count": 1
     },
     {
+      "target": "evt_era_olden",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_luo_clan",
       "count": 1
     },
     {
       "target": "char_xiao_he_jian",
+      "count": 1
+    },
+    {
+      "target": "sys_qi_harvest_fruit",
       "count": 1
     },
     {
@@ -75,11 +87,23 @@
       "count": 1
     },
     {
+      "target": "res_qi_pillar",
+      "count": 1
+    },
+    {
       "target": "loc_xi_land",
       "count": 1
     },
     {
       "target": "res_lightning_qi",
+      "count": 1
+    },
+    {
+      "target": "res_qi_currents",
+      "count": 1
+    },
+    {
+      "target": "res_wind_path_qi_current",
       "count": 1
     }
   ],
@@ -103,13 +127,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
         "char_demon_immortal_qi_jue",
+        "evt_era_olden",
         "char_limitless_demon_venerable",
         "char_hei_fan"
       ]
@@ -126,7 +151,8 @@
       "section": "qi-tide-exposure",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_luo_clan"
+        "fac_luo_clan",
+        "sys_gu_immortal"
       ]
     },
     {

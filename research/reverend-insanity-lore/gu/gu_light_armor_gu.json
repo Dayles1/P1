@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1801,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1801
@@ -49,6 +49,10 @@
     },
     {
       "target": "char_wan_xiao",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -169,7 +173,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_wan_hao_guang",
-          "char_wan_xiao"
+          "char_wan_xiao",
+          "sys_immortal_gu"
         ]
       }
     ]

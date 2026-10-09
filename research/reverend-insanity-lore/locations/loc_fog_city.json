@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1174,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1174
@@ -41,6 +41,10 @@
     {
       "target": "char_not_immortal",
       "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     }
   ],
   "claims": [
@@ -51,7 +55,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -67,12 +71,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_not_immortal"
+        "char_not_immortal",
+        "sys_gu_immortal"
       ]
     }
   ],

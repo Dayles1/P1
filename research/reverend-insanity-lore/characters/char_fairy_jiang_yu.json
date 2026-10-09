@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 528,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     528,
@@ -38,6 +38,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -102,11 +114,19 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_hei_cheng",
       "count": 2
     },
     {
       "target": "char_hei_lou_lan",
+      "count": 2
+    },
+    {
+      "target": "sys_great_strength_true_martial_physique",
       "count": 2
     },
     {
@@ -126,6 +146,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "gu_white_lotus_giant_silkworm_gu",
       "count": 1
     },
@@ -138,7 +162,27 @@
       "count": 1
     },
     {
+      "target": "move_immemorial_flame_axe",
+      "count": 1
+    },
+    {
+      "target": "sys_movement_killer_move",
+      "count": 1
+    },
+    {
       "target": "gu_soul_suction_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "res_sandalwood_sacred_elephant_egg",
+      "count": 1
+    },
+    {
+      "target": "sys_super_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "move_star_fog_concealment",
       "count": 1
     },
     {
@@ -146,7 +190,15 @@
       "count": 1
     },
     {
+      "target": "move_wind_escape",
+      "count": 1
+    },
+    {
       "target": "loc_true_lang_ya_ocean_three_continents_under_cloud_soil",
+      "count": 1
+    },
+    {
+      "target": "house_refinement_cauldron",
       "count": 1
     },
     {
@@ -162,11 +214,27 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "loc_luo_po_valley",
       "count": 1
     },
     {
+      "target": "sys_blazing_glory_lightning_brilliance_physique",
+      "count": 1
+    },
+    {
       "target": "char_three_thatch_demon_immortal",
+      "count": 1
+    },
+    {
+      "target": "house_modest_thatched_hut",
+      "count": 1
+    },
+    {
+      "target": "move_dark_assassination",
       "count": 1
     },
     {
@@ -186,14 +254,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_hei_bai",
         "char_hei_cheng",
-        "char_hei_lou_lan"
+        "char_hei_lou_lan",
+        "sys_great_strength_true_martial_physique"
       ]
     },
     {
@@ -203,12 +272,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_northern_plains",
+        "sys_gu_immortal",
         "gu_dark_limit_immortal_gu"
       ]
     },
@@ -219,7 +289,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -231,7 +301,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -243,7 +313,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -255,7 +325,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -267,7 +337,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-among-lang-ya-attackers",
       "text_origin": "source_excerpt",
@@ -284,7 +354,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-at-luo-po-valley",
       "text_origin": "source_excerpt",
@@ -292,7 +362,8 @@
         "loc_luo_po_valley",
         "char_old_man_tian_long",
         "char_old_lord_can_yang",
-        "char_blazing_glory_lightning_brilliance"
+        "char_blazing_glory_lightning_brilliance",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -302,7 +373,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-at-luo-po-valley",
       "text_origin": "source_excerpt"
@@ -314,12 +385,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chu-rong-report",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_chu_rong",
+        "house_modest_thatched_hut",
         "char_three_thatch_demon_immortal"
       ]
     },
@@ -330,7 +402,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-membership",
       "text_origin": "source_excerpt",
@@ -386,7 +458,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Hei Tribe as of ch. 528 Shadow Sect as of ch. 1087",
@@ -413,7 +485,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Dead",
     "alignment": null,

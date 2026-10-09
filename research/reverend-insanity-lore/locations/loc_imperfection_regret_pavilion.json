@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1710,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1710,
@@ -37,6 +37,10 @@
   "co_mentions": [
     {
       "target": "char_limitless_demon_venerable",
+      "count": 2
+    },
+    {
+      "target": "house_central_heaven_gate",
       "count": 2
     },
     {
@@ -60,6 +64,10 @@
       "count": 2
     },
     {
+      "target": "evt_era_olden",
+      "count": 2
+    },
+    {
       "target": "char_giant_sun_immortal_venerable",
       "count": 2
     },
@@ -68,11 +76,19 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
     {
       "target": "fac_longevity_heaven",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
       "count": 1
     },
     {
@@ -88,7 +104,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_nine_nine_consecutive_unceasing_formation",
+      "count": 1
+    },
+    {
       "target": "char_genesis_lotus_immortal_venerable",
+      "count": 1
+    },
+    {
+      "target": "move_through_branches_and_leaves",
       "count": 1
     }
   ],
@@ -107,6 +135,7 @@
       "mentions": [
         "char_limitless_demon_venerable",
         "loc_star_zone_mountain",
+        "sys_immortal_gu_house",
         "fac_heavenly_court"
       ]
     },
@@ -123,10 +152,12 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fairy_zi_wei",
+        "house_central_heaven_gate",
         "loc_name_plaque_palace",
         "loc_sun_palace",
         "loc_five_deity_hall",
         "loc_central_great_hall",
+        "house_heaven_overseeing_tower",
         "loc_forgotten_dao_lake"
       ]
     },
@@ -157,6 +188,8 @@
       "section": "forbidden-chess-game",
       "text_origin": "source_excerpt",
       "mentions": [
+        "evt_era_olden",
+        "sys_gu_immortal",
         "char_star_constellation_immortal_venerable"
       ]
     },

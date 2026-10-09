@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1346,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1346,
@@ -47,6 +47,14 @@
     {
       "target": "reg_southern_border",
       "count": 3
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_immortal_gu",
+      "count": 1
     },
     {
       "target": "fac_ba_clan",
@@ -110,7 +118,8 @@
       "mentions": [
         "reg_southern_border",
         "gu_water_armor_gu",
-        "fac_qiao_clan"
+        "fac_qiao_clan",
+        "sys_wild_immortal_gu"
       ]
     },
     {
@@ -125,6 +134,7 @@
       "section": "contested-holdings",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "fac_ba_clan",
         "fac_xia_clan"
       ]

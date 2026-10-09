@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1915,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_fate_destruction"
   },
   "chapters_cited": [
     1915
@@ -48,11 +48,31 @@
       "count": 4
     },
     {
+      "target": "move_mutual_injuries",
+      "count": 3
+    },
+    {
       "target": "char_shen_cong_sheng",
       "count": 1
     },
     {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
+      "count": 1
+    },
+    {
       "target": "gu_heal_injury_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_countless_injury_marks",
       "count": 1
     }
   ],
@@ -156,7 +176,10 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_shen_shang",
-          "char_shen_cong_sheng"
+          "char_shen_cong_sheng",
+          "sys_gu_recipe",
+          "sys_vital_gu",
+          "sys_immortal_gu"
         ]
       }
     ]

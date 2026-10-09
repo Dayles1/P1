@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 742,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     742,
@@ -85,6 +85,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_zombie_alliance",
       "count": 1
     },
@@ -113,6 +117,10 @@
       "count": 1
     },
     {
+      "target": "house_medicine_cottage",
+      "count": 1
+    },
+    {
       "target": "fac_guan_tribe",
       "count": 1
     },
@@ -125,11 +133,19 @@
       "count": 1
     },
     {
+      "target": "evt_arc_new_blessed_land_crazed_demon",
+      "count": 1
+    },
+    {
       "target": "char_gong_wan_ting",
       "count": 1
     },
     {
       "target": "char_nu_er_qian",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_blood_battle_martial_competition",
       "count": 1
     },
     {
@@ -145,7 +161,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mission-meeting",
       "text_origin": "source_excerpt",
@@ -153,6 +169,7 @@
         "fac_zombie_alliance",
         "char_yin_liu_gong",
         "char_yao_huang",
+        "sys_gu_immortal",
         "reg_northern_plains"
       ]
     },
@@ -163,7 +180,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "first-supreme-elder",
       "text_origin": "source_excerpt",

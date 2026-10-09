@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1196,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_new_blessed_land_crazed_demon"
   },
   "chapters_cited": [
     1196
@@ -48,11 +48,19 @@
       "count": 4
     },
     {
+      "target": "move_bewitching_soul_art",
+      "count": 2
+    },
+    {
       "target": "char_chu_du",
       "count": 1
     },
     {
       "target": "char_nian_er_ping_zhi",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -114,12 +122,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "battle-with-nian-er-ping-zhi",
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_blood_plain",
+          "move_bewitching_soul_art",
           "char_nian_er_ping_zhi"
         ]
       }
@@ -170,12 +179,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_granny_yin",
+          "sys_gu_immortal",
           "reg_northern_plains"
         ]
       },
@@ -196,7 +206,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "blood-plain-outcome",
         "text_origin": "source_excerpt",

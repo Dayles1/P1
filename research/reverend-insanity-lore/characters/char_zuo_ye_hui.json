@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1336,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1336,
@@ -35,8 +35,25 @@
     1366,
     1370
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "uses_move",
+      "target": "move_grey_night",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1337,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "move_grey_night",
+      "count": 3
+    },
     {
       "target": "char_purple_mountain_true_monarch",
       "count": 2
@@ -50,7 +67,15 @@
       "count": 2
     },
     {
+      "target": "house_heaven_overseeing_tower",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -62,6 +87,14 @@
       "count": 1
     },
     {
+      "target": "evt_era_late",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_southern_border_war",
+      "count": 1
+    },
+    {
       "target": "char_ba_de",
       "count": 1
     },
@@ -70,7 +103,19 @@
       "count": 1
     },
     {
+      "target": "sys_super_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_fairy_zi_wei",
+      "count": 1
+    },
+    {
+      "target": "move_fate_vanquish",
       "count": 1
     },
     {
@@ -94,11 +139,12 @@
       ],
       "certainty": "inferred",
       "confidence": "C",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_fang_yuan",
         "reg_southern_border",
         "char_purple_mountain_true_monarch"
@@ -111,7 +157,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -123,12 +169,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "antiquity-nightmare",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_you_tian_guang",
+        "evt_era_late",
         "char_paradise_earth_immortal_venerable"
       ]
     },
@@ -139,11 +186,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "southern-borders-nightmare",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_super_gu_formation",
         "char_ba_de"
       ]
     },
@@ -154,10 +202,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "damaged-pillar-gu",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "Purple Mountain True Monarch arms it under a prior agreement with Immortal Gu and immortal killer moves, and it survives two hits of Heaven Overseeing Tower’s fate vanquish, standing up after the first with half its injuries healed and after the second still full of vitality.",
@@ -166,10 +217,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "armed-by-agreement",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "house_heaven_overseeing_tower"
+      ]
     },
     {
       "text": "It knows that its size and its liking for moving fast leave it highly restricted on this battlefield, and Heaven Overseeing Tower carries an aura it detests, so it holds a deep desire to destroy the tower.",
@@ -178,7 +232,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "cornered-by-size",
       "text_origin": "source_excerpt"
@@ -190,7 +244,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "instant-regeneration",
       "text_origin": "source_excerpt",
@@ -205,7 +259,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "deadlock",
       "text_origin": "source_excerpt"

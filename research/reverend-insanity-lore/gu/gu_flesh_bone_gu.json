@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 214,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     214,
@@ -74,6 +74,10 @@
       "count": 2
     },
     {
+      "target": "inh_white_bone_inheritance",
+      "count": 3
+    },
+    {
       "target": "char_bai_hua",
       "count": 2
     },
@@ -88,6 +92,14 @@
     {
       "target": "gu_self_reliance_gu",
       "count": 2
+    },
+    {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_healing_gu",
+      "count": 1
     },
     {
       "target": "gu_yang_gu",
@@ -185,7 +197,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -197,7 +209,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
         "text_origin": "source_excerpt"
@@ -215,11 +227,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_master",
           "gu_rising_dead_gu"
         ]
       },
@@ -230,7 +243,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect",
         "text_origin": "source_excerpt"
@@ -249,7 +262,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "called-meat-bone-gu",
         "text_origin": "source_excerpt",
@@ -267,7 +280,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "called-meat-bone-gu",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "inh_white_bone_inheritance"
+        ]
       }
     ]
   },
@@ -319,7 +335,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -342,6 +358,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_bai_gu_mountain",
+          "sys_healing_gu",
           "char_bai_hua"
         ]
       },
@@ -352,7 +369,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ownership",
         "text_origin": "source_excerpt",
@@ -367,7 +384,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bone-flesh-unity-handoff",
         "text_origin": "source_excerpt",
@@ -382,7 +399,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "bone-flesh-unity-handoff",
         "text_origin": "source_excerpt",

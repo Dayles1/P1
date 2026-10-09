@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 11,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_village"
   },
   "chapters_cited": [
     11,
@@ -61,6 +61,14 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_bai_clan",
       "count": 1
     },
@@ -89,7 +97,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_house",
+      "count": 1
+    },
+    {
       "target": "char_gu_yue_yao_ji",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_bai_gu_mountain",
       "count": 1
     },
     {
@@ -151,7 +167,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_house"
+      ]
     },
     {
       "text": "At Gu Yue Village, the only inn stays mostly deserted except when the annual merchant caravan comes to trade on Qing Mao Mountain.",
@@ -182,6 +201,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_southern_border",
+        "sys_gu_worms",
         "fac_gu_masters"
       ]
     },
@@ -197,7 +217,8 @@
       "section": "jia-fus-visit",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_jia_family"
+        "fac_jia_family",
+        "sys_gu_master"
       ]
     },
     {

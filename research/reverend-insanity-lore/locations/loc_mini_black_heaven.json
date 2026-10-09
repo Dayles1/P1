@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1133,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1133,
@@ -49,6 +49,18 @@
       "count": 1
     },
     {
+      "target": "res_walking_meat_tree",
+      "count": 1
+    },
+    {
+      "target": "sys_myriad_destruction_lightning_forest",
+      "count": 1
+    },
+    {
+      "target": "sys_soul_beast",
+      "count": 1
+    },
+    {
       "target": "loc_star_collection_city",
       "count": 1
     },
@@ -65,7 +77,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -93,7 +105,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "dark-walking-meat-trees",
       "text_origin": "source_excerpt"
@@ -108,7 +120,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "soul-beast-holding",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_soul_beast"
+      ]
     },
     {
       "text": "During a broad aperture tribulation, Star Collection City receives word that a terrifying beast calamity has appeared in Mini Black Heaven, with thousands of green claw ghost winged lions hunting down soul beasts.",

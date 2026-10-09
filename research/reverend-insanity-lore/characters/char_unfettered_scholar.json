@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 748,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     748,
@@ -41,6 +41,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -73,11 +85,27 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_thousand_disintegrations",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 790,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "gu_demon_ferret_skin_immortal_gu",
+      "count": 3
+    },
+    {
+      "target": "move_thousand_disintegrations",
       "count": 3
     },
     {
@@ -87,6 +115,10 @@
     {
       "target": "reg_northern_plains",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_hong_xiu",
@@ -117,6 +149,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_bai_sheng_blessed_land",
       "count": 1
     },
@@ -130,6 +166,10 @@
     },
     {
       "target": "gu_demon_ferret_bone",
+      "count": 1
+    },
+    {
+      "target": "move_heart_demon_ferret_transformation",
       "count": 1
     },
     {
@@ -153,6 +193,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_chen_clan",
       "count": 1
     },
@@ -165,11 +209,39 @@
       "count": 1
     },
     {
+      "target": "move_hundred_disintegrations",
+      "count": 1
+    },
+    {
+      "target": "move_life_chasing_fire",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_star_fireflies",
+      "count": 1
+    },
+    {
+      "target": "race_minimen",
+      "count": 1
+    },
+    {
       "target": "char_he_ruo",
       "count": 1
     },
     {
       "target": "gu_small_rule_path_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_big_to_small",
+      "count": 1
+    },
+    {
+      "target": "move_ice_dragon_lock",
+      "count": 1
+    },
+    {
+      "target": "path_rule",
       "count": 1
     },
     {
@@ -199,6 +271,14 @@
     {
       "target": "char_guan_chou",
       "count": 1
+    },
+    {
+      "target": "sys_refinement_path_convention",
+      "count": 1
+    },
+    {
+      "target": "move_peoples_united_hearts",
+      "count": 1
     }
   ],
   "claims": [
@@ -209,12 +289,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_qin_bai_sheng",
+        "sys_gu_immortal",
         "char_tian_xiang",
         "char_hong_xiu",
         "char_fang_yuan",
@@ -229,7 +310,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -241,7 +322,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -253,7 +334,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -265,7 +346,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -277,7 +358,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-among-demonic-path",
       "text_origin": "source_excerpt",
@@ -293,7 +374,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-among-demonic-path",
       "text_origin": "source_excerpt",
@@ -308,7 +389,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chen-clan-inheritance",
       "text_origin": "source_excerpt",
@@ -325,12 +406,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "chen-clan-inheritance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_miniscule_mountain"
+        "sys_immortal_gu",
+        "loc_miniscule_mountain",
+        "race_minimen"
       ]
     },
     {
@@ -340,7 +423,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "iron-eagle-contest",
       "text_origin": "source_excerpt",
@@ -359,7 +442,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "clan-revenge",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_refinement_path_convention"
+      ]
     }
   ],
   "conflicts": [],
@@ -411,7 +497,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Alignment": {
       "text": "lone cultivator as of ch. 748 demonic path as of ch. 786",
@@ -438,7 +524,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": "lone cultivator as of ch. 748 demonic path as of ch. 786",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1688,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1688,
@@ -42,12 +42,28 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
       "target": "reg_eastern_sea",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_shi_miao",
@@ -71,6 +87,18 @@
     },
     {
       "target": "char_duke_long",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "house_dragon_palace",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -103,7 +131,9 @@
         "char_yang_zi_he",
         "char_shi_miao",
         "char_zhang_yin",
-        "reg_eastern_sea"
+        "reg_eastern_sea",
+        "sys_gu_immortal",
+        "house_dragon_palace"
       ]
     },
     {
@@ -128,7 +158,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "poison-path-obstruction",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "She is listed with Song Qi Yuan, Qing Yue An, Shen Cong Sheng, Zhang Yin, Shi Miao, and others in the unprecedented Eastern Sea rank eight gathering seeking Dragon Palace.",
@@ -190,7 +223,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -212,7 +245,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

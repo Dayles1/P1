@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1424,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1424,
@@ -48,11 +48,35 @@
     },
     {
       "type": "refinement_materials",
+      "target": "res_thousand_li_soul_thread",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1424,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "refinement_materials",
       "target": "res_flowing_fire_core",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
       "recorded_chapter": 1443,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "refinement_materials",
+      "target": "res_snow_lotus_essence",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 1441,
       "count": null,
       "confidence": "B",
       "source_id": "src_sagaofgu",
@@ -85,6 +109,10 @@
   ],
   "co_mentions": [
     {
+      "target": "res_snow_lotus_essence",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -97,6 +125,10 @@
       "count": 2
     },
     {
+      "target": "res_thousand_li_soul_thread",
+      "count": 1
+    },
+    {
       "target": "res_flowing_fire_core",
       "count": 1
     },
@@ -106,6 +138,10 @@
     },
     {
       "target": "fac_lang_ya_sect",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     }
   ],
@@ -172,10 +208,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "modified-recipe-completed",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "The modified recipe turns out much more suited to Fang Yuan’s own refinement method than the original, though the result is only rank six rather than the rank seven his soul path trap method needs.",

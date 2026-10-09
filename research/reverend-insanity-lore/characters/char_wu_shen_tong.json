@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 339,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     339,
@@ -45,6 +45,18 @@
     {
       "type": "in_region",
       "target": "reg_southern_border",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -77,6 +89,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_kong_ri_tian",
       "count": 2
     },
@@ -98,6 +114,10 @@
     },
     {
       "target": "char_yi_huo",
+      "count": 2
+    },
+    {
+      "target": "inh_king_bao_inheritance",
       "count": 2
     },
     {
@@ -133,11 +153,23 @@
       "count": 2
     },
     {
+      "target": "evt_arc_three_kings_inheritance",
+      "count": 1
+    },
+    {
       "target": "loc_san_cha_mountain",
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
+      "count": 1
+    },
+    {
+      "target": "inh_king_quan_inheritance",
       "count": 1
     },
     {
@@ -153,11 +185,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "char_second_zombie_king",
       "count": 1
     },
     {
       "target": "char_sun_pang_hu",
+      "count": 1
+    },
+    {
+      "target": "sys_beast_group",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_dao_veins_famous_mountains",
+      "count": 1
+    },
+    {
+      "target": "sys_dead_sea_life_retrieval_formation",
       "count": 1
     }
   ],
@@ -169,7 +217,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -189,7 +237,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -201,13 +249,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "three-kings-opening",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_wu_clan",
-        "fac_gu_masters"
+        "fac_gu_masters",
+        "inh_king_quan_inheritance",
+        "sys_gu_master"
       ]
     },
     {
@@ -217,12 +267,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "peak-contest-with-yi-huo",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_yi_huo"
+        "char_yi_huo",
+        "inh_king_bao_inheritance"
       ]
     },
     {
@@ -232,7 +283,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "peak-contest-with-yi-huo",
       "text_origin": "source_excerpt",
@@ -247,7 +298,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tie-mu-bais-arrival",
       "text_origin": "source_excerpt",
@@ -262,7 +313,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tie-mu-bais-arrival",
       "text_origin": "source_excerpt"
@@ -274,7 +325,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "poison-thinning",
       "text_origin": "source_excerpt",
@@ -289,7 +340,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-in-king-quan",
       "text_origin": "source_excerpt",
@@ -308,12 +359,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-in-king-quan",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_bai_ning_bing"
+        "char_bai_ning_bing",
+        "sys_gu_worms"
       ]
     },
     {
@@ -323,7 +375,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-in-king-quan",
       "text_origin": "source_excerpt"
@@ -335,7 +387,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "death-in-king-quan",
       "text_origin": "source_excerpt"
@@ -347,12 +399,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "previous-life-yi-tian-mountain",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_yi_tian_village",
+        "sys_beast_group",
         "char_xiao_shan",
         "char_sun_pang_hu",
         "char_lu_zuan_feng",
@@ -366,7 +419,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "previous-life-yi-tian-mountain",
       "text_origin": "source_excerpt"
@@ -437,7 +490,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Wu Clan as of ch. 345",
@@ -464,7 +517,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_southern_border",
     "status": "Alive",
     "alignment": null,

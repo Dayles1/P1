@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1143,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1143,
@@ -49,6 +49,18 @@
     {
       "type": "in_region",
       "target": "reg_northern_plains",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_rockmen",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -109,6 +121,10 @@
       "count": 3
     },
     {
+      "target": "race_rockmen",
+      "count": 2
+    },
+    {
       "target": "reg_northern_plains",
       "count": 2
     },
@@ -134,6 +150,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -169,11 +189,31 @@
       "count": 1
     },
     {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
       "target": "loc_star_collection_city",
       "count": 1
     },
     {
+      "target": "path_fire",
+      "count": 1
+    },
+    {
+      "target": "sys_earthly_calamity",
+      "count": 1
+    },
+    {
       "target": "res_earth_path_immortal_material",
+      "count": 1
+    },
+    {
+      "target": "move_heaven_human_sensation",
+      "count": 1
+    },
+    {
+      "target": "move_human_executing_heavens_work",
       "count": 1
     },
     {
@@ -182,6 +222,18 @@
     },
     {
       "target": "char_ke_xin_hong",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "move_devour_heaven_and_earth",
       "count": 1
     },
     {
@@ -194,6 +246,14 @@
     },
     {
       "target": "fac_chai_clan",
+      "count": 1
+    },
+    {
+      "target": "move_congregated_human_talent",
+      "count": 1
+    },
+    {
+      "target": "res_rank_nine_wind_path_immortal_material",
       "count": 1
     },
     {
@@ -213,11 +273,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_fang_yuan"
       ]
     },
@@ -228,10 +289,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "race_rockmen"
+      ]
     },
     {
       "text": "At Earth Mother Altar under the icy plain, four incense sticks were lit. During the drum sounds he took a large step ahead and spoke in a loud voice: he, Gu Immortal Shi Zong of the rockman tribe, was willing to join the four races alliance, and from that day the four races would be united and share fortune and woe together. He activated his immortal essence. The curling smoke surged toward him, coiled around him for a dozen breaths, and merged completely into his body, adding information path dao marks by an earth path method.",
@@ -240,7 +304,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "alliance-oath",
       "text_origin": "source_excerpt",
@@ -268,7 +332,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "moli-region",
       "text_origin": "source_excerpt",
@@ -283,7 +347,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "engagement-banquet",
       "text_origin": "source_excerpt",
@@ -349,6 +413,8 @@
       "section": "fire-bird-mountain",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_formation",
+        "path_fire",
         "loc_star_collection_city"
       ]
     },
@@ -365,6 +431,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_northern_plains",
+        "sys_earthly_calamity",
         "reg_eastern_sea"
       ]
     },
@@ -378,7 +445,11 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "advances-to-rank-eight",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_worms",
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "He went to Human Smoke Mountain with Bing Yuan and Golden Fur Immortal Monarch as rockman, snowman, and hairy man, all at rank eight. When Chai Gan asked what Fang Yuan wanted the mortals for, he sneered that they would kill them all.",
@@ -542,7 +613,7 @@
     "Race": {
       "text": "Rockmen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Rockman Tribe as of ch. 1143 Four races alliance as of ch. 1146 Lang Ya Sect as of ch. 1765",
@@ -574,7 +645,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_rockmen",
     "region": "reg_northern_plains",
     "status": "Alive",
     "alignment": null,

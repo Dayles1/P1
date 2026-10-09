@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 433,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     433,
@@ -77,6 +77,10 @@
       "count": 2
     },
     {
+      "target": "sys_enslavement_gu",
+      "count": 2
+    },
+    {
       "target": "char_chang_shan_yin",
       "count": 1
     },
@@ -101,7 +105,15 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "char_man_hong",
+      "count": 1
+    },
+    {
+      "target": "sys_defensive_gu",
       "count": 1
     },
     {
@@ -216,7 +228,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-effects",
         "text_origin": "source_excerpt",
@@ -231,7 +243,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank-effects",
         "text_origin": "source_excerpt"
@@ -243,7 +255,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ranks-held",
         "text_origin": "source_excerpt"
@@ -255,7 +267,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ranks-held",
         "text_origin": "source_excerpt"
@@ -267,7 +279,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "ranks-held",
         "text_origin": "source_excerpt",
@@ -291,7 +303,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "one-time-use",
         "text_origin": "source_excerpt"
@@ -303,11 +315,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "one-time-use",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_defensive_gu",
           "gu_golden_bell_shield_gu"
         ]
       }
@@ -335,7 +348,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "recipes-and-procurement",
         "text_origin": "source_excerpt"
@@ -347,13 +360,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "recipes-and-procurement",
         "text_origin": "source_excerpt",
         "mentions": [
           "rcp_wolf_enslavement_gu_recipes",
-          "char_lang_ya_land_spirit"
+          "char_lang_ya_land_spirit",
+          "sys_gu_worms"
         ]
       },
       {
@@ -404,7 +418,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt"
@@ -416,7 +430,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -431,7 +445,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt"
@@ -443,7 +457,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "subduing-wolf-kings",
         "text_origin": "source_excerpt"
@@ -455,7 +469,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "subduing-wolf-kings",
         "text_origin": "source_excerpt"
@@ -467,7 +481,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "subduing-wolf-kings",
         "text_origin": "source_excerpt"
@@ -491,7 +505,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "subduing-wolf-kings",
         "text_origin": "source_excerpt"
@@ -506,7 +520,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "final-conflicts",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_enslavement_gu"
+        ]
       }
     ]
   },

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 319,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     319,
@@ -49,7 +49,15 @@
       "count": 4
     },
     {
+      "target": "sys_defensive_gu",
+      "count": 1
+    },
+    {
       "target": "loc_shang_clan_city",
+      "count": 1
+    },
+    {
+      "target": "move_djinn_transformation",
       "count": 1
     },
     {
@@ -157,7 +165,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_shang_clan_city",
-          "char_ju_kai_bei"
+          "char_ju_kai_bei",
+          "sys_defensive_gu"
         ]
       },
       {

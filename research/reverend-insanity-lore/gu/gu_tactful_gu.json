@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 231,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_bai_gu_mountain"
   },
   "chapters_cited": [
     231
@@ -44,6 +44,10 @@
     },
     {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
       "count": 1
     },
     {
@@ -160,6 +164,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_gu_worms",
           "gu_creative_thinking_gu",
           "gu_intelligent_heart_gu",
           "gu_lightning_thoughts_gu",

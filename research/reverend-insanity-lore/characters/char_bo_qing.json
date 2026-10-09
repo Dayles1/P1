@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 566,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     566,
@@ -58,6 +58,18 @@
     {
       "type": "in_region",
       "target": "reg_central_continent",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -162,6 +174,78 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_cloud_flying_sword",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_five_finger_fist_heart_sword",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_formless_flying_sword",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_pursuing_flying_sword",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_ten_thousand_li_flying_sword",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "linked_inheritance",
+      "target": "inh_bo_qing_sword_path_true_inheritance",
+      "role": "creator",
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
@@ -171,6 +255,10 @@
     },
     {
       "target": "fac_spirit_affinity_house",
+      "count": 3
+    },
+    {
+      "target": "move_five_finger_fist_heart_sword",
       "count": 3
     },
     {
@@ -194,12 +282,36 @@
       "count": 3
     },
     {
+      "target": "move_cloud_flying_sword",
+      "count": 3
+    },
+    {
+      "target": "move_formless_flying_sword",
+      "count": 3
+    },
+    {
+      "target": "move_pursuing_flying_sword",
+      "count": 3
+    },
+    {
+      "target": "move_ten_thousand_li_flying_sword",
+      "count": 3
+    },
+    {
       "target": "gu_change_soul_immortal_gu",
       "count": 3
     },
     {
+      "target": "inh_bo_qing_sword_path_true_inheritance",
+      "count": 2
+    },
+    {
       "target": "reg_central_continent",
       "count": 2
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_mo_yao",
@@ -258,6 +370,10 @@
       "count": 2
     },
     {
+      "target": "house_illusion_garden",
+      "count": 2
+    },
+    {
       "target": "char_bi_chen_tian",
       "count": 2
     },
@@ -271,6 +387,10 @@
     },
     {
       "target": "fac_shadow_sect",
+      "count": 2
+    },
+    {
+      "target": "house_sacred_feather_city",
       "count": 2
     },
     {
@@ -302,6 +422,10 @@
       "count": 1
     },
     {
+      "target": "res_stone_heart_liquid",
+      "count": 1
+    },
+    {
       "target": "char_blood_sea_ancestor",
       "count": 1
     },
@@ -310,11 +434,55 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "path_sword",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_lang_ya_land_spirit_against_qin_bai_sheng",
+      "count": 1
+    },
+    {
       "target": "char_spirit_affinity_first_supreme_elder",
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "house_heaven_overseeing_tower",
+      "count": 1
+    },
+    {
+      "target": "sys_sword_path_dao_marks",
+      "count": 1
+    },
+    {
       "target": "loc_heavenly_pool",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "sys_pure_dream_reality_seeker_physique",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_eastern_sea",
+      "count": 1
+    },
+    {
+      "target": "sys_dream_realm",
       "count": 1
     },
     {
@@ -334,11 +502,27 @@
       "count": 1
     },
     {
+      "target": "house_graceful_chaotic_duel_stage",
+      "count": 1
+    },
+    {
       "target": "loc_yi_tian_mountain",
       "count": 1
     },
     {
+      "target": "sys_myriad_tribulation",
+      "count": 1
+    },
+    {
+      "target": "house_embroidered_tower",
+      "count": 1
+    },
+    {
       "target": "gu_man_as_before_gu",
+      "count": 1
+    },
+    {
+      "target": "move_lead_soul_into_dream",
       "count": 1
     },
     {
@@ -358,6 +542,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -366,7 +554,19 @@
       "count": 1
     },
     {
+      "target": "sys_wisdom_refinement_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_omni_directional_travel",
+      "count": 1
+    },
+    {
       "target": "char_tian_xia_xin",
+      "count": 1
+    },
+    {
+      "target": "inh_eastern_sea_information_path_true_inheritance",
       "count": 1
     },
     {
@@ -378,11 +578,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_venerable",
+      "count": 1
+    },
+    {
       "target": "loc_qi_jue_grotto_heaven",
       "count": 1
     },
     {
       "target": "char_great_strength_true_martial",
+      "count": 1
+    },
+    {
+      "target": "move_man_as_before",
       "count": 1
     },
     {
@@ -398,7 +606,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
@@ -429,7 +637,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "central-continent-records",
       "text_origin": "source_excerpt",
@@ -446,7 +654,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "central-continent-records",
       "text_origin": "source_excerpt"
@@ -463,7 +671,8 @@
       "section": "central-continent-records",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_fang_yuan"
+        "char_fang_yuan",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -485,11 +694,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "central-continent-records",
       "text_origin": "source_excerpt",
       "mentions": [
+        "path_sword",
         "char_blood_sea_ancestor"
       ]
     },
@@ -500,11 +710,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "five-finger-fist-heart-swords-origin",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_qin_bai_sheng"
       ]
     },
@@ -515,7 +726,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "zombie-appearance",
       "text_origin": "source_excerpt"
@@ -527,7 +738,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "zombie-appearance",
       "text_origin": "source_excerpt"
@@ -539,7 +750,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "zombie-appearance",
       "text_origin": "source_excerpt"
@@ -551,7 +762,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "rank-nine-attempts",
       "text_origin": "source_excerpt",
@@ -566,11 +777,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "awakening-under-starlight",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_formation",
         "char_bai_cang_shui",
         "char_heaven_overseeing_tower_lord",
         "res_gu_immortal_corpse",
@@ -587,7 +799,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "mo-yaos-remnant-soul-awakens",
       "text_origin": "source_excerpt",
@@ -603,11 +815,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "remnant-soul-annihilated",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu_house",
+        "house_illusion_garden",
         "char_bi_chen_tian",
         "char_lian_jiu_sheng"
       ]
@@ -619,7 +833,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "aftermath-at-falling-heavenly-river",
       "text_origin": "source_excerpt",
@@ -634,7 +848,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "diverging-from-the-previous-life",
       "text_origin": "source_excerpt",
@@ -649,13 +863,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "piloting-sacred-feather-city-against-fang-yuan",
       "text_origin": "source_excerpt",
       "mentions": [
+        "house_sacred_feather_city",
         "loc_yi_tian_mountain",
-        "char_great_strength_true_martial"
+        "char_great_strength_true_martial",
+        "house_graceful_chaotic_duel_stage"
       ]
     },
     {
@@ -665,7 +881,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "five-finger-fist-heart-sword-against-the-light-deer",
       "text_origin": "source_excerpt"
@@ -677,14 +893,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "split-soul-origin-and-fairy-li-shans-death",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_ying_wu_xie",
         "char_fairy_li_shan",
-        "char_tai_bai_yun_sheng"
+        "char_tai_bai_yun_sheng",
+        "move_man_as_before"
       ]
     },
     {
@@ -694,7 +911,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-identity",
       "text_origin": "source_excerpt",
@@ -709,7 +926,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-identity",
       "text_origin": "source_excerpt"
@@ -721,7 +938,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-identity",
       "text_origin": "source_excerpt",
@@ -736,7 +953,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "shadow-sect-identity",
       "text_origin": "source_excerpt"
@@ -748,7 +965,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "flying-sword-immortal-gus-centrality",
       "text_origin": "source_excerpt"
@@ -760,11 +977,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "broken-sword-valleys-origin",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_worms",
         "fac_gu_masters"
       ]
     },
@@ -775,7 +993,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "measure-for-qi-jues-grotto-heaven",
       "text_origin": "source_excerpt",
@@ -792,7 +1010,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sword-path-movement-move-in-his-inheritance",
       "text_origin": "source_excerpt"
@@ -864,7 +1082,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Spirit Affinity House as of ch. 854",
@@ -896,7 +1114,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_central_continent",
     "status": "Dead",
     "alignment": "demonic path as of ch. 566",

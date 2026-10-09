@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 514,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     514,
@@ -64,6 +64,10 @@
       "count": 2
     },
     {
+      "target": "inh_giant_sun_immortal_venerable_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_xue_song_zi",
       "count": 2
     },
@@ -80,6 +84,10 @@
       "count": 2
     },
     {
+      "target": "sys_super_gu_formation",
+      "count": 2
+    },
+    {
       "target": "loc_reverse_flow_river",
       "count": 2
     },
@@ -92,11 +100,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_ma_tribe",
       "count": 1
     },
     {
+      "target": "house_eighty_eight_true_yang_building",
+      "count": 1
+    },
+    {
       "target": "loc_xiao_hun_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "race_snowmen",
+      "count": 1
+    },
+    {
+      "target": "move_dragon_horse_spirit",
       "count": 1
     },
     {
@@ -108,11 +132,23 @@
       "count": 1
     },
     {
+      "target": "move_winged_blade",
+      "count": 1
+    },
+    {
       "target": "char_fairy_li_shan",
       "count": 1
     },
     {
       "target": "loc_shi_huang_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_blessed_land_consolidation",
+      "count": 1
+    },
+    {
+      "target": "sys_alliance_agreement",
       "count": 1
     },
     {
@@ -129,6 +165,10 @@
     },
     {
       "target": "loc_hai_shi_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "evt_fight_fang_yuan_against_hei_cheng_second_battle",
       "count": 1
     },
     {
@@ -156,6 +196,18 @@
       "count": 1
     },
     {
+      "target": "move_nine_cloud_ring",
+      "count": 1
+    },
+    {
+      "target": "res_soft_jade_sand",
+      "count": 1
+    },
+    {
+      "target": "sys_blessed_lands_and_grotto_heavens",
+      "count": 1
+    },
+    {
       "target": "char_demon_lord_long_dan",
       "count": 1
     },
@@ -172,11 +224,31 @@
       "count": 1
     },
     {
+      "target": "sys_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_ice_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_lightning_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_information_path_mortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_corpse_detonation_king",
       "count": 1
     },
     {
       "target": "char_pu_wan_dao",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
       "count": 1
     },
     {
@@ -189,6 +261,14 @@
     },
     {
       "target": "fac_seven_rainbows",
+      "count": 1
+    },
+    {
+      "target": "path_information",
+      "count": 1
+    },
+    {
+      "target": "sys_public_blessed_land",
       "count": 1
     },
     {
@@ -236,6 +316,14 @@
       "count": 1
     },
     {
+      "target": "sys_omni_directional_travel",
+      "count": 1
+    },
+    {
+      "target": "house_edge_link_camp",
+      "count": 1
+    },
+    {
       "target": "char_bi_chen_tian",
       "count": 1
     },
@@ -248,7 +336,15 @@
       "count": 1
     },
     {
+      "target": "res_purple_gold_rock",
+      "count": 1
+    },
+    {
       "target": "char_flood_extremity",
+      "count": 1
+    },
+    {
+      "target": "sys_fate_reversing_sacrificial_refinement_formation",
       "count": 1
     },
     {
@@ -272,14 +368,17 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_dong_fang_chang_fan",
         "char_tan_bi_ya",
-        "fac_ma_tribe"
+        "fac_ma_tribe",
+        "sys_gu_immortal",
+        "house_eighty_eight_true_yang_building",
+        "inh_giant_sun_immortal_venerable_inheritance"
       ]
     },
     {
@@ -289,7 +388,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt"
@@ -301,7 +400,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "blessed-land-peaks",
       "text_origin": "source_excerpt",
@@ -317,7 +416,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fifteen-peaks-and-the-super-gu-formation",
       "text_origin": "source_excerpt",
@@ -325,6 +424,7 @@
         "char_mu_ling_lan",
         "char_hair_mistress",
         "reg_central_continent",
+        "sys_super_gu_formation",
         "loc_reverse_flow_river"
       ]
     }

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 411,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     411,
@@ -71,6 +71,10 @@
       "count": 1
     },
     {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
       "target": "loc_door_of_life_and_death",
       "count": 1
     },
@@ -88,6 +92,10 @@
     },
     {
       "target": "loc_reverse_flow_river",
+      "count": 1
+    },
+    {
+      "target": "move_ghostly_concealment",
       "count": 1
     }
   ],
@@ -116,6 +124,7 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_the_legends_of_ren_zu",
         "char_ren_zu",
         "loc_door_of_life_and_death",
         "char_verdant_great_sun",
@@ -145,7 +154,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "soul-calming-water",
       "text_origin": "source_excerpt",
@@ -160,7 +169,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fairness-immortal-gu",
       "text_origin": "source_excerpt"
@@ -172,7 +181,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "spectral-soul-in-the-domain",
       "text_origin": "source_excerpt",

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1474,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1474,
@@ -47,6 +47,18 @@
     {
       "target": "gu_worry_gu",
       "count": 2
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_myriad_gold_wondrous_essence_physique",
+      "count": 1
     },
     {
       "target": "fac_shi_clan",
@@ -73,7 +85,19 @@
       "count": 1
     },
     {
+      "target": "evt_legend_webs_of_fate",
+      "count": 1
+    },
+    {
       "target": "gu_cognition_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_pursuit_of_freedom",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_lightning_and_hatred",
       "count": 1
     },
     {
@@ -82,6 +106,10 @@
     },
     {
       "target": "char_xiao_qi_xing",
+      "count": 1
+    },
+    {
+      "target": "move_commander_of_justice",
       "count": 1
     }
   ],
@@ -137,7 +165,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "deduced-effect",
         "text_origin": "source_excerpt"
@@ -179,7 +207,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -187,6 +215,7 @@
           "char_shi_zhong",
           "reg_western_desert",
           "fac_shi_clan",
+          "sys_gu_recipe",
           "char_ren_zu",
           "gu_worry_gu",
           "gu_wisdom_gu"
@@ -204,6 +233,7 @@
         "section": "ren-zu-legend",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_the_legends_of_ren_zu",
           "gu_fate_gu"
         ]
       },

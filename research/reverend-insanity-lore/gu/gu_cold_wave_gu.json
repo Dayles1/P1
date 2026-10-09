@@ -23,13 +23,17 @@
   "first_appearance": {
     "chapter": 1312,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1312
   ],
   "relations": [],
   "co_mentions": [
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
     {
       "target": "loc_frosty_peak",
       "count": 1
@@ -119,7 +123,8 @@
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
-          "loc_frosty_peak"
+          "loc_frosty_peak",
+          "sys_gu_worms"
         ]
       }
     ]

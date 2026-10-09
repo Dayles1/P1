@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1994,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1994,
@@ -45,11 +45,23 @@
       "count": 2
     },
     {
+      "target": "move_rotting_smell_vicious_cloud",
+      "count": 2
+    },
+    {
+      "target": "race_eggmen",
+      "count": 2
+    },
+    {
       "target": "char_nie_kuang_feng",
       "count": 2
     },
     {
       "target": "fac_heavenly_court",
+      "count": 1
+    },
+    {
+      "target": "house_demon_judgment_board",
       "count": 1
     },
     {
@@ -88,6 +100,8 @@
       "mentions": [
         "char_ice_crystal_immortal_monarch",
         "fac_heavenly_court",
+        "race_eggmen",
+        "move_rotting_smell_vicious_cloud",
         "loc_chaotic_rock_grotto_heaven",
         "loc_strange_hair_grotto_heaven"
       ]
@@ -104,7 +118,8 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_ice_crystal_grotto_heaven"
+        "loc_ice_crystal_grotto_heaven",
+        "house_demon_judgment_board"
       ]
     },
     {

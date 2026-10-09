@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 425,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     425,
@@ -65,7 +65,15 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "char_sun_cu",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -86,6 +94,14 @@
     },
     {
       "target": "res_laughter_stones",
+      "count": 1
+    },
+    {
+      "target": "res_six_headed_snake_blood",
+      "count": 1
+    },
+    {
+      "target": "res_underworld_jellyfish",
       "count": 1
     },
     {
@@ -111,6 +127,10 @@
     {
       "target": "loc_yu_lu_blessed_land",
       "count": 1
+    },
+    {
+      "target": "move_man_as_before",
+      "count": 1
     }
   ],
   "claims": [
@@ -121,13 +141,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
-        "gu_rebuilding_mount_dongshan"
+        "gu_rebuilding_mount_dongshan",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -137,13 +158,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "immortal-gu-seat",
       "text_origin": "source_excerpt",
       "mentions": [
         "reg_eastern_sea",
-        "char_sun_cu"
+        "char_sun_cu",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -153,7 +175,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "market-among-five",
       "text_origin": "source_excerpt",
@@ -168,7 +190,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "lone-cultivator-market-force",
       "text_origin": "source_excerpt",
@@ -184,11 +206,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "tai-bai-yun-sheng-visit",
       "text_origin": "source_excerpt",
       "mentions": [
+        "move_man_as_before",
         "loc_yu_lu_blessed_land",
         "char_shark_demon",
         "fac_zombie_alliance"
@@ -201,7 +224,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "hai-shi-task-work",
       "text_origin": "source_excerpt"

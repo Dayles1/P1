@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 410,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     410,
@@ -41,6 +41,10 @@
     },
     {
       "target": "loc_door_of_life_and_death",
+      "count": 2
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 2
     },
     {
@@ -68,11 +72,27 @@
       "count": 1
     },
     {
+      "target": "evt_legend_road_of_life_and_death",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_walking_meat_tree",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "gu_self_gu",
+      "count": 1
+    },
+    {
+      "target": "path_human",
       "count": 1
     }
   ],
@@ -159,7 +179,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "path-of-life",
         "text_origin": "source_excerpt"
@@ -175,7 +195,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -222,7 +242,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -239,7 +259,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt"
@@ -251,7 +271,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "both-roads",
         "text_origin": "source_excerpt",
@@ -318,11 +338,13 @@
         "section": "human-path-reading",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_the_legends_of_ren_zu",
           "gu_hope_gu",
           "gu_vanity_gu",
           "gu_guts_gu",
           "gu_pride_gu",
-          "gu_self_gu"
+          "gu_self_gu",
+          "sys_gu_worms"
         ]
       }
     ]

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1159,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1159,
@@ -38,6 +38,10 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "res_flowing_light_fruits",
       "count": 1
     },
@@ -47,6 +51,10 @@
     },
     {
       "target": "res_light_shine_fungi",
+      "count": 1
+    },
+    {
+      "target": "move_light_fungus_radiance",
       "count": 1
     }
   ],
@@ -73,10 +81,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_worms"
+      ]
     },
     {
       "text": "Fang Yuan places modified pure white light shine fungi into Mini Orange Heaven. The fungi float in the sky and help areas that need intense light. Under that influence, Mini Orange Heaven’s aurora lights start to expand, mildly at first but substantially over time.",
@@ -85,7 +96,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "fungi-placement",
       "text_origin": "source_excerpt"

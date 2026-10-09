@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1493,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_river_of_time"
   },
   "chapters_cited": [
     1493,
@@ -39,8 +39,25 @@
     1512,
     2171
   ],
-  "relations": [],
+  "relations": [
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    }
+  ],
   "co_mentions": [
+    {
+      "target": "race_humans",
+      "count": 1
+    },
     {
       "target": "char_thieving_heaven_demon_venerable",
       "count": 2
@@ -48,6 +65,10 @@
     {
       "target": "gu_sneak_attack_gu",
       "count": 2
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
     },
     {
       "target": "gu_chimney_smoke_gu",
@@ -62,11 +83,27 @@
       "count": 1
     },
     {
+      "target": "move_blurred_grey_eyes",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
+      "target": "res_sheepskin_map",
+      "count": 1
+    },
+    {
       "target": "gu_steal_life_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_battle_of_crazed_demon_cave",
+      "count": 1
+    },
+    {
+      "target": "sys_dao_guardian",
       "count": 1
     }
   ],
@@ -97,7 +134,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "intro",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu"
+      ]
     },
     {
       "text": "He speaks as “grandpa” to young Thieving Heaven, snickers, laughs madly, and threatens with methods marked on the youth’s body.",
@@ -118,7 +158,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "capture-of-young-thieving-heaven",
       "text_origin": "source_excerpt"
@@ -130,7 +170,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "subjugation-through-torment",
       "text_origin": "source_excerpt"
@@ -142,7 +182,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "training-and-control",
       "text_origin": "source_excerpt"
@@ -220,7 +260,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "dao-guardian",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_dao_guardian"
+      ]
     }
   ],
   "conflicts": [],
@@ -259,7 +302,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Status": {
       "text": "Alive",
@@ -275,7 +318,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

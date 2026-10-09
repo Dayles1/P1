@@ -23,13 +23,25 @@
   "first_appearance": {
     "chapter": 2189,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2189,
     2203
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_blood",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_giant_sun_immortal_venerable",
@@ -49,6 +61,10 @@
       "count": 2
     },
     {
+      "target": "path_blood",
+      "count": 1
+    },
+    {
       "target": "char_immortal_zombie_giant_sun",
       "count": 2
     },
@@ -61,7 +77,19 @@
       "count": 2
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
       "target": "fac_longevity_heaven",
+      "count": 1
+    },
+    {
+      "target": "move_emotionless_heaven_and_earth",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_finding_self",
       "count": 1
     }
   ],
@@ -94,7 +122,9 @@
     "ranks": [],
     "rank_type": "unknown",
     "is_immortal_gu": null,
-    "paths": [],
+    "paths": [
+      "path_blood"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -175,6 +205,7 @@
         "section": "blood-path-cores",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_worms",
           "fac_longevity_heaven",
           "gu_imitation_gu",
           "gu_blood_relation_gu"
@@ -186,7 +217,7 @@
     "Path": {
       "text": "Blood Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

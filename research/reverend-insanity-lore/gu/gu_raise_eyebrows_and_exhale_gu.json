@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 192,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_gu_yue_clan_conflict"
   },
   "chapters_cited": [
     192,
@@ -67,6 +67,10 @@
     },
     {
       "target": "char_first_gen_gu_yue",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -154,7 +158,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "form-and-rank",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       },
       {
         "text": "Cited chapters never print a Chinese name, feeding method, or refinement recipe for this Gu.",

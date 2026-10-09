@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 462,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     462,
@@ -65,11 +65,19 @@
       "count": 1
     },
     {
+      "target": "res_rush_thunder_stone",
+      "count": 1
+    },
+    {
       "target": "char_daoist_countless_treasures",
       "count": 1
     },
     {
       "target": "char_seven_star_child",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -151,7 +159,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "rush-thunder-stone",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "res_rush_thunder_stone"
+      ]
     },
     {
       "text": "The immemorial nine heavens were nine different worlds. Gu Immortal immortal apertures are also worlds and can swallow one another; the most famous example is treasure yellow heaven, formed when Daoist Countless Treasures fused a yellow heaven fragment world into his grotto-heaven. Seven Star Child absorbed a blue heaven fragment so Starry Sky grotto-heaven could endure. Only a rank eight grotto-heaven can absorb a nine heavens fragment world. Such fragments are precious because the immemorial nine heavens belong to the large world: after a grotto-heaven devouring a fragment, calamities and tribulations weaken or can vanish, and the grotto-heaven need not die with its Gu Immortal, yet the aperture takes on greater-world aura and can never be placed back into the body.",
@@ -165,6 +176,7 @@
       "section": "nine-heavens-fragment-worlds",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_immortal",
         "char_daoist_countless_treasures",
         "char_seven_star_child",
         "loc_starry_sky_grotto_heaven"

@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2162,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_battle_of_crazed_demon_cave"
   },
   "chapters_cited": [
     2162,
@@ -39,6 +39,42 @@
     2184
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_wisdom",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2162,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "path",
+      "target": "path_star",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2162,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_heavenly_court",
@@ -74,11 +110,27 @@
       "count": 3
     },
     {
+      "target": "path_wisdom",
+      "count": 2
+    },
+    {
+      "target": "path_star",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_fairy_yu_xiu",
       "count": 2
     },
     {
       "target": "loc_primordial_domain",
+      "count": 2
+    },
+    {
+      "target": "house_star_constellation_chessboard",
       "count": 2
     },
     {
@@ -118,11 +170,27 @@
       "count": 1
     },
     {
+      "target": "house_divine_emperor_city",
+      "count": 1
+    },
+    {
+      "target": "move_heaven_envies_heroic_geniuses",
+      "count": 1
+    },
+    {
+      "target": "evt_arc_battle_of_crazed_demon_cave",
+      "count": 1
+    },
+    {
       "target": "char_immortal_zombie_giant_sun",
       "count": 1
     },
     {
       "target": "char_che_wei",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
       "count": 1
     },
     {
@@ -173,7 +241,9 @@
       "mentions": [
         "gu_talent_gu",
         "char_limitless_demon_venerable",
+        "path_wisdom",
         "char_qin_ding_ling",
+        "house_divine_emperor_city",
         "char_fang_yuan"
       ]
     },
@@ -230,7 +300,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "uninterrupted-work",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_immortal_gu_house"
+      ]
     },
     {
       "text": "When Zhan Bu Du nears the peak, she has to multitask and control Star Constellation Chessboard while still retrieving Primordial Domain, which greatly reduces her efficiency.",
@@ -244,7 +317,8 @@
       "section": "divided-attention",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_zhan_bu_du"
+        "char_zhan_bu_du",
+        "house_star_constellation_chessboard"
       ]
     },
     {
@@ -313,12 +387,12 @@
     "Paths": {
       "text": "Wisdom path Star path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Heavenly Court as of ch. 2162",
@@ -334,12 +408,15 @@
   "cultivation": {
     "rank_timeline": [],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_wisdom",
+      "path_star"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,

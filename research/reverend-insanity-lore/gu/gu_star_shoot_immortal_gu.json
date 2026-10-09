@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 852,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     852,
@@ -63,11 +63,43 @@
       "count": 3
     },
     {
+      "target": "move_spring_star_rain",
+      "count": 3
+    },
+    {
+      "target": "move_six_illusion_star_bodies",
+      "count": 3
+    },
+    {
+      "target": "move_position_star_swap",
+      "count": 3
+    },
+    {
+      "target": "move_star_cloud_grindstone",
+      "count": 2
+    },
+    {
+      "target": "move_star_snake_rope",
+      "count": 2
+    },
+    {
+      "target": "move_star_soul_battlefield",
+      "count": 2
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
     {
       "target": "char_song_zi_xing",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -104,6 +136,10 @@
     },
     {
       "target": "gu_fixed_immortal_travel",
+      "count": 1
+    },
+    {
+      "target": "move_eat_strength",
       "count": 1
     }
   ],
@@ -160,7 +196,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -197,7 +233,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "food-and-set",
         "text_origin": "source_excerpt",
@@ -255,13 +291,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_star_form_blessed_land",
-          "gu_starlight_immortal_gu"
+          "gu_starlight_immortal_gu",
+          "sys_immortal_gu"
         ]
       },
       {
@@ -271,13 +308,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "spring-star-rain",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
           "gu_star_shoot_gu",
+          "sys_mortal_gu",
           "char_star_lord_wan_xiang",
           "gu_star_fragment_grass"
         ]
@@ -289,7 +327,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "spring-star-rain",
         "text_origin": "source_excerpt"
@@ -319,6 +357,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_sixth_hair",
+          "move_eat_strength",
           "gu_cleanse_soul",
           "gu_fixed_immortal_travel",
           "char_ying_wu_xie"

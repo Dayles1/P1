@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 2019,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     2019,
@@ -49,6 +49,10 @@
       "count": 2
     },
     {
+      "target": "sys_myriad_gold_wondrous_essence_physique",
+      "count": 2
+    },
+    {
       "target": "char_mo_li",
       "count": 1
     },
@@ -69,11 +73,39 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "res_silver_lightning_tree",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
+      "target": "evt_era_immemorial",
+      "count": 1
+    },
+    {
       "target": "gu_hatred_gu",
+      "count": 1
+    },
+    {
+      "target": "reg_heaven_blue_heaven",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_lightning_and_hatred",
       "count": 1
     },
     {
@@ -85,11 +117,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_recipe",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
     {
       "target": "gu_fate_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_myriad_destruction_lightning_forest",
       "count": 1
     }
   ],
@@ -163,8 +207,10 @@
         "mentions": [
           "char_qin_ding_ling",
           "char_wu_shuai",
+          "sys_immortal_gu",
           "gu_fate_gu",
-          "fac_heavenly_court"
+          "fac_heavenly_court",
+          "sys_gu_recipe"
         ]
       }
     ]
@@ -225,7 +271,9 @@
         "section": "lightning-forest",
         "text_origin": "source_excerpt",
         "mentions": [
-          "loc_forest_lightning_grotto_heaven"
+          "loc_forest_lightning_grotto_heaven",
+          "sys_gu_immortal",
+          "sys_the_legends_of_ren_zu"
         ]
       },
       {
@@ -243,6 +291,7 @@
           "char_forest_lightning_grotto_lord",
           "char_lady_cold_ash",
           "char_night_heavenly_wolf_lord",
+          "sys_wild_immortal_gu",
           "char_xiao_he_jian"
         ]
       },
@@ -271,7 +320,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "blue-heaven-legend",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_myriad_gold_wondrous_essence_physique"
+        ]
       },
       {
         "text": "During a myriad tribulation in the sovereign immortal aperture, Fang Yuan’s formation becomes a basin that absorbs incoming lightning bolts into a pool of lightning plasma. That lightning pool’s core is a rank eight Immortal Gu that Fang Yuan had, Lightning Gu.",

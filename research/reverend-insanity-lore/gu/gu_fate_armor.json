@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1404,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1404,
@@ -58,6 +58,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
@@ -66,7 +70,15 @@
       "count": 1
     },
     {
+      "target": "move_soul_explosion",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "move_yama_battlefield",
       "count": 1
     },
     {
@@ -75,6 +87,10 @@
     },
     {
       "target": "char_wu_yong",
+      "count": 1
+    },
+    {
+      "target": "move_destiny_song",
       "count": 1
     }
   ],
@@ -178,13 +194,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "loc_river_of_time",
           "char_feng_jiu_ge",
+          "sys_immortal_gu",
           "fac_heavenly_court",
           "char_fairy_zi_wei",
           "char_huang_shi"

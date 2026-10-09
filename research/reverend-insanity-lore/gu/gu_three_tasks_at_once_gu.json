@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 351,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_demonic_path_rise"
   },
   "chapters_cited": [
     351,
@@ -36,11 +36,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_master",
+      "count": 1
+    },
+    {
       "target": "gu_multitask_gu",
       "count": 1
     },
     {
       "target": "char_bai_ning_bing",
+      "count": 1
+    },
+    {
+      "target": "inh_king_quan_inheritance",
       "count": 1
     }
   ],
@@ -130,7 +138,8 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
-          "gu_multitask_gu"
+          "gu_multitask_gu",
+          "sys_gu_master"
         ]
       },
       {
@@ -145,7 +154,8 @@
         "section": "king-quan-reward",
         "text_origin": "source_excerpt",
         "mentions": [
-          "char_bai_ning_bing"
+          "char_bai_ning_bing",
+          "inh_king_quan_inheritance"
         ]
       }
     ]

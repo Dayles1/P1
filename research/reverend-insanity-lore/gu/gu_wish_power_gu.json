@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1007,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     1007,
@@ -32,11 +32,19 @@
   "relations": [],
   "co_mentions": [
     {
+      "target": "house_sacred_feather_city",
+      "count": 2
+    },
+    {
       "target": "fac_shadow_sect",
       "count": 1
     },
     {
       "target": "loc_green_heaven_fragment_world",
+      "count": 1
+    },
+    {
+      "target": "move_heavenly_wish",
       "count": 1
     },
     {
@@ -99,7 +107,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "use",
         "text_origin": "source_excerpt",
@@ -121,7 +129,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "sacred-feather-city-under-tribulation",
         "text_origin": "source_excerpt",
@@ -161,10 +169,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "house_sacred_feather_city"
+        ]
       }
     ]
   },

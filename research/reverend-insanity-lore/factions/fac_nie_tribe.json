@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 606,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     606
@@ -66,6 +66,10 @@
     {
       "target": "char_tai_bai_yun_sheng",
       "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     }
   ],
   "claims": [
@@ -76,12 +80,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "leader-at-the-sacred-palace",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_nie_ya_qing",
+        "sys_gu_immortal",
         "char_tai_bai_yun_sheng"
       ]
     }

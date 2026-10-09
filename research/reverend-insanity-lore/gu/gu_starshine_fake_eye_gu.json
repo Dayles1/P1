@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 718,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     718,
@@ -41,6 +41,22 @@
     },
     {
       "target": "char_hei_lou_lan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_investigative_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_wild_gu",
       "count": 1
     },
     {
@@ -120,7 +136,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "form",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_wild_gu"
+        ]
       }
     ],
     "visual_confidence": "text_described"
@@ -165,7 +184,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "use-in-starry-sky-grotto-heaven",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_investigative_gu"
+        ]
       }
     ]
   },
@@ -211,7 +233,9 @@
         "mentions": [
           "loc_starry_sky_grotto_heaven",
           "char_fang_yuan",
-          "char_hei_lou_lan"
+          "char_hei_lou_lan",
+          "sys_gu_worms",
+          "sys_gu_immortal"
         ]
       }
     ]

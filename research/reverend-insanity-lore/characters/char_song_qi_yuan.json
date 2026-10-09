@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 893,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     893,
@@ -35,6 +35,18 @@
     {
       "type": "in_region",
       "target": "reg_eastern_sea",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -83,6 +95,10 @@
       "count": 2
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "char_song_yi_shi",
       "count": 2
     },
@@ -92,6 +108,10 @@
     },
     {
       "target": "char_song_xia_qi",
+      "count": 2
+    },
+    {
+      "target": "inh_tian_nan_true_inheritance",
       "count": 2
     },
     {
@@ -105,6 +125,10 @@
     {
       "target": "loc_twin_polar_sea_strait",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
     },
     {
       "target": "char_seven_seas_snake_woman",
@@ -135,6 +159,10 @@
       "count": 1
     },
     {
+      "target": "move_myriad_mountain_ranges",
+      "count": 1
+    },
+    {
       "target": "char_granny_rong",
       "count": 1
     },
@@ -147,7 +175,31 @@
       "count": 1
     },
     {
+      "target": "move_perfect_round_light",
+      "count": 1
+    },
+    {
+      "target": "move_broken_mirror_shard_light",
+      "count": 1
+    },
+    {
       "target": "char_yang_zi_he",
+      "count": 1
+    },
+    {
+      "target": "house_pine_crane_pavilion",
+      "count": 1
+    },
+    {
+      "target": "move_mountain_suppression",
+      "count": 1
+    },
+    {
+      "target": "inh_molten_casting_true_inheritance",
+      "count": 1
+    },
+    {
+      "target": "inh_myriad_fusion_true_inheritance",
       "count": 1
     }
   ],
@@ -159,13 +211,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_song_clan",
         "reg_eastern_sea",
+        "sys_gu_immortal",
         "char_song_yi_shi"
       ]
     },
@@ -176,7 +229,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
@@ -191,11 +244,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "inheritance-contest",
       "text_origin": "source_excerpt",
       "mentions": [
+        "inh_tian_nan_true_inheritance",
         "loc_ascending_heaven_plain",
         "char_song_jia_dan"
       ]
@@ -207,7 +261,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "token-opens-twin-polar-sea-strait",
       "text_origin": "source_excerpt",
@@ -272,7 +326,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Song Clan as of ch. 893",
@@ -299,7 +353,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_eastern_sea",
     "status": "Alive",
     "alignment": null,

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1291,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1291,
@@ -55,7 +55,27 @@
       "count": 1
     },
     {
+      "target": "sys_dark_path_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "gu_connect_luck",
+      "count": 1
+    },
+    {
+      "target": "res_sand_gull_soil",
+      "count": 1
+    },
+    {
+      "target": "res_worldly_sand_gull_dead_egg",
       "count": 1
     },
     {
@@ -67,7 +87,15 @@
       "count": 1
     },
     {
+      "target": "inh_western_desert_zombie_alliance_inheritance",
+      "count": 1
+    },
+    {
       "target": "res_hibiscus_tree",
+      "count": 1
+    },
+    {
+      "target": "res_salt_sand",
       "count": 1
     },
     {
@@ -76,6 +104,10 @@
     },
     {
       "target": "char_eagle_warrior",
+      "count": 1
+    },
+    {
+      "target": "inh_beast_calamity_true_inheritance",
       "count": 1
     },
     {
@@ -103,11 +135,23 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "res_white_steel",
+      "count": 1
+    },
+    {
       "target": "char_twelfth_hair",
       "count": 1
     },
     {
       "target": "res_flying_sand",
+      "count": 1
+    },
+    {
+      "target": "house_pregnancy_temple",
       "count": 1
     }
   ],
@@ -119,13 +163,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_yuan",
         "gu_connect_luck",
+        "sys_gu_worms",
         "char_liu_yong"
       ]
     },
@@ -136,12 +181,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_corpse_city",
+        "sys_mortal_gu_house",
         "reg_western_desert"
       ]
     },
@@ -173,7 +219,8 @@
       "section": "desert-governance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_mo_tan_sang"
+        "char_mo_tan_sang",
+        "sys_gu_immortal"
       ]
     },
     {

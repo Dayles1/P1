@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2299,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_final_war"
   },
   "chapters_cited": [
     2299,
@@ -45,6 +45,18 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_refinement_sea",
+      "count": 1
+    },
+    {
       "target": "fac_gu_masters",
       "count": 1
     },
@@ -57,11 +69,27 @@
       "count": 1
     },
     {
+      "target": "sys_gu_worms",
+      "count": 1
+    },
+    {
+      "target": "sys_stone_nest",
+      "count": 1
+    },
+    {
       "target": "gu_relic_gu",
       "count": 1
     },
     {
       "target": "loc_inkman_city",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_formation",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -108,7 +136,9 @@
       "mentions": [
         "char_twelfth_hair",
         "char_gu_yue_fang_xiang",
-        "char_lian_ke_xin"
+        "char_lian_ke_xin",
+        "sys_gu_immortal",
+        "sys_refinement_sea"
       ]
     },
     {
@@ -135,7 +165,8 @@
       "section": "appearance",
       "text_origin": "source_excerpt",
       "mentions": [
-        "fac_gu_masters"
+        "fac_gu_masters",
+        "sys_immortal_gu"
       ]
     },
     {
@@ -179,6 +210,8 @@
       "mentions": [
         "char_fang_yuan",
         "loc_inkman_city",
+        "sys_stone_nest",
+        "sys_gu_worms",
         "gu_relic_gu"
       ]
     },
@@ -194,6 +227,7 @@
       "section": "qualification-tests",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_gu_master",
         "loc_mini_northern_plains"
       ]
     },
@@ -219,7 +253,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "qualification-tests",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_formation"
+      ]
     },
     {
       "text": "Every Floating Refinement Hive can borrow the help of Refinement Sea and greatly raise the success rate of Gu refinement. Wasted Gu materials from refining in these refinement hives are melted by the Floating Refinement Hives and sent to Refinement Sea. If there was no replenishment from the Floating Refinement Hives, Refinement Sea’s water level would already have fallen by a lot, after Fang Yuan had been trying to advance an Immortal Gu for many days. The constant resource deposit by Floating Refinement Hives accelerated the recovery of Refinement Sea.",

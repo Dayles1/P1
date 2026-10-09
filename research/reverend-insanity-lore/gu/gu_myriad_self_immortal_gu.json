@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1570,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_red_lotus_true_inheritance"
   },
   "chapters_cited": [
     1563,
@@ -33,6 +33,18 @@
     1571
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_strength",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -68,6 +80,10 @@
       "count": 2
     },
     {
+      "target": "path_strength",
+      "count": 1
+    },
+    {
       "target": "char_third_hair",
       "count": 2
     },
@@ -84,6 +100,14 @@
       "count": 2
     },
     {
+      "target": "move_luo_po_seal",
+      "count": 2
+    },
+    {
+      "target": "move_myriad_self_giant_hand",
+      "count": 2
+    },
+    {
       "target": "char_fourth_hair",
       "count": 1
     },
@@ -93,6 +117,26 @@
     },
     {
       "target": "char_seventh_hair",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_mental_energy",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_quasi_supreme",
       "count": 1
     },
     {
@@ -108,6 +152,10 @@
       "count": 1
     },
     {
+      "target": "move_myriad_self",
+      "count": 1
+    },
+    {
       "target": "gu_group_strength_gu",
       "count": 1
     },
@@ -116,7 +164,23 @@
       "count": 1
     },
     {
+      "target": "move_reverse_flow_protection_seal",
+      "count": 1
+    },
+    {
+      "target": "move_omnipresent_four_seas",
+      "count": 1
+    },
+    {
+      "target": "move_myriad_ghost_sword_dragon",
+      "count": 1
+    },
+    {
       "target": "gu_perseverance_gu",
+      "count": 1
+    },
+    {
+      "target": "path_human",
       "count": 1
     }
   ],
@@ -161,7 +225,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_strength"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -186,7 +252,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "effect",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_myriad_self"
+        ]
       },
       {
         "text": "With Myriad Self Immortal Gu, Myriad Self Giant Hand becomes much easier: the new version uses this Immortal Gu as core with group strength Gu and fewer than thirty Gu in total, and no longer needs Self Strength Immortal Gu as core. Reverse Flow Protection Seal also becomes simpler with Myriad Self Immortal Gu among its cores. Fang Yuan’s deeper aim is to use the Gu as a bridge toward Luo Po Seal, and narration says condensing Myriad Self into an Immortal Gu raises the room for creating a new path along that line.",
@@ -200,8 +269,11 @@
         "section": "killer-move-cores",
         "text_origin": "source_excerpt",
         "mentions": [
+          "move_myriad_self_giant_hand",
           "gu_group_strength_gu",
-          "gu_self_strength"
+          "gu_self_strength",
+          "move_reverse_flow_protection_seal",
+          "move_luo_po_seal"
         ]
       }
     ]
@@ -327,7 +399,10 @@
           "fac_lang_ya_sect",
           "char_fang_yuan",
           "char_lang_ya_land_spirit",
-          "loc_lang_ya_blessed_land"
+          "sys_gu_immortal",
+          "sys_mortal_gu",
+          "loc_lang_ya_blessed_land",
+          "sys_immortal_gu"
         ]
       }
     ]
@@ -336,7 +411,7 @@
     "Path": {
       "text": "Strength Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

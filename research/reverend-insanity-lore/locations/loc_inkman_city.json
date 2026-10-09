@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 662,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_blessed_land_consolidation"
   },
   "chapters_cited": [
     662,
@@ -55,6 +55,14 @@
     {
       "target": "loc_mini_western_desert",
       "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "race_inkmen",
+      "count": 1
     },
     {
       "target": "char_immortal_yi_yan",
@@ -89,11 +97,19 @@
       "count": 1
     },
     {
+      "target": "sys_mortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_huang_jin_bloodline",
       "count": 1
     },
     {
       "target": "fac_lang_ya_sect",
+      "count": 1
+    },
+    {
+      "target": "house_eighty_eight_true_yang_building",
       "count": 1
     },
     {
@@ -125,6 +141,10 @@
       "count": 1
     },
     {
+      "target": "res_white_steel",
+      "count": 1
+    },
+    {
       "target": "loc_floating_refinement_hive",
       "count": 1
     }
@@ -142,7 +162,8 @@
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
-        "reg_northern_plains"
+        "reg_northern_plains",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -155,7 +176,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "appearance",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_mortal_gu_house"
+      ]
     },
     {
       "text": "In Lang Ya blessed land, after Lang Ya land spirit blurts the True Yang Building matter, Mo Tan Sang moves first to speak and explains why he is present: inkman city has long had close relations with Lang Ya, his side has some qi path attainment, and he came to help unseal a qi path seal on the land spirit. He adds that Huang Jin tribes jointly suppress inkman city, and that Giant Sun Immortal Venerable once demanded inkman cities offer countless female inkmen as tribute. He invites Fang Yuan to visit inkman city later, and Fang Yuan answers that he will if there is an opportunity.",
@@ -171,6 +195,7 @@
       "mentions": [
         "loc_lang_ya_blessed_land",
         "char_lang_ya_land_spirit",
+        "house_eighty_eight_true_yang_building",
         "char_mo_tan_sang",
         "fac_lang_ya_sect",
         "fac_huang_jin_bloodline",

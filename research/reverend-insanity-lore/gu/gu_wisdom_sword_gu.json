@@ -25,7 +25,7 @@
   "first_appearance": {
     "chapter": 995,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     995,
@@ -71,6 +71,14 @@
       "count": 4
     },
     {
+      "target": "move_five_finger_fist_heart_sword",
+      "count": 4
+    },
+    {
+      "target": "move_myriad_thought_sword_waterfall",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -87,6 +95,14 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_star_thought_immortal_gu",
       "count": 1
     },
@@ -95,7 +111,15 @@
       "count": 1
     },
     {
+      "target": "path_wisdom",
+      "count": 1
+    },
+    {
       "target": "char_mo_yao",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_recipe",
       "count": 1
     },
     {
@@ -107,6 +131,10 @@
       "count": 1
     },
     {
+      "target": "sys_wisdom_refinement_formation",
+      "count": 1
+    },
+    {
       "target": "fac_spirit_affinity_house",
       "count": 1
     },
@@ -115,7 +143,19 @@
       "count": 1
     },
     {
+      "target": "res_multicolored_overlord_flowers",
+      "count": 1
+    },
+    {
       "target": "char_purple_mountain_true_monarch",
+      "count": 1
+    },
+    {
+      "target": "sys_killer_moves",
+      "count": 1
+    },
+    {
+      "target": "sys_compound_killer_moves",
       "count": 1
     }
   ],
@@ -182,7 +222,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance-and-creation",
         "text_origin": "source_excerpt"
@@ -194,10 +234,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance-and-creation",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "path_wisdom",
+          "sys_gu_immortal"
+        ]
       }
     ],
     "visual_confidence": "text_described"
@@ -212,7 +256,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "activation-requirement",
         "text_origin": "source_excerpt"
@@ -242,7 +286,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "killer-move-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_five_finger_fist_heart_sword"
+        ]
       },
       {
         "text": "He later modifies a killer move that uses wisdom sword Immortal Gu as the core and makes that move his main method for clearing wills while refining heaven form. Using the Gu alone in a previous life had only ordinary effect.",
@@ -254,7 +301,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "killer-move-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_killer_moves"
+        ]
       },
       {
         "text": "Myriad Thought Sword Waterfall uses it as the core and is more effective on wills than using the Gu alone.",
@@ -266,7 +316,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "killer-move-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "move_myriad_thought_sword_waterfall"
+        ]
       }
     ]
   },
@@ -282,7 +335,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-and-feeding",
         "text_origin": "source_excerpt",
@@ -297,7 +350,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-and-feeding",
         "text_origin": "source_excerpt"
@@ -309,7 +362,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-and-feeding",
         "text_origin": "source_excerpt",
@@ -324,7 +377,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-and-feeding",
         "text_origin": "source_excerpt"
@@ -336,7 +389,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "refinement-and-feeding",
         "text_origin": "source_excerpt",
@@ -371,7 +424,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "original-purpose",
         "text_origin": "source_excerpt"
@@ -383,11 +436,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "original-purpose",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_gu_recipe",
           "gu_love_gu",
           "char_mo_yao"
         ]
@@ -423,12 +477,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "sys_immortal_gu",
           "char_bo_qing",
           "loc_falling_heavenly_river"
         ]

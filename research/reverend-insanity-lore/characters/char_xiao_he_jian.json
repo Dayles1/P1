@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1996,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1996,
@@ -40,6 +40,18 @@
     2190
   ],
   "relations": [
+    {
+      "type": "race",
+      "target": "race_minimen",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_two_heavens_alliance",
@@ -63,12 +75,32 @@
       "confidence": "B",
       "source_id": "src_sagaofgu",
       "note": null
+    },
+    {
+      "type": "uses_move",
+      "target": "move_cut_grass",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": 2178,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
     }
   ],
   "co_mentions": [
     {
+      "target": "move_cut_grass",
+      "count": 4
+    },
+    {
       "target": "fac_two_heavens_alliance",
       "count": 3
+    },
+    {
+      "target": "race_minimen",
+      "count": 2
     },
     {
       "target": "fac_variant_human_alliance",
@@ -91,6 +123,14 @@
       "count": 2
     },
     {
+      "target": "move_spiraling_green_leaf_blade",
+      "count": 2
+    },
+    {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_luo_clan",
       "count": 1
     },
@@ -111,6 +151,10 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "fac_heavenly_court",
       "count": 1
     },
@@ -124,6 +168,10 @@
     },
     {
       "target": "res_black_hard_qi",
+      "count": 1
+    },
+    {
+      "target": "res_qi_pillar",
       "count": 1
     },
     {
@@ -183,7 +231,23 @@
       "count": 1
     },
     {
+      "target": "res_wood_path_immortal_material",
+      "count": 1
+    },
+    {
+      "target": "sys_contribution_board",
+      "count": 1
+    },
+    {
+      "target": "sys_contribution_points",
+      "count": 1
+    },
+    {
       "target": "gu_forest_gu",
+      "count": 1
+    },
+    {
+      "target": "path_weapon",
       "count": 1
     },
     {
@@ -207,6 +271,10 @@
       "count": 1
     },
     {
+      "target": "move_humble_reciprocation",
+      "count": 1
+    },
+    {
       "target": "loc_crazed_demon_cave",
       "count": 1
     },
@@ -216,6 +284,30 @@
     },
     {
       "target": "char_che_wei",
+      "count": 1
+    },
+    {
+      "target": "house_profound_frost_house",
+      "count": 1
+    },
+    {
+      "target": "house_red_heavenly_altar",
+      "count": 1
+    },
+    {
+      "target": "house_red_river_pavilion",
+      "count": 1
+    },
+    {
+      "target": "house_scarlet_palace",
+      "count": 1
+    },
+    {
+      "target": "house_unbreakable_golden_fortress",
+      "count": 1
+    },
+    {
+      "target": "move_extreme_ice_crystal_light_immortal_suppression_coffin",
       "count": 1
     },
     {
@@ -237,7 +329,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_qi_jue_grotto_heaven",
-        "fac_luo_clan"
+        "fac_luo_clan",
+        "sys_gu_immortal"
       ]
     },
     {
@@ -276,6 +369,7 @@
       "section": "rank-among-experts",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu_house",
         "reg_southern_border"
       ]
     },
@@ -398,6 +492,7 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "loc_crazed_demon_cave",
+        "move_spiraling_green_leaf_blade",
         "char_black_locust"
       ]
     },
@@ -426,7 +521,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "eighth-layer",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "move_cut_grass"
+      ]
     },
     {
       "text": "Heavenly Court is victorious in the eighth layer. The casualties on Fang Yuan’s side are severe. Experts like Xiao He Jian and Ice Crystal Immortal Monarch had perished.",
@@ -487,7 +585,7 @@
     "Race": {
       "text": "Minimen",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Two Heavens Alliance as of ch. 1998 Variant Human Alliance as of ch. 2069",
@@ -514,7 +612,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_minimen",
     "region": null,
     "status": "Dead",
     "alignment": null,

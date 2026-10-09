@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1779,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_central_continent_chaos"
   },
   "chapters_cited": [
     1779,
@@ -36,6 +36,18 @@
     {
       "type": "in_region",
       "target": "reg_western_desert",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
       "role": null,
       "from_chapter": null,
       "to_chapter": null,
@@ -64,6 +76,10 @@
       "count": 3
     },
     {
+      "target": "race_humans",
+      "count": 1
+    },
+    {
       "target": "reg_western_desert",
       "count": 1
     },
@@ -76,11 +92,27 @@
       "count": 1
     },
     {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
       "target": "loc_treasure_moon_oasis",
       "count": 1
     },
     {
+      "target": "move_steal_dao",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
+      "count": 1
+    },
+    {
+      "target": "sys_dao_marks",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_immortal",
       "count": 1
     },
     {
@@ -102,7 +134,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "char_fang_gong",
-        "char_fang_di_chang"
+        "char_fang_di_chang",
+        "sys_immortal_gu_house"
       ]
     },
     {
@@ -118,6 +151,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_dong_clan",
+        "sys_gu_immortal",
+        "sys_dao_marks",
         "char_fang_yuan"
       ]
     },
@@ -200,7 +235,7 @@
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Dong clan",
@@ -227,7 +262,7 @@
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": "reg_western_desert",
     "status": "Alive",
     "alignment": null,

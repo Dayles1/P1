@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 563,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_imperial_court_contest"
   },
   "chapters_cited": [
     563
@@ -49,6 +49,10 @@
     },
     {
       "target": "gu_little_light_gu",
+      "count": 1
+    },
+    {
+      "target": "inh_di_qiu_inheritance",
       "count": 1
     },
     {
@@ -216,6 +220,7 @@
         "text_origin": "source_excerpt",
         "mentions": [
           "char_fang_yuan",
+          "inh_di_qiu_inheritance",
           "loc_wang_ting_blessed_land"
         ]
       }

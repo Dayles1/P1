@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 281,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_shang_clan_city"
   },
   "chapters_cited": [
     334,
@@ -170,6 +170,10 @@
     },
     {
       "target": "loc_bai_qing_blessed_land",
+      "count": 3
+    },
+    {
+      "target": "reg_earth_earth_abyss",
       "count": 3
     },
     {
@@ -445,7 +449,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt"
@@ -457,7 +461,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "geography",
       "text_origin": "source_excerpt",
@@ -484,12 +488,13 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "geography",
       "text_origin": "source_excerpt",
       "mentions": [
-        "loc_tian_ti"
+        "loc_tian_ti",
+        "inh_hu_immortal_inheritance"
       ]
     },
     {
@@ -499,7 +504,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "geography",
       "text_origin": "source_excerpt",
@@ -545,7 +550,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ten-great-sects-roster",
       "text_origin": "source_excerpt",
@@ -560,7 +565,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ten-great-sects-roster",
       "text_origin": "source_excerpt",
@@ -590,12 +595,14 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "ten-great-sects-roster",
       "text_origin": "source_excerpt",
       "mentions": [
-        "char_hong_chi_ming"
+        "house_wind_cloud_manor",
+        "char_hong_chi_ming",
+        "sys_gu_formation"
       ]
     },
     {
@@ -617,7 +624,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sects-rather-than-clans",
       "text_origin": "source_excerpt",
@@ -632,7 +639,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sects-rather-than-clans",
       "text_origin": "source_excerpt"
@@ -647,7 +654,10 @@
       "verification": "citation_unchecked",
       "source_id": "src_sagaofgu",
       "section": "sects-rather-than-clans",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "sys_gu_immortal"
+      ]
     },
     {
       "text": "Central Continent’s sect system differs from Southern Border’s clan system: clans sustain hierarchy through blood ties, while sects recruit disciples by talent and character.",
@@ -656,7 +666,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sects-rather-than-clans",
       "text_origin": "source_excerpt",
@@ -671,7 +681,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "sects-rather-than-clans",
       "text_origin": "source_excerpt",
@@ -715,11 +725,12 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "landmarks-and-sect-territories",
       "text_origin": "source_excerpt",
       "mentions": [
+        "reg_earth_earth_abyss",
         "fac_ancient_soul_sect"
       ]
     },
@@ -730,7 +741,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "landmarks-and-sect-territories",
       "text_origin": "source_excerpt",
@@ -760,7 +771,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "landmarks-and-sect-territories",
       "text_origin": "source_excerpt",
@@ -780,6 +791,7 @@
       "section": "landmarks-and-sect-territories",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu_house",
         "char_genesis_lotus_immortal_venerable"
       ]
     },
@@ -818,7 +830,10 @@
       "verification": "no_citation",
       "source_id": "src_sagaofgu",
       "section": "the-heavenly-court",
-      "text_origin": "source_excerpt"
+      "text_origin": "source_excerpt",
+      "mentions": [
+        "evt_era_remote"
+      ]
     },
     {
       "text": "Regional walls separate the five regions. Crossing one is a severe undertaking for Gu Immortals,",
@@ -827,7 +842,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "the-regional-wall",
       "text_origin": "source_excerpt"
@@ -851,7 +866,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "the-regional-wall",
       "text_origin": "source_excerpt",
@@ -866,7 +881,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "regional-conflicts",
       "text_origin": "source_excerpt"
@@ -878,7 +893,7 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "regional-conflicts",
       "text_origin": "source_excerpt"
@@ -895,6 +910,7 @@
       "section": "regional-conflicts",
       "text_origin": "source_excerpt",
       "mentions": [
+        "evt_arc_central_continent_chaos",
         "char_bai_ning_bing",
         "char_hei_lou_lan",
         "char_ying_wu_xie"

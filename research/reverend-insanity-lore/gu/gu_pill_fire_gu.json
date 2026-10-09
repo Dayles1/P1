@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 461,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_northern_plains_imperial_court"
   },
   "chapters_cited": [
     461,
@@ -41,6 +41,10 @@
     },
     {
       "target": "loc_lang_ya_blessed_land",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -145,7 +149,10 @@
         "verification": "no_citation",
         "source_id": "src_sagaofgu",
         "section": "battlefield-use",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_master"
+        ]
       }
     ]
   },

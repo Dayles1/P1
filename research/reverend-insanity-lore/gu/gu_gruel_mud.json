@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 425,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_hu_immortal_blessed_land"
   },
   "chapters_cited": [
     425,
@@ -48,6 +48,10 @@
   ],
   "co_mentions": [
     {
+      "target": "res_yellow_mud",
+      "count": 3
+    },
+    {
       "target": "rcp_gruel_mud_immortal_gu_remnant_recipe",
       "count": 2
     },
@@ -68,6 +72,10 @@
       "count": 2
     },
     {
+      "target": "sys_immortal_gu",
+      "count": 1
+    },
+    {
       "target": "gu_rebuilding_mount_dongshan",
       "count": 1
     },
@@ -80,11 +88,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "loc_lang_ya_blessed_land",
       "count": 1
     },
     {
       "target": "char_immortal_mudfeet",
+      "count": 1
+    },
+    {
+      "target": "sys_vital_gu",
       "count": 1
     },
     {
@@ -190,7 +206,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "recipe-trade",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_gu_immortal"
+        ]
       }
     ],
     "game_proposals": []
@@ -252,7 +271,10 @@
         "verification": "citation_unchecked",
         "source_id": "src_sagaofgu",
         "section": "intro",
-        "text_origin": "source_excerpt"
+        "text_origin": "source_excerpt",
+        "mentions": [
+          "sys_immortal_gu"
+        ]
       },
       {
         "text": "At Lang Ya blessed land, Fang Yuan exchanges for an expendable rank six Immortal Gu and chooses Immortal Gu Gruel Mud from five offered Immortal Gu, the same Gu whose power had been killing Dang Hun Mountain. He stores it in his pouch rather than his aperture.",
@@ -261,7 +283,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "lang-ya-exchange",
         "text_origin": "source_excerpt",
@@ -277,13 +299,14 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "vital-gu-and-backlash",
         "text_origin": "source_excerpt",
         "mentions": [
           "gu_spring_autumn_cicada",
-          "gu_fixed_immortal_travel"
+          "gu_fixed_immortal_travel",
+          "sys_vital_gu"
         ]
       },
       {
@@ -293,7 +316,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "seal-corrosion",
         "text_origin": "source_excerpt",

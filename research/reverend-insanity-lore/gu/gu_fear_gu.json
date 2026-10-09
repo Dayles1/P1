@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 944,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_eastern_sea"
   },
   "chapters_cited": [
     944,
@@ -67,7 +67,19 @@
       "count": 1
     },
     {
+      "target": "evt_legend_fear_is_scarier_than_death",
+      "count": 1
+    },
+    {
       "target": "loc_door_of_life_and_death",
+      "count": 1
+    },
+    {
+      "target": "race_beastmen",
+      "count": 1
+    },
+    {
+      "target": "sys_the_legends_of_ren_zu",
       "count": 1
     },
     {
@@ -96,6 +108,10 @@
     },
     {
       "target": "gu_weak_gu",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_hope_triumphs_again",
       "count": 1
     }
   ],
@@ -158,7 +174,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "effect-on-ren-zu",
         "text_origin": "source_excerpt",
@@ -223,7 +239,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
@@ -240,11 +256,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "courage-gu-pairing",
         "text_origin": "source_excerpt",
         "mentions": [
+          "sys_the_legends_of_ren_zu",
           "gu_cognition_gu",
           "gu_courage_gu",
           "gu_love_gu"

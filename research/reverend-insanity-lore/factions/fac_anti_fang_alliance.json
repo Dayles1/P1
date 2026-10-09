@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 2256,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_era_of_three_venerables"
   },
   "chapters_cited": [
     2256,
@@ -54,6 +54,10 @@
       "count": 2
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "fac_fang_clan",
       "count": 1
     },
@@ -70,11 +74,23 @@
       "count": 1
     },
     {
+      "target": "evt_arc_era_of_three_venerables",
+      "count": 1
+    },
+    {
       "target": "char_wan_hao_guang",
       "count": 1
     },
     {
       "target": "char_wan_xiao",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu_house",
+      "count": 1
+    },
+    {
+      "target": "move_state_of_disunity",
       "count": 1
     },
     {
@@ -108,6 +124,7 @@
         "fac_fang_clan",
         "fac_wan_clan",
         "fac_xiao_clan",
+        "sys_gu_immortal",
         "fac_tang_clan"
       ]
     },
@@ -123,6 +140,7 @@
       "section": "desert-battle",
       "text_origin": "source_excerpt",
       "mentions": [
+        "sys_immortal_gu_house",
         "char_wan_xiao",
         "char_wan_hao_guang"
       ]

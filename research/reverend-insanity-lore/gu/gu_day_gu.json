@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1130,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_heavenly_court_pursuit"
   },
   "chapters_cited": [
     1130,
@@ -33,6 +33,18 @@
     1400
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_time",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "held_by",
       "target": "char_fang_yuan",
@@ -48,6 +60,10 @@
   ],
   "co_mentions": [
     {
+      "target": "path_time",
+      "count": 3
+    },
+    {
       "target": "char_fang_yuan",
       "count": 2
     },
@@ -60,7 +76,15 @@
       "count": 2
     },
     {
+      "target": "inh_hei_fan_true_inheritance",
+      "count": 2
+    },
+    {
       "target": "char_hei_fan",
+      "count": 1
+    },
+    {
+      "target": "sys_mortal_gu",
       "count": 1
     },
     {
@@ -68,7 +92,19 @@
       "count": 1
     },
     {
+      "target": "move_days_pass_like_years",
+      "count": 1
+    },
+    {
+      "target": "move_years_pass_like_days",
+      "count": 1
+    },
+    {
       "target": "gu_bone_spike_gu",
+      "count": 1
+    },
+    {
+      "target": "sys_immortal_gu",
       "count": 1
     },
     {
@@ -84,7 +120,19 @@
       "count": 1
     },
     {
+      "target": "move_bountiful_year",
+      "count": 1
+    },
+    {
       "target": "loc_tributary_of_the_river_of_time",
+      "count": 1
+    },
+    {
+      "target": "sys_year_essence_pool",
+      "count": 1
+    },
+    {
+      "target": "evt_legend_finding_self",
       "count": 1
     }
   ],
@@ -134,7 +182,9 @@
     ],
     "rank_type": "immortal",
     "is_immortal_gu": true,
-    "paths": [],
+    "paths": [
+      "path_time"
+    ],
     "path_unverified": false,
     "functional_types": [],
     "effect_type_raw": null,
@@ -151,7 +201,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "appearance",
         "text_origin": "source_excerpt"
@@ -169,11 +219,12 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "mortal-uses",
         "text_origin": "source_excerpt",
         "mentions": [
+          "path_time",
           "gu_lifespan_gu"
         ]
       }
@@ -224,15 +275,17 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",
         "mentions": [
+          "inh_hei_fan_true_inheritance",
           "gu_year_gu",
           "char_fang_yuan",
           "gu_month_gu",
-          "char_hei_fan"
+          "char_hei_fan",
+          "sys_mortal_gu"
         ]
       },
       {
@@ -242,7 +295,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt"
@@ -254,12 +307,13 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "immortal-day-gu",
         "text_origin": "source_excerpt",
         "mentions": [
           "reg_eastern_sea",
+          "sys_immortal_gu",
           "loc_river_of_time"
         ]
       },
@@ -284,7 +338,7 @@
     "Path": {
       "text": "Time Path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Food": {
       "text": null,

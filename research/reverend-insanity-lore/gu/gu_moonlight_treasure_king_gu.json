@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 98,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_qing_mao_mountain"
   },
   "chapters_cited": [
     98,
@@ -49,6 +49,10 @@
     },
     {
       "target": "char_gu_yue_bo",
+      "count": 1
+    },
+    {
+      "target": "sys_moonblade",
       "count": 1
     },
     {
@@ -116,7 +120,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "rank",
         "text_origin": "source_excerpt"
@@ -151,7 +155,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "recipe-line",
         "text_origin": "source_excerpt",
@@ -193,7 +197,7 @@
         ],
         "certainty": "canon",
         "confidence": "B",
-        "verification": "citation_unchecked",
+        "verification": "cross_checked_chapter_summary",
         "source_id": "src_sagaofgu",
         "section": "intro",
         "text_origin": "source_excerpt",

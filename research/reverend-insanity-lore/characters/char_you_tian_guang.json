@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1337,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_southern_border_war"
   },
   "chapters_cited": [
     1337
@@ -64,6 +64,22 @@
       "count": 1
     },
     {
+      "target": "evt_era_late",
+      "count": 1
+    },
+    {
+      "target": "evt_era_medieval",
+      "count": 1
+    },
+    {
+      "target": "evt_era_olden",
+      "count": 1
+    },
+    {
+      "target": "move_luck_changing_golden_light_path",
+      "count": 1
+    },
+    {
       "target": "loc_flower_forest_forbidden_land",
       "count": 1
     }
@@ -76,12 +92,15 @@
       ],
       "certainty": "canon",
       "confidence": "B",
-      "verification": "citation_unchecked",
+      "verification": "cross_checked_chapter_summary",
       "source_id": "src_sagaofgu",
       "section": "intro",
       "text_origin": "source_excerpt",
       "mentions": [
         "char_zuo_ye_hui",
+        "evt_era_olden",
+        "evt_era_medieval",
+        "evt_era_late",
         "char_paradise_earth_immortal_venerable",
         "char_mao_li_qiu",
         "char_di_zang_sheng"

@@ -23,7 +23,7 @@
   "first_appearance": {
     "chapter": 1981,
     "volume": null,
-    "arc": null
+    "arc": "evt_arc_great_era_spectral_soul"
   },
   "chapters_cited": [
     1981,
@@ -31,6 +31,30 @@
     2291
   ],
   "relations": [
+    {
+      "type": "path",
+      "target": "path_earth",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
+    {
+      "type": "race",
+      "target": "race_humans",
+      "role": null,
+      "from_chapter": null,
+      "to_chapter": null,
+      "recorded_chapter": null,
+      "count": null,
+      "confidence": "B",
+      "source_id": "src_sagaofgu",
+      "note": null
+    },
     {
       "type": "member_of",
       "target": "fac_two_heavens_alliance",
@@ -48,6 +72,14 @@
     {
       "target": "fac_two_heavens_alliance",
       "count": 2
+    },
+    {
+      "target": "path_earth",
+      "count": 1
+    },
+    {
+      "target": "race_humans",
+      "count": 1
     },
     {
       "target": "char_black_locust",
@@ -74,11 +106,19 @@
       "count": 1
     },
     {
+      "target": "sys_gu_immortal",
+      "count": 1
+    },
+    {
       "target": "char_fang_yuan",
       "count": 1
     },
     {
       "target": "fac_xia_clan",
+      "count": 1
+    },
+    {
+      "target": "sys_gu_master",
       "count": 1
     },
     {
@@ -105,6 +145,7 @@
       "mentions": [
         "char_ice_crystal_immortal_monarch",
         "char_wu_shuai",
+        "sys_gu_immortal",
         "char_night_heavenly_wolf_lord",
         "char_lady_cold_ash",
         "char_crossing_heaven_immortal_monarch",
@@ -154,7 +195,8 @@
       "text_origin": "source_excerpt",
       "mentions": [
         "fac_gu_masters",
-        "loc_crazed_demon_cave"
+        "loc_crazed_demon_cave",
+        "sys_gu_master"
       ]
     }
   ],
@@ -190,12 +232,12 @@
     "Paths": {
       "text": "Earth path",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Race": {
       "text": "Humans",
       "unverified_at_source": false,
-      "linked": false
+      "linked": true
     },
     "Affiliations": {
       "text": "Two Heavens Alliance as of ch. 1981",
@@ -217,12 +259,14 @@
       }
     ],
     "rank_timeline_note": "As recorded by the source infobox; may stop before the character's final rank. Gu Master rank, not Gu rank.",
-    "paths": [],
+    "paths": [
+      "path_earth"
+    ],
     "aperture": null,
     "talent_grade": null
   },
   "biography": {
-    "race": null,
+    "race": "race_humans",
     "region": null,
     "status": "Alive",
     "alignment": null,
