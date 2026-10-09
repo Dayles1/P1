@@ -155,8 +155,7 @@ return [
         'craft' => 2,
         'research' => 15,
         'artifact' => 20,
-        'absorb' => 25,
-        'fuse' => 60,
+        'merge' => 30,
     ],
 
     /*
@@ -187,58 +186,142 @@ return [
     | Artifacts
     |--------------------------------------------------------------------------
     |
-    | What absorbing each artifact gives — for good: attributes, bonuses
-    | and/or a skill — and how many times it can be absorbed. Carried, the
-    | five rare ones still help as before (see client/items.ts); absorbed,
-    | they help the same way for good and the slot is free again.
+    | Artifacts are not items: picked up, they go to the hero's own store
+    | (`stash`, apart from the inventory) and from there into the lineage
+    | tree, whose cells are what counts. A cell takes any artifact; putting
+    | one into a taken cell sends the old one back to the store. Cells open
+    | as the hero grows (`tree_cells`: the level each one opens at). Until
+    | something is put in, a cell is an empty place.
     |
-    | Tiers: common ones lie about the world, rare ones hide one per land,
-    | legendary ones are only fused from others (client/artifacts.ts) and
-    | give a skill and nothing else.
+    | Ranks, 1 to 9:
     |
-    | Bonuses: health and mana add to the maxima; speed, jump, swim, breath
-    | and gather add to the multiplier (0.1 = 10% more); light makes the
-    | hero glow at night.
+    | - 1–5, mortal: 1 common, 2 a little better, 3 good, 4 elite, 5 peak;
+    | - 6–9, immortal: a new layer — 6 already far stronger than 5, and
+    |   every rank above stronger still, with more on top; 9 the best.
+    |
+    | Types (`types`), and what each gives by rank:
+    |
+    | - stats: attribute points (`points`: between min and max, shared out
+    |   at random over strength, agility and spirit). From rank 6 also a
+    |   skill (`skill`: its rank between min and max); rank 9 gives
+    |   tremendous points and a skill of rank 8 — the other type's power.
+    | - skill: one skill of the artifact's rank (see `skills` below). From
+    |   rank 6 also points; rank 9 gives a rank 9 skill and as many points
+    |   as a rank 8 stats artifact.
+    |
+    | Where they come from: the glowing spots in the world (back after
+    | `respawn_minutes`), digs and slain creatures (`drops`: the chance
+    | for each). The rank is rolled from `rank_chances` by the world level:
+    | one level more every `world_level.metres` from the start and every
+    | `world_level.hero_levels` levels of the hero, up to `max`. Three of
+    | the same type and rank merge (`merge`) into one of the next rank.
     |
     */
     'artifacts' => [
-        'strength_rune' => ['tier' => 'common', 'max' => 5, 'attributes' => ['strength' => 2]],
-        'agility_rune' => ['tier' => 'common', 'max' => 5, 'attributes' => ['agility' => 2]],
-        'spirit_rune' => ['tier' => 'common', 'max' => 5, 'attributes' => ['spirit' => 2]],
-        'vital_shard' => ['tier' => 'common', 'max' => 5, 'bonus' => ['health' => 20]],
-        'mana_pearl' => ['tier' => 'common', 'max' => 5, 'bonus' => ['mana' => 20]],
-        'swift_charm' => ['tier' => 'common', 'max' => 3, 'bonus' => ['speed' => 0.05]],
+        'types' => ['stats', 'skill'],
 
-        'golden_clover' => ['tier' => 'rare', 'max' => 1, 'attributes' => ['agility' => 1], 'bonus' => ['speed' => 0.15]],
-        'wind_feather' => ['tier' => 'rare', 'max' => 1, 'attributes' => ['agility' => 1], 'bonus' => ['jump' => 0.3]],
-        'frost_crystal' => ['tier' => 'rare', 'max' => 1, 'attributes' => ['spirit' => 1], 'bonus' => ['swim' => 0.35, 'breath' => 1]],
-        'forest_heart' => ['tier' => 'rare', 'max' => 1, 'attributes' => ['strength' => 1], 'bonus' => ['gather' => 0.5]],
-        'sun_stone' => ['tier' => 'rare', 'max' => 1, 'attributes' => ['spirit' => 1], 'bonus' => ['light' => 1]],
+        // Ranks up to this one are mortal, the ones above immortal.
+        'mortal_up_to' => 5,
 
-        'storm_eye' => ['tier' => 'legendary', 'max' => 1, 'skill' => 'double_jump'],
-        'deep_pearl' => ['tier' => 'legendary', 'max' => 1, 'skill' => 'water_breathing'],
-        'blood_ruby' => ['tier' => 'legendary', 'max' => 1, 'skill' => 'vampirism'],
-        'phoenix_feather' => ['tier' => 'legendary', 'max' => 1, 'skill' => 'second_wind'],
+        'stats' => [
+            1 => ['points' => [4, 5]],
+            2 => ['points' => [7, 8]],
+            3 => ['points' => [11, 13]],
+            4 => ['points' => [16, 19]],
+            5 => ['points' => [23, 27]],
+            6 => ['points' => [58, 68], 'skill' => [1, 3]],
+            7 => ['points' => [100, 115], 'skill' => [2, 4]],
+            8 => ['points' => [165, 185], 'skill' => [3, 5]],
+            9 => ['points' => [280, 320], 'skill' => [8, 8]],
+        ],
+
+        'skill' => [
+            1 => ['skill' => [1, 1]],
+            2 => ['skill' => [2, 2]],
+            3 => ['skill' => [3, 3]],
+            4 => ['skill' => [4, 4]],
+            5 => ['skill' => [5, 5]],
+            6 => ['skill' => [6, 6], 'points' => [11, 13]],
+            7 => ['skill' => [7, 7], 'points' => [23, 27]],
+            8 => ['skill' => [8, 8], 'points' => [58, 68]],
+            9 => ['skill' => [9, 9], 'points' => [165, 185]],
+        ],
+
+        // Percent of each type among the artifacts found.
+        'type_chances' => ['stats' => 75, 'skill' => 25],
+
+        // Percent for ranks 1…9, by world level.
+        'rank_chances' => [
+            1 => [70, 22, 6, 1.5, 0.4, 0.08, 0.015, 0.004, 0.001],
+            2 => [50, 30, 13, 5, 1.5, 0.4, 0.08, 0.015, 0.005],
+            3 => [30, 32, 22, 10, 4, 1.5, 0.4, 0.08, 0.02],
+            4 => [15, 25, 27, 18, 9, 4, 1.5, 0.4, 0.1],
+            5 => [5, 15, 25, 25, 15, 9, 4, 1.5, 0.5],
+        ],
+
+        'world_level' => ['metres' => 60, 'hero_levels' => 15, 'max' => 5],
+
+        // Chance of an artifact from a dig, from a slain creature.
+        'drops' => ['dig' => 0.08, 'creature' => 0.04],
+
+        'respawn_minutes' => 5,
+
+        // How many of the same type and rank merge into one of the next.
+        'merge' => 3,
+
+        // The most artifacts the store keeps.
+        'stash' => 60,
+
+        // The hero level each cell of the lineage tree opens at.
+        'tree_cells' => [1, 1, 1, 3, 5, 7, 10, 13, 16, 20, 25, 30, 35, 40, 45, 50],
     ],
 
     /*
-     * Essence an artifact turns into when recycled, by tier.
+     * The skills artifacts give, each with a value per rank (1…9). A hero
+     * with the same skill from two artifacts has the higher rank of the two.
+     *
+     * - vampirism: share of melee damage that heals;
+     * - second_wind: a lethal blow leaves this share of health instead, at
+     *   most once every `cooldown` seconds;
+     * - double_jump: jumps in the air, and how much higher every jump goes;
+     * - water_breathing: how much longer the breath lasts (0 = for ever),
+     *   and how much faster swimming is;
+     * - swiftness: share faster on foot;
+     * - iron_skin: share of every blow not taken;
+     * - regeneration: health back per second, on top of the usual;
+     * - gatherer: share more from trees, rocks and finds;
+     * - radiance: glows at night, this many times as bright.
      */
-    'essence' => ['common' => 2, 'rare' => 6, 'legendary' => 15],
+    'artifact_skills' => [
+        'vampirism' => ['heal' => [0.02, 0.03, 0.04, 0.05, 0.07, 0.12, 0.17, 0.23, 0.35]],
+        'second_wind' => [
+            'health' => [0.1, 0.13, 0.16, 0.2, 0.25, 0.4, 0.5, 0.65, 1],
+            'cooldown' => [600, 540, 480, 420, 360, 240, 180, 120, 60],
+        ],
+        'double_jump' => [
+            'jumps' => [1, 1, 1, 1, 1, 2, 2, 3, 4],
+            'height' => [0, 0.03, 0.06, 0.09, 0.12, 0.25, 0.35, 0.5, 0.7],
+        ],
+        'water_breathing' => [
+            'breath' => [1.5, 2, 2.5, 3, 4, 8, 15, 30, 0],
+            'swim' => [0, 0.05, 0.1, 0.15, 0.2, 0.4, 0.55, 0.75, 1],
+        ],
+        'swiftness' => ['speed' => [0.03, 0.05, 0.07, 0.09, 0.12, 0.2, 0.26, 0.33, 0.45]],
+        'iron_skin' => ['block' => [0.02, 0.04, 0.06, 0.08, 0.1, 0.18, 0.24, 0.3, 0.4]],
+        'regeneration' => ['health' => [0.2, 0.35, 0.5, 0.7, 1, 2.5, 4, 6, 10]],
+        'gatherer' => ['gather' => [0.1, 0.15, 0.2, 0.3, 0.4, 0.7, 1, 1.4, 2]],
+        'radiance' => ['light' => [1, 1.1, 1.2, 1.35, 1.5, 2, 2.4, 2.8, 3.5]],
+    ],
 
     /*
-     * Minutes until a picked-up artifact appears again in the world.
+     * How the hero can look: hairstyle, hair colour, beard and eye colour.
+     * Only the names — the client draws them (client/player/looks.ts).
      */
-    'artifact_respawn_minutes' => 5,
-
-    /*
-     * The legendary skills: the share of melee damage that heals
-     * (vampirism), and the health a lethal blow leaves instead — at most
-     * once every `cooldown` seconds (second wind).
-     */
-    'passives' => [
-        'vampirism' => 0.1,
-        'second_wind' => ['health' => 0.3, 'cooldown' => 300],
+    'looks' => [
+        'hair' => ['short', 'parted', 'buns', 'bob', 'ponytail', 'long', 'bald'],
+        'hair_color' => ['black', 'brown', 'chestnut', 'auburn', 'blonde', 'platinum', 'pink', 'blue'],
+        'beard' => ['none', 'stubble', 'mustache', 'goatee', 'full'],
+        'eyes' => ['brown', 'hazel', 'green', 'blue', 'grey', 'violet'],
     ],
 
 ];

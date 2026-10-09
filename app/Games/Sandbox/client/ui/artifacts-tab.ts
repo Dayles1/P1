@@ -1,98 +1,105 @@
 /**
- * The artifacts tab: every artifact there is, by tier — common, rare,
- * legendary — as tiles showing how many are carried and how often each
- * has been absorbed; and the chosen one on the right: what absorbing it
- * gives, what it does while carried, where it is found, and the buttons
- * to absorb it, recycle it into essence or, for a legendary one, fuse it
- * from what it takes. Enter presses the main button.
+ * Artifacts: the lineage tree and the store, as one board used twice —
+ * in the artifacts tab and in the character tab's profile.
+ *
+ * - the tree: its open cells (an artifact, or an empty place) and the
+ *   ones still to open, with the level they open at;
+ * - the store: every artifact found and not in the tree, by rank;
+ * - the chosen one: its rank (mortal or immortal), what it gives, and
+ *   what can be done — merge it into the tree (into the first empty cell,
+ *   or into any cell clicked while it is chosen: the one there goes back
+ *   to the store), take it out of the tree, or merge three of a type and
+ *   rank into one of the next.
+ *
+ * Enter merges the chosen artifact into the tree.
  */
 
-import {
-    ARTIFACT_LIST,
-    essenceOf,
-    fusionFor,
-    TIERS,
-    tierOf,
-} from '../artifacts';
-import { artifactRules } from '../hero';
-import type { BonusKey } from '../hero';
+import { artifactIcon, immortal, mergeGroup } from '../artifacts';
+import { ATTRIBUTES, RULES } from '../hero';
+import type { Artifact, Hero, Passive } from '../hero';
 import { t } from '../i18n';
-import { ITEMS } from '../items';
-import type { ArtifactId } from '../items';
 import { button, element, escape } from './dom';
 import { keyBadge } from './hud';
 import type { MenuHost, TabView } from './menu';
 
-/** Bonuses given as a share rather than in points. */
-const SHARES: BonusKey[] = ['speed', 'jump', 'swim', 'breath', 'gather'];
+type Chosen = { from: 'stash'; index: number } | { from: 'tree'; cell: number };
 
-/** Rare artifacts help while carried too (their item description says how). */
-const CARRIED: ArtifactId[] = [
-    'golden_clover',
-    'forest_heart',
-    'sun_stone',
-    'frost_crystal',
-    'wind_feather',
-];
+/** "Elite · Attribute artifact". */
+export function artifactName(artifact: Artifact): string {
+    return `${t.ranks[artifact.rank - 1]} · ${t.artifact_types[artifact.type]}`;
+}
 
-/** What absorbing an artifact gives, line by line ("+2 Strength"…). */
-export function absorbLines(artifact: string): string[] {
-    const rules = artifactRules(artifact);
-
-    if (!rules) {
-        return [];
+/** A skill value as the player reads it: 12%, ×3, ∞, 240 s… */
+function formatValue(name: Passive, key: string, value: number): string {
+    if (name === 'second_wind' && key === 'cooldown') {
+        return `${value} s`;
     }
 
-    const lines: string[] = [];
+    if (name === 'double_jump' && key === 'jumps') {
+        return String(value);
+    }
 
-    for (const [attribute, amount] of Object.entries(rules.attributes ?? {})) {
+    if (name === 'water_breathing' && key === 'breath') {
+        return value === 0 ? '∞' : `×${value}`;
+    }
+
+    if (name === 'radiance') {
+        return `×${value}`;
+    }
+
+    if (name === 'regeneration') {
+        return `+${value}`;
+    }
+
+    return `${Math.round(value * 100)}%`;
+}
+
+/** What a skill does at a rank, its numbers filled in. */
+export function passiveAbout(name: Passive, rank: number): string {
+    const values = RULES.artifact_skills[name] as Record<string, number[]>;
+
+    return t.passives[name][1].replace(/\{(\w+)\}/g, (_, key: string) =>
+        formatValue(name, key, values[key]?.[rank - 1] ?? 0),
+    );
+}
+
+/** What an artifact gives, line by line ("+3 Strength", "Vampirism 6: …"). */
+export function artifactLines(artifact: Artifact): string[] {
+    const lines = ATTRIBUTES.filter(
+        (attribute) => (artifact.points[attribute] ?? 0) > 0,
+    ).map(
+        (attribute) =>
+            `+${artifact.points[attribute]} ${t.attributes[attribute][0]}`,
+    );
+
+    if (artifact.skill) {
+        const { name, rank } = artifact.skill;
         lines.push(
-            `+${amount} ${t.attributes[attribute as keyof typeof t.attributes][0]}`,
+            `${t.passives[name][0]} (${t.rank} ${rank}): ${passiveAbout(name, rank)}`,
         );
-    }
-
-    for (const [key, amount] of Object.entries(rules.bonus ?? {})) {
-        const bonus = key as BonusKey;
-
-        if (bonus === 'light') {
-            lines.push(t.bonuses.light);
-        } else if (SHARES.includes(bonus)) {
-            lines.push(
-                `+${Math.round((amount ?? 0) * 100)}% ${t.bonuses[bonus]}`,
-            );
-        } else {
-            lines.push(`+${amount} ${t.bonuses[bonus]}`);
-        }
-    }
-
-    if (rules.skill) {
-        const [name, about] = t.passives[rules.skill];
-        lines.push(`${name}: ${about}`);
     }
 
     return lines;
 }
 
-export class ArtifactsTab implements TabView {
+/** The tree, the store and the chosen artifact. */
+export class ArtifactBoard {
     readonly element: HTMLElement;
-    private top: HTMLElement;
-    private list: HTMLElement;
-    private detail: HTMLElement;
-    private chosen: ArtifactId = 'strength_rune';
+    private chosen: Chosen | null = null;
 
-    constructor(private host: MenuHost) {
-        this.element = element('div', 'sb-relics');
-        this.top = element('div', 'sb-relics__top');
-        this.list = element('div', 'sb-relics__list');
-        this.detail = element('section', 'sb-details sb-relics__detail');
-        const body = element('div', 'sb-relics__body');
-        body.append(this.list, this.detail);
-        this.element.append(this.top, body);
+    constructor(
+        private host: MenuHost,
+        compact = false,
+    ) {
+        this.element = element(
+            'div',
+            `sb-board${compact ? ' sb-board--compact' : ''}`,
+        );
     }
 
-    /** Enter: fuse a legendary one that can be made, else absorb. */
+    /** Enter: merge the chosen artifact from the store into the tree. */
     primary(): void {
-        this.detail
+        this.element
             .querySelector<HTMLButtonElement>(
                 '.sb-details__actions .sb-button--primary',
             )
@@ -100,149 +107,222 @@ export class ArtifactsTab implements TabView {
     }
 
     render(): void {
-        const inventory = this.host.inventory;
-        const essence = element('div', 'sb-knowledge');
-        essence.innerHTML = `<span class="sb-icon">${ITEMS.essence.icon}</span>`;
-        essence.append(
-            element('span', '', `${t.items.essence[0]}: `),
-            element('b', '', String(inventory.total('essence'))),
-        );
-        this.top.replaceChildren(
-            essence,
-            element('p', 'sb-hint', t.artifacts_hint),
-        );
-
         const hero = this.host.hero();
-        this.list.replaceChildren(
-            ...TIERS.map((tier) => {
-                const section = element(
-                    'section',
-                    `sb-relics__tier sb-relics__tier--${tier}`,
-                );
-                section.append(
-                    element('h3', '', t.tiers[tier]),
-                    element('p', 'sb-hint', t.tier_where[tier]),
-                );
-                const grid = element('div', 'sb-relics__grid');
 
-                for (const artifact of ARTIFACT_LIST[tier]) {
-                    const owned = inventory.total(artifact);
-                    const rules = artifactRules(artifact);
-                    const taken = hero?.absorbed[artifact] ?? 0;
-                    const tile = element(
-                        'button',
-                        `sb-relic sb-relic--${tier}${owned ? ' sb-relic--owned' : ''}${artifact === this.chosen ? ' sb-relic--chosen' : ''}${rules && taken >= rules.max ? ' sb-relic--done' : ''}`,
-                    );
-                    tile.type = 'button';
-                    tile.title = t.items[artifact][0];
-                    tile.innerHTML = `
-                        <span class="sb-icon sb-icon--large">${ITEMS[artifact].icon}</span>
-                        <span class="sb-relic__name">${escape(t.items[artifact][0])}</span>
-                        ${owned ? `<span class="sb-relic__count">×${owned}</span>` : ''}
-                        <span class="sb-relic__dots">${Array.from({ length: rules?.max ?? 0 }, (_, index) => `<i class="${index < taken ? 'on' : ''}"></i>`).join('')}</span>`;
-                    tile.addEventListener('click', () => {
-                        this.chosen = artifact;
-                        this.render();
-                    });
-                    grid.append(tile);
-                }
+        if (!hero) {
+            this.element.replaceChildren();
 
-                section.append(grid);
+            return;
+        }
 
-                return section;
-            }),
+        this.keepChoiceValid(hero);
+
+        const tree = element('section', 'sb-board__tree');
+        tree.append(
+            element('h3', '', t.tree_title),
+            element('p', 'sb-hint', t.tree_hint),
+            this.cells(hero),
         );
 
-        this.renderDetail();
+        const stash = element('section', 'sb-board__stash');
+        stash.append(
+            element(
+                'h3',
+                '',
+                `${t.stash_title} · ${hero.stash.length} / ${RULES.artifacts.stash}`,
+            ),
+        );
+
+        if (hero.stash.length === 0) {
+            stash.append(element('p', 'sb-hint', t.stash_empty));
+        } else {
+            const grid = element('div', 'sb-board__grid');
+            hero.stash.forEach((artifact, index) => {
+                const chosen =
+                    this.chosen?.from === 'stash' &&
+                    this.chosen.index === index;
+                grid.append(
+                    this.tile(artifact, chosen, () => {
+                        this.chosen = { from: 'stash', index };
+                        this.render();
+                    }),
+                );
+            });
+            stash.append(grid);
+        }
+
+        this.element.replaceChildren(tree, stash, this.detail(hero));
     }
 
-    private renderDetail(): void {
-        const artifact = this.chosen;
-        const inventory = this.host.inventory;
-        const hero = this.host.hero();
-        const rules = artifactRules(artifact);
-        const tier = tierOf(artifact);
-        const owned = inventory.total(artifact);
-        const taken = hero?.absorbed[artifact] ?? 0;
-        const max = rules?.max ?? 0;
-        const gives = absorbLines(artifact)
-            .map((line) => `<li>${escape(line)}</li>`)
-            .join('');
+    /** The tree's cells: open (taken or empty) and the next ones to open. */
+    private cells(hero: Hero): HTMLElement {
+        const cells = element('div', 'sb-board__cells');
+        const stashChosen = this.chosen?.from === 'stash';
 
-        this.detail.innerHTML = `
+        hero.tree.forEach((artifact, cell) => {
+            const chosen =
+                this.chosen?.from === 'tree' && this.chosen.cell === cell;
+            const pick = () => {
+                if (this.chosen?.from === 'stash') {
+                    this.host.placeArtifact(this.chosen.index, cell);
+                    this.chosen = { from: 'tree', cell };
+                } else if (artifact) {
+                    this.chosen = { from: 'tree', cell };
+                }
+
+                this.render();
+            };
+
+            if (artifact) {
+                cells.append(this.tile(artifact, chosen, pick, stashChosen));
+            } else {
+                const empty = button(
+                    `sb-cell sb-cell--empty${stashChosen ? ' sb-cell--target' : ''}`,
+                    t.tree_empty,
+                    pick,
+                );
+                cells.append(empty);
+            }
+        });
+
+        for (const at of RULES.artifacts.tree_cells.slice(hero.tree.length)) {
+            cells.append(
+                element(
+                    'div',
+                    'sb-cell sb-cell--locked',
+                    t.tree_locked.replace('{level}', String(at)),
+                ),
+            );
+        }
+
+        return cells;
+    }
+
+    private tile(
+        artifact: Artifact,
+        chosen: boolean,
+        onClick: () => void,
+        target = false,
+    ): HTMLButtonElement {
+        const tile = button(
+            `sb-cell sb-cell--rank${artifact.rank}${immortal(artifact.rank) ? ' sb-cell--immortal' : ''}${chosen ? ' sb-cell--chosen' : ''}${target ? ' sb-cell--target' : ''}`,
+            '',
+            onClick,
+        );
+        tile.title = artifactName(artifact);
+        tile.innerHTML = `
+            <span class="sb-icon sb-icon--large">${artifactIcon(artifact)}</span>
+            <span class="sb-cell__rank">${artifact.rank}</span>
+            <span class="sb-cell__type">${artifact.type === 'skill' ? '✦' : '✚'}</span>`;
+
+        return tile;
+    }
+
+    /** The chosen artifact: what it is, what it gives, what to do with it. */
+    private detail(hero: Hero): HTMLElement {
+        const detail = element('section', 'sb-details sb-board__detail');
+        const chosen = this.chosen;
+        const artifact =
+            chosen?.from === 'stash'
+                ? hero.stash[chosen.index]
+                : chosen?.from === 'tree'
+                  ? hero.tree[chosen.cell]
+                  : null;
+
+        if (!chosen || !artifact) {
+            detail.append(element('p', 'sb-hint', t.artifacts_hint));
+
+            return detail;
+        }
+
+        const layer = immortal(artifact.rank)
+            ? t.layers.immortal
+            : t.layers.mortal;
+        detail.innerHTML = `
             <div class="sb-details__head">
-                <span class="sb-icon sb-icon--large">${ITEMS[artifact].icon}</span>
+                <span class="sb-icon sb-icon--large">${artifactIcon(artifact)}</span>
                 <div>
-                    <strong>${escape(t.items[artifact][0])}</strong>
-                    <small class="sb-tier sb-tier--${tier}">${escape(t.tiers[tier])}</small>
+                    <strong>${escape(artifactName(artifact))}</strong>
+                    <small class="sb-rank sb-rank--${artifact.rank}">${escape(t.rank)} ${artifact.rank} · ${escape(layer)}</small>
                 </div>
             </div>
-            <h4>${escape(t.absorb_gives)}</h4>
-            <ul class="sb-gives">${gives}</ul>
-            ${CARRIED.includes(artifact) ? `<h4>${escape(t.carry_gives)}</h4><p>${escape(t.items[artifact][1])}</p>` : ''}
-            <dl class="sb-derived sb-derived--wide">
-                <dt>${escape(t.absorbed_count)}</dt><dd>${taken} / ${max}</dd>
-                <dt>${escape(t.owned)}</dt><dd>${owned}</dd>
-                <dt>${escape(t.recycle_gives)}</dt><dd>+${essenceOf(artifact)} ${escape(t.items.essence[0])}</dd>
-            </dl>
-            <p class="sb-hint">${escape(t.tier_where[tier])}</p>`;
+            <h4>${escape(t.gives)}</h4>
+            <ul class="sb-gives">${artifactLines(artifact)
+                .map((line) => `<li>${escape(line)}</li>`)
+                .join('')}</ul>`;
 
         const actions = element('div', 'sb-details__actions');
-        const fusion = fusionFor(artifact);
 
-        if (fusion) {
-            const needs = fusion.needs
-                .map(([item, count]) => {
-                    const have = inventory.total(item);
-
-                    return `<li class="${have >= count ? '' : 'sb-short'}"><span class="sb-icon">${ITEMS[item].icon}</span><span>${escape(t.items[item][0])}</span><b>${Math.min(have, count)}/${count}</b></li>`;
-                })
-                .join('');
-            const block = element('div', '');
-            block.innerHTML = `<h4>${escape(t.fusion_needs)}</h4><ul class="sb-needs">${needs}</ul>`;
-            this.detail.append(block);
-
-            const ready =
-                fusion.needs.every(
-                    ([item, count]) => inventory.total(item) >= count,
-                ) && inventory.room(artifact, 1) > 0;
-            const fuse = button(
-                `sb-button${ready ? ' sb-button--primary' : ''}`,
-                t.fuse,
-                () => this.host.fuse(fusion),
-                'fuse',
+        if (chosen.from === 'stash') {
+            const empty = hero.tree.indexOf(null);
+            const place = button(
+                `sb-button${empty >= 0 ? ' sb-button--primary' : ''}`,
+                t.to_tree,
+                () => {
+                    this.host.placeArtifact(chosen.index, empty);
+                    this.chosen = { from: 'tree', cell: empty };
+                    this.render();
+                },
+                'absorb',
             );
-            fuse.disabled = !ready;
-            actions.append(fuse);
+            place.disabled = empty < 0;
+
+            if (empty >= 0 && !this.host.touch) {
+                place.append(keyBadge(t.enter));
+            }
+
+            const group = mergeGroup(hero.stash, chosen.index);
+            const merge = button('sb-button', t.merge, () => {
+                this.chosen = null;
+                this.host.mergeArtifacts(chosen.index);
+            });
+            merge.disabled = !group;
+            actions.append(place, merge);
+            detail.append(
+                actions,
+                element('p', 'sb-hint', group ? t.choose_cell : t.merge_needs),
+            );
+        } else {
+            const takeOut = button('sb-button', t.take_out, () => {
+                this.chosen = null;
+                this.host.takeOutArtifact(chosen.cell);
+            });
+            takeOut.disabled = hero.stashFull;
+            actions.append(takeOut);
+            detail.append(actions);
         }
 
-        const slot = inventory.slots.findIndex(
-            (stack) => stack?.item === artifact,
-        );
-        const absorb = button(
-            `sb-button${slot >= 0 && hero && taken < max ? ' sb-button--primary' : ''}`,
-            t.absorb,
-            () => this.host.absorb(slot),
-            'absorb',
-        );
-        absorb.disabled = slot < 0 || !hero || taken >= max;
-        const recycle = button(
-            'sb-button',
-            t.recycle,
-            () => this.host.recycle(slot),
-            'recycle',
-        );
-        recycle.disabled = slot < 0;
-        actions.append(absorb, recycle);
+        return detail;
+    }
 
-        const first = actions.querySelector<HTMLButtonElement>(
-            '.sb-button--primary',
-        );
+    /** Forgets a choice that is gone (merged, taken out, put in). */
+    private keepChoiceValid(hero: Hero): void {
+        const chosen = this.chosen;
 
-        if (first && !this.host.touch) {
-            first.append(keyBadge(t.enter));
+        if (
+            (chosen?.from === 'stash' && !hero.stash[chosen.index]) ||
+            (chosen?.from === 'tree' && !hero.tree[chosen.cell])
+        ) {
+            this.chosen = null;
         }
+    }
+}
 
-        this.detail.append(actions);
+/** The artifacts tab: the board on its own. */
+export class ArtifactsTab implements TabView {
+    readonly element: HTMLElement;
+    private board: ArtifactBoard;
+
+    constructor(host: MenuHost) {
+        this.board = new ArtifactBoard(host);
+        this.element = this.board.element;
+    }
+
+    primary(): void {
+        this.board.primary();
+    }
+
+    render(): void {
+        this.board.render();
     }
 }

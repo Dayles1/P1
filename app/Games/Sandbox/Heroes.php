@@ -5,8 +5,9 @@ namespace App\Games\Sandbox;
 /**
  * The hero rules of config/heroes.php worked out: a class's starting
  * attributes for a gender, the free points earned up to a level, the
- * attributes at a level (with what absorbed artifacts add) and the values
- * derived from them. The browser client does the same sums
+ * attributes at a level (with what the artifacts in the lineage tree add),
+ * the values derived from them, and whether a saved artifact is one the
+ * rules allow. The browser client does the same sums
  * (client/hero.ts) from the same config; the server uses them to check
  * what a save claims.
  */
@@ -37,21 +38,87 @@ class Heroes
     }
 
     /**
-     * Artifacts that can be absorbed.
-     *
      * @return list<string>
      */
-    public static function artifacts(): array
+    public static function artifactTypes(): array
     {
-        return array_keys(self::artifactRules());
+        return self::rules('artifacts.types');
     }
 
     /**
-     * How many times an artifact can be absorbed (0 for anything else).
+     * The skills artifacts give.
+     *
+     * @return list<string>
      */
-    public static function absorbLimit(string $artifact): int
+    public static function artifactSkills(): array
     {
-        return (int) (self::artifactRules()[$artifact]['max'] ?? 0);
+        return array_keys(self::skillRules());
+    }
+
+    /**
+     * The most artifacts the hero's store keeps.
+     */
+    public static function stashSize(): int
+    {
+        return (int) self::rules('artifacts.stash');
+    }
+
+    /**
+     * Cells of the lineage tree open at a level.
+     */
+    public static function treeCells(int $level): int
+    {
+        return count(array_filter(self::cellLevels(), fn (int $at): bool => $at <= $level));
+    }
+
+    /**
+     * Whether a saved artifact is one the rules allow: a known type and a
+     * rank from 1 to 9; attribute points (if its type and rank give any)
+     * adding up to within the rank's range; a skill (if they give one)
+     * with a rank in its range — and nothing they do not give.
+     */
+    public static function isArtifact(mixed $artifact): bool
+    {
+        if (! is_array($artifact) || array_diff(array_keys($artifact), ['type', 'rank', 'points', 'skill']) !== []) {
+            return false;
+        }
+
+        $type = $artifact['type'] ?? null;
+        $rank = $artifact['rank'] ?? null;
+
+        if (! in_array($type, self::artifactTypes(), true) || ! is_int($rank)) {
+            return false;
+        }
+
+        $rule = self::rules("artifacts.{$type}.{$rank}");
+
+        if (! is_array($rule)) {
+            return false;
+        }
+
+        return self::allowedPoints($artifact['points'] ?? [], $rule['points'] ?? null)
+            && self::allowedSkill($artifact['skill'] ?? null, $rule['skill'] ?? null);
+    }
+
+    /**
+     * Attribute points the artifacts in the tree add to one attribute.
+     *
+     * @param  array<int, mixed>  $tree
+     */
+    public static function fromTree(array $tree, string $attribute): int
+    {
+        return collect($tree)
+            ->sum(fn (mixed $artifact): int => is_array($artifact) ? max(0, (int) ($artifact['points'][$attribute] ?? 0)) : 0);
+    }
+
+    /**
+     * The choices for a part of the hero's look (hair, hair_color, beard, eyes).
+     *
+     * @return list<string>
+     */
+    public static function looks(string $part): array
+    {
+        return self::rules("looks.{$part}") ?? [];
     }
 
     public static function maxLevel(): int
@@ -108,39 +175,22 @@ class Heroes
     }
 
     /**
-     * Attributes at a level, with the free points put in and what absorbed
-     * artifacts add.
+     * Attributes at a level, with the free points put in and what the
+     * artifacts in the lineage tree add.
      *
      * @param  array<string, int>  $points
-     * @param  array<string, int>  $absorbed
+     * @param  array<int, mixed>  $tree
      * @return array<string, int>
      */
-    public static function attributesAt(string $class, string $gender, int $level, array $points = [], array $absorbed = []): array
+    public static function attributesAt(string $class, string $gender, int $level, array $points = [], array $tree = []): array
     {
         $growth = (int) self::rules('levels.per_level') * ($level - 1);
 
         return collect(self::startingAttributes($class, $gender))
             ->map(fn (int $value, string $attribute): int => $value + $growth
                 + max(0, (int) ($points[$attribute] ?? 0))
-                + self::fromArtifacts($absorbed, 'attributes', $attribute))
+                + self::fromTree($tree, $attribute))
             ->all();
-    }
-
-    /**
-     * What absorbed artifacts add up to for one attribute or bonus.
-     *
-     * @param  array<string, int>  $absorbed
-     */
-    public static function fromArtifacts(array $absorbed, string $kind, string $key): int
-    {
-        $total = 0;
-        $rules = self::artifactRules();
-
-        foreach ($absorbed as $artifact => $times) {
-            $total += (int) ($rules[$artifact][$kind][$key] ?? 0) * min(max(0, (int) $times), self::absorbLimit($artifact));
-        }
-
-        return $total;
     }
 
     /**
@@ -172,32 +222,69 @@ class Heroes
      * Most health a saved hero can have; characters from before heroes
      * had 100.
      *
-     * @param  array{class?: string, gender?: string, level?: int, points?: array<string, int>, absorbed?: array<string, int>}|null  $hero
+     * @param  array{class?: string, gender?: string, level?: int, points?: array<string, int>, artifacts?: array{stash?: array<int, mixed>, tree?: array<int, mixed>}}|null  $hero
      */
     public static function maxHealth(?array $hero): float
     {
-        return $hero === null
-            ? 100.0
-            : self::derive('health', self::heroAttributes($hero)) + self::fromArtifacts($hero['absorbed'] ?? [], 'bonus', 'health');
+        return $hero === null ? 100.0 : self::derive('health', self::heroAttributes($hero));
     }
 
     /**
-     * @param  array{class?: string, gender?: string, level?: int, points?: array<string, int>, absorbed?: array<string, int>}|null  $hero
+     * @param  array{class?: string, gender?: string, level?: int, points?: array<string, int>, artifacts?: array{stash?: array<int, mixed>, tree?: array<int, mixed>}}|null  $hero
      */
     public static function maxMana(?array $hero): float
     {
-        return $hero === null
-            ? 0.0
-            : self::derive('mana', self::heroAttributes($hero)) + self::fromArtifacts($hero['absorbed'] ?? [], 'bonus', 'mana');
+        return $hero === null ? 0.0 : self::derive('mana', self::heroAttributes($hero));
     }
 
     /**
-     * @param  array{class?: string, gender?: string, level?: int, points?: array<string, int>, absorbed?: array<string, int>}  $hero
+     * @param  array{class?: string, gender?: string, level?: int, points?: array<string, int>, artifacts?: array{stash?: array<int, mixed>, tree?: array<int, mixed>}}  $hero
      * @return array<string, int>
      */
     private static function heroAttributes(array $hero): array
     {
-        return self::attributesAt($hero['class'] ?? 'fighter', $hero['gender'] ?? 'male', (int) ($hero['level'] ?? 1), $hero['points'] ?? [], $hero['absorbed'] ?? []);
+        return self::attributesAt($hero['class'] ?? 'fighter', $hero['gender'] ?? 'male', (int) ($hero['level'] ?? 1), $hero['points'] ?? [], $hero['artifacts']['tree'] ?? []);
+    }
+
+    /**
+     * Attribute points within a range (none when there is no range).
+     *
+     * @param  array{0: int, 1: int}|null  $range
+     */
+    private static function allowedPoints(mixed $points, ?array $range): bool
+    {
+        if (! is_array($points) || array_diff(array_keys($points), self::attributes()) !== []) {
+            return false;
+        }
+
+        foreach ($points as $amount) {
+            if (! is_int($amount) || $amount < 0) {
+                return false;
+            }
+        }
+
+        $sum = array_sum($points);
+
+        return $range === null ? $sum === 0 : $sum >= $range[0] && $sum <= $range[1];
+    }
+
+    /**
+     * A skill with a rank within a range (none when there is no range).
+     *
+     * @param  array{0: int, 1: int}|null  $range
+     */
+    private static function allowedSkill(mixed $skill, ?array $range): bool
+    {
+        if ($range === null || $skill === null) {
+            return $range === null && $skill === null;
+        }
+
+        return is_array($skill)
+            && array_diff(array_keys($skill), ['name', 'rank']) === []
+            && in_array($skill['name'] ?? null, self::artifactSkills(), true)
+            && is_int($skill['rank'] ?? null)
+            && $skill['rank'] >= $range[0]
+            && $skill['rank'] <= $range[1];
     }
 
     /**
@@ -221,13 +308,23 @@ class Heroes
     }
 
     /**
-     * What absorbing each artifact gives.
+     * Each skill artifacts give: its values, one per rank.
      *
-     * @return array<string, array{tier: string, max: int, attributes?: array<string, int>, bonus?: array<string, float|int>, skill?: string}>
+     * @return array<string, array<string, list<float|int>>>
      */
-    private static function artifactRules(): array
+    private static function skillRules(): array
     {
-        return self::rules('artifacts');
+        return self::rules('artifact_skills');
+    }
+
+    /**
+     * The level each cell of the lineage tree opens at.
+     *
+     * @return list<int>
+     */
+    private static function cellLevels(): array
+    {
+        return self::rules('artifacts.tree_cells');
     }
 
     private static function rules(string $key): mixed

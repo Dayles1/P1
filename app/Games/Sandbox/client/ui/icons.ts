@@ -1,10 +1,11 @@
 /**
- * Line icons for buttons and labels, drawn in the text colour. Inline SVG
+ * Line icons for buttons and labels, drawn in the text colour: a 24 grid,
+ * 2 px lines with sharp ends and joins (the «Кремень» style). Inline SVG
  * rather than emoji: several emoji are missing on Windows 10.
  */
 
 const line = (body: string) =>
-    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">${body}</svg>`;
 
 export const ICONS = {
     bag: line(

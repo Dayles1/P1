@@ -1,26 +1,69 @@
 /* Sandbox — everything is scoped under #sandbox-root or sb- classes. */
 
 :root {
-    --sb-ink: #1d2126;
-    --sb-muted: #5d6670;
-    --sb-glass: rgb(255 255 255 / 0.8);
-    --sb-panel: rgb(250 250 248 / 0.97);
-    --sb-sunken: rgb(29 33 38 / 0.05);
-    --sb-line: rgb(29 33 38 / 0.12);
-    --sb-dark-glass: rgb(29 33 38 / 0.55);
-    --sb-accent: #4f8a5b;
-    --sb-accent-soft: rgb(79 138 91 / 0.14);
-    --sb-danger: #d9534f;
-    --sb-gold: #c9a043;
-    --sb-shadow: 0 20px 60px rgb(29 33 38 / 0.2);
-    --sb-safe-l: max(14px, env(safe-area-inset-left));
-    --sb-safe-r: max(14px, env(safe-area-inset-right));
-    --sb-slot: 52px;
+    /* «Кремень»: basalt, slate, flint; bone for text, ash for the quiet; a spark of orange. */
+    --sb-basalt: #121518;
+    --sb-slate: #1e2328;
+    --sb-flint: #2b3138;
+    --sb-flint-hi: #353c44;
+    --sb-window: #15181b;
+    --sb-well: #1a1e22;
+    --sb-night: #0b0d0f;
+    --sb-bone: #efe6d2;
+    --sb-ash: #a39c8b;
+    --sb-dust: #cfc7b4;
+    --sb-spark: #ff7a2f;
+    --sb-ember: #ffb36b;
+    --sb-health: #e5484d;
+    --sb-mana: #3e9bff;
+    --sb-stamina: #b6e05a;
+    --sb-xp: #f2c14e;
+    --sb-common: #c9c1ae;
+    --sb-rare: #5fd4c4;
+    --sb-legend: #c084fc;
+    /* Over the 3D world plates are basalt at 82%, with a lit top edge. */
+    --sb-plate: rgb(18 21 24 / 0.82);
+    --sb-edge:
+        inset 0 1px 0 rgb(239 230 210 / 0.12),
+        inset 0 0 0 1px rgb(239 230 210 / 0.07);
+    /* Two corners chipped off (top left, bottom right); a diamond; an octagon. */
+    --sb-cut: 10px;
+    --sb-rhomb: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+    --sb-octagon: polygon(
+        30% 0,
+        70% 0,
+        100% 30%,
+        100% 70%,
+        70% 100%,
+        30% 100%,
+        0 70%,
+        0 30%
+    );
+
+    /* The names the rest of the stylesheet uses. */
+    --sb-ink: var(--sb-bone);
+    --sb-muted: var(--sb-ash);
+    --sb-glass: var(--sb-plate);
+    --sb-panel: var(--sb-window);
+    --sb-sunken: var(--sb-well);
+    --sb-raised: var(--sb-flint);
+    --sb-line: rgb(239 230 210 / 0.12);
+    --sb-dark-glass: var(--sb-plate);
+    --sb-accent: var(--sb-spark);
+    --sb-accent-soft: rgb(255 122 47 / 0.12);
+    --sb-danger: var(--sb-health);
+    --sb-gold: var(--sb-xp);
+    --sb-good: var(--sb-stamina);
+    --sb-shadow: 0 24px 60px rgb(0 0 0 / 0.45);
+    --sb-safe-l: max(24px, env(safe-area-inset-left));
+    --sb-safe-r: max(24px, env(safe-area-inset-right));
+    --sb-slot: 64px;
     --sb-mono:
-        ui-monospace, 'Cascadia Mono', Consolas, 'SFMono-Regular', monospace;
+        'JetBrains Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
     --sb-font:
-        system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+        'Golos Text', system-ui, -apple-system, 'Segoe UI', Roboto, Arial,
         sans-serif;
+    --sb-display: 'Unbounded', 'Golos Text', system-ui, sans-serif;
 }
 
 html,
@@ -28,7 +71,7 @@ body {
     margin: 0;
     height: 100%;
     overflow: hidden;
-    background: #cfd8de;
+    background: var(--sb-basalt);
     font-family: var(--sb-font);
     color: var(--sb-ink);
     -webkit-tap-highlight-color: transparent;
@@ -86,35 +129,36 @@ body {
 
 /* Buttons. */
 .sb-button {
+    --sb-cut: 10px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 7px;
-    min-height: 38px;
-    padding: 0 14px;
-    border: 1px solid var(--sb-line);
-    border-radius: 12px;
-    background: #fff;
-    color: var(--sb-ink);
-    font-size: 14px;
-    font-weight: 600;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 16px;
+    border: 0;
+    background: var(--sb-flint);
+    box-shadow: inset 0 0 0 1px var(--sb-line);
+    color: var(--sb-bone);
+    font: 600 14px/1 var(--sb-font);
     text-decoration: none;
     cursor: pointer;
     transition:
-        background 0.15s,
+        background 0.12s,
         transform 0.1s;
 }
 
 .sb-button:hover {
-    background: #f1f3f4;
+    background: var(--sb-flint-hi);
 }
 
 .sb-button:active {
-    transform: scale(0.97);
+    transform: translateY(1px);
 }
 
 .sb-button:disabled {
-    opacity: 0.45;
+    background: var(--sb-flint);
+    color: rgb(239 230 210 / 0.35);
     cursor: default;
     transform: none;
 }
@@ -125,32 +169,31 @@ body {
 }
 
 .sb-button--primary {
-    border-color: transparent;
-    background: var(--sb-accent);
-    color: #fff;
+    background: var(--sb-spark);
+    box-shadow: none;
+    color: var(--sb-basalt);
+    font-weight: 700;
 }
 
 .sb-button--primary:hover {
-    background: #457d50;
+    background: var(--sb-ember);
 }
 
 /* Something that cannot be undone (starting over). */
 .sb-button--danger {
-    border-color: rgb(217 83 79 / 0.4);
-    color: var(--sb-danger);
+    box-shadow: inset 0 0 0 1px rgb(229 72 77 / 0.5);
+    color: var(--sb-health);
 }
 
 .sb-button--danger:hover {
-    border-color: transparent;
-    background: var(--sb-danger);
-    color: #fff;
+    background: var(--sb-health);
+    color: var(--sb-basalt);
 }
 
 .sb-button--small {
     min-height: 32px;
     padding: 0 10px;
-    border-radius: 10px;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .sb-button--wide {
@@ -159,118 +202,443 @@ body {
     font-size: 15px;
 }
 
+/* A square icon button on the playing screen (the menu, the back link). */
+.sb-ib,
 .sb-round {
+    --sb-cut: 10px;
+    position: relative;
     display: grid;
     place-items: center;
-    width: 42px;
-    height: 42px;
+    width: 46px;
+    height: 46px;
     padding: 0;
-    border: 1px solid var(--sb-line);
-    border-radius: 50%;
-    background: var(--sb-glass);
-    backdrop-filter: blur(8px);
+    border: 0;
+    background: var(--sb-plate);
+    box-shadow: inset 0 0 0 1px rgb(239 230 210 / 0.12);
+    color: var(--sb-bone);
     cursor: pointer;
     transition:
-        background 0.15s,
+        background 0.12s,
         transform 0.1s;
 }
 
-.sb-round {
-    position: relative;
+.sb-ib .sb-ui-icon,
+.sb-round .sb-ui-icon {
+    width: 22px;
+    height: 22px;
 }
 
+.sb-ib:hover,
 .sb-round:hover {
-    background: #fff;
+    background: var(--sb-flint);
+}
+
+.sb-ib:active,
+.sb-round:active {
+    transform: translateY(1px);
+}
+
+.sb-ib .sb-key,
+.sb-round .sb-key {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 3px;
+    font-size: 9px;
+    pointer-events: none;
+}
+
+/* Free points to put in: a gold diamond on the hero button. */
+.sb-ib--points::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 8px;
+    height: 8px;
+    background: var(--sb-xp);
+    clip-path: var(--sb-rhomb);
 }
 
 /* The key that does the same as a button (computers only). */
 .sb-key {
-    display: inline-grid;
-    place-items: center;
-    min-width: 18px;
-    height: 18px;
-    padding: 0 5px;
-    border: 1px solid var(--sb-line);
-    border-bottom-width: 2px;
-    border-radius: 5px;
-    background: #fff;
-    color: var(--sb-muted);
-    font: 700 10px/1 var(--sb-mono);
+    --sb-cut: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border: 0;
+    background: var(--sb-flint);
+    box-shadow:
+        inset 0 -2px 0 var(--sb-night),
+        inset 0 1px 0 rgb(239 230 210 / 0.18);
+    color: var(--sb-bone);
+    font: 700 11px/1 var(--sb-mono);
     white-space: nowrap;
-}
-
-.sb-round .sb-key {
-    position: absolute;
-    right: -5px;
-    bottom: -5px;
-    pointer-events: none;
 }
 
 .sb-button .sb-key,
 .sb-tab .sb-key,
 .sb-chip .sb-key,
 .sb-create__class .sb-key {
-    margin-left: 4px;
+    margin-left: 2px;
 }
 
 .sb-button--primary .sb-key,
-.sb-tab--active .sb-key,
 .sb-chip--active .sb-key,
 .sb-create__class--active .sb-key {
-    border-color: rgb(255 255 255 / 0.35);
-    background: rgb(255 255 255 / 0.18);
-    color: #fff;
+    background: rgb(0 0 0 / 0.2);
+    box-shadow: none;
+    color: var(--sb-basalt);
 }
 
-.sb-round:active {
-    transform: scale(0.94);
+/* A plate over the 3D world: basalt at 82%, a lit top edge. */
+.sb-plate {
+    --sb-cut: 10px;
+    background: var(--sb-plate);
+    box-shadow: var(--sb-edge);
+    color: var(--sb-bone);
 }
 
-/* Top bar: back, clock, FPS — and the menu buttons on the right. */
-.sb-top {
-    position: absolute;
-    z-index: 2;
-    top: 14px;
-    left: var(--sb-safe-l);
+/* Small capitals over a group, with the spark diamond. */
+.sb-label {
     display: flex;
     align-items: center;
-    gap: 10px;
-    pointer-events: none;
+    gap: 8px;
+    color: var(--sb-ash);
+    font: 700 10px/1 var(--sb-display);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
 }
 
-.sb-back,
-.sb-clock,
-.sb-fps,
-.sb-status {
-    padding: 8px 14px;
-    border: 1px solid var(--sb-line);
-    border-radius: 999px;
-    background: var(--sb-glass);
-    backdrop-filter: blur(8px);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--sb-ink);
-    text-decoration: none;
+.sb-diamond {
+    display: inline-block;
+    flex: none;
+    width: 7px;
+    height: 7px;
+    background: var(--sb-spark);
+    clip-path: var(--sb-rhomb);
+}
+
+/* ◆ The hero, top left. */
+.sb-hero-plate {
+    position: absolute;
+    z-index: 3;
+    left: var(--sb-safe-l);
+    top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-sizing: border-box;
+    width: 310px;
+    padding: 12px 16px 14px 12px;
+    border: 0;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.sb-portrait {
+    position: relative;
+    flex: none;
+    width: 56px;
+    height: 56px;
+}
+
+.sb-portrait::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--sb-spark);
+    clip-path: var(--sb-octagon);
+}
+
+.sb-portrait__icon {
+    position: absolute;
+    inset: 3px;
+    display: grid;
+    place-items: center;
+    background: var(--sb-flint);
+    clip-path: var(--sb-octagon);
+}
+
+.sb-portrait__icon .sb-ui-icon {
+    width: 26px;
+    height: 26px;
+}
+
+/* The level: a gold diamond (under the portrait, and in the character tab). */
+.sb-level {
+    display: inline-grid;
+    place-items: center;
+    flex: none;
+    width: 30px;
+    height: 30px;
+    background: var(--sb-xp);
+    clip-path: var(--sb-rhomb);
+    color: var(--sb-basalt);
+    font: 800 11px/1 var(--sb-display);
+}
+
+.sb-portrait .sb-level {
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+}
+
+.sb-level--large {
+    width: 52px;
+    height: 52px;
+    font-size: 16px;
+}
+
+.sb-hero-plate__info {
+    display: grid;
+    flex: 1;
+    gap: 7px;
+    min-width: 0;
+}
+
+.sb-hero-plate__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.sb-hero-plate__name {
+    font: 700 15px/1 var(--sb-display);
+    letter-spacing: 0.02em;
+}
+
+.sb-hero-plate__xp {
+    color: var(--sb-ash);
+    font-size: 12px;
     white-space: nowrap;
 }
 
-.sb-back {
-    pointer-events: auto;
+.sb-hero-plate__points {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
 }
 
-.sb-back:hover {
-    background: #fff;
+.sb-hero-plate__points .sb-key {
+    height: 18px;
+    min-width: 18px;
+    font-size: 10px;
 }
 
-.sb-clock,
-.sb-fps {
-    font: 600 13px/1.2 var(--sb-mono);
+.sb-hero-plate__gold {
+    color: var(--sb-xp);
+    font-weight: 600;
 }
 
+/* What is in effect: small squares under the hero. */
+.sb-effects {
+    position: absolute;
+    z-index: 2;
+    left: var(--sb-safe-l);
+    top: 122px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    pointer-events: none;
+}
+
+.sb-fx {
+    --sb-cut: 7px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    background: var(--sb-plate);
+}
+
+.sb-fx .sb-ui-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.sb-fx b {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    padding: 2px 0;
+    background: rgb(11 13 15 / 0.7);
+    color: var(--sb-bone);
+    font: 700 9px/1 var(--sb-mono);
+    text-align: center;
+}
+
+.sb-fx__note {
+    --sb-cut: 6px;
+    display: flex;
+    align-items: center;
+    height: 38px;
+    padding: 0 12px;
+    color: var(--sb-ash);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* ◆ The compass, the clock and the land, top middle. */
+.sb-compass-box {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 24px;
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+    width: 500px;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.sb-compass {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+}
+
+.sb-compass__tape {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent 0 calc(5% - 1px),
+        rgb(239 230 210 / 0.18) calc(5% - 1px) 5%
+    );
+    background-position-x: var(--sb-tick, 0);
+}
+
+.sb-compass__letter {
+    position: absolute;
+    top: 50%;
+    padding: 0 4px;
+    background: var(--sb-plate);
+    color: var(--sb-ash);
+    font: 700 12px/1 var(--sb-display);
+    transform: translate(-50%, -50%);
+}
+
+.sb-compass__letter--north {
+    color: var(--sb-bone);
+    font-size: 15px;
+}
+
+.sb-compass__mark {
+    position: absolute;
+    top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 6px;
+    background: rgb(18 21 24 / 0.9);
+    color: var(--sb-spark);
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    transform: translateX(-50%);
+}
+
+.sb-compass__mark--chest {
+    color: var(--sb-xp);
+}
+
+.sb-compass__mark--chest .sb-diamond {
+    background: var(--sb-xp);
+}
+
+.sb-compass__mark--start {
+    color: var(--sb-bone);
+}
+
+.sb-compass__mark--start .sb-diamond {
+    background: var(--sb-bone);
+}
+
+.sb-compass__pointer {
+    width: 10px;
+    height: 8px;
+    margin-top: -6px;
+    background: var(--sb-spark);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.sb-clock {
+    display: flex;
+    gap: 14px;
+    color: var(--sb-bone);
+    font-size: 13px;
+    text-shadow: 0 1px 3px rgb(0 0 0 / 0.7);
+    white-space: nowrap;
+}
+
+.sb-clock b {
+    font-weight: 600;
+}
+
+.sb-clock__until {
+    opacity: 0.8;
+}
+
+/* Night is near: time to head for the fire. */
+.sb-clock--dusk .sb-clock__until,
+.sb-clock--dusk b:first-child {
+    color: var(--sb-spark);
+    opacity: 1;
+}
+
+/* The creature being fought. */
+.sb-target {
+    display: grid;
+    gap: 7px;
+    box-sizing: border-box;
+    width: 300px;
+    margin-top: 8px;
+    padding: 10px 14px;
+}
+
+.sb-target__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.sb-target__name {
+    font: 700 14px/1 var(--sb-display);
+}
+
+.sb-target__state {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.sb-target__state--attacks {
+    color: var(--sb-health);
+}
+
+.sb-target__state--flees {
+    color: var(--sb-ash);
+}
+
+/* ◆ The menu buttons and the save status, top right. */
 .sb-corner {
     position: absolute;
     z-index: 4;
-    top: 14px;
+    top: 24px;
     right: var(--sb-safe-r);
     display: flex;
     align-items: center;
@@ -279,49 +647,398 @@ body {
 
 .sb-menu-buttons {
     display: flex;
-    gap: 8px;
+    gap: 10px;
+}
+
+.sb-back {
+    text-decoration: none;
+}
+
+.sb-status,
+.sb-fps {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-right: 6px;
+    color: var(--sb-bone);
+    font-size: 12px;
+    text-shadow: 0 1px 3px rgb(0 0 0 / 0.7);
+    white-space: nowrap;
+    pointer-events: none;
 }
 
 .sb-status {
     opacity: 0;
     transition: opacity 0.3s;
-    font-weight: 500;
-    color: var(--sb-muted);
-    pointer-events: none;
+}
+
+.sb-status::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    background: var(--sb-stamina);
+    clip-path: var(--sb-rhomb);
 }
 
 .sb-status--shown {
     opacity: 1;
 }
 
-/* Health and armour. */
-.sb-vitals {
+.sb-fps {
+    font: 700 11px/1 var(--sb-mono);
+}
+
+/* What was picked up, under the menu: the newest on top. */
+.sb-feed {
     position: absolute;
     z-index: 2;
-    left: var(--sb-safe-l);
-    bottom: 16px;
+    top: 92px;
+    right: var(--sb-safe-r);
     display: grid;
     gap: 6px;
-    width: 230px;
-    padding: 10px 12px;
-    border: 1px solid var(--sb-line);
-    border-radius: 16px;
-    background: var(--sb-glass);
-    backdrop-filter: blur(8px);
+    width: 250px;
     pointer-events: none;
 }
 
-.sb-vitals__row {
+.sb-feed__line {
+    --sb-cut: 6px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+    padding: 7px 12px 7px 8px;
+    box-shadow: inset 3px 0 0 var(--sb-feed, var(--sb-spark));
+    font-size: 13px;
+    animation: sb-feed 0.18s ease-out;
 }
 
-.sb-vitals__heart {
-    color: var(--sb-danger);
+.sb-feed__line:nth-child(2) {
+    opacity: 0.78;
 }
 
-.sb-vitals--low .sb-vitals__heart {
+.sb-feed__line:nth-child(n + 3) {
+    opacity: 0.5;
+}
+
+.sb-feed__line--bad {
+    --sb-feed: var(--sb-health);
+}
+
+.sb-feed__line--xp {
+    --sb-feed: var(--sb-xp);
+}
+
+.sb-feed__line .sb-icon {
+    width: 22px;
+    height: 22px;
+}
+
+.sb-feed__count {
+    color: var(--sb-feed, var(--sb-spark));
+    font: 700 12px/1 var(--sb-display);
+}
+
+.sb-feed__text {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sb-feed__total {
+    color: var(--sb-ash);
+}
+
+.sb-feed__line--bump .sb-feed__count {
+    animation: sb-bump 0.25s ease-out;
+}
+
+@keyframes sb-feed {
+    from {
+        opacity: 0;
+        transform: translateX(12px);
+    }
+}
+
+@keyframes sb-bump {
+    50% {
+        transform: scale(1.35);
+    }
+}
+
+/* ◆ The marker on what is in reach (placed by the game): four points and a diamond, red on a creature. */
+.sb-aim {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition:
+        width 0.12s,
+        height 0.12s;
+}
+
+.sb-aim span {
+    position: absolute;
+    background: var(--sb-bone);
+    filter: drop-shadow(0 0 1px rgb(0 0 0 / 0.6));
+}
+
+.sb-aim__n,
+.sb-aim__s {
+    left: calc(50% - 3px);
+    width: 6px;
+    height: 10px;
+}
+
+.sb-aim__n {
+    top: 0;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.sb-aim__s {
+    bottom: 0;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.sb-aim__w,
+.sb-aim__e {
+    top: calc(50% - 3px);
+    width: 10px;
+    height: 6px;
+}
+
+.sb-aim__w {
+    left: 0;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.sb-aim__e {
+    right: 0;
+    clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+
+.sb-aim__c {
+    left: calc(50% - 4px);
+    top: calc(50% - 4px);
+    width: 8px;
+    height: 8px;
+    clip-path: var(--sb-rhomb);
+    opacity: 0.6;
+}
+
+.sb-aim--thing {
+    width: 34px;
+    height: 34px;
+}
+
+.sb-aim--thing .sb-aim__c {
+    background: var(--sb-ember);
+    opacity: 1;
+}
+
+.sb-aim--enemy {
+    width: 30px;
+    height: 30px;
+}
+
+.sb-aim--enemy .sb-aim__c {
+    background: var(--sb-health);
+    opacity: 1;
+}
+
+.sb-aim-hint {
+    --sb-cut: 6px;
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: calc(50% + 34px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 12px 7px 8px;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.sb-aim-hint--off {
+    display: none;
+}
+
+/* Damage dealt, floating up and fading; a critical one bigger, in orange. */
+.sb-damages {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.sb-damage {
+    position: absolute;
+    color: var(--sb-bone);
+    font: 800 22px/1 var(--sb-display);
+    text-shadow:
+        0 2px 0 var(--sb-basalt),
+        0 0 8px rgb(0 0 0 / 0.4);
+    transform: translate(-50%, -50%);
+    animation: sb-damage 0.6s ease-out forwards;
+}
+
+.sb-damage--crit {
+    color: var(--sb-spark);
+    font-size: 30px;
+    rotate: -6deg;
+}
+
+@keyframes sb-damage {
+    to {
+        opacity: 0;
+        transform: translate(-50%, -150%);
+    }
+}
+
+/* ◆ What the keys do now, bottom right. */
+.sb-now {
+    position: absolute;
+    z-index: 2;
+    right: var(--sb-safe-r);
+    bottom: 24px;
+    display: grid;
+    gap: 9px;
+    box-sizing: border-box;
+    width: 230px;
+    padding: 14px;
+    font-size: 13px;
+    pointer-events: none;
+}
+
+.sb-now__lines {
+    display: grid;
+    gap: 9px;
+}
+
+.sb-now__line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sb-now__line .sb-key + span {
+    margin-right: 4px;
+}
+
+.sb-prompt__icon {
+    width: 22px;
+    height: 22px;
+    color: var(--sb-bone);
+}
+
+/* ◆ Carried resources, bottom left. */
+.sb-strip {
+    position: absolute;
+    z-index: 2;
+    left: var(--sb-safe-l);
+    bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+    max-width: calc(50% - 320px);
+    padding: 12px 16px;
+    font: 700 13px/1 var(--sb-display);
+    pointer-events: none;
+}
+
+.sb-strip__item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.sb-strip__item .sb-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.sb-stance {
+    --sb-cut: 6px;
+    position: absolute;
+    z-index: 2;
+    left: var(--sb-safe-l);
+    bottom: 92px;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+/* ◆ Bottom middle: the held item, the bars, the hotbar and the skill. */
+.sb-held {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 146px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 13px;
+    text-shadow: 0 1px 3px rgb(0 0 0 / 0.8);
+    white-space: nowrap;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.sb-held b {
+    font: 700 14px/1 var(--sb-display);
+}
+
+.sb-bars {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 104px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 10px;
+    width: 560px;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.sb-bars__part {
+    display: grid;
+    gap: 5px;
+}
+
+.sb-bars__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgb(0 0 0 / 0.8);
+}
+
+.sb-bars__label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sb-bars__heart {
+    width: 14px;
+    height: 14px;
+    color: var(--sb-health);
+}
+
+.sb-bars--low .sb-bars__heart {
     animation: sb-beat 0.8s ease-in-out infinite;
 }
 
@@ -331,133 +1048,347 @@ body {
     }
 }
 
-.sb-vitals__armor {
+.sb-bars__armor {
     display: flex;
     align-items: center;
-    gap: 6px;
-    color: #5f7b93;
-    font: 600 12px/1 var(--sb-mono);
+    gap: 4px;
+    color: #c9d4dc;
 }
 
-.sb-vitals__armor .sb-ui-icon {
-    width: 18px;
-    height: 18px;
+.sb-bars__armor .sb-ui-icon {
+    width: 13px;
+    height: 13px;
 }
 
+/* A bar: slanted ends, ten shares, a pale tail for what was just lost. */
 .sb-bar {
     position: relative;
-    flex: 1;
-    height: 14px;
-    border-radius: 999px;
-    background: rgb(29 33 38 / 0.14);
-    overflow: hidden;
+    height: 12px;
+    background: rgb(11 13 15 / 0.78);
+    clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+}
+
+.sb-bar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent 0 calc(10% - 2px),
+        rgb(11 13 15 / 0.9) calc(10% - 2px) 10%
+    );
+    pointer-events: none;
+}
+
+.sb-bar__fill,
+.sb-bar__tail {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: var(--sb-bar, var(--sb-health));
 }
 
 .sb-bar__fill {
-    height: 100%;
-    border-radius: inherit;
-    background: linear-gradient(90deg, #c94a45, #e2665f);
-    transition: width 0.25s ease-out;
+    transition: width 0.15s ease-out;
 }
 
-.sb-bar__text {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    color: #fff;
-    font: 700 10px/1 var(--sb-mono);
-    text-shadow: 0 1px 2px rgb(0 0 0 / 0.4);
+.sb-bar__tail {
+    opacity: 0.4;
+    transition: width 0.5s ease-out 0.45s;
 }
 
-.sb-bar--large {
-    height: 18px;
+.sb-bar--health {
+    --sb-bar: var(--sb-health);
 }
 
-/* The hero's level, class and experience above the bars. */
-.sb-vitals__hero {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 5px 8px;
+.sb-bar--mana {
+    --sb-bar: var(--sb-mana);
 }
 
-.sb-level {
-    display: grid;
-    place-items: center;
-    min-width: 24px;
-    height: 24px;
-    padding: 0 6px;
-    border-radius: 999px;
-    background: var(--sb-ink);
-    color: #fff;
-    font: 700 12px/1 var(--sb-mono);
+.sb-bar--stamina {
+    --sb-bar: var(--sb-stamina);
 }
 
-.sb-level--points {
-    background: var(--sb-gold);
-    animation: sb-beat 1.2s ease-in-out infinite;
+.sb-bar--xp {
+    --sb-bar: var(--sb-xp);
+    height: 8px;
 }
 
-.sb-level--large {
-    min-width: 46px;
-    height: 46px;
-    font-size: 19px;
+.sb-bar--out {
+    --sb-bar: var(--sb-health);
 }
 
-.sb-vitals__name {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--sb-muted);
-}
-
+/* The experience bar of the character tab. */
 .sb-xp {
-    flex-basis: 100%;
-    height: 4px;
-    border-radius: 999px;
-    background: rgb(29 33 38 / 0.12);
-    overflow: hidden;
+    position: relative;
+    height: 8px;
+    background: rgb(11 13 15 / 0.78);
+    clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
 }
 
 .sb-xp--large {
-    height: 8px;
+    height: 12px;
 }
 
 .sb-xp__fill {
     height: 100%;
-    border-radius: inherit;
-    background: linear-gradient(90deg, #c9a043, #e6c46a);
+    background: var(--sb-xp);
     transition: width 0.3s ease-out;
 }
 
-.sb-vitals__mana {
-    color: #4f7fd0;
+/* The hotbar: the first six slots, then the skill. */
+.sb-hotbar {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    bottom: 22px;
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    transform: translateX(-50%);
 }
 
-.sb-bar--mana .sb-bar__fill {
-    background: linear-gradient(90deg, #3f6fc4, #5f8fe0);
+/* A slot, wherever it is (the hotbar, the bag, a chest). */
+.sb-slot {
+    --sb-cut: 10px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: var(--sb-slot);
+    height: var(--sb-slot);
+    padding: 0;
+    border: 0;
+    background: rgb(18 21 24 / 0.8);
+    box-shadow:
+        inset 0 0 0 1px rgb(239 230 210 / 0.14),
+        inset 0 1px 0 rgb(239 230 210 / 0.16);
+    color: var(--sb-bone);
+    touch-action: none;
+    cursor: pointer;
+    transition:
+        background 0.12s,
+        transform 0.12s;
 }
 
-/* Stamina: a thin bar under the others, red when spent. */
-.sb-vitals__row--stamina {
-    padding-left: 32px;
+.sb-slot .sb-icon {
+    width: 56%;
+    height: 56%;
 }
 
-.sb-bar--stamina {
-    height: 5px;
+.sb-hotbar__slot {
+    width: 64px;
+    height: 64px;
 }
 
-.sb-bar--stamina .sb-bar__fill {
-    background: linear-gradient(90deg, #b8a33e, #9fbf5a);
-    transition: width 0.12s linear;
+.sb-hotbar__slot--selected {
+    background: rgb(43 32 24 / 0.92);
+    box-shadow:
+        inset 0 0 0 2px var(--sb-spark),
+        inset 0 -18px 24px -14px rgb(255 122 47 / 0.55);
+    transform: translateY(-6px);
 }
 
-.sb-bar--stamina .sb-bar__text {
-    display: none;
+.sb-hotbar__slot--selected .sb-slot__no {
+    color: var(--sb-spark);
 }
 
-.sb-bar--out .sb-bar__fill {
-    background: var(--sb-danger);
+.sb-slot__no {
+    position: absolute;
+    top: 6px;
+    left: 12px;
+    color: rgb(239 230 210 / 0.5);
+    font: 700 10px/1 var(--sb-mono);
+}
+
+.sb-slot__count,
+.sb-hotbar__count {
+    position: absolute;
+    right: 8px;
+    bottom: 6px;
+    color: var(--sb-bone);
+    font: 700 13px/1 var(--sb-display);
+    text-shadow: 0 1px 2px #000;
+}
+
+/* How worn a tool or piece of armour is; a red corner when nearly broken. */
+.sb-wear {
+    position: absolute;
+    left: 10px;
+    right: 12px;
+    bottom: 6px;
+    height: 3px;
+    background: rgb(239 230 210 / 0.16);
+}
+
+.sb-wear span {
+    display: block;
+    height: 100%;
+    background: var(--sb-stamina);
+}
+
+.sb-wear--low span {
+    background: var(--sb-health);
+}
+
+.sb-slot__warn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 10px;
+    height: 10px;
+    background: var(--sb-health);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+/* The class skill: a diamond that fills as it recharges. */
+.sb-skill {
+    position: relative;
+    width: 74px;
+    height: 74px;
+    margin-left: 14px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.sb-skill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--sb-mana);
+    clip-path: var(--sb-rhomb);
+}
+
+.sb-skill__inner {
+    position: absolute;
+    inset: 3px;
+    background: #142235;
+    clip-path: var(--sb-rhomb);
+    overflow: hidden;
+}
+
+.sb-skill__fill {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background: rgb(62 155 255 / 0.35);
+    transition: height 0.2s linear;
+}
+
+.sb-skill .sb-skill__icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 28px;
+    height: 28px;
+    color: #cfe4ff;
+    transform: translate(-50%, -50%);
+}
+
+.sb-skill .sb-key {
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    height: 16px;
+    min-width: 20px;
+    font-size: 9px;
+    transform: translateX(-50%);
+}
+
+.sb-skill__cost {
+    position: absolute;
+    right: -16px;
+    top: 6px;
+    color: var(--sb-mana);
+    font: 700 10px/1 var(--sb-display);
+}
+
+.sb-skill--ready .sb-skill__fill {
+    background: rgb(62 155 255 / 0.6);
+}
+
+.sb-skill--short {
+    opacity: 0.55;
+}
+
+.sb-skill--active::before {
+    background: var(--sb-xp);
+}
+
+/* "Level up" across the screen. */
+.sb-banner {
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    top: 22%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 22px 14px 18px;
+    box-shadow:
+        inset 3px 0 0 var(--sb-xp),
+        var(--sb-edge);
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.sb-banner strong {
+    color: var(--sb-xp);
+    font: 800 24px/1 var(--sb-display);
+}
+
+.sb-banner span {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.sb-banner--shown {
+    animation: sb-banner 3.6s ease-out forwards;
+}
+
+@keyframes sb-banner {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 16px);
+    }
+
+    6%,
+    82% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -10px);
+    }
+}
+
+.sb-breath {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 176px;
+    width: 180px;
+    height: 8px;
+    background: rgb(11 13 15 / 0.78);
+    clip-path: polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
+    transform: translateX(-50%);
+}
+
+.sb-breath__fill {
+    height: 100%;
+    background: #9fd3ec;
+    transition: width 0.15s linear;
+}
+
+.sb-breath--low .sb-breath__fill {
+    background: var(--sb-health);
 }
 
 /* A red glow around the edges when hurt, and while health is low. */
@@ -503,6 +1434,27 @@ body {
     }
 }
 
+#sandbox-root.sb-underwater::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgb(40 90 110 / 0.18);
+    pointer-events: none;
+}
+
+.sb-debug {
+    position: absolute;
+    z-index: 5;
+    left: var(--sb-safe-l);
+    top: 180px;
+    margin: 0;
+    padding: 10px 12px;
+    background: var(--sb-plate);
+    color: var(--sb-bone);
+    font: 12px/1.5 var(--sb-mono);
+    pointer-events: none;
+}
+
 /* The pause, start and death cards. */
 .sb-overlay {
     position: absolute;
@@ -511,50 +1463,62 @@ body {
     display: grid;
     place-items: center;
     padding: 16px;
-    background: rgb(207 216 222 / 0.35);
-    backdrop-filter: blur(2px);
+    background: rgb(8 10 12 / 0.55);
 }
 
 .sb-card {
+    --sb-cut: 14px;
+    position: relative;
     display: grid;
     justify-items: center;
-    gap: 12px;
-    width: min(380px, 100%);
+    gap: 14px;
+    width: min(400px, 100%);
     max-height: 100%;
     overflow: auto;
-    padding: 26px 24px 20px;
-    border: 1px solid var(--sb-line);
-    border-radius: 22px;
-    background: var(--sb-panel);
-    box-shadow: var(--sb-shadow);
+    box-sizing: border-box;
+    padding: 28px 26px 22px;
+    background: var(--sb-window);
+    box-shadow: inset 0 0 0 1px rgb(239 230 210 / 0.1);
+    color: var(--sb-bone);
     text-align: center;
-    animation: sb-rise 0.25s ease-out;
+    animation: sb-rise 0.18s ease-out;
+}
+
+/* The spark stripe at the top left of every window. */
+.sb-card::before,
+.sb-menu__sheet::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 120px;
+    height: 3px;
+    background: var(--sb-spark);
 }
 
 @keyframes sb-rise {
     from {
         opacity: 0;
-        transform: translateY(12px) scale(0.98);
+        transform: translateY(16px);
     }
 }
 
 .sb-card h1 {
     margin: 0;
-    font-size: 28px;
-    letter-spacing: -0.02em;
+    font: 800 30px/1 var(--sb-display);
+    letter-spacing: -0.01em;
 }
 
 .sb-start {
     margin: 0;
-    font-weight: 600;
-    color: var(--sb-muted);
+    color: var(--sb-dust);
+    font-weight: 500;
 }
 
 .sb-card__play {
     width: 100%;
     min-height: 52px;
-    font-size: 17px;
-    border-radius: 14px;
+    font-size: 16px;
 }
 
 .sb-card__play .sb-ui-icon {
@@ -581,7 +1545,7 @@ body {
 
 .sb-card__controls summary {
     padding: 6px 0;
-    color: var(--sb-muted);
+    color: var(--sb-ash);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -596,377 +1560,29 @@ body {
 }
 
 .sb-controls dt {
-    font: 600 12px/1.6 var(--sb-mono);
+    font: 700 12px/1.6 var(--sb-mono);
     text-align: right;
 }
 
 .sb-controls dd {
     margin: 0;
-    color: var(--sb-muted);
+    color: var(--sb-ash);
 }
 
 .sb-death {
-    background: rgb(60 12 12 / 0.45);
+    background: rgb(40 8 10 / 0.6);
 }
 
 .sb-death__icon {
     width: 46px;
     height: 46px;
-    color: var(--sb-danger);
+    color: var(--sb-health);
 }
 
 .sb-death__cause {
     margin: 0;
     font-size: 16px;
     font-weight: 600;
-}
-
-/* What the keys would do right now. */
-.sb-prompt {
-    position: absolute;
-    z-index: 2;
-    left: 50%;
-    bottom: 22%;
-    display: grid;
-    gap: 6px;
-    justify-items: center;
-    transform: translateX(-50%);
-    pointer-events: none;
-}
-
-.sb-prompt__line {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 12px 6px 6px;
-    border-radius: 999px;
-    background: var(--sb-dark-glass);
-    backdrop-filter: blur(6px);
-    color: #f6f7f8;
-    font-size: 14px;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-.sb-prompt kbd {
-    min-width: 22px;
-    padding: 2px 7px;
-    border-radius: 6px;
-    background: #f6f7f8;
-    color: var(--sb-ink);
-    font: 600 12px/1.4 var(--sb-mono);
-    text-align: center;
-}
-
-.sb-prompt__icon {
-    display: grid;
-    place-items: center;
-    width: 24px;
-    height: 24px;
-    padding: 3px;
-    border-radius: 50%;
-    background: #f6f7f8;
-    color: var(--sb-ink);
-    box-sizing: border-box;
-}
-
-.sb-toasts {
-    position: absolute;
-    z-index: 2;
-    left: 50%;
-    bottom: calc(22% + 90px);
-    display: grid;
-    gap: 6px;
-    justify-items: center;
-    transform: translateX(-50%);
-    pointer-events: none;
-}
-
-.sb-toast {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 14px 6px 8px;
-    border-radius: 999px;
-    background: var(--sb-glass);
-    backdrop-filter: blur(8px);
-    font-size: 14px;
-    font-weight: 600;
-    white-space: nowrap;
-    animation: sb-toast 1.8s ease-out forwards;
-}
-
-.sb-toast--bad {
-    color: #a03a30;
-}
-
-@keyframes sb-toast {
-    0% {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-
-    12%,
-    70% {
-        opacity: 1;
-        transform: none;
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateY(-14px);
-    }
-}
-
-/* Hotbar: the first six inventory slots. */
-.sb-hotbar {
-    position: absolute;
-    z-index: 4;
-    left: 50%;
-    bottom: 14px;
-    display: flex;
-    gap: 6px;
-    transform: translateX(-50%);
-}
-
-.sb-hotbar__slot {
-    position: relative;
-    display: grid;
-    place-items: center;
-    width: 52px;
-    height: 52px;
-    padding: 0;
-    border: 1px solid var(--sb-line);
-    border-radius: 12px;
-    background: var(--sb-glass);
-    backdrop-filter: blur(8px);
-    cursor: pointer;
-    transition: transform 0.12s;
-}
-
-.sb-hotbar__slot .sb-icon {
-    width: 30px;
-    height: 30px;
-}
-
-.sb-hotbar__slot--selected {
-    border-color: var(--sb-ink);
-    box-shadow: 0 0 0 2px var(--sb-ink);
-    background: #fff;
-    transform: translateY(-3px);
-}
-
-.sb-hotbar__key {
-    position: absolute;
-    top: 3px;
-    left: 5px;
-    color: var(--sb-muted);
-    font: 600 10px/1 var(--sb-mono);
-}
-
-/* The class skill, right of the hotbar: dark while it cools down. */
-.sb-skill {
-    margin-left: 10px;
-    overflow: hidden;
-    color: #6b4fbf;
-}
-
-.sb-skill .sb-skill__icon {
-    width: 26px;
-    height: 26px;
-}
-
-.sb-skill__shade {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 0;
-    background: rgb(29 33 38 / 0.45);
-    pointer-events: none;
-}
-
-.sb-skill__cost {
-    position: absolute;
-    right: 5px;
-    bottom: 4px;
-    color: #3f6fc4;
-    font: 700 10px/1 var(--sb-mono);
-}
-
-.sb-skill--short {
-    opacity: 0.55;
-}
-
-.sb-skill--active {
-    border-color: var(--sb-gold);
-    box-shadow: 0 0 0 2px var(--sb-gold);
-}
-
-/* "Level up" across the screen. */
-.sb-banner {
-    position: absolute;
-    z-index: 5;
-    left: 50%;
-    top: 20%;
-    display: grid;
-    justify-items: center;
-    gap: 4px;
-    padding: 12px 26px;
-    border-radius: 18px;
-    background: var(--sb-dark-glass);
-    backdrop-filter: blur(6px);
-    color: #f6f7f8;
-    text-align: center;
-    transform: translateX(-50%);
-    pointer-events: none;
-}
-
-.sb-banner strong {
-    color: #f3d27a;
-    font-size: 26px;
-    letter-spacing: -0.01em;
-}
-
-.sb-banner span {
-    font-weight: 600;
-}
-
-.sb-banner--shown {
-    animation: sb-banner 3.6s ease-out forwards;
-}
-
-@keyframes sb-banner {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, 10px) scale(0.96);
-    }
-
-    10%,
-    80% {
-        opacity: 1;
-        transform: translate(-50%, 0);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -10px);
-    }
-}
-
-.sb-hotbar__count,
-.sb-slot__count {
-    position: absolute;
-    right: 5px;
-    bottom: 4px;
-    font: 700 11px/1 var(--sb-mono);
-    text-shadow: 0 0 3px #fff;
-}
-
-/* How worn a tool or piece of armour is. */
-.sb-wear {
-    position: absolute;
-    left: 6px;
-    right: 6px;
-    bottom: 3px;
-    height: 3px;
-    border-radius: 2px;
-    background: rgb(29 33 38 / 0.15);
-    overflow: hidden;
-}
-
-.sb-wear span {
-    display: block;
-    height: 100%;
-    background: #6fa86a;
-}
-
-.sb-wear--low span {
-    background: var(--sb-danger);
-}
-
-.sb-strip {
-    position: absolute;
-    z-index: 2;
-    right: var(--sb-safe-r);
-    bottom: 16px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 6px;
-    max-width: calc(50% - 200px);
-    pointer-events: none;
-}
-
-.sb-strip__item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 10px 5px 6px;
-    border: 1px solid var(--sb-line);
-    border-radius: 999px;
-    background: var(--sb-glass);
-    backdrop-filter: blur(8px);
-    font: 600 13px/1 var(--sb-mono);
-}
-
-.sb-stance {
-    position: absolute;
-    z-index: 2;
-    left: var(--sb-safe-l);
-    bottom: 100px;
-    padding: 7px 12px;
-    border-radius: 999px;
-    background: var(--sb-dark-glass);
-    color: #f6f7f8;
-    font-size: 13px;
-    font-weight: 600;
-    pointer-events: none;
-}
-
-.sb-breath {
-    position: absolute;
-    z-index: 2;
-    left: 50%;
-    bottom: 78px;
-    width: 180px;
-    height: 8px;
-    border-radius: 999px;
-    background: rgb(29 33 38 / 0.4);
-    transform: translateX(-50%);
-    overflow: hidden;
-}
-
-.sb-breath__fill {
-    height: 100%;
-    background: #9fd3ec;
-    transition: width 0.15s linear;
-}
-
-.sb-breath--low .sb-breath__fill {
-    background: #e07a6a;
-}
-
-#sandbox-root.sb-underwater::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgb(40 90 110 / 0.18);
-    pointer-events: none;
-}
-
-.sb-debug {
-    position: absolute;
-    z-index: 5;
-    left: var(--sb-safe-l);
-    top: 64px;
-    margin: 0;
-    padding: 10px 12px;
-    border-radius: 10px;
-    background: rgb(29 33 38 / 0.7);
-    color: #f1f4f6;
-    font: 12px/1.5 var(--sb-mono);
-    pointer-events: none;
 }
 
 /* The menu: a window with tabs that slides in. */
@@ -982,24 +1598,24 @@ body {
 }
 
 .sb-menu--open {
-    background: rgb(20 24 28 / 0.38);
+    background: rgb(8 10 12 / 0.66);
 }
 
 .sb-menu__sheet {
+    --sb-cut: 14px;
+    position: relative;
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
-    width: min(980px, 100%);
-    height: min(640px, 100%);
-    border: 1px solid var(--sb-line);
-    border-radius: 22px;
-    background: var(--sb-panel);
-    box-shadow: var(--sb-shadow);
+    width: min(1220px, 100%);
+    height: min(760px, 100%);
+    background: var(--sb-window);
+    box-shadow: inset 0 0 0 1px rgb(239 230 210 / 0.1);
     overflow: hidden;
     opacity: 0;
-    transform: translateY(18px) scale(0.98);
+    transform: translateY(16px);
     transition:
-        opacity 0.2s ease-out,
-        transform 0.2s ease-out;
+        opacity 0.18s ease-out,
+        transform 0.18s ease-out;
 }
 
 .sb-menu--open .sb-menu__sheet {
@@ -1011,8 +1627,8 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 10px 10px 12px;
-    border-bottom: 1px solid var(--sb-line);
+    padding: 14px 16px;
+    border-bottom: 1px solid rgb(239 230 210 / 0.08);
 }
 
 .sb-tabs {
@@ -1025,40 +1641,41 @@ body {
 }
 
 .sb-tab {
+    --sb-cut: 8px;
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-    min-height: 40px;
+    gap: 8px;
+    min-height: 42px;
     padding: 0 14px;
     border: 0;
-    border-radius: 12px;
     background: transparent;
-    color: var(--sb-muted);
-    font-size: 14px;
-    font-weight: 600;
+    color: var(--sb-ash);
+    font: 600 14px/1 var(--sb-font);
     white-space: nowrap;
     cursor: pointer;
     transition:
-        background 0.15s,
-        color 0.15s;
+        background 0.12s,
+        color 0.12s;
 }
 
 .sb-tab:hover {
-    background: var(--sb-sunken);
+    background: var(--sb-well);
+    color: var(--sb-bone);
 }
 
 .sb-tab--active {
-    background: var(--sb-ink);
-    color: #fff;
+    background: var(--sb-flint);
+    box-shadow: inset 0 -2px 0 var(--sb-spark);
+    color: var(--sb-bone);
 }
 
 .sb-tab--active:hover {
-    background: var(--sb-ink);
+    background: var(--sb-flint);
 }
 
 .sb-menu__close {
     flex: none;
-    background: #fff;
+    background: transparent;
     backdrop-filter: none;
 }
 
@@ -1070,10 +1687,9 @@ body {
 
 .sb-menu h3 {
     margin: 0 0 8px;
-    color: var(--sb-muted);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
+    color: var(--sb-ash);
+    font: 700 11px/1.2 var(--sb-display);
+    letter-spacing: 0.14em;
     text-transform: uppercase;
 }
 
@@ -1084,7 +1700,7 @@ body {
 }
 
 .sb-short {
-    color: #b0503f;
+    color: var(--sb-health);
 }
 
 .sb-up {
@@ -1094,7 +1710,7 @@ body {
 
 .sb-down {
     margin-left: 4px;
-    color: #b0503f;
+    color: var(--sb-health);
 }
 
 /* The card to make a hero: the turning figure, then the choices. */
@@ -1104,6 +1720,8 @@ body {
 
 .sb-create__card {
     grid-template-columns: minmax(200px, 0.85fr) minmax(0, 1.2fr);
+    /* Full size from the start: switching tabs does not resize it. */
+    min-height: min(640px, 100%);
     align-items: stretch;
     justify-items: stretch;
     gap: 18px;
@@ -1113,13 +1731,16 @@ body {
 }
 
 .sb-create__preview {
+    position: relative;
     min-height: 360px;
-    border-radius: 16px;
-    background: radial-gradient(ellipse at 50% 35%, #fff, #dde3e7);
+    background: radial-gradient(ellipse at 50% 35%, #2b3138, #121518);
     overflow: hidden;
 }
 
+/* Out of the flow: sized to the box, it never stretches it. */
 .sb-create__preview canvas {
+    position: absolute;
+    inset: 0;
     display: block;
     width: 100%;
     height: 100%;
@@ -1152,22 +1773,50 @@ body {
     min-height: 44px;
     padding: 0 8px;
     border: 1px solid var(--sb-line);
-    border-radius: 12px;
-    background: #fff;
+    background: var(--sb-raised);
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
 }
 
 .sb-create__class--active {
-    border-color: var(--sb-ink);
-    background: var(--sb-ink);
-    color: #fff;
+    background: var(--sb-spark);
+    box-shadow: none;
+    color: var(--sb-basalt);
 }
 
-.sb-create__genders {
+/* Choices on the hero card: chips that wrap, colour swatches, the two tabs. */
+.sb-create__chips {
     display: flex;
+    flex-wrap: wrap;
     gap: 6px;
+}
+
+.sb-create__swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.sb-swatch {
+    --sb-cut: 6px;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    background: var(--sb-swatch);
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.3);
+    cursor: pointer;
+}
+
+.sb-swatch--active {
+    box-shadow:
+        inset 0 0 0 2px var(--sb-bone),
+        inset 0 0 0 4px var(--sb-basalt);
+}
+
+.sb-create__tabs {
+    justify-self: start;
+    background: rgb(0 0 0 / 0.05);
 }
 
 .sb-create__details {
@@ -1207,15 +1856,13 @@ body {
 
 .sb-attribute__bar {
     height: 8px;
-    border-radius: 999px;
-    background: rgb(29 33 38 / 0.1);
+    background: rgb(11 13 15 / 0.78);
     overflow: hidden;
 }
 
 .sb-attribute__bar span {
     display: block;
     height: 100%;
-    border-radius: inherit;
     background: var(--sb-accent);
 }
 
@@ -1246,11 +1893,11 @@ body {
     height: 32px;
     border-color: transparent;
     background: var(--sb-gold);
-    color: #fff;
+    color: var(--sb-basalt);
 }
 
 .sb-attribute__add:hover {
-    background: #b58d33;
+    background: #ffd571;
 }
 
 .sb-derived {
@@ -1297,9 +1944,8 @@ body {
     gap: 8px;
     margin: 0;
     padding: 8px 10px;
-    border-radius: 10px;
     background: rgb(201 160 67 / 0.15);
-    color: #8a6a1f;
+    color: var(--sb-xp);
     font-size: 13px;
     font-weight: 600;
 }
@@ -1330,8 +1976,7 @@ body {
     min-height: 34px;
     padding: 0 12px;
     border: 1px solid var(--sb-line);
-    border-radius: 999px;
-    background: #fff;
+    background: var(--sb-raised);
     font-size: 13px;
     font-weight: 600;
 }
@@ -1339,7 +1984,7 @@ body {
 .sb-knowledge .sb-ui-icon {
     width: 16px;
     height: 16px;
-    color: #8a6a1f;
+    color: var(--sb-xp);
 }
 
 .sb-recipe--locked .sb-recipe__name {
@@ -1349,7 +1994,7 @@ body {
 .sb-recipe__lock {
     width: 16px;
     height: 16px;
-    color: #8a6a1f;
+    color: var(--sb-xp);
 }
 
 /* Slots, wherever they are. */
@@ -1367,7 +2012,6 @@ body {
     height: var(--sb-slot);
     padding: 0;
     border: 1px solid var(--sb-line);
-    border-radius: 12px;
     background: var(--sb-sunken);
     touch-action: none;
     cursor: pointer;
@@ -1381,19 +2025,19 @@ body {
 }
 
 .sb-slot--hotbar {
-    background: rgb(29 33 38 / 0.09);
+    background: rgb(18 21 24 / 0.9);
 }
 
 .sb-slot--filled {
-    background: #fff;
+    background: rgb(18 21 24 / 0.95);
 }
 
 .sb-slot--held {
-    box-shadow: inset 0 0 0 2px #6fa86a;
+    box-shadow: inset 0 0 0 2px var(--sb-spark);
 }
 
 .sb-slot--picked {
-    outline: 2px solid var(--sb-ink);
+    outline: 2px solid var(--sb-bone);
     outline-offset: -2px;
 }
 
@@ -1409,7 +2053,7 @@ body {
     height: 56px;
     transform: translate(-50%, -50%) scale(1.08);
     pointer-events: none;
-    box-shadow: 0 8px 24px rgb(29 33 38 / 0.25);
+    box-shadow: inset 0 0 0 2px var(--sb-spark);
 }
 
 /* Inventory tab. */
@@ -1441,14 +2085,14 @@ body {
 
 .sb-slot--worn.sb-slot--filled {
     border-style: solid;
-    background: #fff;
+    background: rgb(18 21 24 / 0.95);
 }
 
 .sb-silhouette {
     display: grid;
     width: 55%;
     height: 55%;
-    color: rgb(29 33 38 / 0.15);
+    color: rgb(239 230 210 / 0.2);
 }
 
 .sb-silhouette svg {
@@ -1462,7 +2106,7 @@ body {
     gap: 5px;
     max-width: 110px;
     margin: 2px 0 0;
-    color: #5f7b93;
+    color: #c9d4dc;
     font-size: 11px;
     font-weight: 600;
     text-align: left;
@@ -1500,7 +2144,6 @@ body {
     align-content: start;
     min-height: 120px;
     padding: 14px;
-    border-radius: 16px;
     background: var(--sb-sunken);
 }
 
@@ -1535,7 +2178,7 @@ body {
 }
 
 .sb-details__fact.sb-short {
-    color: #b0503f !important;
+    color: var(--sb-health) !important;
 }
 
 .sb-details__fact .sb-ui-icon {
@@ -1587,8 +2230,7 @@ body {
     min-height: 34px;
     padding: 0 13px;
     border: 1px solid var(--sb-line);
-    border-radius: 999px;
-    background: #fff;
+    background: var(--sb-raised);
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
@@ -1597,7 +2239,7 @@ body {
 .sb-chip--active {
     border-color: var(--sb-accent);
     background: var(--sb-accent);
-    color: #fff;
+    color: var(--sb-basalt);
 }
 
 .sb-craft__body {
@@ -1623,8 +2265,7 @@ body {
     min-height: 46px;
     padding: 6px 10px;
     border: 1px solid var(--sb-line);
-    border-radius: 12px;
-    background: rgb(255 255 255 / 0.55);
+    background: var(--sb-well);
     text-align: left;
     cursor: pointer;
     opacity: 0.72;
@@ -1636,13 +2277,12 @@ body {
 }
 
 .sb-recipe--ready {
-    background: #fff;
+    background: var(--sb-raised);
     opacity: 1;
 }
 
 .sb-recipe--chosen {
-    border-color: var(--sb-ink);
-    box-shadow: 0 0 0 1px var(--sb-ink);
+    box-shadow: inset 0 0 0 2px var(--sb-spark);
     opacity: 1;
 }
 
@@ -1660,7 +2300,7 @@ body {
 }
 
 .sb-recipe__station.sb-short {
-    color: #b0503f;
+    color: var(--sb-health);
 }
 
 .sb-recipe__ready {
@@ -1686,8 +2326,7 @@ body {
     align-items: center;
     gap: 8px;
     padding: 5px 10px 5px 6px;
-    border-radius: 10px;
-    background: #fff;
+    background: var(--sb-raised);
     font-size: 13px;
     font-weight: 600;
 }
@@ -1712,7 +2351,6 @@ body {
     display: grid;
     gap: 8px;
     padding: 14px;
-    border-radius: 16px;
     background: var(--sb-sunken);
 }
 
@@ -1743,8 +2381,7 @@ body {
     align-items: center;
     gap: 8px;
     padding: 6px 10px;
-    border-radius: 10px;
-    background: #fff;
+    background: var(--sb-raised);
     font-size: 13px;
     font-weight: 600;
 }
@@ -1773,7 +2410,6 @@ body {
     align-items: center;
     padding: 8px 10px;
     border: 1px dashed var(--sb-line);
-    border-radius: 12px;
     color: var(--sb-muted);
 }
 
@@ -1792,7 +2428,7 @@ body {
 
 .sb-artifact--found {
     border: 1px solid rgb(201 160 67 / 0.45);
-    background: linear-gradient(135deg, #fffaf0, #fff);
+    background: var(--sb-raised);
     color: var(--sb-ink);
 }
 
@@ -1801,8 +2437,7 @@ body {
     place-items: center;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
-    background: rgb(29 33 38 / 0.07);
+    background: rgb(239 230 210 / 0.06);
     font-size: 20px;
     font-weight: 700;
 }
@@ -1846,7 +2481,6 @@ body {
     gap: 14px;
     align-items: center;
     padding: 12px 14px;
-    border-radius: 14px;
     background: var(--sb-sunken);
 }
 
@@ -1866,15 +2500,13 @@ body {
     flex-wrap: wrap;
     gap: 4px;
     padding: 4px;
-    border-radius: 12px;
-    background: #fff;
+    background: var(--sb-night);
 }
 
 .sb-segment {
     min-height: 34px;
     padding: 0 12px;
     border: 0;
-    border-radius: 9px;
     background: transparent;
     font-size: 13px;
     font-weight: 600;
@@ -1882,8 +2514,8 @@ body {
 }
 
 .sb-segment--active {
-    background: var(--sb-ink);
-    color: #fff;
+    background: var(--sb-spark);
+    color: var(--sb-basalt);
 }
 
 .sb-slider {
@@ -1911,8 +2543,7 @@ body {
     height: 28px;
     padding: 0;
     border: 0;
-    border-radius: 999px;
-    background: rgb(29 33 38 / 0.2);
+    background: var(--sb-night);
     cursor: pointer;
     transition: background 0.15s;
 }
@@ -1923,9 +2554,7 @@ body {
     left: 3px;
     width: 22px;
     height: 22px;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 0.25);
+    background: var(--sb-bone);
     transition: transform 0.15s;
 }
 
@@ -1946,9 +2575,8 @@ body {
 .sb-warning {
     margin: 0;
     padding: 8px 10px;
-    border-radius: 10px;
     background: rgb(217 83 79 / 0.12);
-    color: #9c3a33;
+    color: #ff9b9e;
     font-size: 13px;
     font-weight: 600;
 }
@@ -1969,9 +2597,8 @@ body {
     top: calc(100% - 120px);
     width: 116px;
     height: 116px;
-    border: 2px solid rgb(255 255 255 / 0.55);
-    border-radius: 50%;
-    background: rgb(29 33 38 / 0.18);
+    border: 2px solid rgb(239 230 210 / 0.45);
+    background: rgb(18 21 24 / 0.35);
     transform: translate(-50%, -50%);
     opacity: 0.55;
     pointer-events: none;
@@ -1989,8 +2616,7 @@ body {
     width: 50px;
     height: 50px;
     margin: -25px 0 0 -25px;
-    border-radius: 50%;
-    background: rgb(255 255 255 / 0.88);
+    background: rgb(239 230 210 / 0.85);
     box-shadow: 0 2px 8px rgb(0 0 0 / 0.2);
 }
 
@@ -2010,10 +2636,9 @@ body {
     width: 58px;
     height: 58px;
     padding: 0;
-    border: 2px solid rgb(255 255 255 / 0.6);
-    border-radius: 50%;
-    background: rgb(29 33 38 / 0.38);
-    color: #fff;
+    border: 0;
+    background: var(--sb-plate);
+    color: var(--sb-bone);
     touch-action: none;
     pointer-events: auto;
     transition:
@@ -2028,8 +2653,8 @@ body {
 }
 
 .sb-tb--down {
-    background: rgb(255 255 255 / 0.6);
-    color: var(--sb-ink);
+    background: var(--sb-spark);
+    color: var(--sb-basalt);
     transform: scale(0.94);
 }
 
@@ -2071,7 +2696,7 @@ body {
 
 @keyframes sb-ready {
     50% {
-        box-shadow: 0 0 0 6px rgb(255 255 255 / 0.2);
+        box-shadow: inset 0 0 0 3px var(--sb-ember);
     }
 }
 
@@ -2096,7 +2721,7 @@ body {
 }
 
 .sb-tb--open {
-    background: rgb(255 255 255 / 0.75);
+    background: var(--sb-flint-hi);
     color: var(--sb-ink);
 }
 
@@ -2123,7 +2748,6 @@ body {
     width: auto;
     height: 48px;
     padding: 0 14px 0 10px;
-    border-radius: 999px;
 }
 
 .sb-touch__more .sb-ui-icon {
@@ -2151,8 +2775,8 @@ body {
         place-content: center;
         gap: 12px;
         padding: 24px;
-        background: #1d2126;
-        color: #f6f7f8;
+        background: var(--sb-basalt);
+        color: var(--sb-bone);
         text-align: center;
         font-size: 18px;
     }
@@ -2175,45 +2799,121 @@ body {
     }
 }
 
-/* Touch screens: vitals up top, out of the thumbs' way; smaller bits. */
+/* Narrower windows: a shorter compass, bars and panels so nothing overlaps. */
+@media (max-width: 1280px) {
+    .sb-compass-box {
+        width: 300px;
+    }
+
+    .sb-target {
+        width: 260px;
+    }
+
+    .sb-bars {
+        width: 440px;
+    }
+
+    .sb-now {
+        width: 200px;
+    }
+
+    .sb-strip {
+        max-width: calc(50% - 250px);
+    }
+}
+
+/* Touch screens: the bars up under the hero, out of the thumbs' way; no key panels. */
 @media (pointer: coarse) {
+    :root {
+        --sb-safe-l: max(12px, env(safe-area-inset-left));
+        --sb-safe-r: max(12px, env(safe-area-inset-right));
+    }
+
     .sb-back,
     .sb-strip,
     .sb-stance,
+    .sb-now,
+    .sb-aim-hint,
+    .sb-held,
+    .sb-fx__note,
     .sb-card__controls {
         display: none;
     }
 
-    .sb-top {
-        left: 50%;
+    .sb-hero-plate {
         top: 10px;
-        transform: translateX(-50%);
+        width: 240px;
+        gap: 10px;
+        padding: 8px 12px 12px 8px;
     }
 
-    .sb-clock,
-    .sb-fps {
-        padding: 6px 11px;
-        font-size: 12px;
+    .sb-portrait {
+        width: 44px;
+        height: 44px;
+    }
+
+    .sb-portrait .sb-level {
+        width: 24px;
+        height: 24px;
+        font-size: 10px;
+    }
+
+    .sb-hero-plate__xp {
+        display: none;
+    }
+
+    .sb-bars {
+        left: var(--sb-safe-l);
+        top: 84px;
+        bottom: auto;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 4px;
+        width: 240px;
+        transform: none;
+    }
+
+    .sb-bars__head {
+        font-size: 11px;
+    }
+
+    .sb-bar {
+        height: 9px;
+    }
+
+    .sb-effects {
+        top: 186px;
+    }
+
+    .sb-compass-box {
+        top: 10px;
+        width: 300px;
+    }
+
+    .sb-compass {
+        height: 32px;
+    }
+
+    .sb-target {
+        width: 240px;
     }
 
     .sb-corner {
         top: 10px;
+        gap: 6px;
     }
 
-    .sb-vitals {
-        top: 10px;
-        bottom: auto;
-        width: 170px;
-        padding: 8px 10px;
-        gap: 5px;
+    .sb-menu-buttons {
+        gap: 6px;
     }
 
-    .sb-prompt {
-        bottom: 46%;
+    .sb-ib {
+        width: 40px;
+        height: 40px;
     }
 
-    .sb-toasts {
-        bottom: calc(46% + 80px);
+    .sb-feed {
+        top: 60px;
+        width: 200px;
     }
 
     .sb-hotbar {
@@ -2222,21 +2922,26 @@ body {
     }
 
     .sb-hotbar__slot {
-        width: 44px;
-        height: 44px;
+        width: 48px;
+        height: 48px;
     }
 
-    .sb-hotbar__slot .sb-icon {
-        width: 26px;
-        height: 26px;
+    .sb-hotbar__slot--selected {
+        transform: translateY(-4px);
+    }
+
+    .sb-slot__no {
+        display: none;
+    }
+
+    .sb-skill {
+        width: 58px;
+        height: 58px;
+        margin-left: 8px;
     }
 
     .sb-breath {
-        bottom: 66px;
-    }
-
-    .sb-hotbar__key {
-        display: none;
+        bottom: 72px;
     }
 }
 
@@ -2254,7 +2959,6 @@ body {
     .sb-menu__sheet {
         width: 100%;
         height: 100%;
-        border-radius: 16px;
     }
 
     .sb-menu__header {
@@ -2348,63 +3052,10 @@ body {
     }
 }
 
-/* The crosshair in the middle of the screen: red over a creature. */
-.sb-aim {
-    position: absolute;
-    z-index: 2;
-    left: 50%;
-    top: 50%;
-    width: 22px;
-    height: 22px;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-}
-
-.sb-aim::before,
-.sb-aim::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    transition:
-        border-color 0.12s,
-        background 0.12s,
-        transform 0.12s;
-}
-
-.sb-aim::before {
-    inset: 0;
-    border: 2px solid rgb(255 255 255 / 0.75);
-    box-shadow: 0 0 0 1px rgb(29 33 38 / 0.35);
-}
-
-.sb-aim::after {
-    left: 50%;
-    top: 50%;
-    width: 4px;
-    height: 4px;
-    margin: -2px 0 0 -2px;
-    background: #fff;
-    box-shadow: 0 0 0 1px rgb(29 33 38 / 0.45);
-}
-
-.sb-aim--thing::before {
-    border-color: #f3d27a;
-    transform: scale(0.85);
-}
-
-.sb-aim--enemy::before {
-    border-color: #ff6b5f;
-    transform: scale(0.75);
-}
-
-.sb-aim--enemy::after {
-    background: #ff6b5f;
-}
-
 /* Dive (in deep water) takes the build button's place on a phone. */
 .sb-tb--dive {
     background: rgb(79 127 208 / 0.75);
-    color: #fff;
+    color: var(--sb-basalt);
 }
 
 /* The character tab: profile across the top, cards below. */
@@ -2416,13 +3067,16 @@ body {
 }
 
 .sb-profile__portrait {
+    position: relative;
     min-height: 260px;
-    border-radius: 14px;
-    background: radial-gradient(ellipse at 50% 35%, #fff, #dde3e7);
+    background: radial-gradient(ellipse at 50% 35%, #2b3138, #121518);
     overflow: hidden;
 }
 
+/* Out of the flow: sized to the box, it never stretches it. */
 .sb-profile__portrait canvas {
+    position: absolute;
+    inset: 0;
     display: block;
     width: 100%;
     height: 100%;
@@ -2434,11 +3088,14 @@ body {
     gap: 10px;
 }
 
+.sb-profile__look {
+    justify-self: start;
+}
+
 .sb-skill-card {
     display: flex;
     gap: 12px;
     padding: 10px 12px;
-    border-radius: 12px;
     background: rgb(107 79 191 / 0.08);
 }
 
@@ -2448,9 +3105,8 @@ body {
     place-items: center;
     width: 38px;
     height: 38px;
-    border-radius: 10px;
-    background: #6b4fbf;
-    color: #fff;
+    background: var(--sb-mana);
+    color: var(--sb-basalt);
 }
 
 .sb-skill-card__icon svg {
@@ -2470,7 +3126,7 @@ body {
 
 .sb-skill-card .sb-skill-card__cost {
     margin-top: 2px;
-    color: #3f6fc4;
+    color: var(--sb-mana);
     font: 700 11px/1.3 var(--sb-mono);
 }
 
@@ -2482,9 +3138,8 @@ body {
 
 .sb-passive {
     padding: 4px 10px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, #f08a3c, #c94a8a);
-    color: #fff;
+    background: var(--sb-rank, #c94a8a);
+    color: var(--sb-basalt);
     font-size: 12px;
     font-weight: 700;
     cursor: help;
@@ -2509,20 +3164,19 @@ body {
     place-items: center;
     width: 34px;
     height: 34px;
-    border-radius: 10px;
-    background: #fff;
+    background: var(--sb-raised);
 }
 
 .sb-stat--strength .sb-stat__icon {
-    color: #c94a45;
+    color: var(--sb-health);
 }
 
 .sb-stat--agility .sb-stat__icon {
-    color: #4f8a5b;
+    color: var(--sb-stamina);
 }
 
 .sb-stat--spirit .sb-stat__icon {
-    color: #3f6fc4;
+    color: var(--sb-mana);
 }
 
 .sb-stat__label b {
@@ -2568,30 +3222,6 @@ body {
     height: 15px;
 }
 
-.sb-absorbed {
-    display: grid;
-    gap: 6px;
-}
-
-.sb-absorbed__row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 6px 10px 6px 6px;
-    border-radius: 10px;
-    background: #fff;
-}
-
-.sb-absorbed__row b,
-.sb-absorbed__row small {
-    display: block;
-}
-
-.sb-absorbed__row small {
-    color: var(--sb-muted);
-    font-size: 12px;
-}
-
 .sb-hero__piece small {
     display: block;
     color: var(--sb-muted);
@@ -2599,133 +3229,45 @@ body {
     font-weight: 500;
 }
 
-/* The artifacts tab. */
-.sb-relics {
+/* Artifacts: the lineage tree, the store and the chosen one (see ArtifactBoard). */
+.sb-board {
     display: grid;
-    grid-template-rows: auto minmax(0, 1fr);
-    gap: 12px;
-    height: 100%;
-}
-
-.sb-relics__top {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.sb-relics__top .sb-icon {
-    width: 20px;
-    height: 20px;
-}
-
-.sb-relics__body {
-    display: grid;
-    grid-template-columns: minmax(0, 1.3fr) minmax(240px, 1fr);
-    gap: 14px;
-    min-height: 0;
-}
-
-.sb-relics__list {
-    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(240px, 1fr);
+    grid-template-areas:
+        'tree detail'
+        'stash detail';
     align-content: start;
     gap: 14px;
+    height: 100%;
     min-height: 0;
     overflow: auto;
-    padding-right: 4px;
 }
 
-.sb-relics__tier h3 {
-    margin: 0 0 2px;
+.sb-board--compact {
+    height: auto;
+    overflow: visible;
 }
 
-.sb-relics__tier--rare h3 {
-    color: #3f6fc4;
+.sb-board h3 {
+    margin: 0 0 4px;
 }
 
-.sb-relics__tier--legendary h3 {
-    color: #c06a1f;
+.sb-board__tree {
+    grid-area: tree;
 }
 
-.sb-relics__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
-    gap: 6px;
-    margin-top: 8px;
+.sb-board__stash {
+    grid-area: stash;
 }
 
-.sb-relic {
-    position: relative;
-    display: grid;
-    justify-items: center;
-    gap: 4px;
-    padding: 10px 6px 8px;
-    border: 1px solid var(--sb-line);
-    border-radius: 12px;
-    background: rgb(255 255 255 / 0.5);
-    cursor: pointer;
-    opacity: 0.6;
+.sb-board__detail {
+    position: sticky;
+    top: 0;
+    grid-area: detail;
+    align-self: start;
 }
 
-.sb-relic--owned {
-    background: #fff;
-    opacity: 1;
-}
-
-.sb-relic--rare.sb-relic--owned {
-    border-color: rgb(63 111 196 / 0.5);
-}
-
-.sb-relic--legendary.sb-relic--owned {
-    border-color: rgb(192 106 31 / 0.6);
-    background: linear-gradient(180deg, #fff, #fff4e6);
-}
-
-.sb-relic--chosen {
-    border-color: var(--sb-ink);
-    box-shadow: 0 0 0 1px var(--sb-ink);
-    opacity: 1;
-}
-
-.sb-relic__name {
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.2;
-    text-align: center;
-}
-
-.sb-relic__count {
-    position: absolute;
-    top: 5px;
-    right: 6px;
-    font: 700 11px/1 var(--sb-mono);
-}
-
-.sb-relic__dots {
-    display: flex;
-    gap: 3px;
-}
-
-.sb-relic__dots i {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgb(29 33 38 / 0.15);
-}
-
-.sb-relic__dots i.on {
-    background: var(--sb-gold);
-}
-
-.sb-relic--done .sb-relic__name::after {
-    content: ' ✓';
-    color: var(--sb-accent);
-}
-
-.sb-relics__detail {
-    overflow: auto;
-}
-
-.sb-relics__detail h4 {
+.sb-board__detail h4 {
     margin: 8px 0 2px;
     color: var(--sb-muted);
     font-size: 12px;
@@ -2733,19 +3275,194 @@ body {
     text-transform: uppercase;
 }
 
-.sb-tier {
+.sb-board__cells,
+.sb-board__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+    gap: 6px;
+    margin-top: 6px;
+}
+
+/* A cell: an artifact (its rank's colour), an empty place, or one still shut. */
+.sb-cell {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 64px;
+    padding: 6px;
+    border: 1px solid var(--sb-rank, var(--sb-line));
+    background: rgb(18 21 24 / 0.9);
+    color: var(--sb-muted);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sb-cell--empty {
+    border-style: dashed;
+    background: transparent;
+}
+
+.sb-cell--locked {
+    border-style: dashed;
+    background: transparent;
+    cursor: default;
+    opacity: 0.55;
+}
+
+.sb-cell--immortal {
+    background: linear-gradient(
+        180deg,
+        rgb(18 21 24 / 0.9),
+        rgb(60 38 24 / 0.9)
+    );
+    box-shadow: inset 0 -20px 22px -16px var(--sb-rank);
+}
+
+.sb-cell--target {
+    border-color: var(--sb-accent);
+    box-shadow: inset 0 0 0 1px var(--sb-accent);
+}
+
+.sb-cell--chosen {
+    box-shadow: inset 0 0 0 2px var(--sb-spark);
+}
+
+.sb-cell__rank {
+    position: absolute;
+    top: 5px;
+    left: 7px;
+    color: var(--sb-rank);
+    font: 700 12px/1 var(--sb-mono);
+}
+
+.sb-cell__type {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    color: var(--sb-muted);
+    font-size: 11px;
+}
+
+.sb-rank {
     display: block;
+    color: var(--sb-rank);
     font-size: 12px;
     font-weight: 700;
+}
+
+.sb-cell--rank1,
+.sb-rank--1 {
+    --sb-rank: #9a9a92;
+}
+
+.sb-cell--rank2,
+.sb-rank--2 {
+    --sb-rank: #5f9e5a;
+}
+
+.sb-cell--rank3,
+.sb-rank--3 {
+    --sb-rank: #4f86c6;
+}
+
+.sb-cell--rank4,
+.sb-rank--4 {
+    --sb-rank: #8c5fc8;
+}
+
+.sb-cell--rank5,
+.sb-rank--5 {
+    --sb-rank: #d08a2e;
+}
+
+.sb-cell--rank6,
+.sb-rank--6 {
+    --sb-rank: #d04a4a;
+}
+
+.sb-cell--rank7,
+.sb-rank--7 {
+    --sb-rank: #e0457f;
+}
+
+.sb-cell--rank8,
+.sb-rank--8 {
+    --sb-rank: #21b3c4;
+}
+
+.sb-cell--rank9,
+.sb-rank--9 {
+    --sb-rank: #e0b020;
+}
+
+/* The creative tab (test mode): the hero, any artifact, every item. */
+.sb-creative {
+    display: grid;
+    align-content: start;
+    gap: 14px;
+    height: 100%;
+    overflow: auto;
+}
+
+.sb-creative__section {
+    display: grid;
+    gap: 8px;
+    padding: 14px;
+    background: var(--sb-sunken);
+}
+
+.sb-creative__section h3 {
+    margin: 0;
+}
+
+.sb-creative__section h4 {
+    margin: 4px 0 0;
     color: var(--sb-muted);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
-.sb-tier--rare {
-    color: #3f6fc4;
+.sb-creative__section > .sb-button--primary {
+    justify-self: start;
 }
 
-.sb-tier--legendary {
-    color: #c06a1f;
+.sb-creative__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.sb-creative__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 6px;
+}
+
+.sb-creative__item {
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    padding: 8px 6px;
+    border: 1px solid var(--sb-line);
+    background: var(--sb-raised);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sb-creative__item:active {
+    transform: scale(0.96);
+}
+
+/* The tree takes the whole width of the character tab. */
+.sb-hero__card--wide {
+    grid-column: 1 / -1;
 }
 
 .sb-gives {
@@ -2758,20 +3475,23 @@ body {
 
 .sb-gives li {
     padding: 6px 10px;
-    border-radius: 10px;
     background: rgb(79 138 91 / 0.1);
-    color: #2f6a3b;
+    color: var(--sb-stamina);
     font-size: 13px;
     font-weight: 600;
 }
 
 @media (max-width: 720px), (max-height: 560px) {
-    .sb-relics__body {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    .sb-board {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            'tree'
+            'detail'
+            'stash';
     }
 
-    .sb-relics__top .sb-hint {
-        display: none;
+    .sb-board__detail {
+        position: static;
     }
 
     .sb-profile {
@@ -2781,4 +3501,99 @@ body {
     .sb-profile__portrait {
         min-height: 190px;
     }
+}
+
+/* Two corners chipped off — top left and bottom right — on every plate,
+   button, slot, card and window (each sets its own --sb-cut). */
+.sb-button,
+.sb-ib,
+.sb-round,
+.sb-key,
+.sb-plate,
+.sb-fx,
+.sb-slot,
+.sb-card,
+.sb-menu__sheet,
+.sb-tab,
+.sb-chip,
+.sb-segment,
+.sb-segmented,
+.sb-details,
+.sb-cell,
+.sb-recipe,
+.sb-needs li,
+.sb-hero > section,
+.sb-settings__row,
+.sb-creative__section,
+.sb-creative__item,
+.sb-create__class,
+.sb-create__preview,
+.sb-profile__portrait,
+.sb-knowledge,
+.sb-hero__piece,
+.sb-stat__icon,
+.sb-skill-card,
+.sb-skill-card__icon,
+.sb-passive,
+.sb-gives li,
+.sb-warning,
+.sb-hero__points,
+.sb-artifact,
+.sb-swatch,
+.sb-toggle,
+.sb-toggle__knob,
+.sb-tb {
+    clip-path: polygon(
+        var(--sb-cut) 0,
+        100% 0,
+        100% calc(100% - var(--sb-cut)),
+        calc(100% - var(--sb-cut)) 100%,
+        0 100%,
+        0 var(--sb-cut)
+    );
+}
+
+.sb-chip,
+.sb-segment,
+.sb-needs li,
+.sb-passive,
+.sb-gives li,
+.sb-warning,
+.sb-hero__points,
+.sb-toggle,
+.sb-toggle__knob,
+.sb-stat__icon {
+    --sb-cut: 6px;
+}
+
+.sb-details,
+.sb-hero > section,
+.sb-settings__row,
+.sb-creative__section,
+.sb-cell,
+.sb-recipe,
+.sb-create__class,
+.sb-create__preview,
+.sb-profile__portrait,
+.sb-knowledge,
+.sb-hero__piece,
+.sb-skill-card,
+.sb-skill-card__icon,
+.sb-artifact,
+.sb-creative__item,
+.sb-segmented,
+.sb-tb {
+    --sb-cut: 10px;
+}
+
+/* Headings and every number in the game: Unbounded. */
+.sb-menu h1,
+.sb-create h1,
+.sb-details__head strong,
+.sb-hero__title strong,
+.sb-stat__value,
+.sb-attribute__value,
+.sb-slot__count,
+.sb-cell__rank {
+    font-family: var(--sb-display);
 }

@@ -53,23 +53,7 @@ export type ItemId =
     | 'wood_door'
     | 'wood_roof'
     | 'stone_wall'
-    | 'sleeping_bag'
-    | 'wind_feather'
-    | 'sun_stone'
-    | 'frost_crystal'
-    | 'forest_heart'
-    | 'golden_clover'
-    | 'strength_rune'
-    | 'agility_rune'
-    | 'spirit_rune'
-    | 'vital_shard'
-    | 'mana_pearl'
-    | 'swift_charm'
-    | 'storm_eye'
-    | 'deep_pearl'
-    | 'blood_ruby'
-    | 'phoenix_feather'
-    | 'essence';
+    | 'sleeping_bag';
 
 export type ToolKind = 'axe' | 'pickaxe' | 'sword' | 'shovel';
 
@@ -77,23 +61,6 @@ export type ToolKind = 'axe' | 'pickaxe' | 'sword' | 'shovel';
 export type ArmorSlot = 'head' | 'body' | 'feet';
 
 export const ARMOR_SLOTS: ArmorSlot[] = ['head', 'body', 'feet'];
-
-export type ArtifactId =
-    | 'wind_feather'
-    | 'sun_stone'
-    | 'frost_crystal'
-    | 'forest_heart'
-    | 'golden_clover'
-    | 'strength_rune'
-    | 'agility_rune'
-    | 'spirit_rune'
-    | 'vital_shard'
-    | 'mana_pearl'
-    | 'swift_charm'
-    | 'storm_eye'
-    | 'deep_pearl'
-    | 'blood_ruby'
-    | 'phoenix_feather';
 
 export interface ItemDefinition {
     maxStack: number;
@@ -103,7 +70,6 @@ export interface ItemDefinition {
     tool?: { kind: ToolKind; power: number };
     /** Can be put down in the world. */
     placeable?: boolean;
-    artifact?: boolean;
     /** Eaten or put on: the health it gives back. */
     heals?: number;
     /** Drunk: the mana it gives back. */
@@ -172,18 +138,6 @@ function boots([fill, dark]: readonly [string, string]) {
     );
 }
 
-function rune(glyph: string, color: string): string {
-    return svg(
-        `<path d="M9 4h14l3 6-3 18H9L6 10z" fill="#8f8b83"/><path d="M9 4h14l3 6H6z" fill="#aaa69e"/><path d="${glyph}" stroke="${color}" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="17" r="11" fill="none" stroke="${color}" stroke-opacity=".35" stroke-width="1.5"/>`,
-    );
-}
-
-function pearl(fill: string, shine: string): string {
-    return svg(
-        `<circle cx="16" cy="17" r="9" fill="${fill}"/><circle cx="12.5" cy="13.5" r="3" fill="${shine}" fill-opacity=".8"/><path d="M5 26c3-2 19-2 22 0" stroke="#b9a37a" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="16" cy="17" r="13" fill="none" stroke="${fill}" stroke-opacity=".35" stroke-width="1.5"/>`,
-    );
-}
-
 function shovel(): string {
     return svg(
         `<path d="M8 27 20 10" stroke="#9c7e5f" stroke-width="3" stroke-linecap="round"/><path d="M6 25.5 9.5 29" stroke="#6f5a45" stroke-width="3" stroke-linecap="round"/><path d="M18 12.5c-1-3.5 1-7 4.5-8.5L28 9.5c-1.5 3.5-5 5.5-8.5 4.5z" fill="${STONE_HEAD}" stroke="#6f6d69" stroke-width="1"/>`,
@@ -205,7 +159,8 @@ function meat(fill: string, marbling: string, cooked: boolean): string {
     );
 }
 
-function gem(fill: string, shine: string): string {
+/** A cut stone: the icon artifacts are drawn with. */
+export function gem(fill: string, shine: string): string {
     return svg(
         `<path d="M16 3 26 13 16 29 6 13z" fill="${fill}"/><path d="M16 3 21 13H11z" fill="${shine}"/><circle cx="16" cy="16" r="13" fill="none" stroke="${fill}" stroke-opacity=".35" stroke-width="1.5"/>`,
     );
@@ -491,96 +446,6 @@ export const ITEMS: Record<ItemId, ItemDefinition> = {
         placeable: true,
         icon: svg(
             '<rect x="4" y="9" width="24" height="14" rx="7" fill="#7f9a72"/><rect x="4" y="9" width="9" height="14" rx="4.5" fill="#efe6d8"/><path d="M16 12v8M21 12v8" stroke="#6b8560" stroke-width="1.2"/>',
-        ),
-    },
-    wind_feather: {
-        maxStack: 1,
-        artifact: true,
-        icon: svg(
-            '<path d="M24 4C12 6 7 15 8 26l3-3c1-6 5-11 13-19z" fill="#cfe3ea"/><path d="M8 26 22 7" stroke="#8fb3c1" stroke-width="1.4"/><circle cx="16" cy="16" r="13" fill="none" stroke="#8fb3c1" stroke-opacity=".4" stroke-width="1.5"/>',
-        ),
-    },
-    sun_stone: { maxStack: 1, artifact: true, icon: gem('#e8b45a', '#f8dfa0') },
-    frost_crystal: {
-        maxStack: 1,
-        artifact: true,
-        icon: gem('#8cc2db', '#d7eef7'),
-    },
-    forest_heart: {
-        maxStack: 1,
-        artifact: true,
-        icon: gem('#79a36c', '#bfdcae'),
-    },
-    golden_clover: {
-        maxStack: 1,
-        artifact: true,
-        icon: svg(
-            '<circle cx="12" cy="11" r="5" fill="#d9b44a"/><circle cx="20" cy="11" r="5" fill="#e3c25e"/><circle cx="12" cy="19" r="5" fill="#e3c25e"/><circle cx="20" cy="19" r="5" fill="#d9b44a"/><path d="M16 15c1 6 3 9 6 12" stroke="#a88a35" stroke-width="2" fill="none"/>',
-        ),
-    },
-    strength_rune: {
-        maxStack: 10,
-        artifact: true,
-        icon: rune('M12 11l4 4 4-4M16 15v8', '#e0675f'),
-    },
-    agility_rune: {
-        maxStack: 10,
-        artifact: true,
-        icon: rune('M11 22l5-11 5 11M13 18h6', '#6fbf6a'),
-    },
-    spirit_rune: {
-        maxStack: 10,
-        artifact: true,
-        icon: rune(
-            'M16 10v13M11 13c3 3 7 3 10 0M11 19c3-3 7-3 10 0',
-            '#6f9fe8',
-        ),
-    },
-    vital_shard: {
-        maxStack: 10,
-        artifact: true,
-        icon: gem('#d9534f', '#f2a5a2'),
-    },
-    mana_pearl: {
-        maxStack: 10,
-        artifact: true,
-        icon: pearl('#5f8fe0', '#d6e4fb'),
-    },
-    swift_charm: {
-        maxStack: 10,
-        artifact: true,
-        icon: svg(
-            '<path d="M16 3v6" stroke="#b9a37a" stroke-width="1.6"/><circle cx="16" cy="18" r="8" fill="#d8eef2" stroke="#7fb8c6" stroke-width="2"/><path d="M11 21c4-1 7-4 9-9-1 5-1 8 1 10" stroke="#4f97a8" stroke-width="2" fill="none" stroke-linecap="round"/>',
-        ),
-    },
-    storm_eye: {
-        maxStack: 1,
-        artifact: true,
-        icon: svg(
-            '<ellipse cx="16" cy="16" rx="12" ry="8" fill="#3d4a73"/><circle cx="16" cy="16" r="5.5" fill="#9fd7f2"/><path d="M17 11l-3 5h4l-3 5" stroke="#fff27a" stroke-width="1.8" fill="none" stroke-linejoin="round"/><circle cx="16" cy="16" r="14" fill="none" stroke="#9fd7f2" stroke-opacity=".4" stroke-width="1.5"/>',
-        ),
-    },
-    deep_pearl: {
-        maxStack: 1,
-        artifact: true,
-        icon: pearl('#2f7f8f', '#bdf0f2'),
-    },
-    blood_ruby: {
-        maxStack: 1,
-        artifact: true,
-        icon: gem('#8f1f2f', '#e0505f'),
-    },
-    phoenix_feather: {
-        maxStack: 1,
-        artifact: true,
-        icon: svg(
-            '<path d="M24 4C12 6 7 15 8 26l3-3c1-6 5-11 13-19z" fill="#f08a3c"/><path d="M21 8c-6 3-9 8-9 14" stroke="#ffd36b" stroke-width="2" fill="none"/><path d="M8 26 22 7" stroke="#b5441f" stroke-width="1.2"/><circle cx="16" cy="16" r="13" fill="none" stroke="#f08a3c" stroke-opacity=".4" stroke-width="1.5"/>',
-        ),
-    },
-    essence: {
-        maxStack: 50,
-        icon: svg(
-            '<path d="M12 4h8v4c4 2 6 6 6 10a10 10 0 0 1-20 0c0-4 2-8 6-10z" fill="#e8e2f5" fill-opacity=".6" stroke="#9a8fc0" stroke-width="1"/><path d="M8 19c3-3 6 2 9-1s5 1 7 0c0 5-3.5 8-8 8s-8-3-8-7z" fill="#a587e0"/><circle cx="13" cy="15" r="1.3" fill="#fff"/><circle cx="19" cy="21" r="1" fill="#fff"/>',
         ),
     },
 };

@@ -1,11 +1,11 @@
 /**
  * The settings tab: graphics quality, camera sensitivity, volume and
- * sound, the FPS counter, which graphics card the browser uses — with a
+ * sound, the FPS counter, how the hero is drawn, which graphics card the browser uses — with a
  * warning when it draws without one — and starting over from scratch.
  */
 
 import { t } from '../i18n';
-import { QUALITIES } from '../settings';
+import { BODY_STYLES, QUALITIES } from '../settings';
 import type { Quality } from '../settings';
 import { button, element, escape } from './dom';
 import type { MenuHost, TabView } from './menu';
@@ -46,6 +46,21 @@ export class SettingsTab implements TabView {
         }
 
         this.noteQuality(settings.quality);
+
+        const bodyStyle = element('div', 'sb-segmented');
+
+        for (const each of BODY_STYLES) {
+            bodyStyle.append(
+                button(
+                    `sb-segment${each === settings.bodyStyle ? ' sb-segment--active' : ''}`,
+                    t.body_styles[each],
+                    () => {
+                        this.host.changeSettings({ bodyStyle: each });
+                        this.render();
+                    },
+                ),
+            );
+        }
 
         const sensitivity = this.slider(
             settings.sensitivity,
@@ -93,6 +108,7 @@ export class SettingsTab implements TabView {
             this.row(t.volume, volume),
             this.row(t.sound, sound),
             this.row(t.show_fps, fps),
+            this.row(t.body_style, bodyStyle),
             this.row(t.gpu, gpu),
             this.row(
                 t.start_over,

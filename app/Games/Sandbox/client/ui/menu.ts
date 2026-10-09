@@ -9,8 +9,7 @@
  * eat, drink, study or put on the chosen item.
  */
 
-import type { Fusion } from '../artifacts';
-import type { Attribute, Hero } from '../hero';
+import type { Artifact, Attribute, Hero } from '../hero';
 import type { Tab } from '../i18n';
 import { t } from '../i18n';
 import type { Inventory } from '../inventory';
@@ -25,6 +24,7 @@ import { ArtifactsTab } from './artifacts-tab';
 import { BagTab } from './bag-tab';
 import { ChestTab } from './chest-tab';
 import { CraftTab } from './craft-tab';
+import { CreativeTab } from './creative-tab';
 import { button, element } from './dom';
 import { HeroTab } from './hero-tab';
 import { keyBadge } from './hud';
@@ -58,14 +58,26 @@ export interface MenuHost {
     study: (index: number) => void;
     salvage: (index: number) => void;
     salvageable: (item: ItemId) => boolean;
-    absorb: (index: number) => void;
-    recycle: (index: number) => void;
-    fuse: (fusion: Fusion) => void;
+    /** Puts an artifact from the store into a cell of the lineage tree. */
+    placeArtifact: (index: number, cell: number) => void;
+    /** Takes an artifact out of the tree back into the store. */
+    takeOutArtifact: (cell: number) => void;
+    /** Merges the artifact with others of its type and rank into one rank higher. */
+    mergeArtifacts: (index: number) => void;
     changeSettings: (change: Partial<Settings>) => void;
+    /** Opens the card to change the hero's look. */
+    editLook: () => void;
     /** Deletes everything and starts again from a new hero. */
     startOver: () => void;
     toggleMute: () => void;
     close: () => void;
+    /** Test mode: the creative tab and what it gives. */
+    creative: boolean;
+    giveItem: (item: ItemId) => void;
+    giveArtifact: (artifact: Artifact) => void;
+    addLevels: (levels: number) => void;
+    refill: () => void;
+    toggleImmortal: () => void;
 }
 
 export interface TabView {
@@ -81,6 +93,7 @@ const TABS: [Tab, IconName, string | null][] = [
     ['hero', 'hero', 'P'],
     ['artifacts', 'gem', 'O'],
     ['settings', 'settings', null],
+    ['creative', 'star', null],
     ['chest', 'chest', null],
 ];
 
@@ -150,6 +163,7 @@ export class Menu {
             hero: new HeroTab(host),
             artifacts: new ArtifactsTab(host),
             settings: new SettingsTab(host),
+            creative: new CreativeTab(host),
         };
         this.chestView = new ChestTab(host, () => this.chest);
 
@@ -205,7 +219,10 @@ export class Menu {
     }
 
     switchTo(tab: Tab): void {
-        if (tab === 'chest' && !this.chest) {
+        if (
+            (tab === 'chest' && !this.chest) ||
+            (tab === 'creative' && !this.host.creative)
+        ) {
             tab = 'bag';
         }
 
@@ -213,7 +230,9 @@ export class Menu {
 
         for (const [each, tabButton] of this.buttons) {
             tabButton.classList.toggle('sb-tab--active', each === tab);
-            tabButton.hidden = each === 'chest' && !this.chest;
+            tabButton.hidden =
+                (each === 'chest' && !this.chest) ||
+                (each === 'creative' && !this.host.creative);
         }
 
         const view = this.view(tab);

@@ -71,15 +71,23 @@ class SavePlayerRequest extends FormRequest
             'y' => ['required', 'numeric', 'between:-100,500'],
             'z' => ['required', 'numeric', "between:-{$half},{$half}"],
             'yaw' => ['required', 'numeric', 'between:-7,7'],
-            'hero' => ['sometimes', 'array:class,gender,level,xp,points,absorbed'],
+            'hero' => ['sometimes', 'array:class,gender,level,xp,points,look,artifacts'],
             'hero.class' => ['required_with:hero', Rule::in(Heroes::classes())],
             'hero.gender' => ['required_with:hero', Rule::in(Heroes::genders())],
             'hero.level' => ['required_with:hero', 'integer', 'between:1,'.Heroes::maxLevel()],
             'hero.xp' => ['required_with:hero', 'integer', 'min:0', $this->belowNextLevel(...)],
             'hero.points' => ['present_with:hero', 'array:'.implode(',', Heroes::attributes()), $this->earnedPoints(...)],
             'hero.points.*' => ['integer', 'min:0'],
-            'hero.absorbed' => ['sometimes', 'array:'.implode(',', Heroes::artifacts())],
-            'hero.absorbed.*' => ['integer', 'min:1', $this->withinAbsorbLimit(...)],
+            'hero.artifacts' => ['sometimes', 'array:stash,tree'],
+            'hero.artifacts.stash' => ['present_with:hero.artifacts', 'list', 'max:'.Heroes::stashSize()],
+            'hero.artifacts.stash.*' => ['required', $this->validArtifact(...)],
+            'hero.artifacts.tree' => ['present_with:hero.artifacts', 'list', $this->openCells(...)],
+            'hero.artifacts.tree.*' => ['nullable', $this->validArtifact(...)],
+            'hero.look' => ['sometimes', 'array:hair,hair_color,beard,eyes'],
+            'hero.look.hair' => ['required_with:hero.look', Rule::in(Heroes::looks('hair'))],
+            'hero.look.hair_color' => ['required_with:hero.look', Rule::in(Heroes::looks('hair_color'))],
+            'hero.look.beard' => ['required_with:hero.look', Rule::in(Heroes::looks('beard'))],
+            'hero.look.eyes' => ['required_with:hero.look', Rule::in(Heroes::looks('eyes'))],
 
             'health' => ['sometimes', 'numeric', 'min:0', $this->notAbove('health')],
             'mana' => ['sometimes', 'numeric', 'min:0', $this->notAbove('mana')],
@@ -155,7 +163,7 @@ class SavePlayerRequest extends FormRequest
     /**
      * The hero the save is about: the one it sends, else the stored one.
      *
-     * @return array{class?: string, gender?: string, level?: int, points?: array<string, int>, absorbed?: array<string, int>}|null
+     * @return array{class?: string, gender?: string, level?: int, points?: array<string, int>, artifacts?: array{stash?: array<int, mixed>, tree?: array<int, mixed>}}|null
      */
     private function hero(): ?array
     {
@@ -167,7 +175,7 @@ class SavePlayerRequest extends FormRequest
                 'gender' => $sent['gender'],
                 'level' => max(1, min(Heroes::maxLevel(), (int) ($sent['level'] ?? 1))),
                 'points' => is_array($sent['points'] ?? null) ? $sent['points'] : [],
-                'absorbed' => is_array($sent['absorbed'] ?? null) ? $sent['absorbed'] : [],
+                'artifacts' => ['tree' => is_array($sent['artifacts']['tree'] ?? null) ? $sent['artifacts']['tree'] : []],
             ];
         }
 
@@ -203,14 +211,24 @@ class SavePlayerRequest extends FormRequest
     }
 
     /**
-     * An artifact absorbed no more often than it can be.
+     * An artifact the rules allow (see Heroes::isArtifact).
      */
-    private function withinAbsorbLimit(string $attribute, mixed $value, Closure $fail): void
+    private function validArtifact(string $attribute, mixed $value, Closure $fail): void
     {
-        $artifact = str($attribute)->afterLast('.')->toString();
+        if (! Heroes::isArtifact($value)) {
+            $fail("The {$attribute} is not an artifact the rules allow.");
+        }
+    }
 
-        if (is_int($value) && $value > Heroes::absorbLimit($artifact)) {
-            $fail("The {$artifact} can be absorbed at most ".Heroes::absorbLimit($artifact).' times.');
+    /**
+     * No more cells in the lineage tree than the hero's level opens.
+     */
+    private function openCells(string $attribute, mixed $value, Closure $fail): void
+    {
+        $level = $this->input('hero.level');
+
+        if (is_array($value) && is_int($level) && count($value) > Heroes::treeCells($level)) {
+            $fail("The {$attribute} has more cells than level {$level} opens.");
         }
     }
 

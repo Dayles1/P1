@@ -1,11 +1,10 @@
 /**
  * What the figure holds in its right hand: tools, weapons, a staff, a
- * torch, an artifact. Built along the hand's +Z (forward when the arm
+ * torch. Built along the hand's +Z (forward when the arm
  * hangs), with the grip at the origin.
  */
 
 import * as THREE from 'three';
-import { ITEMS } from '../items';
 import type { ItemId } from '../items';
 
 const WOOD = new THREE.MeshStandardMaterial({
@@ -137,22 +136,7 @@ export function createHeld(item: ItemId): THREE.Group | null {
             break;
         }
         default:
-            if (!ITEMS[item].artifact) {
-                return null;
-            }
-
-            group.add(
-                new THREE.Mesh(
-                    new THREE.OctahedronGeometry(0.07, 0),
-                    new THREE.MeshStandardMaterial({
-                        color: 0xf2e2a8,
-                        emissive: 0xf2c55a,
-                        emissiveIntensity: 0.7,
-                        flatShading: true,
-                    }),
-                ),
-            );
-            group.position.z = 0.06;
+            return null;
     }
 
     return group;

@@ -134,7 +134,7 @@ test('a broken inventory or harvest list is refused', function (array $extra, st
 
 test('tools keep their wear, campfires and found artifacts are saved', function () {
     $user = User::factory()->create();
-    $inventory = [['item' => 'iron_axe', 'count' => 1, 'wear' => 37], ['item' => 'campfire', 'count' => 2], ['item' => 'sun_stone', 'count' => 1]];
+    $inventory = [['item' => 'iron_axe', 'count' => 1, 'wear' => 37], ['item' => 'campfire', 'count' => 2], ['item' => 'old_notes', 'count' => 1]];
     $placed = [['type' => 'campfire', 'x' => 12.5, 'z' => -3.25]];
     $harvested = [['id' => 'art:2', 'at' => 1_760_000_000_000]];
 
