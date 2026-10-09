@@ -8,7 +8,7 @@
  */
 
 import { ARMOR_SLOTS, isItem, ITEMS } from './items';
-import type { ArmorSlot, ArtifactId, ItemId } from './items';
+import type { ArmorSlot, ItemId } from './items';
 
 export const SLOTS = 24;
 export const HOTBAR = 6;
@@ -412,10 +412,6 @@ export class Inventory {
             (sum, slot) => sum + (slot?.item === item ? slot.count : 0),
             0,
         );
-    }
-
-    has(artifact: ArtifactId): boolean {
-        return this.total(artifact) > 0;
     }
 
     toJSON(): (Stack | null)[] {

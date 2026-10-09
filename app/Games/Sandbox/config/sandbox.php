@@ -31,4 +31,13 @@ return [
      */
     'back_url' => env('SANDBOX_BACK_URL', '/games'),
 
+    /*
+     * Test mode, like a creative mode: a "Creative" tab in the game's menu
+     * gives any item or resource, any artifact (type, rank, skill), levels,
+     * and the hero can be made immortal. What it gives is saved like
+     * anything else, so keep it off where people play for real. On by
+     * default only in a local environment.
+     */
+    'creative' => (bool) env('SANDBOX_CREATIVE', env('APP_ENV') === 'local'),
+
 ];

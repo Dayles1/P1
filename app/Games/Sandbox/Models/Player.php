@@ -21,7 +21,7 @@ use Illuminate\Support\Carbon;
  * @property float $y
  * @property float $z
  * @property float $yaw
- * @property array{class: string, gender: string, level: int, xp: int, points: array<string, int>, absorbed?: array<string, int>}|null $hero
+ * @property array{class: string, gender: string, level: int, xp: int, points: array<string, int>, look?: array<string, string>, artifacts?: array{stash: list<array<string, mixed>>, tree: list<array<string, mixed>|null>}}|null $hero
  * @property float|null $health
  * @property float|null $mana
  * @property list<array{item: string, count: int, wear?: int}|null>|null $inventory

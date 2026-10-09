@@ -9,18 +9,17 @@
  * Everything comes from one seeded list, so the world is the same every
  * time and an id ("tree:12") always means the same thing. What the player
  * used up is remembered by id and time and grows back after a while —
- * artifacts too, a few minutes after being picked up: the five rare ones
- * deep in their lands and common runes, shards and charms all over.
+ * artifacts too, a few minutes after being picked up: five glowing spots
+ * deep in their lands (they find a world level higher) and more all over.
+ * What a spot holds is rolled when it is picked up (see artifacts.ts).
  * Campfires the player put down are kept too.
  */
 
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
-import { ARTIFACT_LIST } from '../artifacts';
 import type { HitMaterial } from '../audio';
 import { RULES } from '../hero';
-import { ITEMS } from '../items';
-import type { ArtifactId, ItemId, ToolKind } from '../items';
+import type { ItemId, ToolKind } from '../items';
 import { RADIUS } from '../physics/character';
 import type { Seat } from '../physics/character';
 import type {
@@ -66,7 +65,7 @@ const REGROW: Record<string, number> = {
     tree: 15 * 60_000,
     rock: 20 * 60_000,
     pick: 6 * 60_000,
-    art: RULES.artifact_respawn_minutes * 60_000,
+    art: RULES.artifacts.respawn_minutes * 60_000,
 };
 
 const mat = (
@@ -111,31 +110,17 @@ const ROCK_COLORS = {
     snow: new THREE.Color(0xc9cdd2),
 };
 
-const ARTIFACTS: Record<Biome, ArtifactId> = {
-    meadow: 'golden_clover',
-    forest: 'forest_heart',
-    desert: 'sun_stone',
-    snow: 'frost_crystal',
-    mountains: 'wind_feather',
+/** The glow of the spot deep in each land. */
+const DEEP_GLOW: Record<Biome, number> = {
+    meadow: 0xe3c25e,
+    forest: 0x8fd17a,
+    desert: 0xffc35a,
+    snow: 0x9fdcf5,
+    mountains: 0xe8f4f8,
 };
 
-const ARTIFACT_COLORS: Record<ArtifactId, number> = {
-    golden_clover: 0xe3c25e,
-    forest_heart: 0x8fd17a,
-    sun_stone: 0xffc35a,
-    frost_crystal: 0x9fdcf5,
-    wind_feather: 0xe8f4f8,
-    strength_rune: 0xe0675f,
-    agility_rune: 0x6fbf6a,
-    spirit_rune: 0x6f9fe8,
-    vital_shard: 0xd9534f,
-    mana_pearl: 0x5f8fe0,
-    swift_charm: 0x7fd0e0,
-    storm_eye: 0x9fd7f2,
-    deep_pearl: 0x5fc0c8,
-    blood_ruby: 0xc0303f,
-    phoenix_feather: 0xf08a3c,
-};
+/** Glows of the spots all over, in turn. */
+const GLOWS = [0xe0675f, 0x6fbf6a, 0x6f9fe8, 0xd9534f, 0x5f8fe0, 0x7fd0e0];
 
 /**
  * Blocks next to the spawn: a staircase up to a platform, a gap to jump
@@ -228,7 +213,8 @@ export interface Artifact {
     kind: 'artifact';
     id: string;
     index: number;
-    item: ArtifactId;
+    /** One of the spots deep in a land: it finds a world level higher. */
+    deep: boolean;
     x: number;
     z: number;
     ground: number;
@@ -698,7 +684,7 @@ export class Resources {
     }
 
     /** Picks up a find, an artifact, a dropped bundle or a placed fire. */
-    take(target: Find | Drop | Artifact | Fire, now: number): Yield {
+    take(target: Find | Drop | Fire, now: number): Yield {
         switch (target.kind) {
             case 'drop':
                 this.group.remove(target.mesh);
@@ -709,11 +695,6 @@ export class Resources {
                 this.removeFire(target);
 
                 return { item: 'campfire', count: 1 };
-            case 'artifact':
-                this.useUp('art', target.index);
-                this.harvested.set(target.id, now);
-
-                return { item: target.item, count: 1 };
             case 'find':
                 this.useUp('pick', target.index);
                 this.harvested.set(target.id, now);
@@ -722,11 +703,17 @@ export class Resources {
         }
     }
 
+    /** Empties an artifact's spot (until it comes back). */
+    takeArtifact(target: Artifact, now: number): void {
+        this.useUp('art', target.index);
+        this.harvested.set(target.id, now);
+    }
+
     /** Puts a bundle of items on the ground (not kept between visits). */
     drop(item: ItemId, count: number, at: THREE.Vector3): void {
         const mesh = new THREE.Mesh(
             new THREE.BoxGeometry(0.32, 0.22, 0.26),
-            mat(ITEMS[item].artifact ? 0xe8d9a8 : 0xcbbfa9),
+            mat(0xcbbfa9),
         );
         mesh.castShadow = true;
         mesh.position.copy(at);
@@ -1342,7 +1329,7 @@ export class Resources {
                 }
 
                 this.addArtifact(
-                    ARTIFACTS[biome],
+                    DEEP_GLOW[biome],
                     spot.x,
                     spot.z,
                     spot.ground,
@@ -1354,7 +1341,6 @@ export class Resources {
         }
 
         const commons = createRandom(5151);
-        const kinds = ARTIFACT_LIST.common;
 
         for (
             let attempt = 0;
@@ -1371,22 +1357,21 @@ export class Resources {
                         Math.hypot(other.x - spot.x, other.z - spot.z) > 30,
                 )
             ) {
-                const item = kinds[(this.artifacts.length - 5) % kinds.length];
-                this.addArtifact(item, spot.x, spot.z, spot.ground, 14);
+                const glow = GLOWS[(this.artifacts.length - 5) % GLOWS.length];
+                this.addArtifact(glow, spot.x, spot.z, spot.ground, 14);
             }
         }
     }
 
     /** A glowing artifact over the ground with a beam `beam` metres tall. */
     private addArtifact(
-        item: ArtifactId,
+        color: number,
         x: number,
         z: number,
         ground: number,
         beam: number,
     ): void {
         const index = this.artifacts.length;
-        const color = ARTIFACT_COLORS[item];
         const group = new THREE.Group();
         group.position.set(x, ground, z);
 
@@ -1423,7 +1408,7 @@ export class Resources {
             kind: 'artifact',
             id: `art:${index}`,
             index,
-            item,
+            deep: beam > 20,
             x,
             z,
             ground,

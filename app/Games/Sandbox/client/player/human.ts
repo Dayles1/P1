@@ -1,7 +1,10 @@
 /**
  * A realistic body for the player: a skinned, textured human — Quaternius'
  * Universal Base Characters (CC0), a man or a woman in plain underwear,
- * with hair — worn over the Mannequin's joints. Armour put on is cut from
+ * with hair — worn over the Mannequin's joints; in the anime style it is
+ * reshaped and cel-shaded (see anime). The hero's look picks the hair
+ * (see hair), its colour, a beard and the eyes' colour; the skin's
+ * colours are made a little richer (see paint). Armour put on is cut from
  * the body's own skin, lifted off it a little and coloured (see dress), so
  * it fits and bends with the body.
  *
@@ -28,6 +31,14 @@ import femaleUrl from '../assets/human-female.glb?url';
 import maleUrl from '../assets/human-male.glb?url';
 import type { Gender } from '../hero';
 import type { ArmorSlot } from '../items';
+import type { BodyStyle } from '../settings';
+import { addOutline, reshape, toonMaterial } from './anime';
+import { borrowHair, growHair, MODEL_HAIR } from './hair';
+import { measureHead } from './head';
+import { EYE_COLORS, HAIR_COLORS } from './looks';
+import type { Appearance, HairStyle } from './looks';
+import { irisColor, saturate } from './paint';
+import { cutOut, cutShell } from './shell';
 
 /** The Mannequin's joints a body follows. */
 export interface Rig {
@@ -83,7 +94,25 @@ const FINGERS = ['index', 'middle', 'ring', 'pinky'];
 /** How much of the curl each knuckle takes, from the palm out. */
 const KNUCKLES = [0.8, 1, 0.75];
 
-const HAIR: Record<Gender, number> = { male: 0x3b2a1f, female: 0x4b2e1c };
+/** How much richer the skin's colours are drawn, by style. */
+const SATURATION: Record<BodyStyle, number> = { realistic: 1.15, anime: 1.35 };
+
+/** The hairstyle each model comes with. */
+const OWN_HAIR: Record<Gender, HairStyle> = { male: 'parted', female: 'buns' };
+
+/** Who a body is: gender, how it is drawn and the hero's look. */
+export interface BodyLook {
+    gender: Gender;
+    style: BodyStyle;
+    appearance: Appearance;
+}
+
+/** The other model to take a hairstyle from, when this one lacks it. */
+export function hairDonor(gender: Gender, hair: HairStyle): Gender | null {
+    const other: Gender = gender === 'male' ? 'female' : 'male';
+
+    return MODEL_HAIR[hair] && OWN_HAIR[gender] !== hair ? other : null;
+}
 
 /** Where on the body armour goes, as fractions of the body's height. */
 const COVER = {
@@ -101,23 +130,6 @@ const COVER = {
 const EDGE = 0.03;
 
 const clamp = THREE.MathUtils.clamp;
-
-const cutOuts = new WeakMap<THREE.Material, THREE.Material>();
-
-/** The material, cut where the vertex alpha (how covered) is under ½. */
-function cutOut(material: THREE.Material): THREE.Material {
-    let cut = cutOuts.get(material);
-
-    if (!cut) {
-        cut = material.clone();
-        cut.vertexColors = true;
-        cut.alphaTest = 0.5;
-        cut.side = THREE.DoubleSide;
-        cutOuts.set(material, cut);
-    }
-
-    return cut;
-}
 
 const URLS: Record<Gender, string> = { male: maleUrl, female: femaleUrl };
 const loading = new Map<Gender, Promise<GLTF>>();
@@ -171,21 +183,40 @@ export class Human {
     private curl = { left: CURL_REST, right: CURL_REST };
     /** The skin armour is cut from, and the hair a helmet hides. */
     private body: THREE.SkinnedMesh | null = null;
-    private hair: THREE.Mesh[] = [];
+    private hair: THREE.Object3D[] = [];
+    private style: BodyStyle;
 
     /**
+     * @param donor the other model, when the hairstyle is its (see hairDonor)
      * @param hipJoint height of the Mannequin's hip joints at rest
      * @param hipsDriverRest the Mannequin's hips joint at rest, in figure space
      */
     constructor(
         gltf: GLTF,
-        gender: Gender,
+        donor: GLTF | null,
+        look: BodyLook,
         private root: THREE.Object3D,
         private rig: Rig,
         hipJoint: number,
         private hipsDriverRest: THREE.Vector3,
     ) {
+        const { gender, style, appearance } = look;
         const model = clone(gltf.scene);
+        const unworn: THREE.Object3D[] = [];
+        const paint = (material: THREE.MeshStandardMaterial) =>
+            style === 'anime' ? toonMaterial(material) : material.clone();
+        const tint = (material: THREE.MeshStandardMaterial) => {
+            const painted = paint(material);
+            painted.color.setHex(HAIR_COLORS[appearance.hair_color]);
+
+            return painted;
+        };
+
+        this.style = style;
+
+        if (style === 'anime') {
+            reshape(model, gender);
+        }
 
         model.traverse((object) => {
             if (object instanceof THREE.Bone) {
@@ -198,15 +229,31 @@ export class Human {
                 // Skinned meshes move away from their bounds.
                 object.frustumCulled = false;
 
-                const material = object.material as THREE.MeshStandardMaterial;
-
+                const source = object.material as THREE.MeshStandardMaterial;
                 // The hair texture is grey, to be tinted.
-                if (material.name.startsWith('MI_Hair')) {
-                    material.color.setHex(HAIR[gender]);
+                const material = source.name.startsWith('MI_Hair')
+                    ? tint(source)
+                    : paint(source);
+
+                if (material.map && source.name === 'MI_Eyes') {
+                    material.map = irisColor(
+                        material.map,
+                        EYE_COLORS[appearance.eyes],
+                    );
                 }
 
+                if (material.map && source.name.startsWith('MI_Superhero')) {
+                    material.map = saturate(material.map, SATURATION[style]);
+                }
+
+                object.material = material;
+
                 if (object.name.startsWith('Hair')) {
-                    this.hair.push(object);
+                    if (MODEL_HAIR[appearance.hair] === object.name) {
+                        this.hair.push(object);
+                    } else {
+                        unworn.push(object);
+                    }
                 }
 
                 if (
@@ -217,6 +264,41 @@ export class Human {
                 }
             }
         });
+
+        for (const object of unworn) {
+            object.removeFromParent();
+        }
+
+        const frame = measureHead(model);
+        const body = this.body;
+
+        if (body && frame) {
+            const borrowed = MODEL_HAIR[appearance.hair];
+            const theirs =
+                borrowed && donor ? this.donorHair(donor, borrowed) : null;
+
+            if (borrowed && theirs) {
+                const hair = borrowHair(
+                    body,
+                    frame,
+                    donor!.scene,
+                    borrowed,
+                    tint(theirs),
+                );
+
+                if (hair) {
+                    body.parent!.add(hair);
+                    this.hair.push(hair);
+                }
+            }
+
+            const grown = growHair(body, frame, appearance, style);
+            this.hair.push(...grown.covered);
+        }
+
+        if (body && style === 'anime') {
+            addOutline(body);
+        }
 
         this.holder.add(model);
         root.add(this.holder);
@@ -327,7 +409,6 @@ export class Human {
 
         const geometry = body.geometry;
         const position = geometry.getAttribute('position');
-        const normal = geometry.getAttribute('normal');
         const joints = geometry.getAttribute('skinIndex');
         const weights = geometry.getAttribute('skinWeight');
         const bones = body.skeleton.bones;
@@ -407,50 +488,14 @@ export class Human {
             cover[i] = coverage(i);
         }
 
-        const source = geometry.index!;
-        const indices: number[] = [];
+        const piece = cutShell(body, cover, lift, cutOut(material, this.style));
 
-        for (let i = 0; i < source.count; i += 3) {
-            const a = source.getX(i);
-            const b = source.getX(i + 1);
-            const c = source.getX(i + 2);
-
-            if (Math.max(cover[a], cover[b], cover[c]) > 0.5) {
-                indices.push(a, b, c);
-            }
-        }
-
-        const lifted = new Float32Array(position.count * 3);
-        const alpha = new Float32Array(position.count * 4).fill(1);
-
-        for (let i = 0; i < position.count; i++) {
-            lifted[i * 3] = position.getX(i) + normal.getX(i) * lift;
-            lifted[i * 3 + 1] = position.getY(i) + normal.getY(i) * lift;
-            lifted[i * 3 + 2] = position.getZ(i) + normal.getZ(i) * lift;
-            alpha[i * 4 + 3] = cover[i];
-        }
-
-        const shell = new THREE.BufferGeometry();
-
-        shell.setAttribute('position', new THREE.BufferAttribute(lifted, 3));
-        shell.setAttribute('normal', normal);
-        shell.setAttribute('color', new THREE.BufferAttribute(alpha, 4));
-        shell.setAttribute('skinIndex', joints);
-        shell.setAttribute('skinWeight', weights);
-        shell.setIndex(indices);
-
-        const piece = new THREE.SkinnedMesh(shell, cutOut(material));
-
-        piece.castShadow = true;
-        piece.receiveShadow = true;
-        piece.frustumCulled = false;
-        piece.bind(body.skeleton, body.bindMatrix);
         body.parent!.add(piece);
 
         return [piece];
     }
 
-    /** A helmet covers the hair. */
+    /** A helmet covers the hair (long hair and a tail still hang below it). */
     coverHair(covered: boolean): void {
         for (const hair of this.hair) {
             hair.visible = !covered;
@@ -469,6 +514,22 @@ export class Human {
 
     dispose(): void {
         this.holder.removeFromParent();
+    }
+
+    /** The other model's material for its hair. */
+    private donorHair(
+        donor: GLTF,
+        name: string,
+    ): THREE.MeshStandardMaterial | null {
+        let material: THREE.MeshStandardMaterial | null = null;
+
+        donor.scene.traverse((object) => {
+            if (object instanceof THREE.Mesh && object.name === name) {
+                material = object.material as THREE.MeshStandardMaterial;
+            }
+        });
+
+        return material;
     }
 
     /** Top of the eyebrows, in the body's own space. */

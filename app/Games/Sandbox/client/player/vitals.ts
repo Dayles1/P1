@@ -35,6 +35,10 @@ export class Vitals {
     stamina = 100;
     /** Share of every blow that is taken (a tank's guard lowers it). */
     damageTaken = 1;
+    /** Share of every blow not taken (the iron skin skill). */
+    block = 0;
+    /** Takes no harm at all (the creative tab's immortality). */
+    invulnerable = false;
     private healthRegen = 0.8;
     private manaRegen = 0;
     private staminaRegen = 12;
@@ -73,13 +77,13 @@ export class Vitals {
 
     /** Takes a blow, less what the armour stops. Answers the damage done. */
     hurt(amount: number, armor = 0): number {
-        if (this.dead || amount <= 0) {
+        if (this.dead || amount <= 0 || this.invulnerable) {
             return 0;
         }
 
         const damage = Math.min(
             this.health,
-            amount * throughArmor(armor) * this.damageTaken,
+            amount * throughArmor(armor) * this.damageTaken * (1 - this.block),
         );
         this.health -= damage;
         this.sinceHurt = 0;

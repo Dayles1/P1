@@ -1,13 +1,17 @@
 /**
- * The hero: class, gender, level, experience, the free points put into
- * attributes and the artifacts absorbed — and everything worked out from
- * them (health, mana, stamina, defence, how hard and how fast blows
- * land, speed, the legendary skills…).
+ * The hero: class, gender, look, level, experience, the free points put
+ * into attributes, the artifacts found (the store) and the ones put into
+ * the lineage tree — and everything worked out from them (health, mana,
+ * stamina, defence, how hard and how fast blows land, speed, the skills
+ * artifacts give…).
  *
  * The rules come from the server's config/heroes.php, handed to the page
  * as JSON (views/app.blade.php), so the server checks saves with the very
  * same numbers. App\Games\Sandbox\Heroes does the same sums in PHP.
  */
+
+import { readAppearance } from './player/looks';
+import type { Appearance } from './player/looks';
 
 export type HeroClass = 'tank' | 'fighter' | 'assassin' | 'mage';
 export type Gender = 'male' | 'female';
@@ -55,32 +59,64 @@ export type XpReward =
     | 'craft'
     | 'research'
     | 'artifact'
-    | 'absorb'
-    | 'fuse';
+    | 'merge';
 
-export type ArtifactTier = 'common' | 'rare' | 'legendary';
+export type ArtifactType = 'stats' | 'skill';
 
-/** What an absorbed artifact can add to besides attributes. */
-export type BonusKey =
-    | 'health'
-    | 'mana'
-    | 'speed'
-    | 'jump'
-    | 'swim'
-    | 'breath'
-    | 'gather'
-    | 'light';
+export const ARTIFACT_TYPES: ArtifactType[] = ['stats', 'skill'];
 
-/** The skills legendary artifacts give. */
+/** The skills artifacts give, each with ranks 1 to 9. */
 export type Passive =
-    'double_jump' | 'water_breathing' | 'vampirism' | 'second_wind';
+    | 'vampirism'
+    | 'second_wind'
+    | 'double_jump'
+    | 'water_breathing'
+    | 'swiftness'
+    | 'iron_skin'
+    | 'regeneration'
+    | 'gatherer'
+    | 'radiance';
 
-export interface ArtifactRules {
-    tier: ArtifactTier;
-    max: number;
-    attributes?: Partial<Attributes>;
-    bonus?: Partial<Record<BonusKey, number>>;
-    skill?: Passive;
+export const PASSIVES: Passive[] = [
+    'vampirism',
+    'second_wind',
+    'double_jump',
+    'water_breathing',
+    'swiftness',
+    'iron_skin',
+    'regeneration',
+    'gatherer',
+    'radiance',
+];
+
+/** The highest rank of an artifact or a skill. */
+export const TOP_RANK = 9;
+
+/** An artifact: its type and rank, the attribute points and the skill it gives. */
+export interface Artifact {
+    type: ArtifactType;
+    rank: number;
+    points: Partial<Attributes>;
+    skill?: { name: Passive; rank: number };
+}
+
+/** What a type of artifact gives at a rank: points and a skill's rank, each a range. */
+export interface ArtifactRankRules {
+    points?: [number, number];
+    skill?: [number, number];
+}
+
+/** A skill's values, one per rank (see config/heroes.php `artifact_skills`). */
+export interface PassiveRules {
+    vampirism: { heal: number[] };
+    second_wind: { health: number[]; cooldown: number[] };
+    double_jump: { jumps: number[]; height: number[] };
+    water_breathing: { breath: number[]; swim: number[] };
+    swiftness: { speed: number[] };
+    iron_skin: { block: number[] };
+    regeneration: { health: number[] };
+    gatherer: { gather: number[] };
+    radiance: { light: number[] };
 }
 
 export interface SkillRules {
@@ -111,13 +147,21 @@ export interface HeroRules {
     xp_rewards: Record<XpReward, number>;
     skills: Record<HeroClass, SkillRules>;
     mob_scaling: { health: number; damage: number };
-    artifacts: Record<string, ArtifactRules>;
-    essence: Record<ArtifactTier, number>;
-    artifact_respawn_minutes: number;
-    passives: {
-        vampirism: number;
-        second_wind: { health: number; cooldown: number };
+    artifacts: {
+        types: ArtifactType[];
+        mortal_up_to: number;
+        stats: Record<string, ArtifactRankRules>;
+        skill: Record<string, ArtifactRankRules>;
+        type_chances: Record<ArtifactType, number>;
+        rank_chances: Record<string, number[]>;
+        world_level: { metres: number; hero_levels: number; max: number };
+        drops: { dig: number; creature: number };
+        respawn_minutes: number;
+        merge: number;
+        stash: number;
+        tree_cells: number[];
     };
+    artifact_skills: PassiveRules;
 }
 
 /** Read once from the page (see views/app.blade.php). */
@@ -131,13 +175,91 @@ export interface SavedHero {
     level: number;
     xp: number;
     points: Partial<Attributes>;
-    /** Artifact id → times absorbed. */
+    look?: Appearance;
+    artifacts?: { stash: Artifact[]; tree: (Artifact | null)[] };
+    /** Before the lineage tree: artifact id → times absorbed. */
     absorbed?: Record<string, number>;
 }
 
-/** What absorbing an artifact gives, or undefined for anything else. */
-export function artifactRules(item: string): ArtifactRules | undefined {
-    return RULES.artifacts[item];
+/** What a type of artifact gives at a rank (nothing for a rank there is not). */
+export function artifactRules(
+    type: ArtifactType,
+    rank: number,
+): ArtifactRankRules | undefined {
+    return RULES.artifacts[type][String(rank)];
+}
+
+/** Cells of the lineage tree open at a level. */
+export function treeCells(level: number): number {
+    return RULES.artifacts.tree_cells.filter((at) => at <= level).length;
+}
+
+/** A saved artifact, if it is one the rules allow (the server checks the same). */
+export function readArtifact(saved: unknown): Artifact | null {
+    const source = saved as Partial<Artifact> | null;
+
+    if (
+        !source ||
+        !ARTIFACT_TYPES.includes(source.type as ArtifactType) ||
+        !Number.isInteger(source.rank)
+    ) {
+        return null;
+    }
+
+    const rules = artifactRules(source.type!, source.rank!);
+
+    if (!rules) {
+        return null;
+    }
+
+    const points: Partial<Attributes> = {};
+    let sum = 0;
+
+    for (const attribute of ATTRIBUTES) {
+        const amount = source.points?.[attribute];
+
+        if (Number.isInteger(amount) && amount! > 0) {
+            points[attribute] = amount;
+            sum += amount!;
+        }
+    }
+
+    const [least, most] = rules.points ?? [0, 0];
+
+    if (sum < least || sum > most) {
+        return null;
+    }
+
+    const artifact: Artifact = {
+        type: source.type!,
+        rank: source.rank!,
+        points,
+    };
+    const skill = source.skill;
+
+    if (rules.skill) {
+        if (
+            !skill ||
+            !PASSIVES.includes(skill.name) ||
+            !Number.isInteger(skill.rank) ||
+            skill.rank < rules.skill[0] ||
+            skill.rank > rules.skill[1]
+        ) {
+            return null;
+        }
+
+        artifact.skill = { name: skill.name, rank: skill.rank };
+    }
+
+    return artifact;
+}
+
+/** All the attribute points an artifact gives. */
+export function pointsOf(artifact: Artifact): number {
+    return ATTRIBUTES.reduce(
+        (sum, attribute) => sum + (artifact.points[attribute] ?? 0),
+        0,
+    );
 }
 
 export function startingAttributes(
@@ -246,13 +368,22 @@ export class Hero {
     level = 1;
     xp = 0;
     readonly points: Attributes = { strength: 0, agility: 0, spirit: 0 };
-    /** Artifact id → times absorbed. */
-    readonly absorbed: Record<string, number> = {};
+    /** Artifacts found and not in the tree. */
+    readonly stash: Artifact[] = [];
+    /** The lineage tree's open cells: an artifact, or an empty place. */
+    readonly tree: (Artifact | null)[] = [];
+
+    /** Hairstyle, hair colour, beard and eyes. */
+    look: Appearance;
 
     constructor(
         readonly heroClass: HeroClass,
         readonly gender: Gender,
-    ) {}
+        look?: Appearance,
+    ) {
+        this.look = look ?? readAppearance(null, gender);
+        this.openCells();
+    }
 
     /** A saved hero, or null when there is none (or it makes no sense). */
     static read(saved: unknown): Hero | null {
@@ -266,7 +397,11 @@ export class Hero {
             return null;
         }
 
-        const hero = new Hero(source.class!, source.gender!);
+        const hero = new Hero(
+            source.class!,
+            source.gender!,
+            readAppearance(source.look, source.gender!),
+        );
         hero.level = Math.min(
             RULES.levels.max,
             Math.max(1, Math.floor(Number(source.level) || 1)),
@@ -283,12 +418,18 @@ export class Hero {
             left -= hero.points[attribute];
         }
 
-        for (const [artifact, times] of Object.entries(source.absorbed ?? {})) {
-            const rules = artifactRules(artifact);
-            const count = Math.floor(Number(times) || 0);
+        hero.openCells();
+        (source.artifacts?.tree ?? [])
+            .slice(0, hero.tree.length)
+            .forEach((saved, cell) => {
+                hero.tree[cell] = readArtifact(saved);
+            });
 
-            if (rules && count > 0) {
-                hero.absorbed[artifact] = Math.min(count, rules.max);
+        for (const saved of source.artifacts?.stash ?? []) {
+            const artifact = readArtifact(saved);
+
+            if (artifact) {
+                hero.keep(artifact);
             }
         }
 
@@ -297,7 +438,7 @@ export class Hero {
 
     /**
      * Where each attribute comes from: the class (with the gender), the
-     * levels, the free points and the absorbed artifacts.
+     * levels, the free points and the artifacts in the tree.
      */
     get sources(): Record<
         Attribute,
@@ -309,8 +450,9 @@ export class Hero {
             start: start[attribute],
             levels: growth,
             points: this.points[attribute],
-            artifacts: this.fromArtifacts(
-                (rules) => rules.attributes?.[attribute],
+            artifacts: this.tree.reduce(
+                (sum, artifact) => sum + (artifact?.points[attribute] ?? 0),
+                0,
             ),
         });
 
@@ -338,57 +480,96 @@ export class Hero {
 
     get derived(): Derived {
         const derived = deriveAll(this.attributes);
-        derived.health += this.bonus('health');
-        derived.mana += this.bonus('mana');
-        derived.speed *= 1 + this.bonus('speed');
+        derived.speed *= 1 + this.passive('swiftness', 'speed');
+        derived.healthRegen += this.passive('regeneration', 'health');
 
         return derived;
     }
 
-    /** What absorbed artifacts add to a bonus (0.1 = 10% more, or points). */
-    bonus(key: BonusKey): number {
-        return this.fromArtifacts((rules) => rules.bonus?.[key]);
-    }
-
-    /** Whether an absorbed legendary artifact gave this skill. */
-    has(passive: Passive): boolean {
-        return Object.keys(this.absorbed).some(
-            (artifact) => artifactRules(artifact)?.skill === passive,
+    /** The rank of a skill from the artifacts in the tree (0 without it): the highest one. */
+    skillRank(name: Passive): number {
+        return this.tree.reduce(
+            (best, artifact) =>
+                artifact?.skill?.name === name
+                    ? Math.max(best, artifact.skill.rank)
+                    : best,
+            0,
         );
     }
 
-    /** How many more times the artifact can be absorbed. */
-    absorbLeft(artifact: string): number {
-        const rules = artifactRules(artifact);
+    /** A value of a skill at the rank the hero has it (0 without it). */
+    passive<S extends Passive>(name: S, key: keyof PassiveRules[S]): number {
+        const rank = this.skillRank(name);
+        const values = RULES.artifact_skills[name][key] as number[];
 
-        return rules ? rules.max - (this.absorbed[artifact] ?? 0) : 0;
+        return rank > 0 ? (values[rank - 1] ?? 0) : 0;
     }
 
-    /** Takes in an artifact for good; false when it cannot be (any more). */
-    absorb(artifact: string): boolean {
-        if (this.absorbLeft(artifact) <= 0) {
+    /** The skills the tree gives, at their ranks. */
+    get passives(): { name: Passive; rank: number }[] {
+        return PASSIVES.map((name) => ({
+            name,
+            rank: this.skillRank(name),
+        })).filter(({ rank }) => rank > 0);
+    }
+
+    /** Whether the store has room for one more. */
+    get stashFull(): boolean {
+        return this.stash.length >= RULES.artifacts.stash;
+    }
+
+    /** Puts a found artifact into the store; false when it is full. */
+    keep(artifact: Artifact): boolean {
+        if (this.stashFull) {
             return false;
         }
 
-        this.absorbed[artifact] = (this.absorbed[artifact] ?? 0) + 1;
+        this.stash.push(artifact);
 
         return true;
     }
 
-    private fromArtifacts(
-        value: (rules: ArtifactRules) => number | undefined,
-    ): number {
-        let total = 0;
+    /**
+     * Puts an artifact from the store into a cell of the tree; whatever
+     * was there goes back to the store. False when there is no such cell.
+     */
+    place(index: number, cell: number): boolean {
+        const artifact = this.stash[index];
 
-        for (const [artifact, times] of Object.entries(this.absorbed)) {
-            const rules = artifactRules(artifact);
-
-            if (rules) {
-                total += (value(rules) ?? 0) * times;
-            }
+        if (!artifact || cell < 0 || cell >= this.tree.length) {
+            return false;
         }
 
-        return total;
+        const old = this.tree[cell];
+        this.stash.splice(index, 1);
+        this.tree[cell] = artifact;
+
+        if (old) {
+            this.stash.push(old);
+        }
+
+        return true;
+    }
+
+    /** Takes an artifact out of the tree into the store; false when it cannot. */
+    takeOut(cell: number): boolean {
+        const artifact = this.tree[cell];
+
+        if (!artifact || this.stashFull) {
+            return false;
+        }
+
+        this.tree[cell] = null;
+        this.stash.push(artifact);
+
+        return true;
+    }
+
+    /** Opens the cells the level has reached (as empty places). */
+    private openCells(): void {
+        while (this.tree.length < treeCells(this.level)) {
+            this.tree.push(null);
+        }
     }
 
     get maxed(): boolean {
@@ -429,6 +610,8 @@ export class Hero {
             reached.push(this.level);
         }
 
+        this.openCells();
+
         return reached;
     }
 
@@ -450,7 +633,22 @@ export class Hero {
             level: this.level,
             xp: this.xp,
             points: { ...this.points },
-            absorbed: { ...this.absorbed },
+            look: { ...this.look },
+            artifacts: {
+                stash: this.stash.map(copyArtifact),
+                tree: this.tree.map((artifact) =>
+                    artifact ? copyArtifact(artifact) : null,
+                ),
+            },
         };
     }
+}
+
+function copyArtifact(artifact: Artifact): Artifact {
+    return {
+        type: artifact.type,
+        rank: artifact.rank,
+        points: { ...artifact.points },
+        ...(artifact.skill ? { skill: { ...artifact.skill } } : {}),
+    };
 }

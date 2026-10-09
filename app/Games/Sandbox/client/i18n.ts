@@ -1,23 +1,24 @@
 /** The game's words, in the page's language (ru, en or uz). */
 
 import type {
-    ArtifactTier,
+    ArtifactType,
     Attribute,
-    BonusKey,
     Gender,
     HeroClass,
     Passive,
     SkillRules,
 } from './hero';
 import type { ArmorSlot, ItemId, ToolKind } from './items';
+import type { Beard, EyeColor, HairColor, HairStyle } from './player/looks';
 import type { RecipeGroup } from './recipes';
-import type { Quality } from './settings';
+import type { BodyStyle, Quality } from './settings';
 import type { StatKey } from './stats';
 import type { MobType } from './world/mob-models';
 
 export type DeathCause = MobType | 'fall' | 'drown';
 
-export type Tab = 'bag' | 'craft' | 'hero' | 'artifacts' | 'settings' | 'chest';
+export type Tab =
+    'bag' | 'craft' | 'hero' | 'artifacts' | 'settings' | 'creative' | 'chest';
 
 export type SkillName = SkillRules['name'];
 
@@ -37,6 +38,42 @@ interface Texts {
     saved: string;
     save_failed: string;
     tabs: Record<Tab, string>;
+    creative: {
+        note: string;
+        items: string;
+        items_hint: string;
+        artifacts: string;
+        type: string;
+        skill: string;
+        give: string;
+        hero: string;
+        level_up: string;
+        ten_levels: string;
+        max_level: string;
+        refill: string;
+        immortal: string;
+    };
+    creative_no_hero: string;
+    /** The playing screen's words (see ui/hud.ts). */
+    hud: {
+        /** N, NE, E… clockwise; an empty one is left out. */
+        compass: string[];
+        metres: string;
+        until_sunset: string;
+        until_dawn: string;
+        start: string;
+        now: string;
+        run: string;
+        crouch: string;
+        xp: string;
+        xp_of: string;
+        points: string;
+        attacks: string;
+        flees: string;
+        fire_near: string;
+        bench_near: string;
+        guard: string;
+    };
     inventory_hint: string;
     craft: string;
     needs_fire: string;
@@ -72,6 +109,7 @@ interface Texts {
     broke: string;
     durability: string;
     artifact_found: string;
+    artifact: string;
     out_of_breath: string;
     sound_on: string;
     sound_off: string;
@@ -111,6 +149,22 @@ interface Texts {
     stat_names: Record<StatKey, string>;
     quality: string;
     qualities: Record<Quality, string>;
+    body_style: string;
+    body_styles: Record<BodyStyle, string>;
+    hero_tab_hero: string;
+    hero_tab_look: string;
+    look_title: string;
+    look_save: string;
+    look_cancel: string;
+    edit_look: string;
+    hair_style: string;
+    hair_styles: Record<HairStyle, string>;
+    hair_color: string;
+    hair_colors: Record<HairColor, string>;
+    beard: string;
+    beards: Record<Beard, string>;
+    eye_color: string;
+    eye_colors: Record<EyeColor, string>;
     quality_hint: string;
     smoothing_note: string;
     sensitivity: string;
@@ -184,25 +238,27 @@ interface Texts {
     key_space: string;
     swim_up: string;
     swim_down: string;
-    absorb: string;
-    absorbed: string;
-    absorb_full: string;
-    recycle: string;
-    fuse: string;
-    fused: string;
     second_wind: string;
-    tiers: Record<ArtifactTier, string>;
-    tier_where: Record<ArtifactTier, string>;
     artifacts_hint: string;
-    absorb_gives: string;
-    carry_gives: string;
-    absorbed_count: string;
-    owned: string;
-    fusion_needs: string;
-    recycle_gives: string;
-    absorbed_title: string;
-    none_absorbed: string;
-    bonuses: Record<BonusKey, string>;
+    artifact_types: Record<ArtifactType, string>;
+    ranks: string[];
+    layers: { mortal: string; immortal: string };
+    rank: string;
+    tree_title: string;
+    tree_hint: string;
+    tree_empty: string;
+    tree_locked: string;
+    stash_title: string;
+    stash_empty: string;
+    stash_full: string;
+    to_tree: string;
+    take_out: string;
+    merge: string;
+    merged: string;
+    merge_needs: string;
+    placed: string;
+    choose_cell: string;
+    gives: string;
     passives: Record<Passive, [string, string]>;
     sources: {
         start: string;
@@ -253,7 +309,42 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             hero: 'Персонаж',
             artifacts: 'Артефакты',
             settings: 'Настройки',
+            creative: 'Креатив',
             chest: 'Сундук',
+        },
+        creative: {
+            note: 'Тестовый режим: бери что хочешь. Выключается в config/sandbox.php (SANDBOX_CREATIVE=false).',
+            items: 'Вещи и ресурсы',
+            items_hint: 'Клик — полная стопка в сумку.',
+            artifacts: 'Артефакты',
+            type: 'Тип',
+            skill: 'Навык',
+            give: 'Получить',
+            hero: 'Герой',
+            level_up: '+1 уровень',
+            ten_levels: '+10 уровней',
+            max_level: 'Макс. уровень',
+            refill: 'Здоровье и мана — до полного',
+            immortal: 'Бессмертие',
+        },
+        creative_no_hero: 'Сначала создайте героя',
+        hud: {
+            compass: ['С', 'СВ', 'В', 'ЮВ', 'Ю', 'ЮЗ', 'З', 'СЗ'],
+            metres: 'м',
+            until_sunset: 'до заката {t}',
+            until_dawn: 'до рассвета {t}',
+            start: 'Начало',
+            now: 'Сейчас',
+            run: 'Бег',
+            crouch: 'Присесть',
+            xp: 'опыта',
+            xp_of: '{xp} / {next} опыта',
+            points: '+{n} очк. атрибутов — открыть',
+            attacks: 'нападает',
+            flees: 'убегает',
+            fire_near: 'Огонь рядом · рецепты у костра открыты',
+            bench_near: 'Верстак рядом · его рецепты открыты',
+            guard: 'Защита',
         },
         inventory_hint:
             'Перетаскивайте предметы между ячейками · верхний ряд — быстрые слоты 1–6',
@@ -296,6 +387,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         broke: 'сломался',
         durability: 'Прочность',
         artifact_found: 'Найден артефакт',
+        artifact: 'Артефакт',
         out_of_breath: 'Воздух кончается!',
         sound_on: 'Звук включён',
         sound_off: 'Звук выключен',
@@ -362,6 +454,55 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             digs: 'Раскопок',
             researched: 'Изучено рецептов',
             deaths: 'Смертей',
+        },
+        body_style: 'Стиль персонажа',
+        body_styles: {
+            realistic: 'Реализм',
+            anime: 'Аниме',
+        },
+        hero_tab_hero: 'Герой',
+        hero_tab_look: 'Внешность',
+        look_title: 'Внешность',
+        look_save: 'Сохранить',
+        look_cancel: 'Отмена',
+        edit_look: 'Изменить внешность',
+        hair_style: 'Причёска',
+        hair_styles: {
+            short: 'Короткая',
+            parted: 'С пробором',
+            buns: 'Пучки',
+            bob: 'Каре',
+            ponytail: 'Хвост',
+            long: 'Длинные',
+            bald: 'Лысый',
+        },
+        hair_color: 'Цвет волос',
+        hair_colors: {
+            black: 'Чёрный',
+            brown: 'Тёмный',
+            chestnut: 'Каштановый',
+            auburn: 'Рыжий',
+            blonde: 'Блонд',
+            platinum: 'Платиновый',
+            pink: 'Розовый',
+            blue: 'Синий',
+        },
+        beard: 'Борода',
+        beards: {
+            none: 'Нет',
+            stubble: 'Щетина',
+            mustache: 'Усы',
+            goatee: 'Эспаньолка',
+            full: 'Борода',
+        },
+        eye_color: 'Цвет глаз',
+        eye_colors: {
+            brown: 'Карие',
+            hazel: 'Ореховые',
+            green: 'Зелёные',
+            blue: 'Голубые',
+            grey: 'Серые',
+            violet: 'Фиолетовые',
         },
         quality: 'Графика',
         qualities: {
@@ -496,33 +637,6 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         key_space: 'Пробел',
         swim_up: 'Всплыть',
         swim_down: 'Нырнуть',
-        absorb: 'Поглотить',
-        absorbed: 'Поглощено',
-        absorb_full: 'Больше этот артефакт не поглотить',
-        recycle: 'Переработать',
-        fuse: 'Соединить',
-        fused: 'Создан артефакт',
-        second_wind: 'Второе дыхание! Перо феникса спасло вас',
-        tiers: {
-            common: 'Обычные',
-            rare: 'Редкие',
-            legendary: 'Легендарные',
-        },
-        tier_where: {
-            common: 'Лежат по всему миру (короткий луч света). Появляются снова через 5 минут.',
-            rare: 'По одному в глубине своей земли (высокий луч света). Появляются снова через 5 минут.',
-            legendary: 'Только слиянием других артефактов с эссенцией.',
-        },
-        bonuses: {
-            health: 'к здоровью',
-            mana: 'к мане',
-            speed: 'к скорости бега',
-            jump: 'к прыжку',
-            swim: 'к скорости плавания',
-            breath: 'к запасу воздуха',
-            gather: 'к добыче ресурсов',
-            light: 'свет вокруг ночью',
-        },
         sources: {
             start: 'класс',
             levels: 'уровни',
@@ -534,37 +648,77 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             combat: 'Бой',
             other: 'Движение и знания',
         },
-        artifacts_hint:
-            'Поглощение даёт силу навсегда (артефакт исчезает). Переработка превращает артефакт в эссенцию. Из артефактов и эссенции соединяются легендарные.',
-        absorb_gives: 'При поглощении',
-        carry_gives: 'Пока в сумке',
-        absorbed_count: 'Поглощено',
-        owned: 'В сумке',
-        fusion_needs: 'Для слияния',
-        recycle_gives: 'Переработка даст',
-        absorbed_title: 'Поглощённые артефакты',
-        none_absorbed:
-            'Пока ничего не поглощено — откройте вкладку «Артефакты» (O).',
         regen: 'Восстановление',
         jump: 'Прыжок',
         swim: 'Плавание',
+        second_wind: 'Второе дыхание! Навык спас вас',
+        artifacts_hint:
+            'Артефакты не занимают сумку. Сливайте их в древо родословной (вкладка героя или здесь): ячейка даёт силу артефакта. Три одинаковых по типу и рангу сливаются в один рангом выше.',
+        artifact_types: {
+            stats: 'Артефакт характеристик',
+            skill: 'Артефакт навыка',
+        },
+        ranks: [
+            'Обычный',
+            'Необычный',
+            'Редкий',
+            'Элитный',
+            'Пиковый',
+            'Бессмертный',
+            'Древний',
+            'Мифический',
+            'Божественный',
+        ],
+        layers: {
+            mortal: 'смертный',
+            immortal: 'бессмертный',
+        },
+        rank: 'Ранг',
+        tree_title: 'Древо родословной',
+        tree_hint:
+            'Ячейки открываются с уровнем. Артефакт в ячейке отдаёт свою силу; в занятую ячейку — старый вернётся в хранилище.',
+        tree_empty: 'Пустое место',
+        tree_locked: 'С уровня {level}',
+        stash_title: 'Хранилище артефактов',
+        stash_empty:
+            'Пока пусто. Артефакты находятся в светящихся местах мира, на раскопках и у побеждённых существ — чем дальше от начала и сильнее герой, тем выше ранг.',
+        stash_full: 'Хранилище артефактов полно',
+        to_tree: 'В древо',
+        take_out: 'Вынуть',
+        merge: 'Слить ×3',
+        merged: 'Слиянием получен',
+        merge_needs: 'Для слияния нужно 3 артефакта одного типа и ранга.',
+        placed: 'Слито в древо',
+        choose_cell: 'Выберите ячейку древа, куда слить артефакт.',
+        gives: 'Даёт',
         passives: {
-            double_jump: [
-                'Двойной прыжок',
-                'Можно прыгнуть ещё раз в воздухе.',
-            ],
-            water_breathing: [
-                'Дыхание под водой',
-                'Воздух под водой не кончается.',
-            ],
             vampirism: [
                 'Вампиризм',
-                '10% нанесённого урона возвращается здоровьем.',
+                '{heal} урона в ближнем бою возвращается здоровьем.',
             ],
             second_wind: [
                 'Второе дыхание',
-                'Смертельный удар оставляет 30% здоровья (раз в 5 минут).',
+                'Смертельный удар оставляет {health} здоровья (раз в {cooldown}).',
             ],
+            double_jump: [
+                'Двойной прыжок',
+                'Прыжков в воздухе: {jumps}. Каждый прыжок выше на {height}.',
+            ],
+            water_breathing: [
+                'Дыхание под водой',
+                'Воздуха под водой {breath}, плавание быстрее на {swim}.',
+            ],
+            swiftness: ['Быстроногость', 'Бег быстрее на {speed}.'],
+            iron_skin: ['Железная кожа', 'Каждый удар слабее на {block}.'],
+            regeneration: [
+                'Регенерация',
+                '{health} здоровья в секунду сверх обычного.',
+            ],
+            gatherer: [
+                'Добытчик',
+                'Добыча с деревьев, камней и находок больше на {gather}.',
+            ],
+            radiance: ['Сияние', 'Ночью вокруг светло, ярче в {light}.'],
         },
         items: {
             wood: ['Древесина', 'Рубится из деревьев. Топором — быстрее.'],
@@ -646,26 +800,6 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
                 'Стена с дверью: открывается и закрывается (E).',
             ],
             sleeping_bag: ['Спальник', 'После гибели вы проснётесь у него.'],
-            wind_feather: [
-                'Перо ветра',
-                'Артефакт гор. Пока оно с вами, вы прыгаете выше.',
-            ],
-            sun_stone: [
-                'Солнечный камень',
-                'Артефакт пустыни. Ночью светится вокруг вас.',
-            ],
-            frost_crystal: [
-                'Ледяной кристалл',
-                'Артефакт снегов. Дольше без воздуха и быстрее плаваете.',
-            ],
-            forest_heart: [
-                'Сердце леса',
-                'Артефакт леса. Добыча ресурсов в полтора раза больше.',
-            ],
-            golden_clover: [
-                'Золотой клевер',
-                'Артефакт лугов. Бегаете быстрее.',
-            ],
             shovel: [
                 'Лопата',
                 'Раскапывает раскопки быстро (кирка — медленно).',
@@ -702,50 +836,6 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             stone_wall: [
                 'Каменная стена',
                 'Намного крепче деревянной. Разбирается только киркой.',
-            ],
-            strength_rune: [
-                'Руна силы',
-                'Обычный артефакт. Поглощение: +2 к силе (до 5 раз).',
-            ],
-            agility_rune: [
-                'Руна ловкости',
-                'Обычный артефакт. Поглощение: +2 к ловкости (до 5 раз).',
-            ],
-            spirit_rune: [
-                'Руна духа',
-                'Обычный артефакт. Поглощение: +2 к духу (до 5 раз).',
-            ],
-            vital_shard: [
-                'Осколок жизни',
-                'Обычный артефакт. Поглощение: +20 к здоровью (до 5 раз).',
-            ],
-            mana_pearl: [
-                'Жемчужина маны',
-                'Обычный артефакт. Поглощение: +20 к мане (до 5 раз).',
-            ],
-            swift_charm: [
-                'Амулет ветра',
-                'Обычный артефакт. Поглощение: +5% к скорости бега (до 3 раз).',
-            ],
-            storm_eye: [
-                'Око бури',
-                'Легендарный. Поглощение даёт навык «Двойной прыжок».',
-            ],
-            deep_pearl: [
-                'Жемчужина глубин',
-                'Легендарный. Поглощение даёт навык «Дыхание под водой».',
-            ],
-            blood_ruby: [
-                'Кровавый рубин',
-                'Легендарный. Поглощение даёт навык «Вампиризм».',
-            ],
-            phoenix_feather: [
-                'Перо феникса',
-                'Легендарный. Поглощение даёт навык «Второе дыхание».',
-            ],
-            essence: [
-                'Эссенция артефактов',
-                'Получается переработкой артефактов. Нужна для слияния легендарных.',
             ],
         },
     },
@@ -784,7 +874,42 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             hero: 'Character',
             artifacts: 'Artifacts',
             settings: 'Settings',
+            creative: 'Creative',
             chest: 'Chest',
+        },
+        creative: {
+            note: 'Test mode: take anything. Turned off in config/sandbox.php (SANDBOX_CREATIVE=false).',
+            items: 'Items and resources',
+            items_hint: 'Click — a full stack into the bag.',
+            artifacts: 'Artifacts',
+            type: 'Type',
+            skill: 'Skill',
+            give: 'Get',
+            hero: 'Hero',
+            level_up: '+1 level',
+            ten_levels: '+10 levels',
+            max_level: 'Top level',
+            refill: 'Health and mana to full',
+            immortal: 'Immortal',
+        },
+        creative_no_hero: 'Make a hero first',
+        hud: {
+            compass: ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'],
+            metres: 'm',
+            until_sunset: 'sunset in {t}',
+            until_dawn: 'dawn in {t}',
+            start: 'Start',
+            now: 'Now',
+            run: 'Run',
+            crouch: 'Crouch',
+            xp: 'XP',
+            xp_of: '{xp} / {next} XP',
+            points: '+{n} attribute points — open',
+            attacks: 'attacking',
+            flees: 'fleeing',
+            fire_near: 'Fire nearby · campfire recipes open',
+            bench_near: 'Workbench nearby · its recipes open',
+            guard: 'Guard',
         },
         inventory_hint:
             'Drag items between slots · the top row is the 1–6 hotbar',
@@ -827,6 +952,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         broke: 'broke',
         durability: 'Durability',
         artifact_found: 'Artifact found',
+        artifact: 'Artifact',
         out_of_breath: 'Running out of air!',
         sound_on: 'Sound on',
         sound_off: 'Sound off',
@@ -894,6 +1020,55 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             digs: 'Excavations',
             researched: 'Recipes learnt',
             deaths: 'Deaths',
+        },
+        body_style: 'Character style',
+        body_styles: {
+            realistic: 'Realistic',
+            anime: 'Anime',
+        },
+        hero_tab_hero: 'Hero',
+        hero_tab_look: 'Looks',
+        look_title: 'Looks',
+        look_save: 'Save',
+        look_cancel: 'Cancel',
+        edit_look: 'Change looks',
+        hair_style: 'Hairstyle',
+        hair_styles: {
+            short: 'Short',
+            parted: 'Parted',
+            buns: 'Buns',
+            bob: 'Bob',
+            ponytail: 'Ponytail',
+            long: 'Long',
+            bald: 'Bald',
+        },
+        hair_color: 'Hair colour',
+        hair_colors: {
+            black: 'Black',
+            brown: 'Brown',
+            chestnut: 'Chestnut',
+            auburn: 'Auburn',
+            blonde: 'Blonde',
+            platinum: 'Platinum',
+            pink: 'Pink',
+            blue: 'Blue',
+        },
+        beard: 'Beard',
+        beards: {
+            none: 'None',
+            stubble: 'Stubble',
+            mustache: 'Moustache',
+            goatee: 'Goatee',
+            full: 'Full beard',
+        },
+        eye_color: 'Eye colour',
+        eye_colors: {
+            brown: 'Brown',
+            hazel: 'Hazel',
+            green: 'Green',
+            blue: 'Blue',
+            grey: 'Grey',
+            violet: 'Violet',
         },
         quality: 'Graphics',
         qualities: {
@@ -1025,33 +1200,6 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         key_space: 'Space',
         swim_up: 'Swim up',
         swim_down: 'Dive',
-        absorb: 'Absorb',
-        absorbed: 'Absorbed',
-        absorb_full: 'This artifact cannot be absorbed any more',
-        recycle: 'Recycle',
-        fuse: 'Fuse',
-        fused: 'Artifact made',
-        second_wind: 'Second wind! The phoenix feather saved you',
-        tiers: {
-            common: 'Common',
-            rare: 'Rare',
-            legendary: 'Legendary',
-        },
-        tier_where: {
-            common: 'Lying all over the world (a short beam of light). Back 5 minutes after being taken.',
-            rare: 'One deep in each land (a tall beam of light). Back 5 minutes after being taken.',
-            legendary: 'Only by fusing other artifacts with essence.',
-        },
-        bonuses: {
-            health: 'health',
-            mana: 'mana',
-            speed: 'running speed',
-            jump: 'jump',
-            swim: 'swimming speed',
-            breath: 'breath',
-            gather: 'resources gathered',
-            light: 'light around you at night',
-        },
         sources: {
             start: 'class',
             levels: 'levels',
@@ -1063,32 +1211,79 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             combat: 'Combat',
             other: 'Movement and knowledge',
         },
-        artifacts_hint:
-            'Absorbing gives its power for good (the artifact is gone). Recycling turns it into essence. Artifacts and essence fuse into legendary ones.',
-        absorb_gives: 'Absorbed',
-        carry_gives: 'While carried',
-        absorbed_count: 'Absorbed',
-        owned: 'Carried',
-        fusion_needs: 'To fuse',
-        recycle_gives: 'Recycling gives',
-        absorbed_title: 'Absorbed artifacts',
-        none_absorbed: 'Nothing absorbed yet — open the Artifacts tab (O).',
         regen: 'Regeneration',
         jump: 'Jump',
         swim: 'Swimming',
+        second_wind: 'Second wind! The skill saved you',
+        artifacts_hint:
+            "Artifacts take no room in the bag. Merge them into the lineage tree (the hero tab, or here): a cell gives the artifact's power. Three of the same type and rank merge into one of the next rank.",
+        artifact_types: {
+            stats: 'Attribute artifact',
+            skill: 'Skill artifact',
+        },
+        ranks: [
+            'Common',
+            'Uncommon',
+            'Rare',
+            'Elite',
+            'Peak',
+            'Immortal',
+            'Ancient',
+            'Mythic',
+            'Divine',
+        ],
+        layers: {
+            mortal: 'mortal',
+            immortal: 'immortal',
+        },
+        rank: 'Rank',
+        tree_title: 'Lineage tree',
+        tree_hint:
+            'Cells open with the level. An artifact in a cell gives its power; put into a taken cell, the old one goes back to the store.',
+        tree_empty: 'Empty place',
+        tree_locked: 'From level {level}',
+        stash_title: 'Artifact store',
+        stash_empty:
+            'Empty so far. Artifacts lie in glowing spots of the world, turn up in digs and fall from slain creatures — further from the start and with a stronger hero, of higher ranks.',
+        stash_full: 'The artifact store is full',
+        to_tree: 'Into the tree',
+        take_out: 'Take out',
+        merge: 'Merge ×3',
+        merged: 'Merged into',
+        merge_needs: 'A merge takes 3 artifacts of the same type and rank.',
+        placed: 'Merged into the tree',
+        choose_cell: 'Choose a cell of the tree to merge the artifact into.',
+        gives: 'Gives',
         passives: {
-            double_jump: ['Double jump', 'Jump once more in the air.'],
-            water_breathing: [
-                'Water breathing',
-                'Air never runs out under water.',
-            ],
             vampirism: [
                 'Vampirism',
-                '10% of the damage you deal comes back as health.',
+                '{heal} of melee damage dealt comes back as health.',
             ],
             second_wind: [
                 'Second wind',
-                'A lethal blow leaves 30% health instead (once every 5 minutes).',
+                'A lethal blow leaves {health} health instead (once every {cooldown}).',
+            ],
+            double_jump: [
+                'Double jump',
+                'Jumps in the air: {jumps}. Every jump {height} higher.',
+            ],
+            water_breathing: [
+                'Water breathing',
+                'Breath under water lasts {breath}, swimming {swim} faster.',
+            ],
+            swiftness: ['Swiftness', 'Running {speed} faster.'],
+            iron_skin: ['Iron skin', 'Every blow {block} weaker.'],
+            regeneration: [
+                'Regeneration',
+                '{health} health a second on top of the usual.',
+            ],
+            gatherer: [
+                'Gatherer',
+                '{gather} more from trees, rocks and finds.',
+            ],
+            radiance: [
+                'Radiance',
+                'Light around you at night, {light} as bright.',
             ],
         },
         items: {
@@ -1171,26 +1366,6 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
                 'Sleeping bag',
                 'After dying you wake up next to it.',
             ],
-            wind_feather: [
-                'Wind feather',
-                'Mountain artifact. While you carry it, you jump higher.',
-            ],
-            sun_stone: [
-                'Sun stone',
-                'Desert artifact. Glows around you at night.',
-            ],
-            frost_crystal: [
-                'Frost crystal',
-                'Snow artifact. Longer breath and faster swimming.',
-            ],
-            forest_heart: [
-                'Heart of the forest',
-                'Forest artifact. Half as much again from gathering.',
-            ],
-            golden_clover: [
-                'Golden clover',
-                'Meadow artifact. You run faster.',
-            ],
             shovel: [
                 'Shovel',
                 'Digs out excavations quickly (a pickaxe does it slowly).',
@@ -1227,50 +1402,6 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             stone_wall: [
                 'Stone wall',
                 'Much tougher than wood. Only a pickaxe takes it down.',
-            ],
-            strength_rune: [
-                'Rune of strength',
-                'Common artifact. Absorbed: +2 strength (up to 5 times).',
-            ],
-            agility_rune: [
-                'Rune of agility',
-                'Common artifact. Absorbed: +2 agility (up to 5 times).',
-            ],
-            spirit_rune: [
-                'Rune of spirit',
-                'Common artifact. Absorbed: +2 spirit (up to 5 times).',
-            ],
-            vital_shard: [
-                'Shard of life',
-                'Common artifact. Absorbed: +20 health (up to 5 times).',
-            ],
-            mana_pearl: [
-                'Mana pearl',
-                'Common artifact. Absorbed: +20 mana (up to 5 times).',
-            ],
-            swift_charm: [
-                'Wind charm',
-                'Common artifact. Absorbed: +5% running speed (up to 3 times).',
-            ],
-            storm_eye: [
-                'Eye of the storm',
-                'Legendary. Absorbed, it gives the Double jump skill.',
-            ],
-            deep_pearl: [
-                'Pearl of the deep',
-                'Legendary. Absorbed, it gives the Water breathing skill.',
-            ],
-            blood_ruby: [
-                'Blood ruby',
-                'Legendary. Absorbed, it gives the Vampirism skill.',
-            ],
-            phoenix_feather: [
-                'Phoenix feather',
-                'Legendary. Absorbed, it gives the Second wind skill.',
-            ],
-            essence: [
-                'Artifact essence',
-                'Made by recycling artifacts. Needed to fuse legendary ones.',
             ],
         },
     },
@@ -1309,7 +1440,42 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             hero: 'Qahramon',
             artifacts: 'Artefaktlar',
             settings: 'Sozlamalar',
+            creative: 'Kreativ',
             chest: 'Sandiq',
+        },
+        creative: {
+            note: 'Sinov rejimi: xohlaganingizni oling. config/sandbox.php da o‘chiriladi (SANDBOX_CREATIVE=false).',
+            items: 'Buyumlar va resurslar',
+            items_hint: 'Bosing — sumkaga to‘liq dasta.',
+            artifacts: 'Artefaktlar',
+            type: 'Turi',
+            skill: 'Ko‘nikma',
+            give: 'Olish',
+            hero: 'Qahramon',
+            level_up: '+1 daraja',
+            ten_levels: '+10 daraja',
+            max_level: 'Eng yuqori daraja',
+            refill: 'Sog‘liq va mana — to‘liq',
+            immortal: 'O‘lmaslik',
+        },
+        creative_no_hero: 'Avval qahramon yarating',
+        hud: {
+            compass: ['Sh', '', 'Shq', '', 'J', '', 'G‘', ''],
+            metres: 'm',
+            until_sunset: 'quyosh botishiga {t}',
+            until_dawn: 'tonggacha {t}',
+            start: 'Boshlanish',
+            now: 'Hozir',
+            run: 'Yugurish',
+            crouch: 'Cho‘kkalash',
+            xp: 'tajriba',
+            xp_of: '{xp} / {next} tajriba',
+            points: '+{n} xususiyat ochkosi — ochish',
+            attacks: 'hujum qilmoqda',
+            flees: 'qochmoqda',
+            fire_near: 'Olov yaqin · gulxan retseptlari ochiq',
+            bench_near: 'Dastgoh yaqin · uning retseptlari ochiq',
+            guard: 'Himoya',
         },
         inventory_hint:
             'Buyumlarni kataklar orasida suring · yuqori qator — 1–6 tezkor kataklar',
@@ -1352,6 +1518,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         broke: 'sindi',
         durability: 'Mustahkamlik',
         artifact_found: 'Artefakt topildi',
+        artifact: 'Artefakt',
         out_of_breath: 'Havo tugayapti!',
         sound_on: 'Ovoz yoqildi',
         sound_off: 'Ovoz o‘chirildi',
@@ -1418,6 +1585,55 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             digs: 'Qazishmalar',
             researched: 'O‘rganilgan retseptlar',
             deaths: 'O‘limlar',
+        },
+        body_style: 'Qahramon uslubi',
+        body_styles: {
+            realistic: 'Realistik',
+            anime: 'Anime',
+        },
+        hero_tab_hero: 'Qahramon',
+        hero_tab_look: 'Ko‘rinish',
+        look_title: 'Tashqi ko‘rinish',
+        look_save: 'Saqlash',
+        look_cancel: 'Bekor qilish',
+        edit_look: 'Ko‘rinishni o‘zgartirish',
+        hair_style: 'Soch turmagi',
+        hair_styles: {
+            short: 'Qisqa',
+            parted: 'Ajratilgan',
+            buns: 'Tugunlar',
+            bob: 'Kare',
+            ponytail: 'Dum',
+            long: 'Uzun',
+            bald: 'Taqir',
+        },
+        hair_color: 'Soch rangi',
+        hair_colors: {
+            black: 'Qora',
+            brown: 'Qo‘ng‘ir',
+            chestnut: 'Kashtan',
+            auburn: 'Malla',
+            blonde: 'Sariq',
+            platinum: 'Platina',
+            pink: 'Pushti',
+            blue: 'Ko‘k',
+        },
+        beard: 'Soqol',
+        beards: {
+            none: 'Yo‘q',
+            stubble: 'Tuk',
+            mustache: 'Mo‘ylov',
+            goatee: 'Echki soqol',
+            full: 'Soqol',
+        },
+        eye_color: 'Ko‘z rangi',
+        eye_colors: {
+            brown: 'Qo‘ng‘ir',
+            hazel: 'Yong‘oqrang',
+            green: 'Yashil',
+            blue: 'Ko‘k',
+            grey: 'Kulrang',
+            violet: 'Binafsha',
         },
         quality: 'Grafika',
         qualities: {
@@ -1550,33 +1766,6 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         key_space: 'Probel',
         swim_up: 'Suzib chiqish',
         swim_down: 'Sho‘ng‘ish',
-        absorb: 'Singdirish',
-        absorbed: 'Singdirildi',
-        absorb_full: 'Bu artefaktni boshqa singdirib bo‘lmaydi',
-        recycle: 'Qayta ishlash',
-        fuse: 'Birlashtirish',
-        fused: 'Artefakt yaratildi',
-        second_wind: 'Ikkinchi nafas! Feniks pati sizni qutqardi',
-        tiers: {
-            common: 'Oddiy',
-            rare: 'Noyob',
-            legendary: 'Afsonaviy',
-        },
-        tier_where: {
-            common: 'Butun dunyo bo‘ylab yotadi (qisqa nur). Olingandan 5 daqiqa keyin qaytadi.',
-            rare: 'Har bir yerning ichkarisida bittadan (baland nur). Olingandan 5 daqiqa keyin qaytadi.',
-            legendary: 'Faqat boshqa artefaktlarni mohiyat bilan birlashtirib.',
-        },
-        bonuses: {
-            health: 'sog‘liqqa',
-            mana: 'managa',
-            speed: 'yugurish tezligiga',
-            jump: 'sakrashga',
-            swim: 'suzish tezligiga',
-            breath: 'nafas zaxirasiga',
-            gather: 'resurs yig‘ishga',
-            light: 'kechasi atrofda yorug‘lik',
-        },
         sources: {
             start: 'sinf',
             levels: 'darajalar',
@@ -1588,34 +1777,78 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             combat: 'Jang',
             other: 'Harakat va bilim',
         },
-        artifacts_hint:
-            'Singdirish kuchni abadiy beradi (artefakt yo‘qoladi). Qayta ishlash uni mohiyatga aylantiradi. Artefaktlar va mohiyatdan afsonaviylari birlashtiriladi.',
-        absorb_gives: 'Singdirilganda',
-        carry_gives: 'Sumkada bo‘lsa',
-        absorbed_count: 'Singdirilgan',
-        owned: 'Sumkada',
-        fusion_needs: 'Birlashtirish uchun',
-        recycle_gives: 'Qayta ishlash beradi',
-        absorbed_title: 'Singdirilgan artefaktlar',
-        none_absorbed:
-            'Hali hech narsa singdirilmagan — «Artefaktlar» bo‘limini oching (O).',
         regen: 'Tiklanish',
         jump: 'Sakrash',
         swim: 'Suzish',
+        second_wind: 'Ikkinchi nafas! Ko‘nikma sizni qutqardi',
+        artifacts_hint:
+            'Artefaktlar sumkada joy egallamaydi. Ularni nasl daraxtiga quying (qahramon yorlig‘ida yoki shu yerda): katak artefakt kuchini beradi. Bir xil turdagi va darajadagi uchtasi bir daraja yuqori bittaga qo‘shiladi.',
+        artifact_types: {
+            stats: 'Xususiyat artefakti',
+            skill: 'Ko‘nikma artefakti',
+        },
+        ranks: [
+            'Oddiy',
+            'Noodatiy',
+            'Nodir',
+            'Elita',
+            'Cho‘qqi',
+            'O‘lmas',
+            'Qadimiy',
+            'Afsonaviy',
+            'Ilohiy',
+        ],
+        layers: {
+            mortal: 'o‘lar',
+            immortal: 'o‘lmas',
+        },
+        rank: 'Daraja',
+        tree_title: 'Nasl daraxti',
+        tree_hint:
+            'Kataklar daraja bilan ochiladi. Katakdagi artefakt o‘z kuchini beradi; band katakka qo‘yilsa, eskisi omborga qaytadi.',
+        tree_empty: 'Bo‘sh joy',
+        tree_locked: '{level}-darajadan',
+        stash_title: 'Artefaktlar ombori',
+        stash_empty:
+            'Hozircha bo‘sh. Artefaktlar dunyoning yorug‘ joylarida, qazishmalarda va yengilgan jonzotlardan topiladi — boshlang‘ichdan uzoqroqda va kuchli qahramonda darajasi yuqoriroq.',
+        stash_full: 'Artefaktlar ombori to‘la',
+        to_tree: 'Daraxtga',
+        take_out: 'Olish',
+        merge: '×3 qo‘shish',
+        merged: 'Qo‘shilib hosil bo‘ldi',
+        merge_needs:
+            'Qo‘shish uchun bir xil turdagi va darajadagi 3 ta artefakt kerak.',
+        placed: 'Daraxtga quyildi',
+        choose_cell: 'Artefaktni quyish uchun daraxt katagini tanlang.',
+        gives: 'Beradi',
         passives: {
-            double_jump: [
-                'Ikki marta sakrash',
-                'Havoda yana bir marta sakrash mumkin.',
-            ],
-            water_breathing: ['Suv ostida nafas', 'Suv ostida havo tugamaydi.'],
             vampirism: [
                 'Vampirizm',
-                'Yetkazilgan zararning 10% i sog‘liq bo‘lib qaytadi.',
+                'Yaqin jangdagi zararning {heal} qismi sog‘liqqa qaytadi.',
             ],
             second_wind: [
                 'Ikkinchi nafas',
-                'O‘ldiruvchi zarba 30% sog‘liq qoldiradi (5 daqiqada bir marta).',
+                'O‘ldiradigan zarba o‘rniga {health} sog‘liq qoladi ({cooldown} da bir marta).',
             ],
+            double_jump: [
+                'Qo‘sh sakrash',
+                'Havoda sakrashlar: {jumps}. Har sakrash {height} balandroq.',
+            ],
+            water_breathing: [
+                'Suv ostida nafas',
+                'Suv ostida havo {breath}, suzish {swim} tezroq.',
+            ],
+            swiftness: ['Chaqqonlik', 'Yugurish {speed} tezroq.'],
+            iron_skin: ['Temir teri', 'Har bir zarba {block} kuchsizroq.'],
+            regeneration: [
+                'Regeneratsiya',
+                'Odatdagidan tashqari soniyasiga {health} sog‘liq.',
+            ],
+            gatherer: [
+                'Yig‘uvchi',
+                'Daraxt, tosh va topilmalardan {gather} ko‘proq.',
+            ],
+            radiance: ['Nur', 'Kechasi atrof yorug‘, {light} yorqinroq.'],
         },
         items: {
             wood: ['Yog‘och', 'Daraxtlardan kesiladi. Bolta bilan tezroq.'],
@@ -1694,26 +1927,6 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
                 'Uyqu xaltasi',
                 'Halok bo‘lgach, uning yonida uyg‘onasiz.',
             ],
-            wind_feather: [
-                'Shamol pati',
-                'Tog‘ artefakti. U bilan balandroq sakraysiz.',
-            ],
-            sun_stone: [
-                'Quyosh toshi',
-                'Cho‘l artefakti. Kechasi atrofingizni yoritadi.',
-            ],
-            frost_crystal: [
-                'Muz kristali',
-                'Qor artefakti. Nafas uzoqroq, suzish tezroq.',
-            ],
-            forest_heart: [
-                'O‘rmon yuragi',
-                'O‘rmon artefakti. Resurslar bir yarim baravar ko‘p.',
-            ],
-            golden_clover: [
-                'Oltin beda',
-                'O‘tloq artefakti. Tezroq yugurasiz.',
-            ],
             shovel: [
                 'Belkurak',
                 'Qazishmalarni tez qazadi (cho‘kich — sekin).',
@@ -1750,50 +1963,6 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             stone_wall: [
                 'Tosh devor',
                 'Yog‘ochnikidan ancha mustahkam. Faqat cho‘kich bilan buziladi.',
-            ],
-            strength_rune: [
-                'Kuch runasi',
-                'Oddiy artefakt. Singdirilganda: +2 kuch (5 martagacha).',
-            ],
-            agility_rune: [
-                'Chaqqonlik runasi',
-                'Oddiy artefakt. Singdirilganda: +2 chaqqonlik (5 martagacha).',
-            ],
-            spirit_rune: [
-                'Ruh runasi',
-                'Oddiy artefakt. Singdirilganda: +2 ruh (5 martagacha).',
-            ],
-            vital_shard: [
-                'Hayot parchasi',
-                'Oddiy artefakt. Singdirilganda: +20 sog‘liq (5 martagacha).',
-            ],
-            mana_pearl: [
-                'Mana marvaridi',
-                'Oddiy artefakt. Singdirilganda: +20 mana (5 martagacha).',
-            ],
-            swift_charm: [
-                'Shamol tumori',
-                'Oddiy artefakt. Singdirilganda: +5% yugurish tezligi (3 martagacha).',
-            ],
-            storm_eye: [
-                'Bo‘ron ko‘zi',
-                'Afsonaviy. Singdirilganda «Ikki marta sakrash» mahoratini beradi.',
-            ],
-            deep_pearl: [
-                'Chuqurlik marvaridi',
-                'Afsonaviy. Singdirilganda «Suv ostida nafas» mahoratini beradi.',
-            ],
-            blood_ruby: [
-                'Qonli yoqut',
-                'Afsonaviy. Singdirilganda «Vampirizm» mahoratini beradi.',
-            ],
-            phoenix_feather: [
-                'Feniks pati',
-                'Afsonaviy. Singdirilganda «Ikkinchi nafas» mahoratini beradi.',
-            ],
-            essence: [
-                'Artefakt mohiyati',
-                'Artefaktlarni qayta ishlab olinadi. Afsonaviylarni birlashtirish uchun kerak.',
             ],
         },
     },

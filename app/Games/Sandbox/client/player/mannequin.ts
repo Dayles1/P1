@@ -29,8 +29,10 @@ import type { Attributes, Gender, HeroClass } from '../hero';
 import { ARMOR_SLOTS } from '../items';
 import type { ArmorSlot, ItemId } from '../items';
 import type { Stance } from '../physics/character';
+import type { BodyStyle } from '../settings';
 import { createHeld } from './held';
-import { Human, loadHuman } from './human';
+import { hairDonor, Human, loadHuman } from './human';
+import type { Appearance } from './looks';
 
 const cloth = (color: number, roughness = 0.85) =>
     new THREE.MeshStandardMaterial({ color, roughness });
@@ -62,11 +64,14 @@ const OUTFITS: Record<HeroClass, [number, number, number]> = {
     mage: [0x4b4f8f, 0x3d3a5c, 0xd8c27a],
 };
 
-/** Who the figure is: the hero's class, gender and attributes. */
+/** Who the figure is: the hero's class, gender and attributes, and how it is drawn. */
 export interface Look {
     heroClass: HeroClass;
     gender: Gender;
     attributes: Attributes;
+    style: BodyStyle;
+    /** Hairstyle, hair colour, beard and eyes. */
+    appearance: Appearance;
 }
 
 const HIPS = 0.98;
@@ -288,9 +293,9 @@ export class Mannequin {
     private head: THREE.Group;
     private neck: THREE.Group;
     private chest: THREE.Mesh;
-    /** The realistic body, once loaded, and the gender it was asked for. */
+    /** The realistic body, once loaded, and the gender and style it was asked for. */
     private human: Human | null = null;
-    private humanGender: Gender | null = null;
+    private humanKind: string | null = null;
     private grip = new THREE.Vector3();
     private shoulderL: THREE.Group;
     private shoulderR: THREE.Group;
@@ -329,6 +334,8 @@ export class Mannequin {
     private groundR = 0;
 
     constructor() {
+        // Unseen until the look picks a body (see useBody).
+        this.root.visible = false;
         this.body = joint(this.root, 0, HIPS);
         this.hips = joint(this.body, 0, 0);
         this.head = new THREE.Group();
@@ -606,26 +613,40 @@ export class Mannequin {
         const worn = { ...this.worn };
         this.wear({ head: null, body: null, feet: null });
         this.wear(worn);
-        this.useBody(look.gender);
+        this.useBody(look.gender, look.style, look.appearance);
     }
 
-    /** Swaps in the realistic body for the gender once it has loaded. */
-    private useBody(gender: Gender): void {
-        if (gender === this.humanGender) {
+    /**
+     * Swaps in the realistic body for the gender once it has loaded. Till
+     * then the figure is hidden, so neither the simple one nor the other
+     * gender's body flashes up first.
+     */
+    private useBody(
+        gender: Gender,
+        style: BodyStyle,
+        appearance: Appearance,
+    ): void {
+        const kind = JSON.stringify([gender, style, appearance]);
+
+        if (kind === this.humanKind) {
             return;
         }
 
-        this.humanGender = gender;
-        loadHuman(gender)
-            .then((gltf) => {
-                if (gender !== this.humanGender) {
+        const donor = hairDonor(gender, appearance.hair);
+
+        this.humanKind = kind;
+        this.root.visible = false;
+        Promise.all([loadHuman(gender), donor ? loadHuman(donor) : null])
+            .then(([gltf, donorGltf]) => {
+                if (kind !== this.humanKind) {
                     return;
                 }
 
                 this.human?.dispose();
                 this.human = new Human(
                     gltf,
-                    gender,
+                    donorGltf,
+                    { gender, style, appearance },
                     this.root,
                     {
                         hips: this.hips,
@@ -652,11 +673,38 @@ export class Mannequin {
                 this.wear({ head: null, body: null, feet: null });
                 this.wear(worn);
                 this.apply(null);
+                this.root.visible = true;
             })
             .catch((error: unknown) => {
-                // Without the model the simple figure stays.
                 console.warn('Sandbox: the player model did not load', error);
+
+                if (kind === this.humanKind) {
+                    this.useShapes();
+                }
             });
+    }
+
+    /** Without the model the simple figure shows instead. */
+    private useShapes(): void {
+        if (this.human) {
+            this.human.dispose();
+            this.human = null;
+
+            const worn = { ...this.worn };
+            this.wear({ head: null, body: null, feet: null });
+            this.wear(worn);
+        }
+
+        const show = (object: THREE.Object3D) => {
+            if (object instanceof THREE.Mesh) {
+                object.visible = true;
+            }
+
+            object.children.forEach(show);
+        };
+
+        show(this.root);
+        this.root.visible = true;
     }
 
     /** Hides the simple figure under the realistic body (the held item stays). */

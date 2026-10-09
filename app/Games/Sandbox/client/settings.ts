@@ -1,12 +1,17 @@
 /**
  * The player's own settings for this browser: graphics quality, camera
- * sensitivity, volume and the FPS counter. Kept in localStorage — they
+ * sensitivity, volume, the FPS counter and how the hero is drawn. Kept in localStorage — they
  * belong to the device, not the character.
  */
 
 export type Quality = 'auto' | 'low' | 'medium' | 'high';
 
 export const QUALITIES: Quality[] = ['auto', 'low', 'medium', 'high'];
+
+/** How the hero is drawn: a realistic body or an anime one. */
+export type BodyStyle = 'realistic' | 'anime';
+
+export const BODY_STYLES: BodyStyle[] = ['realistic', 'anime'];
 
 export interface Settings {
     quality: Quality;
@@ -15,6 +20,7 @@ export interface Settings {
     /** 0…1. */
     volume: number;
     showFps: boolean;
+    bodyStyle: BodyStyle;
 }
 
 const KEY = 'sandbox-settings';
@@ -24,6 +30,7 @@ const DEFAULTS: Settings = {
     sensitivity: 1,
     volume: 0.8,
     showFps: false,
+    bodyStyle: 'realistic',
 };
 
 export function loadSettings(): Settings {
@@ -37,6 +44,9 @@ export function loadSettings(): Settings {
             sensitivity: clampNumber(saved.sensitivity, 0.4, 2, 1),
             volume: clampNumber(saved.volume, 0, 1, DEFAULTS.volume),
             showFps: saved.showFps === true,
+            bodyStyle: BODY_STYLES.includes(saved.bodyStyle)
+                ? saved.bodyStyle
+                : DEFAULTS.bodyStyle,
         };
     } catch {
         return { ...DEFAULTS };

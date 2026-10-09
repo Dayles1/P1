@@ -19,6 +19,7 @@ if (!hasToken()) {
             new Game({
                 root,
                 backUrl: root.dataset.backUrl || '/',
+                creative: 'creative' in root.dataset,
                 saved,
             }).start();
         });

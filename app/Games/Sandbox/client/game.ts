@@ -14,14 +14,26 @@
 import * as THREE from 'three';
 import { playtimeBeat, resetPlayer, savePlayer } from './api';
 import type { PlayerState, SavedPlayer } from './api';
-import { essenceOf } from './artifacts';
-import type { Fusion } from './artifacts';
+import {
+    artifactIcon,
+    findArtifact,
+    fromOldSave,
+    isOldArtifact,
+    merged,
+    mergeGroup,
+} from './artifacts';
 import { Sound } from './audio';
 import type { Surface } from './audio';
 import { ThirdPersonCamera } from './camera';
 import { createRenderer, Graphics } from './graphics';
-import { artifactRules, Hero, RULES } from './hero';
-import type { Attribute, Gender, HeroClass, XpReward } from './hero';
+import { Hero, RULES } from './hero';
+import type {
+    Artifact,
+    Attribute,
+    Passive,
+    PassiveRules,
+    XpReward,
+} from './hero';
 import { t } from './i18n';
 import type { DeathCause, Tab } from './i18n';
 import { Input, TOUCH } from './input';
@@ -29,7 +41,7 @@ import type { Action } from './input';
 import { condition, HOTBAR, Inventory } from './inventory';
 import type { Stack } from './inventory';
 import { ITEMS, strikeDamage } from './items';
-import type { ArmorSlot, ArtifactId, ItemId } from './items';
+import type { ArmorSlot, ItemId } from './items';
 import { Character, RADIUS, STANCE_SPEED } from './physics/character';
 import { ColliderGrid } from './physics/colliders';
 import { Mannequin } from './player/mannequin';
@@ -42,9 +54,11 @@ import { loadSettings, saveSettings } from './settings';
 import type { Settings } from './settings';
 import { readStats } from './stats';
 import type { Stats } from './stats';
+import { artifactName } from './ui/artifacts-tab';
 import { CreateHero } from './ui/create';
+import type { HeroChoice } from './ui/create';
 import { Hud } from './ui/hud';
-import type { PromptLine } from './ui/hud';
+import type { CompassMark, Effect, PromptLine } from './ui/hud';
 import type { IconName } from './ui/icons';
 import { Menu } from './ui/menu';
 import { TouchControls } from './ui/touch';
@@ -82,6 +96,10 @@ const SAFE_LANDING = 13;
 const DROWN_DAMAGE = 10;
 /** How close a fire or workbench has to be to make things at it. */
 const CRAFT_REACH = 3.5;
+/** How long (s) a creature struck stays on the plate at the top. */
+const FOUGHT_SECONDS = 6;
+/** Chests further than this (m) are left off the compass. */
+const COMPASS_REACH = 250;
 /** Out of stamina, blows come this much slower. */
 const TIRED_SWING = 1.5;
 /** Share of a thing's materials that come back when it is taken apart. */
@@ -117,6 +135,8 @@ interface LightSource {
 export interface GameOptions {
     root: HTMLElement;
     backUrl: string;
+    /** Test mode: the creative tab (see config/sandbox.php). */
+    creative?: boolean;
     saved: SavedPlayer | null;
 }
 
@@ -153,11 +173,14 @@ export class Game {
     private research = new Research();
     private create: CreateHero | null = null;
     private skillCooldown = 0;
+    /** The creature last struck, shown at the top for a while. */
+    private fought: { mob: Mob; seconds: number } | null = null;
+    private screen = new THREE.Vector3();
     /** Seconds left of the tank's guard. */
     private guardTime = 0;
     /** Seconds the assassin's next blow stays critical after a dash. */
     private poisedTime = 0;
-    /** Seconds until the phoenix feather's second wind works again. */
+    /** Seconds until the second wind skill works again. */
     private secondWindCooldown = 0;
     private hud: Hud;
     private menu: Menu;
@@ -286,13 +309,26 @@ export class Game {
             study: (index) => this.study(index),
             salvage: (index) => this.salvage(index),
             salvageable: (item) => this.salvageable(item),
-            absorb: (index) => this.absorb(index),
-            recycle: (index) => this.recycle(index),
-            fuse: (fusion) => this.fuse(fusion),
+            placeArtifact: (index, cell) => this.placeArtifact(index, cell),
+            takeOutArtifact: (cell) => this.takeOutArtifact(cell),
+            mergeArtifacts: (index) => this.mergeArtifacts(index),
             changeSettings: (change) => this.changeSettings(change),
+            editLook: () => this.editLook(),
             startOver: () => void this.startOver(),
             toggleMute: () => this.toggleMute(),
             close: () => this.closeMenu(),
+            creative: Boolean(options.creative),
+            giveItem: (item) => this.giveItem(item),
+            giveArtifact: (artifact) => this.giveArtifact(artifact),
+            addLevels: (levels) => this.addLevels(levels),
+            refill: () => {
+                this.vitals.refill();
+                this.menu.render();
+            },
+            toggleImmortal: () => {
+                this.vitals.invulnerable = !this.vitals.invulnerable;
+                this.menu.render();
+            },
         });
 
         this.inventory.onChange = () => {
@@ -372,26 +408,62 @@ export class Game {
         }
     }
 
-    /** The card to make a hero: class, then gender, with a turning preview. */
+    /** The card to make a hero: class, gender and look, with a turning preview. */
     private showCreate(): void {
         this.hud.showPaused(false);
-        this.create = new CreateHero(
-            this.options.root,
-            Boolean(this.options.saved),
-            (heroClass, gender) => this.makeHero(heroClass, gender),
-        );
+        this.create = new CreateHero(this.options.root, {
+            returning: Boolean(this.options.saved),
+            style: this.settings.bodyStyle,
+            done: (choice) => this.makeHero(choice),
+        });
     }
 
-    private makeHero(heroClass: HeroClass, gender: Gender): void {
-        this.hero = new Hero(heroClass, gender);
+    private makeHero({ heroClass, gender, style, look }: HeroChoice): void {
+        this.hero = new Hero(heroClass, gender, look);
+        this.changeSettings({ bodyStyle: style });
         this.applyHero();
         this.vitals.refill();
-        this.create?.dispose();
-        this.create = null;
+        this.closeCreate();
         this.dirty = true;
         this.sound.artifact();
         void this.save();
         this.resume();
+    }
+
+    /** The same card for the hero's look alone (from the character tab). */
+    private editLook(): void {
+        const hero = this.hero;
+
+        if (!hero || this.create) {
+            return;
+        }
+
+        this.menu.hide();
+        this.mode = 'paused';
+        this.hud.showPaused(false);
+        this.create = new CreateHero(this.options.root, {
+            returning: false,
+            style: this.settings.bodyStyle,
+            hero,
+            done: ({ style, look }) => {
+                hero.look = look;
+                this.changeSettings({ bodyStyle: style });
+                this.applyHero();
+                this.closeCreate();
+                this.dirty = true;
+                void this.save();
+                this.resume();
+            },
+            cancel: () => {
+                this.closeCreate();
+                this.resume();
+            },
+        });
+    }
+
+    private closeCreate(): void {
+        this.create?.dispose();
+        this.create = null;
     }
 
     /**
@@ -411,6 +483,8 @@ export class Game {
             heroClass: hero.heroClass,
             gender: hero.gender,
             attributes: hero.attributes,
+            style: this.settings.bodyStyle,
+            appearance: hero.look,
         });
         const growth = hero.level - 1;
         this.mobs.strength = [
@@ -429,8 +503,13 @@ export class Game {
             return;
         }
 
-        const reached = hero.gain(RULES.xp_rewards[reward] * times);
+        const amount = RULES.xp_rewards[reward] * times;
+        const reached = hero.gain(amount);
         this.dirty = true;
+
+        if (amount > 0 && !hero.maxed) {
+            this.hud.xp(Math.round(amount));
+        }
 
         if (reached.length === 0) {
             this.hud.setHero(hero);
@@ -469,6 +548,11 @@ export class Game {
 
     private spawn(saved: SavedPlayer | null): void {
         this.hero = Hero.read(saved?.hero);
+        const old = this.hero ? this.oldArtifacts(saved) : [];
+
+        for (const artifact of old) {
+            this.hero!.keep(artifact);
+        }
 
         if (this.hero) {
             this.applyHero();
@@ -497,9 +581,31 @@ export class Game {
             this.character.facing = Math.PI;
         }
 
-        this.dirty = false;
+        this.dirty = old.length > 0;
         this.applyInventory();
         this.view.update(0, this.character.position, 1.55, false, true);
+    }
+
+    /**
+     * What a save from before ranked artifacts had: artifacts absorbed,
+     * and carried in the bag (which no longer takes them).
+     */
+    private oldArtifacts(saved: SavedPlayer | null): Artifact[] {
+        const absorbed = (
+            saved?.hero as { absorbed?: Record<string, number> } | null
+        )?.absorbed;
+        const carried = (Array.isArray(saved?.inventory) ? saved.inventory : [])
+            .map((stack) => stack as { item?: unknown; count?: unknown } | null)
+            .flatMap((stack) =>
+                stack && isOldArtifact(stack.item)
+                    ? Array.from(
+                          { length: Math.max(1, Number(stack.count) || 1) },
+                          () => stack.item as string,
+                      )
+                    : [],
+            );
+
+        return fromOldSave(absorbed ?? {}, carried);
     }
 
     /** Everything the player has: carried, worn and kept in chests. */
@@ -515,7 +621,7 @@ export class Game {
         return stacks.flatMap((stack) => (stack ? [stack.item] : []));
     }
 
-    /** What carrying things does: the item in hand, armour, artifact bonuses. */
+    /** What carrying things does (the item in hand, armour) and what the hero's skills do. */
     private applyInventory(): void {
         const inventory = this.inventory;
         const character = this.character;
@@ -529,109 +635,259 @@ export class Game {
             feet: inventory.worn.feet?.item ?? null,
         });
 
-        // A carried rare artifact helps while carried; an absorbed one for
-        // good (the better of the two counts).
-        const hero = this.hero;
-        const bonus = (key: Parameters<Hero['bonus']>[0]) =>
-            1 + (hero?.bonus(key) ?? 0);
+        // What the skills from the lineage tree do.
+        const skill = <S extends Passive>(
+            name: S,
+            key: keyof PassiveRules[S],
+        ): number => this.hero?.passive(name, key) ?? 0;
+        const breath = skill('water_breathing', 'breath');
 
-        character.jumpScale = Math.max(
-            inventory.has('wind_feather') ? 1.3 : 1,
-            bonus('jump'),
-        );
-        character.runScale = inventory.has('golden_clover') ? 1.15 : 1;
-        character.swimScale = Math.max(
-            inventory.has('frost_crystal') ? 1.35 : 1,
-            bonus('swim'),
-        );
-        character.breathScale = hero?.has('water_breathing')
-            ? Infinity
-            : Math.max(inventory.has('frost_crystal') ? 2 : 1, bonus('breath'));
-        character.extraJumps = hero?.has('double_jump') ? 1 : 0;
-        this.gatherBonus = Math.max(
-            inventory.has('forest_heart') ? 1.5 : 1,
-            bonus('gather'),
-        );
+        character.jumpScale = 1 + skill('double_jump', 'height');
+        character.swimScale = 1 + skill('water_breathing', 'swim');
+        character.breathScale = this.hero?.skillRank('water_breathing')
+            ? breath || Infinity
+            : 1;
+        character.extraJumps = skill('double_jump', 'jumps');
+        this.gatherBonus = 1 + skill('gatherer', 'gather');
+        this.vitals.block = skill('iron_skin', 'block');
     }
 
-    /** Takes in an artifact from a slot for good: its attributes, bonuses or skill. */
-    private absorb(index: number): void {
+    /**
+     * A found artifact goes to the hero's store, never into the bag.
+     * Answers false (and says so) when the store is full.
+     */
+    private gainArtifact(artifact: Artifact): boolean {
         const hero = this.hero;
-        const stack = this.inventory.slots[index];
 
-        if (!hero || !stack || !artifactRules(stack.item)) {
-            return;
-        }
+        if (!hero || !hero.keep(artifact)) {
+            this.note(t.stash_full);
 
-        if (!hero.absorb(stack.item)) {
-            this.note(t.absorb_full);
-
-            return;
+            return false;
         }
 
         const position = this.character.position;
-        this.inventory.take(index, 1);
         this.sound.artifact();
         this.chips.burst(
             position.clone().setY(position.y + 1.2),
             0xf3d27a,
-            24,
+            16,
             0.05,
         );
-        this.hud.toast(`${t.absorbed}: ${t.items[stack.item][0]}`, stack.item);
-        this.applyHero();
-        this.gainXp('absorb');
-        this.dirty = true;
-    }
-
-    /** Turns an artifact from a slot into essence. */
-    private recycle(index: number): void {
-        const stack = this.inventory.slots[index];
-
-        if (!stack || !artifactRules(stack.item)) {
-            return;
-        }
-
-        const essence = essenceOf(stack.item as ArtifactId);
-        this.inventory.take(index, 1);
-        const added = this.inventory.add('essence', essence);
-
-        if (added < essence) {
-            this.dropNear('essence', essence - added);
-        }
-
-        this.sound.craft();
-        this.hud.toast(`+${essence} ${t.items.essence[0]}`, 'essence');
+        this.hud.toast(`${t.artifact_found}: ${artifactName(artifact)}`, {
+            icon: artifactIcon(artifact),
+        });
+        this.stats.artifacts++;
+        this.gainXp('artifact');
         this.dirty = true;
         this.menu.render();
+
+        return true;
     }
 
-    /** Fuses a legendary artifact from others and essence. */
-    private fuse(fusion: Fusion): void {
-        const inventory = this.inventory;
+    /** Rolls a chance of an artifact (from a dig or a slain creature). */
+    private maybeArtifact(chance: number, at: THREE.Vector3): void {
+        if (this.hero && Math.random() < chance) {
+            this.gainArtifact(findArtifact(at.x, at.z, this.hero.level));
+        }
+    }
 
-        if (
-            fusion.needs.some(
-                ([item, count]) => inventory.total(item) < count,
-            ) ||
-            inventory.room(fusion.result, 1) === 0
-        ) {
+    /** Merges an artifact from the store into a cell of the lineage tree. */
+    private placeArtifact(index: number, cell: number): void {
+        const hero = this.hero;
+        const artifact = hero?.stash[index];
+
+        if (!hero || !artifact || !hero.place(index, cell)) {
             return;
         }
 
-        for (const [item, count] of fusion.needs) {
-            inventory.spend(item, count);
-        }
-
-        inventory.add(fusion.result, 1);
         this.sound.artifact();
-        this.hud.toast(
-            `${t.fused}: ${t.items[fusion.result][0]}`,
-            fusion.result,
-        );
-        this.gainXp('fuse');
+        this.hud.toast(`${t.placed}: ${artifactName(artifact)}`, {
+            icon: artifactIcon(artifact),
+        });
+        this.applyHero();
+        this.dirty = true;
+    }
+
+    private takeOutArtifact(cell: number): void {
+        const hero = this.hero;
+
+        if (!hero || !hero.tree[cell]) {
+            return;
+        }
+
+        if (!hero.takeOut(cell)) {
+            this.note(t.stash_full);
+
+            return;
+        }
+
+        this.sound.click();
+        this.applyHero();
+        this.dirty = true;
+    }
+
+    /** Three of a type and rank from the store into one of the next rank. */
+    private mergeArtifacts(index: number): void {
+        const hero = this.hero;
+        const group = hero ? mergeGroup(hero.stash, index) : null;
+
+        if (!hero || !group) {
+            this.note(t.merge_needs);
+
+            return;
+        }
+
+        const parts = group.map((at) => hero.stash[at]);
+
+        for (const at of [...group].sort((a, b) => b - a)) {
+            hero.stash.splice(at, 1);
+        }
+
+        const result = merged(parts);
+        hero.keep(result);
+        this.sound.artifact();
+        this.hud.toast(`${t.merged}: ${artifactName(result)}`, {
+            icon: artifactIcon(result),
+        });
+        this.gainXp('merge');
         this.dirty = true;
         this.menu.render();
+    }
+
+    /** Damage dealt, floating up from the creature on the screen. */
+    private showDamage(mob: Mob, amount: number, crit: boolean): void {
+        const point = this.screen
+            .copy(mob.position)
+            .setY(mob.position.y + 1.4)
+            .project(this.view.camera);
+
+        if (point.z > 1) {
+            return;
+        }
+
+        this.hud.damage(
+            ((point.x + 1) / 2) * window.innerWidth,
+            ((1 - point.y) / 2) * window.innerHeight,
+            amount,
+            crit,
+        );
+    }
+
+    /** The compass and its places, the creature being fought, what is in effect. */
+    private updateHudWorld(dt: number): void {
+        const position = this.character.position;
+        const bearing = (x: number, z: number) =>
+            Math.atan2(x - position.x, position.z - z);
+        const marks: CompassMark[] = [];
+        const bag = this.structures.spawnPoint();
+
+        marks.push(
+            bag
+                ? {
+                      label: t.items.sleeping_bag[0],
+                      bearing: bearing(bag.x, bag.z),
+                      distance: Math.hypot(
+                          bag.x - position.x,
+                          bag.z - position.z,
+                      ),
+                      tone: 'bag',
+                  }
+                : {
+                      label: t.hud.start,
+                      bearing: bearing(0, 0),
+                      distance: Math.hypot(position.x, position.z),
+                      tone: 'start',
+                  },
+        );
+
+        for (const chest of this.structures.list
+            .filter((structure) => structure.type === 'chest')
+            .map((structure) => ({
+                structure,
+                distance: Math.hypot(
+                    structure.x - position.x,
+                    structure.z - position.z,
+                ),
+            }))
+            .filter(({ distance }) => distance < COMPASS_REACH)
+            .sort((a, b) => a.distance - b.distance)
+            .slice(0, 2)) {
+            marks.push({
+                label: t.items.chest[0],
+                bearing: bearing(chest.structure.x, chest.structure.z),
+                distance: chest.distance,
+                tone: 'chest',
+            });
+        }
+
+        this.hud.setCompass(-this.view.yaw, marks);
+
+        // The creature struck lately, or the one under the crosshair.
+        if (this.fought) {
+            this.fought.seconds -= dt;
+        }
+
+        const aimed =
+            this.targets.hit?.kind === 'mob' ? this.targets.hit : null;
+        const fought =
+            this.fought && this.fought.seconds > 0 ? this.fought.mob : null;
+        const mob = aimed ?? fought;
+
+        this.hud.setTarget(
+            mob && mob.health > 0 && mob.state !== 'dead'
+                ? {
+                      name: t.mobs[mob.type],
+                      share: mob.health / mob.maxHealth,
+                      state:
+                          mob.state === 'chase' || mob.state === 'attack'
+                              ? 'attacks'
+                              : mob.state === 'flee'
+                                ? 'flees'
+                                : null,
+                  }
+                : null,
+        );
+
+        const stations = this.stations();
+        const effects: Effect[] = [];
+
+        if (stations.fire) {
+            effects.push({
+                icon: 'fire',
+                color: '#FF7A2F',
+                title: t.hud.fire_near,
+                note: t.hud.fire_near,
+            });
+        }
+
+        if (stations.workbench) {
+            effects.push({
+                icon: 'workbench',
+                color: '#EFE6D2',
+                title: t.hud.bench_near,
+                note: t.hud.bench_near,
+            });
+        }
+
+        if (this.guardTime > 0) {
+            effects.push({
+                icon: 'shield',
+                color: '#F2C14E',
+                title: t.hud.guard,
+                timer: this.guardTime,
+            });
+        }
+
+        if (this.hero && this.skillCooldown > 0) {
+            effects.push({
+                icon: 'spark',
+                color: '#3E9BFF',
+                title: t.skills[this.hero.skill.name][0],
+                timer: this.skillCooldown,
+            });
+        }
+
+        this.hud.setEffects(effects);
     }
 
     private resume(): void {
@@ -877,9 +1133,19 @@ export class Game {
             return;
         }
 
-        const item = target.kind === 'fire' ? 'campfire' : target.item;
+        // An artifact goes to the hero's store; anything else needs room in the bag.
+        if (target.kind === 'artifact') {
+            if (this.hero?.stashFull) {
+                this.note(t.stash_full);
 
-        if (this.inventory.room(item, 1) === 0) {
+                return;
+            }
+        } else if (
+            this.inventory.room(
+                target.kind === 'fire' ? 'campfire' : target.item,
+                1,
+            ) === 0
+        ) {
             this.note(t.full);
 
             return;
@@ -1297,12 +1563,11 @@ export class Game {
 
     /** Damage done to a creature by a blow, a whirlwind or a bolt. */
     private hitMob(mob: Mob, damage: number, crit: boolean): void {
-        const killed = this.mobs.damage(
-            mob,
-            Math.round(damage * 10) / 10,
-            this.character.position,
-        );
+        const dealt = Math.round(damage * 10) / 10;
+        const killed = this.mobs.damage(mob, dealt, this.character.position);
         this.sound.strike();
+        this.fought = { mob, seconds: FOUGHT_SECONDS };
+        this.showDamage(mob, dealt, crit);
 
         if (crit) {
             this.note(t.crit);
@@ -1314,14 +1579,17 @@ export class Game {
             );
         }
 
-        // The blood ruby: a share of every blow comes back as health.
-        if (this.hero?.has('vampirism')) {
-            this.vitals.heal(damage * RULES.passives.vampirism);
+        // Vampirism: a share of every blow comes back as health.
+        const leech = this.hero?.passive('vampirism', 'heal') ?? 0;
+
+        if (leech > 0) {
+            this.vitals.heal(damage * leech);
         }
 
         if (killed) {
             this.stats[mob.type]++;
             this.gainXp(mob.type);
+            this.maybeArtifact(RULES.artifacts.drops.creature, mob.position);
             this.dirty = true;
         }
     }
@@ -1511,22 +1779,31 @@ export class Game {
             return;
         }
 
-        const found = this.resources.take(target, Date.now());
+        if (target.kind === 'artifact') {
+            const hero = this.hero;
 
-        if (ITEMS[found.item].artifact) {
-            this.sound.artifact();
-            this.hud.toast(
-                `${t.artifact_found}: ${t.items[found.item][0]}`,
-                found.item,
+            if (!hero || hero.stashFull) {
+                this.note(t.stash_full);
+
+                return;
+            }
+
+            // The spots deep in their lands find a world level higher.
+            const extra = target.deep
+                ? RULES.artifacts.world_level.hero_levels
+                : 0;
+
+            this.resources.takeArtifact(target, Date.now());
+            this.gainArtifact(
+                findArtifact(target.x, target.z, hero.level + extra),
             );
-            this.inventory.add(found.item, found.count);
-            this.stats.artifacts++;
-            this.gainXp('artifact');
-        } else {
-            this.sound.pickup();
-            this.collect([found]);
+
+            return;
         }
 
+        const found = this.resources.take(target, Date.now());
+        this.sound.pickup();
+        this.collect([found]);
         this.dirty = true;
     }
 
@@ -1644,6 +1921,7 @@ export class Game {
 
         this.stats.digs++;
         this.gainXp('dig');
+        this.maybeArtifact(RULES.artifacts.drops.dig, this.character.position);
         const relic = this.digs.relic();
 
         if (relic) {
@@ -1700,7 +1978,7 @@ export class Game {
             const added = this.inventory.add(item, count);
 
             if (added > 0) {
-                this.hud.toast(`+${added} ${t.items[item][0]}`, item);
+                this.hud.gain(item, added, this.inventory.total(item));
             }
 
             if (added < count) {
@@ -1779,14 +2057,15 @@ export class Game {
     }
 
     private die(cause: DeathCause): void {
-        // The phoenix feather: a lethal blow leaves some health instead,
-        // now and then.
-        if (this.hero?.has('second_wind') && this.secondWindCooldown <= 0) {
-            const { health, cooldown } = RULES.passives.second_wind;
-            this.vitals.health = this.vitals.maxHealth * health;
-            this.secondWindCooldown = cooldown;
+        // Second wind: a lethal blow leaves some health instead, now and then.
+        const hero = this.hero;
+
+        if (hero?.skillRank('second_wind') && this.secondWindCooldown <= 0) {
+            this.vitals.health =
+                this.vitals.maxHealth * hero.passive('second_wind', 'health');
+            this.secondWindCooldown = hero.passive('second_wind', 'cooldown');
             this.sound.heal();
-            this.hud.toast(t.second_wind, 'phoenix_feather');
+            this.hud.toast(t.second_wind);
 
             return;
         }
@@ -1853,6 +2132,61 @@ export class Game {
         if (change.volume !== undefined) {
             this.sound.setVolume(change.volume);
         }
+
+        if (change.bodyStyle) {
+            this.applyHero();
+        }
+    }
+
+    /** Test mode: a full stack of any item into the bag. */
+    private giveItem(item: ItemId): void {
+        const added = this.inventory.add(item, ITEMS[item].maxStack);
+
+        if (added === 0) {
+            this.note(t.full);
+
+            return;
+        }
+
+        this.sound.pickup();
+        this.hud.toast(`+${added} ${t.items[item][0]}`, item);
+        this.dirty = true;
+    }
+
+    /** Test mode: an artifact straight into the store (it counts for nothing). */
+    private giveArtifact(artifact: Artifact): void {
+        if (!this.hero?.keep(artifact)) {
+            this.note(this.hero ? t.stash_full : t.creative_no_hero);
+
+            return;
+        }
+
+        this.sound.artifact();
+        this.hud.toast(`+ ${artifactName(artifact)}`, {
+            icon: artifactIcon(artifact),
+        });
+        this.dirty = true;
+        this.menu.render();
+    }
+
+    /** Test mode: levels up as many times (up to the top). */
+    private addLevels(levels: number): void {
+        const hero = this.hero;
+
+        if (!hero) {
+            this.note(t.creative_no_hero);
+
+            return;
+        }
+
+        for (let i = 0; i < levels && !hero.maxed; i++) {
+            hero.gain(hero.toNext - hero.xp);
+        }
+
+        this.applyHero();
+        this.vitals.refill();
+        this.hud.setHero(hero);
+        this.dirty = true;
     }
 
     private toggleMute(): void {
@@ -2030,7 +2364,8 @@ export class Game {
             this.vitals.mana,
             this.guardTime > 0 || this.poisedTime > 0,
         );
-        this.hud.setClock(skyState.time, t.biomes[this.biome]);
+        this.hud.setClock(skyState.time, this.biome, t.biomes[this.biome]);
+        this.updateHudWorld(dt);
         this.hud.setFps(
             this.settings.showFps
                 ? `${Math.round(this.graphics.fps)} FPS`
@@ -2325,15 +2660,11 @@ export class Game {
             });
         }
 
-        if (
-            (this.inventory.has('sun_stone') ||
-                (this.hero?.bonus('light') ?? 0) > 0) &&
-            night > 0.2
-        ) {
+        if ((this.hero?.skillRank('radiance') ?? 0) > 0 && night > 0.2) {
             sources.push({
                 position: position.clone().setY(position.y + 1.4),
                 color: 0xffd99a,
-                strength: 0.6,
+                strength: 0.6 * this.hero!.passive('radiance', 'light'),
             });
         }
 
@@ -2560,9 +2891,10 @@ export class Game {
             if (text) {
                 lines.push({ key: 'use', text });
             }
-        } else if (use?.kind === 'find' || use?.kind === 'artifact') {
-            const count =
-                use.kind === 'find' && use.count > 1 ? ` ×${use.count}` : '';
+        } else if (use?.kind === 'artifact') {
+            lines.push({ key: 'use', text: `${t.pick_up}: ${t.artifact}` });
+        } else if (use?.kind === 'find') {
+            const count = use.count > 1 ? ` ×${use.count}` : '';
             lines.push({
                 key: 'use',
                 text: `${t.pick_up}: ${t.items[use.item][0]}${count}`,

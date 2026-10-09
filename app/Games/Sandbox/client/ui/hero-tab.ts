@@ -2,13 +2,15 @@
  * The character tab, laid out to be read at a glance:
  *
  * - the profile: a turning 3D portrait of the hero as they are (build,
- *   clothes, armour, what is in hand), class, gender, level, experience,
- *   free points, the class skill and the skills from legendary artifacts;
+ *   look, clothes, armour, what is in hand) with a button to change the
+ *   look, class, gender, level, experience, free points, the class skill
+ *   and the skills the lineage tree gives, with their ranks;
  * - the attributes, each with where it comes from (class, levels, points,
  *   artifacts) and a "+" for every free point;
  * - the figures they make, in groups: survival, combat, movement and
  *   knowledge;
- * - the artifacts absorbed, what is worn, and what the player has done.
+ * - the lineage tree and the artifact store (see ArtifactBoard), what is
+ *   worn, and what the player has done.
  */
 
 import { ATTRIBUTES } from '../hero';
@@ -17,7 +19,7 @@ import { t } from '../i18n';
 import { ARMOR_SLOTS, ITEMS } from '../items';
 import { throughArmor } from '../player/vitals';
 import { STAT_KEYS } from '../stats';
-import { absorbLines } from './artifacts-tab';
+import { ArtifactBoard, passiveAbout } from './artifacts-tab';
 import { button, element, escape, icon } from './dom';
 import { ICONS } from './icons';
 import type { IconName } from './icons';
@@ -35,9 +37,11 @@ const percent = (share: number) => `${Math.round(share * 100)}%`;
 export class HeroTab implements TabView {
     readonly element: HTMLElement;
     private portrait = new Portrait('sb-profile__portrait');
+    private board: ArtifactBoard;
 
     constructor(private host: MenuHost) {
         this.element = element('div', 'sb-hero');
+        this.board = new ArtifactBoard(host, true);
     }
 
     render(): void {
@@ -49,7 +53,7 @@ export class HeroTab implements TabView {
                       this.profile(),
                       this.attributesCard(),
                       this.figuresCard(),
-                      this.artifactsCard(),
+                      this.treeCard(),
                   ]
                 : []),
             this.wornCard(),
@@ -66,6 +70,8 @@ export class HeroTab implements TabView {
                 heroClass: hero.heroClass,
                 gender: hero.gender,
                 attributes: hero.attributes,
+                style: this.host.settings.bodyStyle,
+                appearance: hero.look,
             },
             inventory.held?.item ?? null,
             {
@@ -97,25 +103,18 @@ export class HeroTab implements TabView {
                 </div>
             </div>`;
 
-        const passives = (
-            [
-                'double_jump',
-                'water_breathing',
-                'vampirism',
-                'second_wind',
-            ] as const
-        ).filter((passive) => hero.has(passive));
+        const passives = hero.passives;
 
         if (passives.length > 0) {
             const list = element('div', 'sb-passives');
 
-            for (const passive of passives) {
+            for (const { name, rank } of passives) {
                 const chip = element(
                     'span',
-                    'sb-passive',
-                    t.passives[passive][0],
+                    `sb-passive sb-rank--${rank}`,
+                    `${t.passives[name][0]} ${rank}`,
                 );
-                chip.title = t.passives[passive][1];
+                chip.title = passiveAbout(name, rank);
                 list.append(chip);
             }
 
@@ -135,6 +134,11 @@ export class HeroTab implements TabView {
             info.append(note);
         }
 
+        info.append(
+            button('sb-button sb-profile__look', t.edit_look, () =>
+                this.host.editLook(),
+            ),
+        );
         card.append(this.portrait.element, info);
 
         return card;
@@ -245,8 +249,14 @@ export class HeroTab implements TabView {
                 'speed',
                 [
                     [t.derived.speed, percent(derived.speed)],
-                    [t.jump, percent(1 + hero.bonus('jump'))],
-                    [t.swim, percent(1 + hero.bonus('swim'))],
+                    [
+                        t.jump,
+                        percent(1 + hero.passive('double_jump', 'height')),
+                    ],
+                    [
+                        t.swim,
+                        percent(1 + hero.passive('water_breathing', 'swim')),
+                    ],
                     [t.derived.knowledge, `×${derived.knowledge.toFixed(2)}`],
                 ],
             ],
@@ -270,36 +280,11 @@ export class HeroTab implements TabView {
         return card;
     }
 
-    /** What the absorbed artifacts gave. */
-    private artifactsCard(): HTMLElement {
-        const hero = this.host.hero()!;
-        const card = element('section', 'sb-hero__card');
-        card.append(element('h3', '', t.absorbed_title));
-        const absorbed = Object.entries(hero.absorbed).filter(
-            ([, times]) => times > 0,
-        );
-
-        if (absorbed.length === 0) {
-            card.append(element('p', 'sb-hint', t.none_absorbed));
-
-            return card;
-        }
-
-        const list = element('div', 'sb-absorbed');
-
-        for (const [artifact, times] of absorbed) {
-            const row = element('div', 'sb-absorbed__row');
-            const definition = ITEMS[artifact as keyof typeof ITEMS];
-            row.innerHTML = `
-                <span class="sb-icon">${definition.icon}</span>
-                <div>
-                    <b>${escape(t.items[artifact as keyof typeof t.items][0])}${times > 1 ? ` ×${times}` : ''}</b>
-                    <small>${escape(absorbLines(artifact).join(' · '))}</small>
-                </div>`;
-            list.append(row);
-        }
-
-        card.append(list);
+    /** The lineage tree and the store, the whole width of the tab. */
+    private treeCard(): HTMLElement {
+        const card = element('section', 'sb-hero__card sb-hero__card--wide');
+        this.board.render();
+        card.append(this.board.element);
 
         return card;
     }
