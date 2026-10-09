@@ -56,7 +56,9 @@
                     { "kind": "cylinder", "x": 1.5, "y": 1.4, "z": 0, "r": 0.08, "h": 0.35, "color": "trim" },
                     { "kind": "box", "x": 1.1, "y": 0.9, "z": 0.2, "w": 0.4, "d": 0.06, "h": 0.06, "color": "trim" },
                     { "kind": "emitter", "x": 0.6, "y": 0.6, "z": 0.45, "type": "steam" },
-                    { "kind": "light", "x": 1.5, "y": 0.95, "z": 0.3, "radius": 1.2, "color": "#9fd2ff" }
+                    { "kind": "light", "x": 1.5, "y": 0.95, "z": 0.3, "radius": 1.2, "color": "#9fd2ff" },
+                    { "kind": "solar", "x": 0.18, "y": 0.18, "z": 0.44, "w": 0.84, "d": 1.64, "rows": 5 },
+                    { "kind": "neon", "x": 0.1, "y": 0.1, "z": 0, "w": 1, "d": 1.8, "h": 0.4, "color": "accent", "rings": 1, "corners": true }
                 ]
             }
         },
@@ -92,7 +94,9 @@
                     { "kind": "sphere", "x": 1.55, "y": 0.45, "z": 0.3, "r": 0.28, "color": "metal", "material": "metal" },
                     { "kind": "cylinder", "x": 1.55, "y": 0.45, "z": 0, "r": 0.08, "h": 0.3, "color": "trim" },
                     { "kind": "emitter", "x": 0.7, "y": 0.7, "z": 1, "type": "steam" },
-                    { "kind": "light", "x": 0.7, "y": 0.7, "z": 1, "radius": 1.8, "color": "#c06cff" }
+                    { "kind": "light", "x": 0.7, "y": 0.7, "z": 1, "radius": 1.8, "color": "#c06cff" },
+                    { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#c06cff" }
                 ]
             }
         }

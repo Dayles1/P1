@@ -43,7 +43,9 @@
                     { "kind": "torus", "x": 0.6, "y": 0.6, "z": 0.45, "r": 0.5, "tube": 0.03, "color": "trim", "spin": 0.4, "material": "glow" },
                     { "kind": "torus", "x": 1.4, "y": 0.6, "z": 0.35, "r": 0.4, "tube": 0.03, "color": "trim", "spin": -0.4, "material": "glow" },
                     { "kind": "emitter", "x": 1, "y": 1.4, "z": 1, "type": "sparks" },
-                    { "kind": "light", "x": 1, "y": 1, "z": 1, "radius": 2.4, "color": "#7ae0ff" }
+                    { "kind": "light", "x": 1, "y": 1, "z": 1, "radius": 2.4, "color": "#7ae0ff" },
+                    { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#7ae0ff" }
                 ]
             }
         },
@@ -80,7 +82,10 @@
                     { "kind": "torus", "x": 1, "y": 1, "z": 1.2, "r": 0.5, "tube": 0.04, "color": "accent", "spin": -0.5, "material": "glow" },
                     { "kind": "torus", "x": 1, "y": 1, "z": 1.8, "r": 0.38, "tube": 0.04, "color": "trim", "spin": 0.5, "material": "glow" },
                     { "kind": "cylinder", "x": 1, "y": 1, "z": 1.85, "r": 0.03, "h": 0.6, "color": "metal", "taper": 0 },
-                    { "kind": "light", "x": 1, "y": 1, "z": 1.4, "radius": 2.8, "color": "#ff7ad9" }
+                    { "kind": "light", "x": 1, "y": 1, "z": 1.4, "radius": 2.8, "color": "#ff7ad9" },
+                    { "kind": "pole", "x": 1, "y": 1, "z": 2.45, "h": 0.04, "color": "metal", "blink": "#ff4d4d" },
+                    { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#7ae0ff" }
                 ]
             }
         }

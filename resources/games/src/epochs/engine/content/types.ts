@@ -341,6 +341,30 @@ export type Material = 'matte' | 'glass' | 'metal' | 'glow';
 /** A side of a box: n = towards y−, s = towards y+, w = x−, e = x+. */
 export type Face = 'n' | 'e' | 's' | 'w';
 
+/** The outline of a tower, crown or prism, fitted into its w × d box. */
+export type PlanShape =
+    'rect' | 'rounded' | 'chamfer' | 'ellipse' | 'octagon' | 'tri' | 'cross';
+
+/**
+ * How the walls of a storey are drawn: punched windows (grid), a glass
+ * curtain wall, ribbon windows, vertical fins, Art Deco piers, brick with
+ * sills and lintels, stone with arched windows, prefab panels, or timber
+ * framing.
+ */
+export type FacadeStyle =
+    | 'grid'
+    | 'glass'
+    | 'ribbon'
+    | 'fins'
+    | 'deco'
+    | 'brick'
+    | 'stone'
+    | 'panel'
+    | 'timber';
+
+/** What tops a tower: a frame of fins, steps, a spike, or a lit halo. */
+export type CrownStyle = 'fins' | 'stepped' | 'spike' | 'halo';
+
 /**
  * One piece of a building's 3D model. x, y, w, d are in tiles from the
  * building's corner (x east, y south); z and h are in tiles upward.
@@ -390,6 +414,12 @@ export type ModelPart =
           /** A slab line between storeys. */
           band?: string;
           material?: Material;
+          /** How the walls are drawn; grid (punched windows) by default. */
+          facade?: FacadeStyle;
+          /** A projecting moulding along the top. */
+          cornice?: string;
+          /** A darker base storey band. */
+          plinth?: string;
       }
     | {
           kind: 'windows';
@@ -514,7 +544,270 @@ export type ModelPart =
           radius: number;
           color: string;
       }
-    | { kind: 'tree'; x: number; y: number; scale: number; conifer: boolean }
+    | {
+          kind: 'tree';
+          x: number;
+          y: number;
+          scale: number;
+          conifer: boolean;
+          /** Height it stands on (a roof garden); the ground by default. */
+          z?: number;
+      }
+    | {
+          /**
+           * A tower of storeys on any plan, narrowing (taper: top width as a
+           * share of the base) and turning (twist, degrees) as it rises.
+           */
+          kind: 'tower';
+          x: number;
+          y: number;
+          z: number;
+          w: number;
+          d: number;
+          plan: PlanShape;
+          /** Corner radius (rounded) or cut (chamfer) or arm width (cross). */
+          r?: number;
+          floors: number;
+          floorHeight: number;
+          taper?: number;
+          twist?: number;
+          facade?: FacadeStyle;
+          color: string;
+          window: string;
+          /** Mullions, fins, slabs and piers. */
+          trim?: string;
+          /** The flat top. */
+          cap?: string;
+          material?: Material;
+      }
+    | {
+          /** A plain prism on any plan: podiums, drums, plinths. */
+          kind: 'prism';
+          x: number;
+          y: number;
+          z: number;
+          w: number;
+          d: number;
+          h: number;
+          plan: PlanShape;
+          r?: number;
+          color: string;
+          /** Top width as a share of the base. */
+          taper?: number;
+          material?: Material;
+      }
+    | {
+          kind: 'crown';
+          x: number;
+          y: number;
+          z: number;
+          w: number;
+          d: number;
+          h: number;
+          plan?: PlanShape;
+          r?: number;
+          style: CrownStyle;
+          color: string;
+          /** Light that comes on at night (halo, fin tips). */
+          glow?: string;
+      }
+    | {
+          /** Free-standing columns in front of a wall, optionally under a pediment. */
+          kind: 'columns';
+          face: Face;
+          /** The wall, as its box. */
+          x: number;
+          y: number;
+          w: number;
+          d: number;
+          z?: number;
+          h: number;
+          count: number;
+          /** How far in front of the wall they stand. */
+          depth?: number;
+          color: string;
+          /** A triangular gable over the colonnade, in this colour. */
+          pediment?: string | null;
+      }
+    | {
+          /** A row of round-topped openings (arcade) on walls. */
+          kind: 'arches';
+          faces: Face[];
+          x: number;
+          y: number;
+          z: number;
+          w: number;
+          d: number;
+          h: number;
+          count: number;
+          color: string;
+          /** The openings; lit at night. */
+          opening?: string;
+      }
+    | {
+          kind: 'balconies';
+          faces: Face[];
+          x: number;
+          y: number;
+          z: number;
+          w: number;
+          d: number;
+          floors: number;
+          floorHeight: number;
+          depth?: number;
+          color: string;
+          rail?: string;
+          /** Glass railings instead of solid parapets. */
+          glass?: boolean;
+      }
+    | {
+          /** Flat columns on walls, with a base and a capital. */
+          kind: 'pilasters';
+          faces: Face[];
+          x: number;
+          y: number;
+          z: number;
+          w: number;
+          d: number;
+          h: number;
+          count: number;
+          color: string;
+      }
+    | {
+          /** A projecting moulding around the top of a box. */
+          kind: 'cornice';
+          x: number;
+          y: number;
+          z: number;
+          w: number;
+          d: number;
+          h?: number;
+          out?: number;
+          color: string;
+      }
+    | {
+          /** Battlements: a parapet with merlons around a roof. */
+          kind: 'crenels';
+          x: number;
+          y: number;
+          z: number;
+          w: number;
+          d: number;
+          h: number;
+          color: string;
+      }
+    | {
+          /** Small gabled windows on one slope of a roof. */
+          kind: 'dormers';
+          face: Face;
+          /** The roof's footprint and the height its slope starts at. */
+          x: number;
+          y: number;
+          z: number;
+          w: number;
+          d: number;
+          count: number;
+          h: number;
+          color: string;
+          roof: string;
+          window?: string;
+      }
+    | {
+          /** A sloping canopy over a wall, striped if `stripe` is set. */
+          kind: 'awning';
+          face: Face;
+          x: number;
+          y: number;
+          w: number;
+          d: number;
+          z: number;
+          depth: number;
+          color: string;
+          stripe?: string;
+      }
+    | {
+          /** Steps up to a wall, centred on it. */
+          kind: 'stairs';
+          face: Face;
+          x: number;
+          y: number;
+          w: number;
+          d: number;
+          width: number;
+          steps: number;
+          height: number;
+          color: string;
+      }
+    | {
+          /** Posts and rails (or a low wall) around a plot. */
+          kind: 'fence';
+          x: number;
+          y: number;
+          w: number;
+          d: number;
+          h: number;
+          color: string;
+          /** A gap for a gate in this side. */
+          gate?: Face;
+          solid?: boolean;
+      }
+    | {
+          /** Rows of tilted panels facing south. */
+          kind: 'solar';
+          x: number;
+          y: number;
+          z: number;
+          w: number;
+          d: number;
+          rows: number;
+          color?: string;
+      }
+    | {
+          kind: 'chimney';
+          x: number;
+          y: number;
+          z: number;
+          w: number;
+          h: number;
+          color: string;
+          smoke?: boolean;
+      }
+    | {
+          /** A landing pad with an H and edge lights, centred on x, y. */
+          kind: 'helipad';
+          x: number;
+          y: number;
+          z: number;
+          r: number;
+      }
+    | {
+          /**
+           * Light lines on the edges of a box — corners and rings — dim by
+           * day, glowing at night.
+           */
+          kind: 'neon';
+          x: number;
+          y: number;
+          z: number;
+          w: number;
+          d: number;
+          h: number;
+          color: string;
+          rings?: number;
+          corners?: boolean;
+      }
+    | {
+          /** A clock face on a wall, lit at night. */
+          kind: 'clock';
+          face: Face;
+          x: number;
+          y: number;
+          w: number;
+          d: number;
+          z: number;
+          r: number;
+          color?: string;
+      }
     | {
           kind: 'blades';
           x: number;

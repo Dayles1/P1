@@ -17,12 +17,14 @@ import type {
     Palette,
     RoofShape,
 } from '../engine/content/types';
+import { addArchitecture, addStyledFloors } from './architecture';
+import type { ArchitectureKit } from './architecture';
 import { color, hash3, resolveColor } from './colors';
 import type { Bucket, MaterialSet } from './materials';
 import { BUCKETS } from './materials';
 
-type V3 = [number, number, number];
-type Lit = [number, number, number, number];
+export type V3 = [number, number, number];
+export type Lit = [number, number, number, number];
 
 export interface ModelOptions {
     /** Index into palette.walls for "walls". */
@@ -70,10 +72,10 @@ export interface ModelGeometry {
     dispose(): void;
 }
 
-const WINDOW_PROUD = 0.006;
+export const WINDOW_PROUD = 0.006;
 const ZERO_LIT: Lit = [0, 0, 0, 2];
 
-class GeoBucket {
+export class GeoBucket {
     readonly position: number[] = [];
     readonly normal: number[] = [];
     readonly color: number[] = [];
@@ -138,7 +140,7 @@ class GeoBucket {
 }
 
 /** Model coordinates (x east, y south, z up) → local three.js coordinates. */
-function W(x: number, y: number, z: number): V3 {
+export function W(x: number, y: number, z: number): V3 {
     return [x, z, y];
 }
 
@@ -166,7 +168,7 @@ function polygonNormal(points: V3[]): V3 {
  * Adds a convex polygon (local coordinates) facing `outward` (a direction in
  * model coordinates): the winding is fixed up to face it.
  */
-function poly(
+export function poly(
     bucket: GeoBucket,
     points: V3[],
     c: THREE.Color,
@@ -190,7 +192,7 @@ function poly(
 }
 
 /** A box in model coordinates. */
-function box(
+export function box(
     bucket: GeoBucket,
     x0: number,
     y0: number,
@@ -244,7 +246,7 @@ function box(
 }
 
 /** Appends a three.js geometry (transformed) with one colour. */
-function append(
+export function append(
     bucket: GeoBucket,
     source: THREE.BufferGeometry,
     matrix: THREE.Matrix4,
@@ -276,7 +278,7 @@ function append(
     }
 }
 
-interface FaceFrame {
+export interface FaceFrame {
     ox: number;
     oy: number;
     dx: number;
@@ -286,7 +288,7 @@ interface FaceFrame {
     length: number;
 }
 
-function faceFrame(
+export function faceFrame(
     face: Face,
     x0: number,
     y0: number,
@@ -337,12 +339,17 @@ function faceFrame(
     }
 }
 
-function facePoint(f: FaceFrame, u: number, z: number, proud: number): V3 {
+export function facePoint(
+    f: FaceFrame,
+    u: number,
+    z: number,
+    proud: number,
+): V3 {
     return W(f.ox + f.dx * u + f.nx * proud, f.oy + f.dy * u + f.ny * proud, z);
 }
 
 /** A rectangle lying on a face, slightly in front of it. */
-function faceRect(
+export function faceRect(
     bucket: GeoBucket,
     f: FaceFrame,
     u0: number,
@@ -368,7 +375,7 @@ function faceRect(
 }
 
 /** A strip between two face points (u, z), `width` wide. */
-function faceStrip(
+export function faceStrip(
     bucket: GeoBucket,
     f: FaceFrame,
     u0: number,
@@ -398,7 +405,7 @@ function faceStrip(
     );
 }
 
-function bucketOf(material: Material | undefined): Bucket {
+export function bucketOf(material: Material | undefined): Bucket {
     switch (material) {
         case 'glass':
             return 'glass';
@@ -411,13 +418,13 @@ function bucketOf(material: Material | undefined): Bucket {
     }
 }
 
-function shaded(c: THREE.Color, factor: number): THREE.Color {
+export function shaded(c: THREE.Color, factor: number): THREE.Color {
     return c.clone().multiplyScalar(factor);
 }
 
-const FACES: Face[] = ['n', 'e', 's', 'w'];
+export const FACES: Face[] = ['n', 'e', 's', 'w'];
 
-function num(value: unknown, fallback = 0): number {
+export function num(value: unknown, fallback = 0): number {
     return typeof value === 'number' && Number.isFinite(value)
         ? value
         : fallback;
@@ -457,6 +464,7 @@ export function buildModel(
     const emitters: EmitterSpec[] = [];
     const lights: LightSpec[] = [];
     const matrix = new THREE.Matrix4();
+    const kit: ArchitectureKit = { get, paint, nextLit, emitters, lights };
 
     for (const part of parts) {
         switch (part.kind) {
@@ -487,6 +495,15 @@ export function buildModel(
                 break;
 
             case 'floors':
+                if (
+                    (part.facade && part.facade !== 'grid') ||
+                    part.cornice ||
+                    part.plinth
+                ) {
+                    addStyledFloors(kit, part);
+                    break;
+                }
+
                 addFloors(
                     get(bucketOf(part.material)),
                     get('windows'),
@@ -876,6 +893,7 @@ export function buildModel(
                     num(part.scale, 1),
                     Boolean(part.conifer),
                     0,
+                    num(part.z),
                 );
                 break;
 
@@ -904,6 +922,9 @@ export function buildModel(
                 });
                 break;
             }
+
+            default:
+                addArchitecture(part, kit);
         }
     }
 
@@ -1024,11 +1045,12 @@ export function addTree(
     scale: number,
     conifer: boolean,
     variant: number,
+    z = 0,
 ): void {
     const matrix = new THREE.Matrix4();
     const h = 0.45 * scale;
 
-    matrix.makeTranslation(x, h * 0.15, y);
+    matrix.makeTranslation(x, z + h * 0.15, y);
     append(
         trunk,
         new THREE.CylinderGeometry(0.018 * scale, 0.026 * scale, h * 0.3, 5),
@@ -1043,7 +1065,7 @@ export function addTree(
             const r = (0.13 - i * 0.03) * scale;
             const ch = h * 0.38;
 
-            matrix.makeTranslation(x, h * (0.22 + i * 0.22) + ch / 2, y);
+            matrix.makeTranslation(x, z + h * (0.22 + i * 0.22) + ch / 2, y);
             append(trunk, new THREE.ConeGeometry(r, ch, 7), matrix, green);
         }
     } else {
@@ -1052,7 +1074,7 @@ export function addTree(
         );
 
         matrix.compose(
-            new THREE.Vector3(x, h * 0.62, y),
+            new THREE.Vector3(x, z + h * 0.62, y),
             new THREE.Quaternion(),
             new THREE.Vector3(1, 0.9, 1),
         );
@@ -1062,7 +1084,11 @@ export function addTree(
             matrix,
             tone,
         );
-        matrix.makeTranslation(x + 0.05 * scale, h * 0.78, y - 0.03 * scale);
+        matrix.makeTranslation(
+            x + 0.05 * scale,
+            z + h * 0.78,
+            y - 0.03 * scale,
+        );
         append(
             crown,
             new THREE.IcosahedronGeometry(0.09 * scale, 0),

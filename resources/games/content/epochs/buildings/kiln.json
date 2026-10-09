@@ -90,7 +90,21 @@
                     { "kind": "box", "x": 0.436, "y": 0.81, "z": 1.105, "w": 0.128, "d": 0.02, "h": 0.03, "color": "#c9c2b8" },
                     { "kind": "emitter", "x": 0.5, "y": 0.82, "z": 1.3, "type": "smoke" },
                     { "kind": "box", "x": 0.1, "y": 0.72, "z": 0, "w": 0.25, "d": 0.2, "h": 0.15, "color": "walls" },
-                    { "kind": "box", "x": 0.7, "y": 0.72, "z": 0, "w": 0.22, "d": 0.2, "h": 0.15, "color": "walls" }
+                    { "kind": "box", "x": 0.7, "y": 0.72, "z": 0, "w": 0.22, "d": 0.2, "h": 0.15, "color": "walls" },
+                    {
+                        "kind": "pilasters",
+                        "faces": ["s", "e"],
+                        "x": 0.08,
+                        "y": 0.1,
+                        "z": 0,
+                        "w": 0.84,
+                        "d": 0.55,
+                        "h": 0.32,
+                        "count": 3,
+                        "color": "trim"
+                    },
+                    { "kind": "pole", "x": 0.94, "y": 0.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.94, "y": 0.94, "z": 0.3, "radius": 1.2, "color": "#f3c86b" }
                 ]
             }
         },
@@ -139,7 +153,23 @@
                     { "kind": "cylinder", "x": 0.55, "y": 0.8, "z": 0, "r": 0.12, "h": 0.6, "color": "metal", "segments": 12 },
                     { "kind": "cylinder", "x": 0.85, "y": 0.82, "z": 0, "r": 0.05, "h": 1, "color": "metal", "taper": 0.75, "segments": 12 },
                     { "kind": "box", "x": 0.81, "y": 0.81, "z": 0.85, "w": 0.08, "d": 0.02, "h": 0.03, "color": "#c9c2b8" },
-                    { "kind": "emitter", "x": 0.85, "y": 0.82, "z": 1, "type": "steam" }
+                    { "kind": "emitter", "x": 0.85, "y": 0.82, "z": 1, "type": "steam" },
+                    {
+                        "kind": "pilasters",
+                        "faces": ["s", "e"],
+                        "x": 0.06,
+                        "y": 0.06,
+                        "z": 0,
+                        "w": 0.88,
+                        "d": 0.55,
+                        "h": 0.45,
+                        "count": 3,
+                        "color": "trim"
+                    },
+                    { "kind": "cornice", "x": 0.06, "y": 0.06, "z": 0.45, "w": 0.88, "d": 0.55, "h": 0.04, "out": 0.025, "color": "trim" },
+                    { "kind": "pole", "x": 0.85, "y": 0.82, "z": 1, "h": 0.04, "color": "metal", "blink": "#ff4d4d" },
+                    { "kind": "pole", "x": 0.94, "y": 0.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.94, "y": 0.94, "z": 0.3, "radius": 1.2, "color": "#fff1c4" }
                 ]
             }
         }

@@ -74,7 +74,10 @@
                     { "kind": "box", "x": 0.35, "y": 0.35, "z": 0, "w": 0.3, "d": 0.3, "h": 0.1, "color": "walls" },
                     { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0.1, "r": 0.08, "h": 1.4, "color": "metal", "taper": 0.4, "segments": 4 },
                     { "kind": "box", "x": 0.42, "y": 0.4, "z": 1.5, "w": 0.16, "d": 0.2, "h": 0.1, "color": "metal" },
-                    { "kind": "blades", "x": 0.5, "y": 0.38, "z": 1.55, "r": 0.4, "speed": 0.4, "color": "trim", "axis": "y" }
+                    { "kind": "blades", "x": 0.5, "y": 0.38, "z": 1.55, "r": 0.4, "speed": 0.4, "color": "trim", "axis": "y" },
+                    { "kind": "pole", "x": 0.5, "y": 0.5, "z": 1.5, "h": 0.04, "color": "metal", "blink": "#ff4d4d" },
+                    { "kind": "pole", "x": 0.94, "y": 0.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.94, "y": 0.94, "z": 0.3, "radius": 1.2, "color": "#fff1c4" }
                 ]
             }
         },
@@ -107,7 +110,9 @@
                     { "kind": "box", "x": 0.42, "y": 0.38, "z": 2.6, "w": 0.16, "d": 0.3, "h": 0.14, "color": "#f2f4f4" },
                     { "kind": "blades", "x": 0.5, "y": 0.36, "z": 2.67, "r": 0.46, "speed": 0.3, "color": "#f2f4f4", "axis": "y" },
                     { "kind": "pole", "x": 0.5, "y": 0.5, "z": 2.74, "h": 0.05, "color": "metal", "blink": "#ff3b3b" },
-                    { "kind": "box", "x": 0.3, "y": 0.75, "z": 0, "w": 0.4, "d": 0.2, "h": 0.15, "color": "walls" }
+                    { "kind": "box", "x": 0.3, "y": 0.75, "z": 0, "w": 0.4, "d": 0.2, "h": 0.15, "color": "walls" },
+                    { "kind": "pole", "x": 0.94, "y": 0.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.94, "y": 0.94, "z": 0.3, "radius": 1.2, "color": "#b5fff0" }
                 ]
             }
         }

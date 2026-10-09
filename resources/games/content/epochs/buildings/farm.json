@@ -170,7 +170,21 @@
                     { "kind": "sphere", "x": 1.35, "y": 1.6, "z": 0.9, "r": 0.17, "color": "metal", "half": true },
                     { "kind": "cylinder", "x": 1.75, "y": 1.6, "z": 0, "r": 0.15, "h": 0.75, "color": "metal", "segments": 16 },
                     { "kind": "sphere", "x": 1.75, "y": 1.6, "z": 0.75, "r": 0.15, "color": "metal", "half": true },
-                    { "kind": "box", "x": 1.1, "y": 0.5, "z": 0, "w": 0.2, "d": 0.14, "h": 0.12, "color": "#c43a2a" }
+                    { "kind": "box", "x": 1.1, "y": 0.5, "z": 0, "w": 0.2, "d": 0.14, "h": 0.12, "color": "#c43a2a" },
+                    {
+                        "kind": "pilasters",
+                        "faces": ["s", "e"],
+                        "x": 0.15,
+                        "y": 1.35,
+                        "z": 0,
+                        "w": 0.9,
+                        "d": 0.55,
+                        "h": 0.38,
+                        "count": 3,
+                        "color": "trim"
+                    },
+                    { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#fff1c4" }
                 ]
             }
         },
@@ -284,7 +298,10 @@
                     { "kind": "tree", "x": 0.55, "y": 0.55, "scale": 0.35, "conifer": false },
                     { "kind": "tree", "x": 1.45, "y": 1.45, "scale": 0.35, "conifer": false },
                     { "kind": "box", "x": 1.3, "y": 0.3, "z": 0, "w": 0.5, "d": 0.4, "h": 0.3, "color": "walls" },
-                    { "kind": "pole", "x": 1.55, "y": 0.5, "z": 0.3, "h": 0.4, "color": "metal", "blink": "#f0a43a" }
+                    { "kind": "pole", "x": 1.55, "y": 0.5, "z": 0.3, "h": 0.4, "color": "metal", "blink": "#f0a43a" },
+                    { "kind": "neon", "x": 1.3, "y": 0.3, "z": 0, "w": 0.5, "d": 0.4, "h": 0.3, "color": "accent", "rings": 1, "corners": true },
+                    { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#cfe0ff" }
                 ]
             }
         },
@@ -312,13 +329,15 @@
             },
             "model": {
                 "parts": [
-                    { "kind": "floors", "x": 0.1, "y": 0.1, "z": 0, "w": 1.2, "d": 1.8, "floors": 6, "floorHeight": 0.2, "color": "walls", "window": "crop", "band": "trim" },
+                    { "kind": "floors", "x": 0.1, "y": 0.1, "z": 0, "w": 1.2, "d": 1.8, "floors": 6, "floorHeight": 0.2, "color": "walls", "window": "crop", "band": "trim", "facade": "glass" },
                     { "kind": "box", "x": 0.1, "y": 0.1, "z": 1.2, "w": 1.2, "d": 1.8, "h": 0.04, "color": "trim", "material": "glow" },
                     { "kind": "field", "x": 0.15, "y": 0.15, "w": 1.1, "d": 1.7, "rows": 8, "color": "crop" },
-                    { "kind": "floors", "x": 1.35, "y": 0.4, "z": 0, "w": 0.55, "d": 0.55, "floors": 9, "floorHeight": 0.2, "color": "glass", "window": "accent", "band": "trim", "material": "glass" },
+                    { "kind": "floors", "x": 1.35, "y": 0.4, "z": 0, "w": 0.55, "d": 0.55, "floors": 9, "floorHeight": 0.2, "color": "glass", "window": "accent", "band": "trim", "material": "glass", "facade": "glass" },
                     { "kind": "roof", "shape": "pyramid", "x": 1.35, "y": 0.4, "z": 1.8, "w": 0.55, "d": 0.55, "h": 0.3, "color": "accent", "material": "glow" },
                     { "kind": "field", "x": 1.35, "y": 1.1, "w": 0.55, "d": 0.8, "rows": 4, "color": "crop" },
-                    { "kind": "light", "x": 0.7, "y": 1, "z": 1.3, "radius": 2, "color": "#9ad0a0" }
+                    { "kind": "light", "x": 0.7, "y": 1, "z": 1.3, "radius": 2, "color": "#9ad0a0" },
+                    { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#c06cff" }
                 ]
             }
         },
@@ -355,7 +374,9 @@
                     { "kind": "sphere", "x": 1.7, "y": 0.3, "z": 0.2, "r": 0.2, "color": "glass", "material": "glass" },
                     { "kind": "sphere", "x": 0.3, "y": 1.7, "z": 0.2, "r": 0.2, "color": "glass", "material": "glass" },
                     { "kind": "field", "x": 1.4, "y": 1.4, "w": 0.5, "d": 0.5, "rows": 3, "color": "crop" },
-                    { "kind": "light", "x": 1, "y": 1, "z": 1.3, "radius": 2.2, "color": "#b6f08a" }
+                    { "kind": "light", "x": 1, "y": 1, "z": 1.3, "radius": 2.2, "color": "#b6f08a" },
+                    { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#7ae0ff" }
                 ]
             }
         }

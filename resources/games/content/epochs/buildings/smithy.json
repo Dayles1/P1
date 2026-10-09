@@ -165,7 +165,19 @@
                     { "kind": "box", "x": 0.802, "y": 0.84, "z": 0.85, "w": 0.096, "d": 0.02, "h": 0.03, "color": "#c9c2b8" },
                     { "kind": "emitter", "x": 0.85, "y": 0.85, "z": 1, "type": "smoke" },
                     { "kind": "pole", "x": 0.05, "y": 0.95, "z": 0, "h": 0.3, "color": "metal", "blink": null },
-                    { "kind": "light", "x": 0.05, "y": 0.95, "z": 0.3, "radius": 1.4, "color": "#f3c86b" }
+                    { "kind": "light", "x": 0.05, "y": 0.95, "z": 0.3, "radius": 1.4, "color": "#f3c86b" },
+                    {
+                        "kind": "pilasters",
+                        "faces": ["s", "e"],
+                        "x": 0.08,
+                        "y": 0.15,
+                        "z": 0,
+                        "w": 0.84,
+                        "d": 0.7,
+                        "h": 0.42,
+                        "count": 3,
+                        "color": "trim"
+                    }
                 ]
             }
         },
@@ -216,7 +228,20 @@
                     { "kind": "box", "x": 0.752, "y": 0.81, "z": 0.935, "w": 0.096, "d": 0.02, "h": 0.03, "color": "#c9c2b8" },
                     { "kind": "emitter", "x": 0.8, "y": 0.82, "z": 1.1, "type": "steam" },
                     { "kind": "pole", "x": 0.95, "y": 0.95, "z": 0, "h": 0.4, "color": "metal", "blink": null },
-                    { "kind": "light", "x": 0.95, "y": 0.95, "z": 0.4, "radius": 1.4, "color": "#ffd98a" }
+                    { "kind": "light", "x": 0.95, "y": 0.95, "z": 0.4, "radius": 1.4, "color": "#ffd98a" },
+                    {
+                        "kind": "pilasters",
+                        "faces": ["s", "e"],
+                        "x": 0.06,
+                        "y": 0.06,
+                        "z": 0,
+                        "w": 0.88,
+                        "d": 0.62,
+                        "h": 0.55,
+                        "count": 3,
+                        "color": "trim"
+                    },
+                    { "kind": "pole", "x": 0.8, "y": 0.82, "z": 1.1, "h": 0.04, "color": "metal", "blink": "#ff4d4d" }
                 ]
             }
         },

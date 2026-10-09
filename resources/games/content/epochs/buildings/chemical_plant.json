@@ -47,7 +47,9 @@
                     { "kind": "pole", "x": 1.7, "y": 0.3, "z": 0, "h": 1.6, "color": "metal", "blink": null },
                     { "kind": "emitter", "x": 1.7, "y": 0.3, "z": 1.6, "type": "sparks" },
                     { "kind": "light", "x": 1.7, "y": 0.3, "z": 1.6, "radius": 1.4, "color": "#ff9a3a" },
-                    { "kind": "emitter", "x": 0.35, "y": 0.35, "z": 1.8, "type": "steam" }
+                    { "kind": "emitter", "x": 0.35, "y": 0.35, "z": 1.8, "type": "steam" },
+                    { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#e8f4ff" }
                 ]
             }
         },
@@ -97,7 +99,8 @@
                     },
                     { "kind": "roof", "shape": "flat", "x": 0.1, "y": 1, "z": 0.45, "w": 1.8, "d": 0.85, "h": 0.04, "color": "roof" },
                     { "kind": "tree", "x": 1.8, "y": 1.8, "scale": 0.3, "conifer": false },
-                    { "kind": "light", "x": 0.85, "y": 0.45, "z": 0.5, "radius": 1.4, "color": "#b6f08a" }
+                    { "kind": "light", "x": 0.85, "y": 0.45, "z": 0.5, "radius": 1.4, "color": "#b6f08a" },
+                    { "kind": "solar", "x": 0.18, "y": 1.08, "z": 0.49, "w": 1.64, "d": 0.69, "rows": 2 }
                 ]
             }
         }

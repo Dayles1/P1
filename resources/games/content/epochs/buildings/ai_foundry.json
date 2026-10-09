@@ -54,7 +54,10 @@
                     { "kind": "roof", "shape": "pyramid", "x": 0.45, "y": 0.45, "z": 1.84, "w": 1.1, "d": 1.1, "h": 0.35, "color": "walls" },
                     { "kind": "sphere", "x": 1, "y": 1, "z": 2.3, "r": 0.12, "color": "accent", "material": "glow" },
                     { "kind": "torus", "x": 1, "y": 1, "z": 0.45, "r": 0.75, "tube": 0.03, "color": "accent", "spin": 0.2, "material": "glow" },
-                    { "kind": "light", "x": 1, "y": 1, "z": 2.3, "radius": 2.4, "color": "#c06cff" }
+                    { "kind": "light", "x": 1, "y": 1, "z": 2.3, "radius": 2.4, "color": "#c06cff" },
+                    { "kind": "neon", "x": 0.2, "y": 0.2, "z": 0, "w": 1.6, "d": 1.6, "h": 0.4, "color": "accent", "rings": 1, "corners": true },
+                    { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#c06cff" }
                 ]
             }
         },
@@ -89,7 +92,9 @@
                     { "kind": "cylinder", "x": 0.35, "y": 0.35, "z": 0, "r": 0.15, "h": 0.8, "color": "glass", "taper": 0, "segments": 6, "material": "glass" },
                     { "kind": "cylinder", "x": 1.65, "y": 1.65, "z": 0, "r": 0.15, "h": 0.8, "color": "glass", "taper": 0, "segments": 6, "material": "glass" },
                     { "kind": "torus", "x": 1, "y": 1, "z": 1, "r": 0.6, "tube": 0.04, "color": "trim", "spin": 0.3, "material": "glow" },
-                    { "kind": "light", "x": 1, "y": 1, "z": 1.8, "radius": 2.5, "color": "#7ae0ff" }
+                    { "kind": "light", "x": 1, "y": 1, "z": 1.8, "radius": 2.5, "color": "#7ae0ff" },
+                    { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#7ae0ff" }
                 ]
             }
         }
