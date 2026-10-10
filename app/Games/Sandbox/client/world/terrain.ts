@@ -4,62 +4,26 @@
  * directly and the chunks (Terrain, below) are only its picture. Its shape and colour follow
  * the biomes (biomes.ts): dunes in the desert, ponds and lakes where it
  * is wetter, rock and snow up high. Anything below WATER_LEVEL is under
- * water. Over it all rises Qing Mao Mountain (qingmao.ts), its three
- * villages on level terraces, with dirt paths between them.
+ * water.
  *
  * World coordinates: 1 unit = 1 metre, Y is up, the world spans
- * [-WORLD_HALF, WORLD_HALF] on X and Z, the spawn is at the origin —
- * the square of the Gu Yue village.
+ * [-WORLD_HALF, WORLD_HALF] on X and Z, the spawn is at the origin.
  */
 
 import * as THREE from 'three';
 import { biomeWeights, peaksAt } from './biomes';
 import { fbm, smoothstep, valueNoise } from './noise';
-import {
-    HOME,
-    mountainHeight,
-    mountainShare,
-    pathDistance,
-    PATH_HALF,
-    terraceAt,
-    VILLAGES,
-} from './qingmao';
-import type { Village } from './qingmao';
 
 export const WORLD_HALF = 256;
 
-/** The open square in the middle of the Gu Yue village, around the spawn. */
+/** A flat clearing around the spawn point. */
 export const SPAWN_RADIUS = 16;
 
 export const WATER_LEVEL = -2.5;
 
 const SEED = 1337;
 
-/** Each village's terrace height: the land at its middle, worked out once. */
-const terraceLevels = new Map<Village, number>();
-
-function terraceLevel(village: Village): number {
-    let level = terraceLevels.get(village);
-
-    if (level === undefined) {
-        level = Math.max(WATER_LEVEL + 3, naturalHeight(village.x, village.z));
-        terraceLevels.set(village, level);
-    }
-
-    return level;
-}
-
 export function heightAt(x: number, z: number): number {
-    const natural = naturalHeight(x, z);
-    const terrace = terraceAt(x, z);
-
-    return terrace
-        ? natural + (terraceLevel(terrace.village) - natural) * terrace.weight
-        : natural;
-}
-
-/** The land as it grew, before the villages levelled their terraces. */
-function naturalHeight(x: number, z: number): number {
     const biome = biomeWeights(x, z);
     const flatten = 1 - 0.7 * biome.desert;
 
@@ -86,17 +50,17 @@ function naturalHeight(x: number, z: number): number {
         (1 - biome.desert) *
         (1 - biome.mountains);
 
+    const clearing = smoothstep(
+        SPAWN_RADIUS,
+        SPAWN_RADIUS * 3,
+        Math.hypot(x, z),
+    );
     const edge = Math.max(Math.abs(x), Math.abs(z));
     const rim = smoothstep(WORLD_HALF - 70, WORLD_HALF - 4, edge);
-    // On Qing Mao the wild peaks and lakes give way to the one mountain.
-    const wild = 1 - smoothstep(0.05, 0.3, mountainShare(x, z));
     const land =
-        (hills + detail) * flatten +
-        dunes * biome.desert +
-        (mountains - lakes) * wild +
-        mountainHeight(x, z);
+        (hills + detail) * flatten + dunes * biome.desert + mountains - lakes;
 
-    return land + rim * rim * 70;
+    return land * clearing + rim * rim * 70;
 }
 
 /** The surface normal at (x, z), written into `out`. */
@@ -112,17 +76,13 @@ export function normalAt(
     return out.set(-dx, 2 * e, -dz).normalize();
 }
 
-/** The land of a gloomy world: dry, grey-olive grass, dark woods, ashen sand. */
-const GRASS = new THREE.Color(0x7f8a6c);
-const FOREST = new THREE.Color(0x5f6e55);
-const SAND = new THREE.Color(0xb3a684);
-const SNOW = new THREE.Color(0xd9dcdf);
-const STONE = new THREE.Color(0x8a8883);
-const SHORE = new THREE.Color(0xa99f84);
-const LAKE_BED = new THREE.Color(0x6b6d63);
-/** Trodden earth in the villages and on the paths, flagstones on the square. */
-const EARTH = new THREE.Color(0x6f624d);
-const PAVING = new THREE.Color(0x77736a);
+const GRASS = new THREE.Color(0xa9c08f);
+const FOREST = new THREE.Color(0x8aa276);
+const SAND = new THREE.Color(0xe0cc98);
+const SNOW = new THREE.Color(0xeef1f3);
+const STONE = new THREE.Color(0xa5a39e);
+const SHORE = new THREE.Color(0xd8c9a0);
+const LAKE_BED = new THREE.Color(0x8f9184);
 
 /** The ground's colour at a point of the given height and steepness (0…1). */
 function groundColor(
@@ -155,17 +115,11 @@ function groundColor(
             SNOW.b * biome.snow) /
         total;
 
-    // Qing Mao stays green with bamboo up its slopes: rock and snow come
-    // only near its top, not at the height the villages stand at.
-    const altitude = y - mountainHeight(x, z) * 0.8;
-
     out.lerp(
         STONE,
-        Math.max(steep, smoothstep(18, 32, altitude), biome.mountains * 0.6),
+        Math.max(steep, smoothstep(18, 32, y), biome.mountains * 0.6),
     );
-    out.lerp(SNOW, smoothstep(40, 55, altitude));
-    out.lerp(EARTH, trodden(x, z));
-    out.lerp(PAVING, square(x, z));
+    out.lerp(SNOW, smoothstep(40, 55, y));
     out.lerp(
         SHORE,
         (1 - biome.snow) * smoothstep(WATER_LEVEL + 1.2, WATER_LEVEL + 0.2, y),
@@ -178,37 +132,6 @@ function groundColor(
         valueNoise(x / 2.5, z / 2.5, SEED + 73) * 0.025;
 
     return out.multiplyScalar(1 + patch);
-}
-
-/** How trodden the ground is (0…1): inside the villages and on the paths. */
-function trodden(x: number, z: number): number {
-    let share = smoothstep(
-        PATH_HALF + 0.8,
-        PATH_HALF - 0.6,
-        pathDistance(x, z),
-    );
-
-    for (const village of VILLAGES) {
-        const distance = Math.hypot(x - village.x, z - village.z);
-        // Worn bare in patches, grass left by the walls.
-        const worn = 0.55 + valueNoise(x / 6, z / 6, SEED + 91) * 0.35;
-
-        share = Math.max(
-            share,
-            smoothstep(village.radius + 1, village.radius - 6, distance) * worn,
-        );
-    }
-
-    return share;
-}
-
-/** The flagstones of the Gu Yue square (0…1). */
-function square(x: number, z: number): number {
-    return smoothstep(
-        SPAWN_RADIUS + 0.5,
-        SPAWN_RADIUS - 0.5,
-        Math.hypot(x - HOME.x, z - HOME.z),
-    );
 }
 
 /** Side of a terrain chunk, metres. */

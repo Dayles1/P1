@@ -97,13 +97,6 @@ const KNUCKLES = [0.8, 1, 0.75];
 /** How much richer the skin's colours are drawn, by style. */
 const SATURATION: Record<BodyStyle, number> = { realistic: 1.15, anime: 1.35 };
 
-/**
- * How deep the skin's relief is drawn (the normal map's strength): the
- * models are superheroes, and the woman's muscles read as a bodybuilder's
- * in a low sun.
- */
-const RELIEF: Record<Gender, number> = { male: 1, female: 0.55 };
-
 /** Texture filtering at a slant (the GPU's own limit caps it). */
 const ANISOTROPY = 8;
 
@@ -271,13 +264,6 @@ export class Human {
 
                 if (material.map && source.name.startsWith('MI_Superhero')) {
                     material.map = saturate(material.map, SATURATION[style]);
-                }
-
-                if (
-                    material instanceof THREE.MeshStandardMaterial &&
-                    source.name.startsWith('MI_Superhero')
-                ) {
-                    material.normalScale.setScalar(RELIEF[gender]);
                 }
 
                 sharpen(material);

@@ -159,6 +159,13 @@ function meat(fill: string, marbling: string, cooked: boolean): string {
     );
 }
 
+/** A cut stone: the icon artifacts are drawn with. */
+export function gem(fill: string, shine: string): string {
+    return svg(
+        `<path d="M16 3 26 13 16 29 6 13z" fill="${fill}"/><path d="M16 3 21 13H11z" fill="${shine}"/><circle cx="16" cy="16" r="13" fill="none" stroke="${fill}" stroke-opacity=".35" stroke-width="1.5"/>`,
+    );
+}
+
 export const ITEMS: Record<ItemId, ItemDefinition> = {
     wood: {
         maxStack: 100,

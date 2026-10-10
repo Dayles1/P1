@@ -1,6 +1,5 @@
 /** The game's words, in the page's language (ru, en or uz). */
 
-import type { Species } from './gu';
 import type {
     ArtifactType,
     Attribute,
@@ -15,7 +14,6 @@ import type { RecipeGroup } from './recipes';
 import type { BodyStyle, Quality } from './settings';
 import type { StatKey } from './stats';
 import type { MobType } from './world/mob-models';
-import type { Clan } from './world/qingmao';
 
 export type DeathCause = MobType | 'fall' | 'drown';
 
@@ -184,19 +182,8 @@ interface Texts {
         'meadow' | 'forest' | 'desert' | 'snow' | 'mountains',
         string
     >;
-    /** The clan villages of Qing Mao: [short, full] name. */
-    villages: Record<Clan, [string, string]>;
-    map: {
-        title: string;
-        hint: string;
-        hint_touch: string;
-        you: string;
-        summit: string;
-        paths: string;
-    };
     hero_title: string;
-    /** A few lines on the world the hero wakes in. */
-    hero_intro: string;
+    hero_pick_class: string;
     hero_pick_gender: string;
     hero_start: string;
     hero_keeps: string;
@@ -254,8 +241,6 @@ interface Texts {
     second_wind: string;
     artifacts_hint: string;
     artifact_types: Record<ArtifactType, string>;
-    /** The Gu each artifact is (see gu.ts). */
-    gu: Record<Species, string>;
     ranks: string[];
     layers: { mortal: string; immortal: string };
     rank: string;
@@ -290,7 +275,7 @@ interface Texts {
 
 const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
     ru: {
-        title: 'Gu World',
+        title: 'Песочница',
         back: 'Игры',
         start: 'Нажмите, чтобы играть',
         start_touch: 'Коснитесь, чтобы играть',
@@ -309,7 +294,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             ['ПКМ / R', 'построить · съесть'],
             ['1–6', 'выбрать предмет'],
             ['I / Tab', 'инвентарь'],
-            ['Q · P · N', 'крафт · персонаж · карта'],
+            ['Q · P', 'крафт · персонаж'],
             ['M · F3 · F4', 'звук · отладка · промотать время'],
             ['G', 'умение класса'],
             ['Enter', 'создать · изучить (в меню)'],
@@ -555,27 +540,13 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             snow: 'Снега',
             mountains: 'Горы',
         },
-        villages: {
-            gu_yue: ['Гу Юэ', 'Деревня клана Гу Юэ'],
-            bai: ['Бай', 'Деревня клана Бай'],
-            xiong: ['Сюн', 'Деревня клана Сюн'],
-        },
-        map: {
-            title: 'Гора Цин Мао',
-            hint: 'N или Esc — закрыть',
-            hint_touch: 'Коснитесь, чтобы закрыть',
-            you: 'Вы',
-            summit: 'Вершина',
-            paths: 'Тропы',
-        },
-        hero_title: 'Пробуждение',
-        hero_intro:
-            'Мир Гу жесток: здесь живут лишь сильные. В тебе только что открылась апертура — ты смертный, но уже не простой. Найди первого Гу и вырасти его: путь укажут они.',
+        hero_title: 'Новый герой',
+        hero_pick_class: 'Выберите класс',
         hero_pick_gender: 'Пол',
-        hero_start: 'Войти в мир',
+        hero_start: 'В путь',
         hero_keeps: 'Ваши вещи, постройки и статистика останутся с вами.',
         hero_gender_note:
-            'Женщины ловчее и быстрее, мужчины сильнее — на одно очко.',
+            'Женщины ловчее и быстрее, мужчины сильнее (у танка — на 2 очка, у остальных — на 1).',
         classes: {
             tank: [
                 'Танк',
@@ -686,24 +657,6 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         artifact_types: {
             stats: 'Артефакт характеристик',
             skill: 'Артефакт навыка',
-        },
-        gu: {
-            leech: 'Кровавая пиявка',
-            cicada: 'Цикада возрождения',
-            locust: 'Прыгучая саранча',
-            diver: 'Жук-ныряльщик',
-            dragonfly: 'Стрекоза-вихрь',
-            ironbeetle: 'Железный жук',
-            caterpillar: 'Нефритовая гусеница',
-            ant: 'Муравей-добытчик',
-            firefly: 'Светлячок',
-            rhino: 'Жук-силач',
-            mantis: 'Богомол-боец',
-            centipede: 'Сколопендра',
-            spider: 'Паук-тень',
-            moth: 'Лунный мотылёк',
-            silkworm: 'Шелкопряд духа',
-            scarab: 'Золотой скарабей',
         },
         ranks: [
             'Обычный',
@@ -887,7 +840,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         },
     },
     en: {
-        title: 'Gu World',
+        title: 'Sandbox',
         back: 'Games',
         start: 'Click to play',
         start_touch: 'Tap to play',
@@ -906,7 +859,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             ['RMB / R', 'build · eat'],
             ['1–6', 'pick an item'],
             ['I / Tab', 'inventory'],
-            ['Q · P · N', 'crafting · character · map'],
+            ['Q · P', 'crafting · character'],
             ['M · F3 · F4', 'sound · debug · skip time'],
             ['G', 'class skill'],
             ['Enter', 'make · learn (in the menu)'],
@@ -1153,27 +1106,13 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             snow: 'Snowlands',
             mountains: 'Mountains',
         },
-        villages: {
-            gu_yue: ['Gu Yue', 'Gu Yue clan village'],
-            bai: ['Bai', 'Bai clan village'],
-            xiong: ['Xiong', 'Xiong clan village'],
-        },
-        map: {
-            title: 'Qing Mao Mountain',
-            hint: 'N or Esc to close',
-            hint_touch: 'Tap to close',
-            you: 'You',
-            summit: 'Summit',
-            paths: 'Paths',
-        },
-        hero_title: 'Awakening',
-        hero_intro:
-            'The world of Gu is cruel: only the strong live here. Your aperture has just opened — still a mortal, but no longer an ordinary one. Find your first Gu and raise it: the Gu will show the way.',
+        hero_title: 'New hero',
+        hero_pick_class: 'Choose a class',
         hero_pick_gender: 'Gender',
-        hero_start: 'Enter the world',
+        hero_start: 'Set off',
         hero_keeps: 'Your things, buildings and stats stay with you.',
         hero_gender_note:
-            'Women are nimbler and quicker, men stronger — by one point.',
+            'Women are nimbler and quicker, men stronger (2 points for a tank, 1 for the rest).',
         classes: {
             tank: [
                 'Tank',
@@ -1281,24 +1220,6 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         artifact_types: {
             stats: 'Attribute artifact',
             skill: 'Skill artifact',
-        },
-        gu: {
-            leech: 'Blood leech',
-            cicada: 'Rebirth cicada',
-            locust: 'Leaping locust',
-            diver: 'Diving beetle',
-            dragonfly: 'Whirlwind dragonfly',
-            ironbeetle: 'Iron beetle',
-            caterpillar: 'Jade caterpillar',
-            ant: 'Gatherer ant',
-            firefly: 'Firefly',
-            rhino: 'Strongman beetle',
-            mantis: 'Fighting mantis',
-            centipede: 'Centipede',
-            spider: 'Shadow spider',
-            moth: 'Moon moth',
-            silkworm: 'Spirit silkworm',
-            scarab: 'Golden scarab',
         },
         ranks: [
             'Common',
@@ -1485,7 +1406,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         },
     },
     uz: {
-        title: 'Gu World',
+        title: 'Qumdon',
         back: "O'yinlar",
         start: "O'ynash uchun bosing",
         start_touch: "O'ynash uchun teging",
@@ -1504,7 +1425,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             ['SOT / R', 'qurish · yeyish'],
             ['1–6', 'buyumni tanlash'],
             ['I / Tab', 'inventar'],
-            ['Q · P · N', 'yasash · qahramon · xarita'],
+            ['Q · P', 'yasash · qahramon'],
             ['M · F3 · F4', 'ovoz · nosozlik · vaqtni o‘tkazish'],
             ['G', 'sinf mahorati'],
             ['Enter', 'yasash · o‘rganish (menyuda)'],
@@ -1750,28 +1671,14 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
             snow: 'Qorliklar',
             mountains: 'Tog‘lar',
         },
-        villages: {
-            gu_yue: ['Gu Yue', 'Gu Yue urug‘i qishlog‘i'],
-            bai: ['Bai', 'Bai urug‘i qishlog‘i'],
-            xiong: ['Xiong', 'Xiong urug‘i qishlog‘i'],
-        },
-        map: {
-            title: 'Qing Mao tog‘i',
-            hint: 'Yopish — N yoki Esc',
-            hint_touch: 'Yopish uchun teging',
-            you: 'Siz',
-            summit: 'Cho‘qqi',
-            paths: 'So‘qmoqlar',
-        },
-        hero_title: 'Uyg‘onish',
-        hero_intro:
-            'Gu dunyosi shafqatsiz: bu yerda faqat kuchlilar yashaydi. Sening aperturang endigina ochildi — hali oddiy odamsan, lekin endi oddiy emassan. Birinchi Gu’ingni top va uni o‘stir: yo‘lni ular ko‘rsatadi.',
+        hero_title: 'Yangi qahramon',
+        hero_pick_class: 'Sinfni tanlang',
         hero_pick_gender: 'Jins',
-        hero_start: 'Dunyoga kirish',
+        hero_start: 'Yo‘lga',
         hero_keeps:
             'Buyumlaringiz, qurilmalaringiz va statistikangiz saqlanadi.',
         hero_gender_note:
-            'Ayollar chaqqonroq va tezroq, erkaklar kuchliroq — bir ochkoga.',
+            'Ayollar chaqqonroq va tezroq, erkaklar kuchliroq (tankda 2 ochko, boshqalarda 1).',
         classes: {
             tank: [
                 'Tank',
@@ -1879,24 +1786,6 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         artifact_types: {
             stats: 'Xususiyat artefakti',
             skill: 'Ko‘nikma artefakti',
-        },
-        gu: {
-            leech: 'Qon zuluk',
-            cicada: 'Tirilish chirildog‘i',
-            locust: 'Sakrovchi chigirtka',
-            diver: 'Sho‘ng‘uvchi qo‘ng‘iz',
-            dragonfly: 'Quyun ninachi',
-            ironbeetle: 'Temir qo‘ng‘iz',
-            caterpillar: 'Zumrad qurt',
-            ant: 'Yig‘uvchi chumoli',
-            firefly: 'Yaltiroq qo‘ng‘iz',
-            rhino: 'Polvon qo‘ng‘iz',
-            mantis: 'Jangchi beshiktervatar',
-            centipede: 'Qirqoyoq',
-            spider: 'Soya o‘rgimchak',
-            moth: 'Oy kapalagi',
-            silkworm: 'Ruh ipak qurti',
-            scarab: 'Oltin skarabey',
         },
         ranks: [
             'Oddiy',

@@ -1,6 +1,7 @@
 /**
  * Everything standing on the ground: trees, cacti and rocks to gather
- * from, finds to pick up, artifacts, campfires and places to sit. Each is a picture (instanced meshes) and,
+ * from, finds to pick up, artifacts, campfires, places to sit and the
+ * blocks next to the spawn. Each is a picture (instanced meshes) and,
  * when solid, a collider. What grows where follows the biome: broad trees
  * in meadows and woods, firs in the snow and on the mountains, cacti in
  * the desert, iron ore in mountain rock.
@@ -11,9 +12,7 @@
  * artifacts too, a few minutes after being picked up: five glowing spots
  * deep in their lands (they find a world level higher) and more all over.
  * What a spot holds is rolled when it is picked up (see artifacts.ts).
- * Campfires the player put down are kept too. Nothing grows or lies on
- * the villages' terraces or the paths of Qing Mao (qingmao.ts), except
- * the first few finds, on the Gu Yue square round its fireplace.
+ * Campfires the player put down are kept too.
  */
 
 import * as THREE from 'three';
@@ -34,7 +33,6 @@ import { CulledInstances } from './culled';
 import type { Reach } from './culled';
 import type { Chips } from './effects';
 import { createRandom } from './noise';
-import { keptClear } from './qingmao';
 import {
     heightAt,
     normalAt,
@@ -88,6 +86,7 @@ const CROWN = mat(0x8fae78, true);
 const PINE = mat(0x6e8f70, true);
 const CACTUS = mat(0x86a472);
 const ROCK = mat(0xffffff, true);
+const BLOCK = mat(0xd8d4cc);
 const STICK = mat(0x9c7e5f);
 const PEBBLE = mat(0xbab6af, true);
 const FLINT = mat(0x5f6266, true);
@@ -122,6 +121,25 @@ const DEEP_GLOW: Record<Biome, number> = {
 
 /** Glows of the spots all over, in turn. */
 const GLOWS = [0xe0675f, 0x6fbf6a, 0x6f9fe8, 0xd9534f, 0x5f8fe0, 0x7fd0e0];
+
+/**
+ * Blocks next to the spawn: a staircase up to a platform, a gap to jump
+ * over, a wall, a box, and a low slab on two posts to crawl under.
+ * [x, z, width, depth, height, raised by].
+ */
+const BLOCKS: [number, number, number, number, number, number][] = [
+    [6, -2, 1.6, 1.6, 0.4, 0],
+    [7.6, -2, 1.6, 1.6, 0.8, 0],
+    [9.2, -2, 1.6, 1.6, 1.4, 0],
+    [10.8, -2, 1.6, 1.6, 2.0, 0],
+    [13.2, -2, 3, 3, 2.0, 0],
+    [17, -2, 2, 2, 2.0, 0],
+    [-8, 6, 0.6, 10, 2.4, 0],
+    [-4, -9, 3, 3, 1.1, 0],
+    [-13, 6, 3.2, 3, 0.3, 0.8],
+    [-14.4, 6, 0.4, 3, 0.8, 0],
+    [-11.6, 6, 0.4, 3, 0.8, 0],
+];
 
 /** Logs to sit on around the spawn's fireplace. [x, z, length, faces]. */
 const CAMPFIRE = { x: -3, z: 12 };
@@ -367,6 +385,7 @@ export class Resources {
         this.placeRocks(random);
         this.scatterFinds(random);
         this.hideArtifacts(random);
+        this.buildBlocks();
         this.buildCampfire();
     }
 
@@ -967,12 +986,7 @@ export class Resources {
         const x = (random() * 2 - 1) * range;
         const z = (random() * 2 - 1) * range;
 
-        // `clearance` keeps things off the spawn; the villages and paths
-        // are kept clear by a little more than their own size.
-        if (
-            Math.hypot(x, z) < SPAWN_RADIUS + clearance ||
-            keptClear(x, z, 1.5)
-        ) {
+        if (Math.hypot(x, z) < SPAWN_RADIUS + clearance) {
             return null;
         }
 
@@ -1239,15 +1253,14 @@ export class Resources {
 
             if (this.finds.length < 50) {
                 const angle = random() * Math.PI * 2;
-                // On the square: the houses stand round it.
-                const distance = 4 + random() * (SPAWN_RADIUS - 5);
+                const distance = 7 + random() * 30;
                 const x = Math.cos(angle) * distance;
                 const z = Math.sin(angle) * distance;
                 const ground = heightAt(x, z);
                 spot =
                     normalAt(x, z, normal).y > 0.85 &&
                     ground > WATER_LEVEL + 0.3 &&
-                    this.clearOfFire(x, z)
+                    this.clearOfBlocks(x, z)
                         ? { x, z, ground, biome: 'meadow' }
                         : null;
             } else {
@@ -1344,12 +1357,7 @@ export class Resources {
                         Math.hypot(other.x - spot.x, other.z - spot.z) > 30,
                 )
             ) {
-                const glow =
-                    GLOWS[
-                        (((this.artifacts.length - 5) % GLOWS.length) +
-                            GLOWS.length) %
-                            GLOWS.length
-                    ];
+                const glow = GLOWS[(this.artifacts.length - 5) % GLOWS.length];
                 this.addArtifact(glow, spot.x, spot.z, spot.ground, 14);
             }
         }
@@ -1409,9 +1417,49 @@ export class Resources {
         });
     }
 
-    /** Clear of the square's fireplace and the logs round it. */
-    private clearOfFire(x: number, z: number): boolean {
-        return Math.hypot(x - CAMPFIRE.x, z - CAMPFIRE.z) > 4;
+    private clearOfBlocks(x: number, z: number): boolean {
+        return (
+            BLOCKS.every(
+                ([bx, bz, width, depth]) =>
+                    Math.abs(x - bx) > width / 2 + 0.6 ||
+                    Math.abs(z - bz) > depth / 2 + 0.6,
+            ) && Math.hypot(x - CAMPFIRE.x, z - CAMPFIRE.z) > 4
+        );
+    }
+
+    private buildBlocks(): void {
+        const blocks = new THREE.InstancedMesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            BLOCK,
+            BLOCKS.length,
+        );
+        blocks.castShadow = blocks.receiveShadow = true;
+        this.group.add(blocks);
+
+        BLOCKS.forEach(([x, z, width, depth, height, raised], index) => {
+            const ground = heightAt(x, z);
+            const bottom = ground + raised;
+            this.matrix.compose(
+                this.position.set(x, bottom + height / 2, z),
+                this.quaternion.identity(),
+                this.scale.set(width, height, depth),
+            );
+            blocks.setMatrixAt(index, this.matrix);
+
+            this.colliders.add({
+                kind: 'box',
+                min: new THREE.Vector3(
+                    x - width / 2,
+                    raised > 0 ? bottom : ground - 1,
+                    z - depth / 2,
+                ),
+                max: new THREE.Vector3(
+                    x + width / 2,
+                    bottom + height,
+                    z + depth / 2,
+                ),
+            });
+        });
     }
 
     /** The spawn's fireplace — always burning — with two logs to sit on. */

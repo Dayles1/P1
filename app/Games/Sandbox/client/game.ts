@@ -60,7 +60,6 @@ import type { HeroChoice } from './ui/create';
 import { Hud } from './ui/hud';
 import type { CompassMark, Effect, PromptLine, ScreenPoint } from './ui/hud';
 import type { IconName } from './ui/icons';
-import { WorldMap } from './ui/map';
 import { Menu } from './ui/menu';
 import { TouchControls } from './ui/touch';
 import type { TouchContext } from './ui/touch';
@@ -73,14 +72,12 @@ import type { Dig } from './world/digs';
 import { Chips } from './world/effects';
 import { Mobs } from './world/mobs';
 import type { Mob } from './world/mobs';
-import { VILLAGES, villageAt } from './world/qingmao';
 import { placementSpot, Resources } from './world/resources';
 import type { HitTarget, Tool, UseTarget, Yield } from './world/resources';
 import { Sky } from './world/sky';
 import { Structures } from './world/structures';
 import type { Structure, StructureType } from './world/structures';
 import { heightAt, Terrain, WATER_LEVEL } from './world/terrain';
-import { Villages } from './world/villages';
 import { Water } from './world/water';
 
 const AUTOSAVE_SECONDS = 10;
@@ -114,7 +111,7 @@ const SALVAGEABLE = ['tools', 'weapons', 'armor', 'building'];
 
 const UNDERWATER = new THREE.Color(0x2f5566);
 
-type Mode = 'play' | 'paused' | 'menu' | 'map' | 'dead';
+type Mode = 'play' | 'paused' | 'menu' | 'dead';
 
 /** What a blow can land on. */
 type Strike = HitTarget | Mob | Structure | Dig;
@@ -187,7 +184,6 @@ export class Game {
     private secondWindCooldown = 0;
     private hud: Hud;
     private menu: Menu;
-    private map: WorldMap;
     private clock = new THREE.Clock();
 
     private mode: Mode = 'paused';
@@ -221,12 +217,11 @@ export class Game {
         const quality = this.settings.quality;
         this.renderer = createRenderer(quality);
         this.renderer.setSize(window.innerWidth, window.innerHeight);
-        // AgX: muted and filmic, and it keeps skin from going red in the dark.
-        this.renderer.toneMapping = THREE.AgXToneMapping;
+        this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
         this.renderer.domElement.className = 'sb-canvas';
         options.root.append(this.renderer.domElement);
 
-        this.scene.fog = new THREE.Fog(0x9a9ea0, 30, 320);
+        this.scene.fog = new THREE.Fog(0xcfd8de, 70, 320);
         const ambient = new THREE.HemisphereLight(0xf1f4f6, 0x8f8a80, 1.6);
         this.scene.add(ambient);
 
@@ -250,14 +245,12 @@ export class Game {
         this.resources = new Resources(colliders, this.chips);
         this.digs = new Digs(colliders, this.chips);
         this.structures = new Structures(colliders);
-        const villages = new Villages(colliders);
         this.mobs = new Mobs(colliders, this.chips, () => this.resources.fires);
         this.bolts = new Bolts(this.chips);
         this.scene.add(
             this.terrain.group,
             this.water.mesh,
             this.resources.group,
-            villages.group,
             this.digs.group,
             this.structures.group,
             this.mobs.group,
@@ -282,9 +275,7 @@ export class Game {
             pause: () => this.pause(),
             respawn: () => this.respawn(),
             skill: () => this.act('skill'),
-            map: () => this.act('map'),
         });
-        this.map = new WorldMap(options.root, () => this.closeMap());
 
         if (TOUCH) {
             this.touch = new TouchControls(options.root, this.input, (action) =>
@@ -387,7 +378,6 @@ export class Game {
                 this.started = true;
                 this.beat();
                 this.menu.hide();
-                this.map.hide();
                 this.hud.showPaused(false);
                 this.touch?.show(true);
             } else if (this.mode === 'play') {
@@ -550,9 +540,7 @@ export class Game {
     private beat(): void {
         if (
             document.visibilityState === 'visible' &&
-            (this.mode === 'play' ||
-                this.mode === 'menu' ||
-                this.mode === 'map')
+            (this.mode === 'play' || this.mode === 'menu')
         ) {
             playtimeBeat();
         }
@@ -839,33 +827,24 @@ export class Game {
         const marks: CompassMark[] = [];
         const bag = this.structures.spawnPoint();
 
-        if (bag) {
-            marks.push({
-                label: t.items.sleeping_bag[0],
-                bearing: bearing(bag.x, bag.z),
-                distance: Math.hypot(bag.x - position.x, bag.z - position.z),
-                tone: 'bag',
-            });
-        }
-
-        // The clan villages of Qing Mao (Gu Yue is where the hero started).
-        const home = villageAt(position.x, position.z);
-
-        for (const village of VILLAGES) {
-            const distance = Math.hypot(
-                village.x - position.x,
-                village.z - position.z,
-            );
-
-            if (village !== home && distance < COMPASS_REACH) {
-                marks.push({
-                    label: t.villages[village.clan][0],
-                    bearing: bearing(village.x, village.z),
-                    distance,
-                    tone: 'village',
-                });
-            }
-        }
+        marks.push(
+            bag
+                ? {
+                      label: t.items.sleeping_bag[0],
+                      bearing: bearing(bag.x, bag.z),
+                      distance: Math.hypot(
+                          bag.x - position.x,
+                          bag.z - position.z,
+                      ),
+                      tone: 'bag',
+                  }
+                : {
+                      label: t.hud.start,
+                      bearing: bearing(0, 0),
+                      distance: Math.hypot(position.x, position.z),
+                      tone: 'start',
+                  },
+        );
 
         for (const chest of this.structures.list
             .filter((structure) => structure.type === 'chest')
@@ -888,7 +867,6 @@ export class Game {
         }
 
         this.hud.setCompass(-this.view.yaw, marks);
-        this.map.update(position.x, position.z, -this.view.yaw);
 
         // The creature struck lately, or the one under the crosshair.
         if (this.fought) {
@@ -997,7 +975,6 @@ export class Game {
 
         this.closeChest();
         this.menu.hide();
-        this.map.hide();
         this.mode = 'paused';
         this.hud.showPaused(true, this.started);
         this.touch?.show(false);
@@ -1021,39 +998,6 @@ export class Game {
     private closeMenu(): void {
         this.closeChest();
         this.menu.hide();
-        this.mode = 'paused';
-        this.sound.click();
-        this.resume();
-    }
-
-    /** The map key: opens the map of Qing Mao (over the menu too) or closes it. */
-    private toggleMap(): void {
-        if (this.mode === 'map') {
-            this.closeMap();
-
-            return;
-        }
-
-        if (this.mode !== 'play' && this.mode !== 'menu') {
-            return;
-        }
-
-        this.closeChest();
-        this.menu.hide();
-        this.mode = 'map';
-        this.map.show();
-        this.hud.showPaused(false);
-        this.touch?.show(false);
-        this.sound.click();
-        this.input.unlock();
-    }
-
-    private closeMap(): void {
-        if (this.mode !== 'map') {
-            return;
-        }
-
-        this.map.hide();
         this.mode = 'paused';
         this.sound.click();
         this.resume();
@@ -1113,14 +1057,8 @@ export class Game {
                 this.toggleMenu('artifacts');
 
                 return;
-            case 'map':
-                this.toggleMap();
-
-                return;
             case 'escape':
-                if (this.mode === 'map') {
-                    this.closeMap();
-                } else if (this.mode === 'menu') {
+                if (this.mode === 'menu') {
                     this.pause();
                 } else if (this.mode === 'play' && TOUCH) {
                     this.pause();
@@ -2420,10 +2358,7 @@ export class Game {
             character.stance === 'stand' &&
             character.horizontalSpeed > STANCE_SPEED.stand[0] + 0.5;
         const hunted =
-            alive &&
-            (this.mode === 'play' ||
-                this.mode === 'menu' ||
-                this.mode === 'map')
+            alive && (this.mode === 'play' || this.mode === 'menu')
                 ? character.position
                 : null;
         this.mobs.update(dt, hunted, running, this.night, this.view.camera);
@@ -2473,15 +2408,7 @@ export class Game {
             this.vitals.mana,
             this.guardTime > 0 || this.poisedTime > 0,
         );
-        const village = villageAt(
-            this.character.position.x,
-            this.character.position.z,
-        );
-        this.hud.setClock(
-            skyState.time,
-            this.biome,
-            village ? t.villages[village.clan][1] : t.biomes[this.biome],
-        );
+        this.hud.setClock(skyState.time, this.biome, t.biomes[this.biome]);
         this.updateHudWorld(dt);
         this.hud.setFps(
             this.settings.showFps
@@ -2691,9 +2618,7 @@ export class Game {
         if (
             character.underwater &&
             character.breath <= 0 &&
-            (this.mode === 'play' ||
-                this.mode === 'menu' ||
-                this.mode === 'map')
+            (this.mode === 'play' || this.mode === 'menu')
         ) {
             this.drowning += dt;
 
@@ -2855,9 +2780,8 @@ export class Game {
             fog.near = 0.5;
             fog.far = 26;
         } else {
-            // The land ends where the fog is thickest, so its edge never shows;
-            // the gloom starts close.
-            fog.near = this.viewDistance * 0.15;
+            // The land ends where the fog is thickest, so its edge never shows.
+            fog.near = this.viewDistance * 0.3;
             fog.far = this.viewDistance;
         }
 

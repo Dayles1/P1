@@ -15,7 +15,6 @@
  */
 
 import { artifactIcon, immortal, mergeGroup } from '../artifacts';
-import { speciesOf } from '../gu';
 import { ATTRIBUTES, RULES } from '../hero';
 import type { Artifact, Hero, Passive } from '../hero';
 import { t } from '../i18n';
@@ -25,9 +24,9 @@ import type { MenuHost, TabView } from './menu';
 
 type Chosen = { from: 'stash'; index: number } | { from: 'tree'; cell: number };
 
-/** "Blood leech · Elite": its Gu and its rank. */
+/** "Elite · Attribute artifact". */
 export function artifactName(artifact: Artifact): string {
-    return `${t.gu[speciesOf(artifact)]} · ${t.ranks[artifact.rank - 1]}`;
+    return `${t.ranks[artifact.rank - 1]} · ${t.artifact_types[artifact.type]}`;
 }
 
 /** A skill value as the player reads it: 12%, ×3, ∞, 240 s… */
