@@ -13,6 +13,7 @@ import { toonMaterial } from './anime';
 const cutOuts: Record<BodyStyle, WeakMap<THREE.Material, THREE.Material>> = {
     realistic: new WeakMap(),
     anime: new WeakMap(),
+    scifi: new WeakMap(),
 };
 
 /**

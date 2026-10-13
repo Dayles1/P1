@@ -632,11 +632,16 @@ export class Mannequin {
             return;
         }
 
-        const donor = hairDonor(gender, appearance.hair);
+        // The Sci-Fi Girl wears her own hair: no other model to borrow from.
+        const donor =
+            style === 'scifi' ? null : hairDonor(gender, appearance.hair);
 
         this.humanKind = kind;
         this.root.visible = false;
-        Promise.all([loadHuman(gender), donor ? loadHuman(donor) : null])
+        Promise.all([
+            loadHuman(gender, style),
+            donor ? loadHuman(donor) : null,
+        ])
             .then(([gltf, donorGltf]) => {
                 if (kind !== this.humanKind) {
                     return;

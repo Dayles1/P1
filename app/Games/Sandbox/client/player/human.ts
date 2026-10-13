@@ -29,6 +29,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { clone } from 'three/examples/jsm/utils/SkeletonUtils.js';
 import femaleUrl from '../assets/human-female.glb?url';
 import maleUrl from '../assets/human-male.glb?url';
+import scifiUrl from '../assets/scifi-girl.glb?url';
 import type { Gender } from '../hero';
 import type { ArmorSlot } from '../items';
 import type { BodyStyle } from '../settings';
@@ -95,7 +96,11 @@ const FINGERS = ['index', 'middle', 'ring', 'pinky'];
 const KNUCKLES = [0.8, 1, 0.75];
 
 /** How much richer the skin's colours are drawn, by style. */
-const SATURATION: Record<BodyStyle, number> = { realistic: 1.15, anime: 1.35 };
+const SATURATION: Record<BodyStyle, number> = {
+    realistic: 1.15,
+    anime: 1.35,
+    scifi: 1,
+};
 
 /** Texture filtering at a slant (the GPU's own limit caps it). */
 const ANISOTROPY = 8;
@@ -150,17 +155,36 @@ function sharpen(material: THREE.Material): void {
     }
 }
 
-const URLS: Record<Gender, string> = { male: maleUrl, female: femaleUrl };
-const loading = new Map<Gender, Promise<GLTF>>();
+/**
+ * The models: Quaternius' two bodies, and the Sci-Fi Girl — her own mesh,
+ * outfit and hair, rigged with the same bone names so the Mannequin drives
+ * her the same way (she has no skin to cut armour or grown hair from).
+ * Source: "Sci-Fi Girl v.01" on Sketchfab,
+ * https://sketchfab.com/3d-models/scifi-girl-v01-96340701c2ed4d37851c7d9109eee9c0
+ * (credit its author as its licence asks); decimated, re-textured and rigged
+ * for the game.
+ */
+type ModelKey = Gender | 'scifi';
 
-/** Loads (once) the body for a gender. */
-export function loadHuman(gender: Gender): Promise<GLTF> {
-    let promise = loading.get(gender);
+const URLS: Record<ModelKey, string> = {
+    male: maleUrl,
+    female: femaleUrl,
+    scifi: scifiUrl,
+};
+const loading = new Map<ModelKey, Promise<GLTF>>();
+
+/** Loads (once) the body for a gender, or the Sci-Fi Girl for that style. */
+export function loadHuman(
+    gender: Gender,
+    style: BodyStyle = 'realistic',
+): Promise<GLTF> {
+    const key: ModelKey = style === 'scifi' ? 'scifi' : gender;
+    let promise = loading.get(key);
 
     if (!promise) {
-        promise = new GLTFLoader().loadAsync(URLS[gender]);
-        promise.catch(() => loading.delete(gender));
-        loading.set(gender, promise);
+        promise = new GLTFLoader().loadAsync(URLS[key]);
+        promise.catch(() => loading.delete(key));
+        loading.set(key, promise);
     }
 
     return promise;

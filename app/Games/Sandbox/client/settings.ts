@@ -8,10 +8,13 @@ export type Quality = 'auto' | 'low' | 'medium' | 'high';
 
 export const QUALITIES: Quality[] = ['auto', 'low', 'medium', 'high'];
 
-/** How the hero is drawn: a realistic body or an anime one. */
-export type BodyStyle = 'realistic' | 'anime';
+/**
+ * How the hero is drawn: a realistic body, an anime one, or the Sci-Fi
+ * Girl (a model of her own, whatever the gender and hairstyle).
+ */
+export type BodyStyle = 'realistic' | 'anime' | 'scifi';
 
-export const BODY_STYLES: BodyStyle[] = ['realistic', 'anime'];
+export const BODY_STYLES: BodyStyle[] = ['realistic', 'anime', 'scifi'];
 
 export interface Settings {
     quality: Quality;

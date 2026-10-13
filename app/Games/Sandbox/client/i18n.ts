@@ -459,6 +459,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         body_styles: {
             realistic: 'Реализм',
             anime: 'Аниме',
+            scifi: 'Sci-Fi девушка',
         },
         hero_tab_hero: 'Герой',
         hero_tab_look: 'Внешность',
@@ -1025,6 +1026,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         body_styles: {
             realistic: 'Realistic',
             anime: 'Anime',
+            scifi: 'Sci-Fi girl',
         },
         hero_tab_hero: 'Hero',
         hero_tab_look: 'Looks',
@@ -1590,6 +1592,7 @@ const TEXTS: Record<'ru' | 'en' | 'uz', Texts> = {
         body_styles: {
             realistic: 'Realistik',
             anime: 'Anime',
+            scifi: 'Sci-Fi qiz',
         },
         hero_tab_hero: 'Qahramon',
         hero_tab_look: 'Ko‘rinish',
