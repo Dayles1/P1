@@ -10,6 +10,7 @@
         "format:check": "prettier --check resources/",
         "lint": "eslint . --fix",
         "lint:check": "eslint .",
+        "test:city3": "vitest run --config app/Games/City3/client/vitest.config.ts",
         "test:gu-world": "vitest run --config app/Games/GuWorld/client/vitest.config.ts"
     },
     "devDependencies": {

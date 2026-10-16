@@ -68,7 +68,9 @@ export function Hub({ homeUrl }: { homeUrl: string }) {
             Promise.all([
                 gameApi<Progress>('progress').catch(() => ({}) as Progress),
                 ...CATALOG.filter((game) => game.api).map((game) =>
-                    apiRequest<SandboxProgress | null>(`${game.api}/summary`)
+                    apiRequest<GameProgress | SandboxProgress | null>(
+                        `${game.api}/summary`,
+                    )
                         .then((summary) => ({ [game.slug]: summary }))
                         .catch(() => ({})),
                 ),

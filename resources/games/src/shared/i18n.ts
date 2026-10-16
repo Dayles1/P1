@@ -95,6 +95,10 @@ const ru = {
         'Мегаполис',
     ],
     titles: {
+        city3: [
+            'Летопись города 3',
+            'Новая глава летописи: десять эпох от античности до 3000 года, 3D-стройка, технологии, чертежи и свои округа. Пока играется так же, как вторая часть, — перемены впереди.',
+        ],
         'gu-world': [
             'GU World',
             'Мир Мастеров Гу по мотивам Reverend Insanity. В разработке: сейчас строится основа мира.',
@@ -197,6 +201,10 @@ const en: Dictionary = {
         'Megalopolis',
     ],
     titles: {
+        city3: [
+            'City Chronicle 3',
+            'A new chapter of the chronicle: ten eras from antiquity to the year 3000, building in 3D, technologies, blueprints and your own districts. For now it plays like the second part — changes are on the way.',
+        ],
         'gu-world': [
             'GU World',
             'A world of Gu Masters inspired by Reverend Insanity. In development: the world’s foundation is being built.',
@@ -301,6 +309,10 @@ const uz: Dictionary = {
         'Megapolis',
     ],
     titles: {
+        city3: [
+            'Shahar solnomasi 3',
+            'Solnomaning yangi bobi: antik davrdan 3000-yilgacha o‘nta davr, 3D’da qurilish, texnologiyalar, chizmalar va o‘z tumanlaringiz. Hozircha ikkinchi qism kabi o‘ynaladi — o‘zgarishlar oldinda.',
+        ],
         'gu-world': [
             'GU World',
             'Reverend Insanity asosidagi Gu ustalari dunyosi. Ishlab chiqilmoqda: dunyo poydevori qurilmoqda.',

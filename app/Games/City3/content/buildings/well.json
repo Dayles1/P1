@@ -1,0 +1,222 @@
+{
+    "id": "well",
+    "name": "Колодец",
+    "icon": "⛲",
+    "category": "services",
+    "description": "Чистая вода рядом с домом — жители счастливее.",
+    "size": { "w": 1, "h": 1 },
+    "unique": false,
+    "hidden": false,
+    "placement": { "requiresRoad": true },
+    "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": "water" },
+    "levels": [
+        {
+            "level": 1,
+            "name": "Колодец",
+            "epoch": "e0",
+            "description": "Каменный сруб с журавлём.",
+            "cost": { "stone": 20, "wood": 10 },
+            "buildTime": 5,
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 3, "happiness": 4 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "plaza" },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0, "r": 0.14, "h": 0.12, "color": "#8f8a80", "taper": 1, "segments": 12 },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.5, "z": 0.11, "r": 0.1, "h": 0.005, "color": "#3fa9d8" },
+                    { "kind": "box", "x": 0.25, "y": 0.3, "z": 0, "w": 0.03, "d": 0.03, "h": 0.4, "color": "#5a3e26" },
+                    { "kind": "box", "x": 0.2, "y": 0.3, "z": 0.38, "w": 0.6, "d": 0.02, "h": 0.02, "color": "#5a3e26" },
+                    { "kind": "box", "x": 0.74, "y": 0.3, "z": 0.1, "w": 0.02, "d": 0.02, "h": 0.3, "color": "#5a3e26" },
+                    { "kind": "cylinder", "x": 0.7, "y": 0.75, "z": 0, "r": 0.05, "h": 0.08, "color": "#7a5532" },
+                    { "kind": "cylinder", "x": 0.8, "y": 0.62, "z": 0, "r": 0.04, "h": 0.07, "color": "#b5532f", "taper": 0.7 }
+                ]
+            }
+        },
+        {
+            "level": 2,
+            "name": "Акведук",
+            "epoch": "e0",
+            "tech": "mathematics",
+            "description": "Арки акведука приносят воду с гор в городской фонтан.",
+            "cost": { "stone": 80, "wood": 20, "gold": 30 },
+            "buildTime": 10,
+            "effects": {
+                "housing": 0,
+                "jobs": 0,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 4, "happiness": 6 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "plaza" },
+                    { "kind": "floors", "x": 0.05, "y": 0.4, "z": 0, "w": 0.9, "d": 0.2, "floors": 2, "floorHeight": 0.24, "color": "walls", "window": "window", "facade": "stone" },
+                    {
+                        "kind": "arches",
+                        "faces": ["s", "n"],
+                        "x": 0.05,
+                        "y": 0.4,
+                        "z": 0,
+                        "w": 0.9,
+                        "d": 0.2,
+                        "h": 0.44,
+                        "count": 3,
+                        "color": "trim",
+                        "opening": "plaza"
+                    },
+                    { "kind": "box", "x": 0.05, "y": 0.4, "z": 0.48, "w": 0.9, "d": 0.2, "h": 0.04, "color": "trim" },
+                    { "kind": "box", "x": 0.05, "y": 0.45, "z": 0.52, "w": 0.9, "d": 0.1, "h": 0.02, "color": "#3fa9d8", "material": "glass" },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.8, "z": 0, "r": 0.14, "h": 0.06, "color": "trim" },
+                    { "kind": "cylinder", "x": 0.5, "y": 0.8, "z": 0.06, "r": 0.03, "h": 0.1, "color": "trim" },
+                    { "kind": "emitter", "x": 0.5, "y": 0.8, "z": 0.16, "type": "water" }
+                ]
+            }
+        },
+        {
+            "level": 3,
+            "name": "Водокачка",
+            "epoch": "e1800",
+            "tech": "steam_engine",
+            "description": "Паровой насос и кирпичная водонапорная башня.",
+            "cost": { "bricks": 150, "steel": 40, "gold": 300 },
+            "buildTime": 15,
+            "effects": {
+                "housing": 0,
+                "jobs": 2,
+                "produces": {},
+                "consumes": { "coal": 0.1 },
+                "storage": 0,
+                "power": 0,
+                "powerUse": 0,
+                "aura": { "radius": 5, "happiness": 7 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "plaza" },
+                    { "kind": "prism", "x": 0.15, "y": 0.4, "z": 0, "w": 0.36, "d": 0.36, "h": 0.7, "plan": "octagon", "color": "walls" },
+                    {
+                        "kind": "windows",
+                        "faces": ["s", "e"],
+                        "x": 0.15,
+                        "y": 0.4,
+                        "z": 0.2,
+                        "w": 0.36,
+                        "d": 0.36,
+                        "h": 0.4,
+                        "rows": 3,
+                        "cols": 1,
+                        "color": "window"
+                    },
+                    { "kind": "cylinder", "x": 0.33, "y": 0.58, "z": 0.7, "r": 0.24, "h": 0.2, "color": "metal", "taper": 1, "segments": 16, "material": "metal" },
+                    { "kind": "roof", "shape": "cone", "x": 0.09, "y": 0.34, "z": 0.9, "w": 0.48, "d": 0.48, "h": 0.14, "color": "roof" },
+                    { "kind": "floors", "x": 0.55, "y": 0.15, "z": 0, "w": 0.35, "d": 0.35, "floors": 1, "floorHeight": 0.24, "color": "walls", "window": "window", "band": "trim", "facade": "brick" },
+                    { "kind": "roof", "shape": "gable", "x": 0.53, "y": 0.13, "z": 0.24, "w": 0.39, "d": 0.39, "h": 0.14, "color": "roof", "axis": "x" },
+                    { "kind": "chimney", "x": 0.85, "y": 0.2, "z": 0.24, "w": 0.06, "h": 0.3, "color": "#7a3e2e", "smoke": true },
+                    { "kind": "emitter", "x": 0.72, "y": 0.6, "z": 0.1, "type": "steam" }
+                ]
+            }
+        },
+        {
+            "level": 4,
+            "name": "Водопровод",
+            "epoch": "e1900",
+            "tech": "electricity",
+            "description": "Электронасосная станция и фонтан на площади.",
+            "cost": { "steel": 150, "concrete": 100, "gold": 1200 },
+            "buildTime": 20,
+            "effects": {
+                "housing": 0,
+                "jobs": 3,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 2,
+                "aura": { "radius": 6, "happiness": 9 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "plaza" },
+                    { "kind": "floors", "x": 0.1, "y": 0.12, "z": 0, "w": 0.5, "d": 0.45, "floors": 1, "floorHeight": 0.26, "color": "walls", "window": "window", "band": "trim", "facade": "brick", "cornice": "trim" },
+                    { "kind": "roof", "shape": "hip", "x": 0.08, "y": 0.1, "z": 0.26, "w": 0.54, "d": 0.49, "h": 0.14, "color": "roof" },
+                    { "kind": "door", "face": "s", "x": 0.1, "y": 0.12, "w": 0.5, "d": 0.45, "width": 0.12, "height": 0.18, "color": "metal" },
+                    { "kind": "cylinder", "x": 0.75, "y": 0.75, "z": 0, "r": 0.16, "h": 0.05, "color": "trim" },
+                    { "kind": "cylinder", "x": 0.75, "y": 0.75, "z": 0.05, "r": 0.13, "h": 0.005, "color": "#3fa9d8", "taper": 1, "segments": 16, "material": "glass" },
+                    { "kind": "cylinder", "x": 0.75, "y": 0.75, "z": 0.05, "r": 0.03, "h": 0.12, "color": "trim" },
+                    { "kind": "emitter", "x": 0.75, "y": 0.75, "z": 0.18, "type": "water" },
+                    { "kind": "light", "x": 0.75, "y": 0.75, "z": 0.08, "radius": 0.8, "color": "#7fd0ff" },
+                    { "kind": "pole", "x": 0.85, "y": 0.15, "z": 0, "h": 0.3, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.85, "y": 0.15, "z": 0.3, "radius": 1.2, "color": "#fff1c4" }
+                ]
+            }
+        },
+        {
+            "level": 5,
+            "name": "Водоочистная станция",
+            "epoch": "e2000",
+            "description": "Фильтры, отстойники и чистая вода в каждом кране.",
+            "cost": { "concrete": 500, "steel": 300, "plastic": 80, "gold": 4000 },
+            "buildTime": 30,
+            "effects": {
+                "housing": 0,
+                "jobs": 6,
+                "produces": {},
+                "consumes": {},
+                "storage": 0,
+                "power": 0,
+                "powerUse": 6,
+                "aura": { "radius": 7, "happiness": 11 },
+                "pollution": null,
+                "boost": null,
+                "near": null,
+                "seasonal": false,
+                "defense": 0
+            },
+            "model": {
+                "parts": [
+                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 0.9, "d": 0.9, "color": "plaza" },
+                    { "kind": "cylinder", "x": 0.3, "y": 0.3, "z": 0, "r": 0.2, "h": 0.1, "color": "trim", "taper": 1, "segments": 20 },
+                    { "kind": "cylinder", "x": 0.3, "y": 0.3, "z": 0.1, "r": 0.17, "h": 0.005, "color": "#3fa9d8", "taper": 1, "segments": 20, "material": "glass" },
+                    { "kind": "cylinder", "x": 0.72, "y": 0.3, "z": 0, "r": 0.16, "h": 0.1, "color": "trim", "taper": 1, "segments": 20 },
+                    { "kind": "cylinder", "x": 0.72, "y": 0.3, "z": 0.1, "r": 0.13, "h": 0.005, "color": "#3fa9d8", "taper": 1, "segments": 20, "material": "glass" },
+                    { "kind": "floors", "x": 0.15, "y": 0.6, "z": 0, "w": 0.7, "d": 0.3, "floors": 1, "floorHeight": 0.24, "color": "walls", "window": "glass", "band": "trim", "facade": "ribbon" },
+                    { "kind": "roof", "shape": "flat", "x": 0.13, "y": 0.58, "z": 0.24, "w": 0.74, "d": 0.34, "h": 0.03, "color": "roof" },
+                    { "kind": "cylinder", "x": 0.75, "y": 0.72, "z": 0.27, "r": 0.03, "h": 0.18, "color": "metal", "taper": 1, "segments": 8, "material": "metal" },
+                    { "kind": "pole", "x": 0.06, "y": 0.94, "z": 0, "h": 0.28, "color": "metal", "blink": null },
+                    { "kind": "light", "x": 0.06, "y": 0.94, "z": 0.28, "radius": 1.2, "color": "#e8f4ff" }
+                ]
+            }
+        }
+    ]
+}

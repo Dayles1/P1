@@ -89,8 +89,8 @@ class LeaderboardController extends GameController
         return match ($game) {
             Game::City => CitySave::query()->select(['id', 'user_id', 'score', 'epoch', 'year', 'population', 'updated_at']),
             Game::Epochs => World::query()->select(['id', 'user_id', 'score', 'epoch', 'epoch_index', 'year', 'population', 'updated_at']),
-            // Nothing to rank: the Sandbox keeps no score.
-            Game::Sandbox => abort(404),
+            // Not ranked here: each keeps its own leaderboard (/api/sandbox, /api/city3).
+            Game::Sandbox, Game::City3 => abort(404),
         };
     }
 

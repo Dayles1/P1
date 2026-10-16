@@ -31,6 +31,15 @@ export interface GameEntry {
 
 export const CATALOG: GameEntry[] = [
     {
+        slug: 'city3',
+        cover: '🌆',
+        hue: '#2f9e8f',
+        genre: 'strategy',
+        path: null,
+        href: '/games/city3',
+        api: '/api/city3',
+    },
+    {
         slug: 'epochs',
         cover: '🏙️',
         hue: '#35b8e0',

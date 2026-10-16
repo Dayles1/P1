@@ -1,6 +1,7 @@
 <?php
 
 use App\Domain\Chat\Providers\ConversationServiceProvider;
+use App\Games\City3\City3ServiceProvider;
 use App\Games\GamesServiceProvider;
 use App\Games\GuWorld\GuWorldServiceProvider;
 use App\Games\Sandbox\SandboxServiceProvider;
@@ -13,8 +14,9 @@ return [
     AuthServiceProvider::class,
     InfrastructureServiceProvider::class,
     ConversationServiceProvider::class,
-    // Before GamesServiceProvider: its /games catch-all would shadow /games/sandbox and /games/gu-world.
+    // Before GamesServiceProvider: its /games catch-all would shadow /games/sandbox, /games/gu-world and /games/city3.
     SandboxServiceProvider::class,
     GuWorldServiceProvider::class,
+    City3ServiceProvider::class,
     GamesServiceProvider::class,
 ];

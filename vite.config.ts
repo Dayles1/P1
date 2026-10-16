@@ -42,6 +42,9 @@ export default defineConfig({
                 // GU World — a self-contained game, all of it in app/Games/GuWorld
                 'app/Games/GuWorld/client/main.ts',
 
+                // Летопись города 3 — a self-contained game (React), all of it in app/Games/City3
+                'app/Games/City3/client/main.tsx',
+
                 // Если здесь будут другие Blade-страницы,
                 // добавляй их сюда
             ],
@@ -63,8 +66,11 @@ export default defineConfig({
             ],
         }),
 
-        // Only the games SPA is written in React.
-        react({ include: /resources\/games\/.*\.tsx?$/ }),
+        // Only the games SPA and Летопись города 3 are written in React.
+        react({
+            include:
+                /(?:resources\/games|app\/Games\/City3\/client)\/.*\.tsx?$/,
+        }),
 
         wayfinder({
             formVariants: true,

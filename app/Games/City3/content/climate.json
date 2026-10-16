@@ -1,0 +1,111 @@
+{
+    "$doc": "Климат: времена года, погода и свет в течение суток.",
+    "seasons": [
+        {
+            "id": "spring",
+            "name": "Весна",
+            "icon": "🌸",
+            "temperature": 12,
+            "fertility": 1,
+            "groundTint": null,
+            "snow": 0,
+            "treeTint": "#4f9a4a",
+            "weather": { "clear": 0.5, "cloudy": 0.2, "rain": 0.3 }
+        },
+        {
+            "id": "summer",
+            "name": "Лето",
+            "icon": "☀️",
+            "temperature": 26,
+            "fertility": 1.25,
+            "groundTint": "#c9c25a",
+            "snow": 0,
+            "treeTint": "#3f8a3e",
+            "weather": { "clear": 0.75, "cloudy": 0.15, "rain": 0.1 }
+        },
+        {
+            "id": "autumn",
+            "name": "Осень",
+            "icon": "🍂",
+            "temperature": 9,
+            "fertility": 0.85,
+            "groundTint": "#b88a3a",
+            "snow": 0,
+            "treeTint": "#c8862e",
+            "weather": {
+                "clear": 0.35,
+                "cloudy": 0.3,
+                "rain": 0.3,
+                "fog": 0.05
+            }
+        },
+        {
+            "id": "winter",
+            "name": "Зима",
+            "icon": "❄️",
+            "temperature": -6,
+            "fertility": 0.35,
+            "groundTint": "#eef3f7",
+            "snow": 0.75,
+            "treeTint": "#2f5f3a",
+            "weather": { "clear": 0.4, "cloudy": 0.2, "snow": 0.4 }
+        }
+    ],
+    "weather": [
+        {
+            "id": "clear",
+            "name": "Ясно",
+            "icon": "☀️",
+            "light": 0,
+            "particles": null,
+            "sound": null
+        },
+        {
+            "id": "cloudy",
+            "name": "Облачно",
+            "icon": "☁️",
+            "light": -0.08,
+            "particles": null,
+            "sound": "wind"
+        },
+        {
+            "id": "rain",
+            "name": "Дождь",
+            "icon": "🌧️",
+            "light": -0.18,
+            "particles": { "kind": "rain", "density": 0.55 },
+            "sound": "rain",
+            "fertility": 1.1
+        },
+        {
+            "id": "snow",
+            "name": "Снег",
+            "icon": "🌨️",
+            "light": -0.1,
+            "particles": { "kind": "snow", "density": 0.45 },
+            "sound": "wind"
+        },
+        {
+            "id": "fog",
+            "name": "Туман",
+            "icon": "🌫️",
+            "light": -0.12,
+            "particles": { "kind": "fog", "density": 0.5 },
+            "sound": null
+        }
+    ],
+    "weatherMinutes": [0.5, 1.5],
+    "dayNight": {
+        "nightBelow": 0.62,
+        "keyframes": [
+            { "at": 0, "name": "Ночь", "light": 0.32, "tint": "#0b1640" },
+            { "at": 0.2, "name": "Рассвет", "light": 0.5, "tint": "#40305e" },
+            { "at": 0.27, "name": "Утро", "light": 0.92, "tint": "#ffcf9a" },
+            { "at": 0.4, "name": "День", "light": 1, "tint": null },
+            { "at": 0.68, "name": "Вечер", "light": 0.95, "tint": "#ff9a52" },
+            { "at": 0.78, "name": "Сумерки", "light": 0.55, "tint": "#2c2a68" },
+            { "at": 0.86, "name": "Ночь", "light": 0.34, "tint": "#0b1640" },
+            { "at": 1, "name": "Ночь", "light": 0.32, "tint": "#0b1640" }
+        ]
+    }
+}

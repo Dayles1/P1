@@ -117,6 +117,8 @@ export default [
             'resources/js/components/ui/*',
             'resources/js/routes/**',
             'resources/js/wayfinder/**',
+            // Design notes and balance simulations kept next to a game, not app code.
+            'app/Games/*/docs/**',
         ],
     },
     prettier, // Turn off all rules that might conflict with Prettier
