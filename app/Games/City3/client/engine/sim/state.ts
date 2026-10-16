@@ -19,15 +19,25 @@ export interface Research {
     end: number;
 }
 
+/** The columns the player owns, over the land and the beach rows. */
+export interface Land {
+    minX: number;
+    maxX: number;
+}
+
 export interface WorldState {
+    /** Seeds the events' randomness; the map is the same for everyone. */
     seed: number;
     width: number;
     height: number;
     /** Index into epochs.json. */
     epoch: number;
-    year: number;
-    /** Game seconds since the world was founded. */
+    /**
+     * Game seconds since the world was founded. The calendar year is
+     * derived from it (Game.year), so it can never jump.
+     */
     time: number;
+    land: Land;
     resources: Amounts;
     population: number;
     weather: string;

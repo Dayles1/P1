@@ -10,6 +10,9 @@
  * that lays out the real 40-row grid with Manhattan service diamonds to check the population gates against land capacity.
  * Units: 1 tick = 1 game second; every content rate is PER YEAR (1 year = 25 ticks) and is applied /25 per tick.
  * Deterministic for a given seed. Random events are not simulated (expected value ≈ +1 % of income, §13).
+ * Note: "§…" numbers in the comments below refer to the earlier 16-section synthesis draft. In the final design document
+ * (../gdd.md) the report of this script is §12 and the content tables are §8–§9; sim ids villa / workshop / forestry / tower
+ * are the content ids manor / smithy / lumber / skyscraper (gdd Appendix B).
  */
 import { pathToFileURL } from 'url';
 
@@ -48,7 +51,7 @@ export const K = {
   spirit: { perYear: 0.001, cap: 0.3 },
   roadShareOfTiles: 0.4, coverageEfficiency: 0.45,
   upkeepPerYear: { civic: 0.008, housing: 0, food: 0.006, raw: 0.008, industry: 0.008, trade: 0.008, storage: 0.006,
-                   service: 0.015, park: 0.015, culture: 0.008, energy: 0.008, power: 0.012, transport: 0.010 },
+                   service: 0.013, park: 0.013, culture: 0.008, energy: 0.008, power: 0.012, transport: 0.008 },
   upkeepEraMult: [0.35, 0.5, 0.65, 0.8, 0.9, 1.0, 1.0],      // x upkeepPerYear, by the level's own era
   matRatio: { civic: 0.06, housing: 0.08, raw: 0.04, default: 0.05 },
   labourOrder: ['svc', 'food', 'raw', 'ind', 'com'],
@@ -85,8 +88,8 @@ export const ERAS = [
   { id: 'e2100', hist: 2100, ru: 'Ближнее будущее', en: 'Near Future', money: ['Кредиты', 'Credits', '◈'] },
 ];
 // Chronicle star thresholds (entry year ≤ value). ★ = ahead of history (year ≤ hist). Re-derived by this script (§14.3):
-// silver = median typical entry year × 1.05, gold = median optimised entry year × 1.05 (5 seeds).
-export let STARS = [null, { s2: 66, s3: 60 }, { s2: 142, s3: 128 }, { s2: 236, s3: 211 }, { s2: 372, s3: 337 }, { s2: 557, s3: 499 }, { s2: 796, s3: 703 }];
+// silver = median typical entry year × 1.05, gold = best typical/optimised run × 1.02 (5 seeds each).
+export let STARS = [null, { s2: 76, s3: 72 }, { s2: 157, s3: 143 }, { s2: 235, s3: 222 }, { s2: 366, s3: 341 }, { s2: 558, s3: 498 }, { s2: 750, s3: 700 }];
 
 // ───────────────────────────────────────────────────────────── discoveries (28 = 4 per era, paid in money)
 const R_COST = [240, 1200, 7200, 48000, 280000, 1400000, 6000000];
@@ -139,10 +142,10 @@ const LANDMARK_RU = 'храм, театр, усадьба, рынок, школ�
 export const B = {
   town_center: { ru: 'Ратуша', en: 'Town Hall', cat: 'civic', size: [2, 2], place: 'land', unique: true, levels: [
     lv(0, 'Шатёр вождя', 'town_center L1', { money: 0, housing: 8, trade: 6, storage: 1200, aura: [4, 6], time: 0, visitors: 10 }),
-    lv(0, 'Дом вождя', 'town_center L2', { money: 600, housing: 12, trade: 10, storage: 2000, aura: [5, 7], time: 1 * SPY, visitors: 20 }),
+    lv(0, 'Дом вождя', 'town_center L2', { money: 400, housing: 12, trade: 10, storage: 2000, aura: [5, 7], time: 1 * SPY, visitors: 20 }),
     lv(1, 'Ратуша', 'town_center L3', { money: 2400, housing: 18, trade: 25, storage: 4800, aura: [5, 8], time: 3 * SPY, visitors: 60 }),
-    lv(2, 'Дворец', 'town_center L4', { money: 16000, housing: 25, trade: 80, storage: 12000, aura: [6, 10], time: 5 * SPY, attraction: 2, visitors: 200 }),
-    lv(3, 'Городская управа', 'town_center L5', { money: 120000, housing: 35, trade: 250, storage: 32000, aura: [6, 10], time: 7 * SPY, attraction: 3, visitors: 600 }),
+    lv(2, 'Дворец', 'town_center L4', { money: 22000, housing: 25, trade: 80, storage: 12000, aura: [6, 10], time: 5 * SPY, attraction: 2, visitors: 200 }),
+    lv(3, 'Городская управа', 'town_center L5', { money: 150000, housing: 35, trade: 250, storage: 32000, aura: [6, 10], time: 7 * SPY, attraction: 3, visitors: 600 }),
     lv(4, 'Мэрия', 'town_center L6', { money: 800000, housing: 50, trade: 600, storage: 80000, aura: [7, 12], time: 9 * SPY, attraction: 4, pu: 5, visitors: 2000 }),
     lv(5, 'Сити-холл', 'town_center L7', { money: 3500000, housing: 70, trade: 1400, storage: 200000, aura: [7, 12], time: 11 * SPY, attraction: 6, pu: 10, visitors: 6000 }),
     lv(6, 'Цифровая мэрия', 'town_center L8', { money: 18000000, housing: 100, trade: 3000, storage: 480000, aura: [8, 14], time: 13 * SPY, attraction: 8, pu: 15, visitors: 15000 }),
@@ -402,7 +405,7 @@ export const START_COLS = [35, 64];
 export const GATES = [null,
   { pop: 80, items: [{ ru: 'Агора', type: 'market', level: 1, n: 1 }, { ru: 'Школа философов', type: 'school', level: 1, n: 1 }],
     density: '—' },
-  { pop: 400, items: [{ ru: 'Управа района с грамотой', type: 'district_hall', level: 1, n: 1 }, { ru: '2 кузницы', type: 'workshop', level: 1, n: 2 }],
+  { pop: 460, items: [{ ru: 'Управа района с грамотой', type: 'district_hall', level: 1, n: 1 }, { ru: '2 кузницы', type: 'workshop', level: 1, n: 2 }],
     density: 'house L4 (Обжиг кирпича)' },
   { pop: 1800, items: [{ ru: 'Гавань и 4 торговых заказа', type: 'port', level: 1, n: 1, extra: c => c.ordersDelivered >= 4 }, { ru: 'Стеклодувня', type: 'glassworks', level: 1, n: 1 }],
     density: 'house L5 + villas' },
@@ -946,9 +949,10 @@ export const PROFILES = {
   // typical: acts every 15 game-s, sensible priorities
   typical: { name: 'typical', interval: 15, perVisit: 3, reserve: 1.15, covTarget: 0.85, happyTarget: 55, exposure: 0.25, roi: 1.5, landEfficiency: 0.62,
           researchLag: 40, trafficTolerance: 1.1, villas: true, homeUpgradeBias: 1, gateEarly: 0.8, stripBuffer: 0.1, taxSmart: false, researchSaveMin: 2, loans: false, afk: 0.05, mistakes: 0.08 },
-  // optimised: acts every 3 game-s, spends to zero, best point of the 32-point sweep (§14.4), uses the tax lever and loans
-  optimised: { name: 'optimised', interval: 3, perVisit: 6, reserve: 1.0, covTarget: 0.92, happyTarget: 62, exposure: 0.12, roi: 2.5, landEfficiency: 0.72,
-          researchLag: 0, trafficTolerance: 0.95, villas: true, homeUpgradeBias: 1.1, gateEarly: 0.85, stripBuffer: 0.14, taxSmart: true, researchSaveMin: 5, loans: true, afk: 0, mistakes: 0 },
+  // optimised: acts every 3 game-s, spends to zero, zones industry away from homes; best point of the 32-point sweep (§14.4b):
+  //            the tax lever and loans did NOT make it faster, so the best expert uses neither
+  optimised: { name: 'optimised', interval: 3, perVisit: 6, reserve: 1.0, covTarget: 0.92, happyTarget: 62, exposure: 0.12, roi: 1.8, landEfficiency: 0.72,
+          researchLag: 0, trafficTolerance: 0.95, villas: true, homeUpgradeBias: 1.1, gateEarly: 0.85, stripBuffer: 0.14, taxSmart: false, researchSaveMin: 5, loans: false, afk: 0, mistakes: 0 },
 };
 const perYear = c => c.ema.income * SPY;                         // gross income per year (EMA)
 
@@ -972,6 +976,8 @@ function decide(c) {
   };
   c.deliverOrders();
   { const m = c.buildings.find(b => b.mothballed);                 // re-open mothballed buildings once the treasury can carry them
+    // the Advisor's "sell surplus" hint: a mothballed generator the city no longer needs is demolished (refund 50 % of paid)
+    if (m && lvl(m.type, m.active).power && s.power >= s.pu) { c.demolish(m); return 'demolish-surplus'; }
     if (m && c.ema.net * SPY > 2 * lvl(m.type, m.active).upkeep && c.money > lvl(m.type, m.active).upkeep) { m.mothballed = false; c.dirty = true; c.actions++; return 'unmothball'; } }
   if (p.taxSmart) c.policy = c.h > 78 ? 'high' : c.h < 52 ? 'low' : 'normal';
   if (p.taxSmart && c.era >= K.density.era) c.dense = c.h > 74 || (c.dense && c.h > 66);
@@ -1049,8 +1055,9 @@ function decide(c) {
       }
       const old = c.buildings.find(b => b.type === type && b.active && b.active < level && b.level === b.active);
       if (old) { if (c.upgrade(old, level)) return 'gate-up:' + type; return 'save'; }
-      const opts = type === 'district_hall' ? { charter: 'craft' } : B[type].place === 'landOrBeach' && type === 'glassworks' ? { beach: true } : {};
-      if (!c.canPlace(type, opts)) { if (B[type].place === 'coast' || type === 'district_hall') break; break; }
+      let opts = type === 'district_hall' ? { charter: 'craft' } : B[type].place === 'landOrBeach' && type === 'glassworks' ? { beach: true } : {};
+      if (!c.canPlace(type, opts) && opts.beach) opts = {};      // a full beach: the glassworks goes on land instead
+      if (!c.canPlace(type, opts)) break;
       if (c.add(type, level, opts)) return 'gate:' + type;
       return 'save';
     }
@@ -1402,13 +1409,15 @@ function spatialCapacity(era, strips, jobShare, opts = {}) {
 
 // ───────────────────────────────────────────────────────────── main
 const isMain = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
-if (isMain) main();
 function line(cols) { return '| ' + cols.join(' | ') + ' |'; }
 function deriveStars(byProfile) {
   const out = [null];
   for (let e = 1; e <= 6; e++) {
-    const yr = n => median(byProfile[n].map(r => r.c.entries.find(x => x.era === e)?.year ?? Infinity));
-    out.push({ s2: Math.round(yr('typical') * 1.05), s3: Math.round(yr('optimised') * 1.05) });
+    const ys = n => byProfile[n].map(r => r.c.entries.find(x => x.era === e)?.year ?? Infinity);
+    // ★★ = typical median × 1.05; ★★★ = the best of the 10 typical/optimised runs × 1.02 (always reached by a simulated expert)
+    const s2 = Math.round(median(ys('typical')) * 1.05);
+    const s3 = Math.min(s2 - 1, Math.round(Math.min(...ys('typical'), ...ys('optimised')) * 1.02));
+    out.push({ s2, s3 });
   }
   return out;
 }
@@ -1438,12 +1447,14 @@ function main() {
     console.log(line([name, ERAS[e.era].en, m.toFixed(0), `${Math.floor(m / 60)}:${String(Math.round(m % 60)).padStart(2, '0')}`, Math.floor(e.year), Math.round(e.lead), '★'.repeat(e.stars) || '–',
       fmt(e.pop), fmt(e.income), fmt(e.net), fmt(e.net / 12), Math.round(e.upkeepShare * 100) + '%', e.strips, e.buildings, e.actions, taps]));
   }
-  console.log('\n### Era lengths (minutes at ×1, seed 1)\n');
+  console.log('\n### Era lengths (minutes at ×1; median of the seeds, seed 1 in brackets)\n');
   console.log(line(['era', 'slow', 'typical', 'optimised'])); console.log('|---|---:|---:|---:|');
-  for (let e = 0; e < 6; e++) console.log(line([ERAS[e].en, ...['slow', 'typical', 'optimised'].map(n => { const en = ref[n].c.entries; const a = en.find(x => x.era === e), b = en.find(x => x.era === e + 1); return a && b ? Math.round((b.t - a.t) / 60) : '—'; })]));
-  console.log(line(['**total to the Near Future**', ...['slow', 'typical', 'optimised'].map(n => { const x = ref[n].c.entries.find(e => e.era === 6); return x ? `**${Math.floor(x.t / 3600)} h ${Math.round(x.t / 60 % 60)} min**` : '—'; })]));
+  const len = (r, e) => { const en = r.c.entries, a = en.find(x => x.era === e), b = en.find(x => x.era === e + 1); return a && b ? (b.t - a.t) / 60 : NaN; };
+  for (let e = 0; e < 6; e++) console.log(line([ERAS[e].en, ...['slow', 'typical', 'optimised'].map(n => `${Math.round(median(runs[n].map(r => len(r, e))))} (${Math.round(len(ref[n], e))})`)]));
+  const tot = r => { const x = r.c.entries.find(e => e.era === 6); return x ? x.t / 60 : NaN; };
+  console.log(line(['**total to the Near Future**', ...['slow', 'typical', 'optimised'].map(n => { const m = median(runs[n].map(tot)); return `**${Math.floor(m / 60)} h ${String(Math.round(m % 60)).padStart(2, '0')} min** (${Math.round(tot(ref[n]))})`; })]));
   console.log('\n## 14.3 Seed spread (5 seeds: decision-interval jitter ±30 %, random AFK spells, mistakes) and the derived star thresholds\n');
-  console.log(line(['era', 'slow: year (min–max)', 'typical: year (min–max)', 'optimised: year (min–max)', 'typical: minutes (min–max)', '★ = history', '★★ ≤ (typical median × 1.05)', '★★★ ≤ (optimised median × 1.05)']));
+  console.log(line(['era', 'slow: year (min–max)', 'typical: year (min–max)', 'optimised: year (min–max)', 'typical: minutes (min–max)', '★ = history', '★★ ≤ (typical median × 1.05)', '★★★ ≤ (best typical/optimised run × 1.02)']));
   console.log('|---|---|---|---|---|---:|---:|---:|');
   for (let e = 1; e <= 6; e++) {
     const ys = n => runs[n].map(r => r.c.entries.find(x => x.era === e)?.year).filter(Boolean);
@@ -1452,6 +1463,18 @@ function main() {
     console.log(line([ERAS[e].en, rng(ys('slow')), rng(ys('typical')), rng(ys('optimised')), rng(ms), ERAS[e].hist, STARS[e].s2, STARS[e].s3]));
   }
   console.log('\nStar data for eras.json: ' + JSON.stringify(STARS.slice(1).map(s => [s.s2, s.s3])));
+  console.log('\n## 14.3b Entry time per profile (medians of 5 seeds; "stars" = how many of the 5 runs earned ★ / ★★ / ★★★)\n');
+  console.log(line(['era', 'slow: min', 'year', 'stars', 'typical: min', 'year', 'stars', 'optimised: min', 'year', 'stars']));
+  console.log('|---|---:|---:|---|---:|---:|---|---:|---:|---|');
+  for (let e = 1; e <= 6; e++) {
+    const cells = [];
+    for (const n of ['slow', 'typical', 'optimised']) {
+      const en = runs[n].map(r => r.c.entries.find(x => x.era === e)).filter(Boolean);
+      const dist = [1, 2, 3].map(k => en.filter(x => x.stars === k).length).join('/');
+      cells.push(Math.round(median(en.map(x => x.t / 60))), Math.round(median(en.map(x => x.year))), dist);
+    }
+    console.log(line([ERAS[e].en, ...cells]));
+  }
   console.log('\n## 14.5 End state (2 h of play after entering the Near Future) and score\n');
   console.log(line(['profile', 'game h', 'year', 'pop', 'happiness', 'gross/yr', 'costs/yr', 'money', 'strips', 'buildings', 'organic level-ups', 'score', 'Chronicle', 'City', 'Land', 'Achievements', 'Chronicle share']));
   console.log('|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|');
@@ -1534,29 +1557,37 @@ function main() {
   for (const r of rows) console.log(line(r));
   // stress test: a reckless burst of upkeep in the Modern era, then 150 game years of autopilot (no decisions)
   console.log('\n### 14.9b Stress test: arrears and recovery\n');
-  let burst = false, burstT = 0, minH = 100, minNet = 0, recovered = null, afkEnd = 0;
+  // The burst adds free coal power plants until their upkeep + fuel exceeds 1.5 × the city's gross income, so the net goes
+  // deeply negative, the treasury empties and the mothballing rule (gdd §4.10) must bring the city back on its own.
+  let burst = false, burstT = 0, minH = 100, minNet = 0, positiveAgain = null, afkEnd = 0, added = 0, nAdded = 0, popAtBurst = 0, minPop = Infinity;
   const st = run('typical', { seed: 1, stopAtNF: true, hook: c => {
     if (!burst && c.era === 4 && c.pop > 9000) {
-      burst = true; burstT = c.t;
-      for (let i = 0; i < 12; i++) { const b = { uid: ++c.uid, type: 'theater', level: c.bestLevel('theater'), active: c.bestLevel('theater'), readyAt: c.t, beach: true, paid: 0, builtEra: c.era, mult: 1, organic: 0 }; c.buildings.push(b); }
-      for (let i = 0; i < 4; i++) { const b = { uid: ++c.uid, type: 'power_plant', level: 1, active: 1, readyAt: c.t, beach: false, paid: 0, builtEra: c.era, mult: 1, organic: 0 }; c.buildings.push(b); }
+      burst = true; burstT = c.t; popAtBurst = c.pop;
+      const l = lvl('power_plant', 1), each = l.upkeep + l.fuelUse * K.price.fuelImport, target = 1.5 * c.ema.income * SPY;
+      while (added < target) { c.buildings.push({ uid: ++c.uid, type: 'power_plant', level: 1, active: 1, readyAt: c.t, beach: false, paid: 0, builtEra: c.era, mult: 1, organic: 0 }); added += each; nAdded++; }
       c.money = 0; c.dirty = true; c.afkUntil = c.t + 150 * SPY; afkEnd = c.afkUntil;
     }
-    if (burst) { minH = Math.min(minH, c.h); minNet = Math.min(minNet, c.ema.net * SPY); if (recovered === null && c.t > afkEnd && c.arrears === 0 && c.ema.net > 0) recovered = c.t; }
+    if (burst) {
+      minH = Math.min(minH, c.h); minNet = Math.min(minNet, c.ema.net * SPY); minPop = Math.min(minPop, c.pop);
+      if (positiveAgain === null && c.t > burstT + 2 * SPY && c.ema.net > 0) positiveAgain = c.t;
+    }
   } });
   const sc = st.c;
-  console.log(`Burst at minute ${Math.round(burstT / 60)} (year ${Math.floor(yearOf(burstT))}): +12 top theatres and +4 power plants for free, money set to 0, then 150 game years without decisions.`);
-  console.log(`Seconds in arrears: ${sc.arrearsTicks}; lowest happiness ${Math.round(minH)}; worst net ${fmt(minNet)}/yr; money never below 0; arrears cleared and net positive again at minute ${recovered ? Math.round(recovered / 60) : '—'} ` +
-    `(${recovered ? Math.round((recovered - afkEnd) / SPY) : '—'} years after the player returns); Near Future reached at minute ${st.doneAt ? Math.round(st.doneAt / 60) : '—'} (baseline ${Math.round(baseNF)}).`);
+  console.log(`Burst at minute ${Math.round(burstT / 60)} (year ${Math.floor(yearOf(burstT))}): +${nAdded} coal power plants for free (upkeep + fuel ${fmt(added)}/yr = 1.5 × gross), money set to 0, then 150 game years without any decision.`);
+  console.log(`Seconds in arrears: ${sc.arrearsTicks}; buildings mothballed by the treasury rule: ${sc.mothballs || 0}; worst net ${fmt(minNet)}/yr; money never below 0; ` +
+    `net positive again ${positiveAgain ? Math.round((positiveAgain - burstT) / SPY) : '—'} years after the burst (while still on autopilot); lowest happiness ${Math.round(minH)}; ` +
+    `lowest population ${fmt(minPop)} (${Math.round(100 * minPop / popAtBurst)} % of the population at the burst); Near Future reached at minute ${st.doneAt ? Math.round(st.doneAt / 60) : '—'} (baseline ${Math.round(baseNF)}).`);
   // ── sweep (optimised settings)
   console.log('\n## 14.4b 32-point sweep around the optimised profile (minutes to the Near Future, seed 1)\n');
   const sweep = [];
-  for (const interval of [3, 6]) for (const roi of [1.5, 2.5]) for (const covTarget of [0.88, 0.95]) for (const taxSmart of [false, true]) for (const loans of [false, true]) {
-    const r = run({ ...PROFILES.optimised, interval, roi, covTarget, taxSmart, loans }, { seed: 1, stopAtNF: true });
-    sweep.push({ interval, roi, covTarget, taxSmart, loans, min: r.doneAt ? r.doneAt / 60 : 9999 });
+  for (const interval of [3, 8]) for (const roi of [1.2, 1.8]) for (const reserve of [1.0, 1.15]) for (const taxSmart of [false, true]) for (const loans of [false, true]) {
+    const r = run({ ...PROFILES.optimised, interval, roi, reserve, taxSmart, loans }, { seed: 1, stopAtNF: true });
+    sweep.push({ interval, roi, reserve, taxSmart, loans, min: r.doneAt ? r.doneAt / 60 : 9999 });
   }
   sweep.sort((a, b) => a.min - b.min);
   console.log(`span ${Math.round(sweep[0].min)}–${Math.round(sweep[sweep.length - 1].min)} min; best: ${JSON.stringify(sweep[0])}; median ${Math.round(median(sweep.map(x => x.min)))}`);
+  const avg = f => Math.round(sweep.filter(f).reduce((a, x) => a + x.min, 0) / sweep.filter(f).length);
+  console.log(`mean with tax lever ${avg(x => x.taxSmart)} vs without ${avg(x => !x.taxSmart)}; with loans ${avg(x => x.loans)} vs without ${avg(x => !x.loans)}; interval 3 s ${avg(x => x.interval === 3)} vs 8 s ${avg(x => x.interval === 8)}`);
   // ── spatial capacity
   console.log('\n## 14.8 Spatial capacity check of the population gates (real 40-row layout, exact Manhattan diamonds)\n');
   console.log(line(['gate (into)', 'pop gate', 'content era', 'strips (typical at entry)', 'best home', 'lots / road share', 'services placed', 'coverage efficiency', 'capacity', 'gate / capacity', 'full map capacity', 'gate / full map', 'with density policy'])); console.log('|---|---:|---|---:|---|---|---:|---:|---:|---:|---:|---:|---:|');
@@ -1637,3 +1668,6 @@ function printRoster() {
   let nb = 0, nl = 0, reused = 0; for (const b of Object.values(B)) { nb++; nl += b.levels.length; reused += b.levels.filter(l => l.reuse !== 'NEW').length; }
   console.log(`\nTotals: ${nb} buildings, ${nl} levels (${reused} reuse a v2 model, ${nl - reused} NEW), plus ${ROADS.street.length + ROADS.avenue.length} road levels and ${TRACK.length} track levels.`);
 }
+
+// run last, after every module-level constant (VISITORS0 …) is initialised
+if (isMain) main();

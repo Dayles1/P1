@@ -1,7 +1,9 @@
 /**
- * Game time: one number of game seconds turned into the time of day, the
- * day count, the season and the light, all driven by world.json and
- * climate.json.
+ * Game time: one number of game seconds turned into the calendar year and,
+ * on a separate visual clock, the time of day, the day count, the season
+ * and the light, all driven by world.json and climate.json. The year runs
+ * at one rate for the whole game (world.json time.secondsPerYear, from year
+ * 0); nothing ever moves it but time.
  */
 
 import type { Content } from '../content/registry';
@@ -24,13 +26,29 @@ export class Clock {
         return this.content.world.time.secondsPerDay;
     }
 
+    get secondsPerYear(): number {
+        return Math.max(1, this.content.world.time.secondsPerYear);
+    }
+
+    /** The calendar year at a game time: whole years since year 0. */
+    year(time: number): number {
+        return Math.floor(Math.max(0, time) / this.secondsPerYear);
+    }
+
+    /** Days since the start, the start's time of day included. */
+    private days(time: number): number {
+        return (
+            time / this.secondsPerDay + (this.content.world.time.dayStart ?? 0)
+        );
+    }
+
     /** 0 = midnight, 0.5 = noon. */
     timeOfDay(time: number): number {
-        return (time / this.secondsPerDay) % 1;
+        return this.days(time) % 1;
     }
 
     day(time: number): number {
-        return Math.floor(time / this.secondsPerDay);
+        return Math.floor(this.days(time));
     }
 
     season(time: number): SeasonDef {
@@ -46,11 +64,9 @@ export class Clock {
 
     /** How far through the current season, 0..1 — used to blend its looks. */
     seasonProgress(time: number): number {
-        const length =
-            this.secondsPerDay *
-            Math.max(1, this.content.world.time.daysPerSeason);
+        const length = Math.max(1, this.content.world.time.daysPerSeason);
 
-        return (time % length) / length;
+        return (this.days(time) % length) / length;
     }
 
     clockText(time: number): string {

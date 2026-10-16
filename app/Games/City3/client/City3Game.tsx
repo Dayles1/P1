@@ -317,7 +317,7 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
 
                 revisionRef.current = created.revision;
                 toast(
-                    `🏕️ ${world.epoch.year} год. ${world.epoch.tagline}`,
+                    `🏕️ ${world.year} год. ${world.epoch.tagline}`,
                     'info',
                 );
             }
@@ -799,8 +799,6 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                     if (building.uid === overlayRef.current.selectedUid) {
                         selectBuilding(null);
                     }
-                } else if (tile) {
-                    game.clear(tile.x, tile.y);
                 }
 
                 return;

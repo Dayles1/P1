@@ -1,7 +1,14 @@
 {
-    "$doc": "Основные правила мира: размер карты, время, старт, население, экономика, районы, NPC и случайные события. Все скорости — в единицах за секунду.",
-    "map": { "width": 72, "height": 72, "seed": null },
-    "time": { "secondsPerDay": 240, "daysPerSeason": 1, "tickSeconds": 1, "maxOfflineSeconds": 3600 },
+    "$doc": "Основные правила мира: карта, время, старт, население, экономика, районы, NPC и случайные события. Все скорости — в единицах за секунду. map — одна карта для всех игроков: width столбцов; с севера на юг landRows рядов луга (ряд 0 упирается в горы за краем карты), beachRows рядов пляжа и seaRows рядов мелководья; biomes — какой биом у каждой полосы; start — открытые с начала столбцы (на всю глубину суши и пляжа). time: secondsPerYear — игровых секунд в году (год идёт ровно всю игру и начинается с 0); secondsPerDay и dayStart — сутки для смены дня и ночи и сезонов, отдельно от календаря.",
+    "map": {
+        "width": 100,
+        "landRows": 40,
+        "beachRows": 20,
+        "seaRows": 4,
+        "biomes": { "land": "meadow", "beach": "beach", "sea": "water" },
+        "start": { "minX": 35, "maxX": 64 }
+    },
+    "time": { "secondsPerYear": 25, "secondsPerDay": 240, "dayStart": 0.3, "daysPerSeason": 1, "tickSeconds": 1, "maxOfflineSeconds": 3600 },
     "start": {
         "epoch": "e0",
         "population": 6,
@@ -15,21 +22,7 @@
         "storageBase": 300,
         "refundShare": 0.5,
         "upgradeShare": 0.7,
-        "moveCostPerTile": 6,
-        "clearFeature": {
-            "tree": {
-                "cost": { "gold": 4 },
-                "gain": { "wood": 4 }
-            },
-            "rock": {
-                "cost": { "gold": 10 },
-                "gain": { "stone": 5 }
-            },
-            "reeds": {
-                "cost": { "gold": 2 },
-                "gain": {}
-            }
-        }
+        "moveCostPerTile": 6
     },
     "districts": {
         "radius": 7,

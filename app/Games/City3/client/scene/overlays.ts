@@ -9,7 +9,6 @@
 import * as THREE from 'three';
 import type { BuildingDef, Effects } from '../engine/content/types';
 import type { Game } from '../engine/sim/game';
-import { featureCode } from '../engine/world/world-map';
 import type { BuildingEntry, Buildings } from './buildings';
 import { modelGroup } from './buildings';
 import { color, hash3, wallsOf } from './colors';
@@ -483,13 +482,6 @@ export class Overlays {
             }
         }
 
-        if (ranges?.effects.near) {
-            // Features change as they are cleared: include a cheap count.
-            const near = ranges.effects.near;
-
-            key += `:${game.countFeatureNear(ranges.x, ranges.y, ranges.w, ranges.h, near.radius, near.feature)}`;
-        }
-
         const r = ranges;
 
         this.ranges.set(key, () => {
@@ -533,29 +525,6 @@ export class Overlays {
                 add(e.pollution.radius, rgba('#8a5a2b', 0.2));
             }
 
-            if (e.near) {
-                const code = featureCode(e.near.feature);
-
-                for (const [x, y] of game.around(
-                    r.x,
-                    r.y,
-                    r.w,
-                    r.h,
-                    e.near.radius,
-                )) {
-                    const index = game.map.index(x, y);
-
-                    tiles.set(index, {
-                        x,
-                        y,
-                        c:
-                            game.map.feature[index] === code
-                                ? rgba('#5adf6a', 0.45)
-                                : rgba('#5adf6a', 0.08),
-                    });
-                }
-            }
-
             return [...tiles.values()];
         });
 
@@ -591,10 +560,6 @@ export class Overlays {
 
             if (e.pollution) {
                 rect(e.pollution.radius, rgba('#a0703a', 0.9));
-            }
-
-            if (e.near) {
-                rect(e.near.radius, rgba('#5adf6a', 0.9));
             }
 
             return rects;

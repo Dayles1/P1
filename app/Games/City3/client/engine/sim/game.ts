@@ -27,8 +27,8 @@ import { Clock } from '../core/clock';
 import { EventBus } from '../core/events';
 import { between, hash2, mulberry32, pick, weighted } from '../core/random';
 import type { Rng } from '../core/random';
-import { generateMap } from '../world/generator';
-import { featureCode } from '../world/world-map';
+import { buildMap, mapLayout } from '../world/layout';
+import type { MapLayout } from '../world/layout';
 import type { WorldMap } from '../world/world-map';
 import { NpcSystem } from './npcs';
 import type {
@@ -46,7 +46,6 @@ export interface BuildingStatus {
     efficiency: number;
     starved: string | null;
     noPower: boolean;
-    nearbyFeatures: number;
     boost: number;
     fertility: number;
     happiness: number | null;
@@ -97,6 +96,8 @@ export class Game {
     readonly content: Content;
     readonly events = new EventBus();
     readonly clock: Clock;
+    /** The fixed map's bands (land, beach, sea). */
+    readonly layout: MapLayout;
     state: WorldState;
     map: WorldMap;
     buildings = new Map<number, BuildingState>();
@@ -129,6 +130,7 @@ export class Game {
         this.state = state;
         this.map = map;
         this.clock = new Clock(content);
+        this.layout = mapLayout(content);
         this.rng = mulberry32(state.seed ^ Math.floor(state.time));
 
         for (const building of buildings) {
@@ -144,12 +146,13 @@ export class Game {
         this.updateEconomy(0);
     }
 
+    /** A new world on the fixed map; the seed only drives events and names. */
     static create(
         content: Content,
         seed = Math.floor(Math.random() * 2 ** 31),
     ): Game {
         const world = content.world;
-        const map = generateMap(content, seed);
+        const map = buildMap(content);
         const epoch = Math.max(
             0,
             content.epochs.findIndex((e) => e.id === world.start.epoch),
@@ -159,8 +162,8 @@ export class Game {
             width: map.width,
             height: map.height,
             epoch,
-            year: content.epoch(epoch).year,
-            time: world.time.secondsPerDay * 0.3,
+            time: 0,
+            land: { ...world.map.start },
             resources: { ...content.emptyAmounts(), ...world.start.resources },
             population: world.start.population,
             weather: content.weather[0]?.id ?? 'clear',
@@ -182,7 +185,7 @@ export class Game {
                 start.at === 'center'
                     ? [
                           Math.floor(map.width / 2 - def.size.w / 2),
-                          Math.floor(map.height / 2 - def.size.h / 2),
+                          Math.floor(world.map.landRows / 2 - def.size.h / 2),
                       ]
                     : start.at;
 
@@ -201,9 +204,14 @@ export class Game {
         return this.content.epoch(this.state.epoch);
     }
 
-    /** The current era's palette (sky, interface); buildings use their own. */
+    /** The current era's palette (interface); buildings use their own. */
     get palette() {
         return this.content.epoch(this.state.epoch).palette;
+    }
+
+    /** The calendar year: game time at one constant rate, from year 0. */
+    get year(): number {
+        return this.clock.year(this.state.time);
     }
 
     get season() {
@@ -295,21 +303,21 @@ export class Game {
         return this.state.techs.includes(id);
     }
 
-    territory(epoch = this.state.epoch): {
+    /**
+     * The player's land as an inclusive tile rect: the owned columns, over
+     * the full depth of the land and the beach (the sea is nobody's yet).
+     */
+    territory(): {
         minX: number;
         minY: number;
         maxX: number;
         maxY: number;
     } {
-        const radius = this.content.epoch(epoch).territory;
-        const cx = Math.floor(this.map.width / 2);
-        const cy = Math.floor(this.map.height / 2);
-
         return {
-            minX: Math.max(0, cx - radius),
-            minY: Math.max(0, cy - radius),
-            maxX: Math.min(this.map.width - 1, cx + radius - 1),
-            maxY: Math.min(this.map.height - 1, cy + radius - 1),
+            minX: this.state.land.minX,
+            minY: 0,
+            maxX: this.state.land.maxX,
+            maxY: this.layout.seaY - 1,
         };
     }
 
@@ -317,6 +325,22 @@ export class Game {
         const t = this.territory();
 
         return x >= t.minX && y >= t.minY && x <= t.maxX && y <= t.maxY;
+    }
+
+    /** Sets the owned columns (expansion strips are bought through this later). */
+    setLand(minX: number, maxX: number): ActionResult {
+        const width = this.map.width;
+        const from = Math.max(0, Math.min(width - 1, Math.floor(minX)));
+        const to = Math.max(0, Math.min(width - 1, Math.floor(maxX)));
+
+        if (from > to) {
+            return { ok: false, reason: 'Пустая полоса земли' };
+        }
+
+        this.state.land = { minX: from, maxX: to };
+        this.revision++;
+
+        return { ok: true };
     }
 
     /** Resources the player knows about by now (or happens to hold). */
@@ -786,24 +810,6 @@ export class Game {
         }
     }
 
-    countFeatureNear(
-        x: number,
-        y: number,
-        w: number,
-        h: number,
-        radius: number,
-        feature: string,
-    ): number {
-        const code = featureCode(feature as never);
-        let count = 0;
-
-        for (const [tx, ty] of this.around(x, y, w, h, radius)) {
-            count += this.map.feature[this.map.index(tx, ty)] === code ? 1 : 0;
-        }
-
-        return count;
-    }
-
     canPlace(type: string, x: number, y: number, ignoreUid = 0): ActionResult {
         const def = this.content.building(type);
 
@@ -831,13 +837,6 @@ export class Game {
                     return {
                         ok: false,
                         reason: `Только на: ${def.placement.biomes.join(', ')}`,
-                    };
-                }
-
-                if (this.map.featureAt(tx, ty)) {
-                    return {
-                        ok: false,
-                        reason: 'Сначала расчистите клетку (лес, камни, камыш)',
                     };
                 }
 
@@ -1144,44 +1143,6 @@ export class Game {
         return { ok: true };
     }
 
-    /** Cuts a tree, breaks a rock or mows reeds. */
-    clear(x: number, y: number): ActionResult {
-        const feature = this.map.featureAt(x, y);
-
-        if (!this.inTerritory(x, y)) {
-            return this.fail('За границей ваших земель');
-        }
-
-        if (!feature) {
-            return this.fail('Здесь нечего расчищать');
-        }
-
-        const rule = this.content.world.economy.clearFeature[feature] ?? {
-            cost: {},
-            gain: {},
-        };
-
-        if (!this.canAfford(rule.cost)) {
-            return this.fail(this.missing(rule.cost));
-        }
-
-        this.pay(rule.cost);
-        this.gain(rule.gain);
-        this.map.setFeature(x, y, null);
-        this.structureChanged();
-
-        const text = Object.entries(rule.gain)
-            .map(
-                ([id, amount]) =>
-                    `+${amount} ${this.content.resource(id)?.icon ?? id}`,
-            )
-            .join(' ');
-
-        this.events.emit({ type: 'cleared', x, y, text });
-
-        return { ok: true };
-    }
-
     research(id: string): ActionResult {
         const tech = this.content.tech(id);
 
@@ -1308,7 +1269,6 @@ export class Game {
 
         this.pay(next.cost);
         this.state.epoch++;
-        this.state.year = this.epoch.year;
         this.npcs.onEpochChanged();
         this.structureChanged();
         this.events.emit({ type: 'epoch', epoch: this.state.epoch });
@@ -1323,11 +1283,6 @@ export class Game {
         const before = this.season.id;
 
         state.time += dt;
-        state.year = Math.min(
-            (this.content.epochs[state.epoch + 1]?.year ?? 3999) - 1,
-            state.year +
-                (this.epoch.yearsPerDay * dt) / this.clock.secondsPerDay,
-        );
         state.moods = state.moods.filter((mood) => mood.until > state.time);
 
         if (!quiet && this.season.id !== before) {
@@ -1663,7 +1618,7 @@ export class Game {
 
     /**
      * Everything that only changes when something is built, moved,
-     * upgraded or cleared: road connections, districts, terrain and boost
+     * upgraded or removed: road connections, districts, terrain and boost
      * bonuses, and how pleasant each home's surroundings are.
      */
     private recalculate(): void {
@@ -1764,16 +1719,6 @@ export class Game {
                 efficiency: 0,
                 starved: null,
                 noPower: false,
-                nearbyFeatures: effects.near
-                    ? this.countFeatureNear(
-                          building.x,
-                          building.y,
-                          def.size.w,
-                          def.size.h,
-                          effects.near.radius,
-                          effects.near.feature,
-                      )
-                    : 0,
                 boost,
                 fertility,
                 happiness,
@@ -1902,12 +1847,6 @@ export class Game {
                 );
             }
 
-            const nearby = effects.near
-                ? Math.min(
-                      effects.near.max,
-                      status.nearbyFeatures * effects.near.perTile,
-                  )
-                : 0;
             const seasonal = effects.seasonal
                 ? season.fertility * weatherFertility * status.fertility
                 : 1;
@@ -1919,7 +1858,7 @@ export class Game {
                     (policy.produces?.[id] ?? 0) +
                     (policy.produces?.['*'] ?? 0);
                 const perSecond =
-                    (amount + nearby) *
+                    amount *
                     (1 + status.boost) *
                     Math.max(0, 1 + percent / 100) *
                     seasonal *
@@ -2263,7 +2202,6 @@ export class Game {
         }
 
         this.state.epoch++;
-        this.state.year = this.epoch.year;
         this.npcs.onEpochChanged();
         this.structureChanged();
         this.events.emit({ type: 'epoch', epoch: this.state.epoch });

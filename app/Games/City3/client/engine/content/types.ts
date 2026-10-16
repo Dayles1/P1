@@ -9,13 +9,27 @@ export type ResourceId = string;
 export type Amounts = Record<ResourceId, number>;
 
 export interface WorldFile {
+    /**
+     * The one map everyone plays on. From north (row 0, where the mountain
+     * range outside the map begins) to south: land, beach, shallow sea.
+     */
     map: {
         width: number;
-        height: number;
-        seed: number | null;
+        landRows: number;
+        beachRows: number;
+        seaRows: number;
+        /** The biome of each band. */
+        biomes: { land: string; beach: string; sea: string };
+        /** The columns open from the start, over the land and the beach. */
+        start: { minX: number; maxX: number };
     };
     time: {
+        /** Game seconds in a year: one rate for the whole game, from year 0. */
+        secondsPerYear: number;
+        /** Day and night and the seasons run on their own clock. */
         secondsPerDay: number;
+        /** The time of day the world starts at (0.3 ≈ morning). */
+        dayStart?: number;
         daysPerSeason: number;
         tickSeconds: number;
         maxOfflineSeconds: number;
@@ -27,6 +41,7 @@ export interface WorldFile {
         buildings: {
             type: string;
             level?: number;
+            /** 'center' = the middle of the land rows. */
             at: 'center' | [number, number];
         }[];
     };
@@ -51,7 +66,6 @@ export interface WorldFile {
         /** An upgrade without its own `upgrade` cost costs this share of the level's `cost`. */
         upgradeShare: number;
         moveCostPerTile: number;
-        clearFeature: Record<string, { cost: Amounts; gain: Amounts }>;
     };
     districts: {
         /** Tiles around a district hall that belong to its district. */
@@ -124,28 +138,9 @@ export interface BiomeDef {
     fertility: number;
     speed: number;
     water?: boolean;
-    when: {
-        elevation?: [number, number];
-        moisture?: [number, number];
-        temperature?: [number, number];
-    };
-    /** Chance (0..1) of each feature on a tile of this biome. */
-    features: Partial<Record<FeatureId, number>>;
 }
 
-export type FeatureId = 'tree' | 'rock' | 'reeds';
-
 export interface BiomesFile {
-    generator: {
-        elevationScale: number;
-        moistureScale: number;
-        temperatureScale: number;
-        octaves: number;
-        edgeFalloff: number;
-        lake: { count: number; radius: [number, number] };
-        river: { count: number; width: number };
-        clearRadius: number;
-    };
     biomes: BiomeDef[];
 }
 
@@ -213,8 +208,8 @@ export interface Palette {
     crop: string;
     flag: string;
     accent: string;
-    /** Sky gradient while this era is the current one: zenith, horizon. */
-    sky: [string, string];
+    /** Unused: the sky is the same natural sky in every era. */
+    sky?: [string, string];
     [key: string]: unknown;
 }
 
@@ -235,8 +230,6 @@ export interface EpochDef {
     year: number;
     name: string;
     tagline: string;
-    yearsPerDay: number;
-    territory: number;
     palette: Palette;
     theme: EpochTheme;
     ambience: string;
@@ -834,12 +827,6 @@ export interface Effects {
     aura: { radius: number; happiness: number } | null;
     pollution: { radius: number; amount: number } | null;
     boost: { targets: string[]; radius: number; percent: number } | null;
-    near: {
-        feature: FeatureId;
-        radius: number;
-        perTile: number;
-        max: number;
-    } | null;
     seasonal: boolean;
     defense: number;
 }

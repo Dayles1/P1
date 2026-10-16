@@ -51,7 +51,7 @@ export function TopBar({
                     ←
                 </button>
                 <div className="hud-year" title={epoch.tagline}>
-                    <strong>{Math.floor(game.state.year)} г.</strong>
+                    <strong>{game.year} г.</strong>
                     <span>{epoch.name}</span>
                 </div>
                 <div

@@ -103,7 +103,7 @@ export class Content {
     }
 
     biomeIndexOf(id: string): number {
-        return this.biomeIndex.get(id) ?? this.biomes.length - 1;
+        return this.biomeIndex.get(id) ?? 0;
     }
 
     building(id: string): BuildingDef {
@@ -256,21 +256,51 @@ export function validateContent(
     // world
     const world = content.world;
 
-    if (!(
-        world.map?.width >= 16 &&
-        world.map?.width <= 256 &&
-        world.map?.height >= 16 &&
-        world.map?.height <= 256
-    )) {
+    const map = world.map;
+    const rows =
+        (map?.landRows ?? 0) + (map?.beachRows ?? 0) + (map?.seaRows ?? 0);
+
+    if (
+        !(map?.width >= 16 && map.width <= 256 && rows >= 16 && rows <= 256) ||
+        !(map.landRows >= 1 && map.beachRows >= 0 && map.seaRows >= 0)
+    ) {
         add(
             'world',
             'map',
-            'Размер карты — от 16 до 256 клеток по каждой стороне',
+            'Размер карты — от 16 до 256 клеток по каждой стороне, суша — хотя бы один ряд',
+        );
+    }
+
+    for (const band of ['land', 'beach', 'sea'] as const) {
+        if (!biomes.has(map?.biomes?.[band])) {
+            add(
+                'world',
+                `map.biomes.${band}`,
+                `Нет биома «${String(map?.biomes?.[band])}»`,
+            );
+        }
+    }
+
+    if (
+        !(
+            map?.start?.minX >= 0 &&
+            map.start.minX <= map.start.maxX &&
+            map.start.maxX < map.width
+        )
+    ) {
+        add(
+            'world',
+            'map.start',
+            'Открытые столбцы — внутри карты, и minX не больше maxX',
         );
     }
 
     if (!(world.time?.secondsPerDay >= 10)) {
         add('world', 'time.secondsPerDay', 'Сутки — не короче 10 секунд');
+    }
+
+    if (!(world.time?.secondsPerYear >= 1)) {
+        add('world', 'time.secondsPerYear', 'Год — не короче секунды');
     }
 
     checkEpoch('world', 'start.epoch', world.start?.epoch);
@@ -323,12 +353,6 @@ export function validateContent(
     // biomes
     if (!content.biomes.biomes?.length) {
         add('biomes', 'biomes', 'Нужен хотя бы один биом');
-    } else if (Object.keys(content.biomes.biomes.at(-1)!.when ?? {}).length) {
-        add(
-            'biomes',
-            `biomes[${content.biomes.biomes.length - 1}].when`,
-            'Последний биом должен быть «по умолчанию» — с пустым when',
-        );
     }
 
     // climate

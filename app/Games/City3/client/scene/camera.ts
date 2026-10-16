@@ -1,15 +1,30 @@
 /**
  * An orbit camera around a target on the ground: yaw (0 = looking north,
- * towards y−), pitch, distance; every change eases towards its goal.
+ * towards y−, at the mountains), pitch, distance; every change eases
+ * towards its goal. The view is kept to what the world is built for: the
+ * yaw swings only so far either side of north, the pitch never looks up
+ * past the horizon nor straight down, the zoom has a cap, and the target
+ * stays over the player's land (plus a margin). The field of view widens
+ * on tall screens so a phone in portrait still sees enough of the map.
  */
 
 import * as THREE from 'three';
 import { clamp, damp } from './colors';
 
 export const MIN_DISTANCE = 6;
-export const MAX_DISTANCE = 120;
-export const MIN_PITCH = (20 * Math.PI) / 180;
-export const MAX_PITCH = (85 * Math.PI) / 180;
+export const MAX_DISTANCE = 70;
+export const MIN_PITCH = (14 * Math.PI) / 180;
+export const MAX_PITCH = (66 * Math.PI) / 180;
+/** The top of the view rises at most this far above the horizon. */
+const SKY_ABOVE = (12 * Math.PI) / 180;
+/** How far the view may turn from north either way. */
+export const MAX_YAW = (35 * Math.PI) / 180;
+/** Vertical field of view on wide screens, and the least horizontal one. */
+const BASE_FOV = 42;
+const MIN_HORIZONTAL_FOV = 50;
+const MAX_FOV = 70;
+/** Fixed far plane: everything out to the fogged ends of the world. */
+const FAR = 1600;
 
 interface CameraState {
     yaw: number;
@@ -17,6 +32,14 @@ interface CameraState {
     distance: number;
     x: number;
     z: number;
+}
+
+/** The rectangle (world X, Z) the target is kept within. */
+export interface CameraArea {
+    minX: number;
+    maxX: number;
+    minZ: number;
+    maxZ: number;
 }
 
 function wrapAngle(angle: number): number {
@@ -30,32 +53,41 @@ export class OrbitCamera {
     /** Smoothed ground height under the target. */
     groundY = 0;
 
-    private width = 1;
-    private height = 1;
+    private area: CameraArea = { minX: 0, maxX: 1, minZ: 0, maxZ: 1 };
 
     constructor(private heightAt: (x: number, z: number) => number) {
-        this.camera = new THREE.PerspectiveCamera(40, 1, 0.1, 500);
+        this.camera = new THREE.PerspectiveCamera(BASE_FOV, 1, 0.1, FAR);
         this.goal = {
-            yaw: Math.PI / 4,
-            pitch: (55 * Math.PI) / 180,
-            distance: 30,
+            yaw: 0,
+            pitch: (30 * Math.PI) / 180,
+            distance: 40,
             x: 0,
             z: 0,
         };
         this.current = { ...this.goal };
     }
 
-    /** The map size the target is kept within. */
-    setBounds(width: number, height: number): void {
-        this.width = width;
-        this.height = height;
+    /** The rectangle the target is kept within. */
+    setArea(area: CameraArea): void {
+        const a = this.area;
+
+        if (
+            a.minX === area.minX &&
+            a.maxX === area.maxX &&
+            a.minZ === area.minZ &&
+            a.maxZ === area.maxZ
+        ) {
+            return;
+        }
+
+        this.area = { ...area };
         this.clampTarget(this.goal);
         this.clampTarget(this.current);
     }
 
     private clampTarget(state: CameraState): void {
-        state.x = clamp(state.x, 0, this.width);
-        state.z = clamp(state.z, 0, this.height);
+        state.x = clamp(state.x, this.area.minX, this.area.maxX);
+        state.z = clamp(state.z, this.area.minZ, this.area.maxZ);
     }
 
     get target(): THREE.Vector3 {
@@ -92,15 +124,22 @@ export class OrbitCamera {
         );
         camera.up.set(0, 1, 0);
         camera.lookAt(x, this.groundY, z);
-        camera.near = Math.max(0.05, distance * 0.02);
-        camera.far = distance * 6 + 160;
+        camera.near = Math.max(0.1, distance * 0.02);
+        camera.far = FAR;
         camera.updateProjectionMatrix();
         camera.updateMatrixWorld();
     }
 
+    /** A new screen shape: a tall one gets a taller field of view. */
     setAspect(aspect: number): void {
+        const wide = (MIN_HORIZONTAL_FOV * Math.PI) / 360;
+        const needed =
+            (Math.atan(Math.tan(wide) / Math.max(0.1, aspect)) * 360) / Math.PI;
+
         this.camera.aspect = aspect;
+        this.camera.fov = clamp(needed, BASE_FOV, MAX_FOV);
         this.camera.updateProjectionMatrix();
+        this.goal.pitch = clamp(this.goal.pitch, this.minPitch, MAX_PITCH);
     }
 
     centerOn(x: number, z: number, smooth = true): void {
@@ -162,20 +201,27 @@ export class OrbitCamera {
     }
 
     rotate(radians: number): void {
-        this.goal.yaw += radians;
+        this.goal.yaw = clamp(this.goal.yaw + radians, -MAX_YAW, MAX_YAW);
+    }
+
+    /** The lowest pitch: never so low that the view is mostly sky. */
+    get minPitch(): number {
+        return Math.max(
+            MIN_PITCH,
+            (this.camera.fov * Math.PI) / 360 - SKY_ABOVE,
+        );
     }
 
     tilt(radians: number): void {
         this.goal.pitch = clamp(
             this.goal.pitch + radians,
-            MIN_PITCH,
+            this.minPitch,
             MAX_PITCH,
         );
     }
 
     setYaw(radians: number, smooth = true): void {
-        this.goal.yaw =
-            this.current.yaw + wrapAngle(radians - this.current.yaw);
+        this.goal.yaw = clamp(wrapAngle(radians), -MAX_YAW, MAX_YAW);
 
         if (!smooth) {
             this.current.yaw = this.goal.yaw;

@@ -1,16 +1,60 @@
 /**
- * Sky and light: a gradient sky from the current era's palette blended to
+ * Sky and light: a natural sky dome (the same in every era) blended to
  * night colours, the sun (with shadows around the camera target) moving
  * through the day, bluish moonlight at night, hemisphere ambient light,
  * dawn / dusk tints and fog for depth (denser in foggy weather).
+ *
+ * The dome is world-space and follows the camera; its colour at and below
+ * the horizon is exactly the fog colour, so fogged ground and the far
+ * ridges melt into the sky with no seam. The fog is sized in world units
+ * so the ends of the world (the aprons past the map) are always fogged.
  */
 
 import * as THREE from 'three';
 import type { Game } from '../engine/sim/game';
 import { color, smoothstep } from './colors';
 
+const DAY_ZENITH = '#5b9bd5';
+const DAY_HORIZON = '#d3e2ea';
 const NIGHT_ZENITH = '#060a1c';
 const NIGHT_HORIZON = '#1a2350';
+
+/** Fog in world units (tiles): clear weather, at any zoom. */
+const FOG_NEAR = 85;
+const FOG_FAR = 330;
+/** The dome's radius; it must stay inside the camera's far plane. */
+export const DOME_RADIUS = 1400;
+
+const DOME_VERTEX = /* glsl */ `
+    varying vec3 vDirection;
+
+    void main() {
+        vDirection = position;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+`;
+
+const DOME_FRAGMENT = /* glsl */ `
+    uniform vec3 uZenith;
+    uniform vec3 uHorizon;
+    uniform vec3 uSun;
+    uniform vec3 uSunColor;
+    varying vec3 vDirection;
+
+    void main() {
+        vec3 direction = normalize(vDirection);
+        float up = max(direction.y, 0.0);
+        vec3 sky = mix(uHorizon, uZenith, pow(smoothstep(0.0, 0.6, up), 0.7));
+        float sun = max(dot(direction, uSun), 0.0);
+
+        // A soft glow around the sun, fading out towards the horizon line.
+        sky += uSunColor * (pow(sun, 48.0) * 0.5 + pow(sun, 6.0) * 0.08)
+            * smoothstep(0.0, 0.12, up);
+        gl_FragColor = vec4(sky, 1.0);
+
+        #include <colorspace_fragment>
+    }
+`;
 
 export interface SkyState {
     /** 0 = full day, 1 = deep night. */
@@ -24,9 +68,8 @@ export class Sky {
     readonly hemisphere: THREE.HemisphereLight;
     readonly fog: THREE.Fog;
 
-    private canvas: HTMLCanvasElement;
-    private texture: THREE.CanvasTexture;
-    private gradientKey = '';
+    private dome: THREE.Mesh;
+    private domeMaterial: THREE.ShaderMaterial;
     private shadowSize = 0;
     private zenith = new THREE.Color();
     private horizon = new THREE.Color();
@@ -41,18 +84,39 @@ export class Sky {
         this.sun.shadow.camera.near = 1;
         this.sun.shadow.camera.far = 200;
         this.hemisphere = new THREE.HemisphereLight(0xbfdcff, 0x6b5a40, 1);
-        this.fog = new THREE.Fog(0xdde8f0, 60, 200);
-        this.canvas = document.createElement('canvas');
-        this.canvas.width = 2;
-        this.canvas.height = 256;
-        this.texture = new THREE.CanvasTexture(this.canvas);
-        this.texture.colorSpace = THREE.SRGBColorSpace;
-        scene.add(this.sun, this.sun.target, this.hemisphere);
-        scene.background = this.texture;
+        this.fog = new THREE.Fog(0xdde8f0, FOG_NEAR, FOG_FAR);
+        this.domeMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+                uZenith: { value: new THREE.Color() },
+                uHorizon: { value: new THREE.Color() },
+                uSun: { value: new THREE.Vector3(0, 1, 0) },
+                uSunColor: { value: new THREE.Color() },
+            },
+            vertexShader: DOME_VERTEX,
+            fragmentShader: DOME_FRAGMENT,
+            side: THREE.BackSide,
+            depthWrite: false,
+            depthTest: false,
+            fog: false,
+        });
+        this.dome = new THREE.Mesh(
+            new THREE.SphereGeometry(DOME_RADIUS, 32, 16),
+            this.domeMaterial,
+        );
+        this.dome.name = 'sky';
+        this.dome.frustumCulled = false;
+        this.dome.renderOrder = -1000;
+        scene.add(this.sun, this.sun.target, this.hemisphere, this.dome);
+        scene.background = null;
         scene.fog = this.fog;
     }
 
-    update(game: Game, target: THREE.Vector3, distance: number): SkyState {
+    update(
+        game: Game,
+        target: THREE.Vector3,
+        distance: number,
+        eye: THREE.Vector3,
+    ): SkyState {
         const weather = game.weather;
         const light = game.clock.light(game.state.time, weather?.light ?? 0);
         const tod = game.clock.timeOfDay(game.state.time);
@@ -62,11 +126,12 @@ export class Sky {
             ? Math.min(1, light.tintStrength * 1.6)
             : 0;
         const gloom = Math.max(0, -(weather?.light ?? 0)) * 2.2;
-        const sky = game.palette.sky ?? ['#8fc3e8', '#eef2f2'];
 
-        // Sky colours.
-        this.zenith.copy(color(sky[0])).lerp(color(NIGHT_ZENITH), night);
-        this.horizon.copy(color(sky[1])).lerp(color(NIGHT_HORIZON), night);
+        // Sky colours: natural, whatever the era.
+        this.zenith.copy(color(DAY_ZENITH)).lerp(color(NIGHT_ZENITH), night);
+        this.horizon
+            .copy(color(DAY_HORIZON))
+            .lerp(color(NIGHT_HORIZON), night);
 
         if (tint) {
             this.horizon.lerp(tint, tintShare * 0.8);
@@ -79,8 +144,6 @@ export class Sky {
             this.zenith.lerp(grey, Math.min(0.7, gloom) * (1 - night * 0.7));
             this.horizon.lerp(grey, Math.min(0.6, gloom) * (1 - night * 0.7));
         }
-
-        this.paintGradient();
 
         // Sun and moon.
         const angle = (tod - 0.25) * Math.PI * 2;
@@ -141,16 +204,16 @@ export class Sky {
 
         this.scene.environmentIntensity = 0.08 + light.level * 0.32;
 
-        // Fog: far by default, close in fog; coloured like the horizon.
+        // Fog: in world units, closer in fog and rain; coloured like the horizon.
         const foggy =
             weather?.particles?.kind === 'fog' ? weather.particles.density : 0;
         const rainy = weather?.particles?.kind === 'rain' ? 0.3 : 0;
-        const near = distance * (1.6 - foggy * 1.4 - rainy);
-        const far =
-            distance * (5.5 - foggy * 3.6 - rainy * 2) + 30 * (1 - foggy);
 
-        this.fog.near = Math.max(1, near);
-        this.fog.far = Math.max(this.fog.near + 5, far);
+        this.fog.near = Math.max(4, FOG_NEAR * (1 - foggy * 0.9 - rainy));
+        this.fog.far = Math.max(
+            this.fog.near + 40,
+            FOG_FAR * (1 - foggy * 0.6 - rainy * 0.6),
+        );
         this.fog.color.copy(this.horizon);
 
         if (foggy) {
@@ -158,42 +221,26 @@ export class Sky {
                 this.scratch.set(0xd8dde2).multiplyScalar(1 - night * 0.8),
                 foggy * 0.6,
             );
+            this.zenith.lerp(this.fog.color, foggy * 0.7);
         }
+
+        // The dome: its horizon is the fog colour, so the two always meet.
+        const uniforms = this.domeMaterial.uniforms;
+
+        uniforms.uZenith.value.copy(this.zenith);
+        uniforms.uHorizon.value.copy(this.fog.color);
+        uniforms.uSun.value.copy(direction);
+        uniforms.uSunColor.value
+            .copy(this.sun.color)
+            .multiplyScalar(sunPower >= moonPower * 0.8 ? sunPower : 0);
+        this.dome.position.copy(eye);
 
         return { night, level: light.level };
     }
 
-    private paintGradient(): void {
-        const key = `${this.zenith.getHexString()}${this.horizon.getHexString()}`;
-
-        if (key === this.gradientKey) {
-            return;
-        }
-
-        this.gradientKey = key;
-
-        const ctx = this.canvas.getContext('2d')!;
-        const gradient = ctx.createLinearGradient(0, 0, 0, 256);
-
-        gradient.addColorStop(
-            0,
-            `#${this.zenith.getHexString(THREE.SRGBColorSpace)}`,
-        );
-        gradient.addColorStop(
-            0.75,
-            `#${this.horizon.getHexString(THREE.SRGBColorSpace)}`,
-        );
-        gradient.addColorStop(
-            1,
-            `#${this.horizon.getHexString(THREE.SRGBColorSpace)}`,
-        );
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, 2, 256);
-        this.texture.needsUpdate = true;
-    }
-
     dispose(): void {
-        this.texture.dispose();
+        this.dome.geometry.dispose();
+        this.domeMaterial.dispose();
         this.sun.dispose();
         this.hemisphere.dispose();
     }

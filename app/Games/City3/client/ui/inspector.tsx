@@ -74,12 +74,6 @@ export function effectLines(game: Game, effects: Effects): string[] {
         );
     }
 
-    if (effects.near) {
-        lines.push(
-            `🌲 +${Math.round(effects.near.perTile * 600) / 10}/мин за каждый объект «${effects.near.feature}» рядом`,
-        );
-    }
-
     if (effects.seasonal) {
         lines.push('🌦️ зависит от сезона и плодородия');
     }
@@ -369,14 +363,6 @@ export function Inspector({
             <li key="job">
                 👷 Работают: <b>{status.workers}</b> /{' '}
                 {game.effects(building).jobs}
-            </li>,
-        );
-    }
-
-    if (status?.nearbyFeatures) {
-        live.push(
-            <li key="near">
-                🌲 Ресурсы рядом: <b>{status.nearbyFeatures}</b>
             </li>,
         );
     }

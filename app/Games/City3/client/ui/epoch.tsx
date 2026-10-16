@@ -87,9 +87,6 @@ export function EpochPanel({
                         </span>
                     )}
                     <span>
-                        🗺️ земли {next.territory * 2}×{next.territory * 2}
-                    </span>
-                    <span>
                         🔬{' '}
                         {
                             game.content.techs.filter(
@@ -111,7 +108,7 @@ export function EpochPanel({
                     onClick={onAdvance}
                 >
                     {ready
-                        ? `🚀 Перейти в ${next.year} год`
+                        ? `🚀 Начать эпоху «${next.name}»`
                         : 'Выполните условия'}
                 </button>
             </div>
@@ -286,35 +283,14 @@ export function EpochSplash({
     onDone: () => void;
 }) {
     const info = game.content.epoch(epoch);
-    const from = game.content.epoch(Math.max(0, epoch - 1)).year;
-    const [year, setYear] = useState(from);
+    // The calendar does not jump with the era: the splash shows today's year.
+    const [year] = useState(game.year);
 
     useEffect(() => {
-        const start = performance.now();
-        let frame = 0;
-        const step = (now: number) => {
-            const progress = Math.min(1, (now - start) / 1600);
-
-            setYear(
-                Math.round(
-                    from + (info.year - from) * (1 - Math.pow(1 - progress, 3)),
-                ),
-            );
-
-            if (progress < 1) {
-                frame = requestAnimationFrame(step);
-            }
-        };
-
-        frame = requestAnimationFrame(step);
-
         const timer = window.setTimeout(onDone, 5200);
 
-        return () => {
-            cancelAnimationFrame(frame);
-            window.clearTimeout(timer);
-        };
-    }, [from, info.year, onDone]);
+        return () => window.clearTimeout(timer);
+    }, [onDone]);
 
     return (
         <div className="epoch-splash" onClick={onDone} role="status">

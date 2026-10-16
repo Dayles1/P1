@@ -1,6 +1,6 @@
 /**
- * The 3D view of a Game (three.js): terrain, water, roads, trees, the
- * buildings from their models, residents and traffic, sky, sun and
+ * The 3D view of a Game (three.js): terrain, water, the mountains, roads,
+ * the buildings from their models, residents and traffic, sky, sun and
  * weather, effects for what happens in the city and the overlays the
  * player works with. Only what changed is rebuilt each frame.
  *
@@ -13,10 +13,10 @@ import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment
 import type { GameEvent } from '../engine/core/events';
 import type { Game } from '../engine/sim/game';
 import type { BuildingState, NpcState } from '../engine/sim/state';
+import { Backdrop } from './backdrop';
 import { Buildings, ModelCache } from './buildings';
 import { OrbitCamera } from './camera';
 import { clamp, color } from './colors';
-import { Features } from './features';
 import { GlowLayer, Particles } from './fx';
 import type { ParticleKind } from './fx';
 import { Labels } from './labels';
@@ -26,7 +26,7 @@ import { Overlays } from './overlays';
 import { People } from './people';
 import { Roads } from './roads';
 import { Sky } from './sky';
-import { Terrain } from './terrain';
+import { Terrain, WATER_Y } from './terrain';
 import { Weather } from './weather';
 
 export interface Overlay {
@@ -54,12 +54,15 @@ interface World {
     game: Game;
     terrain: Terrain;
     roads: Roads;
-    features: Features;
+    backdrop: Backdrop;
     buildings: Buildings;
     people: People;
     overlays: Overlays;
     group: THREE.Group;
 }
+
+/** How far past the player's land (in tiles) the camera target may go. */
+const CAMERA_MARGIN = 6;
 
 const EMITTER_RATES: Record<string, number> = {
     smoke: 3,
@@ -101,7 +104,6 @@ export class Renderer {
     private structureRevision = -1;
     private glowRevision = '';
     private roadTimer = 0;
-    private featureTimer = 0;
 
     constructor(canvas: HTMLCanvasElement) {
         this.canvas = canvas;
@@ -153,7 +155,7 @@ export class Renderer {
 
         const terrain = new Terrain(game);
         const roads = new Roads(game, terrain);
-        const features = new Features(game, terrain, this.materials);
+        const backdrop = new Backdrop(game.map.width);
         const buildings = new Buildings(
             game,
             terrain,
@@ -173,7 +175,7 @@ export class Renderer {
         group.add(
             terrain.group,
             roads.group,
-            features.group,
+            backdrop.group,
             buildings.group,
             people.group,
             overlays.group,
@@ -183,7 +185,7 @@ export class Renderer {
             game,
             terrain,
             roads,
-            features,
+            backdrop,
             buildings,
             people,
             overlays,
@@ -193,11 +195,10 @@ export class Renderer {
         this.glowRevision = '';
         this.particles.clear();
         this.labels.clear();
-        this.orbit.setBounds(game.map.width, game.map.height);
+        this.updateCameraArea(game);
 
         buildings.sync();
         this.reflatten();
-        features.sync(true);
 
         const center = game.center;
 
@@ -221,7 +222,7 @@ export class Renderer {
         world.overlays.dispose();
         world.people.dispose();
         world.buildings.dispose();
-        world.features.dispose();
+        world.backdrop.dispose();
         world.roads.dispose();
         world.terrain.dispose();
         this.world = null;
@@ -289,7 +290,6 @@ export class Renderer {
         this.structureRevision = world.buildings.structureRevision;
         world.terrain.flatten(world.buildings.footprints());
         world.roads.sync(true);
-        world.features.sync(true);
         world.overlays.invalidate();
     }
 
@@ -318,11 +318,17 @@ export class Renderer {
         const game = world.game;
         const season = game.season;
 
+        this.updateCameraArea(game);
         this.orbit.update(step);
 
         const target = this.orbit.target;
         const distance = this.orbit.current.distance;
-        const sky = this.sky.update(game, target, distance);
+        const sky = this.sky.update(
+            game,
+            target,
+            distance,
+            this.orbit.camera.position,
+        );
 
         this.night = sky.night;
 
@@ -336,6 +342,7 @@ export class Renderer {
         this.materials.setXray(overlay.xray);
 
         world.terrain.update(step, this.time);
+        world.backdrop.update(season.snow ?? 0);
         world.terrain.showGrid(
             Boolean(overlay.ghost) || overlay.roadPath.length > 0,
         );
@@ -346,16 +353,10 @@ export class Renderer {
         }
 
         this.roadTimer -= step;
-        this.featureTimer -= step;
 
         if (this.roadTimer <= 0) {
             this.roadTimer = 0.25;
             world.roads.sync();
-        }
-
-        if (this.featureTimer <= 0) {
-            this.featureTimer = 0.5;
-            world.features.sync();
         }
 
         world.buildings.update(this.time, sky.night);
@@ -649,26 +650,6 @@ export class Renderer {
                 break;
             }
 
-            case 'cleared': {
-                const ground = terrain.heightAt(event.x + 0.5, event.y + 0.5);
-
-                particles.burst('dust', event.x, ground, event.y, 1, 1, 16);
-
-                if (event.text) {
-                    this.labels.float(
-                        event.text,
-                        new THREE.Vector3(
-                            event.x + 0.5,
-                            ground + 0.5,
-                            event.y + 0.5,
-                        ),
-                        '#ffffff',
-                    );
-                }
-
-                break;
-            }
-
             case 'epoch': {
                 const target = this.orbit.target;
                 const spread = clamp(this.orbit.current.distance * 0.35, 4, 16);
@@ -749,7 +730,24 @@ export class Renderer {
         return this.raycaster.ray;
     }
 
-    /** Float tile coordinates on the terrain under a CSS-pixel point of the canvas. */
+    /** The target stays over the player's land, plus a margin. */
+    private updateCameraArea(game: Game): void {
+        const land = game.territory();
+
+        this.orbit.setArea({
+            minX: land.minX - CAMERA_MARGIN,
+            maxX: land.maxX + 1 + CAMERA_MARGIN,
+            minZ: land.minY + 1,
+            maxZ: land.maxY + 3,
+        });
+    }
+
+    /**
+     * Float tile coordinates on the ground under a CSS-pixel point of the
+     * canvas. The ground is flat, so this is where the ray meets the plane
+     * y = 0, nudged once or twice onto the real height (the beach's slope,
+     * the water surface over the sea).
+     */
     groundAt(px: number, py: number): { x: number; y: number } | null {
         const world = this.world;
 
@@ -766,54 +764,17 @@ export class Renderer {
             return null;
         }
 
-        // March between the highest and lowest possible ground.
-        const top = 4;
-        const bottom = -0.7;
-        const t0 = Math.max(0, (top - origin.y) / direction.y);
-        const t1 = (bottom - origin.y) / direction.y;
-        const stepLength = 0.1;
-        let previous = t0;
-        let hit = -1;
+        let ground = 0;
+        let x = origin.x;
+        let z = origin.z;
 
-        const above = (t: number) => {
-            const x = origin.x + direction.x * t;
-            const z = origin.z + direction.z * t;
+        for (let i = 0; i < 3; i++) {
+            const t = (ground - origin.y) / direction.y;
 
-            return (
-                origin.y +
-                direction.y * t -
-                Math.max(terrain.heightAt(x, z), -0.1)
-            );
-        };
-
-        for (let t = t0; t <= t1; t += stepLength) {
-            if (above(t) <= 0) {
-                hit = t;
-                break;
-            }
-
-            previous = t;
+            x = origin.x + direction.x * t;
+            z = origin.z + direction.z * t;
+            ground = Math.max(terrain.heightAt(x, z), WATER_Y);
         }
-
-        if (hit < 0) {
-            hit = t1;
-        }
-
-        let low = previous;
-        let high = hit;
-
-        for (let i = 0; i < 10; i++) {
-            const mid = (low + high) / 2;
-
-            if (above(mid) > 0) {
-                low = mid;
-            } else {
-                high = mid;
-            }
-        }
-
-        const x = origin.x + direction.x * high;
-        const z = origin.z + direction.z * high;
 
         if (
             x < 0 ||

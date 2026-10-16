@@ -102,9 +102,7 @@ export function stepCost(
         return Infinity;
     }
 
-    const feature = map.feature[index];
-
-    return 1 / biome.speed + (feature === 1 ? 0.8 : feature === 2 ? 2 : 0);
+    return 1 / biome.speed;
 }
 
 export function findPath(

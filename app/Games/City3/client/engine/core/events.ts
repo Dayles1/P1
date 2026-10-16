@@ -29,7 +29,6 @@ export type GameEvent =
           h: number;
           sound: string | null;
       }
-    | { type: 'cleared'; x: number; y: number; text: string }
     | { type: 'epoch'; epoch: number }
     | { type: 'researched'; tech: string }
     | { type: 'achievement'; goal: string }

@@ -16,7 +16,7 @@ import type {
     Research,
     WorldState,
 } from '../sim/state';
-import { WorldMap } from '../world/world-map';
+import { buildMap } from '../world/layout';
 import type { TileRow } from '../world/world-map';
 
 export interface WorldPayload {
@@ -101,7 +101,8 @@ function worldPayload(game: Game): WorldPayload {
         height: s.height,
         epoch: game.epoch.id,
         epoch_index: s.epoch,
-        year: Math.floor(s.year),
+        // Derived from the time; kept for the server (a 4-digit column).
+        year: Math.min(9999, game.year),
         time: Math.floor(s.time),
         population: Math.floor(s.population),
         happiness: Math.round(game.stats.happiness),
@@ -225,8 +226,8 @@ export function fromServer(content: Content, loaded: LoadedWorld): Game {
         width: w.width,
         height: w.height,
         epoch: epochIndex,
-        year: w.year,
         time: w.time,
+        land: { ...content.world.map.start },
         resources: { ...content.emptyAmounts(), ...w.resources },
         population: w.population,
         weather: w.weather,
@@ -243,7 +244,11 @@ export function fromServer(content: Content, loaded: LoadedWorld): Game {
             ...(w.stats ?? {}),
         },
     };
-    const map = WorldMap.fromRows(content, w.width, w.height, loaded.tiles);
+    // The map is fixed: built from the content, whatever tiles were saved.
+    const map = buildMap(content);
+
+    state.width = map.width;
+    state.height = map.height;
     const buildings: BuildingState[] = loaded.buildings.map((b) => ({
         uid: b.uid,
         type: b.type,
