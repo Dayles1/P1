@@ -45,6 +45,15 @@ import type { Rng } from '../core/random';
 import { buildMap, mapLayout } from '../world/layout';
 import type { MapLayout } from '../world/layout';
 import type { WorldMap } from '../world/world-map';
+import {
+    goldenBonus,
+    happinessAverage,
+    liveLead,
+    scoreOf,
+    starsFor,
+    transitionShare,
+} from './chronicle';
+import type { ChronicleEntry, GateProgress, Lead, Score } from './chronicle';
 import { settle } from './economy';
 import type {
     EconomyCity,
@@ -67,19 +76,45 @@ import {
     staticHappiness,
 } from './population';
 import type { CityTerms, HomeEntry, Surroundings } from './population';
+import {
+    moveCost,
+    refundOf,
+    scalePrice,
+    spiritDiscount,
+    upgradePrice,
+} from './pricing';
 import type {
     ActionResult,
     BuildingState,
     BuildingStyle,
+    EconomyState,
     NpcState,
     WorldState,
 } from './state';
+import {
+    chestOffer,
+    loanLimit,
+    mothballPick,
+    policyEffects,
+    policyFreeAt,
+} from './treasury';
+import type { PolicyEffects } from './treasury';
+
+/** Buildings a move would tear from their spot (gdd §4.9). */
+const UNMOVABLE = new Set(['port', 'rail_station', 'airport']);
 
 /** What one building is doing right now. Rates are per year. */
 export interface BuildingStatus {
     complete: boolean;
+    /**
+     * The level that works now: the current one once complete, the old one
+     * while an upgrade builds, 0 for a new building under construction.
+     */
+    level: number;
+    /** Closed: no effect, no upkeep, no jobs. */
+    mothballed: boolean;
     connected: boolean;
-    /** Complete and connected: it works, stamps its effects and counts. */
+    /** A working level, open and connected: it works, stamps its effects and counts. */
     working: boolean;
     /** Share of its full output it makes now (staff, power, fuel). */
     efficiency: number;
@@ -220,14 +255,50 @@ export interface Quote {
     total: number;
 }
 
-/** One line of the gate into the next era. */
+/** One line of the gate into the next era (gdd §2.2: at most 4). */
 export interface GateLine {
+    /** What the line asks for: citizens, a building of the gate, discoveries. */
+    kind: 'population' | 'item' | 'discoveries';
     label: string;
     done: boolean;
-    current?: number;
-    target?: number;
-    /** The Town Hall upgrade that opens the era. */
-    cost?: Amounts;
+    current: number;
+    target: number;
+    /** Items: the building type to build. */
+    type?: string;
+}
+
+/** The Town Hall upgrade that opens the next era (gdd §2.2). */
+export interface TownHallUpgrade {
+    level: LevelDef;
+    /** List price and the price to pay (Spirit of the Age taken off). */
+    list: Amounts;
+    cost: Amounts;
+    /** Spirit of the Age discount, a share. */
+    spirit: number;
+    /** Game seconds the build takes. */
+    buildTime: number;
+}
+
+/** How a price comes about (the price sheet, gdd §4.9). */
+export interface PriceBreakdown {
+    /** The target level's list price. */
+    list: Amounts;
+    /** Money paid for the building so far, and how much of it is credited. */
+    paid: number;
+    credit: number;
+    /** The floor share of the list price applied. */
+    floor: boolean;
+    /** Spirit of the Age discount (Town Hall, discoveries), a share. */
+    spirit: number;
+    cost: Amounts;
+    quote: Quote;
+}
+
+/** The last thing that moved the lead (the lead tooltip). */
+export interface LeadCause {
+    label: string;
+    /** Years the lead jumped. */
+    years: number;
 }
 
 const EMPTY_STAFF: Record<JobClass, number> = {
@@ -237,6 +308,23 @@ const EMPTY_STAFF: Record<JobClass, number> = {
     ind: 1,
     com: 1,
 };
+
+/** A new world's treasury and Chronicle state. */
+export function defaultEconomy(): EconomyState {
+    return {
+        policy: 'normal',
+        policyT: null,
+        dense: false,
+        denseT: null,
+        loan: 0,
+        arrears: false,
+        arrearsYears: 0,
+        chestT: null,
+        h50: 50,
+        bestH50: 0,
+        flags: { tester: false },
+    };
+}
 
 export class Game {
     readonly content: Content;
@@ -286,9 +374,16 @@ export class Game {
     private meanHappiness = 50;
     private upkeepBy: Record<string, number> = {};
     private roadCapacity = 0;
-    /** Game time each era was entered in this session (heritage ramps from it). */
-    private eraEnteredAt: number[] = [];
     private telemetryByEra = new Map<number, TelemetryAcc>();
+    /** Net money of the year so far (the year-end treasury check). */
+    private yearNet = 0;
+    /** The lead at each of the last years (is it falling?). */
+    private leadHistory: number[] = [];
+    /** Gate lines done at the last check, and the lead then. */
+    private gateDone: boolean[] = [];
+    private lastLead: number | null = null;
+    /** The last gate line that turned green and what it gave. */
+    leadCause: LeadCause | null = null;
 
     constructor(
         content: Content,
@@ -356,6 +451,9 @@ export class Game {
             blueprints: [],
             achievements: [],
             stats: { built: 0, upgraded: 0, demolished: 0, events: 0 },
+            eraLog: [],
+            peakPopulation: world.start.population,
+            economy: defaultEconomy(),
         };
         const game = new Game(content, state, map, [], []);
 
@@ -460,6 +558,41 @@ export class Game {
         return building.buildEnd <= this.state.time;
     }
 
+    /**
+     * The level that works now (gdd §4.9, as the balance sim): the current
+     * one once built, the old one while an upgrade builds, 0 while a new
+     * building is under construction.
+     */
+    workingLevel(building: BuildingState): number {
+        return this.isComplete(building)
+            ? building.level
+            : Math.max(0, Math.min(building.fromLevel ?? 0, building.level));
+    }
+
+    /** The definition of the working level (the current one when nothing works yet). */
+    workDef(building: BuildingState): LevelDef {
+        const level = this.workingLevel(building);
+
+        return level > 0
+            ? this.content.level(this.def(building), level)
+            : this.levelDef(building);
+    }
+
+    /** What a building does now: its working level's effects. */
+    workEffects(building: BuildingState): Effects {
+        return this.workDef(building).effects;
+    }
+
+    /** The era (index) of the working level (tax, tourism, heritage). */
+    workEpoch(building: BuildingState): number {
+        return this.content.epochOrder(this.workDef(building).epoch);
+    }
+
+    /** Works at some level and is not mothballed. */
+    isActive(building: BuildingState): boolean {
+        return !building.mothballed && this.workingLevel(building) > 0;
+    }
+
     buildingAt(x: number, y: number): BuildingState | undefined {
         return this.buildings.get(this.map.occupantAt(x, y));
     }
@@ -470,14 +603,15 @@ export class Game {
         return building !== undefined && this.roleOf(building) === 'road';
     }
 
+    /** Open buildings of a type working at `minLevel` or higher (gate items, goals). */
     count(type: string, minLevel = 1): number {
         let count = 0;
 
         for (const building of this.buildings.values()) {
             count +=
                 building.type === type &&
-                building.level >= minLevel &&
-                this.isComplete(building)
+                !building.mothballed &&
+                this.workingLevel(building) >= minLevel
                     ? 1
                     : 0;
         }
@@ -658,7 +792,7 @@ export class Game {
             return this.levelLock(def, 1);
         }
 
-        if (def.unique && this.count(def.id) + this.underConstruction(def.id)) {
+        if (def.unique && this.has(def.id)) {
             return 'Уже построено';
         }
 
@@ -667,6 +801,28 @@ export class Game {
 
     buildCost(def: BuildingDef, level = 1): Amounts {
         return this.content.level(def, level).cost;
+    }
+
+    /** Any building of a type stands (built, building, or mothballed). */
+    has(type: string): boolean {
+        for (const building of this.buildings.values()) {
+            if (building.type === type) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /** Whether the building's next level is the Town Hall upgrade into the next era. */
+    isGateUpgrade(building: BuildingState): boolean {
+        const entry = this.nextEpoch?.entry;
+
+        return (
+            this.roleOf(building) === 'center' &&
+            entry !== undefined &&
+            building.level + 1 === entry.townHallLevel
+        );
     }
 
     upgradeBlock(building: BuildingState): string | null {
@@ -678,6 +834,14 @@ export class Game {
 
         if (!this.isComplete(building)) {
             return 'Идёт стройка';
+        }
+
+        if (building.mothballed) {
+            return 'Здание законсервировано';
+        }
+
+        if (this.isGateUpgrade(building)) {
+            return this.gateBlock();
         }
 
         return (
@@ -699,34 +863,53 @@ export class Game {
     }
 
     /**
-     * Price to bring a building up to a higher level: the new level's
-     * price, less a share of the current level's (trade-in), but never
-     * below the floor share of the new price — money and materials alike.
+     * Price to bring a building up to a higher level (gdd §4.9): the new
+     * level's price less 70 % of the money paid for the building (at most
+     * its current level's list price), never below 25 % of the new price —
+     * money and materials alike. The Town Hall pays its full price, less the
+     * Spirit of the Age.
      */
     relevelCost(building: BuildingState, level: number): Amounts {
+        return this.priceBreakdown(building, level).cost;
+    }
+
+    /** How the price of bringing a building up to `level` comes about (the price sheet). */
+    priceBreakdown(building: BuildingState, level: number): PriceBreakdown {
         const economy = this.content.world.economy;
         const money = this.content.currency;
-        const target = this.content.level(this.def(building), level).cost;
-        const current = this.levelDef(building).cost[money] ?? 0;
-        const targetMoney = target[money] ?? 0;
-        const share =
-            targetMoney > 0
-                ? Math.max(
-                      economy.upgradeFloor,
-                      1 -
-                          (economy.tradeIn * Math.min(current, targetMoney)) /
-                              targetMoney,
-                  )
-                : 1;
+        const list = this.content.level(this.def(building), level).cost;
+        const listMoney = list[money] ?? 0;
+        const paid = Math.max(0, building.paid ?? 0);
 
-        return Object.fromEntries(
-            Object.entries(target).map(([id, amount]) => [
-                id,
-                id === money
-                    ? Math.ceil(amount * share - 1e-9)
-                    : Math.round(amount * share * 10) / 10,
-            ]),
-        );
+        if (this.roleOf(building) === 'center') {
+            const spirit = this.spirit();
+            const cost = scalePrice(list, 1 - spirit, money);
+
+            return {
+                list,
+                paid,
+                credit: 0,
+                floor: false,
+                spirit,
+                cost,
+                quote: this.quote(cost),
+            };
+        }
+
+        const currentList = this.levelDef(building).cost[money] ?? 0;
+        const credit = economy.tradeIn * Math.min(paid, currentList);
+        const cost = upgradePrice(list, money, paid, currentList, economy);
+
+        return {
+            list,
+            paid,
+            credit: Math.min(credit, listMoney),
+            floor:
+                listMoney > 0 && 1 - credit / listMoney < economy.upgradeFloor,
+            spirit: 0,
+            cost,
+            quote: this.quote(cost),
+        };
     }
 
     buildTime(level: LevelDef): number {
@@ -737,11 +920,51 @@ export class Game {
         const money = this.content.currency;
 
         return {
-            [money]: Math.ceil(
-                (this.levelDef(building).cost[money] ?? 0) *
-                    this.content.world.economy.moveShare,
+            [money]: moveCost(
+                this.levelDef(building).cost[money] ?? 0,
+                this.content.world.economy,
             ),
         };
+    }
+
+    /**
+     * Money a demolition returns (gdd §4.9): half the money actually paid
+     * for the building; a street tile half its current list price.
+     */
+    refund(building: BuildingState): number {
+        const economy = this.content.world.economy;
+
+        return refundOf(
+            this.def(building).network === 'road'
+                ? (this.levelDef(building).cost[this.content.currency] ?? 0)
+                : (building.paid ?? 0),
+            economy,
+        );
+    }
+
+    /** Why a building cannot be moved; null when it can. */
+    moveBlock(building: BuildingState): string | null {
+        const def = this.def(building);
+
+        if (def.hidden || UNMOVABLE.has(def.id)) {
+            return 'Это здание нельзя перенести';
+        }
+
+        return this.isComplete(building) ? null : 'Идёт стройка';
+    }
+
+    /** Spirit of the Age (gdd §2.2): the discount on the Town Hall upgrade and discoveries. */
+    spirit(): number {
+        return spiritDiscount(
+            this.year,
+            this.nextEpoch?.year,
+            this.content.world.chronicle.spirit,
+        );
+    }
+
+    /** A discovery's price now (Spirit of the Age taken off). */
+    techCost(tech: TechDef): Amounts {
+        return scalePrice(tech.cost, 1 - this.spirit(), this.content.currency);
     }
 
     /** How a price will be paid, with the materials the stores lack bought for money. */
@@ -1052,34 +1275,69 @@ export class Game {
         return this.content.epochs[this.state.epoch + 1];
     }
 
-    /** The Town Hall level whose completion opens the next era, and its price. */
-    townHallUpgrade(): { level: LevelDef; cost: Amounts } | null {
+    /**
+     * The Town Hall upgrade that opens the next era (gdd §2.2): the level,
+     * its list price, the price with the Spirit of the Age taken off, and
+     * the build time. Null in the last era.
+     */
+    townHallUpgrade(): TownHallUpgrade | null {
         const entry = this.nextEpoch?.entry;
         const def = this.content.byRole('center');
         const level =
             entry && def ? def.levels[entry.townHallLevel - 1] : undefined;
 
-        return level ? { level, cost: level.cost } : null;
+        if (!level) {
+            return null;
+        }
+
+        const spirit = this.spirit();
+
+        return {
+            level,
+            list: level.cost,
+            cost: scalePrice(level.cost, 1 - spirit, this.content.currency),
+            spirit,
+            buildTime: this.buildTime(level),
+        };
+    }
+
+    /** The Town Hall is being raised into the next era. */
+    townHallBuilding(): boolean {
+        const center = this.center;
+        const entry = this.nextEpoch?.entry;
+
+        return (
+            center !== undefined &&
+            entry !== undefined &&
+            center.level >= entry.townHallLevel &&
+            !this.isComplete(center)
+        );
+    }
+
+    /** Discoveries of the current era made so far. */
+    eraDiscoveries(): number {
+        return this.content.techs.filter(
+            (tech) => tech.epoch === this.epoch.id && this.hasTech(tech.id),
+        ).length;
     }
 
     /**
-     * The gate into the next era (epochs.json entry): citizens, the
-     * buildings it asks for, discoveries of this era, and the price of the
-     * Town Hall upgrade that opens it.
+     * The gate into the next era (gdd §2.2, epochs.json entry), at most 4
+     * lines: citizens, the buildings it asks for (complete, open, at the
+     * level), the era's discoveries. The Town Hall upgrade is the button,
+     * not a line.
      */
-    epochChecklist(): GateLine[] {
+    gateLines(): GateLine[] {
         const entry = this.nextEpoch?.entry;
-        const upgrade = this.townHallUpgrade();
 
-        if (!entry || !upgrade) {
+        if (!entry) {
             return [];
         }
 
-        const discoveries = this.content.techs.filter(
-            (tech) => tech.epoch === this.epoch.id && this.hasTech(tech.id),
-        ).length;
+        const discoveries = this.eraDiscoveries();
         const lines: GateLine[] = [
             {
+                kind: 'population',
                 label: 'Жители',
                 current: Math.floor(this.state.population),
                 target: entry.population,
@@ -1091,48 +1349,204 @@ export class Game {
             const have = this.count(item.type, item.level);
 
             lines.push({
+                kind: 'item',
                 label: item.label,
                 current: Math.min(have, item.count),
                 target: item.count,
                 done: have >= item.count,
+                type: item.type,
             });
         }
 
         lines.push({
+            kind: 'discoveries',
             label: `Открытия эпохи «${this.epoch.name}»`,
             current: Math.min(discoveries, entry.discoveries),
             target: entry.discoveries,
             done: discoveries >= entry.discoveries,
         });
-        lines.push({
-            label: `Ратуша → «${upgrade.level.name}»`,
-            cost: upgrade.cost,
-            done: this.canAfford(upgrade.cost),
-        });
 
         return lines;
     }
 
-    canAdvance(): boolean {
-        const list = this.epochChecklist();
+    /** Every gate line is green. */
+    gateMet(): boolean {
+        const lines = this.gateLines();
 
-        return list.length > 0 && list.every((item) => item.done);
+        return lines.length > 0 && lines.every((line) => line.done);
+    }
+
+    /** Why the Town Hall cannot be raised into the next era now; null when it can. */
+    gateBlock(): string | null {
+        if (!this.nextEpoch) {
+            return 'Последняя эпоха';
+        }
+
+        if (this.townHallBuilding()) {
+            return 'Ратуша уже строится';
+        }
+
+        const left = this.gateLines().filter((line) => !line.done).length;
+
+        return left
+            ? `Ещё ${left} ${left === 1 ? 'условие' : left < 5 ? 'условия' : 'условий'}`
+            : null;
+    }
+
+    /** The gate is met, nothing builds and the treasury holds the price. */
+    canAdvance(): boolean {
+        const upgrade = this.townHallUpgrade();
+
+        return (
+            upgrade !== null &&
+            this.gateBlock() === null &&
+            this.canAfford(upgrade.cost)
+        );
+    }
+
+    /** How far the gate is, for the live lead (gdd §2.3: g). */
+    gateProgress(): GateProgress | null {
+        const entry = this.nextEpoch?.entry;
+
+        if (!entry) {
+            return null;
+        }
+
+        return {
+            population: this.state.population,
+            populationGate: entry.population,
+            items: entry.items.filter(
+                (item) => this.count(item.type, item.level) >= item.count,
+            ).length,
+            itemsTotal: entry.items.length,
+            discoveries: this.eraDiscoveries(),
+            discoveriesNeeded: entry.discoveries,
+        };
+    }
+
+    /** Live lead over history (gdd §2.3), on the calendar year. */
+    lead(): Lead {
+        return liveLead(
+            {
+                year: this.year,
+                eraYear: this.epoch.year,
+                nextEraYear: this.nextEpoch?.year,
+                building: this.townHallBuilding(),
+                gate: this.gateProgress(),
+            },
+            this.content.world.chronicle,
+        );
+    }
+
+    /** The lead fell over the last `fallingYears` years («История догоняет»). */
+    leadFalling(): boolean {
+        const years = this.content.world.chronicle.lead.fallingYears;
+        const history = this.leadHistory;
+
+        return (
+            history.length > years &&
+            Math.round(this.lead().lead) < history[history.length - 1 - years]
+        );
+    }
+
+    /** The eras entered, with their year, lead and stars (gdd §2.3). */
+    chronicle(): ChronicleEntry[] {
+        return this.state.eraLog
+            .filter((entry) => this.content.epochs[entry.era])
+            .map((entry) => {
+                const epoch = this.content.epoch(entry.era);
+                const year = this.clock.year(entry.t);
+
+                return {
+                    era: entry.era,
+                    year,
+                    lead: epoch.year - year,
+                    stars: starsFor(year, epoch.year, epoch.entry?.stars),
+                };
+            });
+    }
+
+    /** Game time the current era began (0 for the first era or an unknown entry). */
+    eraStart(epoch = this.state.epoch): number | null {
+        if (epoch === 0) {
+            return 0;
+        }
+
+        return (
+            this.state.eraLog.find((entry) => entry.era === epoch)?.t ?? null
+        );
+    }
+
+    /**
+     * How far the city has moved into its era's looks, 0..1 (gdd §2.4: sky,
+     * accent, clothes, vehicles over 20 years). An era entered before the
+     * log was kept counts as long done.
+     */
+    eraTransition(): number {
+        const start = this.eraStart();
+
+        return start === null || this.state.epoch === 0
+            ? 1
+            : transitionShare(
+                  (this.state.time - start) / this.clock.secondsPerYear,
+                  this.content.world.chronicle,
+              );
+    }
+
+    /** Golden Age bonus now (gdd §2.3), a share; 0 when none is running. */
+    golden(): number {
+        const last = this.state.eraLog.at(-1);
+
+        if (!last || last.era !== this.state.epoch) {
+            return 0;
+        }
+
+        const entry = this.chronicle().at(-1);
+
+        return goldenBonus(
+            (this.state.time - last.t) / this.clock.secondsPerYear,
+            entry?.stars ?? 0,
+            this.content.world.chronicle.golden,
+        );
+    }
+
+    /** Expansion strips bought (from the owned columns). */
+    strips(): number {
+        const start = this.content.world.map.start;
+        const width = this.state.land.maxX - this.state.land.minX;
+
+        return Math.max(
+            0,
+            Math.floor(
+                (width - (start.maxX - start.minX)) /
+                    this.content.world.chronicle.score.stripWidth,
+            ),
+        );
+    }
+
+    /** Score (gdd §10): Chronicle + City + Land + Achievements; money is worth nothing. */
+    scoreBreakdown(): Score {
+        const economy = this.state.economy;
+        const achievements = new Set(
+            this.content.achievements.map((achievement) => achievement.id),
+        );
+
+        return scoreOf(
+            {
+                entries: this.chronicle(),
+                peakPopulation: this.state.peakPopulation,
+                bestH50: economy.bestH50 || economy.h50,
+                strips: this.strips(),
+                achievements: this.state.achievements.filter((id) =>
+                    achievements.has(id),
+                ).length,
+            },
+            this.content.world.chronicle,
+        );
     }
 
     score(): number {
-        let levels = 0;
-
-        for (const building of this.buildings.values()) {
-            levels += this.roleOf(building) === 'road' ? 0 : building.level;
-        }
-
-        return Math.floor(
-            this.state.population +
-                levels * 10 +
-                this.state.epoch * 1000 +
-                this.state.techs.length * 50 +
-                this.state.achievements.length * 100,
-        );
+        return this.scoreBreakdown().total;
     }
 
     // ———————————————————————————————————————— Placement
@@ -1260,8 +1674,7 @@ export class Game {
             return this.fail(this.missing(cost));
         }
 
-        this.pay(cost);
-
+        const paid = this.pay(cost);
         const building = this.addBuilding(
             type,
             x,
@@ -1269,6 +1682,8 @@ export class Game {
             level,
             this.buildTime(this.content.level(def, level)),
         );
+
+        building.paid = paid;
 
         if (this.content.roleOf(def) === 'district') {
             building.district = {
@@ -1299,6 +1714,10 @@ export class Game {
             return { ok: false };
         }
 
+        if (this.isGateUpgrade(building)) {
+            return this.advanceEpoch();
+        }
+
         const blocked = this.upgradeBlock(building);
 
         if (blocked) {
@@ -1315,7 +1734,9 @@ export class Game {
 
         const def = this.def(building);
 
-        this.pay(cost);
+        building.paid = (building.paid ?? 0) + this.pay(cost);
+        // The old level keeps working until the new one is built (gdd §4.9).
+        building.fromLevel = building.level;
         building.level++;
         building.buildStart = this.state.time;
         building.buildEnd =
@@ -1354,7 +1775,9 @@ export class Game {
         const def = this.def(building);
         const reason = !this.isComplete(building)
             ? 'Идёт стройка'
-            : this.levelLock(def, level);
+            : this.roleOf(building) === 'center'
+              ? 'Ратушу улучшают через ворота эпохи'
+              : this.levelLock(def, level);
 
         if (reason) {
             return quiet ? { ok: false, reason } : this.fail(reason);
@@ -1368,7 +1791,8 @@ export class Game {
                 : this.fail(this.missing(cost));
         }
 
-        this.pay(cost);
+        building.paid = (building.paid ?? 0) + this.pay(cost);
+        building.fromLevel = building.level;
         building.level = level;
         building.buildStart = this.state.time;
         building.buildEnd =
@@ -1421,13 +1845,8 @@ export class Game {
             return this.fail('Ратушу снести нельзя');
         }
 
-        // Money only: half the current level's price.
-        this.gain({
-            [this.content.currency]: Math.floor(
-                (this.levelDef(building).cost[this.content.currency] ?? 0) *
-                    this.content.world.economy.refundShare,
-            ),
-        });
+        // Money only: half of what was paid for it (gdd §4.9).
+        this.gain({ [this.content.currency]: this.refund(building) });
 
         this.removeBuilding(uid);
         this.state.stats.demolished++;
@@ -1448,8 +1867,14 @@ export class Game {
     move(uid: number, x: number, y: number): ActionResult {
         const building = this.buildings.get(uid);
 
-        if (!building || this.def(building).hidden) {
-            return this.fail('Это здание нельзя перенести');
+        if (!building) {
+            return { ok: false };
+        }
+
+        const blocked = this.moveBlock(building);
+
+        if (blocked) {
+            return this.fail(blocked);
         }
 
         const placement = this.canPlace(
@@ -1474,6 +1899,8 @@ export class Game {
         this.occupy(building, 0);
         building.x = x;
         building.y = y;
+        // It keeps working while it settles in.
+        building.fromLevel = building.level;
         building.buildStart = this.state.time;
         building.buildEnd = this.state.time + 2;
         this.occupy(building, uid);
@@ -1508,11 +1935,13 @@ export class Game {
             return this.fail(locked);
         }
 
-        if (!this.canAfford(tech.cost)) {
-            return this.fail(this.missing(tech.cost));
+        const cost = this.techCost(tech);
+
+        if (!this.canAfford(cost)) {
+            return this.fail(this.missing(cost));
         }
 
-        this.pay(tech.cost);
+        this.pay(cost);
         this.state.research = {
             id,
             start: this.state.time,
@@ -1610,43 +2039,298 @@ export class Game {
     }
 
     /**
-     * Enters the next era once its gate is met: pays the Town Hall
-     * upgrade and raises the Town Hall to the era's level at once (the
-     * visible build and the Chronicle come with the eras slice).
+     * Starts the Town Hall upgrade into the next era once its gate is met
+     * (gdd §2.2): pays its price (less the Spirit of the Age) and raises it
+     * visibly; the old Town Hall keeps working, and the era begins when the
+     * build finishes. No other fee.
      */
     advanceEpoch(): ActionResult {
         const upgrade = this.townHallUpgrade();
+        const center = this.center;
 
-        if (!upgrade || !this.canAdvance()) {
-            return this.fail('Условия ещё не выполнены');
+        if (!upgrade || !center) {
+            return this.fail('Последняя эпоха');
         }
 
-        this.pay(upgrade.cost);
-        this.enterNextEpoch();
+        const blocked = this.gateBlock();
+
+        if (blocked) {
+            return this.fail(blocked);
+        }
+
+        if (!this.canAfford(upgrade.cost)) {
+            return this.fail(this.missing(upgrade.cost));
+        }
+
+        const before = this.lead().lead;
+
+        center.paid = (center.paid ?? 0) + this.pay(upgrade.cost);
+        center.fromLevel = center.level;
+        center.level = upgrade.level.level;
+        center.buildStart = this.state.time;
+        center.buildEnd = this.state.time + upgrade.buildTime;
+        this.state.stats.upgraded++;
+        this.changedBuildings.add(center.uid);
+
+        if (upgrade.buildTime <= 0) {
+            this.enterNextEpoch();
+        } else {
+            this.structureChanged();
+            this.leadCause = {
+                label: `«${upgrade.level.name}» строится`,
+                years: Math.round(this.lead().lead - before),
+            };
+        }
+
+        this.events.emit({
+            type: 'upgraded',
+            uid: center.uid,
+            x: center.x,
+            y: center.y,
+            w: this.def(center).size.w,
+            h: this.def(center).size.h,
+            sound: this.def(center).sounds.upgrade,
+        });
 
         return { ok: true };
     }
 
+    /**
+     * The Town Hall finished: the next era begins (gdd §2.4). The Chronicle
+     * records it, the stars and the Golden Age start; nothing else moves —
+     * the sky, the accent, clothes and vehicles follow over the years.
+     */
     private enterNextEpoch(): void {
-        const entry = this.nextEpoch?.entry;
-        const center = this.center;
-
-        if (!entry) {
+        if (!this.nextEpoch) {
             return;
         }
 
-        if (center && center.level < entry.townHallLevel) {
-            center.level = entry.townHallLevel;
-            center.buildStart = this.state.time;
-            center.buildEnd = this.state.time;
-            this.changedBuildings.add(center.uid);
-        }
-
         this.state.epoch++;
-        this.eraEnteredAt[this.state.epoch] = this.state.time;
+        this.state.eraLog.push({ era: this.state.epoch, t: this.state.time });
+        this.gateDone = [];
+        this.lastLead = null;
+        this.leadHistory = [];
         this.npcs.onEpochChanged();
         this.structureChanged();
-        this.events.emit({ type: 'epoch', epoch: this.state.epoch });
+
+        const entry = this.chronicle().at(-1);
+
+        this.events.emit({
+            type: 'epoch',
+            epoch: this.state.epoch,
+            stars: entry?.stars ?? 0,
+            lead: entry?.lead ?? 0,
+        });
+    }
+
+    // ———————————————————————————————————————— Treasury and policies
+
+    /** Why a building cannot be mothballed; null when it can (gdd §4.10). */
+    mothballBlock(building: BuildingState): string | null {
+        const def = this.def(building);
+        const role = this.roleOf(building);
+
+        if (def.category === 'housing' || role === 'center') {
+            return 'Дома и ратушу не консервируют';
+        }
+
+        if (role === 'road') {
+            return 'Улицы не консервируют';
+        }
+
+        return this.workingLevel(building) > 0 ? null : 'Идёт стройка';
+    }
+
+    /** Closes a building: no effect, no upkeep, no jobs, until reopened. */
+    mothball(uid: number): ActionResult {
+        const building = this.buildings.get(uid);
+
+        if (!building || building.mothballed) {
+            return { ok: false };
+        }
+
+        const blocked = this.mothballBlock(building);
+
+        if (blocked) {
+            return this.fail(blocked);
+        }
+
+        building.mothballed = true;
+        this.changedBuildings.add(uid);
+        this.structureChanged();
+        this.events.emit({ type: 'sound', id: 'click' });
+
+        return { ok: true };
+    }
+
+    reopen(uid: number): ActionResult {
+        const building = this.buildings.get(uid);
+
+        if (!building || !building.mothballed) {
+            return { ok: false };
+        }
+
+        building.mothballed = false;
+        this.changedBuildings.add(uid);
+        this.structureChanged();
+        this.events.emit({ type: 'sound', id: 'click' });
+
+        return { ok: true };
+    }
+
+    /** What the city's policies do now. */
+    policies(): PolicyEffects {
+        const economy = this.state.economy;
+
+        return policyEffects(
+            economy.policy,
+            economy.dense,
+            this.content.world.economy.policies,
+        );
+    }
+
+    /** Why a policy cannot change now (era, or the 5-year lock); null when it can. */
+    policyLock(kind: 'tax' | 'dense'): string | null {
+        const rules = this.content.world.economy.policies;
+        const epoch = this.content.epochOrder(rules[kind].epoch);
+
+        if (epoch > this.state.epoch) {
+            return `Откроется в эпоху «${this.content.epoch(epoch).name}»`;
+        }
+
+        const freeAt = policyFreeAt(
+            kind === 'tax'
+                ? this.state.economy.policyT
+                : this.state.economy.denseT,
+            rules,
+            this.clock.secondsPerYear,
+        );
+
+        return freeAt > this.state.time
+            ? `Можно сменить в ${this.clock.year(freeAt)} году`
+            : null;
+    }
+
+    setTaxPolicy(policy: EconomyState['policy']): ActionResult {
+        const economy = this.state.economy;
+
+        if (economy.policy === policy) {
+            return { ok: true };
+        }
+
+        const locked = this.policyLock('tax');
+
+        if (locked) {
+            return this.fail(locked);
+        }
+
+        economy.policy = policy;
+        economy.policyT = this.state.time;
+        this.structureChanged();
+
+        return { ok: true };
+    }
+
+    setDense(on: boolean): ActionResult {
+        const economy = this.state.economy;
+
+        if (economy.dense === on) {
+            return { ok: true };
+        }
+
+        const locked = this.policyLock('dense');
+
+        if (locked) {
+            return this.fail(locked);
+        }
+
+        economy.dense = on;
+        economy.denseT = this.state.time;
+        this.structureChanged();
+
+        return { ok: true };
+    }
+
+    /** The loan the treasury offers now (0 while one is owed). */
+    loanOffer(): number {
+        return this.state.economy.loan > 0
+            ? 0
+            : loanLimit(
+                  this.stats.budget.gross,
+                  this.content.world.economy.treasury,
+              );
+    }
+
+    /** Takes a treasury loan (gdd §4.10): one at a time, up to the offer. */
+    takeLoan(amount = this.loanOffer()): ActionResult {
+        const offer = this.loanOffer();
+        const sum = Math.floor(Math.min(amount, offer));
+
+        if (sum <= 0) {
+            return this.fail(
+                this.state.economy.loan > 0
+                    ? 'Сначала верните прошлую ссуду'
+                    : 'Казна пока не даёт ссуду',
+            );
+        }
+
+        this.state.economy.loan = sum;
+        this.gain({ [this.content.currency]: sum });
+        this.revision++;
+        this.events.emit({ type: 'sound', id: 'click' });
+
+        return { ok: true };
+    }
+
+    /** What the Treasury chest holds after `hoursAway` real hours (gdd §4.12). */
+    chestOffer(hoursAway: number): number {
+        return chestOffer(
+            {
+                net: this.stats.budget.net,
+                hoursAway,
+                time: this.state.time,
+                lastClaim: this.state.economy.chestT,
+                secondsPerYear: this.clock.secondsPerYear,
+            },
+            this.content.world.economy.treasury,
+        );
+    }
+
+    /** Takes the chest offered on return. */
+    claimChest(amount: number): ActionResult {
+        const economy = this.state.economy;
+        const cooldown =
+            this.content.world.economy.treasury.chest.cooldownYears *
+            this.clock.secondsPerYear;
+
+        if (
+            !(amount > 0) ||
+            (economy.chestT !== null &&
+                this.state.time - economy.chestT < cooldown)
+        ) {
+            return { ok: false };
+        }
+
+        economy.chestT = this.state.time;
+        this.gain({ [this.content.currency]: Math.floor(amount) });
+        this.revision++;
+        this.events.emit({ type: 'sound', id: 'upgrade' });
+
+        return { ok: true };
+    }
+
+    /** A save that used tester tools stays off the leaderboard (gdd §2.1, §10). */
+    markTester(): void {
+        this.state.economy.flags.tester = true;
+    }
+
+    /** The Town Hall at a level of an era the city has not entered yet. */
+    private isEraTownHall(building: BuildingState): boolean {
+        return (
+            this.roleOf(building) === 'center' &&
+            this.levelEpoch(building) > this.state.epoch &&
+            this.nextEpoch !== undefined
+        );
     }
 
     // ———————————————————————————————————————— Simulation
@@ -1676,6 +2360,8 @@ export class Game {
 
         this.updateWeather(quiet);
 
+        let raised = false;
+
         for (const building of this.buildings.values()) {
             if (
                 building.buildEnd > state.time - dt &&
@@ -1683,11 +2369,18 @@ export class Game {
             ) {
                 this.structureDirty = true;
                 building.builtEra = state.epoch;
+                building.fromLevel = building.level;
+                raised ||= this.isEraTownHall(building);
 
                 if (!quiet && this.roleOf(building) !== 'road') {
                     this.events.emit({ type: 'built', uid: building.uid });
                 }
             }
+        }
+
+        if (raised) {
+            this.enterNextEpoch();
+            this.center!.builtEra = state.epoch;
         }
 
         this.updateResearch(quiet);
@@ -1707,6 +2400,10 @@ export class Game {
         }
 
         this.updateGoals(quiet);
+
+        if (Math.floor(state.time) % 5 === 0) {
+            this.trackGate();
+        }
 
         if (state.time >= state.nextEventAt) {
             this.randomEvent(quiet);
@@ -1748,7 +2445,7 @@ export class Game {
             traffic: 0,
             budget: {
                 income: { tax: 0, trade: 0, tourism: 0, fares: 0 },
-                costs: { upkeep: 0, food: 0, fuel: 0, power: 0 },
+                costs: { upkeep: 0, food: 0, fuel: 0, power: 0, interest: 0 },
                 upkeepBy: {},
                 gross: 0,
                 spent: 0,
@@ -1821,10 +2518,13 @@ export class Game {
         return { ok: false, reason };
     }
 
-    /** Pays a price: materials from the stores, what they lack bought for money. */
-    private pay(cost: Amounts): void {
+    /**
+     * Pays a price: materials from the stores, what they lack bought for
+     * money. Returns the money paid (imported materials included).
+     */
+    private pay(cost: Amounts): number {
         if (this.infinite) {
-            return;
+            return 0;
         }
 
         const money = this.content.currency;
@@ -1842,6 +2542,8 @@ export class Game {
             (resources[MATERIALS] ?? 0) - quote.fromStock,
         );
         resources[money] = Math.max(0, (resources[money] ?? 0) - quote.total);
+
+        return quote.total;
     }
 
     private gain(amounts: Amounts): void {
@@ -1903,6 +2605,9 @@ export class Game {
             level,
             buildStart: this.state.time,
             buildEnd: this.state.time + buildTime,
+            fromLevel: 0,
+            paid: 0,
+            mothballed: false,
             style: null,
             district: null,
         };
@@ -2099,7 +2804,7 @@ export class Game {
         for (const building of this.buildings.values()) {
             const status = this.status.get(building.uid);
 
-            if (!status?.complete || !status.home) {
+            if (!status?.level || status.mothballed || !status.home) {
                 continue;
             }
 
@@ -2121,17 +2826,17 @@ export class Game {
         }
 
         const since =
-            (building.builtEra ?? this.levelEpoch(building)) +
+            (building.builtEra ?? this.workEpoch(building)) +
             rules.heritageEraGap;
 
         if (since > this.state.epoch) {
             return 1;
         }
 
-        // Unknown entry time (a world loaded from the server): fully ramped.
-        const entered = this.eraEnteredAt[since];
+        // Unknown entry time (an era entered before the log was kept): fully ramped.
+        const entered = this.eraStart(since);
         const ramp =
-            entered === undefined || rules.heritageRampYears <= 0
+            entered === null || rules.heritageRampYears <= 0
                 ? 1
                 : Math.min(
                       1,
@@ -2146,14 +2851,14 @@ export class Game {
     attractionOf(building: BuildingState): number {
         const rules = this.content.world.economy.tourism;
         const def = this.def(building);
-        const attraction = this.effects(building).attraction;
+        const attraction = this.workEffects(building).attraction;
 
         if (!attraction) {
             return 0;
         }
 
         const eraMult =
-            rules.eraMult[this.levelEpoch(building)] ??
+            rules.eraMult[this.workEpoch(building)] ??
             rules.eraMult.at(-1) ??
             1;
         const onBeach =
@@ -2224,11 +2929,15 @@ export class Game {
         for (const building of all) {
             const def = this.def(building);
             const complete = this.isComplete(building);
+            const level = this.workingLevel(building);
+            const mothballed = building.mothballed;
             const connected = this.isConnected(building);
-            const working = complete && connected;
+            const working = level > 0 && !mothballed && connected;
 
             status.set(building.uid, {
                 complete,
+                level,
+                mothballed,
                 connected,
                 working,
                 efficiency: 0,
@@ -2253,7 +2962,10 @@ export class Game {
                           )?.uid ?? null),
                 output: {},
                 input: {},
-                upkeep: complete ? this.levelDef(building).upkeep : 0,
+                upkeep:
+                    level > 0 && !mothballed
+                        ? this.workDef(building).upkeep
+                        : 0,
             });
 
             if (working) {
@@ -2273,13 +2985,13 @@ export class Game {
     private ownAura(building: BuildingState): number {
         return this.status.get(building.uid)?.working &&
             this.roleOf(building) !== 'center'
-            ? (this.effects(building).aura?.happiness ?? 0)
+            ? (this.workEffects(building).aura?.happiness ?? 0)
             : 0;
     }
 
     /** What a working building stamps on the fields. */
     private gridSource(building: BuildingState): GridSource {
-        const effects = this.effects(building);
+        const effects = this.workEffects(building);
         const center = this.roleOf(building) === 'center';
         const aura = effects.aura
             ? { radius: effects.aura.radius, happiness: effects.aura.happiness }
@@ -2387,9 +3099,10 @@ export class Game {
         const lines = new Map<string, ProductionLine>();
         const unlocked = this.unlocked;
         const housingBonus = 1 + this.bonuses.housing / 100;
+        const dense = 1 + this.policies().housing;
         const eraTax = world.economy.taxMultByLevelEra;
         const boosters = all.filter(
-            (b) => this.status.get(b.uid)!.working && this.effects(b).boost,
+            (b) => this.status.get(b.uid)!.working && this.workEffects(b).boost,
         );
         let housing = 0;
         let taxWeighted = 0;
@@ -2405,18 +3118,18 @@ export class Game {
         for (const building of all) {
             const status = this.status.get(building.uid)!;
             const def = this.def(building);
-            const level = this.levelDef(building);
+            const level = this.workDef(building);
             const effects = level.effects;
             const area = this.footprint(building);
 
-            if (status.complete && level.upkeep) {
+            if (status.upkeep > 0) {
                 const key = def.network === 'road' ? 'roads' : def.category;
 
-                city.upkeep += level.upkeep;
-                this.upkeepBy[key] = (this.upkeepBy[key] ?? 0) + level.upkeep;
+                city.upkeep += status.upkeep;
+                this.upkeepBy[key] = (this.upkeepBy[key] ?? 0) + status.upkeep;
             }
 
-            if (status.complete && effects.housing > 0) {
+            if (status.level > 0 && !status.mothballed && effects.housing > 0) {
                 const at = this.surroundingsAt(
                     area,
                     this.ownAura(building),
@@ -2509,6 +3222,7 @@ export class Game {
                         places,
                         status.comfort,
                         world.population,
+                        dense,
                     ),
                     staticHappiness: status.surroundings,
                     powered: effects.powerUse > 0,
@@ -2516,7 +3230,7 @@ export class Game {
                 housing += places;
                 taxWeighted +=
                     places *
-                    (eraTax[this.levelEpoch(building)] ?? eraTax.at(-1) ?? 1) *
+                    (eraTax[this.workEpoch(building)] ?? eraTax.at(-1) ?? 1) *
                     def.taxMult;
                 taxBonus +=
                     (places *
@@ -2553,7 +3267,7 @@ export class Game {
         let best = 0;
 
         for (const booster of boosters) {
-            const boost = this.effects(booster).boost!;
+            const boost = this.workEffects(booster).boost!;
 
             if (
                 boost.targets.includes(building.type) &&
@@ -2576,9 +3290,12 @@ export class Game {
         const terms = cityTerms(world.happiness, {
             discoveries: this.bonuses.happiness,
             moods: this.state.moods.reduce((sum, mood) => sum + mood.amount, 0),
-            // Tax policy and density (slice 3), Golden Age (slice 4).
-            policy: 0,
-            golden: 0,
+            // Tax policy and density together (gdd §4.11).
+            policy: this.policies().happiness,
+            golden:
+                this.golden() > 0
+                    ? this.content.world.chronicle.golden.happiness
+                    : 0,
             density: 0,
             starving,
             powerRatio,
@@ -2638,13 +3355,13 @@ export class Game {
                 tax: this.bonuses.tax / 100,
                 trade: this.bonuses.trade / 100,
             },
-            // Golden Age (slice 4), tax policy (slice 3), port orders (slice 8),
-            // congestion on the access roads (slice 6).
-            golden: 0,
-            taxPolicy: 1,
+            golden: this.golden(),
+            taxPolicy: this.policies().tax,
+            // Port orders (slice 8), congestion on the access roads (slice 6).
             reserved: { food: 0, mat: 0, goods: 0 },
             congestion: 1,
             previousPowerRatio: this.stats.powerRatio,
+            loan: state.economy.loan,
         };
         const result = settle(
             this.city,
@@ -2657,7 +3374,12 @@ export class Game {
         const flows = result.flows;
 
         if (commit) {
+            const economy = state.economy;
+
             resources[money] = result.money;
+            economy.loan = result.loan < 0.5 ? 0 : result.loan;
+            economy.arrears ||= result.arrears;
+            this.yearNet += (flows.net * dt) / this.clock.secondsPerYear;
             resources.food = result.stocks.food;
             resources[MATERIALS] = result.stocks.mat;
             resources.goods = result.stocks.goods;
@@ -2668,6 +3390,21 @@ export class Game {
                 flows.starving,
                 dt,
                 world.population,
+            );
+            state.peakPopulation = Math.max(
+                state.peakPopulation,
+                Math.floor(state.population),
+            );
+            Object.assign(
+                economy,
+                happinessAverage(
+                    economy,
+                    flows.happiness,
+                    state.time,
+                    dt,
+                    this.clock.secondsPerYear,
+                    world.chronicle,
+                ),
             );
         }
 
@@ -2702,7 +3439,8 @@ export class Game {
             (this.state.population * traffic.tripsPerCitizen +
                 flows.jobs * traffic.tripsPerJob) *
             traffic.tripLength *
-            traffic.hotspot;
+            traffic.hotspot *
+            (1 + this.policies().trips);
 
         return {
             rates,
@@ -2775,7 +3513,7 @@ export class Game {
             }
 
             const def = this.def(building);
-            const effects = this.effects(building);
+            const effects = this.workEffects(building);
             const staff = def.jobClass ? flows.staff[def.jobClass] : 1;
             const powered = effects.powerUse > 0;
             const burnsFuel = (effects.consumes.fuel ?? 0) > 0;
@@ -2835,10 +3573,19 @@ export class Game {
     /** Once per game year (gdd §4.0): organic growth, tourism and P* refresh, telemetry. */
     private newYear(quiet: boolean): void {
         this.organicGrowth(quiet);
+        this.treasuryCheck(quiet);
 
         if (this.structureDirty) {
             this.rebuild();
         }
+
+        const years = this.content.world.chronicle.lead.fallingYears;
+
+        this.leadHistory.push(Math.round(this.lead().lead));
+        this.leadHistory.splice(
+            0,
+            Math.max(0, this.leadHistory.length - years - 1),
+        );
 
         let attraction = 0;
 
@@ -2851,6 +3598,91 @@ export class Game {
         this.city.attraction = attraction;
         this.homesDirty = true;
         this.recordYear();
+    }
+
+    /**
+     * The year-end treasury check (gdd §4.10): after a year in arrears that
+     * ran at a loss, the open non-home building with the highest upkeep is
+     * mothballed — one a year, until the net is positive again.
+     */
+    private treasuryCheck(quiet: boolean): void {
+        const economy = this.state.economy;
+        const perYear = this.content.world.economy.treasury.mothballPerYear;
+        const yearNet = this.yearNet;
+
+        this.yearNet = 0;
+
+        if (!economy.arrears) {
+            return;
+        }
+
+        economy.arrears = false;
+        economy.arrearsYears++;
+
+        for (let i = 0; i < perYear; i++) {
+            const uid = mothballPick(
+                true,
+                yearNet,
+                [...this.buildings.values()]
+                    .filter(
+                        (building) =>
+                            !building.mothballed &&
+                            this.mothballBlock(building) === null,
+                    )
+                    .map((building) => ({
+                        uid: building.uid,
+                        upkeep: this.status.get(building.uid)?.upkeep ?? 0,
+                    })),
+            );
+            const building = uid === null ? undefined : this.buildings.get(uid);
+
+            if (!building) {
+                return;
+            }
+
+            building.mothballed = true;
+            this.changedBuildings.add(building.uid);
+            this.structureDirty = true;
+
+            if (!quiet) {
+                this.events.emit({
+                    type: 'toast',
+                    text: `🔒 Казна пуста: законсервировано «${this.nameOf(building)}». Откройте, когда доход позволит`,
+                    tone: 'bad',
+                });
+            }
+        }
+    }
+
+    /**
+     * Every 5 game seconds: when a gate line turns green the lead jumps;
+     * remember what did it for the lead tooltip (gdd §2.3).
+     */
+    private trackGate(): void {
+        const lines = this.gateLines();
+        const lead = this.lead().lead;
+        const before = this.lastLead;
+
+        if (before !== null && lines.length === this.gateDone.length) {
+            const turned = lines.find(
+                (line, index) => line.done && !this.gateDone[index],
+            );
+
+            if (turned && lead > before + 0.5) {
+                this.leadCause = {
+                    label:
+                        turned.kind === 'item'
+                            ? `${turned.label} построено`
+                            : turned.kind === 'population'
+                              ? `${turned.label}: ${turned.target}`
+                              : turned.label,
+                    years: Math.round(lead - before),
+                };
+            }
+        }
+
+        this.gateDone = lines.map((line) => line.done);
+        this.lastLead = lead;
     }
 
     /**
@@ -3122,6 +3954,8 @@ export class Game {
 
     /** Tester: fills the stores to the brim and adds money for the next Town Hall twice over. */
     testerGrant(): void {
+        this.markTester();
+
         const next = this.townHallUpgrade()?.cost[this.content.currency] ?? 0;
 
         for (const resource of this.visibleResources()) {
@@ -3140,10 +3974,16 @@ export class Game {
 
     /** Tester: finishes all construction and the research under way. */
     testerFinish(): void {
+        let raised = false;
+
+        this.markTester();
+
         for (const building of this.buildings.values()) {
             if (!this.isComplete(building)) {
+                raised ||= this.isEraTownHall(building);
                 building.buildEnd = this.state.time;
                 building.builtEra = this.state.epoch;
+                building.fromLevel = building.level;
                 building.buildStart = Math.min(
                     building.buildStart,
                     this.state.time,
@@ -3157,11 +3997,17 @@ export class Game {
             this.updateResearch(false);
         }
 
+        if (raised) {
+            this.enterNextEpoch();
+        }
+
         this.structureChanged();
     }
 
     /** Tester: researches every technology of the eras reached so far. */
     testerResearchAll(): void {
+        this.markTester();
+
         for (const tech of this.content.techs) {
             if (
                 this.content.epochOrder(tech.epoch) <= this.state.epoch &&
@@ -3176,8 +4022,25 @@ export class Game {
         this.structureChanged();
     }
 
-    /** Tester: moves to the next era whatever the checklist says. */
+    /** Tester: raises the Town Hall into the next era at once, whatever the gate says. */
     testerNextEpoch(): void {
+        const entry = this.nextEpoch?.entry;
+        const center = this.center;
+
+        if (!entry) {
+            return;
+        }
+
+        this.markTester();
+
+        if (center && center.level < entry.townHallLevel) {
+            center.fromLevel = center.level;
+            center.level = entry.townHallLevel;
+            center.buildStart = this.state.time;
+            center.buildEnd = this.state.time;
+            this.changedBuildings.add(center.uid);
+        }
+
         this.enterNextEpoch();
     }
 

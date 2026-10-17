@@ -72,6 +72,52 @@ export function formatExact(value: number): string {
     return `${value < 0 && Math.round(value) !== 0 ? MINUS : ''}${digits}`;
 }
 
+/** A signed whole number with thin spaces: +1 352, −34. */
+export function formatSigned(value: number): string {
+    const rounded = Math.round(value);
+
+    return `${rounded > 0 ? '+' : ''}${formatExact(rounded)}`;
+}
+
+/** Russian plural: 1 год, 2 года, 5 лет. */
+export function plural(
+    count: number,
+    one: string,
+    few: string,
+    many: string,
+): string {
+    const n = Math.abs(Math.round(count)) % 100;
+    const last = n % 10;
+
+    if (n > 10 && n < 20) {
+        return many;
+    }
+
+    return last === 1 ? one : last >= 2 && last <= 4 ? few : many;
+}
+
+/** «12 лет», «1 год». */
+export function years(count: number): string {
+    return `${formatExact(count)} ${plural(count, 'год', 'года', 'лет')}`;
+}
+
+/** Two #rrggbb colours mixed: 0 = the first, 1 = the second. */
+export function mixColor(from: string, to: string, share: number): string {
+    const parse = (hex: string) =>
+        [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) || 0);
+    const a = parse(from);
+    const b = parse(to);
+    const t = Math.max(0, Math.min(1, share));
+
+    return `#${a
+        .map((value, i) =>
+            Math.round(value + (b[i] - value) * t)
+                .toString(16)
+                .padStart(2, '0'),
+        )
+        .join('')}`;
+}
+
 /** The current era's face of the money: its symbol in a coin. */
 export function MoneyIcon({ face }: { face: CurrencyFace }) {
     return (

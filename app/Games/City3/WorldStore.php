@@ -12,21 +12,47 @@ use Illuminate\Support\Facades\DB;
  * Reads and writes a player's world across its four tables. A world is
  * created whole once; afterwards only changes arrive, guarded by a
  * revision so an older tab cannot overwrite newer progress.
+ *
+ * The calendar year and the score are the server's (gdd §10, §14): the
+ * year comes from the game time, the score from the era log (entry years,
+ * leads and stars against epochs.json), the peak population (at most 1.2 ×
+ * the places of the stored homes), the best 50-year happiness and the
+ * achievements; what the browser says about them is ignored. A world that
+ * used tester tools, or whose game time ran faster than the fastest speed
+ * allows between saves, or that entered an era implausibly early, stays
+ * off the leaderboard.
  */
 class WorldStore
 {
-    /** World columns the browser sends. */
+    /** World columns the browser sends (`year` and `score` are recomputed). */
     private const array WORLD_FIELDS = [
         'seed', 'width', 'height', 'epoch', 'epoch_index', 'year', 'time', 'population', 'happiness', 'score',
         'resources', 'weather', 'weather_until', 'next_event_at', 'moods', 'next_uid', 'stats',
-        'techs', 'research', 'blueprints', 'achievements',
+        'techs', 'research', 'blueprints', 'achievements', 'peak_population', 'era_log', 'economy',
     ];
 
     /** Building columns the browser sends and reads back. */
-    private const array BUILDING_FIELDS = ['uid', 'type', 'x', 'y', 'level', 'build_start', 'build_end', 'style', 'district'];
+    private const array BUILDING_FIELDS = [
+        'uid', 'type', 'x', 'y', 'level', 'build_start', 'build_end', 'style', 'district',
+        'paid', 'mothballed', 'organic', 'built_era', 'from_level',
+    ];
 
     /** Resident columns the browser sends and reads back. */
     private const array NPC_FIELDS = ['uid', 'type', 'name', 'age', 'home_uid', 'work_uid', 'x', 'y', 'activity', 'offset'];
+
+    /** The fastest speed a player has (×5) with a margin: game seconds per real second (gdd §10). */
+    private const float MAX_GAME_RATE = 5.5;
+
+    /** Game seconds of slack on top of that between two saves. */
+    private const int TIME_SLACK = 60;
+
+    /** A peak population above this share of the stored homes' places is cut (gdd §10). */
+    private const float PEAK_SHARE_OF_HOUSING = 1.2;
+
+    /** An era entered before this share of its ★★★ year is implausible (gdd §10). */
+    private const float EARLIEST_ENTRY_SHARE = 0.6;
+
+    public function __construct(private ContentRepository $content) {}
 
     public function find(int $userId): ?World
     {
@@ -68,6 +94,7 @@ class WorldStore
             $this->upsertTiles($world, $data['tiles']);
             $this->upsertBuildings($world, $data['buildings']);
             $this->replaceNpcs($world, $data['npcs']);
+            $this->recompute($world, true);
 
             return $world;
         });
@@ -88,6 +115,8 @@ class WorldStore
                 return null;
             }
 
+            $timely = $this->timely($world, (int) $data['world']['time']);
+
             $world->fill([...$this->worldColumns($data['world']), 'revision' => $world->revision + 1])->save();
 
             $this->upsertTiles($world, $data['tiles']);
@@ -98,6 +127,7 @@ class WorldStore
             }
 
             $this->replaceNpcs($world, $data['npcs']);
+            $this->recompute($world, $timely);
 
             return $world;
         });
@@ -123,16 +153,123 @@ class WorldStore
             'techs' => $world->techs ?? [],
             'blueprints' => $world->blueprints ?? [],
             'achievements' => $world->achievements ?? [],
+            'peak_population' => $world->peak_population ?? $world->population,
+            'era_log' => $world->era_log ?? [],
+            'economy' => $world->economy,
         ];
     }
 
     /**
+     * Works out the year, the score and the leaderboard columns from what
+     * is stored (gdd §10): the client's score is never used.
+     */
+    public function recompute(World $world, bool $timely): void
+    {
+        $economy = $world->economy ?? [];
+        $scored = $this->score($world);
+
+        $world->forceFill([
+            'peak_population' => $scored['peak'],
+            'score' => min(4_294_967_295, $scored['score']),
+            'stars' => $scored['stars'],
+            'lead' => $scored['lead'],
+            'ranked' => ($world->ranked ?? true)
+                && $timely
+                && $scored['plausible']
+                && ! ($economy['flags']['tester'] ?? false),
+        ])->save();
+    }
+
+    /**
+     * The score (gdd §10) = Chronicle + City + Land + Achievements, from the
+     * era log, the peak population, the best 50-year happiness and the
+     * achievements. Land counts no strips until they are stored (slice 5).
+     *
+     * @return array{score: int, stars: int, lead: int, peak: int, plausible: bool}
+     */
+    public function score(World $world): array
+    {
+        $rules = $this->content->scoreRules();
+        $eras = $this->content->eras();
+        $secondsPerYear = $this->content->secondsPerYear();
+        $chronicle = 0;
+        $stars = 0;
+        $lead = 0;
+        $plausible = true;
+
+        foreach ($world->era_log ?? [] as $entry) {
+            $era = $eras[$entry['era']] ?? null;
+
+            if ($era === null || $entry['era'] < 1) {
+                continue;
+            }
+
+            $year = intdiv(max(0, $entry['t']), $secondsPerYear);
+            $thresholds = $era['stars'];
+            $earned = $year > $era['year'] ? 0 : 1
+                + ($thresholds !== null && $year <= $thresholds[0] ? 1 : 0)
+                + ($thresholds !== null && $year <= $thresholds[1] ? 1 : 0);
+            $lead = $era['year'] - $year;
+            $stars += $earned;
+            $chronicle += $rules['eraBase'] + max(0, $lead) + ($rules['starPoints'][$earned] ?? 0);
+
+            if ($thresholds !== null && $year < self::EARLIEST_ENTRY_SHARE * $thresholds[1]) {
+                $plausible = false;
+            }
+        }
+
+        $housing = $world->buildings()->get(['type', 'level'])
+            ->sum(fn (Building $building): int => $this->content->housing($building->type, $building->level));
+        $peak = (int) min(
+            max((int) $world->peak_population, (int) $world->population),
+            floor(self::PEAK_SHARE_OF_HOUSING * $housing),
+        );
+        $economy = $world->economy ?? [];
+        $happiness = (float) (($economy['bestH50'] ?? 0) ?: ($economy['h50'] ?? 0));
+        $city = (int) round(
+            $rules['cityPerSqrtPeak'] * sqrt(max(0, $peak))
+            * ($rules['happinessBase'] + $rules['happinessShare'] * max(0, min(100, $happiness)) / 100),
+        );
+        $achievements = count(array_intersect(
+            array_unique($world->achievements ?? []),
+            $this->content->achievementIds(),
+        ));
+
+        return [
+            'score' => $chronicle + $city + $achievements * $rules['perAchievement'],
+            'stars' => $stars,
+            'lead' => $lead,
+            'peak' => $peak,
+            'plausible' => $plausible,
+        ];
+    }
+
+    /**
+     * The game time grew no faster than the fastest speed allows since the
+     * last save (gdd §10: Δgame ≤ Δwall × 5.5 + 60 s); time never moves back.
+     */
+    private function timely(World $world, int $time): bool
+    {
+        $elapsed = $world->updated_at === null ? 0 : max(0, $world->updated_at->diffInSeconds(now()));
+
+        return $time >= $world->time
+            && $time - $world->time <= $elapsed * self::MAX_GAME_RATE + self::TIME_SLACK;
+    }
+
+    /**
+     * The world columns of a save; the calendar year follows the game time.
+     *
      * @param  array<string, mixed>  $world
      * @return array<string, mixed>
      */
     private function worldColumns(array $world): array
     {
-        return array_intersect_key($world, array_flip(self::WORLD_FIELDS));
+        $columns = array_intersect_key($world, array_flip(self::WORLD_FIELDS));
+
+        unset($columns['score']);
+        $columns['year'] = min(9999, intdiv((int) $world['time'], $this->content->secondsPerYear()));
+
+        return $columns;
     }
 
     /**
@@ -176,11 +313,19 @@ class WorldStore
                     'build_end' => $building['build_end'],
                     'style' => isset($building['style']) ? json_encode($building['style'], JSON_THROW_ON_ERROR) : null,
                     'district' => isset($building['district']) ? json_encode($building['district'], JSON_THROW_ON_ERROR) : null,
+                    'paid' => $building['paid'] ?? null,
+                    'mothballed' => (bool) ($building['mothballed'] ?? false),
+                    'organic' => (float) ($building['organic'] ?? 0),
+                    'built_era' => $building['built_era'] ?? null,
+                    'from_level' => (int) ($building['from_level'] ?? 0),
                     'created_at' => $now,
                     'updated_at' => $now,
                 ], $chunk),
                 ['world_id', 'uid'],
-                ['type', 'x', 'y', 'level', 'build_start', 'build_end', 'style', 'district', 'updated_at'],
+                [
+                    'type', 'x', 'y', 'level', 'build_start', 'build_end', 'style', 'district',
+                    'paid', 'mothballed', 'organic', 'built_era', 'from_level', 'updated_at',
+                ],
             );
         }
     }

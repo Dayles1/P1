@@ -440,3 +440,190 @@ test('autosaves do not use up the limits on creating a world or on the playtime 
     $this->postJson('/api/city3/world', city3CreatePayload())->assertCreated();
     $this->postJson('/api/games/city3/playtime')->assertOk();
 });
+
+/**
+ * A sync of the given world numbers and building rows on top of a revision.
+ *
+ * @param  array<string, mixed>  $world
+ * @param  list<array<string, mixed>>  $buildings
+ * @return array<string, mixed>
+ */
+function city3Sync(array $world, array $buildings = [], int $revision = 1): array
+{
+    return [
+        'revision' => $revision,
+        'world' => city3World($world),
+        'tiles' => [],
+        'buildings' => ['upsert' => $buildings, 'delete' => []],
+        'npcs' => [],
+    ];
+}
+
+/**
+ * The treasury state as the browser sends it.
+ *
+ * @param  array<string, mixed>  $overrides
+ * @return array<string, mixed>
+ */
+function city3Economy(array $overrides = []): array
+{
+    return [
+        'policy' => 'normal', 'policyT' => null, 'dense' => false, 'denseT' => null, 'loan' => 0,
+        'arrears' => false, 'arrearsYears' => 0, 'chestT' => null, 'h50' => 50, 'bestH50' => 0,
+        'flags' => ['tester' => false],
+        ...$overrides,
+    ];
+}
+
+test('prices, mothballing, organic growth and the Chronicle are saved and load back', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user, 'sanctum')->postJson('/api/city3/world', city3CreatePayload())->assertCreated();
+    $this->travel(10)->minutes();
+
+    $this->putJson('/api/city3/world', city3Sync([
+        'epoch' => 'e1000',
+        'epoch_index' => 1,
+        'time' => 2000,
+        'peak_population' => 9,
+        'era_log' => [['era' => 1, 't' => 1900]],
+        'economy' => city3Economy(['policy' => 'low', 'policyT' => 1950, 'loan' => 120.5, 'chestT' => 1990, 'h50' => 61.25]),
+    ], [
+        ['uid' => 4, 'type' => 'farm', 'x' => 5, 'y' => 7, 'level' => 2, 'build_start' => 1990, 'build_end' => 2240, 'style' => null, 'district' => null,
+            'paid' => 1203, 'mothballed' => false, 'organic' => 0, 'built_era' => 0, 'from_level' => 1],
+        ['uid' => 5, 'type' => 'temple', 'x' => 2, 'y' => 2, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null,
+            'paid' => 360, 'mothballed' => true, 'organic' => 0, 'built_era' => 0, 'from_level' => 0],
+        ['uid' => 6, 'type' => 'house', 'x' => 9, 'y' => 2, 'level' => 2, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null,
+            'paid' => 28, 'mothballed' => false, 'organic' => 0.375, 'built_era' => 1, 'from_level' => 2],
+    ]))->assertOk();
+
+    $this->getJson('/api/city3/world')
+        ->assertOk()
+        ->assertJsonPath('data.world.world.era_log', [['era' => 1, 't' => 1900]])
+        ->assertJsonPath('data.world.world.peak_population', 9)
+        ->assertJsonPath('data.world.world.economy.policy', 'low')
+        ->assertJsonPath('data.world.world.economy.loan', 120.5)
+        ->assertJsonPath('data.world.world.economy.chestT', 1990)
+        ->assertJsonPath('data.world.buildings.1.paid', 1203)
+        ->assertJsonPath('data.world.buildings.1.from_level', 1)
+        ->assertJsonPath('data.world.buildings.2.mothballed', true)
+        ->assertJsonPath('data.world.buildings.3.organic', 0.375)
+        ->assertJsonPath('data.world.buildings.3.built_era', 1)
+        // Saved before slice 3: nothing recorded, the client credits the list price.
+        ->assertJsonPath('data.world.buildings.0.paid', null)
+        ->assertJsonPath('data.world.buildings.0.mothballed', false);
+});
+
+test('the server works out the year and the score from the era log, never the browser', function () {
+    $user = User::factory()->create();
+    $homes = [];
+
+    for ($i = 0; $i < 17; $i++) {
+        $homes[] = ['uid' => 10 + $i, 'type' => 'house', 'x' => $i % 16, 'y' => 1 + intdiv($i, 16), 'level' => 5, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null];
+    }
+
+    $this->actingAs($user, 'sanctum')->postJson('/api/city3/world', city3CreatePayload())->assertCreated();
+    $this->travel(10)->minutes();
+
+    $this->putJson('/api/city3/world', city3Sync([
+        'epoch' => 'e1000',
+        'epoch_index' => 1,
+        'time' => 74 * 25 + 10,
+        'year' => 5,
+        'score' => 999_999,
+        'peak_population' => 400,
+        // Entered the Middle Ages in year 74: two stars (by 76, not by 72), 926 years ahead.
+        'era_log' => [['era' => 1, 't' => 74 * 25]],
+        'economy' => city3Economy(['h50' => 58, 'bestH50' => 60]),
+        'achievements' => ['first_homes', 'never_in_arrears'],
+    ], $homes))->assertOk();
+
+    $world = World::query()->sole();
+
+    // Chronicle 1 000 + 926 + 300; City 20 × √400 × (0.8 + 0.4 × 0.6); one achievement.
+    expect($world->year)->toBe(74)
+        ->and($world->score)->toBe(2226 + 416 + 250)
+        ->and($world->stars)->toBe(2)
+        ->and($world->lead)->toBe(926)
+        ->and($world->peak_population)->toBe(400)
+        ->and($world->ranked)->toBeTrue();
+});
+
+test('a peak population the stored homes cannot hold is cut to 1.2 times their places', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user, 'sanctum')->postJson('/api/city3/world', city3CreatePayload())->assertCreated();
+    $this->putJson('/api/city3/world', city3Sync(['peak_population' => 5000]))->assertOk();
+
+    // Only the chief's tent stands: 8 places.
+    expect(World::query()->sole()->peak_population)->toBe(9);
+});
+
+test('era logs that do not hold together, unknown treasury keys and bad building fields are refused', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user, 'sanctum')->postJson('/api/city3/world', city3CreatePayload())->assertCreated();
+
+    $this->putJson('/api/city3/world', city3Sync([
+        'epoch' => 'e1500',
+        'epoch_index' => 2,
+        'time' => 4000,
+        'era_log' => [['era' => 2, 't' => 100], ['era' => 1, 't' => 200]],
+        'economy' => [...city3Economy(['policy' => 'zero']), 'bribe' => 5],
+    ], [
+        ['uid' => 4, 'type' => 'house', 'x' => 5, 'y' => 7, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null,
+            'paid' => -5, 'mothballed' => 'maybe', 'organic' => 3, 'built_era' => 9, 'from_level' => 0],
+    ]))->assertUnprocessable()->assertJsonValidationErrors([
+        'world.era_log', 'world.economy', 'world.economy.policy',
+        'buildings.upsert.0.paid', 'buildings.upsert.0.mothballed', 'buildings.upsert.0.organic', 'buildings.upsert.0.built_era',
+    ]);
+
+    $this->putJson('/api/city3/world', city3Sync([
+        'epoch' => 'e1000',
+        'epoch_index' => 1,
+        'time' => 4000,
+        'era_log' => [['era' => 1, 't' => 5000]],
+    ]))->assertUnprocessable()->assertJsonValidationErrors(['world.era_log']);
+
+    expect(World::query()->sole()->revision)->toBe(1);
+});
+
+test('tester saves, time that ran too fast and eras entered impossibly early stay off the leaderboard', function () {
+    $tester = User::factory()->create();
+    $hasty = User::factory()->create();
+    $prodigy = User::factory()->create();
+
+    foreach ([$tester, $hasty, $prodigy] as $user) {
+        $this->actingAs($user, 'sanctum')->postJson('/api/city3/world', city3CreatePayload())->assertCreated();
+    }
+
+    $this->travel(10)->minutes();
+
+    $this->actingAs($tester, 'sanctum')
+        ->putJson('/api/city3/world', city3Sync(['time' => 500, 'economy' => city3Economy(['flags' => ['tester' => true]])]))
+        ->assertOk();
+    // 10 minutes of play at ×5 is 3 000 game seconds at most.
+    $this->actingAs($hasty, 'sanctum')
+        ->putJson('/api/city3/world', city3Sync(['time' => 20_000]))
+        ->assertOk();
+    // The Middle Ages in year 10: below 0.6 × the three-star year 72.
+    $this->actingAs($prodigy, 'sanctum')
+        ->putJson('/api/city3/world', city3Sync(['epoch' => 'e1000', 'epoch_index' => 1, 'time' => 300, 'era_log' => [['era' => 1, 't' => 250]]]))
+        ->assertOk();
+
+    expect(World::query()->where('ranked', true)->count())->toBe(0);
+
+    $this->actingAs($prodigy, 'sanctum')
+        ->getJson('/api/city3/leaderboard')
+        ->assertOk()
+        ->assertJsonCount(0, 'data.entries')
+        ->assertJsonPath('data.me.rank', null);
+
+    // A later honest save does not wash the flag off.
+    $this->travel(10)->minutes();
+    $this->actingAs($tester, 'sanctum')
+        ->putJson('/api/city3/world', city3Sync(['time' => 600], [], 2))
+        ->assertOk();
+
+    expect(World::query()->where('user_id', $tester->id)->value('ranked'))->toBeFalse();
+});

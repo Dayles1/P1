@@ -6,4 +6,5 @@ return [
     'world_missing' => 'Dunyo hali yaratilmagan.',
     'tiles_too_many' => 'Bunday xarita uchun kataklar juda ko‘p.',
     'tile_invalid' => '#:index-katak: xarita doirasida [x, y, biom, balandlik, obyekt] kutiladi.',
+    'era_log_invalid' => 'Davrlar solnomasi tartib bilan, vaqt esa orqaga qaytmasdan borishi kerak.',
 ];

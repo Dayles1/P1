@@ -518,7 +518,9 @@ export class Renderer {
 
             let text = '';
 
-            if (!status.connected) {
+            if (status.mothballed) {
+                text += '🔒';
+            } else if (!status.connected) {
                 text += '🚧';
             }
 
@@ -531,9 +533,9 @@ export class Renderer {
             }
 
             if (
-                game.effects(entry.building).jobs > 0 &&
+                game.workEffects(entry.building).jobs > 0 &&
                 status.efficiency < 0.5 &&
-                status.connected
+                status.working
             ) {
                 text += '👷';
             }
@@ -651,19 +653,24 @@ export class Renderer {
             }
 
             case 'epoch': {
-                const target = this.orbit.target;
-                const spread = clamp(this.orbit.current.distance * 0.35, 4, 16);
+                // Confetti over the Town Hall that opened the era; no flash (gdd §2.4).
+                const center = world.game.center;
+                const entry = center
+                    ? world.buildings.entries.get(center.uid)
+                    : undefined;
+                const x = center ? center.x + 1 : this.orbit.target.x;
+                const z = center ? center.y + 1 : this.orbit.target.z;
+                const top = entry ? entry.box.max.y : this.orbit.target.y;
 
-                for (let i = 0; i < 260; i++) {
+                for (let i = 0; i < 160; i++) {
                     particles.spawn(
                         'confetti',
-                        target.x + (Math.random() - 0.5) * spread,
-                        target.y + 0.5 + Math.random() * 2,
-                        target.z + (Math.random() - 0.5) * spread,
+                        x + (Math.random() - 0.5) * 4,
+                        top + 0.3 + Math.random() * 1.5,
+                        z + (Math.random() - 0.5) * 4,
                     );
                 }
 
-                this.labels.flash();
                 break;
             }
 

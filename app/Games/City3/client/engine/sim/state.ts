@@ -5,7 +5,7 @@
  * comes from the content files.
  */
 
-import type { Amounts } from '../content/types';
+import type { Amounts, TaxPolicy } from '../content/types';
 
 export interface Mood {
     until: number;
@@ -17,6 +17,38 @@ export interface Research {
     id: string;
     start: number;
     end: number;
+}
+
+/** An era entered: its index and the game time its Town Hall finished. */
+export interface EraLogEntry {
+    era: number;
+    t: number;
+}
+
+/**
+ * The treasury's and the Chronicle's running state (gdd §14 `economy`):
+ * policies and when they last changed, the loan, arrears, the chest's last
+ * claim, the happiness average for the score, and the tester flag that
+ * keeps a world off the leaderboard.
+ */
+export interface EconomyState {
+    policy: TaxPolicy;
+    /** Game time the tax policy last changed (null: never). */
+    policyT: number | null;
+    dense: boolean;
+    denseT: number | null;
+    /** Money still owed on the treasury loan. */
+    loan: number;
+    /** This year a tick's costs exceeded the treasury. */
+    arrears: boolean;
+    /** Years that ended in arrears, in all. */
+    arrearsYears: number;
+    /** Game time the Treasury chest was last claimed (null: never). */
+    chestT: number | null;
+    /** 50-year moving average of the city's happiness, and its best since year 50. */
+    h50: number;
+    bestH50: number;
+    flags: { tester: boolean };
 }
 
 /** The columns the player owns, over the land and the beach rows. */
@@ -58,6 +90,11 @@ export interface WorldState {
         demolished: number;
         events: number;
     };
+    /** Eras entered after the first, in order (the Chronicle). */
+    eraLog: EraLogEntry[];
+    /** The most citizens the city ever had. */
+    peakPopulation: number;
+    economy: EconomyState;
 }
 
 /** How the player dressed a building: a blueprint and/or own colours. */
@@ -82,11 +119,20 @@ export interface BuildingState {
      */
     district: { name: string; policy: string | null } | null;
     /**
-     * The city's era when the current level was finished (Heritage).
-     * Not saved yet (slice 3): a loaded building counts from its level's era.
+     * While an upgrade builds, the level that keeps working (0: a new
+     * building, nothing works yet). Meaningless once `buildEnd` is past.
+     */
+    fromLevel: number;
+    /** Money actually paid for it: every build and upgrade step, imported materials included. */
+    paid: number;
+    /** Closed by hand or by an empty treasury: no effect, no upkeep, no jobs. */
+    mothballed: boolean;
+    /**
+     * The city's era when the current level was finished (Heritage); a
+     * building saved before slice 3 counts from its level's era.
      */
     builtEra?: number;
-    /** Organic growth progress, 0..1 (gdd §4.7). Not saved yet (slice 3). */
+    /** Organic growth progress, 0..1 (gdd §4.7). */
     organic?: number;
 }
 

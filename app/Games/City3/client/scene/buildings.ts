@@ -259,11 +259,12 @@ export class Buildings {
 
             const entry = this.entries.get(building.uid);
             const complete = game.isComplete(building);
+            // A reload during an upgrade shows the old level that still works.
             let completeLevel = entry
                 ? entry.completeLevel
                 : complete
                   ? building.level
-                  : 0;
+                  : game.workingLevel(building);
 
             if (
                 entry &&

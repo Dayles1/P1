@@ -4,6 +4,10 @@
  * through the day, bluish moonlight at night, hemisphere ambient light,
  * dawn / dusk tints and fog for depth (denser in foggy weather).
  *
+ * Each era has a light haze of its own (epochs.json atmosphere): after an
+ * era begins it blends in over the transition years (gdd §2.4), never at
+ * once; a Golden Age warms the light while it lasts.
+ *
  * The dome is world-space and follows the camera; its colour at and below
  * the horizon is exactly the fog colour, so fogged ground and the far
  * ridges melt into the sky with no seam. The fog is sized in world units
@@ -18,6 +22,8 @@ const DAY_ZENITH = '#5b9bd5';
 const DAY_HORIZON = '#d3e2ea';
 const NIGHT_ZENITH = '#060a1c';
 const NIGHT_HORIZON = '#1a2350';
+/** Warm light of a Golden Age. */
+const GOLDEN_LIGHT = '#ffc46b';
 
 /** Fog in world units (tiles): clear weather, at any zoom. */
 const FOG_NEAR = 85;
@@ -74,6 +80,7 @@ export class Sky {
     private zenith = new THREE.Color();
     private horizon = new THREE.Color();
     private scratch = new THREE.Color();
+    private haze = new THREE.Color();
 
     constructor(private scene: THREE.Scene) {
         this.sun = new THREE.DirectionalLight(0xffffff, 3);
@@ -126,17 +133,21 @@ export class Sky {
             ? Math.min(1, light.tintStrength * 1.6)
             : 0;
         const gloom = Math.max(0, -(weather?.light ?? 0)) * 2.2;
+        const era = this.atmosphere(game);
+        const golden = Math.min(1, game.golden() / 0.15) * 0.3 * (1 - night);
 
         // Sky colours: natural, whatever the era.
         this.zenith.copy(color(DAY_ZENITH)).lerp(color(NIGHT_ZENITH), night);
-        this.horizon
-            .copy(color(DAY_HORIZON))
-            .lerp(color(NIGHT_HORIZON), night);
+        this.horizon.copy(color(DAY_HORIZON)).lerp(color(NIGHT_HORIZON), night);
 
         if (tint) {
             this.horizon.lerp(tint, tintShare * 0.8);
             this.zenith.lerp(tint, tintShare * 0.3);
         }
+
+        // The era's haze, softer at night.
+        this.horizon.lerp(this.haze, era.strength * (1 - night * 0.6));
+        this.zenith.lerp(this.haze, era.strength * 0.35 * (1 - night * 0.6));
 
         if (gloom > 0) {
             const grey = color('#8d969e');
@@ -161,6 +172,12 @@ export class Sky {
 
             if (tint) {
                 this.sun.color.lerp(tint, tintShare);
+            }
+
+            this.sun.color.lerp(this.haze, era.strength * 0.5);
+
+            if (golden > 0) {
+                this.sun.color.lerp(color(GOLDEN_LIGHT), golden);
             }
 
             this.sun.intensity =
@@ -209,10 +226,13 @@ export class Sky {
             weather?.particles?.kind === 'fog' ? weather.particles.density : 0;
         const rainy = weather?.particles?.kind === 'rain' ? 0.3 : 0;
 
-        this.fog.near = Math.max(4, FOG_NEAR * (1 - foggy * 0.9 - rainy));
+        this.fog.near = Math.max(
+            4,
+            FOG_NEAR * era.fog * (1 - foggy * 0.9 - rainy),
+        );
         this.fog.far = Math.max(
             this.fog.near + 40,
-            FOG_FAR * (1 - foggy * 0.6 - rainy * 0.6),
+            FOG_FAR * era.fog * (1 - foggy * 0.6 - rainy * 0.6),
         );
         this.fog.color.copy(this.horizon);
 
@@ -236,6 +256,25 @@ export class Sky {
         this.dome.position.copy(eye);
 
         return { night, level: light.level };
+    }
+
+    /**
+     * The city's haze now: the previous era's blended into the current
+     * one's over the transition (the colour is left in `haze`).
+     */
+    private atmosphere(game: Game): { strength: number; fog: number } {
+        const epochs = game.content.epochs;
+        const now = epochs[game.state.epoch].atmosphere;
+        const before = epochs[Math.max(0, game.state.epoch - 1)].atmosphere;
+        const share = game.eraTransition();
+
+        this.haze.copy(color(before.tint)).lerp(color(now.tint), share);
+
+        return {
+            strength:
+                before.strength + (now.strength - before.strength) * share,
+            fog: before.fog + (now.fog - before.fog) * share,
+        };
     }
 
     dispose(): void {

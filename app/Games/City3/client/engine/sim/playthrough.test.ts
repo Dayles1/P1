@@ -12,7 +12,8 @@ const { content } = loadContent();
  * or education. Discoveries in the gate's order (Masonry and Writing as
  * soon as affordable, the rest when the next build is still paid for);
  * the chief's house at 30 citizens, adobe houses after Masonry, and the
- * Middle Ages as soon as the gate opens.
+ * Town Hall raised into the Middle Ages as soon as the gate opens (a
+ * 3-year build: the era begins when it is finished).
  */
 function play(years: number): Game {
     const game = Game.create(content, 7);
@@ -117,7 +118,7 @@ describe('a whole era', () => {
             game.state.epoch,
             JSON.stringify({
                 year: game.year,
-                gate: game.epochChecklist(),
+                gate: game.gateLines(),
                 population: game.state.population,
                 target: game.stats.target,
                 happiness: game.stats.happiness,
@@ -127,12 +128,22 @@ describe('a whole era', () => {
         expect(game.center!.level).toBe(3);
         expect(game.state.population).toBeGreaterThanOrEqual(80);
         // Within the sim's typical range (gdd §12.3: 71–106; ★★ by year 76).
-        // Measured: year 86.
+        // Measured: year 89 (the gate opened in year 86, then 3 years of build).
         expect(game.year).toBeGreaterThanOrEqual(71);
         expect(game.year).toBeLessThanOrEqual(106);
         expect(game.state.achievements).toEqual(
             expect.arrayContaining(['first_homes', 'fields', 'agora']),
         );
         expect(game.money).toBeGreaterThanOrEqual(0);
+        // The Chronicle: entered on the year the Town Hall was finished.
+        expect(game.chronicle()).toEqual([
+            {
+                era: 1,
+                year: game.year,
+                lead: 1000 - game.year,
+                stars: game.year <= 76 ? 2 : 1,
+            },
+        ]);
+        expect(game.score()).toBeGreaterThan(1000 + 1000 - 106);
     });
 });

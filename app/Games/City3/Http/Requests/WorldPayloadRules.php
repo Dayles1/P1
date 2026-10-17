@@ -52,7 +52,69 @@ trait WorldPayloadRules
             'world.blueprints.*' => ['string', Rule::in($content->blueprintIds())],
             'world.achievements' => ['present', 'array', 'max:1000'],
             'world.achievements.*' => ['string', Rule::in($content->goalIds())],
+            'world.peak_population' => ['sometimes', 'nullable', 'integer', 'min:0', 'max:100000000'],
+            'world.era_log' => ['sometimes', 'nullable', 'array', 'max:7', $this->eraLogRule()],
+            'world.era_log.*' => ['array:era,t'],
+            'world.era_log.*.era' => ['required', 'integer', 'min:0', 'max:'.max(0, count($content->epochIds()) - 1)],
+            'world.era_log.*.t' => ['required', 'integer', 'min:0'],
+            'world.economy' => ['sometimes', 'nullable', 'array:'.implode(',', self::ECONOMY_KEYS)],
+            'world.economy.policy' => ['required_with:world.economy', Rule::in(['low', 'normal', 'high'])],
+            'world.economy.policyT' => ['nullable', 'integer', 'min:0'],
+            'world.economy.dense' => ['sometimes', 'boolean'],
+            'world.economy.denseT' => ['nullable', 'integer', 'min:0'],
+            'world.economy.loan' => ['sometimes', 'numeric', 'min:0', 'max:1000000000000000'],
+            'world.economy.arrears' => ['sometimes', 'boolean'],
+            'world.economy.arrearsYears' => ['sometimes', 'integer', 'min:0', 'max:1000000'],
+            'world.economy.chestT' => ['nullable', 'integer', 'min:0'],
+            'world.economy.h50' => ['sometimes', 'numeric', 'between:0,100'],
+            'world.economy.bestH50' => ['sometimes', 'numeric', 'between:0,100'],
+            'world.economy.flags' => ['sometimes', 'array:tester'],
+            'world.economy.flags.tester' => ['sometimes', 'boolean'],
         ];
+    }
+
+    /**
+     * The treasury state a world may keep (gdd §14 `economy`, whitelisted).
+     *
+     * @var list<string>
+     */
+    private const array ECONOMY_KEYS = [
+        'policy', 'policyT', 'dense', 'denseT', 'loan', 'arrears', 'arrearsYears', 'chestT', 'h50', 'bestH50', 'flags',
+    ];
+
+    /**
+     * The era log holds together (gdd §14): strictly increasing eras, never
+     * past the world's era, at non-decreasing times not after now.
+     */
+    protected function eraLogRule(): Closure
+    {
+        return function (string $attribute, mixed $log, Closure $fail): void {
+            if (! is_array($log)) {
+                return;
+            }
+
+            $era = -1;
+            $time = 0;
+
+            foreach ($log as $entry) {
+                $entryEra = is_array($entry) ? ($entry['era'] ?? null) : null;
+                $entryTime = is_array($entry) ? ($entry['t'] ?? null) : null;
+
+                if (
+                    ! is_int($entryEra) || ! is_int($entryTime)
+                    || $entryEra <= $era || $entryTime < $time
+                    || $entryEra > (int) $this->input('world.epoch_index')
+                    || $entryTime > (int) $this->input('world.time')
+                ) {
+                    $fail(__('city3::messages.era_log_invalid'));
+
+                    return;
+                }
+
+                $era = $entryEra;
+                $time = $entryTime;
+            }
+        };
     }
 
     /**
@@ -76,6 +138,11 @@ trait WorldPayloadRules
             "{$prefix}.*.district" => ['nullable', 'array'],
             "{$prefix}.*.district.name" => ['required_with:'.$prefix.'.*.district', 'string', 'max:40'],
             "{$prefix}.*.district.policy" => ['nullable', 'string', 'max:64'],
+            "{$prefix}.*.paid" => ['sometimes', 'nullable', 'integer', 'min:0'],
+            "{$prefix}.*.mothballed" => ['sometimes', 'boolean'],
+            "{$prefix}.*.organic" => ['sometimes', 'numeric', 'between:0,1'],
+            "{$prefix}.*.built_era" => ['sometimes', 'nullable', 'integer', 'min:0', 'max:'.max(0, count(app(ContentRepository::class)->epochIds()) - 1)],
+            "{$prefix}.*.from_level" => ['sometimes', 'integer', 'min:0', 'max:60'],
         ];
     }
 

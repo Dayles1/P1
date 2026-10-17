@@ -143,6 +143,87 @@ class ContentRepository
     }
 
     /**
+     * The achievement ids (goals.json `achievements`): each is worth points.
+     *
+     * @return list<string>
+     */
+    public function achievementIds(): array
+    {
+        return $this->ids('goals', 'achievements');
+    }
+
+    /**
+     * Game seconds in a calendar year (world.json time.secondsPerYear).
+     */
+    public function secondsPerYear(): int
+    {
+        $seconds = $this->read('world')['time']['secondsPerYear'] ?? 25;
+
+        return is_numeric($seconds) ? max(1, (int) $seconds) : 25;
+    }
+
+    /**
+     * The eras in order: historical year and the [★★, ★★★] years of entering it.
+     *
+     * @return list<array{id: string, year: int, stars: array{0: int, 1: int}|null}>
+     */
+    public function eras(): array
+    {
+        $eras = [];
+
+        foreach ($this->read('epochs')['epochs'] ?? [] as $epoch) {
+            if (! is_array($epoch) || ! is_string($epoch['id'] ?? null)) {
+                continue;
+            }
+
+            $stars = $epoch['entry']['stars'] ?? null;
+
+            $eras[] = [
+                'id' => $epoch['id'],
+                'year' => (int) ($epoch['year'] ?? 0),
+                'stars' => is_array($stars) && count($stars) === 2 ? [(int) $stars[0], (int) $stars[1]] : null,
+            ];
+        }
+
+        return $eras;
+    }
+
+    /**
+     * The score rules (world.json chronicle.score, gdd §10).
+     *
+     * @return array{eraBase: int, starPoints: list<int>, cityPerSqrtPeak: float, happinessBase: float, happinessShare: float, perStrip: int, perAchievement: int}
+     */
+    public function scoreRules(): array
+    {
+        $score = $this->read('world')['chronicle']['score'] ?? [];
+
+        return [
+            'eraBase' => (int) ($score['eraBase'] ?? 1000),
+            'starPoints' => array_values(array_map('intval', $score['starPoints'] ?? [0, 100, 300, 600])),
+            'cityPerSqrtPeak' => (float) ($score['cityPerSqrtPeak'] ?? 20),
+            'happinessBase' => (float) ($score['happinessBase'] ?? 0.8),
+            'happinessShare' => (float) ($score['happinessShare'] ?? 0.4),
+            'perStrip' => (int) ($score['perStrip'] ?? 100),
+            'perAchievement' => (int) ($score['perAchievement'] ?? 250),
+        ];
+    }
+
+    /**
+     * Places a building's level offers its residents (0 for an unknown
+     * type or level, or a building nobody lives in).
+     */
+    public function housing(string $type, int $level): int
+    {
+        if (! in_array($type, $this->buildingIds(), true)) {
+            return 0;
+        }
+
+        $housing = $this->read("buildings/{$type}")['levels'][$level - 1]['effects']['housing'] ?? 0;
+
+        return is_numeric($housing) ? (int) $housing : 0;
+    }
+
+    /**
      * The ids of the entries listed under `$list` in a content file.
      *
      * @return list<string>

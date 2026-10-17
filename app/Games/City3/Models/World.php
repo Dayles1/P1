@@ -12,7 +12,9 @@ use Illuminate\Support\Carbon;
  * A player's world in "Летопись города 3". `user_id` is the host
  * application's user id (another database, so no relation). The numbers
  * here are the player's progress; the rules they are read against live in
- * the content files.
+ * the content files. `score`, `year`, `stars`, `lead` and `ranked` are
+ * worked out by the server (WorldStore) from the era log and the rest;
+ * what the browser says about them is ignored.
  *
  * @property int $id
  * @property int $user_id
@@ -38,6 +40,12 @@ use Illuminate\Support\Carbon;
  * @property array{id: string, start: int, end: int}|null $research
  * @property list<string>|null $blueprints
  * @property list<string>|null $achievements
+ * @property int $peak_population
+ * @property list<array{era: int, t: int}>|null $era_log
+ * @property array<string, mixed>|null $economy
+ * @property int $stars
+ * @property int $lead
+ * @property bool $ranked
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
@@ -79,6 +87,12 @@ class World extends Model
             'research' => 'array',
             'blueprints' => 'array',
             'achievements' => 'array',
+            'peak_population' => 'integer',
+            'era_log' => 'array',
+            'economy' => 'array',
+            'stars' => 'integer',
+            'lead' => 'integer',
+            'ranked' => 'boolean',
         ];
     }
 

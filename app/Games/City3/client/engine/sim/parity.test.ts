@@ -245,6 +245,7 @@ function year(c: SimCity) {
             reserved: { food: 0, mat: 0, goods: 0 },
             congestion: 1,
             previousPowerRatio: powerRatio,
+            loan: 0,
         };
         const result = settle(city, input, rules, 1, SPY, ({ starving }) =>
             starving ? c.h - 25 : c.h,

@@ -8,6 +8,18 @@
 export type ResourceId = string;
 export type Amounts = Record<ResourceId, number>;
 
+/** Tax policy of the Town Hall (gdd §4.11). */
+export type TaxPolicy = 'low' | 'normal' | 'high';
+
+/** An era's haze: horizon and light tint and fog distance (blended in over the transition). */
+export interface Atmosphere {
+    tint: string;
+    /** How strongly the tint colours the sky and light, 0..0.3. */
+    strength: number;
+    /** Fog distance multiplier. */
+    fog: number;
+}
+
 export interface WorldFile {
     /**
      * The one map everyone plays on. From north (row 0, where the mountain
@@ -32,7 +44,6 @@ export interface WorldFile {
         dayStart?: number;
         daysPerSeason: number;
         tickSeconds: number;
-        maxOfflineSeconds: number;
     };
     start: {
         epoch: string;
@@ -98,6 +109,73 @@ export interface WorldFile {
             heritageEraGap: number;
             heritageRampYears: number;
             beachManorMult: number;
+        };
+        /** Town Hall policies (gdd §4.11); each change is locked for `lockYears`. */
+        policies: {
+            lockYears: number;
+            tax: {
+                /** The era the tax policy opens in. */
+                epoch: string;
+                options: Record<
+                    TaxPolicy,
+                    { name: string; tax: number; happiness: number }
+                >;
+            };
+            /** «Плотная застройка»: housing and car trips up (shares), happiness down. */
+            dense: {
+                name: string;
+                epoch: string;
+                housing: number;
+                happiness: number;
+                trips: number;
+            };
+        };
+        /** Safety nets (gdd §4.10, §4.12). */
+        treasury: {
+            /** Buildings mothballed per year while the treasury is empty and the year ran at a loss. */
+            mothballPerYear: number;
+            loan: {
+                maxYearsOfGross: number;
+                ratePerYear: number;
+                /** Share of a positive net that repays the loan. */
+                repayShareOfNet: number;
+            };
+            chest: {
+                maxYearsOfNet: number;
+                /** Real hours away that fill the chest. */
+                fillRealHours: number;
+                /** Game years between two chests. */
+                cooldownYears: number;
+            };
+        };
+    };
+    /** The race against history (gdd §2.3, §2.4, §10). */
+    chronicle: {
+        /** Share of the way to the next era while the Town Hall builds, and for a complete gate. */
+        lead: { building: number; progress: number; fallingYears: number };
+        /** On era entry: +perStar × stars to taxes, exports and production for `years`, ramped over `rampYears`. */
+        golden: {
+            perStar: number;
+            years: number;
+            rampYears: number;
+            happiness: number;
+        };
+        /** Spirit of the Age: the Town Hall upgrade and discoveries get cheaper once history is ahead. */
+        spirit: { perYear: number; cap: number };
+        /** Years the sky, the accent, clothes and vehicles take to follow a new era. */
+        transitionYears: number;
+        score: {
+            eraBase: number;
+            /** Points for 0, 1, 2 and 3 stars. */
+            starPoints: [number, number, number, number];
+            cityPerSqrtPeak: number;
+            happinessBase: number;
+            happinessShare: number;
+            /** Years of the moving average of happiness. */
+            happinessYears: number;
+            stripWidth: number;
+            perStrip: number;
+            perAchievement: number;
         };
     };
     /** A home's happiness: base, + comfort × services covered, + auras, − pollution. */
@@ -338,6 +416,7 @@ export interface EpochDef {
     entry?: EpochEntry;
     /** The interface accent colour. */
     accent: string;
+    atmosphere: Atmosphere;
     palette: Palette;
     ambience: string;
 }

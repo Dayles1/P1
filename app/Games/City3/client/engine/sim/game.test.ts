@@ -108,16 +108,24 @@ describe('the calendar', () => {
 
         game.state.time = 30 * 25 + 3;
         game.infinite = true;
-        vi.spyOn(game, 'canAdvance').mockReturnValue(true);
+        vi.spyOn(game, 'gateBlock').mockReturnValue(null);
 
         expect(game.year).toBe(30);
         expect(game.advanceEpoch().ok).toBe(true);
-        expect(game.state.epoch).toBe(1);
+        // The era begins when the Town Hall is built (3 years), not before.
+        expect(game.state.epoch).toBe(0);
         expect(game.year).toBe(30);
-        expect(game.state.time).toBe(30 * 25 + 3);
+
+        for (let i = 0; i < 75; i++) {
+            game.tick(1, true);
+        }
+
+        expect(game.state.epoch).toBe(1);
+        expect(game.state.time).toBe(30 * 25 + 3 + 75);
+        expect(game.year).toBe(33);
 
         game.testerNextEpoch();
-        expect(game.year).toBe(30);
+        expect(game.year).toBe(33);
         expect('year' in game.state).toBe(false);
     });
 });

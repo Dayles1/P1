@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { formatExact, formatNumber, formatRate } from './common';
+import {
+    formatExact,
+    formatNumber,
+    formatRate,
+    formatSigned,
+    mixColor,
+    plural,
+    years,
+} from './common';
 
 describe('the number format (gdd §3.2)', () => {
     it('keeps three significant digits with Latin suffixes and a decimal comma', () => {
@@ -50,5 +58,26 @@ describe('the number format (gdd §3.2)', () => {
         expect(formatExact(1_234_567.4)).toBe('1 234 567');
         expect(formatExact(-999)).toBe('−999');
         expect(formatExact(7)).toBe('7');
+    });
+});
+
+describe('the Chronicle words and colours', () => {
+    it('signs the lead and counts years in Russian', () => {
+        expect(formatSigned(1352.4)).toBe('+1 352');
+        expect(formatSigned(-34)).toBe('−34');
+        expect(formatSigned(0)).toBe('0');
+        expect(
+            [1, 2, 5, 11, 21, 22, 112].map((n) =>
+                plural(n, 'год', 'года', 'лет'),
+            ),
+        ).toEqual(['год', 'года', 'лет', 'лет', 'год', 'года', 'лет']);
+        expect(years(926)).toBe('926 лет');
+    });
+
+    it('blends the era accent', () => {
+        expect(mixColor('#000000', '#ffffff', 0.5)).toBe('#808080');
+        expect(mixColor('#c9d17a', '#e79a8e', 0)).toBe('#c9d17a');
+        expect(mixColor('#c9d17a', '#e79a8e', 1)).toBe('#e79a8e');
+        expect(mixColor('#c9d17a', '#e79a8e', 7)).toBe('#e79a8e');
     });
 });

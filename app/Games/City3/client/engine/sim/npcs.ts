@@ -4,6 +4,11 @@
  * npcs.json (sleep → work → leisure → home), walks there along A* paths and
  * thinks about what bothers them. Traffic only drives around the roads for
  * life and is never saved.
+ *
+ * A new era changes them gradually (gdd §2.4): residents re-dress in the
+ * era's clothes when they next leave home (5 % a year, all within the
+ * transition), and the share of the era's vehicles grows with the years
+ * since entry; traffic is never cleared.
  */
 
 import type { NpcTypeDef } from '../content/types';
@@ -270,20 +275,29 @@ export class NpcSystem {
         this.changed ||= before !== this.residents.length;
     }
 
+    /** A new era: nothing changes at once; clothes and vehicles follow over the transition. */
     onEpochChanged(): void {
-        const types = this.game.content.npcTypesFor(
-            this.game.state.epoch,
-            'resident',
-        );
+        this.changed = true;
+    }
 
-        if (types.length) {
-            for (const npc of this.residents) {
-                npc.type =
-                    types[Math.floor(hash2(npc.uid, 3) * types.length)].id;
-            }
+    /**
+     * Re-dresses a resident leaving home in the era's clothes once their
+     * turn has come: each resident's turn is a fixed share of the
+     * transition, so 5 % a year change over 20 years.
+     */
+    private redress(npc: NpcState): void {
+        const game = this.game;
+        const types = game.content.npcTypesFor(game.state.epoch, 'resident');
+
+        if (
+            !types.length ||
+            types.some((type) => type.id === npc.type) ||
+            hash2(npc.uid, 7) > game.eraTransition()
+        ) {
+            return;
         }
 
-        this.vehicles = [];
+        npc.type = types[Math.floor(hash2(npc.uid, 3) * types.length)].id;
         this.changed = true;
     }
 
@@ -302,9 +316,9 @@ export class NpcSystem {
 
         for (const building of game.buildings.values()) {
             const status = game.status.get(building.uid);
-            const housing = game.effects(building).housing;
+            const housing = game.workEffects(building).housing;
 
-            if (housing && status?.complete && status.connected) {
+            if (housing && status?.working) {
                 result.push({
                     building,
                     free:
@@ -376,9 +390,9 @@ export class NpcSystem {
 
         for (const building of game.buildings.values()) {
             const status = game.status.get(building.uid);
-            const jobs = game.effects(building).jobs;
+            const jobs = game.workEffects(building).jobs;
 
-            if (!jobs || !status?.complete || !status.connected) {
+            if (!jobs || !status?.working) {
                 continue;
             }
 
@@ -425,8 +439,8 @@ export class NpcSystem {
         const game = this.game;
         const spots = [...game.buildings.values()].filter(
             (b) =>
-                game.effects(b).aura &&
-                game.status.get(b.uid)?.complete &&
+                game.workEffects(b).aura &&
+                game.status.get(b.uid)?.working &&
                 !game.roleOf(b),
         );
 
@@ -443,6 +457,10 @@ export class NpcSystem {
                 : goal === 'work' && npc.workUid
                   ? game.buildings.get(npc.workUid)
                   : this.leisureSpot();
+
+        if (npc.activity === 'home' && goal !== 'home') {
+            this.redress(npc);
+        }
 
         npc.goal = goal;
 
@@ -529,6 +547,10 @@ export class NpcSystem {
         const game = this.game;
         const rules = game.content.world.npc;
         const types = game.content.npcTypesFor(game.state.epoch, 'traffic');
+        const older =
+            game.state.epoch > 0
+                ? game.content.npcTypesFor(game.state.epoch - 1, 'traffic')
+                : [];
         const roads = [...game.connectedRoads];
         const wanted = types.length
             ? Math.min(
@@ -546,7 +568,12 @@ export class NpcSystem {
             Math.random() < 0.05
         ) {
             const index = roads[Math.floor(Math.random() * roads.length)];
-            const type = types[Math.floor(Math.random() * types.length)];
+            // The era's vehicles are a growing share of the new ones (gdd §2.4).
+            const pool =
+                older.length && Math.random() > game.eraTransition()
+                    ? older
+                    : types;
+            const type = pool[Math.floor(Math.random() * pool.length)];
             const x = index % game.map.width;
             const y = Math.floor(index / game.map.width);
 

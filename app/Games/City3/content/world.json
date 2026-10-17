@@ -1,5 +1,5 @@
 {
-    "$doc": "Основные правила мира. Все скорости — в год (год = time.secondsPerYear игровых секунд; движок делит годовые числа на него каждую секунду). map — одна карта для всех: width столбцов; с севера на юг landRows рядов луга (ряд 0 упирается в горы), beachRows рядов пляжа (последний — линия воды) и seaRows рядов моря; biomes — биом каждой полосы; start — открытые с начала столбцы. time: secondsPerYear — игровых секунд в году; secondsPerDay и dayStart — сутки для света и сезонов (на экономику не влияют). start — с чего начинается город. economy: currency — единственная валюта (money); taxPerCitizen — налог с жителя в год, taxMultByLevelEra — множитель налога по эпохе уровня дома; foodPerCitizen — еды на жителя в год; storageBase — склад ратуши без построек; prices — цены за единицу (matImport — докупка недостающих стройматериалов при стройке); tradeIn и upgradeFloor — улучшение засчитывает 70 % цены нынешнего уровня, но стоит не меньше 25 % нового; refundShare — сколько денег вернёт снос; moveShare — цена переноса от цены уровня; exportAbove — еда и стройматериалы сверх этой доли склада уходят на экспорт; unemploymentTaxLoss — безработица u снижает налог на эту долю × u; powerShortfall — без электричества потребители работают на base + share × доля энергии; faresShareOfTax — плата за метро с охваченного жителя как доля налога; tourism — спрос на туризм: perPoint за очко притяжения × eraMult по эпохе уровня здания, наследие ×heritageMult (нарастает за heritageRampYears лет), когда уровень старше города на heritageEraGap эпох; усадьба на пляже ×beachManorMult. happiness — довольство домов: base, comfort за услуги (вода, досуг, здоровье, образование), auraCap, pollutionCap и transitCap (метро). population — за игровую секунду: дома заполняются до P* (места × (0,7 + 0,3 × доля услуг) × заселённость от довольства: пусто при 25, полно при 70); сверху лишние уезжают, при голоде люди уходят; organicPerYear — прогресс бесплатного роста старых домов в год; needs — лестница нужд: дом уровня с нуждой T требует первые T пунктов. traffic — грубая модель пробок до пространственной (ρ для телеметрии). districts — радиус округа управы. events: первое на firstYear году, потом каждые everyYears лет; gain/lose меньше 1 — доля склада (для денег — доля казны), иначе количество; mood — прибавка к довольству на years лет.",
+    "$doc": "Основные правила мира. Все скорости — в год (год = time.secondsPerYear игровых секунд; движок делит годовые числа на него каждую секунду). map — одна карта для всех: width столбцов; с севера на юг landRows рядов луга (ряд 0 упирается в горы), beachRows рядов пляжа (последний — линия воды) и seaRows рядов моря; biomes — биом каждой полосы; start — открытые с начала столбцы. time: secondsPerYear — игровых секунд в году; secondsPerDay и dayStart — сутки для света и сезонов (на экономику не влияют); пока игра закрыта, время стоит. start — с чего начинается город. economy: currency — единственная валюта (money); taxPerCitizen — налог с жителя в год, taxMultByLevelEra — множитель налога по эпохе уровня дома; foodPerCitizen — еды на жителя в год; storageBase — склад ратуши без построек; prices — цены за единицу (matImport — докупка недостающих стройматериалов при стройке); tradeIn и upgradeFloor — улучшение засчитывает 70 % цены нынешнего уровня, но стоит не меньше 25 % нового; refundShare — сколько денег вернёт снос; moveShare — цена переноса от цены уровня; exportAbove — еда и стройматериалы сверх этой доли склада уходят на экспорт; unemploymentTaxLoss — безработица u снижает налог на эту долю × u; powerShortfall — без электричества потребители работают на base + share × доля энергии; faresShareOfTax — плата за метро с охваченного жителя как доля налога; tourism — спрос на туризм: perPoint за очко притяжения × eraMult по эпохе уровня здания, наследие ×heritageMult (нарастает за heritageRampYears лет), когда уровень старше города на heritageEraGap эпох; усадьба на пляже ×beachManorMult. policies — указы ратуши, каждый меняется не чаще раза в lockYears лет: tax (с эпохи epoch) — налоги ×tax и прибавка happiness к довольству; dense (с эпохи epoch) — плотная застройка: жильё +housing, довольство happiness, поездки +trips. treasury — подушки казны: mothballPerYear — сколько зданий в год консервируется, когда казна пуста и год в минусе; loan — ссуда до maxYearsOfGross годовых доходов под ratePerYear в год, гасится repayShareOfNet чистого дохода; chest — сундук казны после отлучки: min(1, часов / fillRealHours) × maxYearsOfNet годового чистого дохода, не чаще раза в cooldownYears игровых лет. chronicle — гонка с историей: lead — опережение (building — доля пути к следующей эпохе, пока строится ратуша; progress — доля за выполненные ворота; fallingYears — за сколько лет сравнивать, падает ли опережение); golden — золотой век после входа в эпоху: perStar за звезду к налогам, экспорту и производству на years лет, нарастает и спадает за rampYears, +happiness к довольству; spirit — дух времени: когда год позже исторического года следующей эпохи, улучшение ратуши и открытия дешевле на perYear за год, не больше cap; transitionYears — за сколько лет плавно меняются небо, акцент и одежда жителей; score — очки: eraBase + опережение + starPoints за каждую эпоху, cityPerSqrtPeak × √пик населения × (happinessBase + happinessShare × лучшее среднее довольство за happinessYears лет / 100), perStrip за полосу земли шириной stripWidth, perAchievement за достижение. happiness — довольство домов: base, comfort за услуги (вода, досуг, здоровье, образование), auraCap, pollutionCap и transitCap (метро). population — за игровую секунду: дома заполняются до P* (места × (0,7 + 0,3 × доля услуг) × заселённость от довольства: пусто при 25, полно при 70); сверху лишние уезжают, при голоде люди уходят; organicPerYear — прогресс бесплатного роста старых домов в год; needs — лестница нужд: дом уровня с нуждой T требует первые T пунктов. traffic — грубая модель пробок до пространственной (ρ для телеметрии). districts — радиус округа управы. events: первое на firstYear году, потом каждые everyYears лет; gain/lose меньше 1 — доля склада (для денег — доля казны), иначе количество; mood — прибавка к довольству на years лет.",
     "map": {
         "width": 100,
         "landRows": 40,
@@ -8,7 +8,7 @@
         "biomes": { "land": "meadow", "beach": "beach", "sea": "water" },
         "start": { "minX": 35, "maxX": 64 }
     },
-    "time": { "secondsPerYear": 25, "secondsPerDay": 240, "dayStart": 0.3, "daysPerSeason": 1, "tickSeconds": 1, "maxOfflineSeconds": 3600 },
+    "time": { "secondsPerYear": 25, "secondsPerDay": 240, "dayStart": 0.3, "daysPerSeason": 1, "tickSeconds": 1 },
     "start": {
         "epoch": "e0",
         "population": 6,
@@ -33,7 +33,31 @@
         "unemploymentTaxLoss": 0.3,
         "powerShortfall": { "base": 0.6, "share": 0.4 },
         "faresShareOfTax": 0.1,
-        "tourism": { "perPoint": 4, "eraMult": [1, 3.2, 12.1, 37.1, 85.7, 199.3, 352.9], "heritageMult": 2, "heritageEraGap": 2, "heritageRampYears": 20, "beachManorMult": 1.5 }
+        "tourism": { "perPoint": 4, "eraMult": [1, 3.2, 12.1, 37.1, 85.7, 199.3, 352.9], "heritageMult": 2, "heritageEraGap": 2, "heritageRampYears": 20, "beachManorMult": 1.5 },
+        "policies": {
+            "lockYears": 5,
+            "tax": {
+                "epoch": "e1000",
+                "options": {
+                    "low": { "name": "Низкие", "tax": 0.8, "happiness": 8 },
+                    "normal": { "name": "Обычные", "tax": 1, "happiness": 0 },
+                    "high": { "name": "Высокие", "tax": 1.2, "happiness": -10 }
+                }
+            },
+            "dense": { "name": "Плотная застройка", "epoch": "e1800", "housing": 0.15, "happiness": -6, "trips": 0.1 }
+        },
+        "treasury": {
+            "mothballPerYear": 1,
+            "loan": { "maxYearsOfGross": 3, "ratePerYear": 0.1, "repayShareOfNet": 0.25 },
+            "chest": { "maxYearsOfNet": 1, "fillRealHours": 8, "cooldownYears": 25 }
+        }
+    },
+    "chronicle": {
+        "lead": { "building": 0.98, "progress": 0.95, "fallingYears": 10 },
+        "golden": { "perStar": 0.05, "years": 10, "rampYears": 2, "happiness": 3 },
+        "spirit": { "perYear": 0.001, "cap": 0.3 },
+        "transitionYears": 20,
+        "score": { "eraBase": 1000, "starPoints": [0, 100, 300, 600], "cityPerSqrtPeak": 20, "happinessBase": 0.8, "happinessShare": 0.4, "happinessYears": 50, "stripWidth": 5, "perStrip": 100, "perAchievement": 250 }
     },
     "happiness": { "base": 35, "comfort": 30, "auraCap": 15, "pollutionCap": 30, "transitCap": 8, "starving": 25, "noPower": 15 },
     "population": {

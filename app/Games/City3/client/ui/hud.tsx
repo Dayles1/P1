@@ -1,4 +1,5 @@
 import type { Game } from '../engine/sim/game';
+import { CalendarChip } from './chronicle';
 import {
     Bar,
     duration,
@@ -10,8 +11,10 @@ import {
 } from './common';
 
 /**
- * The bar along the top: year and era, clock, the money pill (the only
- * resource on screen, in the current era's face), citizens, research, speed.
+ * The bar along the top: the calendar chip (year, era, the live lead over
+ * history), clock, the money pill (the only resource on screen, in the
+ * current era's face; the coin flips at an era change, the pill turns red
+ * in arrears), citizens, research, speed.
  */
 export function TopBar({
     game,
@@ -23,6 +26,7 @@ export function TopBar({
     onBack,
     onMenu,
     onResearch,
+    onChronicle,
     tester,
     infinite,
     fps,
@@ -37,6 +41,7 @@ export function TopBar({
     onBack: () => void;
     onMenu: () => void;
     onResearch: () => void;
+    onChronicle: () => void;
     /** Testers get faster speeds. */
     tester: boolean;
     infinite: boolean;
@@ -52,6 +57,11 @@ export function TopBar({
     const coin = game.content.currencyFace(game.state.epoch);
     const money = game.money;
     const moneyRate = stats.rates[game.content.currency] ?? 0;
+    const closed = [...game.buildings.values()].filter(
+        (building) => building.mothballed,
+    ).length;
+    const arrears = stats.arrears || game.state.economy.arrears;
+    const closedText = `Казна пуста: законсервировано ${closed} ${closed === 1 ? 'здание' : closed > 1 && closed < 5 ? 'здания' : 'зданий'}`;
 
     return (
         <header className="hud-top">
@@ -64,10 +74,7 @@ export function TopBar({
                 >
                     ←
                 </button>
-                <div className="hud-year" title={epoch.tagline}>
-                    <strong>{game.year} г.</strong>
-                    <span>{epoch.name}</span>
-                </div>
+                <CalendarChip game={game} onOpen={onChronicle} />
                 <div
                     className="hud-clock"
                     title={`${light.phase} · ${game.season.name} · ${game.weather?.name ?? ''}`}
@@ -82,12 +89,16 @@ export function TopBar({
 
             <div className="hud-res">
                 <div
-                    className="hud-res__item hud-money"
+                    className={`hud-res__item hud-money${arrears ? ' hud-money--arrears' : ''}`}
                     role="status"
                     aria-label={`Деньги: ${formatExact(money)} (${coin.short.toLowerCase()})`}
                     title={`${coin.name}: ${formatExact(money)} · ${formatRate(moneyRate)}\n«${coin.flavor}»`}
                 >
-                    <span className="hud-res__icon">
+                    {/* Keyed by era: the coin flips once when the face changes. */}
+                    <span
+                        className="hud-res__icon hud-money__coin"
+                        key={epoch.id}
+                    >
                         <MoneyIcon face={coin} />
                     </span>
                     <span className="hud-res__value">
@@ -98,6 +109,11 @@ export function TopBar({
                     >
                         {formatRate(moneyRate)}
                     </span>
+                    {(arrears || closed > 0) && (
+                        <span className="hud-alert" title={closedText}>
+                            🔒{closed > 0 ? closed : ''}
+                        </span>
+                    )}
                 </div>
 
                 <div

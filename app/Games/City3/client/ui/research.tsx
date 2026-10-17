@@ -119,13 +119,14 @@ function TechCard({
                 )}
                 {!done && !active && (
                     <>
-                        <CostLine game={game} cost={tech.cost} />
+                        <CostLine game={game} cost={game.techCost(tech)} />
                         <small>⏱ {duration(game.researchTime(tech))}</small>
                         <button
                             type="button"
                             className="hud-button hud-button--primary"
                             disabled={
-                                Boolean(lock) || !game.canAfford(tech.cost)
+                                Boolean(lock) ||
+                                !game.canAfford(game.techCost(tech))
                             }
                             title={lock ?? ''}
                             onClick={() => onResearch(tech.id)}

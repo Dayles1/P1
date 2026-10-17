@@ -35,7 +35,8 @@ export type GameEvent =
           h: number;
           sound: string | null;
       }
-    | { type: 'epoch'; epoch: number }
+    /** An era began: its stars and lead at entry (gdd §2.3). */
+    | { type: 'epoch'; epoch: number; stars: number; lead: number }
     | { type: 'researched'; tech: string }
     | { type: 'achievement'; goal: string }
     | { type: 'restyled'; uid: number }

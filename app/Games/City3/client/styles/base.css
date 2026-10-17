@@ -1,6 +1,6 @@
 /* =========================================================
    ЛЕТОПИСЬ ГОРОДА 3 — base styles: tokens, reset and the city HUD
-   (top bar, inspector, toolbar, toasts, modals, era splash).
+   (top bar, inspector, toolbar, toasts, modals).
    Carried over from the games SPA (resources/games/src/styles.css)
    without the menu and the first city game's classes; city3.css adds
    the rest. The HUD colours come from the current era's `theme`,
@@ -803,56 +803,6 @@ button {
     margin-top: 8px;
     color: var(--hud-muted);
     font-size: 13px;
-}
-
-/* ——————————————————————————————— Epoch splash ——————————————————————————————— */
-
-.epoch-splash {
-    position: absolute;
-    inset: 0;
-    z-index: 30;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    background: radial-gradient(
-        circle,
-        rgba(0, 0, 0, 0.35),
-        rgba(0, 0, 0, 0.75)
-    );
-    text-align: center;
-    animation: toast-in 400ms ease;
-}
-
-.epoch-splash__year {
-    color: var(--hud-accent);
-    font-family: var(--hud-font);
-    font-size: clamp(72px, 16vw, 160px);
-    font-variant-numeric: tabular-nums;
-    font-weight: 700;
-    line-height: 1;
-    text-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-}
-
-.epoch-splash__name {
-    margin-top: 6px;
-    color: #fff;
-    font-family: var(--hud-font);
-    font-size: clamp(26px, 5vw, 44px);
-}
-
-.epoch-splash__tagline {
-    max-width: 560px;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 17px;
-    line-height: 1.5;
-}
-
-.epoch-splash__skip {
-    margin-top: 18px;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 12px;
 }
 
 /* ——————————————————————————————— Small screens ——————————————————————————————— */

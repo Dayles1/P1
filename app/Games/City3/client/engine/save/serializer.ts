@@ -3,14 +3,19 @@
  * sent whole (every tile with its coordinates); after that only what
  * changed travels: the world's numbers, changed and removed buildings,
  * changed tiles, and the residents.
+ *
+ * While the game is closed nothing advances (gdd §4.12): there is no
+ * catch-up; the Treasury chest is offered on return instead.
  */
 
 import type { Content } from '../content/registry';
 import type { Amounts } from '../content/types';
-import { Game } from '../sim/game';
+import { defaultEconomy, Game } from '../sim/game';
 import type {
     BuildingState,
     BuildingStyle,
+    EconomyState,
+    EraLogEntry,
     Mood,
     NpcState,
     Research,
@@ -41,6 +46,9 @@ export interface WorldPayload {
     blueprints: string[];
     achievements: string[];
     stats: WorldState['stats'];
+    peak_population: number;
+    era_log: EraLogEntry[];
+    economy: EconomyState;
 }
 
 export interface BuildingRow {
@@ -53,6 +61,12 @@ export interface BuildingRow {
     build_end: number;
     style: BuildingStyle | null;
     district: BuildingState['district'];
+    /** Money paid for it; null in a save from before slice 3. */
+    paid: number | null;
+    mothballed: boolean;
+    organic: number;
+    built_era: number | null;
+    from_level: number;
 }
 
 export interface NpcRow {
@@ -129,8 +143,25 @@ function worldPayload(game: Game): WorldPayload {
         blueprints: s.blueprints,
         achievements: s.achievements,
         stats: s.stats,
+        peak_population: Math.floor(s.peakPopulation),
+        era_log: s.eraLog.map((entry) => ({
+            era: entry.era,
+            t: Math.floor(entry.t),
+        })),
+        economy: {
+            ...s.economy,
+            policyT: roundTime(s.economy.policyT),
+            denseT: roundTime(s.economy.denseT),
+            chestT: roundTime(s.economy.chestT),
+            loan: Math.ceil(s.economy.loan),
+            h50: Math.round(s.economy.h50 * 100) / 100,
+            bestH50: Math.round(s.economy.bestH50 * 100) / 100,
+            flags: { ...s.economy.flags },
+        },
     };
 }
+
+const roundTime = (t: number | null) => (t === null ? null : Math.floor(t));
 
 const buildingRow = (b: BuildingState): BuildingRow => ({
     uid: b.uid,
@@ -142,6 +173,11 @@ const buildingRow = (b: BuildingState): BuildingRow => ({
     build_end: Math.ceil(b.buildEnd),
     style: b.style,
     district: b.district,
+    paid: Math.ceil(b.paid),
+    mothballed: b.mothballed,
+    organic: Math.round((b.organic ?? 0) * 1000) / 1000,
+    built_era: b.builtEra ?? null,
+    from_level: b.fromLevel,
 });
 
 const npcRow = (n: NpcState): NpcRow => ({
@@ -262,26 +298,27 @@ export function fromServer(content: Content, loaded: LoadedWorld): Game {
         techs: (w.techs ?? []).filter((id) => content.tech(id)),
         research: w.research && content.tech(w.research.id) ? w.research : null,
         blueprints: (w.blueprints ?? []).filter((id) => content.blueprint(id)),
-        // Goals of today's content only (the server checks the ids).
-        achievements: (w.achievements ?? []).filter((id) =>
-            content.goals.some((goal) => goal.id === id),
+        // Goals and achievements of today's content only (the server checks the ids).
+        achievements: (w.achievements ?? []).filter(
+            (id) =>
+                content.goals.some((goal) => goal.id === id) ||
+                content.achievements.some((goal) => goal.id === id),
         ),
         stats: {
             ...{ built: 0, upgraded: 0, demolished: 0, events: 0 },
             ...(w.stats ?? {}),
         },
+        eraLog: migrateEraLog(w.era_log, epochIndex, w.time),
+        peakPopulation: Math.max(w.peak_population ?? 0, w.population),
+        economy: migrateEconomy(w.economy),
     };
     // The map is fixed: built from the content, whatever tiles were saved.
     const map = buildMap(content);
 
     state.width = map.width;
     state.height = map.height;
-    const buildings: BuildingState[] = loaded.buildings.map((b) => ({
-        uid: b.uid,
-        type: b.type,
-        x: b.x,
-        y: b.y,
-        level: Math.max(
+    const buildings: BuildingState[] = loaded.buildings.map((b) => {
+        const level = Math.max(
             1,
             Math.min(
                 content.hasBuilding(b.type)
@@ -289,12 +326,32 @@ export function fromServer(content: Content, loaded: LoadedWorld): Game {
                     : 1,
                 b.level,
             ),
-        ),
-        buildStart: b.build_start,
-        buildEnd: b.build_end,
-        style: b.style ?? null,
-        district: b.district ?? null,
-    }));
+        );
+
+        return {
+            uid: b.uid,
+            type: b.type,
+            x: b.x,
+            y: b.y,
+            level,
+            buildStart: b.build_start,
+            buildEnd: b.build_end,
+            fromLevel: Math.max(0, Math.min(level, b.from_level ?? 0)),
+            // Before slice 3 nothing was recorded: the current level's list price.
+            paid:
+                b.paid ??
+                (content.hasBuilding(b.type)
+                    ? (content.building(b.type).levels[level - 1]?.cost[
+                          content.currency
+                      ] ?? 0)
+                    : 0),
+            mothballed: Boolean(b.mothballed),
+            organic: b.organic ?? undefined,
+            builtEra: b.built_era ?? undefined,
+            style: b.style ?? null,
+            district: b.district ?? null,
+        };
+    });
     const game = new Game(content, state, map, [], []);
 
     for (const building of buildings) {
@@ -339,36 +396,69 @@ export function fromServer(content: Content, loaded: LoadedWorld): Game {
     return game;
 }
 
-/** Plays out the time the player was away (capped by world.json). */
-export function catchUp(
-    game: Game,
-    savedAt: string | null,
-): { seconds: number; population: number; money: number } | null {
-    if (!savedAt) {
-        return null;
+/**
+ * The era log as saved, kept only where it holds together: eras the world
+ * has reached, strictly increasing, at non-decreasing times not after now.
+ */
+export function migrateEraLog(
+    saved: EraLogEntry[] | null | undefined,
+    epoch: number,
+    time: number,
+): EraLogEntry[] {
+    const log: EraLogEntry[] = [];
+
+    for (const entry of saved ?? []) {
+        const last = log.at(-1);
+
+        if (
+            Number.isInteger(entry?.era) &&
+            Number.isFinite(entry?.t) &&
+            entry.era >= 1 &&
+            entry.era <= epoch &&
+            entry.t <= time &&
+            (!last || (entry.era > last.era && entry.t >= last.t))
+        ) {
+            log.push({ era: entry.era, t: entry.t });
+        }
     }
 
-    const seconds = Math.min(
-        game.content.world.time.maxOfflineSeconds,
-        Math.floor((Date.now() - Date.parse(savedAt)) / 1000),
-    );
+    return log;
+}
 
-    if (seconds < 30) {
-        return null;
-    }
+/** The saved treasury state over the defaults (a save from before slice 3 has none). */
+export function migrateEconomy(
+    saved: Partial<EconomyState> | null | undefined,
+): EconomyState {
+    const economy = defaultEconomy();
+    const number = (value: unknown, fallback: number) =>
+        typeof value === 'number' && Number.isFinite(value) ? value : fallback;
+    const time = (value: unknown) =>
+        typeof value === 'number' && Number.isFinite(value) ? value : null;
 
-    const before = {
-        population: game.state.population,
-        money: game.money,
-    };
-
-    for (let i = 0; i < seconds; i++) {
-        game.tick(1, true);
+    if (!saved) {
+        return economy;
     }
 
     return {
-        seconds,
-        population: Math.floor(game.state.population - before.population),
-        money: Math.floor(game.money - before.money),
+        policy: ['low', 'normal', 'high'].includes(saved.policy ?? '')
+            ? saved.policy!
+            : economy.policy,
+        policyT: time(saved.policyT),
+        dense: Boolean(saved.dense),
+        denseT: time(saved.denseT),
+        loan: Math.max(0, number(saved.loan, 0)),
+        arrears: Boolean(saved.arrears),
+        arrearsYears: Math.max(0, number(saved.arrearsYears, 0)),
+        chestT: time(saved.chestT),
+        h50: number(saved.h50, economy.h50),
+        bestH50: number(saved.bestH50, economy.bestH50),
+        flags: { tester: Boolean(saved.flags?.tester) },
     };
+}
+
+/** Real hours since the world was last saved (the Treasury chest, gdd §4.12). */
+export function hoursAway(savedAt: string | null, now = Date.now()): number {
+    const saved = savedAt ? Date.parse(savedAt) : NaN;
+
+    return Number.isFinite(saved) ? Math.max(0, (now - saved) / 3_600_000) : 0;
 }

@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { loadContent } from '../../content';
-import { fromServer, migrateResources, toCreatePayload } from './serializer';
+import {
+    fromServer,
+    hoursAway,
+    migrateEraLog,
+    migrateResources,
+    toCreatePayload,
+} from './serializer';
 import type { BuildingRow, LoadedWorld } from './serializer';
 
 const { content } = loadContent();
@@ -21,7 +27,32 @@ const row = (
     build_end: 0,
     style: null,
     district: null,
+    paid: 100,
+    mothballed: false,
+    organic: 0,
+    built_era: 0,
+    from_level: 0,
 });
+
+/** A save written before slice 3 has no paid, mothballed, era log or economy. */
+const oldRow = (
+    uid: number,
+    type: string,
+    x: number,
+    y: number,
+    level: number,
+): BuildingRow =>
+    ({
+        uid,
+        type,
+        x,
+        y,
+        level,
+        build_start: 0,
+        build_end: 0,
+        style: null,
+        district: null,
+    }) as unknown as BuildingRow;
 
 /** A save written before slice 1: gold and wood, a spaceport, a house at level 14. */
 function oldSave(): LoadedWorld {
@@ -50,12 +81,12 @@ function oldSave(): LoadedWorld {
             blueprints: ['moon_base'],
             achievements: ['first_homes', 'conquer_mars'],
             stats: { built: 3, upgraded: 0, demolished: 0, events: 0 },
-        },
+        } as unknown as LoadedWorld['world'],
         tiles: [],
         buildings: [
-            row(1, 'town_center', 49, 19, 11),
-            row(2, 'spaceport', 40, 5, 1),
-            row(3, 'house', 45, 10, 14),
+            oldRow(1, 'town_center', 49, 19, 11),
+            oldRow(2, 'spaceport', 40, 5, 1),
+            oldRow(3, 'house', 45, 10, 14),
         ],
         npcs: [],
     };
@@ -91,5 +122,97 @@ describe('old saves', () => {
             Object.keys(toCreatePayload(game).world.resources).sort(),
         ).toEqual(['food', 'fuel', 'goods', 'mat', 'money']);
         game.tick(1, true);
+    });
+});
+
+describe('slice 3 fields', () => {
+    it('credit a building saved before slice 3 with its level list price', () => {
+        const game = fromServer(content, oldSave());
+        const house = game.buildingAt(45, 10)!;
+
+        expect(house.paid).toBe(
+            content.building('house').levels[10].cost.money,
+        );
+        expect(house.mothballed).toBe(false);
+        expect(game.state.eraLog).toEqual([]);
+        expect(game.state.economy.policy).toBe('normal');
+        expect(game.state.economy.loan).toBe(0);
+        expect(game.state.peakPopulation).toBe(12);
+    });
+
+    it('round-trip paid, mothballing, organic growth, the era log and the economy', () => {
+        const save = oldSave();
+
+        save.world = {
+            ...save.world,
+            epoch: 'e1000',
+            time: 4000,
+            peak_population: 300,
+            era_log: [{ era: 1, t: 2000 }],
+            economy: {
+                policy: 'low',
+                policyT: 2500,
+                dense: false,
+                denseT: null,
+                loan: 400,
+                arrears: false,
+                arrearsYears: 2,
+                chestT: 3000,
+                h50: 61.5,
+                bestH50: 0,
+                flags: { tester: false },
+            },
+        };
+        save.buildings = [
+            row(1, 'town_center', 49, 19, 3),
+            { ...row(3, 'farm', 45, 10, 1), paid: 333, mothballed: true },
+            { ...row(4, 'house', 40, 10, 2), organic: 0.42, built_era: 1 },
+        ];
+
+        const game = fromServer(content, save);
+        const payload = toCreatePayload(game);
+        const farm = payload.buildings.find((b) => b.uid === 3)!;
+        const house = payload.buildings.find((b) => b.uid === 4)!;
+
+        expect(farm).toMatchObject({ paid: 333, mothballed: true });
+        expect(house).toMatchObject({ organic: 0.42, built_era: 1 });
+        expect(payload.world.era_log).toEqual([{ era: 1, t: 2000 }]);
+        expect(payload.world.peak_population).toBe(300);
+        expect(payload.world.economy).toMatchObject({
+            policy: 'low',
+            policyT: 2500,
+            loan: 400,
+            chestT: 3000,
+            arrearsYears: 2,
+        });
+        expect(game.status.get(3)!.working).toBe(false);
+    });
+
+    it('keep only an era log that holds together', () => {
+        expect(
+            migrateEraLog(
+                [
+                    { era: 1, t: 100 },
+                    { era: 1, t: 200 },
+                    { era: 3, t: 50 },
+                    { era: 2, t: 300 },
+                    { era: 4, t: 400 },
+                ],
+                3,
+                1000,
+            ),
+        ).toEqual([
+            { era: 1, t: 100 },
+            { era: 2, t: 300 },
+        ]);
+        expect(migrateEraLog(null, 2, 10)).toEqual([]);
+    });
+
+    it('count the real hours away', () => {
+        const now = Date.parse('2026-10-17T12:00:00Z');
+
+        expect(hoursAway('2026-10-17T08:00:00Z', now)).toBe(4);
+        expect(hoursAway(null, now)).toBe(0);
+        expect(hoursAway('not a date', now)).toBe(0);
     });
 });

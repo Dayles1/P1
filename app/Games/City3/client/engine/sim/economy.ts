@@ -3,7 +3,8 @@
  * function of cached aggregates: labour in priority classes, fuel and
  * power, production, food, automatic imports while there is money,
  * exports through the trade capacity, storage, then money — taxes,
- * exports, tourism (saturating) and fares in; upkeep and imports out.
+ * exports, tourism (saturating) and fares in; upkeep, imports and loan
+ * interest out, and a share of a positive net repays the loan.
  *
  * The aggregates (`EconomyCity`) are rebuilt by the game only when the
  * map changes, so a tick costs the same for ten buildings or a thousand.
@@ -95,6 +96,8 @@ export interface EconomyInput {
     congestion: number;
     /** Last tick's power ratio: fuel makers that use power run on it. */
     previousPowerRatio: number;
+    /** The treasury loan still owed (gdd §4.10): interest is a cost, a share of a positive net repays it. */
+    loan: number;
 }
 
 /** What one tick did, as rates per year. */
@@ -119,7 +122,16 @@ export interface Flows {
     waste: Amounts;
     happiness: number;
     income: { tax: number; trade: number; tourism: number; fares: number };
-    costs: { upkeep: number; food: number; fuel: number; power: number };
+    costs: {
+        upkeep: number;
+        food: number;
+        fuel: number;
+        power: number;
+        /** Loan interest. */
+        interest: number;
+    };
+    /** Loan repaid per year (not a cost: the debt shrinks by it). */
+    repaid: number;
     tourism: { demand: number; capacity: number };
     gross: number;
     spent: number;
@@ -128,6 +140,8 @@ export interface Flows {
 
 export interface Settlement {
     money: number;
+    /** The loan still owed after this tick. */
+    loan: number;
     stocks: Stocks;
     /** The tick's costs exceeded the treasury: money stays at 0. */
     arrears: boolean;
@@ -372,13 +386,27 @@ export function settle(
     const upkeep = city.upkeep * year;
     const fuelCost = fuelImported * prices.fuelImport * discount * year;
     const powerCost = powerBought * prices.gridPower * year;
+    const loan0 = Math.max(0, finite(input.loan));
+    const interest = loan0 * rules.treasury.loan.ratePerYear * year;
     const income = finite(tax + trade + tourism + fares);
-    const spent = finite(upkeep + foodCost + fuelCost + powerCost);
-    const after = money0 + income - spent;
+    const spent = finite(upkeep + foodCost + fuelCost + powerCost + interest);
+    let after = money0 + income - spent;
     const arrears = after < 0;
+    // A positive net repays the loan by a share, as far as the treasury holds.
+    const repaid =
+        loan0 > 0 && income > spent && after > 0
+            ? Math.min(
+                  loan0,
+                  (income - spent) * rules.treasury.loan.repayShareOfNet,
+                  after,
+              )
+            : 0;
+
+    after -= repaid;
 
     return {
         money: after > 0 ? after : 0,
+        loan: loan0 - repaid,
         stocks,
         arrears,
         flows: {
@@ -422,7 +450,9 @@ export function settle(
                 food: perYear(foodCost),
                 fuel: perYear(fuelCost),
                 power: perYear(powerCost),
+                interest: perYear(interest),
             },
+            repaid: perYear(repaid),
             tourism: { demand: city.attraction, capacity: city.visitors },
             gross: perYear(income),
             spent: perYear(spent),

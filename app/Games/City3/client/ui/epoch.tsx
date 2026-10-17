@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
 import type { Category } from '../engine/content/types';
 import type { Budget, Game } from '../engine/sim/game';
 import {
     Bar,
     CATEGORY_NAMES,
-    CostLine,
     face,
     formatExact,
     formatNumber,
@@ -24,6 +22,7 @@ const IMPORT_NAMES: Record<Exclude<keyof Budget['costs'], 'upkeep'>, string> = {
     food: '🌾 Покупка еды',
     fuel: '🛢️ Покупка топлива',
     power: '🔌 Электричество из сети',
+    interest: '🏦 Проценты по ссуде',
 };
 
 function upkeepName(key: string): string {
@@ -159,133 +158,6 @@ function labourLine(game: Game): { text: string; bad: boolean } {
     return { text: 'баланс', bad: false };
 }
 
-export function EpochPanel({
-    game,
-    onAdvance,
-    onClose,
-}: {
-    game: Game;
-    onAdvance: () => void;
-    onClose: () => void;
-}) {
-    const current = game.epoch;
-    const next = game.content.epochs[game.state.epoch + 1];
-
-    if (!next) {
-        return (
-            <Modal title="Эпохи" onClose={onClose}>
-                <p className="epoch-panel__lead">
-                    Ваш город дошёл до эпохи «{current.name}» — вершины пути.
-                    Растите население, изучайте оставшиеся технологии, собирайте
-                    достижения и стройте исторические кварталы.
-                </p>
-            </Modal>
-        );
-    }
-
-    const unlocks = game.content.buildings.filter(
-        (def) => !def.hidden && def.levels[0].epoch === next.id,
-    );
-    const upgrades = game.content.buildings.filter(
-        (def) =>
-            def.levels[0].epoch !== next.id &&
-            def.levels.some((level) => level.epoch === next.id),
-    );
-    const resources = game.content.resources.filter(
-        (resource) => resource.epoch === next.id,
-    );
-    const ready = game.canAdvance();
-    const coin = next.currency;
-
-    return (
-        <Modal title="Новая эпоха" onClose={onClose}>
-            <div className="epoch-panel">
-                <div className="epoch-panel__path">
-                    <div>
-                        <span>{current.year}</span>
-                        <b>{current.name}</b>
-                    </div>
-                    <span className="epoch-panel__arrow">→</span>
-                    <div className="epoch-panel__next">
-                        <span>{next.year}</span>
-                        <b>{next.name}</b>
-                    </div>
-                </div>
-                <p className="epoch-panel__lead">{next.tagline}</p>
-
-                <ul className="checklist">
-                    {game.epochChecklist().map((item) => (
-                        <li
-                            key={item.label}
-                            className={item.done ? 'done' : ''}
-                        >
-                            {item.done ? '✅' : '⬜'} {item.label}
-                            {item.target !== undefined &&
-                                `: ${formatNumber(item.current ?? 0)} / ${formatNumber(item.target)}`}
-                            {item.cost && (
-                                <>
-                                    {' '}
-                                    <CostLine game={game} cost={item.cost} />
-                                </>
-                            )}
-                        </li>
-                    ))}
-                </ul>
-                <p className="epoch-panel__note">
-                    <MoneyIcon face={coin} /> Деньги станут «{coin.name}» — та
-                    же казна, новая монета.
-                </p>
-
-                <h3>Что откроется</h3>
-                <div className="epoch-panel__unlocks">
-                    {resources.map((resource) => (
-                        <span key={resource.id} title={resource.description}>
-                            {resource.icon} {resource.name}
-                        </span>
-                    ))}
-                    {unlocks.map((def) => (
-                        <span key={def.id} title={def.description}>
-                            {def.icon} {def.levels[0].name}
-                        </span>
-                    ))}
-                    {upgrades.length > 0 && (
-                        <span
-                            title={upgrades.map((def) => def.name).join(', ')}
-                        >
-                            ⬆ новые уровни:{' '}
-                            {upgrades.map((def) => def.icon).join(' ')}
-                        </span>
-                    )}
-                    <span>
-                        🔬{' '}
-                        {
-                            game.content.techs.filter(
-                                (tech) => tech.epoch === next.id,
-                            ).length
-                        }{' '}
-                        технологий
-                    </span>
-                </div>
-                <p className="epoch-panel__note">
-                    Уже построенные здания не изменятся сами — улучшайте их,
-                    когда захотите, или оставьте старый квартал как есть.
-                </p>
-
-                <button
-                    type="button"
-                    className="hud-button hud-button--primary hud-button--big"
-                    disabled={!ready}
-                    onClick={onAdvance}
-                >
-                    {ready
-                        ? `🚀 Начать эпоху «${next.name}»`
-                        : 'Выполните условия'}
-                </button>
-            </div>
-        </Modal>
-    );
-}
-
 export function Goals({ game, onClose }: { game: Game; onClose: () => void }) {
     const goals = game.content.goals;
     const done = game.state.achievements.length;
@@ -370,7 +242,7 @@ export function Stats({ game, onClose }: { game: Game; onClose: () => void }) {
                 <div className="stats__tiles">
                     <div>
                         <b>{formatNumber(game.score())}</b>
-                        <span>очков развития</span>
+                        <span>очков</span>
                     </div>
                     <div>
                         <b>{formatNumber(Math.floor(game.state.population))}</b>
@@ -498,36 +370,5 @@ export function Stats({ game, onClose }: { game: Game; onClose: () => void }) {
                 </div>
             </div>
         </Modal>
-    );
-}
-
-export function EpochSplash({
-    game,
-    epoch,
-    onDone,
-}: {
-    game: Game;
-    epoch: number;
-    onDone: () => void;
-}) {
-    const info = game.content.epoch(epoch);
-    // The calendar does not jump with the era: the splash shows today's year.
-    const [year] = useState(game.year);
-
-    useEffect(() => {
-        const timer = window.setTimeout(onDone, 5200);
-
-        return () => window.clearTimeout(timer);
-    }, [onDone]);
-
-    return (
-        <div className="epoch-splash" onClick={onDone} role="status">
-            <div className="epoch-splash__year">{year}</div>
-            <div className="epoch-splash__name">{info.name}</div>
-            <p className="epoch-splash__tagline">{info.tagline}</p>
-            <span className="epoch-splash__skip">
-                нажмите, чтобы продолжить
-            </span>
-        </div>
     );
 }

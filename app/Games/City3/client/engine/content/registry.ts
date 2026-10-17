@@ -563,6 +563,91 @@ export function validateContent(
         );
     }
 
+    const policies = economy?.policies;
+    const taxOptions = policies?.tax?.options;
+
+    checkEpoch('world', 'economy.policies.tax.epoch', policies?.tax?.epoch);
+    checkEpoch('world', 'economy.policies.dense.epoch', policies?.dense?.epoch);
+
+    if (
+        !(policies?.lockYears >= 0) ||
+        !(['low', 'normal', 'high'] as const).every(
+            (id) =>
+                isNumber(taxOptions?.[id]?.tax) &&
+                taxOptions[id].tax > 0 &&
+                isNumber(taxOptions[id].happiness) &&
+                Boolean(taxOptions[id].name),
+        ) ||
+        !isNumber(policies?.dense?.housing) ||
+        !isNumber(policies.dense.happiness) ||
+        !isNumber(policies.dense.trips)
+    ) {
+        add(
+            'world',
+            'economy.policies',
+            'Нужны lockYears, налоги low/normal/high (tax, happiness, name) и dense',
+        );
+    }
+
+    const treasury = economy?.treasury;
+
+    if (
+        !(treasury?.mothballPerYear >= 0) ||
+        !(treasury?.loan?.maxYearsOfGross >= 0) ||
+        !(treasury.loan.ratePerYear >= 0) ||
+        !(
+            treasury.loan.repayShareOfNet > 0 &&
+            treasury.loan.repayShareOfNet <= 1
+        ) ||
+        !(treasury?.chest?.maxYearsOfNet >= 0) ||
+        !(treasury.chest.fillRealHours > 0) ||
+        !(treasury.chest.cooldownYears >= 0)
+    ) {
+        add(
+            'world',
+            'economy.treasury',
+            'Нужны mothballPerYear, loan (maxYearsOfGross, ratePerYear, repayShareOfNet) и chest',
+        );
+    }
+
+    const chronicle = world.chronicle;
+    const score = chronicle?.score;
+
+    if (
+        !(chronicle?.lead?.building > 0 && chronicle.lead.building <= 1) ||
+        !(chronicle.lead.progress > 0 && chronicle.lead.progress <= 1) ||
+        !(chronicle.lead.fallingYears >= 1) ||
+        !(chronicle?.golden?.perStar >= 0) ||
+        !(chronicle.golden.years > 0) ||
+        !(
+            chronicle.golden.rampYears > 0 &&
+            chronicle.golden.rampYears * 2 <= chronicle.golden.years
+        ) ||
+        !isNumber(chronicle.golden.happiness) ||
+        !(chronicle?.spirit?.perYear >= 0) ||
+        !(chronicle.spirit.cap >= 0 && chronicle.spirit.cap < 1) ||
+        !(chronicle?.transitionYears > 0) ||
+        !Array.isArray(score?.starPoints) ||
+        score.starPoints.length !== 4 ||
+        !score.starPoints.every(isNumber) ||
+        !(score.stripWidth >= 1) ||
+        ![
+            score.eraBase,
+            score.cityPerSqrtPeak,
+            score.happinessBase,
+            score.happinessShare,
+            score.happinessYears,
+            score.perStrip,
+            score.perAchievement,
+        ].every((value) => isNumber(value) && value >= 0)
+    ) {
+        add(
+            'world',
+            'chronicle',
+            'Нужны lead, golden (rampYears × 2 ≤ years), spirit (cap < 1), transitionYears и score',
+        );
+    }
+
     const needKinds = new Set<string>([
         ...SERVICES,
         'happiness',
@@ -704,6 +789,21 @@ export function validateContent(
 
         if (!/^#[0-9a-fA-F]{6}$/.test(epoch.accent ?? '')) {
             add('epochs', `${path}.accent`, 'Цвет — в виде #rrggbb');
+        }
+
+        if (
+            !/^#[0-9a-fA-F]{6}$/.test(epoch.atmosphere?.tint ?? '') ||
+            !(
+                epoch.atmosphere.strength >= 0 &&
+                epoch.atmosphere.strength <= 0.3
+            ) ||
+            !(epoch.atmosphere.fog > 0)
+        ) {
+            add(
+                'epochs',
+                `${path}.atmosphere`,
+                'Нужны tint (#rrggbb), strength от 0 до 0,3 и fog больше 0',
+            );
         }
 
         if (!content.sounds.ambience?.[epoch.ambience]) {

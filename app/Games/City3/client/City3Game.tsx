@@ -6,8 +6,8 @@ import { loadContent } from './content';
 import type { LoadedContent } from './content';
 import type { GameEvent } from './engine/core/events';
 import {
-    catchUp,
     fromServer,
+    hoursAway,
     restoreChanges,
     takeChanges,
     toCreatePayload,
@@ -19,11 +19,18 @@ import { Renderer } from './scene/renderer';
 import type { Overlay, Quality } from './scene/renderer';
 import { BuildDock } from './ui/build';
 import { Bureau } from './ui/bureau';
-import { formatNumber, Modal } from './ui/common';
-import { EpochPanel, EpochSplash, Goals, Stats } from './ui/epoch';
+import {
+    ChronicleSheet,
+    EraBanner,
+    TownHallCard,
+    WhatsNew,
+} from './ui/chronicle';
+import { formatNumber, mixColor, Modal } from './ui/common';
+import { Goals, Stats } from './ui/epoch';
 import { CameraControls, GoalsWidget, TopBar } from './ui/hud';
 import { Inspector, NpcPanel } from './ui/inspector';
 import { TechTree } from './ui/research';
+import { ChestCard, PriceSheet } from './ui/treasury';
 
 type Tool =
     | { kind: 'select' }
@@ -31,7 +38,23 @@ type Tool =
     | { kind: 'bulldoze' }
     | { kind: 'move'; uid: number };
 
-type Panel = 'stats' | 'epoch' | 'menu' | 'tech' | 'bureau' | 'goals' | null;
+type Panel =
+    | 'stats'
+    | 'epoch'
+    | 'chronicle'
+    | 'whatsnew'
+    | 'menu'
+    | 'tech'
+    | 'bureau'
+    | 'goals'
+    | null;
+
+/** The era just entered, for the banner. */
+interface Banner {
+    epoch: number;
+    stars: number;
+    lead: number;
+}
 
 interface Toast {
     id: number;
@@ -121,7 +144,15 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
     const [xray, setXray] = useState(false);
     const [districts, setDistricts] = useState(false);
     const [toasts, setToasts] = useState<Toast[]>([]);
-    const [splash, setSplash] = useState<number | null>(null);
+    const [banner, setBanner] = useState<Banner | null>(null);
+    /** The Treasury chest offered on return (0: none). */
+    const [chest, setChest] = useState(0);
+    /** A chest closed without taking it waits under the goals (ui-spec §5.4). */
+    const [pendingChest, setPendingChest] = useState(0);
+    /** The price sheet: a building and the level priced. */
+    const [price, setPrice] = useState<{ uid: number; level: number } | null>(
+        null,
+    );
     const [saveLabel, setSaveLabel] = useState('');
     const [conflict, setConflict] = useState(false);
     const [hint, setHint] = useState<string | null>(null);
@@ -175,6 +206,11 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
     }, []);
 
     const setSpeed = useCallback((value: number) => {
+        // Tester speeds keep the world off the leaderboard (gdd §2.1).
+        if (value > 5) {
+            gameRef.current?.markTester();
+        }
+
         speedRef.current = value;
         setSpeedState(value);
     }, []);
@@ -295,6 +331,7 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
 
             const saved = response.world;
             let world: Game;
+            let chest = 0;
 
             setTester(response.tester);
 
@@ -302,14 +339,7 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                 world = fromServer(content.content, saved);
                 revisionRef.current = saved.revision;
 
-                const away = catchUp(world, saved.saved_at);
-
-                if (away && away.seconds >= 60) {
-                    toast(
-                        `🌙 Пока вас не было (${Math.round(away.seconds / 60)} мин): ${away.population >= 0 ? '+' : ''}${formatNumber(away.population)} жителей, казна ${away.money >= 0 ? '+' : ''}${formatNumber(away.money)} ${world.content.currencyFace(world.state.epoch).symbol}`,
-                        'good',
-                    );
-                }
+                chest = world.chestOffer(hoursAway(saved.saved_at));
             } else {
                 world = Game.create(content.content);
 
@@ -339,6 +369,7 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                 center ? center.y + 1 : world.map.height / 2,
             );
             setGame(world);
+            setChest(chest);
             setPhase('ready');
         })().catch((failure: unknown) => {
             if (!cancelled) {
@@ -399,7 +430,11 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                     break;
                 case 'epoch':
                     audio?.play('epoch');
-                    setSplash(event.epoch);
+                    setBanner({
+                        epoch: event.epoch,
+                        stars: event.stars,
+                        lead: event.lead,
+                    });
                     void save();
                     break;
                 case 'weather':
@@ -1100,8 +1135,15 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
         game && selectedUid ? game.buildings.get(selectedUid) : undefined;
     const npc = game && selectedNpc ? game.npcs.get(selectedNpc) : undefined;
     // One designed interface for every era; only the accent follows the era.
+    // The era's accent blends in over the transition years (gdd §2.4).
     const themeStyle = game
-        ? ({ '--hud-accent': game.epoch.accent } as CSSProperties)
+        ? ({
+              '--hud-accent': mixColor(
+                  game.content.epoch(Math.max(0, game.state.epoch - 1)).accent,
+                  game.epoch.accent,
+                  game.eraTransition(),
+              ),
+          } as CSSProperties)
         : undefined;
     const activeBuild =
         tool.kind === 'build' ? { type: tool.type, level: tool.level } : null;
@@ -1112,7 +1154,7 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
             : tool.kind === 'build' && game
               ? `Строим: ${game.content.level(game.content.building(tool.type), tool.level).name}. Клик — поставить, Esc — отмена.`
               : tool.kind === 'bulldoze'
-                ? 'Снос: клик по зданию (вернётся половина стоимости), по дереву, камню или камышу — расчистить.'
+                ? 'Снос: клик по зданию — вернём 50 % уплаченного за него.'
                 : tool.kind === 'move'
                   ? 'Выберите новое место. Esc — отмена.'
                   : null;
@@ -1170,6 +1212,7 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                         onBack={leave}
                         onMenu={() => setPanel('menu')}
                         onResearch={() => setPanel('tech')}
+                        onChronicle={() => setPanel('chronicle')}
                         tester={tester}
                         infinite={infinite}
                         fps={fps}
@@ -1189,6 +1232,17 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                         onToggle={() => setGoalsCollapsed((on) => !on)}
                         onOpen={() => setPanel('goals')}
                     />
+
+                    {pendingChest > 0 && chest === 0 && (
+                        <button
+                            type="button"
+                            className="chest-chip"
+                            onClick={() => setChest(pendingChest)}
+                            title="Казна собрала, пока вас не было"
+                        >
+                            🧰 Забрать {formatNumber(pendingChest)}
+                        </button>
+                    )}
 
                     <CameraControls
                         yaw={yaw}
@@ -1266,13 +1320,20 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                             onDemolish={() => {
                                 if (
                                     window.confirm(
-                                        `Снести «${game.nameOf(selected)}»? Вернётся половина стоимости.`,
+                                        `Снести «${game.nameOf(selected)}»? Вернём 50 % уплаченного: ${formatNumber(game.refund(selected))}.`,
                                     )
                                 ) {
                                     game.demolish(selected.uid);
                                     selectBuilding(null);
                                 }
                             }}
+                            onPrice={() =>
+                                setPrice({
+                                    uid: selected.uid,
+                                    level: selected.level + 1,
+                                })
+                            }
+                            onTownHall={() => setPanel('epoch')}
                         />
                     )}
 
@@ -1427,14 +1488,28 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                                         : 'toolbar__epoch'
                                 }
                                 onClick={() => setPanel('epoch')}
-                                title="Новая эпоха"
+                                title={
+                                    game.nextEpoch
+                                        ? `Следующая эпоха: ${game.nextEpoch.name}`
+                                        : 'Ратуша'
+                                }
                             >
-                                ⏳{' '}
+                                🏛️{' '}
                                 <span>
-                                    {game.content.epochs[game.state.epoch + 1]
-                                        ? `Эпоха ${game.content.epochs[game.state.epoch + 1].year}`
-                                        : 'Эпохи'}
+                                    {game.townHallBuilding()
+                                        ? 'Ратуша строится'
+                                        : game.nextEpoch
+                                          ? `Ратуша · ${game.gateLines().filter((line) => line.done).length}/${game.gateLines().length}`
+                                          : 'Ратуша'}
                                 </span>
+                            </button>
+                            <button
+                                type="button"
+                                aria-pressed={panel === 'chronicle'}
+                                onClick={() => setPanel('chronicle')}
+                                title="Летопись: эпохи, звёзды, таблица"
+                            >
+                                📜 <span>Летопись</span>
                             </button>
                         </nav>
                     </div>
@@ -1452,14 +1527,59 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                         <Goals game={game} onClose={() => setPanel(null)} />
                     )}
                     {panel === 'epoch' && (
-                        <EpochPanel
+                        <TownHallCard
                             game={game}
-                            onAdvance={() => {
-                                if (game.advanceEpoch().ok) {
+                            onClose={() => setPanel(null)}
+                            onFix={(line) => {
+                                if (line.kind === 'item' && line.type) {
+                                    const def = game.content.building(
+                                        line.type,
+                                    );
+
                                     setPanel(null);
+                                    setDockOpen(true);
+                                    setTool({
+                                        kind: 'build',
+                                        type: line.type,
+                                        level:
+                                            game.availableLevels(def).at(-1) ??
+                                            1,
+                                    });
+                                } else if (line.kind === 'discoveries') {
+                                    setPanel('tech');
+                                } else {
+                                    setPanel('stats');
                                 }
                             }}
+                            onPrice={() => {
+                                const center = game.center;
+
+                                if (center) {
+                                    setPrice({
+                                        uid: center.uid,
+                                        level:
+                                            game.townHallUpgrade()?.level
+                                                .level ?? center.level,
+                                    });
+                                }
+                            }}
+                        />
+                    )}
+                    {panel === 'chronicle' && (
+                        <ChronicleSheet
+                            game={game}
                             onClose={() => setPanel(null)}
+                        />
+                    )}
+                    {panel === 'whatsnew' && (
+                        <WhatsNew game={game} onClose={() => setPanel(null)} />
+                    )}
+                    {price && game.buildings.get(price.uid) && (
+                        <PriceSheet
+                            game={game}
+                            building={game.buildings.get(price.uid)!}
+                            level={price.level}
+                            onClose={() => setPrice(null)}
                         />
                     )}
                     {panel === 'menu' && (
@@ -1704,11 +1824,35 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                         </Modal>
                     )}
 
-                    {splash !== null && (
-                        <EpochSplash
+                    {banner && (
+                        <EraBanner
+                            key={banner.epoch}
                             game={game}
-                            epoch={splash}
-                            onDone={() => setSplash(null)}
+                            epoch={banner.epoch}
+                            stars={banner.stars}
+                            lead={banner.lead}
+                            onWhatsNew={() => {
+                                setBanner(null);
+                                setPanel('whatsnew');
+                            }}
+                            onDone={() => setBanner(null)}
+                        />
+                    )}
+
+                    {chest > 0 && (
+                        <ChestCard
+                            game={game}
+                            amount={chest}
+                            onTake={() => {
+                                game.claimChest(chest);
+                                setChest(0);
+                                setPendingChest(0);
+                                void save();
+                            }}
+                            onClose={() => {
+                                setPendingChest(chest);
+                                setChest(0);
+                            }}
                         />
                     )}
 

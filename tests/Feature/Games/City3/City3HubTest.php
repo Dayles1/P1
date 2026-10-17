@@ -69,7 +69,7 @@ test('the leaderboard ranks worlds by score, ties sharing a rank, and shows the 
             'rank' => 1,
             'name' => 'Борис',
             'score' => 5000,
-            'details' => ['epoch' => 'e1000', 'epoch_name' => (new ContentRepository)->epochName('e1000'), 'year' => 1100, 'population' => 40],
+            'details' => ['epoch' => 'e1000', 'epoch_name' => (new ContentRepository)->epochName('e1000'), 'year' => 1100, 'population' => 40, 'lead' => 0, 'stars' => 0],
             'is_me' => false,
         ])
         ->assertJsonPath('data.entries.1.rank', 2)
@@ -173,4 +173,39 @@ test('the hub lists the game first, on its own page with its own API', function 
         ->toContain("api: '/api/city3'")
         ->toContain('path: null')
         ->and(file_get_contents(resource_path('games/src/shared/i18n.ts')))->toContain('Летопись города 3', 'City Chronicle 3', 'Shahar solnomasi 3');
+});
+
+test('the Chronicle tab ranks by stars, then the lead; the era tab only the player\'s era', function () {
+    $user = User::factory()->create(['name' => 'Анна']);
+
+    World::factory()->inEpoch('e1000', 1, 120, 300)->create(['user_id' => $user->id, 'score' => 3000, 'stars' => 2, 'lead' => 900]);
+    World::factory()->inEpoch('e1500', 2, 160, 900)->create(['score' => 9000, 'stars' => 3, 'lead' => 1340]);
+    World::factory()->inEpoch('e1000', 1, 90, 200)->create(['score' => 2000, 'stars' => 2, 'lead' => 926]);
+    World::factory()->inEpoch('e1000', 1, 95, 250)->create(['score' => 8000, 'stars' => 1, 'lead' => 905]);
+    World::factory()->create(['score' => 99_999, 'stars' => 3, 'lead' => 999, 'ranked' => false]);
+
+    $this->actingAs($user, 'sanctum');
+
+    $this->getJson('/api/city3/leaderboard?tab=chronicle')
+        ->assertOk()
+        ->assertJsonPath('data.tab', 'chronicle')
+        ->assertJsonCount(4, 'data.entries')
+        ->assertJsonPath('data.entries.0.score', 9000)
+        ->assertJsonPath('data.entries.1.details.lead', 926)
+        ->assertJsonPath('data.entries.2.is_me', true)
+        ->assertJsonPath('data.entries.2.details.stars', 2)
+        ->assertJsonPath('data.entries.3.score', 8000)
+        ->assertJsonPath('data.me.rank', 3);
+
+    $this->getJson('/api/city3/leaderboard?tab=era')
+        ->assertOk()
+        ->assertJsonCount(3, 'data.entries')
+        ->assertJsonPath('data.entries.0.score', 8000)
+        ->assertJsonPath('data.me.rank', 2);
+
+    $this->getJson('/api/city3/leaderboard?tab=nonsense')
+        ->assertOk()
+        ->assertJsonPath('data.tab', 'overall')
+        ->assertJsonPath('data.entries.0.score', 9000)
+        ->assertJsonPath('data.me.rank', 3);
 });

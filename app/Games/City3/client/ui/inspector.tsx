@@ -263,6 +263,8 @@ export function Inspector({
     onDemolish,
     onClose,
     onNext,
+    onPrice,
+    onTownHall,
 }: {
     game: Game;
     building: BuildingState;
@@ -274,6 +276,10 @@ export function Inspector({
     onDemolish: () => void;
     onClose: () => void;
     onNext: () => void;
+    /** Opens the price sheet of the next level. */
+    onPrice: () => void;
+    /** Opens the Town Hall card (the Town Hall's upgrade is the era gate). */
+    onTownHall: () => void;
 }) {
     const def = game.def(building);
     const level = game.levelDef(building);
@@ -282,6 +288,9 @@ export function Inspector({
     const next = def.levels[building.level];
     const role = game.content.roleOf(def);
     const fixed = role === 'center';
+    const gate = game.isGateUpgrade(building);
+    const mothballBlock = game.mothballBlock(building);
+    const moveBlock = game.moveBlock(building);
     const problems: string[] = [];
     let same = 0;
 
@@ -292,7 +301,11 @@ export function Inspector({
                 : 0;
     }
 
-    if (status?.complete) {
+    if (status?.mothballed) {
+        problems.push(
+            '🔒 Законсервировано: не работает, не платит содержание и не занимает рабочих.',
+        );
+    } else if (status?.level) {
         if (!status.connected) {
             problems.push('🚧 Нет дороги до центра или управы — не работает.');
         }
@@ -490,7 +503,12 @@ export function Inspector({
             </p>
 
             {!game.isComplete(building) && (
-                <p className="inspector__note">🏗️ Идёт строительство…</p>
+                <p className="inspector__note">
+                    🏗️ Идёт строительство
+                    {status?.level
+                        ? ` — пока работает прежний уровень «${game.content.level(def, status.level).name}»`
+                        : '…'}
+                </p>
             )}
 
             {problems.map((problem) => (
@@ -541,7 +559,16 @@ export function Inspector({
             )}
 
             <div className="inspector__actions">
-                {next && (
+                {gate && (
+                    <button
+                        type="button"
+                        className="hud-button hud-button--primary"
+                        onClick={onTownHall}
+                    >
+                        🏛️ Ворота эпохи
+                    </button>
+                )}
+                {next && !gate && (
                     <button
                         type="button"
                         className="hud-button hud-button--primary"
@@ -560,8 +587,17 @@ export function Inspector({
                         )}
                     </button>
                 )}
-                {block && next && (
+                {block && next && !gate && (
                     <span className="inspector__hint">{block}</span>
+                )}
+                {next && !block && !gate && (
+                    <button
+                        type="button"
+                        className="link-button"
+                        onClick={onPrice}
+                    >
+                        Как считается цена
+                    </button>
                 )}
                 {next && !block && same > 1 && (
                     <button
@@ -575,7 +611,7 @@ export function Inspector({
                 )}
                 {!fixed && (
                     <div className="inspector__row">
-                        {role !== 'road' && (
+                        {role !== 'road' && !moveBlock && (
                             <button
                                 type="button"
                                 className="hud-button"
@@ -584,12 +620,35 @@ export function Inspector({
                                 ↔ Перенести
                             </button>
                         )}
+                        {building.mothballed ? (
+                            <button
+                                type="button"
+                                className="hud-button hud-button--primary"
+                                onClick={() => game.reopen(building.uid)}
+                                title={`Содержание ${formatRate(-game.workDef(building).upkeep)}`}
+                            >
+                                🔓 Открыть
+                            </button>
+                        ) : (
+                            !mothballBlock && (
+                                <button
+                                    type="button"
+                                    className="hud-button"
+                                    onClick={() => game.mothball(building.uid)}
+                                    title="Не работает, не стоит денег и не занимает рабочих, пока не откроете"
+                                >
+                                    🔒 Законсервировать
+                                </button>
+                            )
+                        )}
                         <button
                             type="button"
                             className="hud-button hud-button--danger"
                             onClick={onDemolish}
+                            title="Вернём 50 % уплаченного"
                         >
-                            🧨 Снести
+                            🧨 Снести · вернём{' '}
+                            {formatNumber(game.refund(building))}
                         </button>
                     </div>
                 )}

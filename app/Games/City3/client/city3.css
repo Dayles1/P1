@@ -1043,3 +1043,484 @@ a.hud-button {
     color: var(--hud-muted);
     font-size: 11px;
 }
+
+/* ——————————————————————————————— Calendar chip and the lead (gdd §2.3, ui-spec §5.1) ——————————————————————————————— */
+
+.hud-calendar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 8px 2px 2px;
+    border: 1px solid var(--hud-border);
+    border-radius: 999px;
+    background: transparent;
+    font-family: var(--hud-font);
+    text-align: left;
+}
+
+.hud-calendar__ring {
+    width: 34px;
+    height: 34px;
+    transform: rotate(-90deg);
+}
+
+.hud-calendar__ring circle {
+    fill: none;
+    stroke-width: 3.5;
+}
+
+.hud-calendar__track {
+    stroke: rgba(255, 255, 255, 0.12);
+}
+
+.hud-calendar__fill {
+    stroke: var(--hud-accent);
+    stroke-linecap: round;
+}
+
+.hud-calendar__body {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.hud-calendar__body strong {
+    font-size: 17px;
+}
+
+.hud-calendar__body span {
+    color: var(--hud-muted);
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.hud-calendar__lead {
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-family: var(--g-font);
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.hud-calendar__lead--ahead {
+    background: color-mix(in srgb, var(--g-good) 22%, transparent);
+    color: var(--g-good);
+}
+
+.hud-calendar__lead--falling {
+    background: color-mix(in srgb, #f5b942 25%, transparent);
+    color: #f5b942;
+}
+
+.hud-calendar__lead--behind {
+    color: var(--hud-muted);
+}
+
+.hud-calendar__tip {
+    position: absolute;
+    z-index: 30;
+    top: calc(100% + 8px);
+    left: 0;
+    display: none;
+    width: 300px;
+    padding: 10px 12px;
+    border: 1px solid var(--hud-border);
+    border-radius: var(--hud-radius);
+    background: var(--hud-bg-solid);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    color: var(--hud-text);
+    font-family: var(--g-font);
+    font-size: 12.5px;
+    line-height: 1.4;
+    white-space: normal;
+}
+
+.hud-calendar:hover .hud-calendar__tip,
+.hud-calendar:focus-visible .hud-calendar__tip {
+    display: block;
+}
+
+/* ——————————————————————————————— Race line and the Chronicle ——————————————————————————————— */
+
+.race {
+    margin: 22px 0 12px;
+}
+
+.race__track {
+    position: relative;
+    display: flex;
+    gap: 3px;
+    height: 12px;
+}
+
+.race__segment {
+    flex: 1;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.race__segment--done {
+    background: color-mix(in srgb, var(--hud-accent) 45%, transparent);
+}
+
+.race__fill {
+    position: absolute;
+    top: 3px;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--g-good);
+    opacity: 0.8;
+}
+
+.race__tick {
+    position: absolute;
+    top: -3px;
+    width: 2px;
+    height: 18px;
+    margin-left: -1px;
+    background: #f3e9d2;
+}
+
+.race__pennant {
+    position: absolute;
+    top: -20px;
+    margin-left: -4px;
+    color: var(--hud-accent);
+    font-size: 15px;
+}
+
+.race__labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+    color: var(--hud-muted);
+    font-size: 11px;
+}
+
+.chronicle__eras {
+    width: 100%;
+    margin: 6px 0 12px;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.chronicle__eras th,
+.chronicle__eras td {
+    padding: 5px 6px;
+    border-bottom: 1px solid var(--hud-border);
+    text-align: left;
+}
+
+.chronicle__stars {
+    color: #f5b942;
+    white-space: nowrap;
+}
+
+.chronicle__score {
+    margin: 8px 0;
+}
+
+.chronicle__board .hud-speed,
+.policy .hud-speed {
+    width: max-content;
+}
+
+.chronicle__board .hud-speed button,
+.policy .hud-speed button {
+    width: auto;
+    padding: 0 10px;
+}
+
+.chronicle__rows {
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 13px;
+}
+
+.chronicle__rows li {
+    display: grid;
+    grid-template-columns: 28px 1fr auto auto auto 64px;
+    gap: 8px;
+    align-items: baseline;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--hud-border);
+}
+
+.chronicle__rows li.is-me {
+    color: var(--hud-accent);
+}
+
+.chronicle__rows small {
+    color: var(--hud-muted);
+}
+
+/* ——————————————————————————————— Era banner (no splash, no flash, no count-up) ——————————————————————————————— */
+
+.era-banner {
+    position: absolute;
+    z-index: 40;
+    top: 70px;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border: 1px solid var(--hud-accent);
+    border-radius: var(--hud-radius);
+    background: var(--hud-bg-solid);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    transform: translateX(-50%);
+    animation: toast-in 220ms ease;
+}
+
+.era-banner div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.era-banner b {
+    font-family: var(--hud-font);
+    font-size: 22px;
+}
+
+.era-banner small {
+    color: var(--hud-muted);
+}
+
+.era-banner__stars {
+    color: #f5b942;
+    letter-spacing: 2px;
+}
+
+.era-banner__coin .money-icon {
+    font-size: 34px;
+}
+
+.era-banner__coin,
+.hud-money__coin {
+    display: inline-block;
+    animation: coin-flip 1.2s ease;
+}
+
+@keyframes coin-flip {
+    from {
+        transform: rotateY(0);
+    }
+
+    to {
+        transform: rotateY(720deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .era-banner__coin,
+    .hud-money__coin {
+        animation: coin-fade 1.2s ease;
+    }
+}
+
+@keyframes coin-fade {
+    from {
+        opacity: 0.2;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ——————————————————————————————— Town Hall card ——————————————————————————————— */
+
+.gate {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 8px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.gate__line {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr auto;
+    gap: 4px 8px;
+    padding: 7px 10px;
+    border: 1px solid var(--hud-border);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    text-align: left;
+}
+
+.gate__line .bar {
+    grid-column: 1 / -1;
+}
+
+.gate__line small {
+    color: var(--hud-muted);
+}
+
+.gate__line--done {
+    opacity: 0.75;
+}
+
+.gate__stars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 8px 0;
+}
+
+.gate__star {
+    padding: 4px 8px;
+    border: 1px solid var(--hud-border);
+    border-radius: 8px;
+    color: #f5b942;
+    font-size: 12.5px;
+}
+
+.gate__star--gone {
+    color: var(--hud-muted);
+    text-decoration: line-through;
+}
+
+.gate__star--best {
+    border-color: #f5b942;
+    box-shadow: 0 0 0 1px #f5b942 inset;
+}
+
+.gate__building {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 8px 0;
+}
+
+.gate__building small,
+.policy small {
+    color: var(--hud-muted);
+    font-size: 12px;
+}
+
+.policy {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+    margin: 6px 0;
+}
+
+.policy > span {
+    min-width: 140px;
+}
+
+.loan {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+    padding: 8px 10px;
+    border: 1px dashed var(--hud-border);
+    border-radius: 8px;
+    font-size: 12.5px;
+}
+
+.link-button {
+    align-self: flex-start;
+    padding: 2px 0;
+    border: 0;
+    background: none;
+    color: var(--hud-accent);
+    font-size: 12.5px;
+    text-decoration: underline;
+}
+
+/* ——————————————————————————————— Price sheet, treasury ——————————————————————————————— */
+
+.price {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.price td {
+    padding: 5px 4px;
+    border-bottom: 1px solid var(--hud-border);
+    vertical-align: top;
+}
+
+.price td:last-child {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.price__total td {
+    font-weight: 700;
+}
+
+.hud-money--arrears {
+    box-shadow: inset 0 0 0 1px var(--g-bad);
+}
+
+.hud-money--arrears .hud-res__rate {
+    color: var(--g-bad);
+}
+
+.hud-alert {
+    margin-left: 4px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    background: var(--g-bad);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.chest {
+    position: absolute;
+    z-index: 60;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.chest__card {
+    display: flex;
+    width: min(340px, calc(100% - 32px));
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 18px;
+    border: 1px solid var(--hud-border);
+    border-radius: calc(var(--hud-radius) + 4px);
+    background: var(--hud-bg-solid);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.chest__icon {
+    font-family: var(--g-emoji);
+    font-size: 40px;
+}
+
+.chest__actions {
+    display: flex;
+    gap: 8px;
+}
+
+.chest-chip {
+    position: absolute;
+    top: 74px;
+    right: 10px;
+    padding: 6px 12px;
+    border: 1px solid var(--hud-accent);
+    border-radius: 999px;
+    background: var(--hud-bg-solid);
+    font-size: 13px;
+}

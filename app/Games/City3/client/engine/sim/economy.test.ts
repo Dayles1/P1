@@ -153,7 +153,7 @@ describe('prices', () => {
         expect(game.relevelCost(house, 11).money).toBe(570_000 - 19);
     });
 
-    it('returns half the current level’s money on demolition', () => {
+    it('returns half the money paid on demolition', () => {
         const game = Game.create(content, 7);
 
         game.place('farm', 40, 10);
@@ -183,21 +183,22 @@ describe('zones', () => {
 });
 
 describe('the gate into the next era', () => {
-    it('lists citizens, the buildings asked for, discoveries and the Town Hall price', () => {
+    it('lists citizens, the buildings asked for and discoveries; the Town Hall upgrade is the button', () => {
         const game = Game.create(content, 7);
-        const labels = game.epochChecklist().map((line) => line.label);
+        const labels = game.gateLines().map((line) => line.label);
 
         expect(labels).toEqual([
             'Жители',
             'Агора',
             'Школа философов',
             'Открытия эпохи «Античность»',
-            'Ратуша → «Ратуша»',
         ]);
-        expect(game.epochChecklist().at(-1)!.cost).toEqual({
-            money: 2400,
-            mat: 140,
+        expect(game.townHallUpgrade()).toMatchObject({
+            cost: { money: 2400, mat: 140 },
+            spirit: 0,
+            buildTime: 75,
         });
+        expect(game.gateBlock()).toBe('Ещё 4 условия');
         expect(game.canAdvance()).toBe(false);
         expect(game.advanceEpoch().ok).toBe(false);
     });
@@ -218,11 +219,26 @@ describe('the gate into the next era', () => {
         const money = game.money;
 
         expect(game.advanceEpoch().ok).toBe(true);
-        expect(game.state.epoch).toBe(1);
+        // A visible build: the era begins when the Town Hall is finished.
+        expect(game.state.epoch).toBe(0);
         expect(game.center!.level).toBe(3);
-        expect(game.isComplete(game.center!)).toBe(true);
+        expect(game.townHallBuilding()).toBe(true);
+        expect(game.workingLevel(game.center!)).toBe(1);
         expect(game.money).toBe(money - price);
-        expect(game.epochChecklist().at(-1)!.label).toBe('Ратуша → «Дворец»');
+        expect(game.gateBlock()).toBe('Ратуша уже строится');
+
+        for (let t = 0; t < 75; t++) {
+            game.tick(1, true);
+        }
+
+        expect(game.state.epoch).toBe(1);
+        expect(game.isComplete(game.center!)).toBe(true);
+        expect(game.state.eraLog).toEqual([{ era: 1, t: 75 }]);
+        expect(game.gateLines().map((line) => line.label)).toEqual([
+            'Жители',
+            '2 кузницы',
+            'Открытия эпохи «Средневековье»',
+        ]);
     });
 
     it('keeps the chief’s house for 30 citizens', () => {
@@ -269,6 +285,7 @@ function settleOnce(city: Partial<EconomyCity>, input: Partial<EconomyInput>) {
             reserved: { food: 0, mat: 0, goods: 0 },
             congestion: 1,
             previousPowerRatio: 1,
+            loan: 0,
             ...input,
         },
         content.world.economy,
@@ -421,7 +438,7 @@ describe('upkeep (gdd §4.8)', () => {
 });
 
 describe('an empty treasury', () => {
-    it('stays at zero, never NaN, and the city keeps running', () => {
+    it('stays at zero, never NaN, and mothballs the costliest buildings until the net is positive', () => {
         const game = Game.create(content, 7);
 
         game.state.resources.money = 50_000;
@@ -441,14 +458,35 @@ describe('an empty treasury', () => {
         game.state.resources.food = 0;
         game.state.population = 30;
 
+        const closedAt: number[] = [];
+
         for (let tick = 0; tick < 100 * 25; tick++) {
             game.tick(1, true);
 
             expect(Number.isFinite(game.money)).toBe(true);
             expect(game.money).toBeGreaterThanOrEqual(0);
+
+            const closed = [...game.buildings.values()].filter(
+                (building) => building.mothballed,
+            ).length;
+
+            if (closed > closedAt.length) {
+                closedAt.push(game.year);
+            }
         }
 
-        expect(game.stats.budget.costs.upkeep).toBeCloseTo(6 * 1.6);
+        const temples = [...game.buildings.values()].filter(
+            (building) => building.type === 'temple',
+        );
+        const closed = temples.filter((temple) => temple.mothballed).length;
+
+        // One a year at most, only temples (homes and the Town Hall stay).
+        expect(closed).toBeGreaterThan(0);
+        expect(closedAt.length).toBe(closed);
+        expect(new Set(closedAt).size).toBe(closed);
+        expect(game.state.economy.arrearsYears).toBeGreaterThan(0);
+        expect(game.stats.budget.costs.upkeep).toBeCloseTo((6 - closed) * 1.6);
+        expect(game.stats.budget.net).toBeGreaterThanOrEqual(0);
         expect(Number.isFinite(game.state.population)).toBe(true);
         expect(game.state.population).toBeGreaterThanOrEqual(0);
 
@@ -457,13 +495,11 @@ describe('an empty treasury', () => {
         }
 
         // Broke with nothing in the stores: the city starves instead of buying food.
-        // Only the Town Hall's rooms are lived in: the taxes cannot pay the temples.
-        expect(game.stats.budget.net).toBeLessThan(0);
+        game.state.resources.money = 0;
         game.state.resources.food = 0;
         game.tick(1, true);
         expect(game.stats.starving).toBe(true);
-        expect(game.stats.arrears).toBe(true);
-        expect(game.money).toBe(0);
+        expect(game.money).toBeGreaterThanOrEqual(0);
     });
 
     it('buys food, fuel and grid power while there is money, and stops at zero', () => {
