@@ -4,22 +4,30 @@
  * research, economy, population, goals, events, NPC decisions) and exposes
  * the player's actions. Every number it uses comes from the content files.
  *
+ * Content rates are per game year; each game second the engine applies
+ * `rate / secondsPerYear`. There is one currency, `money` (world.json
+ * economy.currency); construction prices are money plus materials, and the
+ * materials a construction lacks are bought for money on the spot.
+ *
  * Nothing changes by itself when an era begins: a building keeps the level
  * (and so the look) the player gave it. Eras only open new levels,
- * technologies, resources and land.
+ * discoveries and resources.
  */
 
-import type { Content } from '../content/registry';
+import { MATERIALS, SERVICES } from '../content/registry';
+import type { BuildingRole, Content } from '../content/registry';
 import type {
     Amounts,
     BlueprintDef,
     BuildingDef,
     DistrictPolicyDef,
     Effects,
+    EpochDef,
     GoalDef,
     LevelDef,
     Palette,
     RoofShape,
+    ServiceId,
     TechBonus,
     TechDef,
 } from '../content/types';
@@ -39,7 +47,7 @@ import type {
     WorldState,
 } from './state';
 
-/** What one building is doing right now. */
+/** What one building is doing right now. Rates are per year. */
 export interface BuildingStatus {
     complete: boolean;
     connected: boolean;
@@ -47,9 +55,12 @@ export interface BuildingStatus {
     starved: string | null;
     noPower: boolean;
     boost: number;
-    fertility: number;
     happiness: number | null;
     pollution: number;
+    /** Homes: the services that reach them. */
+    services: ServiceId[];
+    /** Homes: the share of the era's home services that reach them, 0..1. */
+    comfort: number;
     residents: number;
     workers: number;
     /** The district hall whose district it stands in. */
@@ -58,36 +69,73 @@ export interface BuildingStatus {
     input: Amounts;
 }
 
+/** The city's numbers right now. Rates are per year. */
 export interface Stats {
     rates: Amounts;
     caps: Amounts;
+    /** Places in homes. */
     housing: number;
+    /**
+     * How many citizens the homes hold at their happiness (P*): homes
+     * fill with comfort (services) and happiness (occupancy).
+     */
+    target: number;
     jobs: number;
     workers: number;
     employment: number;
     powerSupply: number;
     powerDemand: number;
-    defense: number;
     happiness: number;
     starving: boolean;
+    /** Money per year from taxes. */
+    tax: number;
+    /** Housing-weighted tax multiplier of the homes' level eras. */
+    taxMult: number;
+    /** Money per year from old buildings in historic districts. */
     tourism: number;
+    /** Percent faster research from schools and the like. */
+    research: number;
 }
 
-/** Every researched technology's bonus added up. */
+/** Every researched discovery's bonus added up. */
 export interface Bonuses {
     produces: Record<string, number>;
     happiness: number;
     housing: number;
-    storage: number;
-    buildSpeed: number;
     tax: number;
+    trade: number;
     research: number;
+    traffic: number;
 }
 
 export interface GoalProgress {
     current: number;
     target: number;
     done: boolean;
+}
+
+/**
+ * A price as it will be paid: its money, its materials — those in stock
+ * and those bought for money because the stores lack them — and the money
+ * in all.
+ */
+export interface Quote {
+    money: number;
+    mat: number;
+    fromStock: number;
+    bought: number;
+    importMoney: number;
+    total: number;
+}
+
+/** One line of the gate into the next era. */
+export interface GateLine {
+    label: string;
+    done: boolean;
+    current?: number;
+    target?: number;
+    /** The Town Hall upgrade that opens the era. */
+    cost?: Amounts;
 }
 
 const NO_POLICY: DistrictPolicyDef['effects'] = {};
@@ -168,7 +216,7 @@ export class Game {
             population: world.start.population,
             weather: content.weather[0]?.id ?? 'clear',
             weatherUntil: 0,
-            nextEventAt: world.events.firstAfter,
+            nextEventAt: world.events.firstYear * world.time.secondsPerYear,
             moods: [],
             nextUid: 1,
             techs: [],
@@ -225,9 +273,10 @@ export class Game {
         );
     }
 
+    /** The Town Hall. */
     get center(): BuildingState | undefined {
         for (const building of this.buildings.values()) {
-            if (this.def(building).role === 'center') {
+            if (this.roleOf(building) === 'center') {
                 return building;
             }
         }
@@ -239,7 +288,7 @@ export class Game {
     get bureau(): BuildingState | undefined {
         for (const building of this.buildings.values()) {
             if (
-                this.def(building).role === 'bureau' &&
+                this.roleOf(building) === 'bureau' &&
                 this.isComplete(building)
             ) {
                 return building;
@@ -251,6 +300,11 @@ export class Game {
 
     def(building: BuildingState): BuildingDef {
         return this.content.building(building.type);
+    }
+
+    /** What the engine does specially with a building, if anything. */
+    roleOf(building: BuildingState): BuildingRole | null {
+        return this.content.roleOf(this.def(building));
     }
 
     levelDef(building: BuildingState): LevelDef {
@@ -281,7 +335,7 @@ export class Game {
     isRoad(index: number): boolean {
         const building = this.buildings.get(this.map.occupant[index]);
 
-        return building !== undefined && this.def(building).role === 'road';
+        return building !== undefined && this.roleOf(building) === 'road';
     }
 
     count(type: string, minLevel = 1): number {
@@ -343,6 +397,11 @@ export class Game {
         return { ok: true };
     }
 
+    /** Money in the treasury. */
+    get money(): number {
+        return this.state.resources[this.content.currency] ?? 0;
+    }
+
     /** Resources the player knows about by now (or happens to hold). */
     visibleResources() {
         return this.content.resources.filter(
@@ -369,7 +428,23 @@ export class Game {
         }
 
         if (levelDef.tech && !this.hasTech(levelDef.tech)) {
-            return `Нужна технология «${this.content.tech(levelDef.tech)?.name ?? levelDef.tech}»`;
+            return `Нужно открытие «${this.content.tech(levelDef.tech)?.name ?? levelDef.tech}»`;
+        }
+
+        const requires = levelDef.requires;
+
+        if (
+            requires?.population &&
+            this.state.population < requires.population
+        ) {
+            return `Нужно ${requires.population} жителей`;
+        }
+
+        if (
+            requires?.townHallLevel &&
+            (this.center?.level ?? 0) < requires.townHallLevel
+        ) {
+            return `Нужна ратуша уровня ${requires.townHallLevel}`;
         }
 
         return null;
@@ -417,43 +492,79 @@ export class Game {
     }
 
     upgradeCost(building: BuildingState): Amounts {
-        const next = this.def(building).levels[building.level];
+        return this.def(building).levels[building.level]
+            ? this.relevelCost(building, building.level + 1)
+            : {};
+    }
 
-        if (!next) {
-            return {};
-        }
-
-        if (next.upgrade) {
-            return next.upgrade;
-        }
-
-        const share = this.content.world.economy.upgradeShare ?? 0.7;
+    /**
+     * Price to bring a building up to a higher level: the new level's
+     * price, less a share of the current level's (trade-in), but never
+     * below the floor share of the new price — money and materials alike.
+     */
+    relevelCost(building: BuildingState, level: number): Amounts {
+        const economy = this.content.world.economy;
+        const money = this.content.currency;
+        const target = this.content.level(this.def(building), level).cost;
+        const current = this.levelDef(building).cost[money] ?? 0;
+        const targetMoney = target[money] ?? 0;
+        const share =
+            targetMoney > 0
+                ? Math.max(
+                      economy.upgradeFloor,
+                      1 -
+                          (economy.tradeIn * Math.min(current, targetMoney)) /
+                              targetMoney,
+                  )
+                : 1;
 
         return Object.fromEntries(
-            Object.entries(next.cost).map(([id, amount]) => [
+            Object.entries(target).map(([id, amount]) => [
                 id,
-                Math.ceil(amount * share),
+                id === money
+                    ? Math.ceil(amount * share - 1e-9)
+                    : Math.round(amount * share * 10) / 10,
             ]),
         );
     }
 
     buildTime(level: LevelDef): number {
-        return (
-            level.buildTime * Math.max(0.2, 1 - this.bonuses.buildSpeed / 100)
-        );
+        return level.buildTime;
     }
 
-    moveCost(building: BuildingState, x: number, y: number): Amounts {
-        const distance = Math.abs(building.x - x) + Math.abs(building.y - y);
-        const def = this.def(building);
+    moveCost(building: BuildingState): Amounts {
+        const money = this.content.currency;
 
         return {
-            gold: Math.ceil(
-                this.content.world.economy.moveCostPerTile *
-                    def.size.w *
-                    def.size.h +
-                    distance,
+            [money]: Math.ceil(
+                (this.levelDef(building).cost[money] ?? 0) *
+                    this.content.world.economy.moveShare,
             ),
+        };
+    }
+
+    /** How a price will be paid, with the materials the stores lack bought for money. */
+    quote(cost: Amounts): Quote {
+        const money = cost[this.content.currency] ?? 0;
+        const mat = cost[MATERIALS] ?? 0;
+        const stock = Math.max(0, this.state.resources[MATERIALS] ?? 0);
+        const fromStock = Math.min(mat, stock);
+        const bought = Math.max(0, mat - fromStock);
+        const importMoney =
+            bought > 1e-9
+                ? Math.ceil(
+                      bought * this.content.world.economy.prices.matImport -
+                          1e-9,
+                  )
+                : 0;
+
+        return {
+            money,
+            mat,
+            fromStock,
+            bought,
+            importMoney,
+            total: money + importMoney,
         };
     }
 
@@ -462,17 +573,31 @@ export class Game {
             return true;
         }
 
-        return Object.entries(cost).every(
-            ([id, amount]) => (this.state.resources[id] ?? 0) >= amount - 1e-6,
+        const others = Object.entries(cost).filter(
+            ([id]) => id !== this.content.currency && id !== MATERIALS,
+        );
+
+        return (
+            this.money >= this.quote(cost).total - 1e-6 &&
+            others.every(
+                ([id, amount]) =>
+                    (this.state.resources[id] ?? 0) >= amount - 1e-6,
+            )
         );
     }
 
     missing(cost: Amounts): string {
-        const names = Object.entries(cost)
-            .filter(([id, amount]) => (this.state.resources[id] ?? 0) < amount)
-            .map(([id]) => this.content.resource(id)?.name.toLowerCase() ?? id);
+        if (this.canAfford(cost)) {
+            return '';
+        }
 
-        return names.length ? `Не хватает: ${names.join(', ')}` : '';
+        const quote = this.quote(cost);
+
+        return this.money < quote.total - 1e-6
+            ? quote.importMoney > 0
+                ? 'Не хватает денег (с докупкой стройматериалов)'
+                : 'Не хватает денег'
+            : 'Не хватает ресурсов';
     }
 
     // ———————————————————————————————————————— Looks
@@ -523,7 +648,7 @@ export class Game {
     blueprintFits(blueprint: BlueprintDef, def: BuildingDef): boolean {
         return blueprint.buildings.length
             ? blueprint.buildings.includes(def.id)
-            : !def.hidden && !def.role;
+            : !def.hidden && !this.content.roleOf(def);
     }
 
     blueprintLock(blueprint: BlueprintDef): string | null {
@@ -548,7 +673,7 @@ export class Game {
 
     districtHalls(): BuildingState[] {
         return [...this.buildings.values()].filter(
-            (b) => this.def(b).role === 'district',
+            (b) => this.roleOf(b) === 'district',
         );
     }
 
@@ -589,7 +714,7 @@ export class Game {
 
     techLock(tech: TechDef): string | null {
         if (this.hasTech(tech.id)) {
-            return 'Изучено';
+            return 'Сделано';
         }
 
         if (this.content.epochOrder(tech.epoch) > this.state.epoch) {
@@ -603,14 +728,17 @@ export class Game {
         }
 
         if (this.state.research) {
-            return 'Идёт другое исследование';
+            return 'Идёт другое открытие';
         }
 
         return null;
     }
 
+    /** Game seconds a discovery takes: faster with schools and research bonuses (up to ×2.5). */
     researchTime(tech: TechDef): number {
-        return tech.time * Math.max(0.2, 1 - this.bonuses.research / 100);
+        const percent = this.stats.research + this.bonuses.research;
+
+        return tech.time / (1 + Math.min(1.5, Math.max(0, percent) / 100));
     }
 
     /** What a technology opens: building levels that need it. */
@@ -642,7 +770,13 @@ export class Game {
                 target = condition.value;
                 break;
             case 'building':
-                current = this.count(condition.building, condition.level ?? 1);
+                current = ([] as string[])
+                    .concat(condition.building)
+                    .reduce(
+                        (sum, type) =>
+                            sum + this.count(type, condition.level ?? 1),
+                        0,
+                    );
                 target = condition.count;
                 break;
             case 'epoch':
@@ -658,10 +792,6 @@ export class Game {
                 current = state.techs.length;
                 target = condition.count;
                 break;
-            case 'resource':
-                current = Math.floor(state.resources[condition.resource] ?? 0);
-                target = condition.value;
-                break;
             case 'happiness':
                 current =
                     state.population >= 10
@@ -669,25 +799,34 @@ export class Game {
                         : 0;
                 target = condition.value;
                 break;
-            case 'districts':
-                current = this.districtHalls().filter((h) =>
-                    this.isComplete(h),
-                ).length;
-                target = condition.count;
+            case 'coverage': {
+                const { tiles, covered } = this.homeCoverage(condition.service);
+
+                target = Math.round(condition.share * 100);
+                current =
+                    tiles >= condition.minTiles
+                        ? Math.floor((covered / tiles) * 100 + 1e-9)
+                        : 0;
                 break;
-            case 'blueprints':
-                current = state.blueprints.length;
-                target = condition.count;
+            }
+            case 'power':
+                current = Math.floor(this.stats.powerSupply);
+                target = condition.value;
                 break;
             case 'heritage':
                 current = [...this.buildings.values()].filter(
                     (b) =>
-                        this.def(b).role !== 'road' &&
+                        this.def(b).heritage &&
                         this.isComplete(b) &&
-                        state.epoch - this.levelEpoch(b) >= condition.age,
+                        state.epoch - this.levelEpoch(b) >=
+                            (condition.age ?? 2),
                 ).length;
                 target = condition.count;
                 break;
+            default:
+                // Conditions of systems that come later (stars, strips, …).
+                current = 0;
+                target = 1;
         }
 
         return {
@@ -715,55 +854,70 @@ export class Game {
 
     // ———————————————————————————————————————— Era
 
-    epochChecklist(): { label: string; done: boolean }[] {
-        const next = this.epoch.next;
+    /** The next era, if there is one. */
+    get nextEpoch(): EpochDef | undefined {
+        return this.content.epochs[this.state.epoch + 1];
+    }
 
-        if (!next) {
+    /** The Town Hall level whose completion opens the next era, and its price. */
+    townHallUpgrade(): { level: LevelDef; cost: Amounts } | null {
+        const entry = this.nextEpoch?.entry;
+        const def = this.content.byRole('center');
+        const level =
+            entry && def ? def.levels[entry.townHallLevel - 1] : undefined;
+
+        return level ? { level, cost: level.cost } : null;
+    }
+
+    /**
+     * The gate into the next era (epochs.json entry): citizens, the
+     * buildings it asks for, discoveries of this era, and the price of the
+     * Town Hall upgrade that opens it.
+     */
+    epochChecklist(): GateLine[] {
+        const entry = this.nextEpoch?.entry;
+        const upgrade = this.townHallUpgrade();
+
+        if (!entry || !upgrade) {
             return [];
         }
 
-        const items = [
+        const discoveries = this.content.techs.filter(
+            (tech) => tech.epoch === this.epoch.id && this.hasTech(tech.id),
+        ).length;
+        const lines: GateLine[] = [
             {
-                label: `Жителей: ${Math.floor(this.state.population)} / ${next.population}`,
-                done: this.state.population >= next.population,
+                label: 'Жители',
+                current: Math.floor(this.state.population),
+                target: entry.population,
+                done: this.state.population >= entry.population,
             },
         ];
 
-        for (const need of next.buildings) {
-            const def = this.content.building(need.type);
-            const have = this.count(need.type, need.level ?? 1);
-            const name = need.level
-                ? this.content.level(def, need.level).name
-                : def.name;
+        for (const item of entry.items) {
+            const have = this.count(item.type, item.level);
 
-            items.push({
-                label: `${def.icon} ${name}${need.level ? ` (ур. ${need.level}+)` : ''}: ${have} / ${need.count}`,
-                done: have >= need.count,
+            lines.push({
+                label: item.label,
+                current: Math.min(have, item.count),
+                target: item.count,
+                done: have >= item.count,
             });
         }
 
-        for (const id of next.techs ?? []) {
-            const tech = this.content.tech(id);
-
-            items.push({
-                label: `${tech?.icon ?? '🔬'} Технология «${tech?.name ?? id}»`,
-                done: this.hasTech(id),
-            });
-        }
-
-        const cost = Object.entries(next.cost)
-            .map(
-                ([id, amount]) =>
-                    `${this.content.resource(id)?.icon ?? id} ${amount}`,
-            )
-            .join('  ');
-
-        items.push({
-            label: `Казна: ${cost}`,
-            done: this.canAfford(next.cost),
+        lines.push({
+            label: `Открытия эпохи «${this.epoch.name}»`,
+            current: Math.min(discoveries, entry.discoveries),
+            target: entry.discoveries,
+            done: discoveries >= entry.discoveries,
+        });
+        lines.push({
+            label: `Ратуша → «${upgrade.level.name}»`,
+            cost: upgrade.cost,
+            done: this.canAfford(upgrade.cost),
         });
 
-        return items;
+        return lines;
     }
 
     canAdvance(): boolean {
@@ -776,7 +930,7 @@ export class Game {
         let levels = 0;
 
         for (const building of this.buildings.values()) {
-            levels += this.def(building).role === 'road' ? 0 : building.level;
+            levels += this.roleOf(building) === 'road' ? 0 : building.level;
         }
 
         return Math.floor(
@@ -820,23 +974,11 @@ export class Game {
                 }
 
                 const biome = this.map.biomeAt(tx, ty);
-                const bridge =
-                    def.placement.overWater && this.map.isOpenWater(tx, ty);
 
-                if (!biome.buildable && !bridge) {
+                if (!biome.buildable) {
                     return {
                         ok: false,
                         reason: `Здесь нельзя строить: ${biome.name.toLowerCase()}`,
-                    };
-                }
-
-                if (
-                    def.placement.biomes &&
-                    !def.placement.biomes.includes(biome.id)
-                ) {
-                    return {
-                        ok: false,
-                        reason: `Только на: ${def.placement.biomes.join(', ')}`,
                     };
                 }
 
@@ -848,30 +990,41 @@ export class Game {
             }
         }
 
-        const nearWater = def.placement.nearWater;
+        const zone = this.zoneReason(def, y);
 
-        if (nearWater) {
-            let water = false;
+        return zone ? { ok: false, reason: zone } : { ok: true };
+    }
 
-            for (const [tx, ty] of this.around(
-                x,
-                y,
-                def.size.w,
-                def.size.h,
-                nearWater,
-            )) {
-                if (this.map.biomeAt(tx, ty).water) {
-                    water = true;
-                    break;
-                }
-            }
+    /**
+     * Why a footprint whose top row is `y` is out of its building's zone
+     * (gdd §5.1): land rows, land or beach, the mountain foot (rows 0–1),
+     * the waterline (the last beach row). Deposit spots come with the land
+     * slice; until then any mountain-foot place will do.
+     */
+    zoneReason(def: BuildingDef, y: number): string | null {
+        const bottom = y + def.size.h - 1;
+        const waterline = this.layout.seaY - 1;
 
-            if (!water) {
-                return { ok: false, reason: 'Нужна вода рядом' };
-            }
+        switch (def.placement.zone) {
+            case 'land':
+                return bottom < this.layout.beachY
+                    ? null
+                    : 'Это здание ставят на суше, не на пляже';
+            case 'landOrBeach':
+                return bottom < waterline
+                    ? null
+                    : 'У самой воды ставят только причалы';
+            case 'coast':
+                return bottom === waterline
+                    ? null
+                    : 'Ставится у самой кромки воды';
+            case 'mountain':
+                return y === 0
+                    ? null
+                    : 'Ставится у подножия гор — вплотную к ним';
+            default:
+                return 'Такое здание пока нельзя поставить';
         }
-
-        return { ok: true };
     }
 
     // ———————————————————————————————————————— Actions
@@ -906,14 +1059,14 @@ export class Game {
             this.buildTime(this.content.level(def, level)),
         );
 
-        if (def.role === 'district') {
+        if (this.content.roleOf(def) === 'district') {
             building.district = {
                 name: this.districtName(),
                 policy: null,
             };
         }
 
-        this.state.stats.built += def.role === 'road' ? 0 : 1;
+        this.state.stats.built += this.content.roleOf(def) === 'road' ? 0 : 1;
         this.structureChanged();
         this.events.emit({
             type: 'placed',
@@ -974,24 +1127,6 @@ export class Game {
         });
 
         return { ok: true };
-    }
-
-    /** Price to bring a building straight up to a higher level. */
-    relevelCost(building: BuildingState, level: number): Amounts {
-        const target = this.content.level(this.def(building), level);
-
-        if (target.upgrade) {
-            return target.upgrade;
-        }
-
-        const share = this.content.world.economy.upgradeShare ?? 0.7;
-
-        return Object.fromEntries(
-            Object.entries(target.cost).map(([id, amount]) => [
-                id,
-                Math.ceil(amount * share),
-            ]),
-        );
     }
 
     /**
@@ -1071,17 +1206,17 @@ export class Game {
 
         const def = this.def(building);
 
-        if (def.role === 'center') {
-            return this.fail('Центр города снести нельзя');
+        if (this.content.roleOf(def) === 'center') {
+            return this.fail('Ратушу снести нельзя');
         }
 
-        for (const [id, amount] of Object.entries(
-            this.levelDef(building).cost,
-        )) {
-            this.state.resources[id] =
-                (this.state.resources[id] ?? 0) +
-                Math.floor(amount * this.content.world.economy.refundShare);
-        }
+        // Money only: half the current level's price.
+        this.gain({
+            [this.content.currency]: Math.floor(
+                (this.levelDef(building).cost[this.content.currency] ?? 0) *
+                    this.content.world.economy.refundShare,
+            ),
+        });
 
         this.removeBuilding(uid);
         this.state.stats.demolished++;
@@ -1112,7 +1247,7 @@ export class Game {
             return this.fail(placement.reason!);
         }
 
-        const cost = this.moveCost(building, x, y);
+        const cost = this.moveCost(building);
 
         if (!this.canAfford(cost)) {
             return this.fail(this.missing(cost));
@@ -1246,7 +1381,7 @@ export class Game {
     ): ActionResult {
         const building = this.buildings.get(uid);
 
-        if (!building || this.def(building).role !== 'district') {
+        if (!building || this.roleOf(building) !== 'district') {
             return { ok: false };
         }
 
@@ -1260,20 +1395,43 @@ export class Game {
         return { ok: true };
     }
 
+    /**
+     * Enters the next era once its gate is met: pays the Town Hall
+     * upgrade and raises the Town Hall to the era's level at once (the
+     * visible build and the Chronicle come with the eras slice).
+     */
     advanceEpoch(): ActionResult {
-        const next = this.epoch.next;
+        const upgrade = this.townHallUpgrade();
 
-        if (!next || !this.canAdvance()) {
+        if (!upgrade || !this.canAdvance()) {
             return this.fail('Условия ещё не выполнены');
         }
 
-        this.pay(next.cost);
+        this.pay(upgrade.cost);
+        this.enterNextEpoch();
+
+        return { ok: true };
+    }
+
+    private enterNextEpoch(): void {
+        const entry = this.nextEpoch?.entry;
+        const center = this.center;
+
+        if (!entry) {
+            return;
+        }
+
+        if (center && center.level < entry.townHallLevel) {
+            center.level = entry.townHallLevel;
+            center.buildStart = this.state.time;
+            center.buildEnd = this.state.time;
+            this.changedBuildings.add(center.uid);
+        }
+
         this.state.epoch++;
         this.npcs.onEpochChanged();
         this.structureChanged();
         this.events.emit({ type: 'epoch', epoch: this.state.epoch });
-
-        return { ok: true };
     }
 
     // ———————————————————————————————————————— Simulation
@@ -1303,7 +1461,7 @@ export class Game {
             ) {
                 this.structureDirty = true;
 
-                if (!quiet && this.def(building).role !== 'road') {
+                if (!quiet && this.roleOf(building) !== 'road') {
                     this.events.emit({ type: 'built', uid: building.uid });
                 }
             }
@@ -1339,15 +1497,18 @@ export class Game {
             rates: this.content.emptyAmounts(),
             caps: this.content.emptyAmounts(),
             housing: 0,
+            target: 0,
             jobs: 0,
             workers: 0,
             employment: 1,
             powerSupply: 0,
             powerDemand: 0,
-            defense: 0,
             happiness: 50,
             starving: false,
+            tax: 0,
+            taxMult: 1,
             tourism: 0,
+            research: 0,
         };
     }
 
@@ -1356,10 +1517,10 @@ export class Game {
             produces: {},
             happiness: 0,
             housing: 0,
-            storage: 0,
-            buildSpeed: 0,
             tax: 0,
+            trade: 0,
             research: 0,
+            traffic: 0,
         };
 
         for (const id of this.state.techs) {
@@ -1379,10 +1540,10 @@ export class Game {
 
             bonuses.happiness += bonus.happiness ?? 0;
             bonuses.housing += bonus.housing ?? 0;
-            bonuses.storage += bonus.storage ?? 0;
-            bonuses.buildSpeed += bonus.buildSpeed ?? 0;
             bonuses.tax += bonus.tax ?? 0;
+            bonuses.trade += bonus.trade ?? 0;
             bonuses.research += bonus.research ?? 0;
+            bonuses.traffic += bonus.traffic ?? 0;
         }
 
         return bonuses;
@@ -1394,17 +1555,27 @@ export class Game {
         return { ok: false, reason };
     }
 
+    /** Pays a price: materials from the stores, what they lack bought for money. */
     private pay(cost: Amounts): void {
         if (this.infinite) {
             return;
         }
 
+        const money = this.content.currency;
+        const quote = this.quote(cost);
+        const resources = this.state.resources;
+
         for (const [id, amount] of Object.entries(cost)) {
-            this.state.resources[id] = Math.max(
-                0,
-                (this.state.resources[id] ?? 0) - amount,
-            );
+            if (id !== money && id !== MATERIALS) {
+                resources[id] = Math.max(0, (resources[id] ?? 0) - amount);
+            }
         }
+
+        resources[MATERIALS] = Math.max(
+            0,
+            (resources[MATERIALS] ?? 0) - quote.fromStock,
+        );
+        resources[money] = Math.max(0, (resources[money] ?? 0) - quote.total);
     }
 
     private gain(amounts: Amounts): void {
@@ -1521,7 +1692,7 @@ export class Game {
 
     /** Roads start from the town centre and from every district hall. */
     private isRoot(building: BuildingState): boolean {
-        const role = this.def(building).role;
+        const role = this.roleOf(building);
 
         return role === 'center' || role === 'district';
     }
@@ -1529,7 +1700,7 @@ export class Game {
     isConnected(building: BuildingState): boolean {
         const def = this.def(building);
 
-        if (def.role === 'road') {
+        if (this.content.roleOf(def) === 'road') {
             return this.connectedRoads.has(
                 this.map.index(building.x, building.y),
             );
@@ -1616,19 +1787,78 @@ export class Game {
         this.connectedRoads = connected;
     }
 
+    /** Tiles between two footprints along the grid (0 when touching): coverage diamonds. */
+    private manhattan(a: BuildingState, b: BuildingState): number {
+        const sa = this.def(a).size;
+        const sb = this.def(b).size;
+        const dx = Math.max(0, a.x - (b.x + sb.w - 1), b.x - (a.x + sa.w - 1));
+        const dy = Math.max(0, a.y - (b.y + sb.h - 1), b.y - (a.y + sa.h - 1));
+
+        return dx + dy;
+    }
+
+    /**
+     * The home services (water, leisure, health, education) some building
+     * of an era reached so far provides; happiness counts the share of
+     * these a home gets.
+     */
+    unlockedServices(): ServiceId[] {
+        const found = new Set<ServiceId>();
+
+        for (const def of this.content.buildings) {
+            for (const level of def.levels) {
+                const service = level.effects.coverage?.service;
+
+                if (
+                    service &&
+                    service !== 'data' &&
+                    this.content.epochOrder(level.epoch) <= this.state.epoch
+                ) {
+                    found.add(service);
+                }
+            }
+        }
+
+        return SERVICES.filter((service) => found.has(service));
+    }
+
+    /** Home tiles in all, and how many of them a service reaches. */
+    homeCoverage(service: ServiceId): { tiles: number; covered: number } {
+        let tiles = 0;
+        let covered = 0;
+
+        for (const building of this.buildings.values()) {
+            const status = this.status.get(building.uid);
+
+            if (!status?.complete || status.happiness === null) {
+                continue;
+            }
+
+            const { w, h } = this.def(building).size;
+
+            tiles += w * h;
+            covered += status.services.includes(service) ? w * h : 0;
+        }
+
+        return { tiles, covered };
+    }
+
     /**
      * Everything that only changes when something is built, moved,
-     * upgraded or removed: road connections, districts, terrain and boost
-     * bonuses, and how pleasant each home's surroundings are.
+     * upgraded or removed: road connections, districts, boosts, and how
+     * pleasant each home's surroundings are: the services that reach it,
+     * the auras around it and the pollution.
      */
     private recalculate(): void {
         this.structureDirty = false;
         this.findConnectedRoads();
 
+        const rules = this.content.world.happiness;
         const all = [...this.buildings.values()];
         const working = all.filter(
             (b) => this.isComplete(b) && this.isConnected(b),
         );
+        const unlocked = this.unlockedServices();
         const status = new Map<number, BuildingStatus>();
         const districtOf = new Map<number, BuildingState | undefined>();
 
@@ -1637,7 +1867,7 @@ export class Game {
 
             districtOf.set(
                 building.uid,
-                def.role === 'district'
+                this.content.roleOf(def) === 'district'
                     ? building
                     : this.districtAt(
                           building.x + Math.floor(def.size.w / 2),
@@ -1651,20 +1881,13 @@ export class Game {
             const effects = this.effects(building);
             const hall = districtOf.get(building.uid);
             const policy = this.policyOf(hall)?.effects ?? NO_POLICY;
+            const home =
+                effects.housing > 0 && this.content.roleOf(def) !== 'center';
+            const services = new Set<ServiceId>();
             let boost = 0;
             let happiness: number | null = null;
             let pollution = 0;
-            let fertility = 0;
-
-            for (let y = building.y; y < building.y + def.size.h; y++) {
-                for (let x = building.x; x < building.x + def.size.w; x++) {
-                    fertility += this.map.inBounds(x, y)
-                        ? this.map.biomeAt(x, y).fertility
-                        : 0;
-                }
-            }
-
-            fertility /= def.size.w * def.size.h;
+            let auras = 0;
 
             for (const other of working) {
                 const otherEffects = this.effects(other);
@@ -1689,28 +1912,35 @@ export class Game {
                         otherEffects.pollution.amount *
                         Math.max(0, 1 + (sourcePolicy.pollution ?? 0) / 100);
                 }
-            }
 
-            if (effects.housing && def.role !== 'center') {
-                let services = 0;
-
-                for (const other of working) {
-                    const aura = this.effects(other).aura;
-
-                    if (
-                        other.uid !== building.uid &&
-                        aura &&
-                        this.distance(building, other) <= aura.radius
-                    ) {
-                        services += aura.happiness;
-                    }
+                if (!home || other.uid === building.uid) {
+                    continue;
                 }
 
+                if (otherEffects.aura && distance <= otherEffects.aura.radius) {
+                    auras += otherEffects.aura.happiness;
+                }
+
+                const coverage = otherEffects.coverage;
+
+                if (
+                    coverage &&
+                    this.manhattan(building, other) <= coverage.radius
+                ) {
+                    services.add(coverage.service);
+                }
+            }
+
+            const covered = unlocked.filter((s) => services.has(s)).length;
+            const comfort = unlocked.length ? covered / unlocked.length : 1;
+
+            if (home) {
                 happiness =
-                    this.content.world.population.baseHappiness +
-                    Math.min(services, 55) +
-                    (policy.happiness ?? 0) -
-                    pollution;
+                    rules.base +
+                    rules.comfort * comfort +
+                    Math.min(rules.auraCap, auras) -
+                    Math.min(rules.pollutionCap, pollution) +
+                    (policy.happiness ?? 0);
             }
 
             status.set(building.uid, {
@@ -1720,9 +1950,10 @@ export class Game {
                 starved: null,
                 noPower: false,
                 boost,
-                fertility,
                 happiness,
                 pollution,
+                services: [...services],
+                comfort,
                 residents: 0,
                 workers: 0,
                 district: hall?.uid ?? null,
@@ -1759,15 +1990,21 @@ export class Game {
         );
     }
 
+    /**
+     * One step (dt game seconds) of the economy. Content rates are per
+     * year, so each is applied as rate × dt / secondsPerYear; the stats
+     * keep the yearly rates for the interface.
+     */
     private updateEconomy(dt: number): void {
         const content = this.content;
         const rules = content.world;
+        const economy = rules.economy;
+        const money = content.currency;
         const state = this.state;
         const stats = this.emptyStats();
-        const season = this.season;
-        const weatherFertility = this.weather?.fertility ?? 1;
+        const year = dt / this.clock.secondsPerYear;
         const active: BuildingState[] = [];
-        let storage = rules.economy.storageBase;
+        let storage = economy.storageBase;
 
         for (const building of this.buildings.values()) {
             const status = this.status.get(building.uid);
@@ -1793,17 +2030,16 @@ export class Game {
             stats.jobs += effects.jobs;
             stats.powerSupply += effects.power;
             stats.powerDemand += effects.powerUse;
-            stats.defense += effects.defense;
             storage += effects.storage;
         }
 
-        storage *= 1 + this.bonuses.storage / 100;
-
         for (const resource of content.resources) {
-            stats.caps[resource.id] = resource.capped ? storage : Infinity;
+            stats.caps[resource.id] = content.isStored(resource.id)
+                ? storage
+                : Infinity;
         }
 
-        stats.workers = state.population * rules.population.workforceShare;
+        stats.workers = state.population * economy.workforceShare;
         stats.employment =
             stats.jobs > 0 ? Math.min(1, stats.workers / stats.jobs) : 1;
 
@@ -1826,7 +2062,7 @@ export class Game {
             status.workers = Math.floor(effects.jobs * stats.employment);
 
             for (const [id, amount] of Object.entries(effects.consumes)) {
-                const need = amount * efficiency * dt;
+                const need = amount * efficiency * year;
 
                 if (need > 0 && (state.resources[id] ?? 0) < need) {
                     efficiency *= (state.resources[id] ?? 0) / need;
@@ -1835,21 +2071,18 @@ export class Game {
             }
 
             status.efficiency = efficiency;
+            stats.research += effects.research * efficiency;
 
             for (const [id, amount] of Object.entries(effects.consumes)) {
-                const perSecond = amount * efficiency;
+                const perYear = amount * efficiency;
 
-                status.input[id] = perSecond;
-                stats.rates[id] = (stats.rates[id] ?? 0) - perSecond;
+                status.input[id] = perYear;
+                stats.rates[id] = (stats.rates[id] ?? 0) - perYear;
                 state.resources[id] = Math.max(
                     0,
-                    (state.resources[id] ?? 0) - perSecond * dt,
+                    (state.resources[id] ?? 0) - perYear * year,
                 );
             }
-
-            const seasonal = effects.seasonal
-                ? season.fertility * weatherFertility * status.fertility
-                : 1;
 
             for (const [id, amount] of Object.entries(effects.produces)) {
                 const percent =
@@ -1857,85 +2090,115 @@ export class Game {
                     (this.bonuses.produces['*'] ?? 0) +
                     (policy.produces?.[id] ?? 0) +
                     (policy.produces?.['*'] ?? 0);
-                const perSecond =
+                const perYear =
                     amount *
                     (1 + status.boost) *
                     Math.max(0, 1 + percent / 100) *
-                    seasonal *
                     efficiency;
 
-                status.output[id] = perSecond;
-                stats.rates[id] = (stats.rates[id] ?? 0) + perSecond;
+                status.output[id] = perYear;
+                stats.rates[id] = (stats.rates[id] ?? 0) + perYear;
                 state.resources[id] =
-                    (state.resources[id] ?? 0) + perSecond * dt;
+                    (state.resources[id] ?? 0) + perYear * year;
             }
 
             // Old buildings in a district that welcomes tourists.
-            if (policy.tourism && this.def(building).role !== 'road') {
+            if (policy.tourism && this.roleOf(building) !== 'road') {
                 const age = state.epoch - this.levelEpoch(building);
 
                 if (age > 0) {
-                    const gold = policy.tourism * age;
+                    const perYear = policy.tourism * age;
 
-                    status.output.gold = (status.output.gold ?? 0) + gold;
-                    stats.rates.gold = (stats.rates.gold ?? 0) + gold;
-                    stats.tourism += gold;
-                    state.resources.gold =
-                        (state.resources.gold ?? 0) + gold * dt;
+                    status.output[money] =
+                        (status.output[money] ?? 0) + perYear;
+                    stats.tourism += perYear;
                 }
             }
         }
 
-        // Happiness of every home.
+        // Happiness of every home, how full it gets (P*), and the tax
+        // multiplier of the homes' level eras.
+        const multipliers = economy.taxMultByLevelEra;
+        const people = rules.population;
+        const noPower = rules.happiness.noPower * (1 - powerRatio);
+        const moods = state.moods.reduce((sum, mood) => sum + mood.amount, 0);
+        const hunger = this.stats.starving ? rules.happiness.starving : 0;
+        const fill = Math.min(1, state.population / Math.max(1, stats.housing));
         let weighted = 0;
         let weight = 0;
-        const cold = season.temperature < 0 ? rules.population.coldPenalty : 0;
-        const fill = Math.min(1, state.population / Math.max(1, stats.housing));
+        let taxWeighted = 0;
 
         for (const building of active) {
             const status = this.status.get(building.uid)!;
             const effects = this.effects(building);
             const housing = this.housingOf(building, status);
 
+            if (housing) {
+                taxWeighted +=
+                    housing *
+                    (multipliers[this.levelEpoch(building)] ??
+                        multipliers.at(-1) ??
+                        1) *
+                    this.def(building).taxMult;
+            }
+
             if (status.happiness === null) {
+                // The Town Hall's own rooms are always lived in.
+                stats.target += housing;
                 continue;
             }
 
-            let happiness = status.happiness - cold + this.bonuses.happiness;
+            let happiness = status.happiness + this.bonuses.happiness;
 
             if (effects.powerUse) {
-                happiness -= (1 - powerRatio) * rules.population.noPowerPenalty;
+                happiness -= noPower;
             }
 
+            const occupancy = Math.max(
+                0,
+                Math.min(
+                    1,
+                    (happiness + moods - hunger - people.occupancy.from) /
+                        people.occupancy.span,
+                ),
+            );
+
+            stats.target +=
+                housing *
+                (people.comfortFill[0] +
+                    people.comfortFill[1] * status.comfort) *
+                occupancy;
             status.residents = Math.floor(housing * fill);
             weighted += happiness * housing;
             weight += housing;
         }
 
         let happiness =
-            weight > 0
-                ? weighted / weight
-                : rules.population.baseHappiness + 10;
+            weight > 0 ? weighted / weight : rules.happiness.base + 20;
 
-        happiness += state.moods.reduce((sum, mood) => sum + mood.amount, 0);
+        happiness += moods;
+        stats.taxMult = stats.housing > 0 ? taxWeighted / stats.housing : 1;
 
-        // Taxes and food.
-        const tax =
+        // Taxes (on the last step's happiness) and food, per year.
+        stats.tax =
             state.population *
-            rules.population.taxPerPerson *
+            economy.taxPerCitizen *
+            stats.taxMult *
             (0.5 + this.stats.happiness / 100) *
             (1 + this.bonuses.tax / 100);
-        const eaten = state.population * rules.population.foodPerPerson;
 
-        stats.rates.gold = (stats.rates.gold ?? 0) + tax;
+        const eaten = state.population * economy.foodPerCitizen;
+        const income = stats.tax + stats.tourism;
+
+        stats.rates[money] = (stats.rates[money] ?? 0) + income;
         stats.rates.food = (stats.rates.food ?? 0) - eaten;
-        state.resources.gold = (state.resources.gold ?? 0) + tax * dt;
-        state.resources.food = (state.resources.food ?? 0) - eaten * dt;
+        state.resources[money] = (state.resources[money] ?? 0) + income * year;
+        state.resources.food = (state.resources.food ?? 0) - eaten * year;
         stats.starving = state.resources.food <= 0 && stats.rates.food < 0;
         state.resources.food = Math.max(0, state.resources.food);
 
         if (stats.starving) {
-            happiness -= rules.population.starvingPenalty;
+            happiness -= rules.happiness.starving;
         }
 
         stats.happiness = Math.max(0, Math.min(100, happiness));
@@ -1943,34 +2206,36 @@ export class Game {
         this.clampToCaps();
     }
 
+    /**
+     * Citizens move towards what the homes hold at their happiness (P*,
+     * gdd §4.7): above it a share moves out, while starving people leave,
+     * otherwise homes fill in a year or two.
+     */
     private updatePopulation(dt: number): void {
         const state = this.state;
-        const capacity = this.stats.housing;
-        const happy = this.stats.happiness;
+        const target = this.stats.target;
         const rules = this.content.world.population;
-        const rate = rules.growthRate;
 
-        if (state.population > capacity) {
+        if (state.population > target) {
             state.population = Math.max(
-                capacity,
+                target,
                 state.population -
                     Math.max(
                         0.2,
-                        (state.population - capacity) *
-                            rules.overcrowdingDecline,
+                        (state.population - target) * rules.moveOutShare,
                     ) *
                         dt,
             );
         } else if (this.stats.starving) {
             state.population -= state.population * rules.starvingDecline * dt;
-        } else if (happy < 25) {
-            state.population -= state.population * rules.unhappyDecline * dt;
-        } else if (happy >= 40) {
+        } else {
             state.population = Math.min(
-                capacity,
+                target,
                 state.population +
-                    ((capacity - state.population) * rate * (happy / 70) +
-                        0.1) *
+                    ((target - state.population) *
+                        rules.growthRate *
+                        Math.min(1, this.stats.happiness / 70) +
+                        rules.growthFlat) *
                         dt,
             );
         }
@@ -2022,17 +2287,15 @@ export class Game {
             this.events.emit({ type: 'achievement', goal: goal.id });
 
             if (!quiet) {
-                const reward = Object.entries(goal.reward)
-                    .map(
-                        ([id, amount]) =>
-                            `+${amount} ${this.content.resource(id)?.icon ?? id}`,
-                    )
-                    .join(' ');
+                const money = goal.reward[this.content.currency] ?? 0;
 
                 this.events.emit({
                     type: 'toast',
-                    text: `🏆 ${goal.name}${reward ? ` · ${reward}` : ''}`,
+                    text: money
+                        ? `🏆 ${goal.name} · +:amount ${this.content.currencyFace(this.state.epoch).symbol}`
+                        : `🏆 ${goal.name}`,
                     tone: 'good',
+                    amount: money,
                 });
             }
         }
@@ -2040,7 +2303,7 @@ export class Game {
 
     private clampToCaps(): void {
         for (const resource of this.content.resources) {
-            if (resource.capped) {
+            if (this.content.isStored(resource.id)) {
                 this.state.resources[resource.id] = Math.min(
                     this.stats.caps[resource.id],
                     this.state.resources[resource.id] ?? 0,
@@ -2079,12 +2342,12 @@ export class Game {
         const state = this.state;
         const rules = this.content.world.events;
         const candidates = rules.list.filter(
-            (event) =>
-                (!event.seasons || event.seasons.includes(this.season.id)) &&
-                (!event.epochs || event.epochs.includes(this.epoch.id)),
+            (event) => !event.epochs || event.epochs.includes(this.epoch.id),
         );
 
-        state.nextEventAt = state.time + between(this.rng, rules.every);
+        state.nextEventAt =
+            state.time +
+            between(this.rng, rules.everyYears) * this.clock.secondsPerYear;
 
         if (!candidates.length || quiet) {
             return;
@@ -2098,13 +2361,13 @@ export class Game {
         let amount = 0;
 
         for (const [id, value] of Object.entries(event.gain ?? {})) {
+            // A share of the stores' capacity, or of the treasury for money.
+            const base = Number.isFinite(this.stats.caps[id])
+                ? this.stats.caps[id]
+                : (state.resources[id] ?? 0);
             const delta =
                 value < 1
-                    ? Math.floor(
-                          (this.stats.caps[id] === Infinity
-                              ? 1000
-                              : this.stats.caps[id]) * value,
-                      )
+                    ? Math.floor(base * value)
                     : value * (1 + state.epoch);
 
             amount += delta;
@@ -2126,7 +2389,8 @@ export class Game {
 
         if (event.mood) {
             state.moods.push({
-                until: state.time + event.mood.seconds,
+                until:
+                    state.time + event.mood.years * this.clock.secondsPerYear,
                 amount: event.mood.amount,
                 reason: event.id,
             });
@@ -2135,7 +2399,8 @@ export class Game {
         state.stats.events++;
         this.events.emit({
             type: 'toast',
-            text: event.text.replace(':amount', String(Math.floor(amount))),
+            text: event.text,
+            amount: Math.floor(amount),
             tone:
                 event.lose || (event.mood && event.mood.amount < 0)
                     ? 'bad'
@@ -2145,14 +2410,17 @@ export class Game {
 
     // ———————————————————————————————————————— Tester tools
 
-    /** Tester: fills every known resource (capped ones to the brim). */
+    /** Tester: fills the stores to the brim and adds money for the next Town Hall twice over. */
     testerGrant(): void {
+        const next = this.townHallUpgrade()?.cost[this.content.currency] ?? 0;
+
         for (const resource of this.visibleResources()) {
             const cap = this.stats.caps[resource.id];
 
             this.state.resources[resource.id] = Number.isFinite(cap)
                 ? cap
-                : (this.state.resources[resource.id] ?? 0) + 100_000;
+                : (this.state.resources[resource.id] ?? 0) +
+                  Math.max(100_000, next * 2);
         }
 
         this.revision++;
@@ -2197,14 +2465,7 @@ export class Game {
 
     /** Tester: moves to the next era whatever the checklist says. */
     testerNextEpoch(): void {
-        if (!this.epoch.next) {
-            return;
-        }
-
-        this.state.epoch++;
-        this.npcs.onEpochChanged();
-        this.structureChanged();
-        this.events.emit({ type: 'epoch', epoch: this.state.epoch });
+        this.enterNextEpoch();
     }
 
     randomName(): string {

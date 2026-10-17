@@ -1,7 +1,13 @@
 /** A tiny typed event bus: the simulation emits, the renderer, audio and UI listen. */
 
 export type GameEvent =
-    | { type: 'toast'; text: string; tone: 'info' | 'good' | 'bad' }
+    /** `:amount` in the text is the amount, formatted by the interface. */
+    | {
+          type: 'toast';
+          text: string;
+          tone: 'info' | 'good' | 'bad';
+          amount?: number;
+      }
     | { type: 'built'; uid: number }
     | {
           type: 'placed';

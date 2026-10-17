@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import type { ReactNode } from 'react';
-import type { Amounts, Category } from '../engine/content/types';
+import { MATERIALS } from '../engine/content/registry';
+import type { Amounts, Category, CurrencyFace } from '../engine/content/types';
 import type { Game } from '../engine/sim/game';
 
 export const CATEGORY_NAMES: Record<Category, { name: string; icon: string }> =
@@ -10,41 +11,74 @@ export const CATEGORY_NAMES: Record<Category, { name: string; icon: string }> =
         resources: { name: 'Добыча', icon: '⛏️' },
         industry: { name: 'Производство', icon: '🏭' },
         power: { name: 'Энергия', icon: '⚡' },
-        trade: { name: 'Торговля', icon: '💰' },
+        trade: { name: 'Торговля', icon: '⚖️' },
         services: { name: 'Услуги', icon: '⛲' },
         science: { name: 'Наука', icon: '🔬' },
         infrastructure: { name: 'Город', icon: '🛤️' },
     };
 
-export function compact(value: number): string {
-    const n = Math.floor(value);
+const SUFFIXES = ['', 'K', 'M', 'B', 'T'];
+const MINUS = '−';
+const THIN_SPACE = ' ';
 
-    if (!Number.isFinite(n)) {
+/**
+ * The one number format of the game (gdd §3.2): three significant digits
+ * with Latin suffixes and a decimal comma — 999, 1,24K, 12,4K, 124K,
+ * 1,24M, 1,24B; negative values with a real minus sign.
+ */
+export function formatNumber(value: number): string {
+    if (!Number.isFinite(value)) {
         return '∞';
     }
 
-    if (Math.abs(n) < 1000) {
-        return String(n);
+    const sign = value < 0 ? MINUS : '';
+    let abs = Math.abs(value);
+    let tier = 0;
+    let rounded = Number(abs.toPrecision(3));
+
+    while (rounded >= 1000 && tier < SUFFIXES.length - 1) {
+        abs /= 1000;
+        tier++;
+        rounded = Number(abs.toPrecision(3));
     }
 
-    if (Math.abs(n) < 1_000_000) {
-        return `${(n / 1000).toFixed(n < 10_000 ? 1 : 0)}k`;
+    if (tier === 0) {
+        rounded = Math.round(rounded * 100) / 100;
     }
 
-    return `${(n / 1_000_000).toFixed(1)}M`;
+    if (rounded === 0) {
+        return '0';
+    }
+
+    return `${sign}${String(rounded).replace('.', ',')}${SUFFIXES[tier]}`;
 }
 
-export function perMinute(rate: number): string {
-    const value = rate * 60;
-    const abs = Math.abs(value);
-    const text =
-        abs >= 1000
-            ? compact(abs)
-            : abs >= 10
-              ? String(Math.round(abs))
-              : String(Math.round(abs * 10) / 10);
+/** A yearly rate: +12,4K/год, −80/год. */
+export function formatRate(perYear: number): string {
+    return `${perYear < 0 ? '' : '+'}${formatNumber(perYear)}/год`;
+}
 
-    return `${value >= 0 ? '+' : '−'}${text}/мин`;
+/** An exact whole number for tooltips and sheets: 12 400 (thin spaces). */
+export function formatExact(value: number): string {
+    if (!Number.isFinite(value)) {
+        return '∞';
+    }
+
+    const digits = String(Math.round(Math.abs(value))).replace(
+        /\B(?=(\d{3})+(?!\d))/g,
+        THIN_SPACE,
+    );
+
+    return `${value < 0 && Math.round(value) !== 0 ? MINUS : ''}${digits}`;
+}
+
+/** The current era's face of the money: its symbol in a coin. */
+export function MoneyIcon({ face }: { face: CurrencyFace }) {
+    return (
+        <span className="money-icon" aria-hidden="true" title={face.short}>
+            {face.symbol}
+        </span>
+    );
 }
 
 export function duration(seconds: number): string {
@@ -71,28 +105,46 @@ export function face(value: number): string {
               : '😠';
 }
 
+/**
+ * A price: the money with any materials bought on the spot included, the
+ * materials, and — when the stores are short — what is bought and for how
+ * much («▦ 20 докупим за 80»).
+ */
 export function CostLine({ game, cost }: { game: Game; cost: Amounts }) {
-    const entries = Object.entries(cost);
+    const quote = game.quote(cost);
+    const coin = game.content.currencyFace(game.state.epoch);
+    const materials = game.content.resource(MATERIALS);
+    const icon = materials?.icon ?? MATERIALS;
 
-    if (!entries.length) {
+    if (!quote.total && !quote.mat) {
         return <span className="cost cost--free">бесплатно</span>;
     }
 
+    const short = !game.canAfford(cost);
+
     return (
-        <span className="cost">
-            {entries.map(([id, amount]) => (
-                <span
-                    key={id}
-                    className={
-                        (game.state.resources[id] ?? 0) >= amount
-                            ? 'cost__item'
-                            : 'cost__item cost__item--short'
-                    }
-                    title={game.content.resource(id)?.name}
-                >
-                    {game.content.resource(id)?.icon ?? id} {compact(amount)}
+        <span
+            className="cost"
+            title={`${coin.short}: ${formatExact(quote.total)}${quote.mat ? ` · ${materials?.name ?? MATERIALS}: ${formatExact(quote.mat)}` : ''}`}
+        >
+            <span
+                className={
+                    short ? 'cost__item cost__item--short' : 'cost__item'
+                }
+            >
+                <MoneyIcon face={coin} /> {formatNumber(quote.total)}
+            </span>
+            {quote.mat > 0 && (
+                <span className="cost__item">
+                    + {icon} {formatNumber(quote.mat)}
                 </span>
-            ))}
+            )}
+            {quote.bought > 0 && (
+                <span className="cost__note">
+                    {icon} {formatNumber(quote.bought)} докупим за{' '}
+                    {formatNumber(quote.importMoney)}
+                </span>
+            )}
         </span>
     );
 }

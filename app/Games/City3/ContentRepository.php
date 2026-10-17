@@ -100,11 +100,33 @@ class ContentRepository
     }
 
     /**
+     * The ids a world may list as reached: story goals and achievements.
+     *
      * @return list<string>
      */
     public function goalIds(): array
     {
-        return $this->ids('goals', 'goals');
+        return [...$this->ids('goals', 'story'), ...$this->ids('goals', 'achievements')];
+    }
+
+    /**
+     * The resources a world keeps: the one currency, the stocks and the flows.
+     *
+     * @return list<string>
+     */
+    public function resourceIds(): array
+    {
+        return $this->ids('resources', 'resources');
+    }
+
+    /**
+     * The one currency's resource id (world.json economy.currency).
+     */
+    public function currency(): string
+    {
+        $currency = $this->read('world')['economy']['currency'] ?? 'money';
+
+        return is_string($currency) ? $currency : 'money';
     }
 
     /**

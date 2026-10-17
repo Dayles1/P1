@@ -32,7 +32,7 @@ class WorldFactory extends Factory
             'population' => 6,
             'happiness' => 55,
             'score' => 16,
-            'resources' => ['food' => 120, 'wood' => 160, 'stone' => 60, 'gold' => 80, 'knowledge' => 0],
+            'resources' => ['money' => 1200, 'food' => 160, 'mat' => 160, 'goods' => 0, 'fuel' => 0],
             'weather' => 'clear',
             'weather_until' => 0,
             'next_event_at' => 200,

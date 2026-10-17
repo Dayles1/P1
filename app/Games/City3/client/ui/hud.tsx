@@ -1,7 +1,18 @@
 import type { Game } from '../engine/sim/game';
-import { Bar, compact, duration, face, perMinute } from './common';
+import {
+    Bar,
+    duration,
+    face,
+    formatExact,
+    formatNumber,
+    formatRate,
+    MoneyIcon,
+} from './common';
 
-/** The bar along the top: year and era, clock, resources, people, research, speed. */
+/**
+ * The bar along the top: year and era, clock, the money pill (the only
+ * resource on screen, in the current era's face), citizens, research, speed.
+ */
 export function TopBar({
     game,
     speed,
@@ -38,6 +49,9 @@ export function TopBar({
     const stats = game.stats;
     const research = game.state.research;
     const tech = research ? game.content.tech(research.id) : undefined;
+    const coin = game.content.currencyFace(game.state.epoch);
+    const money = game.money;
+    const moneyRate = stats.rates[game.content.currency] ?? 0;
 
     return (
         <header className="hud-top">
@@ -68,13 +82,32 @@ export function TopBar({
 
             <div className="hud-res">
                 <div
+                    className="hud-res__item hud-money"
+                    role="status"
+                    aria-label={`Деньги: ${formatExact(money)} (${coin.short.toLowerCase()})`}
+                    title={`${coin.name}: ${formatExact(money)} · ${formatRate(moneyRate)}\n«${coin.flavor}»`}
+                >
+                    <span className="hud-res__icon">
+                        <MoneyIcon face={coin} />
+                    </span>
+                    <span className="hud-res__value">
+                        {formatNumber(money)}
+                    </span>
+                    <span
+                        className={`hud-res__rate${moneyRate < 0 ? ' hud-res__rate--down' : ''}`}
+                    >
+                        {formatRate(moneyRate)}
+                    </span>
+                </div>
+
+                <div
                     className="hud-res__item"
-                    title={`Жители / мест в домах · работают ${Math.floor(Math.min(stats.workers, stats.jobs))} из ${Math.floor(stats.workers)}, рабочих мест ${stats.jobs}`}
+                    title={`Жители / сколько вместят дома при нынешних услугах и довольстве (мест всего ${formatNumber(stats.housing)}) · работают ${formatNumber(Math.min(stats.workers, stats.jobs))} из ${formatNumber(stats.workers)}, рабочих мест ${formatNumber(stats.jobs)}`}
                 >
                     <span className="hud-res__icon">👥</span>
                     <span className="hud-res__value">
-                        {compact(game.state.population)}
-                        <small>/{compact(stats.housing)}</small>
+                        {formatNumber(Math.floor(game.state.population))}
+                        <small>/{formatNumber(Math.floor(stats.target))}</small>
                     </span>
                     <span className="hud-res__rate">
                         {stats.employment < 1
@@ -82,56 +115,6 @@ export function TopBar({
                             : `${face(stats.happiness)} ${Math.round(stats.happiness)}`}
                     </span>
                 </div>
-
-                {(stats.powerDemand > 0 || stats.powerSupply > 0) && (
-                    <div
-                        className="hud-res__item"
-                        title="Энергия: выработка / потребление"
-                    >
-                        <span className="hud-res__icon">⚡</span>
-                        <span className="hud-res__value">
-                            {compact(stats.powerSupply)}
-                            <small>/{compact(stats.powerDemand)}</small>
-                        </span>
-                        <span
-                            className={`hud-res__rate${stats.powerSupply < stats.powerDemand ? ' hud-res__rate--down' : ''}`}
-                        >
-                            энергия
-                        </span>
-                    </div>
-                )}
-
-                {game.visibleResources().map((resource) => {
-                    const value = game.state.resources[resource.id] ?? 0;
-                    const rate = stats.rates[resource.id] ?? 0;
-                    const cap = stats.caps[resource.id];
-                    const full = resource.capped && value >= cap - 0.5;
-
-                    return (
-                        <div
-                            key={resource.id}
-                            className={`hud-res__item${full ? ' hud-res__item--full' : ''}`}
-                            title={`${resource.name}${resource.capped ? ` · склад ${compact(cap)}` : ''}\n${resource.description}`}
-                        >
-                            <span className="hud-res__icon">
-                                {resource.icon}
-                            </span>
-                            <span className="hud-res__value">
-                                {compact(value)}
-                                {resource.capped && (
-                                    <small>/{compact(cap)}</small>
-                                )}
-                            </span>
-                            <span
-                                className={`hud-res__rate${rate < -0.001 ? ' hud-res__rate--down' : ''}`}
-                            >
-                                {Math.abs(rate) < 0.0005
-                                    ? '·'
-                                    : perMinute(rate)}
-                            </span>
-                        </div>
-                    );
-                })}
             </div>
 
             <div className="hud-top__right">
@@ -202,7 +185,7 @@ export function TopBar({
                 {infinite && (
                     <span
                         className="hud-tester"
-                        title="Режим тестера: бесконечные ресурсы"
+                        title="Режим тестера: всё бесплатно"
                     >
                         ♾️
                     </span>
@@ -289,8 +272,8 @@ export function GoalsWidget({
                                         tone="good"
                                     />
                                     <small>
-                                        {compact(progress.current)} /{' '}
-                                        {compact(progress.target)}
+                                        {formatNumber(progress.current)} /{' '}
+                                        {formatNumber(progress.target)}
                                     </small>
                                 </span>
                             </li>

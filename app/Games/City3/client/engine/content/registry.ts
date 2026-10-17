@@ -6,18 +6,22 @@
  */
 
 import type {
+    AchievementDef,
     Amounts,
     BiomeDef,
     BlueprintDef,
     BuildingDef,
     ContentBundle,
+    CurrencyFace,
     EpochDef,
+    GoalCondition,
     GoalDef,
     LevelDef,
     NpcTypeDef,
     Palette,
     ResourceDef,
     SeasonDef,
+    ServiceId,
     TechDef,
     WeatherDef,
 } from './types';
@@ -27,6 +31,70 @@ export interface ContentIssue {
     path: string;
     message: string;
 }
+
+/** What the engine does specially with a building. */
+export type BuildingRole = 'road' | 'center' | 'district' | 'bureau';
+
+/**
+ * The buildings with a special part, by their content ids (stable across
+ * versions, gdd conventions); streets are found by `network: "road"`.
+ */
+export const SPECIAL_BUILDINGS = {
+    center: 'town_center',
+    district: 'district_hall',
+    bureau: 'architect_bureau',
+} as const;
+
+export const SERVICES: ServiceId[] = [
+    'water',
+    'health',
+    'education',
+    'leisure',
+    'data',
+];
+
+/** Materials: the one stock every construction price has besides money. */
+export const MATERIALS = 'mat';
+
+const ZONES = [
+    'land',
+    'landOrBeach',
+    'mountain',
+    'coast',
+    'road',
+    'airportPlot',
+] as const;
+const JOB_CLASSES = ['svc', 'food', 'raw', 'ind', 'com'] as const;
+const VERBS = [
+    'build',
+    'charters',
+    'orders',
+    'rail',
+    'metro',
+    'routes',
+    'programs',
+] as const;
+const CONDITIONS: GoalCondition['type'][] = [
+    'population',
+    'building',
+    'epoch',
+    'tech',
+    'techs',
+    'happiness',
+    'coverage',
+    'power',
+    'heritage',
+    'buildingLevel',
+    'stars',
+    'strips',
+    'peakPopulation',
+    'trafficBelow',
+    'pollutionBelow',
+    'noImportsYears',
+    'happinessYears',
+    'calendarYear',
+    'neverArrears',
+];
 
 export class Content {
     readonly bundle: ContentBundle;
@@ -38,7 +106,9 @@ export class Content {
     readonly buildings: BuildingDef[];
     readonly techs: TechDef[];
     readonly blueprints: BlueprintDef[];
+    /** Story goals: tasks while open, kept as done once reached. */
     readonly goals: GoalDef[];
+    readonly achievements: AchievementDef[];
     readonly npcTypes: NpcTypeDef[];
 
     private readonly epochIndex = new Map<string, number>();
@@ -47,6 +117,7 @@ export class Content {
     private readonly techById = new Map<string, TechDef>();
     private readonly blueprintById = new Map<string, BlueprintDef>();
     private readonly resourceById = new Map<string, ResourceDef>();
+    private readonly roles = new Map<string, BuildingRole>();
 
     constructor(bundle: ContentBundle) {
         this.bundle = bundle;
@@ -58,7 +129,8 @@ export class Content {
         this.npcTypes = bundle.npcs.types;
         this.techs = bundle.techs.techs;
         this.blueprints = bundle.blueprints.blueprints;
-        this.goals = bundle.goals.goals;
+        this.goals = bundle.goals.story ?? [];
+        this.achievements = bundle.goals.achievements ?? [];
 
         this.epochs.forEach((epoch, index) =>
             this.epochIndex.set(epoch.id, index),
@@ -79,13 +151,37 @@ export class Content {
                 this.firstEpoch(a) - this.firstEpoch(b) ||
                 a.id.localeCompare(b.id),
         );
-        this.buildings.forEach((building) =>
-            this.buildingById.set(building.id, building),
-        );
+        this.buildings.forEach((building) => {
+            this.buildingById.set(building.id, building);
+
+            const role =
+                building.network === 'road'
+                    ? 'road'
+                    : (Object.keys(SPECIAL_BUILDINGS) as BuildingRole[]).find(
+                          (key) =>
+                              SPECIAL_BUILDINGS[
+                                  key as keyof typeof SPECIAL_BUILDINGS
+                              ] === building.id,
+                      );
+
+            if (role) {
+                this.roles.set(building.id, role);
+            }
+        });
     }
 
     get world() {
         return this.bundle.world;
+    }
+
+    /** The one currency's resource id ('money'). */
+    get currency(): string {
+        return this.bundle.world.economy.currency;
+    }
+
+    /** How the money looks in an era (index). */
+    currencyFace(epochIndex: number): CurrencyFace {
+        return this.epoch(epochIndex).currency;
     }
 
     epochOrder(id: string): number {
@@ -120,9 +216,14 @@ export class Content {
         return this.buildingById.has(id);
     }
 
-    /** The building with a special role (the town centre, roads, …). */
-    byRole(role: NonNullable<BuildingDef['role']>): BuildingDef | undefined {
-        return this.buildings.find((def) => def.role === role);
+    /** What the engine does specially with a building, if anything. */
+    roleOf(def: BuildingDef): BuildingRole | null {
+        return this.roles.get(def.id) ?? null;
+    }
+
+    /** The building with a special role (the town centre, streets, …). */
+    byRole(role: BuildingRole): BuildingDef | undefined {
+        return this.buildings.find((def) => this.roleOf(def) === role);
     }
 
     level(def: BuildingDef, level: number): LevelDef {
@@ -153,6 +254,13 @@ export class Content {
         return this.resourceById.get(id);
     }
 
+    /** Resources kept in the stores (everything but the currency). */
+    isStored(id: string): boolean {
+        const resource = this.resourceById.get(id);
+
+        return resource !== undefined && resource.kind !== 'currency';
+    }
+
     emptyAmounts(): Amounts {
         return Object.fromEntries(
             this.resources.map((resource) => [resource.id, 0]),
@@ -167,6 +275,9 @@ export class Content {
         );
     }
 }
+
+const isNumber = (value: unknown): value is number =>
+    typeof value === 'number' && Number.isFinite(value);
 
 /**
  * Every problem in a content bundle; an empty list means the game can run
@@ -202,21 +313,26 @@ export function validateContent(
     }
 
     const content = bundle as ContentBundle;
-    const resources = new Set(
-        (content.resources.resources ?? []).map((r) => r.id),
-    );
+    const resourceList = content.resources.resources ?? [];
+    const resources = new Set(resourceList.map((r) => r.id));
     const epochList = (content.epochs.epochs ?? []).map((e) => e.id);
     const epochs = new Set(epochList);
     const order = (id: string) => epochList.indexOf(id);
     const biomes = new Set((content.biomes.biomes ?? []).map((b) => b.id));
-    const seasons = new Set((content.climate.seasons ?? []).map((s) => s.id));
     const weather = new Set((content.climate.weather ?? []).map((w) => w.id));
     const sounds = new Set(Object.keys(content.sounds.presets ?? {}));
     const buildings = new Set(Object.keys(content.buildings));
     const techList = content.techs.techs ?? [];
     const techs = new Map(techList.map((t) => [t.id, t]));
+    const currency = content.world.economy?.currency;
+    const townHall = content.buildings[SPECIAL_BUILDINGS.center];
 
-    const checkAmounts = (file: string, path: string, amounts: unknown) => {
+    const checkAmounts = (
+        file: string,
+        path: string,
+        amounts: unknown,
+        allowed?: string[],
+    ) => {
         if (amounts === undefined || amounts === null) {
             return;
         }
@@ -230,9 +346,15 @@ export function validateContent(
         for (const [id, value] of Object.entries(amounts as Amounts)) {
             if (!resources.has(id)) {
                 add(file, `${path}.${id}`, `Нет такого ресурса «${id}»`);
+            } else if (allowed && !allowed.includes(id)) {
+                add(
+                    file,
+                    `${path}.${id}`,
+                    `Здесь можно только: ${allowed.join(', ')}`,
+                );
             }
 
-            if (typeof value !== 'number' || value < 0) {
+            if (!isNumber(value) || value < 0) {
                 add(file, `${path}.${id}`, 'Нужно неотрицательное число');
             }
         }
@@ -244,7 +366,7 @@ export function validateContent(
     };
     const checkTech = (file: string, path: string, id: unknown) => {
         if (!techs.has(id as string)) {
-            add(file, path, `Нет технологии «${String(id)}»`);
+            add(file, path, `Нет открытия «${String(id)}»`);
         }
     };
     const checkBuilding = (file: string, path: string, id: unknown) => {
@@ -252,10 +374,44 @@ export function validateContent(
             add(file, path, `Нет здания «${String(id)}»`);
         }
     };
+    const checkCondition = (
+        file: string,
+        path: string,
+        condition: GoalCondition | undefined,
+    ) => {
+        if (!condition || !CONDITIONS.includes(condition.type)) {
+            add(
+                file,
+                `${path}.type`,
+                `Неизвестное условие «${String(condition?.type)}»`,
+            );
+
+            return;
+        }
+
+        if (condition.type === 'building') {
+            for (const id of ([] as string[]).concat(condition.building)) {
+                checkBuilding(file, `${path}.building`, id);
+            }
+        } else if (condition.type === 'buildingLevel') {
+            checkBuilding(file, `${path}.building`, condition.building);
+        } else if (
+            condition.type === 'epoch' ||
+            condition.type === 'noImportsYears'
+        ) {
+            checkEpoch(file, `${path}.epoch`, condition.epoch);
+        } else if (condition.type === 'tech') {
+            checkTech(file, `${path}.tech`, condition.tech);
+        } else if (
+            condition.type === 'coverage' &&
+            !SERVICES.includes(condition.service)
+        ) {
+            add(file, `${path}.service`, `Нет услуги «${condition.service}»`);
+        }
+    };
 
     // world
     const world = content.world;
-
     const map = world.map;
     const rows =
         (map?.landRows ?? 0) + (map?.beachRows ?? 0) + (map?.seaRows ?? 0);
@@ -281,13 +437,11 @@ export function validateContent(
         }
     }
 
-    if (
-        !(
-            map?.start?.minX >= 0 &&
-            map.start.minX <= map.start.maxX &&
-            map.start.maxX < map.width
-        )
-    ) {
+    if (!(
+        map?.start?.minX >= 0 &&
+        map.start.minX <= map.start.maxX &&
+        map.start.maxX < map.width
+    )) {
         add(
             'world',
             'map.start',
@@ -310,6 +464,68 @@ export function validateContent(
         checkBuilding('world', `start.buildings[${index}]`, start.type);
     }
 
+    const economy = world.economy;
+
+    if (resourceList.find((r) => r.id === currency)?.kind !== 'currency') {
+        add(
+            'world',
+            'economy.currency',
+            `Валюта «${String(currency)}» должна быть ресурсом вида currency`,
+        );
+    }
+
+    if (
+        !Array.isArray(economy?.taxMultByLevelEra) ||
+        economy.taxMultByLevelEra.length !== epochList.length ||
+        !economy.taxMultByLevelEra.every((v) => isNumber(v) && v > 0)
+    ) {
+        add(
+            'world',
+            'economy.taxMultByLevelEra',
+            'Нужен положительный множитель налога для каждой эпохи',
+        );
+    }
+
+    for (const key of [
+        'taxPerCitizen',
+        'workforceShare',
+        'foodPerCitizen',
+        'storageBase',
+    ] as const) {
+        if (!isNumber(economy?.[key]) || economy[key] < 0) {
+            add('world', `economy.${key}`, 'Нужно неотрицательное число');
+        }
+    }
+
+    for (const key of [
+        'tradeIn',
+        'upgradeFloor',
+        'refundShare',
+        'moveShare',
+    ] as const) {
+        if (!isNumber(economy?.[key]) || economy[key] < 0 || economy[key] > 1) {
+            add('world', `economy.${key}`, 'Нужна доля от 0 до 1');
+        }
+    }
+
+    for (const [key, price] of Object.entries(economy?.prices ?? {})) {
+        if (!isNumber(price) || price < 0) {
+            add(
+                'world',
+                `economy.prices.${key}`,
+                'Нужно неотрицательное число',
+            );
+        }
+    }
+
+    if (!isNumber(economy?.prices?.matImport)) {
+        add(
+            'world',
+            'economy.prices.matImport',
+            'Нужна цена докупки стройматериалов',
+        );
+    }
+
     if (!(world.districts?.radius >= 1)) {
         add('world', 'districts.radius', 'Радиус округа — от 1 клетки');
     }
@@ -326,28 +542,51 @@ export function validateContent(
         }
     }
 
+    if (
+        !(world.events?.firstYear >= 0) ||
+        !(
+            world.events?.everyYears?.[0] > 0 &&
+            world.events.everyYears[1] >= world.events.everyYears[0]
+        )
+    ) {
+        add(
+            'world',
+            'events',
+            'firstYear — от 0, everyYears — [от, до] больше нуля',
+        );
+    }
+
     for (const [index, event] of (world.events?.list ?? []).entries()) {
         checkAmounts('world', `events.list[${index}].gain`, event.gain);
         checkAmounts('world', `events.list[${index}].lose`, event.lose);
-        (event.seasons ?? [])
-            .filter((s) => !seasons.has(s))
-            .forEach((s) =>
-                add(
-                    'world',
-                    `events.list[${index}].seasons`,
-                    `Нет сезона «${s}»`,
-                ),
-            );
         (event.epochs ?? []).forEach((e) =>
             checkEpoch('world', `events.list[${index}].epochs`, e),
         );
     }
 
     // resources
-    for (const [index, resource] of (
-        content.resources.resources ?? []
-    ).entries()) {
+    for (const [index, resource] of resourceList.entries()) {
         checkEpoch('resources', `resources[${index}].epoch`, resource.epoch);
+
+        if (!['currency', 'stock', 'flow'].includes(resource.kind)) {
+            add(
+                'resources',
+                `resources[${index}].kind`,
+                'Вид ресурса — currency, stock или flow',
+            );
+        }
+
+        for (const era of Object.keys(resource.faces ?? {})) {
+            checkEpoch('resources', `resources[${index}].faces`, era);
+        }
+    }
+
+    if (resourceList.filter((r) => r.kind === 'currency').length !== 1) {
+        add('resources', 'resources', 'Валюта должна быть ровно одна');
+    }
+
+    if (!resources.has(MATERIALS)) {
+        add('resources', 'resources', `Нужен ресурс «${MATERIALS}»`);
     }
 
     // biomes
@@ -383,47 +622,136 @@ export function validateContent(
     }
 
     // epochs
+    let previousTownHall = 0;
+
     for (const [index, epoch] of (content.epochs.epochs ?? []).entries()) {
+        const path = `epochs[${index}]`;
+
         if (index > 0 && epoch.year <= content.epochs.epochs[index - 1].year) {
             add(
                 'epochs',
-                `epochs[${index}].year`,
+                `${path}.year`,
                 'Годы эпох должны идти по возрастанию',
             );
         }
 
-        if (epoch.next) {
-            checkAmounts(
-                'epochs',
-                `epochs[${index}].next.cost`,
-                epoch.next.cost,
-            );
-            epoch.next.buildings.forEach((b) =>
-                checkBuilding(
+        for (const key of [
+            'name',
+            'short',
+            'symbol',
+            'icon',
+            'flavor',
+        ] as const) {
+            if (!epoch.currency?.[key]) {
+                add(
                     'epochs',
-                    `epochs[${index}].next.buildings`,
-                    b.type,
-                ),
-            );
-            (epoch.next.techs ?? []).forEach((t) => {
-                checkTech('epochs', `epochs[${index}].next.techs`, t);
+                    `${path}.currency.${key}`,
+                    'Нужно лицо валюты: name, short, symbol, icon, flavor',
+                );
+            }
+        }
 
-                if (techs.has(t) && order(techs.get(t)!.epoch) > index) {
-                    add(
-                        'epochs',
-                        `epochs[${index}].next.techs`,
-                        `Технология «${t}» из более поздней эпохи`,
-                    );
-                }
-            });
+        if (!VERBS.includes(epoch.verb)) {
+            add(
+                'epochs',
+                `${path}.verb`,
+                `Нет такого действия «${epoch.verb}»`,
+            );
+        }
+
+        if (!/^#[0-9a-fA-F]{6}$/.test(epoch.accent ?? '')) {
+            add('epochs', `${path}.accent`, 'Цвет — в виде #rrggbb');
         }
 
         if (!content.sounds.ambience?.[epoch.ambience]) {
             add(
                 'epochs',
-                `epochs[${index}].ambience`,
+                `${path}.ambience`,
                 `Нет фоновых звуков «${epoch.ambience}» в sounds.json`,
             );
+        }
+
+        const entry = epoch.entry;
+
+        if (index === 0) {
+            if (entry) {
+                add('epochs', `${path}.entry`, 'В первую эпоху не входят');
+            }
+
+            continue;
+        }
+
+        if (!entry) {
+            add('epochs', `${path}.entry`, 'Нужно условие входа в эпоху');
+            continue;
+        }
+
+        const level = townHall?.levels[entry.townHallLevel - 1];
+
+        if (!level || entry.townHallLevel <= previousTownHall) {
+            add(
+                'epochs',
+                `${path}.entry.townHallLevel`,
+                'Нужен следующий уровень ратуши',
+            );
+        } else if (level.epoch !== epoch.id) {
+            add(
+                'epochs',
+                `${path}.entry.townHallLevel`,
+                `Уровень ратуши ${entry.townHallLevel} — из другой эпохи`,
+            );
+        }
+
+        previousTownHall = entry.townHallLevel ?? previousTownHall;
+
+        const previousTechs = techList.filter(
+            (tech) => tech.epoch === epochList[index - 1],
+        ).length;
+
+        if (
+            !isNumber(entry.population) ||
+            entry.population < 0 ||
+            !isNumber(entry.discoveries) ||
+            entry.discoveries < 0 ||
+            entry.discoveries > previousTechs
+        ) {
+            add(
+                'epochs',
+                `${path}.entry`,
+                'Население — от 0, открытий — не больше, чем в прошлой эпохе',
+            );
+        }
+
+        const [two, three] = entry.stars ?? [];
+
+        if (!(
+            isNumber(two) &&
+            isNumber(three) &&
+            three <= two &&
+            two <= epoch.year
+        )) {
+            add(
+                'epochs',
+                `${path}.entry.stars`,
+                'Звёзды — [год для ★★, год для ★★★], не позже года эпохи',
+            );
+        }
+
+        for (const [itemIndex, item] of (entry.items ?? []).entries()) {
+            const itemPath = `${path}.entry.items[${itemIndex}]`;
+
+            checkBuilding('epochs', `${itemPath}.type`, item.type);
+
+            if (
+                buildings.has(item.type) &&
+                !content.buildings[item.type].levels[item.level - 1]
+            ) {
+                add('epochs', `${itemPath}.level`, 'Нет такого уровня');
+            }
+
+            if (!(item.count >= 1) || !item.label) {
+                add('epochs', itemPath, 'Нужны count от 1 и label');
+            }
         }
     }
 
@@ -432,7 +760,7 @@ export function validateContent(
         const path = `techs[${index}]`;
 
         checkEpoch('techs', `${path}.epoch`, tech.epoch);
-        checkAmounts('techs', `${path}.cost`, tech.cost);
+        checkAmounts('techs', `${path}.cost`, tech.cost, [currency]);
 
         for (const required of tech.requires ?? []) {
             checkTech('techs', `${path}.requires`, required);
@@ -483,7 +811,7 @@ export function validateContent(
 
     for (const tech of techList) {
         if (cyclic(tech.id)) {
-            add('techs', tech.id, 'Технологии требуют друг друга по кругу');
+            add('techs', tech.id, 'Открытия требуют друг друга по кругу');
             break;
         }
     }
@@ -495,40 +823,48 @@ export function validateContent(
         const path = `blueprints[${index}]`;
 
         checkEpoch('blueprints', `${path}.epoch`, blueprint.epoch);
-        checkAmounts('blueprints', `${path}.cost`, blueprint.cost);
+        checkAmounts('blueprints', `${path}.cost`, blueprint.cost, [currency]);
         (blueprint.buildings ?? []).forEach((b) =>
             checkBuilding('blueprints', `${path}.buildings`, b),
         );
     }
 
     // goals
-    for (const [index, goal] of (content.goals.goals ?? []).entries()) {
-        const path = `goals[${index}]`;
-        const condition = goal.condition;
-
-        checkEpoch('goals', `${path}.epoch`, goal.epoch);
-        checkAmounts('goals', `${path}.reward`, goal.reward);
-
-        if (condition?.type === 'building') {
-            checkBuilding(
-                'goals',
-                `${path}.condition.building`,
-                condition.building,
-            );
-        } else if (condition?.type === 'epoch') {
-            checkEpoch('goals', `${path}.condition.epoch`, condition.epoch);
-        } else if (condition?.type === 'tech') {
-            checkTech('goals', `${path}.condition.tech`, condition.tech);
-        } else if (
-            condition?.type === 'resource' &&
-            !resources.has(condition.resource)
-        ) {
-            add(
-                'goals',
-                `${path}.condition.resource`,
-                `Нет такого ресурса «${condition.resource}»`,
-            );
+    const goalIds = new Set<string>();
+    const checkId = (path: string, id: string) => {
+        if (goalIds.has(id)) {
+            add('goals', path, `id «${id}» уже занят`);
         }
+
+        goalIds.add(id);
+    };
+
+    for (const [index, goal] of (content.goals.story ?? []).entries()) {
+        const path = `story[${index}]`;
+
+        checkId(`${path}.id`, goal.id);
+        checkEpoch('goals', `${path}.epoch`, goal.epoch);
+        checkAmounts('goals', `${path}.reward`, goal.reward, [currency]);
+        checkCondition('goals', `${path}.condition`, goal.condition);
+    }
+
+    for (const [index, side] of (content.goals.sideTemplates ?? []).entries()) {
+        checkCondition(
+            'goals',
+            `sideTemplates[${index}].condition`,
+            side.condition,
+        );
+    }
+
+    for (const [index, achievement] of (
+        content.goals.achievements ?? []
+    ).entries()) {
+        checkId(`achievements[${index}].id`, achievement.id);
+        checkCondition(
+            'goals',
+            `achievements[${index}].condition`,
+            achievement.condition,
+        );
     }
 
     // npcs
@@ -562,7 +898,7 @@ export function validateContent(
     }
 
     // buildings
-    const roles = new Map<string, string>();
+    let roads = 0;
 
     for (const [key, building] of Object.entries(content.buildings)) {
         const file = `buildings/${key}`;
@@ -575,31 +911,55 @@ export function validateContent(
             );
         }
 
-        if (building.role) {
-            if (roles.has(building.role)) {
-                add(
-                    file,
-                    'role',
-                    `Роль «${building.role}» уже у здания «${roles.get(building.role)}»`,
-                );
-            }
-
-            roles.set(building.role, key);
-        }
-
         if (!(
             building.size?.w >= 1 &&
-            building.size?.w <= 4 &&
+            building.size?.w <= 12 &&
             building.size?.h >= 1 &&
             building.size?.h <= 4
         )) {
-            add(file, 'size', 'Размер — от 1×1 до 4×4');
+            add(file, 'size', 'Размер — от 1×1 до 12×4');
         }
 
-        for (const biome of building.placement?.biomes ?? []) {
-            if (!biomes.has(biome)) {
-                add(file, 'placement.biomes', `Нет биома «${biome}»`);
-            }
+        if (![null, 'road', 'rail'].includes(building.network)) {
+            add(file, 'network', 'Сеть — null, road или rail');
+        }
+
+        roads += building.network === 'road' ? 1 : 0;
+
+        if (
+            building.network
+                ? building.jobClass !== null
+                : !JOB_CLASSES.includes(building.jobClass!)
+        ) {
+            add(
+                file,
+                'jobClass',
+                'Класс работ — svc, food, raw, ind или com (у сетей — null)',
+            );
+        }
+
+        if (!ZONES.includes(building.placement?.zone)) {
+            add(
+                file,
+                'placement.zone',
+                `Нет зоны «${building.placement?.zone}»`,
+            );
+        }
+
+        if (
+            building.placement?.deposit !== undefined &&
+            (!['ore', 'coal', 'oil'].includes(building.placement.deposit) ||
+                !['mountain', 'coast'].includes(building.placement.zone))
+        ) {
+            add(
+                file,
+                'placement.deposit',
+                'Залежь — ore, coal или oil, у гор или на берегу',
+            );
+        }
+
+        if (!(building.taxMult > 0)) {
+            add(file, 'taxMult', 'Множитель налога — больше нуля');
         }
 
         for (const [slot, sound] of Object.entries(building.sounds ?? {})) {
@@ -652,25 +1012,77 @@ export function validateContent(
                     add(
                         file,
                         `${path}.tech`,
-                        `Технология «${level.tech}» из более поздней эпохи, чем уровень`,
+                        `Открытие «${level.tech}» из более поздней эпохи, чем уровень`,
                     );
                 }
             }
 
-            checkAmounts(file, `${path}.cost`, level.cost);
-            checkAmounts(file, `${path}.upgrade`, level.upgrade);
-            checkAmounts(
-                file,
-                `${path}.effects.produces`,
-                level.effects?.produces,
-            );
-            checkAmounts(
-                file,
-                `${path}.effects.consumes`,
-                level.effects?.consumes,
-            );
+            checkAmounts(file, `${path}.cost`, level.cost, [
+                currency,
+                MATERIALS,
+            ]);
 
-            for (const target of level.effects?.boost?.targets ?? []) {
+            if (!isNumber(level.cost?.[currency])) {
+                add(file, `${path}.cost.${currency}`, 'Нужна цена в деньгах');
+            }
+
+            if (!isNumber(level.upkeep) || level.upkeep < 0) {
+                add(
+                    file,
+                    `${path}.upkeep`,
+                    'Содержание — неотрицательное число в год',
+                );
+            }
+
+            if (!isNumber(level.buildTime) || level.buildTime < 0) {
+                add(file, `${path}.buildTime`, 'Нужно неотрицательное число');
+            }
+
+            if (
+                !Number.isInteger(level.tier) ||
+                level.tier < 0 ||
+                level.tier > 10
+            ) {
+                add(file, `${path}.tier`, 'Ступень потребностей — от 0 до 10');
+            }
+
+            if (
+                level.requires?.townHallLevel !== undefined &&
+                !townHall?.levels[level.requires.townHallLevel - 1]
+            ) {
+                add(
+                    file,
+                    `${path}.requires.townHallLevel`,
+                    'Нет такого уровня ратуши',
+                );
+            }
+
+            const effects = level.effects;
+
+            for (const kind of ['produces', 'consumes'] as const) {
+                checkAmounts(file, `${path}.effects.${kind}`, effects?.[kind]);
+
+                if (effects?.[kind]?.[currency] !== undefined) {
+                    add(
+                        file,
+                        `${path}.effects.${kind}.${currency}`,
+                        'Деньги не производятся зданиями',
+                    );
+                }
+            }
+
+            if (
+                effects?.coverage &&
+                !SERVICES.includes(effects.coverage.service)
+            ) {
+                add(
+                    file,
+                    `${path}.effects.coverage.service`,
+                    `Нет услуги «${effects.coverage.service}»`,
+                );
+            }
+
+            for (const target of effects?.boost?.targets ?? []) {
                 checkBuilding(file, `${path}.effects.boost.targets`, target);
             }
 
@@ -680,10 +1092,22 @@ export function validateContent(
         });
     }
 
-    for (const role of ['road', 'center'] as const) {
-        if (!roles.has(role)) {
-            add('buildings', '', `Нужно здание с ролью «${role}»`);
+    for (const [role, id] of Object.entries(SPECIAL_BUILDINGS)) {
+        if (!buildings.has(id)) {
+            add('buildings', '', `Нужно здание «${id}» (${role})`);
         }
+    }
+
+    if (townHall && (!townHall.unique || !townHall.hidden)) {
+        add(
+            `buildings/${SPECIAL_BUILDINGS.center}`,
+            'unique',
+            'Ратуша — одна (unique) и не в меню (hidden)',
+        );
+    }
+
+    if (!roads) {
+        add('buildings', '', 'Нужно здание с network: "road" (улица)');
     }
 
     return issues;

@@ -34,7 +34,7 @@ trait WorldPayloadRules
             'world.population' => ['required', 'integer', 'min:0', 'max:100000000'],
             'world.happiness' => ['required', 'integer', 'min:0', 'max:100'],
             'world.score' => ['required', 'integer', 'min:0'],
-            'world.resources' => ['required', 'array'],
+            'world.resources' => ['required', 'array:'.implode(',', $content->resourceIds())],
             'world.resources.*' => ['numeric', 'min:0'],
             'world.weather' => ['required', 'string', 'max:32'],
             'world.weather_until' => ['required', 'integer', 'min:0'],

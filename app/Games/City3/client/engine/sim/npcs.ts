@@ -427,7 +427,7 @@ export class NpcSystem {
             (b) =>
                 game.effects(b).aura &&
                 game.status.get(b.uid)?.complete &&
-                !game.def(b).role,
+                !game.roleOf(b),
         );
 
         return spots.length

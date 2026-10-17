@@ -18,7 +18,7 @@ import { Renderer } from './scene/renderer';
 import type { Overlay, Quality } from './scene/renderer';
 import { BuildDock } from './ui/build';
 import { Bureau } from './ui/bureau';
-import { Modal } from './ui/common';
+import { formatNumber, Modal } from './ui/common';
 import { EpochPanel, EpochSplash, Goals, Stats } from './ui/epoch';
 import { CameraControls, GoalsWidget, TopBar } from './ui/hud';
 import { Inspector, NpcPanel } from './ui/inspector';
@@ -303,7 +303,7 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
 
                 if (away && away.seconds >= 60) {
                     toast(
-                        `🌙 Пока вас не было (${Math.round(away.seconds / 60)} мин): ${away.population >= 0 ? '+' : ''}${away.population} жителей, ${away.gold >= 0 ? '+' : ''}${away.gold} золота`,
+                        `🌙 Пока вас не было (${Math.round(away.seconds / 60)} мин): ${away.population >= 0 ? '+' : ''}${formatNumber(away.population)} жителей, казна ${away.money >= 0 ? '+' : ''}${formatNumber(away.money)} ${world.content.currencyFace(world.state.epoch).symbol}`,
                         'good',
                     );
                 }
@@ -316,10 +316,7 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                 });
 
                 revisionRef.current = created.revision;
-                toast(
-                    `🏕️ ${world.year} год. ${world.epoch.tagline}`,
-                    'info',
-                );
+                toast(`🏕️ ${world.year} год. ${world.epoch.tagline}`, 'info');
             }
 
             if (cancelled) {
@@ -371,7 +368,15 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
 
             switch (event.type) {
                 case 'toast':
-                    toast(event.text, event.tone);
+                    toast(
+                        event.amount === undefined
+                            ? event.text
+                            : event.text.replace(
+                                  ':amount',
+                                  formatNumber(event.amount),
+                              ),
+                        event.tone,
+                    );
                     break;
                 case 'error':
                     audio?.play('error');
@@ -638,7 +643,7 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                 : null;
         };
         const isRoadType = (type: string) =>
-            game.content.building(type).role === 'road';
+            game.content.roleOf(game.content.building(type)) === 'road';
         const roadPath = (
             from: { x: number; y: number },
             to: { x: number; y: number },
@@ -654,7 +659,7 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                     y,
                     ok:
                         (existing !== undefined &&
-                            game.def(existing).role === 'road') ||
+                            game.roleOf(existing) === 'road') ||
                         game.canPlace(game.content.byRole('road')!.id, x, y).ok,
                 });
             };
@@ -841,7 +846,7 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
             for (const step of overlayRef.current.roadPath) {
                 const existing = game.buildingAt(step.x, step.y);
 
-                if (existing && game.def(existing).role === 'road') {
+                if (existing && game.roleOf(existing) === 'road') {
                     // Laying a better road over an old one upgrades it.
                     if (existing.level < level) {
                         if (game.relevel(existing.uid, level, true).ok) {
@@ -1085,19 +1090,9 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
     const selected =
         game && selectedUid ? game.buildings.get(selectedUid) : undefined;
     const npc = game && selectedNpc ? game.npcs.get(selectedNpc) : undefined;
-    const theme = game?.epoch.theme;
-    const themeStyle = theme
-        ? ({
-              '--hud-bg': theme.bg,
-              '--hud-bg-solid': theme.solid,
-              '--hud-border': theme.border,
-              '--hud-text': theme.text,
-              '--hud-muted': theme.muted,
-              '--hud-accent': theme.accent,
-              '--hud-accent-text': theme.accentText,
-              '--hud-font': theme.font,
-              '--hud-radius': `${theme.radius}px`,
-          } as CSSProperties)
+    // One designed interface for every era; only the accent follows the era.
+    const themeStyle = game
+        ? ({ '--hud-accent': game.epoch.accent } as CSSProperties)
         : undefined;
     const activeBuild =
         tool.kind === 'build' ? { type: tool.type, level: tool.level } : null;
@@ -1385,7 +1380,7 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                                 type="button"
                                 aria-pressed={panel === 'tech'}
                                 onClick={() => setPanel('tech')}
-                                title="Технологии (T)"
+                                title="Открытия (T)"
                             >
                                 🔬 <span>Наука</span>
                                 {!game.state.research && (
@@ -1533,8 +1528,8 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                                                     )
                                                 }
                                             />
-                                            ♾️ Бесконечные ресурсы — всё
-                                            бесплатно, склады всегда полные
+                                            ♾️ Режим тестера: всё бесплатно,
+                                            склады всегда полные
                                         </label>
                                         <div>
                                             <button
@@ -1544,7 +1539,7 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                                                     game.testerGrant()
                                                 }
                                             >
-                                                💰 Заполнить ресурсы
+                                                🏦 Пополнить казну и склады
                                             </button>
                                             <button
                                                 type="button"
@@ -1562,12 +1557,12 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                                                     game.testerResearchAll()
                                                 }
                                             >
-                                                🔬 Изучить всё в эпохе
+                                                🔬 Все открытия эпохи
                                             </button>
                                             <button
                                                 type="button"
                                                 className="hud-button"
-                                                disabled={!game.epoch.next}
+                                                disabled={!game.nextEpoch}
                                                 onClick={() => {
                                                     game.testerNextEpoch();
                                                     setPanel(null);

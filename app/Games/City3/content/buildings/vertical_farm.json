@@ -3,11 +3,16 @@
     "name": "Вертикальная ферма",
     "icon": "🥬",
     "category": "food",
-    "description": "Грядки этаж за этажом под светодиодами. Не зависит от погоды, но ест много электричества.",
+    "description": "Ферма в башне: много еды на маленьком участке, но нужно электричество.",
     "size": { "w": 2, "h": 2 },
     "unique": false,
     "hidden": false,
-    "placement": { "requiresRoad": true },
+    "jobClass": "food",
+    "placement": { "zone": "land", "requiresRoad": true },
+    "heritage": false,
+    "rotatable": false,
+    "taxMult": 1,
+    "network": null,
     "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": null },
     "levels": [
         {
@@ -16,21 +21,31 @@
             "epoch": "e2100",
             "tech": "hydroponics",
             "description": "Стеклянная башня-огород в десять ярусов.",
-            "cost": { "glass": 2000, "composites": 400, "electronics": 150, "gold": 12000 },
+            "cost": { "money": 170000, "mat": 8500 },
+            "upkeep": 1000,
             "buildTime": 50,
+            "tier": 0,
             "effects": {
                 "housing": 0,
-                "jobs": 14,
-                "produces": { "food": 35 },
+                "jobs": 160,
+                "produces": { "food": 2400 },
                 "consumes": {},
+                "trade": 0,
                 "storage": 0,
                 "power": 0,
-                "powerUse": 10,
+                "powerUse": 15,
                 "aura": null,
                 "pollution": null,
-                "boost": null,
-                "seasonal": false,
-                "defense": 0
+                "coverage": null,
+                "attraction": 0,
+                "visitors": 0,
+                "research": 0,
+                "importDiscount": 0,
+                "goodsPremium": 0,
+                "transit": null,
+                "charterRadius": 0,
+                "dataTax": null,
+                "boost": null
             },
             "model": {
                 "parts": [
@@ -44,82 +59,6 @@
                     { "kind": "light", "x": 1, "y": 1, "z": 1.2, "radius": 2, "color": "#ff7adf" },
                     { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
                     { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#b5fff0" }
-                ]
-            }
-        },
-        {
-            "level": 2,
-            "name": "Небесная ферма",
-            "epoch": "e2300",
-            "description": "Висячие сады на уступах башни, полив из облачных конденсаторов.",
-            "cost": { "composites": 1200, "glass": 3000, "rare_metals": 100, "gold": 25000 },
-            "buildTime": 60,
-            "effects": {
-                "housing": 0,
-                "jobs": 16,
-                "produces": { "food": 60 },
-                "consumes": {},
-                "storage": 0,
-                "power": 0,
-                "powerUse": 14,
-                "aura": null,
-                "pollution": null,
-                "boost": null,
-                "seasonal": false,
-                "defense": 0
-            },
-            "model": {
-                "parts": [
-                    { "kind": "floors", "x": 0.1, "y": 0.1, "z": 0, "w": 1.8, "d": 1.8, "floors": 5, "floorHeight": 0.22, "color": "glass", "window": "crop", "band": "trim", "material": "glass", "facade": "fins" },
-                    { "kind": "box", "x": 0.08, "y": 0.08, "z": 1.1, "w": 1.84, "d": 1.84, "h": 0.05, "color": "roof" },
-                    { "kind": "floors", "x": 0.3, "y": 0.3, "z": 1.15, "w": 1.4, "d": 1.4, "floors": 6, "floorHeight": 0.22, "color": "glass", "window": "crop", "band": "trim", "material": "glass", "facade": "fins" },
-                    { "kind": "box", "x": 0.28, "y": 0.28, "z": 2.47, "w": 1.44, "d": 1.44, "h": 0.05, "color": "roof" },
-                    { "kind": "floors", "x": 0.5, "y": 0.5, "z": 2.52, "w": 1, "d": 1, "floors": 6, "floorHeight": 0.22, "color": "glass", "window": "crop", "band": "trim", "material": "glass", "facade": "fins" },
-                    { "kind": "tree", "x": 0.2, "y": 0.2, "scale": 0.35, "conifer": false },
-                    { "kind": "tree", "x": 1.8, "y": 1.8, "scale": 0.35, "conifer": false },
-                    { "kind": "tree", "x": 1.8, "y": 0.2, "scale": 0.35, "conifer": false },
-                    { "kind": "tree", "x": 0.2, "y": 1.8, "scale": 0.35, "conifer": false },
-                    { "kind": "torus", "x": 1, "y": 1, "z": 3.84, "r": 0.45, "tube": 0.04, "color": "trim", "spin": 0.05 },
-                    { "kind": "pole", "x": 1, "y": 1, "z": 3.84, "h": 0.5, "color": "metal", "blink": "#f0a43a" },
-                    { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
-                    { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#cfe0ff" }
-                ]
-            }
-        },
-        {
-            "level": 3,
-            "name": "Нано-ферма",
-            "epoch": "e3000",
-            "tech": "molecular_assembly",
-            "description": "Спиральная башня, где растения растут на наноматрицах.",
-            "cost": { "nanomaterials": 120, "ai_cores": 40, "gold": 50000 },
-            "buildTime": 70,
-            "effects": {
-                "housing": 0,
-                "jobs": 14,
-                "produces": { "food": 140 },
-                "consumes": {},
-                "storage": 0,
-                "power": 0,
-                "powerUse": 25,
-                "aura": null,
-                "pollution": null,
-                "boost": null,
-                "seasonal": false,
-                "defense": 0
-            },
-            "model": {
-                "parts": [
-                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0, "r": 0.8, "h": 0.3, "color": "walls", "segments": 32 },
-                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0.3, "r": 0.6, "h": 3.5, "color": "glass", "taper": 0.5, "segments": 32, "material": "glass" },
-                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0.3, "r": 0.25, "h": 3.8, "color": "crop", "taper": 0.6, "segments": 16 },
-                    { "kind": "torus", "x": 1, "y": 1, "z": 1, "r": 0.62, "tube": 0.05, "color": "crop", "spin": 0.1, "material": "glow" },
-                    { "kind": "torus", "x": 1, "y": 1, "z": 2, "r": 0.5, "tube": 0.05, "color": "trim", "spin": -0.1, "material": "glow" },
-                    { "kind": "torus", "x": 1, "y": 1, "z": 3, "r": 0.38, "tube": 0.05, "color": "crop", "spin": 0.1, "material": "glow" },
-                    { "kind": "sphere", "x": 1, "y": 1, "z": 4.1, "r": 0.15, "color": "accent", "material": "glow" },
-                    { "kind": "light", "x": 1, "y": 1, "z": 2, "radius": 2.5, "color": "#b6f08a" },
-                    { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
-                    { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#7ae0ff" }
                 ]
             }
         }

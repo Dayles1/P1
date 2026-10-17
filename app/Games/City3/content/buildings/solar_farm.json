@@ -3,11 +3,16 @@
     "name": "Солнечная ферма",
     "icon": "☀️",
     "category": "power",
-    "description": "Чистая энергия без топлива и дыма.",
+    "description": "Электричество от солнца, без топлива и дыма.",
     "size": { "w": 2, "h": 2 },
     "unique": false,
     "hidden": false,
-    "placement": { "requiresRoad": true },
+    "jobClass": "svc",
+    "placement": { "zone": "landOrBeach", "requiresRoad": true },
+    "heritage": false,
+    "rotatable": false,
+    "taxMult": 1,
+    "network": null,
     "sounds": { "place": "place", "upgrade": "upgrade", "demolish": "demolish", "select": "click", "ambient": "hum" },
     "levels": [
         {
@@ -16,21 +21,31 @@
             "epoch": "e2100",
             "tech": "solar_power",
             "description": "Ряды панелей, поворачивающихся за солнцем.",
-            "cost": { "glass": 1500, "electronics": 200, "composites": 100, "gold": 9000 },
+            "cost": { "money": 640000, "mat": 32000 },
+            "upkeep": 5100,
             "buildTime": 40,
+            "tier": 0,
             "effects": {
                 "housing": 0,
-                "jobs": 4,
+                "jobs": 40,
                 "produces": {},
                 "consumes": {},
+                "trade": 0,
                 "storage": 0,
-                "power": 120,
+                "power": 150,
                 "powerUse": 0,
                 "aura": null,
                 "pollution": null,
-                "boost": null,
-                "seasonal": false,
-                "defense": 0
+                "coverage": null,
+                "attraction": 0,
+                "visitors": 0,
+                "research": 0,
+                "importDiscount": 0,
+                "goodsPremium": 0,
+                "transit": null,
+                "charterRadius": 0,
+                "dataTax": null,
+                "boost": null
             },
             "model": {
                 "parts": [
@@ -43,42 +58,6 @@
                     { "kind": "pole", "x": 1.8, "y": 1.8, "z": 0.3, "h": 0.3, "color": "metal", "blink": "#2fb5a3" },
                     { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
                     { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#b5fff0" }
-                ]
-            }
-        },
-        {
-            "level": 2,
-            "name": "Орбитальный приёмник",
-            "epoch": "e2300",
-            "description": "Антенна принимает энергию с орбитальных солнечных станций.",
-            "cost": { "composites": 1500, "rare_metals": 200, "electronics": 500, "gold": 25000 },
-            "buildTime": 55,
-            "effects": {
-                "housing": 0,
-                "jobs": 6,
-                "produces": {},
-                "consumes": {},
-                "storage": 0,
-                "power": 400,
-                "powerUse": 0,
-                "aura": null,
-                "pollution": null,
-                "boost": null,
-                "seasonal": false,
-                "defense": 0
-            },
-            "model": {
-                "parts": [
-                    { "kind": "ground", "x": 0.05, "y": 0.05, "w": 1.9, "d": 1.9, "color": "plaza" },
-                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0, "r": 0.3, "h": 0.6, "color": "walls", "segments": 16 },
-                    { "kind": "sphere", "x": 1, "y": 1, "z": 1.25, "r": 0.85, "color": "metal", "half": true, "material": "metal" },
-                    { "kind": "cylinder", "x": 1, "y": 1, "z": 0.6, "r": 0.06, "h": 1.3, "color": "metal" },
-                    { "kind": "sphere", "x": 1, "y": 1, "z": 1.95, "r": 0.08, "color": "accent", "material": "glow" },
-                    { "kind": "torus", "x": 1, "y": 1, "z": 1.25, "r": 0.86, "tube": 0.03, "color": "trim" },
-                    { "kind": "light", "x": 1, "y": 1, "z": 1.9, "radius": 2, "color": "#9fd2ff" },
-                    { "kind": "pole", "x": 1, "y": 1, "z": 1.9, "h": 0.04, "color": "metal", "blink": "#ff4d4d" },
-                    { "kind": "pole", "x": 1.94, "y": 1.94, "z": 0, "h": 0.3, "color": "metal", "blink": null },
-                    { "kind": "light", "x": 1.94, "y": 1.94, "z": 0.3, "radius": 1.2, "color": "#cfe0ff" }
                 ]
             }
         }

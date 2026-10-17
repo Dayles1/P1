@@ -468,7 +468,7 @@ export class Overlays {
         } else if (overlay.selectedUid !== null) {
             const building = game.buildings.get(overlay.selectedUid);
 
-            if (building && game.def(building).role !== 'road') {
+            if (building && game.roleOf(building) !== 'road') {
                 const def = game.def(building);
 
                 ranges = {

@@ -1,5 +1,5 @@
 {
-    "$doc": "Основные правила мира: карта, время, старт, население, экономика, районы, NPC и случайные события. Все скорости — в единицах за секунду. map — одна карта для всех игроков: width столбцов; с севера на юг landRows рядов луга (ряд 0 упирается в горы за краем карты), beachRows рядов пляжа и seaRows рядов мелководья; biomes — какой биом у каждой полосы; start — открытые с начала столбцы (на всю глубину суши и пляжа). time: secondsPerYear — игровых секунд в году (год идёт ровно всю игру и начинается с 0); secondsPerDay и dayStart — сутки для смены дня и ночи и сезонов, отдельно от календаря.",
+    "$doc": "Основные правила мира. Все скорости — в год (год = time.secondsPerYear игровых секунд; движок делит годовые числа на него каждую секунду). map — одна карта для всех: width столбцов; с севера на юг landRows рядов луга (ряд 0 упирается в горы), beachRows рядов пляжа (последний — линия воды) и seaRows рядов моря; biomes — биом каждой полосы; start — открытые с начала столбцы. time: secondsPerYear — игровых секунд в году; secondsPerDay и dayStart — сутки для света и сезонов (на экономику не влияют). start — с чего начинается город. economy: currency — единственная валюта (money); taxPerCitizen — налог с жителя в год, taxMultByLevelEra — множитель налога по эпохе уровня дома; foodPerCitizen — еды на жителя в год; storageBase — склад ратуши без построек; prices — цены за единицу (matImport — докупка недостающих стройматериалов при стройке); tradeIn и upgradeFloor — улучшение засчитывает 70 % цены нынешнего уровня, но стоит не меньше 25 % нового; refundShare — сколько денег вернёт снос; moveShare — цена переноса от цены уровня. happiness — довольство домов: base, comfort за услуги (вода, досуг, здоровье, образование), auraCap и pollutionCap. population — за игровую секунду: дома заполняются до P* (места × (0,7 + 0,3 × доля услуг) × заселённость от довольства: пусто при 25, полно при 70); сверху лишние уезжают, при голоде люди уходят. districts — округа управ и их политики (tourism — денег в год со старого здания за каждую эпоху возраста). events: первое на firstYear году, потом каждые everyYears лет; gain/lose меньше 1 — доля склада (для денег — доля казны), иначе количество; mood — прибавка к довольству на years лет.",
     "map": {
         "width": 100,
         "landRows": 40,
@@ -12,18 +12,26 @@
     "start": {
         "epoch": "e0",
         "population": 6,
-        "resources": { "food": 120, "wood": 150, "stone": 60, "gold": 80, "knowledge": 0 },
+        "resources": { "money": 1200, "food": 160, "mat": 160, "goods": 0 },
         "buildings": [
             { "type": "town_center", "level": 1, "at": "center" }
         ]
     },
-    "population": { "foodPerPerson": 0.04, "workforceShare": 0.6, "growthRate": 0.03, "taxPerPerson": 0.02, "baseHappiness": 45, "starvingPenalty": 25, "noPowerPenalty": 20, "coldPenalty": 8, "starvingDecline": 0.003, "unhappyDecline": 0.002, "overcrowdingDecline": 0.1 },
     "economy": {
-        "storageBase": 300,
+        "currency": "money",
+        "taxPerCitizen": 1,
+        "taxMultByLevelEra": [1, 1.6, 2.5, 4, 6, 9, 13],
+        "workforceShare": 0.5,
+        "foodPerCitizen": 0.4,
+        "storageBase": 1200,
+        "prices": { "foodImport": 1, "foodExport": 0.4, "matImport": 4, "matExport": 1.5, "goodsExport": 6, "fuelImport": 3, "fuelExport": 1.2, "gridPower": 100 },
+        "tradeIn": 0.7,
+        "upgradeFloor": 0.25,
         "refundShare": 0.5,
-        "upgradeShare": 0.7,
-        "moveCostPerTile": 6
+        "moveShare": 0.1
     },
+    "happiness": { "base": 35, "comfort": 30, "auraCap": 15, "pollutionCap": 30, "starving": 25, "noPower": 15 },
+    "population": { "growthRate": 0.03, "growthFlat": 0.2, "moveOutShare": 0.05, "starvingDecline": 0.004, "occupancy": { "from": 25, "span": 45 }, "comfortFill": [0.7, 0.3] },
     "districts": {
         "radius": 7,
         "policies": [
@@ -31,8 +39,8 @@
                 "id": "historic",
                 "name": "Исторический квартал",
                 "icon": "🏛️",
-                "description": "Старые здания привлекают туристов: каждое приносит золото тем больше, чем на больше эпох оно старше нынешней. Жители гордятся районом.",
-                "effects": { "tourism": 0.02, "happiness": 5 }
+                "description": "Старые здания привлекают гостей: каждое приносит в год деньги — тем больше, чем на больше эпох оно старше нынешней. Жители гордятся районом.",
+                "effects": { "tourism": 0.5, "happiness": 5 }
             },
             {
                 "id": "industrial",
@@ -56,9 +64,9 @@
                 "id": "business",
                 "name": "Деловой центр",
                 "icon": "💼",
-                "description": "Банки и офисы: всё золото, что делается в районе, — на четверть больше.",
+                "description": "Мастерские и конторы района делают на четверть больше товаров.",
                 "effects": {
-                    "produces": { "gold": 25 }
+                    "produces": { "goods": 25 }
                 }
             },
             {
@@ -72,136 +80,105 @@
     },
     "npc": { "residentsPerNpc": 5, "maxNpcs": 160, "trafficPerRoads": 6, "maxTraffic": 36 },
     "events": {
-        "firstAfter": 200,
-        "every": [120, 220],
+        "firstYear": 15,
+        "everyYears": [6, 10],
         "list": [
             {
                 "id": "harvest",
                 "weight": 2,
                 "text": "🌾 Урожайный год: +:amount еды",
-                "gain": { "food": 0.2 },
-                "seasons": ["summer", "autumn"]
+                "gain": { "food": 0.25 }
             },
             {
                 "id": "caravan",
                 "weight": 2,
-                "text": "🐪 Караван купцов: +:amount золота",
-                "gain": { "gold": 60 },
+                "text": "🐪 Караван купцов привёз стройматериалы: +:amount",
+                "gain": { "mat": 0.15 },
                 "epochs": ["e0", "e1000", "e1500"]
             },
             {
-                "id": "merchant_fleet",
+                "id": "fair",
                 "weight": 2,
-                "text": "🚢 Торговый флот вернулся: +:amount золота",
-                "gain": { "gold": 0.1 },
-                "epochs": ["e1500", "e1800", "e1900"]
+                "text": "🎪 Ярмарка: казна выросла на :amount",
+                "gain": { "money": 0.1 },
+                "epochs": ["e1000", "e1500"]
             },
             {
                 "id": "festival",
                 "weight": 1,
                 "text": "🎉 Городской праздник: жители счастливее",
-                "mood": { "amount": 10, "seconds": 120 }
-            },
-            {
-                "id": "inventor",
-                "weight": 1,
-                "text": "💡 Местный изобретатель поделился идеей: +:amount знаний",
-                "gain": { "knowledge": 0.15 }
+                "mood": { "amount": 10, "years": 5 }
             },
             {
                 "id": "fire",
                 "weight": 1,
-                "text": "🔥 Пожар на складе: сгорела часть дерева",
-                "lose": { "wood": 0.2 },
+                "text": "🔥 Пожар на складе: сгорела часть стройматериалов",
+                "lose": { "mat": 0.2 },
                 "epochs": ["e0", "e1000", "e1500"]
-            },
-            {
-                "id": "flu",
-                "weight": 1,
-                "text": "🤒 Зимняя простуда: настроение падает",
-                "mood": { "amount": -10, "seconds": 120 },
-                "seasons": ["winter"]
             },
             {
                 "id": "plague",
                 "weight": 1,
-                "text": "☠️ Моровое поветрие: люди боятся выходить из домов",
-                "mood": { "amount": -20, "seconds": 240 },
-                "lose": { "food": 0.15 },
+                "text": "☠️ Поветрие: люди боятся выходить из домов",
+                "mood": { "amount": -15, "years": 4 },
                 "epochs": ["e1000"]
+            },
+            {
+                "id": "patron",
+                "weight": 1,
+                "text": "🎭 Меценат пожертвовал городу :amount",
+                "gain": { "money": 0.1 },
+                "epochs": ["e1500"]
             },
             {
                 "id": "gold_rush",
                 "weight": 1,
-                "text": "⛏️ Золотая лихорадка: +:amount золота",
-                "gain": { "gold": 0.2 },
+                "text": "⛏️ Золотая лихорадка: казна выросла на :amount",
+                "gain": { "money": 0.15 },
                 "epochs": ["e1800"]
             },
             {
                 "id": "smog",
                 "weight": 1,
                 "text": "🌫️ Смог над городом: дышать тяжело",
-                "mood": { "amount": -8, "seconds": 180 },
+                "mood": { "amount": -8, "years": 4 },
                 "epochs": ["e1800", "e1900"]
             },
             {
-                "id": "oil_boom",
+                "id": "radio_show",
                 "weight": 1,
-                "text": "🛢️ Новое месторождение: +:amount нефти",
-                "gain": { "oil": 300 },
-                "epochs": ["e1900", "e2000"]
+                "text": "📻 Радиошоу о городе: жители гордятся",
+                "mood": { "amount": 6, "years": 4 },
+                "epochs": ["e1900"]
             },
             {
                 "id": "stock_crash",
                 "weight": 1,
-                "text": "📉 Обвал на бирже: казна потеряла часть золота",
-                "lose": { "gold": 0.25 },
-                "mood": { "amount": -10, "seconds": 180 },
+                "text": "📉 Обвал на бирже: казна потеряла :amount",
+                "lose": { "money": 0.15 },
+                "mood": { "amount": -10, "years": 4 },
                 "epochs": ["e1900", "e2000"]
             },
             {
                 "id": "startup",
                 "weight": 1,
-                "text": "🚀 Местный стартап выстрелил: +:amount электроники",
-                "gain": { "electronics": 0.2 },
+                "text": "🚀 Местный стартап выстрелил: +:amount товаров",
+                "gain": { "goods": 0.2 },
                 "epochs": ["e2000", "e2100"]
             },
             {
-                "id": "blackout",
+                "id": "heat",
                 "weight": 1,
-                "text": "🔌 Хакеры взломали серверы: часть данных потеряна",
-                "lose": { "data": 0.2 },
-                "epochs": ["e2100", "e2300"]
+                "text": "🌡️ Жара: город изнывает",
+                "mood": { "amount": -6, "years": 2 },
+                "epochs": ["e2000"]
             },
             {
-                "id": "solar_flare",
+                "id": "drones",
                 "weight": 1,
-                "text": "☀️ Солнечная вспышка: сгорела часть электроники",
-                "lose": { "electronics": 0.2 },
-                "mood": { "amount": -6, "seconds": 120 },
-                "epochs": ["e2300"]
-            },
-            {
-                "id": "meteor",
-                "weight": 1,
-                "text": "☄️ Упал метеорит: +:amount редких металлов",
-                "gain": { "rare_metals": 200 },
-                "epochs": ["e2300", "e2500"]
-            },
-            {
-                "id": "ai_glitch",
-                "weight": 1,
-                "text": "🤖 Сбой ИИ: потеряны данные, светофоры сошли с ума",
-                "lose": { "data": 0.3 },
-                "mood": { "amount": -8, "seconds": 150 },
-                "epochs": ["e2500"]
-            },
-            {
-                "id": "nano_bloom",
-                "weight": 1,
-                "text": "✨ Нанороботы навели порядок: город сияет",
-                "mood": { "amount": 15, "seconds": 180 },
-                "epochs": ["e3000"]
+                "text": "🚁 Дроны-доставщики: на улицах просторнее",
+                "mood": { "amount": 8, "years": 4 },
+                "epochs": ["e2100"]
             }
         ]
     }

@@ -24,20 +24,20 @@ function bonusLines(game: Game, bonus: TechBonus | null): string[] {
         lines.push(`👥 жильё +${bonus.housing}%`);
     }
 
-    if (bonus.storage) {
-        lines.push(`📦 склады +${bonus.storage}%`);
-    }
-
-    if (bonus.buildSpeed) {
-        lines.push(`🏗️ стройка быстрее на ${bonus.buildSpeed}%`);
-    }
-
     if (bonus.tax) {
-        lines.push(`💰 налоги +${bonus.tax}%`);
+        lines.push(`🏛️ налоги +${bonus.tax}%`);
+    }
+
+    if (bonus.trade) {
+        lines.push(`⚖️ торговый оборот +${bonus.trade}%`);
     }
 
     if (bonus.research) {
-        lines.push(`🔬 исследования быстрее на ${bonus.research}%`);
+        lines.push(`🔬 открытия быстрее на ${bonus.research}%`);
+    }
+
+    if (bonus.traffic) {
+        lines.push(`🚗 нагрузка улиц ${bonus.traffic}%`);
     }
 
     return lines;
@@ -71,7 +71,7 @@ function TechCard({
                     <b>{tech.name}</b>
                     {keyTech && (
                         <small className="tech-card__key">
-                            ключ к новой эпохе
+                            нужно для новой эпохи
                         </small>
                     )}
                 </div>
@@ -102,7 +102,7 @@ function TechCard({
                 </ul>
             )}
             <footer>
-                {done && <span className="tech-card__done">✓ Изучено</span>}
+                {done && <span className="tech-card__done">✓ Сделано</span>}
                 {active && research && (
                     <span className="tech-card__progress">
                         <Bar
@@ -130,7 +130,7 @@ function TechCard({
                             title={lock ?? ''}
                             onClick={() => onResearch(tech.id)}
                         >
-                            🔬 Изучить
+                            🔬 Открыть
                         </button>
                     </>
                 )}
@@ -151,11 +151,20 @@ export function TechTree({
     const [era, setEra] = useState(game.state.epoch);
     const epoch = game.content.epoch(era);
     const techs = game.content.techs.filter((tech) => tech.epoch === epoch.id);
-    const keys = new Set(epoch.next?.techs ?? []);
+    // Discoveries that open a building the next era's gate asks for.
+    const keys = new Set(
+        (game.content.epochs[era + 1]?.entry?.items ?? []).flatMap((item) =>
+            game.content.hasBuilding(item.type)
+                ? (game.content.building(item.type).levels[item.level - 1]
+                      ?.tech ?? [])
+                : [],
+        ),
+    );
+    const needed = game.content.epochs[era + 1]?.entry?.discoveries ?? 0;
     const doneInEra = techs.filter((tech) => game.hasTech(tech.id)).length;
 
     return (
-        <Modal title="Технологии" onClose={onClose} wide className="tech-modal">
+        <Modal title="Открытия" onClose={onClose} wide className="tech-modal">
             <nav className="era-tabs">
                 {game.content.epochs.slice(0, last + 1).map((item, index) => {
                     const list = game.content.techs.filter(
@@ -180,11 +189,12 @@ export function TechTree({
                 })}
             </nav>
             <p className="tech-modal__lead">
-                {epoch.name}: изучено {doneInEra} из {techs.length}. Знания 📜
-                дают школы, университеты и лаборатории. Одновременно идёт одно
-                исследование.
+                {epoch.name}: сделано {doneInEra} из {techs.length}
+                {needed > 0 && ` (для новой эпохи нужно ${needed})`}. Открытия
+                покупаются за деньги; школы и университеты ускоряют их.
+                Одновременно идёт одно открытие.
                 {era > game.state.epoch &&
-                    ' Эти технологии откроются в следующей эпохе.'}
+                    ' Эти открытия станут доступны в следующей эпохе.'}
             </p>
             <div className="tech-grid">
                 {techs.map((tech) => (

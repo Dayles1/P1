@@ -1,6 +1,15 @@
 import { useEffect, useState } from 'react';
 import type { Game } from '../engine/sim/game';
-import { Bar, compact, face, Modal, perMinute } from './common';
+import {
+    Bar,
+    CostLine,
+    face,
+    formatExact,
+    formatNumber,
+    formatRate,
+    Modal,
+    MoneyIcon,
+} from './common';
 
 export function EpochPanel({
     game,
@@ -38,6 +47,7 @@ export function EpochPanel({
         (resource) => resource.epoch === next.id,
     );
     const ready = game.canAdvance();
+    const coin = next.currency;
 
     return (
         <Modal title="Новая эпоха" onClose={onClose}>
@@ -62,9 +72,21 @@ export function EpochPanel({
                             className={item.done ? 'done' : ''}
                         >
                             {item.done ? '✅' : '⬜'} {item.label}
+                            {item.target !== undefined &&
+                                `: ${formatNumber(item.current ?? 0)} / ${formatNumber(item.target)}`}
+                            {item.cost && (
+                                <>
+                                    {' '}
+                                    <CostLine game={game} cost={item.cost} />
+                                </>
+                            )}
                         </li>
                     ))}
                 </ul>
+                <p className="epoch-panel__note">
+                    <MoneyIcon face={coin} /> Деньги станут «{coin.name}» — та
+                    же казна, новая монета.
+                </p>
 
                 <h3>Что откроется</h3>
                 <div className="epoch-panel__unlocks">
@@ -131,12 +153,10 @@ export function Goals({ game, onClose }: { game: Game; onClose: () => void }) {
                     const future =
                         game.content.epochOrder(goal.epoch) > game.state.epoch;
                     const progress = game.goalProgress(goal);
-                    const reward = Object.entries(goal.reward)
-                        .map(
-                            ([id, amount]) =>
-                                `${game.content.resource(id)?.icon ?? id} ${compact(amount)}`,
-                        )
-                        .join(' ');
+                    const money = goal.reward[game.content.currency] ?? 0;
+                    const reward = money
+                        ? `${game.content.currencyFace(game.state.epoch).symbol} ${formatNumber(money)}`
+                        : '';
 
                     return (
                         <article
@@ -163,8 +183,8 @@ export function Goals({ game, onClose }: { game: Game; onClose: () => void }) {
                                             tone="good"
                                         />
                                         <small>
-                                            {compact(progress.current)} /{' '}
-                                            {compact(progress.target)}
+                                            {formatNumber(progress.current)} /{' '}
+                                            {formatNumber(progress.target)}
                                         </small>
                                     </span>
                                 )}
@@ -191,18 +211,33 @@ export function Stats({ game, onClose }: { game: Game; onClose: () => void }) {
     }
 
     const working = game.npcs.residents.filter((npc) => npc.workUid).length;
+    const coin = game.content.currencyFace(game.state.epoch);
+    const money = game.content.currency;
 
     return (
         <Modal title="Статистика города" onClose={onClose} wide>
             <div className="stats">
                 <div className="stats__tiles">
                     <div>
-                        <b>{compact(game.score())}</b>
+                        <b>{formatNumber(game.score())}</b>
                         <span>очков развития</span>
                     </div>
                     <div>
-                        <b>{compact(game.state.population)}</b>
+                        <b>{formatNumber(Math.floor(game.state.population))}</b>
                         <span>жителей</span>
+                    </div>
+                    <div title={formatExact(game.money)}>
+                        <b>
+                            <MoneyIcon face={coin} /> {formatNumber(game.money)}
+                        </b>
+                        <span>
+                            {coin.short.toLowerCase()} ·{' '}
+                            {formatRate(game.stats.rates[money] ?? 0)}
+                        </span>
+                    </div>
+                    <div>
+                        <b>{formatNumber(game.stats.tax)}</b>
+                        <span>налогов в год</span>
                     </div>
                     <div>
                         <b>
@@ -231,31 +266,59 @@ export function Stats({ game, onClose }: { game: Game; onClose: () => void }) {
                     </div>
                     {game.stats.tourism > 0 && (
                         <div>
-                            <b>{perMinute(game.stats.tourism)}</b>
-                            <span>💰 от туристов</span>
+                            <b>{formatRate(game.stats.tourism)}</b>
+                            <span>от туристов</span>
+                        </div>
+                    )}
+                    {(game.stats.powerDemand > 0 ||
+                        game.stats.powerSupply > 0) && (
+                        <div>
+                            <b>
+                                ⚡ {formatNumber(game.stats.powerSupply)} /{' '}
+                                {formatNumber(game.stats.powerDemand)}
+                            </b>
+                            <span>электричество: есть / нужно</span>
                         </div>
                     )}
                 </div>
 
                 <div className="stats__table">
-                    <h3>Экономика, в минуту</h3>
+                    <h3>Склады, в год</h3>
                     <ul>
-                        {game.visibleResources().map((resource) => (
-                            <li key={resource.id}>
-                                {resource.icon} {resource.name}{' '}
-                                <b
-                                    className={
-                                        (game.stats.rates[resource.id] ?? 0) < 0
-                                            ? 'neg'
-                                            : ''
-                                    }
+                        {game
+                            .visibleResources()
+                            .filter((resource) => resource.kind !== 'currency')
+                            .map((resource) => (
+                                <li
+                                    key={resource.id}
+                                    title={resource.description}
                                 >
-                                    {perMinute(
-                                        game.stats.rates[resource.id] ?? 0,
+                                    {resource.icon}{' '}
+                                    {resource.faces?.[game.epoch.id] ??
+                                        resource.name}{' '}
+                                    {formatNumber(
+                                        game.state.resources[resource.id] ?? 0,
                                     )}
-                                </b>
-                            </li>
-                        ))}
+                                    <small>
+                                        /
+                                        {formatNumber(
+                                            game.stats.caps[resource.id],
+                                        )}
+                                    </small>{' '}
+                                    <b
+                                        className={
+                                            (game.stats.rates[resource.id] ??
+                                                0) < 0
+                                                ? 'neg'
+                                                : ''
+                                        }
+                                    >
+                                        {formatRate(
+                                            game.stats.rates[resource.id] ?? 0,
+                                        )}
+                                    </b>
+                                </li>
+                            ))}
                     </ul>
                     <h3>Постройки</h3>
                     <ul>

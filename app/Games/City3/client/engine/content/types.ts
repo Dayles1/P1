@@ -45,27 +45,63 @@ export interface WorldFile {
             at: 'center' | [number, number];
         }[];
     };
-    population: {
-        foodPerPerson: number;
-        workforceShare: number;
-        growthRate: number;
-        taxPerPerson: number;
-        baseHappiness: number;
-        starvingPenalty: number;
-        noPowerPenalty: number;
-        coldPenalty: number;
-        /** Share of people who leave per second while starving / unhappy. */
-        starvingDecline: number;
-        unhappyDecline: number;
-        /** Share of the overflow that leaves per second when homes are gone. */
-        overcrowdingDecline: number;
-    };
+    /** Money, per year: the engine applies `value / secondsPerYear` each game second. */
     economy: {
+        /** The one currency's resource id. */
+        currency: ResourceId;
+        /** Tax per citizen per year, before happiness and bonuses. */
+        taxPerCitizen: number;
+        /** Tax multiplier by the era (index) of each home's current level. */
+        taxMultByLevelEra: number[];
+        /** Share of the citizens who work. */
+        workforceShare: number;
+        /** Food each citizen eats per year. */
+        foodPerCitizen: number;
+        /** Storage of food, materials and goods without any storehouse. */
         storageBase: number;
+        /** Money per unit; `matImport` buys the materials a construction lacks. */
+        prices: {
+            foodImport: number;
+            foodExport: number;
+            matImport: number;
+            matExport: number;
+            goodsExport: number;
+            fuelImport: number;
+            fuelExport: number;
+            gridPower: number;
+        };
+        /** An upgrade credits this share of the current level's money price… */
+        tradeIn: number;
+        /** …but costs at least this share of the new level. */
+        upgradeFloor: number;
+        /** Share of the current level's money price a demolition returns. */
         refundShare: number;
-        /** An upgrade without its own `upgrade` cost costs this share of the level's `cost`. */
-        upgradeShare: number;
-        moveCostPerTile: number;
+        /** Moving costs this share of the current level's money price. */
+        moveShare: number;
+    };
+    /** A home's happiness: base, + comfort × services covered, + auras, − pollution. */
+    happiness: {
+        base: number;
+        comfort: number;
+        auraCap: number;
+        pollutionCap: number;
+        starving: number;
+        noPower: number;
+    };
+    /** Per game second (gdd §4.7). */
+    population: {
+        /** Share of the gap to P* that moves in, times min(1, happiness / 70)… */
+        growthRate: number;
+        /** …plus this many. */
+        growthFlat: number;
+        /** Share of the people above P* who move out. */
+        moveOutShare: number;
+        /** Share of the people who leave while starving. */
+        starvingDecline: number;
+        /** Homes are empty at happiness `from` and full at `from + span`. */
+        occupancy: { from: number; span: number };
+        /** A home holds [base + share × services covered] of its places. */
+        comfortFill: [number, number];
     };
     districts: {
         /** Tiles around a district hall that belong to its district. */
@@ -79,8 +115,8 @@ export interface WorldFile {
         maxTraffic: number;
     };
     events: {
-        firstAfter: number;
-        every: [number, number];
+        firstYear: number;
+        everyYears: [number, number];
         list: GameEventDef[];
     };
 }
@@ -100,7 +136,7 @@ export interface DistrictPolicyDef {
         /** Percent to the pollution made in the district (negative = cleaner). */
         pollution?: number;
         /**
-         * Gold per second for every building in the district, times how many
+         * Money per year for every building in the district, times how many
          * eras older its level is than the current era (old houses draw tourists).
          */
         tourism?: number;
@@ -111,21 +147,28 @@ export interface GameEventDef {
     id: string;
     weight: number;
     text: string;
-    /** Values below 1 are a share of the current stock, otherwise an amount. */
+    /**
+     * Values below 1 are a share — of the store's capacity for a stock, of
+     * the treasury for money — otherwise an amount.
+     */
     gain?: Amounts;
     lose?: Amounts;
-    mood?: { amount: number; seconds: number };
-    seasons?: string[];
+    mood?: { amount: number; years: number };
     epochs?: string[];
 }
 
+/** currency = money (the one currency); stock = kept in the stores; flow = used as made (fuel). */
+export type ResourceKind = 'currency' | 'stock' | 'flow';
+
 export interface ResourceDef {
     id: ResourceId;
+    kind: ResourceKind;
     name: string;
     icon: string;
-    /** The era it is discovered in; the HUD hides it before that. */
+    /** The era it is discovered in; the interface hides it before that. */
     epoch: string;
-    capped: boolean;
+    /** What it is called in each era (materials: wood and stone → … → composites). */
+    faces?: Record<string, string>;
     description: string;
 }
 
@@ -208,21 +251,53 @@ export interface Palette {
     crop: string;
     flag: string;
     accent: string;
-    /** Unused: the sky is the same natural sky in every era. */
-    sky?: [string, string];
     [key: string]: unknown;
 }
 
-export interface EpochTheme {
-    bg: string;
-    solid: string;
-    border: string;
-    text: string;
-    muted: string;
-    accent: string;
-    accentText: string;
-    font: string;
-    radius: number;
+/** How the one currency looks in an era: the amount never changes, only its face. */
+export interface CurrencyFace {
+    /** On the era card: «Серебряные гроши». */
+    name: string;
+    /** In tooltips and for screen readers: «Гроши». */
+    short: string;
+    /** The text fallback of the icon: ₰. */
+    symbol: string;
+    /** The drawn icon's id. */
+    icon: string;
+    flavor: string;
+}
+
+/** The new thing to do in an era (gdd §1.3). */
+export type EraVerb =
+    'build' | 'charters' | 'orders' | 'rail' | 'metro' | 'routes' | 'programs';
+
+/** A building the gate into an era asks for. */
+export interface EntryItem {
+    type: string;
+    level: number;
+    count: number;
+    label: string;
+    /** District halls: with a charter. */
+    charter?: boolean;
+    /** Port: this many delivered trade orders. */
+    ordersDelivered?: number;
+    /** Station: on a line to a mountain portal. */
+    connectedToPortal?: boolean;
+    /** Metro stations: on one line. */
+    sameLine?: boolean;
+    /** Airport: this many open flight routes. */
+    routes?: number;
+}
+
+/** What it takes to enter an era: the Town Hall upgrade is the entry. */
+export interface EpochEntry {
+    townHallLevel: number;
+    population: number;
+    /** How many of the previous era's discoveries. */
+    discoveries: number;
+    /** Calendar years for ★★ and ★★★ (★ = by the era's own year). */
+    stars: [number, number];
+    items: EntryItem[];
 }
 
 export interface EpochDef {
@@ -230,30 +305,30 @@ export interface EpochDef {
     year: number;
     name: string;
     tagline: string;
+    currency: CurrencyFace;
+    verb: EraVerb;
+    /** Absent for the first era. */
+    entry?: EpochEntry;
+    /** The interface accent colour. */
+    accent: string;
     palette: Palette;
-    theme: EpochTheme;
     ambience: string;
-    next: {
-        population: number;
-        buildings: { type: string; count: number; level?: number }[];
-        techs: string[];
-        cost: Amounts;
-    } | null;
 }
 
-/** Bonuses a researched technology gives the whole city, in percent unless noted. */
+/** Bonuses a discovery gives the whole city, in percent unless noted. */
 export interface TechBonus {
     /** Percent to the output of a resource; "*" means every resource. */
     produces?: Record<ResourceId | '*', number>;
     /** Points added to every home's happiness. */
     happiness?: number;
     housing?: number;
-    storage?: number;
-    /** Percent shorter construction. */
-    buildSpeed?: number;
     tax?: number;
-    /** Percent shorter research. */
+    /** Percent to trade capacity. */
+    trade?: number;
+    /** Percent faster research. */
     research?: number;
+    /** Percent to traffic loads (negative = lighter). */
+    traffic?: number;
 }
 
 export interface TechDef {
@@ -303,29 +378,69 @@ export interface BlueprintDef {
     roof: RoofShape | null;
 }
 
+export type ServiceId = 'water' | 'health' | 'education' | 'leisure' | 'data';
+
 export type GoalCondition =
     | { type: 'population'; value: number }
-    | { type: 'building'; building: string; count: number; level?: number }
+    /** Complete buildings of a type (or any of several types), at a level or higher. */
+    | {
+          type: 'building';
+          building: string | string[];
+          count: number;
+          level?: number;
+      }
     | { type: 'epoch'; epoch: string }
     | { type: 'tech'; tech: string }
     | { type: 'techs'; count: number }
-    | { type: 'resource'; resource: ResourceId; value: number }
     | { type: 'happiness'; value: number }
-    | { type: 'districts'; count: number }
-    | { type: 'blueprints'; count: number }
+    /** Share of the home tiles a service covers, once homes cover `minTiles`. */
+    | { type: 'coverage'; service: ServiceId; share: number; minTiles: number }
+    /** The city's own power supply. */
+    | { type: 'power'; value: number }
     /** Buildings standing at a level at least `age` eras older than now. */
-    | { type: 'heritage'; count: number; age: number };
+    | { type: 'heritage'; count: number; age?: number }
+    // Conditions of later systems: kept in the data, not checked yet.
+    | { type: 'buildingLevel'; building: string; level: number; count: number }
+    | { type: 'stars'; perEra?: number; total?: number }
+    | { type: 'strips'; count: number }
+    | { type: 'peakPopulation'; value: number }
+    | { type: 'trafficBelow'; value: number; population: number }
+    | { type: 'pollutionBelow'; value: number; population: number }
+    | { type: 'noImportsYears'; years: number; epoch: string }
+    | { type: 'happinessYears'; value: number; years: number }
+    | { type: 'calendarYear'; value: number }
+    | { type: 'neverArrears' };
 
-/** A goal — shown as a task while open, kept as an achievement once done. */
+/** A story goal: one task at a time from its era, rewarded in money. */
 export interface GoalDef {
     id: string;
+    /** Shown from this era on. */
+    epoch: string;
     name: string;
     icon: string;
     description: string;
-    /** Shown from this era on. */
-    epoch: string;
     condition: GoalCondition;
     reward: Amounts;
+}
+
+/** A side task made from the city's state; its reward is years of gross income. */
+export interface SideTemplateDef {
+    id: string;
+    condition: GoalCondition;
+    rewardYearsOfGross: number;
+}
+
+export interface AchievementDef {
+    id: string;
+    name: string;
+    description: string;
+    condition: GoalCondition;
+}
+
+export interface GoalsFile {
+    story: GoalDef[];
+    sideTemplates: SideTemplateDef[];
+    achievements: AchievementDef[];
 }
 
 /** How a part looks: plain, see-through glass, shiny metal, or glowing. */
@@ -816,20 +931,47 @@ export type ModelPart =
 
 export type PartKind = ModelPart['kind'];
 
+/**
+ * What a building level does. Every rate is per game year (`produces`,
+ * `consumes`, `trade`, `visitors`); power, storage, radii and percents are
+ * levels, not rates.
+ */
 export interface Effects {
     housing: number;
     jobs: number;
     produces: Amounts;
     consumes: Amounts;
+    /** Trade capacity per year. */
+    trade: number;
     storage: number;
     power: number;
     powerUse: number;
     aura: { radius: number; happiness: number } | null;
     pollution: { radius: number; amount: number } | null;
+    coverage: { service: ServiceId; radius: number } | null;
+    attraction: number;
+    /** Visitor capacity per year. */
+    visitors: number;
+    /** Percent faster research. */
+    research: number;
+    /** Percent off every import. */
+    importDiscount: number;
+    /** Percent onto the goods export price. */
+    goodsPremium: number;
+    transit: { radius: number; share: number; happiness: number } | null;
+    charterRadius: number;
+    dataTax: { radius: number; percent: number } | null;
     boost: { targets: string[]; radius: number; percent: number } | null;
-    seasonal: boolean;
-    defense: number;
 }
+
+/** Where a building may stand (gdd §5.1). */
+export type Zone =
+    'land' | 'landOrBeach' | 'mountain' | 'coast' | 'road' | 'airportPlot';
+
+export type DepositKind = 'ore' | 'coal' | 'oil';
+
+/** Labour priority class: services, food, raw materials, industry, commerce. */
+export type JobClass = 'svc' | 'food' | 'raw' | 'ind' | 'com';
 
 export interface LevelDef {
     level: number;
@@ -837,14 +979,24 @@ export interface LevelDef {
     name: string;
     /** The era it can be built or upgraded to in; also its architecture. */
     epoch: string;
-    /** A technology it needs, if any. */
+    /** A discovery it needs, if any. */
     tech?: string;
     description?: string;
-    /** Price to build it straight away. */
+    /** What else it needs: citizens, or a Town Hall level. */
+    requires?: { population?: number; townHallLevel?: number };
+    /** Price to build it straight away: money and construction materials. */
     cost: Amounts;
-    /** Price to upgrade the level below to it; defaults to a share of `cost`. */
-    upgrade?: Amounts;
+    /** Money per year. */
+    upkeep: number;
+    /** Game seconds. */
     buildTime: number;
+    /** Homes: how many of the needs (water, leisure, …) it asks for. */
+    tier: number;
+    /** Streets: trips per tile, happiness next to it, transit share, cosmetic speed. */
+    capacity?: number;
+    appeal?: number;
+    transit?: number;
+    speed?: number;
     effects: Effects;
     model: {
         parts: ModelPart[];
@@ -873,19 +1025,27 @@ export interface BuildingDef {
     icon: string;
     category: Category;
     description: string;
+    /** Up to 12 × 4 tiles. */
     size: { w: number; h: number };
     unique: boolean;
     /** Not in the build menu (the town centre). */
     hidden: boolean;
-    /** Special roles the engine knows about. */
-    role?: 'road' | 'center' | 'district' | 'bureau';
+    /** Null for network pieces (streets), which employ nobody. */
+    jobClass: JobClass | null;
     placement: {
+        zone: Zone;
+        /** A deposit spot it must stand on (mines, coal mines, oil wells). */
+        deposit?: DepositKind;
         requiresRoad: boolean;
-        biomes?: string[];
-        nearWater?: number;
-        /** May also stand on open water (a road there becomes a bridge). */
-        overWater?: boolean;
     };
+    /** Counts as Heritage once its level is two eras old. */
+    heritage: boolean;
+    /** May be turned (stations). */
+    rotatable: boolean;
+    /** Tax multiplier of its homes (manors ×3). */
+    taxMult: number;
+    /** Line pieces: the network they belong to. */
+    network: 'road' | 'rail' | null;
     sounds: {
         place: string | null;
         upgrade: string | null;
@@ -956,7 +1116,7 @@ export interface ContentBundle {
     epochs: { epochs: EpochDef[] };
     techs: { techs: TechDef[] };
     blueprints: { blueprints: BlueprintDef[] };
-    goals: { goals: GoalDef[] };
+    goals: GoalsFile;
     npcs: NpcsFile;
     sounds: SoundsFile;
     buildings: Record<string, BuildingDef>;

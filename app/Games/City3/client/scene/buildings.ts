@@ -251,7 +251,7 @@ export class Buildings {
         for (const building of game.buildings.values()) {
             const def = game.def(building);
 
-            if (def.role === 'road') {
+            if (game.content.roleOf(def) === 'road') {
                 continue;
             }
 

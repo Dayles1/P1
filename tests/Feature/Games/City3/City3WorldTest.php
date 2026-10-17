@@ -27,7 +27,7 @@ function city3World(array $overrides = []): array
         'population' => 6,
         'happiness' => 55,
         'score' => 16,
-        'resources' => ['food' => 120, 'wood' => 160, 'stone' => 60, 'gold' => 80, 'knowledge' => 0],
+        'resources' => ['money' => 1200, 'food' => 160, 'mat' => 160, 'goods' => 0, 'fuel' => 0],
         'weather' => 'clear',
         'weather_until' => 0,
         'next_event_at' => 200,
@@ -95,7 +95,7 @@ test('a new world is stored table by table: every tile with its coordinates, bui
     $world = World::query()->sole();
 
     expect($world->user_id)->toBe($user->id)
-        ->and($world->resources['wood'])->toEqual(160)
+        ->and($world->resources['mat'])->toEqual(160)
         ->and(Tile::query()->count())->toBe(256)
         ->and(Tile::query()->where(['x' => 0, 'y' => 5])->value('feature'))->toBe('tree')
         ->and(Building::query()->sole()->type)->toBe('town_center')
@@ -112,7 +112,7 @@ test('a world loads back exactly as it was created', function () {
         ->assertJsonPath('data.world.revision', 1)
         ->assertJsonPath('data.world.world.seed', 777)
         ->assertJsonPath('data.world.world.epoch', 'e0')
-        ->assertJsonPath('data.world.world.resources.gold', 80)
+        ->assertJsonPath('data.world.world.resources.money', 1200)
         ->assertJsonPath('data.world.world.techs', [])
         ->assertJsonPath('data.world.world.research', null)
         ->assertJsonCount(256, 'data.world.tiles')
@@ -244,6 +244,28 @@ test('eras, blueprints and goals must exist in the content files', function () {
         'buildings' => ['upsert' => [], 'delete' => []],
         'npcs' => [],
     ])->assertUnprocessable()->assertJsonValidationErrors(['world.epoch', 'world.blueprints.0', 'world.achievements.0']);
+});
+
+test('a world keeps only the content\'s resources: one currency, no gold or wood', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user, 'sanctum')->postJson('/api/city3/world', city3CreatePayload())->assertCreated();
+
+    $this->putJson('/api/city3/world', [
+        'revision' => 1,
+        'world' => city3World(['resources' => ['money' => 100, 'gold' => 80, 'wood' => 5]]),
+        'tiles' => [],
+        'buildings' => ['upsert' => [], 'delete' => []],
+        'npcs' => [],
+    ])->assertUnprocessable()->assertJsonValidationErrors(['world.resources']);
+
+    $this->putJson('/api/city3/world', [
+        'revision' => 1,
+        'world' => city3World(['resources' => ['money' => 100, 'food' => 5], 'achievements' => ['first_homes', 'chronicler']]),
+        'tiles' => [],
+        'buildings' => ['upsert' => [], 'delete' => []],
+        'npcs' => [],
+    ])->assertOk();
 });
 
 test('a save from a tab that fell behind is refused', function () {

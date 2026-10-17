@@ -38,7 +38,7 @@ describe('a new world', () => {
 
         expect(game.canPlace('house', 35, 5).ok).toBe(true);
         expect(game.canPlace('house', 64, 39).ok).toBe(true);
-        expect(game.canPlace('house', 40, 59).ok).toBe(true);
+        expect(game.canPlace('fishery', 40, 59).ok).toBe(true);
         expect(game.canPlace('house', 34, 5)).toEqual({
             ok: false,
             reason: outside,

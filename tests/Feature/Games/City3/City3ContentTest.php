@@ -23,12 +23,12 @@ test('the shipped content files are all there and their ids hold together', func
     $epochs = $repository->epochIds();
     $techs = $repository->techIds();
     $buildings = $repository->buildingIds();
-    $resources = array_column($repository->read('resources')['resources'], 'id');
+    $resources = $repository->resourceIds();
     $world = $repository->read('world');
-    $roles = [];
+    $roads = [];
 
     expect($buildings)->toContain('town_center', 'house', 'farm', 'road', 'architect_bureau', 'district_hall')
-        ->and(array_column($repository->read('epochs')['epochs'], 'year'))->toBe([0, 1000, 1500, 1800, 1900, 2000, 2100, 2300, 2500, 3000])
+        ->and(array_column($repository->read('epochs')['epochs'], 'year'))->toBe([0, 1000, 1500, 1800, 1900, 2000, 2100])
         ->and($epochs)->toContain($world['start']['epoch'])
         ->and($techs)->not->toBeEmpty()
         ->and($repository->blueprintIds())->not->toBeEmpty()
@@ -45,27 +45,56 @@ test('the shipped content files are all there and their ids hold together', func
     foreach ($buildings as $id) {
         $building = $repository->read("buildings/{$id}");
 
-        expect($building['id'])->toBe($id);
+        expect($building['id'])->toBe($id)
+            ->and($building)->not->toHaveKey('role')
+            ->and(['land', 'landOrBeach', 'mountain', 'coast', 'road', 'airportPlot'])->toContain($building['placement']['zone'])
+            ->and($building['size']['w'])->toBeLessThanOrEqual(12)
+            ->and($building['size']['h'])->toBeLessThanOrEqual(4);
 
-        if (isset($building['role'])) {
-            expect($roles)->not->toHaveKey($building['role']);
-            $roles[$building['role']] = $id;
+        if ($building['network'] === 'road') {
+            $roads[] = $id;
         }
 
         foreach ($building['levels'] as $level) {
-            expect($epochs)->toContain($level['epoch']);
+            expect($epochs)->toContain($level['epoch'])
+                ->and(array_keys($level['cost']))->toBe(['money', 'mat']);
 
             if (isset($level['tech'])) {
                 expect($techs)->toContain($level['tech']);
             }
-
-            foreach (array_keys($level['cost']) as $resource) {
-                expect($resources)->toContain($resource);
-            }
         }
     }
 
-    expect($roles)->toHaveKeys(['road', 'center']);
+    expect($roads)->toBe(['road']);
+});
+
+test('the content has one currency and the short list of resources', function () {
+    $repository = new ContentRepository;
+    $epochs = $repository->read('epochs')['epochs'];
+
+    expect($repository->resourceIds())->toBe(['money', 'food', 'mat', 'goods', 'fuel'])
+        ->and($repository->currency())->toBe('money')
+        ->and(array_column($repository->read('resources')['resources'], 'kind', 'id'))->toMatchArray(['money' => 'currency', 'fuel' => 'flow'])
+        ->and(array_column(array_column($epochs, 'currency'), 'symbol'))->toBe(['₯', '₰', 'ƒ', '₤', '¤', '▣', '◈'])
+        ->and(array_keys($repository->read('world')['start']['resources']))->toBe(['money', 'food', 'mat', 'goods']);
+
+    foreach ($repository->read('techs')['techs'] as $tech) {
+        expect(array_keys($tech['cost']))->toBe(['money']);
+    }
+
+    foreach ($repository->read('goals')['story'] as $goal) {
+        expect(array_keys($goal['reward']))->toBe(['money']);
+    }
+
+    expect($repository->goalIds())->toContain('first_homes', 'near_future', 'chronicler')
+        ->and($repository->techIds())->toHaveCount(28);
+});
+
+test('the buildings and levels after 2100 are gone', function () {
+    $buildings = (new ContentRepository)->buildingIds();
+
+    expect($buildings)->toHaveCount(36)
+        ->and($buildings)->not->toContain('ai_foundry', 'antimatter_collider', 'electrolyzer', 'fusion_reactor', 'nanofab', 'spaceport');
 });
 
 test('every building has levels with a model, a cost and effects', function () {
@@ -77,7 +106,7 @@ test('every building has levels with a model, a cost and effects', function () {
         expect($building['levels'])->not->toBeEmpty();
 
         foreach ($building['levels'] as $level) {
-            expect($level)->toHaveKeys(['level', 'name', 'epoch', 'cost', 'buildTime', 'effects', 'model'])
+            expect($level)->toHaveKeys(['level', 'name', 'epoch', 'cost', 'upkeep', 'buildTime', 'tier', 'effects', 'model'])
                 ->and($level['model'])->toHaveKey('parts');
         }
     }
@@ -129,7 +158,7 @@ test('every home model stands inside its plot', function () {
         }
     }
 
-    expect($repository->read('buildings/skyscraper')['levels'][0]['tech'])->toBe('highrise_engineering');
+    expect($repository->read('buildings/skyscraper')['levels'][0]['tech'])->toBe('highrise');
 });
 
 test('the hub reads era names from the content files', function () {

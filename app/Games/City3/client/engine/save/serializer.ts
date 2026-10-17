@@ -215,6 +215,30 @@ export function restoreChanges(game: Game, payload: SyncPayload): void {
     }
 }
 
+/**
+ * A saved treasury and stores in today's resources: unknown ids (City
+ * Chronicle 2's wood, stone, knowledge, …) are dropped, and an older save
+ * whose money was called gold keeps it as money.
+ */
+export function migrateResources(
+    content: Content,
+    saved: Amounts | null | undefined,
+): Amounts {
+    const resources = content.emptyAmounts();
+
+    for (const [id, value] of Object.entries(saved ?? {})) {
+        if (id in resources && Number.isFinite(value)) {
+            resources[id] = Math.max(0, value);
+        }
+    }
+
+    if (!(content.currency in (saved ?? {})) && Number.isFinite(saved?.gold)) {
+        resources[content.currency] = Math.max(0, saved!.gold);
+    }
+
+    return resources;
+}
+
 export function fromServer(content: Content, loaded: LoadedWorld): Game {
     const w = loaded.world;
     const epochIndex = Math.max(
@@ -228,7 +252,7 @@ export function fromServer(content: Content, loaded: LoadedWorld): Game {
         epoch: epochIndex,
         time: w.time,
         land: { ...content.world.map.start },
-        resources: { ...content.emptyAmounts(), ...w.resources },
+        resources: migrateResources(content, w.resources),
         population: w.population,
         weather: w.weather,
         weatherUntil: w.weather_until,
@@ -238,7 +262,10 @@ export function fromServer(content: Content, loaded: LoadedWorld): Game {
         techs: (w.techs ?? []).filter((id) => content.tech(id)),
         research: w.research && content.tech(w.research.id) ? w.research : null,
         blueprints: (w.blueprints ?? []).filter((id) => content.blueprint(id)),
-        achievements: w.achievements ?? [],
+        // Goals of today's content only (the server checks the ids).
+        achievements: (w.achievements ?? []).filter((id) =>
+            content.goals.some((goal) => goal.id === id),
+        ),
         stats: {
             ...{ built: 0, upgraded: 0, demolished: 0, events: 0 },
             ...(w.stats ?? {}),
@@ -316,7 +343,7 @@ export function fromServer(content: Content, loaded: LoadedWorld): Game {
 export function catchUp(
     game: Game,
     savedAt: string | null,
-): { seconds: number; population: number; gold: number } | null {
+): { seconds: number; population: number; money: number } | null {
     if (!savedAt) {
         return null;
     }
@@ -332,7 +359,7 @@ export function catchUp(
 
     const before = {
         population: game.state.population,
-        gold: game.state.resources.gold ?? 0,
+        money: game.money,
     };
 
     for (let i = 0; i < seconds; i++) {
@@ -342,6 +369,6 @@ export function catchUp(
     return {
         seconds,
         population: Math.floor(game.state.population - before.population),
-        gold: Math.floor((game.state.resources.gold ?? 0) - before.gold),
+        money: Math.floor(game.money - before.money),
     };
 }

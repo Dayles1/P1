@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import type { BuildingDef, Category, Effects } from '../engine/content/types';
 import type { Game } from '../engine/sim/game';
 import { renderThumbnail } from '../scene/thumbnails';
-import { CATEGORY_NAMES, CostLine } from './common';
+import { CATEGORY_NAMES, CostLine, formatNumber } from './common';
 
 /** A picture of a building level, or its icon when 3D is unavailable. */
 export function Thumb({
@@ -67,7 +67,7 @@ function tags(game: Game, def: BuildingDef, effects: Effects): string[] {
     }
 
     if (effects.storage) {
-        list.push(`📦 +${effects.storage}`);
+        list.push(`📦 +${formatNumber(effects.storage)}`);
     }
 
     return list;

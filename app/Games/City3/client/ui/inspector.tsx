@@ -1,10 +1,18 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
-import type { Effects } from '../engine/content/types';
+import type { Effects, ServiceId } from '../engine/content/types';
 import type { Game } from '../engine/sim/game';
 import type { BuildingState, NpcState } from '../engine/sim/state';
 import { Thumb } from './build';
-import { CostLine, face, perMinute } from './common';
+import { CostLine, face, formatNumber, formatRate } from './common';
+
+const SERVICE_NAMES: Record<ServiceId, string> = {
+    water: '💧 вода',
+    health: '🩺 здоровье',
+    education: '📚 образование',
+    leisure: '🎭 досуг',
+    data: '📡 данные',
+};
 
 /** Colours the player can paint walls and roofs with (from the Bureau). */
 const SWATCHES = [
@@ -27,13 +35,23 @@ export function effectLines(game: Game, effects: Effects): string[] {
     const res = (id: string) => game.content.resource(id);
 
     for (const [id, v] of Object.entries(effects.produces)) {
-        lines.push(`${res(id)?.icon} ${res(id)?.name}: ${perMinute(v)}`);
+        lines.push(`${res(id)?.icon} ${res(id)?.name}: ${formatRate(v)}`);
     }
 
     for (const [id, v] of Object.entries(effects.consumes)) {
         lines.push(
-            `${res(id)?.icon} тратит ${res(id)?.name.toLowerCase()}: ${perMinute(v).slice(1)}`,
+            `${res(id)?.icon} тратит ${res(id)?.name.toLowerCase()}: ${formatNumber(v)}/год`,
         );
+    }
+
+    if (effects.coverage) {
+        lines.push(
+            `${SERVICE_NAMES[effects.coverage.service]} в радиусе ${effects.coverage.radius}`,
+        );
+    }
+
+    if (effects.research) {
+        lines.push(`🔬 открытия быстрее на ${effects.research}%`);
     }
 
     if (effects.housing) {
@@ -45,7 +63,7 @@ export function effectLines(game: Game, effects: Effects): string[] {
     }
 
     if (effects.storage) {
-        lines.push(`📦 склад +${effects.storage}`);
+        lines.push(`📦 склад +${formatNumber(effects.storage)}`);
     }
 
     if (effects.power) {
@@ -72,10 +90,6 @@ export function effectLines(game: Game, effects: Effects): string[] {
         lines.push(
             `⬆ +${effects.boost.percent}% зданиям: ${effects.boost.targets.map((t) => (game.content.hasBuilding(t) ? game.content.building(t).name : t)).join(', ')}`,
         );
-    }
-
-    if (effects.seasonal) {
-        lines.push('🌦️ зависит от сезона и плодородия');
     }
 
     return lines;
@@ -288,7 +302,8 @@ export function Inspector({
     const status = game.status.get(building.uid);
     const block = game.upgradeBlock(building);
     const next = def.levels[building.level];
-    const fixed = def.role === 'center';
+    const role = game.content.roleOf(def);
+    const fixed = role === 'center';
     const problems: string[] = [];
     let same = 0;
 
@@ -327,7 +342,7 @@ export function Inspector({
         live.push(
             <li key={`o${id}`}>
                 {game.content.resource(id)?.icon}{' '}
-                {game.content.resource(id)?.name}: <b>{perMinute(rate)}</b>
+                {game.content.resource(id)?.name}: <b>{formatRate(rate)}</b>
             </li>,
         );
     }
@@ -336,7 +351,7 @@ export function Inspector({
         live.push(
             <li key={`i${id}`}>
                 {game.content.resource(id)?.icon} тратит:{' '}
-                <b>{perMinute(-rate)}</b>
+                <b>{formatNumber(rate)}/год</b>
             </li>,
         );
     }
@@ -350,6 +365,22 @@ export function Inspector({
     }
 
     if (status?.happiness !== null && status?.happiness !== undefined) {
+        const reached = game
+            .unlockedServices()
+            .filter((service) => status.services.includes(service));
+
+        live.push(
+            <li key="services">
+                Услуги:{' '}
+                <b>
+                    {reached.length
+                        ? reached
+                              .map((service) => SERVICE_NAMES[service])
+                              .join(', ')
+                        : 'нет'}
+                </b>
+            </li>,
+        );
         live.push(
             <li key="hap">
                 {face(status.happiness)} Уют района:{' '}
@@ -375,7 +406,7 @@ export function Inspector({
         );
     }
 
-    if (status?.district && def.role !== 'district') {
+    if (status?.district && role !== 'district') {
         const hall = game.buildings.get(status.district);
         const policy = game.policyOf(hall);
 
@@ -399,7 +430,7 @@ export function Inspector({
                 <div>
                     <h2>{game.nameOf(building)}</h2>
                     <span className="inspector__level">
-                        {def.role === 'district' ? `${level.name} · ` : ''}
+                        {role === 'district' ? `${level.name} · ` : ''}
                         ур. {building.level} из {def.levels.length} ·{' '}
                         {game.content.epochById(level.epoch).name}
                         {age > 0 ? ' · 🏛️ историческое' : ''}
@@ -455,7 +486,7 @@ export function Inspector({
                 </p>
             )}
 
-            {def.role === 'district' && (
+            {role === 'district' && (
                 <DistrictSection
                     key={building.uid}
                     game={game}
@@ -510,14 +541,14 @@ export function Inspector({
                         type="button"
                         className="hud-button"
                         onClick={onUpgradeAll}
-                        title="Улучшить все такие здания этого уровня, пока хватает ресурсов"
+                        title="Улучшить все такие здания этого уровня, пока хватает денег"
                     >
                         ⏫ Улучшить все такие ({same})
                     </button>
                 )}
                 {!fixed && (
                     <div className="inspector__row">
-                        {def.role !== 'road' && (
+                        {role !== 'road' && (
                             <button
                                 type="button"
                                 className="hud-button"
@@ -537,7 +568,7 @@ export function Inspector({
                 )}
             </div>
 
-            {game.bureau && !def.role && (
+            {game.bureau && !role && (
                 <StyleSection game={game} building={building} />
             )}
         </aside>

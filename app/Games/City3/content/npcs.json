@@ -80,39 +80,6 @@
             "glow": null
         },
         {
-            "id": "spacer",
-            "name": "Космопоселенец",
-            "role": "resident",
-            "epochs": ["e2300"],
-            "speed": 1.1,
-            "body": ["#c9ced8", "#f0a43a", "#2b3550", "#e6eeff"],
-            "skin": ["#f1c9a0", "#d9a77a", "#c48b5c", "#8d5a3b"],
-            "hat": "#e8ecf2",
-            "glow": "#9fd2ff"
-        },
-        {
-            "id": "synth",
-            "name": "Житель эры ИИ",
-            "role": "resident",
-            "epochs": ["e2500"],
-            "speed": 1.15,
-            "body": ["#24213a", "#35304f", "#a07cff", "#151326"],
-            "skin": ["#f1c9a0", "#d9a77a", "#c48b5c", "#8d5a3b"],
-            "hat": null,
-            "glow": "#c06cff"
-        },
-        {
-            "id": "nanite",
-            "name": "Житель нано-эры",
-            "role": "resident",
-            "epochs": ["e3000"],
-            "speed": 1.2,
-            "body": ["#f2f0f7", "#e6f0f5", "#f5e9f2", "#7ae0ff"],
-            "skin": ["#f1c9a0", "#d9a77a", "#c48b5c", "#8d5a3b"],
-            "hat": null,
-            "glow": "#ff7ad9"
-        },
-        {
             "id": "cart",
             "name": "Повозка",
             "role": "traffic",
@@ -143,19 +110,10 @@
             "id": "hovercar",
             "name": "Аэромобиль",
             "role": "traffic",
-            "epochs": ["e2100", "e2300", "e2500"],
+            "epochs": ["e2100"],
             "speed": 2.4,
             "body": ["#eef3f2", "#2fb5a3", "#f0a43a", "#4f8cff", "#a07cff"],
             "vehicle": "hover"
-        },
-        {
-            "id": "drone",
-            "name": "Грузовой дрон",
-            "role": "traffic",
-            "epochs": ["e2500", "e3000"],
-            "speed": 2.8,
-            "body": ["#24213a", "#a07cff", "#f2f0f7", "#7ae0ff", "#ff7ad9"],
-            "vehicle": "drone"
         }
     ],
     "names": {

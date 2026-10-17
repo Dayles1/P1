@@ -1,491 +1,325 @@
 {
-    "$doc": "Цели. Пока цель не выполнена, она видна как задача (с эпохи epoch), после — остаётся достижением. condition — условие, reward — награда.",
-    "goals": [
+    "$doc": "Задачи и достижения. story — сюжетные задачи: видны с эпохи epoch, учат следующей системе; reward — награда деньгами. sideTemplates — шаблоны побочных задач (награда — rewardYearsOfGross годового дохода). achievements — достижения (по 250 очков); пока здесь те, что не требуют порта, железной дороги, метро и аэропорта. condition.type: building (building — id или список id, count, level), population, tech, epoch, coverage (service, share, minTiles — доля клеток домов под услугой), power (своё электричество), buildingLevel, stars, techs, heritage, strips, peakPopulation, trafficBelow, pollutionBelow, noImportsYears, happinessYears, calendarYear, neverArrears.",
+    "story": [
         {
             "id": "first_homes",
+            "epoch": "e0",
             "name": "Первые очаги",
             "icon": "🏠",
             "description": "Постройте 3 жилых дома.",
-            "epoch": "e0",
             "condition": { "type": "building", "building": "house", "count": 3 },
-            "reward": { "wood": 40, "gold": 20 }
+            "reward": { "money": 160 }
         },
         {
             "id": "fields",
+            "epoch": "e0",
             "name": "Хлеб насущный",
             "icon": "🌾",
-            "description": "Распашите 2 поля.",
+            "description": "Распашите поле.",
+            "condition": { "type": "building", "building": "farm", "count": 1 },
+            "reward": { "money": 160 }
+        },
+        {
+            "id": "stone_from_hills",
             "epoch": "e0",
-            "condition": { "type": "building", "building": "farm", "count": 2 },
-            "reward": { "food": 60, "wood": 30 }
+            "name": "Камень с гор",
+            "icon": "⛰️",
+            "description": "Откройте каменоломню у подножия гор.",
+            "condition": { "type": "building", "building": "quarry", "count": 1 },
+            "reward": { "money": 160 }
         },
         {
             "id": "village_20",
+            "epoch": "e0",
             "name": "Деревня",
             "icon": "👪",
             "description": "Соберите 20 жителей.",
-            "epoch": "e0",
             "condition": { "type": "population", "value": 20 },
-            "reward": { "gold": 60 }
+            "reward": { "money": 240 }
         },
         {
-            "id": "clay_homes",
-            "name": "Дома из глины",
-            "icon": "🏺",
-            "description": "Постройте 4 глинобитных дома.",
+            "id": "agora",
             "epoch": "e0",
-            "condition": { "type": "building", "building": "house", "count": 4, "level": 2 },
-            "reward": { "stone": 60, "gold": 40 }
+            "name": "Агора",
+            "icon": "🏛️",
+            "description": "Постройте агору — рынок на площади.",
+            "condition": { "type": "building", "building": "market", "count": 1 },
+            "reward": { "money": 240 }
         },
         {
             "id": "first_letters",
+            "epoch": "e0",
             "name": "Первые письмена",
             "icon": "✍️",
-            "description": "Изучите письменность.",
-            "epoch": "e0",
+            "description": "Сделайте открытие «Письменность».",
             "condition": { "type": "tech", "tech": "writing" },
-            "reward": { "knowledge": 20 }
+            "reward": { "money": 240 }
         },
         {
             "id": "chiefs_house",
-            "name": "Дом вождя",
-            "icon": "🏛️",
-            "description": "Улучшите центр до дома вождя.",
             "epoch": "e0",
+            "name": "Дом вождя",
+            "icon": "🛖",
+            "description": "Улучшите шатёр вождя до дома вождя (нужно 30 жителей).",
             "condition": { "type": "building", "building": "town_center", "count": 1, "level": 2 },
-            "reward": { "gold": 100 }
+            "reward": { "money": 400 }
         },
         {
-            "id": "happy_tribe",
-            "name": "Счастливое племя",
-            "icon": "😊",
-            "description": "Поднимите настроение до 70.",
+            "id": "water_for_all",
             "epoch": "e0",
-            "condition": { "type": "happiness", "value": 70 },
-            "reward": { "gold": 80, "food": 50 }
+            "name": "Вода в каждый дом",
+            "icon": "💧",
+            "description": "Пусть колодцы накроют 90 % клеток домов (домов хотя бы на 10 клеток).",
+            "condition": { "type": "coverage", "service": "water", "share": 0.9, "minTiles": 10 },
+            "reward": { "money": 320 }
         },
         {
             "id": "middle_ages",
+            "epoch": "e1000",
             "name": "Средние века",
             "icon": "🏰",
             "description": "Войдите в Средневековье.",
-            "epoch": "e1000",
             "condition": { "type": "epoch", "epoch": "e1000" },
-            "reward": { "wood": 200, "stone": 150 }
+            "reward": { "money": 1200 }
         },
         {
-            "id": "ironworks",
-            "name": "Железный век",
-            "icon": "⛓️",
-            "description": "Накопите 100 железа.",
+            "id": "smithy",
             "epoch": "e1000",
-            "condition": { "type": "resource", "resource": "iron", "value": 100 },
-            "reward": { "tools": 30 }
+            "name": "Кузница",
+            "icon": "⚒️",
+            "description": "Постройте кузницу.",
+            "condition": { "type": "building", "building": "smithy", "count": 1 },
+            "reward": { "money": 800 }
         },
         {
-            "id": "first_district",
-            "name": "Новая слобода",
-            "icon": "🗺️",
-            "description": "Основайте первый район.",
+            "id": "town_200",
             "epoch": "e1000",
-            "condition": { "type": "districts", "count": 1 },
-            "reward": { "gold": 300, "bricks": 50 }
-        },
-        {
-            "id": "town_100",
             "name": "Город",
             "icon": "🏘️",
-            "description": "Соберите 100 жителей.",
-            "epoch": "e1000",
-            "condition": { "type": "population", "value": 100 },
-            "reward": { "gold": 300 }
+            "description": "Соберите 200 жителей.",
+            "condition": { "type": "population", "value": 200 },
+            "reward": { "money": 1200 }
         },
         {
-            "id": "brick_by_brick",
-            "name": "Кирпич к кирпичу",
-            "icon": "🧱",
-            "description": "Накопите 300 кирпичей.",
+            "id": "healer",
             "epoch": "e1000",
-            "condition": { "type": "resource", "resource": "bricks", "value": 300 },
-            "reward": { "gold": 200 }
+            "name": "Лекарь",
+            "icon": "🌿",
+            "description": "Откройте лечебницу.",
+            "condition": { "type": "building", "building": "clinic", "count": 1 },
+            "reward": { "money": 600 }
         },
         {
-            "id": "scholars",
-            "name": "Учёные мужи",
-            "icon": "📚",
-            "description": "Изучите 10 технологий.",
+            "id": "first_charter",
             "epoch": "e1000",
-            "condition": { "type": "techs", "count": 10 },
-            "reward": { "knowledge": 100 }
+            "name": "Первая грамота",
+            "icon": "📜",
+            "description": "Постройте управу района.",
+            "condition": { "type": "building", "building": "district_hall", "count": 1 },
+            "reward": { "money": 800 }
         },
         {
             "id": "renaissance",
+            "epoch": "e1500",
             "name": "Возрождение",
             "icon": "🎨",
             "description": "Войдите в эпоху Возрождения.",
-            "epoch": "e1500",
             "condition": { "type": "epoch", "epoch": "e1500" },
-            "reward": { "gold": 800, "glass": 50 }
+            "reward": { "money": 6000 }
         },
         {
-            "id": "bureau",
-            "name": "Город по чертежам",
-            "icon": "📐",
-            "description": "Постройте бюро архитекторов.",
+            "id": "university",
             "epoch": "e1500",
-            "condition": { "type": "building", "building": "architect_bureau", "count": 1 },
-            "reward": { "gold": 500 }
+            "name": "Университет",
+            "icon": "🎓",
+            "description": "Улучшите школу до университета.",
+            "condition": { "type": "building", "building": "school", "count": 1, "level": 3 },
+            "reward": { "money": 4800 }
         },
         {
-            "id": "first_blueprint",
-            "name": "Свой стиль",
-            "icon": "🖌️",
-            "description": "Откройте первый чертёж.",
+            "id": "people_1000",
             "epoch": "e1500",
-            "condition": { "type": "blueprints", "count": 1 },
-            "reward": { "knowledge": 200 }
-        },
-        {
-            "id": "heritage_1",
-            "name": "Наследие предков",
-            "icon": "🏺",
-            "description": "Сохраните 5 зданий на две эпохи старше нынешней.",
-            "epoch": "e1500",
-            "condition": { "type": "heritage", "count": 5, "age": 2 },
-            "reward": { "gold": 600 }
-        },
-        {
-            "id": "half_timber",
-            "name": "Фахверковая улица",
-            "icon": "🏡",
-            "description": "Постройте 6 фахверковых домов.",
-            "epoch": "e1500",
-            "condition": { "type": "building", "building": "house", "count": 6, "level": 5 },
-            "reward": { "bricks": 200, "gold": 400 }
-        },
-        {
-            "id": "press",
-            "name": "Печатный станок",
-            "icon": "📖",
-            "description": "Изучите книгопечатание.",
-            "epoch": "e1500",
-            "condition": { "type": "tech", "tech": "printing" },
-            "reward": { "knowledge": 300 }
-        },
-        {
-            "id": "districts_3",
-            "name": "Три слободы",
-            "icon": "🧭",
-            "description": "Основайте 3 района.",
-            "epoch": "e1500",
-            "condition": { "type": "districts", "count": 3 },
-            "reward": { "gold": 1000 }
+            "name": "1 000 жителей",
+            "icon": "👥",
+            "description": "Соберите 1 000 жителей.",
+            "condition": { "type": "population", "value": 1000 },
+            "reward": { "money": 6000 }
         },
         {
             "id": "industrial",
-            "name": "Промышленная революция",
+            "epoch": "e1800",
+            "name": "Индустриальная эра",
             "icon": "🏭",
-            "description": "Войдите в индустриальную эру.",
-            "epoch": "e1800",
+            "description": "Войдите в Индустриальную эру.",
             "condition": { "type": "epoch", "epoch": "e1800" },
-            "reward": { "gold": 2000, "coal": 300 }
+            "reward": { "money": 28000 }
         },
         {
-            "id": "steam",
+            "id": "steam_power",
+            "epoch": "e1800",
             "name": "Сила пара",
-            "icon": "🚂",
-            "description": "Изучите паровую машину.",
-            "epoch": "e1800",
-            "condition": { "type": "tech", "tech": "steam_engine" },
-            "reward": { "tools": 200 }
+            "icon": "⚙️",
+            "description": "Пусть работают 6 мастерских, стекольных и сталелитейных заводов.",
+            "condition": {
+                "type": "building",
+                "building": ["smithy", "glassworks", "steel_mill"],
+                "count": 6
+            },
+            "reward": { "money": 20000 }
         },
         {
-            "id": "city_500",
-            "name": "Пятьсот душ",
-            "icon": "🏙️",
-            "description": "Соберите 500 жителей.",
+            "id": "people_4000",
             "epoch": "e1800",
-            "condition": { "type": "population", "value": 500 },
-            "reward": { "gold": 3000 }
-        },
-        {
-            "id": "steel_stock",
-            "name": "Стальной запас",
-            "icon": "🔩",
-            "description": "Накопите 1000 стали.",
-            "epoch": "e1800",
-            "condition": { "type": "resource", "resource": "steel", "value": 1000 },
-            "reward": { "gold": 2000 }
-        },
-        {
-            "id": "blocks",
-            "name": "Рабочая слобода",
-            "icon": "🏚️",
-            "description": "Постройте 3 жилых квартала.",
-            "epoch": "e1800",
-            "condition": { "type": "building", "building": "block", "count": 3 },
-            "reward": { "bricks": 500 }
+            "name": "4 000 жителей",
+            "icon": "👥",
+            "description": "Соберите 4 000 жителей.",
+            "condition": { "type": "population", "value": 4000 },
+            "reward": { "money": 28000 }
         },
         {
             "id": "modern",
-            "name": "Эпоха модерна",
-            "icon": "🎩",
-            "description": "Войдите в эпоху модерна.",
             "epoch": "e1900",
+            "name": "Модерн",
+            "icon": "🎩",
+            "description": "Войдите в эпоху Модерна.",
             "condition": { "type": "epoch", "epoch": "e1900" },
-            "reward": { "gold": 5000, "concrete": 500 }
+            "reward": { "money": 120000 }
         },
         {
-            "id": "lights_on",
+            "id": "let_there_be_light",
+            "epoch": "e1900",
             "name": "Да будет свет",
             "icon": "💡",
-            "description": "Постройте 2 электростанции.",
-            "epoch": "e1900",
-            "condition": { "type": "building", "building": "power_plant", "count": 2 },
-            "reward": { "gold": 4000 }
+            "description": "Дайте городу своё электричество.",
+            "condition": { "type": "power", "value": 1 },
+            "reward": { "money": 100000 }
         },
         {
-            "id": "techs_30",
-            "name": "Век науки",
-            "icon": "🔬",
-            "description": "Изучите 30 технологий.",
+            "id": "people_12000",
             "epoch": "e1900",
-            "condition": { "type": "techs", "count": 30 },
-            "reward": { "knowledge": 2000 }
-        },
-        {
-            "id": "blueprints_3",
-            "name": "Архитектурная выставка",
-            "icon": "🖼️",
-            "description": "Откройте 3 чертежа.",
-            "epoch": "e1900",
-            "condition": { "type": "blueprints", "count": 3 },
-            "reward": { "gold": 5000 }
-        },
-        {
-            "id": "happy_city",
-            "name": "Город счастья",
-            "icon": "🎡",
-            "description": "Поднимите настроение до 80.",
-            "epoch": "e1900",
-            "condition": { "type": "happiness", "value": 80 },
-            "reward": { "gold": 6000 }
+            "name": "12 000 жителей",
+            "icon": "👥",
+            "description": "Соберите 12 000 жителей.",
+            "condition": { "type": "population", "value": 12000 },
+            "reward": { "money": 120000 }
         },
         {
             "id": "contemporary",
+            "epoch": "e2000",
             "name": "Современность",
-            "icon": "📱",
-            "description": "Войдите в современность.",
-            "epoch": "e2000",
+            "icon": "🌐",
+            "description": "Войдите в Современность.",
             "condition": { "type": "epoch", "epoch": "e2000" },
-            "reward": { "gold": 15000, "electronics": 100 }
+            "reward": { "money": 480000 }
         },
         {
-            "id": "skyline",
-            "name": "Линия горизонта",
-            "icon": "🏙️",
-            "description": "Постройте 5 небоскрёбов.",
+            "id": "people_30000",
             "epoch": "e2000",
-            "condition": { "type": "building", "building": "house", "count": 5, "level": 10 },
-            "reward": { "gold": 20000 }
-        },
-        {
-            "id": "city_2000",
-            "name": "Мегаполис",
-            "icon": "🌆",
-            "description": "Соберите 2000 жителей.",
-            "epoch": "e2000",
-            "condition": { "type": "population", "value": 2000 },
-            "reward": { "gold": 15000 }
-        },
-        {
-            "id": "heritage_2",
-            "name": "Старый город",
-            "icon": "🏰",
-            "description": "Сохраните 10 зданий на три эпохи старше нынешней.",
-            "epoch": "e2000",
-            "condition": { "type": "heritage", "count": 10, "age": 3 },
-            "reward": { "gold": 15000 }
-        },
-        {
-            "id": "districts_5",
-            "name": "Пять округов",
-            "icon": "🗺️",
-            "description": "Основайте 5 районов.",
-            "epoch": "e2000",
-            "condition": { "type": "districts", "count": 5 },
-            "reward": { "gold": 12000 }
+            "name": "30 000 жителей",
+            "icon": "👥",
+            "description": "Соберите 30 000 жителей.",
+            "condition": { "type": "population", "value": 30000 },
+            "reward": { "money": 480000 }
         },
         {
             "id": "near_future",
-            "name": "Завтрашний день",
-            "icon": "🌱",
-            "description": "Войдите в ближнее будущее.",
             "epoch": "e2100",
-            "condition": { "type": "epoch", "epoch": "e2100" },
-            "reward": { "gold": 30000, "composites": 300 }
-        },
-        {
-            "id": "green_power",
-            "name": "Зелёная энергия",
-            "icon": "☀️",
-            "description": "Постройте 3 солнечные фермы.",
-            "epoch": "e2100",
-            "condition": { "type": "building", "building": "solar_farm", "count": 3 },
-            "reward": { "gold": 25000 }
-        },
-        {
-            "id": "data_lake",
-            "name": "Озеро данных",
-            "icon": "💾",
-            "description": "Накопите 3000 данных.",
-            "epoch": "e2100",
-            "condition": { "type": "resource", "resource": "data", "value": 3000 },
-            "reward": { "knowledge": 5000 }
-        },
-        {
-            "id": "city_4000",
-            "name": "Умный мегаполис",
-            "icon": "🏙️",
-            "description": "Соберите 4000 жителей.",
-            "epoch": "e2100",
-            "condition": { "type": "population", "value": 4000 },
-            "reward": { "gold": 40000 }
-        },
-        {
-            "id": "space_age",
-            "name": "Космическая эра",
+            "name": "Ближнее будущее",
             "icon": "🚀",
-            "description": "Войдите в космическую эру.",
-            "epoch": "e2300",
-            "condition": { "type": "epoch", "epoch": "e2300" },
-            "reward": { "gold": 60000, "hydrogen": 500 }
+            "description": "Войдите в Ближнее будущее.",
+            "condition": { "type": "epoch", "epoch": "e2100" },
+            "reward": { "money": 1600000 }
+        }
+    ],
+    "sideTemplates": [
+        {
+            "id": "water_cover",
+            "condition": { "type": "coverage", "service": "water", "share": 0.9, "minTiles": 10 },
+            "rewardYearsOfGross": 0.5
         },
         {
-            "id": "to_the_stars",
-            "name": "К звёздам",
-            "icon": "🌠",
-            "description": "Постройте 2 космодрома.",
-            "epoch": "e2300",
-            "condition": { "type": "building", "building": "spaceport", "count": 2 },
-            "reward": { "rare_metals": 300 }
+            "id": "stone_houses",
+            "condition": { "type": "buildingLevel", "building": "house", "level": 4, "count": 5 },
+            "rewardYearsOfGross": 0.5
         },
         {
-            "id": "techs_55",
-            "name": "Энциклопедия",
-            "icon": "📚",
-            "description": "Изучите 55 технологий.",
-            "epoch": "e2300",
-            "condition": { "type": "techs", "count": 55 },
-            "reward": { "knowledge": 15000 }
+            "id": "content_city",
+            "condition": { "type": "happinessYears", "value": 70, "years": 10 },
+            "rewardYearsOfGross": 0.5
+        }
+    ],
+    "achievements": [
+        {
+            "id": "ahead_of_history",
+            "name": "Опередить историю",
+            "description": "★★★ при входе в любую эпоху.",
+            "condition": { "type": "stars", "perEra": 3 }
         },
         {
-            "id": "blueprints_10",
-            "name": "Музей архитектуры",
-            "icon": "🏛️",
-            "description": "Откройте 10 чертежей.",
-            "epoch": "e2300",
-            "condition": { "type": "blueprints", "count": 10 },
-            "reward": { "gold": 50000 }
+            "id": "golden_chronicle",
+            "name": "Золотая летопись",
+            "description": "Все 18 звёзд летописи.",
+            "condition": { "type": "stars", "total": 18 }
         },
         {
-            "id": "ai_age",
-            "name": "Эра ИИ",
-            "icon": "🧠",
-            "description": "Войдите в эру ИИ.",
-            "epoch": "e2500",
-            "condition": { "type": "epoch", "epoch": "e2500" },
-            "reward": { "gold": 100000, "ai_cores": 50 }
+            "id": "chronicler",
+            "name": "Летописец",
+            "description": "Все 28 открытий.",
+            "condition": { "type": "techs", "count": 28 }
         },
         {
-            "id": "arcologies",
-            "name": "Город в доме",
-            "icon": "🔺",
-            "description": "Постройте 5 ИИ-аркологий.",
-            "epoch": "e2500",
-            "condition": { "type": "building", "building": "house", "count": 5, "level": 13 },
-            "reward": { "ai_cores": 100 }
+            "id": "heritage",
+            "name": "Наследие",
+            "description": "10 зданий-наследия.",
+            "condition": { "type": "heritage", "count": 10 }
         },
         {
-            "id": "city_10000",
-            "name": "Десять тысяч",
-            "icon": "🌐",
-            "description": "Соберите 10 000 жителей.",
-            "epoch": "e2500",
-            "condition": { "type": "population", "value": 10000 },
-            "reward": { "gold": 120000 }
+            "id": "whole_coast",
+            "name": "Весь берег",
+            "description": "Все 14 полос земли.",
+            "condition": { "type": "strips", "count": 14 }
         },
         {
-            "id": "star_power",
-            "name": "Звезда на Земле",
-            "icon": "☢️",
-            "description": "Изучите термоядерный синтез.",
-            "epoch": "e2500",
-            "condition": { "type": "tech", "tech": "fusion" },
-            "reward": { "hydrogen": 2000 }
+            "id": "megalopolis",
+            "name": "Мегаполис",
+            "description": "100 000 жителей.",
+            "condition": { "type": "peakPopulation", "value": 100000 }
         },
         {
-            "id": "nano_age",
-            "name": "Нано-эра",
-            "icon": "✨",
-            "description": "Войдите в нано-эру.",
-            "epoch": "e3000",
-            "condition": { "type": "epoch", "epoch": "e3000" },
-            "reward": { "gold": 200000, "nanomaterials": 50 }
+            "id": "no_jams",
+            "name": "Без пробок",
+            "description": "Ни одной перегруженной улицы при 50 000 жителей.",
+            "condition": { "type": "trafficBelow", "value": 0.8, "population": 50000 }
         },
         {
-            "id": "antimatter_stock",
-            "name": "Капля антиматерии",
-            "icon": "🌀",
-            "description": "Накопите 50 единиц антиматерии.",
-            "epoch": "e3000",
-            "condition": { "type": "resource", "resource": "antimatter", "value": 50 },
-            "reward": { "gold": 150000 }
+            "id": "clean_sky",
+            "name": "Чистое небо",
+            "description": "Ни одного дома в дыму при 50 000 жителей.",
+            "condition": { "type": "pollutionBelow", "value": 2, "population": 50000 }
         },
         {
-            "id": "city_20000",
-            "name": "Ноополис",
-            "icon": "🌌",
-            "description": "Соберите 20 000 жителей.",
-            "epoch": "e3000",
-            "condition": { "type": "population", "value": 20000 },
-            "reward": { "gold": 300000 }
+            "id": "self_sufficient",
+            "name": "Самодостаточный",
+            "description": "20 лет без покупок у соседей в Ближнем будущем.",
+            "condition": { "type": "noImportsYears", "years": 20, "epoch": "e2100" }
         },
         {
-            "id": "all_techs",
-            "name": "Всезнание",
-            "icon": "🎓",
-            "description": "Изучите все 77 технологий.",
-            "epoch": "e3000",
-            "condition": { "type": "techs", "count": 77 },
-            "reward": { "gold": 250000, "knowledge": 50000 }
+            "id": "garden_city",
+            "name": "Город-сад",
+            "description": "Довольство 90 десять лет подряд.",
+            "condition": { "type": "happinessYears", "value": 90, "years": 10 }
         },
         {
-            "id": "living_history",
-            "name": "Живая история",
-            "icon": "📜",
-            "description": "Сохраните 20 зданий на пять эпох старше нынешней.",
-            "epoch": "e3000",
-            "condition": { "type": "heritage", "count": 20, "age": 5 },
-            "reward": { "gold": 200000 }
+            "id": "century_after_century",
+            "name": "Век за веком",
+            "description": "Дожить до 1000 года.",
+            "condition": { "type": "calendarYear", "value": 1000 }
         },
         {
-            "id": "stargate",
-            "name": "Врата к звёздам",
-            "icon": "🕳️",
-            "description": "Постройте звёздные врата.",
-            "epoch": "e3000",
-            "condition": { "type": "building", "building": "spaceport", "count": 1, "level": 3 },
-            "reward": { "antimatter": 20 }
-        },
-        {
-            "id": "utopia",
-            "name": "Утопия",
-            "icon": "🌈",
-            "description": "Поднимите настроение до 95.",
-            "epoch": "e3000",
-            "condition": { "type": "happiness", "value": 95 },
-            "reward": { "gold": 300000 }
+            "id": "never_in_arrears",
+            "name": "Без недоимок",
+            "description": "Ни разу не оказаться в недоимке.",
+            "condition": { "type": "neverArrears" }
         }
     ]
 }
