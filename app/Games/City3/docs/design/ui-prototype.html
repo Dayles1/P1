@@ -1,0 +1,1502 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Летопись города 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@400..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght,SHRP@400..800,0..100&display=swap">
+<style>
+/* ============================================================
+   Летопись города 3 — HUD prototype (static, self-contained).
+   Tokens mirror ui-spec.md §2. Mobile-first: portrait phone is the
+   base; landscape phone and desktop are overrides at the end.
+   ============================================================ */
+:root{
+  color-scheme: dark;
+  /* lapis — the instrument surfaces */
+  --lapis-950:#0F1530; --lapis-900:#141B38; --lapis-800:#1B2448; --lapis-700:#24305C;
+  --lapis-600:#2F3C6E; --lapis-500:#45548C;
+  /* vellum — text */
+  --vellum:#FAF6EC; --haze:#B3BCDD; --dim:#8590BC;
+  /* pigments — meaning */
+  --malachite:#74DB9F; --malachite-fill:#3DBB74; --malachite-lip:#1F7A47;
+  --cinnabar:#FF8C7A; --cinnabar-fill:#E4573F; --cinnabar-lip:#9A2E1C;
+  --saffron:#FFC24B; --saffron-lip:#B57B0C;
+  --amber:#FFC857;
+  /* the one era accent (content: epochs.json → accent); e1000 here */
+  --era:#E79A8E;
+  --surface:rgba(27,36,72,.95);
+  --rim:rgba(250,246,236,.16);
+  --lip:#0A0F27;
+  --shadow:0 1px 2px rgba(5,8,24,.55),0 6px 16px rgba(5,8,24,.26);
+  --r-pill:999px; --r-inst:18px; --r-btn:16px; --r-card:12px; --r-sheet:22px; --r-chip:10px;
+  --font:"Geologica",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --t-xs:11px; --t-sm:13px; --t-md:15px; --t-lg:18px; --t-xl:22px; --t-2xl:28px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --gut:10px;
+  --top:calc(env(safe-area-inset-top,0px) + var(--gut));
+  --bot:calc(env(safe-area-inset-bottom,0px) + var(--gut));
+  --lft:calc(env(safe-area-inset-left,0px) + var(--gut));
+  --rgt:calc(env(safe-area-inset-right,0px) + var(--gut));
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--lapis-800)}
+body{font-family:var(--font);font-size:var(--t-sm);line-height:1.25;color:var(--vellum);
+  -webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;font-optical-sizing:auto}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;text-align:inherit}
+h2,h3,p,ul,dl,dd{margin:0;padding:0}
+ul{list-style:none}
+.num{font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum" 1,"lnum" 1}
+.disp{font-variation-settings:"SHRP" 100;font-weight:760;letter-spacing:-.01em}
+.pos{color:var(--malachite)} .neg{color:var(--cinnabar)} .warn{color:var(--amber)} .mut{color:var(--haze)}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.i{width:24px;height:24px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.i--s{width:18px;height:18px}
+.i--xs{width:15px;height:15px;stroke-width:2.2}
+.cur{width:24px;height:24px;flex:none}
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--vellum);outline-offset:2px;box-shadow:0 0 0 2px var(--lapis-950),0 0 0 6px var(--lapis-950)!important}
+
+/* ---------- scene ---------- */
+#scene{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
+
+/* ---------- HUD zones ---------- */
+.hud{position:fixed;inset:0;z-index:10;pointer-events:none}
+.zone{position:absolute;display:flex;gap:6px;pointer-events:none}
+.zone > *, .tl__row > *{pointer-events:auto}
+.tl{top:var(--top);left:var(--lft);flex-direction:column;align-items:flex-start}
+.alerts{display:flex;gap:8px;pointer-events:none}
+.alerts > *{pointer-events:auto}
+.tr{top:var(--top);right:var(--rgt);flex-direction:column;align-items:flex-end}
+.bottom{left:var(--lft);right:var(--rgt);bottom:var(--bot);flex-direction:column;gap:8px}
+/* phone portrait: quest chip + map buttons share the row above the advisor (thumb zone) */
+.qz{left:var(--lft);bottom:calc(var(--bot) + 60px + 8px + 42px + 10px);flex-direction:column-reverse;align-items:flex-start}
+.mapbtns{right:var(--rgt);bottom:calc(var(--bot) + 60px + 8px + 42px + 10px);flex-direction:row;gap:8px}
+
+/* readouts: flat instrument surface + rim, no lip */
+.chip{background:var(--surface);box-shadow:inset 0 0 0 1px var(--rim),var(--shadow);border-radius:var(--r-pill)}
+/* pressables: the lip says "press me" */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;
+  border-radius:var(--r-btn);background:var(--lapis-700);font-weight:620;
+  box-shadow:inset 0 0 0 1px var(--rim),0 3px 0 var(--lip),0 6px 14px rgba(5,8,24,.28);
+  transition:transform 90ms var(--ease),box-shadow 90ms var(--ease)}
+.btn:active{transform:translateY(2px);box-shadow:inset 0 0 0 1px var(--rim),0 1px 0 var(--lip),0 2px 6px rgba(5,8,24,.3)}
+.btn--primary{background:var(--saffron);color:var(--lapis-950);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 3px 0 var(--saffron-lip),0 6px 14px rgba(5,8,24,.28)}
+.btn--primary:active{box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 1px 0 var(--saffron-lip)}
+.btn--ok{background:var(--malachite-fill);color:var(--lapis-950);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 3px 0 var(--malachite-lip),0 6px 14px rgba(5,8,24,.28)}
+.btn--danger{background:transparent;color:var(--cinnabar);box-shadow:inset 0 0 0 1.5px rgba(255,140,122,.55)}
+.btn--quiet{background:transparent;box-shadow:inset 0 0 0 1.5px var(--rim)}
+.btn[disabled]{background:var(--lapis-600);color:var(--dim);box-shadow:none;cursor:not-allowed}
+.btn--wide{width:100%}
+.round{width:46px;height:46px;min-height:0;padding:0;border-radius:50%}
+
+/* money pill */
+.money{display:flex;align-items:center;gap:9px;height:52px;padding:0 15px 0 5px;border-radius:26px}
+.money__face{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--lapis-950);box-shadow:inset 0 0 0 1px var(--rim)}
+.money__face .cur{width:31px;height:31px}
+.money__text{display:flex;flex-direction:column;gap:2px}
+.money__value{font-size:20px;line-height:1}
+.money__delta{font-size:11.5px;font-weight:620;line-height:1.1}
+
+/* citizens + happiness */
+.stat{display:flex;align-items:center;gap:5px;height:38px;padding:0 12px 0 9px;font-weight:650;font-size:13.5px}
+.stat .i{width:19px;height:19px;color:var(--haze)}
+.stat__of{color:var(--haze);font-weight:500}
+.stat__div{width:1px;height:18px;background:var(--rim);margin:0 4px}
+.stat .face-good{color:var(--malachite)}
+
+/* alert badges */
+.alert{position:relative;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;
+  background:var(--cinnabar-fill);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35),var(--shadow)}
+.alert::before{content:"";position:absolute;inset:-4px}
+.alert .i{width:20px;height:20px}
+.alert--warn{background:var(--amber);color:var(--lapis-950);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45),var(--shadow)}
+
+/* main quest chip */
+.quest{display:flex;align-items:center;gap:7px;height:38px;padding:0 10px 0 9px;font-weight:620;font-size:13px}
+.quest > .i{width:19px;height:19px;color:var(--era)}
+.pips{display:flex;gap:3px}
+.pips i{width:8px;height:8px;border-radius:2px;background:transparent;box-shadow:inset 0 0 0 1.5px var(--haze)}
+.pips i.on{background:var(--malachite);box-shadow:none}
+.quest__chev{width:16px;height:16px;color:var(--haze);transition:transform 160ms var(--ease)}
+.quest[aria-expanded="true"] .quest__chev{transform:rotate(90deg)}
+.quest-lines{display:none;flex-direction:column;gap:2px;padding:8px;min-width:236px;border-radius:14px}
+.quest-lines.is-open{display:flex}
+.ql{display:grid;grid-template-columns:18px 1fr auto;align-items:center;gap:8px;min-height:30px;padding:0 4px;font-size:12.5px}
+.ql .i{width:16px;height:16px}
+.ql__bar{grid-column:2 / 4;height:3px;border-radius:2px;background:var(--lapis-600);margin-top:-6px;overflow:hidden}
+.ql__bar b{display:block;height:100%;background:var(--era)}
+.ql--done{color:var(--haze)} .ql--done .i{color:var(--malachite)}
+.ql__more{margin-top:4px;min-height:36px;font-size:12.5px}
+
+/* calendar instrument (the bold element): ring = clock + speed, main = year, era, race against history */
+.cal{display:flex;align-items:stretch;border-radius:var(--r-inst)}
+.cal__ring{position:relative;width:54px;flex:none;border-radius:var(--r-inst) 0 0 var(--r-inst)}
+.cal__ring:hover,.cal__main:hover{background:rgba(250,246,236,.05)}
+.cal__ring svg{position:absolute;left:7px;top:7px;width:42px;height:42px;transform:rotate(-90deg)}
+.cal__ring .track{fill:var(--lapis-950);stroke:rgba(250,246,236,.16);stroke-width:3.2}
+.cal__ring .fill{fill:none;stroke:var(--era);stroke-width:3.2;stroke-linecap:round}
+.cal__speed{position:absolute;left:7px;top:7px;width:42px;height:42px;display:grid;place-items:center;font-size:13px;font-weight:760;font-variation-settings:"SHRP" 100}
+.cal__speed .i{width:17px;height:17px;stroke-width:2.6}
+.cal[data-speed="0"] .cal__ring .fill{stroke:var(--amber)}
+.cal[data-speed="0"] .cal__speed{color:var(--amber)}
+.cal[data-speed="0"]{box-shadow:inset 0 0 0 1.5px rgba(255,200,87,.6),var(--shadow)}
+.cal__main{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"year lead" "era era" "race race";column-gap:12px;align-items:baseline;
+  padding:8px 12px 6px 2px;text-align:left;border-radius:0 var(--r-inst) var(--r-inst) 0}
+.cal__year{grid-area:year;font-size:20px;line-height:1}
+.cal__year small{font-size:12px;font-weight:550;color:var(--haze);font-variation-settings:normal;margin-left:2px}
+.cal__era{grid-area:era;font-size:12px;color:var(--haze);font-weight:520;white-space:nowrap;margin-top:3px}
+.race{grid-area:race;position:relative;height:14px;min-width:112px;display:flex;align-items:center;gap:2px;margin-top:3px}
+.race__seg{flex:1;height:4px;border-radius:2px;background:rgba(250,246,236,.2)}
+.race__lead{position:absolute;top:5px;height:4px;border-radius:2px;background:var(--malachite)}
+.race__now{position:absolute;top:1px;width:2px;height:12px;margin-left:-1px;border-radius:1px;background:var(--vellum)}
+.race__city{position:absolute;top:-2px;width:10px;height:12px;margin-left:-1px;background:var(--era);
+  clip-path:polygon(0 0,100% 0,72% 40%,100% 80%,16% 80%,16% 100%,0 100%)}
+.cal__lead{grid-area:lead;justify-self:end;display:flex;align-items:center;gap:3px;font-size:13.5px;font-weight:720;color:var(--malachite);white-space:nowrap}
+.cal__lead .i{width:13px;height:13px;color:var(--era);stroke-width:2.4}
+.cal.is-falling .race__lead{background:var(--amber)} .cal.is-falling .cal__lead{color:var(--amber)}
+
+/* menu + save dot, speed popover */
+.iconbtn{width:44px;height:44px;border-radius:50%;padding:0;min-height:0}
+.save-dot{position:absolute;top:2px;right:2px;width:11px;height:11px;border-radius:50%;background:var(--malachite);box-shadow:0 0 0 2px var(--lapis-800)}
+.speed-pop{display:none;position:absolute;right:0;top:72px;z-index:2;height:46px;padding:3px;gap:2px;border-radius:23px}
+.speed-pop.is-open{display:flex}
+.speed__opt{min-width:46px;height:40px;border-radius:20px;display:grid;place-items:center;font-weight:700;font-size:13.5px;color:var(--haze);font-variation-settings:"SHRP" 100}
+.speed__opt .i{width:18px;height:18px}
+.speed__opt[aria-pressed="true"]{background:var(--vellum);color:var(--lapis-950)}
+
+/* advisor + thumb bar */
+.advisor{display:flex;align-items:center;gap:9px;min-height:42px;padding:0 10px 0 11px;border-radius:21px;font-size:13px;font-weight:520;width:100%}
+.advisor > .i:first-child{color:var(--saffron);width:20px;height:20px}
+.advisor__text{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.advisor > .i:last-child{width:16px;height:16px;color:var(--haze)}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.thumb{flex-direction:column;gap:3px;height:60px;padding:0 4px;font-size:12px;font-weight:650}
+.thumb .i{width:24px;height:24px}
+.thumb kbd{display:none}
+.count{position:absolute;top:-6px;right:-4px;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--vellum);color:var(--lapis-950);
+  font-size:12px;font-weight:760;display:grid;place-items:center;box-shadow:0 0 0 2px var(--lapis-800)}
+.dot{position:absolute;top:-3px;right:-1px;width:14px;height:14px;border-radius:50%;background:var(--malachite);box-shadow:0 0 0 2px var(--lapis-800)}
+
+/* ---------- world-anchored strip plaques ---------- */
+.plaques{position:fixed;inset:0;z-index:5;pointer-events:none}
+.plaque{position:absolute;transform:translate(-50%,calc(-100% - 10px));display:flex;align-items:center;gap:8px;padding:5px 12px 5px 5px;
+  border-radius:24px;pointer-events:auto;white-space:nowrap}
+.plaque::after{content:"";position:absolute;left:50%;bottom:-7px;width:14px;height:8px;margin-left:-7px;background:rgba(27,36,72,.95);clip-path:polygon(0 0,100% 0,50% 100%)}
+.plaque__add{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--saffron);color:var(--lapis-950)}
+.plaque__add .i{width:20px;height:20px;stroke-width:2.6}
+.plaque__body{display:flex;flex-direction:column;gap:2px}
+.plaque__title{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:620;line-height:1.1}
+.plaque__price{display:inline-flex;align-items:center;gap:3px;font-size:14px}
+.plaque__price .cur{width:16px;height:16px}
+.plaque__feat{display:flex;align-items:center;gap:4px;font-size:11.5px;color:var(--haze)}
+.plaque__feat .i{width:14px;height:14px}
+.edge{position:absolute;display:flex;align-items:center;gap:5px;height:40px;padding:0 10px 0 4px;font-size:13px;font-weight:700;pointer-events:auto;transform:translateY(-50%)}
+.edge > .i{width:16px;height:16px;color:var(--haze)}
+.edge__add{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--saffron);color:var(--lapis-950)}
+.edge__add .i{width:16px;height:16px;stroke-width:2.8}
+.edge--r{flex-direction:row-reverse;padding:0 4px 0 10px}
+
+/* ---------- sheets (bottom on phones; side or tray elsewhere) ---------- */
+.sheet{position:fixed;z-index:20;left:0;right:0;bottom:0;display:none;flex-direction:column;background:var(--lapis-800);
+  border-radius:var(--r-sheet) var(--r-sheet) 0 0;box-shadow:inset 0 1px 0 var(--rim),0 -10px 30px rgba(5,8,24,.38);
+  padding-bottom:env(safe-area-inset-bottom,0px);max-height:76%;animation:sheet-up 260ms var(--ease)}
+.sheet.is-open{display:flex}
+@keyframes sheet-up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+.grip{width:40px;height:5px;border-radius:3px;background:var(--lapis-500);margin:8px auto 0;flex:none}
+.xbtn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:var(--haze);flex:none}
+.xbtn:hover{background:var(--lapis-700);color:var(--vellum)}
+.sh-head{display:flex;align-items:flex-start;gap:12px;padding:8px 8px 10px 16px}
+.sh-head__text{flex:1;min-width:0;padding-top:6px}
+.sh-title{font-size:var(--t-lg);font-weight:700;line-height:1.2}
+.sh-sub{font-size:12.5px;color:var(--haze);margin-top:3px}
+.sh-body{overflow:auto;padding:0 16px 16px;display:flex;flex-direction:column;gap:14px;overscroll-behavior:contain}
+.sh-sec{display:flex;flex-direction:column;gap:8px}
+.sh-sec h3{font-size:12.5px;font-weight:620;color:var(--haze)}
+.rule{height:1px;background:var(--rim);flex:none}
+
+/* build tray */
+.tray__head{display:flex;align-items:center;gap:6px;padding:6px 6px 0 10px}
+.tabs{flex:1;min-width:0;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 6px;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18px,#000 calc(100% - 18px),transparent);mask-image:linear-gradient(90deg,transparent 0,#000 18px,#000 calc(100% - 18px),transparent)}
+.tabs::-webkit-scrollbar{display:none}
+.tab{position:relative;flex:none;display:flex;align-items:center;gap:6px;height:40px;padding:0 12px 0 10px;border-radius:20px;color:var(--haze);font-weight:600;font-size:13px}
+.tab .i{width:19px;height:19px}
+.tab.is-on{background:var(--vellum);color:var(--lapis-950)}
+.tab__dot{width:7px;height:7px;border-radius:50%;background:var(--saffron);margin-left:1px}
+.tool{flex:none;display:flex;align-items:center;justify-content:center;gap:6px;width:44px;height:44px;border-radius:22px;color:var(--cinnabar);font-weight:620;box-shadow:inset 0 0 0 1.5px rgba(255,140,122,.45)}
+.tool .i{width:20px;height:20px}
+.tool span{display:none}
+.cards{display:flex;gap:10px;overflow-x:auto;padding:6px 12px 14px;scroll-snap-type:x proximity;scrollbar-width:thin}
+.card{position:relative;flex:none;width:140px;display:flex;flex-direction:column;gap:5px;padding:0 0 10px;border-radius:var(--r-card);background:var(--lapis-700);
+  box-shadow:inset 0 0 0 1px var(--rim);scroll-snap-align:start;text-align:left;overflow:hidden}
+.card:hover{background:#2A3767}
+.card__img{width:140px;height:86px;display:block;background:var(--lapis-900)}
+.card__new{position:absolute;top:7px;left:7px;padding:2px 7px;border-radius:9px;background:var(--saffron);color:var(--lapis-950);font-size:11px;font-weight:720}
+.card__name{padding:0 10px;font-size:13.5px;font-weight:680;line-height:1.2}
+.card__fx{padding:0 10px;font-size:11.5px;color:var(--haze);line-height:1.3}
+.card .cost{padding:0 10px}
+.card--locked .card__img{opacity:.45;filter:grayscale(.7)}
+.card--locked .card__name{color:var(--haze)}
+.lockline{display:flex;align-items:center;gap:5px;padding:0 10px;font-size:11.5px;color:var(--amber);font-weight:560}
+.lockline .i{width:14px;height:14px}
+.empty{padding:18px 16px 26px;color:var(--haze);font-size:13px;max-width:44ch}
+
+/* cost line: [face] 510 + [mat] 26 */
+.cost{display:inline-flex;align-items:center;gap:3px;font-size:13px;font-weight:650;white-space:nowrap}
+.cost .cur{width:16px;height:16px}
+.cost .i{width:14px;height:14px;color:var(--haze);stroke-width:2.2}
+.cost__plus{color:var(--haze);margin:0 2px;font-weight:500}
+.cost--short{color:var(--cinnabar)}
+
+/* placement bar */
+.placebar{position:fixed;z-index:15;left:var(--lft);right:var(--rgt);bottom:var(--bot);display:none;align-items:center;gap:10px;padding:8px;border-radius:30px}
+body[data-state="place"] .placebar{display:flex}
+.placebar .round{width:56px;height:56px}
+.placebar .round .i{width:26px;height:26px;stroke-width:2.6}
+.round--cancel{background:var(--cinnabar-fill);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 3px 0 var(--cinnabar-lip),0 6px 14px rgba(5,8,24,.28)}
+.placebar__info{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center}
+.placebar__name{font-size:15px;font-weight:700}
+.placebar__name small{font-size:12px;color:var(--haze);font-weight:520;margin-left:4px}
+.placebar__fx{font-size:12px;font-weight:560}
+.coach{position:fixed;z-index:15;left:50%;transform:translateX(-50%);bottom:calc(var(--bot) + 84px);display:none;align-items:center;gap:8px;
+  padding:0 14px 0 10px;height:36px;border-radius:18px;font-size:12.5px;white-space:nowrap}
+.coach .i{width:18px;height:18px;color:var(--saffron)}
+body[data-state="place"] .coach{display:flex}
+
+/* inspector + panel content */
+.ph-thumb{width:64px;height:64px;border-radius:14px;background:var(--lapis-900);flex:none;box-shadow:inset 0 0 0 1px var(--rim)}
+.era-tag{display:inline-flex;align-items:center;gap:6px;margin-top:6px;height:24px;padding:0 9px 0 7px;border-radius:12px;background:var(--lapis-700);font-size:11.5px;font-weight:600}
+.era-tag i{width:8px;height:8px;border-radius:50%;background:var(--tag,var(--era))}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.fact{padding:9px 10px;border-radius:var(--r-chip);background:var(--lapis-700)}
+.fact dt{font-size:11.5px;color:var(--haze)}
+.fact dd{font-size:16px;font-weight:700;margin-top:2px}
+.needs{display:flex;gap:6px;flex-wrap:wrap}
+.need{display:inline-flex;align-items:center;gap:5px;height:30px;padding:0 10px 0 7px;border-radius:15px;background:var(--lapis-700);font-size:12.5px;font-weight:600}
+.need .i{width:16px;height:16px;stroke-width:2.4}
+.need--ok .i{color:var(--malachite)}
+.need--miss{background:rgba(228,87,63,.16);box-shadow:inset 0 0 0 1.5px rgba(255,140,122,.5)}
+.need--miss .i{color:var(--cinnabar)}
+.hint{font-size:12.5px;color:var(--haze);line-height:1.4;max-width:52ch}
+.act-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn .cost{font-size:12.5px}
+.btn--primary .cost .i,.btn--primary .cost__plus{color:rgba(15,21,48,.7)}
+.why{font-size:12px;color:var(--amber);text-align:center;margin-top:-2px}
+.lst{display:flex;flex-direction:column;gap:6px}
+.li{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;min-height:44px;padding:6px 10px;border-radius:var(--r-chip);background:var(--lapis-700);font-size:13px}
+.li .i{width:20px;height:20px}
+.li__sub{display:block;font-size:11.5px;color:var(--haze);margin-top:2px}
+.li--done .i{color:var(--malachite)}
+.bar{display:block;height:4px;border-radius:2px;background:var(--lapis-600);overflow:hidden;margin-top:6px}
+.sheet[data-kind="panel"]{max-height:62%}
+.bar b{display:block;height:100%;background:var(--era)}
+.kv{display:flex;justify-content:space-between;gap:12px;font-size:13px;padding:3px 0}
+.kv span:first-child{color:var(--haze)}
+.stars{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.star{padding:8px 6px;border-radius:var(--r-chip);background:var(--lapis-700);text-align:center;font-size:11.5px;color:var(--haze)}
+.star b{display:block;color:var(--saffron);font-size:13px;letter-spacing:1px;margin-bottom:2px}
+.star--reach{box-shadow:inset 0 0 0 1.5px var(--saffron);color:var(--vellum)}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:3px;border-radius:14px;background:var(--lapis-900)}
+.seg button{min-height:40px;border-radius:11px;font-size:12.5px;font-weight:600;color:var(--haze);text-align:center;line-height:1.15}
+.seg button small{display:block;font-size:10.5px;font-weight:500}
+.seg button[aria-pressed="true"]{background:var(--lapis-600);color:var(--vellum);box-shadow:inset 0 0 0 1px var(--rim)}
+.strips{display:grid;grid-template-columns:repeat(7,1fr) 3fr repeat(7,1fr);gap:2px;height:30px}
+.strips i{border-radius:3px;background:var(--lapis-600)}
+.strips .own{background:var(--malachite-fill)}
+.strips .home{background:var(--malachite-fill);opacity:.8}
+.strips .pick{background:var(--saffron)}
+.strips-cap{display:flex;justify-content:space-between;font-size:11px;color:var(--haze)}
+.bars{display:flex;flex-direction:column;gap:7px}
+.brow{display:grid;grid-template-columns:minmax(96px,34%) 1fr auto;align-items:center;gap:10px;font-size:12.5px}
+.brow__track{height:8px;border-radius:4px;background:var(--lapis-700);overflow:hidden}
+.brow__track b{display:block;height:100%;border-radius:4px;background:var(--malachite-fill)}
+.brow--cost .brow__track b{background:#C8705F}
+.totals{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.loss{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:8px 8px 8px 12px;border-radius:var(--r-chip);background:var(--lapis-700);font-size:12.5px}
+.loss .btn{min-height:36px;padding:0 12px;font-size:12px}
+.menu{position:fixed;z-index:25;top:calc(var(--top) + 52px);right:var(--rgt);display:none;flex-direction:column;min-width:244px;padding:6px;border-radius:16px}
+.menu.is-open{display:flex}
+.menu button,.menu a{display:flex;align-items:center;gap:12px;min-height:44px;padding:0 12px;border-radius:10px;font-size:13.5px;font-weight:560;color:var(--vellum);text-decoration:none}
+.menu button:hover,.menu a:hover{background:var(--lapis-700)}
+.menu .i{width:20px;height:20px;color:var(--haze)}
+.menu kbd{margin-left:auto}
+.menu__save{display:flex;align-items:center;gap:8px;padding:8px 12px;font-size:12px;color:var(--haze)}
+.menu__save i{width:9px;height:9px;border-radius:50%;background:var(--malachite)}
+kbd{font:inherit;font-size:10.5px;font-weight:650;color:var(--haze);min-width:18px;height:18px;padding:0 4px;border-radius:5px;box-shadow:inset 0 0 0 1px var(--rim);display:inline-grid;place-items:center}
+
+/* toast */
+.toast{position:fixed;z-index:30;left:50%;top:calc(var(--top) + 140px);transform:translateX(-50%);display:none;align-items:center;gap:10px;
+  max-width:min(360px,calc(100% - 24px));padding:9px 14px 9px 10px;border-radius:16px;font-size:13px;font-weight:560}
+.toast.is-on{display:flex;animation:sheet-up 220ms var(--ease)}
+.toast .i{color:var(--malachite)}
+
+/* prototype-only controls */
+.proto{position:fixed;z-index:40;left:var(--lft);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:4px;padding:6px;border-radius:14px;
+  background:rgba(250,246,236,.92);color:#1B2448;font-size:11.5px;box-shadow:var(--shadow);max-width:150px}
+.proto b{padding:2px 6px;font-weight:700}
+.proto button{padding:6px 8px;border-radius:8px;text-align:left;font-weight:560}
+.proto button[aria-pressed="true"]{background:#1B2448;color:#FAF6EC}
+.proto[data-min="true"] button{display:none}
+body.bare .proto{display:none}
+
+/* state visibility */
+body.has-sheet .bottom, body.has-sheet .mapbtns, body.has-sheet .qz{display:none}
+body[data-state="place"] .bottom, body[data-state="place"] .mapbtns, body[data-state="place"] .qz{display:none}
+@media (orientation: landscape) and (max-height: 520px), (min-width: 1024px) and (min-height: 600px){
+  body.has-sheet .qz, body[data-state="place"] .qz{display:flex}
+}
+body[data-state="place"] .plaques, body[data-state="build"] .plaques{display:none}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:1ms!important;transition-duration:1ms!important}
+}
+
+/* ============ phone landscape ============ */
+@media (orientation: landscape) and (max-height: 520px){
+  :root{--gut:8px}
+  .tl{flex-direction:row;align-items:center}
+  .tr{flex-direction:row;align-items:flex-start}
+  .speed-pop{top:72px;right:50px}
+  .qz{top:calc(var(--top) + 60px);bottom:auto;flex-direction:column}
+  .bottom{flex-direction:row;align-items:flex-end;gap:10px}
+  .advisor{width:auto;flex:1;max-width:420px}
+  .thumbs{margin-left:auto;grid-template-columns:repeat(4,80px)}
+  .thumb{height:54px}
+  .mapbtns{bottom:calc(var(--bot) + 66px);flex-direction:row}
+  #sh-build .cards{grid-auto-rows:max-content}
+  .sheet{left:auto;top:0;bottom:0;width:min(420px,52vw);max-height:none;border-radius:var(--r-sheet) 0 0 var(--r-sheet);padding-right:env(safe-area-inset-right,0px)}
+  .sheet .grip{display:none}
+  .sheet[data-kind="panel"]{max-height:none}
+  body.has-sheet .tr{display:none}
+  #sh-build .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(122px,1fr));overflow-y:auto;overflow-x:hidden;align-content:start}
+  #sh-build .card{width:auto}
+  #sh-build .card__img{width:100%}
+  .placebar .round{width:60px;height:60px}
+  .coach{bottom:calc(var(--bot) + 86px)}
+  .toast{top:calc(var(--top) + 96px)}
+}
+
+/* ============ desktop / tablet landscape ============ */
+@media (min-width: 1024px) and (min-height: 600px){
+  :root{--gut:16px}
+  .tl{flex-direction:row;align-items:center;gap:8px}
+  .qz{top:calc(var(--top) + 66px);bottom:auto;flex-direction:column;gap:0}
+  .qz .quest{border-radius:16px 16px 0 0;box-shadow:inset 0 0 0 1px var(--rim);width:100%;pointer-events:none}
+  .qz .quest__chev{display:none}
+  .qz .quest-lines{display:flex;border-radius:0 0 16px 16px;min-width:300px;padding-top:2px}
+  .money{height:56px;border-radius:28px}
+  .money__value{font-size:22px}
+  .tr{flex-direction:row;gap:8px}
+  .speed-pop{display:flex;position:static}
+  .race{min-width:160px}
+  .bottom{left:50%;right:auto;transform:translateX(-50%);width:560px}
+  .thumb{height:62px}
+  .thumb kbd{display:inline-grid;position:absolute;top:6px;left:7px}
+  .thumb--primary kbd{color:var(--lapis-950);box-shadow:inset 0 0 0 1.5px rgba(15,21,48,.45)}
+  .mapbtns{bottom:var(--bot);flex-direction:column}
+  .sheet{left:auto;right:var(--rgt);top:calc(var(--top) + 82px);bottom:auto;width:400px;max-height:calc(100% - var(--top) - 82px - var(--bot));border-radius:var(--r-sheet);
+    box-shadow:inset 0 0 0 1px var(--rim),0 12px 40px rgba(5,8,24,.4)}
+  .sheet .grip{display:none}
+  .sheet[data-kind="panel"]{max-height:calc(100% - var(--top) - 82px - var(--bot))}
+  .tool{width:auto;padding:0 14px 0 11px}
+  .tool span{display:inline}
+  #sh-build{left:50%;right:auto;top:auto;bottom:var(--bot);transform:translateX(-50%);width:min(1060px,calc(100% - 32px));animation:none}
+  #sh-build .card{width:156px}
+  #sh-build .card__img{width:156px;height:96px}
+  body.has-sheet .bottom{display:flex}
+  body[data-sheet="tray"] .bottom, body[data-sheet="tray"] .mapbtns{display:none}
+  body.has-sheet .mapbtns{right:calc(var(--rgt) + 416px)}
+  .placebar{left:50%;right:auto;transform:translateX(-50%);width:560px}
+  .menu{top:calc(var(--top) + 62px)}
+  .toast{top:calc(var(--top) + 76px)}
+  .proto{top:auto;bottom:var(--bot);transform:none}
+}
+</style>
+</head>
+<body data-state="idle" data-time="day">
+
+<!-- ================= icon sprite: 24-px grid, 2-px stroke, round joins ================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+  <symbol id="i-build" viewBox="0 0 24 24"><path d="M4 20l9.1-9.1"/><path d="M12.4 4.6l7.1 7-2.9 2.9-7.1-7.1z"/></symbol>
+  <symbol id="i-upgrade" viewBox="0 0 24 24"><path d="M6 12.5l6-6 6 6"/><path d="M6 18.5l6-6 6 6"/></symbol>
+  <symbol id="i-goals" viewBox="0 0 24 24"><path d="M10 6.5h10M10 12h10M10 17.5h10"/><path d="M3.5 6.5l1.5 1.5 2.5-3"/><path d="M3.5 12l1.5 1.5 2.5-3"/><path d="M4 17.5h2.5"/></symbol>
+  <symbol id="i-city" viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M7 16v-5M12 16V6.5M17 16v-8"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 4l8 4-8 4-8-4z"/><path d="M4 12l8 4 8-4"/><path d="M4 16l8 4 8-4"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M14.8 9.2l-1.6 4-4 1.6 1.6-4z"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.5"/><path d="M12 2.5v4M12 17.5v4M2.5 12h4M17.5 12h4"/></symbol>
+  <symbol id="i-bulldoze" viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 20V9.5L10 6l5 3.5V20"/><path d="M10.5 11l-1.8 2.6 2.4 1.6-1.4 2.8"/><path d="M17.5 13l2.5-2.5M18 17l3-1"/></symbol>
+  <symbol id="i-move" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><path d="M9 6l3-3 3 3M9 18l3 3 3-3M6 9l-3 3 3 3M18 9l3 3-3 3"/></symbol>
+  <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v5h-5"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 19.5c.5-3.4 2.9-5.4 6-5.4s5.5 2 6 5.4"/><path d="M16 4.9a3.2 3.2 0 0 1 0 6.2"/><path d="M17.6 14.4c1.9.7 3 2.4 3.4 5.1"/></symbol>
+  <symbol id="i-face" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9 10v.6M15 10v.6"/><path d="M8.5 14.2c.9 1.3 2.1 1.9 3.5 1.9s2.6-.6 3.5-1.9"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9.5 18h5M10.5 21h3"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9.5" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-wheat" viewBox="0 0 24 24"><path d="M12 21V7.5"/><path d="M12 11.5c-2.6 0-4.2-1.5-4.2-4.1 2.6 0 4.2 1.5 4.2 4.1zM12 11.5c2.6 0 4.2-1.5 4.2-4.1-2.6 0-4.2 1.5-4.2 4.1zM12 16.5c-2.6 0-4.2-1.5-4.2-4.1 2.6 0 4.2 1.5 4.2 4.1zM12 16.5c2.6 0 4.2-1.5 4.2-4.1-2.6 0-4.2 1.5-4.2 4.1zM12 6.6c-1.3-1-1.3-2.9 0-3.9 1.3 1 1.3 2.9 0 3.9z"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3.5c3.4 4 5.8 7.1 5.8 10.1a5.8 5.8 0 0 1-11.6 0c0-3 2.4-6.1 5.8-10.1z"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 17v-4.6L6.6 7h10.8l2.6 5.4V17z"/><path d="M4 12.4h16"/><circle cx="7.6" cy="17" r="1.8"/><circle cx="16.4" cy="17" r="1.8"/></symbol>
+  <symbol id="i-coin-off" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M5.5 18.5l13-13"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7.5" width="18" height="12.5" rx="2"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5M3 13h18"/></symbol>
+  <symbol id="i-hardhat" viewBox="0 0 24 24"><path d="M3.5 17.5h17"/><path d="M5.5 17.5v-3a6.5 6.5 0 0 1 13 0v3"/><path d="M10 8.2V12M14 8.2V12"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18.5h10a4 4 0 0 0 .6-8A6 6 0 0 0 6.3 9.8 4.4 4.4 0 0 0 7 18.5z"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h9M18 7h2M4 17h3M11 17h9"/><circle cx="15.5" cy="7" r="2.3"/><circle cx="8.8" cy="17" r="2.3"/></symbol>
+  <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9.5v5h4l5 4v-13l-5 4z"/><path d="M16.5 9.5a3.6 3.6 0 0 1 0 5M19 7a7 7 0 0 1 0 10"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.4 2.5 3.6 5.3 3.6 8.5s-1.2 6-3.6 8.5c-2.4-2.5-3.6-5.3-3.6-8.5s1.2-6 3.6-8.5z"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3.5h6"/><path d="M10 3.5V9l-5.2 9.6A1.6 1.6 0 0 0 6.2 21h11.6a1.6 1.6 0 0 0 1.4-2.4L14 9V3.5"/><path d="M7.4 15.5h9.2"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 19.5V5.5A2 2 0 0 1 7 3.5h12v14H7a2 2 0 0 0-2 2 2 2 0 0 0 2 2h4"/><path d="M15 17.5v4.5l-1.5-1.1-1.5 1.1v-4.5"/><path d="M9 8h6"/></symbol>
+  <symbol id="i-hall" viewBox="0 0 24 24"><path d="M3 9.5L12 4l9 5.5z"/><path d="M5 9.5v8M9.7 9.5v8M14.3 9.5v8M19 9.5v8"/><path d="M3.5 20.5h17M4 17.5h16"/></symbol>
+  <symbol id="i-mat" viewBox="0 0 24 24"><rect x="3" y="13" width="8" height="7" rx="1"/><rect x="13" y="13" width="8" height="7" rx="1"/><rect x="8" y="4.5" width="8" height="7" rx="1"/></symbol>
+  <symbol id="i-crate" viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v8.5l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v8.5"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></symbol>
+  <symbol id="i-anchor" viewBox="0 0 24 24"><circle cx="12" cy="5.5" r="2"/><path d="M12 7.5V21M8.5 11h7"/><path d="M4.5 13.5a7.5 7.5 0 0 0 15 0"/></symbol>
+  <symbol id="i-fish" viewBox="0 0 24 24"><path d="M3 12c2.6-3.4 5.6-5 9-5 3.4 0 6.2 1.8 8 5-1.8 3.2-4.6 5-8 5-3.4 0-6.4-1.6-9-5z"/><path d="M3 12l-1-3M3 12l-1 3"/><path d="M15.5 10.5v.5"/></symbol>
+  <symbol id="i-pick" viewBox="0 0 24 24"><path d="M4.5 8.5C8.8 4.6 15.2 4.6 19.5 8.5"/><path d="M12 6v15"/></symbol>
+  <symbol id="i-house" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/></symbol>
+  <symbol id="i-factory" viewBox="0 0 24 24"><path d="M3 20.5V10l5 3v-3l5 3v-3l5 3V4.5h3v16z"/></symbol>
+  <symbol id="i-stall" viewBox="0 0 24 24"><path d="M4 10l1.5-5h13L20 10"/><path d="M4 10a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0"/><path d="M5.5 11.5V20h13v-8.5M10 20v-4.5h4V20"/></symbol>
+  <symbol id="i-service" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4.5"/><path d="M12 8v8M8 12h8"/></symbol>
+  <symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 21v-6"/><path d="M12 15c-4 0-6-2.2-6-5.2C6 6.6 8.7 4 12 4s6 2.6 6 5.8c0 3-2 5.2-6 5.2z"/></symbol>
+  <symbol id="i-train" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="13.5" rx="3"/><path d="M6 10h12"/><path d="M9 13.4v.1M15 13.4v.1"/><path d="M9 19.5l-2 2M15 19.5l2 2"/></symbol>
+  <symbol id="i-road" viewBox="0 0 24 24"><path d="M8 3.5L5 20.5M16 3.5l3 17"/><path d="M12 4.5v2.5M12 10.5v3M12 17.5v3"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 16H3z"/><path d="M12 10v4.5M12 17.4v.1"/></symbol>
+  <symbol id="i-chest" viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="11" rx="2"/><path d="M3 13.5h18"/><path d="M5 9a7 4.5 0 0 1 14 0"/><path d="M11 13.5v3h2v-3"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4"/><path d="M12 13v4M8.5 20.5h7M10 17h4"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 21V3.5"/><path d="M6 4h12l-3.5 4.2L18 12.5H6"/></symbol>
+  <symbol id="i-water" viewBox="0 0 24 24"><path d="M12 3.5c3.4 4 5.8 7.1 5.8 10.1a5.8 5.8 0 0 1-11.6 0c0-3 2.4-6.1 5.8-10.1z"/><path d="M9.2 14.2a2.8 2.8 0 0 0 2.8 2.8"/></symbol>
+  <symbol id="i-health" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.4-7.5-10A4.4 4.4 0 0 1 12 7.2 4.4 4.4 0 0 1 19.5 10c0 5.6-7.5 10-7.5 10z"/><path d="M12 10.5v5M9.5 13h5"/></symbol>
+  <symbol id="i-masks" viewBox="0 0 24 24"><path d="M4 5.5c2.7 1.2 5.3 1.2 8 0v5.5a4 4 0 0 1-8 0z"/><path d="M14 9.5c2-.5 4-.9 6-1.9v5.4a4 4 0 0 1-6 3.5"/><path d="M6.5 9h.1M9.5 9h.1M6.8 12.2c.8.6 1.6.6 2.4 0"/></symbol>
+  <symbol id="i-edu" viewBox="0 0 24 24"><path d="M2.5 9.5L12 5l9.5 4.5L12 14z"/><path d="M6.5 11.5V16c1.6 1.4 3.4 2 5.5 2s3.9-.6 5.5-2v-4.5"/><path d="M21.5 9.5v5"/></symbol>
+
+  <!-- currency faces: duotone, drawn (not font glyphs); one per era -->
+  <symbol id="cur-e0" viewBox="0 0 24 24"><path d="M12 2.3c5.1.2 9.6 4.3 9.7 9.6.1 5.4-4.3 9.9-9.8 9.8C6.6 21.6 2.3 17.3 2.3 12 2.2 6.6 6.8 2.1 12 2.3z" fill="#D7DCE6" stroke="#5F6886" stroke-width="1.2"/><circle cx="12" cy="12" r="7.6" fill="none" stroke="#9AA3BC" stroke-width=".9"/><path d="M8.2 9.4c.6-1.4 2-2.2 3.8-2.2s3.2.8 3.8 2.2l.2 4.4c0 2-1.8 3.4-4 3.4s-4-1.4-4-3.4z" fill="#B7BECF" stroke="#4E5672" stroke-width=".9"/><circle cx="10.3" cy="10.6" r="1.35" fill="#fff" stroke="#3E4560" stroke-width=".8"/><circle cx="13.7" cy="10.6" r="1.35" fill="#fff" stroke="#3E4560" stroke-width=".8"/><path d="M12 11.6l-.6 1 .6.7.6-.7z" fill="#3E4560"/></symbol>
+  <symbol id="cur-e1000" viewBox="0 0 24 24"><path d="M8.6 6.6c-2.9 2-4.6 5-4.6 8 0 3.6 2.8 5.8 7.4 5.8s7.2-2.2 7.2-5.6c0-3-1.7-6.1-4.6-8.2z" fill="#B97D45" stroke="#4E2D12" stroke-width="1.1"/><path d="M8.4 6.6c1.2-.5 2.3-.7 3.6-.7s2.3.2 3.5.7" fill="none" stroke="#4E2D12" stroke-width="1.1"/><path d="M9.3 3.4l1.5 2.4h2.6l1.4-2.4z" fill="#D49A5E" stroke="#4E2D12" stroke-width="1.1" stroke-linejoin="round"/><path d="M7.3 12.6c1.3.6 2.8.9 4.4.9" fill="none" stroke="#7A4A22" stroke-width=".9" stroke-linecap="round"/><circle cx="17.4" cy="17.8" r="3.6" fill="#DFE3EB" stroke="#4E5672" stroke-width="1"/><circle cx="17.4" cy="17.8" r="1.7" fill="none" stroke="#8C95AE" stroke-width=".8"/></symbol>
+  <symbol id="cur-e1500" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.8" fill="#F1C24E" stroke="#8A5B0A" stroke-width="1.1"/><circle cx="12" cy="12" r="8.4" fill="none" stroke="#B9831A" stroke-width="1.1" stroke-dasharray="1 1.1"/><path d="M12 6.3c-1.3 1.4-1.6 3-.9 4.6.3.7.5 1.3.4 2.1h1c-.1-.8.1-1.4.4-2.1.7-1.6.4-3.2-.9-4.6zM8 9.8c-.7 1.6.2 3.3 2.3 3.3-.4-1.3-1-2.4-2.3-3.3zM16 9.8c.7 1.6-.2 3.3-2.3 3.3.4-1.3 1-2.4 2.3-3.3zM9.2 13.6h5.6v1.1H9.2zM11.4 14.7h1.2v2.6h-1.2z" fill="#8A5B0A"/></symbol>
+  <symbol id="cur-e1800" viewBox="0 0 24 24"><rect x="1.8" y="5.5" width="20.4" height="13" rx="1.6" fill="#D5E6C8" stroke="#3F5E3A" stroke-width="1.1"/><rect x="3.6" y="7.2" width="16.8" height="9.6" rx=".8" fill="none" stroke="#6E9165" stroke-width=".8"/><path d="M4 12c1.2-1.6 2.4-1.6 3.6 0s2.4 1.6 3.6 0 2.4-1.6 3.6 0 2.4 1.6 3.6 0" fill="none" stroke="#8DB083" stroke-width=".8"/><path d="M9.3 14.6h6.3v-2.2h-1.4v-1.5h-1.2v1.5h-2.4l-1.3 1.2z" fill="#3F5E3A"/></symbol>
+  <symbol id="cur-e1900" viewBox="0 0 24 24"><rect x="2.5" y="7" width="16" height="10" rx="1.4" fill="#6FA66C" stroke="#2F5A30" stroke-width="1.1" transform="rotate(-8 10.5 12)"/><rect x="4" y="8.5" width="16" height="10" rx="1.4" fill="#9CCB93" stroke="#2F5A30" stroke-width="1.1"/><circle cx="12" cy="13.5" r="2.4" fill="none" stroke="#2F5A30" stroke-width="1"/><circle cx="18" cy="17.2" r="3.6" fill="#E9C25A" stroke="#7D5810" stroke-width="1.1"/></symbol>
+  <symbol id="cur-e2000" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2.4" fill="#5B8DEF" stroke="#1F3F8F" stroke-width="1.1"/><rect x="4.6" y="9" width="4.4" height="3.4" rx=".7" fill="#F1CF6B" stroke="#8C6A12" stroke-width=".7"/><path d="M14.2 9.3a3.6 3.6 0 0 1 0 4.4M16.4 8a5.6 5.6 0 0 1 0 7" fill="none" stroke="#fff" stroke-width="1.1" stroke-linecap="round"/><path d="M4.6 15.6h6" stroke="#CFE0FF" stroke-width="1.1" stroke-linecap="round"/></symbol>
+  <symbol id="cur-e2100" viewBox="0 0 24 24"><path d="M12 1.8l8.8 5.1v10.2L12 22.2l-8.8-5.1V6.9z" fill="#3B2C7A" stroke="#C3A6FF" stroke-width="1.1"/><path d="M12 5.4l5.7 3.3v6.6L12 18.6l-5.7-3.3V8.7z" fill="#8F6BFF"/><path d="M12 8.6l2.9 1.7v3.4L12 15.4l-2.9-1.7v-3.4z" fill="#E4D8FF"/></symbol>
+</defs>
+</svg>
+
+<canvas id="scene" aria-label="Город: 3D-сцена (заглушка прототипа)" role="img"></canvas>
+<div class="plaques" id="plaques"></div>
+
+<!-- ================= HUD ================= -->
+<div class="hud" id="hud">
+  <div class="zone tl">
+    <button class="money chip" data-open="city" aria-label="Деньги: 8 420 (гроши), плюс 1 260 в год. Открыть бюджет города">
+      <span class="money__face"><svg class="cur" aria-hidden="true"><use href="#cur-e1000"/></svg></span>
+      <span class="money__text">
+        <span class="money__value num disp">8,42K</span>
+        <span class="money__delta num pos">+1,26K/год</span>
+      </span>
+    </button>
+    <button class="stat chip" data-open="city" aria-label="Жители: 380 из 412 возможных. Довольство 71 %">
+      <svg class="i" aria-hidden="true"><use href="#i-people"/></svg><span class="num">380</span><span class="stat__of num">/412</span>
+      <span class="stat__div"></span>
+      <svg class="i face-good" aria-hidden="true"><use href="#i-face"/></svg><span class="num">71 %</span>
+    </button>
+    <div class="alerts">
+      <button class="alert" data-open="city" aria-label="Город покупает еду: 310 в год"><svg class="i" aria-hidden="true"><use href="#i-wheat"/></svg></button>
+      <button class="alert alert--warn" aria-label="Пробки: −6 к довольству в 12 домах"><svg class="i" aria-hidden="true"><use href="#i-car"/></svg></button>
+    </div>
+  </div>
+
+  <div class="zone tr">
+    <div class="cal chip" id="cal" data-speed="1">
+      <button class="cal__ring" id="speed-cur" aria-haspopup="true" aria-expanded="false" aria-controls="speed-pop" aria-label="Скорость ×1. Изменить скорость">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle class="track" cx="20" cy="20" r="16.4"/><circle class="fill" cx="20" cy="20" r="16.4" stroke-dasharray="64 200"/></svg>
+        <span class="cal__speed" id="speed-label">×1</span>
+      </button>
+      <button class="cal__main" data-open="chronicle"
+        aria-label="121 год, Средневековье. Опережение истории: плюс 1 207 лет. Открыть летопись"
+        title="Опережение истории: +1 207 лет. Ваш город — как Европа 1 328 года (Средневековье, 66 % пути к Возрождению). Последнее: «Управа района с грамотой» +79 лет.">
+        <span class="cal__year num disp">121<small>г.</small></span>
+        <span class="cal__lead num"><svg class="i" aria-hidden="true"><use href="#i-flag"/></svg>+1 207</span>
+        <span class="cal__era">Средневековье</span>
+        <span class="race" aria-hidden="true">
+          <span class="race__seg"></span><span class="race__seg"></span><span class="race__seg"></span><span class="race__seg"></span><span class="race__seg"></span><span class="race__seg"></span>
+          <span class="race__lead" style="left:2%;width:25.6%"></span>
+          <span class="race__now" style="left:2%"></span>
+          <span class="race__city" style="left:27.6%"></span>
+        </span>
+      </button>
+    </div>
+    <div class="speed-pop chip" id="speed-pop" role="group" aria-label="Скорость">
+      <button class="speed__opt" data-speed="0" aria-pressed="false" aria-label="Пауза (пробел)"><svg class="i"><use href="#i-pause"/></svg></button>
+      <button class="speed__opt" data-speed="1" aria-pressed="true">×1</button>
+      <button class="speed__opt" data-speed="2" aria-pressed="false">×2</button>
+      <button class="speed__opt" data-speed="5" aria-pressed="false">×5</button>
+    </div>
+    <button class="btn iconbtn" id="menu-btn" aria-label="Меню. Игра сохранена" aria-expanded="false"><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg><i class="save-dot"></i></button>
+  </div>
+
+  <div class="zone qz">
+    <button class="quest chip" id="quest" aria-expanded="false" aria-controls="quest-lines" aria-label="К Возрождению: готово 1 из 4">
+      <svg class="i" aria-hidden="true"><use href="#i-hall"/></svg><span>К Возрождению</span>
+      <span class="pips" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span>
+      <svg class="i quest__chev" aria-hidden="true"><use href="#i-chev"/></svg>
+    </button>
+    <div class="quest-lines chip" id="quest-lines">
+      <div class="ql"><svg class="i mut"><use href="#i-people"/></svg><span>Жители</span><span class="num">380 / 460</span><span class="ql__bar"><b style="width:83%"></b></span></div>
+      <div class="ql"><svg class="i mut"><use href="#i-factory"/></svg><span>Кузницы</span><span class="num">1 / 2</span><span class="ql__bar"><b style="width:50%"></b></span></div>
+      <div class="ql"><svg class="i mut"><use href="#i-flask"/></svg><span>Открытия эпохи</span><span class="num">2 / 3</span><span class="ql__bar"><b style="width:67%"></b></span></div>
+      <button class="btn btn--quiet ql__more" data-open="hall"><svg class="i i--s"><use href="#i-hall"/></svg>Открыть ратушу</button>
+    </div>
+  </div>
+
+  <div class="zone mapbtns">
+    <button class="btn round" aria-label="Слои карты (L)"><svg class="i"><use href="#i-layers"/></svg></button>
+    <button class="btn round" aria-label="Повернуть камеру; удерживайте — к ратуше"><svg class="i"><use href="#i-compass"/></svg></button>
+  </div>
+
+  <div class="zone bottom">
+    <button class="advisor chip" data-goto="clinic" aria-label="Совет: 18 домов не растут — нет лечебницы рядом. Показать">
+      <svg class="i" aria-hidden="true"><use href="#i-bulb"/></svg>
+      <span class="advisor__text">18 домов не растут: нет лечебницы рядом</span>
+      <svg class="i" aria-hidden="true"><use href="#i-chev"/></svg>
+    </button>
+    <nav class="thumbs" aria-label="Главные действия">
+      <button class="btn btn--primary thumb" data-open="build"><svg class="i"><use href="#i-build"/></svg><span>Строить</span><kbd>B</kbd></button>
+      <button class="btn thumb" data-open="upgrade"><svg class="i"><use href="#i-upgrade"/></svg><span>Улучшить</span><b class="count num">9</b><kbd>U</kbd></button>
+      <button class="btn thumb" data-open="goals"><svg class="i"><use href="#i-goals"/></svg><span>Задачи</span><b class="dot" aria-label="Есть награда"></b><kbd>G</kbd></button>
+      <button class="btn thumb" data-open="city"><svg class="i"><use href="#i-city"/></svg><span>Город</span><kbd>C</kbd></button>
+    </nav>
+  </div>
+</div>
+
+<!-- ================= menu ================= -->
+<nav class="menu chip" id="menu" aria-label="Меню">
+  <button data-open="chronicle"><svg class="i"><use href="#i-book"/></svg>Летопись<kbd>H</kbd></button>
+  <button data-open="goals"><svg class="i"><use href="#i-flask"/></svg>Открытия<kbd>T</kbd></button>
+  <button><svg class="i"><use href="#i-layers"/></svg>Слои карты<kbd>L</kbd></button>
+  <button><svg class="i"><use href="#i-sliders"/></svg>Настройки</button>
+  <div class="rule"></div>
+  <div class="menu__save"><i></i>Сохранено 12 с назад</div>
+  <a href="#"><svg class="i"><use href="#i-back"/></svg>К списку игр</a>
+</nav>
+
+<!-- ================= build tray ================= -->
+<section class="sheet" id="sh-build" data-kind="tray" role="dialog" aria-label="Строительство">
+  <div class="grip" aria-hidden="true"></div>
+  <header class="tray__head">
+    <div class="tabs" role="tablist" id="tabs" aria-label="Категории"></div>
+    <button class="tool" aria-label="Снос (X)"><svg class="i"><use href="#i-bulldoze"/></svg><span>Снос</span></button>
+    <button class="xbtn" data-close aria-label="Закрыть (Esc)"><svg class="i"><use href="#i-x"/></svg></button>
+  </header>
+  <div class="cards" id="cards" role="tabpanel"></div>
+</section>
+
+<!-- ================= placement ================= -->
+<div class="coach chip" role="status"><svg class="i"><use href="#i-move"/></svg><span id="coach-text">Перетащите здание, чтобы сдвинуть</span></div>
+<div class="placebar chip" role="region" aria-label="Установка здания">
+  <button class="btn round round--cancel" data-cancel aria-label="Отменить (Esc)"><svg class="i"><use href="#i-x"/></svg></button>
+  <div class="placebar__info">
+    <div class="placebar__name" id="pb-name">Знахарь<small>ур. 1</small></div>
+    <div id="pb-cost"></div>
+    <div class="placebar__fx pos" id="pb-fx">Здоровье получат 14 домов</div>
+  </div>
+  <button class="btn btn--ok round" data-confirm aria-label="Построить (Enter)"><svg class="i"><use href="#i-check"/></svg></button>
+</div>
+
+<!-- ================= inspector ================= -->
+<section class="sheet" id="sh-inspect" data-kind="panel" role="dialog" aria-labelledby="ins-title">
+  <div class="grip" aria-hidden="true"></div>
+  <header class="sh-head">
+    <canvas class="ph-thumb" id="ins-thumb" width="128" height="128"></canvas>
+    <div class="sh-head__text">
+      <h2 class="sh-title" id="ins-title">Изба</h2>
+      <p class="sh-sub">Жилой дом, уровень 3 из 11</p>
+      <span class="era-tag" style="--tag:#E79A8E"><i></i>Средневековье</span>
+    </div>
+    <button class="xbtn" data-close aria-label="Закрыть (Esc)"><svg class="i"><use href="#i-x"/></svg></button>
+  </header>
+  <div class="sh-body">
+    <dl class="facts">
+      <div class="fact"><dt>Жители</dt><dd class="num">10 / 10</dd></div>
+      <div class="fact"><dt>Налог</dt><dd class="num pos">+20/год</dd></div>
+      <div class="fact"><dt>Довольство</dt><dd class="num">74 %</dd></div>
+    </dl>
+    <div class="sh-sec">
+      <h3>Для «Каменного дома» нужно</h3>
+      <div class="needs">
+        <span class="need need--ok"><svg class="i"><use href="#i-check"/></svg>Вода</span>
+        <span class="need need--ok"><svg class="i"><use href="#i-check"/></svg>Досуг</span>
+        <span class="need need--miss"><svg class="i"><use href="#i-x"/></svg>Здоровье</span>
+      </div>
+      <p class="hint">Ни одной лечебницы ближе 3 клеток. Знахарь рядом откроет улучшение этому и ещё 17 домам.</p>
+      <button class="btn btn--quiet" data-goto="clinic"><svg class="i i--s"><use href="#i-health"/></svg>Поставить знахаря</button>
+    </div>
+    <div class="rule"></div>
+    <div class="sh-sec">
+      <button class="btn btn--primary btn--wide" disabled><svg class="i i--s"><use href="#i-upgrade"/></svg>Улучшить
+        <span class="cost num"><svg class="cur"><use href="#cur-e1000"/></svg>210<span class="cost__plus">+</span><svg class="i"><use href="#i-mat"/></svg>17</span></button>
+      <p class="why">Сначала нужно здоровье рядом</p>
+      <div class="act-row">
+        <button class="btn"><svg class="i i--s"><use href="#i-move"/></svg>Переместить</button>
+        <button class="btn btn--danger"><svg class="i i--s"><use href="#i-bulldoze"/></svg>Снести</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= strip purchase ================= -->
+<section class="sheet" id="sh-strip" data-kind="panel" role="dialog" aria-labelledby="strip-title">
+  <div class="grip" aria-hidden="true"></div>
+  <header class="sh-head">
+    <div class="sh-head__text">
+      <h2 class="sh-title" id="strip-title">Глубокая бухта</h2>
+      <p class="sh-sub">Полоса справа: 5 клеток в ширину, от гор до моря</p>
+    </div>
+    <button class="xbtn" data-close aria-label="Закрыть (Esc)"><svg class="i"><use href="#i-x"/></svg></button>
+  </header>
+  <div class="sh-body">
+    <div class="sh-sec">
+      <div class="strips" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i class="own"></i><i class="home"></i><i class="pick"></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <div class="strips-cap"><span>Запад</span><span>Ваша земля</span><span>Восток</span></div>
+    </div>
+    <ul class="lst">
+      <li class="li"><svg class="i" style="color:var(--saffron)"><use href="#i-anchor"/></svg><span>Порт в бухте<span class="li__sub">торговля ×1,5, гостей ×1,2</span></span><span></span></li>
+      <li class="li"><svg class="i" style="color:var(--saffron)"><use href="#i-fish"/></svg><span>Рыбный промысел<span class="li__sub">первые 5 в бухте дают ×1,25 еды</span></span><span></span></li>
+      <li class="li"><svg class="i mut"><use href="#i-house"/></svg><span>Земля и пляж<span class="li__sub">200 клеток земли, 95 пляжа, 5 у воды</span></span><span></span></li>
+    </ul>
+    <div class="rule"></div>
+    <div class="sh-sec">
+      <div class="kv num"><span>Цена</span><span>4 400</span></div>
+      <div class="kv num"><span>В казне</span><span>8 420</span></div>
+      <div class="kv num"><span>Следующая полоса</span><span>9 600</span></div>
+    </div>
+    <button class="btn btn--primary btn--wide" data-confirm-strip>Купить полосу
+      <span class="cost num"><svg class="cur"><use href="#cur-e1000"/></svg>4,4K</span></button>
+  </div>
+</section>
+
+<!-- ================= Town Hall ================= -->
+<section class="sheet" id="sh-hall" data-kind="panel" role="dialog" aria-labelledby="hall-title">
+  <div class="grip" aria-hidden="true"></div>
+  <header class="sh-head">
+    <canvas class="ph-thumb" id="hall-thumb" width="128" height="128"></canvas>
+    <div class="sh-head__text">
+      <h2 class="sh-title" id="hall-title">Ратуша</h2>
+      <p class="sh-sub">Уровень 3 из 8. Следующий — «Дворец», с ним начнётся Возрождение</p>
+    </div>
+    <button class="xbtn" data-close aria-label="Закрыть (Esc)"><svg class="i"><use href="#i-x"/></svg></button>
+  </header>
+  <div class="sh-body">
+    <div class="sh-sec">
+      <h3>К Возрождению: готово 1 из 4</h3>
+      <ul class="lst">
+        <li class="li li--done"><svg class="i"><use href="#i-check"/></svg><span>Управа района с грамотой</span><span class="mut">готово</span></li>
+        <li class="li"><svg class="i mut"><use href="#i-factory"/></svg><span>2 кузницы<span class="bar"><b style="width:50%"></b></span></span><span class="num">1 / 2</span></li>
+        <li class="li"><svg class="i mut"><use href="#i-people"/></svg><span>Жители<span class="bar"><b style="width:83%"></b></span></span><span class="num">380 / 460</span></li>
+        <li class="li"><svg class="i mut"><use href="#i-flask"/></svg><span>3 открытия Средневековья<span class="bar"><b style="width:67%"></b></span></span><span class="num">2 / 3</span></li>
+      </ul>
+    </div>
+    <div class="sh-sec">
+      <h3>Звёзды за вход в Возрождение</h3>
+      <div class="stars">
+        <div class="star star--reach"><b>★★★</b>до 143 года</div>
+        <div class="star"><b>★★</b>до 157 года</div>
+        <div class="star"><b>★</b>до 1500 года</div>
+      </div>
+    </div>
+    <button class="btn btn--primary btn--wide" disabled>Улучшить до «Дворца»
+      <span class="cost num"><svg class="cur"><use href="#cur-e1000"/></svg>22K<span class="cost__plus">+</span><svg class="i"><use href="#i-mat"/></svg>1,3K</span></button>
+    <p class="why">Ещё 3 условия. Стройка займёт 5 лет</p>
+    <div class="rule"></div>
+    <div class="sh-sec">
+      <h3>Налоги</h3>
+      <div class="seg" role="group" aria-label="Налоги">
+        <button aria-pressed="false">Низкие<small>+8 к довольству</small></button>
+        <button aria-pressed="true">Обычные<small>&nbsp;</small></button>
+        <button aria-pressed="false">Высокие<small>−10 к довольству</small></button>
+      </div>
+      <div class="kv num"><span>Склады</span><span>4 800 на каждый запас</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= City (budget) ================= -->
+<section class="sheet" id="sh-city" data-kind="panel" role="dialog" aria-labelledby="city-title">
+  <div class="grip" aria-hidden="true"></div>
+  <header class="sh-head">
+    <div class="sh-head__text"><h2 class="sh-title" id="city-title">Город за год</h2><p class="sh-sub">Казна 8 420 гроша. Цифры — за один год игры</p></div>
+    <button class="xbtn" data-close aria-label="Закрыть (Esc)"><svg class="i"><use href="#i-x"/></svg></button>
+  </header>
+  <div class="sh-body">
+    <div class="totals">
+      <div class="fact"><dt>Доход</dt><dd class="num">1 770</dd></div>
+      <div class="fact"><dt>Расход</dt><dd class="num">508</dd></div>
+      <div class="fact"><dt>Итого</dt><dd class="num pos">+1 262</dd></div>
+    </div>
+    <div class="sh-sec">
+      <h3>Главные потери</h3>
+      <div class="loss"><span>Город покупает еду: <b class="neg num">−310/год</b></span><button class="btn">Ферма</button></div>
+      <div class="loss"><span>18 домов не растут: нет лечебницы</span><button class="btn" data-goto="clinic">Показать</button></div>
+      <div class="loss"><span>Пробки у рынка: −6 к довольству в 12 домах</span><button class="btn">Слой</button></div>
+    </div>
+    <div class="sh-sec">
+      <h3>Доходы</h3>
+      <div class="bars">
+        <div class="brow"><span>Налоги</span><span class="brow__track"><b style="width:70%"></b></span><span class="num">1 240</span></div>
+        <div class="brow"><span>Экспорт</span><span class="brow__track"><b style="width:21%"></b></span><span class="num">380</span></div>
+        <div class="brow"><span>Туризм</span><span class="brow__track"><b style="width:8%"></b></span><span class="num">150</span></div>
+      </div>
+    </div>
+    <div class="sh-sec">
+      <h3>Расходы</h3>
+      <div class="bars">
+        <div class="brow brow--cost"><span>Импорт еды</span><span class="brow__track"><b style="width:61%"></b></span><span class="num">310</span></div>
+        <div class="brow brow--cost"><span>Услуги и досуг</span><span class="brow__track"><b style="width:18%"></b></span><span class="num">92</span></div>
+        <div class="brow brow--cost"><span>Сырьё и мастерские</span><span class="brow__track"><b style="width:9%"></b></span><span class="num">48</span></div>
+        <div class="brow brow--cost"><span>Фермы</span><span class="brow__track"><b style="width:6%"></b></span><span class="num">30</span></div>
+        <div class="brow brow--cost"><span>Торговля и склады</span><span class="brow__track"><b style="width:4%"></b></span><span class="num">22</span></div>
+        <div class="brow brow--cost"><span>Дороги</span><span class="brow__track"><b style="width:1.5%"></b></span><span class="num">6</span></div>
+      </div>
+    </div>
+    <div class="sh-sec">
+      <h3>Запасы (склады на 4 800)</h3>
+      <div class="kv num"><span>Еда</span><span>120 <span class="neg">−40/год, докупаем</span></span></div>
+      <div class="kv num"><span>Стройматериалы</span><span>640 <span class="pos">+38/год</span></span></div>
+      <div class="kv num"><span>Товары</span><span>85 <span class="pos">+21/год</span></span></div>
+      <div class="kv"><span>Рабочие руки</span><span>Баланс: 190 рабочих на 176 мест</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Goals ================= -->
+<section class="sheet" id="sh-goals" data-kind="panel" role="dialog" aria-labelledby="goals-title">
+  <div class="grip" aria-hidden="true"></div>
+  <header class="sh-head">
+    <div class="sh-head__text"><h2 class="sh-title" id="goals-title">Задачи</h2><p class="sh-sub">Эпоха, открытия, задачи и достижения</p></div>
+    <button class="xbtn" data-close aria-label="Закрыть (Esc)"><svg class="i"><use href="#i-x"/></svg></button>
+  </header>
+  <div class="sh-body">
+    <div class="loss" style="box-shadow:inset 0 0 0 1.5px var(--malachite)"><span><b>Город</b>: 200 жителей. Награда 1 200</span><button class="btn btn--ok">Забрать</button></div>
+    <div class="sh-sec">
+      <h3>Сюжет</h3>
+      <div class="li"><svg class="i" style="color:var(--saffron)"><use href="#i-flag"/></svg><span>Кузница<span class="li__sub">Поставьте кузницу у гор или у дороги</span><span class="bar"><b style="width:0"></b></span></span><span class="num mut">800</span></div>
+    </div>
+    <div class="sh-sec">
+      <h3>Открытие идёт</h3>
+      <div class="li"><svg class="i" style="color:var(--era)"><use href="#i-flask"/></svg><span>Обжиг кирпича<span class="li__sub">Откроет печь обжига и «Каменный дом». Осталось 1 год</span><span class="bar"><b style="width:72%"></b></span></span><span></span></div>
+    </div>
+    <div class="sh-sec">
+      <h3>Ещё задачи</h3>
+      <div class="li"><svg class="i mut"><use href="#i-water"/></svg><span>Накройте водой 90 % домов<span class="bar"><b style="width:84%"></b></span></span><span class="num mut">890</span></div>
+      <div class="li"><svg class="i mut"><use href="#i-face"/></svg><span>Довольство 70 % 10 лет подряд<span class="bar"><b style="width:40%"></b></span></span><span class="num mut">890</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Upgrade (bulk) ================= -->
+<section class="sheet" id="sh-upgrade" data-kind="panel" role="dialog" aria-labelledby="upg-title">
+  <div class="grip" aria-hidden="true"></div>
+  <header class="sh-head">
+    <div class="sh-head__text"><h2 class="sh-title" id="upg-title">Устаревшие дома в кадре</h2><p class="sh-sub">Сдвиньте карту, чтобы выбрать другие</p></div>
+    <button class="xbtn" data-close aria-label="Закрыть (Esc)"><svg class="i"><use href="#i-x"/></svg></button>
+  </header>
+  <div class="sh-body">
+    <div class="li"><svg class="i" style="color:var(--malachite)"><use href="#i-upgrade"/></svg><span>9 домов → «Изба»<span class="li__sub">+42 жителя</span></span>
+      <button class="btn"><span class="cost num"><svg class="cur"><use href="#cur-e1000"/></svg>1,8K<span class="cost__plus">+</span><svg class="i"><use href="#i-mat"/></svg>140</span></button></div>
+    <div class="li"><svg class="i mut"><use href="#i-lock"/></svg><span>5 домов → «Каменный дом»<span class="li__sub warn">нужно здоровье рядом</span></span><button class="btn btn--quiet" data-goto="clinic">Показать</button></div>
+    <button class="btn btn--primary btn--wide">Улучшить всё доступное<span class="cost num"><svg class="cur"><use href="#cur-e1000"/></svg>1,8K</span></button>
+  </div>
+</section>
+
+<!-- ================= Chronicle (short) ================= -->
+<section class="sheet" id="sh-chronicle" data-kind="panel" role="dialog" aria-labelledby="chr-title">
+  <div class="grip" aria-hidden="true"></div>
+  <header class="sh-head">
+    <div class="sh-head__text"><h2 class="sh-title" id="chr-title">Летопись</h2><p class="sh-sub">Ваш город — как Европа 1 328 года: Средневековье, 66 % пути к Возрождению</p></div>
+    <button class="xbtn" data-close aria-label="Закрыть (Esc)"><svg class="i"><use href="#i-x"/></svg></button>
+  </header>
+  <div class="sh-body">
+    <div class="li li--done"><svg class="i"><use href="#i-book"/></svg><span>Средневековье в 74 году<span class="li__sub">на 926 лет раньше истории</span></span><span style="color:var(--saffron)">★★</span></div>
+    <div class="li"><svg class="i mut"><use href="#i-flag"/></svg><span>Опережение сейчас: +1 207 лет<span class="li__sub">Последнее: «Управа района с грамотой» +79 лет</span></span><span></span></div>
+  </div>
+</section>
+
+<div class="toast chip" id="toast" role="status" aria-live="polite"><svg class="i"><use href="#i-check"/></svg><span id="toast-text"></span></div>
+
+<!-- ================= prototype controls (not part of the design) ================= -->
+<div class="proto" id="proto" data-min="false">
+  <b>Прототип</b>
+  <button data-proto="idle">HUD</button>
+  <button data-proto="build">Строить</button>
+  <button data-proto="place">Установка</button>
+  <button data-proto="inspect">Здание</button>
+  <button data-proto="strip">Полоса</button>
+  <button data-proto="hall">Ратуша</button>
+  <button data-proto="city">Город</button>
+  <button data-proto="night">День / ночь</button>
+</div>
+
+<script>
+'use strict';
+/* =====================================================================
+   Prototype logic: a tiny state machine + a 2D-canvas stand-in for the
+   3D scene (perspective, low-poly boxes). Nothing here is production
+   code; ui-spec.md §10 describes the real React structure.
+   ===================================================================== */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const S = { state: 'idle', time: 'day', cat: 'services', speed: 1, place: null, sel: { x: 55, y: 20 } };
+
+/* ---------- formatting (§3.2 of the GDD) ---------- */
+function fmt(n) {
+  const sig = (v) => (v >= 100 ? Math.round(v) : v >= 10 ? Math.round(v * 10) / 10 : Math.round(v * 100) / 100);
+  const ru = (v) => String(v).replace('.', ',');
+  if (n < 1000) { return ru(n < 10 ? Math.round(n * 10) / 10 : Math.round(n)); }
+  if (n < 1e6) { return ru(sig(n / 1e3)) + 'K'; }
+  return ru(sig(n / 1e6)) + 'M';
+}
+function costHTML(m, mat, short) {
+  return `<span class="cost num${short ? ' cost--short' : ''}"><svg class="cur"><use href="#cur-e1000"/></svg>${fmt(m)}` +
+    (mat ? `<span class="cost__plus">+</span><svg class="i"><use href="#i-mat"/></svg>${fmt(mat)}` : '') + '</span>';
+}
+
+/* ---------- content of the build tray (e1000, GDD §8) ---------- */
+const CATS = [
+  { id: 'housing', name: 'Жильё', icon: 'i-house', fresh: true },
+  { id: 'food', name: 'Еда', icon: 'i-wheat' },
+  { id: 'mat', name: 'Материалы', icon: 'i-mat', fresh: true },
+  { id: 'industry', name: 'Производство', icon: 'i-factory', fresh: true },
+  { id: 'trade', name: 'Торговля', icon: 'i-stall' },
+  { id: 'services', name: 'Услуги', icon: 'i-service', fresh: true },
+  { id: 'leisure', name: 'Досуг', icon: 'i-masks' },
+  { id: 'energy', name: 'Энергия', icon: 'i-bolt' },
+  { id: 'transport', name: 'Транспорт', icon: 'i-train' },
+  { id: 'roads', name: 'Дороги', icon: 'i-road' },
+];
+const CARDS = {
+  housing: [
+    { k: 'house4', name: 'Каменный дом', m: 360, mat: 29, fx: '+14 жителей. Нужны вода, досуг, здоровье', w: 1, d: 1 },
+    { k: 'manor', name: 'Усадьба', m: 780, mat: 62, fx: '+10 жителей, налог ×3, довольство +6 рядом', isNew: true, w: 2, d: 2 },
+  ],
+  food: [
+    { k: 'farm', name: 'Ферма с амбаром', m: 770, mat: 39, fx: '+53 еды в год, окупится за 17 лет', w: 2, d: 2 },
+    { k: 'fishery', name: 'Причал', m: 380, mat: 19, fx: '+30 еды в год. Только у кромки воды', w: 1, d: 1 },
+  ],
+  mat: [
+    { k: 'mine', name: 'Железный рудник', m: 1200, mat: 48, fx: '+38 в год. Только на рудной жиле у гор', isNew: true, w: 2, d: 2 },
+    { k: 'quarry', name: 'Карьер', m: 640, mat: 26, fx: '+21 в год. У подножия гор', w: 2, d: 2 },
+    { k: 'lumber', name: 'Лесопилка', m: 320, mat: 13, fx: '+6,7 в год', w: 1, d: 1 },
+    { k: 'kiln', name: 'Печь обжига', lock: 'Откроется: Обжиг кирпича', w: 1, d: 1 },
+  ],
+  industry: [
+    { k: 'smithy', name: 'Кузница', m: 1000, mat: 50, fx: '+21 товар в год. Нужна для Возрождения', isNew: true, w: 1, d: 1 },
+    { k: 'glass', name: 'Стеклодувня', lock: 'Откроется: Возрождение', w: 2, d: 2 },
+  ],
+  trade: [
+    { k: 'market', name: 'Ярмарка', m: 1000, mat: 50, fx: 'Торговля 19 в год, довольство +5 рядом', w: 2, d: 2 },
+    { k: 'store', name: 'Склад', m: 510, mat: 26, fx: '+4 800 места для каждого запаса', w: 1, d: 1 },
+  ],
+  services: [
+    { k: 'clinic', name: 'Знахарь', m: 510, mat: 26, fx: 'Здоровье в радиусе 3', isNew: true, w: 1, d: 1 },
+    { k: 'well', name: 'Акведук', m: 360, mat: 18, fx: 'Вода в радиусе 4', w: 1, d: 1 },
+    { k: 'school', name: 'Монастырская школа', m: 1500, mat: 75, fx: 'Образование в радиусе 5, открытия +20 %', w: 2, d: 2 },
+    { k: 'dhall', name: 'Сельская управа', m: 960, mat: 48, fx: 'Грамота для района в радиусе 6', isNew: true, w: 1, d: 1 },
+    { k: 'bureau', name: 'Мастерская зодчего', lock: 'Откроется: Возрождение', w: 2, d: 2 },
+  ],
+  leisure: [
+    { k: 'church', name: 'Церковь', m: 1200, mat: 60, fx: 'Досуг в радиусе 5, туристы', w: 2, d: 2 },
+    { k: 'park', name: 'Роща', m: 48, mat: 2.4, fx: 'Довольство +4 в радиусе 2', w: 1, d: 1 },
+  ],
+  energy: [],
+  transport: [
+    { k: 'port', name: 'Гавань', lock: 'Откроется: Мореплавание', w: 3, d: 2 },
+  ],
+  roads: [
+    { k: 'road2', name: 'Мостовая', m: 24, mat: 6, fx: 'Вместимость 65, +1 к довольству вдоль', w: 1, d: 1 },
+    { k: 'road1', name: 'Тропа', m: 8, mat: 2, fx: 'Вместимость 45', w: 1, d: 1 },
+  ],
+};
+const EMPTY = { energy: 'Энергия появится в Возрождении: ветряная мельница ускорит фермы рядом. Электричество — в Модерне.' };
+
+/* ---------- colour helpers ---------- */
+const hx = (h) => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
+const rgba = (c, a = 1) => `rgba(${c[0] | 0},${c[1] | 0},${c[2] | 0},${a})`;
+const mul = (c, k) => [Math.min(255, c[0] * k), Math.min(255, c[1] * k), Math.min(255, c[2] * k)];
+const mix = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+function hash(x, y) { let h = (x * 374761393 + y * 668265263) | 0; h = Math.imul(h ^ (h >>> 13), 1274126177); return ((h ^ (h >>> 16)) >>> 0) / 4294967295; }
+const NIGHT_TINT = hx('#18224A');
+function tone(c, k, night) {
+  const lit = mul(c, k);
+  return night ? mix(mul(lit, 0.36), NIGHT_TINT, 0.38) : lit;
+}
+
+const PAL = {
+  day: { skyTop: '#8FC0E6', skyBot: '#E3EEF2', far: '#A9B6C9', mid: '#93A08B', near: '#848D69', land: '#8CBE5B', landOut: '#7FAF55',
+    beach: '#EAD9A6', wet: '#D3BE88', sea: '#4C9CC6', seaNear: '#3E89B5', road: '#B7A78B', roadEdge: '#93856C', field: '#D8B85A', furrow: '#BE9D45' },
+  night: { skyTop: '#090E24', skyBot: '#1F2B57', far: '#252E4C', mid: '#1E2840', near: '#1C2538', land: '#26402F', landOut: '#223a2b',
+    beach: '#4C4C47', wet: '#3E4040', sea: '#0F2742', seaNear: '#0C2038', road: '#3A3B45', roadEdge: '#2C2D36', field: '#4E4A33', furrow: '#45412D' },
+};
+
+/* ---------- camera: perspective looking north (mountains up, sea down) ---------- */
+function makeCam(W, H, o) {
+  const cp = Math.cos(o.pitch), sp = Math.sin(o.pitch), cyw = Math.cos(o.yaw || 0), syw = Math.sin(o.yaw || 0);
+  const C = [o.tx - syw * cp * o.dist, o.ty + cyw * cp * o.dist, sp * o.dist];
+  const f = [syw * cp, -cyw * cp, -sp], r = [cyw, syw, 0];
+  const u = [f[1] * r[2] - f[2] * r[1], f[2] * r[0] - f[0] * r[2], f[0] * r[1] - f[1] * r[0]];
+  const F = o.scale * o.dist, ox = o.ox ?? W / 2, oy = o.oy ?? H / 2;
+  return {
+    C, pitch: o.pitch,
+    P(x, y, z = 0) {
+      const dx = x - C[0], dy = y - C[1], dz = z - C[2];
+      const zc = dx * f[0] + dy * f[1] + dz * f[2];
+      const xc = dx * r[0] + dy * r[1];
+      const yc = dx * u[0] + dy * u[1] + dz * u[2];
+      const k = F / Math.max(zc, 0.4);
+      return [ox + xc * k, oy - yc * k, zc];
+    },
+    yNear() { return C[1] + (C[2] * sp - 3) / cp; },
+  };
+}
+
+function poly(c, pts, fill, stroke, lw) {
+  c.beginPath(); c.moveTo(pts[0][0], pts[0][1]);
+  for (let i = 1; i < pts.length; i++) { c.lineTo(pts[i][0], pts[i][1]); }
+  c.closePath();
+  if (fill) { c.fillStyle = fill; c.fill(); }
+  if (stroke) { c.strokeStyle = stroke; c.lineWidth = lw || 1; c.stroke(); }
+}
+const quad = (cam, x0, y0, x1, y1, z = 0) => [cam.P(x0, y0, z), cam.P(x1, y0, z), cam.P(x1, y1, z), cam.P(x0, y1, z)];
+
+/* ---------- the town (fixed, e1000) ---------- */
+const ROADS = new Set();
+const road = (x0, y0, x1, y1) => { for (let x = x0; x <= x1; x++) { for (let y = y0; y <= y1; y++) { ROADS.add(x + ',' + y); } } };
+road(38, 21, 62, 21); road(51, 2, 51, 58); road(40, 15, 60, 15); road(40, 27, 60, 27); road(44, 9, 44, 33);
+road(57, 10, 57, 33); road(33, 2, 51, 2); road(51, 58, 54, 58); road(36, 15, 39, 15);
+const isRoad = (x, y) => ROADS.has(x + ',' + y);
+
+const BLD = [];
+const OCC = new Set();
+function add(b) {
+  b.w = b.w || 1; b.d = b.d || 1; BLD.push(b);
+  for (let x = b.x; x < b.x + b.w; x++) { for (let y = b.y; y < b.y + b.d; y++) { OCC.add(x + ',' + y); } }
+}
+add({ k: 'hall', x: 49, y: 19, w: 2, d: 2 });
+add({ k: 'market', x: 52, y: 16, w: 2, d: 2 });
+add({ k: 'church', x: 45, y: 23, w: 2, d: 2 });
+add({ k: 'school', x: 58, y: 16, w: 2, d: 2 });
+add({ k: 'well', x: 48, y: 22 }); add({ k: 'well', x: 55, y: 25 }); add({ k: 'well', x: 46, y: 16 }); add({ k: 'well', x: 41, y: 22 });
+add({ k: 'smithy', x: 56, y: 26 });
+add({ k: 'store', x: 53, y: 22 });
+add({ k: 'park', x: 50, y: 22 }); add({ k: 'park', x: 52, y: 20 });
+add({ k: 'dhall', x: 43, y: 17 });
+add({ k: 'quarry', x: 47, y: 0, w: 2, d: 2 });
+add({ k: 'mine', x: 33, y: 0, w: 2, d: 2 });
+[[40, 28], [42, 28], [45, 28], [47, 28], [53, 28], [40, 30], [42, 30]].forEach(([x, y]) => add({ k: 'farm', x, y, w: 2, d: 2 }));
+add({ k: 'lumber', x: 39, y: 20 }); add({ k: 'lumber', x: 39, y: 22 }); add({ k: 'lumber', x: 38, y: 20 });
+add({ k: 'fishery', x: 54, y: 59 });
+add({ k: 'house3', x: 55, y: 20 });
+const RESERVED = new Set(['47,22', '47,23', '48,23']);
+for (const key of ROADS) {
+  const [rx, ry] = key.split(',').map(Number);
+  for (const [dx, dy] of [[0, -1], [0, 1], [-1, 0], [1, 0]]) {
+    const x = rx + dx, y = ry + dy, k = x + ',' + y;
+    if (x < 37 || x > 62 || y < 8 || y > 34 || isRoad(x, y) || OCC.has(k) || RESERVED.has(k)) { continue; }
+    const h = hash(x, y), dist = Math.abs(x - 50) + Math.abs(y - 20);
+    if (h > (dist < 9 ? 0.9 : dist < 15 ? 0.72 : 0.5)) { continue; }
+    const h2 = hash(y * 3 + 1, x * 5 + 2);
+    const lv = dist < 9 && h2 < 0.45 ? 'house4' : dist < 15 && h2 < 0.7 ? 'house3' : h2 < 0.75 ? 'house2' : 'house1';
+    add({ k: lv, x, y });
+  }
+}
+
+/* ---------- building parts ---------- */
+function partsFor(b) {
+  const P = [], x = b.x, y = b.y, w = b.w, d = b.d;
+  const box = (x0, y0, x1, y1, z0, z1, col, win) => P.push({ t: 'box', x0, y0, x1, y1, z0, z1, col: hx(col), win });
+  const gable = (x0, y0, x1, y1, z, rh, col, axis = 'x') => P.push({ t: 'gable', x0, y0, x1, y1, z, rh, col: hx(col), axis });
+  const hip = (x0, y0, x1, y1, z, rh, col) => P.push({ t: 'hip', x0, y0, x1, y1, z, rh, col: hx(col) });
+  const flat = (x0, y0, x1, y1, col, z = 0.02) => P.push({ t: 'flat', x0, y0, x1, y1, z, col: hx(col) });
+  const blob = (cx, cy, z, r, col) => P.push({ t: 'blob', cx, cy, z, r, col: hx(col) });
+  switch (b.k) {
+    case 'house1': box(x + .25, y + .3, x + .75, y + .8, 0, .28, '#9B7A55'); hip(x + .18, y + .22, x + .82, y + .88, .28, .42, '#D7B868'); break;
+    case 'house2': box(x + .18, y + .24, x + .82, y + .84, 0, .42, '#DCC09A', true); gable(x + .12, y + .2, x + .88, y + .88, .42, .24, '#C7A158'); break;
+    case 'house3': box(x + .16, y + .2, x + .84, y + .84, 0, .5, '#AD7C4C', true); gable(x + .1, y + .14, x + .9, y + .9, .5, .36, '#76604E'); break;
+    case 'house4': box(x + .14, y + .16, x + .86, y + .86, 0, .72, '#CBC3B3', true); gable(x + .08, y + .1, x + .92, y + .92, .72, .4, '#B4553D'); break;
+    case 'manor': flat(x + .05, y + .05, x + w - .05, y + d - .05, '#9DC56F'); box(x + .3, y + .35, x + 1.7, y + 1.45, 0, .85, '#E6DAC0', true); hip(x + .22, y + .27, x + 1.78, y + 1.53, .85, .45, '#8A4B3A'); break;
+    case 'hall':
+      flat(x + .02, y + .02, x + 2 - .02, y + 2 - .02, '#CFC6B2');
+      box(x + .22, y + .3, x + 1.78, y + 1.65, 0, 1.0, '#DCD2BE', true); hip(x + .14, y + .22, x + 1.86, y + 1.73, 1.0, .5, '#5C6984');
+      box(x + .78, y + 1.05, x + 1.22, y + 1.5, 1.0, 2.15, '#E3DACA', true); hip(x + .72, y + .99, x + 1.28, y + 1.56, 2.15, .55, '#A9493A'); break;
+    case 'market':
+      flat(x + .05, y + .05, x + 1.95, y + 1.95, '#CDBFA3');
+      [[.3, .3, '#C8463A'], [1.15, .3, '#E9E2D2'], [.3, 1.15, '#3E6FB0'], [1.15, 1.15, '#D6A23A']].forEach(([ox, oy, c]) => {
+        box(x + ox, y + oy, x + ox + .55, y + oy + .5, 0, .3, '#8A6A48'); gable(x + ox - .04, y + oy - .04, x + ox + .59, y + oy + .54, .3, .16, c);
+      }); break;
+    case 'church':
+      box(x + .3, y + .25, x + 1.7, y + 1.4, 0, .9, '#ECE5D6', true); gable(x + .24, y + .19, x + 1.76, y + 1.46, .9, .55, '#64748C', 'y');
+      box(x + .75, y + 1.15, x + 1.25, y + 1.7, 0, 1.75, '#F1EBDD', true); hip(x + .7, y + 1.1, x + 1.3, y + 1.75, 1.75, .8, '#64748C'); break;
+    case 'school': box(x + .2, y + .3, x + 1.8, y + 1.5, 0, .8, '#CDB79A', true); gable(x + .14, y + .24, x + 1.86, y + 1.56, .8, .42, '#7A4B3A'); box(x + 1.3, y + 1.0, x + 1.7, y + 1.5, .8, 1.35, '#D6C3A8'); break;
+    case 'well': box(x + .36, y + .36, x + .64, y + .64, 0, .2, '#9C9A95'); hip(x + .3, y + .3, x + .7, y + .7, .42, .16, '#6B4C35'); break;
+    case 'smithy': box(x + .18, y + .22, x + .82, y + .84, 0, .5, '#7E6E5E', true); gable(x + .12, y + .16, x + .88, y + .9, .5, .3, '#4B4039'); box(x + .58, y + .3, x + .74, y + .46, .5, 1.05, '#5D514A'); break;
+    case 'store': box(x + .14, y + .2, x + .86, y + .86, 0, .55, '#8A5A33'); gable(x + .08, y + .14, x + .92, y + .92, .55, .32, '#5C3E2B', 'y'); break;
+    case 'park': flat(x + .04, y + .04, x + .96, y + .96, '#6FAE4E'); blob(x + .32, y + .35, .32, .2, '#3F8A3C'); blob(x + .68, y + .55, .3, .2, '#4A9842'); blob(x + .4, y + .74, .26, .17, '#3B8137'); break;
+    case 'dhall': box(x + .16, y + .2, x + .84, y + .84, 0, .62, '#E2D3B5', true); hip(x + .1, y + .14, x + .9, y + .9, .62, .38, '#8C3B2E'); break;
+    case 'quarry': flat(x + .05, y + .05, x + 1.95, y + 1.95, '#A9A49A'); box(x + .3, y + .5, x + .8, y + .9, 0, .3, '#BDB8AE'); box(x + 1.1, y + .9, x + 1.6, y + 1.3, 0, .22, '#C8C3B8'); box(x + .5, y + 1.3, x + .9, y + 1.7, 0, .18, '#B1ABA0'); break;
+    case 'mine': flat(x + .05, y + .05, x + 1.95, y + 1.95, '#8E7B6A'); box(x + .3, y + .2, x + 1.1, y + .9, 0, .5, '#6E5541'); box(x + 1.2, y + .6, x + 1.5, y + .9, 0, 1.2, '#5B4636'); gable(x + 1.15, y + .55, x + 1.55, y + .95, 1.2, .2, '#3E2F25'); box(x + .5, y + 1.2, x + 1.0, y + 1.6, 0, .25, '#9C8A78'); break;
+    case 'farm':
+      P.push({ t: 'field', x0: x + .05, y0: y + .05, x1: x + 1.95, y1: y + 1.95 });
+      if ((x + y) % 4 === 0) { box(x + 1.35, y + .15, x + 1.85, y + .6, 0, .45, '#9C5E3A'); gable(x + 1.3, y + .1, x + 1.9, y + .65, .45, .25, '#6A4130'); } break;
+    case 'lumber': flat(x + .05, y + .05, x + .95, y + .95, '#7FA65A'); [[.3, .3], [.7, .32], [.32, .7], [.7, .72]].forEach(([ox, oy]) => blob(x + ox, y + oy, .22, .15, '#2F6F35')); break;
+    case 'fishery': box(x + .2, y + .1, x + .8, y + .6, 0, .42, '#8C6A4A'); gable(x + .14, y + .04, x + .86, y + .66, .42, .24, '#6E4F37'); flat(x + .4, y + .6, x + .6, y + 1.9, '#8E7155', .06); break;
+    case 'clinic': box(x + .18, y + .2, x + .82, y + .82, 0, .48, '#B9946A', true); gable(x + .12, y + .14, x + .88, y + .88, .48, .3, '#56704A'); blob(x + .8, y + .85, .14, .1, '#4E9A4A'); break;
+    case 'kiln': box(x + .2, y + .2, x + .8, y + .8, 0, .45, '#A3553F'); box(x + .55, y + .3, x + .72, y + .47, .45, 1.0, '#7B3D2E'); break;
+    case 'glass': box(x + .3, y + .3, x + 1.7, y + 1.6, 0, .75, '#B9A68A'); gable(x + .24, y + .24, x + 1.76, y + 1.66, .75, .4, '#5D6B72'); box(x + 1.3, y + .5, x + 1.55, y + .75, .75, 1.6, '#8C7A66'); break;
+    case 'bureau': box(x + .25, y + .3, x + 1.75, y + 1.6, 0, .9, '#E6D7BD', true); hip(x + .18, y + .22, x + 1.82, y + 1.66, .9, .5, '#4C6B7E'); break;
+    case 'port': flat(x + 0, y + .9, x + 3, y + 2, '#8E7155', .06); box(x + .3, y + .1, x + 1.6, y + .8, 0, .6, '#C9B497'); gable(x + .24, y + .04, x + 1.66, y + .86, .6, .3, '#7A4B3A'); break;
+    case 'road1': flat(x + .1, y + 0, x + .9, y + 1, '#C2AE8A'); break;
+    case 'road2': flat(x + 0, y + 0, x + 1, y + 1, '#ADA08A'); break;
+    default: box(x + .2, y + .2, x + .8, y + .8, 0, .5, '#BBB'); gable(x + .14, y + .14, x + .86, y + .86, .5, .3, '#777');
+  }
+  return P;
+}
+
+/* ---------- faces of a part (with outward normals) ---------- */
+const LIGHT = (() => { const v = [-0.5, 0.35, 0.8]; const l = Math.hypot(...v); return v.map((a) => a / l); })();
+function shadeK(n) { const l = Math.hypot(...n); const d = (n[0] * LIGHT[0] + n[1] * LIGHT[1] + n[2] * LIGHT[2]) / l; return 0.6 + 0.48 * Math.max(0, d); }
+function facesOf(p) {
+  const F = [];
+  const f = (pts, n, col, extra) => F.push(Object.assign({ pts, n, col }, extra || {}));
+  if (p.t === 'box') {
+    const { x0, y0, x1, y1, z0, z1, col } = p;
+    f([[x0, y0, z1], [x1, y0, z1], [x1, y1, z1], [x0, y1, z1]], [0, 0, 1], col);
+    f([[x0, y1, z0], [x1, y1, z0], [x1, y1, z1], [x0, y1, z1]], [0, 1, 0], col, p.win ? { win: 's' } : null);
+    f([[x0, y0, z0], [x1, y0, z0], [x1, y0, z1], [x0, y0, z1]], [0, -1, 0], col);
+    f([[x1, y0, z0], [x1, y1, z0], [x1, y1, z1], [x1, y0, z1]], [1, 0, 0], col, p.win ? { win: 'e' } : null);
+    f([[x0, y0, z0], [x0, y1, z0], [x0, y1, z1], [x0, y0, z1]], [-1, 0, 0], col, p.win ? { win: 'w' } : null);
+  } else if (p.t === 'gable') {
+    const { x0, y0, x1, y1, z, rh, col } = p, zr = z + rh;
+    if (p.axis === 'x') {
+      const ym = (y0 + y1) / 2, hd = (y1 - y0) / 2;
+      f([[x0, y1, z], [x1, y1, z], [x1, ym, zr], [x0, ym, zr]], [0, rh, hd], col);
+      f([[x0, y0, z], [x1, y0, z], [x1, ym, zr], [x0, ym, zr]], [0, -rh, hd], col);
+      f([[x1, y0, z], [x1, y1, z], [x1, ym, zr]], [1, 0, 0], col);
+      f([[x0, y0, z], [x0, y1, z], [x0, ym, zr]], [-1, 0, 0], col);
+    } else {
+      const xm = (x0 + x1) / 2, hw = (x1 - x0) / 2;
+      f([[x1, y0, z], [x1, y1, z], [xm, y1, zr], [xm, y0, zr]], [rh, 0, hw], col);
+      f([[x0, y0, z], [x0, y1, z], [xm, y1, zr], [xm, y0, zr]], [-rh, 0, hw], col);
+      f([[x0, y1, z], [x1, y1, z], [xm, y1, zr]], [0, 1, 0], col);
+      f([[x0, y0, z], [x1, y0, z], [xm, y0, zr]], [0, -1, 0], col);
+    }
+  } else if (p.t === 'hip') {
+    const { x0, y0, x1, y1, z, rh, col } = p, xm = (x0 + x1) / 2, ym = (y0 + y1) / 2, a = [xm, ym, z + rh];
+    f([[x0, y1, z], [x1, y1, z], a], [0, rh, (y1 - y0) / 2], col);
+    f([[x0, y0, z], [x1, y0, z], a], [0, -rh, (y1 - y0) / 2], col);
+    f([[x1, y0, z], [x1, y1, z], a], [rh, 0, (x1 - x0) / 2], col);
+    f([[x0, y0, z], [x0, y1, z], a], [-rh, 0, (x1 - x0) / 2], col);
+  }
+  return F;
+}
+
+/* ---------- render a list of buildings with a camera ---------- */
+function renderBuildings(c, cam, list, night, opts = {}) {
+  const faces = [], flats = [], blobs = [];
+  for (const b of list) {
+    for (const p of partsFor(b)) {
+      if (p.t === 'flat' || p.t === 'field') { flats.push({ p, b }); continue; }
+      if (p.t === 'blob') { blobs.push({ p, b, z: cam.P(p.cx, p.cy, p.z)[2] }); continue; }
+      for (const fc of facesOf(p)) {
+        const cx = fc.pts.reduce((s, q) => s + q[0], 0) / fc.pts.length, cy = fc.pts.reduce((s, q) => s + q[1], 0) / fc.pts.length, cz = fc.pts.reduce((s, q) => s + q[2], 0) / fc.pts.length;
+        const v = [cam.C[0] - cx, cam.C[1] - cy, cam.C[2] - cz];
+        if (fc.n[0] * v[0] + fc.n[1] * v[1] + fc.n[2] * v[2] <= 0) { continue; }
+        fc.b = b; fc.z = cam.P(cx, cy, cz)[2] - (fc.n[2] > 0.5 ? 0 : 0.001); faces.push(fc);
+      }
+    }
+  }
+  const pal = night ? PAL.night : PAL.day;
+  for (const { p, b } of flats) {
+    if (p.t === 'field') {
+      poly(c, quad(cam, p.x0, p.y0, p.x1, p.y1, 0.02), rgba(tone(hx(pal.field), 1, false)));
+      for (let i = 1; i < 6; i++) {
+        const yy = p.y0 + (p.y1 - p.y0) * i / 6, a = cam.P(p.x0 + .05, yy, .03), e = cam.P(p.x1 - .05, yy, .03);
+        c.strokeStyle = pal.furrow; c.lineWidth = 1; c.beginPath(); c.moveTo(a[0], a[1]); c.lineTo(e[0], e[1]); c.stroke();
+      }
+    } else {
+      poly(c, quad(cam, p.x0, p.y0, p.x1, p.y1, p.z), rgba(tone(p.col, 0.98, night), opts.alpha ?? 1));
+    }
+  }
+  const items = faces.map((fc) => ({ z: fc.z, fc })).concat(blobs.map((bl) => ({ z: bl.z, bl })));
+  items.sort((a, b) => b.z - a.z);
+  for (const it of items) {
+    if (it.fc) {
+      const fc = it.fc, pts = fc.pts.map((q) => cam.P(q[0], q[1], q[2]));
+      const col = tone(fc.col, shadeK(fc.n), night);
+      poly(c, pts, rgba(opts.tint ? mix(col, opts.tint, 0.35) : col, opts.alpha ?? 1), opts.edge || (night ? null : 'rgba(40,30,20,.18)'), 0.6);
+      if (night && fc.win && !opts.noWin) { drawWindows(c, cam, fc); }
+      if (opts.stroke && fc.b === opts.strokeB) { poly(c, pts, null, opts.stroke, 2); }
+    } else {
+      const { p } = it.bl, q = cam.P(p.cx, p.cy, p.z), r = cam.P(p.cx + p.r, p.cy, p.z);
+      const rad = Math.abs(r[0] - q[0]);
+      c.beginPath(); c.arc(q[0], q[1], rad, 0, Math.PI * 2); c.fillStyle = rgba(tone(p.col, 1, night), opts.alpha ?? 1); c.fill();
+      c.beginPath(); c.arc(q[0] - rad * .3, q[1] - rad * .3, rad * .55, 0, Math.PI * 2); c.fillStyle = rgba(tone(p.col, 1.25, night), (opts.alpha ?? 1) * .7); c.fill();
+    }
+  }
+  return faces;
+}
+function drawWindows(c, cam, fc) {
+  const [a, b, , d] = fc.pts; const h = d[2] - a[2]; if (h < 0.35) { return; }
+  const n = fc.win === 's' ? 2 : 1;
+  for (let i = 0; i < n; i++) {
+    const t0 = (i + .35) / n, t1 = (i + .65) / n, z0 = a[2] + h * .35, z1 = a[2] + h * .7;
+    const lerp = (t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+    const p0 = lerp(t0), p1 = lerp(t1);
+    const pts = [cam.P(p0[0], p0[1], z0), cam.P(p1[0], p1[1], z0), cam.P(p1[0], p1[1], z1), cam.P(p0[0], p0[1], z1)];
+    poly(c, pts, hash(Math.round(p0[0] * 10), Math.round(p0[1] * 10)) < 0.78 ? '#FFD27A' : '#5A4A3A');
+  }
+}
+
+/* ---------- scene ---------- */
+const cv = $('#scene'), ctx = cv.getContext('2d');
+let W = 0, H = 0, DPR = 1, CAM = null;
+function camOpts() {
+  const portrait = H > W, land = !portrait && H < 520, desk = W >= 1024 && H >= 600;
+  const scale = portrait ? W / 14 : land ? W / 40 : desk ? W / 40 : W / 34;
+  let tx = 50.5, ty = portrait ? 28 : land ? 25 : 27, ox = W / 2, oy = H * 0.5;
+  /* a sheet never hides what it talks about: the camera keeps the focus in the visible part */
+  const focus = S.state === 'inspect' ? { x: S.sel.x + .5, y: S.sel.y + .5 } : S.state === 'hall' ? { x: 50, y: 20 } : S.state === 'strip' ? { x: 67.5, y: portrait ? 34 : 38 } : null;
+  if (focus) { tx = focus.x; ty = focus.y; }
+  if (document.body.dataset.sheet === 'panel') {
+    if (portrait) { oy = H * 0.27; } else { ox = (W - (land ? Math.min(420, W * .52) : 432)) / 2; }
+  }
+  if (S.state === 'build' && portrait) { oy = H * 0.36; }
+  if (S.state === 'place') { tx = 48.5; ty = 24.5; if (portrait) { oy = H * 0.42; } }
+  return { tx, ty, pitch: 0.5, dist: 70, scale, ox, oy };
+}
+function drawMountains(cam, pal, night) {
+  const layers = [
+    { y: -40, base: 15, amp: 13, col: pal.far, s: 1.7, step: 3.5, foot: 10 },
+    { y: -20, base: 9, amp: 8, col: pal.mid, s: 4.1, step: 2.6, foot: 8 },
+    { y: -7, base: 3.6, amp: 4.5, col: pal.near, s: 7.3, step: 2, foot: 6.8 },
+  ];
+  for (const L of layers) {
+    const pts = [];
+    for (let x = -80; x <= 180; x += L.step) {
+      const n = Math.sin(x * .13 + L.s) * .5 + Math.sin(x * .051 + L.s * 2) * .35 + Math.sin(x * .31 + L.s * 3) * .15;
+      pts.push([x, L.base + L.amp * (n * .5 + .5)]);
+    }
+    const base = hx(L.col);
+    for (let i = 0; i < pts.length - 1; i++) {
+      const [xa, ha] = pts[i], [xb, hb] = pts[i + 1];
+      const A = cam.P(xa, L.y, ha), B = cam.P(xb, L.y, hb), Bf = cam.P(xb + 1, L.y + L.foot, 0), Af = cam.P(xa - 1, L.y + L.foot, 0);
+      const k = 0.93 + 0.1 * Math.max(-1, Math.min(1, (ha - hb) / 2.5));
+      poly(ctx, [A, B, Bf, Af], rgba(mul(base, k)));
+      const M = cam.P((xa + xb) / 2, L.y + L.foot * .55, Math.min(ha, hb) * .35);
+      poly(ctx, [A, B, M], rgba(mul(base, k * (night ? 1.06 : 1.08)), 0.9));
+    }
+  }
+}
+function drawScene() {
+  const night = S.time === 'night', pal = night ? PAL.night : PAL.day;
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  const g = ctx.createLinearGradient(0, 0, 0, H * .55); g.addColorStop(0, pal.skyTop); g.addColorStop(1, pal.skyBot);
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  const cam = makeCam(W, H, camOpts()); CAM = cam;
+  drawMountains(cam, pal, night);
+  const yN = cam.yNear();
+  ctx.fillStyle = pal.seaNear; const sTop = cam.P(50, 59.6, 0)[1]; ctx.fillRect(0, Math.max(0, sTop - 2), W, H);
+  // land, beach, wet sand, sea
+  poly(ctx, quad(cam, -90, -0.4, 190, 40), pal.land);
+  poly(ctx, quad(cam, -90, 40, 190, 57.6), pal.beach);
+  poly(ctx, quad(cam, -90, 57.6, 190, 59.6), pal.wet);
+  poly(ctx, quad(cam, -90, 59.6, 190, Math.min(yN, 200)), pal.sea);
+  ctx.strokeStyle = night ? 'rgba(160,190,255,.12)' : 'rgba(255,255,255,.35)'; ctx.lineWidth = 1.2;
+  for (const yy of [60.4, 61.6, 63.5, 66]) {
+    if (yy > yN) { continue; }
+    ctx.beginPath();
+    for (let x = -40; x <= 140; x += 1) { const p = cam.P(x, yy + Math.sin(x * .7 + yy) * .12, 0); if (x === -40) { ctx.moveTo(p[0], p[1]); } else { ctx.lineTo(p[0], p[1]); } }
+    ctx.stroke();
+  }
+  // owned land tiling (subtle) and grid
+  for (let x = 30; x < 65; x++) {
+    for (let y = 0; y < 40; y++) {
+      if ((x + y) % 2) { poly(ctx, quad(cam, x, y, x + 1, y + 1), night ? 'rgba(255,255,255,.012)' : 'rgba(255,255,255,.028)'); }
+    }
+  }
+  // deposits at the mountain foot (rows 0-1)
+  const dep = (x0, kind) => {
+    const col = kind === 'coal' ? '#3E3D44' : kind === 'rich' ? '#A3613D' : '#8E6A50';
+    poly(ctx, quad(cam, x0 + .1, .05, x0 + 1.9, 1.9, .01), rgba(tone(hx(col), 1, night), .85));
+    for (let i = 0; i < 5; i++) { const p = cam.P(x0 + .3 + hash(x0, i) * 1.4, .3 + hash(i, x0) * 1.3, .02); ctx.fillStyle = kind === 'coal' ? 'rgba(20,20,26,.8)' : 'rgba(230,140,70,.75)'; ctx.fillRect(p[0] - 1.5, p[1] - 1, 3, 2); }
+  };
+  [[37, 'coal'], [40, 'coal'], [56, 'ore'], [59, 'ore'], [30, 'rich'], [25, 'coal'], [28, 'coal'], [70, 'ore'], [73, 'ore'], [75, 'coal'], [78, 'coal'], [20, 'ore']].forEach(([x, k]) => dep(x, k));
+  // tunnel portal at x 46
+  { const a = cam.P(45.6, -.6, 0), b = cam.P(47.4, -.6, 0), t = cam.P(46.5, -.6, 1.6); ctx.fillStyle = night ? '#07090F' : '#2E2A26';
+    ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.quadraticCurveTo(a[0], t[1], t[0], t[1]); ctx.quadraticCurveTo(b[0], t[1], b[0], b[1]); ctx.closePath(); ctx.fill(); }
+  // roads
+  for (const key of ROADS) {
+    const [x, y] = key.split(',').map(Number);
+    poly(ctx, quad(cam, x, y, x + 1, y + 1, .01), pal.road);
+  }
+  ctx.strokeStyle = pal.roadEdge; ctx.lineWidth = 1;
+  for (const key of ROADS) {
+    const [x, y] = key.split(',').map(Number);
+    const edges = [[0, -1, x, y, x + 1, y], [0, 1, x, y + 1, x + 1, y + 1], [-1, 0, x, y, x, y + 1], [1, 0, x + 1, y, x + 1, y + 1]];
+    for (const [dx, dy, ax, ay, bx, by] of edges) {
+      if (isRoad(x + dx, y + dy)) { continue; }
+      const a = cam.P(ax, ay, .015), b = cam.P(bx, by, .015); ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+    }
+  }
+  // airport plot (faint)
+  ctx.setLineDash([5, 5]); poly(ctx, quad(cam, 44, 46, 56, 50, .01), null, night ? 'rgba(255,255,255,.18)' : 'rgba(110,90,50,.45)', 1.2); ctx.setLineDash([]);
+  // locked strips: tint + hatch, strip borders
+  const lockFill = night ? 'rgba(8,10,30,.42)' : 'rgba(27,36,72,.28)';
+  for (const [x0, x1] of [[-90, 30], [65, 190]]) {
+    const q = quad(cam, x0, -0.4, x1, 59.6, .02);
+    poly(ctx, q, lockFill);
+    ctx.save(); poly(ctx, q); ctx.clip();
+    ctx.strokeStyle = night ? 'rgba(255,255,255,.04)' : 'rgba(255,255,255,.12)'; ctx.lineWidth = 1;
+    for (let s = -H; s < W + H; s += 14) { ctx.beginPath(); ctx.moveTo(s, 0); ctx.lineTo(s + H, H); ctx.stroke(); }
+    ctx.restore();
+  }
+  for (let x = 0; x <= 100; x += 5) {
+    if (x > 30 && x < 65) { continue; }
+    const a = cam.P(x, -.3, .02), b = cam.P(x, 59.6, .02);
+    ctx.strokeStyle = night ? 'rgba(255,255,255,.12)' : 'rgba(255,255,255,.4)'; ctx.lineWidth = x === 30 || x === 65 ? 2 : 1;
+    ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+  }
+  if (S.state === 'strip') {
+    poly(ctx, quad(cam, 65, -.3, 70, 59.6, .03), 'rgba(255,194,75,.22)', '#FFC24B', 2.5);
+  }
+  // placement: coverage diamond + footprint
+  let ghost = null;
+  if (S.state === 'place' && S.place) {
+    const gx = S.place.x, gy = S.place.y, r = S.place.r || 0;
+    if (r) {
+      const inside = (x, y) => Math.abs(x - gx) + Math.abs(y - gy) <= r;
+      for (let x = gx - r; x <= gx + r; x++) {
+        for (let y = gy - r; y <= gy + r; y++) {
+          if (inside(x, y)) { poly(ctx, quad(cam, x, y, x + 1, y + 1, .03), night ? 'rgba(116,219,159,.22)' : 'rgba(250,246,236,.34)'); }
+        }
+      }
+      ctx.strokeStyle = '#1F7A47'; ctx.lineWidth = 2.5; ctx.beginPath();
+      for (let x = gx - r; x <= gx + r; x++) {
+        for (let y = gy - r; y <= gy + r; y++) {
+          if (!inside(x, y)) { continue; }
+          for (const [dx, dy, ax, ay, bx, by] of [[0, -1, x, y, x + 1, y], [0, 1, x, y + 1, x + 1, y + 1], [-1, 0, x, y, x, y + 1], [1, 0, x + 1, y, x + 1, y + 1]]) {
+            if (inside(x + dx, y + dy)) { continue; }
+            const a = cam.P(ax, ay, .04), b = cam.P(bx, by, .04); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]);
+          }
+        }
+      }
+      ctx.stroke();
+    }
+    ghost = { k: S.place.k, x: gx, y: gy, w: S.place.w, d: S.place.d };
+    poly(ctx, quad(cam, gx, gy, gx + ghost.w, gy + ghost.d, .04), 'rgba(116,219,159,.55)', '#3DBB74', 2.5);
+  }
+  // shadows
+  for (const b of BLD) {
+    const s = 0.45; poly(ctx, [cam.P(b.x + .15, b.y + .2, .01), cam.P(b.x + b.w - .1, b.y + .2, .01), cam.P(b.x + b.w + s, b.y + b.d - .15 - s * .6, .01), cam.P(b.x + .15 + s, b.y + b.d - .15 - s * .6, .01)], night ? 'rgba(0,0,0,.15)' : 'rgba(40,50,30,.16)');
+  }
+  // selected tile
+  const selB = S.state === 'inspect' ? BLD.find((b) => b.x === S.sel.x && b.y === S.sel.y) : null;
+  if (selB) { poly(ctx, quad(cam, selB.x - .08, selB.y - .08, selB.x + selB.w + .08, selB.y + selB.d + .08, .03), 'rgba(255,194,75,.35)', '#FFC24B', 2.5); }
+  const hall = BLD.find((b) => b.k === 'hall');
+  if (S.state === 'hall') { poly(ctx, quad(cam, hall.x - .08, hall.y - .08, hall.x + 2.08, hall.y + 2.08, .03), 'rgba(255,194,75,.35)', '#FFC24B', 2.5); }
+  // buildings
+  const coverTint = S.state === 'place' && S.place && S.place.r ? (b) => Math.abs(b.x - S.place.x) + Math.abs(b.y - S.place.y) <= S.place.r && b.k.startsWith('house') : () => false;
+  const covered = BLD.filter(coverTint);
+  renderBuildings(ctx, cam, BLD.filter((b) => !coverTint(b)), night, { strokeB: selB, stroke: '#FFF4D6' });
+  if (covered.length) { renderBuildings(ctx, cam, covered, night, { tint: hx('#74DB9F') }); }
+  if (selB) { renderBuildings(ctx, cam, [selB], night, { edge: '#FFF4D6' }); }
+  if (ghost) {
+    renderBuildings(ctx, cam, [ghost], night, { alpha: .82, tint: hx('#C8F5DA'), noWin: true, edge: 'rgba(31,122,71,.9)' });
+    /* drag affordance: four arrows on the ground around the footprint */
+    const gcx = ghost.x + ghost.w / 2, gcy = ghost.y + ghost.d / 2;
+    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+      const ax = gcx + dx * (ghost.w / 2 + .45), ay = gcy + dy * (ghost.d / 2 + .45);
+      const tip = [ax + dx * .38, ay + dy * .38], b1 = [ax - dy * .32, ay + dx * .32], b2 = [ax + dy * .32, ay - dx * .32];
+      poly(ctx, [cam.P(tip[0], tip[1], .06), cam.P(b1[0], b1[1], .06), cam.P(b2[0], b2[1], .06)], '#FAF6EC', '#141B38', 1.6);
+    }
+  }
+  // night: lanterns along roads (s2: a wooden lantern every 3rd tile)
+  if (night) {
+    for (const key of ROADS) {
+      const [x, y] = key.split(',').map(Number);
+      if ((x + 2 * y) % 3 !== 0 || y > 40) { continue; }
+      const p = cam.P(x + .9, y + .1, .35);
+      const gr = ctx.createRadialGradient(p[0], p[1], 0, p[0], p[1], 16); gr.addColorStop(0, 'rgba(255,210,122,.55)'); gr.addColorStop(1, 'rgba(255,210,122,0)');
+      ctx.fillStyle = gr; ctx.fillRect(p[0] - 16, p[1] - 16, 32, 32); ctx.fillStyle = '#FFE2A0'; ctx.fillRect(p[0] - 1, p[1] - 1, 2, 2);
+    }
+  }
+  placePlaques(cam);
+}
+
+/* ---------- strip plaques (world-anchored) + off-screen edge chips ---------- */
+const STRIPS = [
+  { id: 'L2', x: 27.5, price: 4400, feat: 'уголь', icon: 'i-pick', side: 'l' },
+  { id: 'R1', x: 67.5, price: 4400, feat: 'бухта', icon: 'i-anchor', side: 'r' },
+];
+function placePlaques(cam) {
+  const host = $('#plaques'); host.innerHTML = '';
+  const topSafe = 150, botSafe = 150;
+  for (const s of STRIPS) {
+    const p = cam.P(s.x, 33, 0);
+    const label = `Купить полосу: ${s.feat}, ${fmt(s.price)}`;
+    if (p[0] > 60 && p[0] < W - 60 && p[1] > topSafe && p[1] < H - botSafe) {
+      host.insertAdjacentHTML('beforeend', `<button class="plaque chip" data-strip="${s.id}" aria-label="${label}" style="left:${p[0]}px;top:${p[1]}px">
+        <span class="plaque__add"><svg class="i"><use href="#i-plus"/></svg></span>
+        <span class="plaque__body"><span class="plaque__title">Полоса<span class="plaque__price num disp"><svg class="cur"><use href="#cur-e1000"/></svg>${fmt(s.price)}</span></span>
+        <span class="plaque__feat"><svg class="i"><use href="#${s.icon}"/></svg>${s.feat}</span></span></button>`);
+    } else if (S.state === 'idle') {
+      const y = Math.min(Math.max(p[1], H * .4), H * .55);
+      const side = p[0] < W / 2 ? 'left' : 'right';
+      host.insertAdjacentHTML('beforeend', `<button class="edge chip${side === 'right' ? ' edge--r' : ''}" data-strip="${s.id}" aria-label="${label}" style="${side}:var(--${side === 'left' ? 'lft' : 'rgt'});top:${y}px">
+        <svg class="i"><use href="#i-chev${side === 'left' ? '-l' : ''}"/></svg><span class="edge__add"><svg class="i"><use href="#i-plus"/></svg></span><span class="num">${fmt(s.price)}</span></button>`);
+    }
+  }
+}
+
+/* ---------- thumbnails (stand-ins for the engine's rendered thumbs) ---------- */
+function drawThumb(canvas, kind, w, d, opts = {}) {
+  const rect = canvas.getBoundingClientRect(), dpr = 2;
+  const cw = Math.max(40, Math.round(rect.width || canvas.width / 2)), ch = Math.max(40, Math.round(rect.height || canvas.height / 2));
+  canvas.width = cw * dpr; canvas.height = ch * dpr;
+  const c = canvas.getContext('2d'); c.setTransform(dpr, 0, 0, dpr, 0, 0);
+  c.fillStyle = opts.bg || '#141B38'; c.fillRect(0, 0, cw, ch);
+  const b = { k: kind, x: 0, y: 0, w, d };
+  const size = Math.max(w, d);
+  const cam = makeCam(cw, ch, { tx: w / 2, ty: d / 2, pitch: 0.62, yaw: 0.62, dist: 12 + size * 4, scale: ch / (size * 1.2 + 0.35), ox: cw / 2, oy: ch * .62 });
+  c.fillStyle = 'rgba(141,190,91,.2)';
+  c.beginPath(); const g0 = cam.P(w / 2, d / 2, 0), gr = Math.abs(cam.P(w / 2 + size * .62, d / 2, 0)[0] - g0[0]);
+  c.ellipse(g0[0], g0[1], gr, gr * .48, 0, 0, Math.PI * 2); c.fill();
+  renderBuildings(c, cam, [b], false, { edge: 'rgba(20,15,10,.25)' });
+}
+
+/* ---------- build tray ---------- */
+function renderTray() {
+  $('#tabs').innerHTML = CATS.map((c) => `<button class="tab${c.id === S.cat ? ' is-on' : ''}" role="tab" aria-selected="${c.id === S.cat}" data-cat="${c.id}">
+    <svg class="i"><use href="#${c.icon}"/></svg><span>${c.name}</span>${c.fresh ? '<i class="tab__dot" aria-label="есть новое"></i>' : ''}</button>`).join('');
+  const list = CARDS[S.cat] || [];
+  $('#cards').innerHTML = list.length ? list.map((c, i) => c.lock
+    ? `<button class="card card--locked" data-card="${i}" aria-disabled="true"><canvas class="card__img" data-kind="${c.k}" data-w="${c.w}" data-d="${c.d}"></canvas>
+       <span class="card__name">${c.name}</span><span class="lockline"><svg class="i"><use href="#i-lock"/></svg>${c.lock}</span></button>`
+    : `<button class="card" data-card="${i}"><canvas class="card__img" data-kind="${c.k}" data-w="${c.w}" data-d="${c.d}"></canvas>
+       ${c.isNew ? '<span class="card__new">Новое</span>' : ''}<span class="card__name">${c.name}</span>${costHTML(c.m, c.mat)}<span class="card__fx">${c.fx}</span></button>`).join('')
+    : `<p class="empty">${EMPTY[S.cat] || 'Пока здесь пусто.'}</p>`;
+  requestAnimationFrame(() => $$('#cards canvas').forEach((cn) => drawThumb(cn, cn.dataset.kind, +cn.dataset.w, +cn.dataset.d)));
+  const on = $('.tab.is-on'); if (on) { on.scrollIntoView({ block: 'nearest', inline: 'center' }); }
+}
+
+/* ---------- state machine ---------- */
+const SHEETS = { build: 'sh-build', inspect: 'sh-inspect', strip: 'sh-strip', hall: 'sh-hall', city: 'sh-city', goals: 'sh-goals', upgrade: 'sh-upgrade', chronicle: 'sh-chronicle' };
+function setState(st, extra) {
+  S.state = st; document.body.dataset.state = st;
+  Object.entries(SHEETS).forEach(([k, id]) => $('#' + id).classList.toggle('is-open', k === st));
+  const sheet = SHEETS[st] ? $('#' + SHEETS[st]) : null;
+  document.body.classList.toggle('has-sheet', !!sheet);
+  document.body.dataset.sheet = sheet ? sheet.dataset.kind : '';
+  $('#menu').classList.remove('is-open');
+  if (st === 'build') { renderTray(); }
+  if (st === 'place') {
+    S.place = extra || S.place || { k: 'clinic', name: 'Знахарь', m: 510, mat: 26, w: 1, d: 1, x: 47, y: 22, r: 3, fx: 'Здоровье получат 14 домов' };
+    $('#pb-name').innerHTML = `${S.place.name}<small>${S.place.w}×${S.place.d}</small>`;
+    $('#pb-cost').innerHTML = costHTML(S.place.m, S.place.mat);
+    $('#pb-fx').textContent = S.place.fx || 'Можно ставить здесь';
+  }
+  if (st === 'inspect') { requestAnimationFrame(() => drawThumb($('#ins-thumb'), 'house3', 1, 1, { bg: '#141B38' })); }
+  if (st === 'hall') { requestAnimationFrame(() => drawThumb($('#hall-thumb'), 'hall', 2, 2, { bg: '#141B38' })); }
+  $$('.proto [data-proto]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.proto === st)));
+  drawScene();
+}
+function toast(text) { $('#toast-text').textContent = text; const t = $('#toast'); t.classList.add('is-on'); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('is-on'), 3200); }
+function setSpeed(v) {
+  S.speed = v; $$('.speed__opt').forEach((b) => b.setAttribute('aria-pressed', String(+b.dataset.speed === v)));
+  $('#speed-label').innerHTML = v === 0 ? '<svg class="i"><use href="#i-pause"/></svg>' : '×' + v;
+  $('#cal').dataset.speed = String(v);
+  $('#speed-cur').setAttribute('aria-label', (v === 0 ? 'Пауза' : 'Скорость ×' + v) + '. Изменить скорость');
+  $('#speed-pop').classList.remove('is-open'); $('#speed-cur').setAttribute('aria-expanded', 'false');
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click', (e) => {
+  const t = e.target.closest('button, a'); if (!t) { return; }
+  if (t.dataset.proto) { if (t.dataset.proto === 'night') { S.time = S.time === 'day' ? 'night' : 'day'; document.body.dataset.time = S.time; drawScene(); } else { setState(t.dataset.proto); } return; }
+  if (t.dataset.open) { setState(t.dataset.open); return; }
+  if (t.hasAttribute('data-close')) { setState('idle'); return; }
+  if (t.dataset.goto === 'clinic') { setState('place'); return; }
+  if (t.dataset.cat) { S.cat = t.dataset.cat; renderTray(); return; }
+  if (t.dataset.card) {
+    const c = (CARDS[S.cat] || [])[+t.dataset.card]; if (!c || c.lock) { return; }
+    setState('place', c.k === 'clinic' ? null : { k: c.k, name: c.name, m: c.m, mat: c.mat, w: c.w, d: c.d, x: 47, y: 22, r: 0, fx: c.fx });
+    return;
+  }
+  if (t.hasAttribute('data-cancel')) { setState('build'); return; }
+  if (t.hasAttribute('data-confirm')) { setState('idle'); return; }
+  if (t.dataset.strip) { setState('strip'); return; }
+  if (t.hasAttribute('data-confirm-strip')) { setState('idle'); toast('Полоса куплена: Глубокая бухта'); return; }
+  if (t.id === 'quest') { const open = t.getAttribute('aria-expanded') !== 'true'; t.setAttribute('aria-expanded', String(open)); $('#quest-lines').classList.toggle('is-open', open); return; }
+  if (t.id === 'menu-btn') { const m = $('#menu'); m.classList.toggle('is-open'); t.setAttribute('aria-expanded', String(m.classList.contains('is-open'))); return; }
+  if (t.id === 'speed-cur') { const sp = $('#speed-pop'); sp.classList.toggle('is-open'); t.setAttribute('aria-expanded', String(sp.classList.contains('is-open'))); return; }
+  if (t.dataset.speed) { setSpeed(+t.dataset.speed); return; }
+});
+cv.addEventListener('click', (e) => {
+  if (!CAM) { return; }
+  if (S.state !== 'idle' && S.state !== 'inspect' && S.state !== 'hall') { return; }
+  let best = null, bd = 1e9;
+  for (const b of BLD) {
+    const p = CAM.P(b.x + b.w / 2, b.y + b.d / 2, 0.3), d = Math.hypot(p[0] - e.clientX, p[1] - e.clientY);
+    if (d < bd) { bd = d; best = b; }
+  }
+  if (!best || bd > 40) { setState('idle'); return; }
+  if (best.k === 'hall') { setState('hall'); return; }
+  S.sel = { x: best.x, y: best.y }; setState('inspect');
+});
+document.addEventListener('keydown', (e) => {
+  if (e.target.closest('input, textarea')) { return; }
+  const k = e.key.toLowerCase();
+  if (k === 'escape') { setState(S.state === 'place' ? 'build' : 'idle'); }
+  else if (k === 'b' || k === 'и') { setState(S.state === 'build' ? 'idle' : 'build'); }
+  else if (k === 'u' || k === 'г') { setState('upgrade'); }
+  else if (k === 'g' || k === 'п') { setState('goals'); }
+  else if (k === 'c' || k === 'с') { setState('city'); }
+  else if (k === 'h' || k === 'р') { setState('chronicle'); }
+  else if (k === 'enter' && S.state === 'place') { setState('idle'); }
+  else if (k === ' ') { e.preventDefault(); setSpeed(S.speed === 0 ? 1 : 0); }
+  else if (k === '1') { setSpeed(1); } else if (k === '2') { setSpeed(2); } else if (k === '3') { setSpeed(5); }
+});
+function resize() {
+  DPR = Math.min(2, window.devicePixelRatio || 1); W = innerWidth; H = innerHeight;
+  cv.width = W * DPR; cv.height = H * DPR; drawScene();
+}
+addEventListener('resize', resize);
+
+/* ---------- boot: #s=<state>&t=night&bare&cat=<id>&toast ---------- */
+const q = new URLSearchParams(location.hash.slice(1));
+if (q.has('bare')) { document.body.classList.add('bare'); }
+if (q.get('t') === 'night') { S.time = 'night'; document.body.dataset.time = 'night'; }
+if (q.get('cat')) { S.cat = q.get('cat'); }
+resize();
+setState(q.get('s') || 'idle');
+if (q.has('quest')) { $('#quest').click(); }
+if (q.has('menu')) { $('#menu-btn').click(); }
+if (q.has('speed')) { $('#speed-cur').click(); }
+if (q.has('toast')) { toast('Задача выполнена: «Город». Награда ждёт в «Задачах»'); }
+document.fonts && document.fonts.ready.then(() => {
+  const m = document.createElement('span'); m.className = 'num disp'; m.style.cssText = 'position:absolute;visibility:hidden;font-size:40px';
+  document.body.appendChild(m); m.textContent = '1111'; const a = m.offsetWidth; m.textContent = '0000'; const b = m.offsetWidth; m.remove();
+  console.log('font', document.fonts.check('16px Geologica'), 'tnum widths', a, b);
+});
+</script>
+</body>
+</html>
