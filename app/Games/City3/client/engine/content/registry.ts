@@ -526,20 +526,63 @@ export function validateContent(
         );
     }
 
-    if (!(world.districts?.radius >= 1)) {
-        add('world', 'districts.radius', 'Радиус округа — от 1 клетки');
+    for (const key of ['exportAbove', 'unemploymentTaxLoss'] as const) {
+        if (!isNumber(economy?.[key]) || economy[key] < 0 || economy[key] > 1) {
+            add('world', `economy.${key}`, 'Нужна доля от 0 до 1');
+        }
     }
 
-    for (const [index, policy] of (world.districts?.policies ?? []).entries()) {
-        for (const id of Object.keys(policy.effects?.produces ?? {})) {
-            if (id !== '*' && !resources.has(id)) {
-                add(
-                    'world',
-                    `districts.policies[${index}].effects.produces.${id}`,
-                    `Нет такого ресурса «${id}»`,
-                );
-            }
+    if (
+        !isNumber(economy?.powerShortfall?.base) ||
+        !isNumber(economy?.powerShortfall?.share) ||
+        economy.powerShortfall.base + economy.powerShortfall.share !== 1
+    ) {
+        add(
+            'world',
+            'economy.powerShortfall',
+            'base + share должны давать 1 (полная работа при полной энергии)',
+        );
+    }
+
+    const tourism = economy?.tourism;
+
+    if (
+        !isNumber(tourism?.perPoint) ||
+        !Array.isArray(tourism?.eraMult) ||
+        tourism.eraMult.length !== epochList.length ||
+        !tourism.eraMult.every((v) => isNumber(v) && v > 0) ||
+        !(tourism.heritageMult >= 1) ||
+        !(tourism.heritageEraGap >= 1) ||
+        !(tourism.heritageRampYears >= 0) ||
+        !(tourism.beachManorMult >= 1)
+    ) {
+        add(
+            'world',
+            'economy.tourism',
+            'Нужны perPoint, eraMult для каждой эпохи и множители наследия',
+        );
+    }
+
+    const needKinds = new Set<string>([
+        ...SERVICES,
+        'happiness',
+        'aura',
+        'power',
+        'transit',
+    ]);
+
+    for (const [index, need] of (world.population?.needs ?? []).entries()) {
+        if (!needKinds.has(need?.need) || !need.label) {
+            add(
+                'world',
+                `population.needs[${index}]`,
+                'Нужда — услуга, happiness, aura, power или transit, с подписью',
+            );
         }
+    }
+
+    if (!(world.districts?.radius >= 1)) {
+        add('world', 'districts.radius', 'Радиус округа — от 1 клетки');
     }
 
     if (

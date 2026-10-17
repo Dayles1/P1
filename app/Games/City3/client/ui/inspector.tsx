@@ -222,8 +222,6 @@ function DistrictSection({
     building: BuildingState;
 }) {
     const [name, setName] = useState(building.district?.name ?? '');
-    const policies = game.content.world.districts.policies;
-    const current = building.district?.policy ?? null;
     let members = 0;
 
     for (const status of game.status.values()) {
@@ -239,10 +237,10 @@ function DistrictSection({
                     value={name}
                     maxLength={40}
                     onChange={(event) => setName(event.target.value)}
-                    onBlur={() => game.setDistrict(building.uid, name, current)}
+                    onBlur={() => game.setDistrict(building.uid, name)}
                     onKeyDown={(event) =>
                         event.key === 'Enter' &&
-                        game.setDistrict(building.uid, name, current)
+                        game.setDistrict(building.uid, name)
                     }
                 />
             </label>
@@ -251,26 +249,6 @@ function DistrictSection({
                 {game.content.world.districts.radius} клеток. Дороги от управы
                 работают без связи с центром.
             </p>
-            <div className="policies">
-                {[null, ...policies].map((policy) => (
-                    <button
-                        key={policy?.id ?? 'none'}
-                        type="button"
-                        aria-pressed={current === (policy?.id ?? null)}
-                        onClick={() =>
-                            game.setDistrict(
-                                building.uid,
-                                name,
-                                policy?.id ?? null,
-                            )
-                        }
-                        title={policy?.description ?? 'Без особой политики'}
-                    >
-                        <span>{policy?.icon ?? '—'}</span>
-                        {policy?.name ?? 'Обычный'}
-                    </button>
-                ))}
-            </div>
         </div>
     );
 }
@@ -329,9 +307,11 @@ export function Inspector({
             );
         }
 
-        if (game.effects(building).jobs && game.stats.employment < 1) {
+        const staff = def.jobClass ? game.stats.staff[def.jobClass] : 1;
+
+        if (game.effects(building).jobs && staff < 1) {
             problems.push(
-                `👷 Рабочих хватает на ${Math.round(game.stats.employment * 100)}% — нужно больше жилья.`,
+                `👷 Рабочих хватает на ${Math.round(staff * 100)}% — нужно больше жилья.`,
             );
         }
     }
@@ -398,6 +378,55 @@ export function Inspector({
         );
     }
 
+    if (status?.working && game.effects(building).power > 0) {
+        live.push(
+            <li key="power">
+                ⚡ Энергия:{' '}
+                <b>
+                    {formatNumber(
+                        game.effects(building).power * status.efficiency,
+                    )}
+                </b>
+            </li>,
+        );
+    }
+
+    if (status?.home && level.tier > 0) {
+        const missing = new Set(
+            game.missingNeeds(
+                def,
+                building.level,
+                building.x,
+                building.y,
+                building.uid,
+            ),
+        );
+
+        live.push(
+            <li key="needs" className="inspector__needs">
+                Нужды:{' '}
+                {game.content.world.population.needs
+                    .slice(0, level.tier)
+                    .map((need) => (
+                        <span
+                            key={need.label}
+                            className={missing.has(need) ? 'neg' : 'ok'}
+                        >
+                            {missing.has(need) ? '✗' : '✓'} {need.label}
+                        </span>
+                    ))}
+            </li>,
+        );
+    }
+
+    if (status && status.upkeep > 0) {
+        live.push(
+            <li key="upkeep">
+                🧾 Содержание: <b>{formatRate(-status.upkeep)}</b>
+            </li>,
+        );
+    }
+
     if (status && status.boost > 0) {
         live.push(
             <li key="boost">
@@ -408,12 +437,10 @@ export function Inspector({
 
     if (status?.district && role !== 'district') {
         const hall = game.buildings.get(status.district);
-        const policy = game.policyOf(hall);
 
         live.push(
             <li key="district">
                 🏛️ Округ: <b>{hall?.district?.name}</b>
-                {policy ? ` · ${policy.icon} ${policy.name}` : ''}
             </li>,
         );
     }

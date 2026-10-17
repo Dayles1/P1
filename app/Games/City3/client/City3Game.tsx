@@ -14,6 +14,7 @@ import {
 } from './engine/save/serializer';
 import type { LoadedWorld } from './engine/save/serializer';
 import { Game } from './engine/sim/game';
+import type { TelemetryRow } from './engine/sim/game';
 import { Renderer } from './scene/renderer';
 import type { Overlay, Quality } from './scene/renderer';
 import { BuildDock } from './ui/build';
@@ -126,6 +127,8 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
     const [hint, setHint] = useState<string | null>(null);
     const [yaw, setYaw] = useState(0);
     const [infinite, setInfiniteState] = useState(false);
+    /** Tester: the per-era telemetry table, once asked for. */
+    const [telemetry, setTelemetry] = useState<TelemetryRow[] | null>(null);
     const [quality, setQualityState] = useState<Quality>(savedQuality);
     const [fps, setFps] = useState(60);
     const [others, setOthers] = useState(0);
@@ -698,7 +701,13 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
 
             if (active.kind === 'build' && !isRoadType(active.type)) {
                 const at = footprintAt(active.type, px, py)!;
-                const check = game.canPlace(active.type, at.x, at.y);
+                const check = game.canPlace(
+                    active.type,
+                    at.x,
+                    at.y,
+                    0,
+                    active.level,
+                );
 
                 overlay.ghost = {
                     type: active.type,
@@ -1570,7 +1579,106 @@ export default function City3Game({ backUrl }: { backUrl: string }) {
                                             >
                                                 ⏭ Следующая эпоха
                                             </button>
+                                            <button
+                                                type="button"
+                                                className="hud-button"
+                                                onClick={() => {
+                                                    const rows =
+                                                        game.telemetry();
+
+                                                    // For the ±20 % retune (gdd §12.9): copy from the console.
+                                                    console.table(
+                                                        rows.map((row) => ({
+                                                            ...row,
+                                                            coverage:
+                                                                JSON.stringify(
+                                                                    row.coverage,
+                                                                ),
+                                                            income: JSON.stringify(
+                                                                row.income,
+                                                            ),
+                                                        })),
+                                                    );
+                                                    setTelemetry(rows);
+                                                }}
+                                            >
+                                                📈 Телеметрия эпох
+                                            </button>
                                         </div>
+                                        {telemetry && (
+                                            <table className="game-menu__telemetry">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Эпоха</th>
+                                                        <th>лет</th>
+                                                        <th>ρ</th>
+                                                        <th>охват, %</th>
+                                                        <th>
+                                                            налог/экспорт/
+                                                            туризм/метро, %
+                                                        </th>
+                                                        <th>расходы</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {telemetry.map((row) => (
+                                                        <tr key={row.era}>
+                                                            <td>{row.era}</td>
+                                                            <td>{row.years}</td>
+                                                            <td>
+                                                                {row.rho.toFixed(
+                                                                    2,
+                                                                )}
+                                                            </td>
+                                                            <td>
+                                                                {Object.entries(
+                                                                    row.coverage,
+                                                                )
+                                                                    .map(
+                                                                        ([
+                                                                            id,
+                                                                            share,
+                                                                        ]) =>
+                                                                            `${id.slice(0, 3)} ${Math.round(share * 100)}`,
+                                                                    )
+                                                                    .join(
+                                                                        ' · ',
+                                                                    )}
+                                                            </td>
+                                                            <td>
+                                                                {[
+                                                                    row.income
+                                                                        .tax,
+                                                                    row.income
+                                                                        .trade,
+                                                                    row.income
+                                                                        .tourism,
+                                                                    row.income
+                                                                        .fares,
+                                                                ]
+                                                                    .map(
+                                                                        (
+                                                                            share,
+                                                                        ) =>
+                                                                            Math.round(
+                                                                                share *
+                                                                                    100,
+                                                                            ),
+                                                                    )
+                                                                    .join('/')}
+                                                            </td>
+                                                            <td>
+                                                                {Math.round(
+                                                                    row.costs *
+                                                                        100,
+                                                                )}
+                                                                %
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        )}
                                     </div>
                                 )}
                                 <div className="game-menu__keys">

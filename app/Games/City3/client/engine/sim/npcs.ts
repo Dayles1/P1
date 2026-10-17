@@ -204,7 +204,7 @@ export class NpcSystem {
             home?.noPower ||
             (homeBuilding &&
                 game.effects(homeBuilding).powerUse &&
-                game.stats.powerSupply < game.stats.powerDemand)
+                game.stats.powerRatio < 1)
         ) {
             return thoughts.no_power;
         }

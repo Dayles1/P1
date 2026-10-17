@@ -1,17 +1,23 @@
 import { describe, expect, it } from 'vitest';
 import { loadContent } from '../../content';
+import { mulberry32 } from '../core/random';
+import { settle, tourismIncome } from './economy';
+import type { EconomyCity, EconomyInput } from './economy';
 import { Game } from './game';
 
 const { content } = loadContent();
 
-/** A new world whose farm (east of the Town Hall, so connected) is built. */
+/**
+ * A new world whose farm (east of the Town Hall, so connected) is built,
+ * with `population` citizens; the stats show the next tick (nothing moved).
+ */
 function withFarm(population = 8): Game {
     const game = Game.create(content, 7);
 
     expect(game.place('farm', 51, 19).ok).toBe(true);
     game.testerFinish();
     game.state.population = population;
-    game.tick(1, true);
+    game.structureChanged();
 
     return game;
 }
@@ -49,32 +55,35 @@ describe('per-year rates', () => {
         )!;
         const before = game.state.resources.food;
 
+        // 8 citizens: 4 workers fill the farm's 4 jobs.
         expect(game.status.get(farm.uid)!.output.food).toBeCloseTo(28);
         // 8 citizens eat 0.4 a year each.
         expect(game.stats.rates.food).toBeCloseTo(28 - 8 * 0.4);
 
-        for (let i = 0; i < 25; i++) {
-            game.tick(1, true);
-        }
+        game.tick(1, true);
 
-        expect(game.state.resources.food - before).toBeCloseTo(28 - 3.2, 5);
+        expect(game.state.resources.food - before).toBeCloseTo(
+            (28 - 3.2) / 25,
+            9,
+        );
     });
 
     it('taxes 1.0 a citizen a year, by happiness and the homes’ level era', () => {
         const game = withFarm();
         const money = game.money;
 
-        // No homes but the Town Hall: city happiness is base + 20 = 55.
-        expect(game.stats.happiness).toBe(55);
+        // No homes but the Town Hall's rooms: base 35 + its own aura 6.
+        expect(game.stats.happiness).toBe(41);
         expect(game.stats.taxMult).toBe(1);
-        expect(game.stats.tax).toBeCloseTo(8 * 1.0 * (0.5 + 0.55));
-        expect(game.stats.rates.money).toBeCloseTo(game.stats.tax);
+        expect(game.stats.tax).toBeCloseTo(8 * 1.0 * (0.5 + 0.41));
+        // Net of the farm's upkeep, 0.5 a year.
+        expect(game.stats.rates.money).toBeCloseTo(game.stats.tax - 0.5);
 
-        for (let i = 0; i < 25; i++) {
-            game.tick(1, true);
-        }
+        // No goal reward in the way.
+        game.state.achievements = content.goals.map((goal) => goal.id);
+        game.tick(1, true);
 
-        expect(game.money - money).toBeCloseTo(8.4, 5);
+        expect(game.money - money).toBeCloseTo((7.28 - 0.5) / 25, 9);
     });
 
     it('makes discoveries faster with schools', () => {
@@ -224,5 +233,265 @@ describe('the gate into the next era', () => {
         game.state.population = 30;
         expect(game.upgradeBlock(center)).toBeNull();
         expect(game.upgradeCost(center)).toEqual({ money: 400, mat: 24 });
+    });
+});
+
+/** A settlement of one game second at happiness 60. */
+function settleOnce(city: Partial<EconomyCity>, input: Partial<EconomyInput>) {
+    const full: EconomyCity = {
+        jobs: { svc: 0, food: 0, raw: 0, ind: 0, com: 0 },
+        lines: [],
+        plants: { power: 0, fuel: 0 },
+        cleanPower: 0,
+        powerUse: 0,
+        trade: 0,
+        storage: 2400,
+        upkeep: 0,
+        importDiscount: 0,
+        goodsPremium: 0,
+        attraction: 0,
+        visitors: 0,
+        taxMult: 1,
+        homeTaxBonus: 0,
+        metroCoverage: 0,
+        ...city,
+    };
+
+    return settle(
+        full,
+        {
+            population: 0,
+            money: 1000,
+            stocks: { food: 0, mat: 0, goods: 0 },
+            bonuses: { prod: 0, produces: {}, tax: 0, trade: 0 },
+            golden: 0,
+            taxPolicy: 1,
+            reserved: { food: 0, mat: 0, goods: 0 },
+            congestion: 1,
+            previousPowerRatio: 1,
+            ...input,
+        },
+        content.world.economy,
+        1,
+        content.world.time.secondsPerYear,
+        () => 60,
+    );
+}
+
+describe('bounds (gdd §4.4, §4.5, §4.14)', () => {
+    it('never exports more than the trade capacity, nor earns more than K × 10', () => {
+        const rng = mulberry32(5);
+
+        for (let i = 0; i < 300; i++) {
+            const result = settleOnce(
+                {
+                    jobs: { svc: 0, food: 0, raw: 0, ind: 0, com: 50 },
+                    lines: [
+                        {
+                            jobClass: 'raw',
+                            powered: false,
+                            burnsFuel: false,
+                            produces: { fuel: rng() * 5000 },
+                            consumes: {},
+                        },
+                    ],
+                    trade: rng() < 0.2 ? 0 : rng() * 3000,
+                    storage: 1000 + rng() * 50_000,
+                    goodsPremium: rng() < 0.5 ? 0.25 : 0,
+                },
+                {
+                    population: 20 + rng() * 200,
+                    golden: rng() * 0.15,
+                    bonuses: { prod: 0, produces: {}, tax: 0, trade: rng() },
+                    stocks: {
+                        food: rng() * 60_000,
+                        mat: rng() * 60_000,
+                        goods: rng() * 60_000,
+                    },
+                },
+            );
+            const flows = result.flows;
+            const sold =
+                flows.exports.goods +
+                flows.exports.fuel +
+                flows.exports.food +
+                flows.exports.mat;
+
+            expect(sold).toBeLessThanOrEqual(flows.exportCapacity + 1e-6);
+            // 6 × (1 + 25 % premium + 10 % freight + 10 % cargo) × Golden Age 1.15 < 10.
+            expect(flows.income.trade).toBeLessThanOrEqual(
+                flows.exportCapacity * 10 + 1e-6,
+            );
+            expect(result.stocks.goods).toBeGreaterThanOrEqual(0);
+        }
+    });
+
+    it('sells goods first, then spare fuel, then food and materials above 90 % of the stores', () => {
+        const result = settleOnce(
+            {
+                jobs: { svc: 0, food: 0, raw: 0, ind: 0, com: 1 },
+                trade: 250,
+                storage: 1000,
+            },
+            { population: 2, stocks: { food: 980, mat: 950, goods: 4 } },
+        );
+        const exports = result.flows.exports;
+
+        // 250 a year = 10 a tick: the 4 goods, then 6 of the food above 900.
+        expect(exports.goods).toBeCloseTo(4 * 25);
+        expect(exports.food).toBeCloseTo(6 * 25);
+        expect(exports.mat).toBe(0);
+        expect(result.flows.income.trade).toBeCloseTo((4 * 6 + 6 * 0.4) * 25);
+    });
+
+    it('saturates tourism: never above the demand nor the visitor capacity', () => {
+        for (const [demand, capacity] of [
+            [0, 100],
+            [100, 0],
+            [10, 10],
+            [1e6, 600],
+            [40, 2000],
+        ]) {
+            const income = tourismIncome(demand, capacity);
+
+            expect(income).toBeLessThanOrEqual(Math.min(demand, capacity));
+            expect(income).toBeGreaterThanOrEqual(0);
+        }
+
+        expect(tourismIncome(1e9, 600)).toBeCloseTo(600, 0);
+
+        // In a city: every temple adds less; the Town Hall's 10 visitors cap it.
+        const game = Game.create(content, 7);
+        const tourism: number[] = [];
+
+        game.state.resources.money = 50_000;
+        game.state.population = 40;
+
+        for (let x = 36; x <= 60; x++) {
+            expect(game.place('road', x, 21).ok).toBe(true);
+        }
+
+        for (let i = 0; i < 8; i++) {
+            expect(game.place('temple', 36 + i * 2, 22).ok).toBe(true);
+            game.testerFinish();
+            tourism.push(game.stats.tourism);
+        }
+
+        expect(tourism.at(-1)!).toBeLessThan(10);
+        expect(tourism.at(-1)! - tourism.at(-2)!).toBeLessThan(
+            tourism[1] - tourism[0],
+        );
+    });
+});
+
+describe('upkeep (gdd §4.8)', () => {
+    it('charges every finished building’s upkeep; homes and the Town Hall are free', () => {
+        const game = Game.create(content, 7);
+
+        game.state.resources.money = 10_000;
+        expect(game.place('well', 48, 21).ok).toBe(true);
+        expect(game.place('house', 47, 21).ok).toBe(true);
+        expect(game.place('temple', 51, 21).ok).toBe(true);
+        // Under construction: nothing charged yet.
+        expect(game.stats.budget.costs.upkeep).toBe(0);
+
+        game.testerFinish();
+        expect(game.stats.budget.costs.upkeep).toBeCloseTo(0.6 + 1.6);
+        expect(game.status.get(game.buildingAt(51, 21)!.uid)!.upkeep).toBe(1.6);
+
+        // Nobody to tax: a year costs the upkeep, money only.
+        game.state.population = 0;
+        game.state.achievements = content.goals.map((goal) => goal.id);
+        game.structureChanged();
+
+        const money = game.money;
+
+        for (let i = 0; i < 25; i++) {
+            game.tick(1, true);
+        }
+
+        const income = game.stats.budget.gross;
+
+        expect(game.stats.budget.spent).toBeCloseTo(2.2);
+        // Newcomers start paying tax during the year; upkeep is still charged.
+        expect(game.money).toBeLessThan(money + income);
+        expect(game.money).toBeGreaterThan(money - 2.2 - 1e-9);
+        expect(settleOnce({ upkeep: 2.2 }, {}).flows.net).toBeCloseTo(-2.2);
+    });
+});
+
+describe('an empty treasury', () => {
+    it('stays at zero, never NaN, and the city keeps running', () => {
+        const game = Game.create(content, 7);
+
+        game.state.resources.money = 50_000;
+
+        for (let x = 38; x <= 61; x++) {
+            expect(game.place('road', x, 21).ok).toBe(true);
+        }
+
+        for (let i = 0; i < 6; i++) {
+            expect(game.place('temple', 38 + i * 2, 22).ok).toBe(true);
+        }
+
+        game.testerFinish();
+        // No goal rewards to refill the treasury.
+        game.state.achievements = content.goals.map((goal) => goal.id);
+        game.state.resources.money = 0;
+        game.state.resources.food = 0;
+        game.state.population = 30;
+
+        for (let tick = 0; tick < 100 * 25; tick++) {
+            game.tick(1, true);
+
+            expect(Number.isFinite(game.money)).toBe(true);
+            expect(game.money).toBeGreaterThanOrEqual(0);
+        }
+
+        expect(game.stats.budget.costs.upkeep).toBeCloseTo(6 * 1.6);
+        expect(Number.isFinite(game.state.population)).toBe(true);
+        expect(game.state.population).toBeGreaterThanOrEqual(0);
+
+        for (const amount of Object.values(game.state.resources)) {
+            expect(Number.isFinite(amount)).toBe(true);
+        }
+
+        // Broke with nothing in the stores: the city starves instead of buying food.
+        // Only the Town Hall's rooms are lived in: the taxes cannot pay the temples.
+        expect(game.stats.budget.net).toBeLessThan(0);
+        game.state.resources.food = 0;
+        game.tick(1, true);
+        expect(game.stats.starving).toBe(true);
+        expect(game.stats.arrears).toBe(true);
+        expect(game.money).toBe(0);
+    });
+
+    it('buys food, fuel and grid power while there is money, and stops at zero', () => {
+        const city: Partial<EconomyCity> = {
+            jobs: { svc: 10, food: 0, raw: 0, ind: 0, com: 0 },
+            plants: { power: 10, fuel: 20 },
+            powerUse: 30,
+        };
+        const rich = settleOnce(city, { population: 100 }).flows;
+
+        expect(rich.imports.food).toBeCloseTo(40);
+        expect(rich.imports.fuel).toBeCloseTo(20);
+        expect(rich.imports.power).toBeCloseTo(20);
+        expect(rich.power.ratio).toBe(1);
+        expect(rich.costs.power).toBeCloseTo(20 * 100);
+
+        // Broke, and the upkeep is more than the taxes bring.
+        const broke = settleOnce(
+            { ...city, upkeep: 500 },
+            { population: 100, money: 0 },
+        );
+
+        expect(broke.flows.starving).toBe(true);
+        expect(broke.flows.imports).toEqual({ food: 0, fuel: 0, power: 0 });
+        expect(broke.flows.fuel.ratio).toBe(0);
+        // No fuel: the plants make nothing — 0 of 30 units of power.
+        expect(broke.flows.power.ratio).toBe(0);
+        expect(broke.money).toBe(0);
+        expect(broke.arrears).toBe(true);
     });
 });

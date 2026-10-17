@@ -76,8 +76,18 @@ export interface BuildingState {
     buildStart: number;
     buildEnd: number;
     style: BuildingStyle | null;
-    /** District halls: the district's name and policy. */
+    /**
+     * District halls: the district's name. `policy` is v2's and always
+     * null now (charters replace it in slice 7); kept for the save shape.
+     */
     district: { name: string; policy: string | null } | null;
+    /**
+     * The city's era when the current level was finished (Heritage).
+     * Not saved yet (slice 3): a loaded building counts from its level's era.
+     */
+    builtEra?: number;
+    /** Organic growth progress, 0..1 (gdd §4.7). Not saved yet (slice 3). */
+    organic?: number;
 }
 
 export type NpcActivity = 'home' | 'walking' | 'working' | 'leisure';

@@ -78,6 +78,27 @@ export interface WorldFile {
         refundShare: number;
         /** Moving costs this share of the current level's money price. */
         moveShare: number;
+        /** Food and materials above this share of the storage cap are exported. */
+        exportAbove: number;
+        /** Unemployment `u` cuts the tax by `share × u`. */
+        unemploymentTaxLoss: number;
+        /** Power users run at `base + share × power ratio` when the grid cannot be bought. */
+        powerShortfall: { base: number; share: number };
+        /** Metro fares per covered citizen: this share of the tax per citizen × taxMult. */
+        faresShareOfTax: number;
+        /**
+         * Tourism demand per attraction point, by the era (index) of the
+         * attraction's own level; Heritage doubles it (ramped in) once the
+         * level is `heritageEraGap` eras older than the city.
+         */
+        tourism: {
+            perPoint: number;
+            eraMult: number[];
+            heritageMult: number;
+            heritageEraGap: number;
+            heritageRampYears: number;
+            beachManorMult: number;
+        };
     };
     /** A home's happiness: base, + comfort × services covered, + auras, − pollution. */
     happiness: {
@@ -85,6 +106,8 @@ export interface WorldFile {
         comfort: number;
         auraCap: number;
         pollutionCap: number;
+        /** Metro stations' appeal near a home is capped at this. */
+        transitCap: number;
         starving: number;
         noPower: number;
     };
@@ -102,11 +125,25 @@ export interface WorldFile {
         occupancy: { from: number; span: number };
         /** A home holds [base + share × services covered] of its places. */
         comfortFill: [number, number];
+        /** Free climb progress a modernising home gains per year (gdd §4.7). */
+        organicPerYear: number;
+        /** The need ladder: a home level of tier T needs the first T of these. */
+        needs: NeedDef[];
+    };
+    /**
+     * Aggregate traffic until the spatial model (slice 6): trips per
+     * citizen and per job, their length in tiles and the hotspot factor;
+     * ρ = trips × length × hotspot / road capacity. Telemetry only.
+     */
+    traffic: {
+        tripsPerCitizen: number;
+        tripsPerJob: number;
+        tripLength: number;
+        hotspot: number;
     };
     districts: {
         /** Tiles around a district hall that belong to its district. */
         radius: number;
-        policies: DistrictPolicyDef[];
     };
     npc: {
         residentsPerNpc: number;
@@ -121,26 +158,16 @@ export interface WorldFile {
     };
 }
 
-export interface DistrictPolicyDef {
-    id: string;
-    name: string;
-    icon: string;
-    description: string;
-    effects: {
-        /** Percent to the output of buildings in the district; "*" means every resource. */
-        produces?: Record<ResourceId | '*', number>;
-        /** Added to the happiness of homes in the district. */
-        happiness?: number;
-        /** Percent to the housing of homes in the district. */
-        housing?: number;
-        /** Percent to the pollution made in the district (negative = cleaner). */
-        pollution?: number;
-        /**
-         * Money per year for every building in the district, times how many
-         * eras older its level is than the current era (old houses draw tourists).
-         */
-        tourism?: number;
-    };
+/**
+ * One rung of the home need ladder (gdd §4.7): a service reaching the
+ * home, happiness or an aura of at least `min` at it, a power ratio of at
+ * least `min`, or transit.
+ */
+export interface NeedDef {
+    need: ServiceId | 'happiness' | 'aura' | 'power' | 'transit';
+    min?: number;
+    /** What the build button names when it is missing («Образование»). */
+    label: string;
 }
 
 export interface GameEventDef {

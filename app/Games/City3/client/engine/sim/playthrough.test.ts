@@ -6,42 +6,49 @@ const { content } = loadContent();
 
 /**
  * A plain player around the Town Hall (x 49–50, rows 19–20): a street
- * under it, homes on both sides with wells between them, a temple, the
- * agora and the school among the homes, two farms at the end; the
- * cheapest open discovery whenever none is running; the chief's house at
- * 30 citizens, adobe houses after Masonry, and the Middle Ages as soon as
- * the gate opens.
+ * under it, homes on both sides with wells between them and a farm at the
+ * end, two lumber camps for materials, then a temple, parks, the school,
+ * the agora and a theatre — every home in reach of water, most of leisure
+ * or education. Discoveries in the gate's order (Masonry and Writing as
+ * soon as affordable, the rest when the next build is still paid for);
+ * the chief's house at 30 citizens, adobe houses after Masonry, and the
+ * Middle Ages as soon as the gate opens.
  */
 function play(years: number): Game {
     const game = Game.create(content, 7);
     const plan: [string, number, number][] = [];
+    const street = (from: number, to: number) => {
+        for (let x = from; x <= to; x++) {
+            plan.push(['road', x, 21]);
+        }
+    };
+    const homes = (y: number, xs: number[]) => {
+        for (const x of xs) {
+            plan.push(['house', x, y]);
+        }
+    };
 
-    for (let x = 40; x <= 63; x++) {
-        plan.push(['road', x, 21]);
-    }
+    street(43, 61);
+    plan.push(['well', 46, 20], ['well', 53, 20], ['farm', 56, 22]);
+    homes(20, [47, 48, 51, 52, 45, 54, 44, 55]);
+    plan.push(['lumber', 61, 20], ['lumber', 61, 22]);
+    plan.push(['well', 47, 22], ['well', 52, 22]);
+    homes(22, [46, 48, 51, 53]);
+    plan.push(['temple', 42, 22]);
+    street(42, 42);
+    homes(22, [44, 45, 54, 55]);
+    plan.push(['park', 43, 20], ['park', 56, 20], ['school', 49, 22]);
+    street(38, 41);
+    plan.push(['well', 40, 20]);
+    homes(20, [41, 42, 39, 38]);
+    plan.push(['market', 58, 22], ['well', 59, 20]);
+    homes(20, [57, 58, 60]);
+    homes(22, [41]);
+    plan.push(['theater', 39, 22]);
 
-    plan.push(['well', 47, 20], ['well', 52, 20], ['farm', 60, 22]);
-
-    for (const x of [46, 48, 51, 53, 45, 54, 44, 55, 43, 56]) {
-        plan.push(['house', x, 20]);
-    }
-
-    plan.push(['well', 47, 22], ['well', 52, 22], ['temple', 44, 22]);
-
-    for (const x of [46, 48, 51, 53, 43]) {
-        plan.push(['house', x, 22]);
-    }
-
-    plan.push(['market', 49, 22], ['farm', 62, 22], ['school', 54, 22]);
-    plan.push(['well', 42, 20], ['well', 57, 20], ['well', 42, 22]);
-
-    for (const x of [41, 40, 58, 59]) {
-        plan.push(['house', x, 20]);
-    }
-
-    for (const x of [41, 40, 56, 57, 58, 59]) {
-        plan.push(['house', x, 22]);
-    }
+    const order = ['masonry', 'writing', 'coinage', 'agriculture'].map((id) =>
+        content.tech(id)!,
+    );
 
     for (let tick = 0; tick < years * 25 && game.state.epoch === 0; tick++) {
         game.tick(1, true);
@@ -78,11 +85,19 @@ function play(years: number): Game {
             game.upgradeAll('house', 1);
         }
 
-        const next = content.techs
-            .filter((tech) => !game.techLock(tech))
-            .sort((a, b) => a.cost.money - b.cost.money)[0];
+        const next = order.find(
+            (tech) => !game.hasTech(tech.id) && !game.techLock(tech),
+        );
+        const reserve =
+            plan.length && game.state.techs.length >= 2
+                ? game.quote(game.buildCost(content.building(plan[0][0]))).total
+                : 0;
 
-        if (!game.state.research && next && game.canAfford(next.cost)) {
+        if (
+            !game.state.research &&
+            next &&
+            game.money - (next.cost.money ?? 0) >= reserve
+        ) {
             game.research(next.id);
         }
 
@@ -111,9 +126,10 @@ describe('a whole era', () => {
         ).toBe(1);
         expect(game.center!.level).toBe(3);
         expect(game.state.population).toBeGreaterThanOrEqual(80);
-        // Near the sim's pace (★★ by year 76; typical players 71–106).
-        expect(game.year).toBeGreaterThan(40);
-        expect(game.year).toBeLessThan(200);
+        // Within the sim's typical range (gdd §12.3: 71–106; ★★ by year 76).
+        // Measured: year 86.
+        expect(game.year).toBeGreaterThanOrEqual(71);
+        expect(game.year).toBeLessThanOrEqual(106);
         expect(game.state.achievements).toEqual(
             expect.arrayContaining(['first_homes', 'fields', 'agora']),
         );

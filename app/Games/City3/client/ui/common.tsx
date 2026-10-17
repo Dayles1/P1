@@ -207,7 +207,7 @@ export function Bar({
     tone,
 }: {
     value: number;
-    tone?: 'good' | 'accent';
+    tone?: 'good' | 'accent' | 'bad';
 }) {
     return (
         <span className={`bar${tone ? ` bar--${tone}` : ''}`}>

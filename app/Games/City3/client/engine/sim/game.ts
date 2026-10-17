@@ -12,6 +12,12 @@
  * Nothing changes by itself when an era begins: a building keeps the level
  * (and so the look) the player gave it. Eras only open new levels,
  * discoveries and resources.
+ *
+ * The economy maths lives in pure modules: `grids.ts` (coverage, auras,
+ * pollution, transit, charters), `population.ts` (happiness, needs, P*,
+ * growth) and `economy.ts` (labour, production, settlement, money). This
+ * class rebuilds their cached inputs when the map changes and feeds them
+ * once per game second.
  */
 
 import { MATERIALS, SERVICES } from '../content/registry';
@@ -20,11 +26,12 @@ import type {
     Amounts,
     BlueprintDef,
     BuildingDef,
-    DistrictPolicyDef,
     Effects,
     EpochDef,
     GoalDef,
+    JobClass,
     LevelDef,
+    NeedDef,
     Palette,
     RoofShape,
     ServiceId,
@@ -38,7 +45,28 @@ import type { Rng } from '../core/random';
 import { buildMap, mapLayout } from '../world/layout';
 import type { MapLayout } from '../world/layout';
 import type { WorldMap } from '../world/world-map';
+import { settle } from './economy';
+import type {
+    EconomyCity,
+    EconomyInput,
+    Flows,
+    ProductionLine,
+} from './economy';
+import { footprintDistance, Grids } from './grids';
+import type { Footprint, GridSource } from './grids';
 import { NpcSystem } from './npcs';
+import {
+    cityTerms,
+    effectiveHousing,
+    growPopulation,
+    missingNeeds,
+    occupancy,
+    organicStart,
+    organicStep,
+    settleHomes,
+    staticHappiness,
+} from './population';
+import type { CityTerms, HomeEntry, Surroundings } from './population';
 import type {
     ActionResult,
     BuildingState,
@@ -51,13 +79,24 @@ import type {
 export interface BuildingStatus {
     complete: boolean;
     connected: boolean;
+    /** Complete and connected: it works, stamps its effects and counts. */
+    working: boolean;
+    /** Share of its full output it makes now (staff, power, fuel). */
     efficiency: number;
     starved: string | null;
     noPower: boolean;
+    /** Output bonus from neighbours (a windmill by a farm), a share. */
     boost: number;
+    /** Homes and the Town Hall's rooms: happiness now; null otherwise. */
     happiness: number | null;
+    /** …of which its surroundings give (without the city's shared terms). */
+    surroundings: number | null;
+    /** A home (a housing building; the Town Hall is not one). */
+    home: boolean;
     pollution: number;
-    /** Homes: the services that reach them. */
+    /** Σ auras reaching it, the Town Hall's included. */
+    aura: number;
+    /** The services that reach it. */
     services: ServiceId[];
     /** Homes: the share of the era's home services that reach them, 0..1. */
     comfort: number;
@@ -67,13 +106,27 @@ export interface BuildingStatus {
     district: number | null;
     output: Amounts;
     input: Amounts;
+    /** Money per year it costs (complete buildings). */
+    upkeep: number;
+}
+
+/** Money per year: where it comes from and where it goes (gdd §4.6, §4.8). */
+export interface Budget {
+    income: Flows['income'];
+    costs: Flows['costs'];
+    /** Upkeep by building category; streets under `roads`. */
+    upkeepBy: Record<string, number>;
+    gross: number;
+    spent: number;
+    net: number;
 }
 
 /** The city's numbers right now. Rates are per year. */
 export interface Stats {
+    /** Money: net per year; stocks: made − used per year (before trade). */
     rates: Amounts;
     caps: Amounts;
-    /** Places in homes. */
+    /** Places in homes (the Town Hall's rooms included). */
     housing: number;
     /**
      * How many citizens the homes hold at their happiness (P*): homes
@@ -82,19 +135,58 @@ export interface Stats {
     target: number;
     jobs: number;
     workers: number;
+    /** Share of the jobs filled. */
     employment: number;
+    /** Share of each class's jobs filled (services first, commerce last). */
+    staff: Record<JobClass, number>;
+    unemployment: number;
     powerSupply: number;
     powerDemand: number;
+    powerRatio: number;
+    fuelRatio: number;
     happiness: number;
     starving: boolean;
+    /** This tick's costs exceeded the treasury. */
+    arrears: boolean;
     /** Money per year from taxes. */
     tax: number;
     /** Housing-weighted tax multiplier of the homes' level eras. */
     taxMult: number;
-    /** Money per year from old buildings in historic districts. */
+    /** Money per year from tourists. */
     tourism: number;
     /** Percent faster research from schools and the like. */
     research: number;
+    /** Aggregate road load ρ (stub until the spatial traffic model). */
+    traffic: number;
+    budget: Budget;
+    /** The last tick in full. */
+    flows: Flows | null;
+}
+
+/** One era's averages for the ±20 % retune (gdd §12.9, §15 slice 2). */
+export interface TelemetryRow {
+    era: string;
+    years: number;
+    rho: number;
+    coverage: Record<string, number>;
+    /** Shares of the income, 0..1. */
+    income: { tax: number; trade: number; tourism: number; fares: number };
+    /** All costs as a share of the gross. */
+    costs: number;
+    gross: number;
+    happiness: number;
+    population: number;
+}
+
+interface TelemetryAcc {
+    years: number;
+    rho: number;
+    coverage: Record<string, number>;
+    income: { tax: number; trade: number; tourism: number; fares: number };
+    gross: number;
+    spent: number;
+    happiness: number;
+    population: number;
 }
 
 /** Every researched discovery's bonus added up. */
@@ -138,7 +230,13 @@ export interface GateLine {
     cost?: Amounts;
 }
 
-const NO_POLICY: DistrictPolicyDef['effects'] = {};
+const EMPTY_STAFF: Record<JobClass, number> = {
+    svc: 1,
+    food: 1,
+    raw: 1,
+    ind: 1,
+    com: 1,
+};
 
 export class Game {
     readonly content: Content;
@@ -164,8 +262,33 @@ export class Game {
     readonly changedBuildings = new Set<number>();
     readonly deletedBuildings = new Set<number>();
 
+    /** The effect fields every working building stamps (gdd §4.7). */
+    readonly grids: Grids;
+
     private structureDirty = true;
     private rng: Rng;
+    /** The economy's inputs as the map makes them (rebuilt on structural change). */
+    private city: EconomyCity;
+    /** Homes and the Town Hall's rooms (parallel arrays), with their happiness after the city terms. */
+    private homeUids: number[] = [];
+    private homeEntries: HomeEntry[] = [];
+    private homeHappiness = new Float64Array(0);
+    /** Σ research percent of the working buildings (before staffing). */
+    private researchPercent = 0;
+    /** The home services of the eras reached (rebuilt with the map). */
+    private unlocked: ServiceId[] = [];
+    /** The largest data-centre tax percent in the content (stacking caps at it). */
+    private readonly maxDataTax: number;
+    private homesDirty = true;
+    private statusDirty = true;
+    private terms: CityTerms = { all: 0, powered: 0 };
+    private target = 0;
+    private meanHappiness = 50;
+    private upkeepBy: Record<string, number> = {};
+    private roadCapacity = 0;
+    /** Game time each era was entered in this session (heritage ramps from it). */
+    private eraEnteredAt: number[] = [];
+    private telemetryByEra = new Map<number, TelemetryAcc>();
 
     constructor(
         content: Content,
@@ -180,6 +303,13 @@ export class Game {
         this.clock = new Clock(content);
         this.layout = mapLayout(content);
         this.rng = mulberry32(state.seed ^ Math.floor(state.time));
+        this.grids = new Grids(map.width, map.height);
+        this.maxDataTax = Math.max(
+            0,
+            ...content.buildings.flatMap((def) =>
+                def.levels.map((level) => level.effects.dataTax?.percent ?? 0),
+            ),
+        );
 
         for (const building of buildings) {
             if (content.hasBuilding(building.type)) {
@@ -189,9 +319,11 @@ export class Game {
 
         this.stats = this.emptyStats();
         this.bonuses = this.collectBonuses();
+        this.city = this.emptyCity();
         this.npcs = new NpcSystem(this, npcs);
-        this.recalculate();
-        this.updateEconomy(0);
+        this.rebuild();
+        this.runEconomy(1, false);
+        this.refreshStatus();
     }
 
     /** A new world on the fixed map; the seed only drives events and names. */
@@ -450,6 +582,66 @@ export class Game {
         return null;
     }
 
+    /**
+     * The needs of a home level's tier (gdd §4.7) that a footprint lacks:
+     * services reaching it, happiness and auras at it, the city's power,
+     * transit. `uid` is the home itself when it already stands there (its
+     * own aura does not count).
+     */
+    missingNeeds(
+        def: BuildingDef,
+        level: number,
+        x: number,
+        y: number,
+        uid = 0,
+    ): NeedDef[] {
+        const levelDef = def.levels[level - 1];
+
+        if (!levelDef?.tier) {
+            return [];
+        }
+
+        const area = { x, y, w: def.size.w, h: def.size.h };
+        const own = uid ? this.buildings.get(uid) : undefined;
+        const at = this.surroundingsAt(area, own ? this.ownAura(own) : 0);
+        const happiness = Math.max(
+            0,
+            Math.min(
+                100,
+                staticHappiness(this.content.world.happiness, at) +
+                    this.terms.all +
+                    (levelDef.effects.powerUse > 0 ? this.terms.powered : 0),
+            ),
+        );
+
+        return missingNeeds(
+            this.content.world.population.needs,
+            levelDef.tier,
+            {
+                services: (service) => this.grids.covers(service, area),
+                happiness,
+                aura: at.aura + at.centerAura,
+                powerRatio: this.stats.powerRatio,
+                transit: this.grids.transitAt(area),
+            },
+        );
+    }
+
+    /** «Для «Избы» нужно: Досуг» — or null when the tier is met there. */
+    needsReason(
+        def: BuildingDef,
+        level: number,
+        x: number,
+        y: number,
+        uid = 0,
+    ): string | null {
+        const missing = this.missingNeeds(def, level, x, y, uid);
+
+        return missing.length
+            ? `Для «${def.levels[level - 1].name}» нужно: ${missing.map((need) => need.label).join(', ')}`
+            : null;
+    }
+
     /** Levels that can be built straight away right now. */
     availableLevels(def: BuildingDef): number[] {
         return def.levels
@@ -488,7 +680,16 @@ export class Game {
             return 'Идёт стройка';
         }
 
-        return this.levelLock(def, building.level + 1);
+        return (
+            this.levelLock(def, building.level + 1) ??
+            this.needsReason(
+                def,
+                building.level + 1,
+                building.x,
+                building.y,
+                building.uid,
+            )
+        );
     }
 
     upgradeCost(building: BuildingState): Amounts {
@@ -675,14 +876,6 @@ export class Game {
         return [...this.buildings.values()].filter(
             (b) => this.roleOf(b) === 'district',
         );
-    }
-
-    policyOf(hall: BuildingState | undefined): DistrictPolicyDef | undefined {
-        const id = hall?.district?.policy;
-
-        return id
-            ? this.content.world.districts.policies.find((p) => p.id === id)
-            : undefined;
     }
 
     /** The district hall a tile belongs to (the nearest one in reach). */
@@ -964,7 +1157,18 @@ export class Game {
         }
     }
 
-    canPlace(type: string, x: number, y: number, ignoreUid = 0): ActionResult {
+    /**
+     * Whether a building fits at a place: inside the land, on buildable
+     * free tiles, in its zone — and, given a home `level`, with that
+     * level's needs met there.
+     */
+    canPlace(
+        type: string,
+        x: number,
+        y: number,
+        ignoreUid = 0,
+        level = 0,
+    ): ActionResult {
         const def = this.content.building(type);
 
         for (let ty = y; ty < y + def.size.h; ty++) {
@@ -992,7 +1196,14 @@ export class Game {
 
         const zone = this.zoneReason(def, y);
 
-        return zone ? { ok: false, reason: zone } : { ok: true };
+        if (zone) {
+            return { ok: false, reason: zone };
+        }
+
+        const needs =
+            level > 0 ? this.needsReason(def, level, x, y, ignoreUid) : null;
+
+        return needs ? { ok: false, reason: needs } : { ok: true };
     }
 
     /**
@@ -1037,7 +1248,7 @@ export class Game {
             return this.fail(locked);
         }
 
-        const placement = this.canPlace(type, x, y);
+        const placement = this.canPlace(type, x, y, 0, level);
 
         if (!placement.ok) {
             return this.fail(placement.reason!);
@@ -1241,7 +1452,13 @@ export class Game {
             return this.fail('Это здание нельзя перенести');
         }
 
-        const placement = this.canPlace(building.type, x, y, uid);
+        const placement = this.canPlace(
+            building.type,
+            x,
+            y,
+            uid,
+            building.level,
+        );
 
         if (!placement.ok) {
             return this.fail(placement.reason!);
@@ -1374,11 +1591,8 @@ export class Game {
         return { ok: true };
     }
 
-    setDistrict(
-        uid: number,
-        name: string,
-        policy: string | null,
-    ): ActionResult {
+    /** Names a district (v2's district policies are gone; charters come with slice 7). */
+    setDistrict(uid: number, name: string): ActionResult {
         const building = this.buildings.get(uid);
 
         if (!building || this.roleOf(building) !== 'district') {
@@ -1387,10 +1601,10 @@ export class Game {
 
         building.district = {
             name: name.trim().slice(0, 40) || this.districtName(),
-            policy,
+            policy: null,
         };
         this.changedBuildings.add(uid);
-        this.structureChanged();
+        this.revision++;
 
         return { ok: true };
     }
@@ -1429,6 +1643,7 @@ export class Game {
         }
 
         this.state.epoch++;
+        this.eraEnteredAt[this.state.epoch] = this.state.time;
         this.npcs.onEpochChanged();
         this.structureChanged();
         this.events.emit({ type: 'epoch', epoch: this.state.epoch });
@@ -1436,9 +1651,16 @@ export class Game {
 
     // ———————————————————————————————————————— Simulation
 
+    /**
+     * One step of dt game seconds (gdd §4.0): time, constructions and
+     * research (a structural change re-stamps the fields); on a new year
+     * organic growth, tourism and P* refresh and telemetry; then the
+     * economy and the population; goals, events and residents last.
+     */
     tick(dt: number, quiet = false): void {
         const state = this.state;
         const before = this.season.id;
+        const yearBefore = Math.floor(state.time / this.clock.secondsPerYear);
 
         state.time += dt;
         state.moods = state.moods.filter((mood) => mood.until > state.time);
@@ -1460,6 +1682,7 @@ export class Game {
                 building.buildEnd <= state.time
             ) {
                 this.structureDirty = true;
+                building.builtEra = state.epoch;
 
                 if (!quiet && this.roleOf(building) !== 'road') {
                     this.events.emit({ type: 'built', uid: building.uid });
@@ -1470,11 +1693,19 @@ export class Game {
         this.updateResearch(quiet);
 
         if (this.structureDirty) {
-            this.recalculate();
+            this.rebuild();
         }
 
-        this.updateEconomy(dt);
-        this.updatePopulation(dt);
+        if (Math.floor(state.time / this.clock.secondsPerYear) > yearBefore) {
+            this.newYear(quiet);
+        }
+
+        this.runEconomy(dt, true);
+
+        if (this.statusDirty || Math.floor(state.time) % 5 === 0) {
+            this.refreshStatus();
+        }
+
         this.updateGoals(quiet);
 
         if (state.time >= state.nextEventAt) {
@@ -1501,14 +1732,49 @@ export class Game {
             jobs: 0,
             workers: 0,
             employment: 1,
+            staff: { ...EMPTY_STAFF },
+            unemployment: 0,
             powerSupply: 0,
             powerDemand: 0,
+            powerRatio: 1,
+            fuelRatio: 1,
             happiness: 50,
             starving: false,
+            arrears: false,
             tax: 0,
             taxMult: 1,
             tourism: 0,
             research: 0,
+            traffic: 0,
+            budget: {
+                income: { tax: 0, trade: 0, tourism: 0, fares: 0 },
+                costs: { upkeep: 0, food: 0, fuel: 0, power: 0 },
+                upkeepBy: {},
+                gross: 0,
+                spent: 0,
+                net: 0,
+            },
+            flows: null,
+        };
+    }
+
+    private emptyCity(): EconomyCity {
+        return {
+            jobs: { svc: 0, food: 0, raw: 0, ind: 0, com: 0 },
+            lines: [],
+            plants: { power: 0, fuel: 0 },
+            cleanPower: 0,
+            powerUse: 0,
+            trade: 0,
+            storage: this.content.world.economy.storageBase,
+            upkeep: 0,
+            importDiscount: 0,
+            goodsPremium: 0,
+            attraction: 0,
+            visitors: 0,
+            taxMult: 1,
+            homeTaxBonus: 0,
+            metroCoverage: 0,
         };
     }
 
@@ -1673,10 +1939,16 @@ export class Game {
         }
     }
 
+    /**
+     * Something was built, moved, upgraded or removed: re-stamp the
+     * fields, rebuild the economy's inputs and show the new rates at once
+     * (a tick's preview — nothing is paid or produced by it).
+     */
     structureChanged(): void {
         this.structureDirty = true;
-        this.recalculate();
-        this.updateEconomy(0);
+        this.rebuild();
+        this.runEconomy(1, false);
+        this.refreshStatus();
         this.revision++;
     }
 
@@ -1787,14 +2059,11 @@ export class Game {
         this.connectedRoads = connected;
     }
 
-    /** Tiles between two footprints along the grid (0 when touching): coverage diamonds. */
-    private manhattan(a: BuildingState, b: BuildingState): number {
-        const sa = this.def(a).size;
-        const sb = this.def(b).size;
-        const dx = Math.max(0, a.x - (b.x + sb.w - 1), b.x - (a.x + sa.w - 1));
-        const dy = Math.max(0, a.y - (b.y + sb.h - 1), b.y - (a.y + sa.h - 1));
+    /** A building's footprint on the grid. */
+    footprint(building: BuildingState): Footprint {
+        const { w, h } = this.def(building).size;
 
-        return dx + dy;
+        return { x: building.x, y: building.y, w, h };
     }
 
     /**
@@ -1830,7 +2099,7 @@ export class Game {
         for (const building of this.buildings.values()) {
             const status = this.status.get(building.uid);
 
-            if (!status?.complete || status.happiness === null) {
+            if (!status?.complete || !status.home) {
                 continue;
             }
 
@@ -1843,404 +2112,842 @@ export class Game {
         return { tiles, covered };
     }
 
-    /**
-     * Everything that only changes when something is built, moved,
-     * upgraded or removed: road connections, districts, boosts, and how
-     * pleasant each home's surroundings are: the services that reach it,
-     * the auras around it and the pollution.
-     */
-    private recalculate(): void {
-        this.structureDirty = false;
-        this.findConnectedRoads();
+    /** Heritage (gdd §4.5): ×1 → ×2 once a level is two eras older than the city, ramped over 20 years. */
+    heritageMult(building: BuildingState): number {
+        const rules = this.content.world.economy.tourism;
 
-        const rules = this.content.world.happiness;
-        const all = [...this.buildings.values()];
-        const working = all.filter(
-            (b) => this.isComplete(b) && this.isConnected(b),
-        );
-        const unlocked = this.unlockedServices();
-        const status = new Map<number, BuildingStatus>();
-        const districtOf = new Map<number, BuildingState | undefined>();
-
-        for (const building of all) {
-            const def = this.def(building);
-
-            districtOf.set(
-                building.uid,
-                this.content.roleOf(def) === 'district'
-                    ? building
-                    : this.districtAt(
-                          building.x + Math.floor(def.size.w / 2),
-                          building.y + Math.floor(def.size.h / 2),
-                      ),
-            );
+        if (!this.def(building).heritage) {
+            return 1;
         }
 
-        for (const building of all) {
-            const def = this.def(building);
-            const effects = this.effects(building);
-            const hall = districtOf.get(building.uid);
-            const policy = this.policyOf(hall)?.effects ?? NO_POLICY;
-            const home =
-                effects.housing > 0 && this.content.roleOf(def) !== 'center';
-            const services = new Set<ServiceId>();
-            let boost = 0;
-            let happiness: number | null = null;
-            let pollution = 0;
-            let auras = 0;
+        const since =
+            (building.builtEra ?? this.levelEpoch(building)) +
+            rules.heritageEraGap;
 
-            for (const other of working) {
-                const otherEffects = this.effects(other);
-                const distance = this.distance(building, other);
-
-                if (
-                    otherEffects.boost?.targets.includes(def.id) &&
-                    distance <= otherEffects.boost.radius
-                ) {
-                    boost += otherEffects.boost.percent / 100;
-                }
-
-                if (
-                    otherEffects.pollution &&
-                    distance <= otherEffects.pollution.radius
-                ) {
-                    const sourcePolicy =
-                        this.policyOf(districtOf.get(other.uid))?.effects ??
-                        NO_POLICY;
-
-                    pollution +=
-                        otherEffects.pollution.amount *
-                        Math.max(0, 1 + (sourcePolicy.pollution ?? 0) / 100);
-                }
-
-                if (!home || other.uid === building.uid) {
-                    continue;
-                }
-
-                if (otherEffects.aura && distance <= otherEffects.aura.radius) {
-                    auras += otherEffects.aura.happiness;
-                }
-
-                const coverage = otherEffects.coverage;
-
-                if (
-                    coverage &&
-                    this.manhattan(building, other) <= coverage.radius
-                ) {
-                    services.add(coverage.service);
-                }
-            }
-
-            const covered = unlocked.filter((s) => services.has(s)).length;
-            const comfort = unlocked.length ? covered / unlocked.length : 1;
-
-            if (home) {
-                happiness =
-                    rules.base +
-                    rules.comfort * comfort +
-                    Math.min(rules.auraCap, auras) -
-                    Math.min(rules.pollutionCap, pollution) +
-                    (policy.happiness ?? 0);
-            }
-
-            status.set(building.uid, {
-                complete: this.isComplete(building),
-                connected: this.isConnected(building),
-                efficiency: 0,
-                starved: null,
-                noPower: false,
-                boost,
-                happiness,
-                pollution,
-                services: [...services],
-                comfort,
-                residents: 0,
-                workers: 0,
-                district: hall?.uid ?? null,
-                output: {},
-                input: {},
-            });
+        if (since > this.state.epoch) {
+            return 1;
         }
 
-        this.status = status;
+        // Unknown entry time (a world loaded from the server): fully ramped.
+        const entered = this.eraEnteredAt[since];
+        const ramp =
+            entered === undefined || rules.heritageRampYears <= 0
+                ? 1
+                : Math.min(
+                      1,
+                      (this.state.time - entered) /
+                          (rules.heritageRampYears * this.clock.secondsPerYear),
+                  );
+
+        return 1 + (rules.heritageMult - 1) * ramp;
     }
 
-    private policyEffects(
-        status: BuildingStatus,
-    ): DistrictPolicyDef['effects'] {
-        return status.district
-            ? (this.policyOf(this.buildings.get(status.district))?.effects ??
-                  NO_POLICY)
-            : NO_POLICY;
-    }
+    /** Tourism demand per year a building adds (gdd §4.5). */
+    attractionOf(building: BuildingState): number {
+        const rules = this.content.world.economy.tourism;
+        const def = this.def(building);
+        const attraction = this.effects(building).attraction;
 
-    private housingOf(building: BuildingState, status: BuildingStatus): number {
-        const housing = this.effects(building).housing;
-
-        if (!housing) {
+        if (!attraction) {
             return 0;
         }
 
-        return Math.floor(
-            housing *
-                (1 +
-                    (this.bonuses.housing +
-                        (this.policyEffects(status).housing ?? 0)) /
-                        100),
+        const eraMult =
+            rules.eraMult[this.levelEpoch(building)] ??
+            rules.eraMult.at(-1) ??
+            1;
+        const onBeach =
+            def.category === 'housing' &&
+            building.y + def.size.h - 1 >= this.layout.beachY;
+
+        return (
+            attraction *
+            rules.perPoint *
+            eraMult *
+            this.heritageMult(building) *
+            (onBeach ? rules.beachManorMult : 1)
         );
     }
 
+    /** Per-era averages of ρ, coverage and the income mix (tester telemetry). */
+    telemetry(): TelemetryRow[] {
+        return [...this.telemetryByEra.entries()]
+            .sort(([a], [b]) => a - b)
+            .map(([era, acc]) => {
+                const years = Math.max(1, acc.years);
+                const income =
+                    acc.income.tax +
+                    acc.income.trade +
+                    acc.income.tourism +
+                    acc.income.fares;
+                const share = (value: number) =>
+                    income > 0 ? value / income : 0;
+
+                return {
+                    era: this.content.epoch(era).name,
+                    years: acc.years,
+                    rho: acc.rho / years,
+                    coverage: Object.fromEntries(
+                        Object.entries(acc.coverage).map(([id, sum]) => [
+                            id,
+                            sum / years,
+                        ]),
+                    ),
+                    income: {
+                        tax: share(acc.income.tax),
+                        trade: share(acc.income.trade),
+                        tourism: share(acc.income.tourism),
+                        fares: share(acc.income.fares),
+                    },
+                    costs: acc.gross > 0 ? acc.spent / acc.gross : 0,
+                    gross: acc.gross / years,
+                    happiness: acc.happiness / years,
+                    population: acc.population,
+                };
+            });
+    }
+
     /**
-     * One step (dt game seconds) of the economy. Content rates are per
-     * year, so each is applied as rate × dt / secondsPerYear; the stats
-     * keep the yearly rates for the interface.
+     * Everything that only changes when something is built, moved,
+     * upgraded, finished or removed (gdd §4.13): road connections, the
+     * effect fields (only changed buildings are re-stamped), each home's
+     * surroundings, and the economy's cached totals.
      */
-    private updateEconomy(dt: number): void {
-        const content = this.content;
-        const rules = content.world;
-        const economy = rules.economy;
-        const money = content.currency;
+    private rebuild(): void {
+        this.structureDirty = false;
+        this.findConnectedRoads();
+
+        const all = [...this.buildings.values()];
+        const status = new Map<number, BuildingStatus>();
+        const sources = new Map<number, GridSource>();
+
+        for (const building of all) {
+            const def = this.def(building);
+            const complete = this.isComplete(building);
+            const connected = this.isConnected(building);
+            const working = complete && connected;
+
+            status.set(building.uid, {
+                complete,
+                connected,
+                working,
+                efficiency: 0,
+                starved: null,
+                noPower: false,
+                boost: 0,
+                happiness: null,
+                surroundings: null,
+                home: def.category === 'housing',
+                pollution: 0,
+                aura: 0,
+                services: [],
+                comfort: 0,
+                residents: 0,
+                workers: 0,
+                district:
+                    this.content.roleOf(def) === 'district'
+                        ? building.uid
+                        : (this.districtAt(
+                              building.x + Math.floor(def.size.w / 2),
+                              building.y + Math.floor(def.size.h / 2),
+                          )?.uid ?? null),
+                output: {},
+                input: {},
+                upkeep: complete ? this.levelDef(building).upkeep : 0,
+            });
+
+            if (working) {
+                sources.set(building.uid, this.gridSource(building));
+            }
+        }
+
+        this.status = status;
+        this.grids.sync(sources);
+        this.unlocked = this.unlockedServices();
+        this.city = this.collectCity(all);
+        this.homesDirty = true;
+        this.statusDirty = true;
+    }
+
+    /** The aura a building stamps on the aura field itself (a home does not count its own). */
+    private ownAura(building: BuildingState): number {
+        return this.status.get(building.uid)?.working &&
+            this.roleOf(building) !== 'center'
+            ? (this.effects(building).aura?.happiness ?? 0)
+            : 0;
+    }
+
+    /** What a working building stamps on the fields. */
+    private gridSource(building: BuildingState): GridSource {
+        const effects = this.effects(building);
+        const center = this.roleOf(building) === 'center';
+        const aura = effects.aura
+            ? { radius: effects.aura.radius, happiness: effects.aura.happiness }
+            : null;
+
+        return {
+            ...this.footprint(building),
+            coverage: effects.coverage
+                ? {
+                      service: effects.coverage.service,
+                      radius: effects.coverage.radius,
+                  }
+                : null,
+            aura: center ? null : aura,
+            centerAura: center ? aura : null,
+            pollution: effects.pollution
+                ? {
+                      radius: effects.pollution.radius,
+                      amount: effects.pollution.amount,
+                  }
+                : null,
+            transit: effects.transit
+                ? {
+                      radius: effects.transit.radius,
+                      happiness: effects.transit.happiness,
+                  }
+                : null,
+            dataTax: effects.dataTax
+                ? {
+                      radius: effects.dataTax.radius,
+                      percent: effects.dataTax.percent,
+                  }
+                : null,
+            // District charters are stamped here from slice 7 on.
+            charter: null,
+        };
+    }
+
+    /** A footprint's surroundings on the fields (gdd §4.7). */
+    private surroundingsAt(
+        area: Footprint,
+        ownAura = 0,
+        unlocked = this.unlocked,
+    ): Surroundings {
+        const grids = this.grids;
+        const reached = unlocked.filter((service) =>
+            grids.covers(service, area),
+        ).length;
+
+        return {
+            comfort: unlocked.length ? reached / unlocked.length : 1,
+            aura: grids.maxOver(grids.aura, area) - ownAura,
+            centerAura: grids.maxOver(grids.centerAura, area),
+            transit: grids.maxOver(grids.transitAppeal, area),
+            roadAppeal: this.roadAppealAt(area),
+            pollution: Math.max(0, grids.maxOver(grids.pollution, area)),
+            // Traffic (slice 6), airport noise (slice 11), green charters (slice 7).
+            traffic: 0,
+            noise: 0,
+            charter: 0,
+        };
+    }
+
+    /** Appeal of the best working street along a footprint's sides. */
+    private roadAppealAt(area: Footprint): number {
+        let best = 0;
+        const visit = (x: number, y: number) => {
+            if (!this.map.inBounds(x, y)) {
+                return;
+            }
+
+            const index = this.map.index(x, y);
+            const road = this.buildings.get(this.map.occupant[index]);
+
+            if (
+                road &&
+                this.connectedRoads.has(index) &&
+                this.isComplete(road)
+            ) {
+                best = Math.max(best, this.levelDef(road).appeal ?? 0);
+            }
+        };
+
+        for (let x = area.x; x < area.x + area.w; x++) {
+            visit(x, area.y - 1);
+            visit(x, area.y + area.h);
+        }
+
+        for (let y = area.y; y < area.y + area.h; y++) {
+            visit(area.x - 1, y);
+            visit(area.x + area.w, y);
+        }
+
+        return best;
+    }
+
+    /**
+     * The economy's cached totals (gdd §4.13): jobs per class, production
+     * lines, power, trade, storage, upkeep, tourism; and the homes as the
+     * population sees them.
+     */
+    private collectCity(all: BuildingState[]): EconomyCity {
+        const world = this.content.world;
+        const city = this.emptyCity();
+        const lines = new Map<string, ProductionLine>();
+        const unlocked = this.unlocked;
+        const housingBonus = 1 + this.bonuses.housing / 100;
+        const eraTax = world.economy.taxMultByLevelEra;
+        const boosters = all.filter(
+            (b) => this.status.get(b.uid)!.working && this.effects(b).boost,
+        );
+        let housing = 0;
+        let taxWeighted = 0;
+        let taxBonus = 0;
+        let metro = 0;
+
+        this.upkeepBy = {};
+        this.roadCapacity = 0;
+        this.researchPercent = 0;
+        this.homeUids = [];
+        this.homeEntries = [];
+
+        for (const building of all) {
+            const status = this.status.get(building.uid)!;
+            const def = this.def(building);
+            const level = this.levelDef(building);
+            const effects = level.effects;
+            const area = this.footprint(building);
+
+            if (status.complete && level.upkeep) {
+                const key = def.network === 'road' ? 'roads' : def.category;
+
+                city.upkeep += level.upkeep;
+                this.upkeepBy[key] = (this.upkeepBy[key] ?? 0) + level.upkeep;
+            }
+
+            if (status.complete && effects.housing > 0) {
+                const at = this.surroundingsAt(
+                    area,
+                    this.ownAura(building),
+                    unlocked,
+                );
+
+                status.services = SERVICES.filter((service) =>
+                    this.grids.covers(service, area),
+                );
+                status.comfort = at.comfort;
+                status.aura = at.aura + at.centerAura;
+                status.pollution = at.pollution;
+                status.surroundings = staticHappiness(world.happiness, at);
+            }
+
+            if (!status.working) {
+                continue;
+            }
+
+            if (def.network === 'road') {
+                this.roadCapacity += level.capacity ?? 0;
+            }
+
+            if (def.jobClass && effects.jobs) {
+                city.jobs[def.jobClass] += effects.jobs;
+            }
+
+            city.powerUse += effects.powerUse;
+            city.storage += effects.storage;
+            city.trade += effects.trade;
+            city.visitors += effects.visitors;
+            city.importDiscount = Math.max(
+                city.importDiscount,
+                effects.importDiscount / 100,
+            );
+            city.goodsPremium = Math.max(
+                city.goodsPremium,
+                effects.goodsPremium / 100,
+            );
+            this.researchPercent += effects.research;
+
+            const burns = effects.consumes.fuel ?? 0;
+
+            if (effects.power > 0) {
+                if (burns > 0) {
+                    city.plants.power += effects.power;
+                    city.plants.fuel += burns;
+                } else {
+                    city.cleanPower += effects.power;
+                }
+            } else if (
+                Object.keys(effects.produces).length ||
+                Object.keys(effects.consumes).length
+            ) {
+                const jobClass: JobClass = def.jobClass ?? 'svc';
+                const powered = effects.powerUse > 0;
+                const key = `${jobClass}|${powered}|${burns > 0}`;
+                let line = lines.get(key);
+
+                status.boost = this.boostOf(building, boosters);
+
+                if (!line) {
+                    line = {
+                        jobClass,
+                        powered,
+                        burnsFuel: burns > 0,
+                        produces: {},
+                        consumes: {},
+                    };
+                    lines.set(key, line);
+                }
+
+                for (const [id, amount] of Object.entries(effects.produces)) {
+                    line.produces[id] =
+                        (line.produces[id] ?? 0) + amount * (1 + status.boost);
+                }
+
+                for (const [id, amount] of Object.entries(effects.consumes)) {
+                    line.consumes[id] = (line.consumes[id] ?? 0) + amount;
+                }
+            }
+
+            if (effects.housing > 0 && status.surroundings !== null) {
+                const places = effects.housing * housingBonus;
+
+                this.homeUids.push(building.uid);
+                this.homeEntries.push({
+                    housing: places,
+                    heff: effectiveHousing(
+                        places,
+                        status.comfort,
+                        world.population,
+                    ),
+                    staticHappiness: status.surroundings,
+                    powered: effects.powerUse > 0,
+                });
+                housing += places;
+                taxWeighted +=
+                    places *
+                    (eraTax[this.levelEpoch(building)] ?? eraTax.at(-1) ?? 1) *
+                    def.taxMult;
+                taxBonus +=
+                    (places *
+                        Math.min(
+                            this.maxDataTax,
+                            this.grids.maxOver(this.grids.dataTax, area),
+                        )) /
+                    100;
+                metro += this.grids.transitAt(area) ? places : 0;
+            }
+        }
+
+        city.lines = [...lines.values()];
+        city.taxMult = housing > 0 ? taxWeighted / housing : 1;
+        city.homeTaxBonus = housing > 0 ? taxBonus / housing : 0;
+        city.metroCoverage = housing > 0 ? metro / housing : 0;
+        this.homeHappiness = new Float64Array(this.homeEntries.length);
+
+        for (const building of all) {
+            if (this.status.get(building.uid)!.working) {
+                city.attraction += this.attractionOf(building);
+            }
+        }
+
+        return city;
+    }
+
+    /** Output bonus from boosters in reach (windmill → farms), the best one. */
+    private boostOf(
+        building: BuildingState,
+        boosters: BuildingState[],
+    ): number {
+        const area = this.footprint(building);
+        let best = 0;
+
+        for (const booster of boosters) {
+            const boost = this.effects(booster).boost!;
+
+            if (
+                boost.targets.includes(building.type) &&
+                footprintDistance(area, this.footprint(booster)) <= boost.radius
+            ) {
+                best = Math.max(best, boost.percent / 100);
+            }
+        }
+
+        return best;
+    }
+
+    /**
+     * The city's happiness this tick: the homes' static parts plus the
+     * shared terms. P* and every home's happiness are settled again only
+     * when the map changed, a year turned or the shared terms moved.
+     */
+    private cityHappiness(starving: boolean, powerRatio: number): number {
+        const world = this.content.world;
+        const terms = cityTerms(world.happiness, {
+            discoveries: this.bonuses.happiness,
+            moods: this.state.moods.reduce((sum, mood) => sum + mood.amount, 0),
+            // Tax policy and density (slice 3), Golden Age (slice 4).
+            policy: 0,
+            golden: 0,
+            density: 0,
+            starving,
+            powerRatio,
+        });
+
+        if (
+            this.homesDirty ||
+            terms.all !== this.terms.all ||
+            terms.powered !== this.terms.powered
+        ) {
+            const settled = settleHomes(
+                this.homeEntries,
+                terms,
+                world.population,
+                world.happiness.base + 20,
+                this.homeHappiness,
+            );
+
+            this.terms = terms;
+            this.homesDirty = false;
+            this.target = settled.target;
+            this.meanHappiness = settled.happiness;
+        }
+
+        return this.meanHappiness;
+    }
+
+    /**
+     * One step of the economy (economy.ts) and the population
+     * (population.ts). `commit = false` previews: the stats show what a
+     * tick would do, and nothing is paid, made or moved.
+     */
+    private runEconomy(dt: number, commit: boolean): void {
         const state = this.state;
-        const stats = this.emptyStats();
-        const year = dt / this.clock.secondsPerYear;
-        const active: BuildingState[] = [];
-        let storage = economy.storageBase;
+        const world = this.content.world;
+        const money = this.content.currency;
+        const resources = state.resources;
+        const produces: Record<string, number> = {};
+
+        for (const [id, percent] of Object.entries(this.bonuses.produces)) {
+            if (id !== '*') {
+                produces[id] = percent / 100;
+            }
+        }
+
+        const input: EconomyInput = {
+            population: state.population,
+            money: resources[money] ?? 0,
+            stocks: {
+                food: resources.food ?? 0,
+                mat: resources[MATERIALS] ?? 0,
+                goods: resources.goods ?? 0,
+            },
+            bonuses: {
+                prod: (this.bonuses.produces['*'] ?? 0) / 100,
+                produces,
+                tax: this.bonuses.tax / 100,
+                trade: this.bonuses.trade / 100,
+            },
+            // Golden Age (slice 4), tax policy (slice 3), port orders (slice 8),
+            // congestion on the access roads (slice 6).
+            golden: 0,
+            taxPolicy: 1,
+            reserved: { food: 0, mat: 0, goods: 0 },
+            congestion: 1,
+            previousPowerRatio: this.stats.powerRatio,
+        };
+        const result = settle(
+            this.city,
+            input,
+            world.economy,
+            dt,
+            this.clock.secondsPerYear,
+            (city) => this.cityHappiness(city.starving, city.powerRatio),
+        );
+        const flows = result.flows;
+
+        if (commit) {
+            resources[money] = result.money;
+            resources.food = result.stocks.food;
+            resources[MATERIALS] = result.stocks.mat;
+            resources.goods = result.stocks.goods;
+            state.population = growPopulation(
+                state.population,
+                this.target,
+                flows.happiness,
+                flows.starving,
+                dt,
+                world.population,
+            );
+        }
+
+        this.stats = this.statsOf(flows, result.arrears);
+    }
+
+    private statsOf(flows: Flows, arrears: boolean): Stats {
+        const city = this.city;
+        const money = this.content.currency;
+        const traffic = this.content.world.traffic;
+        const rates = this.content.emptyAmounts();
+        const caps: Amounts = {};
+        let housing = 0;
+
+        for (const resource of this.content.resources) {
+            caps[resource.id] =
+                resource.kind === 'stock' ? city.storage : Infinity;
+        }
+
+        for (const id of Object.keys(rates)) {
+            rates[id] = (flows.made[id] ?? 0) - (flows.used[id] ?? 0);
+        }
+
+        rates.food = (rates.food ?? 0) - flows.eaten;
+        rates[money] = flows.net;
+
+        for (const entry of this.homeEntries) {
+            housing += entry.housing;
+        }
+
+        const trips =
+            (this.state.population * traffic.tripsPerCitizen +
+                flows.jobs * traffic.tripsPerJob) *
+            traffic.tripLength *
+            traffic.hotspot;
+
+        return {
+            rates,
+            caps,
+            housing,
+            target: this.target,
+            jobs: flows.jobs,
+            workers: flows.workers,
+            employment:
+                flows.jobs > 0 ? Math.min(1, flows.workers / flows.jobs) : 1,
+            staff: flows.staff,
+            unemployment: flows.unemployment,
+            powerSupply: flows.power.supply,
+            powerDemand: flows.power.use,
+            powerRatio: flows.power.ratio,
+            fuelRatio: flows.fuel.ratio,
+            happiness: flows.happiness,
+            starving: flows.starving,
+            arrears,
+            tax: flows.income.tax,
+            taxMult: city.taxMult,
+            tourism: flows.income.tourism,
+            research: this.researchPercent * flows.staff.svc,
+            traffic: this.roadCapacity > 0 ? trips / this.roadCapacity : 0,
+            budget: {
+                income: flows.income,
+                costs: flows.costs,
+                upkeepBy: this.upkeepBy,
+                gross: flows.gross,
+                spent: flows.spent,
+                net: flows.net,
+            },
+            flows,
+        };
+    }
+
+    /**
+     * Per-building numbers for the interface (badges, inspector) from the
+     * last tick's staffing, power and fuel — every 5 game seconds and
+     * after a structural change; the economy itself never loops over
+     * buildings.
+     */
+    private refreshStatus(): void {
+        const flows = this.stats.flows;
+        const shortfall = this.content.world.economy.powerShortfall;
+        const productivity = 1 + (this.bonuses.produces['*'] ?? 0) / 100;
+
+        this.statusDirty = false;
+
+        if (!flows) {
+            return;
+        }
 
         for (const building of this.buildings.values()) {
             const status = this.status.get(building.uid);
-            const effects = this.effects(building);
 
             if (!status) {
                 continue;
             }
 
-            status.complete = this.isComplete(building);
-            status.efficiency = 0;
             status.output = {};
             status.input = {};
-            status.starved = null;
+            status.efficiency = 0;
             status.noPower = false;
+            status.starved = null;
+            status.workers = 0;
 
-            if (!status.complete || !status.connected) {
+            if (!status.working) {
                 continue;
             }
 
-            active.push(building);
-            stats.housing += this.housingOf(building, status);
-            stats.jobs += effects.jobs;
-            stats.powerSupply += effects.power;
-            stats.powerDemand += effects.powerUse;
-            storage += effects.storage;
-        }
-
-        for (const resource of content.resources) {
-            stats.caps[resource.id] = content.isStored(resource.id)
-                ? storage
-                : Infinity;
-        }
-
-        stats.workers = state.population * economy.workforceShare;
-        stats.employment =
-            stats.jobs > 0 ? Math.min(1, stats.workers / stats.jobs) : 1;
-
-        const powerRatio =
-            stats.powerDemand > 0
-                ? Math.min(1, stats.powerSupply / stats.powerDemand)
-                : 1;
-
-        for (const building of active) {
+            const def = this.def(building);
             const effects = this.effects(building);
-            const status = this.status.get(building.uid)!;
-            const policy = this.policyEffects(status);
-            let efficiency = effects.jobs ? stats.employment : 1;
-
-            if (effects.powerUse) {
-                efficiency *= powerRatio;
-                status.noPower = powerRatio < 1;
-            }
-
-            status.workers = Math.floor(effects.jobs * stats.employment);
-
-            for (const [id, amount] of Object.entries(effects.consumes)) {
-                const need = amount * efficiency * year;
-
-                if (need > 0 && (state.resources[id] ?? 0) < need) {
-                    efficiency *= (state.resources[id] ?? 0) / need;
-                    status.starved = id;
-                }
-            }
+            const staff = def.jobClass ? flows.staff[def.jobClass] : 1;
+            const powered = effects.powerUse > 0;
+            const burnsFuel = (effects.consumes.fuel ?? 0) > 0;
+            const efficiency =
+                staff *
+                (powered
+                    ? shortfall.base + shortfall.share * flows.power.ratio
+                    : 1) *
+                (burnsFuel ? flows.fuel.ratio : 1);
+            const scale =
+                effects.power > 0 ? efficiency : efficiency * productivity;
 
             status.efficiency = efficiency;
-            stats.research += effects.research * efficiency;
-
-            for (const [id, amount] of Object.entries(effects.consumes)) {
-                const perYear = amount * efficiency;
-
-                status.input[id] = perYear;
-                stats.rates[id] = (stats.rates[id] ?? 0) - perYear;
-                state.resources[id] = Math.max(
-                    0,
-                    (state.resources[id] ?? 0) - perYear * year,
-                );
-            }
+            status.workers = Math.floor(effects.jobs * staff);
+            status.noPower = powered && flows.power.ratio < 1;
+            status.starved =
+                burnsFuel && flows.fuel.ratio < 1
+                    ? 'fuel'
+                    : (effects.consumes.food ?? 0) > 0 && flows.starving
+                      ? 'food'
+                      : null;
 
             for (const [id, amount] of Object.entries(effects.produces)) {
-                const percent =
-                    (this.bonuses.produces[id] ?? 0) +
-                    (this.bonuses.produces['*'] ?? 0) +
-                    (policy.produces?.[id] ?? 0) +
-                    (policy.produces?.['*'] ?? 0);
-                const perYear =
+                status.output[id] =
                     amount *
                     (1 + status.boost) *
-                    Math.max(0, 1 + percent / 100) *
-                    efficiency;
-
-                status.output[id] = perYear;
-                stats.rates[id] = (stats.rates[id] ?? 0) + perYear;
-                state.resources[id] =
-                    (state.resources[id] ?? 0) + perYear * year;
+                    scale *
+                    (1 + (this.bonuses.produces[id] ?? 0) / 100);
             }
 
-            // Old buildings in a district that welcomes tourists.
-            if (policy.tourism && this.roleOf(building) !== 'road') {
-                const age = state.epoch - this.levelEpoch(building);
-
-                if (age > 0) {
-                    const perYear = policy.tourism * age;
-
-                    status.output[money] =
-                        (status.output[money] ?? 0) + perYear;
-                    stats.tourism += perYear;
-                }
+            for (const [id, amount] of Object.entries(effects.consumes)) {
+                status.input[id] = amount * scale;
             }
         }
 
-        // Happiness of every home, how full it gets (P*), and the tax
-        // multiplier of the homes' level eras.
-        const multipliers = economy.taxMultByLevelEra;
-        const people = rules.population;
-        const noPower = rules.happiness.noPower * (1 - powerRatio);
-        const moods = state.moods.reduce((sum, mood) => sum + mood.amount, 0);
-        const hunger = this.stats.starving ? rules.happiness.starving : 0;
-        const fill = Math.min(1, state.population / Math.max(1, stats.housing));
-        let weighted = 0;
-        let weight = 0;
-        let taxWeighted = 0;
+        const fill =
+            this.target > 0
+                ? Math.min(1, this.state.population / this.target)
+                : 0;
+        const rules = this.content.world.population.occupancy;
 
-        for (const building of active) {
-            const status = this.status.get(building.uid)!;
-            const effects = this.effects(building);
-            const housing = this.housingOf(building, status);
+        this.homeUids.forEach((uid, index) => {
+            const status = this.status.get(uid);
+            const happiness = this.homeHappiness[index];
 
-            if (housing) {
-                taxWeighted +=
-                    housing *
-                    (multipliers[this.levelEpoch(building)] ??
-                        multipliers.at(-1) ??
-                        1) *
-                    this.def(building).taxMult;
+            if (status) {
+                status.happiness = happiness;
+                status.residents = Math.floor(
+                    this.homeEntries[index].heff *
+                        occupancy(happiness, rules) *
+                        fill,
+                );
             }
+        });
+    }
 
-            if (status.happiness === null) {
-                // The Town Hall's own rooms are always lived in.
-                stats.target += housing;
-                continue;
-            }
+    /** Once per game year (gdd §4.0): organic growth, tourism and P* refresh, telemetry. */
+    private newYear(quiet: boolean): void {
+        this.organicGrowth(quiet);
 
-            let happiness = status.happiness + this.bonuses.happiness;
-
-            if (effects.powerUse) {
-                happiness -= noPower;
-            }
-
-            const occupancy = Math.max(
-                0,
-                Math.min(
-                    1,
-                    (happiness + moods - hunger - people.occupancy.from) /
-                        people.occupancy.span,
-                ),
-            );
-
-            stats.target +=
-                housing *
-                (people.comfortFill[0] +
-                    people.comfortFill[1] * status.comfort) *
-                occupancy;
-            status.residents = Math.floor(housing * fill);
-            weighted += happiness * housing;
-            weight += housing;
+        if (this.structureDirty) {
+            this.rebuild();
         }
 
-        let happiness =
-            weight > 0 ? weighted / weight : rules.happiness.base + 20;
+        let attraction = 0;
 
-        happiness += moods;
-        stats.taxMult = stats.housing > 0 ? taxWeighted / stats.housing : 1;
-
-        // Taxes (on the last step's happiness) and food, per year.
-        stats.tax =
-            state.population *
-            economy.taxPerCitizen *
-            stats.taxMult *
-            (0.5 + this.stats.happiness / 100) *
-            (1 + this.bonuses.tax / 100);
-
-        const eaten = state.population * economy.foodPerCitizen;
-        const income = stats.tax + stats.tourism;
-
-        stats.rates[money] = (stats.rates[money] ?? 0) + income;
-        stats.rates.food = (stats.rates.food ?? 0) - eaten;
-        state.resources[money] = (state.resources[money] ?? 0) + income * year;
-        state.resources.food = (state.resources.food ?? 0) - eaten * year;
-        stats.starving = state.resources.food <= 0 && stats.rates.food < 0;
-        state.resources.food = Math.max(0, state.resources.food);
-
-        if (stats.starving) {
-            happiness -= rules.happiness.starving;
+        for (const building of this.buildings.values()) {
+            if (this.status.get(building.uid)?.working) {
+                attraction += this.attractionOf(building);
+            }
         }
 
-        stats.happiness = Math.max(0, Math.min(100, happiness));
-        this.stats = stats;
-        this.clampToCaps();
+        this.city.attraction = attraction;
+        this.homesDirty = true;
+        this.recordYear();
     }
 
     /**
-     * Citizens move towards what the homes hold at their happiness (P*,
-     * gdd §4.7): above it a share moves out, while starving people leave,
-     * otherwise homes fill in a year or two.
+     * Old quarters modernise by themselves (gdd §4.7): every finished home
+     * whose next level is open, at least one era old and whose needs are
+     * met gains progress each year; at 1 it climbs a level for free.
      */
-    private updatePopulation(dt: number): void {
-        const state = this.state;
-        const target = this.stats.target;
-        const rules = this.content.world.population;
+    private organicGrowth(quiet: boolean): void {
+        const perYear = this.content.world.population.organicPerYear;
+        const newest = this.state.epoch - 1;
 
-        if (state.population > target) {
-            state.population = Math.max(
-                target,
-                state.population -
-                    Math.max(
-                        0.2,
-                        (state.population - target) * rules.moveOutShare,
-                    ) *
-                        dt,
+        for (const building of this.buildings.values()) {
+            const def = this.def(building);
+            const next = def.levels[building.level];
+
+            if (
+                def.category !== 'housing' ||
+                !next ||
+                !this.isComplete(building) ||
+                this.content.epochOrder(next.epoch) > newest ||
+                this.levelLock(def, building.level + 1) ||
+                this.missingNeeds(
+                    def,
+                    building.level + 1,
+                    building.x,
+                    building.y,
+                    building.uid,
+                ).length
+            ) {
+                continue;
+            }
+
+            const step = organicStep(
+                building.organic ?? organicStart(building.uid),
+                perYear,
             );
-        } else if (this.stats.starving) {
-            state.population -= state.population * rules.starvingDecline * dt;
-        } else {
-            state.population = Math.min(
-                target,
-                state.population +
-                    ((target - state.population) *
-                        rules.growthRate *
-                        Math.min(1, this.stats.happiness / 70) +
-                        rules.growthFlat) *
-                        dt,
-            );
+
+            building.organic = step.progress;
+
+            if (!step.climb) {
+                continue;
+            }
+
+            building.level++;
+            building.builtEra = this.state.epoch;
+            this.changedBuildings.add(building.uid);
+            this.structureDirty = true;
+            this.events.emit({
+                type: 'upgraded',
+                uid: building.uid,
+                x: building.x,
+                y: building.y,
+                w: def.size.w,
+                h: def.size.h,
+                sound: quiet ? null : def.sounds.upgrade,
+            });
+        }
+    }
+
+    /** A yearly sample of ρ, coverage and the income mix for this era. */
+    private recordYear(): void {
+        const stats = this.stats;
+        const era = this.state.epoch;
+        let acc = this.telemetryByEra.get(era);
+
+        if (!acc) {
+            acc = {
+                years: 0,
+                rho: 0,
+                coverage: {},
+                income: { tax: 0, trade: 0, tourism: 0, fares: 0 },
+                gross: 0,
+                spent: 0,
+                happiness: 0,
+                population: 0,
+            };
+            this.telemetryByEra.set(era, acc);
         }
 
-        state.population = Math.max(0, state.population);
+        acc.years++;
+        acc.rho += stats.traffic;
+
+        for (const service of this.unlockedServices()) {
+            const { tiles, covered } = this.homeCoverage(service);
+
+            acc.coverage[service] =
+                (acc.coverage[service] ?? 0) + (tiles ? covered / tiles : 0);
+        }
+
+        acc.income.tax += stats.budget.income.tax;
+        acc.income.trade += stats.budget.income.trade;
+        acc.income.tourism += stats.budget.income.tourism;
+        acc.income.fares += stats.budget.income.fares;
+        acc.gross += stats.budget.gross;
+        acc.spent += stats.budget.spent;
+        acc.happiness += stats.happiness;
+        acc.population = this.state.population;
     }
 
     private updateResearch(quiet: boolean): void {
@@ -2301,13 +3008,16 @@ export class Game {
         }
     }
 
+    /** Stocks above the storage cap are lost; flows (fuel) are never kept. */
     private clampToCaps(): void {
         for (const resource of this.content.resources) {
-            if (this.content.isStored(resource.id)) {
+            if (resource.kind === 'stock') {
                 this.state.resources[resource.id] = Math.min(
-                    this.stats.caps[resource.id],
+                    this.stats.caps[resource.id] ?? Infinity,
                     this.state.resources[resource.id] ?? 0,
                 );
+            } else if (resource.kind === 'flow') {
+                this.state.resources[resource.id] = 0;
             }
         }
     }
@@ -2415,12 +3125,14 @@ export class Game {
         const next = this.townHallUpgrade()?.cost[this.content.currency] ?? 0;
 
         for (const resource of this.visibleResources()) {
-            const cap = this.stats.caps[resource.id];
-
-            this.state.resources[resource.id] = Number.isFinite(cap)
-                ? cap
-                : (this.state.resources[resource.id] ?? 0) +
-                  Math.max(100_000, next * 2);
+            if (resource.kind === 'stock') {
+                this.state.resources[resource.id] =
+                    this.stats.caps[resource.id];
+            } else if (resource.kind === 'currency') {
+                this.state.resources[resource.id] =
+                    (this.state.resources[resource.id] ?? 0) +
+                    Math.max(100_000, next * 2);
+            }
         }
 
         this.revision++;
@@ -2431,6 +3143,7 @@ export class Game {
         for (const building of this.buildings.values()) {
             if (!this.isComplete(building)) {
                 building.buildEnd = this.state.time;
+                building.builtEra = this.state.epoch;
                 building.buildStart = Math.min(
                     building.buildStart,
                     this.state.time,

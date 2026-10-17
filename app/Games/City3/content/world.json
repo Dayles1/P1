@@ -1,5 +1,5 @@
 {
-    "$doc": "Основные правила мира. Все скорости — в год (год = time.secondsPerYear игровых секунд; движок делит годовые числа на него каждую секунду). map — одна карта для всех: width столбцов; с севера на юг landRows рядов луга (ряд 0 упирается в горы), beachRows рядов пляжа (последний — линия воды) и seaRows рядов моря; biomes — биом каждой полосы; start — открытые с начала столбцы. time: secondsPerYear — игровых секунд в году; secondsPerDay и dayStart — сутки для света и сезонов (на экономику не влияют). start — с чего начинается город. economy: currency — единственная валюта (money); taxPerCitizen — налог с жителя в год, taxMultByLevelEra — множитель налога по эпохе уровня дома; foodPerCitizen — еды на жителя в год; storageBase — склад ратуши без построек; prices — цены за единицу (matImport — докупка недостающих стройматериалов при стройке); tradeIn и upgradeFloor — улучшение засчитывает 70 % цены нынешнего уровня, но стоит не меньше 25 % нового; refundShare — сколько денег вернёт снос; moveShare — цена переноса от цены уровня. happiness — довольство домов: base, comfort за услуги (вода, досуг, здоровье, образование), auraCap и pollutionCap. population — за игровую секунду: дома заполняются до P* (места × (0,7 + 0,3 × доля услуг) × заселённость от довольства: пусто при 25, полно при 70); сверху лишние уезжают, при голоде люди уходят. districts — округа управ и их политики (tourism — денег в год со старого здания за каждую эпоху возраста). events: первое на firstYear году, потом каждые everyYears лет; gain/lose меньше 1 — доля склада (для денег — доля казны), иначе количество; mood — прибавка к довольству на years лет.",
+    "$doc": "Основные правила мира. Все скорости — в год (год = time.secondsPerYear игровых секунд; движок делит годовые числа на него каждую секунду). map — одна карта для всех: width столбцов; с севера на юг landRows рядов луга (ряд 0 упирается в горы), beachRows рядов пляжа (последний — линия воды) и seaRows рядов моря; biomes — биом каждой полосы; start — открытые с начала столбцы. time: secondsPerYear — игровых секунд в году; secondsPerDay и dayStart — сутки для света и сезонов (на экономику не влияют). start — с чего начинается город. economy: currency — единственная валюта (money); taxPerCitizen — налог с жителя в год, taxMultByLevelEra — множитель налога по эпохе уровня дома; foodPerCitizen — еды на жителя в год; storageBase — склад ратуши без построек; prices — цены за единицу (matImport — докупка недостающих стройматериалов при стройке); tradeIn и upgradeFloor — улучшение засчитывает 70 % цены нынешнего уровня, но стоит не меньше 25 % нового; refundShare — сколько денег вернёт снос; moveShare — цена переноса от цены уровня; exportAbove — еда и стройматериалы сверх этой доли склада уходят на экспорт; unemploymentTaxLoss — безработица u снижает налог на эту долю × u; powerShortfall — без электричества потребители работают на base + share × доля энергии; faresShareOfTax — плата за метро с охваченного жителя как доля налога; tourism — спрос на туризм: perPoint за очко притяжения × eraMult по эпохе уровня здания, наследие ×heritageMult (нарастает за heritageRampYears лет), когда уровень старше города на heritageEraGap эпох; усадьба на пляже ×beachManorMult. happiness — довольство домов: base, comfort за услуги (вода, досуг, здоровье, образование), auraCap, pollutionCap и transitCap (метро). population — за игровую секунду: дома заполняются до P* (места × (0,7 + 0,3 × доля услуг) × заселённость от довольства: пусто при 25, полно при 70); сверху лишние уезжают, при голоде люди уходят; organicPerYear — прогресс бесплатного роста старых домов в год; needs — лестница нужд: дом уровня с нуждой T требует первые T пунктов. traffic — грубая модель пробок до пространственной (ρ для телеметрии). districts — радиус округа управы. events: первое на firstYear году, потом каждые everyYears лет; gain/lose меньше 1 — доля склада (для денег — доля казны), иначе количество; mood — прибавка к довольству на years лет.",
     "map": {
         "width": 100,
         "landRows": 40,
@@ -28,56 +28,37 @@
         "tradeIn": 0.7,
         "upgradeFloor": 0.25,
         "refundShare": 0.5,
-        "moveShare": 0.1
+        "moveShare": 0.1,
+        "exportAbove": 0.9,
+        "unemploymentTaxLoss": 0.3,
+        "powerShortfall": { "base": 0.6, "share": 0.4 },
+        "faresShareOfTax": 0.1,
+        "tourism": { "perPoint": 4, "eraMult": [1, 3.2, 12.1, 37.1, 85.7, 199.3, 352.9], "heritageMult": 2, "heritageEraGap": 2, "heritageRampYears": 20, "beachManorMult": 1.5 }
     },
-    "happiness": { "base": 35, "comfort": 30, "auraCap": 15, "pollutionCap": 30, "starving": 25, "noPower": 15 },
-    "population": { "growthRate": 0.03, "growthFlat": 0.2, "moveOutShare": 0.05, "starvingDecline": 0.004, "occupancy": { "from": 25, "span": 45 }, "comfortFill": [0.7, 0.3] },
-    "districts": {
-        "radius": 7,
-        "policies": [
-            {
-                "id": "historic",
-                "name": "Исторический квартал",
-                "icon": "🏛️",
-                "description": "Старые здания привлекают гостей: каждое приносит в год деньги — тем больше, чем на больше эпох оно старше нынешней. Жители гордятся районом.",
-                "effects": { "tourism": 0.5, "happiness": 5 }
-            },
-            {
-                "id": "industrial",
-                "name": "Промышленная зона",
-                "icon": "🏭",
-                "description": "Заводы и мастерские работают на пятую часть быстрее, но дыма больше, а жить здесь неуютно.",
-                "effects": {
-                    "produces": { "*": 20 },
-                    "pollution": 30,
-                    "happiness": -5
-                }
-            },
-            {
-                "id": "residential",
-                "name": "Спальный район",
-                "icon": "🛏️",
-                "description": "Тихие дворы: дома вмещают больше людей, жители довольнее.",
-                "effects": { "housing": 15, "happiness": 8 }
-            },
-            {
-                "id": "business",
-                "name": "Деловой центр",
-                "icon": "💼",
-                "description": "Мастерские и конторы района делают на четверть больше товаров.",
-                "effects": {
-                    "produces": { "goods": 25 }
-                }
-            },
-            {
-                "id": "green",
-                "name": "Зелёный район",
-                "icon": "🌳",
-                "description": "Сады, бульвары и фильтры: загрязнения вдвое меньше, жители счастливее.",
-                "effects": { "pollution": -50, "happiness": 10 }
-            }
+    "happiness": { "base": 35, "comfort": 30, "auraCap": 15, "pollutionCap": 30, "transitCap": 8, "starving": 25, "noPower": 15 },
+    "population": {
+        "growthRate": 0.03,
+        "growthFlat": 0.2,
+        "moveOutShare": 0.05,
+        "starvingDecline": 0.004,
+        "occupancy": { "from": 25, "span": 45 },
+        "comfortFill": [0.7, 0.3],
+        "organicPerYear": 0.015,
+        "needs": [
+            { "need": "water", "label": "Вода" },
+            { "need": "leisure", "label": "Досуг" },
+            { "need": "health", "label": "Здоровье" },
+            { "need": "education", "label": "Образование" },
+            { "need": "happiness", "min": 50, "label": "Довольство не ниже 50" },
+            { "need": "aura", "min": 4, "label": "Парк или рынок рядом" },
+            { "need": "power", "min": 0.95, "label": "Электричество" },
+            { "need": "transit", "label": "Метро или проспект рядом" },
+            { "need": "happiness", "min": 65, "label": "Довольство не ниже 65" },
+            { "need": "data", "label": "Дата-центр" }
         ]
     },
+    "traffic": { "tripsPerCitizen": 0.5, "tripsPerJob": 0.3, "tripLength": 10, "hotspot": 1.3 },
+    "districts": { "radius": 7 },
     "npc": { "residentsPerNpc": 5, "maxNpcs": 160, "trafficPerRoads": 6, "maxTraffic": 36 },
     "events": {
         "firstYear": 15,
