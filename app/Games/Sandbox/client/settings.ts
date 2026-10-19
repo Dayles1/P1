@@ -9,12 +9,12 @@ export type Quality = 'auto' | 'low' | 'medium' | 'high';
 export const QUALITIES: Quality[] = ['auto', 'low', 'medium', 'high'];
 
 /**
- * How the hero is drawn: a realistic body, an anime one, or the Sci-Fi
- * Girl (a model of her own, whatever the gender and hairstyle).
+ * How the hero is drawn: the Sci-Fi Girl (a model of her own, whatever the
+ * gender and hairstyle; the default), a realistic body or an anime one.
  */
 export type BodyStyle = 'realistic' | 'anime' | 'scifi';
 
-export const BODY_STYLES: BodyStyle[] = ['realistic', 'anime', 'scifi'];
+export const BODY_STYLES: BodyStyle[] = ['scifi', 'realistic', 'anime'];
 
 export interface Settings {
     quality: Quality;
@@ -33,7 +33,7 @@ const DEFAULTS: Settings = {
     sensitivity: 1,
     volume: 0.8,
     showFps: false,
-    bodyStyle: 'realistic',
+    bodyStyle: 'scifi',
 };
 
 export function loadSettings(): Settings {

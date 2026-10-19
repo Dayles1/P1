@@ -6,8 +6,9 @@
  *
  * - the hero: the four classes, man or woman, what that makes of the
  *   attributes and the figures that follow from them, the class skill;
- * - the look: realistic or anime (a setting of the device), hairstyle,
- *   hair colour, a beard (for a man) and the colour of the eyes.
+ * - the look: the Sci-Fi Girl, realistic or anime (a setting of the
+ *   device), hairstyle, hair colour, a beard (for a man) and the colour
+ *   of the eyes.
  *
  * The same card changes the look of a hero already made (from the
  * character tab): then it shows only the look, and saves or cancels.
@@ -108,10 +109,12 @@ export class CreateHero {
         this.element.append(card);
         root.append(this.element);
 
-        // Both bodies ready, so a change of gender or hair (and starting) swaps at once.
+        // Every body ready, so a change of gender, style or hair (and starting) swaps at once.
         for (const gender of GENDERS) {
             void loadHuman(gender);
         }
+
+        void loadHuman('female', 'scifi');
 
         this.render();
         window.addEventListener('keydown', this.keyDown);

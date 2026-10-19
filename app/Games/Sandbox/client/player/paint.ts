@@ -1,8 +1,9 @@
 /**
  * Repaints the body's textures in the browser, once per look: richer
- * colour for the skin, and the iris of the eye texture in the chosen
- * colour (the pupil and the glint kept). The models' own textures stay
- * as they are; every repaint is a new texture, cached.
+ * colour for the skin, the iris of the eye texture in the chosen colour
+ * (the pupil and the glint kept), and the skin under the hair and the
+ * brows in the hair's colour. The models' own textures stay as they
+ * are; every repaint is a new texture, cached.
  */
 
 import * as THREE from 'three';
@@ -72,6 +73,47 @@ export function saturate(source: THREE.Texture, amount: number): THREE.Texture {
             pixels[i] = grey + (r - grey) * amount;
             pixels[i + 1] = grey + (g - grey) * amount;
             pixels[i + 2] = grey + (b - grey) * amount;
+        }
+    });
+}
+
+/** How far down the alpha goes where the skin is fully the hair's (see hairline). */
+const HAIRLINE_MARK = 100;
+
+/**
+ * The skin under the hair and the brows in the hair's colour, their light
+ * and shade kept: the texture marks them in its alpha (255 untouched, down
+ * by HAIRLINE_MARK for fully), which is put back to opaque.
+ */
+export function hairline(source: THREE.Texture, color: number): THREE.Texture {
+    const hair = new THREE.Color(color);
+    const shade = new THREE.Color();
+
+    return repaint(source, `hairline:${color}`, (pixels) => {
+        for (let i = 0; i < pixels.length; i += 4) {
+            const share = Math.min(1, (255 - pixels[i + 3]) / HAIRLINE_MARK);
+
+            pixels[i + 3] = 255;
+
+            if (share <= 0) {
+                continue;
+            }
+
+            const light =
+                (0.299 * pixels[i] +
+                    0.587 * pixels[i + 1] +
+                    0.114 * pixels[i + 2]) /
+                255;
+
+            // As the hair cards draw it: the colour times a grey that
+            // varies with the strands.
+            shade
+                .copy(hair)
+                .multiplyScalar(0.45 + 0.55 * light)
+                .convertLinearToSRGB();
+            pixels[i] += (shade.r * 255 - pixels[i]) * share;
+            pixels[i + 1] += (shade.g * 255 - pixels[i + 1]) * share;
+            pixels[i + 2] += (shade.b * 255 - pixels[i + 2]) * share;
         }
     });
 }

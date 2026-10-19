@@ -638,10 +638,7 @@ export class Mannequin {
 
         this.humanKind = kind;
         this.root.visible = false;
-        Promise.all([
-            loadHuman(gender, style),
-            donor ? loadHuman(donor) : null,
-        ])
+        Promise.all([loadHuman(gender, style), donor ? loadHuman(donor) : null])
             .then(([gltf, donorGltf]) => {
                 if (kind !== this.humanKind) {
                     return;
@@ -905,7 +902,7 @@ export class Mannequin {
         }
 
         this.plantFeet(dt, motion);
-        this.apply(motion.activity);
+        this.apply(motion.activity, dt);
     }
 
     private targetPose(dt: number, motion: MotionState): Pose {
@@ -1241,7 +1238,7 @@ export class Mannequin {
         this.groundR += (right - this.groundR) * ease;
     }
 
-    private apply(activity: Activity): void {
+    private apply(activity: Activity, dt = 0): void {
         const pose = this.pose;
         // The body sinks to reach the lower foot.
         const bodyY =
@@ -1335,7 +1332,7 @@ export class Mannequin {
 
         if (this.human) {
             this.human.setGrip(0, this.heldItem ? 1 : 0);
-            this.human.update();
+            this.human.update(dt);
             // The held item goes into the body's own hand.
             this.elbowR.updateWorldMatrix(true, false);
             this.hand.position.copy(

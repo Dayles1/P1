@@ -38,8 +38,9 @@ import { borrowHair, growHair, MODEL_HAIR } from './hair';
 import { measureHead } from './head';
 import { EYE_COLORS, HAIR_COLORS } from './looks';
 import type { Appearance, HairStyle } from './looks';
-import { irisColor, saturate } from './paint';
+import { hairline, irisColor, saturate } from './paint';
 import { cutOut, cutShell } from './shell';
+import { Skirt } from './skirt';
 
 /** The Mannequin's joints a body follows. */
 export interface Rig {
@@ -86,8 +87,15 @@ const DRIVERS: Record<string, { joint: keyof Rig; share?: number }> = {
     foot_r: { joint: 'ankleR' },
 };
 
-/** Arms hang this far out from straight down (radians) at rest. */
-const ARM_OUT = 0.1;
+/**
+ * Arms hang this far out from straight down (radians) at rest, by style:
+ * the Sci-Fi Girl's a little wider, so her hands swing clear of her skirt.
+ */
+const ARM_OUT: Record<BodyStyle, number> = {
+    realistic: 0.1,
+    anime: 0.1,
+    scifi: 0.2,
+};
 /** Finger curl per joint (radians): relaxed, and round a held item. */
 const CURL_REST = 0.3;
 const CURL_GRIP = 1.2;
@@ -104,6 +112,10 @@ const SATURATION: Record<BodyStyle, number> = {
 
 /** Texture filtering at a slant (the GPU's own limit caps it). */
 const ANISOTROPY = 8;
+
+/** The Sci-Fi Girl's skin and dress materials. */
+const GIRL_SKIN = 'Girl_Skin';
+const GIRL_CLOTH = 'Girl_Cloth';
 
 /** The hairstyle each model comes with. */
 const OWN_HAIR: Record<Gender, HairStyle> = { male: 'parted', female: 'buns' };
@@ -136,6 +148,8 @@ const COVER = {
 
 /** How wide (m) an armour edge fades over before it is cut. */
 const EDGE = 0.03;
+/** Painted brows: their top this far (m) above the eyes. */
+const BROW_ABOVE_EYES = 0.022;
 
 const clamp = THREE.MathUtils.clamp;
 
@@ -156,13 +170,17 @@ function sharpen(material: THREE.Material): void {
 }
 
 /**
- * The models: Quaternius' two bodies, and the Sci-Fi Girl — her own mesh,
- * outfit and hair, rigged with the same bone names so the Mannequin drives
- * her the same way (she has no skin to cut armour or grown hair from).
+ * The models: Quaternius' two bodies, and the Sci-Fi Girl — her own body,
+ * dress and hair, rigged with the same bone names so the Mannequin drives
+ * her the same way, plus a skirt the legs push aside (see Skirt). Her own
+ * hair is always worn (no grown hairstyles), coloured as the hero's; the
+ * skin under it and her brows take that colour too. Armour is cut from
+ * her skin and dress.
  * Source: "Sci-Fi Girl v.01" on Sketchfab,
  * https://sketchfab.com/3d-models/scifi-girl-v01-96340701c2ed4d37851c7d9109eee9c0
- * (credit its author as its licence asks); decimated, re-textured and rigged
- * for the game.
+ * (credit its author as its licence asks); built for the game from the
+ * original high-poly model and 4K maps: reduced, rigged and skinned (the
+ * weights taken over from Quaternius' body), with WebP PBR textures.
  */
 type ModelKey = Gender | 'scifi';
 
@@ -226,7 +244,11 @@ export class Human {
     private curl = { left: CURL_REST, right: CURL_REST };
     /** The skin armour is cut from, and the hair a helmet hides. */
     private body: THREE.SkinnedMesh | null = null;
+    /** Clothes armour is cut from too, where they cover the skin (the Sci-Fi Girl's dress). */
+    private outfit: THREE.SkinnedMesh | null = null;
     private hair: THREE.Object3D[] = [];
+    /** The panels of a skirt the legs push aside (the Sci-Fi Girl's dress). */
+    private skirt: Skirt | null = null;
     private style: BodyStyle;
 
     /**
@@ -290,6 +312,14 @@ export class Human {
                     material.map = saturate(material.map, SATURATION[style]);
                 }
 
+                // Her scalp and brows take the hair's colour.
+                if (material.map && source.name === GIRL_SKIN) {
+                    material.map = hairline(
+                        material.map,
+                        HAIR_COLORS[appearance.hair_color],
+                    );
+                }
+
                 sharpen(material);
                 object.material = material;
 
@@ -299,13 +329,23 @@ export class Human {
                     } else {
                         unworn.push(object);
                     }
+                } else if (
+                    style === 'scifi' &&
+                    source.name.startsWith('MI_Hair')
+                ) {
+                    // The Sci-Fi Girl's own hair (always worn).
+                    this.hair.push(object);
                 }
 
-                if (
-                    object instanceof THREE.SkinnedMesh &&
-                    material.name.startsWith('MI_Superhero')
-                ) {
-                    this.body = object;
+                if (object instanceof THREE.SkinnedMesh) {
+                    if (
+                        material.name.startsWith('MI_Superhero') ||
+                        material.name === GIRL_SKIN
+                    ) {
+                        this.body = object;
+                    } else if (material.name === GIRL_CLOTH) {
+                        this.outfit = object;
+                    }
                 }
             }
         });
@@ -379,6 +419,7 @@ export class Human {
         this.inFigure(pelvis.parent!, this.pelvisParent);
         this.positionInFigure(pelvis, this.pelvisRest);
         this.findFingers();
+        this.skirt = Skirt.find(this.bones, model);
     }
 
     /** How tightly each hand closes: 0 relaxed, 1 a fist round a handle. */
@@ -387,8 +428,11 @@ export class Human {
         this.curl.right = THREE.MathUtils.lerp(CURL_REST, CURL_GRIP, right);
     }
 
-    /** Copies the joints' turns onto the bones. Call after the joints move. */
-    update(): void {
+    /**
+     * Copies the joints' turns onto the bones, `dt` seconds on (a skirt
+     * eases with it). Call after the joints move.
+     */
+    update(dt = 0): void {
         this.root.updateWorldMatrix(true, false);
         this.root.getWorldQuaternion(this.rootInverse).invert();
 
@@ -434,12 +478,15 @@ export class Human {
             pelvis.parent!.worldToLocal(this.root.localToWorld(shift)),
         );
         this.holder.updateMatrixWorld(true);
+        this.skirt?.update(dt);
     }
 
     /**
-     * Armour for a slot, cut from the body's skin: a cap above the brows, a
+     * Armour for a slot, cut from the body's skin (and from clothes worn
+     * over it, where they are what is seen): a cap above the brows, a
      * jacket over the trunk and upper arms (a breastplate over the trunk
-     * only), boots up the shins. Taking it off is removing it.
+     * only), boots up the shins. A skirt's swinging cloth is left as it is.
+     * Taking it off is removing it.
      */
     dress(
         slot: ArmorSlot,
@@ -452,15 +499,35 @@ export class Human {
             return [];
         }
 
-        const geometry = body.geometry;
+        body.geometry.computeBoundingBox();
+
+        const height = body.geometry.boundingBox!.max.y;
+        const cut = cutOut(material, this.style);
+        const pieces: THREE.Object3D[] = [];
+
+        for (const skin of this.outfit ? [body, this.outfit] : [body]) {
+            const piece = this.cutArmor(skin, slot, item, height, cut);
+
+            skin.parent!.add(piece);
+            pieces.push(piece);
+        }
+
+        return pieces;
+    }
+
+    /** One mesh's share of the armour for a slot (see dress). */
+    private cutArmor(
+        skin: THREE.SkinnedMesh,
+        slot: ArmorSlot,
+        item: string,
+        height: number,
+        material: THREE.Material,
+    ): THREE.SkinnedMesh {
+        const geometry = skin.geometry;
         const position = geometry.getAttribute('position');
         const joints = geometry.getAttribute('skinIndex');
         const weights = geometry.getAttribute('skinWeight');
-        const bones = body.skeleton.bones;
-
-        geometry.computeBoundingBox();
-
-        const height = geometry.boundingBox!.max.y;
+        const bones = skin.skeleton.bones;
         const brows = this.browHeight(height);
         const plate = item === 'iron_chestplate';
         const share = (vertex: number, test: (name: string) => boolean) => {
@@ -481,6 +548,11 @@ export class Human {
             const x = position.getX(vertex);
             const y = position.getY(vertex);
             const z = position.getZ(vertex);
+
+            // A skirt swings free of armour.
+            if (share(vertex, (name) => name.startsWith('skirt_')) > 0.05) {
+                return 0;
+            }
 
             if (slot === 'head') {
                 return Math.min(
@@ -516,6 +588,8 @@ export class Human {
                 inside(COVER.trunk * height - Math.abs(x)),
                 inside(y - (plate ? COVER.plateWaist : COVER.waist) * height),
                 inside(COVER.collar * height - y),
+                // Arms hanging (not out in a T) come near the trunk: not theirs.
+                this.style === 'scifi' ? 1 - upperArm : 1,
             );
 
             return Math.min(
@@ -533,11 +607,7 @@ export class Human {
             cover[i] = coverage(i);
         }
 
-        const piece = cutShell(body, cover, lift, cutOut(material, this.style));
-
-        body.parent!.add(piece);
-
-        return [piece];
+        return cutShell(skin, cover, lift, material);
     }
 
     /** A helmet covers the hair (long hair and a tail still hang below it). */
@@ -577,14 +647,29 @@ export class Human {
         return material;
     }
 
-    /** Top of the eyebrows, in the body's own space. */
+    /**
+     * Top of the eyebrows, in the body's own space: of the brows' own
+     * mesh, else a little above the eyes (brows painted on the skin).
+     */
     private browHeight(height: number): number {
         let top = 0.94 * height;
+        let fromBrows = false;
 
         this.holder.traverse((object) => {
-            if (object instanceof THREE.Mesh && object.name === 'Eyebrows') {
+            if (!(object instanceof THREE.Mesh)) {
+                return;
+            }
+
+            if (object.name === 'Eyebrows') {
                 object.geometry.computeBoundingBox();
                 top = object.geometry.boundingBox!.max.y;
+                fromBrows = true;
+            } else if (
+                !fromBrows &&
+                (object.material as THREE.Material).name === 'MI_Eyes'
+            ) {
+                object.geometry.computeBoundingBox();
+                top = object.geometry.boundingBox!.max.y + BROW_ABOVE_EYES;
             }
         });
 
@@ -644,8 +729,9 @@ export class Human {
 
     /** Hangs the arms and legs straight down: the Mannequin's rest pose. */
     private calibrate(): void {
+        const out = ARM_OUT[this.style];
         const down = (side: number) =>
-            new THREE.Vector3(side * Math.sin(ARM_OUT), -Math.cos(ARM_OUT), 0);
+            new THREE.Vector3(side * Math.sin(out), -Math.cos(out), 0);
         const straight = new THREE.Vector3(0, -1, 0);
         const aims: [string, string, THREE.Vector3][] = [
             ['upperarm_l', 'lowerarm_l', down(1)],
