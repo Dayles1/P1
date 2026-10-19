@@ -3,17 +3,23 @@
 namespace App\Games\City3\Http\Requests;
 
 use App\Games\City3\ContentRepository;
+use App\Games\City3\LandRules;
+use App\Games\City3\Models\World;
 use Closure;
 use Illuminate\Validation\Rule;
 
 /**
  * Rules shared by creating and syncing a world. Ids are checked against
- * the game's content files. Tiles come as compact rows
- * [x, y, biome, elevation, feature] and are checked by hand — thousands of
- * them would be slow through wildcard rules.
+ * the game's content files, and every building against the land it
+ * stands on (LandRules: the owned strips and its zone, gdd §14). Tiles
+ * come as compact rows [x, y, biome, elevation, feature] and are checked
+ * by hand — thousands of them would be slow through wildcard rules.
  */
 trait WorldPayloadRules
 {
+    /** The player's stored world, once looked up (false: there is none). */
+    private World|false|null $storedWorld = null;
+
     /**
      * @return array<string, mixed>
      */
@@ -70,7 +76,74 @@ trait WorldPayloadRules
             'world.economy.bestH50' => ['sometimes', 'numeric', 'between:0,100'],
             'world.economy.flags' => ['sometimes', 'array:tester'],
             'world.economy.flags.tester' => ['sometimes', 'boolean'],
+            'world.land_left' => ['sometimes', 'integer', 'min:0', 'max:'.$content->land()['perSide']],
+            'world.land_right' => ['sometimes', 'integer', 'min:0', 'max:'.$content->land()['perSide']],
         ];
+    }
+
+    /**
+     * The strips bought west and east as the save says, or as stored when
+     * it does not say (a save from before slice 5).
+     *
+     * @return array{0: int, 1: int}
+     */
+    protected function stripsBought(): array
+    {
+        $stored = $this->storedWorld();
+
+        return [
+            (int) ($this->input('world.land_left') ?? $stored->land_left ?? 0),
+            (int) ($this->input('world.land_right') ?? $stored->land_right ?? 0),
+        ];
+    }
+
+    /**
+     * The player's world as stored before this request, if there is one.
+     */
+    protected function storedWorld(): ?World
+    {
+        if ($this->storedWorld === null) {
+            $user = $this->user();
+
+            $this->storedWorld = $user === null
+                ? false
+                : (World::query()->where('user_id', $user->getAuthIdentifier())->first() ?? false);
+        }
+
+        return $this->storedWorld ?: null;
+    }
+
+    /**
+     * Land once bought is never given back (gdd §14: strips monotonic).
+     */
+    protected function landNeverShrinks(string $column): Closure
+    {
+        return function (string $attribute, mixed $value, Closure $fail) use ($column): void {
+            $stored = $this->storedWorld();
+
+            if ($stored !== null && is_int($value) && $value < (int) $stored->{$column}) {
+                $fail(__('city3::messages.land_shrunk'));
+            }
+        };
+    }
+
+    /**
+     * A building stands on the owned land, inside its zone (gdd §5, §14).
+     */
+    protected function placementRule(): Closure
+    {
+        return function (string $attribute, mixed $building, Closure $fail): void {
+            if (! is_array($building) || ! is_string($building['type'] ?? null) || ! is_int($building['x'] ?? null) || ! is_int($building['y'] ?? null)) {
+                return;
+            }
+
+            [$west, $east] = $this->stripsBought();
+            $error = app(LandRules::class)->placementError($building['type'], $building['x'], $building['y'], $west, $east);
+
+            if ($error !== null) {
+                $fail(__('city3::messages.building_'.$error, ['type' => $building['type'], 'x' => $building['x'], 'y' => $building['y']]));
+            }
+        };
     }
 
     /**
@@ -124,6 +197,7 @@ trait WorldPayloadRules
     {
         return [
             $prefix => ['present', 'array', 'max:6000'],
+            "{$prefix}.*" => [$this->placementRule()],
             "{$prefix}.*.uid" => ['required', 'integer', 'min:1'],
             "{$prefix}.*.type" => ['required', 'string', Rule::in(app(ContentRepository::class)->buildingIds())],
             "{$prefix}.*.x" => ['required', 'integer', 'min:0', 'max:255'],

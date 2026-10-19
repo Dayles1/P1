@@ -204,7 +204,7 @@ test('saved worlds are checked against the game\'s own content files', function 
                 'world' => app(WorldStore::class)->worldPayload($world),
                 'tiles' => [],
                 'buildings' => [
-                    'upsert' => [['uid' => 3, 'type' => 'tea_house', 'x' => 2, 'y' => 2, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null]],
+                    'upsert' => [['uid' => 3, 'type' => 'tea_house', 'x' => 40, 'y' => 10, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null]],
                     'delete' => [],
                 ],
                 'npcs' => [],

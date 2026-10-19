@@ -1,0 +1,468 @@
+/* =========================================================
+   Летопись города 3 — tokens (ui-spec §3): lapis surfaces, vellum
+   text, malachite / cinnabar / saffron / amber meanings, one era
+   accent (--era, set on .c3-ui from the HUD snapshot), one family
+   (Geologica) in two voices, radii as a hierarchy, the lip rule.
+   Phone portrait is the base; landscape and desktop override.
+   ========================================================= */
+
+:root {
+    color-scheme: dark;
+    --lapis-950: #0f1530;
+    --lapis-900: #141b38;
+    --lapis-800: #1b2448;
+    --lapis-700: #24305c;
+    --lapis-600: #2f3c6e;
+    --lapis-500: #45548c;
+    --vellum: #faf6ec;
+    --haze: #b3bcdd;
+    --dim: #8590bc;
+    --malachite: #74db9f;
+    --malachite-fill: #3dbb74;
+    --malachite-lip: #1f7a47;
+    --cinnabar: #ff8c7a;
+    --cinnabar-fill: #e4573f;
+    --cinnabar-lip: #9a2e1c;
+    --saffron: #ffc24b;
+    --saffron-lip: #b57b0c;
+    --amber: #ffc857;
+    --era: #e79a8e;
+    --surface: rgba(27, 36, 72, 0.95);
+    --rim: rgba(250, 246, 236, 0.16);
+    --lip: #0a0f27;
+    --shadow: 0 1px 2px rgba(5, 8, 24, 0.55), 0 6px 16px rgba(5, 8, 24, 0.26);
+    --r-pill: 999px;
+    --r-inst: 18px;
+    --r-btn: 16px;
+    --r-card: 12px;
+    --r-sheet: 22px;
+    --r-chip: 10px;
+    --font:
+        'Geologica', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --t-xs: 11px;
+    --t-sm: 13px;
+    --t-md: 15px;
+    --t-lg: 18px;
+    --t-xl: 22px;
+    --t-2xl: 28px;
+    --num-hud: 20px;
+    --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --gut: 10px;
+    --top: calc(env(safe-area-inset-top, 0px) + var(--gut));
+    --bot: calc(env(safe-area-inset-bottom, 0px) + var(--gut));
+    --lft: calc(env(safe-area-inset-left, 0px) + var(--gut));
+    --rgt: calc(env(safe-area-inset-right, 0px) + var(--gut));
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    background: var(--lapis-800);
+}
+
+body {
+    font-family: var(--font);
+    font-size: var(--t-sm);
+    line-height: 1.25;
+    color: var(--vellum);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    font-optical-sizing: auto;
+}
+
+.c3 {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    font-family: var(--font);
+    color: var(--vellum);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+:where(.c3) button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    text-align: inherit;
+}
+
+:where(.c3) button:disabled {
+    cursor: not-allowed;
+}
+
+:where(.c3) h2,
+:where(.c3) h3,
+:where(.c3) p,
+:where(.c3) ul,
+:where(.c3) ol,
+:where(.c3) dl,
+:where(.c3) dd {
+    margin: 0;
+    padding: 0;
+}
+
+:where(.c3) ul,
+:where(.c3) ol {
+    list-style: none;
+}
+
+.c3-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    touch-action: none;
+    outline: none;
+}
+
+.c3-sprite {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* the two voices of one family */
+.c3-num {
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings:
+        'tnum' 1,
+        'lnum' 1;
+}
+
+.c3-disp {
+    font-variation-settings: 'SHRP' 100;
+    font-weight: 760;
+    letter-spacing: -0.01em;
+}
+
+.c3-pos {
+    color: var(--malachite);
+}
+
+.c3-neg {
+    color: var(--cinnabar);
+}
+
+.c3-warn {
+    color: var(--amber);
+}
+
+.c3-mut {
+    color: var(--haze);
+}
+
+.c3-saffron {
+    color: var(--saffron);
+}
+
+.c3-era {
+    color: var(--era);
+}
+
+/* icons */
+.c3-i {
+    width: 24px;
+    height: 24px;
+    flex: none;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.c3-i--m {
+    width: 20px;
+    height: 20px;
+}
+
+.c3-i--s {
+    width: 18px;
+    height: 18px;
+}
+
+.c3-i--xs {
+    width: 15px;
+    height: 15px;
+    stroke-width: 2.2;
+}
+
+.c3-cur {
+    width: 24px;
+    height: 24px;
+    flex: none;
+}
+
+.c3-cur--inline {
+    width: 18px;
+    height: 18px;
+    vertical-align: -4px;
+    margin-right: 2px;
+}
+
+/* focus: two-tone ring that works on saffron, lapis and the scene */
+.c3 :focus {
+    outline: none;
+}
+
+.c3 :focus-visible {
+    outline: 2px solid var(--vellum);
+    outline-offset: 2px;
+    box-shadow:
+        0 0 0 2px var(--lapis-950),
+        0 0 0 6px var(--lapis-950) !important;
+}
+
+/* readouts: flat instrument surface + rim, no lip */
+.c3-chip {
+    background: var(--surface);
+    box-shadow:
+        inset 0 0 0 1px var(--rim),
+        var(--shadow);
+    border-radius: var(--r-pill);
+}
+
+/* pressables: the lip says "press me" */
+.c3-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: var(--r-btn);
+    background: var(--lapis-700);
+    font-weight: 620;
+    color: var(--vellum);
+    text-decoration: none;
+    box-shadow:
+        inset 0 0 0 1px var(--rim),
+        0 3px 0 var(--lip),
+        0 6px 14px rgba(5, 8, 24, 0.28);
+    transition:
+        transform 90ms var(--ease),
+        box-shadow 90ms var(--ease);
+}
+
+.c3-btn:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow:
+        inset 0 0 0 1px var(--rim),
+        0 1px 0 var(--lip),
+        0 2px 6px rgba(5, 8, 24, 0.3);
+}
+
+.c3 .c3-btn--primary {
+    background: var(--saffron);
+    color: var(--lapis-950);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        0 3px 0 var(--saffron-lip),
+        0 6px 14px rgba(5, 8, 24, 0.28);
+}
+
+.c3 .c3-btn--primary:active:not(:disabled) {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        0 1px 0 var(--saffron-lip);
+}
+
+.c3 .c3-btn--ok {
+    background: var(--malachite-fill);
+    color: var(--lapis-950);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        0 3px 0 var(--malachite-lip),
+        0 6px 14px rgba(5, 8, 24, 0.28);
+}
+
+.c3 .c3-btn--danger {
+    background: transparent;
+    color: var(--cinnabar);
+    box-shadow: inset 0 0 0 1.5px rgba(255, 140, 122, 0.55);
+}
+
+.c3 .c3-btn--danger-fill {
+    background: var(--cinnabar-fill);
+    color: #fff;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        0 3px 0 var(--cinnabar-lip);
+}
+
+.c3 .c3-btn--quiet {
+    background: transparent;
+    box-shadow: inset 0 0 0 1.5px var(--rim);
+}
+
+.c3 .c3-btn:disabled {
+    background: var(--lapis-600);
+    color: var(--dim);
+    box-shadow: none;
+    transform: none;
+}
+
+.c3 .c3-btn--wide {
+    width: 100%;
+    flex-wrap: wrap;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.c3 .c3-btn--small {
+    min-height: 36px;
+    padding: 0 12px;
+    font-size: 12.5px;
+    border-radius: 12px;
+}
+
+.c3-round {
+    width: 46px;
+    height: 46px;
+    min-height: 0;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.c3-iconbtn {
+    width: 44px;
+    height: 44px;
+    min-height: 0;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.c3-link {
+    color: var(--haze);
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgba(179, 188, 221, 0.4);
+    text-underline-offset: 3px;
+    min-height: 32px;
+}
+
+.c3-link:hover {
+    color: var(--vellum);
+}
+
+.c3-link--center {
+    align-self: center;
+    text-align: center;
+}
+
+.c3-link--left {
+    text-align: left;
+    color: var(--vellum);
+    text-decoration: none;
+}
+
+.c3-kbd {
+    font: inherit;
+    font-size: 10.5px;
+    font-weight: 650;
+    color: var(--haze);
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 1px var(--rim);
+    display: inline-grid;
+    place-items: center;
+}
+
+.c3-rule {
+    height: 1px;
+    background: var(--rim);
+    flex: none;
+}
+
+.c3-input {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 12px;
+    border-radius: 12px;
+    border: 0;
+    background: var(--lapis-900);
+    color: var(--vellum);
+    font: inherit;
+    font-size: 15px;
+    box-shadow: inset 0 0 0 1px var(--rim);
+    user-select: text;
+}
+
+.c3-loading {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: var(--lapis-800);
+    color: var(--haze);
+    font-size: 15px;
+}
+
+.c3-error {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 520px;
+    padding: 20px;
+    border-radius: var(--r-sheet);
+    color: var(--vellum);
+}
+
+.c3-error code {
+    font-size: 11px;
+    color: var(--haze);
+    word-break: break-word;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .c3 *,
+    .c3 *::before,
+    .c3 *::after {
+        animation-duration: 1ms !important;
+        transition-duration: 1ms !important;
+    }
+}
+
+@media (prefers-contrast: more) {
+    :root {
+        --rim: rgba(250, 246, 236, 0.4);
+    }
+
+    .c3-chip {
+        box-shadow:
+            inset 0 0 0 2px var(--rim),
+            var(--shadow);
+    }
+}
+
+@media (orientation: landscape) and (max-height: 520px) {
+    :root {
+        --gut: 8px;
+    }
+}
+
+@media (min-width: 1024px) and (min-height: 600px) {
+    :root {
+        --gut: 16px;
+        --num-hud: 22px;
+    }
+}

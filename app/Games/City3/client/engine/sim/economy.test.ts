@@ -175,8 +175,9 @@ describe('zones', () => {
         expect(game.canPlace('park', 40, 59).ok).toBe(false);
         expect(game.canPlace('fishery', 40, 59).ok).toBe(true);
         expect(game.canPlace('fishery', 40, 50).ok).toBe(false);
-        expect(game.canPlace('quarry', 40, 0).ok).toBe(true);
-        expect(game.canPlace('quarry', 40, 1).ok).toBe(false);
+        // Columns 40–41 at the mountain foot are a coal spot (gdd §5.3).
+        expect(game.canPlace('quarry', 42, 0).ok).toBe(true);
+        expect(game.canPlace('quarry', 42, 1).ok).toBe(false);
         expect(game.canPlace('farm', 40, 38).ok).toBe(true);
         expect(game.canPlace('farm', 40, 39).ok).toBe(false);
     });

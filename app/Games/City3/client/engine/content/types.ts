@@ -33,8 +33,46 @@ export interface WorldFile {
         /** The biome of each band. */
         biomes: { land: string; beach: string; sea: string };
         /** The columns open from the start, over the land and the beach. */
-        start: { minX: number; maxX: number };
+        start: ColumnSpan;
+        /** Columns of the tunnel portals on row 0, kept free for the railway (gdd §7.2). */
+        portals: number[];
+        /** Ore and coal spots at the mountain foot, oil spots at the waterline (gdd §5.3). */
+        deposits: DepositDef[];
+        /** Output of an extractor standing on a rich deposit. */
+        richMult: number;
+        /**
+         * The future airport's plot (gdd §5.4): only `allow` types stand on
+         * it until the airport, which removes them for all they cost.
+         */
+        airportPlot: {
+            x: number;
+            y: number;
+            w: number;
+            h: number;
+            allow: string[];
+        };
+        /** Places that change what stands there (gdd §5.3). */
+        features: {
+            /** The deep bay: its port trades and hosts more, its first fisheries catch more. */
+            bay: ColumnSpan & {
+                trade: number;
+                visitors: number;
+                fishery: number;
+                fisheryMax: number;
+            };
+            /** Lighthouse capes: the attraction of buildings on their beach. */
+            cape: ColumnSpan[];
+            capeAttraction: number;
+            /** The sunny slope: solar farms there make more power. */
+            sunny: ColumnSpan & { solar: number };
+        };
     };
+    /**
+     * Expansion strips (gdd §5.2): `stripWidth` columns over the full
+     * depth, `perSide` each way, bought outwards in order; the k-th
+     * purchase costs `price[k − 1]` whichever side it is on.
+     */
+    land: { stripWidth: number; perSide: number; price: number[] };
     time: {
         /** Game seconds in a year: one rate for the whole game, from year 0. */
         secondsPerYear: number;
@@ -173,7 +211,7 @@ export interface WorldFile {
             happinessShare: number;
             /** Years of the moving average of happiness. */
             happinessYears: number;
-            stripWidth: number;
+            /** Points per expansion strip bought. */
             perStrip: number;
             perAchievement: number;
         };
@@ -1075,6 +1113,22 @@ export type Zone =
     'land' | 'landOrBeach' | 'mountain' | 'coast' | 'road' | 'airportPlot';
 
 export type DepositKind = 'ore' | 'coal' | 'oil';
+
+/** Columns from `minX` to `maxX`, both included. */
+export interface ColumnSpan {
+    minX: number;
+    maxX: number;
+}
+
+/** A deposit spot: the footprint its extractor must stand on exactly. */
+export interface DepositDef {
+    kind: DepositKind;
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+    rich?: boolean;
+}
 
 /** Labour priority class: services, food, raw materials, industry, commerce. */
 export type JobClass = 'svc' | 'food' | 'raw' | 'ind' | 'com';

@@ -280,6 +280,132 @@ const isNumber = (value: unknown): value is number =>
     typeof value === 'number' && Number.isFinite(value);
 
 /**
+ * The fixed map's land (gdd §5): portals and deposit spots where their
+ * band is (ore and coal 2×2 at the mountain foot, oil at the waterline),
+ * not on top of each other; the airport plot on the beach; the bay, capes
+ * and sunny slope inside the map; strips that fit the map, priced for
+ * every purchase.
+ */
+function checkLand(
+    world: ContentBundle['world'],
+    buildings: Set<string>,
+    add: (file: string, path: string, message: string) => void,
+): void {
+    const map = world.map;
+
+    if (!map?.start) {
+        // Reported with the map's size and start columns.
+        return;
+    }
+
+    const width = map.width;
+    const waterline = map.landRows + map.beachRows - 1;
+    const column = (x: unknown) =>
+        Number.isInteger(x) && (x as number) >= 0 && (x as number) < width;
+    const span = (s: { minX: number; maxX: number } | undefined) =>
+        column(s?.minX) && column(s?.maxX) && s!.minX <= s!.maxX;
+    const taken = new Set<string>();
+
+    for (const [index, portal] of (map.portals ?? []).entries()) {
+        if (!column(portal)) {
+            add('world', `map.portals[${index}]`, 'Портал — столбец карты');
+        }
+
+        taken.add(`${portal},0`);
+    }
+
+    for (const [index, spot] of (map.deposits ?? []).entries()) {
+        const row = spot?.kind === 'oil' ? waterline : 0;
+        const fits =
+            ['ore', 'coal', 'oil'].includes(spot?.kind) &&
+            column(spot.x) &&
+            column(spot.x + spot.w - 1) &&
+            spot.y === row &&
+            Number.isInteger(spot.w) &&
+            Number.isInteger(spot.h) &&
+            spot.w >= 1 &&
+            spot.h >= 1 &&
+            (spot.kind === 'oil' ? spot.h === 1 : spot.h <= map.landRows);
+        let free = true;
+
+        for (let y = spot?.y ?? 0; fits && y < spot.y + spot.h; y++) {
+            for (let x = spot.x; x < spot.x + spot.w; x++) {
+                free &&= !taken.has(`${x},${y}`);
+                taken.add(`${x},${y}`);
+            }
+        }
+
+        if (!fits || !free) {
+            add(
+                'world',
+                `map.deposits[${index}]`,
+                'Руда и уголь — у подножия гор (y = 0), нефть — 1 клетка на линии воды; месторождения и порталы не перекрываются',
+            );
+        }
+    }
+
+    const plot = map.airportPlot;
+
+    if (!(
+        column(plot?.x) &&
+        column(plot.x + plot.w - 1) &&
+        plot.y >= map.landRows &&
+        plot.y + plot.h - 1 < waterline &&
+        Array.isArray(plot.allow) &&
+        plot.allow.every((id) => buildings.has(id))
+    )) {
+        add(
+            'world',
+            'map.airportPlot',
+            'Участок аэропорта — на пляже, не у самой воды; allow — id зданий',
+        );
+    }
+
+    const features = map.features;
+
+    if (
+        !(map.richMult >= 1) ||
+        !span(features?.bay) ||
+        !(features.bay.trade > 0 && features.bay.visitors > 0) ||
+        !(features.bay.fishery > 0 && features.bay.fisheryMax >= 0) ||
+        !Array.isArray(features.cape) ||
+        !features.cape.every(span) ||
+        !(features.capeAttraction > 0) ||
+        !span(features.sunny) ||
+        !(features.sunny.solar > 0)
+    ) {
+        add(
+            'world',
+            'map.features',
+            'Нужны richMult ≥ 1, бухта, мысы и солнечный склон внутри карты с множителями больше 0',
+        );
+    }
+
+    const land = world.land;
+
+    if (
+        !(Number.isInteger(land?.stripWidth) && land.stripWidth >= 1) ||
+        !(Number.isInteger(land.perSide) && land.perSide >= 0) ||
+        map.start.minX - land.perSide * land.stripWidth < 0 ||
+        map.start.maxX + land.perSide * land.stripWidth >= width ||
+        !Array.isArray(land.price) ||
+        land.price.length !== land.perSide * 2 ||
+        !land.price.every(
+            (price, i) =>
+                isNumber(price) &&
+                price > 0 &&
+                price >= (land.price[i - 1] ?? 0),
+        )
+    ) {
+        add(
+            'world',
+            'land',
+            'Полосы помещаются на карте; price — по цене на каждую из perSide × 2 покупок, не дешевле предыдущей',
+        );
+    }
+}
+
+/**
  * Every problem in a content bundle; an empty list means the game can run
  * on it.
  */
@@ -448,6 +574,8 @@ export function validateContent(
             'Открытые столбцы — внутри карты, и minX не больше maxX',
         );
     }
+
+    checkLand(world, buildings, add);
 
     if (!(world.time?.secondsPerDay >= 10)) {
         add('world', 'time.secondsPerDay', 'Сутки — не короче 10 секунд');
@@ -630,7 +758,6 @@ export function validateContent(
         !Array.isArray(score?.starPoints) ||
         score.starPoints.length !== 4 ||
         !score.starPoints.every(isNumber) ||
-        !(score.stripWidth >= 1) ||
         ![
             score.eraBase,
             score.cityPerSqrtPeak,

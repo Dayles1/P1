@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\DB;
  * The calendar year and the score are the server's (gdd §10, §14): the
  * year comes from the game time, the score from the era log (entry years,
  * leads and stars against epochs.json), the peak population (at most 1.2 ×
- * the places of the stored homes), the best 50-year happiness and the
- * achievements; what the browser says about them is ignored. A world that
- * used tester tools, or whose game time ran faster than the fastest speed
- * allows between saves, or that entered an era implausibly early, stays
- * off the leaderboard.
+ * the places of the stored homes), the best 50-year happiness, the land
+ * strips bought and the achievements; what the browser says about them is
+ * ignored. A world that used tester tools, or whose game time ran faster
+ * than the fastest speed allows between saves, or that entered an era
+ * implausibly early, stays off the leaderboard.
  */
 class WorldStore
 {
@@ -29,6 +29,7 @@ class WorldStore
         'seed', 'width', 'height', 'epoch', 'epoch_index', 'year', 'time', 'population', 'happiness', 'score',
         'resources', 'weather', 'weather_until', 'next_event_at', 'moods', 'next_uid', 'stats',
         'techs', 'research', 'blueprints', 'achievements', 'peak_population', 'era_log', 'economy',
+        'land_left', 'land_right',
     ];
 
     /** Building columns the browser sends and reads back. */
@@ -102,7 +103,9 @@ class WorldStore
 
     /**
      * Applies a batch of changes. Returns null when the browser's revision
-     * is out of date.
+     * is out of date — unless the batch is forced: then it is the browser's
+     * whole city, taken over whatever was saved since, and buildings it
+     * does not list are removed.
      *
      * @param  array<string, mixed>  $data  validated SyncWorldRequest data
      */
@@ -110,9 +113,14 @@ class WorldStore
     {
         return DB::connection(config('city3.connection'))->transaction(function () use ($world, $data): ?World {
             $world = World::query()->whereKey($world->id)->lockForUpdate()->firstOrFail();
+            $force = (bool) ($data['force'] ?? false);
 
-            if ($world->revision !== (int) $data['revision']) {
+            if (! $force && $world->revision !== (int) $data['revision']) {
                 return null;
+            }
+
+            if ($force) {
+                $this->deleteBuildingsExcept($world, array_column($data['buildings']['upsert'], 'uid'));
             }
 
             $timely = $this->timely($world, (int) $data['world']['time']);
@@ -156,6 +164,8 @@ class WorldStore
             'peak_population' => $world->peak_population ?? $world->population,
             'era_log' => $world->era_log ?? [],
             'economy' => $world->economy,
+            'land_left' => (int) $world->land_left,
+            'land_right' => (int) $world->land_right,
         ];
     }
 
@@ -182,8 +192,8 @@ class WorldStore
 
     /**
      * The score (gdd §10) = Chronicle + City + Land + Achievements, from the
-     * era log, the peak population, the best 50-year happiness and the
-     * achievements. Land counts no strips until they are stored (slice 5).
+     * era log, the peak population, the best 50-year happiness, the strips
+     * bought (0..7 a side, checked on save) and the achievements.
      *
      * @return array{score: int, stars: int, lead: int, peak: int, plausible: bool}
      */
@@ -235,8 +245,10 @@ class WorldStore
             $this->content->achievementIds(),
         ));
 
+        $strips = max(0, (int) $world->land_left) + max(0, (int) $world->land_right);
+
         return [
-            'score' => $chronicle + $city + $achievements * $rules['perAchievement'],
+            'score' => $chronicle + $city + $strips * $rules['perStrip'] + $achievements * $rules['perAchievement'],
             'stars' => $stars,
             'lead' => $lead,
             'peak' => $peak,
@@ -290,6 +302,20 @@ class WorldStore
                 ['world_id', 'x', 'y'],
                 ['biome', 'elevation', 'feature'],
             );
+        }
+    }
+
+    /**
+     * Removes every building of the world but the listed ones (a forced save).
+     *
+     * @param  list<int>  $keep
+     */
+    private function deleteBuildingsExcept(World $world, array $keep): void
+    {
+        $gone = array_values(array_diff($world->buildings()->pluck('uid')->all(), $keep));
+
+        foreach (array_chunk($gone, 500) as $chunk) {
+            $world->buildings()->whereIn('uid', $chunk)->delete();
         }
     }
 

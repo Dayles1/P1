@@ -2,12 +2,17 @@
  * What the player works with on top of the world: the hovered tile, the
  * ghost of a building being placed (with its footprint and ranges), the
  * selected building's outline and ranges, the selected resident's ring,
- * a road being dragged and the districts' areas. Each piece is rebuilt
- * only when its inputs change.
+ * a road being dragged, the districts' areas and the land's zones and
+ * deposits (on demand, and by themselves while placing). Each piece is
+ * rebuilt only when its inputs change.
  */
 
 import * as THREE from 'three';
-import type { BuildingDef, Effects } from '../engine/content/types';
+import type {
+    BuildingDef,
+    DepositKind,
+    Effects,
+} from '../engine/content/types';
 import type { Game } from '../engine/sim/game';
 import type { BuildingEntry, Buildings } from './buildings';
 import { modelGroup } from './buildings';
@@ -21,6 +26,13 @@ import { WATER_Y } from './terrain';
 import type { Terrain } from './terrain';
 
 type RGBA = [number, number, number, number];
+
+/** Deposit spots in the zones overlay, by kind. */
+const SPOT_COLORS: Record<DepositKind, string> = {
+    ore: '#e07a3c',
+    coal: '#1c1c1c',
+    oil: '#8a5cf0',
+};
 
 function rgba(css: string, alpha: number): RGBA {
     const c = color(css);
@@ -228,6 +240,7 @@ export class Overlays {
     private path: TileMesh;
     private ranges: TileMesh;
     private districts: TileMesh;
+    private zones: TileMesh;
     private footprint: TileMesh;
     private lines: RectLines;
     private ghost: {
@@ -250,6 +263,7 @@ export class Overlays {
         private materials: MaterialSet,
     ) {
         this.districts = new TileMesh(terrain, this.group, 3, 0.04);
+        this.zones = new TileMesh(terrain, this.group, 3, 0.042);
         this.ranges = new TileMesh(terrain, this.group, 4, 0.05);
         this.footprint = new TileMesh(terrain, this.group, 5, 0.055);
         this.path = new TileMesh(terrain, this.group, 5, 0.055);
@@ -276,6 +290,7 @@ export class Overlays {
             this.path,
             this.ranges,
             this.districts,
+            this.zones,
             this.footprint,
         ]) {
             mesh.invalidate();
@@ -303,6 +318,7 @@ export class Overlays {
         this.updateRanges(overlay);
         this.updateOutline(overlay, time);
         this.updateDistricts(overlay);
+        this.updateZones(overlay);
 
         const npc =
             overlay.selectedNpc !== null
@@ -688,6 +704,88 @@ export class Overlays {
         });
     }
 
+    /**
+     * The land's zones and deposits (gdd §5.1, §5.3, §5.4), on demand and
+     * while placing: the mountain foot, ore, coal and oil spots (stronger
+     * when rich), the tunnel portals, the waterline and the airport plot.
+     * While placing, what the building may take is green — its deposits,
+     * the free mountain foot, the waterline, the plot — and the plot is
+     * red for what may not stand on it.
+     */
+    private updateZones(overlay: Overlay): void {
+        const game = this.game;
+        const ghost = overlay.ghost;
+        const def =
+            ghost && game.content.hasBuilding(ghost.type)
+                ? game.content.building(ghost.type)
+                : null;
+
+        if (!overlay.showZones && !def) {
+            this.zones.set('', () => []);
+
+            return;
+        }
+
+        const map = game.content.world.map;
+        const plot = map.airportPlot;
+        const zone = def?.placement.zone ?? null;
+        const deposit = def?.placement.deposit ?? null;
+        const plotState = !def
+            ? 'shown'
+            : zone === 'airportPlot' || plot.allow.includes(def.id)
+              ? 'allowed'
+              : 'refused';
+
+        this.zones.set(`z:${zone}:${deposit}:${plotState}`, () => {
+            const width = game.map.width;
+            const waterline = game.layout.seaY - 1;
+            const tiles = new Map<number, { x: number; y: number; c: RGBA }>();
+            const put = (x: number, y: number, c: RGBA) =>
+                tiles.set(y * width + x, { x, y, c });
+            const good = (alpha: number) => rgba('#5adf6a', alpha);
+            const quarry = zone === 'mountain' && !deposit;
+            const pier = zone === 'coast' && !deposit;
+
+            for (let x = 0; x < width; x++) {
+                put(x, 0, quarry ? good(0.4) : rgba('#c8b48a', 0.24));
+                put(x, 1, quarry ? good(0.3) : rgba('#c8b48a', 0.14));
+                put(x, waterline, pier ? good(0.4) : rgba('#4fc3f7', 0.26));
+            }
+
+            for (const x of map.portals) {
+                put(x, 0, rgba('#ffffff', 0.55));
+            }
+
+            for (const spot of map.deposits) {
+                const c =
+                    deposit === spot.kind
+                        ? good(spot.rich ? 0.75 : 0.58)
+                        : rgba(SPOT_COLORS[spot.kind], spot.rich ? 0.66 : 0.5);
+
+                for (let y = spot.y; y < spot.y + spot.h; y++) {
+                    for (let x = spot.x; x < spot.x + spot.w; x++) {
+                        put(x, y, c);
+                    }
+                }
+            }
+
+            const plotColor =
+                plotState === 'allowed'
+                    ? good(0.3)
+                    : plotState === 'refused'
+                      ? rgba('#ff4a3a', 0.28)
+                      : rgba('#ffd34d', 0.22);
+
+            for (let y = plot.y; y < plot.y + plot.h; y++) {
+                for (let x = plot.x; x < plot.x + plot.w; x++) {
+                    put(x, y, plotColor);
+                }
+            }
+
+            return [...tiles.values()];
+        });
+    }
+
     dispose(): void {
         this.clearGhost();
         this.clearOutline();
@@ -697,6 +795,7 @@ export class Overlays {
             this.path,
             this.ranges,
             this.districts,
+            this.zones,
             this.footprint,
         ]) {
             mesh.dispose();

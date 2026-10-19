@@ -13,6 +13,7 @@ import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment
 import type { GameEvent } from '../engine/core/events';
 import type { Game } from '../engine/sim/game';
 import type { BuildingState, NpcState } from '../engine/sim/state';
+import type { Side } from '../engine/world/land';
 import { Backdrop } from './backdrop';
 import { Buildings, ModelCache } from './buildings';
 import { OrbitCamera } from './camera';
@@ -20,6 +21,7 @@ import { clamp, color } from './colors';
 import { GlowLayer, Particles } from './fx';
 import type { ParticleKind } from './fx';
 import { Labels } from './labels';
+import { LandMarks } from './land';
 import { createMaterials } from './materials';
 import type { MaterialSet } from './materials';
 import { Overlays } from './overlays';
@@ -47,6 +49,12 @@ export interface Overlay {
     xray: boolean;
     /** Tint every district's area. */
     showDistricts: boolean;
+    /**
+     * Tint the zones and deposits (gdd §11.2): the mountain foot, ore,
+     * coal and oil spots, tunnel portals, the waterline, the airport plot.
+     * They show by themselves while a building is being placed.
+     */
+    showZones?: boolean;
 }
 
 /** Everything built for one attached game. */
@@ -55,6 +63,7 @@ interface World {
     terrain: Terrain;
     roads: Roads;
     backdrop: Backdrop;
+    land: LandMarks;
     buildings: Buildings;
     people: People;
     overlays: Overlays;
@@ -104,6 +113,8 @@ export class Renderer {
     private structureRevision = -1;
     private glowRevision = '';
     private roadTimer = 0;
+    /** The owned columns last frame (a bought strip sparkles). */
+    private landKey = '';
 
     constructor(canvas: HTMLCanvasElement) {
         this.canvas = canvas;
@@ -156,6 +167,7 @@ export class Renderer {
         const terrain = new Terrain(game);
         const roads = new Roads(game, terrain);
         const backdrop = new Backdrop(game.map.width);
+        const land = new LandMarks(game, terrain);
         const buildings = new Buildings(
             game,
             terrain,
@@ -176,6 +188,7 @@ export class Renderer {
             terrain.group,
             roads.group,
             backdrop.group,
+            land.group,
             buildings.group,
             people.group,
             overlays.group,
@@ -186,12 +199,14 @@ export class Renderer {
             terrain,
             roads,
             backdrop,
+            land,
             buildings,
             people,
             overlays,
             group,
         };
         this.structureRevision = -1;
+        this.landKey = `${game.state.land.minX}:${game.state.land.maxX}`;
         this.glowRevision = '';
         this.particles.clear();
         this.labels.clear();
@@ -223,6 +238,7 @@ export class Renderer {
         world.people.dispose();
         world.buildings.dispose();
         world.backdrop.dispose();
+        world.land.dispose();
         world.roads.dispose();
         world.terrain.dispose();
         this.world = null;
@@ -343,6 +359,8 @@ export class Renderer {
 
         world.terrain.update(step, this.time);
         world.backdrop.update(season.snow ?? 0);
+        world.land.update(this.time);
+        this.celebrateLand(world);
         world.terrain.showGrid(
             Boolean(overlay.ghost) || overlay.roadPath.length > 0,
         );
@@ -390,6 +408,43 @@ export class Renderer {
         world.overlays.update(overlay, this.time);
         this.updateLabels(world, step);
         this.gl.render(this.scene, this.orbit.camera);
+    }
+
+    /** A strip was bought: sparkles rise over it, by the plaque's row. */
+    private celebrateLand(world: World): void {
+        const land = world.game.state.land;
+        const key = `${land.minX}:${land.maxX}`;
+        const before = this.landKey.split(':').map(Number);
+
+        if (key === this.landKey) {
+            return;
+        }
+
+        this.landKey = key;
+
+        const center = world.game.center;
+        const row = center ? center.y - 8 : 10;
+        const strips: [number, number][] = [];
+
+        if (land.minX < before[0]) {
+            strips.push([land.minX, before[0] - land.minX]);
+        }
+
+        if (land.maxX > before[1]) {
+            strips.push([before[1] + 1, land.maxX - before[1]]);
+        }
+
+        for (const [x, width] of strips) {
+            this.particles.burst(
+                'sparkle',
+                x,
+                world.terrain.heightAt(x, row) + 0.2,
+                row,
+                width,
+                18,
+                160,
+            );
+        }
     }
 
     /** Static glows (lamps, model lights), rebuilt when buildings or roads change. */
@@ -836,6 +891,31 @@ export class Renderer {
         }
 
         return [];
+    }
+
+    /**
+     * The strip plaque under a CSS-pixel point of the canvas (gdd §5.2:
+     * tapping it opens the confirm sheet), or null.
+     */
+    pickStrip(px: number, py: number): Side | null {
+        const world = this.world;
+
+        if (!world) {
+            return null;
+        }
+
+        this.ray(px, py);
+
+        return world.land.pick(this.raycaster);
+    }
+
+    /** Canvas CSS pixels of a side's strip plaque, if it is shown. */
+    stripPlaqueOnScreen(
+        side: Side,
+    ): { x: number; y: number; visible: boolean } | null {
+        const at = this.world?.land.plaqueAt(side);
+
+        return at ? this.project(at) : null;
     }
 
     pickNpc(px: number, py: number): NpcState | null {

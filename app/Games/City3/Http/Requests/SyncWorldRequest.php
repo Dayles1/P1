@@ -7,7 +7,8 @@ use Illuminate\Foundation\Http\FormRequest;
 /**
  * What changed since the last save: the world's numbers, changed tiles,
  * changed and removed buildings, and the residents. `revision` is the one
- * the browser last saw — a tab that fell behind is refused.
+ * the browser last saw — a tab that fell behind is refused; land strips
+ * once bought cannot shrink.
  */
 class SyncWorldRequest extends FormRequest
 {
@@ -23,8 +24,9 @@ class SyncWorldRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'revision' => ['required', 'integer', 'min:1'],
+            'force' => ['sometimes', 'boolean'],
             ...$this->worldRules(),
             'tiles' => ['present', 'array', $this->tilesRule()],
             'buildings' => ['required', 'array'],
@@ -33,5 +35,10 @@ class SyncWorldRequest extends FormRequest
             'buildings.delete.*' => ['integer', 'min:1'],
             ...$this->npcRules(),
         ];
+
+        $rules['world.land_left'][] = $this->landNeverShrinks('land_left');
+        $rules['world.land_right'][] = $this->landNeverShrinks('land_right');
+
+        return $rules;
     }
 }

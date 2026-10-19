@@ -42,6 +42,20 @@ import { Clock } from '../core/clock';
 import { EventBus } from '../core/events';
 import { between, hash2, mulberry32, pick, weighted } from '../core/random';
 import type { Rng } from '../core/random';
+import {
+    addStrip,
+    inSpan,
+    nextStrip,
+    overlaps,
+    placementReason,
+    SIDE_NAMES,
+    SITE_TYPES,
+    siteOf,
+    stripFeature,
+    stripPrice,
+    stripsOwned,
+} from '../world/land';
+import type { Side, Site } from '../world/land';
 import { buildMap, mapLayout } from '../world/layout';
 import type { MapLayout } from '../world/layout';
 import type { WorldMap } from '../world/world-map';
@@ -294,6 +308,23 @@ export interface PriceBreakdown {
     quote: Quote;
 }
 
+/** The next expansion strip on one side (gdd §5.2): what the plaque and the confirm sheet show. */
+export interface LandOffer {
+    /** Its columns, over the full depth of the land and the beach. */
+    minX: number;
+    maxX: number;
+    /** Money; it depends only on how many strips are owned, either side. */
+    price: number;
+    affordable: boolean;
+    /** What it holds, for the plaque («богатая руда», «бухта»); null for plain land. */
+    feature: string | null;
+    /**
+     * When the price is out of reach: the treasury loan on offer (gdd
+     * §4.10) and whether it covers the rest. Take it with `takeLoan`.
+     */
+    loan?: { amount: number; enough: boolean };
+}
+
 /** The last thing that moved the lead (the lead tooltip). */
 export interface LeadCause {
     label: string;
@@ -357,6 +388,8 @@ export class Game {
     private rng: Rng;
     /** The economy's inputs as the map makes them (rebuilt on structural change). */
     private city: EconomyCity;
+    /** What each building's place gives it (rebuilt on structural change). */
+    private sites = new Map<number, Site>();
     /** Homes and the Town Hall's rooms (parallel arrays), with their happiness after the city terms. */
     private homeUids: number[] = [];
     private homeEntries: HomeEntry[] = [];
@@ -647,7 +680,10 @@ export class Game {
         return x >= t.minX && y >= t.minY && x <= t.maxX && y <= t.maxY;
     }
 
-    /** Sets the owned columns (expansion strips are bought through this later). */
+    /**
+     * Sets the owned columns outright (tester tools, loading a save);
+     * players widen their land strip by strip with `buyStrip`.
+     */
     setLand(minX: number, maxX: number): ActionResult {
         const width = this.map.width;
         const from = Math.max(0, Math.min(width - 1, Math.floor(minX)));
@@ -661,6 +697,85 @@ export class Game {
         this.revision++;
 
         return { ok: true };
+    }
+
+    /** Expansion strips bought on each side. */
+    stripsBySide(): Record<Side, number> {
+        return stripsOwned(
+            this.state.land,
+            this.content.world.map.start,
+            this.content.world.land,
+        );
+    }
+
+    /**
+     * The next strip on a side (gdd §5.2): the columns right outside the
+     * land — strips are bought outwards in order — at the price of the
+     * next purchase whichever side it is on, and whether the treasury
+     * holds it; when it does not, the treasury loan on offer. Null when
+     * that side is all bought.
+     */
+    landOffer(side: Side): LandOffer | null {
+        const rules = this.content.world.land;
+        const map = this.content.world.map;
+        const strip = nextStrip(
+            this.state.land,
+            side,
+            map.start,
+            rules,
+            this.map.width,
+        );
+        const price = stripPrice(this.strips(), rules);
+
+        if (!strip || price === null) {
+            return null;
+        }
+
+        const affordable = this.canAfford({ [this.content.currency]: price });
+        const offer: LandOffer = {
+            ...strip,
+            price,
+            affordable,
+            feature: stripFeature(map, strip),
+        };
+        const loan = affordable ? 0 : this.loanOffer();
+
+        if (loan > 0) {
+            offer.loan = { amount: loan, enough: this.money + loan >= price };
+        }
+
+        return offer;
+    }
+
+    /** Buys the next strip on a side; false (with the reason as an error event) when it cannot. */
+    buyStrip(side: Side): boolean {
+        const offer = this.landOffer(side);
+
+        if (!offer) {
+            this.fail(`Вся земля ${SIDE_NAMES[side]} уже ваша`);
+
+            return false;
+        }
+
+        const cost = { [this.content.currency]: offer.price };
+
+        if (!this.canAfford(cost)) {
+            this.fail(this.missing(cost));
+
+            return false;
+        }
+
+        this.pay(cost);
+        this.state.land = addStrip(this.state.land, offer);
+        this.revision++;
+        this.events.emit({ type: 'sound', id: 'coin' });
+        this.events.emit({
+            type: 'toast',
+            text: `🗺️ Новая полоса земли ${SIDE_NAMES[side]}${offer.feature ? `: ${offer.feature}` : ''}`,
+            tone: 'good',
+        });
+
+        return true;
     }
 
     /** Money in the treasury. */
@@ -1239,8 +1354,12 @@ export class Game {
                 ).length;
                 target = condition.count;
                 break;
+            case 'strips':
+                current = this.strips();
+                target = condition.count;
+                break;
             default:
-                // Conditions of systems that come later (stars, strips, …).
+                // Conditions of systems that come later (stars, traffic, …).
                 current = 0;
                 target = 1;
         }
@@ -1510,18 +1629,11 @@ export class Game {
         );
     }
 
-    /** Expansion strips bought (from the owned columns). */
+    /** Expansion strips bought, both sides (from the owned columns). */
     strips(): number {
-        const start = this.content.world.map.start;
-        const width = this.state.land.maxX - this.state.land.minX;
+        const owned = this.stripsBySide();
 
-        return Math.max(
-            0,
-            Math.floor(
-                (width - (start.maxX - start.minX)) /
-                    this.content.world.chronicle.score.stripWidth,
-            ),
-        );
+        return owned.west + owned.east;
     }
 
     /** Score (gdd §10): Chronicle + City + Land + Achievements; money is worth nothing. */
@@ -1584,6 +1696,11 @@ export class Game {
         level = 0,
     ): ActionResult {
         const def = this.content.building(type);
+        // The airport clears the roads and parks on its plot (gdd §5.4).
+        const clears =
+            def.placement.zone === 'airportPlot'
+                ? new Set(this.plotClearance().map((b) => b.uid))
+                : null;
 
         for (let ty = y; ty < y + def.size.h; ty++) {
             for (let tx = x; tx < x + def.size.w; tx++) {
@@ -1602,13 +1719,17 @@ export class Game {
 
                 const occupant = this.map.occupantAt(tx, ty);
 
-                if (occupant && occupant !== ignoreUid) {
+                if (
+                    occupant &&
+                    occupant !== ignoreUid &&
+                    !clears?.has(occupant)
+                ) {
                     return { ok: false, reason: 'Место занято' };
                 }
             }
         }
 
-        const zone = this.zoneReason(def, y);
+        const zone = this.zoneReason(def, x, y);
 
         if (zone) {
             return { ok: false, reason: zone };
@@ -1621,35 +1742,43 @@ export class Game {
     }
 
     /**
-     * Why a footprint whose top row is `y` is out of its building's zone
-     * (gdd §5.1): land rows, land or beach, the mountain foot (rows 0–1),
-     * the waterline (the last beach row). Deposit spots come with the land
-     * slice; until then any mountain-foot place will do.
+     * Why a building's footprint at (x, y) is out of its zone (gdd §5.1,
+     * §5.3, §5.4): land rows, land or beach, the waterline; the mountain
+     * foot, exactly on a deposit of its kind for mines, coal mines and oil
+     * wells, off the deposits and portals for the rest; only roads and
+     * parks on the airport plot, the airport only on it.
      */
-    zoneReason(def: BuildingDef, y: number): string | null {
-        const bottom = y + def.size.h - 1;
-        const waterline = this.layout.seaY - 1;
+    zoneReason(def: BuildingDef, x: number, y: number): string | null {
+        return placementReason(
+            def,
+            { x, y, w: def.size.w, h: def.size.h },
+            this.layout,
+            this.content.world.map,
+        );
+    }
 
-        switch (def.placement.zone) {
-            case 'land':
-                return bottom < this.layout.beachY
-                    ? null
-                    : 'Это здание ставят на суше, не на пляже';
-            case 'landOrBeach':
-                return bottom < waterline
-                    ? null
-                    : 'У самой воды ставят только причалы';
-            case 'coast':
-                return bottom === waterline
-                    ? null
-                    : 'Ставится у самой кромки воды';
-            case 'mountain':
-                return y === 0
-                    ? null
-                    : 'Ставится у подножия гор — вплотную к ним';
-            default:
-                return 'Такое здание пока нельзя поставить';
-        }
+    /** What stands on the airport plot and goes when the airport comes (gdd §5.4). */
+    plotClearance(): BuildingState[] {
+        const plot = this.content.world.map.airportPlot;
+
+        return [...this.buildings.values()].filter(
+            (building) =>
+                plot.allow.includes(building.type) &&
+                overlaps(this.footprint(building), plot),
+        );
+    }
+
+    /** What a building's place gives it: a rich deposit, the deep bay, a cape, the sunny slope. */
+    site(building: BuildingState): Site {
+        return (
+            this.sites.get(building.uid) ??
+            siteOf(
+                this.def(building),
+                this.footprint(building),
+                this.layout,
+                this.content.world.map,
+            )
+        );
     }
 
     // ———————————————————————————————————————— Actions
@@ -1675,6 +1804,11 @@ export class Game {
         }
 
         const paid = this.pay(cost);
+
+        if (def.placement.zone === 'airportPlot') {
+            this.clearAirportPlot();
+        }
+
         const building = this.addBuilding(
             type,
             x,
@@ -1862,6 +1996,31 @@ export class Game {
         });
 
         return { ok: true };
+    }
+
+    /**
+     * Makes way for the airport (gdd §5.4): the roads and parks on its plot
+     * are removed and everything paid for them comes back.
+     */
+    private clearAirportPlot(): void {
+        const cleared = this.plotClearance();
+        let refund = 0;
+
+        for (const building of cleared) {
+            refund += Math.max(0, building.paid ?? 0);
+            this.removeBuilding(building.uid);
+            this.npcs.onBuildingRemoved(building.uid);
+        }
+
+        if (cleared.length) {
+            this.gain({ [this.content.currency]: refund });
+            this.events.emit({
+                type: 'toast',
+                text: '🛫 Участок аэропорта расчищен, вся цена дорог и парков вернулась: +:amount',
+                tone: 'info',
+                amount: refund,
+            });
+        }
     }
 
     move(uid: number, x: number, y: number): ActionResult {
@@ -2847,7 +3006,7 @@ export class Game {
         return 1 + (rules.heritageMult - 1) * ramp;
     }
 
-    /** Tourism demand per year a building adds (gdd §4.5). */
+    /** Tourism demand per year a building adds (gdd §4.5), a cape's beach included (§5.3). */
     attractionOf(building: BuildingState): number {
         const rules = this.content.world.economy.tourism;
         const def = this.def(building);
@@ -2870,7 +3029,8 @@ export class Game {
             rules.perPoint *
             eraMult *
             this.heritageMult(building) *
-            (onBeach ? rules.beachManorMult : 1)
+            (onBeach ? rules.beachManorMult : 1) *
+            this.site(building).attraction
         );
     }
 
@@ -2976,9 +3136,37 @@ export class Game {
         this.status = status;
         this.grids.sync(sources);
         this.unlocked = this.unlockedServices();
+        this.sites = this.collectSites(all);
         this.city = this.collectCity(all);
         this.homesDirty = true;
         this.statusDirty = true;
+    }
+
+    /**
+     * What every building's place gives it (gdd §5.3). The deep bay
+     * favours its first fisheries, in the order they were built.
+     */
+    private collectSites(all: BuildingState[]): Map<number, Site> {
+        const map = this.content.world.map;
+        const bay = map.features.bay;
+        const sites = new Map<number, Site>();
+        let fisheries = 0;
+
+        for (const building of [...all].sort((a, b) => a.uid - b.uid)) {
+            const def = this.def(building);
+            const area = this.footprint(building);
+            const firstInBay =
+                def.id === SITE_TYPES.fishery &&
+                inSpan(area, bay) &&
+                fisheries++ < bay.fisheryMax;
+
+            sites.set(
+                building.uid,
+                siteOf(def, area, this.layout, map, firstInBay),
+            );
+        }
+
+        return sites;
     }
 
     /** The aura a building stamps on the aura field itself (a home does not count its own). */
@@ -3121,6 +3309,7 @@ export class Game {
             const level = this.workDef(building);
             const effects = level.effects;
             const area = this.footprint(building);
+            const site = this.site(building);
 
             if (status.upkeep > 0) {
                 const key = def.network === 'road' ? 'roads' : def.category;
@@ -3159,8 +3348,8 @@ export class Game {
 
             city.powerUse += effects.powerUse;
             city.storage += effects.storage;
-            city.trade += effects.trade;
-            city.visitors += effects.visitors;
+            city.trade += effects.trade * site.trade;
+            city.visitors += effects.visitors * site.visitors;
             city.importDiscount = Math.max(
                 city.importDiscount,
                 effects.importDiscount / 100,
@@ -3175,10 +3364,10 @@ export class Game {
 
             if (effects.power > 0) {
                 if (burns > 0) {
-                    city.plants.power += effects.power;
+                    city.plants.power += effects.power * site.power;
                     city.plants.fuel += burns;
                 } else {
-                    city.cleanPower += effects.power;
+                    city.cleanPower += effects.power * site.power;
                 }
             } else if (
                 Object.keys(effects.produces).length ||
@@ -3202,9 +3391,11 @@ export class Game {
                     lines.set(key, line);
                 }
 
+                // A rich deposit or the deep bay: more out of the same inputs (gdd §4.2).
                 for (const [id, amount] of Object.entries(effects.produces)) {
                     line.produces[id] =
-                        (line.produces[id] ?? 0) + amount * (1 + status.boost);
+                        (line.produces[id] ?? 0) +
+                        amount * (1 + status.boost) * site.output;
                 }
 
                 for (const [id, amount] of Object.entries(effects.consumes)) {
@@ -3536,10 +3727,13 @@ export class Game {
                       ? 'food'
                       : null;
 
+            const site = this.site(building).output;
+
             for (const [id, amount] of Object.entries(effects.produces)) {
                 status.output[id] =
                     amount *
                     (1 + status.boost) *
+                    site *
                     scale *
                     (1 + (this.bonuses.produces[id] ?? 0) / 100);
             }

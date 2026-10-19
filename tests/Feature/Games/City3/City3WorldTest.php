@@ -43,7 +43,8 @@ function city3World(array $overrides = []): array
 }
 
 /**
- * A full 16×16 map, a town centre and one resident.
+ * A full 16×16 map, the town centre where the fixed map has it (x 49–50,
+ * rows 19–20) and one resident.
  *
  * @return array<string, mixed>
  */
@@ -60,7 +61,7 @@ function city3CreatePayload(): array
     return [
         'world' => city3World(),
         'tiles' => $tiles,
-        'buildings' => [['uid' => 1, 'type' => 'town_center', 'x' => 7, 'y' => 7, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null]],
+        'buildings' => [['uid' => 1, 'type' => 'town_center', 'x' => 49, 'y' => 19, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null]],
         'npcs' => [['uid' => 2, 'type' => 'peasant', 'name' => 'Алишер Каримов', 'age' => 30, 'home_uid' => 1, 'work_uid' => null, 'x' => 8.5, 'y' => 8.5, 'activity' => 'home', 'offset' => 0.01]],
     ];
 }
@@ -146,8 +147,8 @@ test('sync applies only the changes and moves the revision on', function () {
         'tiles' => [[0, 5, 'meadow', 120, null]],
         'buildings' => [
             'upsert' => [
-                ['uid' => 3, 'type' => 'road', 'x' => 6, 'y' => 7, 'level' => 1, 'build_start' => 400, 'build_end' => 400],
-                ['uid' => 4, 'type' => 'house', 'x' => 5, 'y' => 7, 'level' => 2, 'build_start' => 400, 'build_end' => 410, 'style' => null, 'district' => null],
+                ['uid' => 3, 'type' => 'road', 'x' => 48, 'y' => 19, 'level' => 1, 'build_start' => 400, 'build_end' => 400],
+                ['uid' => 4, 'type' => 'house', 'x' => 47, 'y' => 19, 'level' => 2, 'build_start' => 400, 'build_end' => 410, 'style' => null, 'district' => null],
             ],
             'delete' => [],
         ],
@@ -193,8 +194,8 @@ test('research, blueprints, goals, building styles and districts are saved and l
         'tiles' => [],
         'buildings' => [
             'upsert' => [
-                ['uid' => 4, 'type' => 'house', 'x' => 5, 'y' => 7, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => ['blueprint' => $blueprint, 'colors' => ['roof' => '#aa3322']], 'district' => null],
-                ['uid' => 5, 'type' => 'district_hall', 'x' => 2, 'y' => 2, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => ['name' => 'Заречье', 'policy' => 'historic']],
+                ['uid' => 4, 'type' => 'house', 'x' => 47, 'y' => 19, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => ['blueprint' => $blueprint, 'colors' => ['roof' => '#aa3322']], 'district' => null],
+                ['uid' => 5, 'type' => 'district_hall', 'x' => 44, 'y' => 10, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => ['name' => 'Заречье', 'policy' => 'historic']],
             ],
             'delete' => [],
         ],
@@ -222,7 +223,7 @@ test('unknown technologies and bad colours are refused', function () {
         'tiles' => [],
         'buildings' => [
             'upsert' => [
-                ['uid' => 4, 'type' => 'house', 'x' => 5, 'y' => 7, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => ['blueprint' => null, 'colors' => ['wall' => 'red; drop table']], 'district' => null],
+                ['uid' => 4, 'type' => 'house', 'x' => 47, 'y' => 19, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => ['blueprint' => null, 'colors' => ['wall' => 'red; drop table']], 'district' => null],
             ],
             'delete' => [],
         ],
@@ -286,6 +287,66 @@ test('a save from a tab that fell behind is refused', function () {
         ->assertJsonPath('data.revision', 1);
 
     expect(World::query()->sole()->population)->toBe(6);
+});
+
+test('a tab that fell behind can keep its own version: a forced save takes its whole city over the newer one', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user, 'sanctum')->postJson('/api/city3/world', city3CreatePayload())->assertCreated();
+
+    // Another tab saves a road (revision 2).
+    $this->putJson('/api/city3/world', [
+        'revision' => 1,
+        'world' => city3World(['time' => 300, 'next_uid' => 4]),
+        'tiles' => [],
+        'buildings' => [
+            'upsert' => [['uid' => 3, 'type' => 'road', 'x' => 48, 'y' => 19, 'level' => 1, 'build_start' => 200, 'build_end' => 200]],
+            'delete' => [],
+        ],
+        'npcs' => [],
+    ])->assertOk()->assertJsonPath('data.revision', 2);
+
+    // This tab still thinks it is at revision 1 and has a house instead.
+    $mine = [
+        'revision' => 1,
+        'world' => city3World(['time' => 400, 'population' => 12, 'next_uid' => 5]),
+        'tiles' => [],
+        'buildings' => [
+            'upsert' => [
+                ['uid' => 1, 'type' => 'town_center', 'x' => 49, 'y' => 19, 'level' => 1, 'build_start' => 0, 'build_end' => 0],
+                ['uid' => 4, 'type' => 'house', 'x' => 47, 'y' => 19, 'level' => 1, 'build_start' => 350, 'build_end' => 360],
+            ],
+            'delete' => [],
+        ],
+        'npcs' => [],
+    ];
+
+    $this->putJson('/api/city3/world', $mine)->assertStatus(409);
+
+    $this->putJson('/api/city3/world', [...$mine, 'force' => true])
+        ->assertOk()
+        ->assertJsonPath('data.revision', 3);
+
+    $world = World::query()->sole();
+
+    expect($world->revision)->toBe(3)
+        ->and($world->population)->toBe(12)
+        ->and(Building::query()->orderBy('uid')->pluck('type', 'uid')->all())->toBe([1 => 'town_center', 4 => 'house']);
+});
+
+test('force must be a boolean', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user, 'sanctum')->postJson('/api/city3/world', city3CreatePayload())->assertCreated();
+
+    $this->putJson('/api/city3/world', [
+        'revision' => 1,
+        'force' => 'yes please',
+        'world' => city3World(),
+        'tiles' => [],
+        'buildings' => ['upsert' => [], 'delete' => []],
+        'npcs' => [],
+    ])->assertUnprocessable()->assertJsonValidationErrors('force');
 });
 
 test('changes cannot be saved before the world is created', function () {
@@ -489,11 +550,11 @@ test('prices, mothballing, organic growth and the Chronicle are saved and load b
         'era_log' => [['era' => 1, 't' => 1900]],
         'economy' => city3Economy(['policy' => 'low', 'policyT' => 1950, 'loan' => 120.5, 'chestT' => 1990, 'h50' => 61.25]),
     ], [
-        ['uid' => 4, 'type' => 'farm', 'x' => 5, 'y' => 7, 'level' => 2, 'build_start' => 1990, 'build_end' => 2240, 'style' => null, 'district' => null,
+        ['uid' => 4, 'type' => 'farm', 'x' => 45, 'y' => 10, 'level' => 2, 'build_start' => 1990, 'build_end' => 2240, 'style' => null, 'district' => null,
             'paid' => 1203, 'mothballed' => false, 'organic' => 0, 'built_era' => 0, 'from_level' => 1],
-        ['uid' => 5, 'type' => 'temple', 'x' => 2, 'y' => 2, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null,
+        ['uid' => 5, 'type' => 'temple', 'x' => 40, 'y' => 10, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null,
             'paid' => 360, 'mothballed' => true, 'organic' => 0, 'built_era' => 0, 'from_level' => 0],
-        ['uid' => 6, 'type' => 'house', 'x' => 9, 'y' => 2, 'level' => 2, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null,
+        ['uid' => 6, 'type' => 'house', 'x' => 47, 'y' => 22, 'level' => 2, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null,
             'paid' => 28, 'mothballed' => false, 'organic' => 0.375, 'built_era' => 1, 'from_level' => 2],
     ]))->assertOk();
 
@@ -519,7 +580,7 @@ test('the server works out the year and the score from the era log, never the br
     $homes = [];
 
     for ($i = 0; $i < 17; $i++) {
-        $homes[] = ['uid' => 10 + $i, 'type' => 'house', 'x' => $i % 16, 'y' => 1 + intdiv($i, 16), 'level' => 5, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null];
+        $homes[] = ['uid' => 10 + $i, 'type' => 'house', 'x' => 36 + $i % 16, 'y' => 1 + intdiv($i, 16), 'level' => 5, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null];
     }
 
     $this->actingAs($user, 'sanctum')->postJson('/api/city3/world', city3CreatePayload())->assertCreated();
@@ -571,7 +632,7 @@ test('era logs that do not hold together, unknown treasury keys and bad building
         'era_log' => [['era' => 2, 't' => 100], ['era' => 1, 't' => 200]],
         'economy' => [...city3Economy(['policy' => 'zero']), 'bribe' => 5],
     ], [
-        ['uid' => 4, 'type' => 'house', 'x' => 5, 'y' => 7, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null,
+        ['uid' => 4, 'type' => 'house', 'x' => 47, 'y' => 19, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null,
             'paid' => -5, 'mothballed' => 'maybe', 'organic' => 3, 'built_era' => 9, 'from_level' => 0],
     ]))->assertUnprocessable()->assertJsonValidationErrors([
         'world.era_log', 'world.economy', 'world.economy.policy',
@@ -626,4 +687,82 @@ test('tester saves, time that ran too fast and eras entered impossibly early sta
         ->assertOk();
 
     expect(World::query()->where('user_id', $tester->id)->value('ranked'))->toBeFalse();
+});
+
+/**
+ * A building row at a place, level 1, finished.
+ *
+ * @return array<string, mixed>
+ */
+function city3Building(int $uid, string $type, int $x, int $y): array
+{
+    return ['uid' => $uid, 'type' => $type, 'x' => $x, 'y' => $y, 'level' => 1, 'build_start' => 0, 'build_end' => 0, 'style' => null, 'district' => null];
+}
+
+test('the land bought is saved, loads back and scores 100 a strip', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user, 'sanctum')->postJson('/api/city3/world', city3CreatePayload())->assertCreated();
+
+    $before = World::query()->sole();
+
+    expect($before->land_left)->toBe(0)->and($before->land_right)->toBe(0);
+
+    $this->putJson('/api/city3/world', city3Sync(['land_left' => 2, 'land_right' => 1], [
+        // On the rich ore of the first western strip, and a fishery in the deep bay.
+        city3Building(4, 'mine', 30, 0),
+        city3Building(5, 'fishery', 66, 59),
+    ]))->assertOk();
+
+    $this->getJson('/api/city3/world')
+        ->assertOk()
+        ->assertJsonPath('data.world.world.land_left', 2)
+        ->assertJsonPath('data.world.world.land_right', 1)
+        ->assertJsonPath('data.world.buildings.1.x', 30);
+
+    expect(World::query()->sole()->score)->toBe($before->score + 300);
+});
+
+test('buildings must stand on the land bought, inside their zone', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user, 'sanctum')->postJson('/api/city3/world', city3CreatePayload())->assertCreated();
+
+    $this->putJson('/api/city3/world', city3Sync([], [
+        city3Building(4, 'house', 33, 10),      // west of the start, not bought
+        city3Building(5, 'house', 40, 45),      // a home on the beach
+        city3Building(6, 'mine', 42, 0),        // no ore there
+        city3Building(7, 'quarry', 37, 0),      // on the coal spot
+        city3Building(8, 'fishery', 40, 58),    // not at the waterline
+        city3Building(9, 'storehouse', 50, 47), // on the airport plot
+        city3Building(10, 'house', 40, 60),     // in the sea
+        city3Building(11, 'quarry', 45, 0),     // over the tunnel portal at x 46
+    ]))->assertUnprocessable()->assertJsonValidationErrors([
+        'buildings.upsert.0', 'buildings.upsert.1', 'buildings.upsert.2', 'buildings.upsert.3',
+        'buildings.upsert.4', 'buildings.upsert.5', 'buildings.upsert.6', 'buildings.upsert.7',
+    ]);
+
+    $this->putJson('/api/city3/world', city3Sync(['land_left' => 8, 'land_right' => -1]))
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors(['world.land_left', 'world.land_right']);
+
+    $this->putJson('/api/city3/world', city3Sync(['land_left' => 1], [
+        city3Building(4, 'house', 33, 10),
+        city3Building(5, 'park', 44, 46),
+        city3Building(6, 'road', 50, 47),
+        city3Building(7, 'quarry', 42, 0),
+        city3Building(8, 'coal_mine', 37, 0),
+        city3Building(9, 'manor', 40, 57),
+        city3Building(10, 'fishery', 40, 59),
+        city3Building(11, 'house', 40, 0),
+    ]))->assertOk();
+
+    // Land once bought is never given back; a save that does not say keeps it.
+    $this->putJson('/api/city3/world', city3Sync(['land_left' => 0], [], 2))
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors(['world.land_left']);
+    $this->putJson('/api/city3/world', city3Sync([], [city3Building(12, 'house', 31, 10)], 2))->assertOk();
+
+    expect(World::query()->sole()->land_left)->toBe(1)
+        ->and(Building::query()->count())->toBe(10);
 });

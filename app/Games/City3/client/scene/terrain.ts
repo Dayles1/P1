@@ -12,10 +12,20 @@
  * (backdrop.ts). Under buildings the ground is flattened to the building's
  * base height. Also draws the border of the player's land and the
  * placement grid.
+ *
+ * The land's places show in the ground from day one, locked strips too
+ * (gdd §5.2, §5.3): gravel along the mountain foot, rusty ore and black
+ * coal on their spots, dark stone at the tunnel portals, an oily sheen on
+ * the oil spots at the waterline, and the future airport's plot outlined
+ * faintly on the beach (§5.4).
  */
 
 import * as THREE from 'three';
-import type { BiomeDef } from '../engine/content/types';
+import type {
+    BiomeDef,
+    DepositDef,
+    DepositKind,
+} from '../engine/content/types';
 import type { Game } from '../engine/sim/game';
 import { bandAt, groundHeight, SHORE_ROWS } from '../engine/world/layout';
 import type { Band, MapLayout } from '../engine/world/layout';
@@ -50,6 +60,16 @@ interface Shade {
 
 const SNOW = '#eef4f8';
 const WET_SAND = '#b8a473';
+/** The mountain foot's gravel (rows 0–1), the portals' stone. */
+const GRAVEL = '#8f8670';
+const PORTAL_STONE = '#4d4741';
+/** Deposit spots in the ground, by kind. */
+const DEPOSIT_TINT: Record<DepositKind, { color: string; share: number }> = {
+    ore: { color: '#9b5534', share: 0.55 },
+    coal: { color: '#2b2826', share: 0.65 },
+    oil: { color: '#26221f', share: 0.6 },
+};
+const PLOT_SAND = '#efe2bd';
 
 function waterNormalMap(): THREE.DataTexture {
     const size = 128;
@@ -133,6 +153,9 @@ export class Terrain {
     /** Tile colours on and near the map: x −PAD..W+PAD−1, y 0..H+PAD−1. */
     private tileColors: Float32Array;
     private decks = new Set<number>();
+    /** Deposit spots and portal tiles by tile index (static: the map is fixed). */
+    private spots = new Map<number, DepositDef>();
+    private portals = new Set<number>();
 
     private geometry = new THREE.BufferGeometry();
     private mesh: THREE.Mesh;
@@ -169,6 +192,20 @@ export class Terrain {
             ],
             sea: game.content.biomes[game.content.biomeIndexOf(biomes.sea)],
         };
+
+        const land = game.content.world.map;
+
+        for (const spot of land.deposits) {
+            for (let y = spot.y; y < spot.y + spot.h; y++) {
+                for (let x = spot.x; x < spot.x + spot.w; x++) {
+                    this.spots.set(y * map.width + x, spot);
+                }
+            }
+        }
+
+        for (const x of land.portals) {
+            this.portals.add(x);
+        }
 
         const corners = (map.width + 1) * (map.height + 1);
 
@@ -560,6 +597,8 @@ export class Terrain {
                 out.lerp(color(WET_SAND), smoothstep(-2.2, 0, fromShore) * 0.7);
             }
 
+            this.placeColor(x, y, out);
+
             if (shade.tint) {
                 out.lerp(shade.tint, shade.snow > 0 ? 0.15 : 0.22);
             }
@@ -580,6 +619,51 @@ export class Terrain {
         }
 
         return out;
+    }
+
+    /**
+     * What a tile's place adds to its colour (gdd §5.3, §5.4): the mountain
+     * foot's gravel, a deposit's ore, coal or oil (speckled, stronger when
+     * rich), a portal's stone, the airport plot's lighter sand.
+     */
+    private placeColor(x: number, y: number, out: THREE.Color): void {
+        const inMap = x >= 0 && x < this.width;
+        const spot = inMap ? this.spots.get(y * this.width + x) : undefined;
+
+        if (y < 2) {
+            out.lerp(
+                color(GRAVEL),
+                (y === 0 ? 0.32 : 0.16) + hash3(x, y, 21) * 0.1,
+            );
+        }
+
+        if (spot) {
+            const tint = DEPOSIT_TINT[spot.kind];
+            const speckle = hash3(x, y, 31);
+
+            out.lerp(color(tint.color), tint.share + (spot.rich ? 0.15 : 0));
+
+            if (spot.kind !== 'oil' && speckle > (spot.rich ? 0.55 : 0.75)) {
+                // Glints of ore or coal in the ground.
+                out.lerp(
+                    color(spot.kind === 'ore' ? '#d29a52' : '#56514c'),
+                    0.5,
+                );
+            }
+        } else if (y === 0 && inMap && this.portals.has(x)) {
+            out.lerp(color(PORTAL_STONE), 0.6);
+        }
+
+        const plot = this.game.content.world.map.airportPlot;
+
+        if (
+            x >= plot.x &&
+            x < plot.x + plot.w &&
+            y >= plot.y &&
+            y < plot.y + plot.h
+        ) {
+            out.lerp(color(PLOT_SAND), 0.18);
+        }
     }
 
     /** A tile's colour from the cache near the map, else worked out. */
@@ -742,6 +826,23 @@ export class Terrain {
             color('#ffe08a'),
             0.95,
             0.24,
+        );
+
+        // The future airport's plot, faint, from day one (gdd §5.4).
+        const plot = this.game.content.world.map.airportPlot;
+
+        this.addBorder(
+            positions,
+            colors,
+            {
+                minX: plot.x,
+                minY: plot.y,
+                maxX: plot.x + plot.w - 1,
+                maxY: plot.y + plot.h - 1,
+            },
+            color('#ffffff'),
+            0.38,
+            0,
         );
 
         const geometry = new THREE.BufferGeometry();

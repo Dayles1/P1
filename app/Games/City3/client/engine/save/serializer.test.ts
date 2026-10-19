@@ -216,3 +216,33 @@ describe('slice 3 fields', () => {
         expect(hoursAway('not a date', now)).toBe(0);
     });
 });
+
+describe('slice 5 land', () => {
+    it('round-trips the strips bought on each side', () => {
+        const save = oldSave();
+
+        save.world = { ...save.world, land_left: 2, land_right: 1 };
+        save.buildings = [
+            row(1, 'town_center', 49, 19, 1),
+            row(2, 'house', 26, 10, 1),
+        ];
+
+        const game = fromServer(content, save);
+        const payload = toCreatePayload(game);
+
+        expect(game.state.land).toEqual({ minX: 25, maxX: 69 });
+        expect(game.strips()).toBe(3);
+        expect(game.buildingAt(26, 10)?.type).toBe('house');
+        expect(payload.world).toMatchObject({ land_left: 2, land_right: 1 });
+    });
+
+    it('gives a save from before slice 5 the starting columns', () => {
+        const game = fromServer(content, oldSave());
+
+        expect(game.state.land).toEqual(content.world.map.start);
+        expect(toCreatePayload(game).world).toMatchObject({
+            land_left: 0,
+            land_right: 0,
+        });
+    });
+});

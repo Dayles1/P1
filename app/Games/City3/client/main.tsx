@@ -7,8 +7,6 @@
 import { Component, StrictMode } from 'react';
 import type { ReactNode } from 'react';
 import { createRoot } from 'react-dom/client';
-import './styles/base.css';
-import './city3.css';
 import { goToLogin, hasToken } from './api';
 import City3Game from './City3Game';
 
@@ -37,22 +35,22 @@ class Crash extends Component<
         }
 
         return (
-            <div className="city epochs">
-                <div className="city__loading">
-                    <div className="epochs-error">
+            <div className="c3">
+                <div className="c3-loading">
+                    <div className="c3-error c3-chip">
                         <p>
                             {/webgl/i.test(error)
                                 ? 'Не удалось запустить 3D-графику. Нужен браузер с поддержкой WebGL — обновите его или включите аппаратное ускорение.'
                                 : 'Не удалось запустить игру.'}
                         </p>
                         <code>{error}</code>
-                        <div className="epochs-error__actions">
-                            <a className="hud-button" href={this.props.backUrl}>
-                                ← К списку игр
+                        <div className="c3-act-row">
+                            <a className="c3-btn" href={this.props.backUrl}>
+                                К списку игр
                             </a>
                             <button
                                 type="button"
-                                className="hud-button"
+                                className="c3-btn c3-btn--primary"
                                 onClick={() => window.location.reload()}
                             >
                                 Повторить

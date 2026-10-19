@@ -36,11 +36,13 @@ test('the page speaks the player\'s language and fits notched screens', function
         ->assertSee('viewport-fit=cover', false);
 });
 
-test('the page links its own font, so it needs no font config from the host', function () {
+test('the page links its own font, Geologica with the sharpness axis, so it needs no font config from the host', function () {
     $this->withoutVite()
         ->get('/games/city3')
         ->assertOk()
-        ->assertSee('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap', false);
+        ->assertSee('https://fonts.googleapis.com/css2?family=Geologica:wght@400..800&display=swap', false)
+        ->assertSee('https://fonts.googleapis.com/css2?family=Geologica:wght,SHRP@400..800,0..100&display=swap', false)
+        ->assertDontSee('family=Onest', false);
 
     expect(file_get_contents(base_path('app/Games/City3/views/app.blade.php')))->not->toContain('@fonts');
 });

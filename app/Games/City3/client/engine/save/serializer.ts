@@ -21,6 +21,7 @@ import type {
     Research,
     WorldState,
 } from '../sim/state';
+import { landOf } from '../world/land';
 import { buildMap } from '../world/layout';
 import type { TileRow } from '../world/world-map';
 
@@ -49,6 +50,9 @@ export interface WorldPayload {
     peak_population: number;
     era_log: EraLogEntry[];
     economy: EconomyState;
+    /** Expansion strips bought west and east of the starting columns (gdd §14, 0..7 each). */
+    land_left: number;
+    land_right: number;
 }
 
 export interface BuildingRow {
@@ -108,6 +112,7 @@ export interface LoadedWorld {
 
 function worldPayload(game: Game): WorldPayload {
     const s = game.state;
+    const strips = game.stripsBySide();
 
     return {
         seed: s.seed,
@@ -158,6 +163,8 @@ function worldPayload(game: Game): WorldPayload {
             bestH50: Math.round(s.economy.bestH50 * 100) / 100,
             flags: { ...s.economy.flags },
         },
+        land_left: strips.west,
+        land_right: strips.east,
     };
 }
 
@@ -287,7 +294,14 @@ export function fromServer(content: Content, loaded: LoadedWorld): Game {
         height: w.height,
         epoch: epochIndex,
         time: w.time,
-        land: { ...content.world.map.start },
+        // The strips bought on each side; a save from before slice 5 owns the start.
+        land: landOf(
+            content.world.map.start,
+            w.land_left ?? 0,
+            w.land_right ?? 0,
+            content.world.land,
+            content.world.map.width,
+        ),
         resources: migrateResources(content, w.resources),
         population: w.population,
         weather: w.weather,

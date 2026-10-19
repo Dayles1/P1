@@ -209,6 +209,68 @@ class ContentRepository
     }
 
     /**
+     * The fixed map's land (world.json `map` and `land`, gdd §5): its size
+     * in rows, the starting columns, the strips, the tunnel portals, the
+     * deposit spots and the airport plot.
+     *
+     * @return array{width: int, landRows: int, beachRows: int, start: array{minX: int, maxX: int}, stripWidth: int, perSide: int, portals: list<int>, deposits: list<array{kind: string, x: int, y: int, w: int, h: int}>, airportPlot: array{x: int, y: int, w: int, h: int, allow: list<string>}}
+     */
+    public function land(): array
+    {
+        $world = $this->read('world');
+        $map = is_array($world['map'] ?? null) ? $world['map'] : [];
+        $land = is_array($world['land'] ?? null) ? $world['land'] : [];
+        $plot = is_array($map['airportPlot'] ?? null) ? $map['airportPlot'] : [];
+        $rect = fn (array $item): array => [
+            'x' => (int) ($item['x'] ?? 0),
+            'y' => (int) ($item['y'] ?? 0),
+            'w' => (int) ($item['w'] ?? 0),
+            'h' => (int) ($item['h'] ?? 0),
+        ];
+
+        return [
+            'width' => (int) ($map['width'] ?? 100),
+            'landRows' => (int) ($map['landRows'] ?? 40),
+            'beachRows' => (int) ($map['beachRows'] ?? 20),
+            'start' => ['minX' => (int) ($map['start']['minX'] ?? 0), 'maxX' => (int) ($map['start']['maxX'] ?? 0)],
+            'stripWidth' => max(1, (int) ($land['stripWidth'] ?? 5)),
+            'perSide' => max(0, (int) ($land['perSide'] ?? 0)),
+            'portals' => array_values(array_map('intval', is_array($map['portals'] ?? null) ? $map['portals'] : [])),
+            'deposits' => array_values(array_map(
+                fn (array $spot): array => ['kind' => (string) ($spot['kind'] ?? ''), ...$rect($spot)],
+                array_filter(is_array($map['deposits'] ?? null) ? $map['deposits'] : [], 'is_array'),
+            )),
+            'airportPlot' => [
+                ...$rect($plot),
+                'allow' => array_values(array_filter(is_array($plot['allow'] ?? null) ? $plot['allow'] : [], 'is_string')),
+            ],
+        ];
+    }
+
+    /**
+     * Where a building type may stand: its size, its zone and the deposit
+     * it needs (buildings/{type}.json); null for an unknown type.
+     *
+     * @return array{w: int, h: int, zone: string, deposit: string|null}|null
+     */
+    public function placement(string $type): ?array
+    {
+        if (! in_array($type, $this->buildingIds(), true)) {
+            return null;
+        }
+
+        $building = $this->read("buildings/{$type}");
+        $deposit = $building['placement']['deposit'] ?? null;
+
+        return [
+            'w' => max(1, (int) ($building['size']['w'] ?? 1)),
+            'h' => max(1, (int) ($building['size']['h'] ?? 1)),
+            'zone' => (string) ($building['placement']['zone'] ?? 'land'),
+            'deposit' => is_string($deposit) ? $deposit : null,
+        ];
+    }
+
+    /**
      * Places a building's level offers its residents (0 for an unknown
      * type or level, or a building nobody lives in).
      */
